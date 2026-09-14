@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Snapshot resources.
 class SnapshotState {
   /// Description of the snapshot.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-defined labels (key-value pairs) should be created with.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Server to the snapshot should be created from.
-  final pulumi.Input<int>? serverId;
+  final pulumi.Input<int?>? serverId;
 
   /// Creates a new [SnapshotState].
   /// [description] Description of the snapshot.
@@ -33,7 +33,7 @@ class SnapshotState {
     return SnapshotState(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

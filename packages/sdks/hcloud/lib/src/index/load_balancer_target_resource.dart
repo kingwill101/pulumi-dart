@@ -79,6 +79,8 @@ import 'load_balancer_target_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -103,8 +105,8 @@ import 'load_balancer_target_state.dart';
 /// 		}
 /// 		_, err = hcloud.NewLoadBalancerTarget(ctx, "load_balancer_target", &hcloud.LoadBalancerTargetArgs{
 /// 			Type:           pulumi.String("server"),
-/// 			LoadBalancerId: loadBalancer.ID(),
-/// 			ServerId:       myServer.ID(),
+/// 			LoadBalancerId: loadBalancer.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+/// 			ServerId:       myServer.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -259,7 +261,7 @@ class LoadBalancerTargetResource extends pulumi.CustomResource {
           'hcloud:index/loadBalancerTarget:LoadBalancerTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     ip = registerOutput<String?>('ip');
     labelSelector = registerOutput<String?>('labelSelector');
@@ -274,11 +276,12 @@ class LoadBalancerTargetResource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LoadBalancerTargetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LoadBalancerTargetResource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -292,6 +295,23 @@ class LoadBalancerTargetResource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    ip = registerOutput<String?>('ip');
+    labelSelector = registerOutput<String?>('labelSelector');
+    loadBalancerId = registerOutput<int>('loadBalancerId');
+    serverId = registerOutput<int?>('serverId');
+    type = registerOutput<String>('type');
+    usePrivateIp = registerOutput<bool>('usePrivateIp');
+  }
+
+  /// Creates a typed reference to an existing [LoadBalancerTargetResource] resource.
+  LoadBalancerTargetResource.reference(String urn)
+    : super(
+        'hcloud:index/loadBalancerTarget:LoadBalancerTarget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     ip = registerOutput<String?>('ip');
     labelSelector = registerOutput<String?>('labelSelector');
     loadBalancerId = registerOutput<int>('loadBalancerId');

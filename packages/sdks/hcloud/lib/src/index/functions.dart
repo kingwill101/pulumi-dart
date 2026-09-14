@@ -224,6 +224,17 @@ Future<GetCertificateResult> getCertificate(
   return GetCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getCertificate:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
+}
+
 /// Provides details about multiple Hetzner Cloud Certificates.
 ///
 /// ## Example Usage
@@ -340,6 +351,17 @@ Future<GetCertificatesResult> getCertificates(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCertificatesResult.fromMap(result);
+}
+
+pulumi.Output<GetCertificatesResult> getCertificatesOutput(
+  GetCertificatesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getCertificates:getCertificates',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificatesResult.fromMap);
 }
 
 /// Provides details about a specific Hetzner Cloud Datacenter.
@@ -494,6 +516,17 @@ Future<GetDatacenterResult> getDatacenter(
   return GetDatacenterResult.fromMap(result);
 }
 
+pulumi.Output<GetDatacenterResult> getDatacenterOutput(
+  GetDatacenterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getDatacenter:getDatacenter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatacenterResult.fromMap);
+}
+
 /// Provides a list of available Hetzner Cloud Datacenters.
 ///
 /// This resource may be useful to create highly available infrastructure, distributed across several Datacenters.
@@ -604,6 +637,17 @@ Future<GetDatacentersResult> getDatacenters(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatacentersResult.fromMap(result);
+}
+
+pulumi.Output<GetDatacentersResult> getDatacentersOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getDatacenters:getDatacenters',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetDatacentersResult.fromMap);
 }
 
 /// Provides details about a specific Hetzner Cloud Firewall.
@@ -749,6 +793,17 @@ Future<GetFirewallResult> getFirewall(
   return GetFirewallResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallResult> getFirewallOutput(
+  GetFirewallArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getFirewall:getFirewall',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallResult.fromMap);
+}
+
 /// Provides details about multiple Hetzner Cloud Firewall.
 ///
 /// ## Example Usage
@@ -867,6 +922,17 @@ Future<GetFirewallsResult> getFirewalls(
   return GetFirewallsResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallsResult> getFirewallsOutput(
+  GetFirewallsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getFirewalls:getFirewalls',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallsResult.fromMap);
+}
+
 /// Provides details about a Hetzner Cloud Floating IP.
 ///
 /// This resource can be useful when you need to determine a Floating IP ID based on the IP address.
@@ -970,7 +1036,6 @@ Future<GetFirewallsResult> getFirewalls(
 /// 		var main []*hcloud.FloatingIpAssignment
 /// 		for index := 0; index < counter; index++ {
 /// 			key0 := index
-/// 			_ := index
 /// 			__res, err := hcloud.NewFloatingIpAssignment(ctx, fmt.Sprintf("main-%v", key0), &hcloud.FloatingIpAssignmentArgs{
 /// 				FloatingIpId: pulumi.Int(ip1.Id),
 /// 				ServerId:     pulumi.Any(mainHcloudServer.Id),
@@ -1082,6 +1147,17 @@ Future<GetFloatingIpResult> getFloatingIp(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFloatingIpResult.fromMap(result);
+}
+
+pulumi.Output<GetFloatingIpResult> getFloatingIpOutput(
+  GetFloatingIpArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getFloatingIp:getFloatingIp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFloatingIpResult.fromMap);
 }
 
 /// Provides details about multiple Hetzner Cloud Floating IPs.
@@ -1200,6 +1276,17 @@ Future<GetFloatingIpsResult> getFloatingIps(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFloatingIpsResult.fromMap(result);
+}
+
+pulumi.Output<GetFloatingIpsResult> getFloatingIpsOutput(
+  GetFloatingIpsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getFloatingIps:getFloatingIps',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFloatingIpsResult.fromMap);
 }
 
 /// Provides details about a Hetzner Cloud Image.
@@ -1454,6 +1541,17 @@ Future<GetImageResult> getImage(
   return GetImageResult.fromMap(result);
 }
 
+pulumi.Output<GetImageResult> getImageOutput(
+  GetImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getImage:getImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageResult.fromMap);
+}
+
 /// Provides a list of Hetzner Storage Images.
 ///
 /// It is recommended to always provide the image architecture (using ''with_architecture'').
@@ -1607,6 +1705,17 @@ Future<GetImagesResult> getImages(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImagesResult.fromMap(result);
+}
+
+pulumi.Output<GetImagesResult> getImagesOutput(
+  GetImagesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getImages:getImages',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImagesResult.fromMap);
 }
 
 /// Provides details about a specific Hetzner Cloud Load Balancer.
@@ -1779,6 +1888,17 @@ Future<GetLoadBalancerResult> getLoadBalancer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLoadBalancerResult.fromMap(result);
+}
+
+pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
+  GetLoadBalancerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getLoadBalancer:getLoadBalancer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadBalancerResult.fromMap);
 }
 
 /// Provides details about a specific Hetzner Cloud Load Balancer Type.
@@ -1973,6 +2093,17 @@ Future<GetLoadBalancerTypeResult> getLoadBalancerType(
   return GetLoadBalancerTypeResult.fromMap(result);
 }
 
+pulumi.Output<GetLoadBalancerTypeResult> getLoadBalancerTypeOutput(
+  GetLoadBalancerTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getLoadBalancerType:getLoadBalancerType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadBalancerTypeResult.fromMap);
+}
+
 /// Provides a list of available Hetzner Cloud Load Balancer Types.
 ///
 /// ## Example Usage
@@ -2076,6 +2207,17 @@ Future<GetLoadBalancerTypesResult> getLoadBalancerTypes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLoadBalancerTypesResult.fromMap(result);
+}
+
+pulumi.Output<GetLoadBalancerTypesResult> getLoadBalancerTypesOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getLoadBalancerTypes:getLoadBalancerTypes',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetLoadBalancerTypesResult.fromMap);
 }
 
 /// Provides details about multiple Hetzner Cloud Load Balancers.
@@ -2211,6 +2353,17 @@ Future<GetLoadBalancersResult> getLoadBalancers(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLoadBalancersResult.fromMap(result);
+}
+
+pulumi.Output<GetLoadBalancersResult> getLoadBalancersOutput(
+  GetLoadBalancersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getLoadBalancers:getLoadBalancers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadBalancersResult.fromMap);
 }
 
 /// Provides details about a specific Hetzner Cloud Location.
@@ -2358,6 +2511,17 @@ Future<GetLocationResult> getLocation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLocationResult.fromMap(result);
+}
+
+pulumi.Output<GetLocationResult> getLocationOutput(
+  GetLocationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getLocation:getLocation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocationResult.fromMap);
 }
 
 /// Provides a list of available Hetzner Cloud Locations.
@@ -2525,6 +2689,17 @@ Future<GetLocationsResult> getLocations(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLocationsResult.fromMap(result);
+}
+
+pulumi.Output<GetLocationsResult> getLocationsOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getLocations:getLocations',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetLocationsResult.fromMap);
 }
 
 /// Provides details about a Hetzner Cloud network.
@@ -2700,6 +2875,17 @@ Future<GetNetworkResult> getNetwork(
   return GetNetworkResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkResult> getNetworkOutput(
+  GetNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getNetwork:getNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkResult.fromMap);
+}
+
 /// Provides details about multiple Hetzner Cloud Networks.
 ///
 /// ## Example Usage
@@ -2833,6 +3019,17 @@ Future<GetNetworksResult> getNetworks(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworksResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworksResult> getNetworksOutput(
+  GetNetworksArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getNetworks:getNetworks',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworksResult.fromMap);
 }
 
 /// Provides details about a specific Hetzner Cloud Placement Group.
@@ -2978,6 +3175,17 @@ Future<GetPlacementGroupResult> getPlacementGroup(
   return GetPlacementGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetPlacementGroupResult> getPlacementGroupOutput(
+  GetPlacementGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getPlacementGroup:getPlacementGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPlacementGroupResult.fromMap);
+}
+
 /// Provides details about multiple Hetzner Cloud Placement Groups.
 ///
 /// ## Example Usage
@@ -3111,6 +3319,17 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPlacementGroupsResult.fromMap(result);
+}
+
+pulumi.Output<GetPlacementGroupsResult> getPlacementGroupsOutput(
+  GetPlacementGroupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getPlacementGroups:getPlacementGroups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPlacementGroupsResult.fromMap);
 }
 
 /// Provides details about a Hetzner Cloud Primary IP.
@@ -3402,6 +3621,17 @@ Future<GetPrimaryIpResult> getPrimaryIp(
   return GetPrimaryIpResult.fromMap(result);
 }
 
+pulumi.Output<GetPrimaryIpResult> getPrimaryIpOutput(
+  GetPrimaryIpArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getPrimaryIp:getPrimaryIp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrimaryIpResult.fromMap);
+}
+
 /// Provides a list of Hetzner Cloud Primary IPs.
 ///
 /// See the [Primary IPs API documentation](https://docs.hetzner.cloud/reference/cloud#tag/primary-ips) for more details.
@@ -3529,6 +3759,17 @@ Future<GetPrimaryIpsResult> getPrimaryIps(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrimaryIpsResult.fromMap(result);
+}
+
+pulumi.Output<GetPrimaryIpsResult> getPrimaryIpsOutput(
+  GetPrimaryIpsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getPrimaryIps:getPrimaryIps',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrimaryIpsResult.fromMap);
 }
 
 /// Provides details about a Hetzner Cloud Server.
@@ -3711,6 +3952,17 @@ Future<GetServerResult> getServer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerResult.fromMap(result);
+}
+
+pulumi.Output<GetServerResult> getServerOutput(
+  GetServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getServer:getServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerResult.fromMap);
 }
 
 /// Provides details about a specific Hetzner Cloud Server Type.
@@ -3912,6 +4164,17 @@ Future<GetServerTypeResult> getServerType(
   return GetServerTypeResult.fromMap(result);
 }
 
+pulumi.Output<GetServerTypeResult> getServerTypeOutput(
+  GetServerTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getServerType:getServerType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerTypeResult.fromMap);
+}
+
 /// Provides a list of available Hetzner Cloud Server Types.
 ///
 /// ## Example Usage
@@ -4015,6 +4278,17 @@ Future<GetServerTypesResult> getServerTypes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerTypesResult.fromMap(result);
+}
+
+pulumi.Output<GetServerTypesResult> getServerTypesOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getServerTypes:getServerTypes',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetServerTypesResult.fromMap);
 }
 
 /// Provides details about multiple Hetzner Cloud Servers.
@@ -4134,6 +4408,17 @@ Future<GetServersResult> getServers(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServersResult.fromMap(result);
+}
+
+pulumi.Output<GetServersResult> getServersOutput(
+  GetServersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getServers:getServers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServersResult.fromMap);
 }
 
 /// Provides details about a specific Hetzner Cloud SSH Key.
@@ -4388,6 +4673,17 @@ Future<GetSshKeyResult> getSshKey(
   return GetSshKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetSshKeyResult> getSshKeyOutput(
+  GetSshKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getSshKey:getSshKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSshKeyResult.fromMap);
+}
+
 /// Provides a list of Hetzner Cloud SSH Keys.
 ///
 /// This resource is useful if you want to use a non-terraform managed SSH Key.
@@ -4538,6 +4834,17 @@ Future<GetSshKeysResult> getSshKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSshKeysResult.fromMap(result);
+}
+
+pulumi.Output<GetSshKeysResult> getSshKeysOutput(
+  GetSshKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getSshKeys:getSshKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSshKeysResult.fromMap);
 }
 
 /// Provides details about a Hetzner Storage Box.
@@ -4714,6 +5021,17 @@ Future<GetStorageBoxResult> getStorageBox(
   return GetStorageBoxResult.fromMap(result);
 }
 
+pulumi.Output<GetStorageBoxResult> getStorageBoxOutput(
+  GetStorageBoxArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getStorageBox:getStorageBox',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageBoxResult.fromMap);
+}
+
 /// Provides details about a Hetzner Storage Box Snapshot.
 ///
 /// See the [Storage Box Snapshots API documentation](https://docs.hetzner.cloud/reference/hetzner#storage-box-snapshots) for more details.
@@ -4783,6 +5101,17 @@ Future<GetStorageBoxSnapshotResult> getStorageBoxSnapshot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStorageBoxSnapshotResult.fromMap(result);
+}
+
+pulumi.Output<GetStorageBoxSnapshotResult> getStorageBoxSnapshotOutput(
+  GetStorageBoxSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getStorageBoxSnapshot:getStorageBoxSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageBoxSnapshotResult.fromMap);
 }
 
 /// Provides a list of Hetzner Storage Box Snapshots.
@@ -4955,6 +5284,17 @@ Future<GetStorageBoxSnapshotsResult> getStorageBoxSnapshots(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStorageBoxSnapshotsResult.fromMap(result);
+}
+
+pulumi.Output<GetStorageBoxSnapshotsResult> getStorageBoxSnapshotsOutput(
+  GetStorageBoxSnapshotsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getStorageBoxSnapshots:getStorageBoxSnapshots',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageBoxSnapshotsResult.fromMap);
 }
 
 /// Provides details about a Hetzner Storage Box Subaccount.
@@ -5204,6 +5544,17 @@ Future<GetStorageBoxSubaccountResult> getStorageBoxSubaccount(
   return GetStorageBoxSubaccountResult.fromMap(result);
 }
 
+pulumi.Output<GetStorageBoxSubaccountResult> getStorageBoxSubaccountOutput(
+  GetStorageBoxSubaccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getStorageBoxSubaccount:getStorageBoxSubaccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageBoxSubaccountResult.fromMap);
+}
+
 /// Provides a list of Hetzner Storage Box Subaccounts.
 ///
 /// See the [Storage Box Subaccounts API documentation](https://docs.hetzner.cloud/reference/hetzner#storage-box-subaccounts) for more details.
@@ -5376,6 +5727,17 @@ Future<GetStorageBoxSubaccountsResult> getStorageBoxSubaccounts(
   return GetStorageBoxSubaccountsResult.fromMap(result);
 }
 
+pulumi.Output<GetStorageBoxSubaccountsResult> getStorageBoxSubaccountsOutput(
+  GetStorageBoxSubaccountsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getStorageBoxSubaccounts:getStorageBoxSubaccounts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageBoxSubaccountsResult.fromMap);
+}
+
 /// Provides details about a Hetzner Storage Box Type.
 ///
 /// See the [Storage Box Type API documentation](https://docs.hetzner.cloud/reference/hetzner#storage-box-types) for more details.
@@ -5523,6 +5885,17 @@ Future<GetStorageBoxTypeResult> getStorageBoxType(
   return GetStorageBoxTypeResult.fromMap(result);
 }
 
+pulumi.Output<GetStorageBoxTypeResult> getStorageBoxTypeOutput(
+  GetStorageBoxTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getStorageBoxType:getStorageBoxType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageBoxTypeResult.fromMap);
+}
+
 /// Provides a list of Hetzner Storage Box Types.
 ///
 /// See the [Storage Box Type API documentation](https://docs.hetzner.cloud/reference/hetzner#storage-box-types) for more details.
@@ -5628,6 +6001,17 @@ Future<GetStorageBoxTypesResult> getStorageBoxTypes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStorageBoxTypesResult.fromMap(result);
+}
+
+pulumi.Output<GetStorageBoxTypesResult> getStorageBoxTypesOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getStorageBoxTypes:getStorageBoxTypes',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetStorageBoxTypesResult.fromMap);
 }
 
 /// Provides a list of Hetzner Storage Boxes.
@@ -5765,6 +6149,17 @@ Future<GetStorageBoxesResult> getStorageBoxes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStorageBoxesResult.fromMap(result);
+}
+
+pulumi.Output<GetStorageBoxesResult> getStorageBoxesOutput(
+  GetStorageBoxesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getStorageBoxes:getStorageBoxes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageBoxesResult.fromMap);
 }
 
 /// Provides details about a Hetzner Cloud volume.
@@ -5940,6 +6335,17 @@ Future<GetVolumeResult> getVolume(
   return GetVolumeResult.fromMap(result);
 }
 
+pulumi.Output<GetVolumeResult> getVolumeOutput(
+  GetVolumeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getVolume:getVolume',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeResult.fromMap);
+}
+
 /// Provides details about multiple Hetzner Cloud Volumes.
 ///
 /// ## Example Usage
@@ -6073,6 +6479,17 @@ Future<GetVolumesResult> getVolumes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVolumesResult.fromMap(result);
+}
+
+pulumi.Output<GetVolumesResult> getVolumesOutput(
+  GetVolumesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getVolumes:getVolumes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumesResult.fromMap);
 }
 
 /// Provides details about a Hetzner Cloud Zone.
@@ -6249,6 +6666,17 @@ Future<GetZoneResult> getZone(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetZoneResult.fromMap(result);
+}
+
+pulumi.Output<GetZoneResult> getZoneOutput(
+  GetZoneArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getZone:getZone',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZoneResult.fromMap);
 }
 
 /// Provides details about a Hetzner Cloud Zone Resource Record Set (RRSet).
@@ -6481,6 +6909,17 @@ Future<GetZoneRrsetResult> getZoneRrset(
   return GetZoneRrsetResult.fromMap(result);
 }
 
+pulumi.Output<GetZoneRrsetResult> getZoneRrsetOutput(
+  GetZoneRrsetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getZoneRrset:getZoneRrset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZoneRrsetResult.fromMap);
+}
+
 /// Provides a list of Hetzner Cloud Zone Resource Record Set (RRSet).
 ///
 /// See the [Zone RRSets API documentation](https://docs.hetzner.cloud/reference/cloud#zone-rrsets) for more details.
@@ -6663,6 +7102,17 @@ Future<GetZoneRrsetsResult> getZoneRrsets(
   return GetZoneRrsetsResult.fromMap(result);
 }
 
+pulumi.Output<GetZoneRrsetsResult> getZoneRrsetsOutput(
+  GetZoneRrsetsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getZoneRrsets:getZoneRrsets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZoneRrsetsResult.fromMap);
+}
+
 /// Provides a list of Hetzner Cloud Zone.
 ///
 /// See the [Zones API documentation](https://docs.hetzner.cloud/reference/cloud#zones) for more details.
@@ -6800,6 +7250,17 @@ Future<GetZonesResult> getZones(
   return GetZonesResult.fromMap(result);
 }
 
+pulumi.Output<GetZonesResult> getZonesOutput(
+  GetZonesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getZones:getZones',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZonesResult.fromMap);
+}
+
 /// Converts a Internationalized Domain Name (IDN) to ASCII using Punycode.
 ///
 /// The conversion is defined by Golang's IDNA package. See https://pkg.go.dev/golang.org/x/net/idna
@@ -6812,17 +7273,32 @@ Future<GetZonesResult> getZones(
 /// idna(domain string) string
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_idna_idna_args_doc}
+/// [domain] Value for the `domain` invoke input.
 /// [options] Invoke options controlling this call.
-Future<Map<String, dynamic>> idna(
-  IdnaArgs args, {
+Future<String> idna(
+  pulumi.Input<String> domain,
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
-  return await deployment.invoke<Map<String, dynamic>>(
+  final value = await deployment.invokeSingle<dynamic>(
     'hcloud:index/idna:idna',
-    args.toMap(),
+    IdnaArgs(domain: domain, ).toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
+  return value as String;
+}
+
+pulumi.Output<String> idnaOutput(
+  pulumi.Input<String> domain,
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeSingleOutput<dynamic>(
+    'hcloud:index/idna:idna',
+    pulumi.Input.mapToInputs(IdnaArgs(domain: domain, ).toMap()),
+    options: options,
+  ).apply<String>((value) => value as String);
 }
 
 /// Format a TXT record by splitting it in quoted strings of 255 characters.
@@ -6834,15 +7310,30 @@ Future<Map<String, dynamic>> idna(
 /// txt_record(record string) string
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_txt_record_txt_record_args_doc}
+/// [record] Value for the `record` invoke input.
 /// [options] Invoke options controlling this call.
-Future<Map<String, dynamic>> txtRecord(
-  TxtRecordArgs args, {
+Future<String> txtRecord(
+  pulumi.Input<String> record,
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
-  return await deployment.invoke<Map<String, dynamic>>(
+  final value = await deployment.invokeSingle<dynamic>(
     'hcloud:index/txtRecord:txtRecord',
-    args.toMap(),
+    TxtRecordArgs(record: record, ).toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
+  return value as String;
+}
+
+pulumi.Output<String> txtRecordOutput(
+  pulumi.Input<String> record,
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeSingleOutput<dynamic>(
+    'hcloud:index/txtRecord:txtRecord',
+    pulumi.Input.mapToInputs(TxtRecordArgs(record: record, ).toMap()),
+    options: options,
+  ).apply<String>((value) => value as String);
 }

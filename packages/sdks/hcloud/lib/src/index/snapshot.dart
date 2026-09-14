@@ -54,6 +54,8 @@ import 'snapshot_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -69,7 +71,7 @@ import 'snapshot_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewSnapshot(ctx, "my-snapshot", &hcloud.SnapshotArgs{
-/// 			ServerId: node1.ID(),
+/// 			ServerId: node1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -174,10 +176,10 @@ class Snapshot extends pulumi.CustomResource {
           'hcloud:index/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     serverId = registerOutput<int>('serverId');
   }
 
@@ -186,11 +188,12 @@ class Snapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Snapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -205,7 +208,21 @@ class Snapshot extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     description = registerOutput<String?>('description');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    serverId = registerOutput<int>('serverId');
+  }
+
+  /// Creates a typed reference to an existing [Snapshot] resource.
+  Snapshot.reference(String urn)
+    : super(
+        'hcloud:index/snapshot:Snapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     serverId = registerOutput<int>('serverId');
   }
 }

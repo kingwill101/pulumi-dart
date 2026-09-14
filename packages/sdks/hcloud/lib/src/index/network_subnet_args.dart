@@ -16,7 +16,7 @@ class NetworkSubnetArgs {
   /// Type of subnet. `server`, `cloud` or `vswitch`
   final pulumi.Input<String> type;
   /// ID of the vswitch, Required if type is `vswitch`
-  final pulumi.Input<int>? vswitchId;
+  final pulumi.Input<int?>? vswitchId;
 
   /// Creates a new [NetworkSubnetArgs].
   /// [ipRange] Range to allocate IPs from. Must be a subnet of the ipRange of the Network and must not overlap with any other subnets or with any destinations in routes.
@@ -45,10 +45,10 @@ class NetworkSubnetArgs {
   factory NetworkSubnetArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSubnetArgs(
       ipRange: pulumi.Input.fromValue(map['ipRange'] as String),
-      networkId: pulumi.Input.fromValue(map['networkId'] as int),
+      networkId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['networkId'])),
       networkZone: pulumi.Input.fromValue(map['networkZone'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
-      vswitchId: (() { final guardedValue = map['vswitchId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vswitchId: (() { final guardedValue = map['vswitchId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

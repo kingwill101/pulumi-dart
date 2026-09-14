@@ -6,9 +6,9 @@ import 'get_servers_server.dart';
 /// Result data returned by getServers.
 class GetServersResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// (list) List of all matching servers. See `data.hcloud_server` for schema.
-  final List<GetServersServer> servers;
+  final List<GetServersServer>? servers;
   final String? withSelector;
   final List<String>? withStatuses;
 
@@ -18,16 +18,16 @@ class GetServersResult {
   /// [withSelector] Optional.
   /// [withStatuses] Optional.
   const GetServersResult({
-    required this.id,
-    required this.servers,
+    this.id,
+    this.servers,
     this.withSelector,
     this.withStatuses,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'servers': pulumi.Input.encodeList<GetServersServer, Map<String, dynamic>>(servers, (value) => value.toMap()),
+      'id': ?id,
+      'servers': ?(() { final guardedValue = servers; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServersServer, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'withSelector': ?withSelector,
       'withStatuses': ?withStatuses,
     };
@@ -35,8 +35,8 @@ class GetServersResult {
 
   factory GetServersResult.fromMap(Map<String, dynamic> map) {
     return GetServersResult(
-      id: map['id'] as String,
-      servers: pulumi.Input.decodeList<GetServersServer>(map['servers']!, (value) => GetServersServer.fromMap((value as Map).cast<String, dynamic>())),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      servers: (() { final guardedValue = map['servers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServersServer>(guardedValue, (value) => GetServersServer.fromMap((value as Map).cast<String, dynamic>())); })(),
       withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
       withStatuses: (() { final guardedValue = map['withStatuses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );

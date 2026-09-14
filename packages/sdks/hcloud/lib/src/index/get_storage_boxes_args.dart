@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_storage_boxes_get_storage_boxes_args_doc}
 class GetStorageBoxesArgs {
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  final pulumi.Input<String>? withSelector;
+  final pulumi.Input<String?>? withSelector;
 
   /// Creates a new [GetStorageBoxesArgs].
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)

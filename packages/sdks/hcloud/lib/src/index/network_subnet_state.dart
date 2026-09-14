@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering NetworkSubnet resources.
 class NetworkSubnetState {
-  final pulumi.Input<String>? gateway;
+  final pulumi.Input<String?>? gateway;
   /// Range to allocate IPs from. Must be a subnet of the ipRange of the Network and must not overlap with any other subnets or with any destinations in routes.
-  final pulumi.Input<String>? ipRange;
+  final pulumi.Input<String?>? ipRange;
   /// ID of the Network the subnet should be added to.
-  final pulumi.Input<int>? networkId;
+  final pulumi.Input<int?>? networkId;
   /// Name of network zone.
-  final pulumi.Input<String>? networkZone;
+  final pulumi.Input<String?>? networkZone;
   /// Type of subnet. `server`, `cloud` or `vswitch`
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// ID of the vswitch, Required if type is `vswitch`
-  final pulumi.Input<int>? vswitchId;
+  final pulumi.Input<int?>? vswitchId;
 
   /// Creates a new [NetworkSubnetState].
   /// [gateway] Optional.
@@ -47,10 +47,10 @@ class NetworkSubnetState {
     return NetworkSubnetState(
       gateway: (() { final guardedValue = map['gateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipRange: (() { final guardedValue = map['ipRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkId: (() { final guardedValue = map['networkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      networkId: (() { final guardedValue = map['networkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       networkZone: (() { final guardedValue = map['networkZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vswitchId: (() { final guardedValue = map['vswitchId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vswitchId: (() { final guardedValue = map['vswitchId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'zone_args.dart';
 import 'zone_authoritative_nameservers.dart';
+import 'zone_primary_nameserver.dart';
 import 'zone_state.dart';
 
 /// Provides a Hetzner Cloud Zone resource.
@@ -30,7 +31,7 @@ class Zone extends pulumi.CustomResource {
   /// Name of the Zone.
   late final pulumi.Output<String> name;
   /// Primary nameservers of the Zone. Forbidden when mode is primary and required when mode is secondary.
-  late final pulumi.Output<List<Map<String, dynamic>>> primaryNameservers;
+  late final pulumi.Output<List<ZonePrimaryNameserver>> primaryNameservers;
   /// Registrar of the Zone.
   late final pulumi.Output<String> registrar;
   /// Default Time To Live (TTL) of the Zone.
@@ -48,14 +49,14 @@ class Zone extends pulumi.CustomResource {
           'hcloud:index/zone:Zone',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     authoritativeNameservers = registerOutput<ZoneAuthoritativeNameservers>('authoritativeNameservers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneAuthoritativeNameservers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteProtection = registerOutput<bool>('deleteProtection');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    primaryNameservers = registerOutput<List<Map<String, dynamic>>>('primaryNameservers');
+    primaryNameservers = registerOutput<List<ZonePrimaryNameserver>>('primaryNameservers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZonePrimaryNameserver>(guardedValue, (value) => ZonePrimaryNameserver.fromMap((value as Map).cast<String, dynamic>())); });
     registrar = registerOutput<String>('registrar');
     ttl = registerOutput<int>('ttl');
   }
@@ -65,11 +66,12 @@ class Zone extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ZoneState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Zone._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -85,10 +87,29 @@ class Zone extends pulumi.CustomResource {
         ) {
     authoritativeNameservers = registerOutput<ZoneAuthoritativeNameservers>('authoritativeNameservers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneAuthoritativeNameservers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteProtection = registerOutput<bool>('deleteProtection');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    primaryNameservers = registerOutput<List<Map<String, dynamic>>>('primaryNameservers');
+    primaryNameservers = registerOutput<List<ZonePrimaryNameserver>>('primaryNameservers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZonePrimaryNameserver>(guardedValue, (value) => ZonePrimaryNameserver.fromMap((value as Map).cast<String, dynamic>())); });
+    registrar = registerOutput<String>('registrar');
+    ttl = registerOutput<int>('ttl');
+  }
+
+  /// Creates a typed reference to an existing [Zone] resource.
+  Zone.reference(String urn)
+    : super(
+        'hcloud:index/zone:Zone',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authoritativeNameservers = registerOutput<ZoneAuthoritativeNameservers>('authoritativeNameservers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneAuthoritativeNameservers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deleteProtection = registerOutput<bool>('deleteProtection');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    primaryNameservers = registerOutput<List<ZonePrimaryNameserver>>('primaryNameservers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZonePrimaryNameserver>(guardedValue, (value) => ZonePrimaryNameserver.fromMap((value as Map).cast<String, dynamic>())); });
     registrar = registerOutput<String>('registrar');
     ttl = registerOutput<int>('ttl');
   }

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'firewall_apply_to.dart';
 import 'firewall_args.dart';
+import 'firewall_rule.dart';
 import 'firewall_state.dart';
 
 /// Provides a Hetzner Cloud Firewall to represent a Firewall in the Hetzner Cloud.
@@ -125,6 +127,8 @@ import 'firewall_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -161,7 +165,7 @@ import 'firewall_state.dart';
 /// 			Image:      pulumi.String("debian-12"),
 /// 			ServerType: pulumi.String("cx23"),
 /// 			FirewallIds: pulumi.IntArray{
-/// 				myfirewall.ID(),
+/// 				myfirewall.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -293,13 +297,13 @@ import 'firewall_state.dart';
 /// ```
 class Firewall extends pulumi.CustomResource {
   /// Resources the firewall should be assigned to
-  late final pulumi.Output<List<Map<String, dynamic>>> applyTos;
+  late final pulumi.Output<List<FirewallApplyTo>> applyTos;
   /// User-defined labels (key-value pairs) should be created with.
   late final pulumi.Output<Map<String, String>> labels;
   /// Name of the Firewall.
   late final pulumi.Output<String> name;
   /// Configuration of a Rule from this Firewall.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<FirewallRule>?> rules;
 
   /// Creates a new [Firewall].
   /// [name] The Pulumi resource name.
@@ -313,12 +317,12 @@ class Firewall extends pulumi.CustomResource {
           'hcloud:index/firewall:Firewall',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
-    applyTos = registerOutput<List<Map<String, dynamic>>>('applyTos');
-    labels = registerOutput<Map<String, String>>('labels');
+    applyTos = registerOutput<List<FirewallApplyTo>>('applyTos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallApplyTo>(guardedValue, (value) => FirewallApplyTo.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<FirewallRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallRule>(guardedValue, (value) => FirewallRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Firewall] resource's state with the given [name] and [id].
@@ -326,11 +330,12 @@ class Firewall extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Firewall._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -344,9 +349,24 @@ class Firewall extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    applyTos = registerOutput<List<Map<String, dynamic>>>('applyTos');
-    labels = registerOutput<Map<String, String>>('labels');
+    applyTos = registerOutput<List<FirewallApplyTo>>('applyTos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallApplyTo>(guardedValue, (value) => FirewallApplyTo.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<FirewallRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallRule>(guardedValue, (value) => FirewallRule.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Firewall] resource.
+  Firewall.reference(String urn)
+    : super(
+        'hcloud:index/firewall:Firewall',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applyTos = registerOutput<List<FirewallApplyTo>>('applyTos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallApplyTo>(guardedValue, (value) => FirewallApplyTo.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    rules = registerOutput<List<FirewallRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallRule>(guardedValue, (value) => FirewallRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

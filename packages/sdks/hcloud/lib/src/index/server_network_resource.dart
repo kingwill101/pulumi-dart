@@ -101,6 +101,8 @@ import 'server_network_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -123,7 +125,7 @@ import 'server_network_state.dart';
 /// 			return err
 /// 		}
 /// 		subnet1, err := hcloud.NewNetworkSubnet(ctx, "subnet1", &hcloud.NetworkSubnetArgs{
-/// 			NetworkId:   network.ID(),
+/// 			NetworkId:   network.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			Type:        pulumi.String("cloud"),
 /// 			NetworkZone: pulumi.String("eu-central"),
 /// 			IpRange:     pulumi.String("10.0.1.0/24"),
@@ -132,8 +134,8 @@ import 'server_network_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewServerNetwork(ctx, "node1_subnet1", &hcloud.ServerNetworkArgs{
-/// 			ServerId: node1.ID(),
-/// 			SubnetId: subnet1.ID(),
+/// 			ServerId: node1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+/// 			SubnetId: subnet1.ID().ToIDOutput().ToStringOutput(),
 /// 			Ip:       pulumi.String("10.0.1.5"),
 /// 			AliasIps: pulumi.StringArray{
 /// 				pulumi.String("10.0.1.10"),
@@ -297,9 +299,9 @@ class ServerNetworkResource extends pulumi.CustomResource {
           'hcloud:index/serverNetwork:ServerNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
-    aliasIps = registerOutput<List<String>>('aliasIps');
+    aliasIps = registerOutput<List<String>>('aliasIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ip = registerOutput<String>('ip');
     macAddress = registerOutput<String>('macAddress');
     networkId = registerOutput<int>('networkId');
@@ -312,11 +314,12 @@ class ServerNetworkResource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerNetworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServerNetworkResource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -330,7 +333,24 @@ class ServerNetworkResource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    aliasIps = registerOutput<List<String>>('aliasIps');
+    aliasIps = registerOutput<List<String>>('aliasIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ip = registerOutput<String>('ip');
+    macAddress = registerOutput<String>('macAddress');
+    networkId = registerOutput<int>('networkId');
+    serverId = registerOutput<int>('serverId');
+    subnetId = registerOutput<String?>('subnetId');
+  }
+
+  /// Creates a typed reference to an existing [ServerNetworkResource] resource.
+  ServerNetworkResource.reference(String urn)
+    : super(
+        'hcloud:index/serverNetwork:ServerNetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aliasIps = registerOutput<List<String>>('aliasIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ip = registerOutput<String>('ip');
     macAddress = registerOutput<String>('macAddress');
     networkId = registerOutput<int>('networkId');

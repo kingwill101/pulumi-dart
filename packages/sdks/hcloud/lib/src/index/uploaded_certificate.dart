@@ -45,17 +45,18 @@ class UploadedCertificate extends pulumi.CustomResource {
           'hcloud:index/uploadedCertificate:UploadedCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
+          additionalSecretOutputs: const ['privateKey'],
         ) {
     certificate = registerOutput<String>('certificate');
     created = registerOutput<String>('created');
-    domainNames = registerOutput<List<String>>('domainNames');
+    domainNames = registerOutput<List<String>>('domainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     fingerprint = registerOutput<String>('fingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     notValidAfter = registerOutput<String>('notValidAfter');
     notValidBefore = registerOutput<String>('notValidBefore');
-    privateKey = registerOutput<String>('privateKey');
+    privateKey = registerOutput<String>('privateKey', isSecret: true);
     type = registerOutput<String>('type');
   }
 
@@ -64,11 +65,12 @@ class UploadedCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UploadedCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UploadedCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -84,13 +86,35 @@ class UploadedCertificate extends pulumi.CustomResource {
         ) {
     certificate = registerOutput<String>('certificate');
     created = registerOutput<String>('created');
-    domainNames = registerOutput<List<String>>('domainNames');
+    domainNames = registerOutput<List<String>>('domainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     fingerprint = registerOutput<String>('fingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     notValidAfter = registerOutput<String>('notValidAfter');
     notValidBefore = registerOutput<String>('notValidBefore');
-    privateKey = registerOutput<String>('privateKey');
+    privateKey = registerOutput<String>('privateKey', isSecret: true);
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [UploadedCertificate] resource.
+  UploadedCertificate.reference(String urn)
+    : super(
+        'hcloud:index/uploadedCertificate:UploadedCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['privateKey'],
+        isResourceReference: true,
+      ) {
+    certificate = registerOutput<String>('certificate');
+    created = registerOutput<String>('created');
+    domainNames = registerOutput<List<String>>('domainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    fingerprint = registerOutput<String>('fingerprint');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    notValidAfter = registerOutput<String>('notValidAfter');
+    notValidBefore = registerOutput<String>('notValidBefore');
+    privateKey = registerOutput<String>('privateKey', isSecret: true);
     type = registerOutput<String>('type');
   }
 }

@@ -37,7 +37,7 @@ class ZoneRecord extends pulumi.CustomResource {
           'hcloud:index/zoneRecord:ZoneRecord',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     comment = registerOutput<String>('comment');
     this.name = registerOutput<String>('name');
@@ -51,11 +51,12 @@ class ZoneRecord extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ZoneRecordState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ZoneRecord._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -69,6 +70,22 @@ class ZoneRecord extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    comment = registerOutput<String>('comment');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+    value = registerOutput<String>('value');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [ZoneRecord] resource.
+  ZoneRecord.reference(String urn)
+    : super(
+        'hcloud:index/zoneRecord:ZoneRecord',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     comment = registerOutput<String>('comment');
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');

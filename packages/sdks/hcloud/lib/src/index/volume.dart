@@ -69,6 +69,8 @@ import 'volume_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -86,7 +88,7 @@ import 'volume_state.dart';
 /// 		_, err = hcloud.NewVolume(ctx, "master", &hcloud.VolumeArgs{
 /// 			Name:      pulumi.String("volume1"),
 /// 			Size:      pulumi.Int(50),
-/// 			ServerId:  node1.ID(),
+/// 			ServerId:  node1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			Automount: pulumi.Bool(true),
 /// 			Format:    pulumi.String("ext4"),
 /// 		})
@@ -219,12 +221,12 @@ class Volume extends pulumi.CustomResource {
           'hcloud:index/volume:Volume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     automount = registerOutput<bool?>('automount');
     deleteProtection = registerOutput<bool?>('deleteProtection');
     format = registerOutput<String?>('format');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     linuxDevice = registerOutput<String>('linuxDevice');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -237,11 +239,12 @@ class Volume extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Volume._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -258,7 +261,27 @@ class Volume extends pulumi.CustomResource {
     automount = registerOutput<bool?>('automount');
     deleteProtection = registerOutput<bool?>('deleteProtection');
     format = registerOutput<String?>('format');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    linuxDevice = registerOutput<String>('linuxDevice');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    serverId = registerOutput<int>('serverId');
+    size = registerOutput<int>('size');
+  }
+
+  /// Creates a typed reference to an existing [Volume] resource.
+  Volume.reference(String urn)
+    : super(
+        'hcloud:index/volume:Volume',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automount = registerOutput<bool?>('automount');
+    deleteProtection = registerOutput<bool?>('deleteProtection');
+    format = registerOutput<String?>('format');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     linuxDevice = registerOutput<String>('linuxDevice');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

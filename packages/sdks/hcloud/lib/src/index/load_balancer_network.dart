@@ -95,6 +95,8 @@ import 'load_balancer_network_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -117,7 +119,7 @@ import 'load_balancer_network_state.dart';
 /// 			return err
 /// 		}
 /// 		subnet, err := hcloud.NewNetworkSubnet(ctx, "subnet", &hcloud.NetworkSubnetArgs{
-/// 			NetworkId:   network.ID(),
+/// 			NetworkId:   network.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			Type:        pulumi.String("cloud"),
 /// 			NetworkZone: pulumi.String("eu-central"),
 /// 			IpRange:     pulumi.String("10.0.1.0/24"),
@@ -126,8 +128,8 @@ import 'load_balancer_network_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewLoadBalancerNetwork(ctx, "attachment", &hcloud.LoadBalancerNetworkArgs{
-/// 			LoadBalancerId: main.ID(),
-/// 			SubnetId:       subnet.ID(),
+/// 			LoadBalancerId: main.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+/// 			SubnetId:       subnet.ID().ToIDOutput().ToStringOutput(),
 /// 			Ip:             pulumi.String("10.0.1.5"),
 /// 		})
 /// 		if err != nil {
@@ -281,7 +283,7 @@ class LoadBalancerNetwork extends pulumi.CustomResource {
           'hcloud:index/loadBalancerNetwork:LoadBalancerNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     enablePublicInterface = registerOutput<bool>('enablePublicInterface');
     ip = registerOutput<String>('ip');
@@ -295,11 +297,12 @@ class LoadBalancerNetwork extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LoadBalancerNetworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LoadBalancerNetwork._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -313,6 +316,22 @@ class LoadBalancerNetwork extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    enablePublicInterface = registerOutput<bool>('enablePublicInterface');
+    ip = registerOutput<String>('ip');
+    loadBalancerId = registerOutput<int>('loadBalancerId');
+    networkId = registerOutput<int>('networkId');
+    subnetId = registerOutput<String?>('subnetId');
+  }
+
+  /// Creates a typed reference to an existing [LoadBalancerNetwork] resource.
+  LoadBalancerNetwork.reference(String urn)
+    : super(
+        'hcloud:index/loadBalancerNetwork:LoadBalancerNetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     enablePublicInterface = registerOutput<bool>('enablePublicInterface');
     ip = registerOutput<String>('ip');
     loadBalancerId = registerOutput<int>('loadBalancerId');

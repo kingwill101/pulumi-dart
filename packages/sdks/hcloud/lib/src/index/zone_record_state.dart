@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ZoneRecord resources.
 class ZoneRecordState {
   /// Comment of the Zone Record.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// Name of the Zone Record.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type of the Zone Record.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Value of the Zone Record.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// ID or Name of the parent Zone.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [ZoneRecordState].
   /// [comment] Comment of the Zone Record.

@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_certificate_certificate_args_doc}
 class CertificateArgs {
   final pulumi.Input<String> certificate;
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> privateKey;
 
   /// Creates a new [CertificateArgs].

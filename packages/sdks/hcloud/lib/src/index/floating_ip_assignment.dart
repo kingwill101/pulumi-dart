@@ -76,6 +76,8 @@ import 'floating_ip_assignment_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -99,8 +101,8 @@ import 'floating_ip_assignment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewFloatingIpAssignment(ctx, "main", &hcloud.FloatingIpAssignmentArgs{
-/// 			FloatingIpId: master.ID(),
-/// 			ServerId:     node1.ID(),
+/// 			FloatingIpId: master.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+/// 			ServerId:     node1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -225,7 +227,7 @@ class FloatingIpAssignment extends pulumi.CustomResource {
           'hcloud:index/floatingIpAssignment:FloatingIpAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     floatingIpId = registerOutput<int>('floatingIpId');
     serverId = registerOutput<int>('serverId');
@@ -236,11 +238,12 @@ class FloatingIpAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FloatingIpAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FloatingIpAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -254,6 +257,19 @@ class FloatingIpAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    floatingIpId = registerOutput<int>('floatingIpId');
+    serverId = registerOutput<int>('serverId');
+  }
+
+  /// Creates a typed reference to an existing [FloatingIpAssignment] resource.
+  FloatingIpAssignment.reference(String urn)
+    : super(
+        'hcloud:index/floatingIpAssignment:FloatingIpAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     floatingIpId = registerOutput<int>('floatingIpId');
     serverId = registerOutput<int>('serverId');
   }

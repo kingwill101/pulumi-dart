@@ -6,19 +6,19 @@ import 'zone_rrset_record.dart';
 /// Input properties used for looking up and filtering ZoneRrset resources.
 class ZoneRrsetState {
   /// Whether change protection is enabled.
-  final pulumi.Input<bool>? changeProtection;
+  final pulumi.Input<bool?>? changeProtection;
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the Zone RRSet.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Records of the Zone RRSet.
-  final pulumi.Input<List<ZoneRrsetRecord>>? records;
+  final pulumi.Input<List<ZoneRrsetRecord>?>? records;
   /// Time To Live (TTL) of the Zone RRSet.
-  final pulumi.Input<int>? ttl;
+  final pulumi.Input<int?>? ttl;
   /// Type of the Zone RRSet.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// ID or Name of the parent Zone.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [ZoneRrsetState].
   /// [changeProtection] Whether change protection is enabled.
@@ -56,7 +56,7 @@ class ZoneRrsetState {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       records: (() { final guardedValue = map['records']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ZoneRrsetRecord>(guardedValue, (value) => ZoneRrsetRecord.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

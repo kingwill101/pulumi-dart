@@ -40,11 +40,11 @@ class GetStorageBoxesStorageBoxSnapshotPlan {
 
   factory GetStorageBoxesStorageBoxSnapshotPlan.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxesStorageBoxSnapshotPlan(
-      dayOfMonth: pulumi.Input.fromValue(map['dayOfMonth'] as int),
-      dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as int),
-      hour: pulumi.Input.fromValue(map['hour'] as int),
-      maxSnapshots: pulumi.Input.fromValue(map['maxSnapshots'] as int),
-      minute: pulumi.Input.fromValue(map['minute'] as int),
+      dayOfMonth: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dayOfMonth'])),
+      dayOfWeek: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dayOfWeek'])),
+      hour: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hour'])),
+      maxSnapshots: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxSnapshots'])),
+      minute: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minute'])),
     );
   }
 }

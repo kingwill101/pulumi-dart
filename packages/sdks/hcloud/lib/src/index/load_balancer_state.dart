@@ -7,28 +7,28 @@ import 'load_balancer_target.dart';
 /// Input properties used for looking up and filtering LoadBalancer resources.
 class LoadBalancerState {
   /// Configuration of the algorithm the Load Balancer use.
-  final pulumi.Input<LoadBalancerAlgorithm>? algorithm;
+  final pulumi.Input<LoadBalancerAlgorithm?>? algorithm;
   /// Enable or disable delete protection. See "Delete Protection" in the Provider Docs for details.
-  final pulumi.Input<bool>? deleteProtection;
+  final pulumi.Input<bool?>? deleteProtection;
   /// (string) IPv4 Address of the Load Balancer.
-  final pulumi.Input<String>? ipv4;
+  final pulumi.Input<String?>? ipv4;
   /// (string) IPv6 Address of the Load Balancer.
-  final pulumi.Input<String>? ipv6;
+  final pulumi.Input<String?>? ipv6;
   /// User-defined labels (key-value pairs) should be created with.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Type of the Load Balancer.
-  final pulumi.Input<String>? loadBalancerType;
+  final pulumi.Input<String?>? loadBalancerType;
   /// The location name of the Load Balancer. Require when no networkZone is set. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the Load Balancer.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (int) ID of the first private network that this Load Balancer is connected to.
-  final pulumi.Input<int>? networkId;
+  final pulumi.Input<int?>? networkId;
   /// (string) IP of the Load Balancer in the first private network that it is connected to.
-  final pulumi.Input<String>? networkIp;
+  final pulumi.Input<String?>? networkIp;
   /// The Network Zone of the Load Balancer. Require when no location is set.
-  final pulumi.Input<String>? networkZone;
-  final pulumi.Input<List<LoadBalancerTarget>>? targets;
+  final pulumi.Input<String?>? networkZone;
+  final pulumi.Input<List<LoadBalancerTarget>?>? targets;
 
   /// Creates a new [LoadBalancerState].
   /// [algorithm] Configuration of the algorithm the Load Balancer use.
@@ -85,7 +85,7 @@ class LoadBalancerState {
       loadBalancerType: (() { final guardedValue = map['loadBalancerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkId: (() { final guardedValue = map['networkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      networkId: (() { final guardedValue = map['networkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       networkIp: (() { final guardedValue = map['networkIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkZone: (() { final guardedValue = map['networkZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targets: (() { final guardedValue = map['targets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LoadBalancerTarget>(guardedValue, (value) => LoadBalancerTarget.fromMap((value as Map).cast<String, dynamic>()))); })(),

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'server_args.dart';
+import 'server_network.dart';
+import 'server_public_net.dart';
 import 'server_state.dart';
 
 /// Provides an Hetzner Cloud server resource. This can be used to create, modify, and delete servers. Servers also support provisioning.
@@ -281,6 +283,8 @@ import 'server_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -312,7 +316,7 @@ import 'server_state.dart';
 /// 			PublicNets: hcloud.ServerPublicNetArray{
 /// 				&hcloud.ServerPublicNetArgs{
 /// 					Ipv4Enabled: pulumi.Bool(true),
-/// 					Ipv4:        primaryIp1.ID(),
+/// 					Ipv4:        primaryIp1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 					Ipv6Enabled: pulumi.Bool(false),
 /// 				},
 /// 			},
@@ -547,6 +551,8 @@ import 'server_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -562,7 +568,7 @@ import 'server_state.dart';
 /// 		}
 /// 		networkSubnet, err := hcloud.NewNetworkSubnet(ctx, "network_subnet", &hcloud.NetworkSubnetArgs{
 /// 			Type:        pulumi.String("cloud"),
-/// 			NetworkId:   network.ID(),
+/// 			NetworkId:   network.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			NetworkZone: pulumi.String("eu-central"),
 /// 			IpRange:     pulumi.String("10.0.1.0/24"),
 /// 		})
@@ -576,7 +582,7 @@ import 'server_state.dart';
 /// 			Location:   pulumi.String("nbg1"),
 /// 			Networks: hcloud.ServerNetworkTypeArray{
 /// 				&hcloud.ServerNetworkTypeArgs{
-/// 					SubnetId: networkSubnet.ID(),
+/// 					SubnetId: networkSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					Ip:       pulumi.String("10.0.1.5"),
 /// 					AliasIps: pulumi.StringArray{
 /// 						pulumi.String("10.0.1.6"),
@@ -963,14 +969,14 @@ class Server extends pulumi.CustomResource {
   /// Name of the server to create (must be unique per project and a valid hostname as per RFC 1123).
   late final pulumi.Output<String> name;
   /// Network the server should be attached to on creation. (Can be specified multiple times)
-  late final pulumi.Output<List<Map<String, dynamic>>?> networks;
+  late final pulumi.Output<List<ServerNetwork>?> networks;
   /// Placement Group ID the server added to on creation.
   late final pulumi.Output<int?> placementGroupId;
   /// (int) The size of the primary disk in GB.
   late final pulumi.Output<int> primaryDiskSize;
   /// In this block you can either enable / disable ipv4 and ipv6 or link existing primary IPs (checkout the examples).
   /// If this block is not defined, two primary (ipv4 & ipv6) ips getting auto generated.
-  late final pulumi.Output<List<Map<String, dynamic>>?> publicNets;
+  late final pulumi.Output<List<ServerPublicNet>?> publicNets;
   /// Enable or disable rebuild protection (Needs to be the same as `deleteProtection`).
   late final pulumi.Output<bool?> rebuildProtection;
   /// Enable and boot in to the specified rescue system. This enables simple installation of custom operating systems. `linux64` or `linux32`
@@ -998,14 +1004,14 @@ class Server extends pulumi.CustomResource {
           'hcloud:index/server:Server',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     allowDeprecatedImages = registerOutput<bool?>('allowDeprecatedImages');
     backupWindow = registerOutput<String>('backupWindow');
     backups = registerOutput<bool?>('backups');
     datacenter = registerOutput<String>('datacenter');
     deleteProtection = registerOutput<bool?>('deleteProtection');
-    firewallIds = registerOutput<List<int>>('firewallIds');
+    firewallIds = registerOutput<List<int>>('firewallIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     ignoreRemoteFirewallIds = registerOutput<bool?>('ignoreRemoteFirewallIds');
     image = registerOutput<String>('image');
     ipv4Address = registerOutput<String>('ipv4Address');
@@ -1013,18 +1019,18 @@ class Server extends pulumi.CustomResource {
     ipv6Network = registerOutput<String>('ipv6Network');
     iso = registerOutput<String?>('iso');
     keepDisk = registerOutput<bool?>('keepDisk');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networks = registerOutput<List<Map<String, dynamic>>?>('networks');
+    networks = registerOutput<List<ServerNetwork>?>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerNetwork>(guardedValue, (value) => ServerNetwork.fromMap((value as Map).cast<String, dynamic>())); });
     placementGroupId = registerOutput<int?>('placementGroupId');
     primaryDiskSize = registerOutput<int>('primaryDiskSize');
-    publicNets = registerOutput<List<Map<String, dynamic>>?>('publicNets');
+    publicNets = registerOutput<List<ServerPublicNet>?>('publicNets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerPublicNet>(guardedValue, (value) => ServerPublicNet.fromMap((value as Map).cast<String, dynamic>())); });
     rebuildProtection = registerOutput<bool?>('rebuildProtection');
     rescue = registerOutput<String?>('rescue');
     serverType = registerOutput<String>('serverType');
     shutdownBeforeDeletion = registerOutput<bool?>('shutdownBeforeDeletion');
-    sshKeys = registerOutput<List<String>?>('sshKeys');
+    sshKeys = registerOutput<List<String>?>('sshKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
     userData = registerOutput<String?>('userData');
   }
@@ -1034,11 +1040,12 @@ class Server extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Server._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1057,7 +1064,7 @@ class Server extends pulumi.CustomResource {
     backups = registerOutput<bool?>('backups');
     datacenter = registerOutput<String>('datacenter');
     deleteProtection = registerOutput<bool?>('deleteProtection');
-    firewallIds = registerOutput<List<int>>('firewallIds');
+    firewallIds = registerOutput<List<int>>('firewallIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     ignoreRemoteFirewallIds = registerOutput<bool?>('ignoreRemoteFirewallIds');
     image = registerOutput<String>('image');
     ipv4Address = registerOutput<String>('ipv4Address');
@@ -1065,18 +1072,56 @@ class Server extends pulumi.CustomResource {
     ipv6Network = registerOutput<String>('ipv6Network');
     iso = registerOutput<String?>('iso');
     keepDisk = registerOutput<bool?>('keepDisk');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networks = registerOutput<List<Map<String, dynamic>>?>('networks');
+    networks = registerOutput<List<ServerNetwork>?>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerNetwork>(guardedValue, (value) => ServerNetwork.fromMap((value as Map).cast<String, dynamic>())); });
     placementGroupId = registerOutput<int?>('placementGroupId');
     primaryDiskSize = registerOutput<int>('primaryDiskSize');
-    publicNets = registerOutput<List<Map<String, dynamic>>?>('publicNets');
+    publicNets = registerOutput<List<ServerPublicNet>?>('publicNets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerPublicNet>(guardedValue, (value) => ServerPublicNet.fromMap((value as Map).cast<String, dynamic>())); });
     rebuildProtection = registerOutput<bool?>('rebuildProtection');
     rescue = registerOutput<String?>('rescue');
     serverType = registerOutput<String>('serverType');
     shutdownBeforeDeletion = registerOutput<bool?>('shutdownBeforeDeletion');
-    sshKeys = registerOutput<List<String>?>('sshKeys');
+    sshKeys = registerOutput<List<String>?>('sshKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    status = registerOutput<String>('status');
+    userData = registerOutput<String?>('userData');
+  }
+
+  /// Creates a typed reference to an existing [Server] resource.
+  Server.reference(String urn)
+    : super(
+        'hcloud:index/server:Server',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowDeprecatedImages = registerOutput<bool?>('allowDeprecatedImages');
+    backupWindow = registerOutput<String>('backupWindow');
+    backups = registerOutput<bool?>('backups');
+    datacenter = registerOutput<String>('datacenter');
+    deleteProtection = registerOutput<bool?>('deleteProtection');
+    firewallIds = registerOutput<List<int>>('firewallIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    ignoreRemoteFirewallIds = registerOutput<bool?>('ignoreRemoteFirewallIds');
+    image = registerOutput<String>('image');
+    ipv4Address = registerOutput<String>('ipv4Address');
+    ipv6Address = registerOutput<String>('ipv6Address');
+    ipv6Network = registerOutput<String>('ipv6Network');
+    iso = registerOutput<String?>('iso');
+    keepDisk = registerOutput<bool?>('keepDisk');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networks = registerOutput<List<ServerNetwork>?>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerNetwork>(guardedValue, (value) => ServerNetwork.fromMap((value as Map).cast<String, dynamic>())); });
+    placementGroupId = registerOutput<int?>('placementGroupId');
+    primaryDiskSize = registerOutput<int>('primaryDiskSize');
+    publicNets = registerOutput<List<ServerPublicNet>?>('publicNets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerPublicNet>(guardedValue, (value) => ServerPublicNet.fromMap((value as Map).cast<String, dynamic>())); });
+    rebuildProtection = registerOutput<bool?>('rebuildProtection');
+    rescue = registerOutput<String?>('rescue');
+    serverType = registerOutput<String>('serverType');
+    shutdownBeforeDeletion = registerOutput<bool?>('shutdownBeforeDeletion');
+    sshKeys = registerOutput<List<String>?>('sshKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
     userData = registerOutput<String?>('userData');
   }

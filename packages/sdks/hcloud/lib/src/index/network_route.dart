@@ -60,6 +60,8 @@ import 'network_route_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -74,7 +76,7 @@ import 'network_route_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewNetworkRoute(ctx, "privNet", &hcloud.NetworkRouteArgs{
-/// 			NetworkId:   mynet.ID(),
+/// 			NetworkId:   mynet.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			Destination: pulumi.String("10.100.1.0/24"),
 /// 			Gateway:     pulumi.String("10.0.1.1"),
 /// 		})
@@ -185,7 +187,7 @@ class NetworkRoute extends pulumi.CustomResource {
           'hcloud:index/networkRoute:NetworkRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     destination = registerOutput<String>('destination');
     gateway = registerOutput<String>('gateway');
@@ -197,11 +199,12 @@ class NetworkRoute extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkRouteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkRoute._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -215,6 +218,20 @@ class NetworkRoute extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    destination = registerOutput<String>('destination');
+    gateway = registerOutput<String>('gateway');
+    networkId = registerOutput<int>('networkId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkRoute] resource.
+  NetworkRoute.reference(String urn)
+    : super(
+        'hcloud:index/networkRoute:NetworkRoute',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     destination = registerOutput<String>('destination');
     gateway = registerOutput<String>('gateway');
     networkId = registerOutput<int>('networkId');

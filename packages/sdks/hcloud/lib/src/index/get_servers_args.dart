@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_servers_get_servers_args_doc}
 class GetServersArgs {
   /// Label Selector. For more information about possible values, visit the [Hetzner Cloud Documentation](https://docs.hetzner.cloud/reference/cloud#label-selector).
-  final pulumi.Input<String>? withSelector;
+  final pulumi.Input<String?>? withSelector;
   /// List only servers with the specified status, could contain `initializing`, `starting`, `running`, `stopping`, `off`, `deleting`, `rebuilding`, `migrating`, `unknown`.
-  final pulumi.Input<List<String>>? withStatuses;
+  final pulumi.Input<List<String>?>? withStatuses;
 
   /// Creates a new [GetServersArgs].
   /// [withSelector] Label Selector. For more information about possible values, visit the [Hetzner Cloud Documentation](https://docs.hetzner.cloud/reference/cloud#label-selector).

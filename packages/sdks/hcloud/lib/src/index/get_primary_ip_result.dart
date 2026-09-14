@@ -4,29 +4,29 @@
 /// Result data returned by getPrimaryIp.
 class GetPrimaryIpResult {
   /// ID of the resource the Primary IP is assigned to.
-  final int assigneeId;
+  final int? assigneeId;
   /// Type of the resource the Primary IP is assigned to.
-  final String assigneeType;
+  final String? assigneeType;
   /// Whether auto delete is enabled.
-  final bool autoDelete;
+  final bool? autoDelete;
   /// Name of the Datacenter of the Primary IP.
-  final String datacenter;
+  final String? datacenter;
   /// Whether delete protection is enabled.
-  final bool deleteProtection;
+  final bool? deleteProtection;
   /// ID of the Primary IP.
   final int? id;
   /// IP address of the Primary IP.
   final String? ipAddress;
   /// IP network of the Primary IP for IPv6 addresses. Only set if `type` is `ipv6`.
-  final String ipNetwork;
+  final String? ipNetwork;
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Name of the Location of the Primary IP.
-  final String location;
+  final String? location;
   /// Name of the Primary IP.
   final String? name;
   /// Type of the Primary IP (`ipv4` or `ipv6`).
-  final String type;
+  final String? type;
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
   final String? withSelector;
 
@@ -45,53 +45,53 @@ class GetPrimaryIpResult {
   /// [type] Type of the Primary IP (`ipv4` or `ipv6`).
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
   const GetPrimaryIpResult({
-    required this.assigneeId,
-    required this.assigneeType,
-    required this.autoDelete,
-    required this.datacenter,
-    required this.deleteProtection,
+    this.assigneeId,
+    this.assigneeType,
+    this.autoDelete,
+    this.datacenter,
+    this.deleteProtection,
     this.id,
     this.ipAddress,
-    required this.ipNetwork,
-    required this.labels,
-    required this.location,
+    this.ipNetwork,
+    this.labels,
+    this.location,
     this.name,
-    required this.type,
+    this.type,
     this.withSelector,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assigneeId': assigneeId,
-      'assigneeType': assigneeType,
-      'autoDelete': autoDelete,
-      'datacenter': datacenter,
-      'deleteProtection': deleteProtection,
+      'assigneeId': ?assigneeId,
+      'assigneeType': ?assigneeType,
+      'autoDelete': ?autoDelete,
+      'datacenter': ?datacenter,
+      'deleteProtection': ?deleteProtection,
       'id': ?id,
       'ipAddress': ?ipAddress,
-      'ipNetwork': ipNetwork,
-      'labels': labels,
-      'location': location,
+      'ipNetwork': ?ipNetwork,
+      'labels': ?labels,
+      'location': ?location,
       'name': ?name,
-      'type': type,
+      'type': ?type,
       'withSelector': ?withSelector,
     };
   }
 
   factory GetPrimaryIpResult.fromMap(Map<String, dynamic> map) {
     return GetPrimaryIpResult(
-      assigneeId: map['assigneeId'] as int,
-      assigneeType: map['assigneeType'] as String,
-      autoDelete: map['autoDelete'] as bool,
-      datacenter: map['datacenter'] as String,
-      deleteProtection: map['deleteProtection'] as bool,
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      assigneeId: (() { final guardedValue = map['assigneeId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      assigneeType: (() { final guardedValue = map['assigneeType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      autoDelete: (() { final guardedValue = map['autoDelete']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      datacenter: (() { final guardedValue = map['datacenter']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deleteProtection: (() { final guardedValue = map['deleteProtection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      ipNetwork: map['ipNetwork'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      location: map['location'] as String,
+      ipNetwork: (() { final guardedValue = map['ipNetwork']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

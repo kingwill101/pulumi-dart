@@ -3,12 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallsFirewallRule {
-  final pulumi.Input<String>? description;
-  final pulumi.Input<List<String>>? destinationIps;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<List<String>?>? destinationIps;
   final pulumi.Input<String> direction;
-  final pulumi.Input<String>? port;
-  final pulumi.Input<String>? protocol;
-  final pulumi.Input<List<String>>? sourceIps;
+  final pulumi.Input<String?>? port;
+  final pulumi.Input<String?>? protocol;
+  final pulumi.Input<List<String>?>? sourceIps;
 
   /// Creates a new [GetFirewallsFirewallRule].
   /// [description] Optional.

@@ -79,6 +79,8 @@ import 'volume_attachment_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -102,8 +104,8 @@ import 'volume_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewVolumeAttachment(ctx, "main", &hcloud.VolumeAttachmentArgs{
-/// 			VolumeId:  master.ID(),
-/// 			ServerId:  node1.ID(),
+/// 			VolumeId:  master.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+/// 			ServerId:  node1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			Automount: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -234,7 +236,7 @@ class VolumeAttachment extends pulumi.CustomResource {
           'hcloud:index/volumeAttachment:VolumeAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     automount = registerOutput<bool>('automount');
     serverId = registerOutput<int>('serverId');
@@ -246,11 +248,12 @@ class VolumeAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VolumeAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -264,6 +267,20 @@ class VolumeAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    automount = registerOutput<bool>('automount');
+    serverId = registerOutput<int>('serverId');
+    volumeId = registerOutput<int>('volumeId');
+  }
+
+  /// Creates a typed reference to an existing [VolumeAttachment] resource.
+  VolumeAttachment.reference(String urn)
+    : super(
+        'hcloud:index/volumeAttachment:VolumeAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     automount = registerOutput<bool>('automount');
     serverId = registerOutput<int>('serverId');
     volumeId = registerOutput<int>('volumeId');

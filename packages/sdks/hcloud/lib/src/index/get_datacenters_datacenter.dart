@@ -47,7 +47,7 @@ class GetDatacentersDatacenter {
     return GetDatacentersDatacenter(
       availableServerTypeIds: pulumi.Input.fromValue((map['availableServerTypeIds'] as List).cast<int>()),
       description: pulumi.Input.fromValue(map['description'] as String),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       location: pulumi.Input.fromValue((map['location'] as Map).cast<String, String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       supportedServerTypeIds: pulumi.Input.fromValue((map['supportedServerTypeIds'] as List).cast<int>()),

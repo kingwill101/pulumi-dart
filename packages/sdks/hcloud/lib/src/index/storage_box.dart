@@ -395,17 +395,18 @@ class StorageBox extends pulumi.CustomResource {
           'hcloud:index/storageBox:StorageBox',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     accessSettings = registerOutput<StorageBoxAccessSettings>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageBoxAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteProtection = registerOutput<bool>('deleteProtection');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     server = registerOutput<String>('server');
     snapshotPlan = registerOutput<StorageBoxSnapshotPlan?>('snapshotPlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageBoxSnapshotPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sshKeys = registerOutput<List<String>>('sshKeys');
+    sshKeys = registerOutput<List<String>>('sshKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     storageBoxType = registerOutput<String>('storageBoxType');
     system = registerOutput<String>('system');
     username = registerOutput<String>('username');
@@ -416,11 +417,12 @@ class StorageBox extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StorageBoxState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StorageBox._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -436,13 +438,37 @@ class StorageBox extends pulumi.CustomResource {
         ) {
     accessSettings = registerOutput<StorageBoxAccessSettings>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageBoxAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteProtection = registerOutput<bool>('deleteProtection');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     server = registerOutput<String>('server');
     snapshotPlan = registerOutput<StorageBoxSnapshotPlan?>('snapshotPlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageBoxSnapshotPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sshKeys = registerOutput<List<String>>('sshKeys');
+    sshKeys = registerOutput<List<String>>('sshKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    storageBoxType = registerOutput<String>('storageBoxType');
+    system = registerOutput<String>('system');
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [StorageBox] resource.
+  StorageBox.reference(String urn)
+    : super(
+        'hcloud:index/storageBox:StorageBox',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    accessSettings = registerOutput<StorageBoxAccessSettings>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageBoxAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deleteProtection = registerOutput<bool>('deleteProtection');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password', isSecret: true);
+    server = registerOutput<String>('server');
+    snapshotPlan = registerOutput<StorageBoxSnapshotPlan?>('snapshotPlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageBoxSnapshotPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sshKeys = registerOutput<List<String>>('sshKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     storageBoxType = registerOutput<String>('storageBoxType');
     system = registerOutput<String>('system');
     username = registerOutput<String>('username');
