@@ -37,10 +37,10 @@ class HorizontalPodAutoscalerSpec {
 
   factory HorizontalPodAutoscalerSpec.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscalerSpec(
-      maxReplicas: pulumi.Input.fromValue((map['maxReplicas'] as num).toInt()),
-      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxReplicas: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxReplicas'])),
+      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       scaleTargetRef: pulumi.Input.fromValue(CrossVersionObjectReference.fromMap((map['scaleTargetRef']! as Map).cast<String, dynamic>())),
-      targetCPUUtilizationPercentage: (() { final guardedValue = map['targetCPUUtilizationPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetCPUUtilizationPercentage: (() { final guardedValue = map['targetCPUUtilizationPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

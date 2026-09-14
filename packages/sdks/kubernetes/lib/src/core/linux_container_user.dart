@@ -31,9 +31,9 @@ class LinuxContainerUser {
 
   factory LinuxContainerUser.fromMap(Map<String, dynamic> map) {
     return LinuxContainerUser(
-      gid: pulumi.Input.fromValue((map['gid'] as num).toInt()),
+      gid: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['gid'])),
       supplementalGroups: (() { final guardedValue = map['supplementalGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
-      uid: pulumi.Input.fromValue((map['uid'] as num).toInt()),
+      uid: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['uid'])),
     );
   }
 }

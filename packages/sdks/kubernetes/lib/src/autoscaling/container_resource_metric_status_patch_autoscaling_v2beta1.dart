@@ -37,7 +37,7 @@ class ContainerResourceMetricStatusPatchAutoscalingV2beta1 {
   factory ContainerResourceMetricStatusPatchAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return ContainerResourceMetricStatusPatchAutoscalingV2beta1(
       container: (() { final guardedValue = map['container']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      currentAverageUtilization: (() { final guardedValue = map['currentAverageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      currentAverageUtilization: (() { final guardedValue = map['currentAverageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       currentAverageValue: (() { final guardedValue = map['currentAverageValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

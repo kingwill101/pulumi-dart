@@ -40,7 +40,7 @@ class TokenRequestSpec {
       attestations: (() { final guardedValue = map['attestations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>())); })(),
       audiences: pulumi.Input.fromValue((map['audiences'] as List).cast<String>()),
       boundObjectRef: (() { final guardedValue = map['boundObjectRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BoundObjectReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      expirationSeconds: (() { final guardedValue = map['expirationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      expirationSeconds: (() { final guardedValue = map['expirationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

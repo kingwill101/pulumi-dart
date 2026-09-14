@@ -102,7 +102,7 @@ class DeviceSubRequest {
     return DeviceSubRequest(
       allocationMode: (() { final guardedValue = map['allocationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CapacityRequirements.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       derivedAttributes: (() { final guardedValue = map['derivedAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeviceDerivedAttribute>(guardedValue, (value) => DeviceDerivedAttribute.fromMap((value as Map).cast<String, dynamic>()))); })(),
       deviceClassName: pulumi.Input.fromValue(map['deviceClassName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),

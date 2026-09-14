@@ -37,10 +37,10 @@ class HorizontalPodAutoscalerSpecPatch {
 
   factory HorizontalPodAutoscalerSpecPatch.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscalerSpecPatch(
-      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       scaleTargetRef: (() { final guardedValue = map['scaleTargetRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CrossVersionObjectReferencePatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      targetCPUUtilizationPercentage: (() { final guardedValue = map['targetCPUUtilizationPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetCPUUtilizationPercentage: (() { final guardedValue = map['targetCPUUtilizationPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

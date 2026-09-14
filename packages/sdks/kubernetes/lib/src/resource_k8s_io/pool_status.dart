@@ -78,17 +78,17 @@ class PoolStatus {
 
   factory PoolStatus.fromMap(Map<String, dynamic> map) {
     return PoolStatus(
-      allocatedDevices: (() { final guardedValue = map['allocatedDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      availableDevices: (() { final guardedValue = map['availableDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      allocatedDevices: (() { final guardedValue = map['allocatedDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      availableDevices: (() { final guardedValue = map['availableDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       driver: pulumi.Input.fromValue(map['driver'] as String),
-      generation: pulumi.Input.fromValue((map['generation'] as num).toInt()),
+      generation: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['generation'])),
       nodeName: (() { final guardedValue = map['nodeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       partitionSummary: (() { final guardedValue = map['partitionSummary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PartitionTypeStatus>(guardedValue, (value) => PartitionTypeStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
       poolName: pulumi.Input.fromValue(map['poolName'] as String),
-      resourceSliceCount: (() { final guardedValue = map['resourceSliceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      resourceSliceCount: (() { final guardedValue = map['resourceSliceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       shareableSummary: (() { final guardedValue = map['shareableSummary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ShareableSummaryStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      totalDevices: (() { final guardedValue = map['totalDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      unavailableDevices: (() { final guardedValue = map['unavailableDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      totalDevices: (() { final guardedValue = map['totalDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      unavailableDevices: (() { final guardedValue = map['unavailableDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       validationError: (() { final guardedValue = map['validationError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

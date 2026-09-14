@@ -67,16 +67,16 @@ class DaemonSetStatusAppsV1beta2 {
 
   factory DaemonSetStatusAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return DaemonSetStatusAppsV1beta2(
-      collisionCount: (() { final guardedValue = map['collisionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      collisionCount: (() { final guardedValue = map['collisionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DaemonSetConditionAppsV1beta2>(guardedValue, (value) => DaemonSetConditionAppsV1beta2.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      currentNumberScheduled: pulumi.Input.fromValue((map['currentNumberScheduled'] as num).toInt()),
-      desiredNumberScheduled: pulumi.Input.fromValue((map['desiredNumberScheduled'] as num).toInt()),
-      numberAvailable: (() { final guardedValue = map['numberAvailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      numberMisscheduled: pulumi.Input.fromValue((map['numberMisscheduled'] as num).toInt()),
-      numberReady: pulumi.Input.fromValue((map['numberReady'] as num).toInt()),
-      numberUnavailable: (() { final guardedValue = map['numberUnavailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      updatedNumberScheduled: (() { final guardedValue = map['updatedNumberScheduled']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      currentNumberScheduled: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['currentNumberScheduled'])),
+      desiredNumberScheduled: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['desiredNumberScheduled'])),
+      numberAvailable: (() { final guardedValue = map['numberAvailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      numberMisscheduled: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberMisscheduled'])),
+      numberReady: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberReady'])),
+      numberUnavailable: (() { final guardedValue = map['numberUnavailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      updatedNumberScheduled: (() { final guardedValue = map['updatedNumberScheduled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

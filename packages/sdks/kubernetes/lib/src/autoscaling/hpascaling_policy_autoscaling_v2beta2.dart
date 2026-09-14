@@ -31,9 +31,9 @@ class HPAScalingPolicyAutoscalingV2beta2 {
 
   factory HPAScalingPolicyAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return HPAScalingPolicyAutoscalingV2beta2(
-      periodSeconds: pulumi.Input.fromValue((map['periodSeconds'] as num).toInt()),
+      periodSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['periodSeconds'])),
       type: pulumi.Input.fromValue(map['type'] as String),
-      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
+      value: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['value'])),
     );
   }
 }

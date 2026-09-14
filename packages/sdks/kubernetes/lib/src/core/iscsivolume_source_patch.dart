@@ -78,7 +78,7 @@ class ISCSIVolumeSourcePatch {
       initiatorName: (() { final guardedValue = map['initiatorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       iqn: (() { final guardedValue = map['iqn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       iscsiInterface: (() { final guardedValue = map['iscsiInterface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      lun: (() { final guardedValue = map['lun']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      lun: (() { final guardedValue = map['lun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       portals: (() { final guardedValue = map['portals']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       secretRef: (() { final guardedValue = map['secretRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LocalObjectReferencePatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
