@@ -274,7 +274,7 @@ class PodSpecPatch {
 
   factory PodSpecPatch.fromMap(Map<String, dynamic> map) {
     return PodSpecPatch(
-      activeDeadlineSeconds: (() { final guardedValue = map['activeDeadlineSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      activeDeadlineSeconds: (() { final guardedValue = map['activeDeadlineSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       affinity: (() { final guardedValue = map['affinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AffinityPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       automountServiceAccountToken: (() { final guardedValue = map['automountServiceAccountToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       containers: (() { final guardedValue = map['containers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerPatch>(guardedValue, (value) => ContainerPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -297,7 +297,7 @@ class PodSpecPatch {
       os: (() { final guardedValue = map['os']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PodOSPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       overhead: (() { final guardedValue = map['overhead']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       preemptionPolicy: (() { final guardedValue = map['preemptionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       priorityClassName: (() { final guardedValue = map['priorityClassName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       readinessGates: (() { final guardedValue = map['readinessGates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PodReadinessGatePatch>(guardedValue, (value) => PodReadinessGatePatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resourceClaims: (() { final guardedValue = map['resourceClaims']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PodResourceClaimPatch>(guardedValue, (value) => PodResourceClaimPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -313,7 +313,7 @@ class PodSpecPatch {
       setHostnameAsFQDN: (() { final guardedValue = map['setHostnameAsFQDN']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       shareProcessNamespace: (() { final guardedValue = map['shareProcessNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       subdomain: (() { final guardedValue = map['subdomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      terminationGracePeriodSeconds: (() { final guardedValue = map['terminationGracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      terminationGracePeriodSeconds: (() { final guardedValue = map['terminationGracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tolerations: (() { final guardedValue = map['tolerations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TolerationPatch>(guardedValue, (value) => TolerationPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
       topologySpreadConstraints: (() { final guardedValue = map['topologySpreadConstraints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TopologySpreadConstraintPatch>(guardedValue, (value) => TopologySpreadConstraintPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
       volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VolumePatch>(guardedValue, (value) => VolumePatch.fromMap((value as Map).cast<String, dynamic>()))); })(),

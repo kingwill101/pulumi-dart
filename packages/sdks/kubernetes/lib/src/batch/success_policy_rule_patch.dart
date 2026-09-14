@@ -26,7 +26,7 @@ class SuccessPolicyRulePatch {
 
   factory SuccessPolicyRulePatch.fromMap(Map<String, dynamic> map) {
     return SuccessPolicyRulePatch(
-      succeededCount: (() { final guardedValue = map['succeededCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      succeededCount: (() { final guardedValue = map['succeededCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       succeededIndexes: (() { final guardedValue = map['succeededIndexes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

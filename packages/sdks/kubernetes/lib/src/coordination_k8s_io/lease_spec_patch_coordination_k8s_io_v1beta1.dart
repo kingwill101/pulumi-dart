@@ -43,8 +43,8 @@ class LeaseSpecPatchCoordinationK8sIoV1beta1 {
     return LeaseSpecPatchCoordinationK8sIoV1beta1(
       acquireTime: (() { final guardedValue = map['acquireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       holderIdentity: (() { final guardedValue = map['holderIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      leaseDurationSeconds: (() { final guardedValue = map['leaseDurationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      leaseTransitions: (() { final guardedValue = map['leaseTransitions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      leaseDurationSeconds: (() { final guardedValue = map['leaseDurationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      leaseTransitions: (() { final guardedValue = map['leaseTransitions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       renewTime: (() { final guardedValue = map['renewTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

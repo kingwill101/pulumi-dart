@@ -31,7 +31,7 @@ class NetworkPolicyPortPatch {
 
   factory NetworkPolicyPortPatch.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyPortPatch(
-      endPort: (() { final guardedValue = map['endPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      endPort: (() { final guardedValue = map['endPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

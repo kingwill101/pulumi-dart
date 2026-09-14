@@ -33,8 +33,8 @@ class ShareableSummaryStatus {
   factory ShareableSummaryStatus.fromMap(Map<String, dynamic> map) {
     return ShareableSummaryStatus(
       capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ShareableCapacityStatus>(guardedValue, (value) => ShareableCapacityStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      fullyAvailableDevices: pulumi.Input.fromValue((map['fullyAvailableDevices'] as num).toInt()),
-      partiallyAvailableDevices: pulumi.Input.fromValue((map['partiallyAvailableDevices'] as num).toInt()),
+      fullyAvailableDevices: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['fullyAvailableDevices'])),
+      partiallyAvailableDevices: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['partiallyAvailableDevices'])),
     );
   }
 }
