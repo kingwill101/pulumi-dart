@@ -29235,6 +29235,8 @@ class _DurabletaskModuleNamespace {
   final GetTaskHubArgs = module_durabletask.GetTaskHubArgs.new;
   final GetTaskHubResult = module_durabletask.GetTaskHubResult.new;
   final GetTaskHubResultArgs = module_durabletask.GetTaskHubResult.new;
+  final PrivateEndpointConnectionResponse = module_durabletask.PrivateEndpointConnectionResponse.new;
+  final PrivateEndpointConnectionResponseArgs = module_durabletask.PrivateEndpointConnectionResponse.new;
   final PrivateEndpointResponse = module_durabletask.PrivateEndpointResponse.new;
   final PrivateEndpointResponseArgs = module_durabletask.PrivateEndpointResponse.new;
   final PrivateEndpointServiceConnectionStatus = module_durabletask.PrivateEndpointServiceConnectionStatus.values;
@@ -29242,6 +29244,7 @@ class _DurabletaskModuleNamespace {
   final PrivateLinkServiceConnectionStateArgs = module_durabletask.PrivateLinkServiceConnectionState.new;
   final PrivateLinkServiceConnectionStateResponse = module_durabletask.PrivateLinkServiceConnectionStateResponse.new;
   final PrivateLinkServiceConnectionStateResponseArgs = module_durabletask.PrivateLinkServiceConnectionStateResponse.new;
+  final PublicNetworkAccess = module_durabletask.PublicNetworkAccess.values;
   final PurgeableOrchestrationState = module_durabletask.PurgeableOrchestrationState.values;
   final RetentionPolicy = module_durabletask.RetentionPolicy.new;
   final RetentionPolicyArgs = module_durabletask.RetentionPolicyArgs.new;
@@ -29263,6 +29266,7 @@ class _DurabletaskModuleNamespace {
   final SchedulerPropertiesResponseArgs = module_durabletask.SchedulerPropertiesResponse.new;
   final SchedulerSku = module_durabletask.SchedulerSku.new;
   final SchedulerSkuArgs = module_durabletask.SchedulerSku.new;
+  final SchedulerSkuName = module_durabletask.SchedulerSkuName.values;
   final SchedulerSkuResponse = module_durabletask.SchedulerSkuResponse.new;
   final SchedulerSkuResponseArgs = module_durabletask.SchedulerSkuResponse.new;
   final SystemDataResponse = module_durabletask.SystemDataResponse.new;
