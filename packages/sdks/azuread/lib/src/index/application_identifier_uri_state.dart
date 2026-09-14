@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ApplicationIdentifierUri resources.
 class ApplicationIdentifierUriState {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? identifierUri;
+  final pulumi.Input<String?>? identifierUri;
 
   /// Creates a new [ApplicationIdentifierUriState].
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.

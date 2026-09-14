@@ -279,11 +279,11 @@ import 'app_role_assignment_state.dart';
 ///                 .resourceAppId(wellKnown.result().microsoftGraph())
 ///                 .resourceAccesses(
 ///                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-///                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
+///                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("User.Read.All")))
 ///                         .type("Role")
 ///                         .build(),
 ///                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-///                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
+///                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.get("User.ReadWrite")))
 ///                         .type("Scope")
 ///                         .build())
 ///                 .build())
@@ -294,7 +294,7 @@ import 'app_role_assignment_state.dart';
 ///             .build());
 ///
 ///         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()
-///             .appRoleId(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
+///             .appRoleId(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("User.Read.All")))
 ///             .principalObjectId(exampleServicePrincipal.objectId())
 ///             .resourceObjectId(msgraph.objectId())
 ///             .build());
@@ -637,7 +637,7 @@ import 'app_role_assignment_state.dart';
 ///             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
 ///                 .resourceAppId(internal.clientId())
 ///                 .resourceAccesses(ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-///                     .id(internalServicePrincipal.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.Query.All()))
+///                     .id(internalServicePrincipal.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("Query.All")))
 ///                     .type("Role")
 ///                     .build())
 ///                 .build())
@@ -648,7 +648,7 @@ import 'app_role_assignment_state.dart';
 ///             .build());
 ///
 ///         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()
-///             .appRoleId(internalServicePrincipal.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.Query.All()))
+///             .appRoleId(internalServicePrincipal.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("Query.All")))
 ///             .principalObjectId(exampleServicePrincipal.objectId())
 ///             .resourceObjectId(internalServicePrincipal.objectId())
 ///             .build());
@@ -736,7 +736,7 @@ class AppRoleAssignment extends pulumi.CustomResource {
           'azuread:index/appRoleAssignment:AppRoleAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
     appRoleId = registerOutput<String>('appRoleId');
     principalDisplayName = registerOutput<String>('principalDisplayName');
@@ -751,11 +751,12 @@ class AppRoleAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppRoleAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppRoleAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -769,6 +770,23 @@ class AppRoleAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appRoleId = registerOutput<String>('appRoleId');
+    principalDisplayName = registerOutput<String>('principalDisplayName');
+    principalObjectId = registerOutput<String>('principalObjectId');
+    principalType = registerOutput<String>('principalType');
+    resourceDisplayName = registerOutput<String>('resourceDisplayName');
+    resourceObjectId = registerOutput<String>('resourceObjectId');
+  }
+
+  /// Creates a typed reference to an existing [AppRoleAssignment] resource.
+  AppRoleAssignment.reference(String urn)
+    : super(
+        'azuread:index/appRoleAssignment:AppRoleAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appRoleId = registerOutput<String>('appRoleId');
     principalDisplayName = registerOutput<String>('principalDisplayName');
     principalObjectId = registerOutput<String>('principalObjectId');

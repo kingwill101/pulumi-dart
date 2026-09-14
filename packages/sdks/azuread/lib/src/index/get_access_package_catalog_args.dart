@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_access_package_catalog_get_access_package_catalog_args_doc}
 class GetAccessPackageCatalogArgs {
   /// The display name of the access package catalog.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The ID of this access package catalog.
   ///
   /// &gt; One of `displayName` or `objectId` must be specified.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
 
   /// Creates a new [GetAccessPackageCatalogArgs].
   /// [displayName] The display name of the access package catalog.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'synchronization_secret_args.dart';
+import 'synchronization_secret_credential.dart';
 import 'synchronization_secret_state.dart';
 
 /// Manages synchronization secrets associated with a service principal (enterprise application) within Azure Active Directory.
@@ -30,7 +31,7 @@ import 'synchronization_secret_state.dart';
 ///     objectId: exampleApplicationFromTemplate.servicePrincipalObjectId,
 /// });
 /// const exampleSynchronizationSecret = new azuread.SynchronizationSecret("example", {
-///     servicePrincipalId: exampleGetServicePrincipal.apply(exampleGetServicePrincipal => exampleGetServicePrincipal.id),
+///     servicePrincipalId: exampleGetServicePrincipal.id,
 ///     credentials: [
 ///         {
 ///             key: "BaseAddress",
@@ -136,9 +137,7 @@ import 'synchronization_secret_state.dart';
 /// 			ObjectId: exampleApplicationFromTemplate.ServicePrincipalObjectId,
 /// 		}, nil)
 /// 		_, err = azuread.NewSynchronizationSecret(ctx, "example", &azuread.SynchronizationSecretArgs{
-/// 			ServicePrincipalId: pulumi.String(exampleGetServicePrincipal.ApplyT(func(exampleGetServicePrincipal azuread.GetServicePrincipalResult) (*string, error) {
-/// 				return exampleGetServicePrincipal.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			ServicePrincipalId: exampleGetServicePrincipal.Id(),
 /// 			Credentials: azuread.SynchronizationSecretCredentialArray{
 /// 				&azuread.SynchronizationSecretCredentialArgs{
 /// 					Key:   pulumi.String("BaseAddress"),
@@ -282,7 +281,7 @@ import 'synchronization_secret_state.dart';
 /// This resource does not support importing.
 class SynchronizationSecret extends pulumi.CustomResource {
   /// One or more `credential` blocks as documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> credentials;
+  late final pulumi.Output<List<SynchronizationSecretCredential>?> credentials;
   /// The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> servicePrincipalId;
 
@@ -298,9 +297,9 @@ class SynchronizationSecret extends pulumi.CustomResource {
           'azuread:index/synchronizationSecret:SynchronizationSecret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
-    credentials = registerOutput<List<Map<String, dynamic>>?>('credentials');
+    credentials = registerOutput<List<SynchronizationSecretCredential>?>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SynchronizationSecretCredential>(guardedValue, (value) => SynchronizationSecretCredential.fromMap((value as Map).cast<String, dynamic>())); });
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
   }
 
@@ -309,11 +308,12 @@ class SynchronizationSecret extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SynchronizationSecretState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SynchronizationSecret._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -327,7 +327,20 @@ class SynchronizationSecret extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    credentials = registerOutput<List<Map<String, dynamic>>?>('credentials');
+    credentials = registerOutput<List<SynchronizationSecretCredential>?>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SynchronizationSecretCredential>(guardedValue, (value) => SynchronizationSecretCredential.fromMap((value as Map).cast<String, dynamic>())); });
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
+  }
+
+  /// Creates a typed reference to an existing [SynchronizationSecret] resource.
+  SynchronizationSecret.reference(String urn)
+    : super(
+        'azuread:index/synchronizationSecret:SynchronizationSecret',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    credentials = registerOutput<List<SynchronizationSecretCredential>?>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SynchronizationSecretCredential>(guardedValue, (value) => SynchronizationSecretCredential.fromMap((value as Map).cast<String, dynamic>())); });
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
   }
 }

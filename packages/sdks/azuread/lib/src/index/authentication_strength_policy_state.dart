@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AuthenticationStrengthPolicy resources.
 class AuthenticationStrengthPolicyState {
   /// List of allowed authentication methods for this authentication strength policy.
-  final pulumi.Input<List<String>>? allowedCombinations;
+  final pulumi.Input<List<String>?>? allowedCombinations;
   /// The description for this authentication strength policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The friendly name for this authentication strength policy.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
 
   /// Creates a new [AuthenticationStrengthPolicyState].
   /// [allowedCombinations] List of allowed authentication methods for this authentication strength policy.

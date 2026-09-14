@@ -166,12 +166,12 @@ class AdministrativeUnit extends pulumi.CustomResource {
           'azuread:index/administrativeUnit:AdministrativeUnit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     hiddenMembershipEnabled = registerOutput<bool?>('hiddenMembershipEnabled');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     objectId = registerOutput<String>('objectId');
     preventDuplicateNames = registerOutput<bool?>('preventDuplicateNames');
   }
@@ -181,11 +181,12 @@ class AdministrativeUnit extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AdministrativeUnitState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AdministrativeUnit._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -202,7 +203,24 @@ class AdministrativeUnit extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     hiddenMembershipEnabled = registerOutput<bool?>('hiddenMembershipEnabled');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    objectId = registerOutput<String>('objectId');
+    preventDuplicateNames = registerOutput<bool?>('preventDuplicateNames');
+  }
+
+  /// Creates a typed reference to an existing [AdministrativeUnit] resource.
+  AdministrativeUnit.reference(String urn)
+    : super(
+        'azuread:index/administrativeUnit:AdministrativeUnit',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    hiddenMembershipEnabled = registerOutput<bool?>('hiddenMembershipEnabled');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     objectId = registerOutput<String>('objectId');
     preventDuplicateNames = registerOutput<bool?>('preventDuplicateNames');
   }

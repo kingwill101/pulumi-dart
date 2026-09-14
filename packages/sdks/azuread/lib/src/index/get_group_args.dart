@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_group_get_group_args_doc}
 class GetGroupArgs {
   /// The display name for the group.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
-  final pulumi.Input<bool>? includeTransitiveMembers;
+  final pulumi.Input<bool?>? includeTransitiveMembers;
   /// Whether the group is mail-enabled.
-  final pulumi.Input<bool>? mailEnabled;
+  final pulumi.Input<bool?>? mailEnabled;
   /// The mail alias for the group, unique in the organisation.
-  final pulumi.Input<String>? mailNickname;
+  final pulumi.Input<String?>? mailNickname;
   /// Specifies the object ID of the group.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// Whether the group is a security group.
   ///
   /// &gt; One of `displayName`, `objectId` or `mailNickname` must be specified.
-  final pulumi.Input<bool>? securityEnabled;
+  final pulumi.Input<bool?>? securityEnabled;
 
   /// Creates a new [GetGroupArgs].
   /// [displayName] The display name for the group.

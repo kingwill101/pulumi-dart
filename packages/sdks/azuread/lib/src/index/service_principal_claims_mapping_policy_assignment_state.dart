@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ServicePrincipalClaimsMappingPolicyAssignment resources.
 class ServicePrincipalClaimsMappingPolicyAssignmentState {
   /// The ID of the claims mapping policy to assign.
-  final pulumi.Input<String>? claimsMappingPolicyId;
+  final pulumi.Input<String?>? claimsMappingPolicyId;
   /// The ID of the service principal for the policy assignment.
-  final pulumi.Input<String>? servicePrincipalId;
+  final pulumi.Input<String?>? servicePrincipalId;
 
   /// Creates a new [ServicePrincipalClaimsMappingPolicyAssignmentState].
   /// [claimsMappingPolicyId] The ID of the claims mapping policy to assign.

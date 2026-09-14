@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_directory_role_args.dart';
+import 'custom_directory_role_permission.dart';
 import 'custom_directory_role_state.dart';
 
 /// Manages a Custom Directory Role within Azure Active Directory.
@@ -261,7 +262,7 @@ class CustomDirectoryRole extends pulumi.CustomResource {
   /// The object ID of the custom directory role.
   late final pulumi.Output<String> objectId;
   /// A collection of `permissions` blocks as documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> permissions;
+  late final pulumi.Output<List<CustomDirectoryRolePermission>> permissions;
   /// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
   late final pulumi.Output<String> templateId;
   /// The version of the role definition. This can be any arbitrary string between 1-128 characters.
@@ -279,13 +280,13 @@ class CustomDirectoryRole extends pulumi.CustomResource {
           'azuread:index/customDirectoryRole:CustomDirectoryRole',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool>('enabled');
     objectId = registerOutput<String>('objectId');
-    permissions = registerOutput<List<Map<String, dynamic>>>('permissions');
+    permissions = registerOutput<List<CustomDirectoryRolePermission>>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDirectoryRolePermission>(guardedValue, (value) => CustomDirectoryRolePermission.fromMap((value as Map).cast<String, dynamic>())); });
     templateId = registerOutput<String>('templateId');
     version = registerOutput<String>('version');
   }
@@ -295,11 +296,12 @@ class CustomDirectoryRole extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomDirectoryRoleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomDirectoryRole._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -317,7 +319,25 @@ class CustomDirectoryRole extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool>('enabled');
     objectId = registerOutput<String>('objectId');
-    permissions = registerOutput<List<Map<String, dynamic>>>('permissions');
+    permissions = registerOutput<List<CustomDirectoryRolePermission>>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDirectoryRolePermission>(guardedValue, (value) => CustomDirectoryRolePermission.fromMap((value as Map).cast<String, dynamic>())); });
+    templateId = registerOutput<String>('templateId');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [CustomDirectoryRole] resource.
+  CustomDirectoryRole.reference(String urn)
+    : super(
+        'azuread:index/customDirectoryRole:CustomDirectoryRole',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool>('enabled');
+    objectId = registerOutput<String>('objectId');
+    permissions = registerOutput<List<CustomDirectoryRolePermission>>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDirectoryRolePermission>(guardedValue, (value) => CustomDirectoryRolePermission.fromMap((value as Map).cast<String, dynamic>())); });
     templateId = registerOutput<String>('templateId');
     version = registerOutput<String>('version');
   }

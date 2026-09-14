@@ -173,8 +173,8 @@ import 'access_package_resource_catalog_association_state.dart';
 ///             .build());
 ///
 ///         var exampleAccessPackageResourceCatalogAssociation = new AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation", AccessPackageResourceCatalogAssociationArgs.builder()
-///             .catalogId(exampleCatalog.id())
-///             .resourceOriginId(exampleGroup.objectId())
+///             .catalogId(exampleCatalog.get("id"))
+///             .resourceOriginId(exampleGroup.get("objectId"))
 ///             .resourceOriginSystem("AadGroup")
 ///             .build());
 ///
@@ -233,7 +233,7 @@ class AccessPackageResourceCatalogAssociation extends pulumi.CustomResource {
           'azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     resourceOriginId = registerOutput<String>('resourceOriginId');
@@ -245,11 +245,12 @@ class AccessPackageResourceCatalogAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessPackageResourceCatalogAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessPackageResourceCatalogAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -263,6 +264,20 @@ class AccessPackageResourceCatalogAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    catalogId = registerOutput<String>('catalogId');
+    resourceOriginId = registerOutput<String>('resourceOriginId');
+    resourceOriginSystem = registerOutput<String>('resourceOriginSystem');
+  }
+
+  /// Creates a typed reference to an existing [AccessPackageResourceCatalogAssociation] resource.
+  AccessPackageResourceCatalogAssociation.reference(String urn)
+    : super(
+        'azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     catalogId = registerOutput<String>('catalogId');
     resourceOriginId = registerOutput<String>('resourceOriginId');
     resourceOriginSystem = registerOutput<String>('resourceOriginSystem');

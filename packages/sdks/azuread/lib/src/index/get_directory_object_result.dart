@@ -4,33 +4,33 @@
 /// Result data returned by getDirectoryObject.
 class GetDirectoryObjectResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String objectId;
-  final String type;
+  final String? id;
+  final String? objectId;
+  final String? type;
 
   /// Creates a new [GetDirectoryObjectResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [objectId] Required.
-  /// [type] Required.
+  /// [objectId] Optional.
+  /// [type] Optional.
   const GetDirectoryObjectResult({
-    required this.id,
-    required this.objectId,
-    required this.type,
+    this.id,
+    this.objectId,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'objectId': objectId,
-      'type': type,
+      'id': ?id,
+      'objectId': ?objectId,
+      'type': ?type,
     };
   }
 
   factory GetDirectoryObjectResult.fromMap(Map<String, dynamic> map) {
     return GetDirectoryObjectResult(
-      id: map['id'] as String,
-      objectId: map['objectId'] as String,
-      type: map['type'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

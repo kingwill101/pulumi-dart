@@ -89,7 +89,7 @@ import 'application_federated_identity_credential_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationFederatedIdentityCredential(ctx, "example", &azuread.ApplicationFederatedIdentityCredentialArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName:   pulumi.String("my-repo-deploy"),
 /// 			Description:   pulumi.String("Deployments for my-repo"),
 /// 			Audiences: pulumi.StringArray{
@@ -222,10 +222,10 @@ class ApplicationFederatedIdentityCredential extends pulumi.CustomResource {
           'azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
-    audiences = registerOutput<List<String>>('audiences');
+    audiences = registerOutput<List<String>>('audiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     credentialId = registerOutput<String>('credentialId');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -238,11 +238,12 @@ class ApplicationFederatedIdentityCredential extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationFederatedIdentityCredentialState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationFederatedIdentityCredential._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -257,7 +258,25 @@ class ApplicationFederatedIdentityCredential extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     applicationId = registerOutput<String>('applicationId');
-    audiences = registerOutput<List<String>>('audiences');
+    audiences = registerOutput<List<String>>('audiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    credentialId = registerOutput<String>('credentialId');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    issuer = registerOutput<String>('issuer');
+    subject = registerOutput<String>('subject');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationFederatedIdentityCredential] resource.
+  ApplicationFederatedIdentityCredential.reference(String urn)
+    : super(
+        'azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    audiences = registerOutput<List<String>>('audiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     credentialId = registerOutput<String>('credentialId');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

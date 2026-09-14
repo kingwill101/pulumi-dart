@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering UserFlowAttribute resources.
 class UserFlowAttributeState {
   /// The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
-  final pulumi.Input<String>? attributeType;
+  final pulumi.Input<String?>? attributeType;
   /// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? dataType;
+  final pulumi.Input<String?>? dataType;
   /// The description of the user flow attribute that is shown to the user at the time of sign-up.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the user flow attribute. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
 
   /// Creates a new [UserFlowAttributeState].
   /// [attributeType] The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.

@@ -1,5 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'service_principal_app_role.dart';
 import 'service_principal_args.dart';
+import 'service_principal_feature.dart';
+import 'service_principal_feature_tag.dart';
+import 'service_principal_oauth2_permission_scope.dart';
 import 'service_principal_saml_single_sign_on.dart';
 import 'service_principal_state.dart';
 
@@ -746,7 +750,7 @@ class ServicePrincipal extends pulumi.CustomResource {
   /// A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
   late final pulumi.Output<Map<String, String>> appRoleIds;
   /// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-  late final pulumi.Output<List<Map<String, dynamic>>> appRoles;
+  late final pulumi.Output<List<ServicePrincipalAppRole>> appRoles;
   /// The tenant ID where the associated application is registered.
   late final pulumi.Output<String> applicationTenantId;
   /// The client ID of the application for which to create a service principal.
@@ -758,9 +762,9 @@ class ServicePrincipal extends pulumi.CustomResource {
   /// A `featureTags` block as described below. Cannot be used together with the `tags` property.
   ///
   /// &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
-  late final pulumi.Output<List<Map<String, dynamic>>> featureTags;
+  late final pulumi.Output<List<ServicePrincipalFeatureTag>> featureTags;
   /// Block of features to configure for this service principal using tags
-  late final pulumi.Output<List<Map<String, dynamic>>> features;
+  late final pulumi.Output<List<ServicePrincipalFeature>> features;
   /// Home page or landing page of the associated application.
   late final pulumi.Output<String> homepageUrl;
   /// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
@@ -774,7 +778,7 @@ class ServicePrincipal extends pulumi.CustomResource {
   /// A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
   late final pulumi.Output<Map<String, String>> oauth2PermissionScopeIds;
   /// A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> oauth2PermissionScopes;
+  late final pulumi.Output<List<ServicePrincipalOauth2PermissionScope>> oauth2PermissionScopes;
   /// The object ID of the service principal.
   late final pulumi.Output<String> objectId;
   /// A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
@@ -816,35 +820,35 @@ class ServicePrincipal extends pulumi.CustomResource {
           'azuread:index/servicePrincipal:ServicePrincipal',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
     accountEnabled = registerOutput<bool?>('accountEnabled');
-    alternativeNames = registerOutput<List<String>?>('alternativeNames');
+    alternativeNames = registerOutput<List<String>?>('alternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     appRoleAssignmentRequired = registerOutput<bool?>('appRoleAssignmentRequired');
-    appRoleIds = registerOutput<Map<String, String>>('appRoleIds');
-    appRoles = registerOutput<List<Map<String, dynamic>>>('appRoles');
+    appRoleIds = registerOutput<Map<String, String>>('appRoleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    appRoles = registerOutput<List<ServicePrincipalAppRole>>('appRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePrincipalAppRole>(guardedValue, (value) => ServicePrincipalAppRole.fromMap((value as Map).cast<String, dynamic>())); });
     applicationTenantId = registerOutput<String>('applicationTenantId');
     clientId = registerOutput<String>('clientId');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    featureTags = registerOutput<List<Map<String, dynamic>>>('featureTags');
-    features = registerOutput<List<Map<String, dynamic>>>('features');
+    featureTags = registerOutput<List<ServicePrincipalFeatureTag>>('featureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePrincipalFeatureTag>(guardedValue, (value) => ServicePrincipalFeatureTag.fromMap((value as Map).cast<String, dynamic>())); });
+    features = registerOutput<List<ServicePrincipalFeature>>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePrincipalFeature>(guardedValue, (value) => ServicePrincipalFeature.fromMap((value as Map).cast<String, dynamic>())); });
     homepageUrl = registerOutput<String>('homepageUrl');
     loginUrl = registerOutput<String?>('loginUrl');
     logoutUrl = registerOutput<String>('logoutUrl');
     notes = registerOutput<String?>('notes');
-    notificationEmailAddresses = registerOutput<List<String>?>('notificationEmailAddresses');
-    oauth2PermissionScopeIds = registerOutput<Map<String, String>>('oauth2PermissionScopeIds');
-    oauth2PermissionScopes = registerOutput<List<Map<String, dynamic>>>('oauth2PermissionScopes');
+    notificationEmailAddresses = registerOutput<List<String>?>('notificationEmailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    oauth2PermissionScopeIds = registerOutput<Map<String, String>>('oauth2PermissionScopeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    oauth2PermissionScopes = registerOutput<List<ServicePrincipalOauth2PermissionScope>>('oauth2PermissionScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePrincipalOauth2PermissionScope>(guardedValue, (value) => ServicePrincipalOauth2PermissionScope.fromMap((value as Map).cast<String, dynamic>())); });
     objectId = registerOutput<String>('objectId');
-    owners = registerOutput<List<String>?>('owners');
+    owners = registerOutput<List<String>?>('owners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     preferredSingleSignOnMode = registerOutput<String?>('preferredSingleSignOnMode');
-    redirectUris = registerOutput<List<String>>('redirectUris');
+    redirectUris = registerOutput<List<String>>('redirectUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     samlMetadataUrl = registerOutput<String>('samlMetadataUrl');
     samlSingleSignOn = registerOutput<ServicePrincipalSamlSingleSignOn?>('samlSingleSignOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePrincipalSamlSingleSignOn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    servicePrincipalNames = registerOutput<List<String>>('servicePrincipalNames');
+    servicePrincipalNames = registerOutput<List<String>>('servicePrincipalNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     signInAudience = registerOutput<String>('signInAudience');
-    tags = registerOutput<List<String>>('tags');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
     useExisting = registerOutput<bool?>('useExisting');
   }
@@ -854,11 +858,12 @@ class ServicePrincipal extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServicePrincipalState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServicePrincipal._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -873,32 +878,72 @@ class ServicePrincipal extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accountEnabled = registerOutput<bool?>('accountEnabled');
-    alternativeNames = registerOutput<List<String>?>('alternativeNames');
+    alternativeNames = registerOutput<List<String>?>('alternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     appRoleAssignmentRequired = registerOutput<bool?>('appRoleAssignmentRequired');
-    appRoleIds = registerOutput<Map<String, String>>('appRoleIds');
-    appRoles = registerOutput<List<Map<String, dynamic>>>('appRoles');
+    appRoleIds = registerOutput<Map<String, String>>('appRoleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    appRoles = registerOutput<List<ServicePrincipalAppRole>>('appRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePrincipalAppRole>(guardedValue, (value) => ServicePrincipalAppRole.fromMap((value as Map).cast<String, dynamic>())); });
     applicationTenantId = registerOutput<String>('applicationTenantId');
     clientId = registerOutput<String>('clientId');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    featureTags = registerOutput<List<Map<String, dynamic>>>('featureTags');
-    features = registerOutput<List<Map<String, dynamic>>>('features');
+    featureTags = registerOutput<List<ServicePrincipalFeatureTag>>('featureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePrincipalFeatureTag>(guardedValue, (value) => ServicePrincipalFeatureTag.fromMap((value as Map).cast<String, dynamic>())); });
+    features = registerOutput<List<ServicePrincipalFeature>>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePrincipalFeature>(guardedValue, (value) => ServicePrincipalFeature.fromMap((value as Map).cast<String, dynamic>())); });
     homepageUrl = registerOutput<String>('homepageUrl');
     loginUrl = registerOutput<String?>('loginUrl');
     logoutUrl = registerOutput<String>('logoutUrl');
     notes = registerOutput<String?>('notes');
-    notificationEmailAddresses = registerOutput<List<String>?>('notificationEmailAddresses');
-    oauth2PermissionScopeIds = registerOutput<Map<String, String>>('oauth2PermissionScopeIds');
-    oauth2PermissionScopes = registerOutput<List<Map<String, dynamic>>>('oauth2PermissionScopes');
+    notificationEmailAddresses = registerOutput<List<String>?>('notificationEmailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    oauth2PermissionScopeIds = registerOutput<Map<String, String>>('oauth2PermissionScopeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    oauth2PermissionScopes = registerOutput<List<ServicePrincipalOauth2PermissionScope>>('oauth2PermissionScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePrincipalOauth2PermissionScope>(guardedValue, (value) => ServicePrincipalOauth2PermissionScope.fromMap((value as Map).cast<String, dynamic>())); });
     objectId = registerOutput<String>('objectId');
-    owners = registerOutput<List<String>?>('owners');
+    owners = registerOutput<List<String>?>('owners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     preferredSingleSignOnMode = registerOutput<String?>('preferredSingleSignOnMode');
-    redirectUris = registerOutput<List<String>>('redirectUris');
+    redirectUris = registerOutput<List<String>>('redirectUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     samlMetadataUrl = registerOutput<String>('samlMetadataUrl');
     samlSingleSignOn = registerOutput<ServicePrincipalSamlSingleSignOn?>('samlSingleSignOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePrincipalSamlSingleSignOn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    servicePrincipalNames = registerOutput<List<String>>('servicePrincipalNames');
+    servicePrincipalNames = registerOutput<List<String>>('servicePrincipalNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     signInAudience = registerOutput<String>('signInAudience');
-    tags = registerOutput<List<String>>('tags');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+    useExisting = registerOutput<bool?>('useExisting');
+  }
+
+  /// Creates a typed reference to an existing [ServicePrincipal] resource.
+  ServicePrincipal.reference(String urn)
+    : super(
+        'azuread:index/servicePrincipal:ServicePrincipal',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountEnabled = registerOutput<bool?>('accountEnabled');
+    alternativeNames = registerOutput<List<String>?>('alternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    appRoleAssignmentRequired = registerOutput<bool?>('appRoleAssignmentRequired');
+    appRoleIds = registerOutput<Map<String, String>>('appRoleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    appRoles = registerOutput<List<ServicePrincipalAppRole>>('appRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePrincipalAppRole>(guardedValue, (value) => ServicePrincipalAppRole.fromMap((value as Map).cast<String, dynamic>())); });
+    applicationTenantId = registerOutput<String>('applicationTenantId');
+    clientId = registerOutput<String>('clientId');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    featureTags = registerOutput<List<ServicePrincipalFeatureTag>>('featureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePrincipalFeatureTag>(guardedValue, (value) => ServicePrincipalFeatureTag.fromMap((value as Map).cast<String, dynamic>())); });
+    features = registerOutput<List<ServicePrincipalFeature>>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePrincipalFeature>(guardedValue, (value) => ServicePrincipalFeature.fromMap((value as Map).cast<String, dynamic>())); });
+    homepageUrl = registerOutput<String>('homepageUrl');
+    loginUrl = registerOutput<String?>('loginUrl');
+    logoutUrl = registerOutput<String>('logoutUrl');
+    notes = registerOutput<String?>('notes');
+    notificationEmailAddresses = registerOutput<List<String>?>('notificationEmailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    oauth2PermissionScopeIds = registerOutput<Map<String, String>>('oauth2PermissionScopeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    oauth2PermissionScopes = registerOutput<List<ServicePrincipalOauth2PermissionScope>>('oauth2PermissionScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePrincipalOauth2PermissionScope>(guardedValue, (value) => ServicePrincipalOauth2PermissionScope.fromMap((value as Map).cast<String, dynamic>())); });
+    objectId = registerOutput<String>('objectId');
+    owners = registerOutput<List<String>?>('owners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    preferredSingleSignOnMode = registerOutput<String?>('preferredSingleSignOnMode');
+    redirectUris = registerOutput<List<String>>('redirectUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    samlMetadataUrl = registerOutput<String>('samlMetadataUrl');
+    samlSingleSignOn = registerOutput<ServicePrincipalSamlSingleSignOn?>('samlSingleSignOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePrincipalSamlSingleSignOn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    servicePrincipalNames = registerOutput<List<String>>('servicePrincipalNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    signInAudience = registerOutput<String>('signInAudience');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
     useExisting = registerOutput<bool?>('useExisting');
   }

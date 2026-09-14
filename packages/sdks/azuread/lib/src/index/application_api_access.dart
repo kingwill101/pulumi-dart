@@ -118,7 +118,7 @@ import 'application_api_access_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationApiAccess(ctx, "example_msgraph", &azuread.ApplicationApiAccessArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			ApiClientId:   pulumi.String(wellKnown.Result.MicrosoftGraph),
 /// 			RoleIds: pulumi.StringArray{
 /// 				pulumi.String(msgraph.AppRoleIds.Group.Read.All),
@@ -293,7 +293,7 @@ import 'application_api_access_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationApiAccess(ctx, "example", &azuread.ApplicationApiAccessArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -397,12 +397,12 @@ class ApplicationApiAccess extends pulumi.CustomResource {
           'azuread:index/applicationApiAccess:ApplicationApiAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
     apiClientId = registerOutput<String>('apiClientId');
     applicationId = registerOutput<String>('applicationId');
-    roleIds = registerOutput<List<String>?>('roleIds');
-    scopeIds = registerOutput<List<String>?>('scopeIds');
+    roleIds = registerOutput<List<String>?>('roleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scopeIds = registerOutput<List<String>?>('scopeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ApplicationApiAccess] resource's state with the given [name] and [id].
@@ -410,11 +410,12 @@ class ApplicationApiAccess extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationApiAccessState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationApiAccess._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -430,7 +431,22 @@ class ApplicationApiAccess extends pulumi.CustomResource {
         ) {
     apiClientId = registerOutput<String>('apiClientId');
     applicationId = registerOutput<String>('applicationId');
-    roleIds = registerOutput<List<String>?>('roleIds');
-    scopeIds = registerOutput<List<String>?>('scopeIds');
+    roleIds = registerOutput<List<String>?>('roleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scopeIds = registerOutput<List<String>?>('scopeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ApplicationApiAccess] resource.
+  ApplicationApiAccess.reference(String urn)
+    : super(
+        'azuread:index/applicationApiAccess:ApplicationApiAccess',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiClientId = registerOutput<String>('apiClientId');
+    applicationId = registerOutput<String>('applicationId');
+    roleIds = registerOutput<List<String>?>('roleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scopeIds = registerOutput<List<String>?>('scopeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

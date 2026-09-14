@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ClaimsMappingPolicy resources.
 class ClaimsMappingPolicyState {
   /// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
-  final pulumi.Input<List<String>>? definitions;
+  final pulumi.Input<List<String>?>? definitions;
   /// The display name for this Claims Mapping Policy.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
 
   /// Creates a new [ClaimsMappingPolicyState].
   /// [definitions] The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.

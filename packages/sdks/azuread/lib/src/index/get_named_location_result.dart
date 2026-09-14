@@ -6,44 +6,44 @@ import 'get_named_location_ip.dart';
 
 /// Result data returned by getNamedLocation.
 class GetNamedLocationResult {
-  final List<GetNamedLocationCountry> countries;
-  final String displayName;
+  final List<GetNamedLocationCountry>? countries;
+  final String? displayName;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final List<GetNamedLocationIp> ips;
-  final String objectId;
+  final String? id;
+  final List<GetNamedLocationIp>? ips;
+  final String? objectId;
 
   /// Creates a new [GetNamedLocationResult].
-  /// [countries] Required.
-  /// [displayName] Required.
+  /// [countries] Optional.
+  /// [displayName] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ips] Required.
-  /// [objectId] Required.
+  /// [ips] Optional.
+  /// [objectId] Optional.
   const GetNamedLocationResult({
-    required this.countries,
-    required this.displayName,
-    required this.id,
-    required this.ips,
-    required this.objectId,
+    this.countries,
+    this.displayName,
+    this.id,
+    this.ips,
+    this.objectId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'countries': pulumi.Input.encodeList<GetNamedLocationCountry, Map<String, dynamic>>(countries, (value) => value.toMap()),
-      'displayName': displayName,
-      'id': id,
-      'ips': pulumi.Input.encodeList<GetNamedLocationIp, Map<String, dynamic>>(ips, (value) => value.toMap()),
-      'objectId': objectId,
+      'countries': ?(() { final guardedValue = countries; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNamedLocationCountry, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'displayName': ?displayName,
+      'id': ?id,
+      'ips': ?(() { final guardedValue = ips; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNamedLocationIp, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'objectId': ?objectId,
     };
   }
 
   factory GetNamedLocationResult.fromMap(Map<String, dynamic> map) {
     return GetNamedLocationResult(
-      countries: pulumi.Input.decodeList<GetNamedLocationCountry>(map['countries']!, (value) => GetNamedLocationCountry.fromMap((value as Map).cast<String, dynamic>())),
-      displayName: map['displayName'] as String,
-      id: map['id'] as String,
-      ips: pulumi.Input.decodeList<GetNamedLocationIp>(map['ips']!, (value) => GetNamedLocationIp.fromMap((value as Map).cast<String, dynamic>())),
-      objectId: map['objectId'] as String,
+      countries: (() { final guardedValue = map['countries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNamedLocationCountry>(guardedValue, (value) => GetNamedLocationCountry.fromMap((value as Map).cast<String, dynamic>())); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ips: (() { final guardedValue = map['ips']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNamedLocationIp>(guardedValue, (value) => GetNamedLocationIp.fromMap((value as Map).cast<String, dynamic>())); })(),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

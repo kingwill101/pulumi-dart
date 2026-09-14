@@ -257,12 +257,13 @@ class User extends pulumi.CustomResource {
           'azuread:index/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     aboutMe = registerOutput<String>('aboutMe');
     accountEnabled = registerOutput<bool?>('accountEnabled');
     ageGroup = registerOutput<String?>('ageGroup');
-    businessPhones = registerOutput<List<String>>('businessPhones');
+    businessPhones = registerOutput<List<String>>('businessPhones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     city = registerOutput<String?>('city');
     companyName = registerOutput<String?>('companyName');
     consentProvidedForMinor = registerOutput<String?>('consentProvidedForMinor');
@@ -281,7 +282,7 @@ class User extends pulumi.CustomResource {
     faxNumber = registerOutput<String?>('faxNumber');
     forcePasswordChange = registerOutput<bool?>('forcePasswordChange');
     givenName = registerOutput<String?>('givenName');
-    imAddresses = registerOutput<List<String>>('imAddresses');
+    imAddresses = registerOutput<List<String>>('imAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     jobTitle = registerOutput<String?>('jobTitle');
     mail = registerOutput<String>('mail');
     mailNickname = registerOutput<String>('mailNickname');
@@ -296,11 +297,11 @@ class User extends pulumi.CustomResource {
     onpremisesSecurityIdentifier = registerOutput<String>('onpremisesSecurityIdentifier');
     onpremisesSyncEnabled = registerOutput<bool>('onpremisesSyncEnabled');
     onpremisesUserPrincipalName = registerOutput<String>('onpremisesUserPrincipalName');
-    otherMails = registerOutput<List<String>?>('otherMails');
-    password = registerOutput<String>('password');
+    otherMails = registerOutput<List<String>?>('otherMails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    password = registerOutput<String>('password', isSecret: true);
     postalCode = registerOutput<String?>('postalCode');
     preferredLanguage = registerOutput<String?>('preferredLanguage');
-    proxyAddresses = registerOutput<List<String>>('proxyAddresses');
+    proxyAddresses = registerOutput<List<String>>('proxyAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     showInAddressList = registerOutput<bool?>('showInAddressList');
     state = registerOutput<String?>('state');
     streetAddress = registerOutput<String?>('streetAddress');
@@ -315,11 +316,12 @@ class User extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return User._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -336,7 +338,7 @@ class User extends pulumi.CustomResource {
     aboutMe = registerOutput<String>('aboutMe');
     accountEnabled = registerOutput<bool?>('accountEnabled');
     ageGroup = registerOutput<String?>('ageGroup');
-    businessPhones = registerOutput<List<String>>('businessPhones');
+    businessPhones = registerOutput<List<String>>('businessPhones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     city = registerOutput<String?>('city');
     companyName = registerOutput<String?>('companyName');
     consentProvidedForMinor = registerOutput<String?>('consentProvidedForMinor');
@@ -355,7 +357,7 @@ class User extends pulumi.CustomResource {
     faxNumber = registerOutput<String?>('faxNumber');
     forcePasswordChange = registerOutput<bool?>('forcePasswordChange');
     givenName = registerOutput<String?>('givenName');
-    imAddresses = registerOutput<List<String>>('imAddresses');
+    imAddresses = registerOutput<List<String>>('imAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     jobTitle = registerOutput<String?>('jobTitle');
     mail = registerOutput<String>('mail');
     mailNickname = registerOutput<String>('mailNickname');
@@ -370,13 +372,74 @@ class User extends pulumi.CustomResource {
     onpremisesSecurityIdentifier = registerOutput<String>('onpremisesSecurityIdentifier');
     onpremisesSyncEnabled = registerOutput<bool>('onpremisesSyncEnabled');
     onpremisesUserPrincipalName = registerOutput<String>('onpremisesUserPrincipalName');
-    otherMails = registerOutput<List<String>?>('otherMails');
-    password = registerOutput<String>('password');
+    otherMails = registerOutput<List<String>?>('otherMails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    password = registerOutput<String>('password', isSecret: true);
     postalCode = registerOutput<String?>('postalCode');
     preferredLanguage = registerOutput<String?>('preferredLanguage');
-    proxyAddresses = registerOutput<List<String>>('proxyAddresses');
+    proxyAddresses = registerOutput<List<String>>('proxyAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     showInAddressList = registerOutput<bool?>('showInAddressList');
     this.state = registerOutput<String?>('state');
+    streetAddress = registerOutput<String?>('streetAddress');
+    surname = registerOutput<String?>('surname');
+    usageLocation = registerOutput<String?>('usageLocation');
+    userPrincipalName = registerOutput<String>('userPrincipalName');
+    userType = registerOutput<String>('userType');
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'azuread:index/user:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    aboutMe = registerOutput<String>('aboutMe');
+    accountEnabled = registerOutput<bool?>('accountEnabled');
+    ageGroup = registerOutput<String?>('ageGroup');
+    businessPhones = registerOutput<List<String>>('businessPhones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    city = registerOutput<String?>('city');
+    companyName = registerOutput<String?>('companyName');
+    consentProvidedForMinor = registerOutput<String?>('consentProvidedForMinor');
+    costCenter = registerOutput<String?>('costCenter');
+    country = registerOutput<String?>('country');
+    creationType = registerOutput<String>('creationType');
+    department = registerOutput<String?>('department');
+    disablePasswordExpiration = registerOutput<bool?>('disablePasswordExpiration');
+    disableStrongPassword = registerOutput<bool?>('disableStrongPassword');
+    displayName = registerOutput<String>('displayName');
+    division = registerOutput<String?>('division');
+    employeeHireDate = registerOutput<String?>('employeeHireDate');
+    employeeId = registerOutput<String?>('employeeId');
+    employeeType = registerOutput<String?>('employeeType');
+    externalUserState = registerOutput<String>('externalUserState');
+    faxNumber = registerOutput<String?>('faxNumber');
+    forcePasswordChange = registerOutput<bool?>('forcePasswordChange');
+    givenName = registerOutput<String?>('givenName');
+    imAddresses = registerOutput<List<String>>('imAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    jobTitle = registerOutput<String?>('jobTitle');
+    mail = registerOutput<String>('mail');
+    mailNickname = registerOutput<String>('mailNickname');
+    managerId = registerOutput<String?>('managerId');
+    mobilePhone = registerOutput<String?>('mobilePhone');
+    objectId = registerOutput<String>('objectId');
+    officeLocation = registerOutput<String?>('officeLocation');
+    onpremisesDistinguishedName = registerOutput<String>('onpremisesDistinguishedName');
+    onpremisesDomainName = registerOutput<String>('onpremisesDomainName');
+    onpremisesImmutableId = registerOutput<String>('onpremisesImmutableId');
+    onpremisesSamAccountName = registerOutput<String>('onpremisesSamAccountName');
+    onpremisesSecurityIdentifier = registerOutput<String>('onpremisesSecurityIdentifier');
+    onpremisesSyncEnabled = registerOutput<bool>('onpremisesSyncEnabled');
+    onpremisesUserPrincipalName = registerOutput<String>('onpremisesUserPrincipalName');
+    otherMails = registerOutput<List<String>?>('otherMails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    password = registerOutput<String>('password', isSecret: true);
+    postalCode = registerOutput<String?>('postalCode');
+    preferredLanguage = registerOutput<String?>('preferredLanguage');
+    proxyAddresses = registerOutput<List<String>>('proxyAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    showInAddressList = registerOutput<bool?>('showInAddressList');
+    state = registerOutput<String?>('state');
     streetAddress = registerOutput<String?>('streetAddress');
     surname = registerOutput<String?>('surname');
     usageLocation = registerOutput<String?>('usageLocation');

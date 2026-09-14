@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover {
   /// For a user in an approval stage, this property indicates whether the user is a backup fallback approver
-  final pulumi.Input<bool>? backup;
+  final pulumi.Input<bool?>? backup;
   /// The object ID of the subject
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// Type of users
   final pulumi.Input<String> subjectType;
 

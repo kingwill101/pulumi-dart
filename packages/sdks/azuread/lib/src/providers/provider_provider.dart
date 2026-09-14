@@ -53,16 +53,17 @@ class ProviderProvider extends pulumi.ProviderResource {
   }) : super(
           'azuread',
           name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.Input.mapToInputs((args ?? ProviderArgs()).toMap()),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
+          additionalSecretOutputs: const ['clientCertificatePassword', 'clientId', 'clientSecret'],
         ) {
     adoPipelineServiceConnectionId = registerOutput<String?>('adoPipelineServiceConnectionId');
     clientCertificate = registerOutput<String?>('clientCertificate');
-    clientCertificatePassword = registerOutput<String?>('clientCertificatePassword');
+    clientCertificatePassword = registerOutput<String?>('clientCertificatePassword', isSecret: true);
     clientCertificatePath = registerOutput<String?>('clientCertificatePath');
-    clientId = registerOutput<String?>('clientId');
+    clientId = registerOutput<String?>('clientId', isSecret: true);
     clientIdFilePath = registerOutput<String?>('clientIdFilePath');
-    clientSecret = registerOutput<String?>('clientSecret');
+    clientSecret = registerOutput<String?>('clientSecret', isSecret: true);
     clientSecretFilePath = registerOutput<String?>('clientSecretFilePath');
     environment = registerOutput<String?>('environment');
     metadataHost = registerOutput<String?>('metadataHost');

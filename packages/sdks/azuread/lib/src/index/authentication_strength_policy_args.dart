@@ -10,7 +10,7 @@ class AuthenticationStrengthPolicyArgs {
   /// List of allowed authentication methods for this authentication strength policy.
   final pulumi.Input<List<String>> allowedCombinations;
   /// The description for this authentication strength policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The friendly name for this authentication strength policy.
   final pulumi.Input<String> displayName;
 

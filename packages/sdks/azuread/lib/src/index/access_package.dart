@@ -83,7 +83,7 @@ import 'access_package_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewAccessPackage(ctx, "example", &azuread.AccessPackageArgs{
-/// 			CatalogId:   example.ID(),
+/// 			CatalogId:   example.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("access-package"),
 /// 			Description: pulumi.String("Access Package"),
 /// 		})
@@ -196,7 +196,7 @@ class AccessPackage extends pulumi.CustomResource {
           'azuread:index/accessPackage:AccessPackage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     description = registerOutput<String>('description');
@@ -209,11 +209,12 @@ class AccessPackage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessPackageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessPackage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -227,6 +228,21 @@ class AccessPackage extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    catalogId = registerOutput<String>('catalogId');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    hidden = registerOutput<bool?>('hidden');
+  }
+
+  /// Creates a typed reference to an existing [AccessPackage] resource.
+  AccessPackage.reference(String urn)
+    : super(
+        'azuread:index/accessPackage:AccessPackage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     catalogId = registerOutput<String>('catalogId');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');

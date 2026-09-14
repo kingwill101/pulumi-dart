@@ -8,35 +8,35 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_application_registration_application_registration_args_doc}
 class ApplicationRegistrationArgs {
   /// A description of the application, as shown to end users.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name for the application.
   final pulumi.Input<String> displayName;
   /// Configures the `groups` claim issued in a user or OAuth access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
-  final pulumi.Input<List<String>>? groupMembershipClaims;
+  final pulumi.Input<List<String>?>? groupMembershipClaims;
   /// Home page or landing page of the application.
-  final pulumi.Input<String>? homepageUrl;
+  final pulumi.Input<String?>? homepageUrl;
   /// Whether this web application can request an access token using OAuth implicit flow.
-  final pulumi.Input<bool>? implicitAccessTokenIssuanceEnabled;
+  final pulumi.Input<bool?>? implicitAccessTokenIssuanceEnabled;
   /// Whether this web application can request an ID token using OAuth implicit flow.
-  final pulumi.Input<bool>? implicitIdTokenIssuanceEnabled;
+  final pulumi.Input<bool?>? implicitIdTokenIssuanceEnabled;
   /// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
-  final pulumi.Input<String>? logoutUrl;
+  final pulumi.Input<String?>? logoutUrl;
   /// URL of the marketing page for the application.
-  final pulumi.Input<String>? marketingUrl;
+  final pulumi.Input<String?>? marketingUrl;
   /// User-specified notes relevant for the management of the application.
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
   /// URL of the privacy statement for the application.
-  final pulumi.Input<String>? privacyStatementUrl;
+  final pulumi.Input<String?>? privacyStatementUrl;
   /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
-  final pulumi.Input<int>? requestedAccessTokenVersion;
+  final pulumi.Input<int?>? requestedAccessTokenVersion;
   /// References application context information from a Service or Asset Management database.
-  final pulumi.Input<String>? serviceManagementReference;
+  final pulumi.Input<String?>? serviceManagementReference;
   /// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
-  final pulumi.Input<String>? signInAudience;
+  final pulumi.Input<String?>? signInAudience;
   /// URL of the support page for the application.
-  final pulumi.Input<String>? supportUrl;
+  final pulumi.Input<String?>? supportUrl;
   /// URL of the terms of service statement for the application.
-  final pulumi.Input<String>? termsOfServiceUrl;
+  final pulumi.Input<String?>? termsOfServiceUrl;
 
   /// Creates a new [ApplicationRegistrationArgs].
   /// [description] A description of the application, as shown to end users.
@@ -104,7 +104,7 @@ class ApplicationRegistrationArgs {
       marketingUrl: (() { final guardedValue = map['marketingUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privacyStatementUrl: (() { final guardedValue = map['privacyStatementUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      requestedAccessTokenVersion: (() { final guardedValue = map['requestedAccessTokenVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      requestedAccessTokenVersion: (() { final guardedValue = map['requestedAccessTokenVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       serviceManagementReference: (() { final guardedValue = map['serviceManagementReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       signInAudience: (() { final guardedValue = map['signInAudience']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       supportUrl: (() { final guardedValue = map['supportUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

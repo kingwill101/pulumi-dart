@@ -274,6 +274,17 @@ Future<GetAccessPackageResult> getAccessPackage(
   return GetAccessPackageResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessPackageResult> getAccessPackageOutput(
+  GetAccessPackageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getAccessPackage:getAccessPackage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPackageResult.fromMap);
+}
+
 /// i
 /// Use this resource to retrieve information for an existing access package catalog within Identity Governance in Azure Active Directory.
 ///
@@ -504,6 +515,17 @@ Future<GetAccessPackageCatalogResult> getAccessPackageCatalog(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccessPackageCatalogResult.fromMap(result);
+}
+
+pulumi.Output<GetAccessPackageCatalogResult> getAccessPackageCatalogOutput(
+  GetAccessPackageCatalogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getAccessPackageCatalog:getAccessPackageCatalog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPackageCatalogResult.fromMap);
 }
 
 /// Gets information about an access package catalog role.
@@ -737,6 +759,17 @@ Future<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole(
   return GetAccessPackageCatalogRoleResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRoleOutput(
+  GetAccessPackageCatalogRoleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPackageCatalogRoleResult.fromMap);
+}
+
 /// Gets information about an adminisrative unit in Azure Active Directory.
 ///
 /// ## API Permissions
@@ -968,6 +1001,17 @@ Future<GetAdministrativeUnitResult> getAdministrativeUnit(
   return GetAdministrativeUnitResult.fromMap(result);
 }
 
+pulumi.Output<GetAdministrativeUnitResult> getAdministrativeUnitOutput(
+  GetAdministrativeUnitArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getAdministrativeUnit:getAdministrativeUnit',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAdministrativeUnitResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Application within Azure Active Directory.
 ///
 /// ## API Permissions
@@ -1106,6 +1150,17 @@ Future<GetApplicationResult> getApplication(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApplicationResult.fromMap(result);
+}
+
+pulumi.Output<GetApplicationResult> getApplicationOutput(
+  GetApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getApplication:getApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationResult.fromMap);
 }
 
 /// Use this data source to discover application IDs for APIs published by Microsoft.
@@ -1437,11 +1492,11 @@ Future<GetApplicationResult> getApplication(
 ///                 .resourceAppId(wellKnown.result().MicrosoftGraph())
 ///                 .resourceAccesses(
 ///                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-///                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
+///                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("User.Read.All")))
 ///                         .type("Role")
 ///                         .build(),
 ///                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-///                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
+///                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.get("User.ReadWrite")))
 ///                         .type("Scope")
 ///                         .build())
 ///                 .build())
@@ -1486,6 +1541,17 @@ Future<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIds(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApplicationPublishedAppIdsResult.fromMap(result);
+}
+
+pulumi.Output<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIdsOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetApplicationPublishedAppIdsResult.fromMap);
 }
 
 /// Use this data source to access information about an Application Template from the [Azure AD App Gallery](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/category/azure-active-directory-apps).
@@ -1624,6 +1690,17 @@ Future<GetApplicationTemplateResult> getApplicationTemplate(
   return GetApplicationTemplateResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationTemplateResult> getApplicationTemplateOutput(
+  GetApplicationTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getApplicationTemplate:getApplicationTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationTemplateResult.fromMap);
+}
+
 /// Use this data source to access the configuration of the AzureAD provider.
 ///
 /// ## API Permissions
@@ -1745,6 +1822,17 @@ Future<GetClientConfigResult> getClientConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClientConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetClientConfigResult> getClientConfigOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getClientConfig:getClientConfig',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetClientConfigResult.fromMap);
 }
 
 /// Retrieves the OData type for a generic directory object having the provided object ID.
@@ -1896,6 +1984,17 @@ Future<GetDirectoryObjectResult> getDirectoryObject(
   return GetDirectoryObjectResult.fromMap(result);
 }
 
+pulumi.Output<GetDirectoryObjectResult> getDirectoryObjectOutput(
+  GetDirectoryObjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getDirectoryObject:getDirectoryObject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDirectoryObjectResult.fromMap);
+}
+
 /// Use this data source to access information about directory role templates within Azure Active Directory.
 ///
 /// ## API Permissions
@@ -2021,6 +2120,17 @@ Future<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDirectoryRoleTemplatesResult.fromMap(result);
+}
+
+pulumi.Output<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplatesOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetDirectoryRoleTemplatesResult.fromMap);
 }
 
 /// Use this data source to access information about activated directory roles within Azure Active Directory.
@@ -2150,6 +2260,17 @@ Future<GetDirectoryRolesResult> getDirectoryRoles(
   return GetDirectoryRolesResult.fromMap(result);
 }
 
+pulumi.Output<GetDirectoryRolesResult> getDirectoryRolesOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getDirectoryRoles:getDirectoryRoles',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetDirectoryRolesResult.fromMap);
+}
+
 /// Use this data source to access information about existing Domains within Azure Active Directory.
 ///
 /// ## API Permissions
@@ -2269,6 +2390,17 @@ Future<GetDomainsResult> getDomains(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainsResult.fromMap(result);
+}
+
+pulumi.Output<GetDomainsResult> getDomainsOutput(
+  GetDomainsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getDomains:getDomains',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainsResult.fromMap);
 }
 
 /// Gets information about an Azure Active Directory group.
@@ -2406,6 +2538,17 @@ Future<GetGroupResult> getGroup(
   return GetGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetGroupResult> getGroupOutput(
+  GetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getGroup:getGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupResult.fromMap);
+}
+
 /// Use this data source to retrieve a role policy for an Azure AD group.
 ///
 /// ## API Permissions
@@ -2482,7 +2625,7 @@ Future<GetGroupResult> getGroup(
 /// 			return err
 /// 		}
 /// 		_ = azuread.GetGroupRoleManagementPolicyOutput(ctx, azuread.GetGroupRoleManagementPolicyOutputArgs{
-/// 			GroupId: example.ID(),
+/// 			GroupId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleId:  pulumi.String("owner"),
 /// 		}, nil)
 /// 		return nil
@@ -2572,6 +2715,17 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGroupRoleManagementPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicyOutput(
+  GetGroupRoleManagementPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getGroupRoleManagementPolicy:getGroupRoleManagementPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupRoleManagementPolicyResult.fromMap);
 }
 
 /// Gets Object IDs or Display Names for multiple Azure Active Directory groups.
@@ -3147,6 +3301,17 @@ Future<GetGroupsResult> getGroups(
   return GetGroupsResult.fromMap(result);
 }
 
+pulumi.Output<GetGroupsResult> getGroupsOutput(
+  GetGroupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getGroups:getGroups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupsResult.fromMap);
+}
+
 /// Gets information about a Named Location within Azure Active Directory.
 ///
 /// ## API Permissions
@@ -3295,6 +3460,17 @@ Future<GetNamedLocationResult> getNamedLocation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamedLocationResult.fromMap(result);
+}
+
+pulumi.Output<GetNamedLocationResult> getNamedLocationOutput(
+  GetNamedLocationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getNamedLocation:getNamedLocation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamedLocationResult.fromMap);
 }
 
 /// Gets information about an existing service principal associated with an application within Azure Active Directory.
@@ -3629,6 +3805,17 @@ Future<GetServicePrincipalResult> getServicePrincipal(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServicePrincipalResult.fromMap(result);
+}
+
+pulumi.Output<GetServicePrincipalResult> getServicePrincipalOutput(
+  GetServicePrincipalArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getServicePrincipal:getServicePrincipal',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServicePrincipalResult.fromMap);
 }
 
 /// Gets basic information for multiple Azure Active Directory service principals.
@@ -4028,6 +4215,17 @@ Future<GetServicePrincipalsResult> getServicePrincipals(
   return GetServicePrincipalsResult.fromMap(result);
 }
 
+pulumi.Output<GetServicePrincipalsResult> getServicePrincipalsOutput(
+  GetServicePrincipalsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getServicePrincipals:getServicePrincipals',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServicePrincipalsResult.fromMap);
+}
+
 /// Gets information about an Azure Active Directory user.
 ///
 /// ## API Permissions
@@ -4152,6 +4350,17 @@ Future<GetUserResult> getUser(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserResult.fromMap(result);
+}
+
+pulumi.Output<GetUserResult> getUserOutput(
+  GetUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getUser:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserResult.fromMap);
 }
 
 /// Gets basic information for multiple Azure Active Directory users.
@@ -4295,4 +4504,15 @@ Future<GetUsersResult> getUsers(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUsersResult.fromMap(result);
+}
+
+pulumi.Output<GetUsersResult> getUsersOutput(
+  GetUsersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getUsers:getUsers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUsersResult.fromMap);
 }

@@ -6,13 +6,13 @@ import 'synchronization_job_provision_on_demand_parameter.dart';
 /// Input properties used for looking up and filtering SynchronizationJobProvisionOnDemand resources.
 class SynchronizationJobProvisionOnDemandState {
   /// One or more `parameter` blocks as documented below.
-  final pulumi.Input<List<SynchronizationJobProvisionOnDemandParameter>>? parameters;
+  final pulumi.Input<List<SynchronizationJobProvisionOnDemandParameter>?>? parameters;
   /// The ID of the service principal for the synchronization job.
-  final pulumi.Input<String>? servicePrincipalId;
+  final pulumi.Input<String?>? servicePrincipalId;
   /// The ID of the synchronization job.
-  final pulumi.Input<String>? synchronizationJobId;
+  final pulumi.Input<String?>? synchronizationJobId;
   /// Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
-  final pulumi.Input<Map<String, String>>? triggers;
+  final pulumi.Input<Map<String, String>?>? triggers;
 
   /// Creates a new [SynchronizationJobProvisionOnDemandState].
   /// [parameters] One or more `parameter` blocks as documented below.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_synchronization_job_synchronization_job_args_doc}
 class SynchronizationJobArgs {
   /// Whether the provisioning job is enabled. Default state is `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
   final pulumi.Input<String> servicePrincipalId;
   /// Identifier of the synchronization template this job is based on.

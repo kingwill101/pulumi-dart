@@ -5,7 +5,7 @@ import 'conditional_access_policy_conditions_users_excluded_guests_or_external_u
 
 class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser {
   /// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
-  final pulumi.Input<List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant>>? externalTenants;
+  final pulumi.Input<List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant>?>? externalTenants;
   /// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
   final pulumi.Input<List<String>> guestOrExternalUserTypes;
 

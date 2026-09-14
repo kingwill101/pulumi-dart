@@ -127,16 +127,16 @@ import 'claims_mapping_policy_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]map[string]interface{}{
 /// 			"ClaimsMappingPolicy": map[string]interface{}{
-/// 				"ClaimsSchema": []map[string]interface{}{
-/// 					map[string]interface{}{
+/// 				"ClaimsSchema": []map[string]string{
+/// 					{
 /// 						"ID":            "employeeid",
 /// 						"JwtClaimType":  "name",
 /// 						"SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
 /// 						"Source":        "user",
 /// 					},
-/// 					map[string]interface{}{
+/// 					{
 /// 						"ID":            "tenantcountry",
 /// 						"JwtClaimType":  "country",
 /// 						"SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
@@ -293,9 +293,9 @@ class ClaimsMappingPolicy extends pulumi.CustomResource {
           'azuread:index/claimsMappingPolicy:ClaimsMappingPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
-    definitions = registerOutput<List<String>>('definitions');
+    definitions = registerOutput<List<String>>('definitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
   }
 
@@ -304,11 +304,12 @@ class ClaimsMappingPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClaimsMappingPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClaimsMappingPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -322,7 +323,20 @@ class ClaimsMappingPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    definitions = registerOutput<List<String>>('definitions');
+    definitions = registerOutput<List<String>>('definitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String>('displayName');
+  }
+
+  /// Creates a typed reference to an existing [ClaimsMappingPolicy] resource.
+  ClaimsMappingPolicy.reference(String urn)
+    : super(
+        'azuread:index/claimsMappingPolicy:ClaimsMappingPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    definitions = registerOutput<List<String>>('definitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
   }
 }

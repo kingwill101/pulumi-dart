@@ -243,7 +243,7 @@ class AdministrativeUnitRoleMember extends pulumi.CustomResource {
           'azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
     administrativeUnitObjectId = registerOutput<String>('administrativeUnitObjectId');
     memberObjectId = registerOutput<String>('memberObjectId');
@@ -255,11 +255,12 @@ class AdministrativeUnitRoleMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AdministrativeUnitRoleMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AdministrativeUnitRoleMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -273,6 +274,20 @@ class AdministrativeUnitRoleMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    administrativeUnitObjectId = registerOutput<String>('administrativeUnitObjectId');
+    memberObjectId = registerOutput<String>('memberObjectId');
+    roleObjectId = registerOutput<String>('roleObjectId');
+  }
+
+  /// Creates a typed reference to an existing [AdministrativeUnitRoleMember] resource.
+  AdministrativeUnitRoleMember.reference(String urn)
+    : super(
+        'azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     administrativeUnitObjectId = registerOutput<String>('administrativeUnitObjectId');
     memberObjectId = registerOutput<String>('memberObjectId');
     roleObjectId = registerOutput<String>('roleObjectId');

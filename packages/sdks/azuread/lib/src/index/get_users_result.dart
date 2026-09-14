@@ -6,21 +6,21 @@ import 'get_users_user.dart';
 /// Result data returned by getUsers.
 class GetUsersResult {
   /// The employee identifiers assigned to the users by the organisation.
-  final List<String> employeeIds;
+  final List<String>? employeeIds;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final bool? ignoreMissing;
   /// The email aliases of the users.
-  final List<String> mailNicknames;
+  final List<String>? mailNicknames;
   /// The SMTP email addresses of the users.
-  final List<String> mails;
+  final List<String>? mails;
   /// The object IDs of the users.
-  final List<String> objectIds;
+  final List<String>? objectIds;
   final bool? returnAll;
   /// The user principal names (UPNs) of the users.
-  final List<String> userPrincipalNames;
+  final List<String>? userPrincipalNames;
   /// A list of users. Each `user` object provides the attributes documented below.
-  final List<GetUsersUser> users;
+  final List<GetUsersUser>? users;
 
   /// Creates a new [GetUsersResult].
   /// [employeeIds] The employee identifiers assigned to the users by the organisation.
@@ -33,42 +33,42 @@ class GetUsersResult {
   /// [userPrincipalNames] The user principal names (UPNs) of the users.
   /// [users] A list of users. Each `user` object provides the attributes documented below.
   const GetUsersResult({
-    required this.employeeIds,
-    required this.id,
+    this.employeeIds,
+    this.id,
     this.ignoreMissing,
-    required this.mailNicknames,
-    required this.mails,
-    required this.objectIds,
+    this.mailNicknames,
+    this.mails,
+    this.objectIds,
     this.returnAll,
-    required this.userPrincipalNames,
-    required this.users,
+    this.userPrincipalNames,
+    this.users,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'employeeIds': employeeIds,
-      'id': id,
+      'employeeIds': ?employeeIds,
+      'id': ?id,
       'ignoreMissing': ?ignoreMissing,
-      'mailNicknames': mailNicknames,
-      'mails': mails,
-      'objectIds': objectIds,
+      'mailNicknames': ?mailNicknames,
+      'mails': ?mails,
+      'objectIds': ?objectIds,
       'returnAll': ?returnAll,
-      'userPrincipalNames': userPrincipalNames,
-      'users': pulumi.Input.encodeList<GetUsersUser, Map<String, dynamic>>(users, (value) => value.toMap()),
+      'userPrincipalNames': ?userPrincipalNames,
+      'users': ?(() { final guardedValue = users; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetUsersUser, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetUsersResult.fromMap(Map<String, dynamic> map) {
     return GetUsersResult(
-      employeeIds: (map['employeeIds'] as List).cast<String>(),
-      id: map['id'] as String,
+      employeeIds: (() { final guardedValue = map['employeeIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ignoreMissing: (() { final guardedValue = map['ignoreMissing']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      mailNicknames: (map['mailNicknames'] as List).cast<String>(),
-      mails: (map['mails'] as List).cast<String>(),
-      objectIds: (map['objectIds'] as List).cast<String>(),
+      mailNicknames: (() { final guardedValue = map['mailNicknames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      mails: (() { final guardedValue = map['mails']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      objectIds: (() { final guardedValue = map['objectIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       returnAll: (() { final guardedValue = map['returnAll']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      userPrincipalNames: (map['userPrincipalNames'] as List).cast<String>(),
-      users: pulumi.Input.decodeList<GetUsersUser>(map['users']!, (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>())),
+      userPrincipalNames: (() { final guardedValue = map['userPrincipalNames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      users: (() { final guardedValue = map['users']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetUsersUser>(guardedValue, (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

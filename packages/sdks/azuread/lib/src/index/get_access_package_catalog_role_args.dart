@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_access_package_catalog_role_get_access_package_catalog_role_args_doc}
 class GetAccessPackageCatalogRoleArgs {
   /// Specifies the display name of the role.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Specifies the object ID of the role.
   ///
   /// &gt; One of `displayName` or `objectId` must be specified.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
 
   /// Creates a new [GetAccessPackageCatalogRoleArgs].
   /// [displayName] Specifies the display name of the role.

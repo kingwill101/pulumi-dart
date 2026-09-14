@@ -9,7 +9,7 @@ import 'custom_directory_role_permission.dart';
 /// {@macro pulumi_index_custom_directory_role_custom_directory_role_args_doc}
 class CustomDirectoryRoleArgs {
   /// The description of the custom directory role.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the custom directory role.
   final pulumi.Input<String> displayName;
   /// Indicates whether the role is enabled for assignment.
@@ -17,7 +17,7 @@ class CustomDirectoryRoleArgs {
   /// A collection of `permissions` blocks as documented below.
   final pulumi.Input<List<CustomDirectoryRolePermission>> permissions;
   /// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? templateId;
+  final pulumi.Input<String?>? templateId;
   /// The version of the role definition. This can be any arbitrary string between 1-128 characters.
   final pulumi.Input<String> version;
 

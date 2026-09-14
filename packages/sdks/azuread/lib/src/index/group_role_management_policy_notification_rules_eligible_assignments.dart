@@ -7,11 +7,11 @@ import 'group_role_management_policy_notification_rules_eligible_assignments_ass
 
 class GroupRoleManagementPolicyNotificationRulesEligibleAssignments {
   /// Admin notification settings
-  final pulumi.Input<GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications>? adminNotifications;
+  final pulumi.Input<GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications?>? adminNotifications;
   /// Approver notification settings
-  final pulumi.Input<GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications>? approverNotifications;
+  final pulumi.Input<GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications?>? approverNotifications;
   /// Assignee notification settings
-  final pulumi.Input<GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications>? assigneeNotifications;
+  final pulumi.Input<GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications?>? assigneeNotifications;
 
   /// Creates a new [GroupRoleManagementPolicyNotificationRulesEligibleAssignments].
   /// [adminNotifications] Admin notification settings

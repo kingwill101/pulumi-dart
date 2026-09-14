@@ -195,7 +195,7 @@ import 'application_pre_authorized_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationPreAuthorized(ctx, "example", &azuread.ApplicationPreAuthorizedArgs{
-/// 			ApplicationId:      authorizer.ID(),
+/// 			ApplicationId:      authorizer.ID().ToIDOutput().ToStringOutput(),
 /// 			AuthorizedClientId: authorized.ClientId,
 /// 			PermissionIds: pulumi.StringArray{
 /// 				pulumi.String("00000000-0000-0000-0000-000000000000"),
@@ -382,11 +382,11 @@ class ApplicationPreAuthorized extends pulumi.CustomResource {
           'azuread:index/applicationPreAuthorized:ApplicationPreAuthorized',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     authorizedClientId = registerOutput<String>('authorizedClientId');
-    permissionIds = registerOutput<List<String>>('permissionIds');
+    permissionIds = registerOutput<List<String>>('permissionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ApplicationPreAuthorized] resource's state with the given [name] and [id].
@@ -394,11 +394,12 @@ class ApplicationPreAuthorized extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationPreAuthorizedState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationPreAuthorized._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -414,6 +415,20 @@ class ApplicationPreAuthorized extends pulumi.CustomResource {
         ) {
     applicationId = registerOutput<String>('applicationId');
     authorizedClientId = registerOutput<String>('authorizedClientId');
-    permissionIds = registerOutput<List<String>>('permissionIds');
+    permissionIds = registerOutput<List<String>>('permissionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ApplicationPreAuthorized] resource.
+  ApplicationPreAuthorized.reference(String urn)
+    : super(
+        'azuread:index/applicationPreAuthorized:ApplicationPreAuthorized',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    authorizedClientId = registerOutput<String>('authorizedClientId');
+    permissionIds = registerOutput<List<String>>('permissionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

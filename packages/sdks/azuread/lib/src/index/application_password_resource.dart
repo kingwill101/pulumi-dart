@@ -70,7 +70,7 @@ import 'application_password_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationPassword(ctx, "example", &azuread.ApplicationPasswordArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -227,9 +227,9 @@ import 'application_password_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationPassword(ctx, "example", &azuread.ApplicationPasswordArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			RotateWhenChanged: pulumi.StringMap{
-/// 				"rotation": exampleRotating.ID(),
+/// 				"rotation": exampleRotating.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -359,16 +359,17 @@ class ApplicationPasswordResource extends pulumi.CustomResource {
           'azuread:index/applicationPassword:ApplicationPassword',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
+          additionalSecretOutputs: const ['value'],
         ) {
     applicationId = registerOutput<String>('applicationId');
     displayName = registerOutput<String>('displayName');
     endDate = registerOutput<String>('endDate');
     endDateRelative = registerOutput<String?>('endDateRelative');
     keyId = registerOutput<String>('keyId');
-    rotateWhenChanged = registerOutput<Map<String, String>?>('rotateWhenChanged');
+    rotateWhenChanged = registerOutput<Map<String, String>?>('rotateWhenChanged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     startDate = registerOutput<String>('startDate');
-    value = registerOutput<String>('value');
+    value = registerOutput<String>('value', isSecret: true);
   }
 
   /// Gets an existing [ApplicationPasswordResource] resource's state with the given [name] and [id].
@@ -376,11 +377,12 @@ class ApplicationPasswordResource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationPasswordState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationPasswordResource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -399,8 +401,28 @@ class ApplicationPasswordResource extends pulumi.CustomResource {
     endDate = registerOutput<String>('endDate');
     endDateRelative = registerOutput<String?>('endDateRelative');
     keyId = registerOutput<String>('keyId');
-    rotateWhenChanged = registerOutput<Map<String, String>?>('rotateWhenChanged');
+    rotateWhenChanged = registerOutput<Map<String, String>?>('rotateWhenChanged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     startDate = registerOutput<String>('startDate');
-    value = registerOutput<String>('value');
+    value = registerOutput<String>('value', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [ApplicationPasswordResource] resource.
+  ApplicationPasswordResource.reference(String urn)
+    : super(
+        'azuread:index/applicationPassword:ApplicationPassword',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['value'],
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    displayName = registerOutput<String>('displayName');
+    endDate = registerOutput<String>('endDate');
+    endDateRelative = registerOutput<String?>('endDateRelative');
+    keyId = registerOutput<String>('keyId');
+    rotateWhenChanged = registerOutput<Map<String, String>?>('rotateWhenChanged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    startDate = registerOutput<String>('startDate');
+    value = registerOutput<String>('value', isSecret: true);
   }
 }

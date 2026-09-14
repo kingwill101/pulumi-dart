@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AccessPackageResourcePackageAssociation resources.
 class AccessPackageResourcePackageAssociationState {
   /// The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? accessPackageId;
+  final pulumi.Input<String?>? accessPackageId;
   /// The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? accessType;
+  final pulumi.Input<String?>? accessType;
   /// The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? catalogResourceAssociationId;
+  final pulumi.Input<String?>? catalogResourceAssociationId;
 
   /// Creates a new [AccessPackageResourcePackageAssociationState].
   /// [accessPackageId] The ID of access package this resource association is configured to. Changing this forces a new resource to be created.

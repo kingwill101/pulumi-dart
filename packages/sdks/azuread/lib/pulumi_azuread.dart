@@ -3,11 +3,11 @@
 import 'package:pulumi_azuread/index.dart' as module_index;
 import 'package:pulumi_azuread/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final AccessPackage = module_index.AccessPackage.new;
   final AccessPackageArgs = module_index.AccessPackageArgs.new;
   final AccessPackageAssignmentPolicy = module_index.AccessPackageAssignmentPolicy.new;
@@ -486,28 +486,48 @@ class _IndexModuleNamespace {
   final UserStateArgs = module_index.UserState.new;
   final getAccessPackage = module_index.getAccessPackage;
   final getAccessPackageCatalog = module_index.getAccessPackageCatalog;
+  final getAccessPackageCatalogOutput = module_index.getAccessPackageCatalogOutput;
   final getAccessPackageCatalogRole = module_index.getAccessPackageCatalogRole;
+  final getAccessPackageCatalogRoleOutput = module_index.getAccessPackageCatalogRoleOutput;
+  final getAccessPackageOutput = module_index.getAccessPackageOutput;
   final getAdministrativeUnit = module_index.getAdministrativeUnit;
+  final getAdministrativeUnitOutput = module_index.getAdministrativeUnitOutput;
   final getApplication = module_index.getApplication;
+  final getApplicationOutput = module_index.getApplicationOutput;
   final getApplicationPublishedAppIds = module_index.getApplicationPublishedAppIds;
+  final getApplicationPublishedAppIdsOutput = module_index.getApplicationPublishedAppIdsOutput;
   final getApplicationTemplate = module_index.getApplicationTemplate;
+  final getApplicationTemplateOutput = module_index.getApplicationTemplateOutput;
   final getClientConfig = module_index.getClientConfig;
+  final getClientConfigOutput = module_index.getClientConfigOutput;
   final getDirectoryObject = module_index.getDirectoryObject;
+  final getDirectoryObjectOutput = module_index.getDirectoryObjectOutput;
   final getDirectoryRoleTemplates = module_index.getDirectoryRoleTemplates;
+  final getDirectoryRoleTemplatesOutput = module_index.getDirectoryRoleTemplatesOutput;
   final getDirectoryRoles = module_index.getDirectoryRoles;
+  final getDirectoryRolesOutput = module_index.getDirectoryRolesOutput;
   final getDomains = module_index.getDomains;
+  final getDomainsOutput = module_index.getDomainsOutput;
   final getGroup = module_index.getGroup;
+  final getGroupOutput = module_index.getGroupOutput;
   final getGroupRoleManagementPolicy = module_index.getGroupRoleManagementPolicy;
+  final getGroupRoleManagementPolicyOutput = module_index.getGroupRoleManagementPolicyOutput;
   final getGroups = module_index.getGroups;
+  final getGroupsOutput = module_index.getGroupsOutput;
   final getNamedLocation = module_index.getNamedLocation;
+  final getNamedLocationOutput = module_index.getNamedLocationOutput;
   final getServicePrincipal = module_index.getServicePrincipal;
+  final getServicePrincipalOutput = module_index.getServicePrincipalOutput;
   final getServicePrincipals = module_index.getServicePrincipals;
+  final getServicePrincipalsOutput = module_index.getServicePrincipalsOutput;
   final getUser = module_index.getUser;
+  final getUserOutput = module_index.getUserOutput;
   final getUsers = module_index.getUsers;
+  final getUsersOutput = module_index.getUsersOutput;
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Azuread = module_providers.ProviderProvider.new;
   final AzureadArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;
@@ -517,4 +537,5 @@ class _ProvidersModuleNamespace {
   final TerraformConfigResult = module_providers.TerraformConfigResult.new;
   final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;
   final terraformConfig = module_providers.terraformConfig;
+  final terraformConfigOutput = module_providers.terraformConfigOutput;
 }

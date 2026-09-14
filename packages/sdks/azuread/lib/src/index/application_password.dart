@@ -6,13 +6,13 @@ class ApplicationPassword {
   /// A display name for the password. Changing this field forces a new resource to be created.
   final pulumi.Input<String> displayName;
   /// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
-  final pulumi.Input<String>? endDate;
+  final pulumi.Input<String?>? endDate;
   /// (Required) The unique key ID for the generated password.
-  final pulumi.Input<String>? keyId;
+  final pulumi.Input<String?>? keyId;
   /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
-  final pulumi.Input<String>? startDate;
+  final pulumi.Input<String?>? startDate;
   /// (Required) The generated password for the application.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ApplicationPassword].
   /// [displayName] A display name for the password. Changing this field forces a new resource to be created.
