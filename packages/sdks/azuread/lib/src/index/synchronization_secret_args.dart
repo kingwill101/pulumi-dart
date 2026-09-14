@@ -9,7 +9,7 @@ import 'synchronization_secret_credential.dart';
 /// {@macro pulumi_index_synchronization_secret_synchronization_secret_args_doc}
 class SynchronizationSecretArgs {
   /// One or more `credential` blocks as documented below.
-  final pulumi.Input<List<SynchronizationSecretCredential>>? credentials;
+  final pulumi.Input<List<SynchronizationSecretCredential>?>? credentials;
   /// The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
   final pulumi.Input<String> servicePrincipalId;
 

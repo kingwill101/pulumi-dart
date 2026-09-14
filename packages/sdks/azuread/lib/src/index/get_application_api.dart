@@ -39,7 +39,7 @@ class GetApplicationApi {
       knownClientApplications: pulumi.Input.fromValue((map['knownClientApplications'] as List).cast<String>()),
       mappedClaimsEnabled: pulumi.Input.fromValue(map['mappedClaimsEnabled'] as bool),
       oauth2PermissionScopes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetApplicationApiOauth2PermissionScope>(map['oauth2PermissionScopes']!, (value) => GetApplicationApiOauth2PermissionScope.fromMap((value as Map).cast<String, dynamic>()))),
-      requestedAccessTokenVersion: pulumi.Input.fromValue(map['requestedAccessTokenVersion'] as int),
+      requestedAccessTokenVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['requestedAccessTokenVersion'])),
     );
   }
 }

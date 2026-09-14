@@ -6,9 +6,9 @@ import 'synchronization_secret_credential.dart';
 /// Input properties used for looking up and filtering SynchronizationSecret resources.
 class SynchronizationSecretState {
   /// One or more `credential` blocks as documented below.
-  final pulumi.Input<List<SynchronizationSecretCredential>>? credentials;
+  final pulumi.Input<List<SynchronizationSecretCredential>?>? credentials;
   /// The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
-  final pulumi.Input<String>? servicePrincipalId;
+  final pulumi.Input<String?>? servicePrincipalId;
 
   /// Creates a new [SynchronizationSecretState].
   /// [credentials] One or more `credential` blocks as documented below.

@@ -12,9 +12,9 @@ class AccessPackageCatalogArgs {
   /// The display name of the access package catalog.
   final pulumi.Input<String> displayName;
   /// Whether the access packages in this catalog can be requested by users outside the tenant.
-  final pulumi.Input<bool>? externallyVisible;
+  final pulumi.Input<bool?>? externallyVisible;
   /// Whether the access packages in this catalog are available for management.
-  final pulumi.Input<bool>? published;
+  final pulumi.Input<bool?>? published;
 
   /// Creates a new [AccessPackageCatalogArgs].
   /// [description] The description of the access package catalog.

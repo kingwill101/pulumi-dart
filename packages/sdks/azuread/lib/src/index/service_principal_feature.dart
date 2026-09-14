@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServicePrincipalFeature {
   /// Whether this service principal represents a custom SAML application
-  final pulumi.Input<bool>? customSingleSignOnApp;
+  final pulumi.Input<bool?>? customSingleSignOnApp;
   /// Whether this service principal represents an Enterprise Application
-  final pulumi.Input<bool>? enterpriseApplication;
+  final pulumi.Input<bool?>? enterpriseApplication;
   /// Whether this service principal represents a gallery application
-  final pulumi.Input<bool>? galleryApplication;
+  final pulumi.Input<bool?>? galleryApplication;
   /// Whether this app is visible to users in My Apps and Office 365 Launcher
-  final pulumi.Input<bool>? visibleToUsers;
+  final pulumi.Input<bool?>? visibleToUsers;
 
   /// Creates a new [ServicePrincipalFeature].
   /// [customSingleSignOnApp] Whether this service principal represents a custom SAML application

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AccessPackageCatalogRoleAssignment resources.
 class AccessPackageCatalogRoleAssignmentState {
   /// The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? principalObjectId;
+  final pulumi.Input<String?>? principalObjectId;
   /// The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? roleId;
+  final pulumi.Input<String?>? roleId;
 
   /// Creates a new [AccessPackageCatalogRoleAssignmentState].
   /// [catalogId] The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.

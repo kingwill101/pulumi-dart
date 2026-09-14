@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConditionalAccessPolicyConditionsPlatforms {
   /// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
-  final pulumi.Input<List<String>>? excludedPlatforms;
+  final pulumi.Input<List<String>?>? excludedPlatforms;
   /// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
   final pulumi.Input<List<String>> includedPlatforms;
 

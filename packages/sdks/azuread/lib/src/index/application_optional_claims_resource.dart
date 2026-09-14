@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'application_optional_claims_access_token.dart';
 import 'application_optional_claims_args.dart';
+import 'application_optional_claims_id_token.dart';
+import 'application_optional_claims_saml2_token.dart';
 import 'application_optional_claims_state.dart';
 
 /// Manages optional claims for an application registration.
@@ -138,7 +141,7 @@ import 'application_optional_claims_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationOptionalClaims(ctx, "example", &azuread.ApplicationOptionalClaimsArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			AccessTokens: azuread.ApplicationOptionalClaimsAccessTokenArray{
 /// 				&azuread.ApplicationOptionalClaimsAccessTokenArgs{
 /// 					Name: pulumi.String("myclaim"),
@@ -288,15 +291,15 @@ import 'application_optional_claims_state.dart';
 /// ```
 class ApplicationOptionalClaimsResource extends pulumi.CustomResource {
   /// One or more `accessToken` blocks as documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> accessTokens;
+  late final pulumi.Output<List<ApplicationOptionalClaimsAccessToken>?> accessTokens;
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> applicationId;
   /// One or more `idToken` blocks as documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> idTokens;
+  late final pulumi.Output<List<ApplicationOptionalClaimsIdToken>?> idTokens;
   /// One or more `saml2Token` blocks as documented below.
   ///
   /// &gt; At least one of `accessToken`, `idToken` or `saml2Token` must be specified
-  late final pulumi.Output<List<Map<String, dynamic>>?> saml2Tokens;
+  late final pulumi.Output<List<ApplicationOptionalClaimsSaml2Token>?> saml2Tokens;
 
   /// Creates a new [ApplicationOptionalClaimsResource].
   /// [name] The Pulumi resource name.
@@ -310,12 +313,12 @@ class ApplicationOptionalClaimsResource extends pulumi.CustomResource {
           'azuread:index/applicationOptionalClaims:ApplicationOptionalClaims',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
-    accessTokens = registerOutput<List<Map<String, dynamic>>?>('accessTokens');
+    accessTokens = registerOutput<List<ApplicationOptionalClaimsAccessToken>?>('accessTokens', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationOptionalClaimsAccessToken>(guardedValue, (value) => ApplicationOptionalClaimsAccessToken.fromMap((value as Map).cast<String, dynamic>())); });
     applicationId = registerOutput<String>('applicationId');
-    idTokens = registerOutput<List<Map<String, dynamic>>?>('idTokens');
-    saml2Tokens = registerOutput<List<Map<String, dynamic>>?>('saml2Tokens');
+    idTokens = registerOutput<List<ApplicationOptionalClaimsIdToken>?>('idTokens', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationOptionalClaimsIdToken>(guardedValue, (value) => ApplicationOptionalClaimsIdToken.fromMap((value as Map).cast<String, dynamic>())); });
+    saml2Tokens = registerOutput<List<ApplicationOptionalClaimsSaml2Token>?>('saml2Tokens', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationOptionalClaimsSaml2Token>(guardedValue, (value) => ApplicationOptionalClaimsSaml2Token.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ApplicationOptionalClaimsResource] resource's state with the given [name] and [id].
@@ -323,11 +326,12 @@ class ApplicationOptionalClaimsResource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationOptionalClaimsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationOptionalClaimsResource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -341,9 +345,24 @@ class ApplicationOptionalClaimsResource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accessTokens = registerOutput<List<Map<String, dynamic>>?>('accessTokens');
+    accessTokens = registerOutput<List<ApplicationOptionalClaimsAccessToken>?>('accessTokens', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationOptionalClaimsAccessToken>(guardedValue, (value) => ApplicationOptionalClaimsAccessToken.fromMap((value as Map).cast<String, dynamic>())); });
     applicationId = registerOutput<String>('applicationId');
-    idTokens = registerOutput<List<Map<String, dynamic>>?>('idTokens');
-    saml2Tokens = registerOutput<List<Map<String, dynamic>>?>('saml2Tokens');
+    idTokens = registerOutput<List<ApplicationOptionalClaimsIdToken>?>('idTokens', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationOptionalClaimsIdToken>(guardedValue, (value) => ApplicationOptionalClaimsIdToken.fromMap((value as Map).cast<String, dynamic>())); });
+    saml2Tokens = registerOutput<List<ApplicationOptionalClaimsSaml2Token>?>('saml2Tokens', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationOptionalClaimsSaml2Token>(guardedValue, (value) => ApplicationOptionalClaimsSaml2Token.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ApplicationOptionalClaimsResource] resource.
+  ApplicationOptionalClaimsResource.reference(String urn)
+    : super(
+        'azuread:index/applicationOptionalClaims:ApplicationOptionalClaims',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessTokens = registerOutput<List<ApplicationOptionalClaimsAccessToken>?>('accessTokens', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationOptionalClaimsAccessToken>(guardedValue, (value) => ApplicationOptionalClaimsAccessToken.fromMap((value as Map).cast<String, dynamic>())); });
+    applicationId = registerOutput<String>('applicationId');
+    idTokens = registerOutput<List<ApplicationOptionalClaimsIdToken>?>('idTokens', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationOptionalClaimsIdToken>(guardedValue, (value) => ApplicationOptionalClaimsIdToken.fromMap((value as Map).cast<String, dynamic>())); });
+    saml2Tokens = registerOutput<List<ApplicationOptionalClaimsSaml2Token>?>('saml2Tokens', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationOptionalClaimsSaml2Token>(guardedValue, (value) => ApplicationOptionalClaimsSaml2Token.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

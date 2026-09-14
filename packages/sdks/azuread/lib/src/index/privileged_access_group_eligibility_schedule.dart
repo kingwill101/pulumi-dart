@@ -117,7 +117,7 @@ import 'privileged_access_group_eligibility_schedule_state.dart';
 /// 		}
 /// 		_, err = azuread.NewPrivilegedAccessGroupEligibilitySchedule(ctx, "example", &azuread.PrivilegedAccessGroupEligibilityScheduleArgs{
 /// 			GroupId:        pulumi.Any(pim.Id),
-/// 			PrincipalId:    member.ID(),
+/// 			PrincipalId:    member.ID().ToIDOutput().ToStringOutput(),
 /// 			AssignmentType: pulumi.String("member"),
 /// 			Duration:       pulumi.String("P30D"),
 /// 			Justification:  pulumi.String("as requested"),
@@ -194,7 +194,7 @@ import 'privileged_access_group_eligibility_schedule_state.dart';
 ///             .build());
 ///
 ///         var examplePrivilegedAccessGroupEligibilitySchedule = new PrivilegedAccessGroupEligibilitySchedule("examplePrivilegedAccessGroupEligibilitySchedule", PrivilegedAccessGroupEligibilityScheduleArgs.builder()
-///             .groupId(pim.id())
+///             .groupId(pim.get("id"))
 ///             .principalId(member.id())
 ///             .assignmentType("member")
 ///             .duration("P30D")
@@ -275,7 +275,7 @@ class PrivilegedAccessGroupEligibilitySchedule extends pulumi.CustomResource {
           'azuread:index/privilegedAccessGroupEligibilitySchedule:PrivilegedAccessGroupEligibilitySchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
     assignmentType = registerOutput<String>('assignmentType');
     duration = registerOutput<String?>('duration');
@@ -295,11 +295,12 @@ class PrivilegedAccessGroupEligibilitySchedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrivilegedAccessGroupEligibilityScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrivilegedAccessGroupEligibilitySchedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -313,6 +314,28 @@ class PrivilegedAccessGroupEligibilitySchedule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    assignmentType = registerOutput<String>('assignmentType');
+    duration = registerOutput<String?>('duration');
+    expirationDate = registerOutput<String>('expirationDate');
+    groupId = registerOutput<String>('groupId');
+    justification = registerOutput<String?>('justification');
+    permanentAssignment = registerOutput<bool>('permanentAssignment');
+    principalId = registerOutput<String>('principalId');
+    startDate = registerOutput<String>('startDate');
+    status = registerOutput<String>('status');
+    ticketNumber = registerOutput<String?>('ticketNumber');
+    ticketSystem = registerOutput<String?>('ticketSystem');
+  }
+
+  /// Creates a typed reference to an existing [PrivilegedAccessGroupEligibilitySchedule] resource.
+  PrivilegedAccessGroupEligibilitySchedule.reference(String urn)
+    : super(
+        'azuread:index/privilegedAccessGroupEligibilitySchedule:PrivilegedAccessGroupEligibilitySchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     assignmentType = registerOutput<String>('assignmentType');
     duration = registerOutput<String?>('duration');
     expirationDate = registerOutput<String>('expirationDate');

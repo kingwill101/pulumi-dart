@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationWebImplicitGrant {
   /// Whether this web application can request an access token using OAuth 2.0 implicit flow.
-  final pulumi.Input<bool>? accessTokenIssuanceEnabled;
+  final pulumi.Input<bool?>? accessTokenIssuanceEnabled;
   /// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
-  final pulumi.Input<bool>? idTokenIssuanceEnabled;
+  final pulumi.Input<bool?>? idTokenIssuanceEnabled;
 
   /// Creates a new [ApplicationWebImplicitGrant].
   /// [accessTokenIssuanceEnabled] Whether this web application can request an access token using OAuth 2.0 implicit flow.

@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_application_get_application_args_doc}
 class GetApplicationArgs {
   /// Specifies the Client ID of the application.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Specifies the display name of the application.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Specifies any identifier URI of the application. See also the `identifierUris` attribute which contains a list of all identifier URIs for the application.
   ///
   /// &gt; One of `clientId`, `displayName`, `objectId`, or `identifierUri` must be specified.
-  final pulumi.Input<String>? identifierUri;
+  final pulumi.Input<String?>? identifierUri;
   /// Specifies the Object ID of the application.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
 
   /// Creates a new [GetApplicationArgs].
   /// [clientId] Specifies the Client ID of the application.

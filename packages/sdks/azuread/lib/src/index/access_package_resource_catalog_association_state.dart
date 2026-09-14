@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AccessPackageResourceCatalogAssociation resources.
 class AccessPackageResourceCatalogAssociationState {
   /// The unique ID of the access package catalog. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceOriginId;
+  final pulumi.Input<String?>? resourceOriginId;
   /// The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceOriginSystem;
+  final pulumi.Input<String?>? resourceOriginSystem;
 
   /// Creates a new [AccessPackageResourceCatalogAssociationState].
   /// [catalogId] The unique ID of the access package catalog. Changing this forces a new resource to be created.

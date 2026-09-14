@@ -5,13 +5,13 @@ import 'access_package_assignment_policy_approval_settings_approval_stage.dart';
 
 class AccessPackageAssignmentPolicyApprovalSettings {
   /// Whether an approval is required.
-  final pulumi.Input<bool>? approvalRequired;
+  final pulumi.Input<bool?>? approvalRequired;
   /// Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
-  final pulumi.Input<bool>? approvalRequiredForExtension;
+  final pulumi.Input<bool?>? approvalRequiredForExtension;
   /// An `approvalStage` block specifying the process to obtain an approval, as documented below.
-  final pulumi.Input<List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStage>>? approvalStages;
+  final pulumi.Input<List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStage>?>? approvalStages;
   /// Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
-  final pulumi.Input<bool>? requestorJustificationRequired;
+  final pulumi.Input<bool?>? requestorJustificationRequired;
 
   /// Creates a new [AccessPackageAssignmentPolicyApprovalSettings].
   /// [approvalRequired] Whether an approval is required.

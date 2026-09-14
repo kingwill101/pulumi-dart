@@ -7,11 +7,11 @@ import 'application_optional_claims_saml2_token.dart';
 
 class ApplicationOptionalClaims {
   /// One or more `accessToken` blocks as documented below.
-  final pulumi.Input<List<ApplicationOptionalClaimsAccessToken>>? accessTokens;
+  final pulumi.Input<List<ApplicationOptionalClaimsAccessToken>?>? accessTokens;
   /// One or more `idToken` blocks as documented below.
-  final pulumi.Input<List<ApplicationOptionalClaimsIdToken>>? idTokens;
+  final pulumi.Input<List<ApplicationOptionalClaimsIdToken>?>? idTokens;
   /// One or more `saml2Token` blocks as documented below.
-  final pulumi.Input<List<ApplicationOptionalClaimsSaml2Token>>? saml2Tokens;
+  final pulumi.Input<List<ApplicationOptionalClaimsSaml2Token>?>? saml2Tokens;
 
   /// Creates a new [ApplicationOptionalClaims].
   /// [accessTokens] One or more `accessToken` blocks as documented below.

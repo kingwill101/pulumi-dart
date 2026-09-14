@@ -14,7 +14,7 @@ class ApplicationFlexibleFederatedIdentityCredentialArgs {
   /// The expression to match for claims. See the Preview Documentation for more information.
   final pulumi.Input<String> claimsMatchingExpression;
   /// A description for the federated identity credential.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A unique display name for the federated identity credential. Changing this forces a new resource to be created.
   final pulumi.Input<String> displayName;
   /// The URL of the external identity provider, which must match the issuer claim of the external token being exchanged.

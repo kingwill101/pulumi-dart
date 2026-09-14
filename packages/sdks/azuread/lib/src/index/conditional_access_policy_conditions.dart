@@ -12,25 +12,25 @@ class ConditionalAccessPolicyConditions {
   /// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
   final pulumi.Input<ConditionalAccessPolicyConditionsApplications> applications;
   /// A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
-  final pulumi.Input<List<String>>? authenticationFlowTransferMethods;
+  final pulumi.Input<List<String>?>? authenticationFlowTransferMethods;
   /// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
   final pulumi.Input<List<String>> clientAppTypes;
   /// An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
-  final pulumi.Input<ConditionalAccessPolicyConditionsClientApplications>? clientApplications;
+  final pulumi.Input<ConditionalAccessPolicyConditionsClientApplications?>? clientApplications;
   /// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
-  final pulumi.Input<ConditionalAccessPolicyConditionsDevices>? devices;
+  final pulumi.Input<ConditionalAccessPolicyConditionsDevices?>? devices;
   /// The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
-  final pulumi.Input<String>? insiderRiskLevels;
+  final pulumi.Input<String?>? insiderRiskLevels;
   /// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
-  final pulumi.Input<ConditionalAccessPolicyConditionsLocations>? locations;
+  final pulumi.Input<ConditionalAccessPolicyConditionsLocations?>? locations;
   /// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
-  final pulumi.Input<ConditionalAccessPolicyConditionsPlatforms>? platforms;
+  final pulumi.Input<ConditionalAccessPolicyConditionsPlatforms?>? platforms;
   /// A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
-  final pulumi.Input<List<String>>? servicePrincipalRiskLevels;
+  final pulumi.Input<List<String>?>? servicePrincipalRiskLevels;
   /// A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
-  final pulumi.Input<List<String>>? signInRiskLevels;
+  final pulumi.Input<List<String>?>? signInRiskLevels;
   /// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
-  final pulumi.Input<List<String>>? userRiskLevels;
+  final pulumi.Input<List<String>?>? userRiskLevels;
   /// A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
   final pulumi.Input<ConditionalAccessPolicyConditionsUsers> users;
 

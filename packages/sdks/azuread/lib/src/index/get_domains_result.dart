@@ -8,9 +8,9 @@ class GetDomainsResult {
   /// Whether the DNS for the domain is managed by Microsoft 365.
   final bool? adminManaged;
   /// A list of tenant domains. Each `domain` object provides the attributes documented below.
-  final List<GetDomainsDomain> domains;
+  final List<GetDomainsDomain>? domains;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final bool? includeUnverified;
   final bool? onlyDefault;
   final bool? onlyInitial;
@@ -28,8 +28,8 @@ class GetDomainsResult {
   /// [supportsServices] Optional.
   const GetDomainsResult({
     this.adminManaged,
-    required this.domains,
-    required this.id,
+    this.domains,
+    this.id,
     this.includeUnverified,
     this.onlyDefault,
     this.onlyInitial,
@@ -40,8 +40,8 @@ class GetDomainsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'adminManaged': ?adminManaged,
-      'domains': pulumi.Input.encodeList<GetDomainsDomain, Map<String, dynamic>>(domains, (value) => value.toMap()),
-      'id': id,
+      'domains': ?(() { final guardedValue = domains; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDomainsDomain, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
       'includeUnverified': ?includeUnverified,
       'onlyDefault': ?onlyDefault,
       'onlyInitial': ?onlyInitial,
@@ -53,8 +53,8 @@ class GetDomainsResult {
   factory GetDomainsResult.fromMap(Map<String, dynamic> map) {
     return GetDomainsResult(
       adminManaged: (() { final guardedValue = map['adminManaged']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      domains: pulumi.Input.decodeList<GetDomainsDomain>(map['domains']!, (value) => GetDomainsDomain.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
+      domains: (() { final guardedValue = map['domains']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDomainsDomain>(guardedValue, (value) => GetDomainsDomain.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       includeUnverified: (() { final guardedValue = map['includeUnverified']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       onlyDefault: (() { final guardedValue = map['onlyDefault']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       onlyInitial: (() { final guardedValue = map['onlyInitial']; if (guardedValue == null) return null; return guardedValue as bool; })(),

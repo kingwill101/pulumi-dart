@@ -76,7 +76,7 @@ import 'application_identifier_uri_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationIdentifierUri(ctx, "example", &azuread.ApplicationIdentifierUriArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			IdentifierUri: pulumi.String("https://app.example.com"),
 /// 		})
 /// 		if err != nil {
@@ -209,7 +209,7 @@ import 'application_identifier_uri_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationIdentifierUri(ctx, "example", &azuread.ApplicationIdentifierUriArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -307,7 +307,7 @@ class ApplicationIdentifierUri extends pulumi.CustomResource {
           'azuread:index/applicationIdentifierUri:ApplicationIdentifierUri',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     identifierUri = registerOutput<String>('identifierUri');
@@ -318,11 +318,12 @@ class ApplicationIdentifierUri extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationIdentifierUriState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationIdentifierUri._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -336,6 +337,19 @@ class ApplicationIdentifierUri extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationId = registerOutput<String>('applicationId');
+    identifierUri = registerOutput<String>('identifierUri');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationIdentifierUri] resource.
+  ApplicationIdentifierUri.reference(String urn)
+    : super(
+        'azuread:index/applicationIdentifierUri:ApplicationIdentifierUri',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationId = registerOutput<String>('applicationId');
     identifierUri = registerOutput<String>('identifierUri');
   }

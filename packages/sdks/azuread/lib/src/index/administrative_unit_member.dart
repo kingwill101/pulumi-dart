@@ -89,7 +89,7 @@ import 'administrative_unit_member_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewAdministrativeUnitMember(ctx, "example", &azuread.AdministrativeUnitMemberArgs{
-/// 			AdministrativeUnitObjectId: exampleAdministrativeUnit.ID(),
+/// 			AdministrativeUnitObjectId: exampleAdministrativeUnit.ID().ToIDOutput().ToStringOutput(),
 /// 			MemberObjectId:             pulumi.String(example.Id),
 /// 		})
 /// 		if err != nil {
@@ -210,7 +210,7 @@ class AdministrativeUnitMember extends pulumi.CustomResource {
           'azuread:index/administrativeUnitMember:AdministrativeUnitMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
     administrativeUnitObjectId = registerOutput<String?>('administrativeUnitObjectId');
     memberObjectId = registerOutput<String?>('memberObjectId');
@@ -221,11 +221,12 @@ class AdministrativeUnitMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AdministrativeUnitMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AdministrativeUnitMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -239,6 +240,19 @@ class AdministrativeUnitMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    administrativeUnitObjectId = registerOutput<String?>('administrativeUnitObjectId');
+    memberObjectId = registerOutput<String?>('memberObjectId');
+  }
+
+  /// Creates a typed reference to an existing [AdministrativeUnitMember] resource.
+  AdministrativeUnitMember.reference(String urn)
+    : super(
+        'azuread:index/administrativeUnitMember:AdministrativeUnitMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     administrativeUnitObjectId = registerOutput<String?>('administrativeUnitObjectId');
     memberObjectId = registerOutput<String?>('memberObjectId');
   }

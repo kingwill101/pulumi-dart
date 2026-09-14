@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AdministrativeUnitRoleMember resources.
 class AdministrativeUnitRoleMemberState {
   /// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? administrativeUnitObjectId;
+  final pulumi.Input<String?>? administrativeUnitObjectId;
   /// The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? memberObjectId;
+  final pulumi.Input<String?>? memberObjectId;
   /// The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? roleObjectId;
+  final pulumi.Input<String?>? roleObjectId;
 
   /// Creates a new [AdministrativeUnitRoleMemberState].
   /// [administrativeUnitObjectId] The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.

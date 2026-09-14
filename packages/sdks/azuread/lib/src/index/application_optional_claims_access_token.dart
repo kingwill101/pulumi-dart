@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationOptionalClaimsAccessToken {
   /// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
-  final pulumi.Input<List<String>>? additionalProperties;
+  final pulumi.Input<List<String>?>? additionalProperties;
   /// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
-  final pulumi.Input<bool>? essential;
+  final pulumi.Input<bool?>? essential;
   /// The name of the optional claim.
   final pulumi.Input<String> name;
   /// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [ApplicationOptionalClaimsAccessToken].
   /// [additionalProperties] List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.

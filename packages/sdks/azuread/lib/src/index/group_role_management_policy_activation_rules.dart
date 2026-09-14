@@ -5,19 +5,19 @@ import 'group_role_management_policy_activation_rules_approval_stage.dart';
 
 class GroupRoleManagementPolicyActivationRules {
   /// An `approvalStage` block as defined below.
-  final pulumi.Input<GroupRoleManagementPolicyActivationRulesApprovalStage>? approvalStage;
+  final pulumi.Input<GroupRoleManagementPolicyActivationRulesApprovalStage?>? approvalStage;
   /// The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
-  final pulumi.Input<String>? maximumDuration;
+  final pulumi.Input<String?>? maximumDuration;
   /// Is approval required for activation. If `true` an `approvalStage` block must be provided.
-  final pulumi.Input<bool>? requireApproval;
+  final pulumi.Input<bool?>? requireApproval;
   /// Is a justification required during activation of the role.
-  final pulumi.Input<bool>? requireJustification;
+  final pulumi.Input<bool?>? requireJustification;
   /// Is multi-factor authentication required to activate the role. Conflicts with `requiredConditionalAccessAuthenticationContext`.
-  final pulumi.Input<bool>? requireMultifactorAuthentication;
+  final pulumi.Input<bool?>? requireMultifactorAuthentication;
   /// Is ticket information requrired during activation of the role.
-  final pulumi.Input<bool>? requireTicketInfo;
+  final pulumi.Input<bool?>? requireTicketInfo;
   /// The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `requireMultifactorAuthentication`.
-  final pulumi.Input<String>? requiredConditionalAccessAuthenticationContext;
+  final pulumi.Input<String?>? requiredConditionalAccessAuthenticationContext;
 
   /// Creates a new [GroupRoleManagementPolicyActivationRules].
   /// [approvalStage] An `approvalStage` block as defined below.

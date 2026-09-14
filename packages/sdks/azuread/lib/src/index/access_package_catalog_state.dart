@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AccessPackageCatalog resources.
 class AccessPackageCatalogState {
   /// The description of the access package catalog.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the access package catalog.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Whether the access packages in this catalog can be requested by users outside the tenant.
-  final pulumi.Input<bool>? externallyVisible;
+  final pulumi.Input<bool?>? externallyVisible;
   /// Whether the access packages in this catalog are available for management.
-  final pulumi.Input<bool>? published;
+  final pulumi.Input<bool?>? published;
 
   /// Creates a new [AccessPackageCatalogState].
   /// [description] The description of the access package catalog.

@@ -100,7 +100,7 @@ import 'application_owner_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationOwner(ctx, "example_jane", &azuread.ApplicationOwnerArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			OwnerObjectId: jane.ObjectId,
 /// 		})
 /// 		if err != nil {
@@ -223,7 +223,7 @@ class ApplicationOwner extends pulumi.CustomResource {
           'azuread:index/applicationOwner:ApplicationOwner',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     ownerObjectId = registerOutput<String>('ownerObjectId');
@@ -234,11 +234,12 @@ class ApplicationOwner extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationOwnerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationOwner._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -252,6 +253,19 @@ class ApplicationOwner extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationId = registerOutput<String>('applicationId');
+    ownerObjectId = registerOutput<String>('ownerObjectId');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationOwner] resource.
+  ApplicationOwner.reference(String urn)
+    : super(
+        'azuread:index/applicationOwner:ApplicationOwner',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationId = registerOutput<String>('applicationId');
     ownerObjectId = registerOutput<String>('ownerObjectId');
   }

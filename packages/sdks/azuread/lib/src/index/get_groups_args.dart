@@ -8,21 +8,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_groups_get_groups_args_doc}
 class GetGroupsArgs {
   /// A common display name prefix to match when returning groups.
-  final pulumi.Input<String>? displayNamePrefix;
+  final pulumi.Input<String?>? displayNamePrefix;
   /// The display names of the groups.
-  final pulumi.Input<List<String>>? displayNames;
+  final pulumi.Input<List<String>?>? displayNames;
   /// Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `returnAll`. Defaults to `false`.
-  final pulumi.Input<bool>? ignoreMissing;
+  final pulumi.Input<bool?>? ignoreMissing;
   /// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
-  final pulumi.Input<bool>? mailEnabled;
+  final pulumi.Input<bool?>? mailEnabled;
   /// The object IDs of the groups.
-  final pulumi.Input<List<String>>? objectIds;
+  final pulumi.Input<List<String>?>? objectIds;
   /// A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignoreMissing`. Defaults to `false`.
-  final pulumi.Input<bool>? returnAll;
+  final pulumi.Input<bool?>? returnAll;
   /// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
   ///
   /// &gt; One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` _may_ be specified as an empty list, in which case no results will be returned.
-  final pulumi.Input<bool>? securityEnabled;
+  final pulumi.Input<bool?>? securityEnabled;
 
   /// Creates a new [GetGroupsArgs].
   /// [displayNamePrefix] A common display name prefix to match when returning groups.

@@ -14,7 +14,7 @@ class AccessPackageArgs {
   /// The display name of the access package.
   final pulumi.Input<String> displayName;
   /// Whether the access package is hidden from the requestor.
-  final pulumi.Input<bool>? hidden;
+  final pulumi.Input<bool?>? hidden;
 
   /// Creates a new [AccessPackageArgs].
   /// [catalogId] The ID of the Catalog this access package will be created in.

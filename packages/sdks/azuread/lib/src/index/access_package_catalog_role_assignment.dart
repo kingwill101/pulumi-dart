@@ -114,7 +114,7 @@ import 'access_package_catalog_role_assignment_state.dart';
 /// 		_, err = azuread.NewAccessPackageCatalogRoleAssignment(ctx, "example", &azuread.AccessPackageCatalogRoleAssignmentArgs{
 /// 			RoleId:            pulumi.String(exampleGetAccessPackageCatalogRole.ObjectId),
 /// 			PrincipalObjectId: pulumi.String(example.ObjectId),
-/// 			CatalogId:         exampleAccessPackageCatalog.ID(),
+/// 			CatalogId:         exampleAccessPackageCatalog.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -253,7 +253,7 @@ class AccessPackageCatalogRoleAssignment extends pulumi.CustomResource {
           'azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     principalObjectId = registerOutput<String>('principalObjectId');
@@ -265,11 +265,12 @@ class AccessPackageCatalogRoleAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessPackageCatalogRoleAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessPackageCatalogRoleAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -283,6 +284,20 @@ class AccessPackageCatalogRoleAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    catalogId = registerOutput<String>('catalogId');
+    principalObjectId = registerOutput<String>('principalObjectId');
+    roleId = registerOutput<String>('roleId');
+  }
+
+  /// Creates a typed reference to an existing [AccessPackageCatalogRoleAssignment] resource.
+  AccessPackageCatalogRoleAssignment.reference(String urn)
+    : super(
+        'azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     catalogId = registerOutput<String>('catalogId');
     principalObjectId = registerOutput<String>('principalObjectId');
     roleId = registerOutput<String>('roleId');

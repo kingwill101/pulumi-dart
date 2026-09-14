@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AccessPackage resources.
 class AccessPackageState {
   /// The ID of the Catalog this access package will be created in.
-  final pulumi.Input<String>? catalogId;
+  final pulumi.Input<String?>? catalogId;
   /// The description of the access package.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the access package.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Whether the access package is hidden from the requestor.
-  final pulumi.Input<bool>? hidden;
+  final pulumi.Input<bool?>? hidden;
 
   /// Creates a new [AccessPackageState].
   /// [catalogId] The ID of the Catalog this access package will be created in.

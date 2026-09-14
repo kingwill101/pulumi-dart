@@ -1,9 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_api.dart';
+import 'application_app_role.dart';
 import 'application_args.dart';
+import 'application_feature_tag.dart';
 import 'application_optional_claims.dart';
 import 'application_password.dart';
 import 'application_public_client.dart';
+import 'application_required_resource_access.dart';
 import 'application_single_page_application.dart';
 import 'application_state.dart';
 import 'application_web.dart';
@@ -761,8 +764,8 @@ import 'application_web.dart';
 ///                 .mappedClaimsEnabled(true)
 ///                 .requestedAccessTokenVersion(2)
 ///                 .knownClientApplications(
-///                     known1.clientId(),
-///                     known2.clientId())
+///                     known1.get("clientId"),
+///                     known2.get("clientId"))
 ///                 .oauth2PermissionScopes(
 ///                     ApplicationApiOauth2PermissionScopeArgs.builder()
 ///                         .adminConsentDescription("Allow the application to access example on behalf of the signed-in user.")
@@ -974,7 +977,7 @@ import 'application_web.dart';
 ///         endDate: std.timeaddOutput({
 ///             duration: example.id,
 ///             timestamp: "4320h",
-///         }).apply(invoke => invoke.result),
+///         }).result,
 ///     },
 /// });
 /// export const examplePassword = exampleApplication.password.apply(password => password?.[0]?.value);
@@ -994,7 +997,7 @@ import 'application_web.dart';
 ///         "display_name": "MySecret-1",
 ///         "start_date": example.id,
 ///         "end_date": std.timeadd_output(duration=example.id,
-///             timestamp="4320h").apply(lambda invoke: invoke.result),
+///             timestamp="4320h").result,
 ///     })
 /// pulumi.export("examplePassword", example_application.password[0]["value"])
 /// ```
@@ -1069,14 +1072,11 @@ import 'application_web.dart';
 /// },
 /// Password: &azuread.ApplicationPasswordTypeArgs{
 /// DisplayName: pulumi.String("MySecret-1"),
-/// StartDate: example.ID(),
+/// StartDate: example.ID().ToIDOutput().ToStringOutput(),
 /// EndDate: std.TimeaddOutput(ctx, std.TimeaddOutputArgs{
-/// Duration: example.ID(),
+/// Duration: example.ID().ToIDOutput().ToStringOutput(),
 /// Timestamp: pulumi.String("4320h"),
-/// }, nil).ApplyT(func(invoke std.TimeaddResult) (*string, error) {
-/// val := invoke.Result
-/// return &val, nil
-/// }).(pulumi.StringPtrOutput),
+/// }, nil).Result(),
 /// },
 /// })
 /// if err != nil {
@@ -1169,7 +1169,7 @@ import 'application_web.dart';
 ///                 .build())
 ///             .build());
 ///
-///         ctx.export("examplePassword", exampleApplication.password().applyValue(_password -> _password[0].value()));
+///         ctx.export("examplePassword", exampleApplication.password().applyValue(_password -> _password[0].get("value")));
 ///     }
 /// }
 /// ```
@@ -1398,7 +1398,7 @@ class Application extends pulumi.CustomResource {
   /// A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
   late final pulumi.Output<Map<String, String>> appRoleIds;
   /// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-  late final pulumi.Output<List<Map<String, dynamic>>?> appRoles;
+  late final pulumi.Output<List<ApplicationAppRole>?> appRoles;
   /// The Client ID for the application.
   late final pulumi.Output<String> clientId;
   /// A description of the application, as shown to end users.
@@ -1414,7 +1414,7 @@ class Application extends pulumi.CustomResource {
   /// A `featureTags` block as described below. Cannot be used together with the `tags` property.
   ///
   /// &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
-  late final pulumi.Output<List<Map<String, dynamic>>> featureTags;
+  late final pulumi.Output<List<ApplicationFeatureTag>> featureTags;
   /// A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
   late final pulumi.Output<List<String>?> groupMembershipClaims;
   /// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
@@ -1452,7 +1452,7 @@ class Application extends pulumi.CustomResource {
   /// The verified publisher domain for the application.
   late final pulumi.Output<String> publisherDomain;
   /// A collection of `requiredResourceAccess` blocks as documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> requiredResourceAccesses;
+  late final pulumi.Output<List<ApplicationRequiredResourceAccess>?> requiredResourceAccesses;
   /// References application context information from a Service or Asset Management database.
   late final pulumi.Output<String?> serviceManagementReference;
   /// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
@@ -1490,40 +1490,40 @@ class Application extends pulumi.CustomResource {
           'azuread:index/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.10.1').merge(options),
         ) {
     api = registerOutput<ApplicationApi?>('api', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationApi.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    appRoleIds = registerOutput<Map<String, String>>('appRoleIds');
-    appRoles = registerOutput<List<Map<String, dynamic>>?>('appRoles');
+    appRoleIds = registerOutput<Map<String, String>>('appRoleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    appRoles = registerOutput<List<ApplicationAppRole>?>('appRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationAppRole>(guardedValue, (value) => ApplicationAppRole.fromMap((value as Map).cast<String, dynamic>())); });
     clientId = registerOutput<String>('clientId');
     description = registerOutput<String?>('description');
     deviceOnlyAuthEnabled = registerOutput<bool?>('deviceOnlyAuthEnabled');
     disabledByMicrosoft = registerOutput<String>('disabledByMicrosoft');
     displayName = registerOutput<String>('displayName');
     fallbackPublicClientEnabled = registerOutput<bool?>('fallbackPublicClientEnabled');
-    featureTags = registerOutput<List<Map<String, dynamic>>>('featureTags');
-    groupMembershipClaims = registerOutput<List<String>?>('groupMembershipClaims');
-    identifierUris = registerOutput<List<String>?>('identifierUris');
+    featureTags = registerOutput<List<ApplicationFeatureTag>>('featureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationFeatureTag>(guardedValue, (value) => ApplicationFeatureTag.fromMap((value as Map).cast<String, dynamic>())); });
+    groupMembershipClaims = registerOutput<List<String>?>('groupMembershipClaims', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    identifierUris = registerOutput<List<String>?>('identifierUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     logoImage = registerOutput<String?>('logoImage');
     logoUrl = registerOutput<String>('logoUrl');
     marketingUrl = registerOutput<String?>('marketingUrl');
     notes = registerOutput<String?>('notes');
-    oauth2PermissionScopeIds = registerOutput<Map<String, String>>('oauth2PermissionScopeIds');
+    oauth2PermissionScopeIds = registerOutput<Map<String, String>>('oauth2PermissionScopeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     oauth2PostResponseRequired = registerOutput<bool?>('oauth2PostResponseRequired');
     objectId = registerOutput<String>('objectId');
     optionalClaims = registerOutput<ApplicationOptionalClaims?>('optionalClaims', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationOptionalClaims.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    owners = registerOutput<List<String>?>('owners');
+    owners = registerOutput<List<String>?>('owners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     password = registerOutput<ApplicationPassword?>('password', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPassword.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preventDuplicateNames = registerOutput<bool?>('preventDuplicateNames');
     privacyStatementUrl = registerOutput<String?>('privacyStatementUrl');
     publicClient = registerOutput<ApplicationPublicClient?>('publicClient', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPublicClient.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     publisherDomain = registerOutput<String>('publisherDomain');
-    requiredResourceAccesses = registerOutput<List<Map<String, dynamic>>?>('requiredResourceAccesses');
+    requiredResourceAccesses = registerOutput<List<ApplicationRequiredResourceAccess>?>('requiredResourceAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationRequiredResourceAccess>(guardedValue, (value) => ApplicationRequiredResourceAccess.fromMap((value as Map).cast<String, dynamic>())); });
     serviceManagementReference = registerOutput<String?>('serviceManagementReference');
     signInAudience = registerOutput<String?>('signInAudience');
     singlePageApplication = registerOutput<ApplicationSinglePageApplication?>('singlePageApplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationSinglePageApplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     supportUrl = registerOutput<String?>('supportUrl');
-    tags = registerOutput<List<String>>('tags');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     templateId = registerOutput<String>('templateId');
     termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
     web = registerOutput<ApplicationWeb?>('web', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationWeb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1534,11 +1534,12 @@ class Application extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Application._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1553,37 +1554,83 @@ class Application extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     api = registerOutput<ApplicationApi?>('api', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationApi.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    appRoleIds = registerOutput<Map<String, String>>('appRoleIds');
-    appRoles = registerOutput<List<Map<String, dynamic>>?>('appRoles');
+    appRoleIds = registerOutput<Map<String, String>>('appRoleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    appRoles = registerOutput<List<ApplicationAppRole>?>('appRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationAppRole>(guardedValue, (value) => ApplicationAppRole.fromMap((value as Map).cast<String, dynamic>())); });
     clientId = registerOutput<String>('clientId');
     description = registerOutput<String?>('description');
     deviceOnlyAuthEnabled = registerOutput<bool?>('deviceOnlyAuthEnabled');
     disabledByMicrosoft = registerOutput<String>('disabledByMicrosoft');
     displayName = registerOutput<String>('displayName');
     fallbackPublicClientEnabled = registerOutput<bool?>('fallbackPublicClientEnabled');
-    featureTags = registerOutput<List<Map<String, dynamic>>>('featureTags');
-    groupMembershipClaims = registerOutput<List<String>?>('groupMembershipClaims');
-    identifierUris = registerOutput<List<String>?>('identifierUris');
+    featureTags = registerOutput<List<ApplicationFeatureTag>>('featureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationFeatureTag>(guardedValue, (value) => ApplicationFeatureTag.fromMap((value as Map).cast<String, dynamic>())); });
+    groupMembershipClaims = registerOutput<List<String>?>('groupMembershipClaims', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    identifierUris = registerOutput<List<String>?>('identifierUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     logoImage = registerOutput<String?>('logoImage');
     logoUrl = registerOutput<String>('logoUrl');
     marketingUrl = registerOutput<String?>('marketingUrl');
     notes = registerOutput<String?>('notes');
-    oauth2PermissionScopeIds = registerOutput<Map<String, String>>('oauth2PermissionScopeIds');
+    oauth2PermissionScopeIds = registerOutput<Map<String, String>>('oauth2PermissionScopeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     oauth2PostResponseRequired = registerOutput<bool?>('oauth2PostResponseRequired');
     objectId = registerOutput<String>('objectId');
     optionalClaims = registerOutput<ApplicationOptionalClaims?>('optionalClaims', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationOptionalClaims.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    owners = registerOutput<List<String>?>('owners');
+    owners = registerOutput<List<String>?>('owners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     password = registerOutput<ApplicationPassword?>('password', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPassword.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preventDuplicateNames = registerOutput<bool?>('preventDuplicateNames');
     privacyStatementUrl = registerOutput<String?>('privacyStatementUrl');
     publicClient = registerOutput<ApplicationPublicClient?>('publicClient', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPublicClient.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     publisherDomain = registerOutput<String>('publisherDomain');
-    requiredResourceAccesses = registerOutput<List<Map<String, dynamic>>?>('requiredResourceAccesses');
+    requiredResourceAccesses = registerOutput<List<ApplicationRequiredResourceAccess>?>('requiredResourceAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationRequiredResourceAccess>(guardedValue, (value) => ApplicationRequiredResourceAccess.fromMap((value as Map).cast<String, dynamic>())); });
     serviceManagementReference = registerOutput<String?>('serviceManagementReference');
     signInAudience = registerOutput<String?>('signInAudience');
     singlePageApplication = registerOutput<ApplicationSinglePageApplication?>('singlePageApplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationSinglePageApplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     supportUrl = registerOutput<String?>('supportUrl');
-    tags = registerOutput<List<String>>('tags');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    templateId = registerOutput<String>('templateId');
+    termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
+    web = registerOutput<ApplicationWeb?>('web', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationWeb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Application] resource.
+  Application.reference(String urn)
+    : super(
+        'azuread:index/application:Application',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    api = registerOutput<ApplicationApi?>('api', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationApi.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    appRoleIds = registerOutput<Map<String, String>>('appRoleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    appRoles = registerOutput<List<ApplicationAppRole>?>('appRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationAppRole>(guardedValue, (value) => ApplicationAppRole.fromMap((value as Map).cast<String, dynamic>())); });
+    clientId = registerOutput<String>('clientId');
+    description = registerOutput<String?>('description');
+    deviceOnlyAuthEnabled = registerOutput<bool?>('deviceOnlyAuthEnabled');
+    disabledByMicrosoft = registerOutput<String>('disabledByMicrosoft');
+    displayName = registerOutput<String>('displayName');
+    fallbackPublicClientEnabled = registerOutput<bool?>('fallbackPublicClientEnabled');
+    featureTags = registerOutput<List<ApplicationFeatureTag>>('featureTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationFeatureTag>(guardedValue, (value) => ApplicationFeatureTag.fromMap((value as Map).cast<String, dynamic>())); });
+    groupMembershipClaims = registerOutput<List<String>?>('groupMembershipClaims', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    identifierUris = registerOutput<List<String>?>('identifierUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    logoImage = registerOutput<String?>('logoImage');
+    logoUrl = registerOutput<String>('logoUrl');
+    marketingUrl = registerOutput<String?>('marketingUrl');
+    notes = registerOutput<String?>('notes');
+    oauth2PermissionScopeIds = registerOutput<Map<String, String>>('oauth2PermissionScopeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    oauth2PostResponseRequired = registerOutput<bool?>('oauth2PostResponseRequired');
+    objectId = registerOutput<String>('objectId');
+    optionalClaims = registerOutput<ApplicationOptionalClaims?>('optionalClaims', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationOptionalClaims.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    owners = registerOutput<List<String>?>('owners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    password = registerOutput<ApplicationPassword?>('password', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPassword.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    preventDuplicateNames = registerOutput<bool?>('preventDuplicateNames');
+    privacyStatementUrl = registerOutput<String?>('privacyStatementUrl');
+    publicClient = registerOutput<ApplicationPublicClient?>('publicClient', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPublicClient.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    publisherDomain = registerOutput<String>('publisherDomain');
+    requiredResourceAccesses = registerOutput<List<ApplicationRequiredResourceAccess>?>('requiredResourceAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationRequiredResourceAccess>(guardedValue, (value) => ApplicationRequiredResourceAccess.fromMap((value as Map).cast<String, dynamic>())); });
+    serviceManagementReference = registerOutput<String?>('serviceManagementReference');
+    signInAudience = registerOutput<String?>('signInAudience');
+    singlePageApplication = registerOutput<ApplicationSinglePageApplication?>('singlePageApplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationSinglePageApplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    supportUrl = registerOutput<String?>('supportUrl');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     templateId = registerOutput<String>('templateId');
     termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
     web = registerOutput<ApplicationWeb?>('web', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationWeb.fromMap((guardedValue as Map).cast<String, dynamic>()); });

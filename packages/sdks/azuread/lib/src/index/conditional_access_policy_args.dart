@@ -15,11 +15,11 @@ class ConditionalAccessPolicyArgs {
   /// The friendly name for this Conditional Access Policy.
   final pulumi.Input<String> displayName;
   /// A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-  final pulumi.Input<ConditionalAccessPolicyGrantControls>? grantControls;
+  final pulumi.Input<ConditionalAccessPolicyGrantControls?>? grantControls;
   /// A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
   ///
   /// &gt; Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
-  final pulumi.Input<ConditionalAccessPolicySessionControls>? sessionControls;
+  final pulumi.Input<ConditionalAccessPolicySessionControls?>? sessionControls;
   /// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
   final pulumi.Input<String> state;
 

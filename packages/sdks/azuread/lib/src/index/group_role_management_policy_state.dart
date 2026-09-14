@@ -9,21 +9,21 @@ import 'group_role_management_policy_notification_rules.dart';
 /// Input properties used for looking up and filtering GroupRoleManagementPolicy resources.
 class GroupRoleManagementPolicyState {
   /// An `activationRules` block as defined below.
-  final pulumi.Input<GroupRoleManagementPolicyActivationRules>? activationRules;
+  final pulumi.Input<GroupRoleManagementPolicyActivationRules?>? activationRules;
   /// An `activeAssignmentRules` block as defined below.
-  final pulumi.Input<GroupRoleManagementPolicyActiveAssignmentRules>? activeAssignmentRules;
+  final pulumi.Input<GroupRoleManagementPolicyActiveAssignmentRules?>? activeAssignmentRules;
   /// (String) The description of this policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (String) The display name of this policy.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// An `eligibleAssignmentRules` block as defined below.
-  final pulumi.Input<GroupRoleManagementPolicyEligibleAssignmentRules>? eligibleAssignmentRules;
+  final pulumi.Input<GroupRoleManagementPolicyEligibleAssignmentRules?>? eligibleAssignmentRules;
   /// The ID of the Azure AD group for which the policy applies.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// A `notificationRules` block as defined below.
-  final pulumi.Input<GroupRoleManagementPolicyNotificationRules>? notificationRules;
+  final pulumi.Input<GroupRoleManagementPolicyNotificationRules?>? notificationRules;
   /// The type of assignment this policy coveres. Can be either `member` or `owner`.
-  final pulumi.Input<String>? roleId;
+  final pulumi.Input<String?>? roleId;
 
   /// Creates a new [GroupRoleManagementPolicyState].
   /// [activationRules] An `activationRules` block as defined below.

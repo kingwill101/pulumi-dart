@@ -11,43 +11,43 @@ import 'service_principal_saml_single_sign_on.dart';
 /// {@macro pulumi_index_service_principal_service_principal_args_doc}
 class ServicePrincipalArgs {
   /// Whether or not the service principal account is enabled. Defaults to `true`.
-  final pulumi.Input<bool>? accountEnabled;
+  final pulumi.Input<bool?>? accountEnabled;
   /// A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
-  final pulumi.Input<List<String>>? alternativeNames;
+  final pulumi.Input<List<String>?>? alternativeNames;
   /// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
-  final pulumi.Input<bool>? appRoleAssignmentRequired;
+  final pulumi.Input<bool?>? appRoleAssignmentRequired;
   /// The client ID of the application for which to create a service principal.
   final pulumi.Input<String> clientId;
   /// A description of the service principal provided for internal end-users.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A `featureTags` block as described below. Cannot be used together with the `tags` property.
   ///
   /// &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
-  final pulumi.Input<List<ServicePrincipalFeatureTag>>? featureTags;
+  final pulumi.Input<List<ServicePrincipalFeatureTag>?>? featureTags;
   /// Block of features to configure for this service principal using tags
-  final pulumi.Input<List<ServicePrincipalFeature>>? features;
+  final pulumi.Input<List<ServicePrincipalFeature>?>? features;
   /// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
-  final pulumi.Input<String>? loginUrl;
+  final pulumi.Input<String?>? loginUrl;
   /// A free text field to capture information about the service principal, typically used for operational purposes.
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
   /// A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
-  final pulumi.Input<List<String>>? notificationEmailAddresses;
+  final pulumi.Input<List<String>?>? notificationEmailAddresses;
   /// A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
   ///
   /// &gt; **Ownership of Service Principals** It's recommended to always specify one or more service principal owners, including the principal being used to execute Terraform, such as in the example above.
-  final pulumi.Input<List<String>>? owners;
+  final pulumi.Input<List<String>?>? owners;
   /// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
-  final pulumi.Input<String>? preferredSingleSignOnMode;
+  final pulumi.Input<String?>? preferredSingleSignOnMode;
   /// A `samlSingleSignOn` block as documented below.
-  final pulumi.Input<ServicePrincipalSamlSingleSignOn>? samlSingleSignOn;
+  final pulumi.Input<ServicePrincipalSamlSingleSignOn?>? samlSingleSignOn;
   /// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
   ///
   /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
   ///
   /// &gt; **Caveats of `useExisting`** Enabling this behaviour is useful for managing existing service principals that may already be installed in your tenant for Microsoft-published APIs, as it allows you to make changes where permitted, and then also reference them in your Terraform configuration. However, the behaviour of delete operations is also affected - when `useExisting` is `true`, Terraform will still attempt to delete the service principal on destroy, although it will not raise an error if the deletion fails (as it often the case for first-party Microsoft applications).
-  final pulumi.Input<bool>? useExisting;
+  final pulumi.Input<bool?>? useExisting;
 
   /// Creates a new [ServicePrincipalArgs].
   /// [accountEnabled] Whether or not the service principal account is enabled. Defaults to `true`.
