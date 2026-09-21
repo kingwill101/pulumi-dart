@@ -255,7 +255,7 @@ class PrivateKey extends pulumi.CustomResource {
           'tls:index/privateKey:PrivateKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.6.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.6.1').merge(options),
           additionalSecretOutputs: const ['privateKeyOpenssh', 'privateKeyPem', 'privateKeyPemPkcs8'],
         ) {
     algorithm = registerOutput<String>('algorithm');

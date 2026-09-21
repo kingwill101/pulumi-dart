@@ -19,7 +19,7 @@ class ProviderProvider extends pulumi.ProviderResource {
           'tls',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.6.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.6.1').merge(options),
         );
 
   /// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.

@@ -276,7 +276,7 @@ class SelfSignedCert extends pulumi.CustomResource {
           'tls:index/selfSignedCert:SelfSignedCert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.6.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.6.1').merge(options),
           additionalSecretOutputs: const ['privateKeyPem', 'privateKeyPemWo'],
         ) {
     allowedUses = registerOutput<List<String>>('allowedUses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
