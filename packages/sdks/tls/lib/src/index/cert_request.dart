@@ -203,7 +203,7 @@ class CertRequest extends pulumi.CustomResource {
           'tls:index/certRequest:CertRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '5.6.0').merge(options),
+          pulumi.CustomResourceOptions(version: '5.6.1').merge(options),
           additionalSecretOutputs: const ['privateKeyPem', 'privateKeyPemWo'],
         ) {
     certRequestPem = registerOutput<String>('certRequestPem');
