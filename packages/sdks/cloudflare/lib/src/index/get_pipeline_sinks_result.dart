@@ -9,12 +9,14 @@ class GetPipelineSinksResult {
   /// Defines the configuration of the R2 Sink.
   final pulumi.Input<GetPipelineSinksResultConfig> config;
   final pulumi.Input<String> createdAt;
+  /// Defines the output data format of a sink.
   final pulumi.Input<GetPipelineSinksResultFormat> format;
   /// Indicates a unique identifier for this sink.
   final pulumi.Input<String> id;
   final pulumi.Input<String> modifiedAt;
   /// Defines the name of the Sink.
   final pulumi.Input<String> name;
+  /// Defines the schema of the events in the data stream.
   final pulumi.Input<GetPipelineSinksResultSchema> schema;
   /// Specifies the type of sink.
   /// Available values: "r2", "r2*data*catalog".
@@ -23,11 +25,11 @@ class GetPipelineSinksResult {
   /// Creates a new [GetPipelineSinksResult].
   /// [config] Defines the configuration of the R2 Sink.
   /// [createdAt] Required.
-  /// [format] Required.
+  /// [format] Defines the output data format of a sink.
   /// [id] Indicates a unique identifier for this sink.
   /// [modifiedAt] Required.
   /// [name] Defines the name of the Sink.
-  /// [schema] Required.
+  /// [schema] Defines the schema of the events in the data stream.
   /// [type] Specifies the type of sink.
   const GetPipelineSinksResult({
     required this.config,

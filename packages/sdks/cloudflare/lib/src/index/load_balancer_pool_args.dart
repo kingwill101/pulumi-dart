@@ -111,7 +111,7 @@ class LoadBalancerPoolArgs {
       latitude: (() { final guardedValue = map['latitude']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       loadShedding: (() { final guardedValue = map['loadShedding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoadBalancerPoolLoadShedding.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       longitude: (() { final guardedValue = map['longitude']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
-      minimumOrigins: (() { final guardedValue = map['minimumOrigins']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minimumOrigins: (() { final guardedValue = map['minimumOrigins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       monitor: (() { final guardedValue = map['monitor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       monitorGroup: (() { final guardedValue = map['monitorGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),

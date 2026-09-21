@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stream_live_input_args.dart';
+import 'stream_live_input_playback.dart';
 import 'stream_live_input_recording.dart';
 import 'stream_live_input_rtmps.dart';
 import 'stream_live_input_rtmps_playback.dart';
@@ -89,6 +90,8 @@ class StreamLiveInput extends pulumi.CustomResource {
   late final pulumi.Output<String?> meta;
   /// The date and time the live input was last modified.
   late final pulumi.Output<String> modified;
+  /// Details for playing a live input's broadcast using the HLS or DASH manifests. URLs reference the live input ID.
+  late final pulumi.Output<StreamLiveInputPlayback> playback;
   /// When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
   late final pulumi.Output<bool> preferLowLatency;
   /// Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
@@ -123,7 +126,7 @@ class StreamLiveInput extends pulumi.CustomResource {
           'cloudflare:index/streamLiveInput:StreamLiveInput',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     created = registerOutput<String>('created');
@@ -134,6 +137,7 @@ class StreamLiveInput extends pulumi.CustomResource {
     liveInputIdentifier = registerOutput<String?>('liveInputIdentifier');
     meta = registerOutput<String?>('meta');
     modified = registerOutput<String>('modified');
+    playback = registerOutput<StreamLiveInputPlayback>('playback', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamLiveInputPlayback.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preferLowLatency = registerOutput<bool>('preferLowLatency');
     recording = registerOutput<StreamLiveInputRecording>('recording', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamLiveInputRecording.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rtmps = registerOutput<StreamLiveInputRtmps>('rtmps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamLiveInputRtmps.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -179,6 +183,7 @@ class StreamLiveInput extends pulumi.CustomResource {
     liveInputIdentifier = registerOutput<String?>('liveInputIdentifier');
     meta = registerOutput<String?>('meta');
     modified = registerOutput<String>('modified');
+    playback = registerOutput<StreamLiveInputPlayback>('playback', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamLiveInputPlayback.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preferLowLatency = registerOutput<bool>('preferLowLatency');
     recording = registerOutput<StreamLiveInputRecording>('recording', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamLiveInputRecording.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rtmps = registerOutput<StreamLiveInputRtmps>('rtmps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamLiveInputRtmps.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -209,6 +214,7 @@ class StreamLiveInput extends pulumi.CustomResource {
     liveInputIdentifier = registerOutput<String?>('liveInputIdentifier');
     meta = registerOutput<String?>('meta');
     modified = registerOutput<String>('modified');
+    playback = registerOutput<StreamLiveInputPlayback>('playback', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamLiveInputPlayback.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     preferLowLatency = registerOutput<bool>('preferLowLatency');
     recording = registerOutput<StreamLiveInputRecording>('recording', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamLiveInputRecording.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rtmps = registerOutput<StreamLiveInputRtmps>('rtmps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamLiveInputRtmps.fromMap((guardedValue as Map).cast<String, dynamic>()); });

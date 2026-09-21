@@ -37,7 +37,7 @@ class GetZeroTrustResourceLibraryCategoriesResult {
     return GetZeroTrustResourceLibraryCategoriesResult(
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      id: pulumi.Input.fromValue((map['id'] as num).toInt()),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

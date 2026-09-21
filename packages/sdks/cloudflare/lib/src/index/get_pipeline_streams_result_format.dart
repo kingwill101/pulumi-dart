@@ -45,7 +45,7 @@ class GetPipelineStreamsResultFormat {
     return GetPipelineStreamsResultFormat(
       compression: pulumi.Input.fromValue(map['compression'] as String),
       decimalEncoding: pulumi.Input.fromValue(map['decimalEncoding'] as String),
-      rowGroupBytes: pulumi.Input.fromValue((map['rowGroupBytes'] as num).toInt()),
+      rowGroupBytes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rowGroupBytes'])),
       timestampFormat: pulumi.Input.fromValue(map['timestampFormat'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
       unstructured: pulumi.Input.fromValue(map['unstructured'] as bool),

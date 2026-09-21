@@ -83,7 +83,7 @@ class GetZoneLockdownsInvokeResult {
       ip: (() { final guardedValue = map['ip']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipRangeSearch: (() { final guardedValue = map['ipRangeSearch']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipSearch: (() { final guardedValue = map['ipSearch']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       modifiedOn: (() { final guardedValue = map['modifiedOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZoneLockdownsResult>(guardedValue, (value) => GetZoneLockdownsResult.fromMap((value as Map).cast<String, dynamic>())); })(),

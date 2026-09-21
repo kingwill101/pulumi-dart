@@ -20,6 +20,7 @@ import 'ruleset_rule_action_parameters_no_cache.dart';
 import 'ruleset_rule_action_parameters_no_store.dart';
 import 'ruleset_rule_action_parameters_no_transform.dart';
 import 'ruleset_rule_action_parameters_origin.dart';
+import 'ruleset_rule_action_parameters_origin_range_requests.dart';
 import 'ruleset_rule_action_parameters_overrides.dart';
 import 'ruleset_rule_action_parameters_private.dart';
 import 'ruleset_rule_action_parameters_proxy_revalidate.dart';
@@ -124,6 +125,8 @@ class RulesetRuleActionParameters {
   final pulumi.Input<bool?>? originCacheControl;
   /// Whether to generate Cloudflare error pages for issues from the origin server.
   final pulumi.Input<bool?>? originErrorPagePassthru;
+  /// Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
+  final pulumi.Input<RulesetRuleActionParametersOriginRangeRequests?>? originRangeRequests;
   /// A set of overrides to apply to the target ruleset.
   final pulumi.Input<RulesetRuleActionParametersOverrides?>? overrides;
   /// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
@@ -250,6 +253,7 @@ class RulesetRuleActionParameters {
   /// [origin] An origin to route to.
   /// [originCacheControl] Whether Cloudflare will aim to strictly adhere to RFC 7234.
   /// [originErrorPagePassthru] Whether to generate Cloudflare error pages for issues from the origin server.
+  /// [originRangeRequests] Controls whether Cloudflare fetches a large asset from the origin as a series of range requests instead of one whole-body request.
   /// [overrides] A set of overrides to apply to the target ruleset.
   /// [phases] A list of phases to skip the execution of. This option is incompatible with the rulesets option.
   /// [polish] The Polish level to configure.
@@ -330,6 +334,7 @@ class RulesetRuleActionParameters {
     this.origin,
     this.originCacheControl,
     this.originErrorPagePassthru,
+    this.originRangeRequests,
     this.overrides,
     this.phases,
     this.polish,
@@ -413,6 +418,7 @@ class RulesetRuleActionParameters {
       'origin': ?pulumi.Input.mapOptionalInputValue<RulesetRuleActionParametersOrigin, Map<String, dynamic>>(origin, (value) => value.toMap()),
       'originCacheControl': ?originCacheControl,
       'originErrorPagePassthru': ?originErrorPagePassthru,
+      'originRangeRequests': ?pulumi.Input.mapOptionalInputValue<RulesetRuleActionParametersOriginRangeRequests, Map<String, dynamic>>(originRangeRequests, (value) => value.toMap()),
       'overrides': ?pulumi.Input.mapOptionalInputValue<RulesetRuleActionParametersOverrides, Map<String, dynamic>>(overrides, (value) => value.toMap()),
       'phases': ?phases,
       'polish': ?polish,
@@ -483,7 +489,7 @@ class RulesetRuleActionParameters {
       hotlinkProtection: (() { final guardedValue = map['hotlinkProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       immutable: (() { final guardedValue = map['immutable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RulesetRuleActionParametersImmutable.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      increment: (() { final guardedValue = map['increment']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      increment: (() { final guardedValue = map['increment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       matchedData: (() { final guardedValue = map['matchedData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RulesetRuleActionParametersMatchedData.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       maxAge: (() { final guardedValue = map['maxAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RulesetRuleActionParametersMaxAge.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mirage: (() { final guardedValue = map['mirage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -497,6 +503,7 @@ class RulesetRuleActionParameters {
       origin: (() { final guardedValue = map['origin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RulesetRuleActionParametersOrigin.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       originCacheControl: (() { final guardedValue = map['originCacheControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       originErrorPagePassthru: (() { final guardedValue = map['originErrorPagePassthru']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      originRangeRequests: (() { final guardedValue = map['originRangeRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RulesetRuleActionParametersOriginRangeRequests.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       overrides: (() { final guardedValue = map['overrides']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RulesetRuleActionParametersOverrides.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       phases: (() { final guardedValue = map['phases']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       polish: (() { final guardedValue = map['polish']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -505,7 +512,7 @@ class RulesetRuleActionParameters {
       proxyRevalidate: (() { final guardedValue = map['proxyRevalidate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RulesetRuleActionParametersProxyRevalidate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       public: (() { final guardedValue = map['public']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RulesetRuleActionParametersPublic.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rawResponseFields: (() { final guardedValue = map['rawResponseFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RulesetRuleActionParametersRawResponseField>(guardedValue, (value) => RulesetRuleActionParametersRawResponseField.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      readTimeout: (() { final guardedValue = map['readTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      readTimeout: (() { final guardedValue = map['readTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       redirectsForAiTraining: (() { final guardedValue = map['redirectsForAiTraining']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       requestBodyBuffering: (() { final guardedValue = map['requestBodyBuffering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requestFields: (() { final guardedValue = map['requestFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RulesetRuleActionParametersRequestField>(guardedValue, (value) => RulesetRuleActionParametersRequestField.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -525,7 +532,7 @@ class RulesetRuleActionParameters {
       ssl: (() { final guardedValue = map['ssl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       staleIfError: (() { final guardedValue = map['staleIfError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RulesetRuleActionParametersStaleIfError.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       staleWhileRevalidate: (() { final guardedValue = map['staleWhileRevalidate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RulesetRuleActionParametersStaleWhileRevalidate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      statusCode: (() { final guardedValue = map['statusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      statusCode: (() { final guardedValue = map['statusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       stripEtags: (() { final guardedValue = map['stripEtags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       stripLastModified: (() { final guardedValue = map['stripLastModified']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       stripSetCookie: (() { final guardedValue = map['stripSetCookie']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

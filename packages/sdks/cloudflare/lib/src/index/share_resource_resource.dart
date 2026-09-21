@@ -161,7 +161,7 @@ class ShareResourceResource extends pulumi.CustomResource {
   /// Share Resource identifier.
   late final pulumi.Output<String> resourceId;
   /// Resource Type.
-  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
   late final pulumi.Output<String> resourceType;
   /// Resource Version.
   late final pulumi.Output<int> resourceVersion;
@@ -183,7 +183,7 @@ class ShareResourceResource extends pulumi.CustomResource {
           'cloudflare:index/shareResource:ShareResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     created = registerOutput<String>('created');

@@ -31,8 +31,8 @@ class GetWorkerVersionBindingSimple {
   factory GetWorkerVersionBindingSimple.fromMap(Map<String, dynamic> map) {
     return GetWorkerVersionBindingSimple(
       limit: pulumi.Input.fromValue((map['limit'] as num).toDouble()),
-      mitigationTimeout: pulumi.Input.fromValue((map['mitigationTimeout'] as num).toInt()),
-      period: pulumi.Input.fromValue((map['period'] as num).toInt()),
+      mitigationTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['mitigationTimeout'])),
+      period: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['period'])),
     );
   }
 }

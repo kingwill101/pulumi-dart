@@ -15,7 +15,7 @@ class GetAccountSubscriptionResult {
   /// How often the subscription is renewed automatically.
   /// Available values: "weekly", "monthly", "quarterly", "yearly".
   final String? frequency;
-  /// Subscription identifier tag.
+  /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
   final String? id;
   /// The price of the subscription that will be billed, in US dollars.
   final double? price;
@@ -33,7 +33,7 @@ class GetAccountSubscriptionResult {
   /// [currentPeriodEnd] The end of the current period and also when the next billing is due.
   /// [currentPeriodStart] When the current billing period started. May match initial*period*start if this is the first period.
   /// [frequency] How often the subscription is renewed automatically.
-  /// [id] Subscription identifier tag.
+  /// [id] The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
   /// [price] The price of the subscription that will be billed, in US dollars.
   /// [ratePlan] The rate plan applied to the subscription.
   /// [state] The state that the subscription is in.

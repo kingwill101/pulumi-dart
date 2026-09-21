@@ -36,6 +36,9 @@ class GetWorkerVersionsResultBinding {
   final pulumi.Input<String> format;
   /// Identifier of the D1 database to bind to.
   final pulumi.Input<String> id;
+  /// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+  /// Available values: "runtime-email-alpha".
+  final pulumi.Input<String> identity;
   /// Name of the Vectorize index to bind to.
   final pulumi.Input<String> indexName;
   /// The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
@@ -43,7 +46,7 @@ class GetWorkerVersionsResultBinding {
   /// JSON data to use.
   final pulumi.Input<String> json;
   /// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-  /// Available values: "eu", "fedramp", "fedramp-high".
+  /// Available values: "eu", "fedramp", "fedramp-high", "us".
   final pulumi.Input<String> jurisdiction;
   /// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
   final pulumi.Input<String> keyBase64;
@@ -109,6 +112,7 @@ class GetWorkerVersionsResultBinding {
   /// [environment] The environment of the scriptName to bind to.
   /// [format] Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
   /// [id] Identifier of the D1 database to bind to.
+  /// [identity] Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
   /// [indexName] Name of the Vectorize index to bind to.
   /// [instanceName] The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
   /// [json] JSON data to use.
@@ -152,6 +156,7 @@ class GetWorkerVersionsResultBinding {
     required this.environment,
     required this.format,
     required this.id,
+    required this.identity,
     required this.indexName,
     required this.instanceName,
     required this.json,
@@ -198,6 +203,7 @@ class GetWorkerVersionsResultBinding {
       'environment': environment,
       'format': format,
       'id': id,
+      'identity': identity,
       'indexName': indexName,
       'instanceName': instanceName,
       'json': json,
@@ -245,6 +251,7 @@ class GetWorkerVersionsResultBinding {
       environment: pulumi.Input.fromValue(map['environment'] as String),
       format: pulumi.Input.fromValue(map['format'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
+      identity: pulumi.Input.fromValue(map['identity'] as String),
       indexName: pulumi.Input.fromValue(map['indexName'] as String),
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
       json: pulumi.Input.fromValue(map['json'] as String),

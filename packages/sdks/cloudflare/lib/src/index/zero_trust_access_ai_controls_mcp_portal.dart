@@ -339,7 +339,7 @@ class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     allowCodeMode = registerOutput<bool>('allowCodeMode');

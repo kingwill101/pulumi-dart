@@ -172,11 +172,11 @@ class GetWorkerVersionsResult {
       migrationTag: pulumi.Input.fromValue(map['migrationTag'] as String),
       migrations: pulumi.Input.fromValue(GetWorkerVersionsResultMigrations.fromMap((map['migrations']! as Map).cast<String, dynamic>())),
       modules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWorkerVersionsResultModule>(map['modules']!, (value) => GetWorkerVersionsResultModule.fromMap((value as Map).cast<String, dynamic>()))),
-      number: pulumi.Input.fromValue((map['number'] as num).toInt()),
+      number: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['number'])),
       packageDependencies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWorkerVersionsResultPackageDependency>(map['packageDependencies']!, (value) => GetWorkerVersionsResultPackageDependency.fromMap((value as Map).cast<String, dynamic>()))),
       placement: pulumi.Input.fromValue(GetWorkerVersionsResultPlacement.fromMap((map['placement']! as Map).cast<String, dynamic>())),
       source: pulumi.Input.fromValue(map['source'] as String),
-      startupTimeMs: pulumi.Input.fromValue((map['startupTimeMs'] as num).toInt()),
+      startupTimeMs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startupTimeMs'])),
       urls: pulumi.Input.fromValue((map['urls'] as List).cast<String>()),
       usageModel: pulumi.Input.fromValue(map['usageModel'] as String),
     );

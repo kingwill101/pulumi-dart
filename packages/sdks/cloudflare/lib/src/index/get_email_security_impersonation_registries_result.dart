@@ -68,8 +68,8 @@ class GetEmailSecurityImpersonationRegistriesResult {
     return GetEmailSecurityImpersonationRegistriesResult(
       comments: pulumi.Input.fromValue(map['comments'] as String),
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
-      directoryId: pulumi.Input.fromValue((map['directoryId'] as num).toInt()),
-      directoryNodeId: pulumi.Input.fromValue((map['directoryNodeId'] as num).toInt()),
+      directoryId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['directoryId'])),
+      directoryNodeId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['directoryNodeId'])),
       email: pulumi.Input.fromValue(map['email'] as String),
       externalDirectoryNodeId: pulumi.Input.fromValue(map['externalDirectoryNodeId'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),

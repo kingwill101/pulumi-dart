@@ -101,7 +101,7 @@ class CertificatePackState {
       validationErrors: (() { final guardedValue = map['validationErrors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CertificatePackValidationError>(guardedValue, (value) => CertificatePackValidationError.fromMap((value as Map).cast<String, dynamic>()))); })(),
       validationMethod: (() { final guardedValue = map['validationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       validationRecords: (() { final guardedValue = map['validationRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CertificatePackValidationRecord>(guardedValue, (value) => CertificatePackValidationRecord.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      validityDays: (() { final guardedValue = map['validityDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      validityDays: (() { final guardedValue = map['validityDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

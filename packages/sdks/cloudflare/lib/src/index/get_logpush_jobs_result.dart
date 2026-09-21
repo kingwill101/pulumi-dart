@@ -5,7 +5,7 @@ import 'get_logpush_jobs_result_output_options.dart';
 
 class GetLogpushJobsResult {
   /// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-  /// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+  /// Available values: "access*requests", "account*abuse*protection*events", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dex*application*tests", "dex*device*state*events", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "email*security*post*delivery*events", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "ipsec*logs", "magic*bgp*logs", "magic*ids*detections", "mcp*portal*logs", "mnm*flow*logs", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "turnstile*events", "warp*config*changes", "warp*toggle*changes", "websocket*analytics", "workers*trace*events", "zaraz*events", "zero*trust*network_sessions".
   final pulumi.Input<String> dataset;
   /// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
   final pulumi.Input<String> destinationConf;
@@ -99,14 +99,14 @@ class GetLogpushJobsResult {
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
       frequency: pulumi.Input.fromValue(map['frequency'] as String),
-      id: pulumi.Input.fromValue((map['id'] as num).toInt()),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       lastComplete: pulumi.Input.fromValue(map['lastComplete'] as String),
       lastError: pulumi.Input.fromValue(map['lastError'] as String),
       logpullOptions: pulumi.Input.fromValue(map['logpullOptions'] as String),
-      maxUploadBytes: pulumi.Input.fromValue((map['maxUploadBytes'] as num).toInt()),
-      maxUploadIntervalSeconds: pulumi.Input.fromValue((map['maxUploadIntervalSeconds'] as num).toInt()),
-      maxUploadRecords: pulumi.Input.fromValue((map['maxUploadRecords'] as num).toInt()),
+      maxUploadBytes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxUploadBytes'])),
+      maxUploadIntervalSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxUploadIntervalSeconds'])),
+      maxUploadRecords: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxUploadRecords'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       outputOptions: pulumi.Input.fromValue(GetLogpushJobsResultOutputOptions.fromMap((map['outputOptions']! as Map).cast<String, dynamic>())),
     );

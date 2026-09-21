@@ -183,7 +183,7 @@ class HostnameTlsSetting extends pulumi.CustomResource {
           'cloudflare:index/hostnameTlsSetting:HostnameTlsSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     hostname = registerOutput<String>('hostname');

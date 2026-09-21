@@ -144,6 +144,8 @@ import 'content_scanning_expression_state.dart';
 /// &gt; This resource does not currently support `pulumi import`.
 class ContentScanningExpression extends pulumi.CustomResource {
   late final pulumi.Output<List<ContentScanningExpressionBody>> bodies;
+  /// Defines the custom content extraction expression used to reach content objects in the request.
+  late final pulumi.Output<String?> payload;
   /// Defines an identifier.
   late final pulumi.Output<String> zoneId;
 
@@ -159,9 +161,10 @@ class ContentScanningExpression extends pulumi.CustomResource {
           'cloudflare:index/contentScanningExpression:ContentScanningExpression',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     bodies = registerOutput<List<ContentScanningExpressionBody>>('bodies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContentScanningExpressionBody>(guardedValue, (value) => ContentScanningExpressionBody.fromMap((value as Map).cast<String, dynamic>())); });
+    payload = registerOutput<String?>('payload');
     zoneId = registerOutput<String>('zoneId');
   }
 
@@ -190,6 +193,7 @@ class ContentScanningExpression extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bodies = registerOutput<List<ContentScanningExpressionBody>>('bodies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContentScanningExpressionBody>(guardedValue, (value) => ContentScanningExpressionBody.fromMap((value as Map).cast<String, dynamic>())); });
+    payload = registerOutput<String?>('payload');
     zoneId = registerOutput<String>('zoneId');
   }
 
@@ -203,6 +207,7 @@ class ContentScanningExpression extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     bodies = registerOutput<List<ContentScanningExpressionBody>>('bodies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContentScanningExpressionBody>(guardedValue, (value) => ContentScanningExpressionBody.fromMap((value as Map).cast<String, dynamic>())); });
+    payload = registerOutput<String?>('payload');
     zoneId = registerOutput<String>('zoneId');
   }
 }

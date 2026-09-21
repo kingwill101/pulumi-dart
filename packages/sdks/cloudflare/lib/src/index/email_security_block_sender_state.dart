@@ -12,16 +12,13 @@ class EmailSecurityBlockSenderState {
   /// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
   final pulumi.Input<String?>? lastModified;
   final pulumi.Input<String?>? modifiedAt;
-  /// The pattern value to match against. Format depends on `patternType`:
-  /// - EMAIL: a valid email address, e.g. `user@example.com`
-  /// - DOMAIN: a valid domain name, e.g. `example.com`
-  /// - IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.
+  /// The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
   final pulumi.Input<String?>? pattern;
   /// Type of pattern matching.
   /// - EMAIL: matches a full email address (e.g. `user@example.com`)
   /// - DOMAIN: matches a domain name (e.g. `example.com`)
-  /// - IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.
-  /// - UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.
+  /// - IP: matches a plain IPv4 or IPv6 address (e.g. `1.2.3.4` or `2606:4700:4700::1111`) or CIDR block (e.g. `1.2.3.0/24` or `2606:4700:4700::/48`). The API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
+  /// - UNKNOWN: deprecated; you cannot use this when creating or updating policies, but it may appear on existing entries.
   /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
   final pulumi.Input<String?>? patternType;
 
@@ -32,7 +29,7 @@ class EmailSecurityBlockSenderState {
   /// [isRegex] Optional.
   /// [lastModified] Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
   /// [modifiedAt] Optional.
-  /// [pattern] The pattern value to match against. Format depends on `patternType`:
+  /// [pattern] The pattern value to match. The format depends on `patternType`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents.
   /// [patternType] Type of pattern matching.
   const EmailSecurityBlockSenderState({
     this.accountId,

@@ -54,7 +54,7 @@ class GetAiSearchInstancesInvokeResult {
   factory GetAiSearchInstancesInvokeResult.fromMap(Map<String, dynamic> map) {
     return GetAiSearchInstancesInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return guardedValue as String; })(),
       orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       orderByDirection: (() { final guardedValue = map['orderByDirection']; if (guardedValue == null) return null; return guardedValue as String; })(),

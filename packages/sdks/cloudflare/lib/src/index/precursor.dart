@@ -189,7 +189,7 @@ class Precursor extends pulumi.CustomResource {
           'cloudflare:index/precursor:Precursor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     defaultMode = registerOutput<String>('defaultMode');
     enforcementRules = registerOutput<List<PrecursorEnforcementRule>>('enforcementRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrecursorEnforcementRule>(guardedValue, (value) => PrecursorEnforcementRule.fromMap((value as Map).cast<String, dynamic>())); });

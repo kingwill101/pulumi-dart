@@ -101,7 +101,7 @@ class GetCertificatePacksResult {
       validationErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCertificatePacksResultValidationError>(map['validationErrors']!, (value) => GetCertificatePacksResultValidationError.fromMap((value as Map).cast<String, dynamic>()))),
       validationMethod: pulumi.Input.fromValue(map['validationMethod'] as String),
       validationRecords: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCertificatePacksResultValidationRecord>(map['validationRecords']!, (value) => GetCertificatePacksResultValidationRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      validityDays: pulumi.Input.fromValue((map['validityDays'] as num).toInt()),
+      validityDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['validityDays'])),
     );
   }
 }

@@ -35,7 +35,7 @@ class ZeroTrustGatewayCertificateArgs {
     return ZeroTrustGatewayCertificateArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       activate: (() { final guardedValue = map['activate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      validityPeriodDays: (() { final guardedValue = map['validityPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      validityPeriodDays: (() { final guardedValue = map['validityPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -7,30 +7,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_email_routing_dns_get_email_routing_dns_args_doc}
 class GetEmailRoutingDnsArgs {
-  /// Domain of your zone.
+  /// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
   final pulumi.Input<String?>? subdomain;
   /// Identifier.
-  final pulumi.Input<String?>? zoneId;
+  final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetEmailRoutingDnsArgs].
-  /// [subdomain] Domain of your zone.
+  /// [subdomain] Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
   /// [zoneId] Identifier.
   const GetEmailRoutingDnsArgs({
     this.subdomain,
-    this.zoneId,
+    required this.zoneId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'subdomain': ?subdomain,
-      'zoneId': ?zoneId,
+      'zoneId': zoneId,
     };
   }
 
   factory GetEmailRoutingDnsArgs.fromMap(Map<String, dynamic> map) {
     return GetEmailRoutingDnsArgs(
       subdomain: (() { final guardedValue = map['subdomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }
 }

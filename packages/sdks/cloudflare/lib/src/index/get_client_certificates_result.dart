@@ -124,7 +124,7 @@ class GetClientCertificatesResult {
       ski: pulumi.Input.fromValue(map['ski'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      validityDays: pulumi.Input.fromValue((map['validityDays'] as num).toInt()),
+      validityDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['validityDays'])),
     );
   }
 }

@@ -55,7 +55,7 @@ class HyperdriveConfigArgs {
       mtls: (() { final guardedValue = map['mtls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HyperdriveConfigMtls.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       origin: pulumi.Input.fromValue(HyperdriveConfigOrigin.fromMap((map['origin']! as Map).cast<String, dynamic>())),
-      originConnectionLimit: (() { final guardedValue = map['originConnectionLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      originConnectionLimit: (() { final guardedValue = map['originConnectionLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -14,9 +14,11 @@ class PipelineSinkArgs {
   final pulumi.Input<String> accountId;
   /// Defines the configuration of the R2 Sink.
   final pulumi.Input<PipelineSinkConfig?>? config;
+  /// Defines the output data format of a sink.
   final pulumi.Input<PipelineSinkFormat?>? format;
   /// Defines the name of the Sink.
   final pulumi.Input<String> name;
+  /// Defines the schema of the events in the data stream.
   final pulumi.Input<PipelineSinkSchema?>? schema;
   /// Specifies the type of sink.
   /// Available values: "r2", "r2*data*catalog".
@@ -25,9 +27,9 @@ class PipelineSinkArgs {
   /// Creates a new [PipelineSinkArgs].
   /// [accountId] Specifies the public ID of the account.
   /// [config] Defines the configuration of the R2 Sink.
-  /// [format] Optional.
+  /// [format] Defines the output data format of a sink.
   /// [name] Defines the name of the Sink.
-  /// [schema] Optional.
+  /// [schema] Defines the schema of the events in the data stream.
   /// [type] Specifies the type of sink.
   const PipelineSinkArgs({
     required this.accountId,

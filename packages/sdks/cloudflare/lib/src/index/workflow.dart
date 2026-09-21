@@ -1,7 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workflow_args.dart';
+import 'workflow_concurrency.dart';
 import 'workflow_default_retention.dart';
-import 'workflow_instances.dart';
 import 'workflow_limits.dart';
 import 'workflow_schedule.dart';
 import 'workflow_state.dart';
@@ -24,6 +24,9 @@ import 'workflow_state.dart';
 ///     workflowName: "x",
 ///     className: "x",
 ///     scriptName: "x",
+///     concurrency: {
+///         limit: 1,
+///     },
 ///     defaultRetention: {
 ///         errorRetention: "5 minutes",
 ///         successRetention: "5 minutes",
@@ -45,6 +48,9 @@ import 'workflow_state.dart';
 ///     workflow_name="x",
 ///     class_name="x",
 ///     script_name="x",
+///     concurrency={
+///         "limit": 1,
+///     },
 ///     default_retention={
 ///         "error_retention": "5 minutes",
 ///         "success_retention": "5 minutes",
@@ -70,6 +76,10 @@ import 'workflow_state.dart';
 ///         WorkflowName = "x",
 ///         ClassName = "x",
 ///         ScriptName = "x",
+///         Concurrency = new Cloudflare.Inputs.WorkflowConcurrencyArgs
+///         {
+///             Limit = 1,
+///         },
 ///         DefaultRetention = new Cloudflare.Inputs.WorkflowDefaultRetentionArgs
 ///         {
 ///             ErrorRetention = "5 minutes",
@@ -105,6 +115,9 @@ import 'workflow_state.dart';
 /// 			WorkflowName: pulumi.String("x"),
 /// 			ClassName:    pulumi.String("x"),
 /// 			ScriptName:   pulumi.String("x"),
+/// 			Concurrency: &cloudflare.WorkflowConcurrencyArgs{
+/// 				Limit: pulumi.Int(1),
+/// 			},
 /// 			DefaultRetention: &cloudflare.WorkflowDefaultRetentionArgs{
 /// 				ErrorRetention:   pulumi.Any("5 minutes"),
 /// 				SuccessRetention: pulumi.Any("5 minutes"),
@@ -139,6 +152,9 @@ import 'workflow_state.dart';
 ///   workflow_name = "x"
 ///   class_name    = "x"
 ///   script_name   = "x"
+///   concurrency = {
+///     limit = 1
+///   }
 ///   default_retention = {
 ///     error_retention   = "5 minutes"
 ///     success_retention = "5 minutes"
@@ -159,6 +175,7 @@ import 'workflow_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.cloudflare.Workflow;
 /// import com.pulumi.cloudflare.WorkflowArgs;
+/// import com.pulumi.cloudflare.inputs.WorkflowConcurrencyArgs;
 /// import com.pulumi.cloudflare.inputs.WorkflowDefaultRetentionArgs;
 /// import com.pulumi.cloudflare.inputs.WorkflowLimitsArgs;
 /// import com.pulumi.cloudflare.inputs.WorkflowScheduleArgs;
@@ -180,6 +197,9 @@ import 'workflow_state.dart';
 ///             .workflowName("x")
 ///             .className("x")
 ///             .scriptName("x")
+///             .concurrency(WorkflowConcurrencyArgs.builder()
+///                 .limit(1)
+///                 .build())
 ///             .defaultRetention(WorkflowDefaultRetentionArgs.builder()
 ///                 .errorRetention("5 minutes")
 ///                 .successRetention("5 minutes")
@@ -205,6 +225,8 @@ import 'workflow_state.dart';
 ///       workflowName: x
 ///       className: x
 ///       scriptName: x
+///       concurrency:
+///         limit: 1
 ///       defaultRetention:
 ///         errorRetention: 5 minutes
 ///         successRetention: 5 minutes
@@ -223,10 +245,11 @@ import 'workflow_state.dart';
 class Workflow extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   late final pulumi.Output<String> className;
+  late final pulumi.Output<WorkflowConcurrency?> concurrency;
   late final pulumi.Output<String> createdOn;
   /// Default retention applied to instances of this version when they do not set their own retention.
   late final pulumi.Output<WorkflowDefaultRetention?> defaultRetention;
-  late final pulumi.Output<WorkflowInstances> instances;
+  late final pulumi.Output<Map<String, double>> instances;
   late final pulumi.Output<double> isDeleted;
   late final pulumi.Output<WorkflowLimits?> limits;
   late final pulumi.Output<String> modifiedOn;
@@ -250,13 +273,14 @@ class Workflow extends pulumi.CustomResource {
           'cloudflare:index/workflow:Workflow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     className = registerOutput<String>('className');
+    concurrency = registerOutput<WorkflowConcurrency?>('concurrency', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowConcurrency.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdOn = registerOutput<String>('createdOn');
     defaultRetention = registerOutput<WorkflowDefaultRetention?>('defaultRetention', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowDefaultRetention.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    instances = registerOutput<WorkflowInstances>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowInstances.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instances = registerOutput<Map<String, double>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, double>(); });
     isDeleted = registerOutput<double>('isDeleted');
     limits = registerOutput<WorkflowLimits?>('limits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     modifiedOn = registerOutput<String>('modifiedOn');
@@ -295,9 +319,10 @@ class Workflow extends pulumi.CustomResource {
         ) {
     accountId = registerOutput<String>('accountId');
     className = registerOutput<String>('className');
+    concurrency = registerOutput<WorkflowConcurrency?>('concurrency', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowConcurrency.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdOn = registerOutput<String>('createdOn');
     defaultRetention = registerOutput<WorkflowDefaultRetention?>('defaultRetention', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowDefaultRetention.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    instances = registerOutput<WorkflowInstances>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowInstances.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instances = registerOutput<Map<String, double>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, double>(); });
     isDeleted = registerOutput<double>('isDeleted');
     limits = registerOutput<WorkflowLimits?>('limits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     modifiedOn = registerOutput<String>('modifiedOn');
@@ -321,9 +346,10 @@ class Workflow extends pulumi.CustomResource {
       ) {
     accountId = registerOutput<String>('accountId');
     className = registerOutput<String>('className');
+    concurrency = registerOutput<WorkflowConcurrency?>('concurrency', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowConcurrency.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdOn = registerOutput<String>('createdOn');
     defaultRetention = registerOutput<WorkflowDefaultRetention?>('defaultRetention', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowDefaultRetention.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    instances = registerOutput<WorkflowInstances>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowInstances.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instances = registerOutput<Map<String, double>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, double>(); });
     isDeleted = registerOutput<double>('isDeleted');
     limits = registerOutput<WorkflowLimits?>('limits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     modifiedOn = registerOutput<String>('modifiedOn');

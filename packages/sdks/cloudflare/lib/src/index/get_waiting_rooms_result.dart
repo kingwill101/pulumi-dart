@@ -15,7 +15,7 @@ class GetWaitingRoomsResult {
   /// Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom*page*html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:
   final pulumi.Input<String> customPageHtml;
   /// The language of the default page template. If no defaultTemplateLanguage is provided, then `en-US` (English) will be used.
-  /// Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "lv-LV", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
+  /// Available values: "en-US", "es-ES", "de-DE", "fr-FR", "it-IT", "ja-JP", "ko-KR", "pt-BR", "zh-CN", "zh-TW", "nl-NL", "pl-PL", "id-ID", "tr-TR", "ar-EG", "ru-RU", "fa-IR", "bg-BG", "hr-HR", "cs-CZ", "da-DK", "fi-FI", "lt-LT", "ms-MY", "nb-NO", "ro-RO", "el-GR", "he-IL", "hi-IN", "hu-HU", "sr-BA", "sk-SK", "sl-SI", "sv-SE", "tl-PH", "th-TH", "uk-UA", "vi-VN".
   final pulumi.Input<String> defaultTemplateLanguage;
   /// A note that you can use to add more details about the waiting room.
   final pulumi.Input<String> description;
@@ -265,16 +265,16 @@ class GetWaitingRoomsResult {
       jsonResponseEnabled: pulumi.Input.fromValue(map['jsonResponseEnabled'] as bool),
       modifiedOn: pulumi.Input.fromValue(map['modifiedOn'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      newUsersPerMinute: pulumi.Input.fromValue((map['newUsersPerMinute'] as num).toInt()),
+      newUsersPerMinute: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['newUsersPerMinute'])),
       nextEventPrequeueStartTime: pulumi.Input.fromValue(map['nextEventPrequeueStartTime'] as String),
       nextEventStartTime: pulumi.Input.fromValue(map['nextEventStartTime'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
       queueAll: pulumi.Input.fromValue(map['queueAll'] as bool),
       queueingMethod: pulumi.Input.fromValue(map['queueingMethod'] as String),
-      queueingStatusCode: pulumi.Input.fromValue((map['queueingStatusCode'] as num).toInt()),
-      sessionDuration: pulumi.Input.fromValue((map['sessionDuration'] as num).toInt()),
+      queueingStatusCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['queueingStatusCode'])),
+      sessionDuration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sessionDuration'])),
       suspended: pulumi.Input.fromValue(map['suspended'] as bool),
-      totalActiveUsers: pulumi.Input.fromValue((map['totalActiveUsers'] as num).toInt()),
+      totalActiveUsers: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalActiveUsers'])),
       turnstileAction: pulumi.Input.fromValue(map['turnstileAction'] as String),
       turnstileMode: pulumi.Input.fromValue(map['turnstileMode'] as String),
     );

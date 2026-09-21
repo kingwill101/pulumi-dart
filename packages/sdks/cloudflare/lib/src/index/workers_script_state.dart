@@ -6,6 +6,7 @@ import 'workers_script_assets.dart';
 import 'workers_script_binding.dart';
 import 'workers_script_cache_options.dart';
 import 'workers_script_exports.dart';
+import 'workers_script_files.dart';
 import 'workers_script_limits.dart';
 import 'workers_script_migrations.dart';
 import 'workers_script_named_handler.dart';
@@ -49,6 +50,8 @@ class WorkersScriptState {
   final pulumi.Input<String?>? etag;
   /// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
   final pulumi.Input<Map<String, WorkersScriptExports>?>? exports;
+  /// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+  final pulumi.Input<Map<String, WorkersScriptFiles>?>? files;
   /// The names of handlers exported as part of the default export.
   final pulumi.Input<List<String>?>? handlers;
   /// Whether a Worker contains assets.
@@ -110,6 +113,7 @@ class WorkersScriptState {
   /// [createdOn] When the script was created.
   /// [etag] Hashed script content, can be used in a If-None-Match header when updating.
   /// [exports] Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+  /// [files] Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
   /// [handlers] The names of handlers exported as part of the default export.
   /// [hasAssets] Whether a Worker contains assets.
   /// [hasModules] Whether a Worker contains modules.
@@ -148,6 +152,7 @@ class WorkersScriptState {
     this.createdOn,
     this.etag,
     this.exports,
+    this.files,
     this.handlers,
     this.hasAssets,
     this.hasModules,
@@ -189,6 +194,7 @@ class WorkersScriptState {
       'createdOn': ?createdOn,
       'etag': ?etag,
       'exports': ?pulumi.Input.mapOptionalInputValue<Map<String, WorkersScriptExports>, Map<String, Map<String, dynamic>>>(exports, (value) => pulumi.Input.encodeMapValues<WorkersScriptExports, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'files': ?pulumi.Input.mapOptionalInputValue<Map<String, WorkersScriptFiles>, Map<String, Map<String, dynamic>>>(files, (value) => pulumi.Input.encodeMapValues<WorkersScriptFiles, Map<String, dynamic>>(value, (value) => value.toMap())),
       'handlers': ?handlers,
       'hasAssets': ?hasAssets,
       'hasModules': ?hasModules,
@@ -231,6 +237,7 @@ class WorkersScriptState {
       createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exports: (() { final guardedValue = map['exports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<WorkersScriptExports>(guardedValue, (value) => WorkersScriptExports.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      files: (() { final guardedValue = map['files']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<WorkersScriptFiles>(guardedValue, (value) => WorkersScriptFiles.fromMap((value as Map).cast<String, dynamic>()))); })(),
       handlers: (() { final guardedValue = map['handlers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       hasAssets: (() { final guardedValue = map['hasAssets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       hasModules: (() { final guardedValue = map['hasModules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -250,7 +257,7 @@ class WorkersScriptState {
       placementMode: (() { final guardedValue = map['placementMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       placementStatus: (() { final guardedValue = map['placementStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scriptName: (() { final guardedValue = map['scriptName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      startupTimeMs: (() { final guardedValue = map['startupTimeMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      startupTimeMs: (() { final guardedValue = map['startupTimeMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tailConsumers: (() { final guardedValue = map['tailConsumers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkersScriptTailConsumer>(guardedValue, (value) => WorkersScriptTailConsumer.fromMap((value as Map).cast<String, dynamic>()))); })(),
       usageModel: (() { final guardedValue = map['usageModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

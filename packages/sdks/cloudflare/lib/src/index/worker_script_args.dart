@@ -6,6 +6,7 @@ import 'worker_script_assets.dart';
 import 'worker_script_binding.dart';
 import 'worker_script_cache_options.dart';
 import 'worker_script_exports.dart';
+import 'worker_script_files.dart';
 import 'worker_script_limits.dart';
 import 'worker_script_migrations.dart';
 import 'worker_script_observability.dart';
@@ -47,6 +48,8 @@ class WorkerScriptArgs {
   final pulumi.Input<String?>? contentType;
   /// Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
   final pulumi.Input<Map<String, WorkerScriptExports>?>? exports;
+  /// Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
+  final pulumi.Input<Map<String, WorkerScriptFiles>?>? files;
   /// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
   final pulumi.Input<bool?>? keepAssets;
   /// List of binding types to keep from previous_upload.
@@ -87,6 +90,7 @@ class WorkerScriptArgs {
   /// [contentSha256] SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
   /// [contentType] Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
   /// [exports] Per-entrypoint export configuration. Keys are the export names; values describe the entrypoint's kind and per-entrypoint cache behavior.
+  /// [files] Additional modules and data files to include in the multipart Worker upload. Map keys are multipart part names referenced by binding `part` values and module imports.
   /// [keepAssets] Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keepAssets`.
   /// [keepBindings] List of binding types to keep from previous_upload.
   /// [limits] Limits to apply for this Worker.
@@ -113,6 +117,7 @@ class WorkerScriptArgs {
     this.contentSha256,
     this.contentType,
     this.exports,
+    this.files,
     this.keepAssets,
     this.keepBindings,
     this.limits,
@@ -142,6 +147,7 @@ class WorkerScriptArgs {
       'contentSha256': ?contentSha256,
       'contentType': ?contentType,
       'exports': ?pulumi.Input.mapOptionalInputValue<Map<String, WorkerScriptExports>, Map<String, Map<String, dynamic>>>(exports, (value) => pulumi.Input.encodeMapValues<WorkerScriptExports, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'files': ?pulumi.Input.mapOptionalInputValue<Map<String, WorkerScriptFiles>, Map<String, Map<String, dynamic>>>(files, (value) => pulumi.Input.encodeMapValues<WorkerScriptFiles, Map<String, dynamic>>(value, (value) => value.toMap())),
       'keepAssets': ?keepAssets,
       'keepBindings': ?keepBindings,
       'limits': ?pulumi.Input.mapOptionalInputValue<WorkerScriptLimits, Map<String, dynamic>>(limits, (value) => value.toMap()),
@@ -172,6 +178,7 @@ class WorkerScriptArgs {
       contentSha256: (() { final guardedValue = map['contentSha256']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exports: (() { final guardedValue = map['exports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<WorkerScriptExports>(guardedValue, (value) => WorkerScriptExports.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      files: (() { final guardedValue = map['files']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<WorkerScriptFiles>(guardedValue, (value) => WorkerScriptFiles.fromMap((value as Map).cast<String, dynamic>()))); })(),
       keepAssets: (() { final guardedValue = map['keepAssets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       keepBindings: (() { final guardedValue = map['keepBindings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       limits: (() { final guardedValue = map['limits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerScriptLimits.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -50,7 +50,7 @@ import 'worker_version_state.dart';
 ///         enabled: true,
 ///         crossVersionCache: true,
 ///     },
-///     compatibilityDate: "2021-01-01",
+///     compatibilityDate: "2021-01-01T00:00:00Z",
 ///     compatibilityFlags: ["nodejs_compat"],
 ///     containers: [{
 ///         className: "MyDurableObject",
@@ -143,7 +143,7 @@ import 'worker_version_state.dart';
 ///         "enabled": True,
 ///         "cross_version_cache": True,
 ///     },
-///     compatibility_date="2021-01-01",
+///     compatibility_date="2021-01-01T00:00:00Z",
 ///     compatibility_flags=["nodejs_compat"],
 ///     containers=[{
 ///         "class_name": "MyDurableObject",
@@ -248,7 +248,7 @@ import 'worker_version_state.dart';
 ///             Enabled = true,
 ///             CrossVersionCache = true,
 ///         },
-///         CompatibilityDate = "2021-01-01",
+///         CompatibilityDate = "2021-01-01T00:00:00Z",
 ///         CompatibilityFlags = new[]
 ///         {
 ///             "nodejs_compat",
@@ -391,7 +391,7 @@ import 'worker_version_state.dart';
 /// 				Enabled:           pulumi.Bool(true),
 /// 				CrossVersionCache: pulumi.Bool(true),
 /// 			},
-/// 			CompatibilityDate: pulumi.String("2021-01-01"),
+/// 			CompatibilityDate: pulumi.String("2021-01-01T00:00:00Z"),
 /// 			CompatibilityFlags: pulumi.StringArray{
 /// 				pulumi.String("nodejs_compat"),
 /// 			},
@@ -513,7 +513,7 @@ import 'worker_version_state.dart';
 ///     enabled             = true
 ///     cross_version_cache = true
 ///   }
-///   compatibility_date  = "2021-01-01"
+///   compatibility_date  = "2021-01-01T00:00:00Z"
 ///   compatibility_flags = ["nodejs_compat"]
 ///   containers {
 ///     class_name = "MyDurableObject"
@@ -638,7 +638,7 @@ import 'worker_version_state.dart';
 ///                 .enabled(true)
 ///                 .crossVersionCache(true)
 ///                 .build())
-///             .compatibilityDate("2021-01-01")
+///             .compatibilityDate("2021-01-01T00:00:00Z")
 ///             .compatibilityFlags("nodejs_compat")
 ///             .containers(WorkerVersionContainerArgs.builder()
 ///                 .className("MyDurableObject")
@@ -730,7 +730,7 @@ import 'worker_version_state.dart';
 ///       cacheOptions:
 ///         enabled: true
 ///         crossVersionCache: true
-///       compatibilityDate: 2021-01-01
+///       compatibilityDate: 2021-01-01T00:00:00Z
 ///       compatibilityFlags:
 ///         - nodejs_compat
 ///       containers:
@@ -869,7 +869,7 @@ class WorkerVersion extends pulumi.CustomResource {
           'cloudflare:index/workerVersion:WorkerVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     annotations = registerOutput<WorkerVersionAnnotations>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>()); });

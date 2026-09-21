@@ -93,19 +93,19 @@ class ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequest {
     return ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequest(
       access: (() { final guardedValue = map['access']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccess.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       caPool: (() { final guardedValue = map['caPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      connectTimeout: (() { final guardedValue = map['connectTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      connectTimeout: (() { final guardedValue = map['connectTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       disableChunkedEncoding: (() { final guardedValue = map['disableChunkedEncoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       http2Origin: (() { final guardedValue = map['http2Origin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       httpHostHeader: (() { final guardedValue = map['httpHostHeader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      keepAliveConnections: (() { final guardedValue = map['keepAliveConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      keepAliveTimeout: (() { final guardedValue = map['keepAliveTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      keepAliveConnections: (() { final guardedValue = map['keepAliveConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      keepAliveTimeout: (() { final guardedValue = map['keepAliveTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       matchSnItoHost: (() { final guardedValue = map['matchSnItoHost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       noHappyEyeballs: (() { final guardedValue = map['noHappyEyeballs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       noTlsVerify: (() { final guardedValue = map['noTlsVerify']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       originServerName: (() { final guardedValue = map['originServerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       proxyType: (() { final guardedValue = map['proxyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tcpKeepAlive: (() { final guardedValue = map['tcpKeepAlive']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      tlsTimeout: (() { final guardedValue = map['tlsTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tcpKeepAlive: (() { final guardedValue = map['tcpKeepAlive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      tlsTimeout: (() { final guardedValue = map['tlsTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -20,7 +20,7 @@ class PagesProjectDeploymentConfigsProductionLimits {
 
   factory PagesProjectDeploymentConfigsProductionLimits.fromMap(Map<String, dynamic> map) {
     return PagesProjectDeploymentConfigsProductionLimits(
-      cpuMs: pulumi.Input.fromValue((map['cpuMs'] as num).toInt()),
+      cpuMs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpuMs'])),
     );
   }
 }

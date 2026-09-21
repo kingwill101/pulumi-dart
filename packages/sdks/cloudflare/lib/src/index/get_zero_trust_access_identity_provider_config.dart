@@ -35,12 +35,19 @@ class GetZeroTrustAccessIdentityProviderConfig {
   /// Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
   /// SAML assertions using the certificate from the assigned certificate set.
   final pulumi.Input<bool> enableEncryption;
+  /// Asks the IdP to reauthenticate the user for each SAML authentication request.
+  final pulumi.Input<bool> forceAuthn;
   /// Add a list of attribute names that will be returned in the response header from the Access callback.
   final pulumi.Input<List<GetZeroTrustAccessIdentityProviderConfigHeaderAttribute>> headerAttributes;
   /// X509 certificate to verify the signature in the SAML authentication response
   final pulumi.Input<List<String>> idpPublicCerts;
   /// IdP Entity ID or Issuer URL
   final pulumi.Input<String> issuerUrl;
+  /// The maximum URL length the IdP accepts for the SSO redirect URL.
+  /// When the constructed SSO URL would exceed this length, the RelayState
+  /// is stored server-side and a short nonce is passed to the IdP instead.
+  /// Set this if your IdP enforces a URL length limit.
+  final pulumi.Input<int> maxSsoUrlLength;
   /// Your okta account url
   final pulumi.Input<String> oktaAccount;
   /// Your OneLogin account url
@@ -82,9 +89,11 @@ class GetZeroTrustAccessIdentityProviderConfig {
   /// [emailAttributeName] The attribute name for email in the SAML response.
   /// [emailClaimName] The claim name for email in the idToken response.
   /// [enableEncryption] Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+  /// [forceAuthn] Asks the IdP to reauthenticate the user for each SAML authentication request.
   /// [headerAttributes] Add a list of attribute names that will be returned in the response header from the Access callback.
   /// [idpPublicCerts] X509 certificate to verify the signature in the SAML authentication response
   /// [issuerUrl] IdP Entity ID or Issuer URL
+  /// [maxSsoUrlLength] The maximum URL length the IdP accepts for the SSO redirect URL.
   /// [oktaAccount] Your okta account url
   /// [oneloginAccount] Your OneLogin account url
   /// [pingEnvId] Your PingOne environment identifier
@@ -113,9 +122,11 @@ class GetZeroTrustAccessIdentityProviderConfig {
     required this.emailAttributeName,
     required this.emailClaimName,
     required this.enableEncryption,
+    required this.forceAuthn,
     required this.headerAttributes,
     required this.idpPublicCerts,
     required this.issuerUrl,
+    required this.maxSsoUrlLength,
     required this.oktaAccount,
     required this.oneloginAccount,
     required this.pingEnvId,
@@ -147,9 +158,11 @@ class GetZeroTrustAccessIdentityProviderConfig {
       'emailAttributeName': emailAttributeName,
       'emailClaimName': emailClaimName,
       'enableEncryption': enableEncryption,
+      'forceAuthn': forceAuthn,
       'headerAttributes': pulumi.Input.mapInputValue<List<GetZeroTrustAccessIdentityProviderConfigHeaderAttribute>, List<Map<String, dynamic>>>(headerAttributes, (value) => pulumi.Input.encodeList<GetZeroTrustAccessIdentityProviderConfigHeaderAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'idpPublicCerts': idpPublicCerts,
       'issuerUrl': issuerUrl,
+      'maxSsoUrlLength': maxSsoUrlLength,
       'oktaAccount': oktaAccount,
       'oneloginAccount': oneloginAccount,
       'pingEnvId': pingEnvId,
@@ -182,9 +195,11 @@ class GetZeroTrustAccessIdentityProviderConfig {
       emailAttributeName: pulumi.Input.fromValue(map['emailAttributeName'] as String),
       emailClaimName: pulumi.Input.fromValue(map['emailClaimName'] as String),
       enableEncryption: pulumi.Input.fromValue(map['enableEncryption'] as bool),
+      forceAuthn: pulumi.Input.fromValue(map['forceAuthn'] as bool),
       headerAttributes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetZeroTrustAccessIdentityProviderConfigHeaderAttribute>(map['headerAttributes']!, (value) => GetZeroTrustAccessIdentityProviderConfigHeaderAttribute.fromMap((value as Map).cast<String, dynamic>()))),
       idpPublicCerts: pulumi.Input.fromValue((map['idpPublicCerts'] as List).cast<String>()),
       issuerUrl: pulumi.Input.fromValue(map['issuerUrl'] as String),
+      maxSsoUrlLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxSsoUrlLength'])),
       oktaAccount: pulumi.Input.fromValue(map['oktaAccount'] as String),
       oneloginAccount: pulumi.Input.fromValue(map['oneloginAccount'] as String),
       pingEnvId: pulumi.Input.fromValue(map['pingEnvId'] as String),

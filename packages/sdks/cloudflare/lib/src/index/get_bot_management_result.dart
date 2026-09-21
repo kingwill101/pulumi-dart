@@ -11,6 +11,8 @@ class GetBotManagementResult {
   final bool? autoUpdateModel;
   /// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
   final bool? bmCookieEnabled;
+  /// Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+  final bool? botPreferenceSyncEnabled;
   /// Specifies the Robots Access Control License variant to use.
   /// Available values: "off", "policyOnly".
   final String? cfRobotsVariant;
@@ -56,6 +58,7 @@ class GetBotManagementResult {
   /// [aiBotsProtection] Enable rule to block AI Scrapers and Crawlers.
   /// [autoUpdateModel] Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
   /// [bmCookieEnabled] Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+  /// [botPreferenceSyncEnabled] Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
   /// [cfRobotsVariant] Specifies the Robots Access Control License variant to use.
   /// [contentBotsProtection] Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
   /// [crawlerProtection] Enable rule to punish AI Scrapers and Crawlers via a link maze.
@@ -76,6 +79,7 @@ class GetBotManagementResult {
     this.aiBotsProtection,
     this.autoUpdateModel,
     this.bmCookieEnabled,
+    this.botPreferenceSyncEnabled,
     this.cfRobotsVariant,
     this.contentBotsProtection,
     this.crawlerProtection,
@@ -99,6 +103,7 @@ class GetBotManagementResult {
       'aiBotsProtection': ?aiBotsProtection,
       'autoUpdateModel': ?autoUpdateModel,
       'bmCookieEnabled': ?bmCookieEnabled,
+      'botPreferenceSyncEnabled': ?botPreferenceSyncEnabled,
       'cfRobotsVariant': ?cfRobotsVariant,
       'contentBotsProtection': ?contentBotsProtection,
       'crawlerProtection': ?crawlerProtection,
@@ -123,6 +128,7 @@ class GetBotManagementResult {
       aiBotsProtection: (() { final guardedValue = map['aiBotsProtection']; if (guardedValue == null) return null; return guardedValue as String; })(),
       autoUpdateModel: (() { final guardedValue = map['autoUpdateModel']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       bmCookieEnabled: (() { final guardedValue = map['bmCookieEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      botPreferenceSyncEnabled: (() { final guardedValue = map['botPreferenceSyncEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       cfRobotsVariant: (() { final guardedValue = map['cfRobotsVariant']; if (guardedValue == null) return null; return guardedValue as String; })(),
       contentBotsProtection: (() { final guardedValue = map['contentBotsProtection']; if (guardedValue == null) return null; return guardedValue as String; })(),
       crawlerProtection: (() { final guardedValue = map['crawlerProtection']; if (guardedValue == null) return null; return guardedValue as String; })(),

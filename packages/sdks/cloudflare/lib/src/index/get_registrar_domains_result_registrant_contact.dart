@@ -15,15 +15,15 @@ class GetRegistrarDomainsResultRegistrantContact {
   final pulumi.Input<String> email;
   /// Contact fax number.
   final pulumi.Input<String> fax;
-  /// User's first name
+  /// User's first name.
   final pulumi.Input<String> firstName;
   /// Contact Identifier.
   final pulumi.Input<String> id;
-  /// User's last name
+  /// User's last name.
   final pulumi.Input<String> lastName;
   /// Name of organization.
   final pulumi.Input<String> organization;
-  /// User's telephone number
+  /// User's telephone number.
   final pulumi.Input<String> phone;
   /// State.
   final pulumi.Input<String> state;
@@ -37,11 +37,11 @@ class GetRegistrarDomainsResultRegistrantContact {
   /// [country] The country in which the user lives.
   /// [email] The contact email address of the user.
   /// [fax] Contact fax number.
-  /// [firstName] User's first name
+  /// [firstName] User's first name.
   /// [id] Contact Identifier.
-  /// [lastName] User's last name
+  /// [lastName] User's last name.
   /// [organization] Name of organization.
-  /// [phone] User's telephone number
+  /// [phone] User's telephone number.
   /// [state] State.
   /// [zip] The zipcode or postal code where the user lives.
   const GetRegistrarDomainsResultRegistrantContact({

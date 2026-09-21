@@ -26,7 +26,7 @@ class GetRulesetRuleActionParametersCacheReserve {
   factory GetRulesetRuleActionParametersCacheReserve.fromMap(Map<String, dynamic> map) {
     return GetRulesetRuleActionParametersCacheReserve(
       eligible: pulumi.Input.fromValue(map['eligible'] as bool),
-      minimumFileSize: pulumi.Input.fromValue((map['minimumFileSize'] as num).toInt()),
+      minimumFileSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minimumFileSize'])),
     );
   }
 }

@@ -5,7 +5,6 @@ import 'get_magic_transit_connectors_result.dart';
 
 /// Result data returned by getMagicTransitConnectors.
 class GetMagicTransitConnectorsInvokeResult {
-  /// Account identifier
   final String? accountId;
   /// Filter connectors by device type.
   /// Available values: "MANAGED", "LICENSED".
@@ -16,7 +15,7 @@ class GetMagicTransitConnectorsInvokeResult {
   final List<GetMagicTransitConnectorsResult>? results;
 
   /// Creates a new [GetMagicTransitConnectorsInvokeResult].
-  /// [accountId] Account identifier
+  /// [accountId] Optional.
   /// [deviceType] Filter connectors by device type.
   /// [maxItems] Max items to fetch, default: 1000
   /// [results] The items returned by the data source
@@ -40,7 +39,7 @@ class GetMagicTransitConnectorsInvokeResult {
     return GetMagicTransitConnectorsInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deviceType: (() { final guardedValue = map['deviceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMagicTransitConnectorsResult>(guardedValue, (value) => GetMagicTransitConnectorsResult.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }

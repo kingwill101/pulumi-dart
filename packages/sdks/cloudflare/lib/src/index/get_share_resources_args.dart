@@ -12,7 +12,7 @@ class GetShareResourcesArgs {
   /// Max items to fetch, default: 1000
   final pulumi.Input<int?>? maxItems;
   /// Filter share resources by resource_type.
-  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
   final pulumi.Input<String?>? resourceType;
   /// Share identifier tag.
   final pulumi.Input<String> shareId;
@@ -47,7 +47,7 @@ class GetShareResourcesArgs {
   factory GetShareResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetShareResourcesArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       shareId: pulumi.Input.fromValue(map['shareId'] as String),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

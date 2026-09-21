@@ -53,7 +53,7 @@ import 'pages_project_state.dart';
 ///                 BROWSER: {},
 ///             },
 ///             buildImageMajorVersion: 3,
-///             compatibilityDate: "2025-01-01",
+///             compatibilityDate: "2025-01-01T00:00:00Z",
 ///             compatibilityFlags: ["url_standard"],
 ///             d1Databases: {
 ///                 D1_BINDING: {
@@ -135,7 +135,7 @@ import 'pages_project_state.dart';
 ///                 BROWSER: {},
 ///             },
 ///             buildImageMajorVersion: 3,
-///             compatibilityDate: "2025-01-01",
+///             compatibilityDate: "2025-01-01T00:00:00Z",
 ///             compatibilityFlags: ["url_standard"],
 ///             d1Databases: {
 ///                 D1_BINDING: {
@@ -255,7 +255,7 @@ import 'pages_project_state.dart';
 ///                 "BROWSER": {},
 ///             },
 ///             "build_image_major_version": 3,
-///             "compatibility_date": "2025-01-01",
+///             "compatibility_date": "2025-01-01T00:00:00Z",
 ///             "compatibility_flags": ["url_standard"],
 ///             "d1_databases": {
 ///                 "D1_BINDING": {
@@ -337,7 +337,7 @@ import 'pages_project_state.dart';
 ///                 "BROWSER": {},
 ///             },
 ///             "build_image_major_version": 3,
-///             "compatibility_date": "2025-01-01",
+///             "compatibility_date": "2025-01-01T00:00:00Z",
 ///             "compatibility_flags": ["url_standard"],
 ///             "d1_databases": {
 ///                 "D1_BINDING": {
@@ -469,7 +469,7 @@ import 'pages_project_state.dart';
 ///                     { "BROWSER", null },
 ///                 },
 ///                 BuildImageMajorVersion = 3,
-///                 CompatibilityDate = "2025-01-01",
+///                 CompatibilityDate = "2025-01-01T00:00:00Z",
 ///                 CompatibilityFlags = new[]
 ///                 {
 ///                     "url_standard",
@@ -582,7 +582,7 @@ import 'pages_project_state.dart';
 ///                     { "BROWSER", null },
 ///                 },
 ///                 BuildImageMajorVersion = 3,
-///                 CompatibilityDate = "2025-01-01",
+///                 CompatibilityDate = "2025-01-01T00:00:00Z",
 ///                 CompatibilityFlags = new[]
 ///                 {
 ///                     "url_standard",
@@ -749,7 +749,7 @@ import 'pages_project_state.dart';
 /// 						"BROWSER": &cloudflare.PagesProjectDeploymentConfigsPreviewBrowsersArgs{},
 /// 					},
 /// 					BuildImageMajorVersion: pulumi.Int(3),
-/// 					CompatibilityDate:      pulumi.String("2025-01-01"),
+/// 					CompatibilityDate:      pulumi.String("2025-01-01T00:00:00Z"),
 /// 					CompatibilityFlags: pulumi.StringArray{
 /// 						pulumi.String("url_standard"),
 /// 					},
@@ -833,7 +833,7 @@ import 'pages_project_state.dart';
 /// 						"BROWSER": &cloudflare.PagesProjectDeploymentConfigsProductionBrowsersArgs{},
 /// 					},
 /// 					BuildImageMajorVersion: pulumi.Int(3),
-/// 					CompatibilityDate:      pulumi.String("2025-01-01"),
+/// 					CompatibilityDate:      pulumi.String("2025-01-01T00:00:00Z"),
 /// 					CompatibilityFlags: pulumi.StringArray{
 /// 						pulumi.String("url_standard"),
 /// 					},
@@ -974,7 +974,7 @@ import 'pages_project_state.dart';
 ///         "BROWSER" = {}
 ///       }
 ///       build_image_major_version = 3
-///       compatibility_date        = "2025-01-01"
+///       compatibility_date        = "2025-01-01T00:00:00Z"
 ///       compatibility_flags       = ["url_standard"]
 ///       d1_databases = {
 ///         "D1_BINDING" = {
@@ -1056,7 +1056,7 @@ import 'pages_project_state.dart';
 ///         "BROWSER" = {}
 ///       }
 ///       build_image_major_version = 3
-///       compatibility_date        = "2025-01-01"
+///       compatibility_date        = "2025-01-01T00:00:00Z"
 ///       compatibility_flags       = ["url_standard"]
 ///       d1_databases = {
 ///         "D1_BINDING" = {
@@ -1224,7 +1224,7 @@ import 'pages_project_state.dart';
 ///                     .browsers(Map.of("BROWSER", PagesProjectDeploymentConfigsPreviewBrowsersArgs.builder()
 ///                         .build()))
 ///                     .buildImageMajorVersion(3)
-///                     .compatibilityDate("2025-01-01")
+///                     .compatibilityDate("2025-01-01T00:00:00Z")
 ///                     .compatibilityFlags("url_standard")
 ///                     .d1Databases(Map.of("D1_BINDING", PagesProjectDeploymentConfigsPreviewD1DatabasesArgs.builder()
 ///                         .id("445e2955-951a-43f8-a35b-a4d0c8138f63")
@@ -1281,7 +1281,7 @@ import 'pages_project_state.dart';
 ///                     .browsers(Map.of("BROWSER", PagesProjectDeploymentConfigsProductionBrowsersArgs.builder()
 ///                         .build()))
 ///                     .buildImageMajorVersion(3)
-///                     .compatibilityDate("2025-01-01")
+///                     .compatibilityDate("2025-01-01T00:00:00Z")
 ///                     .compatibilityFlags("url_standard")
 ///                     .d1Databases(Map.of("D1_BINDING", PagesProjectDeploymentConfigsProductionD1DatabasesArgs.builder()
 ///                         .id("445e2955-951a-43f8-a35b-a4d0c8138f63")
@@ -1379,7 +1379,7 @@ import 'pages_project_state.dart';
 ///           browsers:
 ///             BROWSER: {}
 ///           buildImageMajorVersion: 3
-///           compatibilityDate: 2025-01-01
+///           compatibilityDate: 2025-01-01T00:00:00Z
 ///           compatibilityFlags:
 ///             - url_standard
 ///           d1Databases:
@@ -1434,7 +1434,7 @@ import 'pages_project_state.dart';
 ///           browsers:
 ///             BROWSER: {}
 ///           buildImageMajorVersion: 3
-///           compatibilityDate: 2025-01-01
+///           compatibilityDate: 2025-01-01T00:00:00Z
 ///           compatibilityFlags:
 ///             - url_standard
 ///           d1Databases:
@@ -1555,7 +1555,7 @@ class PagesProject extends pulumi.CustomResource {
           'cloudflare:index/pagesProject:PagesProject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     buildConfig = registerOutput<PagesProjectBuildConfig>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PagesProjectBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

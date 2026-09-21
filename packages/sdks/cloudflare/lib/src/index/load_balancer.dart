@@ -1192,7 +1192,7 @@ class LoadBalancer extends pulumi.CustomResource {
           'cloudflare:index/loadBalancer:LoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     adaptiveRouting = registerOutput<LoadBalancerAdaptiveRouting>('adaptiveRouting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAdaptiveRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     countryPools = registerOutput<Map<String, List<String>>>('countryPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });

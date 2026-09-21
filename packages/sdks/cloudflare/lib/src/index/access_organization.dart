@@ -48,20 +48,20 @@ import 'access_organization_state.dart';
 ///         requiredAaguids: "2fc0579f-8113-47ea-b116-bb5a8db9202a",
 ///         sessionDuration: "24h",
 ///     },
-///     mfaRequiredForAllApps: false,
-///     mfaSshPivKeyRequirements: {
+///     mfaPivKeyRequirements: {
 ///         pinPolicy: "always",
 ///         requireFipsDevice: true,
-///         sshKeySizes: [
+///         sshKeySize: [
 ///             256,
 ///             2048,
 ///         ],
-///         sshKeyTypes: [
+///         sshKeyType: [
 ///             "ecdsa",
 ///             "rsa",
 ///         ],
 ///         touchPolicy: "always",
 ///     },
+///     mfaRequiredForAllApps: false,
 ///     name: "Widget Corps Internal Applications",
 ///     sessionDuration: "24h",
 ///     uiReadOnlyToggleReason: "Temporarily turn off the UI read only lock to make a change via the UI",
@@ -103,20 +103,20 @@ import 'access_organization_state.dart';
 ///         "required_aaguids": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
 ///         "session_duration": "24h",
 ///     },
-///     mfa_required_for_all_apps=False,
-///     mfa_ssh_piv_key_requirements={
-///         "pin_policy": "always",
-///         "require_fips_device": True,
-///         "ssh_key_sizes": [
+///     mfa_piv_key_requirements={
+///         "pinPolicy": "always",
+///         "requireFipsDevice": True,
+///         "sshKeySize": [
 ///             256,
 ///             2048,
 ///         ],
-///         "ssh_key_types": [
+///         "sshKeyType": [
 ///             "ecdsa",
 ///             "rsa",
 ///         ],
-///         "touch_policy": "always",
+///         "touchPolicy": "always",
 ///     },
+///     mfa_required_for_all_apps=False,
 ///     name="Widget Corps Internal Applications",
 ///     session_duration="24h",
 ///     ui_read_only_toggle_reason="Temporarily turn off the UI read only lock to make a change via the UI",
@@ -169,23 +169,23 @@ import 'access_organization_state.dart';
 ///             RequiredAaguids = "2fc0579f-8113-47ea-b116-bb5a8db9202a",
 ///             SessionDuration = "24h",
 ///         },
-///         MfaRequiredForAllApps = false,
-///         MfaSshPivKeyRequirements = new Cloudflare.Inputs.ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs
+///         MfaPivKeyRequirements =
 ///         {
-///             PinPolicy = "always",
-///             RequireFipsDevice = true,
-///             SshKeySizes = new[]
+///             { "pinPolicy", "always" },
+///             { "requireFipsDevice", true },
+///             { "sshKeySize", new[]
 ///             {
 ///                 256,
 ///                 2048,
-///             },
-///             SshKeyTypes = new[]
+///             } },
+///             { "sshKeyType", new[]
 ///             {
 ///                 "ecdsa",
 ///                 "rsa",
-///             },
-///             TouchPolicy = "always",
+///             } },
+///             { "touchPolicy", "always" },
 ///         },
+///         MfaRequiredForAllApps = false,
 ///         Name = "Widget Corps Internal Applications",
 ///         SessionDuration = "24h",
 ///         UiReadOnlyToggleReason = "Temporarily turn off the UI read only lock to make a change via the UI",
@@ -237,20 +237,20 @@ import 'access_organization_state.dart';
 /// 				RequiredAaguids:            pulumi.String("2fc0579f-8113-47ea-b116-bb5a8db9202a"),
 /// 				SessionDuration:            pulumi.String("24h"),
 /// 			},
-/// 			MfaRequiredForAllApps: pulumi.Bool(false),
-/// 			MfaSshPivKeyRequirements: &cloudflare.ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs{
-/// 				PinPolicy:         pulumi.String("always"),
-/// 				RequireFipsDevice: pulumi.Bool(true),
-/// 				SshKeySizes: pulumi.IntArray{
-/// 					pulumi.Int(256),
-/// 					pulumi.Int(2048),
+/// 			MfaPivKeyRequirements: map[string]interface{}{
+/// 				"pinPolicy":         "always",
+/// 				"requireFipsDevice": true,
+/// 				"sshKeySize": []int{
+/// 					256,
+/// 					2048,
 /// 				},
-/// 				SshKeyTypes: pulumi.StringArray{
-/// 					pulumi.String("ecdsa"),
-/// 					pulumi.String("rsa"),
+/// 				"sshKeyType": []string{
+/// 					"ecdsa",
+/// 					"rsa",
 /// 				},
-/// 				TouchPolicy: pulumi.String("always"),
+/// 				"touchPolicy": "always",
 /// 			},
+/// 			MfaRequiredForAllApps:          pulumi.Bool(false),
 /// 			Name:                           pulumi.String("Widget Corps Internal Applications"),
 /// 			SessionDuration:                pulumi.String("24h"),
 /// 			UiReadOnlyToggleReason:         pulumi.String("Temporarily turn off the UI read only lock to make a change via the UI"),
@@ -299,14 +299,14 @@ import 'access_organization_state.dart';
 ///     required_aaguids              = "2fc0579f-8113-47ea-b116-bb5a8db9202a"
 ///     session_duration              = "24h"
 ///   }
-///   mfa_required_for_all_apps = false
-///   mfa_ssh_piv_key_requirements = {
-///     pin_policy          = "always"
-///     require_fips_device = true
-///     ssh_key_sizes       = [256, 2048]
-///     ssh_key_types       = ["ecdsa", "rsa"]
-///     touch_policy        = "always"
+///   mfa_piv_key_requirements = {
+///     "pinPolicy"         = "always"
+///     "requireFipsDevice" = true
+///     "sshKeySize"        = [256, 2048]
+///     "sshKeyType"        = ["ecdsa", "rsa"]
+///     "touchPolicy"       = "always"
 ///   }
+///   mfa_required_for_all_apps          = false
 ///   name                               = "Widget Corps Internal Applications"
 ///   session_duration                   = "24h"
 ///   ui_read_only_toggle_reason         = "Temporarily turn off the UI read only lock to make a change via the UI"
@@ -326,7 +326,6 @@ import 'access_organization_state.dart';
 /// import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationCustomPagesArgs;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationLoginDesignArgs;
 /// import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaConfigArgs;
-/// import com.pulumi.cloudflare.inputs.ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -368,18 +367,18 @@ import 'access_organization_state.dart';
 ///                 .requiredAaguids("2fc0579f-8113-47ea-b116-bb5a8db9202a")
 ///                 .sessionDuration("24h")
 ///                 .build())
-///             .mfaRequiredForAllApps(false)
-///             .mfaSshPivKeyRequirements(ZeroTrustOrganizationMfaSshPivKeyRequirementsArgs.builder()
-///                 .pinPolicy("always")
-///                 .requireFipsDevice(true)
-///                 .sshKeySizes(
+///             .mfaPivKeyRequirements(Map.ofEntries(
+///                 Map.entry("pinPolicy", "always"),
+///                 Map.entry("requireFipsDevice", true),
+///                 Map.entry("sshKeySize", Arrays.asList(
 ///                     256,
-///                     2048)
-///                 .sshKeyTypes(
+///                     2048)),
+///                 Map.entry("sshKeyType", Arrays.asList(
 ///                     "ecdsa",
-///                     "rsa")
-///                 .touchPolicy("always")
-///                 .build())
+///                     "rsa")),
+///                 Map.entry("touchPolicy", "always")
+///             ))
+///             .mfaRequiredForAllApps(false)
 ///             .name("Widget Corps Internal Applications")
 ///             .sessionDuration("24h")
 ///             .uiReadOnlyToggleReason("Temporarily turn off the UI read only lock to make a change via the UI")
@@ -422,17 +421,17 @@ import 'access_organization_state.dart';
 ///         amrMatchingSessionDuration: 12h
 ///         requiredAaguids: 2fc0579f-8113-47ea-b116-bb5a8db9202a
 ///         sessionDuration: 24h
-///       mfaRequiredForAllApps: false
-///       mfaSshPivKeyRequirements:
+///       mfaPivKeyRequirements:
 ///         pinPolicy: always
 ///         requireFipsDevice: true
-///         sshKeySizes:
+///         sshKeySize:
 ///           - 256
 ///           - 2048
-///         sshKeyTypes:
+///         sshKeyType:
 ///           - ecdsa
 ///           - rsa
 ///         touchPolicy: always
+///       mfaRequiredForAllApps: false
 ///       name: Widget Corps Internal Applications
 ///       sessionDuration: 24h
 ///       uiReadOnlyToggleReason: Temporarily turn off the UI read only lock to make a change via the UI
@@ -497,7 +496,7 @@ class AccessOrganization extends pulumi.CustomResource {
           'cloudflare:index/accessOrganization:AccessOrganization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     allowAuthenticateViaWarp = registerOutput<bool>('allowAuthenticateViaWarp');

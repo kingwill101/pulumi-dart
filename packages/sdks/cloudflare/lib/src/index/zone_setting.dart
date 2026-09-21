@@ -44,7 +44,7 @@ import 'zone_setting_state.dart';
 /// | `imageResizing` | `"on"`, `"off"`, `"open"` | Image Transformations provides on-demand resizing, conversion and optimizatio... |
 /// | `ipGeolocation` | `"on"` / `"off"` | Enable IP Geolocation to have Cloudflare geolocate visitors to your website a... |
 /// | `ipv6` | `"on"` / `"off"` | Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.... |
-/// | `maxUpload` | Number (18 values) | Maximum size of an allowable upload. |
+/// | `maxUpload` | Number (26 values) | Maximum size of an allowable upload. |
 /// | `minTlsVersion` | `"1.0"`, `"1.1"`, `"1.2"`, `"1.3"` | Only accepts HTTPS requests that use at least the TLS protocol version specif... |
 /// | `mirage` | `"on"` / `"off"` | Automatically optimize image loading for website visitors on mobile devices. ... |
 /// | `nel` | Object | Enable Network Error Logging reporting on your zone. (Beta) |
@@ -55,6 +55,7 @@ import 'zone_setting_state.dart';
 /// | `originH2MaxStreams` | Number | Origin H2 Max Streams configures the max number of concurrent requests that C... |
 /// | `originMaxHttpVersion` | `"2"`, `"1"` | Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will... |
 /// | `polish` | `"off"`, `"lossless"`, `"lossy"` | Removes metadata and compresses your images for faster page load times. Basic... |
+/// | `preRender` | `"on"` / `"off"` | When enabled, Cloudflare serves pre-rendered HTML to eligible search and AI c... |
 /// | `prefetchPreload` | `"on"` / `"off"` | Cloudflare will prefetch any URLs that are included in the response headers. ... |
 /// | `privacyPass` | `"on"` / `"off"` | Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to... |
 /// | `proxyReadTimeout` | Number | Maximum time between two read operations from origin. |
@@ -1876,7 +1877,7 @@ class ZoneSetting extends pulumi.CustomResource {
           'cloudflare:index/zoneSetting:ZoneSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     editable = registerOutput<bool>('editable');
     enabled = registerOutput<bool>('enabled');

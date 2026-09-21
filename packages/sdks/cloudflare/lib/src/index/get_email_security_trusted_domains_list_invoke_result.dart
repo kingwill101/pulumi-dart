@@ -67,7 +67,7 @@ class GetEmailSecurityTrustedDomainsListInvokeResult {
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isRecent: (() { final guardedValue = map['isRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       isSimilarity: (() { final guardedValue = map['isSimilarity']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pattern: (() { final guardedValue = map['pattern']; if (guardedValue == null) return null; return guardedValue as String; })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetEmailSecurityTrustedDomainsListResult>(guardedValue, (value) => GetEmailSecurityTrustedDomainsListResult.fromMap((value as Map).cast<String, dynamic>())); })(),

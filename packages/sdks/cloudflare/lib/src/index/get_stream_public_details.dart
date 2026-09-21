@@ -37,7 +37,7 @@ class GetStreamPublicDetails {
     return GetStreamPublicDetails(
       channelLink: pulumi.Input.fromValue(map['channelLink'] as String),
       logo: pulumi.Input.fromValue(map['logo'] as String),
-      mediaId: pulumi.Input.fromValue((map['mediaId'] as num).toInt()),
+      mediaId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['mediaId'])),
       shareLink: pulumi.Input.fromValue(map['shareLink'] as String),
       title: pulumi.Input.fromValue(map['title'] as String),
     );

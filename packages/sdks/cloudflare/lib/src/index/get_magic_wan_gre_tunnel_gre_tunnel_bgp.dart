@@ -30,7 +30,7 @@ class GetMagicWanGreTunnelGreTunnelBgp {
 
   factory GetMagicWanGreTunnelGreTunnelBgp.fromMap(Map<String, dynamic> map) {
     return GetMagicWanGreTunnelGreTunnelBgp(
-      customerAsn: pulumi.Input.fromValue((map['customerAsn'] as num).toInt()),
+      customerAsn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['customerAsn'])),
       extraPrefixes: pulumi.Input.fromValue((map['extraPrefixes'] as List).cast<String>()),
       md5Key: pulumi.Input.fromValue(map['md5Key'] as String),
     );

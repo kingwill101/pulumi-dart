@@ -64,7 +64,7 @@ class AiGatewaySpendLimitsRule {
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<AiGatewaySpendLimitsRuleMetadata>(guardedValue, (value) => AiGatewaySpendLimitsRuleMetadata.fromMap((value as Map).cast<String, dynamic>()))); })(),
       model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiGatewaySpendLimitsRuleModel.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       technique: (() { final guardedValue = map['technique']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      window: pulumi.Input.fromValue((map['window'] as num).toInt()),
+      window: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['window'])),
     );
   }
 }

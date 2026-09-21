@@ -45,7 +45,7 @@ class GetTotalTlsResult {
       certificateAuthority: (() { final guardedValue = map['certificateAuthority']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      validityPeriod: (() { final guardedValue = map['validityPeriod']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      validityPeriod: (() { final guardedValue = map['validityPeriod']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
