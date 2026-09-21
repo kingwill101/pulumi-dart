@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_vpc_nat_gateway_get_vpc_nat_gateway_args_doc}
 class GetVpcNatGatewayArgs {
   /// The ID of VPC NAT Gateway.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of VPC NAT Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GetVpcNatGatewayArgs].
   /// [id] The ID of VPC NAT Gateway.

@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GenaiAgentDeployment {
   /// API Key value
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Name of the API Key
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Status of the Deployment
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Updated At timestamp for the Agent
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
   /// Url of the Deployment
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
   /// API Key value
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
   /// Visibility of the Deployment
-  final pulumi.Input<String>? visibility;
+  final pulumi.Input<String?>? visibility;
 
   /// Creates a new [GenaiAgentDeployment].
   /// [createdAt] API Key value

@@ -20,7 +20,7 @@ class GradientaiAgentKnowledgeBaseAttachment extends pulumi.CustomResource {
           'digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     agentUuid = registerOutput<String>('agentUuid');
     knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
@@ -31,11 +31,12 @@ class GradientaiAgentKnowledgeBaseAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GradientaiAgentKnowledgeBaseAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GradientaiAgentKnowledgeBaseAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -49,6 +50,19 @@ class GradientaiAgentKnowledgeBaseAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    agentUuid = registerOutput<String>('agentUuid');
+    knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
+  }
+
+  /// Creates a typed reference to an existing [GradientaiAgentKnowledgeBaseAttachment] resource.
+  GradientaiAgentKnowledgeBaseAttachment.reference(String urn)
+    : super(
+        'digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     agentUuid = registerOutput<String>('agentUuid');
     knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
   }

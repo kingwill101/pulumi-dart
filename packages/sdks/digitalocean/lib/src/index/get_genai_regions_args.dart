@@ -9,8 +9,8 @@ import 'get_genai_regions_sort.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_genai_regions_get_genai_regions_args_doc}
 class GetGenaiRegionsArgs {
-  final pulumi.Input<List<GetGenaiRegionsFilter>>? filters;
-  final pulumi.Input<List<GetGenaiRegionsSort>>? sorts;
+  final pulumi.Input<List<GetGenaiRegionsFilter>?>? filters;
+  final pulumi.Input<List<GetGenaiRegionsSort>?>? sorts;
 
   /// Creates a new [GetGenaiRegionsArgs].
   /// [filters] Optional.

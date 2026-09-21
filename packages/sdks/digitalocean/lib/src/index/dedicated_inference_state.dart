@@ -6,27 +6,27 @@ import 'dedicated_inference_model_deployment.dart';
 /// Input properties used for looking up and filtering DedicatedInference resources.
 class DedicatedInferenceState {
   /// The date and time when the dedicated inference endpoint was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Whether to enable a public HTTPS endpoint for the dedicated inference endpoint. Defaults to `false`. This field is immutable after creation and changing it forces a new resource.
-  final pulumi.Input<bool>? enablePublicEndpoint;
+  final pulumi.Input<bool?>? enablePublicEndpoint;
   /// A HuggingFace token for accessing gated models.
-  final pulumi.Input<String>? huggingFaceToken;
+  final pulumi.Input<String?>? huggingFaceToken;
   /// The list of model deployments to run on the dedicated inference endpoint. Each `modelDeployments` block supports:
-  final pulumi.Input<List<DedicatedInferenceModelDeployment>>? modelDeployments;
+  final pulumi.Input<List<DedicatedInferenceModelDeployment>?>? modelDeployments;
   /// A human-readable name for the dedicated inference endpoint.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The fully-qualified domain name of the private endpoint.
-  final pulumi.Input<String>? privateEndpointFqdn;
+  final pulumi.Input<String?>? privateEndpointFqdn;
   /// The fully-qualified domain name of the public endpoint, if enabled.
-  final pulumi.Input<String>? publicEndpointFqdn;
+  final pulumi.Input<String?>? publicEndpointFqdn;
   /// The region slug where the dedicated inference endpoint will be deployed. Changing this forces a new resource.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The current status of the dedicated inference endpoint.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The date and time when the dedicated inference endpoint was last updated.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
   /// The UUID of the VPC to deploy the dedicated inference endpoint into. Changing this forces a new resource.
-  final pulumi.Input<String>? vpcUuid;
+  final pulumi.Input<String?>? vpcUuid;
 
   /// Creates a new [DedicatedInferenceState].
   /// [createdAt] The date and time when the dedicated inference endpoint was created.

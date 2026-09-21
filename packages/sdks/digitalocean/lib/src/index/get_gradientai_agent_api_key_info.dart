@@ -6,15 +6,15 @@ class GetGradientaiAgentApiKeyInfo {
   /// API Key value
   final pulumi.Input<String> createdAt;
   /// Created By user ID for the API Key
-  final pulumi.Input<String>? createdBy;
+  final pulumi.Input<String?>? createdBy;
   /// Deleted At timestamp for the API Key
   final pulumi.Input<String> deletedAt;
   /// Name of the API Key
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Updated At timestamp for the API Key
-  final pulumi.Input<String>? secretKey;
+  final pulumi.Input<String?>? secretKey;
   /// API Key value
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [GetGradientaiAgentApiKeyInfo].
   /// [createdAt] API Key value

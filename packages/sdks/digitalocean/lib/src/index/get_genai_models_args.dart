@@ -9,8 +9,8 @@ import 'get_genai_models_sort.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_genai_models_get_genai_models_args_doc}
 class GetGenaiModelsArgs {
-  final pulumi.Input<List<GetGenaiModelsFilter>>? filters;
-  final pulumi.Input<List<GetGenaiModelsSort>>? sorts;
+  final pulumi.Input<List<GetGenaiModelsFilter>?>? filters;
+  final pulumi.Input<List<GetGenaiModelsSort>?>? sorts;
 
   /// Creates a new [GetGenaiModelsArgs].
   /// [filters] Optional.

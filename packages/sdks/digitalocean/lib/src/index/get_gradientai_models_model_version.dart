@@ -30,9 +30,9 @@ class GetGradientaiModelsModelVersion {
 
   factory GetGradientaiModelsModelVersion.fromMap(Map<String, dynamic> map) {
     return GetGradientaiModelsModelVersion(
-      major: pulumi.Input.fromValue(map['major'] as int),
-      minor: pulumi.Input.fromValue(map['minor'] as int),
-      patch: pulumi.Input.fromValue(map['patch'] as int),
+      major: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['major'])),
+      minor: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minor'])),
+      patch: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['patch'])),
     );
   }
 }

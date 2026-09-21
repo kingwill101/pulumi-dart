@@ -7,68 +7,68 @@ import 'database_cluster_storage_autoscale.dart';
 
 /// Input properties used for looking up and filtering DatabaseCluster resources.
 class DatabaseClusterState {
-  final pulumi.Input<DatabaseClusterBackupRestore>? backupRestore;
+  final pulumi.Input<DatabaseClusterBackupRestore?>? backupRestore;
   /// The uniform resource name of the database cluster.
-  final pulumi.Input<String>? clusterUrn;
+  final pulumi.Input<String?>? clusterUrn;
   /// Name of the cluster's default database.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
-  final pulumi.Input<String>? engine;
+  final pulumi.Input<String?>? engine;
   /// A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
-  final pulumi.Input<String>? evictionPolicy;
+  final pulumi.Input<String?>? evictionPolicy;
   /// Database cluster's hostname.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Defines when the automatic maintenance should be performed for the database cluster.
-  final pulumi.Input<List<DatabaseClusterMaintenanceWindow>>? maintenanceWindows;
+  final pulumi.Input<List<DatabaseClusterMaintenanceWindow>?>? maintenanceWindows;
   /// A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
-  final pulumi.Input<List<String>>? metricsEndpoints;
+  final pulumi.Input<List<String>?>? metricsEndpoints;
   /// The name of the database cluster.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
-  final pulumi.Input<int>? nodeCount;
+  final pulumi.Input<int?>? nodeCount;
   /// Password for the cluster's default user.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Network port that the database cluster is listening on.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Same as `host`, but only accessible from resources within the account and in the same region.
-  final pulumi.Input<String>? privateHost;
+  final pulumi.Input<String?>? privateHost;
   /// The ID of the VPC where the database cluster will be located.
-  final pulumi.Input<String>? privateNetworkUuid;
+  final pulumi.Input<String?>? privateNetworkUuid;
   /// Same as `uri`, but only accessible from resources within the account and in the same region.
-  final pulumi.Input<String>? privateUri;
+  final pulumi.Input<String?>? privateUri;
   /// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// DigitalOcean region where the cluster will reside.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<dynamic>? region;
   /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
-  final pulumi.Input<String>? size;
+  final pulumi.Input<dynamic>? size;
   /// A comma separated string specifying the  SQL modes for a MySQL cluster.
-  final pulumi.Input<String>? sqlMode;
+  final pulumi.Input<String?>? sqlMode;
   /// Storage autoscaling configuration for the database cluster.
-  final pulumi.Input<DatabaseClusterStorageAutoscale>? storageAutoscale;
+  final pulumi.Input<DatabaseClusterStorageAutoscale?>? storageAutoscale;
   /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
-  final pulumi.Input<String>? storageSizeMib;
+  final pulumi.Input<String?>? storageSizeMib;
   /// A list of tag names to be applied to the database cluster.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// Name of the OpenSearch dashboard db.
-  final pulumi.Input<String>? uiDatabase;
+  final pulumi.Input<String?>? uiDatabase;
   /// Hostname for the OpenSearch dashboard.
-  final pulumi.Input<String>? uiHost;
+  final pulumi.Input<String?>? uiHost;
   /// Password for the OpenSearch dashboard's default user.
-  final pulumi.Input<String>? uiPassword;
+  final pulumi.Input<String?>? uiPassword;
   /// Network port that the OpenSearch dashboard is listening on.
-  final pulumi.Input<int>? uiPort;
+  final pulumi.Input<int?>? uiPort;
   /// The full URI for connecting to the OpenSearch dashboard.
-  final pulumi.Input<String>? uiUri;
+  final pulumi.Input<String?>? uiUri;
   /// Username for OpenSearch dashboard's default user.
-  final pulumi.Input<String>? uiUser;
+  final pulumi.Input<String?>? uiUser;
   /// The full URI for connecting to the database cluster.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
   /// Username for the cluster's default user.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
   /// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
   /// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [DatabaseClusterState].
   /// [backupRestore] Optional.
@@ -183,15 +183,15 @@ class DatabaseClusterState {
       maintenanceWindows: (() { final guardedValue = map['maintenanceWindows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DatabaseClusterMaintenanceWindow>(guardedValue, (value) => DatabaseClusterMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))); })(),
       metricsEndpoints: (() { final guardedValue = map['metricsEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       privateHost: (() { final guardedValue = map['privateHost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateNetworkUuid: (() { final guardedValue = map['privateNetworkUuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateUri: (() { final guardedValue = map['privateUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sqlMode: (() { final guardedValue = map['sqlMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageAutoscale: (() { final guardedValue = map['storageAutoscale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseClusterStorageAutoscale.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       storageSizeMib: (() { final guardedValue = map['storageSizeMib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -199,7 +199,7 @@ class DatabaseClusterState {
       uiDatabase: (() { final guardedValue = map['uiDatabase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uiHost: (() { final guardedValue = map['uiHost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uiPassword: (() { final guardedValue = map['uiPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      uiPort: (() { final guardedValue = map['uiPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      uiPort: (() { final guardedValue = map['uiPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       uiUri: (() { final guardedValue = map['uiUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uiUser: (() { final guardedValue = map['uiUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

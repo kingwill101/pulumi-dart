@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering GenaiAgentRoute resources.
 class GenaiAgentRouteState {
   /// The UUID of the child agent.
-  final pulumi.Input<String>? childAgentUuid;
+  final pulumi.Input<String?>? childAgentUuid;
   /// if-case condition for the route.
-  final pulumi.Input<String>? ifCase;
+  final pulumi.Input<String?>? ifCase;
   /// The UUID of the parent agent.
-  final pulumi.Input<String>? parentAgentUuid;
-  final pulumi.Input<bool>? rollback;
+  final pulumi.Input<String?>? parentAgentUuid;
+  final pulumi.Input<bool?>? rollback;
   /// A name for the route.
-  final pulumi.Input<String>? routeName;
+  final pulumi.Input<String?>? routeName;
   /// The UUID of the linkage
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [GenaiAgentRouteState].
   /// [childAgentUuid] The UUID of the child agent.

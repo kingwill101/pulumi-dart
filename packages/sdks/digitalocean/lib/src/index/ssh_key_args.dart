@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_ssh_key_ssh_key_args_doc}
 class SshKeyArgs {
   /// The name of the SSH key for identification
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The public key. If this is a file, it
   /// can be read using the file interpolation function
   final pulumi.Input<String> publicKey;

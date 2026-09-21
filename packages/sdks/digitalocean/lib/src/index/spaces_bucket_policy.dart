@@ -429,7 +429,7 @@ class SpacesBucketPolicy extends pulumi.CustomResource {
           'digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     policy = registerOutput<String>('policy');
@@ -441,11 +441,12 @@ class SpacesBucketPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpacesBucketPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpacesBucketPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -459,6 +460,20 @@ class SpacesBucketPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [SpacesBucketPolicy] resource.
+  SpacesBucketPolicy.reference(String urn)
+    : super(
+        'digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

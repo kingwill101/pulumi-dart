@@ -9,8 +9,8 @@ import 'get_genai_knowledge_bases_sort.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_genai_knowledge_bases_get_genai_knowledge_bases_args_doc}
 class GetGenaiKnowledgeBasesArgs {
-  final pulumi.Input<List<GetGenaiKnowledgeBasesFilter>>? filters;
-  final pulumi.Input<List<GetGenaiKnowledgeBasesSort>>? sorts;
+  final pulumi.Input<List<GetGenaiKnowledgeBasesFilter>?>? filters;
+  final pulumi.Input<List<GetGenaiKnowledgeBasesSort>?>? sorts;
 
   /// Creates a new [GetGenaiKnowledgeBasesArgs].
   /// [filters] Optional.

@@ -18,53 +18,53 @@ import 'app_spec_service_termination.dart';
 
 class AppSpecService {
   /// Describes an alert policy for the component.
-  final pulumi.Input<List<AppSpecServiceAlert>>? alerts;
+  final pulumi.Input<List<AppSpecServiceAlert>?>? alerts;
   /// Configuration for automatically scaling this component based on metrics.
-  final pulumi.Input<AppSpecServiceAutoscaling>? autoscaling;
+  final pulumi.Input<AppSpecServiceAutoscaling?>? autoscaling;
   /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-  final pulumi.Input<AppSpecServiceBitbucket>? bitbucket;
+  final pulumi.Input<AppSpecServiceBitbucket?>? bitbucket;
   /// An optional build command to run while building this component from source.
-  final pulumi.Input<String>? buildCommand;
+  final pulumi.Input<String?>? buildCommand;
   /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-  final pulumi.Input<AppSpecServiceCors>? cors;
+  final pulumi.Input<AppSpecServiceCors?>? cors;
   /// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
-  final pulumi.Input<String>? dockerfilePath;
+  final pulumi.Input<String?>? dockerfilePath;
   /// An environment slug describing the type of this app.
-  final pulumi.Input<String>? environmentSlug;
+  final pulumi.Input<String?>? environmentSlug;
   /// Describes an environment variable made available to an app competent.
-  final pulumi.Input<List<AppSpecServiceEnv>>? envs;
+  final pulumi.Input<List<AppSpecServiceEnv>?>? envs;
   /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
-  final pulumi.Input<AppSpecServiceGit>? git;
+  final pulumi.Input<AppSpecServiceGit?>? git;
   /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-  final pulumi.Input<AppSpecServiceGithub>? github;
+  final pulumi.Input<AppSpecServiceGithub?>? github;
   /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-  final pulumi.Input<AppSpecServiceGitlab>? gitlab;
+  final pulumi.Input<AppSpecServiceGitlab?>? gitlab;
   /// A health check to determine the availability of this component.
-  final pulumi.Input<AppSpecServiceHealthCheck>? healthCheck;
+  final pulumi.Input<AppSpecServiceHealthCheck?>? healthCheck;
   /// The internal port on which this service's run command will listen.
-  final pulumi.Input<int>? httpPort;
+  final pulumi.Input<int?>? httpPort;
   /// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
-  final pulumi.Input<AppSpecServiceImage>? image;
+  final pulumi.Input<AppSpecServiceImage?>? image;
   /// The amount of instances that this component should be scaled to.
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
   /// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
-  final pulumi.Input<String>? instanceSizeSlug;
+  final pulumi.Input<String?>? instanceSizeSlug;
   /// A list of ports on which this service will listen for internal traffic.
-  final pulumi.Input<List<int>>? internalPorts;
+  final pulumi.Input<List<int>?>? internalPorts;
   /// A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
-  final pulumi.Input<AppSpecServiceLivenessHealthCheck>? livenessHealthCheck;
+  final pulumi.Input<AppSpecServiceLivenessHealthCheck?>? livenessHealthCheck;
   /// Describes a log forwarding destination.
-  final pulumi.Input<List<AppSpecServiceLogDestination>>? logDestinations;
+  final pulumi.Input<List<AppSpecServiceLogDestination>?>? logDestinations;
   /// The name of the component.
   final pulumi.Input<String> name;
   /// An HTTP paths that should be routed to this component.
-  final pulumi.Input<List<AppSpecServiceRoute>>? routes;
+  final pulumi.Input<List<AppSpecServiceRoute>?>? routes;
   /// An optional run command to override the component's default.
-  final pulumi.Input<String>? runCommand;
+  final pulumi.Input<String?>? runCommand;
   /// An optional path to the working directory to use for the build.
-  final pulumi.Input<String>? sourceDir;
+  final pulumi.Input<String?>? sourceDir;
   /// Contains a component's termination parameters.
-  final pulumi.Input<AppSpecServiceTermination>? termination;
+  final pulumi.Input<AppSpecServiceTermination?>? termination;
 
   /// Creates a new [AppSpecService].
   /// [alerts] Describes an alert policy for the component.
@@ -161,9 +161,9 @@ class AppSpecService {
       github: (() { final guardedValue = map['github']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppSpecServiceGithub.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       gitlab: (() { final guardedValue = map['gitlab']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppSpecServiceGitlab.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       healthCheck: (() { final guardedValue = map['healthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppSpecServiceHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      httpPort: (() { final guardedValue = map['httpPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      httpPort: (() { final guardedValue = map['httpPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppSpecServiceImage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceSizeSlug: (() { final guardedValue = map['instanceSizeSlug']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       internalPorts: (() { final guardedValue = map['internalPorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
       livenessHealthCheck: (() { final guardedValue = map['livenessHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppSpecServiceLivenessHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

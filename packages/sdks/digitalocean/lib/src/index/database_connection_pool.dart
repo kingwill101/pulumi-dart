@@ -253,19 +253,20 @@ class DatabaseConnectionPool extends pulumi.CustomResource {
           'digitalocean:index/databaseConnectionPool:DatabaseConnectionPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
+          additionalSecretOutputs: const ['password', 'privateUri', 'uri'],
         ) {
     clusterId = registerOutput<String>('clusterId');
     dbName = registerOutput<String>('dbName');
     host = registerOutput<String>('host');
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     port = registerOutput<int>('port');
     privateHost = registerOutput<String>('privateHost');
-    privateUri = registerOutput<String>('privateUri');
+    privateUri = registerOutput<String>('privateUri', isSecret: true);
     size = registerOutput<int>('size');
-    uri = registerOutput<String>('uri');
+    uri = registerOutput<String>('uri', isSecret: true);
     user = registerOutput<String?>('user');
   }
 
@@ -274,11 +275,12 @@ class DatabaseConnectionPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseConnectionPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseConnectionPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -297,12 +299,36 @@ class DatabaseConnectionPool extends pulumi.CustomResource {
     host = registerOutput<String>('host');
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     port = registerOutput<int>('port');
     privateHost = registerOutput<String>('privateHost');
-    privateUri = registerOutput<String>('privateUri');
+    privateUri = registerOutput<String>('privateUri', isSecret: true);
     size = registerOutput<int>('size');
-    uri = registerOutput<String>('uri');
+    uri = registerOutput<String>('uri', isSecret: true);
+    user = registerOutput<String?>('user');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseConnectionPool] resource.
+  DatabaseConnectionPool.reference(String urn)
+    : super(
+        'digitalocean:index/databaseConnectionPool:DatabaseConnectionPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password', 'privateUri', 'uri'],
+        isResourceReference: true,
+      ) {
+    clusterId = registerOutput<String>('clusterId');
+    dbName = registerOutput<String>('dbName');
+    host = registerOutput<String>('host');
+    mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password', isSecret: true);
+    port = registerOutput<int>('port');
+    privateHost = registerOutput<String>('privateHost');
+    privateUri = registerOutput<String>('privateUri', isSecret: true);
+    size = registerOutput<int>('size');
+    uri = registerOutput<String>('uri', isSecret: true);
     user = registerOutput<String?>('user');
   }
 }

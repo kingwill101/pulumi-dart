@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GenaiAgentChildAgentApiKeyInfo {
   /// API Key value
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Created By user ID for the API Key
-  final pulumi.Input<String>? createdBy;
+  final pulumi.Input<String?>? createdBy;
   /// Deleted At timestamp for the API Key
-  final pulumi.Input<String>? deletedAt;
+  final pulumi.Input<String?>? deletedAt;
   /// Name of the API Key
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Updated At timestamp for the API Key
-  final pulumi.Input<String>? secretKey;
+  final pulumi.Input<String?>? secretKey;
   /// API Key value
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [GenaiAgentChildAgentApiKeyInfo].
   /// [createdAt] API Key value

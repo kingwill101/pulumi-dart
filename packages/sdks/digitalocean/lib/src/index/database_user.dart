@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_user_args.dart';
+import 'database_user_setting.dart';
 import 'database_user_state.dart';
 
 /// Provides a DigitalOcean database user resource. When creating a new database cluster, a default admin user with name `doadmin` will be created. Then, this resource can be used to provide additional normal users inside the cluster.
@@ -755,7 +756,7 @@ class DatabaseUser extends pulumi.CustomResource {
   late final pulumi.Output<String> role;
   /// Contains optional settings for the user.
   /// The `settings` block is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> settings;
+  late final pulumi.Output<List<DatabaseUserSetting>?> settings;
 
   /// Creates a new [DatabaseUser].
   /// [name] The Pulumi resource name.
@@ -769,16 +770,17 @@ class DatabaseUser extends pulumi.CustomResource {
           'digitalocean:index/databaseUser:DatabaseUser',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
+          additionalSecretOutputs: const ['accessCert', 'accessKey', 'password'],
         ) {
-    accessCert = registerOutput<String>('accessCert');
-    accessKey = registerOutput<String>('accessKey');
+    accessCert = registerOutput<String>('accessCert', isSecret: true);
+    accessKey = registerOutput<String>('accessKey', isSecret: true);
     clusterId = registerOutput<String>('clusterId');
     mysqlAuthPlugin = registerOutput<String?>('mysqlAuthPlugin');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     role = registerOutput<String>('role');
-    settings = registerOutput<List<Map<String, dynamic>>?>('settings');
+    settings = registerOutput<List<DatabaseUserSetting>?>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseUserSetting>(guardedValue, (value) => DatabaseUserSetting.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [DatabaseUser] resource's state with the given [name] and [id].
@@ -786,11 +788,12 @@ class DatabaseUser extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseUserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseUser._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -804,13 +807,33 @@ class DatabaseUser extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accessCert = registerOutput<String>('accessCert');
-    accessKey = registerOutput<String>('accessKey');
+    accessCert = registerOutput<String>('accessCert', isSecret: true);
+    accessKey = registerOutput<String>('accessKey', isSecret: true);
     clusterId = registerOutput<String>('clusterId');
     mysqlAuthPlugin = registerOutput<String?>('mysqlAuthPlugin');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     role = registerOutput<String>('role');
-    settings = registerOutput<List<Map<String, dynamic>>?>('settings');
+    settings = registerOutput<List<DatabaseUserSetting>?>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseUserSetting>(guardedValue, (value) => DatabaseUserSetting.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DatabaseUser] resource.
+  DatabaseUser.reference(String urn)
+    : super(
+        'digitalocean:index/databaseUser:DatabaseUser',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['accessCert', 'accessKey', 'password'],
+        isResourceReference: true,
+      ) {
+    accessCert = registerOutput<String>('accessCert', isSecret: true);
+    accessKey = registerOutput<String>('accessKey', isSecret: true);
+    clusterId = registerOutput<String>('clusterId');
+    mysqlAuthPlugin = registerOutput<String?>('mysqlAuthPlugin');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password', isSecret: true);
+    role = registerOutput<String>('role');
+    settings = registerOutput<List<DatabaseUserSetting>?>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseUserSetting>(guardedValue, (value) => DatabaseUserSetting.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

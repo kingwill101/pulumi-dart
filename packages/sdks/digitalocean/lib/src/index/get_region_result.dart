@@ -4,17 +4,17 @@
 /// Result data returned by getRegion.
 class GetRegionResult {
   /// A boolean value that represents whether new Droplets can be created in this region.
-  final bool available;
+  final bool? available;
   /// A set of features available in this region.
-  final List<String> features;
+  final List<String>? features;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The display name of the region.
-  final String name;
+  final String? name;
   /// A set of identifying slugs for the Droplet sizes available in this region.
-  final List<String> sizes;
+  final List<String>? sizes;
   /// A human-readable string that is used as a unique identifier for each region.
-  final String slug;
+  final String? slug;
 
   /// Creates a new [GetRegionResult].
   /// [available] A boolean value that represents whether new Droplets can be created in this region.
@@ -24,33 +24,33 @@ class GetRegionResult {
   /// [sizes] A set of identifying slugs for the Droplet sizes available in this region.
   /// [slug] A human-readable string that is used as a unique identifier for each region.
   const GetRegionResult({
-    required this.available,
-    required this.features,
-    required this.id,
-    required this.name,
-    required this.sizes,
-    required this.slug,
+    this.available,
+    this.features,
+    this.id,
+    this.name,
+    this.sizes,
+    this.slug,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'available': available,
-      'features': features,
-      'id': id,
-      'name': name,
-      'sizes': sizes,
-      'slug': slug,
+      'available': ?available,
+      'features': ?features,
+      'id': ?id,
+      'name': ?name,
+      'sizes': ?sizes,
+      'slug': ?slug,
     };
   }
 
   factory GetRegionResult.fromMap(Map<String, dynamic> map) {
     return GetRegionResult(
-      available: map['available'] as bool,
-      features: (map['features'] as List).cast<String>(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      sizes: (map['sizes'] as List).cast<String>(),
-      slug: map['slug'] as String,
+      available: (() { final guardedValue = map['available']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      features: (() { final guardedValue = map['features']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sizes: (() { final guardedValue = map['sizes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      slug: (() { final guardedValue = map['slug']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

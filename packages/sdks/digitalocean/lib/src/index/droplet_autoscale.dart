@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'droplet_autoscale_args.dart';
 import 'droplet_autoscale_config.dart';
+import 'droplet_autoscale_current_utilization.dart';
 import 'droplet_autoscale_droplet_template.dart';
 import 'droplet_autoscale_state.dart';
 
@@ -384,7 +385,7 @@ class DropletAutoscale extends pulumi.CustomResource {
   late final pulumi.Output<String> createdAt;
   /// The current average resource utilization of the Droplet Autoscale pool, this attribute further
   /// embeds `memory` and `cpu` attributes to respectively report utilization data.
-  late final pulumi.Output<List<Map<String, dynamic>>> currentUtilizations;
+  late final pulumi.Output<List<DropletAutoscaleCurrentUtilization>> currentUtilizations;
   /// The droplet template parameters for Droplet Autoscale pool, the supported arguments
   /// are documented below.
   late final pulumi.Output<DropletAutoscaleDropletTemplate> dropletTemplate;
@@ -408,11 +409,11 @@ class DropletAutoscale extends pulumi.CustomResource {
           'digitalocean:index/dropletAutoscale:DropletAutoscale',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     config = registerOutput<DropletAutoscaleConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DropletAutoscaleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
-    currentUtilizations = registerOutput<List<Map<String, dynamic>>>('currentUtilizations');
+    currentUtilizations = registerOutput<List<DropletAutoscaleCurrentUtilization>>('currentUtilizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DropletAutoscaleCurrentUtilization>(guardedValue, (value) => DropletAutoscaleCurrentUtilization.fromMap((value as Map).cast<String, dynamic>())); });
     dropletTemplate = registerOutput<DropletAutoscaleDropletTemplate>('dropletTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DropletAutoscaleDropletTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     status = registerOutput<String>('status');
@@ -424,11 +425,12 @@ class DropletAutoscale extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DropletAutoscaleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DropletAutoscale._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -444,7 +446,25 @@ class DropletAutoscale extends pulumi.CustomResource {
         ) {
     config = registerOutput<DropletAutoscaleConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DropletAutoscaleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
-    currentUtilizations = registerOutput<List<Map<String, dynamic>>>('currentUtilizations');
+    currentUtilizations = registerOutput<List<DropletAutoscaleCurrentUtilization>>('currentUtilizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DropletAutoscaleCurrentUtilization>(guardedValue, (value) => DropletAutoscaleCurrentUtilization.fromMap((value as Map).cast<String, dynamic>())); });
+    dropletTemplate = registerOutput<DropletAutoscaleDropletTemplate>('dropletTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DropletAutoscaleDropletTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    status = registerOutput<String>('status');
+    updatedAt = registerOutput<String>('updatedAt');
+  }
+
+  /// Creates a typed reference to an existing [DropletAutoscale] resource.
+  DropletAutoscale.reference(String urn)
+    : super(
+        'digitalocean:index/dropletAutoscale:DropletAutoscale',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    config = registerOutput<DropletAutoscaleConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DropletAutoscaleConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdAt = registerOutput<String>('createdAt');
+    currentUtilizations = registerOutput<List<DropletAutoscaleCurrentUtilization>>('currentUtilizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DropletAutoscaleCurrentUtilization>(guardedValue, (value) => DropletAutoscaleCurrentUtilization.fromMap((value as Map).cast<String, dynamic>())); });
     dropletTemplate = registerOutput<DropletAutoscaleDropletTemplate>('dropletTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DropletAutoscaleDropletTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     status = registerOutput<String>('status');

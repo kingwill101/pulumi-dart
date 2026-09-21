@@ -237,10 +237,10 @@ class ProjectResources extends pulumi.CustomResource {
           'digitalocean:index/projectResources:ProjectResources',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     project = registerOutput<String>('project');
-    resources = registerOutput<List<String>>('resources');
+    resources = registerOutput<List<String>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ProjectResources] resource's state with the given [name] and [id].
@@ -248,11 +248,12 @@ class ProjectResources extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectResourcesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProjectResources._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -267,6 +268,19 @@ class ProjectResources extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     project = registerOutput<String>('project');
-    resources = registerOutput<List<String>>('resources');
+    resources = registerOutput<List<String>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ProjectResources] resource.
+  ProjectResources.reference(String urn)
+    : super(
+        'digitalocean:index/projectResources:ProjectResources',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    project = registerOutput<String>('project');
+    resources = registerOutput<List<String>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

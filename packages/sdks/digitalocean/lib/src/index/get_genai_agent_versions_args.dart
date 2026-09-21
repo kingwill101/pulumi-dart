@@ -10,8 +10,8 @@ import 'get_genai_agent_versions_sort.dart';
 /// {@macro pulumi_index_get_genai_agent_versions_get_genai_agent_versions_args_doc}
 class GetGenaiAgentVersionsArgs {
   final pulumi.Input<String> agentId;
-  final pulumi.Input<List<GetGenaiAgentVersionsFilter>>? filters;
-  final pulumi.Input<List<GetGenaiAgentVersionsSort>>? sorts;
+  final pulumi.Input<List<GetGenaiAgentVersionsFilter>?>? filters;
+  final pulumi.Input<List<GetGenaiAgentVersionsSort>?>? sorts;
 
   /// Creates a new [GetGenaiAgentVersionsArgs].
   /// [agentId] Required.

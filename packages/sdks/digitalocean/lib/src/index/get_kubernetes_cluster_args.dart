@@ -18,22 +18,22 @@ import 'get_kubernetes_cluster_sso.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_kubernetes_cluster_get_kubernetes_cluster_args_doc}
 class GetKubernetesClusterArgs {
-  final pulumi.Input<GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin>? amdGpuDeviceMetricsExporterPlugin;
-  final pulumi.Input<GetKubernetesClusterAmdGpuDevicePlugin>? amdGpuDevicePlugin;
-  final pulumi.Input<GetKubernetesClusterAmdGpuDraDriver>? amdGpuDraDriver;
-  final pulumi.Input<List<GetKubernetesClusterClusterAutoscalerConfiguration>>? clusterAutoscalerConfigurations;
-  final pulumi.Input<GetKubernetesClusterCorednsAutoscaler>? corednsAutoscaler;
-  final pulumi.Input<int>? kubeconfigExpireSeconds;
+  final pulumi.Input<GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin?>? amdGpuDeviceMetricsExporterPlugin;
+  final pulumi.Input<GetKubernetesClusterAmdGpuDevicePlugin?>? amdGpuDevicePlugin;
+  final pulumi.Input<GetKubernetesClusterAmdGpuDraDriver?>? amdGpuDraDriver;
+  final pulumi.Input<List<GetKubernetesClusterClusterAutoscalerConfiguration>?>? clusterAutoscalerConfigurations;
+  final pulumi.Input<GetKubernetesClusterCorednsAutoscaler?>? corednsAutoscaler;
+  final pulumi.Input<int?>? kubeconfigExpireSeconds;
   /// The name of Kubernetes cluster.
   final pulumi.Input<String> name;
-  final pulumi.Input<GetKubernetesClusterNvidiaGpuDevicePlugin>? nvidiaGpuDevicePlugin;
-  final pulumi.Input<GetKubernetesClusterNvidiaGpuDraDriver>? nvidiaGpuDraDriver;
-  final pulumi.Input<GetKubernetesClusterP2pOciRegistryPlugin>? p2pOciRegistryPlugin;
-  final pulumi.Input<GetKubernetesClusterRdmaSharedDevicePlugin>? rdmaSharedDevicePlugin;
-  final pulumi.Input<GetKubernetesClusterRoutingAgent>? routingAgent;
-  final pulumi.Input<List<GetKubernetesClusterSso>>? ssos;
+  final pulumi.Input<GetKubernetesClusterNvidiaGpuDevicePlugin?>? nvidiaGpuDevicePlugin;
+  final pulumi.Input<GetKubernetesClusterNvidiaGpuDraDriver?>? nvidiaGpuDraDriver;
+  final pulumi.Input<GetKubernetesClusterP2pOciRegistryPlugin?>? p2pOciRegistryPlugin;
+  final pulumi.Input<GetKubernetesClusterRdmaSharedDevicePlugin?>? rdmaSharedDevicePlugin;
+  final pulumi.Input<GetKubernetesClusterRoutingAgent?>? routingAgent;
+  final pulumi.Input<List<GetKubernetesClusterSso>?>? ssos;
   /// A list of tag names applied to the node pool.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
 
   /// Creates a new [GetKubernetesClusterArgs].
   /// [amdGpuDeviceMetricsExporterPlugin] Optional.
@@ -93,7 +93,7 @@ class GetKubernetesClusterArgs {
       amdGpuDraDriver: (() { final guardedValue = map['amdGpuDraDriver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetKubernetesClusterAmdGpuDraDriver.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clusterAutoscalerConfigurations: (() { final guardedValue = map['clusterAutoscalerConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetKubernetesClusterClusterAutoscalerConfiguration>(guardedValue, (value) => GetKubernetesClusterClusterAutoscalerConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       corednsAutoscaler: (() { final guardedValue = map['corednsAutoscaler']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetKubernetesClusterCorednsAutoscaler.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      kubeconfigExpireSeconds: (() { final guardedValue = map['kubeconfigExpireSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      kubeconfigExpireSeconds: (() { final guardedValue = map['kubeconfigExpireSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       nvidiaGpuDevicePlugin: (() { final guardedValue = map['nvidiaGpuDevicePlugin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetKubernetesClusterNvidiaGpuDevicePlugin.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       nvidiaGpuDraDriver: (() { final guardedValue = map['nvidiaGpuDraDriver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetKubernetesClusterNvidiaGpuDraDriver.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

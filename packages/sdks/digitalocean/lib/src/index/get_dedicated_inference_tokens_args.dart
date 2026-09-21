@@ -12,9 +12,9 @@ class GetDedicatedInferenceTokensArgs {
   /// The ID of the dedicated inference endpoint to list tokens for.
   final pulumi.Input<String> dedicatedInferenceId;
   /// Filter the results. The `filter` block is documented below.
-  final pulumi.Input<List<GetDedicatedInferenceTokensFilter>>? filters;
+  final pulumi.Input<List<GetDedicatedInferenceTokensFilter>?>? filters;
   /// Sort the results. The `sort` block is documented below.
-  final pulumi.Input<List<GetDedicatedInferenceTokensSort>>? sorts;
+  final pulumi.Input<List<GetDedicatedInferenceTokensSort>?>? sorts;
 
   /// Creates a new [GetDedicatedInferenceTokensArgs].
   /// [dedicatedInferenceId] The ID of the dedicated inference endpoint to list tokens for.

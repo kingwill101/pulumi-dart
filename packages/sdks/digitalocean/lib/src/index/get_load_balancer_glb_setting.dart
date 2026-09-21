@@ -42,9 +42,9 @@ class GetLoadBalancerGlbSetting {
   factory GetLoadBalancerGlbSetting.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerGlbSetting(
       cdns: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLoadBalancerGlbSettingCdn>(map['cdns']!, (value) => GetLoadBalancerGlbSettingCdn.fromMap((value as Map).cast<String, dynamic>()))),
-      failoverThreshold: pulumi.Input.fromValue(map['failoverThreshold'] as int),
+      failoverThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['failoverThreshold'])),
       regionPriorities: pulumi.Input.fromValue((map['regionPriorities'] as Map).cast<String, int>()),
-      targetPort: pulumi.Input.fromValue(map['targetPort'] as int),
+      targetPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetPort'])),
       targetProtocol: pulumi.Input.fromValue(map['targetProtocol'] as String),
     );
   }

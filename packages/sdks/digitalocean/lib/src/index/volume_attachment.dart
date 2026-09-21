@@ -244,7 +244,7 @@ class VolumeAttachment extends pulumi.CustomResource {
           'digitalocean:index/volumeAttachment:VolumeAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     dropletId = registerOutput<int>('dropletId');
     volumeId = registerOutput<String>('volumeId');
@@ -255,11 +255,12 @@ class VolumeAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VolumeAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -273,6 +274,19 @@ class VolumeAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dropletId = registerOutput<int>('dropletId');
+    volumeId = registerOutput<String>('volumeId');
+  }
+
+  /// Creates a typed reference to an existing [VolumeAttachment] resource.
+  VolumeAttachment.reference(String urn)
+    : super(
+        'digitalocean:index/volumeAttachment:VolumeAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dropletId = registerOutput<int>('dropletId');
     volumeId = registerOutput<String>('volumeId');
   }

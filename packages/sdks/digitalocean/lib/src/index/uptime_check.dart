@@ -36,11 +36,11 @@ class UptimeCheck extends pulumi.CustomResource {
           'digitalocean:index/uptimeCheck:UptimeCheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
-    regions = registerOutput<List<String>?>('regions');
+    regions = registerOutput<List<String>?>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     target = registerOutput<String>('target');
     type = registerOutput<String?>('type');
   }
@@ -50,11 +50,12 @@ class UptimeCheck extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UptimeCheckState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UptimeCheck._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -70,7 +71,23 @@ class UptimeCheck extends pulumi.CustomResource {
         ) {
     enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
-    regions = registerOutput<List<String>?>('regions');
+    regions = registerOutput<List<String>?>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    target = registerOutput<String>('target');
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [UptimeCheck] resource.
+  UptimeCheck.reference(String urn)
+    : super(
+        'digitalocean:index/uptimeCheck:UptimeCheck',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    enabled = registerOutput<bool?>('enabled');
+    this.name = registerOutput<String>('name');
+    regions = registerOutput<List<String>?>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     target = registerOutput<String>('target');
     type = registerOutput<String?>('type');
   }

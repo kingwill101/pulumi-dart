@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vector_database_args.dart';
 import 'vector_database_config.dart';
+import 'vector_database_endpoint.dart';
 import 'vector_database_state.dart';
 
 /// Provides a DigitalOcean vector database resource. Vector databases are powered by
@@ -303,7 +304,7 @@ class VectorDatabase extends pulumi.CustomResource {
   /// The date and time when the vector database was created.
   late final pulumi.Output<String> createdAt;
   /// The connection endpoints for the vector database. The structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
+  late final pulumi.Output<List<VectorDatabaseEndpoint>> endpoints;
   /// The name of the vector database. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// The UUID of the account that owns the vector database.
@@ -333,18 +334,18 @@ class VectorDatabase extends pulumi.CustomResource {
           'digitalocean:index/vectorDatabase:VectorDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     config = registerOutput<VectorDatabaseConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VectorDatabaseConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    endpoints = registerOutput<List<VectorDatabaseEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VectorDatabaseEndpoint>(guardedValue, (value) => VectorDatabaseEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     ownerUuid = registerOutput<String>('ownerUuid');
     projectId = registerOutput<String>('projectId');
     region = registerOutput<String>('region');
     size = registerOutput<String>('size');
     status = registerOutput<String>('status');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updatedAt = registerOutput<String>('updatedAt');
   }
 
@@ -353,11 +354,12 @@ class VectorDatabase extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VectorDatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VectorDatabase._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -373,14 +375,36 @@ class VectorDatabase extends pulumi.CustomResource {
         ) {
     config = registerOutput<VectorDatabaseConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VectorDatabaseConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAt = registerOutput<String>('createdAt');
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    endpoints = registerOutput<List<VectorDatabaseEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VectorDatabaseEndpoint>(guardedValue, (value) => VectorDatabaseEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     ownerUuid = registerOutput<String>('ownerUuid');
     projectId = registerOutput<String>('projectId');
     region = registerOutput<String>('region');
     size = registerOutput<String>('size');
     status = registerOutput<String>('status');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    updatedAt = registerOutput<String>('updatedAt');
+  }
+
+  /// Creates a typed reference to an existing [VectorDatabase] resource.
+  VectorDatabase.reference(String urn)
+    : super(
+        'digitalocean:index/vectorDatabase:VectorDatabase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    config = registerOutput<VectorDatabaseConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VectorDatabaseConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdAt = registerOutput<String>('createdAt');
+    endpoints = registerOutput<List<VectorDatabaseEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VectorDatabaseEndpoint>(guardedValue, (value) => VectorDatabaseEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    ownerUuid = registerOutput<String>('ownerUuid');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    size = registerOutput<String>('size');
+    status = registerOutput<String>('status');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updatedAt = registerOutput<String>('updatedAt');
   }
 }

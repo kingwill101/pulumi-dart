@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpacesBucketVersioning {
   /// Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
   /// state. You can, however, suspend versioning on that bucket.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [SpacesBucketVersioning].
   /// [enabled] Enable versioning. Once you version-enable a bucket, it can never return to an unversioned

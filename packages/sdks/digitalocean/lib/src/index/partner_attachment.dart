@@ -38,10 +38,10 @@ class PartnerAttachment extends pulumi.CustomResource {
           'digitalocean:index/partnerAttachment:PartnerAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     bgp = registerOutput<PartnerAttachmentBgp>('bgp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PartnerAttachmentBgp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    childrens = registerOutput<List<String>>('childrens');
+    childrens = registerOutput<List<String>>('childrens', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     connectionBandwidthInMbps = registerOutput<int>('connectionBandwidthInMbps');
     createdAt = registerOutput<String>('createdAt');
     naasProvider = registerOutput<String>('naasProvider');
@@ -50,7 +50,7 @@ class PartnerAttachment extends pulumi.CustomResource {
     redundancyZone = registerOutput<String>('redundancyZone');
     region = registerOutput<String>('region');
     state = registerOutput<String>('state');
-    vpcIds = registerOutput<List<String>>('vpcIds');
+    vpcIds = registerOutput<List<String>>('vpcIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [PartnerAttachment] resource's state with the given [name] and [id].
@@ -58,11 +58,12 @@ class PartnerAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PartnerAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PartnerAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -77,7 +78,7 @@ class PartnerAttachment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bgp = registerOutput<PartnerAttachmentBgp>('bgp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PartnerAttachmentBgp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    childrens = registerOutput<List<String>>('childrens');
+    childrens = registerOutput<List<String>>('childrens', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     connectionBandwidthInMbps = registerOutput<int>('connectionBandwidthInMbps');
     createdAt = registerOutput<String>('createdAt');
     naasProvider = registerOutput<String>('naasProvider');
@@ -86,6 +87,28 @@ class PartnerAttachment extends pulumi.CustomResource {
     redundancyZone = registerOutput<String>('redundancyZone');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
-    vpcIds = registerOutput<List<String>>('vpcIds');
+    vpcIds = registerOutput<List<String>>('vpcIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [PartnerAttachment] resource.
+  PartnerAttachment.reference(String urn)
+    : super(
+        'digitalocean:index/partnerAttachment:PartnerAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bgp = registerOutput<PartnerAttachmentBgp>('bgp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PartnerAttachmentBgp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    childrens = registerOutput<List<String>>('childrens', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionBandwidthInMbps = registerOutput<int>('connectionBandwidthInMbps');
+    createdAt = registerOutput<String>('createdAt');
+    naasProvider = registerOutput<String>('naasProvider');
+    this.name = registerOutput<String>('name');
+    parentUuid = registerOutput<String?>('parentUuid');
+    redundancyZone = registerOutput<String>('redundancyZone');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
+    vpcIds = registerOutput<List<String>>('vpcIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

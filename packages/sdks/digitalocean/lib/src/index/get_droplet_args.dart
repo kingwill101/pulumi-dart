@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_droplet_get_droplet_args_doc}
 class GetDropletArgs {
   /// A boolean value specifying whether or not to search GPU Droplets
-  final pulumi.Input<bool>? gpu;
+  final pulumi.Input<bool?>? gpu;
   /// The ID of the Droplet
-  final pulumi.Input<int>? id;
+  final pulumi.Input<int?>? id;
   /// The name of the Droplet.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A tag applied to the Droplet.
   ///
   /// To include GPU Droplets when searching by name, use:
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
 
   /// Creates a new [GetDropletArgs].
   /// [gpu] A boolean value specifying whether or not to search GPU Droplets
@@ -42,7 +42,7 @@ class GetDropletArgs {
   factory GetDropletArgs.fromMap(Map<String, dynamic> map) {
     return GetDropletArgs(
       gpu: (() { final guardedValue = map['gpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

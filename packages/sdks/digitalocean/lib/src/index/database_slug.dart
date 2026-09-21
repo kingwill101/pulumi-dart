@@ -1,4 +1,6 @@
-enum DatabaseSlug {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum DatabaseSlug implements pulumi.PulumiEnum<String> {
   dB1VPCU1GB("db-s-1vcpu-1gb"),
   dB1VPCU2GB("db-s-1vcpu-2gb"),
   dB2VPCU4GB("db-s-2vcpu-4gb"),
@@ -8,6 +10,7 @@ enum DatabaseSlug {
   dB16VPCU64GB("db-s-16vcpu-64gb");
 
   const DatabaseSlug(this.wireValue);
+  @override
   final String wireValue;
 
   static DatabaseSlug fromValue(String value) {

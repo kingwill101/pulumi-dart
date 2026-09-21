@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDedicatedInferenceAcceleratorsFilter {
   /// Set to `true` to require that a field match all of the `values` instead of just one.
-  final pulumi.Input<bool>? all;
+  final pulumi.Input<bool?>? all;
   /// Filter the accelerators by this key. This may be one of `id`, `name`, `slug`, `status`, `createdAt`.
   final pulumi.Input<String> key;
   /// One of `exact` (default), `re`, or `substring`.
-  final pulumi.Input<String>? matchBy;
+  final pulumi.Input<String?>? matchBy;
   /// A list of values to match against the `key` field.
   final pulumi.Input<List<String>> values;
 

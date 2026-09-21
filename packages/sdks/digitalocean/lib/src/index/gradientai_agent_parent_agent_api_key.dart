@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GradientaiAgentParentAgentApiKey {
   /// API Key value
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
 
   /// Creates a new [GradientaiAgentParentAgentApiKey].
   /// [apiKey] API Key value

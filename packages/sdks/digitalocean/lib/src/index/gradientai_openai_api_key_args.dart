@@ -11,9 +11,9 @@ class GradientaiOpenaiApiKeyArgs {
   /// The OpenAI API key.
   final pulumi.Input<String> apiKey;
   /// Models associated with the OpenAI API key
-  final pulumi.Input<List<GradientaiOpenaiApiKeyModel>>? models;
+  final pulumi.Input<List<GradientaiOpenaiApiKeyModel>?>? models;
   /// A name for the API key.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GradientaiOpenaiApiKeyArgs].
   /// [apiKey] The OpenAI API key.

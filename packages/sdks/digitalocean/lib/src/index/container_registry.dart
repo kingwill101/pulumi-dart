@@ -157,7 +157,7 @@ class ContainerRegistry extends pulumi.CustomResource {
           'digitalocean:index/containerRegistry:ContainerRegistry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     endpoint = registerOutput<String>('endpoint');
@@ -173,11 +173,12 @@ class ContainerRegistry extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContainerRegistryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ContainerRegistry._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -191,6 +192,24 @@ class ContainerRegistry extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createdAt = registerOutput<String>('createdAt');
+    endpoint = registerOutput<String>('endpoint');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    serverUrl = registerOutput<String>('serverUrl');
+    storageUsageBytes = registerOutput<int>('storageUsageBytes');
+    subscriptionTierSlug = registerOutput<String>('subscriptionTierSlug');
+  }
+
+  /// Creates a typed reference to an existing [ContainerRegistry] resource.
+  ContainerRegistry.reference(String urn)
+    : super(
+        'digitalocean:index/containerRegistry:ContainerRegistry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createdAt = registerOutput<String>('createdAt');
     endpoint = registerOutput<String>('endpoint');
     this.name = registerOutput<String>('name');

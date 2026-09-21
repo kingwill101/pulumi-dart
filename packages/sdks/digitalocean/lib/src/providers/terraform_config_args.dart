@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_providers_terraform_config_args_doc}
 class TerraformConfigArgs {
-  final pulumi.Input<dynamic> self;
+  final pulumi.Input<pulumi.ProviderResource> self;
 
   /// Creates a new [TerraformConfigArgs].
   /// [self] Required.
@@ -23,7 +23,7 @@ class TerraformConfigArgs {
 
   factory TerraformConfigArgs.fromMap(Map<String, dynamic> map) {
     return TerraformConfigArgs(
-      self: pulumi.Input.fromValue(map['__self__']),
+      self: pulumi.Input.fromValue(map['__self__'] as pulumi.ProviderResource),
     );
   }
 }

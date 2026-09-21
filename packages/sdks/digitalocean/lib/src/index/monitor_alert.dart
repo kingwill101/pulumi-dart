@@ -66,14 +66,14 @@ class MonitorAlert extends pulumi.CustomResource {
           'digitalocean:index/monitorAlert:MonitorAlert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     alerts = registerOutput<MonitorAlertAlerts>('alerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorAlertAlerts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compare = registerOutput<String>('compare');
     description = registerOutput<String>('description');
     enabled = registerOutput<bool?>('enabled');
-    entities = registerOutput<List<String>?>('entities');
-    tags = registerOutput<List<String>?>('tags');
+    entities = registerOutput<List<String>?>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');
     value = registerOutput<double>('value');
@@ -85,11 +85,12 @@ class MonitorAlert extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MonitorAlertState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MonitorAlert._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -107,8 +108,29 @@ class MonitorAlert extends pulumi.CustomResource {
     compare = registerOutput<String>('compare');
     description = registerOutput<String>('description');
     enabled = registerOutput<bool?>('enabled');
-    entities = registerOutput<List<String>?>('entities');
-    tags = registerOutput<List<String>?>('tags');
+    entities = registerOutput<List<String>?>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
+    value = registerOutput<double>('value');
+    window = registerOutput<String>('window');
+  }
+
+  /// Creates a typed reference to an existing [MonitorAlert] resource.
+  MonitorAlert.reference(String urn)
+    : super(
+        'digitalocean:index/monitorAlert:MonitorAlert',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alerts = registerOutput<MonitorAlertAlerts>('alerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorAlertAlerts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    compare = registerOutput<String>('compare');
+    description = registerOutput<String>('description');
+    enabled = registerOutput<bool?>('enabled');
+    entities = registerOutput<List<String>?>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');
     value = registerOutput<double>('value');

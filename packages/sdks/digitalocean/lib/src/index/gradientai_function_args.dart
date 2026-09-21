@@ -12,7 +12,7 @@ class GradientaiFunctionArgs {
   /// The region where the GradientAI resource will be created.
   final pulumi.Input<String> description;
   /// The model to use for the GradientAI resource.
-  final pulumi.Input<String>? faasName;
+  final pulumi.Input<String?>? faasName;
   /// The current status of the GradientAI resource.
   final pulumi.Input<String> faasNamespace;
   /// The creation timestamp of the GradientAI resource.
@@ -20,7 +20,7 @@ class GradientaiFunctionArgs {
   /// The input schema of the GradientAI resource.
   final pulumi.Input<String> inputSchema;
   /// The output schema of the GradientAI resource.
-  final pulumi.Input<String>? outputSchema;
+  final pulumi.Input<String?>? outputSchema;
 
   /// Creates a new [GradientaiFunctionArgs].
   /// [agentId] The name of the GradientAI resource.

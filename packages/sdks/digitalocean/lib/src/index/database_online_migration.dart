@@ -420,12 +420,12 @@ class DatabaseOnlineMigration extends pulumi.CustomResource {
           'digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
     createdAt = registerOutput<String>('createdAt');
     disableSsl = registerOutput<bool?>('disableSsl');
-    ignoreDbs = registerOutput<List<String>?>('ignoreDbs');
+    ignoreDbs = registerOutput<List<String>?>('ignoreDbs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     source = registerOutput<DatabaseOnlineMigrationSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseOnlineMigrationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
   }
@@ -435,11 +435,12 @@ class DatabaseOnlineMigration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseOnlineMigrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseOnlineMigration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -456,7 +457,24 @@ class DatabaseOnlineMigration extends pulumi.CustomResource {
     clusterId = registerOutput<String>('clusterId');
     createdAt = registerOutput<String>('createdAt');
     disableSsl = registerOutput<bool?>('disableSsl');
-    ignoreDbs = registerOutput<List<String>?>('ignoreDbs');
+    ignoreDbs = registerOutput<List<String>?>('ignoreDbs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    source = registerOutput<DatabaseOnlineMigrationSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseOnlineMigrationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseOnlineMigration] resource.
+  DatabaseOnlineMigration.reference(String urn)
+    : super(
+        'digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterId = registerOutput<String>('clusterId');
+    createdAt = registerOutput<String>('createdAt');
+    disableSsl = registerOutput<bool?>('disableSsl');
+    ignoreDbs = registerOutput<List<String>?>('ignoreDbs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     source = registerOutput<DatabaseOnlineMigrationSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseOnlineMigrationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
   }

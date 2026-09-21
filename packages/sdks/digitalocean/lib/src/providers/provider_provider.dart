@@ -29,14 +29,15 @@ class ProviderProvider extends pulumi.ProviderResource {
   }) : super(
           'digitalocean',
           name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.Input.mapToInputs((args ?? ProviderArgs()).toMap()),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
+          additionalSecretOutputs: const ['token'],
         ) {
     apiEndpoint = registerOutput<String?>('apiEndpoint');
     spacesAccessId = registerOutput<String?>('spacesAccessId');
     spacesEndpoint = registerOutput<String?>('spacesEndpoint');
     spacesSecretKey = registerOutput<String?>('spacesSecretKey');
-    token = registerOutput<String?>('token');
+    token = registerOutput<String?>('token', isSecret: true);
   }
 
   /// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.

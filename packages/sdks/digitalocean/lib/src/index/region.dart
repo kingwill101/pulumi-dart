@@ -1,4 +1,6 @@
-enum Region {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum Region implements pulumi.PulumiEnum<String> {
   nYC1("nyc1"),
   nYC2("nyc2"),
   nYC3("nyc3"),
@@ -15,6 +17,7 @@ enum Region {
   sYD1("syd1");
 
   const Region(this.wireValue);
+  @override
   final String wireValue;
 
   static Region fromValue(String value) {

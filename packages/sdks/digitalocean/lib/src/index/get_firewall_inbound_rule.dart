@@ -3,30 +3,34 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallInboundRule {
+  /// The action to take for traffic matching this rule.
+  /// This may be one of "allow" or "deny". Defaults to "allow" when not set.
+  final pulumi.Input<String?>? action;
   /// The ports on which traffic will be allowed
   /// specified as a string containing a single port, a range (e.g. "8000-9000"),
   /// or "1-65535" to open all ports for a protocol. Required for when protocol is
   /// `tcp` or `udp`.
-  final pulumi.Input<String>? portRange;
+  final pulumi.Input<String?>? portRange;
   /// The type of traffic to be allowed.
   /// This may be one of "tcp", "udp", or "icmp".
   final pulumi.Input<String> protocol;
   /// An array of strings containing the IPv4
   /// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
   /// inbound traffic will be accepted.
-  final pulumi.Input<List<String>>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceAddresses;
   /// An array containing the IDs of
   /// the Droplets from which the inbound traffic will be accepted.
-  final pulumi.Input<List<int>>? sourceDropletIds;
-  final pulumi.Input<List<String>>? sourceKubernetesIds;
+  final pulumi.Input<List<int>?>? sourceDropletIds;
+  final pulumi.Input<List<String>?>? sourceKubernetesIds;
   /// An array containing the IDs
   /// of the Load Balancers from which the inbound traffic will be accepted.
-  final pulumi.Input<List<String>>? sourceLoadBalancerUids;
+  final pulumi.Input<List<String>?>? sourceLoadBalancerUids;
   /// A set of names of Tags corresponding to group of
   /// Droplets from which the inbound traffic will be accepted.
-  final pulumi.Input<List<String>>? sourceTags;
+  final pulumi.Input<List<String>?>? sourceTags;
 
   /// Creates a new [GetFirewallInboundRule].
+  /// [action] The action to take for traffic matching this rule.
   /// [portRange] The ports on which traffic will be allowed
   /// [protocol] The type of traffic to be allowed.
   /// [sourceAddresses] An array of strings containing the IPv4
@@ -35,6 +39,7 @@ class GetFirewallInboundRule {
   /// [sourceLoadBalancerUids] An array containing the IDs
   /// [sourceTags] A set of names of Tags corresponding to group of
   const GetFirewallInboundRule({
+    this.action,
     this.portRange,
     required this.protocol,
     this.sourceAddresses,
@@ -46,6 +51,7 @@ class GetFirewallInboundRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'action': ?action,
       'portRange': ?portRange,
       'protocol': protocol,
       'sourceAddresses': ?sourceAddresses,
@@ -58,6 +64,7 @@ class GetFirewallInboundRule {
 
   factory GetFirewallInboundRule.fromMap(Map<String, dynamic> map) {
     return GetFirewallInboundRule(
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       portRange: (() { final guardedValue = map['portRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       sourceAddresses: (() { final guardedValue = map['sourceAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

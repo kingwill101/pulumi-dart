@@ -20,7 +20,7 @@ class GenaiAgentKnowledgeBaseAttachment extends pulumi.CustomResource {
           'digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     agentUuid = registerOutput<String>('agentUuid');
     knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
@@ -31,11 +31,12 @@ class GenaiAgentKnowledgeBaseAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GenaiAgentKnowledgeBaseAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GenaiAgentKnowledgeBaseAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -49,6 +50,19 @@ class GenaiAgentKnowledgeBaseAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    agentUuid = registerOutput<String>('agentUuid');
+    knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
+  }
+
+  /// Creates a typed reference to an existing [GenaiAgentKnowledgeBaseAttachment] resource.
+  GenaiAgentKnowledgeBaseAttachment.reference(String urn)
+    : super(
+        'digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     agentUuid = registerOutput<String>('agentUuid');
     knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
   }

@@ -7,58 +7,58 @@ import 'get_droplet_autoscale_droplet_template.dart';
 
 /// Result data returned by getDropletAutoscale.
 class GetDropletAutoscaleResult {
-  final List<GetDropletAutoscaleConfig> configs;
-  final String createdAt;
-  final List<GetDropletAutoscaleCurrentUtilization> currentUtilizations;
-  final List<GetDropletAutoscaleDropletTemplate> dropletTemplates;
+  final List<GetDropletAutoscaleConfig>? configs;
+  final String? createdAt;
+  final List<GetDropletAutoscaleCurrentUtilization>? currentUtilizations;
+  final List<GetDropletAutoscaleDropletTemplate>? dropletTemplates;
   final String? id;
   final String? name;
-  final String status;
-  final String updatedAt;
+  final String? status;
+  final String? updatedAt;
 
   /// Creates a new [GetDropletAutoscaleResult].
-  /// [configs] Required.
-  /// [createdAt] Required.
-  /// [currentUtilizations] Required.
-  /// [dropletTemplates] Required.
+  /// [configs] Optional.
+  /// [createdAt] Optional.
+  /// [currentUtilizations] Optional.
+  /// [dropletTemplates] Optional.
   /// [id] Optional.
   /// [name] Optional.
-  /// [status] Required.
-  /// [updatedAt] Required.
+  /// [status] Optional.
+  /// [updatedAt] Optional.
   const GetDropletAutoscaleResult({
-    required this.configs,
-    required this.createdAt,
-    required this.currentUtilizations,
-    required this.dropletTemplates,
+    this.configs,
+    this.createdAt,
+    this.currentUtilizations,
+    this.dropletTemplates,
     this.id,
     this.name,
-    required this.status,
-    required this.updatedAt,
+    this.status,
+    this.updatedAt,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configs': pulumi.Input.encodeList<GetDropletAutoscaleConfig, Map<String, dynamic>>(configs, (value) => value.toMap()),
-      'createdAt': createdAt,
-      'currentUtilizations': pulumi.Input.encodeList<GetDropletAutoscaleCurrentUtilization, Map<String, dynamic>>(currentUtilizations, (value) => value.toMap()),
-      'dropletTemplates': pulumi.Input.encodeList<GetDropletAutoscaleDropletTemplate, Map<String, dynamic>>(dropletTemplates, (value) => value.toMap()),
+      'configs': ?(() { final guardedValue = configs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDropletAutoscaleConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'createdAt': ?createdAt,
+      'currentUtilizations': ?(() { final guardedValue = currentUtilizations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDropletAutoscaleCurrentUtilization, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'dropletTemplates': ?(() { final guardedValue = dropletTemplates; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDropletAutoscaleDropletTemplate, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': ?id,
       'name': ?name,
-      'status': status,
-      'updatedAt': updatedAt,
+      'status': ?status,
+      'updatedAt': ?updatedAt,
     };
   }
 
   factory GetDropletAutoscaleResult.fromMap(Map<String, dynamic> map) {
     return GetDropletAutoscaleResult(
-      configs: pulumi.Input.decodeList<GetDropletAutoscaleConfig>(map['configs']!, (value) => GetDropletAutoscaleConfig.fromMap((value as Map).cast<String, dynamic>())),
-      createdAt: map['createdAt'] as String,
-      currentUtilizations: pulumi.Input.decodeList<GetDropletAutoscaleCurrentUtilization>(map['currentUtilizations']!, (value) => GetDropletAutoscaleCurrentUtilization.fromMap((value as Map).cast<String, dynamic>())),
-      dropletTemplates: pulumi.Input.decodeList<GetDropletAutoscaleDropletTemplate>(map['dropletTemplates']!, (value) => GetDropletAutoscaleDropletTemplate.fromMap((value as Map).cast<String, dynamic>())),
+      configs: (() { final guardedValue = map['configs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDropletAutoscaleConfig>(guardedValue, (value) => GetDropletAutoscaleConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      currentUtilizations: (() { final guardedValue = map['currentUtilizations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDropletAutoscaleCurrentUtilization>(guardedValue, (value) => GetDropletAutoscaleCurrentUtilization.fromMap((value as Map).cast<String, dynamic>())); })(),
+      dropletTemplates: (() { final guardedValue = map['dropletTemplates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDropletAutoscaleDropletTemplate>(guardedValue, (value) => GetDropletAutoscaleDropletTemplate.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      status: map['status'] as String,
-      updatedAt: map['updatedAt'] as String,
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

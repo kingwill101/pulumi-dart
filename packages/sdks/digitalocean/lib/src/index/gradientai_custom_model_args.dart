@@ -9,27 +9,27 @@ import 'gradientai_custom_model_source_ref.dart';
 /// {@macro pulumi_index_gradientai_custom_model_gradientai_custom_model_args_doc}
 class GradientaiCustomModelArgs {
   /// Whether the caller accepts the model provider's terms and conditions. Write-only.
-  final pulumi.Input<bool>? acceptTermsAndConditions;
+  final pulumi.Input<bool?>? acceptTermsAndConditions;
   /// Description of the custom model.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
-  final pulumi.Input<List<String>>? inputModalities;
+  final pulumi.Input<List<String>?>? inputModalities;
   /// License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
-  final pulumi.Input<String>? license;
+  final pulumi.Input<String?>? license;
   /// A human-readable name for the custom model.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
-  final pulumi.Input<List<String>>? outputModalities;
+  final pulumi.Input<List<String>?>? outputModalities;
   /// Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
-  final pulumi.Input<String>? parameters;
+  final pulumi.Input<String?>? parameters;
   /// Preferred GPU region where the model artifacts should be staged.
-  final pulumi.Input<String>? preferredGpuRegion;
+  final pulumi.Input<String?>? preferredGpuRegion;
   /// Reference to the source from which to import the custom model.
   final pulumi.Input<GradientaiCustomModelSourceRef> sourceRef;
   /// Source of the model to import. One of SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET, SOURCE_TYPE_SDK_UPLOAD, SOURCE_TYPE_FINE_TUNING.
   final pulumi.Input<String> sourceType;
   /// User-defined tags associated with the custom model.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
 
   /// Creates a new [GradientaiCustomModelArgs].
   /// [acceptTermsAndConditions] Whether the caller accepts the model provider's terms and conditions. Write-only.

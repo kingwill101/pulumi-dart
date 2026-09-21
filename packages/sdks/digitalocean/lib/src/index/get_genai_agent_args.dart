@@ -19,32 +19,32 @@ import 'get_genai_agent_template.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_genai_agent_get_genai_agent_args_doc}
 class GetGenaiAgentArgs {
-  final pulumi.Input<List<GetGenaiAgentAgentGuardrail>>? agentGuardrails;
+  final pulumi.Input<List<GetGenaiAgentAgentGuardrail>?>? agentGuardrails;
   final pulumi.Input<String> agentId;
-  final pulumi.Input<List<GetGenaiAgentAnthropicApiKey>>? anthropicApiKeys;
-  final pulumi.Input<List<GetGenaiAgentApiKeyInfo>>? apiKeyInfos;
-  final pulumi.Input<List<GetGenaiAgentApiKey>>? apiKeys;
-  final pulumi.Input<List<GetGenaiAgentChatbotIdentifier>>? chatbotIdentifiers;
-  final pulumi.Input<List<GetGenaiAgentChatbot>>? chatbots;
-  final pulumi.Input<List<GetGenaiAgentDeployment>>? deployments;
-  final pulumi.Input<String>? description;
-  final pulumi.Input<List<GetGenaiAgentFunction>>? functions;
-  final pulumi.Input<String>? ifCase;
-  final pulumi.Input<int>? k;
-  final pulumi.Input<List<GetGenaiAgentKnowledgeBase>>? knowledgeBases;
-  final pulumi.Input<int>? maxTokens;
-  final pulumi.Input<List<GetGenaiAgentModel>>? models;
-  final pulumi.Input<List<GetGenaiAgentOpenAiApiKey>>? openAiApiKeys;
-  final pulumi.Input<String>? retrievalMethod;
-  final pulumi.Input<String>? routeCreatedBy;
-  final pulumi.Input<String>? routeName;
-  final pulumi.Input<String>? routeUuid;
-  final pulumi.Input<List<String>>? tags;
-  final pulumi.Input<double>? temperature;
-  final pulumi.Input<List<GetGenaiAgentTemplate>>? templates;
-  final pulumi.Input<double>? topP;
-  final pulumi.Input<String>? url;
-  final pulumi.Input<String>? userId;
+  final pulumi.Input<List<GetGenaiAgentAnthropicApiKey>?>? anthropicApiKeys;
+  final pulumi.Input<List<GetGenaiAgentApiKeyInfo>?>? apiKeyInfos;
+  final pulumi.Input<List<GetGenaiAgentApiKey>?>? apiKeys;
+  final pulumi.Input<List<GetGenaiAgentChatbotIdentifier>?>? chatbotIdentifiers;
+  final pulumi.Input<List<GetGenaiAgentChatbot>?>? chatbots;
+  final pulumi.Input<List<GetGenaiAgentDeployment>?>? deployments;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<List<GetGenaiAgentFunction>?>? functions;
+  final pulumi.Input<String?>? ifCase;
+  final pulumi.Input<int?>? k;
+  final pulumi.Input<List<GetGenaiAgentKnowledgeBase>?>? knowledgeBases;
+  final pulumi.Input<int?>? maxTokens;
+  final pulumi.Input<List<GetGenaiAgentModel>?>? models;
+  final pulumi.Input<List<GetGenaiAgentOpenAiApiKey>?>? openAiApiKeys;
+  final pulumi.Input<String?>? retrievalMethod;
+  final pulumi.Input<String?>? routeCreatedBy;
+  final pulumi.Input<String?>? routeName;
+  final pulumi.Input<String?>? routeUuid;
+  final pulumi.Input<List<String>?>? tags;
+  final pulumi.Input<double?>? temperature;
+  final pulumi.Input<List<GetGenaiAgentTemplate>?>? templates;
+  final pulumi.Input<double?>? topP;
+  final pulumi.Input<String?>? url;
+  final pulumi.Input<String?>? userId;
 
   /// Creates a new [GetGenaiAgentArgs].
   /// [agentGuardrails] Optional.
@@ -146,9 +146,9 @@ class GetGenaiAgentArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       functions: (() { final guardedValue = map['functions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetGenaiAgentFunction>(guardedValue, (value) => GetGenaiAgentFunction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ifCase: (() { final guardedValue = map['ifCase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      k: (() { final guardedValue = map['k']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      k: (() { final guardedValue = map['k']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       knowledgeBases: (() { final guardedValue = map['knowledgeBases']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetGenaiAgentKnowledgeBase>(guardedValue, (value) => GetGenaiAgentKnowledgeBase.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maxTokens: (() { final guardedValue = map['maxTokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxTokens: (() { final guardedValue = map['maxTokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       models: (() { final guardedValue = map['models']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetGenaiAgentModel>(guardedValue, (value) => GetGenaiAgentModel.fromMap((value as Map).cast<String, dynamic>()))); })(),
       openAiApiKeys: (() { final guardedValue = map['openAiApiKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetGenaiAgentOpenAiApiKey>(guardedValue, (value) => GetGenaiAgentOpenAiApiKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
       retrievalMethod: (() { final guardedValue = map['retrievalMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -156,9 +156,9 @@ class GetGenaiAgentArgs {
       routeName: (() { final guardedValue = map['routeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routeUuid: (() { final guardedValue = map['routeUuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      temperature: (() { final guardedValue = map['temperature']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      temperature: (() { final guardedValue = map['temperature']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       templates: (() { final guardedValue = map['templates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetGenaiAgentTemplate>(guardedValue, (value) => GetGenaiAgentTemplate.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      topP: (() { final guardedValue = map['topP']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      topP: (() { final guardedValue = map['topP']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -5,11 +5,11 @@ import 'load_balancer_glb_settings_cdn.dart';
 
 class LoadBalancerGlbSettings {
   /// CDN configuration supporting the following:
-  final pulumi.Input<LoadBalancerGlbSettingsCdn>? cdn;
+  final pulumi.Input<LoadBalancerGlbSettingsCdn?>? cdn;
   /// fail-over threshold
-  final pulumi.Input<int>? failoverThreshold;
+  final pulumi.Input<int?>? failoverThreshold;
   /// region priority map
-  final pulumi.Input<Map<String, int>>? regionPriorities;
+  final pulumi.Input<Map<String, int>?>? regionPriorities;
   /// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
   final pulumi.Input<int> targetPort;
   /// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
@@ -42,9 +42,9 @@ class LoadBalancerGlbSettings {
   factory LoadBalancerGlbSettings.fromMap(Map<String, dynamic> map) {
     return LoadBalancerGlbSettings(
       cdn: (() { final guardedValue = map['cdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LoadBalancerGlbSettingsCdn.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      failoverThreshold: (() { final guardedValue = map['failoverThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      failoverThreshold: (() { final guardedValue = map['failoverThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       regionPriorities: (() { final guardedValue = map['regionPriorities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, int>()); })(),
-      targetPort: pulumi.Input.fromValue(map['targetPort'] as int),
+      targetPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetPort'])),
       targetProtocol: pulumi.Input.fromValue(map['targetProtocol'] as String),
     );
   }

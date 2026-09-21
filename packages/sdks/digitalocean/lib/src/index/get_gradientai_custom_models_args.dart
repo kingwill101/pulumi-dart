@@ -9,9 +9,9 @@ import 'get_gradientai_custom_models_sort.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_gradientai_custom_models_get_gradientai_custom_models_args_doc}
 class GetGradientaiCustomModelsArgs {
-  final pulumi.Input<List<GetGradientaiCustomModelsFilter>>? filters;
-  final pulumi.Input<List<GetGradientaiCustomModelsSort>>? sorts;
-  final pulumi.Input<String>? status;
+  final pulumi.Input<List<GetGradientaiCustomModelsFilter>?>? filters;
+  final pulumi.Input<List<GetGradientaiCustomModelsSort>?>? sorts;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [GetGradientaiCustomModelsArgs].
   /// [filters] Optional.

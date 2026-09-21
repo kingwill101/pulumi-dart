@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier {
   /// Chatbot ID
-  final pulumi.Input<String>? chatbotId;
+  final pulumi.Input<String?>? chatbotId;
 
   /// Creates a new [GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier].
   /// [chatbotId] Chatbot ID

@@ -8,15 +8,15 @@ import 'get_app_spec_function_log_destination_papertrail.dart';
 
 class GetAppSpecFunctionLogDestination {
   /// Datadog configuration.
-  final pulumi.Input<GetAppSpecFunctionLogDestinationDatadog>? datadog;
+  final pulumi.Input<GetAppSpecFunctionLogDestinationDatadog?>? datadog;
   /// Logtail configuration.
-  final pulumi.Input<GetAppSpecFunctionLogDestinationLogtail>? logtail;
+  final pulumi.Input<GetAppSpecFunctionLogDestinationLogtail?>? logtail;
   /// The name of the component.
   final pulumi.Input<String> name;
   /// OpenSearch configuration.
-  final pulumi.Input<GetAppSpecFunctionLogDestinationOpenSearch>? openSearch;
+  final pulumi.Input<GetAppSpecFunctionLogDestinationOpenSearch?>? openSearch;
   /// Papertrail configuration.
-  final pulumi.Input<GetAppSpecFunctionLogDestinationPapertrail>? papertrail;
+  final pulumi.Input<GetAppSpecFunctionLogDestinationPapertrail?>? papertrail;
 
   /// Creates a new [GetAppSpecFunctionLogDestination].
   /// [datadog] Datadog configuration.

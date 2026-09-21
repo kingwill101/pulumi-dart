@@ -552,7 +552,7 @@ class NfsAttachment extends pulumi.CustomResource {
           'digitalocean:index/nfsAttachment:NfsAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     shareId = registerOutput<String>('shareId');
@@ -564,11 +564,12 @@ class NfsAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NfsAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NfsAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -582,6 +583,20 @@ class NfsAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    region = registerOutput<String>('region');
+    shareId = registerOutput<String>('shareId');
+    vpcId = registerOutput<String>('vpcId');
+  }
+
+  /// Creates a typed reference to an existing [NfsAttachment] resource.
+  NfsAttachment.reference(String urn)
+    : super(
+        'digitalocean:index/nfsAttachment:NfsAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     region = registerOutput<String>('region');
     shareId = registerOutput<String>('shareId');
     vpcId = registerOutput<String>('vpcId');

@@ -8,15 +8,15 @@ import 'get_app_spec_service_log_destination_papertrail.dart';
 
 class GetAppSpecServiceLogDestination {
   /// Datadog configuration.
-  final pulumi.Input<GetAppSpecServiceLogDestinationDatadog>? datadog;
+  final pulumi.Input<GetAppSpecServiceLogDestinationDatadog?>? datadog;
   /// Logtail configuration.
-  final pulumi.Input<GetAppSpecServiceLogDestinationLogtail>? logtail;
+  final pulumi.Input<GetAppSpecServiceLogDestinationLogtail?>? logtail;
   /// The name of the component.
   final pulumi.Input<String> name;
   /// OpenSearch configuration.
-  final pulumi.Input<GetAppSpecServiceLogDestinationOpenSearch>? openSearch;
+  final pulumi.Input<GetAppSpecServiceLogDestinationOpenSearch?>? openSearch;
   /// Papertrail configuration.
-  final pulumi.Input<GetAppSpecServiceLogDestinationPapertrail>? papertrail;
+  final pulumi.Input<GetAppSpecServiceLogDestinationPapertrail?>? papertrail;
 
   /// Creates a new [GetAppSpecServiceLogDestination].
   /// [datadog] Datadog configuration.

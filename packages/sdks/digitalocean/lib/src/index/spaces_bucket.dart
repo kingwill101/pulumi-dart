@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spaces_bucket_args.dart';
+import 'spaces_bucket_cors_rule.dart';
+import 'spaces_bucket_lifecycle_rule.dart';
 import 'spaces_bucket_state.dart';
 import 'spaces_bucket_versioning.dart';
 
@@ -490,13 +492,13 @@ class SpacesBucket extends pulumi.CustomResource {
   /// The uniform resource name for the bucket
   late final pulumi.Output<String> bucketUrn;
   /// A rule of Cross-Origin Resource Sharing (documented below).
-  late final pulumi.Output<List<Map<String, dynamic>>?> corsRules;
+  late final pulumi.Output<List<SpacesBucketCorsRule>?> corsRules;
   /// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
   late final pulumi.Output<String> endpoint;
   /// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
   late final pulumi.Output<bool?> forceDestroy;
   /// A configuration of object lifecycle management (documented below).
-  late final pulumi.Output<List<Map<String, dynamic>>?> lifecycleRules;
+  late final pulumi.Output<List<SpacesBucketLifecycleRule>?> lifecycleRules;
   /// The name of the bucket
   late final pulumi.Output<String> name;
   /// The region where the bucket resides (Defaults to `nyc3`)
@@ -516,15 +518,15 @@ class SpacesBucket extends pulumi.CustomResource {
           'digitalocean:index/spacesBucket:SpacesBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     acl = registerOutput<String?>('acl');
     bucketDomainName = registerOutput<String>('bucketDomainName');
     bucketUrn = registerOutput<String>('bucketUrn');
-    corsRules = registerOutput<List<Map<String, dynamic>>?>('corsRules');
+    corsRules = registerOutput<List<SpacesBucketCorsRule>?>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacesBucketCorsRule>(guardedValue, (value) => SpacesBucketCorsRule.fromMap((value as Map).cast<String, dynamic>())); });
     endpoint = registerOutput<String>('endpoint');
     forceDestroy = registerOutput<bool?>('forceDestroy');
-    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>('lifecycleRules');
+    lifecycleRules = registerOutput<List<SpacesBucketLifecycleRule>?>('lifecycleRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacesBucketLifecycleRule>(guardedValue, (value) => SpacesBucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String?>('region');
     versioning = registerOutput<SpacesBucketVersioning?>('versioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpacesBucketVersioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -535,11 +537,12 @@ class SpacesBucket extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpacesBucketState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpacesBucket._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -556,10 +559,31 @@ class SpacesBucket extends pulumi.CustomResource {
     acl = registerOutput<String?>('acl');
     bucketDomainName = registerOutput<String>('bucketDomainName');
     bucketUrn = registerOutput<String>('bucketUrn');
-    corsRules = registerOutput<List<Map<String, dynamic>>?>('corsRules');
+    corsRules = registerOutput<List<SpacesBucketCorsRule>?>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacesBucketCorsRule>(guardedValue, (value) => SpacesBucketCorsRule.fromMap((value as Map).cast<String, dynamic>())); });
     endpoint = registerOutput<String>('endpoint');
     forceDestroy = registerOutput<bool?>('forceDestroy');
-    lifecycleRules = registerOutput<List<Map<String, dynamic>>?>('lifecycleRules');
+    lifecycleRules = registerOutput<List<SpacesBucketLifecycleRule>?>('lifecycleRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacesBucketLifecycleRule>(guardedValue, (value) => SpacesBucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String?>('region');
+    versioning = registerOutput<SpacesBucketVersioning?>('versioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpacesBucketVersioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [SpacesBucket] resource.
+  SpacesBucket.reference(String urn)
+    : super(
+        'digitalocean:index/spacesBucket:SpacesBucket',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acl = registerOutput<String?>('acl');
+    bucketDomainName = registerOutput<String>('bucketDomainName');
+    bucketUrn = registerOutput<String>('bucketUrn');
+    corsRules = registerOutput<List<SpacesBucketCorsRule>?>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacesBucketCorsRule>(guardedValue, (value) => SpacesBucketCorsRule.fromMap((value as Map).cast<String, dynamic>())); });
+    endpoint = registerOutput<String>('endpoint');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    lifecycleRules = registerOutput<List<SpacesBucketLifecycleRule>?>('lifecycleRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacesBucketLifecycleRule>(guardedValue, (value) => SpacesBucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String?>('region');
     versioning = registerOutput<SpacesBucketVersioning?>('versioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpacesBucketVersioning.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiAgentsByOpenaiApiKeyAgentModelAgreement {
   /// Description of the agreement
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the agreement
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// URL of the agreement
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
   /// UUID of the agreement
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [GetGradientaiAgentsByOpenaiApiKeyAgentModelAgreement].
   /// [description] Description of the agreement

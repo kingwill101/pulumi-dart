@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_nat_gateway_args.dart';
+import 'vpc_nat_gateway_egress.dart';
 import 'vpc_nat_gateway_state.dart';
+import 'vpc_nat_gateway_vpc.dart';
 
 /// Provides a DigitalOcean VPC NAT Gateway resource. This can be used to create, modify,
 /// read and delete VPC NAT Gateways.
@@ -227,7 +229,7 @@ class VpcNatGateway extends pulumi.CustomResource {
   late final pulumi.Output<String> createdAt;
   /// Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
   /// `publicGateways` embedding the reserved `ipv4` addresses.
-  late final pulumi.Output<List<Map<String, dynamic>>> egresses;
+  late final pulumi.Output<List<VpcNatGatewayEgress>> egresses;
   /// The egress timeout value for ICMP connections of the VPC NAT Gateway.
   late final pulumi.Output<int> icmpTimeoutSeconds;
   /// The name of the VPC NAT Gateway.
@@ -250,7 +252,7 @@ class VpcNatGateway extends pulumi.CustomResource {
   late final pulumi.Output<String> updatedAt;
   /// The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
   /// documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> vpcs;
+  late final pulumi.Output<List<VpcNatGatewayVpc>> vpcs;
 
   /// Creates a new [VpcNatGateway].
   /// [name] The Pulumi resource name.
@@ -264,10 +266,10 @@ class VpcNatGateway extends pulumi.CustomResource {
           'digitalocean:index/vpcNatGateway:VpcNatGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
-    egresses = registerOutput<List<Map<String, dynamic>>>('egresses');
+    egresses = registerOutput<List<VpcNatGatewayEgress>>('egresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcNatGatewayEgress>(guardedValue, (value) => VpcNatGatewayEgress.fromMap((value as Map).cast<String, dynamic>())); });
     icmpTimeoutSeconds = registerOutput<int>('icmpTimeoutSeconds');
     this.name = registerOutput<String>('name');
     projectId = registerOutput<String>('projectId');
@@ -278,7 +280,7 @@ class VpcNatGateway extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     udpTimeoutSeconds = registerOutput<int>('udpTimeoutSeconds');
     updatedAt = registerOutput<String>('updatedAt');
-    vpcs = registerOutput<List<Map<String, dynamic>>>('vpcs');
+    vpcs = registerOutput<List<VpcNatGatewayVpc>>('vpcs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcNatGatewayVpc>(guardedValue, (value) => VpcNatGatewayVpc.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [VpcNatGateway] resource's state with the given [name] and [id].
@@ -286,11 +288,12 @@ class VpcNatGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcNatGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcNatGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -305,7 +308,7 @@ class VpcNatGateway extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createdAt = registerOutput<String>('createdAt');
-    egresses = registerOutput<List<Map<String, dynamic>>>('egresses');
+    egresses = registerOutput<List<VpcNatGatewayEgress>>('egresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcNatGatewayEgress>(guardedValue, (value) => VpcNatGatewayEgress.fromMap((value as Map).cast<String, dynamic>())); });
     icmpTimeoutSeconds = registerOutput<int>('icmpTimeoutSeconds');
     this.name = registerOutput<String>('name');
     projectId = registerOutput<String>('projectId');
@@ -316,6 +319,30 @@ class VpcNatGateway extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     udpTimeoutSeconds = registerOutput<int>('udpTimeoutSeconds');
     updatedAt = registerOutput<String>('updatedAt');
-    vpcs = registerOutput<List<Map<String, dynamic>>>('vpcs');
+    vpcs = registerOutput<List<VpcNatGatewayVpc>>('vpcs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcNatGatewayVpc>(guardedValue, (value) => VpcNatGatewayVpc.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [VpcNatGateway] resource.
+  VpcNatGateway.reference(String urn)
+    : super(
+        'digitalocean:index/vpcNatGateway:VpcNatGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    egresses = registerOutput<List<VpcNatGatewayEgress>>('egresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcNatGatewayEgress>(guardedValue, (value) => VpcNatGatewayEgress.fromMap((value as Map).cast<String, dynamic>())); });
+    icmpTimeoutSeconds = registerOutput<int>('icmpTimeoutSeconds');
+    this.name = registerOutput<String>('name');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    size = registerOutput<int>('size');
+    state = registerOutput<String>('state');
+    tcpTimeoutSeconds = registerOutput<int>('tcpTimeoutSeconds');
+    type = registerOutput<String>('type');
+    udpTimeoutSeconds = registerOutput<int>('udpTimeoutSeconds');
+    updatedAt = registerOutput<String>('updatedAt');
+    vpcs = registerOutput<List<VpcNatGatewayVpc>>('vpcs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcNatGatewayVpc>(guardedValue, (value) => VpcNatGatewayVpc.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

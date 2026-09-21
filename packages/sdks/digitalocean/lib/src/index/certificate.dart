@@ -606,14 +606,15 @@ class Certificate extends pulumi.CustomResource {
           'digitalocean:index/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
+          additionalSecretOutputs: const ['privateKey'],
         ) {
     certificateChain = registerOutput<String?>('certificateChain');
-    domains = registerOutput<List<String>?>('domains');
+    domains = registerOutput<List<String>?>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     leafCertificate = registerOutput<String?>('leafCertificate');
     this.name = registerOutput<String>('name');
     notAfter = registerOutput<String>('notAfter');
-    privateKey = registerOutput<String?>('privateKey');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
     sha1Fingerprint = registerOutput<String>('sha1Fingerprint');
     state = registerOutput<String>('state');
     type = registerOutput<String?>('type');
@@ -625,11 +626,12 @@ class Certificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Certificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -644,13 +646,35 @@ class Certificate extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     certificateChain = registerOutput<String?>('certificateChain');
-    domains = registerOutput<List<String>?>('domains');
+    domains = registerOutput<List<String>?>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     leafCertificate = registerOutput<String?>('leafCertificate');
     this.name = registerOutput<String>('name');
     notAfter = registerOutput<String>('notAfter');
-    privateKey = registerOutput<String?>('privateKey');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
     sha1Fingerprint = registerOutput<String>('sha1Fingerprint');
     this.state = registerOutput<String>('state');
+    type = registerOutput<String?>('type');
+    uuid = registerOutput<String>('uuid');
+  }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'digitalocean:index/certificate:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['privateKey'],
+        isResourceReference: true,
+      ) {
+    certificateChain = registerOutput<String?>('certificateChain');
+    domains = registerOutput<List<String>?>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    leafCertificate = registerOutput<String?>('leafCertificate');
+    this.name = registerOutput<String>('name');
+    notAfter = registerOutput<String>('notAfter');
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
+    sha1Fingerprint = registerOutput<String>('sha1Fingerprint');
+    state = registerOutput<String>('state');
     type = registerOutput<String?>('type');
     uuid = registerOutput<String>('uuid');
   }

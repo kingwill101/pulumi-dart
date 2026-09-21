@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VolumeAttachment resources.
 class VolumeAttachmentState {
   /// ID of the Droplet to attach the volume to.
-  final pulumi.Input<int>? dropletId;
+  final pulumi.Input<int?>? dropletId;
   /// ID of the Volume to be attached to the Droplet.
-  final pulumi.Input<String>? volumeId;
+  final pulumi.Input<String?>? volumeId;
 
   /// Creates a new [VolumeAttachmentState].
   /// [dropletId] ID of the Droplet to attach the volume to.
@@ -26,7 +26,7 @@ class VolumeAttachmentState {
 
   factory VolumeAttachmentState.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentState(
-      dropletId: (() { final guardedValue = map['dropletId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dropletId: (() { final guardedValue = map['dropletId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       volumeId: (() { final guardedValue = map['volumeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

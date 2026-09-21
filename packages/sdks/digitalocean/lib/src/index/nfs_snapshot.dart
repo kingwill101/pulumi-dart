@@ -248,7 +248,7 @@ class NfsSnapshot extends pulumi.CustomResource {
           'digitalocean:index/nfsSnapshot:NfsSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     this.name = registerOutput<String>('name');
@@ -263,11 +263,12 @@ class NfsSnapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NfsSnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NfsSnapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -281,6 +282,23 @@ class NfsSnapshot extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createdAt = registerOutput<String>('createdAt');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    shareId = registerOutput<String>('shareId');
+    size = registerOutput<int>('size');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [NfsSnapshot] resource.
+  NfsSnapshot.reference(String urn)
+    : super(
+        'digitalocean:index/nfsSnapshot:NfsSnapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createdAt = registerOutput<String>('createdAt');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
