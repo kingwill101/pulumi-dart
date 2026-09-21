@@ -16,7 +16,7 @@ class ProviderProvider extends pulumi.ProviderResource {
           'random',
           name,
           const <String, pulumi.Input<dynamic>>{},
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.21.2').merge(options),
         );
 
   /// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.

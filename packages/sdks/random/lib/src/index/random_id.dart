@@ -112,7 +112,7 @@ import 'random_id_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = aws.NewInstance(ctx, "server", &aws.InstanceArgs{
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]pulumi.String{
 /// 				"name": pulumi.Sprintf("web-server %v", server.Hex),
 /// 			},
 /// 			Ami: server.Keepers.AmiId,
@@ -256,14 +256,14 @@ class RandomId extends pulumi.CustomResource {
           'random:index/randomId:RandomId',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.21.2').merge(options),
         ) {
     b64Std = registerOutput<String>('b64Std');
     b64Url = registerOutput<String>('b64Url');
     byteLength = registerOutput<int>('byteLength');
     dec = registerOutput<String>('dec');
     hex = registerOutput<String>('hex');
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     prefix = registerOutput<String?>('prefix');
   }
 
@@ -272,11 +272,12 @@ class RandomId extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RandomIdState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RandomId._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -295,7 +296,25 @@ class RandomId extends pulumi.CustomResource {
     byteLength = registerOutput<int>('byteLength');
     dec = registerOutput<String>('dec');
     hex = registerOutput<String>('hex');
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    prefix = registerOutput<String?>('prefix');
+  }
+
+  /// Creates a typed reference to an existing [RandomId] resource.
+  RandomId.reference(String urn)
+    : super(
+        'random:index/randomId:RandomId',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    b64Std = registerOutput<String>('b64Std');
+    b64Url = registerOutput<String>('b64Url');
+    byteLength = registerOutput<int>('byteLength');
+    dec = registerOutput<String>('dec');
+    hex = registerOutput<String>('hex');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     prefix = registerOutput<String?>('prefix');
   }
 }

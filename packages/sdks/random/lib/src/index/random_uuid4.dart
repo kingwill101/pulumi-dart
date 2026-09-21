@@ -172,9 +172,9 @@ class RandomUuid4 extends pulumi.CustomResource {
           'random:index/randomUuid4:RandomUuid4',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.21.2').merge(options),
         ) {
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     result = registerOutput<String>('result');
   }
 
@@ -183,11 +183,12 @@ class RandomUuid4 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RandomUuid4State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RandomUuid4._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -201,7 +202,20 @@ class RandomUuid4 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    result = registerOutput<String>('result');
+  }
+
+  /// Creates a typed reference to an existing [RandomUuid4] resource.
+  RandomUuid4.reference(String urn)
+    : super(
+        'random:index/randomUuid4:RandomUuid4',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     result = registerOutput<String>('result');
   }
 }
