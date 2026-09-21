@@ -615,7 +615,7 @@ class Zone extends pulumi.CustomResource {
           'aws:route53/zone:Zone',
           name,
           pulumi.Input.mapToInputs((args ?? ZoneArgs()).toMap()),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String>('comment');

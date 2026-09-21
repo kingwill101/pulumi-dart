@@ -25,8 +25,8 @@ class ConnectorCapacityProvisionedCapacity {
 
   factory ConnectorCapacityProvisionedCapacity.fromMap(Map<String, dynamic> map) {
     return ConnectorCapacityProvisionedCapacity(
-      mcuCount: (() { final guardedValue = map['mcuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      workerCount: pulumi.Input.fromValue((map['workerCount'] as num).toInt()),
+      mcuCount: (() { final guardedValue = map['mcuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      workerCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['workerCount'])),
     );
   }
 }

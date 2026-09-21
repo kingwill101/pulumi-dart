@@ -324,7 +324,7 @@ class IPSet extends pulumi.CustomResource {
           'aws:guardduty/iPSet:IPSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     activate = registerOutput<bool>('activate');
     arn = registerOutput<String>('arn');

@@ -66,7 +66,7 @@ class GetPlanRule {
 
   factory GetPlanRule.fromMap(Map<String, dynamic> map) {
     return GetPlanRule(
-      completionWindow: pulumi.Input.fromValue((map['completionWindow'] as num).toInt()),
+      completionWindow: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['completionWindow'])),
       copyActions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPlanRuleCopyAction>(map['copyActions']!, (value) => GetPlanRuleCopyAction.fromMap((value as Map).cast<String, dynamic>()))),
       enableContinuousBackup: pulumi.Input.fromValue(map['enableContinuousBackup'] as bool),
       lifecycles: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPlanRuleLifecycle>(map['lifecycles']!, (value) => GetPlanRuleLifecycle.fromMap((value as Map).cast<String, dynamic>()))),
@@ -75,7 +75,7 @@ class GetPlanRule {
       scanActions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPlanRuleScanAction>(map['scanActions']!, (value) => GetPlanRuleScanAction.fromMap((value as Map).cast<String, dynamic>()))),
       schedule: pulumi.Input.fromValue(map['schedule'] as String),
       scheduleExpressionTimezone: pulumi.Input.fromValue(map['scheduleExpressionTimezone'] as String),
-      startWindow: pulumi.Input.fromValue((map['startWindow'] as num).toInt()),
+      startWindow: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startWindow'])),
       targetLogicallyAirGappedBackupVaultArn: pulumi.Input.fromValue(map['targetLogicallyAirGappedBackupVaultArn'] as String),
       targetVaultName: pulumi.Input.fromValue(map['targetVaultName'] as String),
     );

@@ -528,7 +528,7 @@ class Project extends pulumi.CustomResource {
           'aws:evidently/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     activeExperimentCount = registerOutput<int>('activeExperimentCount');
     activeLaunchCount = registerOutput<int>('activeLaunchCount');

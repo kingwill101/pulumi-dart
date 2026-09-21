@@ -317,7 +317,7 @@ class DiskAttachment extends pulumi.CustomResource {
           'aws:lightsail/disk_attachment:Disk_attachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     diskName = registerOutput<String>('diskName');
     diskPath = registerOutput<String>('diskPath');

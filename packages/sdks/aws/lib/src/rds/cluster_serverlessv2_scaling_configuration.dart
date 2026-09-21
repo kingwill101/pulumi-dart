@@ -32,7 +32,7 @@ class ClusterServerlessv2ScalingConfiguration {
     return ClusterServerlessv2ScalingConfiguration(
       maxCapacity: pulumi.Input.fromValue((map['maxCapacity'] as num).toDouble()),
       minCapacity: pulumi.Input.fromValue((map['minCapacity'] as num).toDouble()),
-      secondsUntilAutoPause: (() { final guardedValue = map['secondsUntilAutoPause']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      secondsUntilAutoPause: (() { final guardedValue = map['secondsUntilAutoPause']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -55,7 +55,7 @@ class SslNegotiationPolicyState {
   factory SslNegotiationPolicyState.fromMap(Map<String, dynamic> map) {
     return SslNegotiationPolicyState(
       attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SslNegotiationPolicyAttribute>(guardedValue, (value) => SslNegotiationPolicyAttribute.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      lbPort: (() { final guardedValue = map['lbPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      lbPort: (() { final guardedValue = map['lbPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       loadBalancer: (() { final guardedValue = map['loadBalancer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

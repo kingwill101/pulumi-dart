@@ -243,7 +243,7 @@ class Fleet extends pulumi.CustomResource {
           'aws:gamelift/fleet:Fleet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     buildArn = registerOutput<String>('buildArn');

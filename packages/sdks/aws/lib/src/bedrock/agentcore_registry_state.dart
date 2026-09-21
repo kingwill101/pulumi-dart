@@ -7,12 +7,19 @@ import 'agentcore_registry_timeouts.dart';
 
 /// Input properties used for looking up and filtering AgentcoreRegistry resources.
 class AgentcoreRegistryState {
+  /// Approval configuration for registry records. See below.
   final pulumi.Input<List<AgentcoreRegistryApprovalConfiguration>?>? approvalConfigurations;
+  /// Authorizer configuration for the registry. Required when `authorizerType` is `CUSTOM_JWT`. See below.
   final pulumi.Input<AgentcoreRegistryAuthorizerConfiguration?>? authorizerConfiguration;
+  /// Type of authorizer to use for the registry. Valid values are `AWS_IAM` (default) and `CUSTOM_JWT`. This controls the authorization method for the Search and Invoke APIs used by consumers.
   final pulumi.Input<String?>? authorizerType;
+  /// Description of the registry.
   final pulumi.Input<String?>? description;
+  /// Name of the registry. Must be unique within your account and contain only letters, numbers, hyphens, and underscores. Maximum length of 64 characters.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String?>? name;
-  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// ARN of the registry.
   final pulumi.Input<String?>? registryArn;
@@ -21,12 +28,12 @@ class AgentcoreRegistryState {
   final pulumi.Input<AgentcoreRegistryTimeouts?>? timeouts;
 
   /// Creates a new [AgentcoreRegistryState].
-  /// [approvalConfigurations] Optional.
-  /// [authorizerConfiguration] Optional.
-  /// [authorizerType] Optional.
-  /// [description] Optional.
-  /// [name] Optional.
-  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+  /// [approvalConfigurations] Approval configuration for registry records. See below.
+  /// [authorizerConfiguration] Authorizer configuration for the registry. Required when `authorizerType` is `CUSTOM_JWT`. See below.
+  /// [authorizerType] Type of authorizer to use for the registry. Valid values are `AWS_IAM` (default) and `CUSTOM_JWT`. This controls the authorization method for the Search and Invoke APIs used by consumers.
+  /// [description] Description of the registry.
+  /// [name] Name of the registry. Must be unique within your account and contain only letters, numbers, hyphens, and underscores. Maximum length of 64 characters.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [registryArn] ARN of the registry.
   /// [registryId] Unique identifier of the registry.
   /// [timeouts] Optional.

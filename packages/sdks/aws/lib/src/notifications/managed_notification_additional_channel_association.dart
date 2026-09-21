@@ -178,7 +178,7 @@ class ManagedNotificationAdditionalChannelAssociation extends pulumi.CustomResou
           'aws:notifications/managedNotificationAdditionalChannelAssociation:ManagedNotificationAdditionalChannelAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     channelArn = registerOutput<String>('channelArn');
     managedNotificationArn = registerOutput<String>('managedNotificationArn');

@@ -1293,7 +1293,7 @@ class FunctionEventInvokeConfig extends pulumi.CustomResource {
           'aws:lambda/functionEventInvokeConfig:FunctionEventInvokeConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     destinationConfig = registerOutput<FunctionEventInvokeConfigDestinationConfig?>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEventInvokeConfigDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     functionName = registerOutput<String>('functionName');

@@ -24,7 +24,7 @@ class GetPlanStage {
 
   factory GetPlanStage.fromMap(Map<String, dynamic> map) {
     return GetPlanStage(
-      durationInMinutes: pulumi.Input.fromValue((map['durationInMinutes'] as num).toInt()),
+      durationInMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['durationInMinutes'])),
       targets: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPlanStageTarget>(map['targets']!, (value) => GetPlanStageTarget.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

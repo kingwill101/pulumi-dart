@@ -353,7 +353,7 @@ class CustomerManagedPolicyAttachment extends pulumi.CustomResource {
           'aws:ssoadmin/customerManagedPolicyAttachment:CustomerManagedPolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     customerManagedPolicyReference = registerOutput<CustomerManagedPolicyAttachmentCustomerManagedPolicyReference>('customerManagedPolicyReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomerManagedPolicyAttachmentCustomerManagedPolicyReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceArn = registerOutput<String>('instanceArn');

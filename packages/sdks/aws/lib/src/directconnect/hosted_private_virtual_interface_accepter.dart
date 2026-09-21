@@ -283,6 +283,10 @@ class HostedPrivateVirtualInterfaceAccepter extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The ID of the Direct Connect gateway to which to connect the virtual interface.
   late final pulumi.Output<String?> dxGatewayId;
+  /// The number of inbound IPv4 route prefixes to allocate to the virtual interface. Valid values are `0` to `1000`. If not specified, AWS applies the default allocation of `100`.
+  late final pulumi.Output<int> prefixPoolAllocatedCountIpv4;
+  /// The number of inbound IPv6 route prefixes to allocate to the virtual interface. Valid values are `0` to `1000`. If not specified, AWS applies the default allocation of `100`.
+  late final pulumi.Output<int> prefixPoolAllocatedCountIpv6;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -306,10 +310,12 @@ class HostedPrivateVirtualInterfaceAccepter extends pulumi.CustomResource {
           'aws:directconnect/hostedPrivateVirtualInterfaceAccepter:HostedPrivateVirtualInterfaceAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dxGatewayId = registerOutput<String?>('dxGatewayId');
+    prefixPoolAllocatedCountIpv4 = registerOutput<int>('prefixPoolAllocatedCountIpv4');
+    prefixPoolAllocatedCountIpv6 = registerOutput<int>('prefixPoolAllocatedCountIpv6');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
@@ -343,6 +349,8 @@ class HostedPrivateVirtualInterfaceAccepter extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     dxGatewayId = registerOutput<String?>('dxGatewayId');
+    prefixPoolAllocatedCountIpv4 = registerOutput<int>('prefixPoolAllocatedCountIpv4');
+    prefixPoolAllocatedCountIpv6 = registerOutput<int>('prefixPoolAllocatedCountIpv6');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
@@ -361,6 +369,8 @@ class HostedPrivateVirtualInterfaceAccepter extends pulumi.CustomResource {
       ) {
     arn = registerOutput<String>('arn');
     dxGatewayId = registerOutput<String?>('dxGatewayId');
+    prefixPoolAllocatedCountIpv4 = registerOutput<int>('prefixPoolAllocatedCountIpv4');
+    prefixPoolAllocatedCountIpv6 = registerOutput<int>('prefixPoolAllocatedCountIpv6');
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

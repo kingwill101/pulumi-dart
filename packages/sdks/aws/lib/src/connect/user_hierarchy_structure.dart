@@ -403,7 +403,7 @@ class UserHierarchyStructure extends pulumi.CustomResource {
           'aws:connect/userHierarchyStructure:UserHierarchyStructure',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     hierarchyStructure = registerOutput<UserHierarchyStructureHierarchyStructure>('hierarchyStructure', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserHierarchyStructureHierarchyStructure.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceId = registerOutput<String>('instanceId');

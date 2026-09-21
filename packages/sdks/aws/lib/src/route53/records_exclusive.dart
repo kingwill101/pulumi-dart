@@ -379,7 +379,7 @@ class RecordsExclusive extends pulumi.CustomResource {
           'aws:route53/recordsExclusive:RecordsExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     resourceRecordSets = registerOutput<List<RecordsExclusiveResourceRecordSet>?>('resourceRecordSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordsExclusiveResourceRecordSet>(guardedValue, (value) => RecordsExclusiveResourceRecordSet.fromMap((value as Map).cast<String, dynamic>())); });
     timeouts = registerOutput<RecordsExclusiveTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordsExclusiveTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

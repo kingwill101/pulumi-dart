@@ -222,7 +222,7 @@ class Tag extends pulumi.CustomResource {
           'aws:transfer/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     key = registerOutput<String>('key');
     region = registerOutput<String>('region');

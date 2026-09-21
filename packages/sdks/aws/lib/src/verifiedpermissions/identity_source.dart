@@ -584,7 +584,7 @@ class IdentitySource extends pulumi.CustomResource {
           'aws:verifiedpermissions/identitySource:IdentitySource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     configuration = registerOutput<IdentitySourceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentitySourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     policyStoreId = registerOutput<String>('policyStoreId');

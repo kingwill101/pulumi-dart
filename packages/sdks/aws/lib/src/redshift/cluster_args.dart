@@ -52,28 +52,18 @@ class ClusterArgs {
   final pulumi.Input<String?>? kmsKeyId;
   /// The name of the maintenance track for the restored cluster. When you take a snapshot, the snapshot inherits the MaintenanceTrack value from the cluster. The snapshot might be on a different track than the cluster that was the source for the snapshot. For example, suppose that you take a snapshot of  a cluster that is on the current track and then change the cluster to be on the trailing track. In this case, the snapshot and the source cluster are on different tracks. Default value is `current`.
   final pulumi.Input<String?>? maintenanceTrackName;
-  /// Whether to use AWS SecretsManager to manage the cluster admin credentials.
-  /// Conflicts with `masterPassword` and `masterPasswordWo`.
-  /// One of `masterPassword` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided.
+  /// Whether to use AWS SecretsManager to manage the cluster admin credentials. Conflicts with `masterPassword` and `masterPasswordWo`. One of `masterPassword` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided.
   final pulumi.Input<bool?>? manageMasterPassword;
   /// The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained indefinitely. This setting doesn't change the retention period of existing snapshots. Valid values are between `-1` and `3653`. Default value is `-1`.
   final pulumi.Input<int?>? manualSnapshotRetentionPeriod;
-  /// Password for the master DB user.
-  /// Conflicts with `manageMasterPassword` and `masterPasswordWo`.
-  /// One of `masterPassword`, `masterPasswordWo` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided.
-  /// Note that this may show up in logs, and it will be stored in the state file.
-  /// Password must contain at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.
+  /// Password for the master DB user. Conflicts with `manageMasterPassword` and `masterPasswordWo`. One of `masterPassword`, `masterPasswordWo` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided. Note that this will show up in logs, and it will be stored in the state file. Password must contain at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.
   final pulumi.Input<String?>? masterPassword;
   /// ID of the KMS key used to encrypt the cluster admin credentials secret.
   final pulumi.Input<String?>? masterPasswordSecretKmsKeyId;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Password for the master DB user.
-  /// Conflicts with `manageMasterPassword` and `masterPassword`.
-  /// One of `masterPasswordWo`, `masterPassword` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided.
-  /// Note that this may show up in logs.
-  /// Password must contain at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.
+  /// Password for the master DB user. Conflicts with `manageMasterPassword` and `masterPassword`. One of `masterPasswordWo`, `masterPassword` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided. Note that this may show up in logs. Password must contain at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number. If set, requires `masterPasswordWoVersion` to be set.
   final pulumi.Input<String?>? masterPasswordWo;
-  /// Used together with `masterPasswordWo` to trigger an update. Increment this value when an update to the `masterPasswordWo` is required.
+  /// Required when `masterPasswordWo` is set. Changing this value triggers an update to `masterPasswordWo`.
   final pulumi.Input<int?>? masterPasswordWoVersion;
   /// Username for the master DB user.
   final pulumi.Input<String?>? masterUsername;
@@ -134,12 +124,12 @@ class ClusterArgs {
   /// [iamRoles] A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
   /// [kmsKeyId] The ARN for the KMS encryption key. When specifying `kmsKeyId`, `encrypted` needs to be set to true.
   /// [maintenanceTrackName] The name of the maintenance track for the restored cluster. When you take a snapshot, the snapshot inherits the MaintenanceTrack value from the cluster. The snapshot might be on a different track than the cluster that was the source for the snapshot. For example, suppose that you take a snapshot of  a cluster that is on the current track and then change the cluster to be on the trailing track. In this case, the snapshot and the source cluster are on different tracks. Default value is `current`.
-  /// [manageMasterPassword] Whether to use AWS SecretsManager to manage the cluster admin credentials.
+  /// [manageMasterPassword] Whether to use AWS SecretsManager to manage the cluster admin credentials. Conflicts with `masterPassword` and `masterPasswordWo`. One of `masterPassword` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided.
   /// [manualSnapshotRetentionPeriod] The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained indefinitely. This setting doesn't change the retention period of existing snapshots. Valid values are between `-1` and `3653`. Default value is `-1`.
-  /// [masterPassword] Password for the master DB user.
+  /// [masterPassword] Password for the master DB user. Conflicts with `manageMasterPassword` and `masterPasswordWo`. One of `masterPassword`, `masterPasswordWo` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided. Note that this will show up in logs, and it will be stored in the state file. Password must contain at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.
   /// [masterPasswordSecretKmsKeyId] ID of the KMS key used to encrypt the cluster admin credentials secret.
   /// [masterPasswordWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [masterPasswordWoVersion] Used together with `masterPasswordWo` to trigger an update. Increment this value when an update to the `masterPasswordWo` is required.
+  /// [masterPasswordWoVersion] Required when `masterPasswordWo` is set. Changing this value triggers an update to `masterPasswordWo`.
   /// [masterUsername] Username for the master DB user.
   /// [multiAz] Specifies if the Redshift cluster is multi-AZ.
   /// [nodeType] The node type to be provisioned for the cluster.
@@ -250,7 +240,7 @@ class ClusterArgs {
       allowVersionUpgrade: (() { final guardedValue = map['allowVersionUpgrade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       applyImmediately: (() { final guardedValue = map['applyImmediately']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       aquaConfigurationStatus: (() { final guardedValue = map['aquaConfigurationStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      automatedSnapshotRetentionPeriod: (() { final guardedValue = map['automatedSnapshotRetentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      automatedSnapshotRetentionPeriod: (() { final guardedValue = map['automatedSnapshotRetentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       availabilityZoneRelocationEnabled: (() { final guardedValue = map['availabilityZoneRelocationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       clusterIdentifier: pulumi.Input.fromValue(map['clusterIdentifier'] as String),
@@ -268,17 +258,17 @@ class ClusterArgs {
       kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maintenanceTrackName: (() { final guardedValue = map['maintenanceTrackName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       manageMasterPassword: (() { final guardedValue = map['manageMasterPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      manualSnapshotRetentionPeriod: (() { final guardedValue = map['manualSnapshotRetentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      manualSnapshotRetentionPeriod: (() { final guardedValue = map['manualSnapshotRetentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       masterPassword: (() { final guardedValue = map['masterPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       masterPasswordSecretKmsKeyId: (() { final guardedValue = map['masterPasswordSecretKmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       masterPasswordWo: (() { final guardedValue = map['masterPasswordWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      masterPasswordWoVersion: (() { final guardedValue = map['masterPasswordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      masterPasswordWoVersion: (() { final guardedValue = map['masterPasswordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       masterUsername: (() { final guardedValue = map['masterUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       multiAz: (() { final guardedValue = map['multiAz']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       nodeType: pulumi.Input.fromValue(map['nodeType'] as String),
-      numberOfNodes: (() { final guardedValue = map['numberOfNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numberOfNodes: (() { final guardedValue = map['numberOfNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ownerAccount: (() { final guardedValue = map['ownerAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       preferredMaintenanceWindow: (() { final guardedValue = map['preferredMaintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publiclyAccessible: (() { final guardedValue = map['publiclyAccessible']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

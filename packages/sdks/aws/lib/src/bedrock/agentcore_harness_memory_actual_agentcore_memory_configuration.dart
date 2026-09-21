@@ -38,7 +38,7 @@ class AgentcoreHarnessMemoryActualAgentcoreMemoryConfiguration {
     return AgentcoreHarnessMemoryActualAgentcoreMemoryConfiguration(
       actorId: pulumi.Input.fromValue(map['actorId'] as String),
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      messagesCount: pulumi.Input.fromValue((map['messagesCount'] as num).toInt()),
+      messagesCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['messagesCount'])),
       retrievalConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<AgentcoreHarnessMemoryActualAgentcoreMemoryConfigurationRetrievalConfig>(map['retrievalConfigs']!, (value) => AgentcoreHarnessMemoryActualAgentcoreMemoryConfigurationRetrievalConfig.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

@@ -258,17 +258,29 @@ import 'engine_type.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `identifier` (String) Identifier of the RDS Cluster Instance.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import RDS Cluster Instances using the `identifier`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:rds/clusterInstance:ClusterInstance prod_instance_1 aurora-cluster-instance-1
 /// ```
 class ClusterInstance extends pulumi.CustomResource {
-  /// Specifies whether any database modifications are applied immediately, or during the next maintenance window. Default is`false`.
+  /// Whether any database modifications are applied immediately, or during the next maintenance window. Default is `false`.
   late final pulumi.Output<bool> applyImmediately;
   /// ARN of cluster instance
   late final pulumi.Output<String> arn;
-  /// Indicates that minor engine upgrades will be applied automatically to the DB instance during the maintenance window. Default `true`.
+  /// Whether minor engine upgrades will be applied automatically to the DB instance during the maintenance window. Default `true`.
   late final pulumi.Output<bool?> autoMinorVersionUpgrade;
   /// EC2 Availability Zone that the DB instance is created in. See [docs](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html) about the details.
   late final pulumi.Output<String> availabilityZone;
@@ -276,20 +288,19 @@ class ClusterInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> caCertIdentifier;
   /// Identifier of the `aws.rds.Cluster` in which to launch this instance.
   late final pulumi.Output<String> clusterIdentifier;
-  /// Indicates whether to copy all of the user-defined tags from the DB instance to snapshots of the DB instance. Default `false`.
+  /// Whether to copy all of the user-defined tags from the DB instance to snapshots of the DB instance. Default `false`.
   late final pulumi.Output<bool?> copyTagsToSnapshot;
   /// Instance profile associated with the underlying Amazon EC2 instance of an RDS Custom DB instance.
   late final pulumi.Output<String?> customIamInstanceProfile;
   /// Name of the DB parameter group to associate with this instance.
   late final pulumi.Output<String> dbParameterGroupName;
-  /// Specifies the DB subnet group to associate with this DB instance. The default behavior varies depending on whether `dbSubnetGroupName` is specified. Please refer to official [AWS documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-db-instance.html) to understand how `dbSubnetGroupName` and `publiclyAccessible` parameters affect DB instance behaviour. **NOTE:** This must match the `dbSubnetGroupName` of the attached `aws.rds.Cluster`.
+  /// DB subnet group to associate with this DB instance. The default behavior varies depending on whether `dbSubnetGroupName` is specified. Please refer to official [AWS documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-db-instance.html) to understand how `dbSubnetGroupName` and `publiclyAccessible` parameters affect DB instance behaviour. **NOTE:** This must match the `dbSubnetGroupName` of the attached `aws.rds.Cluster`.
   late final pulumi.Output<String> dbSubnetGroupName;
   /// Region-unique, immutable identifier for the DB instance.
   late final pulumi.Output<String> dbiResourceId;
   /// DNS address for this instance. May not be writable
   late final pulumi.Output<String> endpoint;
-  /// Name of the database engine to be used for the RDS cluster instance.
-  /// Valid Values: `aurora-mysql`, `aurora-postgresql`, `mysql`, `postgres`.(Note that `mysql` and `postgres` are Multi-AZ RDS clusters).
+  /// Name of the database engine to be used for the RDS cluster instance. Valid Values: `aurora-mysql`, `aurora-postgresql`, `mysql`, `postgres`. (Note that `mysql` and `postgres` are Multi-AZ RDS clusters).
   late final pulumi.Output<EngineType> engine;
   /// Database engine version. Please note that to upgrade the `engineVersion` of the instance, it must be done on the `aws.rds.Cluster` `engineVersion`. Trying to upgrade in `aws.rds.ClusterInstance` will not update the `engineVersion`.
   late final pulumi.Output<String> engineVersion;
@@ -311,7 +322,7 @@ class ClusterInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> monitoringRoleArn;
   /// Network type of the DB instance.
   late final pulumi.Output<String> networkType;
-  /// Specifies whether Performance Insights is enabled or not. **NOTE:** When Performance Insights is configured at the cluster level through `aws.rds.Cluster`, this argument cannot be set to a value that conflicts with the cluster's configuration.
+  /// Whether Performance Insights is enabled. **NOTE:** When Performance Insights is configured at the cluster level through `aws.rds.Cluster`, this argument cannot be set to a value that conflicts with the cluster's configuration.
   late final pulumi.Output<bool> performanceInsightsEnabled;
   /// ARN for the KMS key to encrypt Performance Insights data. When specifying `performanceInsightsKmsKeyId`, `performanceInsightsEnabled` needs to be set to true.
   late final pulumi.Output<String> performanceInsightsKmsKeyId;
@@ -329,15 +340,14 @@ class ClusterInstance extends pulumi.CustomResource {
   late final pulumi.Output<bool> publiclyAccessible;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Specifies whether the DB cluster is encrypted.
+  /// Whether the DB cluster is encrypted.
   late final pulumi.Output<bool> storageEncrypted;
   /// Map of tags to assign to the instance. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ///
-  /// For more detailed documentation about each argument, refer to
-  /// the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-db-instance.html).
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+  /// Set of RDS event categories (for example `failure`, `maintenance`) to check for after create and update operations. If set, the provider describes RDS events reported for this instance during the operation and surfaces a warning diagnostic, with the RDS event message, for each one found in these categories. Has no effect if unset; see [DescribeEvents](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DescribeEvents.html) and the `aws.rds.getEvents` data source for the source of these events. Requires the `rds:DescribeEvents` IAM permission when set.
+  late final pulumi.Output<List<String>?> warningEventCategories;
   /// Boolean indicating if this instance is writable. `False` indicates this instance is a read replica.
   late final pulumi.Output<bool> writer;
 
@@ -353,7 +363,7 @@ class ClusterInstance extends pulumi.CustomResource {
           'aws:rds/clusterInstance:ClusterInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     applyImmediately = registerOutput<bool>('applyImmediately');
     arn = registerOutput<String>('arn');
@@ -390,6 +400,7 @@ class ClusterInstance extends pulumi.CustomResource {
     storageEncrypted = registerOutput<bool>('storageEncrypted');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    warningEventCategories = registerOutput<List<String>?>('warningEventCategories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     writer = registerOutput<bool>('writer');
   }
 
@@ -452,6 +463,7 @@ class ClusterInstance extends pulumi.CustomResource {
     storageEncrypted = registerOutput<bool>('storageEncrypted');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    warningEventCategories = registerOutput<List<String>?>('warningEventCategories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     writer = registerOutput<bool>('writer');
   }
 
@@ -499,6 +511,7 @@ class ClusterInstance extends pulumi.CustomResource {
     storageEncrypted = registerOutput<bool>('storageEncrypted');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    warningEventCategories = registerOutput<List<String>?>('warningEventCategories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     writer = registerOutput<bool>('writer');
   }
 }

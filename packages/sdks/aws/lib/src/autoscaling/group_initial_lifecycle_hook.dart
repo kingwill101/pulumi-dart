@@ -45,7 +45,7 @@ class GroupInitialLifecycleHook {
   factory GroupInitialLifecycleHook.fromMap(Map<String, dynamic> map) {
     return GroupInitialLifecycleHook(
       defaultResult: (() { final guardedValue = map['defaultResult']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      heartbeatTimeout: (() { final guardedValue = map['heartbeatTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      heartbeatTimeout: (() { final guardedValue = map['heartbeatTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       lifecycleTransition: pulumi.Input.fromValue(map['lifecycleTransition'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       notificationMetadata: (() { final guardedValue = map['notificationMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

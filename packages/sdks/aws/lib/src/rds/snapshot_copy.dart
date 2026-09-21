@@ -252,51 +252,53 @@ import 'snapshot_copy_state.dart';
 /// $ pulumi import aws:rds/snapshotCopy:SnapshotCopy example my-snapshot
 /// ```
 class SnapshotCopy extends pulumi.CustomResource {
-  /// Specifies the allocated storage size in gigabytes (GB).
+  /// Allocated storage size in gigabytes (GB).
   late final pulumi.Output<int> allocatedStorage;
-  /// Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.
+  /// Name of the Availability Zone the DB instance was located in at the time of the DB snapshot.
   late final pulumi.Output<String> availabilityZone;
   /// Whether to copy existing tags. Defaults to `false`.
   late final pulumi.Output<bool?> copyTags;
   /// ARN for the DB snapshot.
   late final pulumi.Output<String> dbSnapshotArn;
-  /// The Destination region to place snapshot copy.
+  /// Destination Region to place snapshot copy.
   late final pulumi.Output<String?> destinationRegion;
-  /// Specifies whether the DB snapshot is encrypted.
+  /// Whether the DB snapshot is encrypted.
   late final pulumi.Output<bool> encrypted;
-  /// Specifies the name of the database engine.
+  /// Name of the database engine.
   late final pulumi.Output<String> engine;
-  /// Specifies the version of the database engine.
+  /// Version of the database engine.
   late final pulumi.Output<String> engineVersion;
-  /// Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.
+  /// Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.
   late final pulumi.Output<int> iops;
   /// KMS key ID.
   late final pulumi.Output<String?> kmsKeyId;
   /// License model information for the restored DB instance.
   late final pulumi.Output<String> licenseModel;
-  /// The name of an option group to associate with the copy of the snapshot.
+  /// Name of an option group to associate with the copy of the snapshot.
   late final pulumi.Output<String> optionGroupName;
+  /// Port that the database engine is listening on.
   late final pulumi.Output<int> port;
-  /// he URL that contains a Signature Version 4 signed request.
+  /// URL that contains a Signature Version 4 signed request.
   late final pulumi.Output<String?> presignedUrl;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
   late final pulumi.Output<List<String>?> sharedAccounts;
+  /// Type of the DB snapshot.
   late final pulumi.Output<String> snapshotType;
   /// Snapshot identifier of the source snapshot.
   late final pulumi.Output<String> sourceDbSnapshotIdentifier;
-  /// The region that the DB snapshot was created in or copied from.
+  /// Region that the DB snapshot was created in or copied from.
   late final pulumi.Output<String> sourceRegion;
-  /// Specifies the storage type associated with DB snapshot.
+  /// Storage type associated with DB snapshot.
   late final pulumi.Output<String> storageType;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The external custom Availability Zone.
+  /// External custom Availability Zone.
   late final pulumi.Output<String?> targetCustomAvailabilityZone;
-  /// The Identifier for the snapshot.
+  /// Identifier for the snapshot.
   late final pulumi.Output<String> targetDbSnapshotIdentifier;
   /// Provides the VPC ID associated with the DB snapshot.
   late final pulumi.Output<String> vpcId;
@@ -313,7 +315,7 @@ class SnapshotCopy extends pulumi.CustomResource {
           'aws:rds/snapshotCopy:SnapshotCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     availabilityZone = registerOutput<String>('availabilityZone');

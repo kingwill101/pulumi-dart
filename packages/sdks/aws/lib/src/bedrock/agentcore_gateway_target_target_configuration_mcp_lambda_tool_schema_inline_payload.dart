@@ -7,18 +7,18 @@ import 'agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_inl
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload {
   /// Description of what the tool does.
   final pulumi.Input<String> description;
-  /// Schema for the tool's input. See `schemaDefinition` below.
+  /// Schema for the tool's input. See `schemaDefinition` Block below.
   final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchema> inputSchema;
   /// Name of the tool.
   final pulumi.Input<String> name;
-  /// Schema for the tool's output. See `schemaDefinition` below.
+  /// Schema for the tool's output. See `schemaDefinition` Block below.
   final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchema?>? outputSchema;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload].
   /// [description] Description of what the tool does.
-  /// [inputSchema] Schema for the tool's input. See `schemaDefinition` below.
+  /// [inputSchema] Schema for the tool's input. See `schemaDefinition` Block below.
   /// [name] Name of the tool.
-  /// [outputSchema] Schema for the tool's output. See `schemaDefinition` below.
+  /// [outputSchema] Schema for the tool's output. See `schemaDefinition` Block below.
   const AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload({
     required this.description,
     required this.inputSchema,

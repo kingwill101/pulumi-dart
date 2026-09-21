@@ -355,7 +355,7 @@ class NamedQuery extends pulumi.CustomResource {
           'aws:athena/namedQuery:NamedQuery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     database = registerOutput<String>('database');
     description = registerOutput<String?>('description');

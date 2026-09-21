@@ -43,7 +43,7 @@ class PolicyStepAdjustment {
     return PolicyStepAdjustment(
       metricIntervalLowerBound: (() { final guardedValue = map['metricIntervalLowerBound']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metricIntervalUpperBound: (() { final guardedValue = map['metricIntervalUpperBound']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scalingAdjustment: pulumi.Input.fromValue((map['scalingAdjustment'] as num).toInt()),
+      scalingAdjustment: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scalingAdjustment'])),
     );
   }
 }

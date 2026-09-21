@@ -33,7 +33,7 @@ class InstanceStorageConfigStorageConfigKinesisVideoStreamConfig {
     return InstanceStorageConfigStorageConfigKinesisVideoStreamConfig(
       encryptionConfig: pulumi.Input.fromValue(InstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
-      retentionPeriodHours: pulumi.Input.fromValue((map['retentionPeriodHours'] as num).toInt()),
+      retentionPeriodHours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionPeriodHours'])),
     );
   }
 }

@@ -35,10 +35,10 @@ class FleetEc2InboundPermission {
 
   factory FleetEc2InboundPermission.fromMap(Map<String, dynamic> map) {
     return FleetEc2InboundPermission(
-      fromPort: pulumi.Input.fromValue((map['fromPort'] as num).toInt()),
+      fromPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['fromPort'])),
       ipRange: pulumi.Input.fromValue(map['ipRange'] as String),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      toPort: pulumi.Input.fromValue((map['toPort'] as num).toInt()),
+      toPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['toPort'])),
     );
   }
 }

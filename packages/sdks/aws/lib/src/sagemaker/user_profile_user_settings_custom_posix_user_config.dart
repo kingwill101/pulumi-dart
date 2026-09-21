@@ -25,8 +25,8 @@ class UserProfileUserSettingsCustomPosixUserConfig {
 
   factory UserProfileUserSettingsCustomPosixUserConfig.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsCustomPosixUserConfig(
-      gid: pulumi.Input.fromValue((map['gid'] as num).toInt()),
-      uid: pulumi.Input.fromValue((map['uid'] as num).toInt()),
+      gid: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['gid'])),
+      uid: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['uid'])),
     );
   }
 }

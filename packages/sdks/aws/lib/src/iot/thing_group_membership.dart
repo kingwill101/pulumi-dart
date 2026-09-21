@@ -150,7 +150,7 @@ class ThingGroupMembership extends pulumi.CustomResource {
           'aws:iot/thingGroupMembership:ThingGroupMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     overrideDynamicGroup = registerOutput<bool?>('overrideDynamicGroup');
     region = registerOutput<String>('region');

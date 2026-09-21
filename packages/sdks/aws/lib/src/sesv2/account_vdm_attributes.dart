@@ -186,7 +186,7 @@ class AccountVdmAttributes extends pulumi.CustomResource {
           'aws:sesv2/accountVdmAttributes:AccountVdmAttributes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     dashboardAttributes = registerOutput<AccountVdmAttributesDashboardAttributes>('dashboardAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountVdmAttributesDashboardAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     guardianAttributes = registerOutput<AccountVdmAttributesGuardianAttributes>('guardianAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountVdmAttributesGuardianAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });

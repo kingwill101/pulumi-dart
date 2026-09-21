@@ -936,7 +936,7 @@ class BucketAclV2 extends pulumi.CustomResource {
           'aws:s3/bucketAclV2:BucketAclV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accessControlPolicy = registerOutput<BucketAclV2AccessControlPolicy>('accessControlPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAclV2AccessControlPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     acl = registerOutput<String?>('acl');

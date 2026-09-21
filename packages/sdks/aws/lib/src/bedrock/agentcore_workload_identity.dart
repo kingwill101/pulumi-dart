@@ -286,7 +286,7 @@ class AgentcoreWorkloadIdentity extends pulumi.CustomResource {
           'aws:bedrock/agentcoreWorkloadIdentity:AgentcoreWorkloadIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     allowedResourceOauth2ReturnUrls = registerOutput<List<String>?>('allowedResourceOauth2ReturnUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');

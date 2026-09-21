@@ -20,7 +20,7 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchic
 
   factory AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration(
-      maxTokens: pulumi.Input.fromValue((map['maxTokens'] as num).toInt()),
+      maxTokens: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxTokens'])),
     );
   }
 }

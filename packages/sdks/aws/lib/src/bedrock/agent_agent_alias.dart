@@ -605,7 +605,7 @@ class AgentAgentAlias extends pulumi.CustomResource {
           'aws:bedrock/agentAgentAlias:AgentAgentAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     agentAliasArn = registerOutput<String>('agentAliasArn');
     agentAliasId = registerOutput<String>('agentAliasId');

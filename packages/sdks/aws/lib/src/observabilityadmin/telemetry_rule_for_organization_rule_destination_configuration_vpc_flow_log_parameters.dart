@@ -31,7 +31,7 @@ class TelemetryRuleForOrganizationRuleDestinationConfigurationVpcFlowLogParamete
   factory TelemetryRuleForOrganizationRuleDestinationConfigurationVpcFlowLogParameters.fromMap(Map<String, dynamic> map) {
     return TelemetryRuleForOrganizationRuleDestinationConfigurationVpcFlowLogParameters(
       logFormat: (() { final guardedValue = map['logFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxAggregationInterval: (() { final guardedValue = map['maxAggregationInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxAggregationInterval: (() { final guardedValue = map['maxAggregationInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       trafficType: (() { final guardedValue = map['trafficType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

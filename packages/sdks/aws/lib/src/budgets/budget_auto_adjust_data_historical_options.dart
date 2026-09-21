@@ -25,8 +25,8 @@ class BudgetAutoAdjustDataHistoricalOptions {
 
   factory BudgetAutoAdjustDataHistoricalOptions.fromMap(Map<String, dynamic> map) {
     return BudgetAutoAdjustDataHistoricalOptions(
-      budgetAdjustmentPeriod: pulumi.Input.fromValue((map['budgetAdjustmentPeriod'] as num).toInt()),
-      lookbackAvailablePeriods: (() { final guardedValue = map['lookbackAvailablePeriods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      budgetAdjustmentPeriod: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['budgetAdjustmentPeriod'])),
+      lookbackAvailablePeriods: (() { final guardedValue = map['lookbackAvailablePeriods']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

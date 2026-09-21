@@ -433,7 +433,7 @@ class Route extends pulumi.CustomResource {
           'aws:apigatewayv2/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     apiKeyRequired = registerOutput<bool?>('apiKeyRequired');

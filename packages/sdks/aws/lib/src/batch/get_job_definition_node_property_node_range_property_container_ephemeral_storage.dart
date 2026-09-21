@@ -20,7 +20,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage {
 
   factory GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage(
-      sizeInGib: pulumi.Input.fromValue((map['sizeInGib'] as num).toInt()),
+      sizeInGib: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeInGib'])),
     );
   }
 }

@@ -183,7 +183,7 @@ class EmailIdentityMailFromAttributes extends pulumi.CustomResource {
           'aws:sesv2/emailIdentityMailFromAttributes:EmailIdentityMailFromAttributes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     behaviorOnMxFailure = registerOutput<String?>('behaviorOnMxFailure');
     emailIdentity = registerOutput<String>('emailIdentity');

@@ -195,6 +195,8 @@ class Canary extends pulumi.CustomResource {
   late final pulumi.Output<int?> failureRetentionPeriod;
   /// Entry point to use for the source code when running the canary. This value must end with the string `.handler` .
   late final pulumi.Output<String> handler;
+  /// ARN of the customer-managed KMS key used to encrypt the environment variables of the canary's Lambda function at rest. If omitted, an AWS owned key is used. Note that this is distinct from `artifact_config.s3_encryption.kms_key_arn`, which encrypts the artifacts the canary uploads to Amazon S3.
+  late final pulumi.Output<String?> kmsKeyArn;
   /// Name for this canary. Has a maximum length of 255 characters. Valid characters are lowercase alphanumeric, hyphen, or underscore.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -244,7 +246,7 @@ class Canary extends pulumi.CustomResource {
           'aws:synthetics/canary:Canary',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     artifactConfig = registerOutput<CanaryArtifactConfig?>('artifactConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CanaryArtifactConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -254,6 +256,7 @@ class Canary extends pulumi.CustomResource {
     executionRoleArn = registerOutput<String>('executionRoleArn');
     failureRetentionPeriod = registerOutput<int?>('failureRetentionPeriod');
     handler = registerOutput<String>('handler');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     runConfig = registerOutput<CanaryRunConfig>('runConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CanaryRunConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -305,6 +308,7 @@ class Canary extends pulumi.CustomResource {
     executionRoleArn = registerOutput<String>('executionRoleArn');
     failureRetentionPeriod = registerOutput<int?>('failureRetentionPeriod');
     handler = registerOutput<String>('handler');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     runConfig = registerOutput<CanaryRunConfig>('runConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CanaryRunConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -341,6 +345,7 @@ class Canary extends pulumi.CustomResource {
     executionRoleArn = registerOutput<String>('executionRoleArn');
     failureRetentionPeriod = registerOutput<int?>('failureRetentionPeriod');
     handler = registerOutput<String>('handler');
+    kmsKeyArn = registerOutput<String?>('kmsKeyArn');
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
     runConfig = registerOutput<CanaryRunConfig>('runConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CanaryRunConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

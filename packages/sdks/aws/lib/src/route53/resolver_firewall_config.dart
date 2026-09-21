@@ -188,7 +188,7 @@ class ResolverFirewallConfig extends pulumi.CustomResource {
           'aws:route53/resolverFirewallConfig:ResolverFirewallConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     firewallFailOpen = registerOutput<String>('firewallFailOpen');
     ownerId = registerOutput<String>('ownerId');

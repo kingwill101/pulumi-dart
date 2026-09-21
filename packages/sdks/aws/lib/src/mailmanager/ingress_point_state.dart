@@ -27,6 +27,8 @@ class IngressPointState {
   final pulumi.Input<String?>? ruleSetId;
   /// Status of the ingress point.
   final pulumi.Input<String?>? status;
+  /// Status to apply to the ingress point. Valid values are `ACTIVE` and `CLOSED`.
+  final pulumi.Input<String?>? statusToUpdate;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -52,6 +54,7 @@ class IngressPointState {
   /// [region] Region where this resource is managed.
   /// [ruleSetId] Identifier of the rule set applied to the ingress point.
   /// [status] Status of the ingress point.
+  /// [statusToUpdate] Status to apply to the ingress point. Valid values are `ACTIVE` and `CLOSED`.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
@@ -69,6 +72,7 @@ class IngressPointState {
     this.region,
     this.ruleSetId,
     this.status,
+    this.statusToUpdate,
     this.tags,
     this.tagsAll,
     this.timeouts,
@@ -89,6 +93,7 @@ class IngressPointState {
       'region': ?region,
       'ruleSetId': ?ruleSetId,
       'status': ?status,
+      'statusToUpdate': ?statusToUpdate,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
       'timeouts': ?pulumi.Input.mapOptionalInputValue<IngressPointTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
@@ -110,6 +115,7 @@ class IngressPointState {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleSetId: (() { final guardedValue = map['ruleSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      statusToUpdate: (() { final guardedValue = map['statusToUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IngressPointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

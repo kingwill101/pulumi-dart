@@ -25,7 +25,7 @@ class ComputeEnvironmentUpdatePolicy {
 
   factory ComputeEnvironmentUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return ComputeEnvironmentUpdatePolicy(
-      jobExecutionTimeoutMinutes: (() { final guardedValue = map['jobExecutionTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      jobExecutionTimeoutMinutes: (() { final guardedValue = map['jobExecutionTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       terminateJobsOnUpdate: (() { final guardedValue = map['terminateJobsOnUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

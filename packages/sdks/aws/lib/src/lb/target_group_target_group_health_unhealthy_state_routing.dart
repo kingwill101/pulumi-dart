@@ -25,7 +25,7 @@ class TargetGroupTargetGroupHealthUnhealthyStateRouting {
 
   factory TargetGroupTargetGroupHealthUnhealthyStateRouting.fromMap(Map<String, dynamic> map) {
     return TargetGroupTargetGroupHealthUnhealthyStateRouting(
-      minimumHealthyTargetsCount: (() { final guardedValue = map['minimumHealthyTargetsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minimumHealthyTargetsCount: (() { final guardedValue = map['minimumHealthyTargetsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       minimumHealthyTargetsPercentage: (() { final guardedValue = map['minimumHealthyTargetsPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

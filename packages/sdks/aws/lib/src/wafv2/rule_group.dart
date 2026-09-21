@@ -1679,8 +1679,8 @@ import 'rule_group_visibility_config.dart';
 ///                         .count(RuleGroupRuleActionCountArgs.builder()
 ///                             .build())
 ///                         .build())
-///                     .statement(Map.of("orStatement", RuleGroupRuleStatementOrStatementArgs.builder()
-///                         .statements(
+///                     .statement(RuleGroupRuleStatementArgs.builder()
+///                         .orStatement(Map.of("statements", Arrays.asList(
 ///                             RuleGroupRuleStatementArgs.builder()
 ///                                 .regexMatchStatement(RuleGroupRuleStatementRegexMatchStatementArgs.builder()
 ///                                     .fieldToMatch(RuleGroupRuleStatementRegexMatchStatementFieldToMatchArgs.builder()
@@ -1727,8 +1727,8 @@ import 'rule_group_visibility_config.dart';
 ///                                         .type("NONE")
 ///                                         .build())
 ///                                     .build())
-///                                 .build())
-///                         .build()))
+///                                 .build())))
+///                         .build())
 ///                     .visibilityConfig(RuleGroupRuleVisibilityConfigArgs.builder()
 ///                         .cloudwatchMetricsEnabled(false)
 ///                         .metricName("rule-2")
@@ -2367,7 +2367,7 @@ class RuleGroup extends pulumi.CustomResource {
           'aws:wafv2/ruleGroup:RuleGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacity = registerOutput<int>('capacity');

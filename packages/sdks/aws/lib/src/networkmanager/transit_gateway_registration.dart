@@ -183,7 +183,7 @@ class TransitGatewayRegistration extends pulumi.CustomResource {
           'aws:networkmanager/transitGatewayRegistration:TransitGatewayRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     globalNetworkId = registerOutput<String>('globalNetworkId');
     transitGatewayArn = registerOutput<String>('transitGatewayArn');

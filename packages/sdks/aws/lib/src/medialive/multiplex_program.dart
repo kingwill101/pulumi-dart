@@ -369,7 +369,7 @@ class MultiplexProgram extends pulumi.CustomResource {
           'aws:medialive/multiplexProgram:MultiplexProgram',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     multiplexId = registerOutput<String>('multiplexId');
     multiplexProgramSettings = registerOutput<MultiplexProgramMultiplexProgramSettings?>('multiplexProgramSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiplexProgramMultiplexProgramSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

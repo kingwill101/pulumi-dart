@@ -145,7 +145,7 @@ class SdkvoiceGlobalSettings extends pulumi.CustomResource {
           'aws:chime/sdkvoiceGlobalSettings:SdkvoiceGlobalSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     voiceConnector = registerOutput<SdkvoiceGlobalSettingsVoiceConnector>('voiceConnector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SdkvoiceGlobalSettingsVoiceConnector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

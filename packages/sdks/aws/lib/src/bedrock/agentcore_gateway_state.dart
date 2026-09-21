@@ -12,7 +12,7 @@ import 'agentcore_gateway_workload_identity_detail.dart';
 class AgentcoreGatewayState {
   /// Configuration for request authorization. Required when `authorizerType` is set to `CUSTOM_JWT`. See `authorizerConfiguration` below.
   final pulumi.Input<AgentcoreGatewayAuthorizerConfiguration?>? authorizerConfiguration;
-  /// Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, `authorizerConfiguration` block is required.
+  /// Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`, `NONE`, `AUTHENTICATE_ONLY`. When set to `CUSTOM_JWT`, `authorizerConfiguration` block is required.
   final pulumi.Input<String?>? authorizerType;
   /// Description of the gateway.
   final pulumi.Input<String?>? description;
@@ -52,7 +52,7 @@ class AgentcoreGatewayState {
 
   /// Creates a new [AgentcoreGatewayState].
   /// [authorizerConfiguration] Configuration for request authorization. Required when `authorizerType` is set to `CUSTOM_JWT`. See `authorizerConfiguration` below.
-  /// [authorizerType] Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, `authorizerConfiguration` block is required.
+  /// [authorizerType] Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`, `NONE`, `AUTHENTICATE_ONLY`. When set to `CUSTOM_JWT`, `authorizerConfiguration` block is required.
   /// [description] Description of the gateway.
   /// [exceptionLevel] Exception level for the gateway. Valid values: `DEBUG`.
   /// [gatewayArn] ARN of the Gateway.

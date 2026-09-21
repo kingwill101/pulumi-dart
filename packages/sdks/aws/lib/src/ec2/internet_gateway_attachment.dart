@@ -184,7 +184,7 @@ class InternetGatewayAttachment extends pulumi.CustomResource {
           'aws:ec2/internetGatewayAttachment:InternetGatewayAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     internetGatewayId = registerOutput<String>('internetGatewayId');
     region = registerOutput<String>('region');

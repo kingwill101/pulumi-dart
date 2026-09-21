@@ -26,7 +26,7 @@ class InsightFiltersFirstObservedAtDateRange {
   factory InsightFiltersFirstObservedAtDateRange.fromMap(Map<String, dynamic> map) {
     return InsightFiltersFirstObservedAtDateRange(
       unit: pulumi.Input.fromValue(map['unit'] as String),
-      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
+      value: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['value'])),
     );
   }
 }

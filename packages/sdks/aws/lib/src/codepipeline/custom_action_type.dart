@@ -222,7 +222,7 @@ class CustomActionType extends pulumi.CustomResource {
           'aws:codepipeline/customActionType:CustomActionType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     category = registerOutput<String>('category');

@@ -175,7 +175,7 @@ class Collection extends pulumi.CustomResource {
           'aws:rekognition/collection:Collection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     collectionId = registerOutput<String>('collectionId');

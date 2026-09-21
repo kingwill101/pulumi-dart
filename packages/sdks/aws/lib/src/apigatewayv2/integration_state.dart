@@ -136,7 +136,7 @@ class IntegrationState {
       requestTemplates: (() { final guardedValue = map['requestTemplates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       responseParameters: (() { final guardedValue = map['responseParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IntegrationResponseParameter>(guardedValue, (value) => IntegrationResponseParameter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       templateSelectionExpression: (() { final guardedValue = map['templateSelectionExpression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timeoutMilliseconds: (() { final guardedValue = map['timeoutMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutMilliseconds: (() { final guardedValue = map['timeoutMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tlsConfig: (() { final guardedValue = map['tlsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationTlsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

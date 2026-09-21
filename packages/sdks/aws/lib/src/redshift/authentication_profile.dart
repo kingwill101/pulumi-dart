@@ -181,7 +181,7 @@ class AuthenticationProfile extends pulumi.CustomResource {
           'aws:redshift/authenticationProfile:AuthenticationProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     authenticationProfileContent = registerOutput<String>('authenticationProfileContent');
     authenticationProfileName = registerOutput<String>('authenticationProfileName');

@@ -187,7 +187,7 @@ class Hsm extends pulumi.CustomResource {
           'aws:cloudhsmv2/hsm:Hsm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     availabilityZone = registerOutput<String>('availabilityZone');
     clusterId = registerOutput<String>('clusterId');

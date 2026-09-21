@@ -36,9 +36,9 @@ class ExpressGatewayServiceScalingTarget {
   factory ExpressGatewayServiceScalingTarget.fromMap(Map<String, dynamic> map) {
     return ExpressGatewayServiceScalingTarget(
       autoScalingMetric: pulumi.Input.fromValue(map['autoScalingMetric'] as String),
-      autoScalingTargetValue: pulumi.Input.fromValue((map['autoScalingTargetValue'] as num).toInt()),
-      maxTaskCount: pulumi.Input.fromValue((map['maxTaskCount'] as num).toInt()),
-      minTaskCount: pulumi.Input.fromValue((map['minTaskCount'] as num).toInt()),
+      autoScalingTargetValue: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['autoScalingTargetValue'])),
+      maxTaskCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxTaskCount'])),
+      minTaskCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minTaskCount'])),
     );
   }
 }

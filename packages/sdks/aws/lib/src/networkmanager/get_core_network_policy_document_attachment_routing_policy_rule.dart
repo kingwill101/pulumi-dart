@@ -46,7 +46,7 @@ class GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule {
       conditions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition>(map['conditions']!, (value) => GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition.fromMap((value as Map).cast<String, dynamic>()))),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       edgeLocations: (() { final guardedValue = map['edgeLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      ruleNumber: pulumi.Input.fromValue((map['ruleNumber'] as num).toInt()),
+      ruleNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ruleNumber'])),
     );
   }
 }

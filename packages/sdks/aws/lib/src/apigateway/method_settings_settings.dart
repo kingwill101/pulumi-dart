@@ -66,13 +66,13 @@ class MethodSettingsSettings {
   factory MethodSettingsSettings.fromMap(Map<String, dynamic> map) {
     return MethodSettingsSettings(
       cacheDataEncrypted: (() { final guardedValue = map['cacheDataEncrypted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      cacheTtlInSeconds: (() { final guardedValue = map['cacheTtlInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cacheTtlInSeconds: (() { final guardedValue = map['cacheTtlInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       cachingEnabled: (() { final guardedValue = map['cachingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dataTraceEnabled: (() { final guardedValue = map['dataTraceEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       loggingLevel: (() { final guardedValue = map['loggingLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metricsEnabled: (() { final guardedValue = map['metricsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       requireAuthorizationForCacheControl: (() { final guardedValue = map['requireAuthorizationForCacheControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      throttlingBurstLimit: (() { final guardedValue = map['throttlingBurstLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      throttlingBurstLimit: (() { final guardedValue = map['throttlingBurstLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       throttlingRateLimit: (() { final guardedValue = map['throttlingRateLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       unauthorizedCacheControlHeaderStrategy: (() { final guardedValue = map['unauthorizedCacheControlHeaderStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

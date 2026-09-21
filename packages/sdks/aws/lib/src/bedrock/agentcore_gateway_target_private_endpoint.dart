@@ -5,14 +5,14 @@ import 'agentcore_gateway_target_private_endpoint_managed_vpc_resource.dart';
 import 'agentcore_gateway_target_private_endpoint_self_managed_lattice_resource.dart';
 
 class AgentcoreGatewayTargetPrivateEndpoint {
-  /// AWS creates and manages the VPC Lattice resource gateway and resource configuration on your behalf using a service-linked role. See `managedVpcResource` below.
+  /// AWS creates and manages the VPC Lattice resource gateway and resource configuration on your behalf using a service-linked role. See `managedVpcResource` Block below.
   final pulumi.Input<AgentcoreGatewayTargetPrivateEndpointManagedVpcResource?>? managedVpcResource;
-  /// Use an existing VPC Lattice resource configuration that you manage yourself. Useful for cross-account setups or advanced Lattice configurations. See `selfManagedLatticeResource` below.
+  /// Use an existing VPC Lattice resource configuration that you manage yourself. Useful for cross-account setups or advanced Lattice configurations. See `selfManagedLatticeResource` Block below.
   final pulumi.Input<AgentcoreGatewayTargetPrivateEndpointSelfManagedLatticeResource?>? selfManagedLatticeResource;
 
   /// Creates a new [AgentcoreGatewayTargetPrivateEndpoint].
-  /// [managedVpcResource] AWS creates and manages the VPC Lattice resource gateway and resource configuration on your behalf using a service-linked role. See `managedVpcResource` below.
-  /// [selfManagedLatticeResource] Use an existing VPC Lattice resource configuration that you manage yourself. Useful for cross-account setups or advanced Lattice configurations. See `selfManagedLatticeResource` below.
+  /// [managedVpcResource] AWS creates and manages the VPC Lattice resource gateway and resource configuration on your behalf using a service-linked role. See `managedVpcResource` Block below.
+  /// [selfManagedLatticeResource] Use an existing VPC Lattice resource configuration that you manage yourself. Useful for cross-account setups or advanced Lattice configurations. See `selfManagedLatticeResource` Block below.
   const AgentcoreGatewayTargetPrivateEndpoint({
     this.managedVpcResource,
     this.selfManagedLatticeResource,

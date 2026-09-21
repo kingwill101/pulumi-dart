@@ -451,7 +451,7 @@ class SslNegotiationPolicy extends pulumi.CustomResource {
           'aws:elb/sslNegotiationPolicy:SslNegotiationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     attributes = registerOutput<List<SslNegotiationPolicyAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SslNegotiationPolicyAttribute>(guardedValue, (value) => SslNegotiationPolicyAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     lbPort = registerOutput<int>('lbPort');

@@ -5,14 +5,14 @@ import 'agentcore_gateway_target_target_configuration_mcp_api_gateway_api_gatewa
 import 'agentcore_gateway_target_target_configuration_mcp_api_gateway_api_gateway_tool_configuration_tool_override.dart';
 
 class AgentcoreGatewayTargetTargetConfigurationMcpApiGatewayApiGatewayToolConfiguration {
-  /// Repeatable block of path and method patterns to expose as tools. See `toolFilter` below.
+  /// Repeatable block of path and method patterns to expose as tools. See `toolFilter` Block below.
   final pulumi.Input<List<AgentcoreGatewayTargetTargetConfigurationMcpApiGatewayApiGatewayToolConfigurationToolFilter>?>? toolFilters;
-  /// Repeatable block of explicit tool definitions with optional custom names and descriptions. See `toolOverride` below.
+  /// Repeatable block of explicit tool definitions with optional custom names and descriptions. See `toolOverride` Block below.
   final pulumi.Input<List<AgentcoreGatewayTargetTargetConfigurationMcpApiGatewayApiGatewayToolConfigurationToolOverride>?>? toolOverrides;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpApiGatewayApiGatewayToolConfiguration].
-  /// [toolFilters] Repeatable block of path and method patterns to expose as tools. See `toolFilter` below.
-  /// [toolOverrides] Repeatable block of explicit tool definitions with optional custom names and descriptions. See `toolOverride` below.
+  /// [toolFilters] Repeatable block of path and method patterns to expose as tools. See `toolFilter` Block below.
+  /// [toolOverrides] Repeatable block of explicit tool definitions with optional custom names and descriptions. See `toolOverride` Block below.
   const AgentcoreGatewayTargetTargetConfigurationMcpApiGatewayApiGatewayToolConfiguration({
     this.toolFilters,
     this.toolOverrides,

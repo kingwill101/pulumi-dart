@@ -170,7 +170,7 @@ class TrustProvider extends pulumi.CustomResource {
           'aws:verifiedaccess/trustProvider:TrustProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     deviceOptions = registerOutput<TrustProviderDeviceOptions?>('deviceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustProviderDeviceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

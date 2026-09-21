@@ -56,7 +56,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData {
       clientNumber: pulumi.Input.fromValue(map['clientNumber'] as String),
       logonLanguage: (() { final guardedValue = map['logonLanguage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       oauthProperties: (() { final guardedValue = map['oauthProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      portNumber: pulumi.Input.fromValue((map['portNumber'] as num).toInt()),
+      portNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['portNumber'])),
       privateLinkServiceName: (() { final guardedValue = map['privateLinkServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

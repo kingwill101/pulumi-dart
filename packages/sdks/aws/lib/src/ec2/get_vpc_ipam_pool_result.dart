@@ -123,9 +123,9 @@ class GetVpcIpamPoolResult {
   factory GetVpcIpamPoolResult.fromMap(Map<String, dynamic> map) {
     return GetVpcIpamPoolResult(
       addressFamily: (() { final guardedValue = map['addressFamily']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      allocationDefaultNetmaskLength: (() { final guardedValue = map['allocationDefaultNetmaskLength']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      allocationMaxNetmaskLength: (() { final guardedValue = map['allocationMaxNetmaskLength']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      allocationMinNetmaskLength: (() { final guardedValue = map['allocationMinNetmaskLength']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      allocationDefaultNetmaskLength: (() { final guardedValue = map['allocationDefaultNetmaskLength']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      allocationMaxNetmaskLength: (() { final guardedValue = map['allocationMaxNetmaskLength']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      allocationMinNetmaskLength: (() { final guardedValue = map['allocationMinNetmaskLength']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       allocationResourceTags: (() { final guardedValue = map['allocationResourceTags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       autoImport: (() { final guardedValue = map['autoImport']; if (guardedValue == null) return null; return guardedValue as bool; })(),
@@ -137,7 +137,7 @@ class GetVpcIpamPoolResult {
       ipamScopeId: (() { final guardedValue = map['ipamScopeId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipamScopeType: (() { final guardedValue = map['ipamScopeType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       locale: (() { final guardedValue = map['locale']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      poolDepth: (() { final guardedValue = map['poolDepth']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      poolDepth: (() { final guardedValue = map['poolDepth']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       publiclyAdvertisable: (() { final guardedValue = map['publiclyAdvertisable']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceIpamPoolId: (() { final guardedValue = map['sourceIpamPoolId']; if (guardedValue == null) return null; return guardedValue as String; })(),

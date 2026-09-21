@@ -163,7 +163,7 @@ class Endpoint extends pulumi.CustomResource {
           'aws:s3outposts/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accessType = registerOutput<String>('accessType');
     arn = registerOutput<String>('arn');

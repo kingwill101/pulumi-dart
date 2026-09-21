@@ -319,7 +319,7 @@ class VpcIpamPreviewNextCidr extends pulumi.CustomResource {
           'aws:ec2/vpcIpamPreviewNextCidr:VpcIpamPreviewNextCidr',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     cidr = registerOutput<String>('cidr');
     disallowedCidrs = registerOutput<List<String>?>('disallowedCidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

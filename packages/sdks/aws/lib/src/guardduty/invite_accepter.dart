@@ -240,7 +240,7 @@ class InviteAccepter extends pulumi.CustomResource {
           'aws:guardduty/inviteAccepter:InviteAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     detectorId = registerOutput<String>('detectorId');
     masterAccountId = registerOutput<String>('masterAccountId');

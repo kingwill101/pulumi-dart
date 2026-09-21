@@ -49,7 +49,7 @@ import 'microvms_image_timeouts.dart';
 ///     key: "code.zip",
 ///     source: new pulumi.asset.FileAsset("code.zip"),
 /// });
-/// const exampleMicrovmsImage = new aws.lambda.MicrovmsImage("example", {
+/// const exampleImage = new aws.lambdamicrovms.Image("example", {
 ///     codeArtifact: {
 ///         uri: pulumi.interpolate`s3://${exampleBucket.bucket}/${exampleBucketObjectv2.key}`,
 ///     },
@@ -93,7 +93,7 @@ import 'microvms_image_timeouts.dart';
 ///     bucket=example_bucket.bucket,
 ///     key="code.zip",
 ///     source=pulumi.FileAsset("code.zip"))
-/// example_microvms_image = aws.lambda_.MicrovmsImage("example",
+/// example_image = aws.lambdamicrovms.Image("example",
 ///     code_artifact={
 ///         "uri": pulumi.Output.all(
 ///             bucket=example_bucket.bucket,
@@ -173,9 +173,9 @@ import 'microvms_image_timeouts.dart';
 ///         Source = new FileAsset("code.zip"),
 ///     });
 ///
-///     var exampleMicrovmsImage = new Aws.Lambda.MicrovmsImage("example", new()
+///     var exampleImage = new Aws.LambdaMicroVMs.Image("example", new()
 ///     {
-///         CodeArtifact = new Aws.Lambda.Inputs.MicrovmsImageCodeArtifactArgs
+///         CodeArtifact = new Aws.LambdaMicroVMs.Inputs.ImageCodeArtifactArgs
 ///         {
 ///             Uri = Output.Tuple(exampleBucket.BucketName, exampleBucketObjectv2.Key).Apply(values =>
 ///             {
@@ -205,7 +205,7 @@ import 'microvms_image_timeouts.dart';
 ///
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
-/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lambda"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/lambdamicrovms"
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -284,8 +284,8 @@ import 'microvms_image_timeouts.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = lambda.NewMicrovmsImage(ctx, "example", &lambda.MicrovmsImageArgs{
-/// 			CodeArtifact: &lambda.MicrovmsImageCodeArtifactArgs{
+/// 		_, err = lambdamicrovms.NewImage(ctx, "example", &lambdamicrovms.ImageArgs{
+/// 			CodeArtifact: &lambdamicrovms.ImageCodeArtifactArgs{
 /// 				Uri: pulumi.All(exampleBucket.Bucket, exampleBucketObjectv2.Key).ApplyT(func(_args []interface{}) (string, error) {
 /// 					bucket := _args[0].(string)
 /// 					key := _args[1].(string)
@@ -350,7 +350,7 @@ import 'microvms_image_timeouts.dart';
 ///   key    = "code.zip"
 ///   source = fileAsset("code.zip")
 /// }
-/// resource "aws_lambda_microvmsimage" "example" {
+/// resource "aws_lambdamicrovms_image" "example" {
 ///   code_artifact = {
 ///     uri ="s3://${aws_s3_bucket.example.bucket}/${aws_s3_bucketobjectv2.example.key}"
 ///   }
@@ -376,9 +376,9 @@ import 'microvms_image_timeouts.dart';
 /// import com.pulumi.aws.iam.RolePolicyArgs;
 /// import com.pulumi.aws.s3.BucketObjectv2;
 /// import com.pulumi.aws.s3.BucketObjectv2Args;
-/// import com.pulumi.aws.lambda.MicrovmsImage;
-/// import com.pulumi.aws.lambda.MicrovmsImageArgs;
-/// import com.pulumi.aws.lambda.inputs.MicrovmsImageCodeArtifactArgs;
+/// import com.pulumi.aws.lambdamicrovms.Image;
+/// import com.pulumi.aws.lambdamicrovms.ImageArgs;
+/// import com.pulumi.aws.lambdamicrovms.inputs.ImageCodeArtifactArgs;
 /// import com.pulumi.asset.FileAsset;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import java.util.ArrayList;
@@ -439,8 +439,8 @@ import 'microvms_image_timeouts.dart';
 ///             .source(new FileAsset("code.zip"))
 ///             .build());
 ///
-///         var exampleMicrovmsImage = new MicrovmsImage("exampleMicrovmsImage", MicrovmsImageArgs.builder()
-///             .codeArtifact(MicrovmsImageCodeArtifactArgs.builder()
+///         var exampleImage = new Image("exampleImage", ImageArgs.builder()
+///             .codeArtifact(ImageCodeArtifactArgs.builder()
 ///                 .uri(Output.tuple(exampleBucket.bucket(), exampleBucketObjectv2.key()).applyValue(values -> {
 ///                     var bucket = values.t1;
 ///                     var key = values.t2;
@@ -496,8 +496,8 @@ import 'microvms_image_timeouts.dart';
 ///       key: code.zip
 ///       source:
 ///         fn::fileAsset: code.zip
-///   exampleMicrovmsImage:
-///     type: aws:lambda:MicrovmsImage
+///   exampleImage:
+///     type: aws:lambdamicrovms:Image
 ///     name: example
 ///     properties:
 ///       codeArtifact:
@@ -588,7 +588,7 @@ class MicrovmsImage extends pulumi.CustomResource {
           'aws:lambda/microvmsImage:MicrovmsImage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     additionalOsCapabilities = registerOutput<List<String>?>('additionalOsCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');

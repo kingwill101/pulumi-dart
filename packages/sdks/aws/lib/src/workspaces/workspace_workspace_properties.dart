@@ -41,10 +41,10 @@ class WorkspaceWorkspaceProperties {
   factory WorkspaceWorkspaceProperties.fromMap(Map<String, dynamic> map) {
     return WorkspaceWorkspaceProperties(
       computeTypeName: (() { final guardedValue = map['computeTypeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rootVolumeSizeGib: (() { final guardedValue = map['rootVolumeSizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      rootVolumeSizeGib: (() { final guardedValue = map['rootVolumeSizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       runningMode: (() { final guardedValue = map['runningMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      runningModeAutoStopTimeoutInMinutes: (() { final guardedValue = map['runningModeAutoStopTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      userVolumeSizeGib: (() { final guardedValue = map['userVolumeSizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      runningModeAutoStopTimeoutInMinutes: (() { final guardedValue = map['runningModeAutoStopTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      userVolumeSizeGib: (() { final guardedValue = map['userVolumeSizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -47,7 +47,7 @@ class WorkspaceApiKeyArgs {
       keyName: pulumi.Input.fromValue(map['keyName'] as String),
       keyRole: pulumi.Input.fromValue(map['keyRole'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      secondsToLive: pulumi.Input.fromValue((map['secondsToLive'] as num).toInt()),
+      secondsToLive: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['secondsToLive'])),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }

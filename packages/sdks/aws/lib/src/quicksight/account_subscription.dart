@@ -144,9 +144,9 @@ class AccountSubscription extends pulumi.CustomResource {
   late final pulumi.Output<String> accountSubscriptionStatus;
   /// Name of your Active Directory. This field is required if `ACTIVE_DIRECTORY` is the selected authentication method of the new Amazon QuickSight account.
   late final pulumi.Output<String?> activeDirectoryName;
-  /// Admin group associated with your Active Directory or IAM Identity Center account. This field is required if `ACTIVE_DIRECTORY` or `IAM_IDENTITY_CENTER` is the selected authentication method of the new Amazon QuickSight account.
+  /// Admin group associated with your Active Directory or IAM Identity Center account. Either this field or `adminProGroup` is required if `ACTIVE_DIRECTORY` or `IAM_IDENTITY_CENTER` is the selected authentication method of the new Amazon QuickSight account.
   late final pulumi.Output<List<String>?> adminGroups;
-  /// Admin PRO group associated with your Active Directory or IAM Identity Center account.
+  /// Admin PRO group associated with your Active Directory or IAM Identity Center account. Either this field or `adminGroup` is required if `ACTIVE_DIRECTORY` or `IAM_IDENTITY_CENTER` is the selected authentication method of the new Amazon QuickSight account.
   late final pulumi.Output<List<String>?> adminProGroups;
   /// Method that you want to use to authenticate your Amazon QuickSight account. Currently, the valid values for this parameter are `IAM_AND_QUICKSIGHT`, `IAM_ONLY`, `IAM_IDENTITY_CENTER`, and `ACTIVE_DIRECTORY`.
   late final pulumi.Output<String> authenticationMethod;
@@ -178,7 +178,7 @@ class AccountSubscription extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> readerGroups;
   /// Reader PRO group associated with your Active Directory or IAM Identity Center account.
   late final pulumi.Output<List<String>?> readerProGroups;
-  /// Realm of the Active Directory that is associated with your Amazon QuickSight account.
+  /// Realm of the Active Directory that is associated with your Amazon QuickSight account. This field is required if `ACTIVE_DIRECTORY` is the selected authentication method of the new Amazon QuickSight account.
   late final pulumi.Output<String?> realm;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -195,7 +195,7 @@ class AccountSubscription extends pulumi.CustomResource {
           'aws:quicksight/accountSubscription:AccountSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     accountSubscriptionStatus = registerOutput<String>('accountSubscriptionStatus');

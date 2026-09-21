@@ -222,7 +222,7 @@ class FilesSynchronizationConfiguration extends pulumi.CustomResource {
           'aws:s3/filesSynchronizationConfiguration:FilesSynchronizationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     expirationDataRules = registerOutput<List<FilesSynchronizationConfigurationExpirationDataRule>?>('expirationDataRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilesSynchronizationConfigurationExpirationDataRule>(guardedValue, (value) => FilesSynchronizationConfigurationExpirationDataRule.fromMap((value as Map).cast<String, dynamic>())); });
     fileSystemId = registerOutput<String>('fileSystemId');

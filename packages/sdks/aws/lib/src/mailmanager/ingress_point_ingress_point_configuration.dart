@@ -7,9 +7,9 @@ class IngressPointIngressPointConfiguration {
   /// ARN of the secret in AWS Secrets Manager that holds the SMTP password, used for `AUTH` ingress points.
   final pulumi.Input<String?>? secretArn;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// SMTP password used for `AUTH` ingress points. This argument is not stored in state. Requires `smtpPasswordWoVersion` to be set. See Write-Only Arguments for more information.
+  /// SMTP password used for `AUTH` ingress points. This argument is not stored in state. If set, requires `smtpPasswordWoVersion` to be set.
   final pulumi.Input<String?>? smtpPasswordWo;
-  /// Version number for `smtpPasswordWo`. Increment this value to trigger a password update. Required when using `smtpPasswordWo`.
+  /// Required when `smtpPasswordWo` is set. Changing this value triggers an update to `smtpPasswordWo`.
   final pulumi.Input<int?>? smtpPasswordWoVersion;
   /// Configuration used to authenticate with `MTLS` ingress points. See `tlsAuthConfiguration` Block for details.
   final pulumi.Input<IngressPointIngressPointConfigurationTlsAuthConfiguration?>? tlsAuthConfiguration;
@@ -17,7 +17,7 @@ class IngressPointIngressPointConfiguration {
   /// Creates a new [IngressPointIngressPointConfiguration].
   /// [secretArn] ARN of the secret in AWS Secrets Manager that holds the SMTP password, used for `AUTH` ingress points.
   /// [smtpPasswordWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [smtpPasswordWoVersion] Version number for `smtpPasswordWo`. Increment this value to trigger a password update. Required when using `smtpPasswordWo`.
+  /// [smtpPasswordWoVersion] Required when `smtpPasswordWo` is set. Changing this value triggers an update to `smtpPasswordWo`.
   /// [tlsAuthConfiguration] Configuration used to authenticate with `MTLS` ingress points. See `tlsAuthConfiguration` Block for details.
   const IngressPointIngressPointConfiguration({
     this.secretArn,
@@ -39,7 +39,7 @@ class IngressPointIngressPointConfiguration {
     return IngressPointIngressPointConfiguration(
       secretArn: (() { final guardedValue = map['secretArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       smtpPasswordWo: (() { final guardedValue = map['smtpPasswordWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      smtpPasswordWoVersion: (() { final guardedValue = map['smtpPasswordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      smtpPasswordWoVersion: (() { final guardedValue = map['smtpPasswordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tlsAuthConfiguration: (() { final guardedValue = map['tlsAuthConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IngressPointIngressPointConfigurationTlsAuthConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

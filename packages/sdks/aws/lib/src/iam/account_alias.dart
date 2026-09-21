@@ -129,7 +129,7 @@ class AccountAlias extends pulumi.CustomResource {
           'aws:iam/accountAlias:AccountAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accountAlias = registerOutput<String>('accountAlias');
   }

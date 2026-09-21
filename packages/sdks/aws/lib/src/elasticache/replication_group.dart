@@ -1556,13 +1556,13 @@ class ReplicationGroup extends pulumi.CustomResource {
   /// Strategy used when modifying `authToken` or `authTokenWo` on an existing replication group. Not used during initial create. Valid values are `SET`, `ROTATE`, and `DELETE`. If omitted during an auth token change, AWS defaults to `ROTATE`. If value is `DELETE` then `authToken` and `authTokenWo` must be omitted.
   late final pulumi.Output<String?> authTokenUpdateStrategy;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Password used to access a password protected server, whose value will not be stored in state. Can be specified only if `transitEncryptionEnabled = true`. Conflicts with `authToken`. Requires `authTokenWoVersion`.
+  /// Password used to access a password protected server, whose value will not be stored in state. Can be specified only if `transitEncryptionEnabled = true`. Conflicts with `authToken`. If set, requires `authTokenWoVersion` to be set.
   late final pulumi.Output<String?> authTokenWo;
-  /// Integer that, when changed, triggers a re-send of `authTokenWo` to the replication group. Requires `authTokenWo`.
+  /// Required when `authTokenWo` is set. Changing this value triggers an update to `authTokenWo`.
   late final pulumi.Output<int?> authTokenWoVersion;
   /// Specifies whether minor version engine upgrades will be applied automatically to the underlying Cache Cluster instances during the maintenance window.
   /// Only supported for engine types `"redis"` and `"valkey"` and if the engine version is 6 or higher.
-  /// Defaults to `true`.
+  /// If this argument is not explicitly set in the configuration, AWS will set a default value of `true` and Terraform will not detect drift on this attribute.
   late final pulumi.Output<bool> autoMinorVersionUpgrade;
   /// Specifies whether a read-only replica will be automatically promoted to read/write primary if the existing primary fails. If enabled, `numCacheClusters` must be greater than 1. Must be enabled for Redis (cluster mode enabled) replication groups. Defaults to `false`.
   late final pulumi.Output<bool?> automaticFailoverEnabled;
@@ -1694,7 +1694,7 @@ class ReplicationGroup extends pulumi.CustomResource {
           'aws:elasticache/replicationGroup:ReplicationGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
           additionalSecretOutputs: const ['authToken', 'authTokenWo'],
         ) {
     applyImmediately = registerOutput<bool>('applyImmediately');

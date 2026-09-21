@@ -35,10 +35,10 @@ class PoolCapacityStatus {
 
   factory PoolCapacityStatus.fromMap(Map<String, dynamic> map) {
     return PoolCapacityStatus(
-      activeUserSessions: pulumi.Input.fromValue((map['activeUserSessions'] as num).toInt()),
-      actualUserSessions: pulumi.Input.fromValue((map['actualUserSessions'] as num).toInt()),
-      availableUserSessions: pulumi.Input.fromValue((map['availableUserSessions'] as num).toInt()),
-      desiredUserSessions: pulumi.Input.fromValue((map['desiredUserSessions'] as num).toInt()),
+      activeUserSessions: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['activeUserSessions'])),
+      actualUserSessions: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['actualUserSessions'])),
+      availableUserSessions: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['availableUserSessions'])),
+      desiredUserSessions: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['desiredUserSessions'])),
     );
   }
 }

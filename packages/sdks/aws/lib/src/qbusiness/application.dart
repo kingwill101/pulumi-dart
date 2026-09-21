@@ -191,7 +191,7 @@ class Application extends pulumi.CustomResource {
           'aws:qbusiness/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachmentsConfiguration = registerOutput<ApplicationAttachmentsConfiguration>('attachmentsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationAttachmentsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

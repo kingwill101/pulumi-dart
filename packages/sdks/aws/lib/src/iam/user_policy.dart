@@ -261,10 +261,22 @@ import 'user_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import IAM User Policies using the `user_name:user_policy_name`. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `user` (String) Name of the IAM user.
+/// * `name` (String) Name of the user policy.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+///
+///
+/// Using `pulumi import`, import IAM User Policies using a `:` delimited string separating `user` and `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:iam/userPolicy:UserPolicy mypolicy user_of_mypolicy_name:mypolicy_name
+/// $ pulumi import aws:iam/userPolicy:UserPolicy example my-user:my-policy
 /// ```
 class UserPolicy extends pulumi.CustomResource {
   /// The name of the policy. If omitted, the provider will assign a random, unique name.
@@ -288,7 +300,7 @@ class UserPolicy extends pulumi.CustomResource {
           'aws:iam/userPolicy:UserPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');

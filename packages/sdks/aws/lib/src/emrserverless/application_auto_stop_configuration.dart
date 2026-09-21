@@ -26,7 +26,7 @@ class ApplicationAutoStopConfiguration {
   factory ApplicationAutoStopConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationAutoStopConfiguration(
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      idleTimeoutMinutes: (() { final guardedValue = map['idleTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      idleTimeoutMinutes: (() { final guardedValue = map['idleTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

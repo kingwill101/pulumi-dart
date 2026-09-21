@@ -735,7 +735,7 @@ class Proxy extends pulumi.CustomResource {
           'aws:rds/proxy:Proxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     auths = registerOutput<List<ProxyAuth>?>('auths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProxyAuth>(guardedValue, (value) => ProxyAuth.fromMap((value as Map).cast<String, dynamic>())); });

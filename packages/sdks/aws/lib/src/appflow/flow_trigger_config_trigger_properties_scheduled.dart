@@ -54,7 +54,7 @@ class FlowTriggerConfigTriggerPropertiesScheduled {
       firstExecutionFrom: (() { final guardedValue = map['firstExecutionFrom']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scheduleEndTime: (() { final guardedValue = map['scheduleEndTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scheduleExpression: pulumi.Input.fromValue(map['scheduleExpression'] as String),
-      scheduleOffset: (() { final guardedValue = map['scheduleOffset']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      scheduleOffset: (() { final guardedValue = map['scheduleOffset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       scheduleStartTime: (() { final guardedValue = map['scheduleStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timezone: (() { final guardedValue = map['timezone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

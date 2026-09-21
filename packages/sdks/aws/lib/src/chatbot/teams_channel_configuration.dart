@@ -213,7 +213,7 @@ class TeamsChannelConfiguration extends pulumi.CustomResource {
           'aws:chatbot/teamsChannelConfiguration:TeamsChannelConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     channelId = registerOutput<String>('channelId');
     channelName = registerOutput<String>('channelName');

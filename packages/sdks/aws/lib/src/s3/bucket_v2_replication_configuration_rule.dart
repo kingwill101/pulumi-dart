@@ -63,7 +63,7 @@ class BucketV2ReplicationConfigurationRule {
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleFilter>(guardedValue, (value) => BucketV2ReplicationConfigurationRuleFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sourceSelectionCriterias: (() { final guardedValue = map['sourceSelectionCriterias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleSourceSelectionCriteria>(guardedValue, (value) => BucketV2ReplicationConfigurationRuleSourceSelectionCriteria.fromMap((value as Map).cast<String, dynamic>()))); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
     );

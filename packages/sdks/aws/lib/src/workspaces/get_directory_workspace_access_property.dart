@@ -1,8 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_directory_workspace_access_property_access_endpoint_config.dart';
 
 class GetDirectoryWorkspaceAccessProperty {
+  /// Configuration for accessing WorkSpaces through VPC endpoints instead of the public internet.
+  final pulumi.Input<List<GetDirectoryWorkspaceAccessPropertyAccessEndpointConfig>> accessEndpointConfigs;
   /// (Optional) Indicates whether users can use Android devices to access their WorkSpaces.
   final pulumi.Input<String> deviceTypeAndroid;
   /// (Optional) Indicates whether users can use Chromebooks to access their WorkSpaces.
@@ -21,6 +24,7 @@ class GetDirectoryWorkspaceAccessProperty {
   final pulumi.Input<String> deviceTypeZeroclient;
 
   /// Creates a new [GetDirectoryWorkspaceAccessProperty].
+  /// [accessEndpointConfigs] Configuration for accessing WorkSpaces through VPC endpoints instead of the public internet.
   /// [deviceTypeAndroid] (Optional) Indicates whether users can use Android devices to access their WorkSpaces.
   /// [deviceTypeChromeos] (Optional) Indicates whether users can use Chromebooks to access their WorkSpaces.
   /// [deviceTypeIos] (Optional) Indicates whether users can use iOS devices to access their WorkSpaces.
@@ -30,6 +34,7 @@ class GetDirectoryWorkspaceAccessProperty {
   /// [deviceTypeWindows] (Optional) Indicates whether users can use Windows clients to access their WorkSpaces.
   /// [deviceTypeZeroclient] (Optional) Indicates whether users can use zero client devices to access their WorkSpaces.
   const GetDirectoryWorkspaceAccessProperty({
+    required this.accessEndpointConfigs,
     required this.deviceTypeAndroid,
     required this.deviceTypeChromeos,
     required this.deviceTypeIos,
@@ -42,6 +47,7 @@ class GetDirectoryWorkspaceAccessProperty {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'accessEndpointConfigs': pulumi.Input.mapInputValue<List<GetDirectoryWorkspaceAccessPropertyAccessEndpointConfig>, List<Map<String, dynamic>>>(accessEndpointConfigs, (value) => pulumi.Input.encodeList<GetDirectoryWorkspaceAccessPropertyAccessEndpointConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'deviceTypeAndroid': deviceTypeAndroid,
       'deviceTypeChromeos': deviceTypeChromeos,
       'deviceTypeIos': deviceTypeIos,
@@ -55,6 +61,7 @@ class GetDirectoryWorkspaceAccessProperty {
 
   factory GetDirectoryWorkspaceAccessProperty.fromMap(Map<String, dynamic> map) {
     return GetDirectoryWorkspaceAccessProperty(
+      accessEndpointConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDirectoryWorkspaceAccessPropertyAccessEndpointConfig>(map['accessEndpointConfigs']!, (value) => GetDirectoryWorkspaceAccessPropertyAccessEndpointConfig.fromMap((value as Map).cast<String, dynamic>()))),
       deviceTypeAndroid: pulumi.Input.fromValue(map['deviceTypeAndroid'] as String),
       deviceTypeChromeos: pulumi.Input.fromValue(map['deviceTypeChromeos'] as String),
       deviceTypeIos: pulumi.Input.fromValue(map['deviceTypeIos'] as String),

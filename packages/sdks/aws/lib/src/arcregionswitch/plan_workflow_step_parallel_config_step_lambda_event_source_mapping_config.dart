@@ -39,7 +39,7 @@ class PlanWorkflowStepParallelConfigStepLambdaEventSourceMappingConfig {
     return PlanWorkflowStepParallelConfigStepLambdaEventSourceMappingConfig(
       action: pulumi.Input.fromValue(map['action'] as String),
       regionEventSourceMappings: (() { final guardedValue = map['regionEventSourceMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepLambdaEventSourceMappingConfigRegionEventSourceMapping>(guardedValue, (value) => PlanWorkflowStepParallelConfigStepLambdaEventSourceMappingConfigRegionEventSourceMapping.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ungracefuls: (() { final guardedValue = map['ungracefuls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepLambdaEventSourceMappingConfigUngraceful>(guardedValue, (value) => PlanWorkflowStepParallelConfigStepLambdaEventSourceMappingConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

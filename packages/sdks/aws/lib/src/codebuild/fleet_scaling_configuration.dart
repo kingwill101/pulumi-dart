@@ -35,8 +35,8 @@ class FleetScalingConfiguration {
 
   factory FleetScalingConfiguration.fromMap(Map<String, dynamic> map) {
     return FleetScalingConfiguration(
-      desiredCapacity: (() { final guardedValue = map['desiredCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxCapacity: (() { final guardedValue = map['maxCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      desiredCapacity: (() { final guardedValue = map['desiredCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxCapacity: (() { final guardedValue = map['maxCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       scalingType: (() { final guardedValue = map['scalingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetTrackingScalingConfigs: (() { final guardedValue = map['targetTrackingScalingConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FleetScalingConfigurationTargetTrackingScalingConfig>(guardedValue, (value) => FleetScalingConfigurationTargetTrackingScalingConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

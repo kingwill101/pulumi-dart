@@ -289,7 +289,7 @@ class LbHttpsRedirectionPolicy extends pulumi.CustomResource {
           'aws:lightsail/lbHttpsRedirectionPolicy:LbHttpsRedirectionPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     lbName = registerOutput<String>('lbName');

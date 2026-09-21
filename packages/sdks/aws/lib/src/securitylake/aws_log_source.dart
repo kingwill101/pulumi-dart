@@ -195,7 +195,7 @@ class AwsLogSource extends pulumi.CustomResource {
           'aws:securitylake/awsLogSource:AwsLogSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     source = registerOutput<AwsLogSourceSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsLogSourceSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });

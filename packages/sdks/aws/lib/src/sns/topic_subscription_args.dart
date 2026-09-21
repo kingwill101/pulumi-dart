@@ -86,7 +86,7 @@ class TopicSubscriptionArgs {
 
   factory TopicSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return TopicSubscriptionArgs(
-      confirmationTimeoutInMinutes: (() { final guardedValue = map['confirmationTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      confirmationTimeoutInMinutes: (() { final guardedValue = map['confirmationTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       deliveryPolicy: (() { final guardedValue = map['deliveryPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
       endpointAutoConfirms: (() { final guardedValue = map['endpointAutoConfirms']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

@@ -92,7 +92,7 @@ class MeteringPolicyEntryArgs {
       destinationTransitGatewayAttachmentId: (() { final guardedValue = map['destinationTransitGatewayAttachmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationTransitGatewayAttachmentType: (() { final guardedValue = map['destinationTransitGatewayAttachmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       meteredAccount: pulumi.Input.fromValue(map['meteredAccount'] as String),
-      policyRuleNumber: pulumi.Input.fromValue((map['policyRuleNumber'] as num).toInt()),
+      policyRuleNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['policyRuleNumber'])),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceCidrBlock: (() { final guardedValue = map['sourceCidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -173,14 +173,14 @@ class GetEndpointResult {
       selfServicePortal: (() { final guardedValue = map['selfServicePortal']; if (guardedValue == null) return null; return guardedValue as String; })(),
       selfServicePortalUrl: (() { final guardedValue = map['selfServicePortalUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serverCertificateArn: (() { final guardedValue = map['serverCertificateArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      sessionTimeoutHours: (() { final guardedValue = map['sessionTimeoutHours']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      sessionTimeoutHours: (() { final guardedValue = map['sessionTimeoutHours']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       splitTunnel: (() { final guardedValue = map['splitTunnel']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       trafficIpAddressType: (() { final guardedValue = map['trafficIpAddressType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       transitGatewayConfigurations: (() { final guardedValue = map['transitGatewayConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetEndpointTransitGatewayConfiguration>(guardedValue, (value) => GetEndpointTransitGatewayConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),
       transportProtocol: (() { final guardedValue = map['transportProtocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      vpnPort: (() { final guardedValue = map['vpnPort']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      vpnPort: (() { final guardedValue = map['vpnPort']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

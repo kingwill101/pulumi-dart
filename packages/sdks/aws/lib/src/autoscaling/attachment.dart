@@ -258,7 +258,7 @@ class Attachment extends pulumi.CustomResource {
           'aws:autoscaling/attachment:Attachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     elb = registerOutput<String?>('elb');

@@ -43,7 +43,7 @@ class StageDefaultRouteSettings {
       dataTraceEnabled: (() { final guardedValue = map['dataTraceEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       detailedMetricsEnabled: (() { final guardedValue = map['detailedMetricsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       loggingLevel: (() { final guardedValue = map['loggingLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      throttlingBurstLimit: (() { final guardedValue = map['throttlingBurstLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      throttlingBurstLimit: (() { final guardedValue = map['throttlingBurstLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       throttlingRateLimit: (() { final guardedValue = map['throttlingRateLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }

@@ -35,7 +35,7 @@ class GetDbServersDbServerDbServerPatchingDetail {
 
   factory GetDbServersDbServerDbServerPatchingDetail.fromMap(Map<String, dynamic> map) {
     return GetDbServersDbServerDbServerPatchingDetail(
-      estimatedPatchDuration: pulumi.Input.fromValue((map['estimatedPatchDuration'] as num).toInt()),
+      estimatedPatchDuration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['estimatedPatchDuration'])),
       patchingStatus: pulumi.Input.fromValue(map['patchingStatus'] as String),
       timePatchingEnded: pulumi.Input.fromValue(map['timePatchingEnded'] as String),
       timePatchingStarted: pulumi.Input.fromValue(map['timePatchingStarted'] as String),

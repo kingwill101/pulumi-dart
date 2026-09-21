@@ -198,7 +198,7 @@ class PipelineEndpoint extends pulumi.CustomResource {
           'aws:opensearchingest/pipelineEndpoint:PipelineEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     pipelineArn = registerOutput<String>('pipelineArn');
     region = registerOutput<String>('region');

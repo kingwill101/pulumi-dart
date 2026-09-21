@@ -265,7 +265,7 @@ class DataShareConsumerAssociation extends pulumi.CustomResource {
           'aws:redshift/dataShareConsumerAssociation:DataShareConsumerAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     allowWrites = registerOutput<bool?>('allowWrites');
     associateEntireAccount = registerOutput<bool?>('associateEntireAccount');

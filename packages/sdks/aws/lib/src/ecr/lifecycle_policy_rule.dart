@@ -40,7 +40,7 @@ class LifecyclePolicyRule {
     return LifecyclePolicyRule(
       action: pulumi.Input.fromValue(LifecyclePolicyAction.fromMap((map['action']! as Map).cast<String, dynamic>())),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rulePriority: pulumi.Input.fromValue((map['rulePriority'] as num).toInt()),
+      rulePriority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rulePriority'])),
       selection: pulumi.Input.fromValue(LifecyclePolicySelection.fromMap((map['selection']! as Map).cast<String, dynamic>())),
     );
   }

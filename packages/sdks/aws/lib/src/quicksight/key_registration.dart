@@ -186,7 +186,7 @@ class KeyRegistration extends pulumi.CustomResource {
           'aws:quicksight/keyRegistration:KeyRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     keyRegistrations = registerOutput<List<KeyRegistrationKeyRegistration>>('keyRegistrations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyRegistrationKeyRegistration>(guardedValue, (value) => KeyRegistrationKeyRegistration.fromMap((value as Map).cast<String, dynamic>())); });

@@ -151,7 +151,7 @@ class Monitor extends pulumi.CustomResource {
           'aws:networkmonitor/monitor:Monitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     aggregationPeriod = registerOutput<int>('aggregationPeriod');
     arn = registerOutput<String>('arn');

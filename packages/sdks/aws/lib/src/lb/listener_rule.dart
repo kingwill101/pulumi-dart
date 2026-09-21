@@ -51,7 +51,7 @@ class ListenerRule extends pulumi.CustomResource {
           'aws:lb/listenerRule:ListenerRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     actions = registerOutput<List<ListenerRuleAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListenerRuleAction>(guardedValue, (value) => ListenerRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

@@ -37,8 +37,8 @@ class GetGroupWarmPool {
   factory GetGroupWarmPool.fromMap(Map<String, dynamic> map) {
     return GetGroupWarmPool(
       instanceReusePolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetGroupWarmPoolInstanceReusePolicy>(map['instanceReusePolicies']!, (value) => GetGroupWarmPoolInstanceReusePolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      maxGroupPreparedCapacity: pulumi.Input.fromValue((map['maxGroupPreparedCapacity'] as num).toInt()),
-      minSize: pulumi.Input.fromValue((map['minSize'] as num).toInt()),
+      maxGroupPreparedCapacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxGroupPreparedCapacity'])),
+      minSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minSize'])),
       poolState: pulumi.Input.fromValue(map['poolState'] as String),
     );
   }

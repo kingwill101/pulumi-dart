@@ -311,7 +311,7 @@ class NotificationChannel extends pulumi.CustomResource {
           'aws:devopsguru/notificationChannel:NotificationChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     filters = registerOutput<NotificationChannelFilters?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationChannelFilters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

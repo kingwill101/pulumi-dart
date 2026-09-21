@@ -96,7 +96,7 @@ class GetCatalogTableStorageDescriptor {
       compressed: pulumi.Input.fromValue(map['compressed'] as bool),
       inputFormat: pulumi.Input.fromValue(map['inputFormat'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      numberOfBuckets: pulumi.Input.fromValue((map['numberOfBuckets'] as num).toInt()),
+      numberOfBuckets: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfBuckets'])),
       outputFormat: pulumi.Input.fromValue(map['outputFormat'] as String),
       parameters: pulumi.Input.fromValue((map['parameters'] as Map).cast<String, String>()),
       schemaReferences: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCatalogTableStorageDescriptorSchemaReference>(map['schemaReferences']!, (value) => GetCatalogTableStorageDescriptorSchemaReference.fromMap((value as Map).cast<String, dynamic>()))),

@@ -25,7 +25,7 @@ class FleetSpotOptionsMaintenanceStrategiesCapacityRebalance {
   factory FleetSpotOptionsMaintenanceStrategiesCapacityRebalance.fromMap(Map<String, dynamic> map) {
     return FleetSpotOptionsMaintenanceStrategiesCapacityRebalance(
       replacementStrategy: (() { final guardedValue = map['replacementStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      terminationDelay: (() { final guardedValue = map['terminationDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      terminationDelay: (() { final guardedValue = map['terminationDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -151,7 +151,7 @@ class InternetMonitor extends pulumi.CustomResource {
           'aws:cloudwatch/internetMonitor:InternetMonitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     healthEventsConfig = registerOutput<InternetMonitorHealthEventsConfig?>('healthEventsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternetMonitorHealthEventsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

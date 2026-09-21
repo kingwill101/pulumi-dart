@@ -247,7 +247,7 @@ class SnapshotScheduleAssociation extends pulumi.CustomResource {
           'aws:redshift/snapshotScheduleAssociation:SnapshotScheduleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     region = registerOutput<String>('region');

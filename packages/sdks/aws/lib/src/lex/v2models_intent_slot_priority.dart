@@ -25,7 +25,7 @@ class V2modelsIntentSlotPriority {
 
   factory V2modelsIntentSlotPriority.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentSlotPriority(
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       slotId: pulumi.Input.fromValue(map['slotId'] as String),
     );
   }

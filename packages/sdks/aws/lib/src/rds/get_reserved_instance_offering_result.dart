@@ -61,7 +61,7 @@ class GetReservedInstanceOfferingResult {
     return GetReservedInstanceOfferingResult(
       currencyCode: (() { final guardedValue = map['currencyCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dbInstanceClass: (() { final guardedValue = map['dbInstanceClass']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       fixedPrice: (() { final guardedValue = map['fixedPrice']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       multiAz: (() { final guardedValue = map['multiAz']; if (guardedValue == null) return null; return guardedValue as bool; })(),

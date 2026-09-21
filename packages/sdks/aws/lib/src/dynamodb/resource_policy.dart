@@ -156,7 +156,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:dynamodb/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     confirmRemoveSelfResourceAccess = registerOutput<bool>('confirmRemoveSelfResourceAccess');
     policy = registerOutput<String>('policy');

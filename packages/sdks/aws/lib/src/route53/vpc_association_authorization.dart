@@ -353,7 +353,7 @@ class VpcAssociationAuthorization extends pulumi.CustomResource {
           'aws:route53/vpcAssociationAuthorization:VpcAssociationAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     vpcId = registerOutput<String>('vpcId');
     vpcRegion = registerOutput<String>('vpcRegion');

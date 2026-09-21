@@ -170,7 +170,7 @@ class Connection extends pulumi.CustomResource {
           'aws:apprunner/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionName = registerOutput<String>('connectionName');

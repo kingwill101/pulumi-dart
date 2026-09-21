@@ -42,10 +42,10 @@ class PolicyPredictiveScalingPolicyConfiguration {
   factory PolicyPredictiveScalingPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingPolicyConfiguration(
       maxCapacityBreachBehavior: (() { final guardedValue = map['maxCapacityBreachBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxCapacityBuffer: (() { final guardedValue = map['maxCapacityBuffer']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxCapacityBuffer: (() { final guardedValue = map['maxCapacityBuffer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       metricSpecifications: pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyPredictiveScalingPolicyConfigurationMetricSpecification>(map['metricSpecifications']!, (value) => PolicyPredictiveScalingPolicyConfigurationMetricSpecification.fromMap((value as Map).cast<String, dynamic>()))),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      schedulingBufferTime: (() { final guardedValue = map['schedulingBufferTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      schedulingBufferTime: (() { final guardedValue = map['schedulingBufferTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

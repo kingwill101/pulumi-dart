@@ -64,7 +64,7 @@ class EndpointAuthorizationState {
       account: (() { final guardedValue = map['account']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       allowedAllVpcs: (() { final guardedValue = map['allowedAllVpcs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       clusterIdentifier: (() { final guardedValue = map['clusterIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      endpointCount: (() { final guardedValue = map['endpointCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      endpointCount: (() { final guardedValue = map['endpointCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       forceDelete: (() { final guardedValue = map['forceDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       grantee: (() { final guardedValue = map['grantee']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       grantor: (() { final guardedValue = map['grantor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

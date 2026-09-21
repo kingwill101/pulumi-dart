@@ -33,7 +33,7 @@ class IntentFollowUpPromptRejectionStatementMessage {
     return IntentFollowUpPromptRejectionStatementMessage(
       content: pulumi.Input.fromValue(map['content'] as String),
       contentType: pulumi.Input.fromValue(map['contentType'] as String),
-      groupNumber: (() { final guardedValue = map['groupNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      groupNumber: (() { final guardedValue = map['groupNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

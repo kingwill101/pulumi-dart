@@ -30,9 +30,9 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerUlimit {
 
   factory GetJobDefinitionNodePropertyNodeRangePropertyContainerUlimit.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerUlimit(
-      hardLimit: pulumi.Input.fromValue((map['hardLimit'] as num).toInt()),
+      hardLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hardLimit'])),
       name: pulumi.Input.fromValue(map['name'] as String),
-      softLimit: pulumi.Input.fromValue((map['softLimit'] as num).toInt()),
+      softLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['softLimit'])),
     );
   }
 }

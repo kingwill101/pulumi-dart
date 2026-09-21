@@ -31,7 +31,7 @@ class GetTargetGroupStickiness {
 
   factory GetTargetGroupStickiness.fromMap(Map<String, dynamic> map) {
     return GetTargetGroupStickiness(
-      cookieDuration: pulumi.Input.fromValue((map['cookieDuration'] as num).toInt()),
+      cookieDuration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cookieDuration'])),
       cookieName: pulumi.Input.fromValue(map['cookieName'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       type: pulumi.Input.fromValue(map['type'] as String),

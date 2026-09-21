@@ -69,7 +69,7 @@ class SafetyRuleArgs {
       ruleConfig: pulumi.Input.fromValue(SafetyRuleRuleConfig.fromMap((map['ruleConfig']! as Map).cast<String, dynamic>())),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       targetControls: (() { final guardedValue = map['targetControls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      waitPeriodMs: pulumi.Input.fromValue((map['waitPeriodMs'] as num).toInt()),
+      waitPeriodMs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['waitPeriodMs'])),
     );
   }
 }

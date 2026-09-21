@@ -92,7 +92,7 @@ class ResolverFirewallRuleArgs {
       action: pulumi.Input.fromValue(map['action'] as String),
       blockOverrideDnsType: (() { final guardedValue = map['blockOverrideDnsType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       blockOverrideDomain: (() { final guardedValue = map['blockOverrideDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      blockOverrideTtl: (() { final guardedValue = map['blockOverrideTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      blockOverrideTtl: (() { final guardedValue = map['blockOverrideTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       blockResponse: (() { final guardedValue = map['blockResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       confidenceThreshold: (() { final guardedValue = map['confidenceThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dnsThreatProtection: (() { final guardedValue = map['dnsThreatProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -100,7 +100,7 @@ class ResolverFirewallRuleArgs {
       firewallDomainRedirectionAction: (() { final guardedValue = map['firewallDomainRedirectionAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       firewallRuleGroupId: pulumi.Input.fromValue(map['firewallRuleGroupId'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       qType: (() { final guardedValue = map['qType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -32,7 +32,7 @@ class FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig
     return FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig(
       capacityProviderArn: pulumi.Input.fromValue(map['capacityProviderArn'] as String),
       executionEnvironmentMemoryGibPerVcpu: (() { final guardedValue = map['executionEnvironmentMemoryGibPerVcpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
-      perExecutionEnvironmentMaxConcurrency: (() { final guardedValue = map['perExecutionEnvironmentMaxConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      perExecutionEnvironmentMaxConcurrency: (() { final guardedValue = map['perExecutionEnvironmentMaxConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

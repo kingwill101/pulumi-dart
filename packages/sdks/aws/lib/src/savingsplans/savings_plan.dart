@@ -347,7 +347,7 @@ class SavingsPlan extends pulumi.CustomResource {
           'aws:savingsplans/savingsPlan:SavingsPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     commitment = registerOutput<String>('commitment');
     currency = registerOutput<String>('currency');

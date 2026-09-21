@@ -78,7 +78,7 @@ class PlanRule {
 
   factory PlanRule.fromMap(Map<String, dynamic> map) {
     return PlanRule(
-      completionWindow: (() { final guardedValue = map['completionWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      completionWindow: (() { final guardedValue = map['completionWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       copyActions: (() { final guardedValue = map['copyActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanRuleCopyAction>(guardedValue, (value) => PlanRuleCopyAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       enableContinuousBackup: (() { final guardedValue = map['enableContinuousBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       lifecycle: (() { final guardedValue = map['lifecycle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PlanRuleLifecycle.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -87,7 +87,7 @@ class PlanRule {
       scanActions: (() { final guardedValue = map['scanActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanRuleScanAction>(guardedValue, (value) => PlanRuleScanAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scheduleExpressionTimezone: (() { final guardedValue = map['scheduleExpressionTimezone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      startWindow: (() { final guardedValue = map['startWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      startWindow: (() { final guardedValue = map['startWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetLogicallyAirGappedBackupVaultArn: (() { final guardedValue = map['targetLogicallyAirGappedBackupVaultArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetVaultName: pulumi.Input.fromValue(map['targetVaultName'] as String),
     );

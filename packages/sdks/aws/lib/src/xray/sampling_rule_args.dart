@@ -93,16 +93,16 @@ class SamplingRuleArgs {
       fixedRate: pulumi.Input.fromValue((map['fixedRate'] as num).toDouble()),
       host: pulumi.Input.fromValue(map['host'] as String),
       httpMethod: pulumi.Input.fromValue(map['httpMethod'] as String),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      reservoirSize: pulumi.Input.fromValue((map['reservoirSize'] as num).toInt()),
+      reservoirSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['reservoirSize'])),
       resourceArn: pulumi.Input.fromValue(map['resourceArn'] as String),
       ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
       serviceType: pulumi.Input.fromValue(map['serviceType'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       urlPath: pulumi.Input.fromValue(map['urlPath'] as String),
-      version: pulumi.Input.fromValue((map['version'] as num).toInt()),
+      version: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['version'])),
     );
   }
 }

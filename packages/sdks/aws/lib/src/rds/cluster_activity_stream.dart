@@ -329,16 +329,13 @@ import 'cluster_activity_stream_state.dart';
 /// $ pulumi import aws:rds/clusterActivityStream:ClusterActivityStream default arn:aws:rds:us-west-2:123456789012:cluster:aurora-cluster-demo
 /// ```
 class ClusterActivityStream extends pulumi.CustomResource {
-  /// Specifies whether the database activity stream includes engine-native audit fields. This option only applies to an Oracle DB instance. By default, no engine-native audit fields are included. Defaults `false`.
-  ///
-  /// For more detailed documentation about each argument, refer to
-  /// the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/start-activity-stream.html).
+  /// Whether the database activity stream includes engine-native audit fields. This option only applies to an Oracle DB instance. By default, no engine-native audit fields are included. Defaults `false`.
   late final pulumi.Output<bool?> engineNativeAuditFieldsIncluded;
-  /// The name of the Amazon Kinesis data stream to be used for the database activity stream.
+  /// Name of the Amazon Kinesis data stream to be used for the database activity stream.
   late final pulumi.Output<String> kinesisStreamName;
-  /// The AWS KMS key identifier for encrypting messages in the database activity stream. The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.
+  /// AWS KMS key identifier for encrypting messages in the database activity stream. The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.
   late final pulumi.Output<String> kmsKeyId;
-  /// Specifies the mode of the database activity stream. Database events such as a change or access generate an activity stream event. The database session can handle these events either synchronously or asynchronously. One of: `sync`, `async`.
+  /// Mode of the database activity stream. Database events such as a change or access generate an activity stream event. The database session can handle these events either synchronously or asynchronously. One of: `sync`, `async`.
   late final pulumi.Output<String> mode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -357,7 +354,7 @@ class ClusterActivityStream extends pulumi.CustomResource {
           'aws:rds/clusterActivityStream:ClusterActivityStream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     engineNativeAuditFieldsIncluded = registerOutput<bool?>('engineNativeAuditFieldsIncluded');
     kinesisStreamName = registerOutput<String>('kinesisStreamName');

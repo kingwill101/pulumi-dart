@@ -738,7 +738,7 @@ class ServerlessCache extends pulumi.CustomResource {
           'aws:elasticache/serverlessCache:ServerlessCache',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cacheUsageLimits = registerOutput<ServerlessCacheCacheUsageLimits?>('cacheUsageLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessCacheCacheUsageLimits.fromMap((guardedValue as Map).cast<String, dynamic>()); });

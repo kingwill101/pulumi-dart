@@ -277,7 +277,7 @@ class BucketLifecycleConfigurationS3Control extends pulumi.CustomResource {
           'aws:s3control/bucketLifecycleConfiguration:BucketLifecycleConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');

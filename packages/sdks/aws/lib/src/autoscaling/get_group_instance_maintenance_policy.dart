@@ -25,8 +25,8 @@ class GetGroupInstanceMaintenancePolicy {
 
   factory GetGroupInstanceMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return GetGroupInstanceMaintenancePolicy(
-      maxHealthyPercentage: pulumi.Input.fromValue((map['maxHealthyPercentage'] as num).toInt()),
-      minHealthyPercentage: pulumi.Input.fromValue((map['minHealthyPercentage'] as num).toInt()),
+      maxHealthyPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxHealthyPercentage'])),
+      minHealthyPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minHealthyPercentage'])),
     );
   }
 }

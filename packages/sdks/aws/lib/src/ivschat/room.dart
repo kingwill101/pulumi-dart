@@ -154,7 +154,7 @@ class Room extends pulumi.CustomResource {
           'aws:ivschat/room:Room',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     loggingConfigurationIdentifiers = registerOutput<List<String>?>('loggingConfigurationIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

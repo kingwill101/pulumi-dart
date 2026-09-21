@@ -200,7 +200,7 @@ class TrustStoreRevocation extends pulumi.CustomResource {
           'aws:lb/trustStoreRevocation:TrustStoreRevocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     revocationId = registerOutput<int>('revocationId');

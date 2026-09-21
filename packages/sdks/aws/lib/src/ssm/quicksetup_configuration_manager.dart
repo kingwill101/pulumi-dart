@@ -263,7 +263,7 @@ class QuicksetupConfigurationManager extends pulumi.CustomResource {
           'aws:ssm/quicksetupConfigurationManager:QuicksetupConfigurationManager',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     configurationDefinition = registerOutput<QuicksetupConfigurationManagerConfigurationDefinition>('configurationDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuicksetupConfigurationManagerConfigurationDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');

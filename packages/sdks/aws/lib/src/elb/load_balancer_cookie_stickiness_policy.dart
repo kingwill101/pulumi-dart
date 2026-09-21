@@ -244,7 +244,7 @@ class LoadBalancerCookieStickinessPolicy extends pulumi.CustomResource {
           'aws:elb/loadBalancerCookieStickinessPolicy:LoadBalancerCookieStickinessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     cookieExpirationPeriod = registerOutput<int?>('cookieExpirationPeriod');
     lbPort = registerOutput<int>('lbPort');

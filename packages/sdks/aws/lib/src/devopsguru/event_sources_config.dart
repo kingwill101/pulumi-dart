@@ -184,7 +184,7 @@ class EventSourcesConfig extends pulumi.CustomResource {
           'aws:devopsguru/eventSourcesConfig:EventSourcesConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     eventSources = registerOutput<List<EventSourcesConfigEventSource>>('eventSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventSourcesConfigEventSource>(guardedValue, (value) => EventSourcesConfigEventSource.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');

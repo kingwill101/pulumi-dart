@@ -39,7 +39,7 @@ class AgentcoreHarnessMemoryActualManagedMemoryConfiguration {
     return AgentcoreHarnessMemoryActualManagedMemoryConfiguration(
       arn: pulumi.Input.fromValue(map['arn'] as String),
       encryptionKeyArn: pulumi.Input.fromValue(map['encryptionKeyArn'] as String),
-      eventExpiryDuration: pulumi.Input.fromValue((map['eventExpiryDuration'] as num).toInt()),
+      eventExpiryDuration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['eventExpiryDuration'])),
       strategies: pulumi.Input.fromValue((map['strategies'] as List).cast<String>()),
     );
   }

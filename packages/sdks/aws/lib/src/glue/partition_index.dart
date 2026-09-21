@@ -698,7 +698,7 @@ class PartitionIndex extends pulumi.CustomResource {
           'aws:glue/partitionIndex:PartitionIndex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     databaseName = registerOutput<String>('databaseName');

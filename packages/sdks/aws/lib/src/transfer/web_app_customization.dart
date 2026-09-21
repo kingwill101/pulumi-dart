@@ -39,7 +39,7 @@ class WebAppCustomization extends pulumi.CustomResource {
           'aws:transfer/webAppCustomization:WebAppCustomization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     faviconFile = registerOutput<String>('faviconFile');
     logoFile = registerOutput<String>('logoFile');

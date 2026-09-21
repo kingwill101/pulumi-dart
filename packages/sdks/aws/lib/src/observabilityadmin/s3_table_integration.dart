@@ -754,7 +754,7 @@ class S3TableIntegration extends pulumi.CustomResource {
           'aws:observabilityadmin/s3TableIntegration:S3TableIntegration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destinationTableBucketArn = registerOutput<String>('destinationTableBucketArn');

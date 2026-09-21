@@ -186,7 +186,7 @@ class IdentityCenterConfiguration extends pulumi.CustomResource {
           'aws:lakeformation/identityCenterConfiguration:IdentityCenterConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     applicationArn = registerOutput<String>('applicationArn');
     catalogId = registerOutput<String>('catalogId');

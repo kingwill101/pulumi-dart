@@ -203,7 +203,7 @@ class AccessEntry extends pulumi.CustomResource {
           'aws:eks/accessEntry:AccessEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accessEntryArn = registerOutput<String>('accessEntryArn');
     clusterName = registerOutput<String>('clusterName');

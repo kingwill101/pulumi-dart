@@ -45,7 +45,7 @@ class LandingZone extends pulumi.CustomResource {
           'aws:controltower/landingZone:LandingZone',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     driftStatuses = registerOutput<List<LandingZoneDriftStatus>>('driftStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LandingZoneDriftStatus>(guardedValue, (value) => LandingZoneDriftStatus.fromMap((value as Map).cast<String, dynamic>())); });

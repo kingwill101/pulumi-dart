@@ -422,7 +422,7 @@ class ObjectLambdaAccessPointPolicy extends pulumi.CustomResource {
           'aws:s3control/objectLambdaAccessPointPolicy:ObjectLambdaAccessPointPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');

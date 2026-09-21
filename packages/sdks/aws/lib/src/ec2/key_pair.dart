@@ -124,6 +124,18 @@ import 'key_pair_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `keyName` - (String) The name of the Key Pair.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Key Pairs using the `keyName`. For example:
 ///
 /// ```sh
@@ -163,7 +175,7 @@ class KeyPair extends pulumi.CustomResource {
           'aws:ec2/keyPair:KeyPair',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     fingerprint = registerOutput<String>('fingerprint');

@@ -145,7 +145,7 @@ class LicenseGrantAccepter extends pulumi.CustomResource {
           'aws:licensemanager/licenseGrantAccepter:LicenseGrantAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     allowedOperations = registerOutput<List<String>>('allowedOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     grantArn = registerOutput<String>('grantArn');

@@ -476,11 +476,11 @@ import 'instance_automated_backups_replication_state.dart';
 class InstanceAutomatedBackupsReplication extends pulumi.CustomResource {
   /// AWS KMS key identifier for encryption of the replicated automated backups. The KMS key ID is the ARN for the KMS encryption key in the destination AWS Region, for example, `arn:aws:kms:us-east-1:123456789012:key/AKIAIOSFODNN7EXAMPLE`.
   late final pulumi.Output<String> kmsKeyId;
-  /// A URL that contains a [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) signed request for the [`StartDBInstanceAutomatedBackupsReplication`](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_StartDBInstanceAutomatedBackupsReplication.html) action to be called in the AWS Region of the source DB instance.
+  /// URL that contains a [Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) signed request for the [`StartDBInstanceAutomatedBackupsReplication`](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_StartDBInstanceAutomatedBackupsReplication.html) action to be called in the AWS Region of the source DB instance.
   late final pulumi.Output<String?> preSignedUrl;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The retention period for the replicated automated backups, defaults to `7`.
+  /// Retention period for the replicated automated backups, defaults to `7`.
   late final pulumi.Output<int?> retentionPeriod;
   /// ARN of the source DB instance for the replicated automated backups, for example, `arn:aws:rds:us-west-2:123456789012:db:mydatabase`.
   late final pulumi.Output<String> sourceDbInstanceArn;
@@ -497,7 +497,7 @@ class InstanceAutomatedBackupsReplication extends pulumi.CustomResource {
           'aws:rds/instanceAutomatedBackupsReplication:InstanceAutomatedBackupsReplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     kmsKeyId = registerOutput<String>('kmsKeyId');
     preSignedUrl = registerOutput<String?>('preSignedUrl');

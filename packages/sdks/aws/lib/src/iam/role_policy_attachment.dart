@@ -411,7 +411,7 @@ class RolePolicyAttachment extends pulumi.CustomResource {
           'aws:iam/rolePolicyAttachment:RolePolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     policyArn = registerOutput<String>('policyArn');
     role = registerOutput<String>('role');

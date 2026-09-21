@@ -56,7 +56,7 @@ class ProviderProvider extends pulumi.ProviderResource {
           'aws',
           name,
           pulumi.Input.mapToInputs((args ?? ProviderArgs()).toMap()),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
           additionalSecretOutputs: const ['accessKey', 'secretKey', 'token'],
         ) {
     accessKey = registerOutput<String?>('accessKey', isSecret: true);

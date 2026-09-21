@@ -3,14 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterMasterUserSecret {
+  /// Amazon Web Services KMS key identifier that is used to encrypt the secret.
   final pulumi.Input<String> kmsKeyId;
+  /// ARN of the secret.
   final pulumi.Input<String> secretArn;
+  /// Status of the secret.
   final pulumi.Input<String> secretStatus;
 
   /// Creates a new [GetClusterMasterUserSecret].
-  /// [kmsKeyId] Required.
-  /// [secretArn] Required.
-  /// [secretStatus] Required.
+  /// [kmsKeyId] Amazon Web Services KMS key identifier that is used to encrypt the secret.
+  /// [secretArn] ARN of the secret.
+  /// [secretStatus] Status of the secret.
   const GetClusterMasterUserSecret({
     required this.kmsKeyId,
     required this.secretArn,

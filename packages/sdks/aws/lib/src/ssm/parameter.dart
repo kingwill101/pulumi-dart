@@ -415,9 +415,9 @@ class Parameter extends pulumi.CustomResource {
   /// Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of `type
   late final pulumi.Output<String> value;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of `type`. Additionally, `write-only` values are never stored to state. `valueWoVersion` can be used to trigger an update and is required with this argument.
+  /// Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of `type`. Additionally, `write-only` values are never stored to state. If set, requires `valueWoVersion`.
   late final pulumi.Output<String?> valueWo;
-  /// Used together with `valueWo` to trigger an update. Increment this value when an update to the `valueWo` is required.
+  /// Required when `valueWo` is set. Changing this value triggers an update to `valueWo`.
   ///
   /// &gt; **NOTE:** `aws:ssm:integration` dataType parameters must be of the type `SecureString` and the name must start with the prefix `/d9d01087-4a3f-49e0-b0b4-d568d7826553/ssm/integrations/webhook/`. See [here](https://docs.aws.amazon.com/systems-manager/latest/userguide/creating-integrations.html) for information on the usage of `aws:ssm:integration` parameters.
   late final pulumi.Output<int?> valueWoVersion;
@@ -436,7 +436,7 @@ class Parameter extends pulumi.CustomResource {
           'aws:ssm/parameter:Parameter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
           additionalSecretOutputs: const ['value', 'valueWo'],
         ) {
     allowedPattern = registerOutput<String?>('allowedPattern');

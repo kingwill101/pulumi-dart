@@ -1182,21 +1182,21 @@ class AgentcoreHarness extends pulumi.CustomResource {
   /// Maximum number of iterations the agent loop can perform.
   late final pulumi.Output<int> maxIterations;
   /// Maximum number of tokens in the model response.
-  late final pulumi.Output<int?> maxTokens;
+  late final pulumi.Output<int> maxTokens;
   /// Memory configuration. See `memory` Block below. If not specified, configured values can be found in `memoryActual`. Clearing this value will reset the memory configuration to default values.
   late final pulumi.Output<AgentcoreHarnessMemory?> memory;
   /// Actual deployed memory configuration.
   late final pulumi.Output<List<AgentcoreHarnessMemoryActual>> memoryActuals;
   /// Model configuration for the harness. See `model` Block below.
-  ///
-  /// The following arguments are optional:
   late final pulumi.Output<AgentcoreHarnessModel> model;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Skill configurations. See `skill` Block below.
   late final pulumi.Output<List<AgentcoreHarnessSkill>?> skills;
   /// System prompt blocks for the harness. See `systemPrompt` Block below.
-  late final pulumi.Output<List<AgentcoreHarnessSystemPrompt>?> systemPrompts;
+  ///
+  /// The following arguments are optional:
+  late final pulumi.Output<List<AgentcoreHarnessSystemPrompt>> systemPrompts;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -1221,7 +1221,7 @@ class AgentcoreHarness extends pulumi.CustomResource {
           'aws:bedrock/agentcoreHarness:AgentcoreHarness',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
           additionalSecretOutputs: const ['environmentVariables'],
         ) {
     allowedTools = registerOutput<List<String>>('allowedTools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
@@ -1235,13 +1235,13 @@ class AgentcoreHarness extends pulumi.CustomResource {
     harnessId = registerOutput<String>('harnessId');
     harnessName = registerOutput<String>('harnessName');
     maxIterations = registerOutput<int>('maxIterations');
-    maxTokens = registerOutput<int?>('maxTokens');
+    maxTokens = registerOutput<int>('maxTokens');
     memory = registerOutput<AgentcoreHarnessMemory?>('memory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessMemory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     memoryActuals = registerOutput<List<AgentcoreHarnessMemoryActual>>('memoryActuals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessMemoryActual>(guardedValue, (value) => AgentcoreHarnessMemoryActual.fromMap((value as Map).cast<String, dynamic>())); });
     model = registerOutput<AgentcoreHarnessModel>('model', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessModel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     skills = registerOutput<List<AgentcoreHarnessSkill>?>('skills', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessSkill>(guardedValue, (value) => AgentcoreHarnessSkill.fromMap((value as Map).cast<String, dynamic>())); });
-    systemPrompts = registerOutput<List<AgentcoreHarnessSystemPrompt>?>('systemPrompts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessSystemPrompt>(guardedValue, (value) => AgentcoreHarnessSystemPrompt.fromMap((value as Map).cast<String, dynamic>())); });
+    systemPrompts = registerOutput<List<AgentcoreHarnessSystemPrompt>>('systemPrompts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessSystemPrompt>(guardedValue, (value) => AgentcoreHarnessSystemPrompt.fromMap((value as Map).cast<String, dynamic>())); });
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeoutSeconds = registerOutput<int>('timeoutSeconds');
@@ -1285,13 +1285,13 @@ class AgentcoreHarness extends pulumi.CustomResource {
     harnessId = registerOutput<String>('harnessId');
     harnessName = registerOutput<String>('harnessName');
     maxIterations = registerOutput<int>('maxIterations');
-    maxTokens = registerOutput<int?>('maxTokens');
+    maxTokens = registerOutput<int>('maxTokens');
     memory = registerOutput<AgentcoreHarnessMemory?>('memory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessMemory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     memoryActuals = registerOutput<List<AgentcoreHarnessMemoryActual>>('memoryActuals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessMemoryActual>(guardedValue, (value) => AgentcoreHarnessMemoryActual.fromMap((value as Map).cast<String, dynamic>())); });
     model = registerOutput<AgentcoreHarnessModel>('model', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessModel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     skills = registerOutput<List<AgentcoreHarnessSkill>?>('skills', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessSkill>(guardedValue, (value) => AgentcoreHarnessSkill.fromMap((value as Map).cast<String, dynamic>())); });
-    systemPrompts = registerOutput<List<AgentcoreHarnessSystemPrompt>?>('systemPrompts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessSystemPrompt>(guardedValue, (value) => AgentcoreHarnessSystemPrompt.fromMap((value as Map).cast<String, dynamic>())); });
+    systemPrompts = registerOutput<List<AgentcoreHarnessSystemPrompt>>('systemPrompts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessSystemPrompt>(guardedValue, (value) => AgentcoreHarnessSystemPrompt.fromMap((value as Map).cast<String, dynamic>())); });
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeoutSeconds = registerOutput<int>('timeoutSeconds');
@@ -1321,13 +1321,13 @@ class AgentcoreHarness extends pulumi.CustomResource {
     harnessId = registerOutput<String>('harnessId');
     harnessName = registerOutput<String>('harnessName');
     maxIterations = registerOutput<int>('maxIterations');
-    maxTokens = registerOutput<int?>('maxTokens');
+    maxTokens = registerOutput<int>('maxTokens');
     memory = registerOutput<AgentcoreHarnessMemory?>('memory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessMemory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     memoryActuals = registerOutput<List<AgentcoreHarnessMemoryActual>>('memoryActuals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessMemoryActual>(guardedValue, (value) => AgentcoreHarnessMemoryActual.fromMap((value as Map).cast<String, dynamic>())); });
     model = registerOutput<AgentcoreHarnessModel>('model', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreHarnessModel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     skills = registerOutput<List<AgentcoreHarnessSkill>?>('skills', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessSkill>(guardedValue, (value) => AgentcoreHarnessSkill.fromMap((value as Map).cast<String, dynamic>())); });
-    systemPrompts = registerOutput<List<AgentcoreHarnessSystemPrompt>?>('systemPrompts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessSystemPrompt>(guardedValue, (value) => AgentcoreHarnessSystemPrompt.fromMap((value as Map).cast<String, dynamic>())); });
+    systemPrompts = registerOutput<List<AgentcoreHarnessSystemPrompt>>('systemPrompts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreHarnessSystemPrompt>(guardedValue, (value) => AgentcoreHarnessSystemPrompt.fromMap((value as Map).cast<String, dynamic>())); });
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeoutSeconds = registerOutput<int>('timeoutSeconds');

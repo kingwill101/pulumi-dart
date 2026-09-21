@@ -313,7 +313,7 @@ class Api extends pulumi.CustomResource {
           'aws:apigatewayv2/api:Api',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     apiEndpoint = registerOutput<String>('apiEndpoint');
     apiKeySelectionExpression = registerOutput<String?>('apiKeySelectionExpression');

@@ -244,7 +244,7 @@ class CompositeAlarm extends pulumi.CustomResource {
           'aws:cloudwatch/compositeAlarm:CompositeAlarm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     actionsEnabled = registerOutput<bool?>('actionsEnabled');
     actionsSuppressor = registerOutput<CompositeAlarmActionsSuppressor?>('actionsSuppressor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CompositeAlarmActionsSuppressor.fromMap((guardedValue as Map).cast<String, dynamic>()); });

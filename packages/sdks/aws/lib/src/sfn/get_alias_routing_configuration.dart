@@ -24,7 +24,7 @@ class GetAliasRoutingConfiguration {
   factory GetAliasRoutingConfiguration.fromMap(Map<String, dynamic> map) {
     return GetAliasRoutingConfiguration(
       stateMachineVersionArn: pulumi.Input.fromValue(map['stateMachineVersionArn'] as String),
-      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
+      weight: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['weight'])),
     );
   }
 }

@@ -579,7 +579,7 @@ class BotAssociation extends pulumi.CustomResource {
           'aws:connect/botAssociation:BotAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     instanceId = registerOutput<String>('instanceId');
     lexBot = registerOutput<BotAssociationLexBot>('lexBot', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BotAssociationLexBot.fromMap((guardedValue as Map).cast<String, dynamic>()); });

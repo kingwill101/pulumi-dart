@@ -75,7 +75,7 @@ class NetworkInsightsPathArgs {
     return NetworkInsightsPathArgs(
       destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationIp: (() { final guardedValue = map['destinationIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       filterAtDestination: (() { final guardedValue = map['filterAtDestination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkInsightsPathFilterAtDestination.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       filterAtSource: (() { final guardedValue = map['filterAtSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkInsightsPathFilterAtSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),

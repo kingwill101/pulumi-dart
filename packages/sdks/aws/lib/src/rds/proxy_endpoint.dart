@@ -138,22 +138,22 @@ import 'proxy_endpoint_state.dart';
 class ProxyEndpoint extends pulumi.CustomResource {
   /// ARN for the proxy endpoint.
   late final pulumi.Output<String> arn;
-  /// The identifier for the proxy endpoint. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
+  /// Identifier for the proxy endpoint. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
   late final pulumi.Output<String> dbProxyEndpointName;
-  /// The name of the DB proxy associated with the DB proxy endpoint that you create.
+  /// Name of the DB proxy associated with the DB proxy endpoint that you create.
   late final pulumi.Output<String> dbProxyName;
-  /// The endpoint that you can use to connect to the proxy. You include the endpoint value in the connection string for a database client application.
+  /// Endpoint that you can use to connect to the proxy. You include the endpoint value in the connection string for a database client application.
   late final pulumi.Output<String> endpoint;
-  /// Indicates whether this endpoint is the default endpoint for the associated DB proxy.
+  /// Whether this endpoint is the default endpoint for the associated DB proxy.
   late final pulumi.Output<bool> isDefault;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A mapping of tags to assign to the resource.
+  /// Map of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Indicates whether the DB proxy endpoint can be used for read/write or read-only operations. The default is `READ_WRITE`. Valid values are `READ_WRITE` and `READ_ONLY`.
+  /// Whether the DB proxy endpoint can be used for read/write or read-only operations. The default is `READ_WRITE`. Valid values are `READ_WRITE` and `READ_ONLY`.
   late final pulumi.Output<String?> targetRole;
-  /// The VPC ID of the DB proxy endpoint.
+  /// VPC ID of the DB proxy endpoint.
   late final pulumi.Output<String> vpcId;
   /// One or more VPC security group IDs to associate with the new proxy.
   late final pulumi.Output<List<String>> vpcSecurityGroupIds;
@@ -172,7 +172,7 @@ class ProxyEndpoint extends pulumi.CustomResource {
           'aws:rds/proxyEndpoint:ProxyEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dbProxyEndpointName = registerOutput<String>('dbProxyEndpointName');

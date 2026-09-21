@@ -1152,7 +1152,7 @@ class Crawler extends pulumi.CustomResource {
           'aws:glue/crawler:Crawler',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     catalogTargets = registerOutput<List<CrawlerCatalogTarget>?>('catalogTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerCatalogTarget>(guardedValue, (value) => CrawlerCatalogTarget.fromMap((value as Map).cast<String, dynamic>())); });

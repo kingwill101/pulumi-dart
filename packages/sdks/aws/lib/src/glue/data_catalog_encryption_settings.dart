@@ -205,7 +205,7 @@ class DataCatalogEncryptionSettings extends pulumi.CustomResource {
           'aws:glue/dataCatalogEncryptionSettings:DataCatalogEncryptionSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     dataCatalogEncryptionSettings = registerOutput<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>('dataCatalogEncryptionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

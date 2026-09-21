@@ -42,11 +42,11 @@ class CapacityProviderAutoScalingGroupProviderManagedScaling {
 
   factory CapacityProviderAutoScalingGroupProviderManagedScaling.fromMap(Map<String, dynamic> map) {
     return CapacityProviderAutoScalingGroupProviderManagedScaling(
-      instanceWarmupPeriod: (() { final guardedValue = map['instanceWarmupPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maximumScalingStepSize: (() { final guardedValue = map['maximumScalingStepSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minimumScalingStepSize: (() { final guardedValue = map['minimumScalingStepSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      instanceWarmupPeriod: (() { final guardedValue = map['instanceWarmupPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maximumScalingStepSize: (() { final guardedValue = map['maximumScalingStepSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minimumScalingStepSize: (() { final guardedValue = map['minimumScalingStepSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      targetCapacity: (() { final guardedValue = map['targetCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetCapacity: (() { final guardedValue = map['targetCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

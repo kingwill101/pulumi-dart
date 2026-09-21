@@ -37,7 +37,7 @@ class CrawlerHudiTarget {
     return CrawlerHudiTarget(
       connectionName: (() { final guardedValue = map['connectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exclusions: (() { final guardedValue = map['exclusions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      maximumTraversalDepth: pulumi.Input.fromValue((map['maximumTraversalDepth'] as num).toInt()),
+      maximumTraversalDepth: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maximumTraversalDepth'])),
       paths: pulumi.Input.fromValue((map['paths'] as List).cast<String>()),
     );
   }

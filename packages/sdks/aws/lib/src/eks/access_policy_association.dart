@@ -206,7 +206,7 @@ class AccessPolicyAssociation extends pulumi.CustomResource {
           'aws:eks/accessPolicyAssociation:AccessPolicyAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accessScope = registerOutput<AccessPolicyAssociationAccessScope>('accessScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPolicyAssociationAccessScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     associatedAt = registerOutput<String>('associatedAt');

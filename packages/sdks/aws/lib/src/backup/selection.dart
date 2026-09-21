@@ -1079,7 +1079,7 @@ class Selection extends pulumi.CustomResource {
           'aws:backup/selection:Selection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     conditions = registerOutput<List<SelectionCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SelectionCondition>(guardedValue, (value) => SelectionCondition.fromMap((value as Map).cast<String, dynamic>())); });
     iamRoleArn = registerOutput<String>('iamRoleArn');

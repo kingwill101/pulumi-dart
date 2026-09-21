@@ -35,7 +35,7 @@ class ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity {
 
   factory ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity(
-      accessControlMaxAgeSec: pulumi.Input.fromValue((map['accessControlMaxAgeSec'] as num).toInt()),
+      accessControlMaxAgeSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['accessControlMaxAgeSec'])),
       includeSubdomains: (() { final guardedValue = map['includeSubdomains']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       override: pulumi.Input.fromValue(map['override'] as bool),
       preload: (() { final guardedValue = map['preload']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

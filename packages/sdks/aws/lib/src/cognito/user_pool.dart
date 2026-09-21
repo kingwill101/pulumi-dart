@@ -568,7 +568,7 @@ class UserPool extends pulumi.CustomResource {
           'aws:cognito/userPool:UserPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accountRecoverySetting = registerOutput<UserPoolAccountRecoverySetting?>('accountRecoverySetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolAccountRecoverySetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     adminCreateUserConfig = registerOutput<UserPoolAdminCreateUserConfig>('adminCreateUserConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPoolAdminCreateUserConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

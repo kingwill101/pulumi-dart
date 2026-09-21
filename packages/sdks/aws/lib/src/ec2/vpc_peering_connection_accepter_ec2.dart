@@ -747,7 +747,7 @@ class VpcPeeringConnectionAccepterEc2 extends pulumi.CustomResource {
           'aws:ec2/vpcPeeringConnectionAccepter:VpcPeeringConnectionAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     acceptStatus = registerOutput<String>('acceptStatus');
     accepter = registerOutput<VpcPeeringConnectionAccepterAccepter>('accepter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcPeeringConnectionAccepterAccepter.fromMap((guardedValue as Map).cast<String, dynamic>()); });

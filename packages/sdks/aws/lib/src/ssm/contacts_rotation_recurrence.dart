@@ -50,8 +50,8 @@ class ContactsRotationRecurrence {
     return ContactsRotationRecurrence(
       dailySettings: (() { final guardedValue = map['dailySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContactsRotationRecurrenceDailySetting>(guardedValue, (value) => ContactsRotationRecurrenceDailySetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
       monthlySettings: (() { final guardedValue = map['monthlySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContactsRotationRecurrenceMonthlySetting>(guardedValue, (value) => ContactsRotationRecurrenceMonthlySetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      numberOfOnCalls: pulumi.Input.fromValue((map['numberOfOnCalls'] as num).toInt()),
-      recurrenceMultiplier: pulumi.Input.fromValue((map['recurrenceMultiplier'] as num).toInt()),
+      numberOfOnCalls: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfOnCalls'])),
+      recurrenceMultiplier: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['recurrenceMultiplier'])),
       shiftCoverages: (() { final guardedValue = map['shiftCoverages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContactsRotationRecurrenceShiftCoverage>(guardedValue, (value) => ContactsRotationRecurrenceShiftCoverage.fromMap((value as Map).cast<String, dynamic>()))); })(),
       weeklySettings: (() { final guardedValue = map['weeklySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContactsRotationRecurrenceWeeklySetting>(guardedValue, (value) => ContactsRotationRecurrenceWeeklySetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

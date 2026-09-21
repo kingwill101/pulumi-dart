@@ -126,11 +126,11 @@ class ClusterSnapshot extends pulumi.CustomResource {
   late final pulumi.Output<int> allocatedStorage;
   /// List of EC2 Availability Zones that instances in the DB cluster snapshot can be restored in.
   late final pulumi.Output<List<String>> availabilityZones;
-  /// The DB Cluster Identifier from which to take the snapshot.
+  /// DB Cluster Identifier from which to take the snapshot.
   late final pulumi.Output<String> dbClusterIdentifier;
   /// ARN for the DB Cluster Snapshot.
   late final pulumi.Output<String> dbClusterSnapshotArn;
-  /// The Identifier for the snapshot.
+  /// Identifier for the snapshot.
   late final pulumi.Output<String> dbClusterSnapshotIdentifier;
   /// Name of the database engine.
   late final pulumi.Output<String> engine;
@@ -146,17 +146,19 @@ class ClusterSnapshot extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
   late final pulumi.Output<List<String>?> sharedAccounts;
+  /// Type of the DB cluster snapshot.
   late final pulumi.Output<String> snapshotType;
+  /// DB Cluster Snapshot ARN that the DB Cluster Snapshot was copied from. It only has value in case of cross customer or cross region copy.
   late final pulumi.Output<String> sourceDbClusterSnapshotArn;
-  /// The status of this DB Cluster Snapshot.
+  /// Status of this DB Cluster Snapshot.
   late final pulumi.Output<String> status;
   /// Whether the DB cluster snapshot is encrypted.
   late final pulumi.Output<bool> storageEncrypted;
-  /// A map of tags to assign to the DB cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the DB cluster. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The VPC ID associated with the DB cluster snapshot.
+  /// VPC ID associated with the DB cluster snapshot.
   late final pulumi.Output<String> vpcId;
 
   /// Creates a new [ClusterSnapshot].
@@ -171,7 +173,7 @@ class ClusterSnapshot extends pulumi.CustomResource {
           'aws:rds/clusterSnapshot:ClusterSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

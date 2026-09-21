@@ -472,7 +472,7 @@ class IntegrationResponse extends pulumi.CustomResource {
           'aws:apigateway/integrationResponse:IntegrationResponse',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     contentHandling = registerOutput<String?>('contentHandling');
     httpMethod = registerOutput<String>('httpMethod');

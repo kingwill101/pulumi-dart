@@ -559,7 +559,7 @@ class V2Policy extends pulumi.CustomResource {
           'aws:resiliencehub/v2Policy:V2Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilitySlo = registerOutput<V2PolicyAvailabilitySlo?>('availabilitySlo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyAvailabilitySlo.fromMap((guardedValue as Map).cast<String, dynamic>()); });

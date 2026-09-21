@@ -427,7 +427,7 @@ class VaultLock extends pulumi.CustomResource {
           'aws:glacier/vaultLock:VaultLock',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     completeLock = registerOutput<bool>('completeLock');
     ignoreDeletionError = registerOutput<bool?>('ignoreDeletionError');

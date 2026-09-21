@@ -523,7 +523,7 @@ class WebAclLoggingConfiguration extends pulumi.CustomResource {
           'aws:wafv2/webAclLoggingConfiguration:WebAclLoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     logDestinationConfigs = registerOutput<List<String>>('logDestinationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loggingFilter = registerOutput<WebAclLoggingConfigurationLoggingFilter?>('loggingFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclLoggingConfigurationLoggingFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });

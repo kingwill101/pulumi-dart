@@ -152,7 +152,7 @@ class GetTaskDefinitionResult {
       proxyConfigurations: (() { final guardedValue = map['proxyConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTaskDefinitionProxyConfiguration>(guardedValue, (value) => GetTaskDefinitionProxyConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       requiresCompatibilities: (() { final guardedValue = map['requiresCompatibilities']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       runtimePlatforms: (() { final guardedValue = map['runtimePlatforms']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTaskDefinitionRuntimePlatform>(guardedValue, (value) => GetTaskDefinitionRuntimePlatform.fromMap((value as Map).cast<String, dynamic>())); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       taskDefinition: (() { final guardedValue = map['taskDefinition']; if (guardedValue == null) return null; return guardedValue as String; })(),

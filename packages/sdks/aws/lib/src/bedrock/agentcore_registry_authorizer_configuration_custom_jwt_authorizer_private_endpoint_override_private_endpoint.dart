@@ -5,12 +5,14 @@ import 'agentcore_registry_authorizer_configuration_custom_jwt_authorizer_privat
 import 'agentcore_registry_authorizer_configuration_custom_jwt_authorizer_private_endpoint_override_private_endpoint_self_managed_lattice_resource.dart';
 
 class AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpoint {
+  /// Managed VPC resource configuration. See `managedVpcResource` below.
   final pulumi.Input<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointManagedVpcResource?>? managedVpcResource;
+  /// Self-managed VPC Lattice resource configuration. See `selfManagedLatticeResource` below.
   final pulumi.Input<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointSelfManagedLatticeResource?>? selfManagedLatticeResource;
 
   /// Creates a new [AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpoint].
-  /// [managedVpcResource] Optional.
-  /// [selfManagedLatticeResource] Optional.
+  /// [managedVpcResource] Managed VPC resource configuration. See `managedVpcResource` below.
+  /// [selfManagedLatticeResource] Self-managed VPC Lattice resource configuration. See `selfManagedLatticeResource` below.
   const AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpoint({
     this.managedVpcResource,
     this.selfManagedLatticeResource,

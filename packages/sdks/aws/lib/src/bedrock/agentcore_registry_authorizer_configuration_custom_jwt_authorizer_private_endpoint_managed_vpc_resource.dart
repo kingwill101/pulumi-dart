@@ -3,20 +3,26 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointManagedVpcResource {
+  /// IP address type for the endpoint. Valid values are `IPV4` and `IPV6`.
   final pulumi.Input<String> endpointIpAddressType;
+  /// Routing domain for the endpoint.
   final pulumi.Input<String?>? routingDomain;
+  /// IDs of the security groups for the endpoint.
   final pulumi.Input<List<String>?>? securityGroupIds;
+  /// IDs of the subnets for the endpoint.
   final pulumi.Input<List<String>> subnetIds;
+  /// Tags to assign to the managed VPC resource.
   final pulumi.Input<Map<String, String>?>? tags;
+  /// Identifier of the VPC for the endpoint.
   final pulumi.Input<String> vpcIdentifier;
 
   /// Creates a new [AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointManagedVpcResource].
-  /// [endpointIpAddressType] Required.
-  /// [routingDomain] Optional.
-  /// [securityGroupIds] Optional.
-  /// [subnetIds] Required.
-  /// [tags] Optional.
-  /// [vpcIdentifier] Required.
+  /// [endpointIpAddressType] IP address type for the endpoint. Valid values are `IPV4` and `IPV6`.
+  /// [routingDomain] Routing domain for the endpoint.
+  /// [securityGroupIds] IDs of the security groups for the endpoint.
+  /// [subnetIds] IDs of the subnets for the endpoint.
+  /// [tags] Tags to assign to the managed VPC resource.
+  /// [vpcIdentifier] Identifier of the VPC for the endpoint.
   const AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointManagedVpcResource({
     required this.endpointIpAddressType,
     this.routingDomain,

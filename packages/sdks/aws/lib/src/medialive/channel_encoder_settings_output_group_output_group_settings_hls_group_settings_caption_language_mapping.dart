@@ -28,7 +28,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptio
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping(
-      captionChannel: pulumi.Input.fromValue((map['captionChannel'] as num).toInt()),
+      captionChannel: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['captionChannel'])),
       languageCode: pulumi.Input.fromValue(map['languageCode'] as String),
       languageDescription: pulumi.Input.fromValue(map['languageDescription'] as String),
     );

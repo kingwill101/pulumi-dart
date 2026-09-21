@@ -188,7 +188,7 @@ class AccessGrantsLocation extends pulumi.CustomResource {
           'aws:s3control/accessGrantsLocation:AccessGrantsLocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accessGrantsLocationArn = registerOutput<String>('accessGrantsLocationArn');
     accessGrantsLocationId = registerOutput<String>('accessGrantsLocationId');

@@ -497,7 +497,7 @@ class Stack extends pulumi.CustomResource {
           'aws:appstream/stack:Stack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accessEndpoints = registerOutput<List<StackAccessEndpoint>>('accessEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StackAccessEndpoint>(guardedValue, (value) => StackAccessEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     applicationSettings = registerOutput<StackApplicationSettings>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

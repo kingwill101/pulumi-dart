@@ -138,7 +138,7 @@ class GetNatGatewayResult {
       regionalNatGatewayAddresses: (() { final guardedValue = map['regionalNatGatewayAddresses']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNatGatewayRegionalNatGatewayAddress>(guardedValue, (value) => GetNatGatewayRegionalNatGatewayAddress.fromMap((value as Map).cast<String, dynamic>())); })(),
       routeTableId: (() { final guardedValue = map['routeTableId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       secondaryAllocationIds: (() { final guardedValue = map['secondaryAllocationIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      secondaryPrivateIpAddressCount: (() { final guardedValue = map['secondaryPrivateIpAddressCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      secondaryPrivateIpAddressCount: (() { final guardedValue = map['secondaryPrivateIpAddressCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       secondaryPrivateIpAddresses: (() { final guardedValue = map['secondaryPrivateIpAddresses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
       subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return guardedValue as String; })(),

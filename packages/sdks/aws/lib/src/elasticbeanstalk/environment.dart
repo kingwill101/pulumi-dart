@@ -253,7 +253,7 @@ class Environment extends pulumi.CustomResource {
           'aws:elasticbeanstalk/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     allSettings = registerOutput<List<EnvironmentAllSetting>>('allSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentAllSetting>(guardedValue, (value) => EnvironmentAllSetting.fromMap((value as Map).cast<String, dynamic>())); });
     application = registerOutput<String>('application');

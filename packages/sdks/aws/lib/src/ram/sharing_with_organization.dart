@@ -113,7 +113,7 @@ class SharingWithOrganization extends pulumi.CustomResource {
           'aws:ram/sharingWithOrganization:SharingWithOrganization',
           name,
           pulumi.Input.mapToInputs(args ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         );
 
   /// Creates a typed reference to an existing [SharingWithOrganization] resource.

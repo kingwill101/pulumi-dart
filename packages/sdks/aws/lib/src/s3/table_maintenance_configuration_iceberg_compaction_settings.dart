@@ -20,7 +20,7 @@ class TableMaintenanceConfigurationIcebergCompactionSettings {
 
   factory TableMaintenanceConfigurationIcebergCompactionSettings.fromMap(Map<String, dynamic> map) {
     return TableMaintenanceConfigurationIcebergCompactionSettings(
-      targetFileSizeMb: pulumi.Input.fromValue((map['targetFileSizeMb'] as num).toInt()),
+      targetFileSizeMb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetFileSizeMb'])),
     );
   }
 }

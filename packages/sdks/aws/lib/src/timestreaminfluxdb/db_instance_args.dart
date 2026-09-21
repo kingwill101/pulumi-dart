@@ -123,7 +123,7 @@ class DbInstanceArgs {
 
   factory DbInstanceArgs.fromMap(Map<String, dynamic> map) {
     return DbInstanceArgs(
-      allocatedStorage: pulumi.Input.fromValue((map['allocatedStorage'] as num).toInt()),
+      allocatedStorage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['allocatedStorage'])),
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       dbInstanceType: pulumi.Input.fromValue(map['dbInstanceType'] as String),
       dbParameterGroupIdentifier: (() { final guardedValue = map['dbParameterGroupIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -135,7 +135,7 @@ class DbInstanceArgs {
       networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       organization: pulumi.Input.fromValue(map['organization'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       publiclyAccessible: (() { final guardedValue = map['publiclyAccessible']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

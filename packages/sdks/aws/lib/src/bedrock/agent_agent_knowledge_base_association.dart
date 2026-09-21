@@ -167,7 +167,7 @@ class AgentAgentKnowledgeBaseAssociation extends pulumi.CustomResource {
           'aws:bedrock/agentAgentKnowledgeBaseAssociation:AgentAgentKnowledgeBaseAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     agentId = registerOutput<String>('agentId');
     agentVersion = registerOutput<String>('agentVersion');

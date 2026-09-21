@@ -156,7 +156,7 @@ class GetKeyResult {
       multiRegion: (() { final guardedValue = map['multiRegion']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       multiRegionConfigurations: (() { final guardedValue = map['multiRegionConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetKeyMultiRegionConfiguration>(guardedValue, (value) => GetKeyMultiRegionConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),
       origin: (() { final guardedValue = map['origin']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pendingDeletionWindowInDays: (() { final guardedValue = map['pendingDeletionWindowInDays']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      pendingDeletionWindowInDays: (() { final guardedValue = map['pendingDeletionWindowInDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       validTo: (() { final guardedValue = map['validTo']; if (guardedValue == null) return null; return guardedValue as String; })(),
       xksKeyConfigurations: (() { final guardedValue = map['xksKeyConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetKeyXksKeyConfiguration>(guardedValue, (value) => GetKeyXksKeyConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),

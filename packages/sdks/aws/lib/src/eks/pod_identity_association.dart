@@ -600,7 +600,7 @@ class PodIdentityAssociation extends pulumi.CustomResource {
           'aws:eks/podIdentityAssociation:PodIdentityAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     associationArn = registerOutput<String>('associationArn');
     associationId = registerOutput<String>('associationId');

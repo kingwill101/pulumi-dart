@@ -9,7 +9,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
   final pulumi.Input<String?>? description;
   /// Nested items definition for arrays of arrays.
   final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsItems?>? items;
-  /// Set of property definitions for arrays of objects. See `property` below.
+  /// Set of property definitions for arrays of objects. See `property` Block below.
   final pulumi.Input<List<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsProperty>?>? properties;
   /// Data type of the array items.
   final pulumi.Input<String> type;
@@ -17,7 +17,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItems].
   /// [description] Description of the array items.
   /// [items] Nested items definition for arrays of arrays.
-  /// [properties] Set of property definitions for arrays of objects. See `property` below.
+  /// [properties] Set of property definitions for arrays of objects. See `property` Block below.
   /// [type] Data type of the array items.
   const AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItems({
     this.description,

@@ -118,14 +118,12 @@ class Namespace extends pulumi.CustomResource {
   late final pulumi.Output<String> adminPasswordSecretArn;
   /// ID of the KMS key used to encrypt the namespace's admin credentials secret.
   late final pulumi.Output<String> adminPasswordSecretKmsKeyId;
-  /// The password of the administrator for the first database created in the namespace.
-  /// Conflicts with `manageAdminPassword` and `adminUserPasswordWo`.
+  /// The password of the administrator for the first database created in the namespace. Conflicts with `manageAdminPassword` and `adminUserPasswordWo`.
   late final pulumi.Output<String?> adminUserPassword;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// The password of the administrator for the first database created in the namespace.
-  /// Conflicts with `manageAdminPassword` and `adminUserPassword`.
+  /// The password of the administrator for the first database created in the namespace. Conflicts with `manageAdminPassword` and `adminUserPassword`. If set, requires `adminUserPasswordWoVersion` to be set.
   late final pulumi.Output<String?> adminUserPasswordWo;
-  /// Used together with `adminUserPasswordWo` to trigger an update. Increment this value when an update to the `adminUserPasswordWo` is required
+  /// Required when `adminUserPasswordWo` is set. Changing this value triggers an update to `adminUserPasswordWo`.
   late final pulumi.Output<int?> adminUserPasswordWoVersion;
   /// The username of the administrator for the first database created in the namespace.
   late final pulumi.Output<String> adminUsername;
@@ -141,8 +139,7 @@ class Namespace extends pulumi.CustomResource {
   late final pulumi.Output<String> kmsKeyId;
   /// The types of logs the namespace can export. Available export types are `userlog`, `connectionlog`, and `useractivitylog`.
   late final pulumi.Output<List<String>?> logExports;
-  /// Whether to use AWS SecretManager to manage namespace's admin credentials.
-  /// Conflicts with `adminUserPassword` and `adminUserPasswordWo`.
+  /// Whether to use AWS SecretManager to manage namespace's admin credentials. Conflicts with `adminUserPassword` and `adminUserPasswordWo`.
   late final pulumi.Output<bool?> manageAdminPassword;
   /// The Redshift Namespace ID.
   late final pulumi.Output<String> namespaceId;
@@ -167,7 +164,7 @@ class Namespace extends pulumi.CustomResource {
           'aws:redshiftserverless/namespace:Namespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
           additionalSecretOutputs: const ['adminUserPassword', 'adminUserPasswordWo', 'adminUsername'],
         ) {
     adminPasswordSecretArn = registerOutput<String>('adminPasswordSecretArn');

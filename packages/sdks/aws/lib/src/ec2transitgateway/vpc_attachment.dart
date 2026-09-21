@@ -176,7 +176,7 @@ class VpcAttachment extends pulumi.CustomResource {
           'aws:ec2transitgateway/vpcAttachment:VpcAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     applianceModeSupport = registerOutput<String?>('applianceModeSupport');
     arn = registerOutput<String>('arn');

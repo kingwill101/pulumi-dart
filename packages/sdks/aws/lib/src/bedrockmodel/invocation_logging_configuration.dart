@@ -535,7 +535,7 @@ class InvocationLoggingConfiguration extends pulumi.CustomResource {
           'aws:bedrockmodel/invocationLoggingConfiguration:InvocationLoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     loggingConfig = registerOutput<InvocationLoggingConfigurationLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvocationLoggingConfigurationLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

@@ -1160,7 +1160,7 @@ class BucketObject extends pulumi.CustomResource {
           'aws:s3/bucketObject:BucketObject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     acl = registerOutput<String?>('acl');
     arn = registerOutput<String>('arn');

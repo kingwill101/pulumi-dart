@@ -131,7 +131,7 @@ class EncryptionByDefault extends pulumi.CustomResource {
           'aws:ebs/encryptionByDefault:EncryptionByDefault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     enabled = registerOutput<bool?>('enabled');
     region = registerOutput<String>('region');

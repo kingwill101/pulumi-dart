@@ -440,7 +440,7 @@ class AutomationRuleV2 extends pulumi.CustomResource {
           'aws:securityhub/automationRuleV2:AutomationRuleV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     action = registerOutput<AutomationRuleV2Action>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomationRuleV2Action.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

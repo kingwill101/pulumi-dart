@@ -252,7 +252,7 @@ class RegexMatchSet extends pulumi.CustomResource {
           'aws:wafregional/regexMatchSet:RegexMatchSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     regexMatchTuples = registerOutput<List<RegexMatchSetRegexMatchTuple>?>('regexMatchTuples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegexMatchSetRegexMatchTuple>(guardedValue, (value) => RegexMatchSetRegexMatchTuple.fromMap((value as Map).cast<String, dynamic>())); });

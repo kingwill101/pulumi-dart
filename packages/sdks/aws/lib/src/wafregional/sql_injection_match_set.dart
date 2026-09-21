@@ -185,7 +185,7 @@ class SqlInjectionMatchSet extends pulumi.CustomResource {
           'aws:wafregional/sqlInjectionMatchSet:SqlInjectionMatchSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

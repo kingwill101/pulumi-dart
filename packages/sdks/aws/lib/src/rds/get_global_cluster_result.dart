@@ -11,11 +11,11 @@ class GetGlobalClusterResult {
   final String? databaseName;
   /// If the Global Cluster should have deletion protection enabled. The database can't be deleted when this value is set to `true`.
   final bool? deletionProtection;
-  /// The endpoint for the Global Cluster.
+  /// Endpoint for the Global Cluster.
   final String? endpoint;
   /// Name of the database engine.
   final String? engine;
-  /// The current lifecycle support status of the database engine for this Global Cluster.
+  /// Current lifecycle support status of the database engine for this Global Cluster.
   final String? engineLifecycleSupport;
   /// Version of the database engine for this Global Cluster.
   final String? engineVersion;
@@ -27,23 +27,23 @@ class GetGlobalClusterResult {
   final String? resourceId;
   /// Whether the DB cluster is encrypted.
   final bool? storageEncrypted;
-  /// A map of tags to assigned to the Global Cluster.
+  /// Map of tags assigned to the Global Cluster.
   final Map<String, String>? tags;
 
   /// Creates a new [GetGlobalClusterResult].
   /// [arn] RDS Global Cluster ARN
   /// [databaseName] Name of the automatically created database on cluster creation.
   /// [deletionProtection] If the Global Cluster should have deletion protection enabled. The database can't be deleted when this value is set to `true`.
-  /// [endpoint] The endpoint for the Global Cluster.
+  /// [endpoint] Endpoint for the Global Cluster.
   /// [engine] Name of the database engine.
-  /// [engineLifecycleSupport] The current lifecycle support status of the database engine for this Global Cluster.
+  /// [engineLifecycleSupport] Current lifecycle support status of the database engine for this Global Cluster.
   /// [engineVersion] Version of the database engine for this Global Cluster.
   /// [identifier] Optional.
   /// [members] Set of objects containing Global Cluster members.
   /// [region] Optional.
   /// [resourceId] AWS Region-unique, immutable identifier for the global database cluster.
   /// [storageEncrypted] Whether the DB cluster is encrypted.
-  /// [tags] A map of tags to assigned to the Global Cluster.
+  /// [tags] Map of tags assigned to the Global Cluster.
   const GetGlobalClusterResult({
     this.arn,
     this.databaseName,

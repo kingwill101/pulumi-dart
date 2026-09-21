@@ -147,7 +147,7 @@ class Account extends pulumi.CustomResource {
           'aws:macie2/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     findingPublishingFrequency = registerOutput<String>('findingPublishingFrequency');

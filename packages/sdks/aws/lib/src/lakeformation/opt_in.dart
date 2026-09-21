@@ -205,7 +205,7 @@ class OptIn extends pulumi.CustomResource {
           'aws:lakeformation/optIn:OptIn',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     conditions = registerOutput<List<OptInCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OptInCondition>(guardedValue, (value) => OptInCondition.fromMap((value as Map).cast<String, dynamic>())); });
     lastModified = registerOutput<String>('lastModified');

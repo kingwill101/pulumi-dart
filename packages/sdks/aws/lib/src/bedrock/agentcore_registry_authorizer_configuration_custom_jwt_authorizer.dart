@@ -7,24 +7,32 @@ import 'agentcore_registry_authorizer_configuration_custom_jwt_authorizer_privat
 import 'agentcore_registry_authorizer_configuration_custom_jwt_authorizer_private_endpoint_override.dart';
 
 class AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizer {
+  /// Set of allowed audience values for JWT token validation.
   final pulumi.Input<List<String>?>? allowedAudiences;
+  /// Set of allowed client IDs for JWT token validation.
   final pulumi.Input<List<String>?>? allowedClients;
+  /// Set of scopes that are allowed to access the token.
   final pulumi.Input<List<String>?>? allowedScopes;
+  /// Configuration restricting which workloads may use this authorizer. See `allowedWorkloadConfiguration` below.
   final pulumi.Input<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerAllowedWorkloadConfiguration?>? allowedWorkloadConfiguration;
+  /// Repeatable block to define a custom claim validation name, value, and operation. See `customClaim` below.
   final pulumi.Input<List<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerCustomClaim>?>? customClaims;
+  /// URL used to fetch OpenID Connect configuration or authorization server metadata. Must end with `.well-known/openid-configuration`.
   final pulumi.Input<String> discoveryUrl;
+  /// Private endpoint used to reach the authorization server. See `privateEndpoint` below.
   final pulumi.Input<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpoint?>? privateEndpoint;
+  /// Overrides for the private endpoints used to reach the authorization server. See `privateEndpointOverrides` below.
   final pulumi.Input<List<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverride>?>? privateEndpointOverrides;
 
   /// Creates a new [AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizer].
-  /// [allowedAudiences] Optional.
-  /// [allowedClients] Optional.
-  /// [allowedScopes] Optional.
-  /// [allowedWorkloadConfiguration] Optional.
-  /// [customClaims] Optional.
-  /// [discoveryUrl] Required.
-  /// [privateEndpoint] Optional.
-  /// [privateEndpointOverrides] Optional.
+  /// [allowedAudiences] Set of allowed audience values for JWT token validation.
+  /// [allowedClients] Set of allowed client IDs for JWT token validation.
+  /// [allowedScopes] Set of scopes that are allowed to access the token.
+  /// [allowedWorkloadConfiguration] Configuration restricting which workloads may use this authorizer. See `allowedWorkloadConfiguration` below.
+  /// [customClaims] Repeatable block to define a custom claim validation name, value, and operation. See `customClaim` below.
+  /// [discoveryUrl] URL used to fetch OpenID Connect configuration or authorization server metadata. Must end with `.well-known/openid-configuration`.
+  /// [privateEndpoint] Private endpoint used to reach the authorization server. See `privateEndpoint` below.
+  /// [privateEndpointOverrides] Overrides for the private endpoints used to reach the authorization server. See `privateEndpointOverrides` below.
   const AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizer({
     this.allowedAudiences,
     this.allowedClients,

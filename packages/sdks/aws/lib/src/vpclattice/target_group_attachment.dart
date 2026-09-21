@@ -157,7 +157,7 @@ class TargetGroupAttachment extends pulumi.CustomResource {
           'aws:vpclattice/targetGroupAttachment:TargetGroupAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     target = registerOutput<TargetGroupAttachmentTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetGroupAttachmentTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });

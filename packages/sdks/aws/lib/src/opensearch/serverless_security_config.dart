@@ -52,7 +52,7 @@ class ServerlessSecurityConfig extends pulumi.CustomResource {
           'aws:opensearch/serverlessSecurityConfig:ServerlessSecurityConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     configVersion = registerOutput<String>('configVersion');
     description = registerOutput<String?>('description');

@@ -176,7 +176,7 @@ class UserProfile extends pulumi.CustomResource {
           'aws:datazone/userProfile:UserProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     details = registerOutput<List<UserProfileDetail>>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserProfileDetail>(guardedValue, (value) => UserProfileDetail.fromMap((value as Map).cast<String, dynamic>())); });
     domainIdentifier = registerOutput<String>('domainIdentifier');

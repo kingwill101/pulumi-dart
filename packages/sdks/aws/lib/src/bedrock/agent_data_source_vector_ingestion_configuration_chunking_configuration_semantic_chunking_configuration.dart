@@ -30,9 +30,9 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticCh
 
   factory AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration(
-      breakpointPercentileThreshold: pulumi.Input.fromValue((map['breakpointPercentileThreshold'] as num).toInt()),
-      bufferSize: pulumi.Input.fromValue((map['bufferSize'] as num).toInt()),
-      maxToken: pulumi.Input.fromValue((map['maxToken'] as num).toInt()),
+      breakpointPercentileThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['breakpointPercentileThreshold'])),
+      bufferSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bufferSize'])),
+      maxToken: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxToken'])),
     );
   }
 }

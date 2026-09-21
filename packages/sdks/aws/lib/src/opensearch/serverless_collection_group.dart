@@ -229,7 +229,7 @@ class ServerlessCollectionGroup extends pulumi.CustomResource {
           'aws:opensearch/serverlessCollectionGroup:ServerlessCollectionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacityLimits = registerOutput<List<ServerlessCollectionGroupCapacityLimit>>('capacityLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerlessCollectionGroupCapacityLimit>(guardedValue, (value) => ServerlessCollectionGroupCapacityLimit.fromMap((value as Map).cast<String, dynamic>())); });

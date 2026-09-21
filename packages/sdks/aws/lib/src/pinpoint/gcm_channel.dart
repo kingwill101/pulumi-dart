@@ -38,7 +38,7 @@ class GcmChannel extends pulumi.CustomResource {
           'aws:pinpoint/gcmChannel:GcmChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
           additionalSecretOutputs: const ['apiKey', 'serviceJson'],
         ) {
     apiKey = registerOutput<String?>('apiKey', isSecret: true);

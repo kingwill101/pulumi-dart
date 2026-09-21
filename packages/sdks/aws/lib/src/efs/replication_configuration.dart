@@ -483,7 +483,7 @@ class ReplicationConfiguration extends pulumi.CustomResource {
           'aws:efs/replicationConfiguration:ReplicationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     destination = registerOutput<ReplicationConfigurationDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationConfigurationDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });

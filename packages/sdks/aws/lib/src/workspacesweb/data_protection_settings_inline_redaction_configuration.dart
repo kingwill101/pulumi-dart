@@ -36,7 +36,7 @@ class DataProtectionSettingsInlineRedactionConfiguration {
 
   factory DataProtectionSettingsInlineRedactionConfiguration.fromMap(Map<String, dynamic> map) {
     return DataProtectionSettingsInlineRedactionConfiguration(
-      globalConfidenceLevel: (() { final guardedValue = map['globalConfidenceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      globalConfidenceLevel: (() { final guardedValue = map['globalConfidenceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       globalEnforcedUrls: (() { final guardedValue = map['globalEnforcedUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       globalExemptUrls: (() { final guardedValue = map['globalExemptUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       inlineRedactionPatterns: pulumi.Input.fromValue(pulumi.Input.decodeList<DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern>(map['inlineRedactionPatterns']!, (value) => DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern.fromMap((value as Map).cast<String, dynamic>()))),

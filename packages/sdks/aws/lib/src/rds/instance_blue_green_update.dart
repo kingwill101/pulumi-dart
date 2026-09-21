@@ -3,19 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceBlueGreenUpdate {
-  /// Enables low-downtime updates when `true`.
-  /// Default is `false`.
-  ///
-  /// [instance-replication]:
-  /// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Replication.html
-  /// [instance-maintenance]:
-  /// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html
-  /// [blue-green]:
-  /// https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/blue-green-deployments.html
+  /// Enables low-downtime updates when `true`. Default is `false`.
   final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [InstanceBlueGreenUpdate].
-  /// [enabled] Enables low-downtime updates when `true`.
+  /// [enabled] Enables low-downtime updates when `true`. Default is `false`.
   const InstanceBlueGreenUpdate({
     this.enabled,
   });

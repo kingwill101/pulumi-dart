@@ -1358,7 +1358,7 @@ class Application extends pulumi.CustomResource {
           'aws:opensearch/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     appConfigs = registerOutput<List<ApplicationAppConfig>?>('appConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationAppConfig>(guardedValue, (value) => ApplicationAppConfig.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

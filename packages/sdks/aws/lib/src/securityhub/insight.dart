@@ -1049,7 +1049,7 @@ class Insight extends pulumi.CustomResource {
           'aws:securityhub/insight:Insight',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     filters = registerOutput<InsightFilters>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightFilters.fromMap((guardedValue as Map).cast<String, dynamic>()); });

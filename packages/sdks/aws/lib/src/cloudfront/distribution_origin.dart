@@ -79,8 +79,8 @@ class DistributionOrigin {
 
   factory DistributionOrigin.fromMap(Map<String, dynamic> map) {
     return DistributionOrigin(
-      connectionAttempts: (() { final guardedValue = map['connectionAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      connectionTimeout: (() { final guardedValue = map['connectionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      connectionAttempts: (() { final guardedValue = map['connectionAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      connectionTimeout: (() { final guardedValue = map['connectionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       customHeaders: (() { final guardedValue = map['customHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DistributionOriginCustomHeader>(guardedValue, (value) => DistributionOriginCustomHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
       customOriginConfig: (() { final guardedValue = map['customOriginConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DistributionOriginCustomOriginConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
@@ -88,7 +88,7 @@ class DistributionOrigin {
       originId: pulumi.Input.fromValue(map['originId'] as String),
       originPath: (() { final guardedValue = map['originPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       originShield: (() { final guardedValue = map['originShield']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DistributionOriginOriginShield.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      responseCompletionTimeout: (() { final guardedValue = map['responseCompletionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      responseCompletionTimeout: (() { final guardedValue = map['responseCompletionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       s3OriginConfig: (() { final guardedValue = map['s3OriginConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DistributionOriginS3OriginConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       vpcOriginConfig: (() { final guardedValue = map['vpcOriginConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DistributionOriginVpcOriginConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

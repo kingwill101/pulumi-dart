@@ -64,11 +64,11 @@ class CatalogTableViewDefinition {
       definer: (() { final guardedValue = map['definer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isProtected: (() { final guardedValue = map['isProtected']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       lastRefreshType: (() { final guardedValue = map['lastRefreshType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      refreshSeconds: (() { final guardedValue = map['refreshSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      refreshSeconds: (() { final guardedValue = map['refreshSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       representations: (() { final guardedValue = map['representations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CatalogTableViewDefinitionRepresentation>(guardedValue, (value) => CatalogTableViewDefinitionRepresentation.fromMap((value as Map).cast<String, dynamic>()))); })(),
       subObjectVersionIds: (() { final guardedValue = map['subObjectVersionIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
       subObjects: (() { final guardedValue = map['subObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      viewVersionId: (() { final guardedValue = map['viewVersionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      viewVersionId: (() { final guardedValue = map['viewVersionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       viewVersionToken: (() { final guardedValue = map['viewVersionToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

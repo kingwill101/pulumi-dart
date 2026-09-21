@@ -54,7 +54,7 @@ class DeploymentArgs {
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
       applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
-      applicationVersion: pulumi.Input.fromValue((map['applicationVersion'] as num).toInt()),
+      applicationVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['applicationVersion'])),
       environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
       forceStop: (() { final guardedValue = map['forceStop']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

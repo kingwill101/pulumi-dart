@@ -142,7 +142,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:route53recoverycontrol/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterEndpoints = registerOutput<List<ClusterClusterEndpoint>>('clusterEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterClusterEndpoint>(guardedValue, (value) => ClusterClusterEndpoint.fromMap((value as Map).cast<String, dynamic>())); });

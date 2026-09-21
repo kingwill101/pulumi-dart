@@ -636,7 +636,7 @@ class CapacityProvider extends pulumi.CustomResource {
           'aws:ecs/capacityProvider:CapacityProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoScalingGroupProvider = registerOutput<CapacityProviderAutoScalingGroupProvider?>('autoScalingGroupProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityProviderAutoScalingGroupProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });

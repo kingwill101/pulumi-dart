@@ -5,16 +5,16 @@ import 'agentcore_api_key_credential_provider_api_key_secret_arn.dart';
 
 /// Input properties used for looking up and filtering AgentcoreApiKeyCredentialProvider resources.
 class AgentcoreApiKeyCredentialProviderState {
-  /// API key value. Cannot be used with `apiKeyWo`. This value will be visible in pulumi preview outputs and logs.
+  /// API key value. Conflicts with `apiKeyWo`. This value will be visible in pulumi preview outputs and logs.
   ///
   /// **Write-Only API Key (choose one approach):**
   final pulumi.Input<String?>? apiKey;
   /// ARN of the AWS Secrets Manager secret containing the API key.
   final pulumi.Input<List<AgentcoreApiKeyCredentialProviderApiKeySecretArn>?>? apiKeySecretArns;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Write-only API key value. Cannot be used with `apiKey`. Must be used together with `apiKeyWoVersion`.
+  /// Write-only API key value. Conflicts with `apiKey`. If set, requires `apiKeyWoVersion` to be set.
   final pulumi.Input<String?>? apiKeyWo;
-  /// Used together with `apiKeyWo` to trigger an update. Increment this value when an update to `apiKeyWo` is required.
+  /// Required when `apiKeyWo` is set. Changing this value triggers an update to `apiKeyWo`.
   final pulumi.Input<int?>? apiKeyWoVersion;
   /// ARN of the API Key credential provider.
   final pulumi.Input<String?>? credentialProviderArn;
@@ -32,10 +32,10 @@ class AgentcoreApiKeyCredentialProviderState {
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [AgentcoreApiKeyCredentialProviderState].
-  /// [apiKey] API key value. Cannot be used with `apiKeyWo`. This value will be visible in pulumi preview outputs and logs.
+  /// [apiKey] API key value. Conflicts with `apiKeyWo`. This value will be visible in pulumi preview outputs and logs.
   /// [apiKeySecretArns] ARN of the AWS Secrets Manager secret containing the API key.
   /// [apiKeyWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [apiKeyWoVersion] Used together with `apiKeyWo` to trigger an update. Increment this value when an update to `apiKeyWo` is required.
+  /// [apiKeyWoVersion] Required when `apiKeyWo` is set. Changing this value triggers an update to `apiKeyWo`.
   /// [credentialProviderArn] ARN of the API Key credential provider.
   /// [name] Name of the API Key credential provider. Forces replacement when changed.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -72,7 +72,7 @@ class AgentcoreApiKeyCredentialProviderState {
       apiKey: (() { final guardedValue = map['apiKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       apiKeySecretArns: (() { final guardedValue = map['apiKeySecretArns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentcoreApiKeyCredentialProviderApiKeySecretArn>(guardedValue, (value) => AgentcoreApiKeyCredentialProviderApiKeySecretArn.fromMap((value as Map).cast<String, dynamic>()))); })(),
       apiKeyWo: (() { final guardedValue = map['apiKeyWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      apiKeyWoVersion: (() { final guardedValue = map['apiKeyWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      apiKeyWoVersion: (() { final guardedValue = map['apiKeyWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       credentialProviderArn: (() { final guardedValue = map['credentialProviderArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

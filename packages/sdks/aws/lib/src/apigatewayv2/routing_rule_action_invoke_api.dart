@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RoutingRuleActionInvokeApi {
-  /// Action to invoke a stage of a target API. Only REST APIs are supported.
+  /// API identifier of the target API.
   final pulumi.Input<String> apiId;
-  /// Action to invoke a stage of a target API. Only REST APIs are supported.
+  /// Name of the target stage.
   final pulumi.Input<String> stage;
-  /// Action to invoke a stage of a target API. Only REST APIs are supported.
+  /// Whether to strip the base path when forwarding the request to the target API.
   final pulumi.Input<bool?>? stripBasePath;
 
   /// Creates a new [RoutingRuleActionInvokeApi].
-  /// [apiId] Action to invoke a stage of a target API. Only REST APIs are supported.
-  /// [stage] Action to invoke a stage of a target API. Only REST APIs are supported.
-  /// [stripBasePath] Action to invoke a stage of a target API. Only REST APIs are supported.
+  /// [apiId] API identifier of the target API.
+  /// [stage] Name of the target stage.
+  /// [stripBasePath] Whether to strip the base path when forwarding the request to the target API.
   const RoutingRuleActionInvokeApi({
     required this.apiId,
     required this.stage,

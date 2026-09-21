@@ -432,9 +432,9 @@ class SecretVersion extends pulumi.CustomResource {
   /// Text data that you want to encrypt and store in this version of the secret. This is required if `secretBinary` or `secretStringWo` is not set.
   late final pulumi.Output<String?> secretString;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Text data that you want to encrypt and store in this version of the secret. This is required if `secretBinary` or `secretString` is not set.
+  /// Text data that you want to encrypt and store in this version of the secret. This is required if `secretBinary` or `secretString` is not set. If set, requires `secretStringWoVersion` to be set.
   late final pulumi.Output<String?> secretStringWo;
-  /// Version identifier that works together with `secretStringWo` to trigger an update. Increment this value when an update to `secretStringWo` is required.
+  /// Required when `secretStringWo` is set. Changing this value triggers an update to `secretStringWo`.
   late final pulumi.Output<int?> secretStringWoVersion;
   /// Unique identifier of the version of the secret.
   late final pulumi.Output<String> versionId;
@@ -455,7 +455,7 @@ class SecretVersion extends pulumi.CustomResource {
           'aws:secretsmanager/secretVersion:SecretVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
           additionalSecretOutputs: const ['secretBinary', 'secretString', 'secretStringWo'],
         ) {
     arn = registerOutput<String>('arn');

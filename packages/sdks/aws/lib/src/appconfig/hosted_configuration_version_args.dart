@@ -19,6 +19,8 @@ class HostedConfigurationVersionArgs {
   final pulumi.Input<String?>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
+  /// User-defined label for the AppConfig hosted configuration version. This value must contain at least one non-numeric character.
+  final pulumi.Input<String?>? versionLabel;
 
   /// Creates a new [HostedConfigurationVersionArgs].
   /// [applicationId] Application ID.
@@ -27,6 +29,7 @@ class HostedConfigurationVersionArgs {
   /// [contentType] Standard MIME type describing the format of the configuration content. For more information, see [Content-Type](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17).
   /// [description] Description of the configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [versionLabel] User-defined label for the AppConfig hosted configuration version. This value must contain at least one non-numeric character.
   const HostedConfigurationVersionArgs({
     required this.applicationId,
     required this.configurationProfileId,
@@ -34,6 +37,7 @@ class HostedConfigurationVersionArgs {
     required this.contentType,
     this.description,
     this.region,
+    this.versionLabel,
   });
 
   Map<String, dynamic> toMap() {
@@ -44,6 +48,7 @@ class HostedConfigurationVersionArgs {
       'contentType': contentType,
       'description': ?description,
       'region': ?region,
+      'versionLabel': ?versionLabel,
     };
   }
 
@@ -55,6 +60,7 @@ class HostedConfigurationVersionArgs {
       contentType: pulumi.Input.fromValue(map['contentType'] as String),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      versionLabel: (() { final guardedValue = map['versionLabel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

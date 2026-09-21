@@ -1886,7 +1886,7 @@ class GraphQLApi extends pulumi.CustomResource {
           'aws:appsync/graphQLApi:GraphQLApi',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     additionalAuthenticationProviders = registerOutput<List<GraphQLApiAdditionalAuthenticationProvider>?>('additionalAuthenticationProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GraphQLApiAdditionalAuthenticationProvider>(guardedValue, (value) => GraphQLApiAdditionalAuthenticationProvider.fromMap((value as Map).cast<String, dynamic>())); });
     apiType = registerOutput<String?>('apiType');

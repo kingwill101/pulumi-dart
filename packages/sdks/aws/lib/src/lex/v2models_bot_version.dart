@@ -178,7 +178,7 @@ class V2modelsBotVersion extends pulumi.CustomResource {
           'aws:lex/v2modelsBotVersion:V2modelsBotVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     botId = registerOutput<String>('botId');
     botVersion = registerOutput<String>('botVersion');

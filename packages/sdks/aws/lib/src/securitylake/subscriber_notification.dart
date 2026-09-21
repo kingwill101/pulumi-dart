@@ -303,7 +303,7 @@ class SubscriberNotification extends pulumi.CustomResource {
           'aws:securitylake/subscriberNotification:SubscriberNotification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     configuration = registerOutput<SubscriberNotificationConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriberNotificationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpointId = registerOutput<String>('endpointId');

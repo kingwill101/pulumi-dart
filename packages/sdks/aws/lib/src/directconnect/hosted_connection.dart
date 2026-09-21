@@ -179,7 +179,7 @@ class HostedConnection extends pulumi.CustomResource {
           'aws:directconnect/hostedConnection:HostedConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     awsDevice = registerOutput<String>('awsDevice');
     bandwidth = registerOutput<String>('bandwidth');

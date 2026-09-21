@@ -271,7 +271,7 @@ class Notification extends pulumi.CustomResource {
           'aws:autoscaling/notification:Notification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     groupNames = registerOutput<List<String>>('groupNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     notifications = registerOutput<List<NotificationType>>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NotificationType>(guardedValue, (value) => NotificationType.fromValue(value as String)); });

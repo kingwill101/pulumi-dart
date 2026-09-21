@@ -41,7 +41,7 @@ class ProjectBuildBatchConfig {
       combineArtifacts: (() { final guardedValue = map['combineArtifacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       restrictions: (() { final guardedValue = map['restrictions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProjectBuildBatchConfigRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceRole: pulumi.Input.fromValue(map['serviceRole'] as String),
-      timeoutInMins: (() { final guardedValue = map['timeoutInMins']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutInMins: (() { final guardedValue = map['timeoutInMins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

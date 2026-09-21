@@ -341,7 +341,7 @@ class DomainServiceAccessPolicy extends pulumi.CustomResource {
           'aws:cloudsearch/domainServiceAccessPolicy:DomainServiceAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accessPolicy = registerOutput<String>('accessPolicy');
     domainName = registerOutput<String>('domainName');

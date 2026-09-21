@@ -35,10 +35,10 @@ class InstanceGroupEbsConfig {
 
   factory InstanceGroupEbsConfig.fromMap(Map<String, dynamic> map) {
     return InstanceGroupEbsConfig(
-      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
+      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      size: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['size'])),
       type: pulumi.Input.fromValue(map['type'] as String),
-      volumesPerInstance: (() { final guardedValue = map['volumesPerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      volumesPerInstance: (() { final guardedValue = map['volumesPerInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -315,7 +315,7 @@ class EventPermission extends pulumi.CustomResource {
           'aws:cloudwatch/eventPermission:EventPermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     action = registerOutput<String?>('action');
     condition = registerOutput<EventPermissionCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventPermissionCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

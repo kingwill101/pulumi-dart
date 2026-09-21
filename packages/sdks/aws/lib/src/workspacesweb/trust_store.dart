@@ -399,7 +399,7 @@ class TrustStore extends pulumi.CustomResource {
           'aws:workspacesweb/trustStore:TrustStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     certificates = registerOutput<List<TrustStoreCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrustStoreCertificate>(guardedValue, (value) => TrustStoreCertificate.fromMap((value as Map).cast<String, dynamic>())); });

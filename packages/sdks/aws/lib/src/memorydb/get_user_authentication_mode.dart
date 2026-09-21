@@ -25,7 +25,7 @@ class GetUserAuthenticationMode {
 
   factory GetUserAuthenticationMode.fromMap(Map<String, dynamic> map) {
     return GetUserAuthenticationMode(
-      passwordCount: pulumi.Input.fromValue((map['passwordCount'] as num).toInt()),
+      passwordCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['passwordCount'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

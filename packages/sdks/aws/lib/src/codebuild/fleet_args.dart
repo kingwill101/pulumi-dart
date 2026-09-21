@@ -84,7 +84,7 @@ class FleetArgs {
 
   factory FleetArgs.fromMap(Map<String, dynamic> map) {
     return FleetArgs(
-      baseCapacity: pulumi.Input.fromValue((map['baseCapacity'] as num).toInt()),
+      baseCapacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['baseCapacity'])),
       computeConfiguration: (() { final guardedValue = map['computeConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FleetComputeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       computeType: pulumi.Input.fromValue(map['computeType'] as String),
       environmentType: pulumi.Input.fromValue(map['environmentType'] as String),

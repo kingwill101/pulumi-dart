@@ -23,8 +23,8 @@ class GetRouteSpecGrpcRouteMatchMetadataMatchRange {
 
   factory GetRouteSpecGrpcRouteMatchMetadataMatchRange.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecGrpcRouteMatchMetadataMatchRange(
-      end: pulumi.Input.fromValue((map['end'] as num).toInt()),
-      start: pulumi.Input.fromValue((map['start'] as num).toInt()),
+      end: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['end'])),
+      start: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['start'])),
     );
   }
 }

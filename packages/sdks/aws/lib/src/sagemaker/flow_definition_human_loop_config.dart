@@ -63,11 +63,11 @@ class FlowDefinitionHumanLoopConfig {
     return FlowDefinitionHumanLoopConfig(
       humanTaskUiArn: pulumi.Input.fromValue(map['humanTaskUiArn'] as String),
       publicWorkforceTaskPrice: (() { final guardedValue = map['publicWorkforceTaskPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      taskAvailabilityLifetimeInSeconds: (() { final guardedValue = map['taskAvailabilityLifetimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      taskCount: pulumi.Input.fromValue((map['taskCount'] as num).toInt()),
+      taskAvailabilityLifetimeInSeconds: (() { final guardedValue = map['taskAvailabilityLifetimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      taskCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['taskCount'])),
       taskDescription: pulumi.Input.fromValue(map['taskDescription'] as String),
       taskKeywords: (() { final guardedValue = map['taskKeywords']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      taskTimeLimitInSeconds: (() { final guardedValue = map['taskTimeLimitInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      taskTimeLimitInSeconds: (() { final guardedValue = map['taskTimeLimitInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       taskTitle: pulumi.Input.fromValue(map['taskTitle'] as String),
       workteamArn: pulumi.Input.fromValue(map['workteamArn'] as String),
     );

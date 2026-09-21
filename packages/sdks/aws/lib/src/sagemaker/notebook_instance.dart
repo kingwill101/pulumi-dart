@@ -399,7 +399,7 @@ class NotebookInstance extends pulumi.CustomResource {
           'aws:sagemaker/notebookInstance:NotebookInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     additionalCodeRepositories = registerOutput<List<String>?>('additionalCodeRepositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');

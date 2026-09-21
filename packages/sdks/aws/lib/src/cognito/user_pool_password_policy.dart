@@ -52,13 +52,13 @@ class UserPoolPasswordPolicy {
 
   factory UserPoolPasswordPolicy.fromMap(Map<String, dynamic> map) {
     return UserPoolPasswordPolicy(
-      minimumLength: (() { final guardedValue = map['minimumLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      passwordHistorySize: (() { final guardedValue = map['passwordHistorySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minimumLength: (() { final guardedValue = map['minimumLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      passwordHistorySize: (() { final guardedValue = map['passwordHistorySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       requireLowercase: (() { final guardedValue = map['requireLowercase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       requireNumbers: (() { final guardedValue = map['requireNumbers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       requireSymbols: (() { final guardedValue = map['requireSymbols']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       requireUppercase: (() { final guardedValue = map['requireUppercase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      temporaryPasswordValidityDays: (() { final guardedValue = map['temporaryPasswordValidityDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      temporaryPasswordValidityDays: (() { final guardedValue = map['temporaryPasswordValidityDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

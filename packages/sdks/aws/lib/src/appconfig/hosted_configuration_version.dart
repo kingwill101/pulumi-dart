@@ -805,6 +805,8 @@ class HostedConfigurationVersion extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+  /// User-defined label for the AppConfig hosted configuration version. This value must contain at least one non-numeric character.
+  late final pulumi.Output<String?> versionLabel;
   /// Version number of the hosted configuration.
   late final pulumi.Output<int> versionNumber;
 
@@ -820,7 +822,7 @@ class HostedConfigurationVersion extends pulumi.CustomResource {
           'aws:appconfig/hostedConfigurationVersion:HostedConfigurationVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
           additionalSecretOutputs: const ['content'],
         ) {
     applicationId = registerOutput<String>('applicationId');
@@ -830,6 +832,7 @@ class HostedConfigurationVersion extends pulumi.CustomResource {
     contentType = registerOutput<String>('contentType');
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
+    versionLabel = registerOutput<String?>('versionLabel');
     versionNumber = registerOutput<int>('versionNumber');
   }
 
@@ -864,6 +867,7 @@ class HostedConfigurationVersion extends pulumi.CustomResource {
     contentType = registerOutput<String>('contentType');
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
+    versionLabel = registerOutput<String?>('versionLabel');
     versionNumber = registerOutput<int>('versionNumber');
   }
 
@@ -884,6 +888,7 @@ class HostedConfigurationVersion extends pulumi.CustomResource {
     contentType = registerOutput<String>('contentType');
     description = registerOutput<String?>('description');
     region = registerOutput<String>('region');
+    versionLabel = registerOutput<String?>('versionLabel');
     versionNumber = registerOutput<int>('versionNumber');
   }
 }

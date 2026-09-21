@@ -25,7 +25,7 @@ class ScheduleFlexibleTimeWindow {
 
   factory ScheduleFlexibleTimeWindow.fromMap(Map<String, dynamic> map) {
     return ScheduleFlexibleTimeWindow(
-      maximumWindowInMinutes: (() { final guardedValue = map['maximumWindowInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumWindowInMinutes: (() { final guardedValue = map['maximumWindowInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }

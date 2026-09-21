@@ -33,7 +33,7 @@ class AgentAgentMemoryConfiguration {
     return AgentAgentMemoryConfiguration(
       enabledMemoryTypes: pulumi.Input.fromValue((map['enabledMemoryTypes'] as List).cast<String>()),
       sessionSummaryConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<AgentAgentMemoryConfigurationSessionSummaryConfiguration>(map['sessionSummaryConfigurations']!, (value) => AgentAgentMemoryConfigurationSessionSummaryConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      storageDays: pulumi.Input.fromValue((map['storageDays'] as num).toInt()),
+      storageDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['storageDays'])),
     );
   }
 }
