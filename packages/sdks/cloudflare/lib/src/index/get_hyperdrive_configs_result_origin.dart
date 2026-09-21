@@ -66,7 +66,7 @@ class GetHyperdriveConfigsResultOrigin {
       database: pulumi.Input.fromValue(map['database'] as String),
       host: pulumi.Input.fromValue(map['host'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       scheme: pulumi.Input.fromValue(map['scheme'] as String),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
       user: pulumi.Input.fromValue(map['user'] as String),

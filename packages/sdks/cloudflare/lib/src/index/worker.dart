@@ -33,6 +33,7 @@ import 'worker_tail_consumer.dart';
 ///             invocationLogs: true,
 ///             persist: true,
 ///         },
+///         redactQueryString: true,
 ///         traces: {
 ///             destinations: ["string"],
 ///             enabled: true,
@@ -71,6 +72,7 @@ import 'worker_tail_consumer.dart';
 ///             "invocation_logs": True,
 ///             "persist": True,
 ///         },
+///         "redact_query_string": True,
 ///         "traces": {
 ///             "destinations": ["string"],
 ///             "enabled": True,
@@ -118,6 +120,7 @@ import 'worker_tail_consumer.dart';
 ///                 InvocationLogs = true,
 ///                 Persist = true,
 ///             },
+///             RedactQueryString = true,
 ///             Traces = new Cloudflare.Inputs.WorkerObservabilityTracesArgs
 ///             {
 ///                 Destinations = new[]
@@ -176,6 +179,7 @@ import 'worker_tail_consumer.dart';
 /// 					InvocationLogs:   pulumi.Bool(true),
 /// 					Persist:          pulumi.Bool(true),
 /// 				},
+/// 				RedactQueryString: true,
 /// 				Traces: &cloudflare.WorkerObservabilityTracesArgs{
 /// 					Destinations: pulumi.StringArray{
 /// 						pulumi.String("string"),
@@ -229,6 +233,7 @@ import 'worker_tail_consumer.dart';
 ///       invocation_logs    = true
 ///       persist            = true
 ///     }
+///     redact_query_string = true
 ///     traces = {
 ///       destinations       = ["string"]
 ///       enabled            = true
@@ -286,6 +291,7 @@ import 'worker_tail_consumer.dart';
 ///                     .invocationLogs(true)
 ///                     .persist(true)
 ///                     .build())
+///                 .redactQueryString(true)
 ///                 .traces(WorkerObservabilityTracesArgs.builder()
 ///                     .destinations("string")
 ///                     .enabled(true)
@@ -327,6 +333,7 @@ import 'worker_tail_consumer.dart';
 ///           headSamplingRate: 1
 ///           invocationLogs: true
 ///           persist: true
+///         redactQueryString: true
 ///         traces:
 ///           destinations:
 ///             - string
@@ -385,7 +392,7 @@ class Worker extends pulumi.CustomResource {
           'cloudflare:index/worker:Worker',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdOn = registerOutput<String>('createdOn');

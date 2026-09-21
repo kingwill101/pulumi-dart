@@ -9,6 +9,9 @@ class GetWorkersKvNamespaceResult {
   final GetWorkersKvNamespaceFilter? filter;
   /// Namespace identifier tag.
   final String? id;
+  /// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+  /// Available values: "eu", "fedramp", "us".
+  final String? jurisdiction;
   /// Namespace identifier tag.
   final String? namespaceId;
   /// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
@@ -20,6 +23,7 @@ class GetWorkersKvNamespaceResult {
   /// [accountId] Identifier.
   /// [filter] Optional.
   /// [id] Namespace identifier tag.
+  /// [jurisdiction] Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
   /// [namespaceId] Namespace identifier tag.
   /// [supportsUrlEncoding] True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
   /// [title] A human-readable string name for a Namespace.
@@ -27,6 +31,7 @@ class GetWorkersKvNamespaceResult {
     this.accountId,
     this.filter,
     this.id,
+    this.jurisdiction,
     this.namespaceId,
     this.supportsUrlEncoding,
     this.title,
@@ -37,6 +42,7 @@ class GetWorkersKvNamespaceResult {
       'accountId': ?accountId,
       'filter': ?filter?.toMap(),
       'id': ?id,
+      'jurisdiction': ?jurisdiction,
       'namespaceId': ?namespaceId,
       'supportsUrlEncoding': ?supportsUrlEncoding,
       'title': ?title,
@@ -48,6 +54,7 @@ class GetWorkersKvNamespaceResult {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetWorkersKvNamespaceFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      jurisdiction: (() { final guardedValue = map['jurisdiction']; if (guardedValue == null) return null; return guardedValue as String; })(),
       namespaceId: (() { final guardedValue = map['namespaceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       supportsUrlEncoding: (() { final guardedValue = map['supportsUrlEncoding']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return guardedValue as String; })(),

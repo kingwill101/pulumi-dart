@@ -35,7 +35,7 @@ class GetLogpushJobArgs {
   factory GetLogpushJobArgs.fromMap(Map<String, dynamic> map) {
     return GetLogpushJobArgs(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      jobId: pulumi.Input.fromValue((map['jobId'] as num).toInt()),
+      jobId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['jobId'])),
       zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

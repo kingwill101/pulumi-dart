@@ -111,7 +111,7 @@ class AccessPolicyState {
   factory AccessPolicyState.fromMap(Map<String, dynamic> map) {
     return AccessPolicyState(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      appCount: (() { final guardedValue = map['appCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      appCount: (() { final guardedValue = map['appCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       approvalGroups: (() { final guardedValue = map['approvalGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessPolicyApprovalGroup>(guardedValue, (value) => AccessPolicyApprovalGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
       approvalRequired: (() { final guardedValue = map['approvalRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       connectionRules: (() { final guardedValue = map['connectionRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessPolicyConnectionRules.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

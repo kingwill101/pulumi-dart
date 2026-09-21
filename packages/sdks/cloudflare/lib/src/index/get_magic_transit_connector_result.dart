@@ -5,7 +5,6 @@ import 'get_magic_transit_connector_filter.dart';
 
 /// Result data returned by getMagicTransitConnector.
 class GetMagicTransitConnectorResult {
-  /// Account identifier
   final String? accountId;
   final bool? activated;
   final String? connectorId;
@@ -24,10 +23,12 @@ class GetMagicTransitConnectorResult {
   final String? lastUpdated;
   final String? licenseKey;
   final String? notes;
+  final bool? primary;
+  final String? siteId;
   final String? timezone;
 
   /// Creates a new [GetMagicTransitConnectorResult].
-  /// [accountId] Account identifier
+  /// [accountId] Optional.
   /// [activated] Optional.
   /// [connectorId] Optional.
   /// [device] Optional.
@@ -42,6 +43,8 @@ class GetMagicTransitConnectorResult {
   /// [lastUpdated] Optional.
   /// [licenseKey] Optional.
   /// [notes] Optional.
+  /// [primary] Optional.
+  /// [siteId] Optional.
   /// [timezone] Optional.
   const GetMagicTransitConnectorResult({
     this.accountId,
@@ -59,6 +62,8 @@ class GetMagicTransitConnectorResult {
     this.lastUpdated,
     this.licenseKey,
     this.notes,
+    this.primary,
+    this.siteId,
     this.timezone,
   });
 
@@ -79,6 +84,8 @@ class GetMagicTransitConnectorResult {
       'lastUpdated': ?lastUpdated,
       'licenseKey': ?licenseKey,
       'notes': ?notes,
+      'primary': ?primary,
+      'siteId': ?siteId,
       'timezone': ?timezone,
     };
   }
@@ -100,6 +107,8 @@ class GetMagicTransitConnectorResult {
       lastUpdated: (() { final guardedValue = map['lastUpdated']; if (guardedValue == null) return null; return guardedValue as String; })(),
       licenseKey: (() { final guardedValue = map['licenseKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      primary: (() { final guardedValue = map['primary']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      siteId: (() { final guardedValue = map['siteId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       timezone: (() { final guardedValue = map['timezone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

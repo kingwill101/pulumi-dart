@@ -38,7 +38,7 @@ class GetMagicTransitSiteLansInvokeResult {
   factory GetMagicTransitSiteLansInvokeResult.fromMap(Map<String, dynamic> map) {
     return GetMagicTransitSiteLansInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMagicTransitSiteLansResult>(guardedValue, (value) => GetMagicTransitSiteLansResult.fromMap((value as Map).cast<String, dynamic>())); })(),
       siteId: (() { final guardedValue = map['siteId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

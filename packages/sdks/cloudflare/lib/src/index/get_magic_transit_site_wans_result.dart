@@ -58,11 +58,11 @@ class GetMagicTransitSiteWansResult {
       healthCheckRate: pulumi.Input.fromValue(map['healthCheckRate'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      physport: pulumi.Input.fromValue((map['physport'] as num).toInt()),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      physport: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['physport'])),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       siteId: pulumi.Input.fromValue(map['siteId'] as String),
       staticAddressing: pulumi.Input.fromValue(GetMagicTransitSiteWansResultStaticAddressing.fromMap((map['staticAddressing']! as Map).cast<String, dynamic>())),
-      vlanTag: pulumi.Input.fromValue((map['vlanTag'] as num).toInt()),
+      vlanTag: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vlanTag'])),
     );
   }
 }

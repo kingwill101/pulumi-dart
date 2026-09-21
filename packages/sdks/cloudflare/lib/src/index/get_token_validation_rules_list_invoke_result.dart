@@ -73,7 +73,7 @@ class GetTokenValidationRulesListInvokeResult {
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTokenValidationRulesListResult>(guardedValue, (value) => GetTokenValidationRulesListResult.fromMap((value as Map).cast<String, dynamic>())); })(),
       ruleId: (() { final guardedValue = map['ruleId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tokenConfigurations: (() { final guardedValue = map['tokenConfigurations']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),

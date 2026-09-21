@@ -17,14 +17,14 @@ import 'waiting_room_event_state.dart';
 /// const exampleWaitingRoomEvent = new cloudflare.WaitingRoomEvent("example_waiting_room_event", {
 ///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     waitingRoomId: "699d98642c564d2e855e9661899b7252",
-///     eventEndTime: "2021-09-28T17:00:00.000Z",
-///     eventStartTime: "2021-09-28T15:30:00.000Z",
+///     eventEndTime: "2021-09-28T17:00:00Z",
+///     eventStartTime: "2021-09-28T15:30:00Z",
 ///     name: "production_webinar_event",
 ///     customPageHtml: "{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}",
 ///     description: "Production event - DO NOT MODIFY",
 ///     disableSessionRenewal: true,
 ///     newUsersPerMinute: 200,
-///     prequeueStartTime: "2021-09-28T15:00:00.000Z",
+///     prequeueStartTime: "2021-09-28T15:00:00Z",
 ///     queueingMethod: "random",
 ///     sessionDuration: 1,
 ///     shuffleAtEventStart: true,
@@ -41,14 +41,14 @@ import 'waiting_room_event_state.dart';
 /// example_waiting_room_event = cloudflare.WaitingRoomEvent("example_waiting_room_event",
 ///     zone_id="023e105f4ecef8ad9ca31a8372d0c353",
 ///     waiting_room_id="699d98642c564d2e855e9661899b7252",
-///     event_end_time="2021-09-28T17:00:00.000Z",
-///     event_start_time="2021-09-28T15:30:00.000Z",
+///     event_end_time="2021-09-28T17:00:00Z",
+///     event_start_time="2021-09-28T15:30:00Z",
 ///     name="production_webinar_event",
 ///     custom_page_html="{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}",
 ///     description="Production event - DO NOT MODIFY",
 ///     disable_session_renewal=True,
 ///     new_users_per_minute=200,
-///     prequeue_start_time="2021-09-28T15:00:00.000Z",
+///     prequeue_start_time="2021-09-28T15:00:00Z",
 ///     queueing_method="random",
 ///     session_duration=1,
 ///     shuffle_at_event_start=True,
@@ -69,14 +69,14 @@ import 'waiting_room_event_state.dart';
 ///     {
 ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///         WaitingRoomId = "699d98642c564d2e855e9661899b7252",
-///         EventEndTime = "2021-09-28T17:00:00.000Z",
-///         EventStartTime = "2021-09-28T15:30:00.000Z",
+///         EventEndTime = "2021-09-28T17:00:00Z",
+///         EventStartTime = "2021-09-28T15:30:00Z",
 ///         Name = "production_webinar_event",
 ///         CustomPageHtml = "{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}",
 ///         Description = "Production event - DO NOT MODIFY",
 ///         DisableSessionRenewal = true,
 ///         NewUsersPerMinute = 200,
-///         PrequeueStartTime = "2021-09-28T15:00:00.000Z",
+///         PrequeueStartTime = "2021-09-28T15:00:00Z",
 ///         QueueingMethod = "random",
 ///         SessionDuration = 1,
 ///         ShuffleAtEventStart = true,
@@ -101,14 +101,14 @@ import 'waiting_room_event_state.dart';
 /// 		_, err := cloudflare.NewWaitingRoomEvent(ctx, "example_waiting_room_event", &cloudflare.WaitingRoomEventArgs{
 /// 			ZoneId:                pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 			WaitingRoomId:         pulumi.String("699d98642c564d2e855e9661899b7252"),
-/// 			EventEndTime:          pulumi.String("2021-09-28T17:00:00.000Z"),
-/// 			EventStartTime:        pulumi.String("2021-09-28T15:30:00.000Z"),
+/// 			EventEndTime:          pulumi.String("2021-09-28T17:00:00Z"),
+/// 			EventStartTime:        pulumi.String("2021-09-28T15:30:00Z"),
 /// 			Name:                  pulumi.String("production_webinar_event"),
 /// 			CustomPageHtml:        pulumi.String("{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}"),
 /// 			Description:           pulumi.String("Production event - DO NOT MODIFY"),
 /// 			DisableSessionRenewal: pulumi.Bool(true),
 /// 			NewUsersPerMinute:     pulumi.Int(200),
-/// 			PrequeueStartTime:     pulumi.String("2021-09-28T15:00:00.000Z"),
+/// 			PrequeueStartTime:     pulumi.String("2021-09-28T15:00:00Z"),
 /// 			QueueingMethod:        pulumi.String("random"),
 /// 			SessionDuration:       pulumi.Int(1),
 /// 			ShuffleAtEventStart:   pulumi.Bool(true),
@@ -136,14 +136,14 @@ import 'waiting_room_event_state.dart';
 /// resource "cloudflare_waitingroomevent" "example_waiting_room_event" {
 ///   zone_id                 = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   waiting_room_id         = "699d98642c564d2e855e9661899b7252"
-///   event_end_time          = "2021-09-28T17:00:00.000Z"
-///   event_start_time        = "2021-09-28T15:30:00.000Z"
+///   event_end_time          = "2021-09-28T17:00:00Z"
+///   event_start_time        = "2021-09-28T15:30:00Z"
 ///   name                    = "production_webinar_event"
 ///   custom_page_html        = "{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}"
 ///   description             = "Production event - DO NOT MODIFY"
 ///   disable_session_renewal = true
 ///   new_users_per_minute    = 200
-///   prequeue_start_time     = "2021-09-28T15:00:00.000Z"
+///   prequeue_start_time     = "2021-09-28T15:00:00Z"
 ///   queueing_method         = "random"
 ///   session_duration        = 1
 ///   shuffle_at_event_start  = true
@@ -177,14 +177,14 @@ import 'waiting_room_event_state.dart';
 ///         var exampleWaitingRoomEvent = new WaitingRoomEvent("exampleWaitingRoomEvent", WaitingRoomEventArgs.builder()
 ///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .waitingRoomId("699d98642c564d2e855e9661899b7252")
-///             .eventEndTime("2021-09-28T17:00:00.000Z")
-///             .eventStartTime("2021-09-28T15:30:00.000Z")
+///             .eventEndTime("2021-09-28T17:00:00Z")
+///             .eventStartTime("2021-09-28T15:30:00Z")
 ///             .name("production_webinar_event")
 ///             .customPageHtml("{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}")
 ///             .description("Production event - DO NOT MODIFY")
 ///             .disableSessionRenewal(true)
 ///             .newUsersPerMinute(200)
-///             .prequeueStartTime("2021-09-28T15:00:00.000Z")
+///             .prequeueStartTime("2021-09-28T15:00:00Z")
 ///             .queueingMethod("random")
 ///             .sessionDuration(1)
 ///             .shuffleAtEventStart(true)
@@ -205,14 +205,14 @@ import 'waiting_room_event_state.dart';
 ///     properties:
 ///       zoneId: 023e105f4ecef8ad9ca31a8372d0c353
 ///       waitingRoomId: 699d98642c564d2e855e9661899b7252
-///       eventEndTime: 2021-09-28T17:00:00.000Z
-///       eventStartTime: 2021-09-28T15:30:00.000Z
+///       eventEndTime: 2021-09-28T17:00:00Z
+///       eventStartTime: 2021-09-28T15:30:00Z
 ///       name: production_webinar_event
 ///       customPageHtml: '{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}'
 ///       description: Production event - DO NOT MODIFY
 ///       disableSessionRenewal: true
 ///       newUsersPerMinute: 200
-///       prequeueStartTime: 2021-09-28T15:00:00.000Z
+///       prequeueStartTime: 2021-09-28T15:00:00Z
 ///       queueingMethod: random
 ///       sessionDuration: 1
 ///       shuffleAtEventStart: true
@@ -279,7 +279,7 @@ class WaitingRoomEvent extends pulumi.CustomResource {
           'cloudflare:index/waitingRoomEvent:WaitingRoomEvent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     createdOn = registerOutput<String>('createdOn');
     customPageHtml = registerOutput<String?>('customPageHtml');

@@ -7,152 +7,12 @@ import 'image_state.dart';
 /// - `Images Read`
 /// - `Images Write`
 ///
-/// ## Example Usage
+/// &gt; Set either `file` (base64-encoded image data, e.g. from
+/// `filebase64`)
+/// or `url` (fetched server-side), not both.
 ///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as cloudflare from "@pulumi/cloudflare";
-///
-/// const exampleImage = new cloudflare.Image("example_image", {
-///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
-///     imageId: "id",
-///     creator: "creator",
-///     file: "Example data",
-///     metadata: {},
-///     requireSignedUrls: true,
-///     url: "https://example.com/path/to/logo.png",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_cloudflare as cloudflare
-///
-/// example_image = cloudflare.Image("example_image",
-///     account_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     image_id="id",
-///     creator="creator",
-///     file="Example data",
-///     metadata={},
-///     require_signed_urls=True,
-///     url="https://example.com/path/to/logo.png")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Cloudflare = Pulumi.Cloudflare;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var exampleImage = new Cloudflare.Image("example_image", new()
-///     {
-///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         ImageId = "id",
-///         Creator = "creator",
-///         File = "Example data",
-///         Metadata = null,
-///         RequireSignedUrls = true,
-///         Url = "https://example.com/path/to/logo.png",
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := cloudflare.NewImage(ctx, "example_image", &cloudflare.ImageArgs{
-/// 			AccountId:         pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			ImageId:           pulumi.String("id"),
-/// 			Creator:           pulumi.String("creator"),
-/// 			File:              pulumi.String("Example data"),
-/// 			Metadata:          pulumi.String{},
-/// 			RequireSignedUrls: pulumi.Bool(true),
-/// 			Url:               pulumi.String("https://example.com/path/to/logo.png"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```hcl
-/// pulumi {
-///   required_providers {
-///     cloudflare = {
-///       source = "pulumi/cloudflare"
-///     }
-///   }
-/// }
-///
-/// resource "cloudflare_image" "example_image" {
-///   account_id          = "023e105f4ecef8ad9ca31a8372d0c353"
-///   image_id            = "id"
-///   creator             = "creator"
-///   file                = "Example data"
-///   metadata            = {}
-///   require_signed_urls = true
-///   url                 = "https://example.com/path/to/logo.png"
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.cloudflare.Image;
-/// import com.pulumi.cloudflare.ImageArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var exampleImage = new Image("exampleImage", ImageArgs.builder()
-///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .imageId("id")
-///             .creator("creator")
-///             .file("Example data")
-///             .metadata(Map.ofEntries(
-///             ))
-///             .requireSignedUrls(true)
-///             .url("https://example.com/path/to/logo.png")
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   exampleImage:
-///     type: cloudflare:Image
-///     name: example_image
-///     properties:
-///       accountId: 023e105f4ecef8ad9ca31a8372d0c353
-///       imageId: id
-///       creator: creator
-///       file: Example data
-///       metadata: {}
-///       requireSignedUrls: true
-///       url: https://example.com/path/to/logo.png
-/// ```
-///
+/// &gt; `requireSignedUrls = true` is rejected for images with a custom `id` (API
+/// error 5410). Since `id` is required here, leave it unset or `false`.
 ///
 /// ## Import
 ///
@@ -195,7 +55,7 @@ class Image extends pulumi.CustomResource {
           'cloudflare:index/image:Image',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     creator = registerOutput<String?>('creator');

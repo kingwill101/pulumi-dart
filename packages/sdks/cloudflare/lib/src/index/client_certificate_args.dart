@@ -40,7 +40,7 @@ class ClientCertificateArgs {
     return ClientCertificateArgs(
       csr: pulumi.Input.fromValue(map['csr'] as String),
       reactivate: (() { final guardedValue = map['reactivate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      validityDays: pulumi.Input.fromValue((map['validityDays'] as num).toInt()),
+      validityDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['validityDays'])),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }

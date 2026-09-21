@@ -97,7 +97,7 @@ import 'cloud_connector_rules_state.dart';
 /// 					Parameters: &cloudflare.CloudConnectorRulesRuleParametersArgs{
 /// 						Host: pulumi.String("examplebucket.s3.eu-north-1.amazonaws.com"),
 /// 					},
-/// 					CloudConnectorRulesProvider: "aws_s3",
+/// 					CloudConnectorRulesProvider: pulumi.String("aws_s3"),
 /// 				},
 /// 			},
 /// 		})
@@ -211,7 +211,7 @@ class CloudConnectorRules extends pulumi.CustomResource {
           'cloudflare:index/cloudConnectorRules:CloudConnectorRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     rules = registerOutput<List<CloudConnectorRulesRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudConnectorRulesRule>(guardedValue, (value) => CloudConnectorRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
     zoneId = registerOutput<String>('zoneId');

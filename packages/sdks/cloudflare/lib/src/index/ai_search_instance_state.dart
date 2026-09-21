@@ -15,7 +15,7 @@ class AiSearchInstanceState {
   final pulumi.Input<String?>? aiGatewayId;
   /// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
   final pulumi.Input<String?>? aiSearchInstanceId;
-  /// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+  /// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
   final pulumi.Input<String?>? aisearchModel;
   final pulumi.Input<bool?>? cache;
   /// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
@@ -29,7 +29,6 @@ class AiSearchInstanceState {
   final pulumi.Input<String?>? createdAt;
   final pulumi.Input<String?>? createdBy;
   final pulumi.Input<List<AiSearchInstanceCustomMetadata>?>? customMetadatas;
-  /// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
   final pulumi.Input<String?>? embeddingModel;
   final pulumi.Input<bool?>? enable;
   final pulumi.Input<double?>? engineVersion;
@@ -50,10 +49,9 @@ class AiSearchInstanceState {
   final pulumi.Input<String?>? publicEndpointId;
   final pulumi.Input<AiSearchInstancePublicEndpointParams?>? publicEndpointParams;
   final pulumi.Input<bool?>? reranking;
-  /// Available values: "@cf/baai/bge-reranker-base", "".
   final pulumi.Input<String?>? rerankingModel;
   final pulumi.Input<AiSearchInstanceRetrievalOptions?>? retrievalOptions;
-  /// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+  /// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
   final pulumi.Input<String?>? rewriteModel;
   final pulumi.Input<bool?>? rewriteQuery;
   final pulumi.Input<double?>? scoreThreshold;
@@ -61,7 +59,6 @@ class AiSearchInstanceState {
   final pulumi.Input<AiSearchInstanceSourceParams?>? sourceParams;
   final pulumi.Input<String?>? status;
   final pulumi.Input<bool?>? summarization;
-  /// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
   final pulumi.Input<String?>? summarizationModel;
   /// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
   /// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
@@ -72,13 +69,12 @@ class AiSearchInstanceState {
   final pulumi.Input<String?>? tokenId;
   /// Available values: "r2", "web-crawler".
   final pulumi.Input<String?>? type;
-  final pulumi.Input<String?>? vectorizeName;
 
   /// Creates a new [AiSearchInstanceState].
   /// [accountId] Optional.
   /// [aiGatewayId] Optional.
   /// [aiSearchInstanceId] AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
-  /// [aisearchModel] Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+  /// [aisearchModel] A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
   /// [cache] Optional.
   /// [cacheThreshold] Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
   /// [cacheTtl] Cache entry TTL in seconds. Allowed values: 600 (10min), 1800 (30min), 3600 (1h), 7200 (2h), 21600 (6h), 43200 (12h), 86400 (24h), 172800 (48h), 259200 (72h), 518400 (6d).
@@ -88,7 +84,7 @@ class AiSearchInstanceState {
   /// [createdAt] Optional.
   /// [createdBy] Optional.
   /// [customMetadatas] Optional.
-  /// [embeddingModel] Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
+  /// [embeddingModel] Optional.
   /// [enable] Optional.
   /// [engineVersion] Optional.
   /// [fusionMethod] Available values: "max", "rrf".
@@ -105,23 +101,22 @@ class AiSearchInstanceState {
   /// [publicEndpointId] Optional.
   /// [publicEndpointParams] Optional.
   /// [reranking] Optional.
-  /// [rerankingModel] Available values: "@cf/baai/bge-reranker-base", "".
+  /// [rerankingModel] Optional.
   /// [retrievalOptions] Optional.
-  /// [rewriteModel] Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+  /// [rewriteModel] A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
   /// [rewriteQuery] Optional.
   /// [scoreThreshold] Optional.
   /// [source] Optional.
   /// [sourceParams] Optional.
   /// [status] Optional.
   /// [summarization] Optional.
-  /// [summarizationModel] Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+  /// [summarizationModel] Optional.
   /// [syncInterval] Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
   /// [systemPromptAisearch] Optional.
   /// [systemPromptIndexSummarization] Optional.
   /// [systemPromptRewriteQuery] Optional.
   /// [tokenId] Optional.
   /// [type] Available values: "r2", "web-crawler".
-  /// [vectorizeName] Optional.
   const AiSearchInstanceState({
     this.accountId,
     this.aiGatewayId,
@@ -169,7 +164,6 @@ class AiSearchInstanceState {
     this.systemPromptRewriteQuery,
     this.tokenId,
     this.type,
-    this.vectorizeName,
   });
 
   Map<String, dynamic> toMap() {
@@ -220,7 +214,6 @@ class AiSearchInstanceState {
       'systemPromptRewriteQuery': ?systemPromptRewriteQuery,
       'tokenId': ?tokenId,
       'type': ?type,
-      'vectorizeName': ?vectorizeName,
     };
   }
 
@@ -234,8 +227,8 @@ class AiSearchInstanceState {
       cacheThreshold: (() { final guardedValue = map['cacheThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cacheTtl: (() { final guardedValue = map['cacheTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       chunk: (() { final guardedValue = map['chunk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      chunkOverlap: (() { final guardedValue = map['chunkOverlap']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      chunkSize: (() { final guardedValue = map['chunkSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      chunkOverlap: (() { final guardedValue = map['chunkOverlap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      chunkSize: (() { final guardedValue = map['chunkSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customMetadatas: (() { final guardedValue = map['customMetadatas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AiSearchInstanceCustomMetadata>(guardedValue, (value) => AiSearchInstanceCustomMetadata.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -247,7 +240,7 @@ class AiSearchInstanceState {
       indexMethod: (() { final guardedValue = map['indexMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiSearchInstanceIndexMethod.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       indexingOptions: (() { final guardedValue = map['indexingOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiSearchInstanceIndexingOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       lastActivity: (() { final guardedValue = map['lastActivity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxNumResults: (() { final guardedValue = map['maxNumResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxNumResults: (() { final guardedValue = map['maxNumResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiSearchInstanceMetadata.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       modifiedAt: (() { final guardedValue = map['modifiedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       modifiedBy: (() { final guardedValue = map['modifiedBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -272,7 +265,6 @@ class AiSearchInstanceState {
       systemPromptRewriteQuery: (() { final guardedValue = map['systemPromptRewriteQuery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tokenId: (() { final guardedValue = map['tokenId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vectorizeName: (() { final guardedValue = map['vectorizeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

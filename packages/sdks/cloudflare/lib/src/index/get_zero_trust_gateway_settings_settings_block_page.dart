@@ -105,7 +105,7 @@ class GetZeroTrustGatewaySettingsSettingsBlockPage {
       sourceAccount: pulumi.Input.fromValue(map['sourceAccount'] as String),
       suppressFooter: pulumi.Input.fromValue(map['suppressFooter'] as bool),
       targetUri: pulumi.Input.fromValue(map['targetUri'] as String),
-      version: pulumi.Input.fromValue((map['version'] as num).toInt()),
+      version: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['version'])),
     );
   }
 }

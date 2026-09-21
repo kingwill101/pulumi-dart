@@ -165,7 +165,7 @@ class ShareRecipientRes extends pulumi.CustomResource {
           'cloudflare:index/shareRecipient:ShareRecipient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     associationStatus = registerOutput<String>('associationStatus');

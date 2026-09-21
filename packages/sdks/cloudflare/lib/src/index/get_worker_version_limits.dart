@@ -25,8 +25,8 @@ class GetWorkerVersionLimits {
 
   factory GetWorkerVersionLimits.fromMap(Map<String, dynamic> map) {
     return GetWorkerVersionLimits(
-      cpuMs: pulumi.Input.fromValue((map['cpuMs'] as num).toInt()),
-      subrequests: pulumi.Input.fromValue((map['subrequests'] as num).toInt()),
+      cpuMs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpuMs'])),
+      subrequests: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['subrequests'])),
     );
   }
 }

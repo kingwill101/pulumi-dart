@@ -26,7 +26,7 @@ class GetZoneDnsSettingsNameservers {
 
   factory GetZoneDnsSettingsNameservers.fromMap(Map<String, dynamic> map) {
     return GetZoneDnsSettingsNameservers(
-      nsSet: pulumi.Input.fromValue((map['nsSet'] as num).toInt()),
+      nsSet: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nsSet'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

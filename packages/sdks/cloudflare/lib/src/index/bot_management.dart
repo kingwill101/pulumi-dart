@@ -18,6 +18,7 @@ import 'bot_management_state.dart';
 /// const exampleBotManagement = new cloudflare.BotManagement("example_bot_management", {
 ///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     aiBotsProtection: "block",
+///     botPreferenceSyncEnabled: true,
 ///     cfRobotsVariant: "policy_only",
 ///     contentBotsProtection: "disabled",
 ///     crawlerProtection: "enabled",
@@ -33,6 +34,7 @@ import 'bot_management_state.dart';
 /// example_bot_management = cloudflare.BotManagement("example_bot_management",
 ///     zone_id="023e105f4ecef8ad9ca31a8372d0c353",
 ///     ai_bots_protection="block",
+///     bot_preference_sync_enabled=True,
 ///     cf_robots_variant="policy_only",
 ///     content_bots_protection="disabled",
 ///     crawler_protection="enabled",
@@ -52,6 +54,7 @@ import 'bot_management_state.dart';
 ///     {
 ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///         AiBotsProtection = "block",
+///         BotPreferenceSyncEnabled = true,
 ///         CfRobotsVariant = "policy_only",
 ///         ContentBotsProtection = "disabled",
 ///         CrawlerProtection = "enabled",
@@ -73,14 +76,15 @@ import 'bot_management_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.NewBotManagement(ctx, "example_bot_management", &cloudflare.BotManagementArgs{
-/// 			ZoneId:                pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			AiBotsProtection:      pulumi.String("block"),
-/// 			CfRobotsVariant:       pulumi.String("policy_only"),
-/// 			ContentBotsProtection: pulumi.String("disabled"),
-/// 			CrawlerProtection:     pulumi.String("enabled"),
-/// 			EnableJs:              pulumi.Bool(true),
-/// 			FightMode:             pulumi.Bool(true),
-/// 			IsRobotsTxtManaged:    pulumi.Bool(false),
+/// 			ZoneId:                   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			AiBotsProtection:         pulumi.String("block"),
+/// 			BotPreferenceSyncEnabled: pulumi.Bool(true),
+/// 			CfRobotsVariant:          pulumi.String("policy_only"),
+/// 			ContentBotsProtection:    pulumi.String("disabled"),
+/// 			CrawlerProtection:        pulumi.String("enabled"),
+/// 			EnableJs:                 pulumi.Bool(true),
+/// 			FightMode:                pulumi.Bool(true),
+/// 			IsRobotsTxtManaged:       pulumi.Bool(false),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -99,14 +103,15 @@ import 'bot_management_state.dart';
 /// }
 ///
 /// resource "cloudflare_botmanagement" "example_bot_management" {
-///   zone_id                 = "023e105f4ecef8ad9ca31a8372d0c353"
-///   ai_bots_protection      = "block"
-///   cf_robots_variant       = "policy_only"
-///   content_bots_protection = "disabled"
-///   crawler_protection      = "enabled"
-///   enable_js               = true
-///   fight_mode              = true
-///   is_robots_txt_managed   = false
+///   zone_id                     = "023e105f4ecef8ad9ca31a8372d0c353"
+///   ai_bots_protection          = "block"
+///   bot_preference_sync_enabled = true
+///   cf_robots_variant           = "policy_only"
+///   content_bots_protection     = "disabled"
+///   crawler_protection          = "enabled"
+///   enable_js                   = true
+///   fight_mode                  = true
+///   is_robots_txt_managed       = false
 /// }
 /// ```
 /// ```java
@@ -133,6 +138,7 @@ import 'bot_management_state.dart';
 ///         var exampleBotManagement = new BotManagement("exampleBotManagement", BotManagementArgs.builder()
 ///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .aiBotsProtection("block")
+///             .botPreferenceSyncEnabled(true)
 ///             .cfRobotsVariant("policy_only")
 ///             .contentBotsProtection("disabled")
 ///             .crawlerProtection("enabled")
@@ -152,6 +158,7 @@ import 'bot_management_state.dart';
 ///     properties:
 ///       zoneId: 023e105f4ecef8ad9ca31a8372d0c353
 ///       aiBotsProtection: block
+///       botPreferenceSyncEnabled: true
 ///       cfRobotsVariant: policy_only
 ///       contentBotsProtection: disabled
 ///       crawlerProtection: enabled
@@ -174,6 +181,8 @@ class BotManagement extends pulumi.CustomResource {
   late final pulumi.Output<bool> autoUpdateModel;
   /// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
   late final pulumi.Output<bool> bmCookieEnabled;
+  /// Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+  late final pulumi.Output<bool?> botPreferenceSyncEnabled;
   /// Specifies the Robots Access Control License variant to use.
   /// Available values: "off", "policyOnly".
   late final pulumi.Output<String> cfRobotsVariant;
@@ -225,11 +234,12 @@ class BotManagement extends pulumi.CustomResource {
           'cloudflare:index/botManagement:BotManagement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     aiBotsProtection = registerOutput<String>('aiBotsProtection');
     autoUpdateModel = registerOutput<bool>('autoUpdateModel');
     bmCookieEnabled = registerOutput<bool>('bmCookieEnabled');
+    botPreferenceSyncEnabled = registerOutput<bool?>('botPreferenceSyncEnabled');
     cfRobotsVariant = registerOutput<String>('cfRobotsVariant');
     contentBotsProtection = registerOutput<String>('contentBotsProtection');
     crawlerProtection = registerOutput<String>('crawlerProtection');
@@ -274,6 +284,7 @@ class BotManagement extends pulumi.CustomResource {
     aiBotsProtection = registerOutput<String>('aiBotsProtection');
     autoUpdateModel = registerOutput<bool>('autoUpdateModel');
     bmCookieEnabled = registerOutput<bool>('bmCookieEnabled');
+    botPreferenceSyncEnabled = registerOutput<bool?>('botPreferenceSyncEnabled');
     cfRobotsVariant = registerOutput<String>('cfRobotsVariant');
     contentBotsProtection = registerOutput<String>('contentBotsProtection');
     crawlerProtection = registerOutput<String>('crawlerProtection');
@@ -303,6 +314,7 @@ class BotManagement extends pulumi.CustomResource {
     aiBotsProtection = registerOutput<String>('aiBotsProtection');
     autoUpdateModel = registerOutput<bool>('autoUpdateModel');
     bmCookieEnabled = registerOutput<bool>('bmCookieEnabled');
+    botPreferenceSyncEnabled = registerOutput<bool?>('botPreferenceSyncEnabled');
     cfRobotsVariant = registerOutput<String>('cfRobotsVariant');
     contentBotsProtection = registerOutput<String>('contentBotsProtection');
     crawlerProtection = registerOutput<String>('crawlerProtection');

@@ -79,7 +79,7 @@ class GetHyperdriveConfigResult {
       mtls: (() { final guardedValue = map['mtls']; if (guardedValue == null) return null; return GetHyperdriveConfigMtls.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       origin: (() { final guardedValue = map['origin']; if (guardedValue == null) return null; return GetHyperdriveConfigOrigin.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      originConnectionLimit: (() { final guardedValue = map['originConnectionLimit']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      originConnectionLimit: (() { final guardedValue = map['originConnectionLimit']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       restartedOn: (() { final guardedValue = map['restartedOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

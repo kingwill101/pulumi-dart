@@ -32,7 +32,7 @@ class GetRulesetRuleActionParametersResponse {
     return GetRulesetRuleActionParametersResponse(
       content: pulumi.Input.fromValue(map['content'] as String),
       contentType: pulumi.Input.fromValue(map['contentType'] as String),
-      statusCode: pulumi.Input.fromValue((map['statusCode'] as num).toInt()),
+      statusCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['statusCode'])),
     );
   }
 }

@@ -30,7 +30,7 @@ class MagicWanGreTunnelBgp {
 
   factory MagicWanGreTunnelBgp.fromMap(Map<String, dynamic> map) {
     return MagicWanGreTunnelBgp(
-      customerAsn: pulumi.Input.fromValue((map['customerAsn'] as num).toInt()),
+      customerAsn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['customerAsn'])),
       extraPrefixes: (() { final guardedValue = map['extraPrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       md5Key: (() { final guardedValue = map['md5Key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

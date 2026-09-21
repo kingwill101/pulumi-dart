@@ -57,11 +57,11 @@ class RulesetRuleRatelimit {
     return RulesetRuleRatelimit(
       characteristics: pulumi.Input.fromValue((map['characteristics'] as List).cast<String>()),
       countingExpression: (() { final guardedValue = map['countingExpression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      mitigationTimeout: (() { final guardedValue = map['mitigationTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      period: pulumi.Input.fromValue((map['period'] as num).toInt()),
-      requestsPerPeriod: (() { final guardedValue = map['requestsPerPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      mitigationTimeout: (() { final guardedValue = map['mitigationTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      period: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['period'])),
+      requestsPerPeriod: (() { final guardedValue = map['requestsPerPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       requestsToOrigin: (() { final guardedValue = map['requestsToOrigin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      scorePerPeriod: (() { final guardedValue = map['scorePerPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      scorePerPeriod: (() { final guardedValue = map['scorePerPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       scoreResponseHeaderName: (() { final guardedValue = map['scoreResponseHeaderName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -167,7 +167,7 @@ class WorkersCronTrigger extends pulumi.CustomResource {
           'cloudflare:index/workersCronTrigger:WorkersCronTrigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     schedules = registerOutput<List<WorkersCronTriggerSchedule>>('schedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkersCronTriggerSchedule>(guardedValue, (value) => WorkersCronTriggerSchedule.fromMap((value as Map).cast<String, dynamic>())); });

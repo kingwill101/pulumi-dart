@@ -46,6 +46,7 @@ import 'pipeline_sink_state.dart';
 ///     },
 ///     format: {
 ///         type: "json",
+///         compression: "uncompressed",
 ///         decimalEncoding: "number",
 ///         timestampFormat: "rfc3339",
 ///         unstructured: true,
@@ -58,12 +59,6 @@ import 'pipeline_sink_state.dart';
 ///             required: true,
 ///             sqlName: "sql_name",
 ///         }],
-///         format: {
-///             type: "json",
-///             decimalEncoding: "number",
-///             timestampFormat: "rfc3339",
-///             unstructured: true,
-///         },
 ///         inferred: true,
 ///     },
 /// });
@@ -101,6 +96,7 @@ import 'pipeline_sink_state.dart';
 ///     },
 ///     format={
 ///         "type": "json",
+///         "compression": "uncompressed",
 ///         "decimal_encoding": "number",
 ///         "timestamp_format": "rfc3339",
 ///         "unstructured": True,
@@ -113,12 +109,6 @@ import 'pipeline_sink_state.dart';
 ///             "required": True,
 ///             "sql_name": "sql_name",
 ///         }],
-///         "format": {
-///             "type": "json",
-///             "decimal_encoding": "number",
-///             "timestamp_format": "rfc3339",
-///             "unstructured": True,
-///         },
 ///         "inferred": True,
 ///     })
 /// ```
@@ -166,6 +156,7 @@ import 'pipeline_sink_state.dart';
 ///         Format = new Cloudflare.Inputs.PipelineSinkFormatArgs
 ///         {
 ///             Type = "json",
+///             Compression = "uncompressed",
 ///             DecimalEncoding = "number",
 ///             TimestampFormat = "rfc3339",
 ///             Unstructured = true,
@@ -182,13 +173,6 @@ import 'pipeline_sink_state.dart';
 ///                     Required = true,
 ///                     SqlName = "sql_name",
 ///                 },
-///             },
-///             Format = new Cloudflare.Inputs.PipelineSinkSchemaFormatArgs
-///             {
-///                 Type = "json",
-///                 DecimalEncoding = "number",
-///                 TimestampFormat = "rfc3339",
-///                 Unstructured = true,
 ///             },
 ///             Inferred = true,
 ///         },
@@ -235,6 +219,7 @@ import 'pipeline_sink_state.dart';
 /// 			},
 /// 			Format: &cloudflare.PipelineSinkFormatArgs{
 /// 				Type:            pulumi.String("json"),
+/// 				Compression:     pulumi.String("uncompressed"),
 /// 				DecimalEncoding: pulumi.String("number"),
 /// 				TimestampFormat: pulumi.String("rfc3339"),
 /// 				Unstructured:    pulumi.Bool(true),
@@ -248,12 +233,6 @@ import 'pipeline_sink_state.dart';
 /// 						Required:    pulumi.Bool(true),
 /// 						SqlName:     pulumi.String("sql_name"),
 /// 					},
-/// 				},
-/// 				Format: &cloudflare.PipelineSinkSchemaFormatArgs{
-/// 					Type:            pulumi.String("json"),
-/// 					DecimalEncoding: pulumi.String("number"),
-/// 					TimestampFormat: pulumi.String("rfc3339"),
-/// 					Unstructured:    pulumi.Bool(true),
 /// 				},
 /// 				Inferred: pulumi.Bool(true),
 /// 			},
@@ -303,6 +282,7 @@ import 'pipeline_sink_state.dart';
 ///   }
 ///   format = {
 ///     type             = "json"
+///     compression      = "uncompressed"
 ///     decimal_encoding = "number"
 ///     timestamp_format = "rfc3339"
 ///     unstructured     = true
@@ -315,12 +295,6 @@ import 'pipeline_sink_state.dart';
 ///       "required"    = true
 ///       "sqlName"     = "sql_name"
 ///     }]
-///     format = {
-///       type             = "json"
-///       decimal_encoding = "number"
-///       timestamp_format = "rfc3339"
-///       unstructured     = true
-///     }
 ///     inferred = true
 ///   }
 /// }
@@ -341,7 +315,6 @@ import 'pipeline_sink_state.dart';
 /// import com.pulumi.cloudflare.inputs.PipelineSinkFormatArgs;
 /// import com.pulumi.cloudflare.inputs.PipelineSinkSchemaArgs;
 /// import com.pulumi.cloudflare.inputs.PipelineSinkSchemaFieldArgs;
-/// import com.pulumi.cloudflare.inputs.PipelineSinkSchemaFormatArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -384,6 +357,7 @@ import 'pipeline_sink_state.dart';
 ///                 .build())
 ///             .format(PipelineSinkFormatArgs.builder()
 ///                 .type("json")
+///                 .compression("uncompressed")
 ///                 .decimalEncoding("number")
 ///                 .timestampFormat("rfc3339")
 ///                 .unstructured(true)
@@ -395,12 +369,6 @@ import 'pipeline_sink_state.dart';
 ///                     .name("name")
 ///                     .required(true)
 ///                     .sqlName("sql_name")
-///                     .build())
-///                 .format(PipelineSinkSchemaFormatArgs.builder()
-///                     .type("json")
-///                     .decimalEncoding("number")
-///                     .timestampFormat("rfc3339")
-///                     .unstructured(true)
 ///                     .build())
 ///                 .inferred(true)
 ///                 .build())
@@ -438,6 +406,7 @@ import 'pipeline_sink_state.dart';
 ///           intervalSeconds: 1
 ///       format:
 ///         type: json
+///         compression: uncompressed
 ///         decimalEncoding: number
 ///         timestampFormat: rfc3339
 ///         unstructured: true
@@ -448,11 +417,6 @@ import 'pipeline_sink_state.dart';
 ///             name: name
 ///             required: true
 ///             sqlName: sql_name
-///         format:
-///           type: json
-///           decimalEncoding: number
-///           timestampFormat: rfc3339
-///           unstructured: true
 ///         inferred: true
 /// ```
 ///
@@ -468,10 +432,12 @@ class PipelineSink extends pulumi.CustomResource {
   /// Defines the configuration of the R2 Sink.
   late final pulumi.Output<PipelineSinkConfig?> config;
   late final pulumi.Output<String> createdAt;
+  /// Defines the output data format of a sink.
   late final pulumi.Output<PipelineSinkFormat?> format;
   late final pulumi.Output<String> modifiedAt;
   /// Defines the name of the Sink.
   late final pulumi.Output<String> name;
+  /// Defines the schema of the events in the data stream.
   late final pulumi.Output<PipelineSinkSchema?> schema;
   /// Specifies the type of sink.
   /// Available values: "r2", "r2*data*catalog".
@@ -489,7 +455,7 @@ class PipelineSink extends pulumi.CustomResource {
           'cloudflare:index/pipelineSink:PipelineSink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     config = registerOutput<PipelineSinkConfig?>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineSinkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

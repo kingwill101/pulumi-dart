@@ -13,12 +13,14 @@ class GetPipelineSinkResult {
   final GetPipelineSinkConfig? config;
   final String? createdAt;
   final GetPipelineSinkFilter? filter;
+  /// Defines the output data format of a sink.
   final GetPipelineSinkFormat? format;
   /// Specifies the publid ID of the sink.
   final String? id;
   final String? modifiedAt;
   /// Defines the name of the Sink.
   final String? name;
+  /// Defines the schema of the events in the data stream.
   final GetPipelineSinkSchema? schema;
   /// Specifies the publid ID of the sink.
   final String? sinkId;
@@ -31,11 +33,11 @@ class GetPipelineSinkResult {
   /// [config] Defines the configuration of the R2 Sink.
   /// [createdAt] Optional.
   /// [filter] Optional.
-  /// [format] Optional.
+  /// [format] Defines the output data format of a sink.
   /// [id] Specifies the publid ID of the sink.
   /// [modifiedAt] Optional.
   /// [name] Defines the name of the Sink.
-  /// [schema] Optional.
+  /// [schema] Defines the schema of the events in the data stream.
   /// [sinkId] Specifies the publid ID of the sink.
   /// [type] Specifies the type of sink.
   const GetPipelineSinkResult({

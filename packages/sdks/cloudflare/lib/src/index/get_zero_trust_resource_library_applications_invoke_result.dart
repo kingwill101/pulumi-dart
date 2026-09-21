@@ -6,6 +6,11 @@ import 'get_zero_trust_resource_library_applications_result.dart';
 /// Result data returned by getZeroTrustResourceLibraryApplications.
 class GetZeroTrustResourceLibraryApplicationsInvokeResult {
   final String? accountId;
+  /// Return only the listed properties on each application, as a comma-separated list.
+  /// Use this to keep responses small when you only need part of each application — for
+  /// example populating a picker with `fields=id,name` instead of downloading every
+  /// hostname and IP subnet.
+  final String? fields;
   final String? filter;
   final int? limit;
   final int? maxItems;
@@ -16,6 +21,7 @@ class GetZeroTrustResourceLibraryApplicationsInvokeResult {
 
   /// Creates a new [GetZeroTrustResourceLibraryApplicationsInvokeResult].
   /// [accountId] Optional.
+  /// [fields] Return only the listed properties on each application, as a comma-separated list.
   /// [filter] Optional.
   /// [limit] Optional.
   /// [maxItems] Optional.
@@ -25,6 +31,7 @@ class GetZeroTrustResourceLibraryApplicationsInvokeResult {
   /// [search] Optional.
   const GetZeroTrustResourceLibraryApplicationsInvokeResult({
     this.accountId,
+    this.fields,
     this.filter,
     this.limit,
     this.maxItems,
@@ -37,6 +44,7 @@ class GetZeroTrustResourceLibraryApplicationsInvokeResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': ?accountId,
+      'fields': ?fields,
       'filter': ?filter,
       'limit': ?limit,
       'maxItems': ?maxItems,
@@ -50,10 +58,11 @@ class GetZeroTrustResourceLibraryApplicationsInvokeResult {
   factory GetZeroTrustResourceLibraryApplicationsInvokeResult.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustResourceLibraryApplicationsInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fields: (() { final guardedValue = map['fields']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      offset: (() { final guardedValue = map['offset']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      offset: (() { final guardedValue = map['offset']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustResourceLibraryApplicationsResult>(guardedValue, (value) => GetZeroTrustResourceLibraryApplicationsResult.fromMap((value as Map).cast<String, dynamic>())); })(),
       search: (() { final guardedValue = map['search']; if (guardedValue == null) return null; return guardedValue as String; })(),

@@ -109,8 +109,8 @@ class GetLoadBalancerMonitorsResult {
   factory GetLoadBalancerMonitorsResult.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerMonitorsResult(
       allowInsecure: pulumi.Input.fromValue(map['allowInsecure'] as bool),
-      consecutiveDown: pulumi.Input.fromValue((map['consecutiveDown'] as num).toInt()),
-      consecutiveUp: pulumi.Input.fromValue((map['consecutiveUp'] as num).toInt()),
+      consecutiveDown: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['consecutiveDown'])),
+      consecutiveUp: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['consecutiveUp'])),
       createdOn: pulumi.Input.fromValue(map['createdOn'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       expectedBody: pulumi.Input.fromValue(map['expectedBody'] as String),
@@ -118,14 +118,14 @@ class GetLoadBalancerMonitorsResult {
       followRedirects: pulumi.Input.fromValue(map['followRedirects'] as bool),
       header: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<String>>(map['header']!, (value) => (value as List).cast<String>())),
       id: pulumi.Input.fromValue(map['id'] as String),
-      interval: pulumi.Input.fromValue((map['interval'] as num).toInt()),
+      interval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interval'])),
       method: pulumi.Input.fromValue(map['method'] as String),
       modifiedOn: pulumi.Input.fromValue(map['modifiedOn'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       probeZone: pulumi.Input.fromValue(map['probeZone'] as String),
-      retries: pulumi.Input.fromValue((map['retries'] as num).toInt()),
-      timeout: pulumi.Input.fromValue((map['timeout'] as num).toInt()),
+      retries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retries'])),
+      timeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeout'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

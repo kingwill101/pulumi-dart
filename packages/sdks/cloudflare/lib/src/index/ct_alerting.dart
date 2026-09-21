@@ -167,7 +167,7 @@ class CtAlerting extends pulumi.CustomResource {
           'cloudflare:index/ctAlerting:CtAlerting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     emails = registerOutput<List<String>?>('emails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enabled = registerOutput<bool>('enabled');

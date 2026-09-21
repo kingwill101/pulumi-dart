@@ -183,7 +183,7 @@ class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDlpPredefinedEntry:ZeroTrustDlpPredefinedEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     caseSensitive = registerOutput<bool>('caseSensitive');

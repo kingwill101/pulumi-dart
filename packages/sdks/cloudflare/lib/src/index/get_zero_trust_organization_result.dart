@@ -27,7 +27,6 @@ class GetZeroTrustOrganizationResult {
   final GetZeroTrustOrganizationMfaConfig? mfaConfig;
   /// Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
   final bool? mfaRequiredForAllApps;
-  /// Configures SSH PIV key requirements for MFA using hardware security keys.
   final GetZeroTrustOrganizationMfaSshPivKeyRequirements? mfaSshPivKeyRequirements;
   /// The name of your Zero Trust organization.
   final String? name;
@@ -56,7 +55,7 @@ class GetZeroTrustOrganizationResult {
   /// [loginDesign] Optional.
   /// [mfaConfig] Configures multi-factor authentication (MFA) settings for an organization.
   /// [mfaRequiredForAllApps] Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
-  /// [mfaSshPivKeyRequirements] Configures SSH PIV key requirements for MFA using hardware security keys.
+  /// [mfaSshPivKeyRequirements] Optional.
   /// [name] The name of your Zero Trust organization.
   /// [sessionDuration] The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
   /// [uiReadOnlyToggleReason] A description of the reason why the UI read only field is being toggled.

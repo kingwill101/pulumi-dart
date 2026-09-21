@@ -1,5 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
+import 'get_zero_trust_resource_library_application_filter.dart';
 
 /// Result data returned by getZeroTrustResourceLibraryApplication.
 class GetZeroTrustResourceLibraryApplicationResult {
@@ -18,13 +19,14 @@ class GetZeroTrustResourceLibraryApplicationResult {
   final int? categoryId;
   /// Returns the application creation time.
   final String? createdAt;
+  final GetZeroTrustResourceLibraryApplicationFilter? filter;
   /// GenAI score for the application. Returns -1 when no score is available.
   final double? genAiScore;
   /// Hostnames matched by the application.
   final List<String>? hostnames;
   /// Returns the human readable ID.
   final String? humanId;
-  /// The ID of this resource.
+  /// Returns the application ID.
   final int? id;
   /// IP subnets matched by the application.
   final List<String>? ipSubnets;
@@ -50,10 +52,11 @@ class GetZeroTrustResourceLibraryApplicationResult {
   /// [applicationTypeDescription] Returns the application type description.
   /// [categoryId] Returns the category ID.
   /// [createdAt] Returns the application creation time.
+  /// [filter] Optional.
   /// [genAiScore] GenAI score for the application. Returns -1 when no score is available.
   /// [hostnames] Hostnames matched by the application.
   /// [humanId] Returns the human readable ID.
-  /// [id] The ID of this resource.
+  /// [id] Returns the application ID.
   /// [ipSubnets] IP subnets matched by the application.
   /// [name] Returns the application name.
   /// [portProtocols] Port and protocol pairs matched by the application.
@@ -70,6 +73,7 @@ class GetZeroTrustResourceLibraryApplicationResult {
     this.applicationTypeDescription,
     this.categoryId,
     this.createdAt,
+    this.filter,
     this.genAiScore,
     this.hostnames,
     this.humanId,
@@ -93,6 +97,7 @@ class GetZeroTrustResourceLibraryApplicationResult {
       'applicationTypeDescription': ?applicationTypeDescription,
       'categoryId': ?categoryId,
       'createdAt': ?createdAt,
+      'filter': ?filter?.toMap(),
       'genAiScore': ?genAiScore,
       'hostnames': ?hostnames,
       'humanId': ?humanId,
@@ -115,12 +120,13 @@ class GetZeroTrustResourceLibraryApplicationResult {
       applicationSource: (() { final guardedValue = map['applicationSource']; if (guardedValue == null) return null; return guardedValue as String; })(),
       applicationType: (() { final guardedValue = map['applicationType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       applicationTypeDescription: (() { final guardedValue = map['applicationTypeDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      categoryId: (() { final guardedValue = map['categoryId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      categoryId: (() { final guardedValue = map['categoryId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetZeroTrustResourceLibraryApplicationFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       genAiScore: (() { final guardedValue = map['genAiScore']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       hostnames: (() { final guardedValue = map['hostnames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       humanId: (() { final guardedValue = map['humanId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       ipSubnets: (() { final guardedValue = map['ipSubnets']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       portProtocols: (() { final guardedValue = map['portProtocols']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),

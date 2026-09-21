@@ -36,6 +36,9 @@ class WorkerVersionBinding {
   final pulumi.Input<String?>? format;
   /// Identifier of the D1 database to bind to.
   final pulumi.Input<String?>? id;
+  /// Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
+  /// Available values: "runtime-email-alpha".
+  final pulumi.Input<String?>? identity;
   /// Name of the Vectorize index to bind to.
   final pulumi.Input<String?>? indexName;
   /// The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
@@ -43,7 +46,7 @@ class WorkerVersionBinding {
   /// JSON data to use.
   final pulumi.Input<String?>? json;
   /// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
-  /// Available values: "eu", "fedramp", "fedramp-high".
+  /// Available values: "eu", "fedramp", "fedramp-high", "us".
   final pulumi.Input<String?>? jurisdiction;
   /// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
   final pulumi.Input<String?>? keyBase64;
@@ -109,6 +112,7 @@ class WorkerVersionBinding {
   /// [environment] The environment of the scriptName to bind to.
   /// [format] Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
   /// [id] Identifier of the D1 database to bind to.
+  /// [identity] Enables Gateway identity for the binding. Requires network*id to be "cf1:network" and cannot be combined with tunnel*id.
   /// [indexName] Name of the Vectorize index to bind to.
   /// [instanceName] The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance.
   /// [json] JSON data to use.
@@ -152,6 +156,7 @@ class WorkerVersionBinding {
     this.environment,
     this.format,
     this.id,
+    this.identity,
     this.indexName,
     this.instanceName,
     this.json,
@@ -198,6 +203,7 @@ class WorkerVersionBinding {
       'environment': ?environment,
       'format': ?format,
       'id': ?id,
+      'identity': ?identity,
       'indexName': ?indexName,
       'instanceName': ?instanceName,
       'json': ?json,
@@ -245,6 +251,7 @@ class WorkerVersionBinding {
       environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       indexName: (() { final guardedValue = map['indexName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceName: (() { final guardedValue = map['instanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       json: (() { final guardedValue = map['json']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

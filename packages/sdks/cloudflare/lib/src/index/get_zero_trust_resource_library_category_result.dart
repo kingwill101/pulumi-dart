@@ -8,7 +8,7 @@ class GetZeroTrustResourceLibraryCategoryResult {
   final String? createdAt;
   /// Returns the category description.
   final String? description;
-  /// The ID of this resource.
+  /// Returns the category ID.
   final int? id;
   /// Returns the category name.
   final String? name;
@@ -17,7 +17,7 @@ class GetZeroTrustResourceLibraryCategoryResult {
   /// [accountId] Optional.
   /// [createdAt] Returns the category creation time.
   /// [description] Returns the category description.
-  /// [id] The ID of this resource.
+  /// [id] Returns the category ID.
   /// [name] Returns the category name.
   const GetZeroTrustResourceLibraryCategoryResult({
     this.accountId,
@@ -42,7 +42,7 @@ class GetZeroTrustResourceLibraryCategoryResult {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

@@ -17,6 +17,7 @@ import 'workers_kv_namespace_state.dart';
 /// const exampleWorkersKvNamespace = new cloudflare.WorkersKvNamespace("example_workers_kv_namespace", {
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     title: "My Own Namespace",
+///     jurisdiction: "eu",
 /// });
 /// ```
 /// ```python
@@ -25,7 +26,8 @@ import 'workers_kv_namespace_state.dart';
 ///
 /// example_workers_kv_namespace = cloudflare.WorkersKvNamespace("example_workers_kv_namespace",
 ///     account_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     title="My Own Namespace")
+///     title="My Own Namespace",
+///     jurisdiction="eu")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -39,6 +41,7 @@ import 'workers_kv_namespace_state.dart';
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///         Title = "My Own Namespace",
+///         Jurisdiction = "eu",
 ///     });
 ///
 /// });
@@ -54,8 +57,9 @@ import 'workers_kv_namespace_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.NewWorkersKvNamespace(ctx, "example_workers_kv_namespace", &cloudflare.WorkersKvNamespaceArgs{
-/// 			AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			Title:     pulumi.String("My Own Namespace"),
+/// 			AccountId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			Title:        pulumi.String("My Own Namespace"),
+/// 			Jurisdiction: pulumi.String("eu"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -74,8 +78,9 @@ import 'workers_kv_namespace_state.dart';
 /// }
 ///
 /// resource "cloudflare_workerskvnamespace" "example_workers_kv_namespace" {
-///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
-///   title      = "My Own Namespace"
+///   account_id   = "023e105f4ecef8ad9ca31a8372d0c353"
+///   title        = "My Own Namespace"
+///   jurisdiction = "eu"
 /// }
 /// ```
 /// ```java
@@ -102,6 +107,7 @@ import 'workers_kv_namespace_state.dart';
 ///         var exampleWorkersKvNamespace = new WorkersKvNamespace("exampleWorkersKvNamespace", WorkersKvNamespaceArgs.builder()
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .title("My Own Namespace")
+///             .jurisdiction("eu")
 ///             .build());
 ///
 ///     }
@@ -115,6 +121,7 @@ import 'workers_kv_namespace_state.dart';
 ///     properties:
 ///       accountId: 023e105f4ecef8ad9ca31a8372d0c353
 ///       title: My Own Namespace
+///       jurisdiction: eu
 /// ```
 ///
 ///
@@ -126,6 +133,9 @@ import 'workers_kv_namespace_state.dart';
 class WorkersKvNamespace extends pulumi.CustomResource {
   /// Identifier.
   late final pulumi.Output<String> accountId;
+  /// Specify the jurisdiction to restrict the KV namespace to durably store data within. Can only be set at namespace creation time.
+  /// Available values: "eu", "fedramp", "us".
+  late final pulumi.Output<String?> jurisdiction;
   /// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
   late final pulumi.Output<bool> supportsUrlEncoding;
   /// A human-readable string name for a Namespace.
@@ -143,9 +153,10 @@ class WorkersKvNamespace extends pulumi.CustomResource {
           'cloudflare:index/workersKvNamespace:WorkersKvNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
+    jurisdiction = registerOutput<String?>('jurisdiction');
     supportsUrlEncoding = registerOutput<bool>('supportsUrlEncoding');
     title = registerOutput<String>('title');
   }
@@ -175,6 +186,7 @@ class WorkersKvNamespace extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accountId = registerOutput<String>('accountId');
+    jurisdiction = registerOutput<String?>('jurisdiction');
     supportsUrlEncoding = registerOutput<bool>('supportsUrlEncoding');
     title = registerOutput<String>('title');
   }
@@ -189,6 +201,7 @@ class WorkersKvNamespace extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     accountId = registerOutput<String>('accountId');
+    jurisdiction = registerOutput<String?>('jurisdiction');
     supportsUrlEncoding = registerOutput<bool>('supportsUrlEncoding');
     title = registerOutput<String>('title');
   }

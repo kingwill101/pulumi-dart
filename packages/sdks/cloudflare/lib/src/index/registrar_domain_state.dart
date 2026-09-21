@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering RegistrarDomain resources.
 class RegistrarDomainState {
-  /// Identifier
+  /// Identifier.
   final pulumi.Input<String?>? accountId;
   /// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
   final pulumi.Input<bool?>? autoRenew;
-  /// Fully qualified domain name (FQDN) including the extension
-  /// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-  /// identifies a registration — the same domain cannot be registered
-  /// twice, making it a natural idempotency key for registration requests.
+  /// Provides a fully qualified domain name (FQDN), including the extension
+  /// (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+  /// a registration. Cloudflare permits only one registration per domain, making
+  /// the domain name a natural idempotency key for registration requests.
   final pulumi.Input<String?>? domainName;
   /// Shows whether a registrar lock is in place for a domain.
   final pulumi.Input<bool?>? locked;
@@ -19,9 +19,9 @@ class RegistrarDomainState {
   final pulumi.Input<bool?>? privacy;
 
   /// Creates a new [RegistrarDomainState].
-  /// [accountId] Identifier
+  /// [accountId] Identifier.
   /// [autoRenew] Auto-renew controls whether subscription is automatically renewed upon domain expiration.
-  /// [domainName] Fully qualified domain name (FQDN) including the extension
+  /// [domainName] Provides a fully qualified domain name (FQDN), including the extension
   /// [locked] Shows whether a registrar lock is in place for a domain.
   /// [privacy] Privacy option controls redacting WHOIS information.
   const RegistrarDomainState({

@@ -7,7 +7,7 @@ import 'get_registrar_domains_result_transfer_in.dart';
 class GetRegistrarDomainsResult {
   /// Shows if a domain is available for transferring into Cloudflare Registrar.
   final pulumi.Input<bool> available;
-  /// Indicates if the domain can be registered as a new domain.
+  /// Indicates eligibility to register the domain as a new domain.
   final pulumi.Input<bool> canRegister;
   /// Shows time of creation.
   final pulumi.Input<String> createdAt;
@@ -21,9 +21,9 @@ class GetRegistrarDomainsResult {
   final pulumi.Input<bool> locked;
   /// Shows contact information for domain registrant.
   final pulumi.Input<GetRegistrarDomainsResultRegistrantContact> registrantContact;
-  /// A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
+  /// A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.
   final pulumi.Input<String> registryStatuses;
-  /// Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
+  /// Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
   final pulumi.Input<bool> supportedTld;
   /// Statuses for domain transfers into Cloudflare Registrar.
   final pulumi.Input<GetRegistrarDomainsResultTransferIn> transferIn;
@@ -32,15 +32,15 @@ class GetRegistrarDomainsResult {
 
   /// Creates a new [GetRegistrarDomainsResult].
   /// [available] Shows if a domain is available for transferring into Cloudflare Registrar.
-  /// [canRegister] Indicates if the domain can be registered as a new domain.
+  /// [canRegister] Indicates eligibility to register the domain as a new domain.
   /// [createdAt] Shows time of creation.
   /// [currentRegistrar] Shows name of current registrar.
   /// [expiresAt] Shows when domain name registration expires.
   /// [id] Domain identifier.
   /// [locked] Shows whether a registrar lock is in place for a domain.
   /// [registrantContact] Shows contact information for domain registrant.
-  /// [registryStatuses] A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
-  /// [supportedTld] Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
+  /// [registryStatuses] A comma-separated list of registry status codes. Refer to [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en) for the full list.
+  /// [supportedTld] Indicates whether Cloudflare Registrar currently supports a particular TLD. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs.
   /// [transferIn] Statuses for domain transfers into Cloudflare Registrar.
   /// [updatedAt] Last updated.
   const GetRegistrarDomainsResult({

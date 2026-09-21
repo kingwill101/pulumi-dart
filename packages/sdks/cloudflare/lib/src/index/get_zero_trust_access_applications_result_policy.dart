@@ -116,7 +116,7 @@ class GetZeroTrustAccessApplicationsResultPolicy {
       isolationRequired: pulumi.Input.fromValue(map['isolationRequired'] as bool),
       mfaConfig: pulumi.Input.fromValue(GetZeroTrustAccessApplicationsResultPolicyMfaConfig.fromMap((map['mfaConfig']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
-      precedence: pulumi.Input.fromValue((map['precedence'] as num).toInt()),
+      precedence: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['precedence'])),
       purposeJustificationPrompt: pulumi.Input.fromValue(map['purposeJustificationPrompt'] as String),
       purposeJustificationRequired: pulumi.Input.fromValue(map['purposeJustificationRequired'] as bool),
       requires: pulumi.Input.fromValue(pulumi.Input.decodeList<GetZeroTrustAccessApplicationsResultPolicyRequire>(map['requires']!, (value) => GetZeroTrustAccessApplicationsResultPolicyRequire.fromMap((value as Map).cast<String, dynamic>()))),

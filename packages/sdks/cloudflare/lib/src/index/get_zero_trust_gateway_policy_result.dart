@@ -143,7 +143,7 @@ class GetZeroTrustGatewayPolicyResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      precedence: (() { final guardedValue = map['precedence']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      precedence: (() { final guardedValue = map['precedence']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       ruleId: (() { final guardedValue = map['ruleId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ruleSettings: (() { final guardedValue = map['ruleSettings']; if (guardedValue == null) return null; return GetZeroTrustGatewayPolicyRuleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
@@ -152,7 +152,7 @@ class GetZeroTrustGatewayPolicyResult {
       sourceAccount: (() { final guardedValue = map['sourceAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
       traffic: (() { final guardedValue = map['traffic']; if (guardedValue == null) return null; return guardedValue as String; })(),
       updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       warningStatus: (() { final guardedValue = map['warningStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

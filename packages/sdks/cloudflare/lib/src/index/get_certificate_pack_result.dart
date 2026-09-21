@@ -119,7 +119,7 @@ class GetCertificatePackResult {
       validationErrors: (() { final guardedValue = map['validationErrors']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCertificatePackValidationError>(guardedValue, (value) => GetCertificatePackValidationError.fromMap((value as Map).cast<String, dynamic>())); })(),
       validationMethod: (() { final guardedValue = map['validationMethod']; if (guardedValue == null) return null; return guardedValue as String; })(),
       validationRecords: (() { final guardedValue = map['validationRecords']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCertificatePackValidationRecord>(guardedValue, (value) => GetCertificatePackValidationRecord.fromMap((value as Map).cast<String, dynamic>())); })(),
-      validityDays: (() { final guardedValue = map['validityDays']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      validityDays: (() { final guardedValue = map['validityDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

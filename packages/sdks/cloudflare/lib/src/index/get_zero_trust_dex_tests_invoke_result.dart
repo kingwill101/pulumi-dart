@@ -45,7 +45,7 @@ class GetZeroTrustDexTestsInvokeResult {
     return GetZeroTrustDexTestsInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustDexTestsResult>(guardedValue, (value) => GetZeroTrustDexTestsResult.fromMap((value as Map).cast<String, dynamic>())); })(),
       testName: (() { final guardedValue = map['testName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

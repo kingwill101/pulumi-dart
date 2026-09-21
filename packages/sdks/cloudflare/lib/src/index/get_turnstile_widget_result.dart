@@ -15,11 +15,6 @@ class GetTurnstileWidgetResult {
   final String? clearanceLevel;
   /// When the widget was created.
   final String? createdOn;
-  /// Origin that created this widget, recorded at creation time and
-  /// immutable afterward. Server-derived from the create request; not
-  /// client-settable. Omitted from the response for widgets created
-  /// before this field existed.
-  /// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
   final String? deployedVia;
   final List<String>? domains;
   /// Return the Ephemeral ID in /siteverify (ENT only).
@@ -27,10 +22,6 @@ class GetTurnstileWidgetResult {
   final GetTurnstileWidgetFilter? filter;
   /// Widget item identifier tag.
   final String? id;
-  /// Origin of the most recent mutation (create, update, delete, or
-  /// secret rotation). Server-derived; not client-settable. Omitted for
-  /// widgets last mutated before this field existed.
-  /// Available values: "wrangler", "dashboard", "spin", "api", "unknown".
   final String? lastModifiedVia;
   /// Widget Mode
   /// Available values: "non-interactive", "invisible", "managed".
@@ -56,12 +47,12 @@ class GetTurnstileWidgetResult {
   /// [botFightMode] If bot*fight*mode is set to `true`, Cloudflare issues computationally
   /// [clearanceLevel] If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
   /// [createdOn] When the widget was created.
-  /// [deployedVia] Origin that created this widget, recorded at creation time and
+  /// [deployedVia] Optional.
   /// [domains] Optional.
   /// [ephemeralId] Return the Ephemeral ID in /siteverify (ENT only).
   /// [filter] Optional.
   /// [id] Widget item identifier tag.
-  /// [lastModifiedVia] Origin of the most recent mutation (create, update, delete, or
+  /// [lastModifiedVia] Optional.
   /// [mode] Widget Mode
   /// [modifiedOn] When the widget was modified.
   /// [name] Human readable widget name. Not unique. Cloudflare suggests that you

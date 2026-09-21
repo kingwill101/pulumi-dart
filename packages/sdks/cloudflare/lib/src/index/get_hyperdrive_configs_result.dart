@@ -68,7 +68,7 @@ class GetHyperdriveConfigsResult {
       mtls: pulumi.Input.fromValue(GetHyperdriveConfigsResultMtls.fromMap((map['mtls']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
       origin: pulumi.Input.fromValue(GetHyperdriveConfigsResultOrigin.fromMap((map['origin']! as Map).cast<String, dynamic>())),
-      originConnectionLimit: pulumi.Input.fromValue((map['originConnectionLimit'] as num).toInt()),
+      originConnectionLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['originConnectionLimit'])),
       restartedOn: pulumi.Input.fromValue(map['restartedOn'] as String),
     );
   }

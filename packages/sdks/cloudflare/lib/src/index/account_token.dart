@@ -365,7 +365,7 @@ class AccountToken extends pulumi.CustomResource {
           'cloudflare:index/accountToken:AccountToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.21.0').merge(options),
           additionalSecretOutputs: const ['value'],
         ) {
     accountId = registerOutput<String>('accountId');

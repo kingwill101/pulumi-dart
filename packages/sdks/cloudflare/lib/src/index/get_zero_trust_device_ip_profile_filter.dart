@@ -20,7 +20,7 @@ class GetZeroTrustDeviceIpProfileFilter {
 
   factory GetZeroTrustDeviceIpProfileFilter.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustDeviceIpProfileFilter(
-      perPage: pulumi.Input.fromValue((map['perPage'] as num).toInt()),
+      perPage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['perPage'])),
     );
   }
 }

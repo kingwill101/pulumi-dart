@@ -35,12 +35,19 @@ class ZeroTrustAccessIdentityProviderConfig {
   /// Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
   /// SAML assertions using the certificate from the assigned certificate set.
   final pulumi.Input<bool?>? enableEncryption;
+  /// Asks the IdP to reauthenticate the user for each SAML authentication request.
+  final pulumi.Input<bool?>? forceAuthn;
   /// Add a list of attribute names that will be returned in the response header from the Access callback.
   final pulumi.Input<List<ZeroTrustAccessIdentityProviderConfigHeaderAttribute>?>? headerAttributes;
   /// X509 certificate to verify the signature in the SAML authentication response
   final pulumi.Input<List<String>?>? idpPublicCerts;
   /// IdP Entity ID or Issuer URL
   final pulumi.Input<String?>? issuerUrl;
+  /// The maximum URL length the IdP accepts for the SSO redirect URL.
+  /// When the constructed SSO URL would exceed this length, the RelayState
+  /// is stored server-side and a short nonce is passed to the IdP instead.
+  /// Set this if your IdP enforces a URL length limit.
+  final pulumi.Input<int?>? maxSsoUrlLength;
   /// Your okta account url
   final pulumi.Input<String?>? oktaAccount;
   /// Your OneLogin account url
@@ -82,9 +89,11 @@ class ZeroTrustAccessIdentityProviderConfig {
   /// [emailAttributeName] The attribute name for email in the SAML response.
   /// [emailClaimName] The claim name for email in the idToken response.
   /// [enableEncryption] Enable SAML assertion encryption. When enabled, the Identity Provider will encrypt
+  /// [forceAuthn] Asks the IdP to reauthenticate the user for each SAML authentication request.
   /// [headerAttributes] Add a list of attribute names that will be returned in the response header from the Access callback.
   /// [idpPublicCerts] X509 certificate to verify the signature in the SAML authentication response
   /// [issuerUrl] IdP Entity ID or Issuer URL
+  /// [maxSsoUrlLength] The maximum URL length the IdP accepts for the SSO redirect URL.
   /// [oktaAccount] Your okta account url
   /// [oneloginAccount] Your OneLogin account url
   /// [pingEnvId] Your PingOne environment identifier
@@ -113,9 +122,11 @@ class ZeroTrustAccessIdentityProviderConfig {
     this.emailAttributeName,
     this.emailClaimName,
     this.enableEncryption,
+    this.forceAuthn,
     this.headerAttributes,
     this.idpPublicCerts,
     this.issuerUrl,
+    this.maxSsoUrlLength,
     this.oktaAccount,
     this.oneloginAccount,
     this.pingEnvId,
@@ -147,9 +158,11 @@ class ZeroTrustAccessIdentityProviderConfig {
       'emailAttributeName': ?emailAttributeName,
       'emailClaimName': ?emailClaimName,
       'enableEncryption': ?enableEncryption,
+      'forceAuthn': ?forceAuthn,
       'headerAttributes': ?pulumi.Input.mapOptionalInputValue<List<ZeroTrustAccessIdentityProviderConfigHeaderAttribute>, List<Map<String, dynamic>>>(headerAttributes, (value) => pulumi.Input.encodeList<ZeroTrustAccessIdentityProviderConfigHeaderAttribute, Map<String, dynamic>>(value, (value) => value.toMap())),
       'idpPublicCerts': ?idpPublicCerts,
       'issuerUrl': ?issuerUrl,
+      'maxSsoUrlLength': ?maxSsoUrlLength,
       'oktaAccount': ?oktaAccount,
       'oneloginAccount': ?oneloginAccount,
       'pingEnvId': ?pingEnvId,
@@ -182,9 +195,11 @@ class ZeroTrustAccessIdentityProviderConfig {
       emailAttributeName: (() { final guardedValue = map['emailAttributeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       emailClaimName: (() { final guardedValue = map['emailClaimName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableEncryption: (() { final guardedValue = map['enableEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      forceAuthn: (() { final guardedValue = map['forceAuthn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       headerAttributes: (() { final guardedValue = map['headerAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ZeroTrustAccessIdentityProviderConfigHeaderAttribute>(guardedValue, (value) => ZeroTrustAccessIdentityProviderConfigHeaderAttribute.fromMap((value as Map).cast<String, dynamic>()))); })(),
       idpPublicCerts: (() { final guardedValue = map['idpPublicCerts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       issuerUrl: (() { final guardedValue = map['issuerUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxSsoUrlLength: (() { final guardedValue = map['maxSsoUrlLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       oktaAccount: (() { final guardedValue = map['oktaAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       oneloginAccount: (() { final guardedValue = map['oneloginAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pingEnvId: (() { final guardedValue = map['pingEnvId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

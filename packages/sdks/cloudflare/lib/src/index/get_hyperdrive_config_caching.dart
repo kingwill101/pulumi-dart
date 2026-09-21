@@ -31,8 +31,8 @@ class GetHyperdriveConfigCaching {
   factory GetHyperdriveConfigCaching.fromMap(Map<String, dynamic> map) {
     return GetHyperdriveConfigCaching(
       disabled: pulumi.Input.fromValue(map['disabled'] as bool),
-      maxAge: pulumi.Input.fromValue((map['maxAge'] as num).toInt()),
-      staleWhileRevalidate: pulumi.Input.fromValue((map['staleWhileRevalidate'] as num).toInt()),
+      maxAge: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxAge'])),
+      staleWhileRevalidate: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['staleWhileRevalidate'])),
     );
   }
 }

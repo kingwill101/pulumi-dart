@@ -50,12 +50,12 @@ class GetZoneMeta {
   factory GetZoneMeta.fromMap(Map<String, dynamic> map) {
     return GetZoneMeta(
       cdnOnly: pulumi.Input.fromValue(map['cdnOnly'] as bool),
-      customCertificateQuota: pulumi.Input.fromValue((map['customCertificateQuota'] as num).toInt()),
+      customCertificateQuota: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['customCertificateQuota'])),
       dnsOnly: pulumi.Input.fromValue(map['dnsOnly'] as bool),
       foundationDns: pulumi.Input.fromValue(map['foundationDns'] as bool),
-      pageRuleQuota: pulumi.Input.fromValue((map['pageRuleQuota'] as num).toInt()),
+      pageRuleQuota: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['pageRuleQuota'])),
       phishingDetected: pulumi.Input.fromValue(map['phishingDetected'] as bool),
-      step: pulumi.Input.fromValue((map['step'] as num).toInt()),
+      step: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['step'])),
     );
   }
 }

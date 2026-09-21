@@ -7,17 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_registrar_domain_get_registrar_domain_args_doc}
 class GetRegistrarDomainArgs {
-  /// Identifier
+  /// Identifier.
   final pulumi.Input<String> accountId;
-  /// Fully qualified domain name (FQDN) including the extension
-  /// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-  /// identifies a registration — the same domain cannot be registered
-  /// twice, making it a natural idempotency key for registration requests.
+  /// Provides a fully qualified domain name (FQDN), including the extension
+  /// (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+  /// a registration. Cloudflare permits only one registration per domain, making
+  /// the domain name a natural idempotency key for registration requests.
   final pulumi.Input<String> domainName;
 
   /// Creates a new [GetRegistrarDomainArgs].
-  /// [accountId] Identifier
-  /// [domainName] Fully qualified domain name (FQDN) including the extension
+  /// [accountId] Identifier.
+  /// [domainName] Provides a fully qualified domain name (FQDN), including the extension
   const GetRegistrarDomainArgs({
     required this.accountId,
     required this.domainName,
