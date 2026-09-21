@@ -945,7 +945,7 @@ class AgentAgentActionGroup extends pulumi.CustomResource {
           'aws:bedrock/agentAgentActionGroup:AgentAgentActionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     actionGroupExecutor = registerOutput<AgentAgentActionGroupActionGroupExecutor?>('actionGroupExecutor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupActionGroupExecutor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     actionGroupId = registerOutput<String>('actionGroupId');

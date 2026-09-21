@@ -585,10 +585,23 @@ import 'alias_state.dart';
 ///
 /// ## Import
 ///
-/// For backwards compatibility, the following legacy `pulumi import` command is also supported:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `functionName` (String) Name or ARN of the Lambda function.
+/// * `name` (String) Name of the alias.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Lambda Function Aliases using `function_name/alias`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:lambda/alias:Alias example example/production
+/// $ pulumi import aws:lambda/alias:Alias example example-function/production
 /// ```
 class Alias extends pulumi.CustomResource {
   /// ARN identifying your Lambda function alias.
@@ -622,7 +635,7 @@ class Alias extends pulumi.CustomResource {
           'aws:lambda/alias:Alias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

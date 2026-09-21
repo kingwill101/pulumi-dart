@@ -395,7 +395,7 @@ class DetectorFeature extends pulumi.CustomResource {
           'aws:guardduty/detectorFeature:DetectorFeature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     additionalConfigurations = registerOutput<List<DetectorFeatureAdditionalConfiguration>?>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DetectorFeatureAdditionalConfiguration>(guardedValue, (value) => DetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     detectorId = registerOutput<String>('detectorId');

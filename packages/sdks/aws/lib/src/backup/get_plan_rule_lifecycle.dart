@@ -27,8 +27,8 @@ class GetPlanRuleLifecycle {
 
   factory GetPlanRuleLifecycle.fromMap(Map<String, dynamic> map) {
     return GetPlanRuleLifecycle(
-      coldStorageAfter: pulumi.Input.fromValue((map['coldStorageAfter'] as num).toInt()),
-      deleteAfter: pulumi.Input.fromValue((map['deleteAfter'] as num).toInt()),
+      coldStorageAfter: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['coldStorageAfter'])),
+      deleteAfter: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['deleteAfter'])),
       optInToArchiveForSupportedResources: pulumi.Input.fromValue(map['optInToArchiveForSupportedResources'] as bool),
     );
   }

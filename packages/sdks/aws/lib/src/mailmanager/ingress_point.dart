@@ -487,6 +487,8 @@ class IngressPoint extends pulumi.CustomResource {
   late final pulumi.Output<String> ruleSetId;
   /// Status of the ingress point.
   late final pulumi.Output<String> status;
+  /// Status to apply to the ingress point. Valid values are `ACTIVE` and `CLOSED`.
+  late final pulumi.Output<String?> statusToUpdate;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -513,7 +515,7 @@ class IngressPoint extends pulumi.CustomResource {
           'aws:mailmanager/ingressPoint:IngressPoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     aRecord = registerOutput<String>('aRecord');
     arn = registerOutput<String>('arn');
@@ -525,6 +527,7 @@ class IngressPoint extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     ruleSetId = registerOutput<String>('ruleSetId');
     status = registerOutput<String>('status');
+    statusToUpdate = registerOutput<String?>('statusToUpdate');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<IngressPointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngressPointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -567,6 +570,7 @@ class IngressPoint extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     ruleSetId = registerOutput<String>('ruleSetId');
     status = registerOutput<String>('status');
+    statusToUpdate = registerOutput<String?>('statusToUpdate');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<IngressPointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngressPointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -594,6 +598,7 @@ class IngressPoint extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     ruleSetId = registerOutput<String>('ruleSetId');
     status = registerOutput<String>('status');
+    statusToUpdate = registerOutput<String?>('statusToUpdate');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeouts = registerOutput<IngressPointTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngressPointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

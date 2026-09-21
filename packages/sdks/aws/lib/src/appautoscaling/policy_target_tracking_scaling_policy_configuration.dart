@@ -50,8 +50,8 @@ class PolicyTargetTrackingScalingPolicyConfiguration {
       customizedMetricSpecification: (() { final guardedValue = map['customizedMetricSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       disableScaleIn: (() { final guardedValue = map['disableScaleIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       predefinedMetricSpecification: (() { final guardedValue = map['predefinedMetricSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      scaleInCooldown: (() { final guardedValue = map['scaleInCooldown']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      scaleOutCooldown: (() { final guardedValue = map['scaleOutCooldown']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      scaleInCooldown: (() { final guardedValue = map['scaleInCooldown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      scaleOutCooldown: (() { final guardedValue = map['scaleOutCooldown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetValue: pulumi.Input.fromValue((map['targetValue'] as num).toDouble()),
     );
   }

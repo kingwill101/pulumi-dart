@@ -12,8 +12,10 @@ class BgpPeerArgs {
   /// The IPv4 CIDR address to use to send traffic to Amazon.
   /// Required for IPv4 BGP peers on public virtual interfaces.
   final pulumi.Input<String?>? amazonAddress;
-  /// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-  final pulumi.Input<int> bgpAsn;
+  /// BGP autonomous system number as an integer between `1` and `2147483646`. For larger values, use `bgpAsnLong`. Exactly one of `bgpAsn` or `bgpAsnLong` must be specified.
+  final pulumi.Input<int?>? bgpAsn;
+  /// BGP autonomous system number as an asplain decimal string between `1` and `4294967294`. This argument also accepts values in the `bgpAsn` range. Exactly one of `bgpAsn` or `bgpAsnLong` must be specified.
+  final pulumi.Input<String?>? bgpAsnLong;
   /// The authentication key for BGP configuration.
   final pulumi.Input<String?>? bgpAuthKey;
   /// The IPv4 CIDR destination address to which Amazon should send traffic.
@@ -27,7 +29,8 @@ class BgpPeerArgs {
   /// Creates a new [BgpPeerArgs].
   /// [addressFamily] The address family for the BGP peer. `ipv4 ` or `ipv6`.
   /// [amazonAddress] The IPv4 CIDR address to use to send traffic to Amazon.
-  /// [bgpAsn] The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
+  /// [bgpAsn] BGP autonomous system number as an integer between `1` and `2147483646`. For larger values, use `bgpAsnLong`. Exactly one of `bgpAsn` or `bgpAsnLong` must be specified.
+  /// [bgpAsnLong] BGP autonomous system number as an asplain decimal string between `1` and `4294967294`. This argument also accepts values in the `bgpAsn` range. Exactly one of `bgpAsn` or `bgpAsnLong` must be specified.
   /// [bgpAuthKey] The authentication key for BGP configuration.
   /// [customerAddress] The IPv4 CIDR destination address to which Amazon should send traffic.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -35,7 +38,8 @@ class BgpPeerArgs {
   const BgpPeerArgs({
     required this.addressFamily,
     this.amazonAddress,
-    required this.bgpAsn,
+    this.bgpAsn,
+    this.bgpAsnLong,
     this.bgpAuthKey,
     this.customerAddress,
     this.region,
@@ -46,7 +50,8 @@ class BgpPeerArgs {
     return <String, dynamic>{
       'addressFamily': addressFamily,
       'amazonAddress': ?amazonAddress,
-      'bgpAsn': bgpAsn,
+      'bgpAsn': ?bgpAsn,
+      'bgpAsnLong': ?bgpAsnLong,
       'bgpAuthKey': ?bgpAuthKey,
       'customerAddress': ?customerAddress,
       'region': ?region,
@@ -58,7 +63,8 @@ class BgpPeerArgs {
     return BgpPeerArgs(
       addressFamily: pulumi.Input.fromValue(map['addressFamily'] as String),
       amazonAddress: (() { final guardedValue = map['amazonAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      bgpAsn: pulumi.Input.fromValue((map['bgpAsn'] as num).toInt()),
+      bgpAsn: (() { final guardedValue = map['bgpAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      bgpAsnLong: (() { final guardedValue = map['bgpAsnLong']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bgpAuthKey: (() { final guardedValue = map['bgpAuthKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customerAddress: (() { final guardedValue = map['customerAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

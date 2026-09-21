@@ -290,7 +290,7 @@ class Package extends pulumi.CustomResource {
           'aws:opensearch/package:Package',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     availablePackageVersion = registerOutput<String>('availablePackageVersion');
     engineVersion = registerOutput<String?>('engineVersion');

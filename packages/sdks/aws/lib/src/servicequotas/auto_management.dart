@@ -227,7 +227,7 @@ class AutoManagement extends pulumi.CustomResource {
           'aws:servicequotas/autoManagement:AutoManagement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     exclusionList = registerOutput<Map<String, List<String>>?>('exclusionList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
     notificationArn = registerOutput<String?>('notificationArn');

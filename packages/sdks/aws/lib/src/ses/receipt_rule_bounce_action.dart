@@ -46,7 +46,7 @@ class ReceiptRuleBounceAction {
   factory ReceiptRuleBounceAction.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleBounceAction(
       message: pulumi.Input.fromValue(map['message'] as String),
-      position: pulumi.Input.fromValue((map['position'] as num).toInt()),
+      position: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['position'])),
       sender: pulumi.Input.fromValue(map['sender'] as String),
       smtpReplyCode: pulumi.Input.fromValue(map['smtpReplyCode'] as String),
       statusCode: (() { final guardedValue = map['statusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

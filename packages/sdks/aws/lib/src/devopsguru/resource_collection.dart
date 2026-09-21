@@ -581,7 +581,7 @@ class ResourceCollection extends pulumi.CustomResource {
           'aws:devopsguru/resourceCollection:ResourceCollection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     cloudformation = registerOutput<ResourceCollectionCloudformation?>('cloudformation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceCollectionCloudformation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

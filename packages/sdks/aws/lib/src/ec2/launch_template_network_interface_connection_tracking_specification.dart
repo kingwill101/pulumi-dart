@@ -30,9 +30,9 @@ class LaunchTemplateNetworkInterfaceConnectionTrackingSpecification {
 
   factory LaunchTemplateNetworkInterfaceConnectionTrackingSpecification.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateNetworkInterfaceConnectionTrackingSpecification(
-      tcpEstablishedTimeout: (() { final guardedValue = map['tcpEstablishedTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      udpStreamTimeout: (() { final guardedValue = map['udpStreamTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      udpTimeout: (() { final guardedValue = map['udpTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tcpEstablishedTimeout: (() { final guardedValue = map['tcpEstablishedTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      udpStreamTimeout: (() { final guardedValue = map['udpStreamTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      udpTimeout: (() { final guardedValue = map['udpTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

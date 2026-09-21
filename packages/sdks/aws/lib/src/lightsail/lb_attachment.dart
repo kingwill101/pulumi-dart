@@ -329,7 +329,7 @@ class LbAttachment extends pulumi.CustomResource {
           'aws:lightsail/lbAttachment:LbAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     instanceName = registerOutput<String>('instanceName');
     lbName = registerOutput<String>('lbName');

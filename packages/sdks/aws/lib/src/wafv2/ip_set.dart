@@ -182,6 +182,20 @@ import 'ip_set_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) Unique identifier for the IP set.
+/// * `name` (String) Name of the IP set.
+/// * `scope` (String) Whether this is for a global (`CLOUDFRONT`) or regional (`REGIONAL`) application.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import WAFv2 IP Sets using `ID/name/scope`. For example:
 ///
 /// ```sh
@@ -222,7 +236,7 @@ class IpSet extends pulumi.CustomResource {
           'aws:wafv2/ipSet:IpSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     addresses = registerOutput<List<String>?>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');

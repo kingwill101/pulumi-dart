@@ -291,7 +291,7 @@ class LogDeliveryDestination extends pulumi.CustomResource {
           'aws:cloudwatch/logDeliveryDestination:LogDeliveryDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deliveryDestinationConfiguration = registerOutput<LogDeliveryDestinationDeliveryDestinationConfiguration?>('deliveryDestinationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogDeliveryDestinationDeliveryDestinationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

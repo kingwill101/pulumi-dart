@@ -71,7 +71,7 @@ class AutomationRuleArgs {
       isTerminal: (() { final guardedValue = map['isTerminal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
-      ruleOrder: pulumi.Input.fromValue((map['ruleOrder'] as num).toInt()),
+      ruleOrder: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ruleOrder'])),
       ruleStatus: (() { final guardedValue = map['ruleStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

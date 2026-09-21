@@ -38,7 +38,7 @@ class CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchema {
     return CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchema(
       fields: pulumi.Input.fromValue(pulumi.Input.decodeList<CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaField>(map['fields']!, (value) => CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaField.fromMap((value as Map).cast<String, dynamic>()))),
       identifierFieldIds: (() { final guardedValue = map['identifierFieldIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
-      schemaId: (() { final guardedValue = map['schemaId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      schemaId: (() { final guardedValue = map['schemaId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

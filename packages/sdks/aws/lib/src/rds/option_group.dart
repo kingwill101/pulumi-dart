@@ -293,9 +293,9 @@ import 'option_group_state.dart';
 class OptionGroup extends pulumi.CustomResource {
   /// ARN of the DB option group.
   late final pulumi.Output<String> arn;
-  /// Specifies the name of the engine that this option group should be associated with.
+  /// Name of the engine that this option group should be associated with.
   late final pulumi.Output<String> engineName;
-  /// Specifies the major version of the engine that this option group should be associated with.
+  /// Major version of the engine that this option group should be associated with.
   late final pulumi.Output<String> majorEngineVersion;
   /// Name of the option group. If omitted, the provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
   late final pulumi.Output<String> name;
@@ -303,7 +303,7 @@ class OptionGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> namePrefix;
   /// Description of the option group. Defaults to "Managed by Pulumi".
   late final pulumi.Output<String> optionGroupDescription;
-  /// The options to apply. See `option` Block below for more details.
+  /// Options to apply. See `option` Block below for more details.
   late final pulumi.Output<List<OptionGroupOption>?> options;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -326,7 +326,7 @@ class OptionGroup extends pulumi.CustomResource {
           'aws:rds/optionGroup:OptionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     engineName = registerOutput<String>('engineName');

@@ -62,11 +62,11 @@ class CloudExadataInfrastructureMaintenanceWindow {
 
   factory CloudExadataInfrastructureMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return CloudExadataInfrastructureMaintenanceWindow(
-      customActionTimeoutInMins: pulumi.Input.fromValue((map['customActionTimeoutInMins'] as num).toInt()),
+      customActionTimeoutInMins: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['customActionTimeoutInMins'])),
       daysOfWeeks: (() { final guardedValue = map['daysOfWeeks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CloudExadataInfrastructureMaintenanceWindowDaysOfWeek>(guardedValue, (value) => CloudExadataInfrastructureMaintenanceWindowDaysOfWeek.fromMap((value as Map).cast<String, dynamic>()))); })(),
       hoursOfDays: (() { final guardedValue = map['hoursOfDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
       isCustomActionTimeoutEnabled: pulumi.Input.fromValue(map['isCustomActionTimeoutEnabled'] as bool),
-      leadTimeInWeeks: (() { final guardedValue = map['leadTimeInWeeks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      leadTimeInWeeks: (() { final guardedValue = map['leadTimeInWeeks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       months: (() { final guardedValue = map['months']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CloudExadataInfrastructureMaintenanceWindowMonth>(guardedValue, (value) => CloudExadataInfrastructureMaintenanceWindowMonth.fromMap((value as Map).cast<String, dynamic>()))); })(),
       patchingMode: pulumi.Input.fromValue(map['patchingMode'] as String),
       preference: pulumi.Input.fromValue(map['preference'] as String),

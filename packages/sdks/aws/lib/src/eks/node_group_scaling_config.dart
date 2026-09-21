@@ -30,9 +30,9 @@ class NodeGroupScalingConfig {
 
   factory NodeGroupScalingConfig.fromMap(Map<String, dynamic> map) {
     return NodeGroupScalingConfig(
-      desiredSize: pulumi.Input.fromValue((map['desiredSize'] as num).toInt()),
-      maxSize: pulumi.Input.fromValue((map['maxSize'] as num).toInt()),
-      minSize: pulumi.Input.fromValue((map['minSize'] as num).toInt()),
+      desiredSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['desiredSize'])),
+      maxSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxSize'])),
+      minSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minSize'])),
     );
   }
 }

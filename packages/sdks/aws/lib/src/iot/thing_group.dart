@@ -261,7 +261,7 @@ class ThingGroup extends pulumi.CustomResource {
           'aws:iot/thingGroup:ThingGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     metadatas = registerOutput<List<ThingGroupMetadata>>('metadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThingGroupMetadata>(guardedValue, (value) => ThingGroupMetadata.fromMap((value as Map).cast<String, dynamic>())); });

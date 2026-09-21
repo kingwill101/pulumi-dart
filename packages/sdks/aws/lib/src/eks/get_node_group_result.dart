@@ -138,7 +138,7 @@ class GetNodeGroupResult {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       capacityType: (() { final guardedValue = map['capacityType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       clusterName: (() { final guardedValue = map['clusterName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      diskSize: (() { final guardedValue = map['diskSize']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      diskSize: (() { final guardedValue = map['diskSize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       instanceTypes: (() { final guardedValue = map['instanceTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),

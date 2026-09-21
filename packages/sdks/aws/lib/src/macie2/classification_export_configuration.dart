@@ -201,7 +201,7 @@ class ClassificationExportConfiguration extends pulumi.CustomResource {
           'aws:macie2/classificationExportConfiguration:ClassificationExportConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     s3Destination = registerOutput<ClassificationExportConfigurationS3Destination>('s3Destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassificationExportConfigurationS3Destination.fromMap((guardedValue as Map).cast<String, dynamic>()); });

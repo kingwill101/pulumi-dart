@@ -252,7 +252,7 @@ class Scope extends pulumi.CustomResource {
           'aws:networkflowmonitor/scope:Scope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     scopeArn = registerOutput<String>('scopeArn');

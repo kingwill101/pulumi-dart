@@ -354,7 +354,7 @@ class AutomationRule extends pulumi.CustomResource {
           'aws:securityhub/automationRule:AutomationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     actions = registerOutput<List<AutomationRuleAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleAction>(guardedValue, (value) => AutomationRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

@@ -742,7 +742,7 @@ class S3Endpoint extends pulumi.CustomResource {
           'aws:dms/s3Endpoint:S3Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     addColumnName = registerOutput<bool?>('addColumnName');
     addTrailingPaddingCharacter = registerOutput<bool?>('addTrailingPaddingCharacter');

@@ -753,43 +753,43 @@ import 'custom_db_engine_version_state.dart';
 class CustomDbEngineVersion extends pulumi.CustomResource {
   /// ARN for the custom engine version.
   late final pulumi.Output<String> arn;
-  /// The date and time that the CEV was created.
+  /// Date and time that the CEV was created.
   late final pulumi.Output<String> createTime;
-  /// The name of the Amazon S3 bucket that contains the database installation files.
+  /// Name of the Amazon S3 bucket that contains the database installation files.
   late final pulumi.Output<String?> databaseInstallationFilesS3BucketName;
-  /// The prefix for the Amazon S3 bucket that contains the database installation files.
+  /// Prefix for the Amazon S3 bucket that contains the database installation files.
   late final pulumi.Output<String?> databaseInstallationFilesS3Prefix;
-  /// The name of the DB parameter group family for the CEV.
+  /// Name of the DB parameter group family for the CEV.
   late final pulumi.Output<String> dbParameterGroupFamily;
-  /// The description of the CEV.
+  /// Description of the CEV.
   late final pulumi.Output<String?> description;
-  /// The name of the database engine. Valid values are `custom-oracle*`, `custom-sqlserver*`.
+  /// Name of the database engine. Valid values are `custom-oracle*`, `custom-sqlserver*`.
   late final pulumi.Output<String> engine;
-  /// The version of the database engine.
+  /// Version of the database engine.
   late final pulumi.Output<String> engineVersion;
-  /// The name of the manifest file within the local filesystem. Conflicts with `manifest`.
+  /// Name of the manifest file within the local filesystem. Conflicts with `manifest`.
   late final pulumi.Output<String?> filename;
-  /// The ID of the AMI that was created with the CEV.
+  /// ID of the AMI that was created with the CEV.
   late final pulumi.Output<String> imageId;
-  /// The ARN of the AWS KMS key that is used to encrypt the database installation files. Required for RDS Custom for Oracle.
+  /// ARN of the AWS KMS key that is used to encrypt the database installation files. Required for RDS Custom for Oracle.
   late final pulumi.Output<String> kmsKeyId;
-  /// The major version of the database engine.
+  /// Major version of the database engine.
   late final pulumi.Output<String> majorEngineVersion;
-  /// The manifest file, in JSON format, that contains the list of database installation files. Conflicts with `filename`.
+  /// Manifest file, in JSON format, that contains the list of database installation files. Conflicts with `filename`.
   late final pulumi.Output<String?> manifest;
-  /// The returned manifest file, in JSON format, service generated and often different from input `manifest`.
+  /// Returned manifest file, in JSON format, service generated and often different from input `manifest`.
   late final pulumi.Output<String> manifestComputed;
-  /// Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the manifest source specified with `filename`. The usual way to set this is filebase64sha256("manifest.json") where "manifest.json" is the local filename of the manifest source.
+  /// Triggers updates. Must be set to a base64-encoded SHA256 hash of the manifest source specified with `filename`. The usual way to set this is filebase64sha256("manifest.json") where "manifest.json" is the local filename of the manifest source.
   late final pulumi.Output<String?> manifestHash;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The ID of the AMI to create the CEV from. Required for RDS Custom for SQL Server. For RDS Custom for Oracle, you can specify an AMI ID that was used in a different Oracle CEV.
+  /// ID of the AMI to create the CEV from. Required for RDS Custom for SQL Server. For RDS Custom for Oracle, you can specify an AMI ID that was used in a different Oracle CEV.
   late final pulumi.Output<String?> sourceImageId;
-  /// The status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
+  /// Status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
   late final pulumi.Output<String> status;
-  /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [CustomDbEngineVersion].
@@ -804,7 +804,7 @@ class CustomDbEngineVersion extends pulumi.CustomResource {
           'aws:rds/customDbEngineVersion:CustomDbEngineVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createTime = registerOutput<String>('createTime');

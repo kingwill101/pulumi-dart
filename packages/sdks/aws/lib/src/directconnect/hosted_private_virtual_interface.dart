@@ -143,6 +143,8 @@ import 'hosted_private_virtual_interface_state.dart';
 /// ```sh
 /// $ pulumi import aws:directconnect/hostedPrivateVirtualInterface:HostedPrivateVirtualInterface test dxvif-33cc44dd
 /// ```
+///
+/// &gt; **Note:** When a virtual interface uses an ASN in the `bgpAsn` range (`1` to `2147483646`), AWS returns the value in both the `asn` and `asnLong` API fields, so import always populates `bgpAsn` rather than `bgpAsnLong`. If the virtual interface was originally created with `bgpAsnLong` set to a value in that range, update your configuration to use `bgpAsn` after import to avoid a difference. Virtual interfaces using a 4-byte ASN (greater than `2147483646`) import into `bgpAsnLong` as expected.
 class HostedPrivateVirtualInterface extends pulumi.CustomResource {
   /// The address family for the BGP peer. `ipv4 ` or `ipv6`.
   late final pulumi.Output<String> addressFamily;
@@ -153,8 +155,10 @@ class HostedPrivateVirtualInterface extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The Direct Connect endpoint on which the virtual interface terminates.
   late final pulumi.Output<String> awsDevice;
-  /// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-  late final pulumi.Output<int> bgpAsn;
+  /// BGP autonomous system number as an integer between `1` and `2147483646`. For larger values, use `bgpAsnLong`. Exactly one of `bgpAsn` or `bgpAsnLong` must be specified.
+  late final pulumi.Output<int?> bgpAsn;
+  /// BGP autonomous system number as an asplain decimal string between `1` and `4294967294`. This argument also accepts values in the `bgpAsn` range. Exactly one of `bgpAsn` or `bgpAsnLong` must be specified.
+  late final pulumi.Output<String?> bgpAsnLong;
   /// The authentication key for BGP configuration.
   late final pulumi.Output<String> bgpAuthKey;
   /// The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
@@ -169,6 +173,12 @@ class HostedPrivateVirtualInterface extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The AWS account that will own the new virtual interface.
   late final pulumi.Output<String> ownerAccountId;
+  /// The number of inbound IPv4 route prefixes allocated to the virtual interface.
+  late final pulumi.Output<int> prefixPoolAllocatedCountIpv4;
+  /// The number of inbound IPv6 route prefixes allocated to the virtual interface.
+  late final pulumi.Output<int> prefixPoolAllocatedCountIpv6;
+  /// Maximum bandwidth allocation for the virtual interface, restricting the bandwidth it can use on the parent connection. Specify a supported bandwidth value without a space (for example, `50Mbps`, `1Gbps`, or `10Gbps`); the value cannot exceed the bandwidth of the parent connection or link aggregation group (LAG), and supported values range up to `1.6Tbps`. See the [VIF Rate Limiters documentation](https://docs.aws.amazon.com/directconnect/latest/UserGuide/vif-rate-limiters.html) for the full list of supported values. Changing this forces a new resource to be created. Rate Limiters are supported only on Direct Connect dedicated connections (including LAGs); they are not supported on hosted connections.
+  late final pulumi.Output<String> rateLimit;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// The VLAN ID.
@@ -186,14 +196,15 @@ class HostedPrivateVirtualInterface extends pulumi.CustomResource {
           'aws:directconnect/hostedPrivateVirtualInterface:HostedPrivateVirtualInterface',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');
     amazonSideAsn = registerOutput<String>('amazonSideAsn');
     arn = registerOutput<String>('arn');
     awsDevice = registerOutput<String>('awsDevice');
-    bgpAsn = registerOutput<int>('bgpAsn');
+    bgpAsn = registerOutput<int?>('bgpAsn');
+    bgpAsnLong = registerOutput<String?>('bgpAsnLong');
     bgpAuthKey = registerOutput<String>('bgpAuthKey');
     connectionId = registerOutput<String>('connectionId');
     customerAddress = registerOutput<String>('customerAddress');
@@ -201,6 +212,9 @@ class HostedPrivateVirtualInterface extends pulumi.CustomResource {
     mtu = registerOutput<int?>('mtu');
     this.name = registerOutput<String>('name');
     ownerAccountId = registerOutput<String>('ownerAccountId');
+    prefixPoolAllocatedCountIpv4 = registerOutput<int>('prefixPoolAllocatedCountIpv4');
+    prefixPoolAllocatedCountIpv6 = registerOutput<int>('prefixPoolAllocatedCountIpv6');
+    rateLimit = registerOutput<String>('rateLimit');
     region = registerOutput<String>('region');
     vlan = registerOutput<int>('vlan');
   }
@@ -234,7 +248,8 @@ class HostedPrivateVirtualInterface extends pulumi.CustomResource {
     amazonSideAsn = registerOutput<String>('amazonSideAsn');
     arn = registerOutput<String>('arn');
     awsDevice = registerOutput<String>('awsDevice');
-    bgpAsn = registerOutput<int>('bgpAsn');
+    bgpAsn = registerOutput<int?>('bgpAsn');
+    bgpAsnLong = registerOutput<String?>('bgpAsnLong');
     bgpAuthKey = registerOutput<String>('bgpAuthKey');
     connectionId = registerOutput<String>('connectionId');
     customerAddress = registerOutput<String>('customerAddress');
@@ -242,6 +257,9 @@ class HostedPrivateVirtualInterface extends pulumi.CustomResource {
     mtu = registerOutput<int?>('mtu');
     this.name = registerOutput<String>('name');
     ownerAccountId = registerOutput<String>('ownerAccountId');
+    prefixPoolAllocatedCountIpv4 = registerOutput<int>('prefixPoolAllocatedCountIpv4');
+    prefixPoolAllocatedCountIpv6 = registerOutput<int>('prefixPoolAllocatedCountIpv6');
+    rateLimit = registerOutput<String>('rateLimit');
     region = registerOutput<String>('region');
     vlan = registerOutput<int>('vlan');
   }
@@ -260,7 +278,8 @@ class HostedPrivateVirtualInterface extends pulumi.CustomResource {
     amazonSideAsn = registerOutput<String>('amazonSideAsn');
     arn = registerOutput<String>('arn');
     awsDevice = registerOutput<String>('awsDevice');
-    bgpAsn = registerOutput<int>('bgpAsn');
+    bgpAsn = registerOutput<int?>('bgpAsn');
+    bgpAsnLong = registerOutput<String?>('bgpAsnLong');
     bgpAuthKey = registerOutput<String>('bgpAuthKey');
     connectionId = registerOutput<String>('connectionId');
     customerAddress = registerOutput<String>('customerAddress');
@@ -268,6 +287,9 @@ class HostedPrivateVirtualInterface extends pulumi.CustomResource {
     mtu = registerOutput<int?>('mtu');
     this.name = registerOutput<String>('name');
     ownerAccountId = registerOutput<String>('ownerAccountId');
+    prefixPoolAllocatedCountIpv4 = registerOutput<int>('prefixPoolAllocatedCountIpv4');
+    prefixPoolAllocatedCountIpv6 = registerOutput<int>('prefixPoolAllocatedCountIpv6');
+    rateLimit = registerOutput<String>('rateLimit');
     region = registerOutput<String>('region');
     vlan = registerOutput<int>('vlan');
   }

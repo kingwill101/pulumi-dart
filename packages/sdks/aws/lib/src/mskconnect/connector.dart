@@ -505,7 +505,7 @@ class Connector extends pulumi.CustomResource {
           'aws:mskconnect/connector:Connector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacity = registerOutput<ConnectorCapacity>('capacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });

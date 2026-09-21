@@ -939,7 +939,7 @@ class InstanceLoggingConfiguration extends pulumi.CustomResource {
           'aws:verifiedaccess/instanceLoggingConfiguration:InstanceLoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accessLogs = registerOutput<InstanceLoggingConfigurationAccessLogs>('accessLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceLoggingConfigurationAccessLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

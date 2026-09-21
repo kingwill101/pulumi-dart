@@ -118,6 +118,17 @@ import 'group_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the IAM group.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+///
+///
 /// Using `pulumi import`, import IAM Groups using the `name`. For example:
 ///
 /// ```sh
@@ -145,7 +156,7 @@ class Group extends pulumi.CustomResource {
           'aws:iam/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

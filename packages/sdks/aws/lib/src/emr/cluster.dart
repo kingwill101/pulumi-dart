@@ -2085,7 +2085,7 @@ class Cluster extends pulumi.CustomResource {
   /// Ordered list of bootstrap actions that will be run before Hadoop is started on the cluster nodes. See below.
   late final pulumi.Output<List<ClusterBootstrapAction>?> bootstrapActions;
   late final pulumi.Output<String> clusterState;
-  /// List of configurations supplied for the EMR cluster you are creating. Supply a configuration object for applications to override their default configuration. See [AWS Documentation](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html) for more information.
+  /// List of configurations supplied for the EMR cluster you are creating, expressed as a string: an HTTP(S) URL to a JSON file, a path to a local `.json` file, or a raw JSON string. To supply configuration objects using Pulumi syntax instead, use `configurationsJson`. See [AWS Documentation](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html) for more information.
   late final pulumi.Output<String?> configurations;
   /// JSON string for supplying list of configurations for the EMR cluster.
   ///
@@ -2346,7 +2346,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:emr/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     additionalInfo = registerOutput<String?>('additionalInfo');
     applications = registerOutput<List<String>?>('applications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

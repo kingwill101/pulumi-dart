@@ -207,9 +207,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String?> engine;
   /// The database engine version. Updating this argument results in an outage.
   late final pulumi.Output<String> engineVersion;
-  /// The name of your final DB snapshot
-  /// when this DB cluster is deleted. If omitted, no final snapshot will be
-  /// made.
+  /// The name of your final DB snapshot when this DB cluster is deleted. If omitted, no final snapshot will be made.
   late final pulumi.Output<String?> finalSnapshotIdentifier;
   /// The global cluster identifier specified on `aws.docdb.GlobalCluster`.
   late final pulumi.Output<String?> globalClusterIdentifier;
@@ -219,14 +217,12 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> kmsKeyId;
   /// Set to `true` to allow Amazon DocumentDB to manage the master user password in AWS Secrets Manager. Cannot be set if `masterPassword` or `masterPasswordWo` is provided.
   late final pulumi.Output<bool?> manageMasterUserPassword;
-  /// Password for the master DB user. Note that this may
-  /// show up in logs, and it will be stored in the state file. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPasswordWo` and `manageMasterUserPassword`.
+  /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPasswordWo` and `manageMasterUserPassword`.
   late final pulumi.Output<String?> masterPassword;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Password for the master DB user. Note that this may
-  /// show up in logs. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPassword` and `manageMasterUserPassword`.
+  /// Password for the master DB user. Note that this will show up in logs. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPassword` and `manageMasterUserPassword`. If set, requires `masterPasswordWoVersion` to be set.
   late final pulumi.Output<String?> masterPasswordWo;
-  /// Used together with `masterPasswordWo` to trigger an update. Increment this value when an update to the `masterPasswordWo` is required.
+  /// Required when `masterPasswordWo` is set. Changing this value triggers an update to `masterPasswordWo`.
   late final pulumi.Output<int?> masterPasswordWoVersion;
   late final pulumi.Output<List<ClusterMasterUserSecret>> masterUserSecrets;
   /// Username for the master DB user.
@@ -279,7 +275,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:docdb/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
           additionalSecretOutputs: const ['masterPassword', 'masterPasswordWo'],
         ) {
     allowMajorVersionUpgrade = registerOutput<bool?>('allowMajorVersionUpgrade');

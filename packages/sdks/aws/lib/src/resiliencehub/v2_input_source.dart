@@ -469,7 +469,7 @@ class V2InputSource extends pulumi.CustomResource {
           'aws:resiliencehub/v2InputSource:V2InputSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     inputSourceId = registerOutput<String>('inputSourceId');
     region = registerOutput<String>('region');

@@ -77,7 +77,7 @@ class RuleGroupArgs {
 
   factory RuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return RuleGroupArgs(
-      capacity: pulumi.Input.fromValue((map['capacity'] as num).toInt()),
+      capacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['capacity'])),
       customResponseBodies: (() { final guardedValue = map['customResponseBodies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RuleGroupCustomResponseBody>(guardedValue, (value) => RuleGroupCustomResponseBody.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

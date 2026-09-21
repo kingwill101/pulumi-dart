@@ -104,7 +104,7 @@ class BotArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       detectSentiment: (() { final guardedValue = map['detectSentiment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableModelImprovements: (() { final guardedValue = map['enableModelImprovements']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      idleSessionTtlInSeconds: (() { final guardedValue = map['idleSessionTtlInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      idleSessionTtlInSeconds: (() { final guardedValue = map['idleSessionTtlInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       intents: pulumi.Input.fromValue(pulumi.Input.decodeList<BotIntent>(map['intents']!, (value) => BotIntent.fromMap((value as Map).cast<String, dynamic>()))),
       locale: (() { final guardedValue = map['locale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -1842,7 +1842,7 @@ class Association extends pulumi.CustomResource {
           'aws:ssm/association:Association',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     applyOnlyAtCronInterval = registerOutput<bool?>('applyOnlyAtCronInterval');
     arn = registerOutput<String>('arn');

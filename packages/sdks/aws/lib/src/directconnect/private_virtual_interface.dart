@@ -173,6 +173,12 @@ class PrivateVirtualInterface extends pulumi.CustomResource {
   late final pulumi.Output<int?> mtu;
   /// The name for the virtual interface.
   late final pulumi.Output<String> name;
+  /// The number of inbound IPv4 route prefixes to allocate to the virtual interface. Valid values are `0` to `1000`. If not specified, AWS applies the default allocation of `100`.
+  late final pulumi.Output<int> prefixPoolAllocatedCountIpv4;
+  /// The number of inbound IPv6 route prefixes to allocate to the virtual interface. Valid values are `0` to `1000`. If not specified, AWS applies the default allocation of `100`.
+  late final pulumi.Output<int> prefixPoolAllocatedCountIpv6;
+  /// Maximum bandwidth allocation for the virtual interface, restricting the bandwidth it can use on the parent connection. Specify a supported bandwidth value without a space (for example, `50Mbps`, `1Gbps`, or `10Gbps`); the value cannot exceed the bandwidth of the parent connection or link aggregation group (LAG), and supported values range up to `1.6Tbps`. See the [VIF Rate Limiters documentation](https://docs.aws.amazon.com/directconnect/latest/UserGuide/vif-rate-limiters.html) for the full list of supported values. Rate Limiters are supported only on Direct Connect dedicated connections (including LAGs); they are not supported on hosted connections.
+  late final pulumi.Output<String> rateLimit;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Indicates whether to enable or disable SiteLink.
@@ -198,7 +204,7 @@ class PrivateVirtualInterface extends pulumi.CustomResource {
           'aws:directconnect/privateVirtualInterface:PrivateVirtualInterface',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');
@@ -214,6 +220,9 @@ class PrivateVirtualInterface extends pulumi.CustomResource {
     jumboFrameCapable = registerOutput<bool>('jumboFrameCapable');
     mtu = registerOutput<int?>('mtu');
     this.name = registerOutput<String>('name');
+    prefixPoolAllocatedCountIpv4 = registerOutput<int>('prefixPoolAllocatedCountIpv4');
+    prefixPoolAllocatedCountIpv6 = registerOutput<int>('prefixPoolAllocatedCountIpv6');
+    rateLimit = registerOutput<String>('rateLimit');
     region = registerOutput<String>('region');
     sitelinkEnabled = registerOutput<bool?>('sitelinkEnabled');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
@@ -260,6 +269,9 @@ class PrivateVirtualInterface extends pulumi.CustomResource {
     jumboFrameCapable = registerOutput<bool>('jumboFrameCapable');
     mtu = registerOutput<int?>('mtu');
     this.name = registerOutput<String>('name');
+    prefixPoolAllocatedCountIpv4 = registerOutput<int>('prefixPoolAllocatedCountIpv4');
+    prefixPoolAllocatedCountIpv6 = registerOutput<int>('prefixPoolAllocatedCountIpv6');
+    rateLimit = registerOutput<String>('rateLimit');
     region = registerOutput<String>('region');
     sitelinkEnabled = registerOutput<bool?>('sitelinkEnabled');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
@@ -291,6 +303,9 @@ class PrivateVirtualInterface extends pulumi.CustomResource {
     jumboFrameCapable = registerOutput<bool>('jumboFrameCapable');
     mtu = registerOutput<int?>('mtu');
     this.name = registerOutput<String>('name');
+    prefixPoolAllocatedCountIpv4 = registerOutput<int>('prefixPoolAllocatedCountIpv4');
+    prefixPoolAllocatedCountIpv6 = registerOutput<int>('prefixPoolAllocatedCountIpv6');
+    rateLimit = registerOutput<String>('rateLimit');
     region = registerOutput<String>('region');
     sitelinkEnabled = registerOutput<bool?>('sitelinkEnabled');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

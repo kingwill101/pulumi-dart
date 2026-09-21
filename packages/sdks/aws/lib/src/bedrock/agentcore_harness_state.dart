@@ -45,14 +45,14 @@ class AgentcoreHarnessState {
   /// Actual deployed memory configuration.
   final pulumi.Input<List<AgentcoreHarnessMemoryActual>?>? memoryActuals;
   /// Model configuration for the harness. See `model` Block below.
-  ///
-  /// The following arguments are optional:
   final pulumi.Input<AgentcoreHarnessModel?>? model;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// Skill configurations. See `skill` Block below.
   final pulumi.Input<List<AgentcoreHarnessSkill>?>? skills;
   /// System prompt blocks for the harness. See `systemPrompt` Block below.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<List<AgentcoreHarnessSystemPrompt>?>? systemPrompts;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
@@ -159,8 +159,8 @@ class AgentcoreHarnessState {
       executionRoleArn: (() { final guardedValue = map['executionRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       harnessId: (() { final guardedValue = map['harnessId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       harnessName: (() { final guardedValue = map['harnessName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxIterations: (() { final guardedValue = map['maxIterations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxTokens: (() { final guardedValue = map['maxTokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxIterations: (() { final guardedValue = map['maxIterations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxTokens: (() { final guardedValue = map['maxTokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreHarnessMemory.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       memoryActuals: (() { final guardedValue = map['memoryActuals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentcoreHarnessMemoryActual>(guardedValue, (value) => AgentcoreHarnessMemoryActual.fromMap((value as Map).cast<String, dynamic>()))); })(),
       model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreHarnessModel.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -169,7 +169,7 @@ class AgentcoreHarnessState {
       systemPrompts: (() { final guardedValue = map['systemPrompts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentcoreHarnessSystemPrompt>(guardedValue, (value) => AgentcoreHarnessSystemPrompt.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreHarnessTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tools: (() { final guardedValue = map['tools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentcoreHarnessTool>(guardedValue, (value) => AgentcoreHarnessTool.fromMap((value as Map).cast<String, dynamic>()))); })(),
       truncations: (() { final guardedValue = map['truncations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentcoreHarnessTruncation>(guardedValue, (value) => AgentcoreHarnessTruncation.fromMap((value as Map).cast<String, dynamic>()))); })(),

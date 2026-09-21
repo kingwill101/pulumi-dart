@@ -208,7 +208,7 @@ class ByteMatchSet extends pulumi.CustomResource {
           'aws:waf/byteMatchSet:ByteMatchSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     byteMatchTuples = registerOutput<List<ByteMatchSetByteMatchTuple>?>('byteMatchTuples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ByteMatchSetByteMatchTuple>(guardedValue, (value) => ByteMatchSetByteMatchTuple.fromMap((value as Map).cast<String, dynamic>())); });

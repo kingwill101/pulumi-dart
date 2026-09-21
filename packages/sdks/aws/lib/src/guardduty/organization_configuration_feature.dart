@@ -207,7 +207,7 @@ class OrganizationConfigurationFeature extends pulumi.CustomResource {
           'aws:guardduty/organizationConfigurationFeature:OrganizationConfigurationFeature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     additionalConfigurations = registerOutput<List<OrganizationConfigurationFeatureAdditionalConfiguration>?>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationConfigurationFeatureAdditionalConfiguration>(guardedValue, (value) => OrganizationConfigurationFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     autoEnable = registerOutput<String>('autoEnable');

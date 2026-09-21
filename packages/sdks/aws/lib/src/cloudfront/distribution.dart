@@ -3116,7 +3116,7 @@ class Distribution extends pulumi.CustomResource {
           'aws:cloudfront/distribution:Distribution',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     aliases = registerOutput<List<String>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     anycastIpListId = registerOutput<String?>('anycastIpListId');

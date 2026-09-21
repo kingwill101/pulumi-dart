@@ -2294,7 +2294,7 @@ class Table extends pulumi.CustomResource {
           'aws:dynamodb/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attributes = registerOutput<List<TableAttribute>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableAttribute>(guardedValue, (value) => TableAttribute.fromMap((value as Map).cast<String, dynamic>())); });

@@ -1227,7 +1227,7 @@ class ExperimentTemplate extends pulumi.CustomResource {
           'aws:fis/experimentTemplate:ExperimentTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     actions = registerOutput<List<ExperimentTemplateAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExperimentTemplateAction>(guardedValue, (value) => ExperimentTemplateAction.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String>('description');

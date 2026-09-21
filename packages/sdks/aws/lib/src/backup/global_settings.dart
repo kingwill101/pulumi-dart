@@ -157,7 +157,7 @@ class GlobalSettings extends pulumi.CustomResource {
           'aws:backup/globalSettings:GlobalSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     globalSettings = registerOutput<Map<String, String>>('globalSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }

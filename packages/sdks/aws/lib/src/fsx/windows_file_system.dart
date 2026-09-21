@@ -735,7 +735,7 @@ class WindowsFileSystem extends pulumi.CustomResource {
           'aws:fsx/windowsFileSystem:WindowsFileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     activeDirectoryId = registerOutput<String?>('activeDirectoryId');
     aliases = registerOutput<List<String>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

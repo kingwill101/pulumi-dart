@@ -4205,7 +4205,7 @@ class Index extends pulumi.CustomResource {
           'aws:kendra/index:Index',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacityUnits = registerOutput<IndexCapacityUnits>('capacityUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexCapacityUnits.fromMap((guardedValue as Map).cast<String, dynamic>()); });

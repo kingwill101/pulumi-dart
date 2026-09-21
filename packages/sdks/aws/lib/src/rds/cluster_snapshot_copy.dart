@@ -225,17 +225,17 @@ import 'cluster_snapshot_copy_timeouts.dart';
 /// $ pulumi import aws:rds/clusterSnapshotCopy:ClusterSnapshotCopy example my-snapshot
 /// ```
 class ClusterSnapshotCopy extends pulumi.CustomResource {
-  /// Specifies the allocated storage size in gigabytes (GB).
+  /// Allocated storage size in gigabytes (GB).
   late final pulumi.Output<int> allocatedStorage;
   /// Whether to copy existing tags. Defaults to `false`.
   late final pulumi.Output<bool?> copyTags;
   /// ARN for the DB cluster snapshot.
   late final pulumi.Output<String> dbClusterSnapshotArn;
-  /// The Destination region to place snapshot copy.
+  /// Destination region to place the snapshot copy.
   late final pulumi.Output<String?> destinationRegion;
-  /// Specifies the name of the database engine.
+  /// Name of the database engine.
   late final pulumi.Output<String> engine;
-  /// Specifies the version of the database engine.
+  /// Version of the database engine.
   late final pulumi.Output<String> engineVersion;
   /// KMS key ID.
   late final pulumi.Output<String?> kmsKeyId;
@@ -247,16 +247,17 @@ class ClusterSnapshotCopy extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
   late final pulumi.Output<List<String>?> sharedAccounts;
+  /// Type of the DB cluster snapshot.
   late final pulumi.Output<String> snapshotType;
   /// Identifier of the source snapshot.
   late final pulumi.Output<String> sourceDbClusterSnapshotIdentifier;
-  /// Specifies whether the DB cluster snapshot is encrypted.
+  /// Whether the DB cluster snapshot is encrypted.
   late final pulumi.Output<bool> storageEncrypted;
-  /// Specifies the storage type associated with DB cluster snapshot.
+  /// Storage type associated with DB cluster snapshot.
   late final pulumi.Output<String> storageType;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Identifier for the snapshot.
   ///
@@ -278,7 +279,7 @@ class ClusterSnapshotCopy extends pulumi.CustomResource {
           'aws:rds/clusterSnapshotCopy:ClusterSnapshotCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     copyTags = registerOutput<bool?>('copyTags');

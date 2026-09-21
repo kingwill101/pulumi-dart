@@ -252,10 +252,10 @@ class TrafficPolicy extends pulumi.CustomResource {
   /// Maximum message size, in bytes, allowed by the traffic policy.
   late final pulumi.Output<int?> maxMessageSizeBytes;
   /// Name of the traffic policy.
-  late final pulumi.Output<String> name;
-  /// Traffic policy statements. See `policyStatement` Block below.
   ///
   /// The following arguments are optional:
+  late final pulumi.Output<String> name;
+  /// Traffic policy statements. See `policyStatement` Block below.
   late final pulumi.Output<List<TrafficPolicyPolicyStatement>?> policyStatements;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -276,7 +276,7 @@ class TrafficPolicy extends pulumi.CustomResource {
           'aws:mailmanager/trafficPolicy:TrafficPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdTimestamp = registerOutput<String>('createdTimestamp');

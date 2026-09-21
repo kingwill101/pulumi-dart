@@ -176,7 +176,7 @@ class ModelCardExportJob extends pulumi.CustomResource {
           'aws:sagemaker/modelCardExportJob:ModelCardExportJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     exportArtifacts = registerOutput<List<ModelCardExportJobExportArtifact>>('exportArtifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ModelCardExportJobExportArtifact>(guardedValue, (value) => ModelCardExportJobExportArtifact.fromMap((value as Map).cast<String, dynamic>())); });
     modelCardExportJobArn = registerOutput<String>('modelCardExportJobArn');

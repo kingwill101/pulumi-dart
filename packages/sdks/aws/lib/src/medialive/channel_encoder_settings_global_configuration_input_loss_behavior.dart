@@ -36,11 +36,11 @@ class ChannelEncoderSettingsGlobalConfigurationInputLossBehavior {
 
   factory ChannelEncoderSettingsGlobalConfigurationInputLossBehavior.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsGlobalConfigurationInputLossBehavior(
-      blackFrameMsec: (() { final guardedValue = map['blackFrameMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      blackFrameMsec: (() { final guardedValue = map['blackFrameMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       inputLossImageColor: (() { final guardedValue = map['inputLossImageColor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       inputLossImageSlate: (() { final guardedValue = map['inputLossImageSlate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsGlobalConfigurationInputLossBehaviorInputLossImageSlate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       inputLossImageType: (() { final guardedValue = map['inputLossImageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      repeatFrameMsec: (() { final guardedValue = map['repeatFrameMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      repeatFrameMsec: (() { final guardedValue = map['repeatFrameMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

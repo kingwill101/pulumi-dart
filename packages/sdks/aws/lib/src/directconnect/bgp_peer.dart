@@ -127,8 +127,10 @@ class BgpPeer extends pulumi.CustomResource {
   late final pulumi.Output<String> amazonAddress;
   /// The Direct Connect endpoint on which the BGP peer terminates.
   late final pulumi.Output<String> awsDevice;
-  /// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-  late final pulumi.Output<int> bgpAsn;
+  /// BGP autonomous system number as an integer between `1` and `2147483646`. For larger values, use `bgpAsnLong`. Exactly one of `bgpAsn` or `bgpAsnLong` must be specified.
+  late final pulumi.Output<int?> bgpAsn;
+  /// BGP autonomous system number as an asplain decimal string between `1` and `4294967294`. This argument also accepts values in the `bgpAsn` range. Exactly one of `bgpAsn` or `bgpAsnLong` must be specified.
+  late final pulumi.Output<String?> bgpAsnLong;
   /// The authentication key for BGP configuration.
   late final pulumi.Output<String> bgpAuthKey;
   /// The ID of the BGP peer.
@@ -155,12 +157,13 @@ class BgpPeer extends pulumi.CustomResource {
           'aws:directconnect/bgpPeer:BgpPeer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');
     awsDevice = registerOutput<String>('awsDevice');
-    bgpAsn = registerOutput<int>('bgpAsn');
+    bgpAsn = registerOutput<int?>('bgpAsn');
+    bgpAsnLong = registerOutput<String?>('bgpAsnLong');
     bgpAuthKey = registerOutput<String>('bgpAuthKey');
     bgpPeerId = registerOutput<String>('bgpPeerId');
     bgpStatus = registerOutput<String>('bgpStatus');
@@ -196,7 +199,8 @@ class BgpPeer extends pulumi.CustomResource {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');
     awsDevice = registerOutput<String>('awsDevice');
-    bgpAsn = registerOutput<int>('bgpAsn');
+    bgpAsn = registerOutput<int?>('bgpAsn');
+    bgpAsnLong = registerOutput<String?>('bgpAsnLong');
     bgpAuthKey = registerOutput<String>('bgpAuthKey');
     bgpPeerId = registerOutput<String>('bgpPeerId');
     bgpStatus = registerOutput<String>('bgpStatus');
@@ -217,7 +221,8 @@ class BgpPeer extends pulumi.CustomResource {
     addressFamily = registerOutput<String>('addressFamily');
     amazonAddress = registerOutput<String>('amazonAddress');
     awsDevice = registerOutput<String>('awsDevice');
-    bgpAsn = registerOutput<int>('bgpAsn');
+    bgpAsn = registerOutput<int?>('bgpAsn');
+    bgpAsnLong = registerOutput<String?>('bgpAsnLong');
     bgpAuthKey = registerOutput<String>('bgpAuthKey');
     bgpPeerId = registerOutput<String>('bgpPeerId');
     bgpStatus = registerOutput<String>('bgpStatus');

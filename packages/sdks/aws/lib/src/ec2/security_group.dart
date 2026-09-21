@@ -1373,7 +1373,7 @@ class SecurityGroup extends pulumi.CustomResource {
           'aws:ec2/securityGroup:SecurityGroup',
           name,
           pulumi.Input.mapToInputs((args ?? SecurityGroupArgs()).toMap()),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');

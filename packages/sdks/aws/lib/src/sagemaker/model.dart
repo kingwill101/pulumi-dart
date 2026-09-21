@@ -339,7 +339,7 @@ class Model extends pulumi.CustomResource {
           'aws:sagemaker/model:Model',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     containers = registerOutput<List<ModelContainer>?>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ModelContainer>(guardedValue, (value) => ModelContainer.fromMap((value as Map).cast<String, dynamic>())); });

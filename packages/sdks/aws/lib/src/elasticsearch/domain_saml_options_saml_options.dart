@@ -56,7 +56,7 @@ class DomainSamlOptionsSamlOptions {
       masterBackendRole: (() { final guardedValue = map['masterBackendRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       masterUserName: (() { final guardedValue = map['masterUserName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rolesKey: (() { final guardedValue = map['rolesKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sessionTimeoutMinutes: (() { final guardedValue = map['sessionTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      sessionTimeoutMinutes: (() { final guardedValue = map['sessionTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       subjectKey: (() { final guardedValue = map['subjectKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

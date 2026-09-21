@@ -63,7 +63,7 @@ class LifecycleHookState {
     return LifecycleHookState(
       autoscalingGroupName: (() { final guardedValue = map['autoscalingGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultResult: (() { final guardedValue = map['defaultResult']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      heartbeatTimeout: (() { final guardedValue = map['heartbeatTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      heartbeatTimeout: (() { final guardedValue = map['heartbeatTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       lifecycleTransition: (() { final guardedValue = map['lifecycleTransition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notificationMetadata: (() { final guardedValue = map['notificationMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -63,8 +63,8 @@ class DomainRuleBasedMatching {
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       exportingConfig: (() { final guardedValue = map['exportingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainRuleBasedMatchingExportingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       matchingRules: (() { final guardedValue = map['matchingRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainRuleBasedMatchingMatchingRule>(guardedValue, (value) => DomainRuleBasedMatchingMatchingRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maxAllowedRuleLevelForMatching: (() { final guardedValue = map['maxAllowedRuleLevelForMatching']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxAllowedRuleLevelForMerging: (() { final guardedValue = map['maxAllowedRuleLevelForMerging']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxAllowedRuleLevelForMatching: (() { final guardedValue = map['maxAllowedRuleLevelForMatching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxAllowedRuleLevelForMerging: (() { final guardedValue = map['maxAllowedRuleLevelForMerging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -74,7 +74,7 @@ class GetListenerResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       loadBalancerArn: (() { final guardedValue = map['loadBalancerArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mutualAuthentications: (() { final guardedValue = map['mutualAuthentications']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetListenerMutualAuthentication>(guardedValue, (value) => GetListenerMutualAuthentication.fromMap((value as Map).cast<String, dynamic>())); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sslPolicy: (() { final guardedValue = map['sslPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),

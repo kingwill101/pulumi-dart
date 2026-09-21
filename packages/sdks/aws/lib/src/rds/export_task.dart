@@ -959,7 +959,7 @@ class ExportTask extends pulumi.CustomResource {
           'aws:rds/exportTask:ExportTask',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     exportOnlies = registerOutput<List<String>?>('exportOnlies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     exportTaskIdentifier = registerOutput<String>('exportTaskIdentifier');

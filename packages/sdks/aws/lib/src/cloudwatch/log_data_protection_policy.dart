@@ -425,7 +425,7 @@ class LogDataProtectionPolicy extends pulumi.CustomResource {
           'aws:cloudwatch/logDataProtectionPolicy:LogDataProtectionPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     logGroupName = registerOutput<String>('logGroupName');
     policyDocument = registerOutput<String>('policyDocument');

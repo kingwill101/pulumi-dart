@@ -270,7 +270,7 @@ class Plan extends pulumi.CustomResource {
           'aws:backup/plan:Plan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     advancedBackupSettings = registerOutput<List<PlanAdvancedBackupSetting>?>('advancedBackupSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanAdvancedBackupSetting>(guardedValue, (value) => PlanAdvancedBackupSetting.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

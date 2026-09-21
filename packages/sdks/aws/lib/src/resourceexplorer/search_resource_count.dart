@@ -26,7 +26,7 @@ class SearchResourceCount {
   factory SearchResourceCount.fromMap(Map<String, dynamic> map) {
     return SearchResourceCount(
       complete: pulumi.Input.fromValue(map['complete'] as bool),
-      totalResources: pulumi.Input.fromValue((map['totalResources'] as num).toInt()),
+      totalResources: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalResources'])),
     );
   }
 }

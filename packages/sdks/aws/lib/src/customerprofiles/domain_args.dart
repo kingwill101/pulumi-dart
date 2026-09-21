@@ -65,7 +65,7 @@ class DomainArgs {
     return DomainArgs(
       deadLetterQueueUrl: (() { final guardedValue = map['deadLetterQueueUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultEncryptionKey: (() { final guardedValue = map['defaultEncryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      defaultExpirationDays: pulumi.Input.fromValue((map['defaultExpirationDays'] as num).toInt()),
+      defaultExpirationDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['defaultExpirationDays'])),
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
       matching: (() { final guardedValue = map['matching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainMatching.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

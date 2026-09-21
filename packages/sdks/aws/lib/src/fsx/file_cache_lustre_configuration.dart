@@ -51,7 +51,7 @@ class FileCacheLustreConfiguration {
       logConfigurations: (() { final guardedValue = map['logConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FileCacheLustreConfigurationLogConfiguration>(guardedValue, (value) => FileCacheLustreConfigurationLogConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       metadataConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<FileCacheLustreConfigurationMetadataConfiguration>(map['metadataConfigurations']!, (value) => FileCacheLustreConfigurationMetadataConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
       mountName: (() { final guardedValue = map['mountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      perUnitStorageThroughput: pulumi.Input.fromValue((map['perUnitStorageThroughput'] as num).toInt()),
+      perUnitStorageThroughput: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['perUnitStorageThroughput'])),
       weeklyMaintenanceStartTime: (() { final guardedValue = map['weeklyMaintenanceStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

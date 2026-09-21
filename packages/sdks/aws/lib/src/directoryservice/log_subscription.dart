@@ -346,7 +346,7 @@ class LogSubscription extends pulumi.CustomResource {
           'aws:directoryservice/logSubscription:LogSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     directoryId = registerOutput<String>('directoryId');
     logGroupName = registerOutput<String>('logGroupName');

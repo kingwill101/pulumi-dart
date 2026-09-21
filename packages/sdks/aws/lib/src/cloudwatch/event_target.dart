@@ -4341,7 +4341,7 @@ class EventTarget extends pulumi.CustomResource {
           'aws:cloudwatch/eventTarget:EventTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     appsyncTarget = registerOutput<EventTargetAppsyncTarget?>('appsyncTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventTargetAppsyncTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

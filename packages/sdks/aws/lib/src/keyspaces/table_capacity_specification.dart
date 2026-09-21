@@ -30,9 +30,9 @@ class TableCapacitySpecification {
 
   factory TableCapacitySpecification.fromMap(Map<String, dynamic> map) {
     return TableCapacitySpecification(
-      readCapacityUnits: (() { final guardedValue = map['readCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      readCapacityUnits: (() { final guardedValue = map['readCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       throughputMode: (() { final guardedValue = map['throughputMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      writeCapacityUnits: (() { final guardedValue = map['writeCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      writeCapacityUnits: (() { final guardedValue = map['writeCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

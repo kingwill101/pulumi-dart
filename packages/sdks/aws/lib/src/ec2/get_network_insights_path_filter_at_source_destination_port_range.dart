@@ -23,8 +23,8 @@ class GetNetworkInsightsPathFilterAtSourceDestinationPortRange {
 
   factory GetNetworkInsightsPathFilterAtSourceDestinationPortRange.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsPathFilterAtSourceDestinationPortRange(
-      fromPort: pulumi.Input.fromValue((map['fromPort'] as num).toInt()),
-      toPort: pulumi.Input.fromValue((map['toPort'] as num).toInt()),
+      fromPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['fromPort'])),
+      toPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['toPort'])),
     );
   }
 }

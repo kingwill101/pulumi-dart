@@ -322,7 +322,7 @@ class Workspace extends pulumi.CustomResource {
           'aws:workspaces/workspace:Workspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     bundleId = registerOutput<String>('bundleId');
     computerName = registerOutput<String>('computerName');

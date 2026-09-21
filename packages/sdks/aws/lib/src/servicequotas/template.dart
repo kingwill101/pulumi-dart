@@ -171,7 +171,7 @@ class Template extends pulumi.CustomResource {
           'aws:servicequotas/template:Template',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     awsRegion = registerOutput<String>('awsRegion');
     globalQuota = registerOutput<bool>('globalQuota');

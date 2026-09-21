@@ -170,7 +170,7 @@ class FrameworkShare extends pulumi.CustomResource {
           'aws:auditmanager/frameworkShare:FrameworkShare',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     comment = registerOutput<String?>('comment');
     destinationAccount = registerOutput<String>('destinationAccount');

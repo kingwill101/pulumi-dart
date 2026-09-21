@@ -194,7 +194,7 @@ class Organization extends pulumi.CustomResource {
           'aws:organizations/organization:Organization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accounts = registerOutput<List<OrganizationAccount>>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationAccount>(guardedValue, (value) => OrganizationAccount.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

@@ -54,7 +54,7 @@ class UserLoginProfileState {
       encryptedPassword: (() { final guardedValue = map['encryptedPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyFingerprint: (() { final guardedValue = map['keyFingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      passwordLength: (() { final guardedValue = map['passwordLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      passwordLength: (() { final guardedValue = map['passwordLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       passwordResetRequired: (() { final guardedValue = map['passwordResetRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       pgpKey: (() { final guardedValue = map['pgpKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

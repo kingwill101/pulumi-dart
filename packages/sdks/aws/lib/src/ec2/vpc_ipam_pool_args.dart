@@ -107,9 +107,9 @@ class VpcIpamPoolArgs {
   factory VpcIpamPoolArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpamPoolArgs(
       addressFamily: pulumi.Input.fromValue(map['addressFamily'] as String),
-      allocationDefaultNetmaskLength: (() { final guardedValue = map['allocationDefaultNetmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      allocationMaxNetmaskLength: (() { final guardedValue = map['allocationMaxNetmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      allocationMinNetmaskLength: (() { final guardedValue = map['allocationMinNetmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      allocationDefaultNetmaskLength: (() { final guardedValue = map['allocationDefaultNetmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      allocationMaxNetmaskLength: (() { final guardedValue = map['allocationMaxNetmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      allocationMinNetmaskLength: (() { final guardedValue = map['allocationMinNetmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       allocationResourceTags: (() { final guardedValue = map['allocationResourceTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       autoImport: (() { final guardedValue = map['autoImport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       awsService: (() { final guardedValue = map['awsService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

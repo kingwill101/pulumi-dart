@@ -61,8 +61,8 @@ class RoomArgs {
   factory RoomArgs.fromMap(Map<String, dynamic> map) {
     return RoomArgs(
       loggingConfigurationIdentifiers: (() { final guardedValue = map['loggingConfigurationIdentifiers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      maximumMessageLength: (() { final guardedValue = map['maximumMessageLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maximumMessageRatePerSecond: (() { final guardedValue = map['maximumMessageRatePerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumMessageLength: (() { final guardedValue = map['maximumMessageLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maximumMessageRatePerSecond: (() { final guardedValue = map['maximumMessageRatePerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       messageReviewHandler: (() { final guardedValue = map['messageReviewHandler']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoomMessageReviewHandler.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -367,7 +367,7 @@ import 'agentcore_gateway_workload_identity_detail.dart';
 ///     protocolConfiguration: {
 ///         mcp: {
 ///             instructions: "Gateway for handling MCP requests",
-///             searchType: "HYBRID",
+///             searchType: "SEMANTIC",
 ///             supportedVersions: [
 ///                 "2025-03-26",
 ///                 "2025-06-18",
@@ -406,7 +406,7 @@ import 'agentcore_gateway_workload_identity_detail.dart';
 ///     protocol_configuration={
 ///         "mcp": {
 ///             "instructions": "Gateway for handling MCP requests",
-///             "search_type": "HYBRID",
+///             "search_type": "SEMANTIC",
 ///             "supported_versions": [
 ///                 "2025-03-26",
 ///                 "2025-06-18",
@@ -456,7 +456,7 @@ import 'agentcore_gateway_workload_identity_detail.dart';
 ///             Mcp = new Aws.Bedrock.Inputs.AgentcoreGatewayProtocolConfigurationMcpArgs
 ///             {
 ///                 Instructions = "Gateway for handling MCP requests",
-///                 SearchType = "HYBRID",
+///                 SearchType = "SEMANTIC",
 ///                 SupportedVersions = new[]
 ///                 {
 ///                     "2025-03-26",
@@ -504,7 +504,7 @@ import 'agentcore_gateway_workload_identity_detail.dart';
 /// 			ProtocolConfiguration: &bedrock.AgentcoreGatewayProtocolConfigurationArgs{
 /// 				Mcp: &bedrock.AgentcoreGatewayProtocolConfigurationMcpArgs{
 /// 					Instructions: pulumi.String("Gateway for handling MCP requests"),
-/// 					SearchType:   pulumi.String("HYBRID"),
+/// 					SearchType:   pulumi.String("SEMANTIC"),
 /// 					SupportedVersions: pulumi.StringArray{
 /// 						pulumi.String("2025-03-26"),
 /// 						pulumi.String("2025-06-18"),
@@ -545,7 +545,7 @@ import 'agentcore_gateway_workload_identity_detail.dart';
 ///   protocol_configuration = {
 ///     mcp = {
 ///       instructions       = "Gateway for handling MCP requests"
-///       search_type        = "HYBRID"
+///       search_type        = "SEMANTIC"
 ///       supported_versions = ["2025-03-26", "2025-06-18"]
 ///     }
 ///   }
@@ -599,7 +599,7 @@ import 'agentcore_gateway_workload_identity_detail.dart';
 ///             .protocolConfiguration(AgentcoreGatewayProtocolConfigurationArgs.builder()
 ///                 .mcp(AgentcoreGatewayProtocolConfigurationMcpArgs.builder()
 ///                     .instructions("Gateway for handling MCP requests")
-///                     .searchType("HYBRID")
+///                     .searchType("SEMANTIC")
 ///                     .supportedVersions(
 ///                         "2025-03-26",
 ///                         "2025-06-18")
@@ -635,7 +635,7 @@ import 'agentcore_gateway_workload_identity_detail.dart';
 ///       protocolConfiguration:
 ///         mcp:
 ///           instructions: Gateway for handling MCP requests
-///           searchType: HYBRID
+///           searchType: SEMANTIC
 ///           supportedVersions:
 ///             - 2025-03-26
 ///             - 2025-06-18
@@ -944,7 +944,7 @@ import 'agentcore_gateway_workload_identity_detail.dart';
 class AgentcoreGateway extends pulumi.CustomResource {
   /// Configuration for request authorization. Required when `authorizerType` is set to `CUSTOM_JWT`. See `authorizerConfiguration` below.
   late final pulumi.Output<AgentcoreGatewayAuthorizerConfiguration?> authorizerConfiguration;
-  /// Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, `authorizerConfiguration` block is required.
+  /// Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`, `NONE`, `AUTHENTICATE_ONLY`. When set to `CUSTOM_JWT`, `authorizerConfiguration` block is required.
   late final pulumi.Output<String> authorizerType;
   /// Description of the gateway.
   late final pulumi.Output<String?> description;
@@ -994,7 +994,7 @@ class AgentcoreGateway extends pulumi.CustomResource {
           'aws:bedrock/agentcoreGateway:AgentcoreGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     authorizerConfiguration = registerOutput<AgentcoreGatewayAuthorizerConfiguration?>('authorizerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayAuthorizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorizerType = registerOutput<String>('authorizerType');

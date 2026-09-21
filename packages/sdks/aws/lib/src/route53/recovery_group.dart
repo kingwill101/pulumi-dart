@@ -137,7 +137,7 @@ class RecoveryGroup extends pulumi.CustomResource {
           'aws:route53recoveryreadiness/recoveryGroup:RecoveryGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cells = registerOutput<List<String>?>('cells', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

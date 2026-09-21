@@ -41,7 +41,7 @@ class GetBucketsResult {
     return GetBucketsResult(
       bucketRegion: (() { final guardedValue = map['bucketRegion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       buckets: (() { final guardedValue = map['buckets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBucketsBucket>(guardedValue, (value) => GetBucketsBucket.fromMap((value as Map).cast<String, dynamic>())); })(),
-      maxBuckets: (() { final guardedValue = map['maxBuckets']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxBuckets: (() { final guardedValue = map['maxBuckets']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

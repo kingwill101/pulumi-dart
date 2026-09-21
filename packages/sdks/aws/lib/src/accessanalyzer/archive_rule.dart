@@ -251,7 +251,7 @@ class ArchiveRule extends pulumi.CustomResource {
           'aws:accessanalyzer/archiveRule:ArchiveRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     analyzerName = registerOutput<String>('analyzerName');
     filters = registerOutput<List<ArchiveRuleFilter>>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ArchiveRuleFilter>(guardedValue, (value) => ArchiveRuleFilter.fromMap((value as Map).cast<String, dynamic>())); });

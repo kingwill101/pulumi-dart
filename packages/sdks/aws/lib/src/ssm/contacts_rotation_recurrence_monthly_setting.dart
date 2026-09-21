@@ -26,7 +26,7 @@ class ContactsRotationRecurrenceMonthlySetting {
 
   factory ContactsRotationRecurrenceMonthlySetting.fromMap(Map<String, dynamic> map) {
     return ContactsRotationRecurrenceMonthlySetting(
-      dayOfMonth: pulumi.Input.fromValue((map['dayOfMonth'] as num).toInt()),
+      dayOfMonth: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dayOfMonth'])),
       handOffTime: (() { final guardedValue = map['handOffTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContactsRotationRecurrenceMonthlySettingHandOffTime.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -355,30 +355,20 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> kmsKeyId;
   /// The name of the maintenance track for the restored cluster. When you take a snapshot, the snapshot inherits the MaintenanceTrack value from the cluster. The snapshot might be on a different track than the cluster that was the source for the snapshot. For example, suppose that you take a snapshot of  a cluster that is on the current track and then change the cluster to be on the trailing track. In this case, the snapshot and the source cluster are on different tracks. Default value is `current`.
   late final pulumi.Output<String?> maintenanceTrackName;
-  /// Whether to use AWS SecretsManager to manage the cluster admin credentials.
-  /// Conflicts with `masterPassword` and `masterPasswordWo`.
-  /// One of `masterPassword` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided.
+  /// Whether to use AWS SecretsManager to manage the cluster admin credentials. Conflicts with `masterPassword` and `masterPasswordWo`. One of `masterPassword` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided.
   late final pulumi.Output<bool?> manageMasterPassword;
   /// The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained indefinitely. This setting doesn't change the retention period of existing snapshots. Valid values are between `-1` and `3653`. Default value is `-1`.
   late final pulumi.Output<int?> manualSnapshotRetentionPeriod;
-  /// Password for the master DB user.
-  /// Conflicts with `manageMasterPassword` and `masterPasswordWo`.
-  /// One of `masterPassword`, `masterPasswordWo` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided.
-  /// Note that this may show up in logs, and it will be stored in the state file.
-  /// Password must contain at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.
+  /// Password for the master DB user. Conflicts with `manageMasterPassword` and `masterPasswordWo`. One of `masterPassword`, `masterPasswordWo` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided. Note that this will show up in logs, and it will be stored in the state file. Password must contain at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.
   late final pulumi.Output<String?> masterPassword;
   /// ARN of the cluster admin credentials secret
   late final pulumi.Output<String> masterPasswordSecretArn;
   /// ID of the KMS key used to encrypt the cluster admin credentials secret.
   late final pulumi.Output<String> masterPasswordSecretKmsKeyId;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Password for the master DB user.
-  /// Conflicts with `manageMasterPassword` and `masterPassword`.
-  /// One of `masterPasswordWo`, `masterPassword` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided.
-  /// Note that this may show up in logs.
-  /// Password must contain at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number.
+  /// Password for the master DB user. Conflicts with `manageMasterPassword` and `masterPassword`. One of `masterPasswordWo`, `masterPassword` or `manageMasterPassword` is required unless `snapshotIdentifier` is provided. Note that this may show up in logs. Password must contain at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one number. If set, requires `masterPasswordWoVersion` to be set.
   late final pulumi.Output<String?> masterPasswordWo;
-  /// Used together with `masterPasswordWo` to trigger an update. Increment this value when an update to the `masterPasswordWo` is required.
+  /// Required when `masterPasswordWo` is set. Changing this value triggers an update to `masterPasswordWo`.
   late final pulumi.Output<int?> masterPasswordWoVersion;
   /// Username for the master DB user.
   late final pulumi.Output<String?> masterUsername;
@@ -432,7 +422,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:redshift/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
           additionalSecretOutputs: const ['masterPassword', 'masterPasswordWo'],
         ) {
     allowVersionUpgrade = registerOutput<bool?>('allowVersionUpgrade');

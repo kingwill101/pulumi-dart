@@ -25,8 +25,8 @@ class GameSessionQueuePlayerLatencyPolicy {
 
   factory GameSessionQueuePlayerLatencyPolicy.fromMap(Map<String, dynamic> map) {
     return GameSessionQueuePlayerLatencyPolicy(
-      maximumIndividualPlayerLatencyMilliseconds: pulumi.Input.fromValue((map['maximumIndividualPlayerLatencyMilliseconds'] as num).toInt()),
-      policyDurationSeconds: (() { final guardedValue = map['policyDurationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumIndividualPlayerLatencyMilliseconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maximumIndividualPlayerLatencyMilliseconds'])),
+      policyDurationSeconds: (() { final guardedValue = map['policyDurationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

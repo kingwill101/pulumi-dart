@@ -48,8 +48,8 @@ class LoadBalancerCookieStickinessPolicyArgs {
 
   factory LoadBalancerCookieStickinessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerCookieStickinessPolicyArgs(
-      cookieExpirationPeriod: (() { final guardedValue = map['cookieExpirationPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      lbPort: pulumi.Input.fromValue((map['lbPort'] as num).toInt()),
+      cookieExpirationPeriod: (() { final guardedValue = map['cookieExpirationPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      lbPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lbPort'])),
       loadBalancer: pulumi.Input.fromValue(map['loadBalancer'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

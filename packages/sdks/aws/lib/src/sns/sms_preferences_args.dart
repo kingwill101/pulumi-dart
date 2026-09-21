@@ -58,7 +58,7 @@ class SmsPreferencesArgs {
       defaultSmsType: (() { final guardedValue = map['defaultSmsType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deliveryStatusIamRoleArn: (() { final guardedValue = map['deliveryStatusIamRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deliveryStatusSuccessSamplingRate: (() { final guardedValue = map['deliveryStatusSuccessSamplingRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      monthlySpendLimit: (() { final guardedValue = map['monthlySpendLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      monthlySpendLimit: (() { final guardedValue = map['monthlySpendLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       usageReportS3Bucket: (() { final guardedValue = map['usageReportS3Bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -39,7 +39,7 @@ class GetLifecyclePolicyDocumentRule {
     return GetLifecyclePolicyDocumentRule(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetLifecyclePolicyDocumentRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       selection: pulumi.Input.fromValue(GetLifecyclePolicyDocumentRuleSelection.fromMap((map['selection']! as Map).cast<String, dynamic>())),
     );
   }

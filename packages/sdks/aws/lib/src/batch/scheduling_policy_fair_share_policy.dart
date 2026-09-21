@@ -30,8 +30,8 @@ class SchedulingPolicyFairSharePolicy {
 
   factory SchedulingPolicyFairSharePolicy.fromMap(Map<String, dynamic> map) {
     return SchedulingPolicyFairSharePolicy(
-      computeReservation: (() { final guardedValue = map['computeReservation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      shareDecaySeconds: (() { final guardedValue = map['shareDecaySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      computeReservation: (() { final guardedValue = map['computeReservation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      shareDecaySeconds: (() { final guardedValue = map['shareDecaySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       shareDistributions: (() { final guardedValue = map['shareDistributions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SchedulingPolicyFairSharePolicyShareDistribution>(guardedValue, (value) => SchedulingPolicyFairSharePolicyShareDistribution.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

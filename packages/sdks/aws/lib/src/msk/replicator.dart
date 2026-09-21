@@ -385,6 +385,865 @@ import 'replicator_state.dart';
 /// ```
 ///
 ///
+/// ### Self-Managed Apache Kafka Cluster Target
+///
+/// Replicate from an Amazon MSK cluster to a self-managed or on-premises Apache Kafka cluster, authenticating to the Apache Kafka cluster with SASL/SCRAM and trusting a custom root CA chain.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const test = new aws.msk.Replicator("test", {
+///     replicationInfoList: {
+///         consumerGroupReplications: [{
+///             consumerGroupsToReplicates: [".*"],
+///         }],
+///         topicReplications: [{
+///             topicNameConfiguration: {
+///                 type: "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS",
+///             },
+///             startingPosition: {
+///                 type: "LATEST",
+///             },
+///             topicsToReplicates: [".*"],
+///         }],
+///         sourceKafkaClusterArn: source.arn,
+///         targetKafkaClusterId: "target-apache-kafka-cluster",
+///         targetCompressionType: "NONE",
+///     },
+///     kafkaClusters: [
+///         {
+///             amazonMskCluster: {
+///                 mskClusterArn: source.arn,
+///             },
+///             vpcConfig: {
+///                 subnetIds: sourceAwsSubnet.map(__item => __item.id),
+///                 securityGroupsIds: [sourceAwsSecurityGroup.id],
+///             },
+///         },
+///         {
+///             apacheKafkaCluster: {
+///                 apacheKafkaClusterId: "target-apache-kafka-cluster",
+///                 bootstrapBrokerString: "b-1.example.com:9096,b-2.example.com:9096",
+///             },
+///             clientAuthentication: {
+///                 saslScram: {
+///                     mechanism: "SHA512",
+///                     secretArn: target.arn,
+///                 },
+///             },
+///             encryptionInTransit: {
+///                 rootCaCertificate: rootCa.arn,
+///             },
+///         },
+///     ],
+///     replicatorName: "test-name",
+///     description: "test-description",
+///     serviceExecutionRoleArn: sourceAwsIamRole.arn,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// test = aws.msk.Replicator("test",
+///     replication_info_list={
+///         "consumer_group_replications": [{
+///             "consumer_groups_to_replicates": [".*"],
+///         }],
+///         "topic_replications": [{
+///             "topic_name_configuration": {
+///                 "type": "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS",
+///             },
+///             "starting_position": {
+///                 "type": "LATEST",
+///             },
+///             "topics_to_replicates": [".*"],
+///         }],
+///         "source_kafka_cluster_arn": source["arn"],
+///         "target_kafka_cluster_id": "target-apache-kafka-cluster",
+///         "target_compression_type": "NONE",
+///     },
+///     kafka_clusters=[
+///         {
+///             "amazon_msk_cluster": {
+///                 "msk_cluster_arn": source["arn"],
+///             },
+///             "vpc_config": {
+///                 "subnet_ids": [__item["id"] for __item in source_aws_subnet],
+///                 "security_groups_ids": [source_aws_security_group["id"]],
+///             },
+///         },
+///         {
+///             "apache_kafka_cluster": {
+///                 "apache_kafka_cluster_id": "target-apache-kafka-cluster",
+///                 "bootstrap_broker_string": "b-1.example.com:9096,b-2.example.com:9096",
+///             },
+///             "client_authentication": {
+///                 "sasl_scram": {
+///                     "mechanism": "SHA512",
+///                     "secret_arn": target["arn"],
+///                 },
+///             },
+///             "encryption_in_transit": {
+///                 "root_ca_certificate": root_ca["arn"],
+///             },
+///         },
+///     ],
+///     replicator_name="test-name",
+///     description="test-description",
+///     service_execution_role_arn=source_aws_iam_role["arn"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var test = new Aws.Msk.Replicator("test", new()
+///     {
+///         ReplicationInfoList = new Aws.Msk.Inputs.ReplicatorReplicationInfoListArgs
+///         {
+///             ConsumerGroupReplications = new[]
+///             {
+///                 new Aws.Msk.Inputs.ReplicatorReplicationInfoListConsumerGroupReplicationArgs
+///                 {
+///                     ConsumerGroupsToReplicates = new[]
+///                     {
+///                         ".*",
+///                     },
+///                 },
+///             },
+///             TopicReplications = new[]
+///             {
+///                 new Aws.Msk.Inputs.ReplicatorReplicationInfoListTopicReplicationArgs
+///                 {
+///                     TopicNameConfiguration = new Aws.Msk.Inputs.ReplicatorReplicationInfoListTopicReplicationTopicNameConfigurationArgs
+///                     {
+///                         Type = "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS",
+///                     },
+///                     StartingPosition = new Aws.Msk.Inputs.ReplicatorReplicationInfoListTopicReplicationStartingPositionArgs
+///                     {
+///                         Type = "LATEST",
+///                     },
+///                     TopicsToReplicates = new[]
+///                     {
+///                         ".*",
+///                     },
+///                 },
+///             },
+///             SourceKafkaClusterArn = source.Arn,
+///             TargetKafkaClusterId = "target-apache-kafka-cluster",
+///             TargetCompressionType = "NONE",
+///         },
+///         KafkaClusters = new[]
+///         {
+///             new Aws.Msk.Inputs.ReplicatorKafkaClusterArgs
+///             {
+///                 AmazonMskCluster = new Aws.Msk.Inputs.ReplicatorKafkaClusterAmazonMskClusterArgs
+///                 {
+///                     MskClusterArn = source.Arn,
+///                 },
+///                 VpcConfig = new Aws.Msk.Inputs.ReplicatorKafkaClusterVpcConfigArgs
+///                 {
+///                     SubnetIds = sourceAwsSubnet.Select(__item => __item.Id).ToList(),
+///                     SecurityGroupsIds = new[]
+///                     {
+///                         sourceAwsSecurityGroup.Id,
+///                     },
+///                 },
+///             },
+///             new Aws.Msk.Inputs.ReplicatorKafkaClusterArgs
+///             {
+///                 ApacheKafkaCluster = new Aws.Msk.Inputs.ReplicatorKafkaClusterApacheKafkaClusterArgs
+///                 {
+///                     ApacheKafkaClusterId = "target-apache-kafka-cluster",
+///                     BootstrapBrokerString = "b-1.example.com:9096,b-2.example.com:9096",
+///                 },
+///                 ClientAuthentication = new Aws.Msk.Inputs.ReplicatorKafkaClusterClientAuthenticationArgs
+///                 {
+///                     SaslScram = new Aws.Msk.Inputs.ReplicatorKafkaClusterClientAuthenticationSaslScramArgs
+///                     {
+///                         Mechanism = "SHA512",
+///                         SecretArn = target.Arn,
+///                     },
+///                 },
+///                 EncryptionInTransit = new Aws.Msk.Inputs.ReplicatorKafkaClusterEncryptionInTransitArgs
+///                 {
+///                     RootCaCertificate = rootCa.Arn,
+///                 },
+///             },
+///         },
+///         ReplicatorName = "test-name",
+///         Description = "test-description",
+///         ServiceExecutionRoleArn = sourceAwsIamRole.Arn,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/msk"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := msk.NewReplicator(ctx, "test", &msk.ReplicatorArgs{
+/// ReplicationInfoList: &msk.ReplicatorReplicationInfoListArgs{
+/// ConsumerGroupReplications: msk.ReplicatorReplicationInfoListConsumerGroupReplicationArray{
+/// &msk.ReplicatorReplicationInfoListConsumerGroupReplicationArgs{
+/// ConsumerGroupsToReplicates: pulumi.StringArray{
+/// pulumi.String(".*"),
+/// },
+/// },
+/// },
+/// TopicReplications: msk.ReplicatorReplicationInfoListTopicReplicationArray{
+/// &msk.ReplicatorReplicationInfoListTopicReplicationArgs{
+/// TopicNameConfiguration: &msk.ReplicatorReplicationInfoListTopicReplicationTopicNameConfigurationArgs{
+/// Type: pulumi.String("PREFIXED_WITH_SOURCE_CLUSTER_ALIAS"),
+/// },
+/// StartingPosition: &msk.ReplicatorReplicationInfoListTopicReplicationStartingPositionArgs{
+/// Type: pulumi.String("LATEST"),
+/// },
+/// TopicsToReplicates: pulumi.StringArray{
+/// pulumi.String(".*"),
+/// },
+/// },
+/// },
+/// SourceKafkaClusterArn: pulumi.Any(source.Arn),
+/// TargetKafkaClusterId: pulumi.String("target-apache-kafka-cluster"),
+/// TargetCompressionType: pulumi.String("NONE"),
+/// },
+/// KafkaClusters: msk.ReplicatorKafkaClusterArray{
+/// &msk.ReplicatorKafkaClusterArgs{
+/// AmazonMskCluster: &msk.ReplicatorKafkaClusterAmazonMskClusterArgs{
+/// MskClusterArn: pulumi.Any(source.Arn),
+/// },
+/// VpcConfig: &msk.ReplicatorKafkaClusterVpcConfigArgs{
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:23,27-48)),
+/// SecurityGroupsIds: pulumi.StringArray{
+/// sourceAwsSecurityGroup.Id,
+/// },
+/// },
+/// },
+/// &msk.ReplicatorKafkaClusterArgs{
+/// ApacheKafkaCluster: &msk.ReplicatorKafkaClusterApacheKafkaClusterArgs{
+/// ApacheKafkaClusterId: pulumi.String("target-apache-kafka-cluster"),
+/// BootstrapBrokerString: pulumi.String("b-1.example.com:9096,b-2.example.com:9096"),
+/// },
+/// ClientAuthentication: &msk.ReplicatorKafkaClusterClientAuthenticationArgs{
+/// SaslScram: &msk.ReplicatorKafkaClusterClientAuthenticationSaslScramArgs{
+/// Mechanism: pulumi.String("SHA512"),
+/// SecretArn: pulumi.Any(target.Arn),
+/// },
+/// },
+/// EncryptionInTransit: &msk.ReplicatorKafkaClusterEncryptionInTransitArgs{
+/// RootCaCertificate: pulumi.Any(rootCa.Arn),
+/// },
+/// },
+/// },
+/// ReplicatorName: pulumi.String("test-name"),
+/// Description: pulumi.String("test-description"),
+/// ServiceExecutionRoleArn: pulumi.Any(sourceAwsIamRole.Arn),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_msk_replicator" "test" {
+///   replication_info_list = {
+///     consumer_group_replications = [{
+///       "consumerGroupsToReplicates" = [".*"]
+///     }]
+///     topic_replications = [{
+///       "topicNameConfiguration" = {
+///         "type" = "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS"
+///       }
+///       "startingPosition" = {
+///         "type" = "LATEST"
+///       }
+///       "topicsToReplicates" = [".*"]
+///     }]
+///     source_kafka_cluster_arn = source.arn
+///     target_kafka_cluster_id  = "target-apache-kafka-cluster"
+///     target_compression_type  = "NONE"
+///   }
+///   kafka_clusters {
+///     amazon_msk_cluster = {
+///       msk_cluster_arn = source.arn
+///     }
+///     vpc_config = {
+///       subnet_ids          = sourceAwsSubnet[*].id
+///       security_groups_ids = [sourceAwsSecurityGroup.id]
+///     }
+///   }
+///   kafka_clusters {
+///     apache_kafka_cluster = {
+///       apache_kafka_cluster_id = "target-apache-kafka-cluster"
+///       bootstrap_broker_string = "b-1.example.com:9096,b-2.example.com:9096"
+///     }
+///     client_authentication = {
+///       sasl_scram = {
+///         mechanism  = "SHA512"
+///         secret_arn = target.arn
+///       }
+///     }
+///     encryption_in_transit = {
+///       root_ca_certificate = rootCa.arn
+///     }
+///   }
+///   replicator_name            = "test-name"
+///   description                = "test-description"
+///   service_execution_role_arn = sourceAwsIamRole.arn
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.msk.Replicator;
+/// import com.pulumi.aws.msk.ReplicatorArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListConsumerGroupReplicationArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListTopicReplicationArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListTopicReplicationTopicNameConfigurationArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListTopicReplicationStartingPositionArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterAmazonMskClusterArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterVpcConfigArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterApacheKafkaClusterArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterClientAuthenticationArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterClientAuthenticationSaslScramArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterEncryptionInTransitArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var test = new Replicator("test", ReplicatorArgs.builder()
+///             .replicationInfoList(ReplicatorReplicationInfoListArgs.builder()
+///                 .consumerGroupReplications(ReplicatorReplicationInfoListConsumerGroupReplicationArgs.builder()
+///                     .consumerGroupsToReplicates(".*")
+///                     .build())
+///                 .topicReplications(ReplicatorReplicationInfoListTopicReplicationArgs.builder()
+///                     .topicNameConfiguration(ReplicatorReplicationInfoListTopicReplicationTopicNameConfigurationArgs.builder()
+///                         .type("PREFIXED_WITH_SOURCE_CLUSTER_ALIAS")
+///                         .build())
+///                     .startingPosition(ReplicatorReplicationInfoListTopicReplicationStartingPositionArgs.builder()
+///                         .type("LATEST")
+///                         .build())
+///                     .topicsToReplicates(".*")
+///                     .build())
+///                 .sourceKafkaClusterArn(source.arn())
+///                 .targetKafkaClusterId("target-apache-kafka-cluster")
+///                 .targetCompressionType("NONE")
+///                 .build())
+///             .kafkaClusters(
+///                 ReplicatorKafkaClusterArgs.builder()
+///                     .amazonMskCluster(ReplicatorKafkaClusterAmazonMskClusterArgs.builder()
+///                         .mskClusterArn(source.arn())
+///                         .build())
+///                     .vpcConfig(ReplicatorKafkaClusterVpcConfigArgs.builder()
+///                         .subnetIds(sourceAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///                         .securityGroupsIds(sourceAwsSecurityGroup.id())
+///                         .build())
+///                     .build(),
+///                 ReplicatorKafkaClusterArgs.builder()
+///                     .apacheKafkaCluster(ReplicatorKafkaClusterApacheKafkaClusterArgs.builder()
+///                         .apacheKafkaClusterId("target-apache-kafka-cluster")
+///                         .bootstrapBrokerString("b-1.example.com:9096,b-2.example.com:9096")
+///                         .build())
+///                     .clientAuthentication(ReplicatorKafkaClusterClientAuthenticationArgs.builder()
+///                         .saslScram(ReplicatorKafkaClusterClientAuthenticationSaslScramArgs.builder()
+///                             .mechanism("SHA512")
+///                             .secretArn(target.arn())
+///                             .build())
+///                         .build())
+///                     .encryptionInTransit(ReplicatorKafkaClusterEncryptionInTransitArgs.builder()
+///                         .rootCaCertificate(rootCa.arn())
+///                         .build())
+///                     .build())
+///             .replicatorName("test-name")
+///             .description("test-description")
+///             .serviceExecutionRoleArn(sourceAwsIamRole.arn())
+///             .build());
+///
+///     }
+/// }
+/// ```
+///
+///
+/// ### With Log Delivery
+///
+/// Deliver replicator logs to CloudWatch Logs, Amazon Data Firehose, and Amazon S3.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const test = new aws.msk.Replicator("test", {
+///     replicationInfoList: {
+///         consumerGroupReplications: [{
+///             consumerGroupsToReplicates: [".*"],
+///         }],
+///         topicReplications: [{
+///             topicsToReplicates: [".*"],
+///         }],
+///         sourceKafkaClusterArn: source.arn,
+///         targetKafkaClusterArn: target.arn,
+///         targetCompressionType: "NONE",
+///     },
+///     logDelivery: {
+///         replicatorLogDelivery: {
+///             cloudwatchLogs: {
+///                 enabled: true,
+///                 logGroup: testAwsCloudwatchLogGroup.name,
+///             },
+///             firehose: {
+///                 enabled: true,
+///                 deliveryStream: testAwsKinesisFirehoseDeliveryStream.name,
+///             },
+///             s3: {
+///                 enabled: true,
+///                 bucket: testAwsS3Bucket.bucket,
+///                 prefix: "replicator-logs",
+///             },
+///         },
+///     },
+///     kafkaClusters: [
+///         {
+///             amazonMskCluster: {
+///                 mskClusterArn: source.arn,
+///             },
+///             vpcConfig: {
+///                 subnetIds: sourceAwsSubnet.map(__item => __item.id),
+///                 securityGroupsIds: [sourceAwsSecurityGroup.id],
+///             },
+///         },
+///         {
+///             amazonMskCluster: {
+///                 mskClusterArn: target.arn,
+///             },
+///             vpcConfig: {
+///                 subnetIds: targetAwsSubnet.map(__item => __item.id),
+///                 securityGroupsIds: [targetAwsSecurityGroup.id],
+///             },
+///         },
+///     ],
+///     replicatorName: "test-name",
+///     serviceExecutionRoleArn: sourceAwsIamRole.arn,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// test = aws.msk.Replicator("test",
+///     replication_info_list={
+///         "consumer_group_replications": [{
+///             "consumer_groups_to_replicates": [".*"],
+///         }],
+///         "topic_replications": [{
+///             "topics_to_replicates": [".*"],
+///         }],
+///         "source_kafka_cluster_arn": source["arn"],
+///         "target_kafka_cluster_arn": target["arn"],
+///         "target_compression_type": "NONE",
+///     },
+///     log_delivery={
+///         "replicator_log_delivery": {
+///             "cloudwatch_logs": {
+///                 "enabled": True,
+///                 "log_group": test_aws_cloudwatch_log_group["name"],
+///             },
+///             "firehose": {
+///                 "enabled": True,
+///                 "delivery_stream": test_aws_kinesis_firehose_delivery_stream["name"],
+///             },
+///             "s3": {
+///                 "enabled": True,
+///                 "bucket": test_aws_s3_bucket["bucket"],
+///                 "prefix": "replicator-logs",
+///             },
+///         },
+///     },
+///     kafka_clusters=[
+///         {
+///             "amazon_msk_cluster": {
+///                 "msk_cluster_arn": source["arn"],
+///             },
+///             "vpc_config": {
+///                 "subnet_ids": [__item["id"] for __item in source_aws_subnet],
+///                 "security_groups_ids": [source_aws_security_group["id"]],
+///             },
+///         },
+///         {
+///             "amazon_msk_cluster": {
+///                 "msk_cluster_arn": target["arn"],
+///             },
+///             "vpc_config": {
+///                 "subnet_ids": [__item["id"] for __item in target_aws_subnet],
+///                 "security_groups_ids": [target_aws_security_group["id"]],
+///             },
+///         },
+///     ],
+///     replicator_name="test-name",
+///     service_execution_role_arn=source_aws_iam_role["arn"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var test = new Aws.Msk.Replicator("test", new()
+///     {
+///         ReplicationInfoList = new Aws.Msk.Inputs.ReplicatorReplicationInfoListArgs
+///         {
+///             ConsumerGroupReplications = new[]
+///             {
+///                 new Aws.Msk.Inputs.ReplicatorReplicationInfoListConsumerGroupReplicationArgs
+///                 {
+///                     ConsumerGroupsToReplicates = new[]
+///                     {
+///                         ".*",
+///                     },
+///                 },
+///             },
+///             TopicReplications = new[]
+///             {
+///                 new Aws.Msk.Inputs.ReplicatorReplicationInfoListTopicReplicationArgs
+///                 {
+///                     TopicsToReplicates = new[]
+///                     {
+///                         ".*",
+///                     },
+///                 },
+///             },
+///             SourceKafkaClusterArn = source.Arn,
+///             TargetKafkaClusterArn = target.Arn,
+///             TargetCompressionType = "NONE",
+///         },
+///         LogDelivery = new Aws.Msk.Inputs.ReplicatorLogDeliveryArgs
+///         {
+///             LogDelivery = new Aws.Msk.Inputs.ReplicatorLogDeliveryReplicatorLogDeliveryArgs
+///             {
+///                 CloudwatchLogs = new Aws.Msk.Inputs.ReplicatorLogDeliveryReplicatorLogDeliveryCloudwatchLogsArgs
+///                 {
+///                     Enabled = true,
+///                     LogGroup = testAwsCloudwatchLogGroup.Name,
+///                 },
+///                 Firehose = new Aws.Msk.Inputs.ReplicatorLogDeliveryReplicatorLogDeliveryFirehoseArgs
+///                 {
+///                     Enabled = true,
+///                     DeliveryStream = testAwsKinesisFirehoseDeliveryStream.Name,
+///                 },
+///                 S3 = new Aws.Msk.Inputs.ReplicatorLogDeliveryReplicatorLogDeliveryS3Args
+///                 {
+///                     Enabled = true,
+///                     Bucket = testAwsS3Bucket.Bucket,
+///                     Prefix = "replicator-logs",
+///                 },
+///             },
+///         },
+///         KafkaClusters = new[]
+///         {
+///             new Aws.Msk.Inputs.ReplicatorKafkaClusterArgs
+///             {
+///                 AmazonMskCluster = new Aws.Msk.Inputs.ReplicatorKafkaClusterAmazonMskClusterArgs
+///                 {
+///                     MskClusterArn = source.Arn,
+///                 },
+///                 VpcConfig = new Aws.Msk.Inputs.ReplicatorKafkaClusterVpcConfigArgs
+///                 {
+///                     SubnetIds = sourceAwsSubnet.Select(__item => __item.Id).ToList(),
+///                     SecurityGroupsIds = new[]
+///                     {
+///                         sourceAwsSecurityGroup.Id,
+///                     },
+///                 },
+///             },
+///             new Aws.Msk.Inputs.ReplicatorKafkaClusterArgs
+///             {
+///                 AmazonMskCluster = new Aws.Msk.Inputs.ReplicatorKafkaClusterAmazonMskClusterArgs
+///                 {
+///                     MskClusterArn = target.Arn,
+///                 },
+///                 VpcConfig = new Aws.Msk.Inputs.ReplicatorKafkaClusterVpcConfigArgs
+///                 {
+///                     SubnetIds = targetAwsSubnet.Select(__item => __item.Id).ToList(),
+///                     SecurityGroupsIds = new[]
+///                     {
+///                         targetAwsSecurityGroup.Id,
+///                     },
+///                 },
+///             },
+///         },
+///         ReplicatorName = "test-name",
+///         ServiceExecutionRoleArn = sourceAwsIamRole.Arn,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/msk"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// _, err := msk.NewReplicator(ctx, "test", &msk.ReplicatorArgs{
+/// ReplicationInfoList: &msk.ReplicatorReplicationInfoListArgs{
+/// ConsumerGroupReplications: msk.ReplicatorReplicationInfoListConsumerGroupReplicationArray{
+/// &msk.ReplicatorReplicationInfoListConsumerGroupReplicationArgs{
+/// ConsumerGroupsToReplicates: pulumi.StringArray{
+/// pulumi.String(".*"),
+/// },
+/// },
+/// },
+/// TopicReplications: msk.ReplicatorReplicationInfoListTopicReplicationArray{
+/// &msk.ReplicatorReplicationInfoListTopicReplicationArgs{
+/// TopicsToReplicates: pulumi.StringArray{
+/// pulumi.String(".*"),
+/// },
+/// },
+/// },
+/// SourceKafkaClusterArn: pulumi.Any(source.Arn),
+/// TargetKafkaClusterArn: pulumi.Any(target.Arn),
+/// TargetCompressionType: pulumi.String("NONE"),
+/// },
+/// LogDelivery: &msk.ReplicatorLogDeliveryArgs{
+/// ReplicatorLogDelivery: &msk.ReplicatorLogDeliveryReplicatorLogDeliveryArgs{
+/// CloudwatchLogs: &msk.ReplicatorLogDeliveryReplicatorLogDeliveryCloudwatchLogsArgs{
+/// Enabled: pulumi.Bool(true),
+/// LogGroup: pulumi.Any(testAwsCloudwatchLogGroup.Name),
+/// },
+/// Firehose: &msk.ReplicatorLogDeliveryReplicatorLogDeliveryFirehoseArgs{
+/// Enabled: pulumi.Bool(true),
+/// DeliveryStream: pulumi.Any(testAwsKinesisFirehoseDeliveryStream.Name),
+/// },
+/// S3: &msk.ReplicatorLogDeliveryReplicatorLogDeliveryS3Args{
+/// Enabled: pulumi.Bool(true),
+/// Bucket: pulumi.Any(testAwsS3Bucket.Bucket),
+/// Prefix: pulumi.String("replicator-logs"),
+/// },
+/// },
+/// },
+/// KafkaClusters: msk.ReplicatorKafkaClusterArray{
+/// &msk.ReplicatorKafkaClusterArgs{
+/// AmazonMskCluster: &msk.ReplicatorKafkaClusterAmazonMskClusterArgs{
+/// MskClusterArn: pulumi.Any(source.Arn),
+/// },
+/// VpcConfig: &msk.ReplicatorKafkaClusterVpcConfigArgs{
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:34,27-48)),
+/// SecurityGroupsIds: pulumi.StringArray{
+/// sourceAwsSecurityGroup.Id,
+/// },
+/// },
+/// },
+/// &msk.ReplicatorKafkaClusterArgs{
+/// AmazonMskCluster: &msk.ReplicatorKafkaClusterAmazonMskClusterArgs{
+/// MskClusterArn: pulumi.Any(target.Arn),
+/// },
+/// VpcConfig: &msk.ReplicatorKafkaClusterVpcConfigArgs{
+/// SubnetIds: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:42,27-48)),
+/// SecurityGroupsIds: pulumi.StringArray{
+/// targetAwsSecurityGroup.Id,
+/// },
+/// },
+/// },
+/// },
+/// ReplicatorName: pulumi.String("test-name"),
+/// ServiceExecutionRoleArn: pulumi.Any(sourceAwsIamRole.Arn),
+/// })
+/// if err != nil {
+/// return err
+/// }
+/// return nil
+/// })
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_msk_replicator" "test" {
+///   replication_info_list = {
+///     consumer_group_replications = [{
+///       "consumerGroupsToReplicates" = [".*"]
+///     }]
+///     topic_replications = [{
+///       "topicsToReplicates" = [".*"]
+///     }]
+///     source_kafka_cluster_arn = source.arn
+///     target_kafka_cluster_arn = target.arn
+///     target_compression_type  = "NONE"
+///   }
+///   log_delivery = {
+///     replicator_log_delivery = {
+///       cloudwatch_logs = {
+///         enabled   = true
+///         log_group = testAwsCloudwatchLogGroup.name
+///       }
+///       firehose = {
+///         enabled         = true
+///         delivery_stream = testAwsKinesisFirehoseDeliveryStream.name
+///       }
+///       s3 = {
+///         enabled = true
+///         bucket  = testAwsS3Bucket.bucket
+///         prefix  = "replicator-logs"
+///       }
+///     }
+///   }
+///   kafka_clusters {
+///     amazon_msk_cluster = {
+///       msk_cluster_arn = source.arn
+///     }
+///     vpc_config = {
+///       subnet_ids          = sourceAwsSubnet[*].id
+///       security_groups_ids = [sourceAwsSecurityGroup.id]
+///     }
+///   }
+///   kafka_clusters {
+///     amazon_msk_cluster = {
+///       msk_cluster_arn = target.arn
+///     }
+///     vpc_config = {
+///       subnet_ids          = targetAwsSubnet[*].id
+///       security_groups_ids = [targetAwsSecurityGroup.id]
+///     }
+///   }
+///   replicator_name            = "test-name"
+///   service_execution_role_arn = sourceAwsIamRole.arn
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.msk.Replicator;
+/// import com.pulumi.aws.msk.ReplicatorArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListConsumerGroupReplicationArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorReplicationInfoListTopicReplicationArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorLogDeliveryArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorLogDeliveryReplicatorLogDeliveryArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorLogDeliveryReplicatorLogDeliveryCloudwatchLogsArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorLogDeliveryReplicatorLogDeliveryFirehoseArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorLogDeliveryReplicatorLogDeliveryS3Args;
+/// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterAmazonMskClusterArgs;
+/// import com.pulumi.aws.msk.inputs.ReplicatorKafkaClusterVpcConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var test = new Replicator("test", ReplicatorArgs.builder()
+///             .replicationInfoList(ReplicatorReplicationInfoListArgs.builder()
+///                 .consumerGroupReplications(ReplicatorReplicationInfoListConsumerGroupReplicationArgs.builder()
+///                     .consumerGroupsToReplicates(".*")
+///                     .build())
+///                 .topicReplications(ReplicatorReplicationInfoListTopicReplicationArgs.builder()
+///                     .topicsToReplicates(".*")
+///                     .build())
+///                 .sourceKafkaClusterArn(source.arn())
+///                 .targetKafkaClusterArn(target.arn())
+///                 .targetCompressionType("NONE")
+///                 .build())
+///             .logDelivery(ReplicatorLogDeliveryArgs.builder()
+///                 .replicatorLogDelivery(ReplicatorLogDeliveryReplicatorLogDeliveryArgs.builder()
+///                     .cloudwatchLogs(ReplicatorLogDeliveryReplicatorLogDeliveryCloudwatchLogsArgs.builder()
+///                         .enabled(true)
+///                         .logGroup(testAwsCloudwatchLogGroup.name())
+///                         .build())
+///                     .firehose(ReplicatorLogDeliveryReplicatorLogDeliveryFirehoseArgs.builder()
+///                         .enabled(true)
+///                         .deliveryStream(testAwsKinesisFirehoseDeliveryStream.name())
+///                         .build())
+///                     .s3(ReplicatorLogDeliveryReplicatorLogDeliveryS3Args.builder()
+///                         .enabled(true)
+///                         .bucket(testAwsS3Bucket.bucket())
+///                         .prefix("replicator-logs")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .kafkaClusters(
+///                 ReplicatorKafkaClusterArgs.builder()
+///                     .amazonMskCluster(ReplicatorKafkaClusterAmazonMskClusterArgs.builder()
+///                         .mskClusterArn(source.arn())
+///                         .build())
+///                     .vpcConfig(ReplicatorKafkaClusterVpcConfigArgs.builder()
+///                         .subnetIds(sourceAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///                         .securityGroupsIds(sourceAwsSecurityGroup.id())
+///                         .build())
+///                     .build(),
+///                 ReplicatorKafkaClusterArgs.builder()
+///                     .amazonMskCluster(ReplicatorKafkaClusterAmazonMskClusterArgs.builder()
+///                         .mskClusterArn(target.arn())
+///                         .build())
+///                     .vpcConfig(ReplicatorKafkaClusterVpcConfigArgs.builder()
+///                         .subnetIds(targetAwsSubnet.stream().map(element -> element.id()).collect(toList()))
+///                         .securityGroupsIds(targetAwsSecurityGroup.id())
+///                         .build())
+///                     .build())
+///             .replicatorName("test-name")
+///             .serviceExecutionRoleArn(sourceAwsIamRole.arn())
+///             .build());
+///
+///     }
+/// }
+/// ```
+///
+///
 /// ## Import
 ///
 /// ### Identity Schema
@@ -405,7 +1264,7 @@ class Replicator extends pulumi.CustomResource {
   late final pulumi.Output<String> currentVersion;
   /// A summary description of the replicator.
   late final pulumi.Output<String?> description;
-  /// A list of Kafka clusters which are targets of the replicator.
+  /// The source and target Kafka clusters for the replicator. Exactly two blocks are required. Detailed below.
   late final pulumi.Output<List<ReplicatorKafkaCluster>> kafkaClusters;
   /// Configuration block for delivering replicator logs to customer destinations. Detailed below.
   late final pulumi.Output<ReplicatorLogDelivery?> logDelivery;
@@ -434,7 +1293,7 @@ class Replicator extends pulumi.CustomResource {
           'aws:msk/replicator:Replicator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     currentVersion = registerOutput<String>('currentVersion');

@@ -43,7 +43,7 @@ class RealtimeLogConfigArgs {
       endpoint: pulumi.Input.fromValue(RealtimeLogConfigEndpoint.fromMap((map['endpoint']! as Map).cast<String, dynamic>())),
       fields: pulumi.Input.fromValue((map['fields'] as List).cast<String>()),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      samplingRate: pulumi.Input.fromValue((map['samplingRate'] as num).toInt()),
+      samplingRate: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['samplingRate'])),
     );
   }
 }

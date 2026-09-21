@@ -136,7 +136,7 @@ class IntegrationArgs {
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
       responseTransferMode: (() { final guardedValue = map['responseTransferMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       restApi: pulumi.Input.fromValue(map['restApi']),
-      timeoutMilliseconds: (() { final guardedValue = map['timeoutMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutMilliseconds: (() { final guardedValue = map['timeoutMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tlsConfig: (() { final guardedValue = map['tlsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationTlsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

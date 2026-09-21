@@ -25,8 +25,8 @@ class GetClusterVersionsClusterVersionControlPlaneScalingTierControlPlaneCompone
 
   factory GetClusterVersionsClusterVersionControlPlaneScalingTierControlPlaneComponentConfigOverrideKubeApiServerConfigServiceNodePortRangeDefaultValue.fromMap(Map<String, dynamic> map) {
     return GetClusterVersionsClusterVersionControlPlaneScalingTierControlPlaneComponentConfigOverrideKubeApiServerConfigServiceNodePortRangeDefaultValue(
-      maxPort: pulumi.Input.fromValue((map['maxPort'] as num).toInt()),
-      minPort: pulumi.Input.fromValue((map['minPort'] as num).toInt()),
+      maxPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPort'])),
+      minPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minPort'])),
     );
   }
 }

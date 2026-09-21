@@ -37,7 +37,7 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetric
   factory PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStat.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStat(
       metric: pulumi.Input.fromValue(PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetric.fromMap((map['metric']! as Map).cast<String, dynamic>())),
-      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       stat: pulumi.Input.fromValue(map['stat'] as String),
       unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -157,7 +157,7 @@ class Snapshot extends pulumi.CustomResource {
           'aws:redshiftserverless/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accountsWithProvisionedRestoreAccesses = registerOutput<List<String>>('accountsWithProvisionedRestoreAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     accountsWithRestoreAccesses = registerOutput<List<String>>('accountsWithRestoreAccesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -46,7 +46,7 @@ class ManagedScalingPolicyState {
       computeLimits: (() { final guardedValue = map['computeLimits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedScalingPolicyComputeLimit>(guardedValue, (value) => ManagedScalingPolicyComputeLimit.fromMap((value as Map).cast<String, dynamic>()))); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scalingStrategy: (() { final guardedValue = map['scalingStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      utilizationPerformanceIndex: (() { final guardedValue = map['utilizationPerformanceIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      utilizationPerformanceIndex: (() { final guardedValue = map['utilizationPerformanceIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -87,7 +87,7 @@ class GetResolverFirewallRuleGroupResult {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ownerId: (() { final guardedValue = map['ownerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      ruleCount: (() { final guardedValue = map['ruleCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      ruleCount: (() { final guardedValue = map['ruleCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       shareStatus: (() { final guardedValue = map['shareStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       statusMessage: (() { final guardedValue = map['statusMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),

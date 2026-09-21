@@ -233,7 +233,7 @@ class KxVolume extends pulumi.CustomResource {
           'aws:finspace/kxVolume:KxVolume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachedClusters = registerOutput<List<KxVolumeAttachedCluster>>('attachedClusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KxVolumeAttachedCluster>(guardedValue, (value) => KxVolumeAttachedCluster.fromMap((value as Map).cast<String, dynamic>())); });

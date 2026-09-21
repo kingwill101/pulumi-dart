@@ -1,3 +1,12 @@
+export 'bedrockmodel/invocation_job.dart';
+export 'bedrockmodel/invocation_job_args.dart';
+export 'bedrockmodel/invocation_job_input_data_config.dart';
+export 'bedrockmodel/invocation_job_input_data_config_s3_input_data_config.dart';
+export 'bedrockmodel/invocation_job_output_data_config.dart';
+export 'bedrockmodel/invocation_job_output_data_config_s3_output_data_config.dart';
+export 'bedrockmodel/invocation_job_state.dart';
+export 'bedrockmodel/invocation_job_timeouts.dart';
+export 'bedrockmodel/invocation_job_vpc_config.dart';
 export 'bedrockmodel/invocation_logging_configuration.dart';
 export 'bedrockmodel/invocation_logging_configuration_args.dart';
 export 'bedrockmodel/invocation_logging_configuration_logging_config.dart';

@@ -31,7 +31,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecif
     return V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification(
       audioSpecification: (() { final guardedValue = map['audioSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dtmfSpecification: (() { final guardedValue = map['dtmfSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      startTimeoutMs: pulumi.Input.fromValue((map['startTimeoutMs'] as num).toInt()),
+      startTimeoutMs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startTimeoutMs'])),
     );
   }
 }

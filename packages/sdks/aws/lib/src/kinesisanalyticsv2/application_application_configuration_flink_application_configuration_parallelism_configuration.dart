@@ -37,8 +37,8 @@ class ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelis
     return ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration(
       autoScalingEnabled: (() { final guardedValue = map['autoScalingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       configurationType: pulumi.Input.fromValue(map['configurationType'] as String),
-      parallelism: (() { final guardedValue = map['parallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      parallelismPerKpu: (() { final guardedValue = map['parallelismPerKpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      parallelism: (() { final guardedValue = map['parallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      parallelismPerKpu: (() { final guardedValue = map['parallelismPerKpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

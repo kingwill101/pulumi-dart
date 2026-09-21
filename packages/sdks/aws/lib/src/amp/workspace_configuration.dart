@@ -602,7 +602,7 @@ class WorkspaceConfiguration extends pulumi.CustomResource {
           'aws:amp/workspaceConfiguration:WorkspaceConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     limitsPerLabelSets = registerOutput<List<WorkspaceConfigurationLimitsPerLabelSet>?>('limitsPerLabelSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceConfigurationLimitsPerLabelSet>(guardedValue, (value) => WorkspaceConfigurationLimitsPerLabelSet.fromMap((value as Map).cast<String, dynamic>())); });
     outOfOrderTimeWindowInSeconds = registerOutput<int>('outOfOrderTimeWindowInSeconds');

@@ -89,7 +89,7 @@ class CaCertificateState {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       caCertificatePem: (() { final guardedValue = map['caCertificatePem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       certificateMode: (() { final guardedValue = map['certificateMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      customerVersion: (() { final guardedValue = map['customerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      customerVersion: (() { final guardedValue = map['customerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       generationId: (() { final guardedValue = map['generationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registrationConfig: (() { final guardedValue = map['registrationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CaCertificateRegistrationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

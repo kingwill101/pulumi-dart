@@ -704,7 +704,7 @@ class Plan extends pulumi.CustomResource {
           'aws:ssmcontacts/plan:Plan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     contactId = registerOutput<String>('contactId');
     region = registerOutput<String>('region');

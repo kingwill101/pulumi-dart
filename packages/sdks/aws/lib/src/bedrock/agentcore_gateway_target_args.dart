@@ -12,35 +12,35 @@ import 'agentcore_gateway_target_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_bedrock_agentcore_gateway_target_agentcore_gateway_target_args_doc}
 class AgentcoreGatewayTargetArgs {
-  /// Configuration for authenticating requests to the target. Required when using `lambda`, `openApiSchema` and `smithyModel` in `mcp` block. If using `mcpServer` in `mcp` block with no authorization, it should not be specified. See `credentialProviderConfiguration` below.
+  /// Configuration for authenticating requests to the target. Required when using `lambda`, `openApiSchema` and `smithyModel` in `mcp` block. If using `mcpServer` in `mcp` block with no authorization, it should not be specified. See `credentialProviderConfiguration` Block below.
   final pulumi.Input<AgentcoreGatewayTargetCredentialProviderConfiguration?>? credentialProviderConfiguration;
   /// Description of the gateway target.
   final pulumi.Input<String?>? description;
   /// Identifier of the gateway that this target belongs to.
   final pulumi.Input<String> gatewayIdentifier;
-  /// Configuration for HTTP header and query parameter propagation between the gateway and target servers. See `metadataConfiguration` below.
+  /// Configuration for HTTP header and query parameter propagation between the gateway and target servers. See `metadataConfiguration` Block below.
   final pulumi.Input<AgentcoreGatewayTargetMetadataConfiguration?>? metadataConfiguration;
   /// Name of the gateway target.
   final pulumi.Input<String?>? name;
-  /// Configuration for private connectivity from AgentCore Gateway to a resource inside your VPC. Traffic is routed through Amazon VPC Lattice and never traverses the public internet. See `privateEndpoint` below.
+  /// Configuration for private connectivity from AgentCore Gateway to a resource inside your VPC. Traffic is routed through Amazon VPC Lattice and never traverses the public internet. See `privateEndpoint` Block below.
   final pulumi.Input<AgentcoreGatewayTargetPrivateEndpoint?>? privateEndpoint;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Configuration for the target endpoint. See `targetConfiguration` below.
+  /// Configuration for the target endpoint. See `targetConfiguration` Block below.
   ///
   /// The following arguments are optional:
   final pulumi.Input<AgentcoreGatewayTargetTargetConfiguration> targetConfiguration;
   final pulumi.Input<AgentcoreGatewayTargetTimeouts?>? timeouts;
 
   /// Creates a new [AgentcoreGatewayTargetArgs].
-  /// [credentialProviderConfiguration] Configuration for authenticating requests to the target. Required when using `lambda`, `openApiSchema` and `smithyModel` in `mcp` block. If using `mcpServer` in `mcp` block with no authorization, it should not be specified. See `credentialProviderConfiguration` below.
+  /// [credentialProviderConfiguration] Configuration for authenticating requests to the target. Required when using `lambda`, `openApiSchema` and `smithyModel` in `mcp` block. If using `mcpServer` in `mcp` block with no authorization, it should not be specified. See `credentialProviderConfiguration` Block below.
   /// [description] Description of the gateway target.
   /// [gatewayIdentifier] Identifier of the gateway that this target belongs to.
-  /// [metadataConfiguration] Configuration for HTTP header and query parameter propagation between the gateway and target servers. See `metadataConfiguration` below.
+  /// [metadataConfiguration] Configuration for HTTP header and query parameter propagation between the gateway and target servers. See `metadataConfiguration` Block below.
   /// [name] Name of the gateway target.
-  /// [privateEndpoint] Configuration for private connectivity from AgentCore Gateway to a resource inside your VPC. Traffic is routed through Amazon VPC Lattice and never traverses the public internet. See `privateEndpoint` below.
+  /// [privateEndpoint] Configuration for private connectivity from AgentCore Gateway to a resource inside your VPC. Traffic is routed through Amazon VPC Lattice and never traverses the public internet. See `privateEndpoint` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [targetConfiguration] Configuration for the target endpoint. See `targetConfiguration` below.
+  /// [targetConfiguration] Configuration for the target endpoint. See `targetConfiguration` Block below.
   /// [timeouts] Optional.
   const AgentcoreGatewayTargetArgs({
     this.credentialProviderConfiguration,

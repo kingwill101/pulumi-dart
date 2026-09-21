@@ -57,11 +57,11 @@ class GetImageRecipeBlockDeviceMappingEb {
     return GetImageRecipeBlockDeviceMappingEb(
       deleteOnTermination: pulumi.Input.fromValue(map['deleteOnTermination'] as String),
       encrypted: pulumi.Input.fromValue(map['encrypted'] as String),
-      iops: pulumi.Input.fromValue((map['iops'] as num).toInt()),
+      iops: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['iops'])),
       kmsKeyId: pulumi.Input.fromValue(map['kmsKeyId'] as String),
       snapshotId: pulumi.Input.fromValue(map['snapshotId'] as String),
-      throughput: pulumi.Input.fromValue((map['throughput'] as num).toInt()),
-      volumeSize: pulumi.Input.fromValue((map['volumeSize'] as num).toInt()),
+      throughput: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['throughput'])),
+      volumeSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['volumeSize'])),
       volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }

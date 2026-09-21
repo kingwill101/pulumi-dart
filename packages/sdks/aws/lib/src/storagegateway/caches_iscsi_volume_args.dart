@@ -78,7 +78,7 @@ class CachesIscsiVolumeArgs {
       sourceVolumeArn: (() { final guardedValue = map['sourceVolumeArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       targetName: pulumi.Input.fromValue(map['targetName'] as String),
-      volumeSizeInBytes: pulumi.Input.fromValue((map['volumeSizeInBytes'] as num).toInt()),
+      volumeSizeInBytes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['volumeSizeInBytes'])),
     );
   }
 }

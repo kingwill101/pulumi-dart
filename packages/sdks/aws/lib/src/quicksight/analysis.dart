@@ -680,7 +680,7 @@ class Analysis extends pulumi.CustomResource {
           'aws:quicksight/analysis:Analysis',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     analysisId = registerOutput<String>('analysisId');
     arn = registerOutput<String>('arn');

@@ -20,7 +20,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurati
 
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioSegmentationConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioSegmentationConfiguration(
-      fixedLengthDuration: pulumi.Input.fromValue((map['fixedLengthDuration'] as num).toInt()),
+      fixedLengthDuration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['fixedLengthDuration'])),
     );
   }
 }

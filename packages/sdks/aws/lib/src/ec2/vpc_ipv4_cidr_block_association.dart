@@ -193,7 +193,7 @@ class VpcIpv4CidrBlockAssociation extends pulumi.CustomResource {
           'aws:ec2/vpcIpv4CidrBlockAssociation:VpcIpv4CidrBlockAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');

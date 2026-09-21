@@ -305,7 +305,7 @@ class IndexingConfiguration extends pulumi.CustomResource {
           'aws:iot/indexingConfiguration:IndexingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     thingGroupIndexingConfiguration = registerOutput<IndexingConfigurationThingGroupIndexingConfiguration>('thingGroupIndexingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexingConfigurationThingGroupIndexingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

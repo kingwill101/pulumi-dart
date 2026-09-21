@@ -250,7 +250,7 @@ class Table extends pulumi.CustomResource {
           'aws:keyspaces/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacitySpecification = registerOutput<TableCapacitySpecification>('capacitySpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableCapacitySpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });

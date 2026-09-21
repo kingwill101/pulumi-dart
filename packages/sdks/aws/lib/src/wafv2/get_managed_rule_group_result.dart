@@ -71,7 +71,7 @@ class GetManagedRuleGroupResult {
   factory GetManagedRuleGroupResult.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupResult(
       availableLabels: (() { final guardedValue = map['availableLabels']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetManagedRuleGroupAvailableLabel>(guardedValue, (value) => GetManagedRuleGroupAvailableLabel.fromMap((value as Map).cast<String, dynamic>())); })(),
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       consumedLabels: (() { final guardedValue = map['consumedLabels']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetManagedRuleGroupConsumedLabel>(guardedValue, (value) => GetManagedRuleGroupConsumedLabel.fromMap((value as Map).cast<String, dynamic>())); })(),
       labelNamespace: (() { final guardedValue = map['labelNamespace']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),

@@ -12,7 +12,11 @@ import 'deployment_state.dart';
 ///
 /// ## Example Usage
 ///
-/// ## Import
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import `aws.apigateway.Deployment` using `REST-API-ID/DEPLOYMENT-ID`. For example:
 ///
@@ -49,7 +53,7 @@ class DeploymentType extends pulumi.CustomResource {
           'aws:apigateway/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');

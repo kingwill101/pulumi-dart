@@ -302,7 +302,7 @@ class OrganizationConfiguration extends pulumi.CustomResource {
           'aws:guardduty/organizationConfiguration:OrganizationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     autoEnableOrganizationMembers = registerOutput<String>('autoEnableOrganizationMembers');
     datasources = registerOutput<OrganizationConfigurationDatasources>('datasources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationDatasources.fromMap((guardedValue as Map).cast<String, dynamic>()); });

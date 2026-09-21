@@ -45,8 +45,8 @@ class LoadBalancerCookieStickinessPolicyState {
 
   factory LoadBalancerCookieStickinessPolicyState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerCookieStickinessPolicyState(
-      cookieExpirationPeriod: (() { final guardedValue = map['cookieExpirationPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      lbPort: (() { final guardedValue = map['lbPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cookieExpirationPeriod: (() { final guardedValue = map['cookieExpirationPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      lbPort: (() { final guardedValue = map['lbPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       loadBalancer: (() { final guardedValue = map['loadBalancer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -8,6 +8,8 @@ import 'capability_timeouts.dart';
 ///
 /// ## Example Usage
 ///
+/// ### Basic Usage
+///
 ///
 /// ```typescript
 /// import * as pulumi from "@pulumi/pulumi";
@@ -215,6 +217,299 @@ import 'capability_timeouts.dart';
 /// ```
 ///
 ///
+/// ### Controller Log Delivery
+///
+/// Capability controllers run in AWS-managed infrastructure outside your cluster, and their logs are exposed through [CloudWatch Vended Logs](https://docs.aws.amazon.com/eks/latest/userguide/capabilities-controller-logs.html) rather than the EKS API. Configure delivery with the `aws.cloudwatch.LogDeliverySource`, `aws.cloudwatch.LogDeliveryDestination`, and `aws.cloudwatch.LogDelivery` resources, using the capability ARN as the source. Valid log types are `EKS_CAPABILITY_ACK_LOGS` (ACK), `EKS_CAPABILITY_KRO_LOGS` (kro), and `EKS_CAPABILITY_ARGOCD_APPLICATION_LOGS`, `EKS_CAPABILITY_ARGOCD_APPLICATIONSET_LOGS`, `EKS_CAPABILITY_ARGOCD_COMMITSERVER_LOGS`, `EKS_CAPABILITY_ARGOCD_REPOSERVER_LOGS`, and `EKS_CAPABILITY_ARGOCD_SERVER_LOGS` (Argo CD, one per controller component).
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.eks.Capability("example", {
+///     clusterName: exampleAwsEksCluster.name,
+///     capabilityName: "ack",
+///     type: "ACK",
+///     roleArn: exampleAwsIamRole.arn,
+///     deletePropagationPolicy: "RETAIN",
+/// });
+/// const ack = new aws.cloudwatch.LogGroup("ack", {name: "/aws/eks/example/capabilities/ack"});
+/// const ackLogDeliverySource = new aws.cloudwatch.LogDeliverySource("ack", {
+///     name: "eks-capability-ack-logs",
+///     logType: "EKS_CAPABILITY_ACK_LOGS",
+///     resourceArn: example.arn,
+/// });
+/// const ackLogDeliveryDestination = new aws.cloudwatch.LogDeliveryDestination("ack", {
+///     deliveryDestinationConfiguration: {
+///         destinationResourceArn: ack.arn,
+///     },
+///     name: "eks-capability-ack-logs",
+/// });
+/// const ackLogDelivery = new aws.cloudwatch.LogDelivery("ack", {
+///     deliverySourceName: ackLogDeliverySource.name,
+///     deliveryDestinationArn: ackLogDeliveryDestination.arn,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.eks.Capability("example",
+///     cluster_name=example_aws_eks_cluster["name"],
+///     capability_name="ack",
+///     type="ACK",
+///     role_arn=example_aws_iam_role["arn"],
+///     delete_propagation_policy="RETAIN")
+/// ack = aws.cloudwatch.LogGroup("ack", name="/aws/eks/example/capabilities/ack")
+/// ack_log_delivery_source = aws.cloudwatch.LogDeliverySource("ack",
+///     name="eks-capability-ack-logs",
+///     log_type="EKS_CAPABILITY_ACK_LOGS",
+///     resource_arn=example.arn)
+/// ack_log_delivery_destination = aws.cloudwatch.LogDeliveryDestination("ack",
+///     delivery_destination_configuration={
+///         "destination_resource_arn": ack.arn,
+///     },
+///     name="eks-capability-ack-logs")
+/// ack_log_delivery = aws.cloudwatch.LogDelivery("ack",
+///     delivery_source_name=ack_log_delivery_source.name,
+///     delivery_destination_arn=ack_log_delivery_destination.arn)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Eks.Capability("example", new()
+///     {
+///         ClusterName = exampleAwsEksCluster.Name,
+///         CapabilityName = "ack",
+///         Type = "ACK",
+///         RoleArn = exampleAwsIamRole.Arn,
+///         DeletePropagationPolicy = "RETAIN",
+///     });
+///
+///     var ack = new Aws.CloudWatch.LogGroup("ack", new()
+///     {
+///         Name = "/aws/eks/example/capabilities/ack",
+///     });
+///
+///     var ackLogDeliverySource = new Aws.CloudWatch.LogDeliverySource("ack", new()
+///     {
+///         Name = "eks-capability-ack-logs",
+///         LogType = "EKS_CAPABILITY_ACK_LOGS",
+///         ResourceArn = example.Arn,
+///     });
+///
+///     var ackLogDeliveryDestination = new Aws.CloudWatch.LogDeliveryDestination("ack", new()
+///     {
+///         DeliveryDestinationConfiguration = new Aws.CloudWatch.Inputs.LogDeliveryDestinationDeliveryDestinationConfigurationArgs
+///         {
+///             DestinationResourceArn = ack.Arn,
+///         },
+///         Name = "eks-capability-ack-logs",
+///     });
+///
+///     var ackLogDelivery = new Aws.CloudWatch.LogDelivery("ack", new()
+///     {
+///         DeliverySourceName = ackLogDeliverySource.Name,
+///         DeliveryDestinationArn = ackLogDeliveryDestination.Arn,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/cloudwatch"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/eks"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := eks.NewCapability(ctx, "example", &eks.CapabilityArgs{
+/// 			ClusterName:             pulumi.Any(exampleAwsEksCluster.Name),
+/// 			CapabilityName:          pulumi.String("ack"),
+/// 			Type:                    pulumi.String("ACK"),
+/// 			RoleArn:                 pulumi.Any(exampleAwsIamRole.Arn),
+/// 			DeletePropagationPolicy: pulumi.String("RETAIN"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ack, err := cloudwatch.NewLogGroup(ctx, "ack", &cloudwatch.LogGroupArgs{
+/// 			Name: pulumi.String("/aws/eks/example/capabilities/ack"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ackLogDeliverySource, err := cloudwatch.NewLogDeliverySource(ctx, "ack", &cloudwatch.LogDeliverySourceArgs{
+/// 			Name:        pulumi.String("eks-capability-ack-logs"),
+/// 			LogType:     pulumi.String("EKS_CAPABILITY_ACK_LOGS"),
+/// 			ResourceArn: example.Arn,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ackLogDeliveryDestination, err := cloudwatch.NewLogDeliveryDestination(ctx, "ack", &cloudwatch.LogDeliveryDestinationArgs{
+/// 			DeliveryDestinationConfiguration: &cloudwatch.LogDeliveryDestinationDeliveryDestinationConfigurationArgs{
+/// 				DestinationResourceArn: ack.Arn,
+/// 			},
+/// 			Name: pulumi.String("eks-capability-ack-logs"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = cloudwatch.NewLogDelivery(ctx, "ack", &cloudwatch.LogDeliveryArgs{
+/// 			DeliverySourceName:     ackLogDeliverySource.Name,
+/// 			DeliveryDestinationArn: ackLogDeliveryDestination.Arn,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_eks_capability" "example" {
+///   cluster_name              = exampleAwsEksCluster.name
+///   capability_name           = "ack"
+///   type                      = "ACK"
+///   role_arn                  = exampleAwsIamRole.arn
+///   delete_propagation_policy = "RETAIN"
+/// }
+/// resource "aws_cloudwatch_loggroup" "ack" {
+///   name = "/aws/eks/example/capabilities/ack"
+/// }
+/// resource "aws_cloudwatch_logdeliverysource" "ack" {
+///   name         = "eks-capability-ack-logs"
+///   log_type     = "EKS_CAPABILITY_ACK_LOGS"
+///   resource_arn = aws_eks_capability.example.arn
+/// }
+/// resource "aws_cloudwatch_logdeliverydestination" "ack" {
+///   delivery_destination_configuration = {
+///     destination_resource_arn = aws_cloudwatch_loggroup.ack.arn
+///   }
+///   name = "eks-capability-ack-logs"
+/// }
+/// resource "aws_cloudwatch_logdelivery" "ack" {
+///   delivery_source_name     = aws_cloudwatch_logdeliverysource.ack.name
+///   delivery_destination_arn = aws_cloudwatch_logdeliverydestination.ack.arn
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.eks.Capability;
+/// import com.pulumi.aws.eks.CapabilityArgs;
+/// import com.pulumi.aws.cloudwatch.LogGroup;
+/// import com.pulumi.aws.cloudwatch.LogGroupArgs;
+/// import com.pulumi.aws.cloudwatch.LogDeliverySource;
+/// import com.pulumi.aws.cloudwatch.LogDeliverySourceArgs;
+/// import com.pulumi.aws.cloudwatch.LogDeliveryDestination;
+/// import com.pulumi.aws.cloudwatch.LogDeliveryDestinationArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.LogDeliveryDestinationDeliveryDestinationConfigurationArgs;
+/// import com.pulumi.aws.cloudwatch.LogDelivery;
+/// import com.pulumi.aws.cloudwatch.LogDeliveryArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new Capability("example", CapabilityArgs.builder()
+///             .clusterName(exampleAwsEksCluster.name())
+///             .capabilityName("ack")
+///             .type("ACK")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .deletePropagationPolicy("RETAIN")
+///             .build());
+///
+///         var ack = new LogGroup("ack", LogGroupArgs.builder()
+///             .name("/aws/eks/example/capabilities/ack")
+///             .build());
+///
+///         var ackLogDeliverySource = new LogDeliverySource("ackLogDeliverySource", LogDeliverySourceArgs.builder()
+///             .name("eks-capability-ack-logs")
+///             .logType("EKS_CAPABILITY_ACK_LOGS")
+///             .resourceArn(example.arn())
+///             .build());
+///
+///         var ackLogDeliveryDestination = new LogDeliveryDestination("ackLogDeliveryDestination", LogDeliveryDestinationArgs.builder()
+///             .deliveryDestinationConfiguration(LogDeliveryDestinationDeliveryDestinationConfigurationArgs.builder()
+///                 .destinationResourceArn(ack.arn())
+///                 .build())
+///             .name("eks-capability-ack-logs")
+///             .build());
+///
+///         var ackLogDelivery = new LogDelivery("ackLogDelivery", LogDeliveryArgs.builder()
+///             .deliverySourceName(ackLogDeliverySource.name())
+///             .deliveryDestinationArn(ackLogDeliveryDestination.arn())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:eks:Capability
+///     properties:
+///       clusterName: ${exampleAwsEksCluster.name}
+///       capabilityName: ack
+///       type: ACK
+///       roleArn: ${exampleAwsIamRole.arn}
+///       deletePropagationPolicy: RETAIN
+///   ack:
+///     type: aws:cloudwatch:LogGroup
+///     properties:
+///       name: /aws/eks/example/capabilities/ack
+///   ackLogDeliverySource:
+///     type: aws:cloudwatch:LogDeliverySource
+///     name: ack
+///     properties:
+///       name: eks-capability-ack-logs
+///       logType: EKS_CAPABILITY_ACK_LOGS
+///       resourceArn: ${example.arn}
+///   ackLogDeliveryDestination:
+///     type: aws:cloudwatch:LogDeliveryDestination
+///     name: ack
+///     properties:
+///       deliveryDestinationConfiguration:
+///         destinationResourceArn: ${ack.arn}
+///       name: eks-capability-ack-logs
+///   ackLogDelivery:
+///     type: aws:cloudwatch:LogDelivery
+///     name: ack
+///     properties:
+///       deliverySourceName: ${ackLogDeliverySource.name}
+///       deliveryDestinationArn: ${ackLogDeliveryDestination.arn}
+/// ```
+///
+///
 /// ## Import
 ///
 /// ### Identity Schema
@@ -272,7 +567,7 @@ class Capability extends pulumi.CustomResource {
           'aws:eks/capability:Capability',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capabilityName = registerOutput<String>('capabilityName');

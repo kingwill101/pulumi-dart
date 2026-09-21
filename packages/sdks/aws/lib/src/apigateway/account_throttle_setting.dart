@@ -25,7 +25,7 @@ class AccountThrottleSetting {
 
   factory AccountThrottleSetting.fromMap(Map<String, dynamic> map) {
     return AccountThrottleSetting(
-      burstLimit: pulumi.Input.fromValue((map['burstLimit'] as num).toInt()),
+      burstLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['burstLimit'])),
       rateLimit: pulumi.Input.fromValue((map['rateLimit'] as num).toDouble()),
     );
   }

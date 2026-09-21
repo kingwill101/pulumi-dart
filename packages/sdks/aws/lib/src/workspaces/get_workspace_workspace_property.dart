@@ -41,10 +41,10 @@ class GetWorkspaceWorkspaceProperty {
   factory GetWorkspaceWorkspaceProperty.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceWorkspaceProperty(
       computeTypeName: pulumi.Input.fromValue(map['computeTypeName'] as String),
-      rootVolumeSizeGib: pulumi.Input.fromValue((map['rootVolumeSizeGib'] as num).toInt()),
+      rootVolumeSizeGib: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rootVolumeSizeGib'])),
       runningMode: pulumi.Input.fromValue(map['runningMode'] as String),
-      runningModeAutoStopTimeoutInMinutes: pulumi.Input.fromValue((map['runningModeAutoStopTimeoutInMinutes'] as num).toInt()),
-      userVolumeSizeGib: pulumi.Input.fromValue((map['userVolumeSizeGib'] as num).toInt()),
+      runningModeAutoStopTimeoutInMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['runningModeAutoStopTimeoutInMinutes'])),
+      userVolumeSizeGib: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['userVolumeSizeGib'])),
     );
   }
 }

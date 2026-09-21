@@ -135,7 +135,7 @@ class Subscription extends pulumi.CustomResource {
           'aws:shield/subscription:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     autoRenew = registerOutput<String>('autoRenew');
     skipDestroy = registerOutput<bool?>('skipDestroy');

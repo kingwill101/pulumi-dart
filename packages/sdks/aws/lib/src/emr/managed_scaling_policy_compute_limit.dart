@@ -40,10 +40,10 @@ class ManagedScalingPolicyComputeLimit {
 
   factory ManagedScalingPolicyComputeLimit.fromMap(Map<String, dynamic> map) {
     return ManagedScalingPolicyComputeLimit(
-      maximumCapacityUnits: pulumi.Input.fromValue((map['maximumCapacityUnits'] as num).toInt()),
-      maximumCoreCapacityUnits: (() { final guardedValue = map['maximumCoreCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maximumOndemandCapacityUnits: (() { final guardedValue = map['maximumOndemandCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minimumCapacityUnits: pulumi.Input.fromValue((map['minimumCapacityUnits'] as num).toInt()),
+      maximumCapacityUnits: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maximumCapacityUnits'])),
+      maximumCoreCapacityUnits: (() { final guardedValue = map['maximumCoreCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maximumOndemandCapacityUnits: (() { final guardedValue = map['maximumOndemandCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minimumCapacityUnits: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minimumCapacityUnits'])),
       unitType: pulumi.Input.fromValue(map['unitType'] as String),
     );
   }

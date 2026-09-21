@@ -376,7 +376,7 @@ class V2modelsBot extends pulumi.CustomResource {
           'aws:lex/v2modelsBot:V2modelsBot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataPrivacies = registerOutput<List<V2modelsBotDataPrivacy>>('dataPrivacies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2modelsBotDataPrivacy>(guardedValue, (value) => V2modelsBotDataPrivacy.fromMap((value as Map).cast<String, dynamic>())); });

@@ -25,8 +25,8 @@ class TableRetentionProperties {
 
   factory TableRetentionProperties.fromMap(Map<String, dynamic> map) {
     return TableRetentionProperties(
-      magneticStoreRetentionPeriodInDays: pulumi.Input.fromValue((map['magneticStoreRetentionPeriodInDays'] as num).toInt()),
-      memoryStoreRetentionPeriodInHours: pulumi.Input.fromValue((map['memoryStoreRetentionPeriodInHours'] as num).toInt()),
+      magneticStoreRetentionPeriodInDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['magneticStoreRetentionPeriodInDays'])),
+      memoryStoreRetentionPeriodInHours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memoryStoreRetentionPeriodInHours'])),
     );
   }
 }

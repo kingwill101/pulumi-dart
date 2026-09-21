@@ -42,7 +42,7 @@ class IndexDocumentMetadataConfigurationUpdateRelevance {
     return IndexDocumentMetadataConfigurationUpdateRelevance(
       duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       freshness: (() { final guardedValue = map['freshness']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      importance: (() { final guardedValue = map['importance']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      importance: (() { final guardedValue = map['importance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rankOrder: (() { final guardedValue = map['rankOrder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       valuesImportanceMap: (() { final guardedValue = map['valuesImportanceMap']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, int>()); })(),
     );

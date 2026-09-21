@@ -38,7 +38,7 @@ class AgentcoreHarnessMemoryActualAgentcoreMemoryConfigurationRetrievalConfig {
       mapBlockKey: pulumi.Input.fromValue(map['mapBlockKey'] as String),
       relevanceScore: pulumi.Input.fromValue((map['relevanceScore'] as num).toDouble()),
       strategyId: pulumi.Input.fromValue(map['strategyId'] as String),
-      topK: pulumi.Input.fromValue((map['topK'] as num).toInt()),
+      topK: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['topK'])),
     );
   }
 }

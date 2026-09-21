@@ -31,7 +31,7 @@ class GetDedicatedIpPoolDedicatedIp {
   factory GetDedicatedIpPoolDedicatedIp.fromMap(Map<String, dynamic> map) {
     return GetDedicatedIpPoolDedicatedIp(
       ip: pulumi.Input.fromValue(map['ip'] as String),
-      warmupPercentage: pulumi.Input.fromValue((map['warmupPercentage'] as num).toInt()),
+      warmupPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['warmupPercentage'])),
       warmupStatus: pulumi.Input.fromValue(map['warmupStatus'] as String),
     );
   }

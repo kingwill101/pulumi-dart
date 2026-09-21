@@ -80,7 +80,7 @@ class GetAuthorizerResult {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       authorizerCredentials: (() { final guardedValue = map['authorizerCredentials']; if (guardedValue == null) return null; return guardedValue as String; })(),
       authorizerId: (() { final guardedValue = map['authorizerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      authorizerResultTtlInSeconds: (() { final guardedValue = map['authorizerResultTtlInSeconds']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      authorizerResultTtlInSeconds: (() { final guardedValue = map['authorizerResultTtlInSeconds']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       authorizerUri: (() { final guardedValue = map['authorizerUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identitySource: (() { final guardedValue = map['identitySource']; if (guardedValue == null) return null; return guardedValue as String; })(),

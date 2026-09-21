@@ -3,6 +3,7 @@ import 'metric_alarm_args.dart';
 import 'metric_alarm_evaluation_criteria.dart';
 import 'metric_alarm_metric_query.dart';
 import 'metric_alarm_state.dart';
+import 'metric_alarm_warm_up_configuration.dart';
 
 /// Provides a CloudWatch Metric Alarm resource.
 ///
@@ -1726,6 +1727,201 @@ import 'metric_alarm_state.dart';
 /// ```
 ///
 ///
+/// ### With a Warm-Up Period
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.cloudwatch.MetricAlarm("example", {
+///     warmUpConfiguration: {
+///         warmUpPeriodDurationInMinutes: 30,
+///     },
+///     name: "example-service-errors",
+///     comparisonOperator: "GreaterThanThreshold",
+///     evaluationPeriods: 3,
+///     metricName: "Errors",
+///     namespace: "ExampleApp",
+///     period: 60,
+///     statistic: "Sum",
+///     threshold: 0,
+///     treatMissingData: "breaching",
+///     alarmActions: [exampleAwsSnsTopic.arn],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.cloudwatch.MetricAlarm("example",
+///     warm_up_configuration={
+///         "warm_up_period_duration_in_minutes": 30,
+///     },
+///     name="example-service-errors",
+///     comparison_operator="GreaterThanThreshold",
+///     evaluation_periods=3,
+///     metric_name="Errors",
+///     namespace="ExampleApp",
+///     period=60,
+///     statistic="Sum",
+///     threshold=float(0),
+///     treat_missing_data="breaching",
+///     alarm_actions=[example_aws_sns_topic["arn"]])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.CloudWatch.MetricAlarm("example", new()
+///     {
+///         WarmUpConfiguration = new Aws.CloudWatch.Inputs.MetricAlarmWarmUpConfigurationArgs
+///         {
+///             WarmUpPeriodDurationInMinutes = 30,
+///         },
+///         Name = "example-service-errors",
+///         ComparisonOperator = "GreaterThanThreshold",
+///         EvaluationPeriods = 3,
+///         MetricName = "Errors",
+///         Namespace = "ExampleApp",
+///         Period = 60,
+///         Statistic = "Sum",
+///         Threshold = 0,
+///         TreatMissingData = "breaching",
+///         AlarmActions =
+///         {
+///             exampleAwsSnsTopic.Arn,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/cloudwatch"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/sns"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudwatch.NewMetricAlarm(ctx, "example", &cloudwatch.MetricAlarmArgs{
+/// 			WarmUpConfiguration: &cloudwatch.MetricAlarmWarmUpConfigurationArgs{
+/// 				WarmUpPeriodDurationInMinutes: pulumi.Int(30),
+/// 			},
+/// 			Name:               pulumi.String("example-service-errors"),
+/// 			ComparisonOperator: pulumi.String("GreaterThanThreshold"),
+/// 			EvaluationPeriods:  pulumi.Int(3),
+/// 			MetricName:         pulumi.String("Errors"),
+/// 			Namespace:          pulumi.String("ExampleApp"),
+/// 			Period:             pulumi.Int(60),
+/// 			Statistic:          pulumi.String("Sum"),
+/// 			Threshold:          pulumi.Float64(0),
+/// 			TreatMissingData:   pulumi.String("breaching"),
+/// 			AlarmActions: pulumi.Array{
+/// 				exampleAwsSnsTopic.Arn,
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_cloudwatch_metricalarm" "example" {
+///   warm_up_configuration = {
+///     warm_up_period_duration_in_minutes = 30
+///   }
+///   name                = "example-service-errors"
+///   comparison_operator = "GreaterThanThreshold"
+///   evaluation_periods  = 3
+///   metric_name         = "Errors"
+///   namespace           = "ExampleApp"
+///   period              = 60
+///   statistic           = "Sum"
+///   threshold           = 0
+///   treat_missing_data  = "breaching"
+///   alarm_actions       = [exampleAwsSnsTopic.arn]
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.cloudwatch.MetricAlarm;
+/// import com.pulumi.aws.cloudwatch.MetricAlarmArgs;
+/// import com.pulumi.aws.cloudwatch.inputs.MetricAlarmWarmUpConfigurationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new MetricAlarm("example", MetricAlarmArgs.builder()
+///             .warmUpConfiguration(MetricAlarmWarmUpConfigurationArgs.builder()
+///                 .warmUpPeriodDurationInMinutes(30)
+///                 .build())
+///             .name("example-service-errors")
+///             .comparisonOperator("GreaterThanThreshold")
+///             .evaluationPeriods(3)
+///             .metricName("Errors")
+///             .namespace("ExampleApp")
+///             .period(60)
+///             .statistic("Sum")
+///             .threshold(0.0)
+///             .treatMissingData("breaching")
+///             .alarmActions(exampleAwsSnsTopic.arn())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:cloudwatch:MetricAlarm
+///     properties:
+///       warmUpConfiguration:
+///         warmUpPeriodDurationInMinutes: 30
+///       name: example-service-errors
+///       comparisonOperator: GreaterThanThreshold
+///       evaluationPeriods: 3
+///       metricName: Errors
+///       namespace: ExampleApp
+///       period: 60
+///       statistic: Sum
+///       threshold: 0
+///       treatMissingData: breaching
+///       alarmActions:
+///         - ${exampleAwsSnsTopic.arn}
+/// ```
+///
+///
 /// &gt; **NOTE:**  You cannot create a metric alarm consisting of both `statistic` and `extendedStatistic` parameters.
 /// You must choose one or the other.
 ///
@@ -1815,6 +2011,8 @@ class MetricAlarm extends pulumi.CustomResource {
   late final pulumi.Output<String?> treatMissingData;
   /// The unit for the alarm's associated metric.
   late final pulumi.Output<String?> unit;
+  /// Warm-up period that delays alarm evaluation after the alarm is created. During the warm-up period the alarm stays in `INSUFFICIENT_DATA` and does not perform alarm actions. See `warmUpConfiguration` below.
+  late final pulumi.Output<MetricAlarmWarmUpConfiguration?> warmUpConfiguration;
 
   /// Creates a new [MetricAlarm].
   /// [name] The Pulumi resource name.
@@ -1828,7 +2026,7 @@ class MetricAlarm extends pulumi.CustomResource {
           'aws:cloudwatch/metricAlarm:MetricAlarm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     actionsEnabled = registerOutput<bool?>('actionsEnabled');
     alarmActions = registerOutput<List<String>?>('alarmActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
@@ -1857,6 +2055,7 @@ class MetricAlarm extends pulumi.CustomResource {
     thresholdMetricId = registerOutput<String?>('thresholdMetricId');
     treatMissingData = registerOutput<String?>('treatMissingData');
     unit = registerOutput<String?>('unit');
+    warmUpConfiguration = registerOutput<MetricAlarmWarmUpConfiguration?>('warmUpConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricAlarmWarmUpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [MetricAlarm] resource's state with the given [name] and [id].
@@ -1910,6 +2109,7 @@ class MetricAlarm extends pulumi.CustomResource {
     thresholdMetricId = registerOutput<String?>('thresholdMetricId');
     treatMissingData = registerOutput<String?>('treatMissingData');
     unit = registerOutput<String?>('unit');
+    warmUpConfiguration = registerOutput<MetricAlarmWarmUpConfiguration?>('warmUpConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricAlarmWarmUpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Creates a typed reference to an existing [MetricAlarm] resource.
@@ -1948,5 +2148,6 @@ class MetricAlarm extends pulumi.CustomResource {
     thresholdMetricId = registerOutput<String?>('thresholdMetricId');
     treatMissingData = registerOutput<String?>('treatMissingData');
     unit = registerOutput<String?>('unit');
+    warmUpConfiguration = registerOutput<MetricAlarmWarmUpConfiguration?>('warmUpConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricAlarmWarmUpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

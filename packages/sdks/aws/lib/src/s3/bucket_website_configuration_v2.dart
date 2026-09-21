@@ -490,7 +490,7 @@ class BucketWebsiteConfigurationV2 extends pulumi.CustomResource {
           'aws:s3/bucketWebsiteConfigurationV2:BucketWebsiteConfigurationV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     errorDocument = registerOutput<BucketWebsiteConfigurationV2ErrorDocument?>('errorDocument', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteConfigurationV2ErrorDocument.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -37,9 +37,7 @@ class GlobalReplicationGroupArgs {
   /// The number of node groups (shards) on the global replication group.
   final pulumi.Input<int?>? numNodeGroups;
   /// An ElastiCache Parameter Group to use for the Global Replication Group.
-  /// Required when upgrading an engine or major engine version, but will be ignored if left configured after the upgrade is complete.
-  /// Specifying without a major version upgrade will fail.
-  /// Note that ElastiCache creates a copy of this parameter group for each member replication group.
+  /// Required when upgrading a major engine version, but will be ignored if left configured after the upgrade is complete. Specifying without a major version upgrade will fail. When a replication group joins a global datastore, AWS auto-generates a new parameter group (prefixed `global-datastore-`) derived from the primary's parameter group. Note that ElastiCache creates a copy of this parameter group for each member replication group.
   final pulumi.Input<String?>? parameterGroupName;
   /// The ID of the primary cluster that accepts writes and will replicate updates to the secondary cluster. If `primaryReplicationGroupId` is changed, creates a new resource.
   final pulumi.Input<String> primaryReplicationGroupId;
@@ -93,7 +91,7 @@ class GlobalReplicationGroupArgs {
       engineVersion: (() { final guardedValue = map['engineVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       globalReplicationGroupDescription: (() { final guardedValue = map['globalReplicationGroupDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       globalReplicationGroupIdSuffix: pulumi.Input.fromValue(map['globalReplicationGroupIdSuffix'] as String),
-      numNodeGroups: (() { final guardedValue = map['numNodeGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numNodeGroups: (() { final guardedValue = map['numNodeGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       parameterGroupName: (() { final guardedValue = map['parameterGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       primaryReplicationGroupId: pulumi.Input.fromValue(map['primaryReplicationGroupId'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

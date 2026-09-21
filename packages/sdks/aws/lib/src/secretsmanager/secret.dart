@@ -253,7 +253,7 @@ class Secret extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Configuration block to support secret replication. See details below.
-  late final pulumi.Output<List<SecretReplica>> replicas;
+  late final pulumi.Output<List<SecretReplica>?> replicas;
   /// Key-value map of user-defined tags that are attached to the secret. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -273,7 +273,7 @@ class Secret extends pulumi.CustomResource {
           'aws:secretsmanager/secret:Secret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');
@@ -284,7 +284,7 @@ class Secret extends pulumi.CustomResource {
     policy = registerOutput<String>('policy');
     recoveryWindowInDays = registerOutput<int?>('recoveryWindowInDays');
     region = registerOutput<String>('region');
-    replicas = registerOutput<List<SecretReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretReplica>(guardedValue, (value) => SecretReplica.fromMap((value as Map).cast<String, dynamic>())); });
+    replicas = registerOutput<List<SecretReplica>?>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretReplica>(guardedValue, (value) => SecretReplica.fromMap((value as Map).cast<String, dynamic>())); });
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
@@ -323,7 +323,7 @@ class Secret extends pulumi.CustomResource {
     policy = registerOutput<String>('policy');
     recoveryWindowInDays = registerOutput<int?>('recoveryWindowInDays');
     region = registerOutput<String>('region');
-    replicas = registerOutput<List<SecretReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretReplica>(guardedValue, (value) => SecretReplica.fromMap((value as Map).cast<String, dynamic>())); });
+    replicas = registerOutput<List<SecretReplica>?>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretReplica>(guardedValue, (value) => SecretReplica.fromMap((value as Map).cast<String, dynamic>())); });
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');
@@ -347,7 +347,7 @@ class Secret extends pulumi.CustomResource {
     policy = registerOutput<String>('policy');
     recoveryWindowInDays = registerOutput<int?>('recoveryWindowInDays');
     region = registerOutput<String>('region');
-    replicas = registerOutput<List<SecretReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretReplica>(guardedValue, (value) => SecretReplica.fromMap((value as Map).cast<String, dynamic>())); });
+    replicas = registerOutput<List<SecretReplica>?>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretReplica>(guardedValue, (value) => SecretReplica.fromMap((value as Map).cast<String, dynamic>())); });
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String?>('type');

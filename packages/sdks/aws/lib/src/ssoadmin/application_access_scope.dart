@@ -226,7 +226,7 @@ class ApplicationAccessScope extends pulumi.CustomResource {
           'aws:ssoadmin/applicationAccessScope:ApplicationAccessScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     applicationArn = registerOutput<String>('applicationArn');
     authorizedTargets = registerOutput<List<String>?>('authorizedTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

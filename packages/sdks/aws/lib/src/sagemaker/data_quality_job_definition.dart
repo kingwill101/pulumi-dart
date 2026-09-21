@@ -332,7 +332,7 @@ class DataQualityJobDefinition extends pulumi.CustomResource {
           'aws:sagemaker/dataQualityJobDefinition:DataQualityJobDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataQualityAppSpecification = registerOutput<DataQualityJobDefinitionDataQualityAppSpecification>('dataQualityAppSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataQualityJobDefinitionDataQualityAppSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });

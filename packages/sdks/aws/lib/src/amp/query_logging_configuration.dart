@@ -253,7 +253,7 @@ class QueryLoggingConfiguration extends pulumi.CustomResource {
           'aws:amp/queryLoggingConfiguration:QueryLoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     destinations = registerOutput<List<QueryLoggingConfigurationDestination>>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QueryLoggingConfigurationDestination>(guardedValue, (value) => QueryLoggingConfigurationDestination.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');

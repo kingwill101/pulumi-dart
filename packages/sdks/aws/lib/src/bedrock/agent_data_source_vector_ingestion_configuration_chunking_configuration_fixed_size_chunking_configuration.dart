@@ -25,8 +25,8 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeC
 
   factory AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration(
-      maxTokens: pulumi.Input.fromValue((map['maxTokens'] as num).toInt()),
-      overlapPercentage: pulumi.Input.fromValue((map['overlapPercentage'] as num).toInt()),
+      maxTokens: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxTokens'])),
+      overlapPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['overlapPercentage'])),
     );
   }
 }

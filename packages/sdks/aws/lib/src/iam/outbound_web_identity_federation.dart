@@ -124,7 +124,7 @@ class OutboundWebIdentityFederation extends pulumi.CustomResource {
           'aws:iam/outboundWebIdentityFederation:OutboundWebIdentityFederation',
           name,
           pulumi.Input.mapToInputs(args ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     issuerIdentifier = registerOutput<String>('issuerIdentifier');
   }

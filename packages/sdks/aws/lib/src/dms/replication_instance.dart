@@ -676,7 +676,7 @@ class ReplicationInstance extends pulumi.CustomResource {
           'aws:dms/replicationInstance:ReplicationInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     allocatedStorage = registerOutput<int>('allocatedStorage');
     allowMajorVersionUpgrade = registerOutput<bool?>('allowMajorVersionUpgrade');

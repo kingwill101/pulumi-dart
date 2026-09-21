@@ -23,7 +23,7 @@ class GetComputeEnvironmentUpdatePolicy {
 
   factory GetComputeEnvironmentUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return GetComputeEnvironmentUpdatePolicy(
-      jobExecutionTimeoutMinutes: pulumi.Input.fromValue((map['jobExecutionTimeoutMinutes'] as num).toInt()),
+      jobExecutionTimeoutMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['jobExecutionTimeoutMinutes'])),
       terminateJobsOnUpdate: pulumi.Input.fromValue(map['terminateJobsOnUpdate'] as bool),
     );
   }

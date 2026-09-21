@@ -353,7 +353,7 @@ class MeteringPolicy extends pulumi.CustomResource {
           'aws:ec2transitgateway/meteringPolicy:MeteringPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     middleboxAttachmentIds = registerOutput<List<String>?>('middleboxAttachmentIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

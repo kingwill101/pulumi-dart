@@ -363,7 +363,7 @@ class WorkspaceSamlConfiguration extends pulumi.CustomResource {
           'aws:grafana/workspaceSamlConfiguration:WorkspaceSamlConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     adminRoleValues = registerOutput<List<String>?>('adminRoleValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allowedOrganizations = registerOutput<List<String>?>('allowedOrganizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

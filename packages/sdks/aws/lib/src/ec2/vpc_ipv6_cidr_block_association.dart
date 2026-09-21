@@ -200,7 +200,7 @@ class VpcIpv6CidrBlockAssociation extends pulumi.CustomResource {
           'aws:ec2/vpcIpv6CidrBlockAssociation:VpcIpv6CidrBlockAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     assignGeneratedIpv6CidrBlock = registerOutput<bool>('assignGeneratedIpv6CidrBlock');
     ipSource = registerOutput<String>('ipSource');

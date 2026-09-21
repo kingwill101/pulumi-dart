@@ -44,7 +44,7 @@ class RestoreTestingPlanRecoveryPointSelection {
       excludeVaults: (() { final guardedValue = map['excludeVaults']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       includeVaults: pulumi.Input.fromValue((map['includeVaults'] as List).cast<String>()),
       recoveryPointTypes: pulumi.Input.fromValue((map['recoveryPointTypes'] as List).cast<String>()),
-      selectionWindowDays: (() { final guardedValue = map['selectionWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      selectionWindowDays: (() { final guardedValue = map['selectionWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

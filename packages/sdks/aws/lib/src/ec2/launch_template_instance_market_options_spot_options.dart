@@ -41,7 +41,7 @@ class LaunchTemplateInstanceMarketOptionsSpotOptions {
 
   factory LaunchTemplateInstanceMarketOptionsSpotOptions.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateInstanceMarketOptionsSpotOptions(
-      blockDurationMinutes: (() { final guardedValue = map['blockDurationMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      blockDurationMinutes: (() { final guardedValue = map['blockDurationMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceInterruptionBehavior: (() { final guardedValue = map['instanceInterruptionBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maxPrice: (() { final guardedValue = map['maxPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       spotInstanceType: (() { final guardedValue = map['spotInstanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

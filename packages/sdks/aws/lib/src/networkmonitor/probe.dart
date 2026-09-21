@@ -225,7 +225,7 @@ class Probe extends pulumi.CustomResource {
           'aws:networkmonitor/probe:Probe',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     arn = registerOutput<String>('arn');

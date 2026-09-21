@@ -37,7 +37,7 @@ class ReceiptRuleLambdaAction {
     return ReceiptRuleLambdaAction(
       functionArn: pulumi.Input.fromValue(map['functionArn'] as String),
       invocationType: (() { final guardedValue = map['invocationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      position: pulumi.Input.fromValue((map['position'] as num).toInt()),
+      position: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['position'])),
       topicArn: (() { final guardedValue = map['topicArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

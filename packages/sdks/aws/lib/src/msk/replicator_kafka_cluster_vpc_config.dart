@@ -4,6 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicatorKafkaClusterVpcConfig {
   /// The AWS security groups to associate with the ENIs used by the replicator. If a security group is not specified, the default security group associated with the VPC is used.
+  ///
+  /// &gt; **Note:** When an `apacheKafkaCluster` uses `clientAuthentication`, the replicator's network interfaces (created in these subnets, with private IPs only) must be able to reach AWS Secrets Manager and AWS KMS to retrieve and decrypt the credentials. Ensure the subnets have egress to those services via a NAT gateway or Secrets Manager and KMS interface VPC endpoints; otherwise the replicator times out connecting to the source cluster.
   final pulumi.Input<List<String>?>? securityGroupsIds;
   /// List of subnets to connect to in the VPC. AWS creates elastic network interfaces inside these subnets to allow communication between your Kafka Cluster and the replicator.
   final pulumi.Input<List<String>> subnetIds;

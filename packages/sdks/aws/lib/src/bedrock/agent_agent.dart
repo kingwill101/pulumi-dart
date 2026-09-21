@@ -592,7 +592,7 @@ class AgentAgent extends pulumi.CustomResource {
           'aws:bedrock/agentAgent:AgentAgent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     agentArn = registerOutput<String>('agentArn');
     agentCollaboration = registerOutput<String>('agentCollaboration');

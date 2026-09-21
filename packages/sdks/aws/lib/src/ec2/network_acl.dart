@@ -265,6 +265,18 @@ import 'network_acl_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) ID of the Network ACL.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Network ACLs using the `id`. For example:
 ///
 /// ```sh
@@ -302,7 +314,7 @@ class NetworkAcl extends pulumi.CustomResource {
           'aws:ec2/networkAcl:NetworkAcl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     egress = registerOutput<List<NetworkAclEgress>>('egress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkAclEgress>(guardedValue, (value) => NetworkAclEgress.fromMap((value as Map).cast<String, dynamic>())); });

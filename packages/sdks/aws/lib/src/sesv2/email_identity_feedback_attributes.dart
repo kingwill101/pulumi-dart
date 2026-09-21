@@ -170,7 +170,7 @@ class EmailIdentityFeedbackAttributes extends pulumi.CustomResource {
           'aws:sesv2/emailIdentityFeedbackAttributes:EmailIdentityFeedbackAttributes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     emailForwardingEnabled = registerOutput<bool?>('emailForwardingEnabled');
     emailIdentity = registerOutput<String>('emailIdentity');

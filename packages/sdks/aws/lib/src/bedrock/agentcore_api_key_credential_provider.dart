@@ -244,16 +244,16 @@ import 'agentcore_api_key_credential_provider_state.dart';
 /// $ pulumi import aws:bedrock/agentcoreApiKeyCredentialProvider:AgentcoreApiKeyCredentialProvider example example-api-key-provider
 /// ```
 class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
-  /// API key value. Cannot be used with `apiKeyWo`. This value will be visible in pulumi preview outputs and logs.
+  /// API key value. Conflicts with `apiKeyWo`. This value will be visible in pulumi preview outputs and logs.
   ///
   /// **Write-Only API Key (choose one approach):**
   late final pulumi.Output<String?> apiKey;
   /// ARN of the AWS Secrets Manager secret containing the API key.
   late final pulumi.Output<List<AgentcoreApiKeyCredentialProviderApiKeySecretArn>> apiKeySecretArns;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Write-only API key value. Cannot be used with `apiKey`. Must be used together with `apiKeyWoVersion`.
+  /// Write-only API key value. Conflicts with `apiKey`. If set, requires `apiKeyWoVersion` to be set.
   late final pulumi.Output<String?> apiKeyWo;
-  /// Used together with `apiKeyWo` to trigger an update. Increment this value when an update to `apiKeyWo` is required.
+  /// Required when `apiKeyWo` is set. Changing this value triggers an update to `apiKeyWo`.
   late final pulumi.Output<int?> apiKeyWoVersion;
   /// ARN of the API Key credential provider.
   late final pulumi.Output<String> credentialProviderArn;
@@ -282,7 +282,7 @@ class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
           'aws:bedrock/agentcoreApiKeyCredentialProvider:AgentcoreApiKeyCredentialProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
           additionalSecretOutputs: const ['apiKey', 'apiKeyWo'],
         ) {
     apiKey = registerOutput<String?>('apiKey', isSecret: true);

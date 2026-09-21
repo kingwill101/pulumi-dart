@@ -2298,7 +2298,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:eks/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accessConfig = registerOutput<ClusterAccessConfig>('accessConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

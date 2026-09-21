@@ -63,7 +63,7 @@ class GetBucketObjectsArgs {
       delimiter: (() { final guardedValue = map['delimiter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encodingType: (() { final guardedValue = map['encodingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fetchOwner: (() { final guardedValue = map['fetchOwner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxKeys: (() { final guardedValue = map['maxKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxKeys: (() { final guardedValue = map['maxKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startAfter: (() { final guardedValue = map['startAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

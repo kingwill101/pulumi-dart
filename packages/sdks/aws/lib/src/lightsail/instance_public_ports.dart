@@ -348,7 +348,7 @@ class InstancePublicPorts extends pulumi.CustomResource {
           'aws:lightsail/instancePublicPorts:InstancePublicPorts',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     instanceName = registerOutput<String>('instanceName');
     portInfos = registerOutput<List<InstancePublicPortsPortInfo>>('portInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstancePublicPortsPortInfo>(guardedValue, (value) => InstancePublicPortsPortInfo.fromMap((value as Map).cast<String, dynamic>())); });

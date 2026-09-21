@@ -397,7 +397,7 @@ class LogS3TableIntegrationSource extends pulumi.CustomResource {
           'aws:cloudwatch/logS3TableIntegrationSource:LogS3TableIntegrationSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     dataSource = registerOutput<LogS3TableIntegrationSourceDataSource>('dataSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogS3TableIntegrationSourceDataSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     integrationArn = registerOutput<String>('integrationArn');

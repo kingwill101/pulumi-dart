@@ -873,7 +873,7 @@ class Resolver extends pulumi.CustomResource {
           'aws:appsync/resolver:Resolver',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');

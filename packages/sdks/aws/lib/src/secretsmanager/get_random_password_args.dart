@@ -70,7 +70,7 @@ class GetRandomPasswordArgs {
       excludePunctuation: (() { final guardedValue = map['excludePunctuation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       excludeUppercase: (() { final guardedValue = map['excludeUppercase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       includeSpace: (() { final guardedValue = map['includeSpace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      passwordLength: (() { final guardedValue = map['passwordLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      passwordLength: (() { final guardedValue = map['passwordLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requireEachIncludedType: (() { final guardedValue = map['requireEachIncludedType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

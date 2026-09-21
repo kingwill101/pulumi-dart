@@ -11,17 +11,21 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderC
   final pulumi.Input<List<String>?>? responseTypes;
   /// OAuth2 token endpoint URL.
   final pulumi.Input<String> tokenEndpoint;
+  /// List of authentication methods supported by the token endpoint. Must contain one or two values matching `clientSecretPost` or `clientSecretBasic`.
+  final pulumi.Input<List<String>?>? tokenEndpointAuthMethods;
 
   /// Creates a new [AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata].
   /// [authorizationEndpoint] OAuth2 authorization endpoint URL.
   /// [issuer] OAuth2 authorization server issuer identifier.
   /// [responseTypes] Set of OAuth2 response types supported by the authorization server.
   /// [tokenEndpoint] OAuth2 token endpoint URL.
+  /// [tokenEndpointAuthMethods] List of authentication methods supported by the token endpoint. Must contain one or two values matching `clientSecretPost` or `clientSecretBasic`.
   const AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata({
     required this.authorizationEndpoint,
     required this.issuer,
     this.responseTypes,
     required this.tokenEndpoint,
+    this.tokenEndpointAuthMethods,
   });
 
   Map<String, dynamic> toMap() {
@@ -30,6 +34,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderC
       'issuer': issuer,
       'responseTypes': ?responseTypes,
       'tokenEndpoint': tokenEndpoint,
+      'tokenEndpointAuthMethods': ?tokenEndpointAuthMethods,
     };
   }
 
@@ -39,6 +44,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderC
       issuer: pulumi.Input.fromValue(map['issuer'] as String),
       responseTypes: (() { final guardedValue = map['responseTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       tokenEndpoint: pulumi.Input.fromValue(map['tokenEndpoint'] as String),
+      tokenEndpointAuthMethods: (() { final guardedValue = map['tokenEndpointAuthMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }
 }

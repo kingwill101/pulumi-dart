@@ -53,11 +53,11 @@ class SmsChannelState {
     return SmsChannelState(
       applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      promotionalMessagesPerSecond: (() { final guardedValue = map['promotionalMessagesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      promotionalMessagesPerSecond: (() { final guardedValue = map['promotionalMessagesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       senderId: (() { final guardedValue = map['senderId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       shortCode: (() { final guardedValue = map['shortCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      transactionalMessagesPerSecond: (() { final guardedValue = map['transactionalMessagesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      transactionalMessagesPerSecond: (() { final guardedValue = map['transactionalMessagesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

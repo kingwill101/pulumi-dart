@@ -644,7 +644,7 @@ class StackSet extends pulumi.CustomResource {
           'aws:cloudformation/stackSet:StackSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     administrationRoleArn = registerOutput<String?>('administrationRoleArn');
     arn = registerOutput<String>('arn');

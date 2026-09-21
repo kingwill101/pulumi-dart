@@ -53,7 +53,7 @@ class MetricAlarmMetricQueryMetric {
       dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       metricName: pulumi.Input.fromValue(map['metricName'] as String),
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      period: pulumi.Input.fromValue((map['period'] as num).toInt()),
+      period: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['period'])),
       stat: pulumi.Input.fromValue(map['stat'] as String),
       unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

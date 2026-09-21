@@ -104,7 +104,7 @@ class ClusterArgs {
       enhancedMonitoring: (() { final guardedValue = map['enhancedMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kafkaVersion: pulumi.Input.fromValue(map['kafkaVersion'] as String),
       loggingInfo: (() { final guardedValue = map['loggingInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterLoggingInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      numberOfBrokerNodes: pulumi.Input.fromValue((map['numberOfBrokerNodes'] as num).toInt()),
+      numberOfBrokerNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfBrokerNodes'])),
       openMonitoring: (() { final guardedValue = map['openMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterOpenMonitoring.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rebalancing: (() { final guardedValue = map['rebalancing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterRebalancing.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

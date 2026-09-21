@@ -785,13 +785,26 @@ import 'integration_tls_config.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `apiId` (String) API identifier.
+/// * `id` (String) Integration identifier.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import `aws.apigatewayv2.Integration` using the API identifier and integration identifier. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:apigatewayv2/integration:Integration example aabbccddee/1122334
 /// ```
 ///
-/// &gt; **Note:** The API Gateway managed integration created as part of [_quick_create_](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-basic-concept.html#apigateway-definition-quick-create) cannot be imported.
+/// &gt; **Note:** The API Gateway managed integration created as part of [*quick_create*](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-basic-concept.html#apigateway-definition-quick-create) cannot be imported.
 class Integration extends pulumi.CustomResource {
   /// API identifier.
   late final pulumi.Output<String> apiId;
@@ -846,7 +859,7 @@ class Integration extends pulumi.CustomResource {
           'aws:apigatewayv2/integration:Integration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     connectionId = registerOutput<String?>('connectionId');

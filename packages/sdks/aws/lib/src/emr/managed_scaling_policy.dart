@@ -274,7 +274,7 @@ class ManagedScalingPolicy extends pulumi.CustomResource {
           'aws:emr/managedScalingPolicy:ManagedScalingPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
     computeLimits = registerOutput<List<ManagedScalingPolicyComputeLimit>>('computeLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedScalingPolicyComputeLimit>(guardedValue, (value) => ManagedScalingPolicyComputeLimit.fromMap((value as Map).cast<String, dynamic>())); });

@@ -25,6 +25,8 @@ class CanaryState {
   final pulumi.Input<int?>? failureRetentionPeriod;
   /// Entry point to use for the source code when running the canary. This value must end with the string `.handler` .
   final pulumi.Input<String?>? handler;
+  /// ARN of the customer-managed KMS key used to encrypt the environment variables of the canary's Lambda function at rest. If omitted, an AWS owned key is used. Note that this is distinct from `artifact_config.s3_encryption.kms_key_arn`, which encrypts the artifacts the canary uploads to Amazon S3.
+  final pulumi.Input<String?>? kmsKeyArn;
   /// Name for this canary. Has a maximum length of 255 characters. Valid characters are lowercase alphanumeric, hyphen, or underscore.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -71,6 +73,7 @@ class CanaryState {
   /// [executionRoleArn] ARN of the IAM role to be used to run the canary. see [AWS Docs](https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_CreateCanary.html#API_CreateCanary_RequestSyntax) for permissions needs for IAM Role.
   /// [failureRetentionPeriod] Number of days to retain data about failed runs of this canary. If you omit this field, the default of 31 days is used. The valid range is 1 to 455 days.
   /// [handler] Entry point to use for the source code when running the canary. This value must end with the string `.handler` .
+  /// [kmsKeyArn] ARN of the customer-managed KMS key used to encrypt the environment variables of the canary's Lambda function at rest. If omitted, an AWS owned key is used. Note that this is distinct from `artifact_config.s3_encryption.kms_key_arn`, which encrypts the artifacts the canary uploads to Amazon S3.
   /// [name] Name for this canary. Has a maximum length of 255 characters. Valid characters are lowercase alphanumeric, hyphen, or underscore.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [runConfig] Configuration block for individual canary runs. Detailed below.
@@ -97,6 +100,7 @@ class CanaryState {
     this.executionRoleArn,
     this.failureRetentionPeriod,
     this.handler,
+    this.kmsKeyArn,
     this.name,
     this.region,
     this.runConfig,
@@ -126,6 +130,7 @@ class CanaryState {
       'executionRoleArn': ?executionRoleArn,
       'failureRetentionPeriod': ?failureRetentionPeriod,
       'handler': ?handler,
+      'kmsKeyArn': ?kmsKeyArn,
       'name': ?name,
       'region': ?region,
       'runConfig': ?pulumi.Input.mapOptionalInputValue<CanaryRunConfig, Map<String, dynamic>>(runConfig, (value) => value.toMap()),
@@ -154,8 +159,9 @@ class CanaryState {
       deleteLambda: (() { final guardedValue = map['deleteLambda']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       engineArn: (() { final guardedValue = map['engineArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       executionRoleArn: (() { final guardedValue = map['executionRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      failureRetentionPeriod: (() { final guardedValue = map['failureRetentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      failureRetentionPeriod: (() { final guardedValue = map['failureRetentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       handler: (() { final guardedValue = map['handler']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kmsKeyArn: (() { final guardedValue = map['kmsKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       runConfig: (() { final guardedValue = map['runConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CanaryRunConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -167,7 +173,7 @@ class CanaryState {
       sourceLocationArn: (() { final guardedValue = map['sourceLocationArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startCanary: (() { final guardedValue = map['startCanary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      successRetentionPeriod: (() { final guardedValue = map['successRetentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      successRetentionPeriod: (() { final guardedValue = map['successRetentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timelines: (() { final guardedValue = map['timelines']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CanaryTimeline>(guardedValue, (value) => CanaryTimeline.fromMap((value as Map).cast<String, dynamic>()))); })(),

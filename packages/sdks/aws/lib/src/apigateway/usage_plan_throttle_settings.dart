@@ -25,7 +25,7 @@ class UsagePlanThrottleSettings {
 
   factory UsagePlanThrottleSettings.fromMap(Map<String, dynamic> map) {
     return UsagePlanThrottleSettings(
-      burstLimit: (() { final guardedValue = map['burstLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      burstLimit: (() { final guardedValue = map['burstLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rateLimit: (() { final guardedValue = map['rateLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }

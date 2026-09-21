@@ -63,7 +63,7 @@ class TrustStoreState {
       caCertificatesBundleSource: (() { final guardedValue = map['caCertificatesBundleSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TrustStoreCaCertificatesBundleSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numberOfCaCertificates: (() { final guardedValue = map['numberOfCaCertificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numberOfCaCertificates: (() { final guardedValue = map['numberOfCaCertificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TrustStoreTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

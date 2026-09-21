@@ -2599,296 +2599,6 @@ import 'agentcore_gateway_target_timeouts.dart';
 /// ```
 ///
 ///
-/// ### HTTP Target Routing to an AgentCore Runtime
-///
-/// Routes gateway traffic directly to an AgentCore Runtime agent over HTTP, without MCP aggregation. The gateway must not have a `protocolType` set.
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
-///
-/// const example = new aws.bedrock.AgentcoreAgentRuntime("example", {
-///     agentRuntimeArtifact: {
-///         containerConfiguration: {
-///             containerUri: "111122223333.dkr.ecr.us-west-2.amazonaws.com/example-runtime:latest",
-///         },
-///     },
-///     networkConfiguration: {
-///         networkMode: "PUBLIC",
-///     },
-///     agentRuntimeName: "example-runtime",
-///     roleArn: runtimeRole.arn,
-/// });
-/// const runtime = new aws.bedrock.AgentcoreGatewayTarget("runtime", {
-///     credentialProviderConfiguration: {
-///         gatewayIamRole: {},
-///     },
-///     targetConfiguration: {
-///         http: {
-///             agentcoreRuntime: {
-///                 arn: example.agentRuntimeArn,
-///                 qualifier: "DEFAULT",
-///             },
-///         },
-///     },
-///     name: "runtime-target",
-///     gatewayIdentifier: exampleAwsBedrockagentcoreGateway.gatewayId,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// example = aws.bedrock.AgentcoreAgentRuntime("example",
-///     agent_runtime_artifact={
-///         "container_configuration": {
-///             "container_uri": "111122223333.dkr.ecr.us-west-2.amazonaws.com/example-runtime:latest",
-///         },
-///     },
-///     network_configuration={
-///         "network_mode": "PUBLIC",
-///     },
-///     agent_runtime_name="example-runtime",
-///     role_arn=runtime_role["arn"])
-/// runtime = aws.bedrock.AgentcoreGatewayTarget("runtime",
-///     credential_provider_configuration={
-///         "gateway_iam_role": {},
-///     },
-///     target_configuration={
-///         "http": {
-///             "agentcore_runtime": {
-///                 "arn": example.agent_runtime_arn,
-///                 "qualifier": "DEFAULT",
-///             },
-///         },
-///     },
-///     name="runtime-target",
-///     gateway_identifier=example_aws_bedrockagentcore_gateway["gatewayId"])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var example = new Aws.Bedrock.AgentcoreAgentRuntime("example", new()
-///     {
-///         AgentRuntimeArtifact = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs
-///         {
-///             ContainerConfiguration = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs
-///             {
-///                 ContainerUri = "111122223333.dkr.ecr.us-west-2.amazonaws.com/example-runtime:latest",
-///             },
-///         },
-///         NetworkConfiguration = new Aws.Bedrock.Inputs.AgentcoreAgentRuntimeNetworkConfigurationArgs
-///         {
-///             NetworkMode = "PUBLIC",
-///         },
-///         AgentRuntimeName = "example-runtime",
-///         RoleArn = runtimeRole.Arn,
-///     });
-///
-///     var runtime = new Aws.Bedrock.AgentcoreGatewayTarget("runtime", new()
-///     {
-///         CredentialProviderConfiguration = new Aws.Bedrock.Inputs.AgentcoreGatewayTargetCredentialProviderConfigurationArgs
-///         {
-///             GatewayIamRole = null,
-///         },
-///         TargetConfiguration = new Aws.Bedrock.Inputs.AgentcoreGatewayTargetTargetConfigurationArgs
-///         {
-///             Http = new Aws.Bedrock.Inputs.AgentcoreGatewayTargetTargetConfigurationHttpArgs
-///             {
-///                 AgentcoreRuntime = new Aws.Bedrock.Inputs.AgentcoreGatewayTargetTargetConfigurationHttpAgentcoreRuntimeArgs
-///                 {
-///                     Arn = example.AgentRuntimeArn,
-///                     Qualifier = "DEFAULT",
-///                 },
-///             },
-///         },
-///         Name = "runtime-target",
-///         GatewayIdentifier = exampleAwsBedrockagentcoreGateway.GatewayId,
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/bedrock"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := bedrock.NewAgentcoreAgentRuntime(ctx, "example", &bedrock.AgentcoreAgentRuntimeArgs{
-/// 			AgentRuntimeArtifact: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs{
-/// 				ContainerConfiguration: &bedrock.AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs{
-/// 					ContainerUri: pulumi.String("111122223333.dkr.ecr.us-west-2.amazonaws.com/example-runtime:latest"),
-/// 				},
-/// 			},
-/// 			NetworkConfiguration: &bedrock.AgentcoreAgentRuntimeNetworkConfigurationArgs{
-/// 				NetworkMode: pulumi.String("PUBLIC"),
-/// 			},
-/// 			AgentRuntimeName: pulumi.String("example-runtime"),
-/// 			RoleArn:          pulumi.Any(runtimeRole.Arn),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = bedrock.NewAgentcoreGatewayTarget(ctx, "runtime", &bedrock.AgentcoreGatewayTargetArgs{
-/// 			CredentialProviderConfiguration: &bedrock.AgentcoreGatewayTargetCredentialProviderConfigurationArgs{
-/// 				GatewayIamRole: &bedrock.AgentcoreGatewayTargetCredentialProviderConfigurationGatewayIamRoleArgs{},
-/// 			},
-/// 			TargetConfiguration: &bedrock.AgentcoreGatewayTargetTargetConfigurationArgs{
-/// 				Http: &bedrock.AgentcoreGatewayTargetTargetConfigurationHttpArgs{
-/// 					AgentcoreRuntime: &bedrock.AgentcoreGatewayTargetTargetConfigurationHttpAgentcoreRuntimeArgs{
-/// 						Arn:       example.AgentRuntimeArn,
-/// 						Qualifier: pulumi.String("DEFAULT"),
-/// 					},
-/// 				},
-/// 			},
-/// 			Name:              pulumi.String("runtime-target"),
-/// 			GatewayIdentifier: pulumi.Any(exampleAwsBedrockagentcoreGateway.GatewayId),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```hcl
-/// pulumi {
-///   required_providers {
-///     aws = {
-///       source = "pulumi/aws"
-///     }
-///   }
-/// }
-///
-/// resource "aws_bedrock_agentcoreagentruntime" "example" {
-///   agent_runtime_artifact = {
-///     container_configuration = {
-///       container_uri = "111122223333.dkr.ecr.us-west-2.amazonaws.com/example-runtime:latest"
-///     }
-///   }
-///   network_configuration = {
-///     network_mode = "PUBLIC"
-///   }
-///   agent_runtime_name = "example-runtime"
-///   role_arn           = runtimeRole.arn
-/// }
-/// resource "aws_bedrock_agentcoregatewaytarget" "runtime" {
-///   credential_provider_configuration = {
-///     gateway_iam_role = {}
-///   }
-///   target_configuration = {
-///     http = {
-///       agentcore_runtime = {
-///         arn       = aws_bedrock_agentcoreagentruntime.example.agent_runtime_arn
-///         qualifier = "DEFAULT"
-///       }
-///     }
-///   }
-///   name               = "runtime-target"
-///   gateway_identifier = exampleAwsBedrockagentcoreGateway.gatewayId
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.bedrock.AgentcoreAgentRuntime;
-/// import com.pulumi.aws.bedrock.AgentcoreAgentRuntimeArgs;
-/// import com.pulumi.aws.bedrock.inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactArgs;
-/// import com.pulumi.aws.bedrock.inputs.AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs;
-/// import com.pulumi.aws.bedrock.inputs.AgentcoreAgentRuntimeNetworkConfigurationArgs;
-/// import com.pulumi.aws.bedrock.AgentcoreGatewayTarget;
-/// import com.pulumi.aws.bedrock.AgentcoreGatewayTargetArgs;
-/// import com.pulumi.aws.bedrock.inputs.AgentcoreGatewayTargetCredentialProviderConfigurationArgs;
-/// import com.pulumi.aws.bedrock.inputs.AgentcoreGatewayTargetCredentialProviderConfigurationGatewayIamRoleArgs;
-/// import com.pulumi.aws.bedrock.inputs.AgentcoreGatewayTargetTargetConfigurationArgs;
-/// import com.pulumi.aws.bedrock.inputs.AgentcoreGatewayTargetTargetConfigurationHttpArgs;
-/// import com.pulumi.aws.bedrock.inputs.AgentcoreGatewayTargetTargetConfigurationHttpAgentcoreRuntimeArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var example = new AgentcoreAgentRuntime("example", AgentcoreAgentRuntimeArgs.builder()
-///             .agentRuntimeArtifact(AgentcoreAgentRuntimeAgentRuntimeArtifactArgs.builder()
-///                 .containerConfiguration(AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfigurationArgs.builder()
-///                     .containerUri("111122223333.dkr.ecr.us-west-2.amazonaws.com/example-runtime:latest")
-///                     .build())
-///                 .build())
-///             .networkConfiguration(AgentcoreAgentRuntimeNetworkConfigurationArgs.builder()
-///                 .networkMode("PUBLIC")
-///                 .build())
-///             .agentRuntimeName("example-runtime")
-///             .roleArn(runtimeRole.arn())
-///             .build());
-///
-///         var runtime = new AgentcoreGatewayTarget("runtime", AgentcoreGatewayTargetArgs.builder()
-///             .credentialProviderConfiguration(AgentcoreGatewayTargetCredentialProviderConfigurationArgs.builder()
-///                 .gatewayIamRole(AgentcoreGatewayTargetCredentialProviderConfigurationGatewayIamRoleArgs.builder()
-///                     .build())
-///                 .build())
-///             .targetConfiguration(AgentcoreGatewayTargetTargetConfigurationArgs.builder()
-///                 .http(AgentcoreGatewayTargetTargetConfigurationHttpArgs.builder()
-///                     .agentcoreRuntime(AgentcoreGatewayTargetTargetConfigurationHttpAgentcoreRuntimeArgs.builder()
-///                         .arn(example.agentRuntimeArn())
-///                         .qualifier("DEFAULT")
-///                         .build())
-///                     .build())
-///                 .build())
-///             .name("runtime-target")
-///             .gatewayIdentifier(exampleAwsBedrockagentcoreGateway.gatewayId())
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   example:
-///     type: aws:bedrock:AgentcoreAgentRuntime
-///     properties:
-///       agentRuntimeArtifact:
-///         containerConfiguration:
-///           containerUri: 111122223333.dkr.ecr.us-west-2.amazonaws.com/example-runtime:latest
-///       networkConfiguration:
-///         networkMode: PUBLIC
-///       agentRuntimeName: example-runtime
-///       roleArn: ${runtimeRole.arn}
-///   runtime:
-///     type: aws:bedrock:AgentcoreGatewayTarget
-///     properties:
-///       credentialProviderConfiguration:
-///         gatewayIamRole: {}
-///       targetConfiguration:
-///         http:
-///           agentcoreRuntime:
-///             arn: ${example.agentRuntimeArn}
-///             qualifier: DEFAULT
-///       name: runtime-target
-///       gatewayIdentifier: ${exampleAwsBedrockagentcoreGateway.gatewayId}
-/// ```
-///
-///
 /// ### Self-hosted MCP server in a VPC (managed Lattice)
 ///
 ///
@@ -3502,27 +3212,40 @@ import 'agentcore_gateway_target_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Bedrock AgentCore Gateway Target using the gateway identifier and target ID separated by a comma. For example:
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `gatewayIdentifier` (String) Gateway identifier.
+/// * `targetId` (String) Gateway target ID.
+///
+/// #### Optional
+///
+/// * `accountId` (String) Account ID where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import gateway targets using `gatewayIdentifier` and `targetId` separated by a comma (`,`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:bedrock/agentcoreGatewayTarget:AgentcoreGatewayTarget example GATEWAY1234567890,TARGET0987654321
 /// ```
 class AgentcoreGatewayTarget extends pulumi.CustomResource {
-  /// Configuration for authenticating requests to the target. Required when using `lambda`, `openApiSchema` and `smithyModel` in `mcp` block. If using `mcpServer` in `mcp` block with no authorization, it should not be specified. See `credentialProviderConfiguration` below.
+  /// Configuration for authenticating requests to the target. Required when using `lambda`, `openApiSchema` and `smithyModel` in `mcp` block. If using `mcpServer` in `mcp` block with no authorization, it should not be specified. See `credentialProviderConfiguration` Block below.
   late final pulumi.Output<AgentcoreGatewayTargetCredentialProviderConfiguration?> credentialProviderConfiguration;
   /// Description of the gateway target.
   late final pulumi.Output<String?> description;
   /// Identifier of the gateway that this target belongs to.
   late final pulumi.Output<String> gatewayIdentifier;
-  /// Configuration for HTTP header and query parameter propagation between the gateway and target servers. See `metadataConfiguration` below.
+  /// Configuration for HTTP header and query parameter propagation between the gateway and target servers. See `metadataConfiguration` Block below.
   late final pulumi.Output<AgentcoreGatewayTargetMetadataConfiguration?> metadataConfiguration;
   /// Name of the gateway target.
   late final pulumi.Output<String> name;
-  /// Configuration for private connectivity from AgentCore Gateway to a resource inside your VPC. Traffic is routed through Amazon VPC Lattice and never traverses the public internet. See `privateEndpoint` below.
+  /// Configuration for private connectivity from AgentCore Gateway to a resource inside your VPC. Traffic is routed through Amazon VPC Lattice and never traverses the public internet. See `privateEndpoint` Block below.
   late final pulumi.Output<AgentcoreGatewayTargetPrivateEndpoint?> privateEndpoint;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Configuration for the target endpoint. See `targetConfiguration` below.
+  /// Configuration for the target endpoint. See `targetConfiguration` Block below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<AgentcoreGatewayTargetTargetConfiguration> targetConfiguration;
@@ -3542,7 +3265,7 @@ class AgentcoreGatewayTarget extends pulumi.CustomResource {
           'aws:bedrock/agentcoreGatewayTarget:AgentcoreGatewayTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     credentialProviderConfiguration = registerOutput<AgentcoreGatewayTargetCredentialProviderConfiguration?>('credentialProviderConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');

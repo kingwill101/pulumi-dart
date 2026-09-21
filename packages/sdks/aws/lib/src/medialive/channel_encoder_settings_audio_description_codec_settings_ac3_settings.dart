@@ -53,7 +53,7 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsAc3Settings {
       bitrate: (() { final guardedValue = map['bitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       bitstreamMode: (() { final guardedValue = map['bitstreamMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       codingMode: (() { final guardedValue = map['codingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dialnorm: (() { final guardedValue = map['dialnorm']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dialnorm: (() { final guardedValue = map['dialnorm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       drcProfile: (() { final guardedValue = map['drcProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lfeFilter: (() { final guardedValue = map['lfeFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadataControl: (() { final guardedValue = map['metadataControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

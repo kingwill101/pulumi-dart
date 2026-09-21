@@ -6,6 +6,7 @@ export 'ecs/capacity_provider_args.dart';
 export 'ecs/capacity_provider_auto_scaling_group_provider.dart';
 export 'ecs/capacity_provider_auto_scaling_group_provider_managed_scaling.dart';
 export 'ecs/capacity_provider_managed_instances_provider.dart';
+export 'ecs/capacity_provider_managed_instances_provider_auto_repair_configuration.dart';
 export 'ecs/capacity_provider_managed_instances_provider_infrastructure_optimization.dart';
 export 'ecs/capacity_provider_managed_instances_provider_instance_launch_template.dart';
 export 'ecs/capacity_provider_managed_instances_provider_instance_launch_template_capacity_reservations.dart';

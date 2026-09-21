@@ -8,33 +8,31 @@ import 'shard_group_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_rds_shard_group_shard_group_args_doc}
 class ShardGroupArgs {
-  /// Specifies whether to create standby DB shard groups for the DB shard group. Valid values are:
+  /// Whether to create standby DB shard groups for the DB shard group. Valid values are `0` (no standby DB shard group, the default), `1` (one standby DB shard group in a different Availability Zone), and `2` (two standby DB shard groups in two different Availability Zones).
   final pulumi.Input<int?>? computeRedundancy;
-  /// The name of the primary DB cluster for the DB shard group.
+  /// Name of the primary DB cluster for the DB shard group.
   final pulumi.Input<String> dbClusterIdentifier;
-  /// The name of the DB shard group.
+  /// Name of the DB shard group.
   final pulumi.Input<String> dbShardGroupIdentifier;
-  /// The maximum capacity of the DB shard group in Aurora capacity units (ACUs).
+  /// Maximum capacity of the DB shard group in Aurora capacity units (ACUs).
   final pulumi.Input<double> maxAcu;
-  /// The minimum capacity of the DB shard group in Aurora capacity units (ACUs).
+  /// Minimum capacity of the DB shard group in Aurora capacity units (ACUs).
   final pulumi.Input<double?>? minAcu;
-  /// Indicates whether the DB shard group is publicly accessible.
+  /// Whether the DB shard group is publicly accessible.
   final pulumi.Input<bool?>? publiclyAccessible;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ///
-  /// For more detailed documentation about each argument, refer to the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-shard-group.html).
   final pulumi.Input<Map<String, String>?>? tags;
   final pulumi.Input<ShardGroupTimeouts?>? timeouts;
 
   /// Creates a new [ShardGroupArgs].
-  /// [computeRedundancy] Specifies whether to create standby DB shard groups for the DB shard group. Valid values are:
-  /// [dbClusterIdentifier] The name of the primary DB cluster for the DB shard group.
-  /// [dbShardGroupIdentifier] The name of the DB shard group.
-  /// [maxAcu] The maximum capacity of the DB shard group in Aurora capacity units (ACUs).
-  /// [minAcu] The minimum capacity of the DB shard group in Aurora capacity units (ACUs).
-  /// [publiclyAccessible] Indicates whether the DB shard group is publicly accessible.
+  /// [computeRedundancy] Whether to create standby DB shard groups for the DB shard group. Valid values are `0` (no standby DB shard group, the default), `1` (one standby DB shard group in a different Availability Zone), and `2` (two standby DB shard groups in two different Availability Zones).
+  /// [dbClusterIdentifier] Name of the primary DB cluster for the DB shard group.
+  /// [dbShardGroupIdentifier] Name of the DB shard group.
+  /// [maxAcu] Maximum capacity of the DB shard group in Aurora capacity units (ACUs).
+  /// [minAcu] Minimum capacity of the DB shard group in Aurora capacity units (ACUs).
+  /// [publiclyAccessible] Whether the DB shard group is publicly accessible.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
@@ -66,7 +64,7 @@ class ShardGroupArgs {
 
   factory ShardGroupArgs.fromMap(Map<String, dynamic> map) {
     return ShardGroupArgs(
-      computeRedundancy: (() { final guardedValue = map['computeRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      computeRedundancy: (() { final guardedValue = map['computeRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dbClusterIdentifier: pulumi.Input.fromValue(map['dbClusterIdentifier'] as String),
       dbShardGroupIdentifier: pulumi.Input.fromValue(map['dbShardGroupIdentifier'] as String),
       maxAcu: pulumi.Input.fromValue((map['maxAcu'] as num).toDouble()),

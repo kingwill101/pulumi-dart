@@ -172,7 +172,7 @@ class OrganizationConfiguration extends pulumi.CustomResource {
           'aws:inspector2/organizationConfiguration:OrganizationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     autoEnable = registerOutput<OrganizationConfigurationAutoEnable>('autoEnable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationAutoEnable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxAccountLimitReached = registerOutput<bool>('maxAccountLimitReached');

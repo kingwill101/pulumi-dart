@@ -31,8 +31,8 @@ class DomainScalingParameters {
   factory DomainScalingParameters.fromMap(Map<String, dynamic> map) {
     return DomainScalingParameters(
       desiredInstanceType: (() { final guardedValue = map['desiredInstanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      desiredPartitionCount: (() { final guardedValue = map['desiredPartitionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      desiredReplicationCount: (() { final guardedValue = map['desiredReplicationCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      desiredPartitionCount: (() { final guardedValue = map['desiredPartitionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      desiredReplicationCount: (() { final guardedValue = map['desiredReplicationCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

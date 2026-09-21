@@ -20,7 +20,7 @@ class AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInp
 
   factory AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigShuffleConfig.fromMap(Map<String, dynamic> map) {
     return AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionInputDataConfigShuffleConfig(
-      seed: pulumi.Input.fromValue((map['seed'] as num).toInt()),
+      seed: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['seed'])),
     );
   }
 }

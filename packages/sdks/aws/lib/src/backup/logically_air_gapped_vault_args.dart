@@ -55,8 +55,8 @@ class LogicallyAirGappedVaultArgs {
   factory LogicallyAirGappedVaultArgs.fromMap(Map<String, dynamic> map) {
     return LogicallyAirGappedVaultArgs(
       encryptionKeyArn: (() { final guardedValue = map['encryptionKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxRetentionDays: pulumi.Input.fromValue((map['maxRetentionDays'] as num).toInt()),
-      minRetentionDays: pulumi.Input.fromValue((map['minRetentionDays'] as num).toInt()),
+      maxRetentionDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRetentionDays'])),
+      minRetentionDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minRetentionDays'])),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

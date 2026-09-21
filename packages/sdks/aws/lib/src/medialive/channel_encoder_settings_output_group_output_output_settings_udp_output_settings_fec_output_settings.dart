@@ -30,9 +30,9 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecO
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings(
-      columnDepth: (() { final guardedValue = map['columnDepth']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      columnDepth: (() { final guardedValue = map['columnDepth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       includeFec: (() { final guardedValue = map['includeFec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rowLength: (() { final guardedValue = map['rowLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      rowLength: (() { final guardedValue = map['rowLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

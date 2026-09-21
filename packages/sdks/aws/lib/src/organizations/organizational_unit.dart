@@ -159,7 +159,7 @@ class OrganizationalUnit extends pulumi.CustomResource {
           'aws:organizations/organizationalUnit:OrganizationalUnit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accounts = registerOutput<List<OrganizationalUnitAccount>>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationalUnitAccount>(guardedValue, (value) => OrganizationalUnitAccount.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

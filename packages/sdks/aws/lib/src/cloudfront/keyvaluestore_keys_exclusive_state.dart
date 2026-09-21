@@ -41,9 +41,9 @@ class KeyvaluestoreKeysExclusiveState {
   factory KeyvaluestoreKeysExclusiveState.fromMap(Map<String, dynamic> map) {
     return KeyvaluestoreKeysExclusiveState(
       keyValueStoreArn: (() { final guardedValue = map['keyValueStoreArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxBatchSize: (() { final guardedValue = map['maxBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxBatchSize: (() { final guardedValue = map['maxBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceKeyValuePairs: (() { final guardedValue = map['resourceKeyValuePairs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KeyvaluestoreKeysExclusiveResourceKeyValuePair>(guardedValue, (value) => KeyvaluestoreKeysExclusiveResourceKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      totalSizeInBytes: (() { final guardedValue = map['totalSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      totalSizeInBytes: (() { final guardedValue = map['totalSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -195,7 +195,7 @@ class FeatureV2 extends pulumi.CustomResource {
           'aws:securityhub/featureV2:FeatureV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     featureName = registerOutput<String>('featureName');
     featureStatus = registerOutput<String>('featureStatus');

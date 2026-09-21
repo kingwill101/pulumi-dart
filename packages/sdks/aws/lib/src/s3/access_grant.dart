@@ -285,7 +285,7 @@ class AccessGrant extends pulumi.CustomResource {
           'aws:s3control/accessGrant:AccessGrant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accessGrantArn = registerOutput<String>('accessGrantArn');
     accessGrantId = registerOutput<String>('accessGrantId');

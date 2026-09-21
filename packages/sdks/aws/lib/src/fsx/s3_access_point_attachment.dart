@@ -228,7 +228,7 @@ class S3AccessPointAttachment extends pulumi.CustomResource {
           'aws:fsx/s3AccessPointAttachment:S3AccessPointAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     openzfsConfiguration = registerOutput<S3AccessPointAttachmentOpenzfsConfiguration>('openzfsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return S3AccessPointAttachmentOpenzfsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

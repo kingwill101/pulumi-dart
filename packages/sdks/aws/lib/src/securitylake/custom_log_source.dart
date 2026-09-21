@@ -255,7 +255,7 @@ class CustomLogSource extends pulumi.CustomResource {
           'aws:securitylake/customLogSource:CustomLogSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     attributes = registerOutput<List<CustomLogSourceAttribute>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomLogSourceAttribute>(guardedValue, (value) => CustomLogSourceAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     configuration = registerOutput<CustomLogSourceConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLogSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

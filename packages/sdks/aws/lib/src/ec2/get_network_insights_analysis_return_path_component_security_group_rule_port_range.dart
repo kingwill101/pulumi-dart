@@ -23,8 +23,8 @@ class GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange {
 
   factory GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange(
-      from: pulumi.Input.fromValue((map['from'] as num).toInt()),
-      to: pulumi.Input.fromValue((map['to'] as num).toInt()),
+      from: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['from'])),
+      to: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['to'])),
     );
   }
 }

@@ -807,7 +807,7 @@ class AgentcoreOnlineEvaluationConfig extends pulumi.CustomResource {
           'aws:bedrock/agentcoreOnlineEvaluationConfig:AgentcoreOnlineEvaluationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     dataSourceConfig = registerOutput<AgentcoreOnlineEvaluationConfigDataSourceConfig>('dataSourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOnlineEvaluationConfigDataSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');

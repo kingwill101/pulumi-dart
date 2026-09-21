@@ -4,14 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_registry_authorizer_configuration_custom_jwt_authorizer_custom_claim_authorizing_claim_match_value.dart';
 
 class AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerCustomClaim {
+  /// Configuration block to define the value or values to match for and the relationship of the match. See `authorizingClaimMatchValue` below.
   final pulumi.Input<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerCustomClaimAuthorizingClaimMatchValue> authorizingClaimMatchValue;
+  /// Name of the custom claim field to check.
   final pulumi.Input<String> inboundTokenClaimName;
+  /// Data type of the claim value to check for. Valid values are `STRING` and `STRING_ARRAY`.
   final pulumi.Input<String> inboundTokenClaimValueType;
 
   /// Creates a new [AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerCustomClaim].
-  /// [authorizingClaimMatchValue] Required.
-  /// [inboundTokenClaimName] Required.
-  /// [inboundTokenClaimValueType] Required.
+  /// [authorizingClaimMatchValue] Configuration block to define the value or values to match for and the relationship of the match. See `authorizingClaimMatchValue` below.
+  /// [inboundTokenClaimName] Name of the custom claim field to check.
+  /// [inboundTokenClaimValueType] Data type of the claim value to check for. Valid values are `STRING` and `STRING_ARRAY`.
   const AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerCustomClaim({
     required this.authorizingClaimMatchValue,
     required this.inboundTokenClaimName,

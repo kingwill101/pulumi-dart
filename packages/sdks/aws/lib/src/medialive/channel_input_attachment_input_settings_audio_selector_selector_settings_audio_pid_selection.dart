@@ -20,7 +20,7 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSe
 
   factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection(
-      pid: pulumi.Input.fromValue((map['pid'] as num).toInt()),
+      pid: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['pid'])),
     );
   }
 }

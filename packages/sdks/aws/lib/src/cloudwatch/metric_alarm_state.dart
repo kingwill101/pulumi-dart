@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metric_alarm_evaluation_criteria.dart';
 import 'metric_alarm_metric_query.dart';
+import 'metric_alarm_warm_up_configuration.dart';
 
 /// Input properties used for looking up and filtering MetricAlarm resources.
 class MetricAlarmState {
@@ -72,6 +73,8 @@ class MetricAlarmState {
   final pulumi.Input<String?>? treatMissingData;
   /// The unit for the alarm's associated metric.
   final pulumi.Input<String?>? unit;
+  /// Warm-up period that delays alarm evaluation after the alarm is created. During the warm-up period the alarm stays in `INSUFFICIENT_DATA` and does not perform alarm actions. See `warmUpConfiguration` below.
+  final pulumi.Input<MetricAlarmWarmUpConfiguration?>? warmUpConfiguration;
 
   /// Creates a new [MetricAlarmState].
   /// [actionsEnabled] Indicates whether or not actions should be executed during any changes to the alarm's state. Defaults to `true`.
@@ -101,6 +104,7 @@ class MetricAlarmState {
   /// [thresholdMetricId] If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY_DETECTION_BAND function.
   /// [treatMissingData] Sets how this alarm is to handle missing data points. The following values are supported: `missing`, `ignore`, `breaching` and `notBreaching`. Defaults to `missing`.
   /// [unit] The unit for the alarm's associated metric.
+  /// [warmUpConfiguration] Warm-up period that delays alarm evaluation after the alarm is created. During the warm-up period the alarm stays in `INSUFFICIENT_DATA` and does not perform alarm actions. See `warmUpConfiguration` below.
   const MetricAlarmState({
     this.actionsEnabled,
     this.alarmActions,
@@ -129,6 +133,7 @@ class MetricAlarmState {
     this.thresholdMetricId,
     this.treatMissingData,
     this.unit,
+    this.warmUpConfiguration,
   });
 
   Map<String, dynamic> toMap() {
@@ -160,6 +165,7 @@ class MetricAlarmState {
       'thresholdMetricId': ?thresholdMetricId,
       'treatMissingData': ?treatMissingData,
       'unit': ?unit,
+      'warmUpConfiguration': ?pulumi.Input.mapOptionalInputValue<MetricAlarmWarmUpConfiguration, Map<String, dynamic>>(warmUpConfiguration, (value) => value.toMap()),
     };
   }
 
@@ -170,12 +176,12 @@ class MetricAlarmState {
       alarmDescription: (() { final guardedValue = map['alarmDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       comparisonOperator: (() { final guardedValue = map['comparisonOperator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      datapointsToAlarm: (() { final guardedValue = map['datapointsToAlarm']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      datapointsToAlarm: (() { final guardedValue = map['datapointsToAlarm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       evaluateLowSampleCountPercentiles: (() { final guardedValue = map['evaluateLowSampleCountPercentiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       evaluationCriteria: (() { final guardedValue = map['evaluationCriteria']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetricAlarmEvaluationCriteria.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      evaluationInterval: (() { final guardedValue = map['evaluationInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      evaluationPeriods: (() { final guardedValue = map['evaluationPeriods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      evaluationInterval: (() { final guardedValue = map['evaluationInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      evaluationPeriods: (() { final guardedValue = map['evaluationPeriods']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       extendedStatistic: (() { final guardedValue = map['extendedStatistic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       insufficientDataActions: (() { final guardedValue = map['insufficientDataActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       metricName: (() { final guardedValue = map['metricName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -183,7 +189,7 @@ class MetricAlarmState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       okActions: (() { final guardedValue = map['okActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
-      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       statistic: (() { final guardedValue = map['statistic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -192,6 +198,7 @@ class MetricAlarmState {
       thresholdMetricId: (() { final guardedValue = map['thresholdMetricId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       treatMissingData: (() { final guardedValue = map['treatMissingData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      warmUpConfiguration: (() { final guardedValue = map['warmUpConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetricAlarmWarmUpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

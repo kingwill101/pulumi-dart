@@ -1159,7 +1159,7 @@ class Distribution extends pulumi.CustomResource {
           'aws:lightsail/distribution:Distribution',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     alternativeDomainNames = registerOutput<List<String>>('alternativeDomainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');

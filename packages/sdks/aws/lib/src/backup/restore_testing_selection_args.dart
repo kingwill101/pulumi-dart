@@ -73,7 +73,7 @@ class RestoreTestingSelectionArgs {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       restoreMetadataOverrides: (() { final guardedValue = map['restoreMetadataOverrides']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       restoreTestingPlanName: pulumi.Input.fromValue(map['restoreTestingPlanName'] as String),
-      validationWindowHours: (() { final guardedValue = map['validationWindowHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      validationWindowHours: (() { final guardedValue = map['validationWindowHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

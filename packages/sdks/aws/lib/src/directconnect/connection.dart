@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_args.dart';
+import 'connection_rate_limiter_status.dart';
 import 'connection_state.dart';
 
 /// Provides a Connection of Direct Connect.
@@ -412,8 +413,18 @@ class Connection extends pulumi.CustomResource {
   late final pulumi.Output<String> partnerName;
   /// The MAC Security (MACsec) port link status of the connection.
   late final pulumi.Output<String> portEncryptionStatus;
+  /// The total number of inbound IPv4 route prefixes that can be allocated across the virtual interfaces on the connection.
+  late final pulumi.Output<int> prefixPoolSizeIpv4;
+  /// The total number of inbound IPv6 route prefixes that can be allocated across the virtual interfaces on the connection.
+  late final pulumi.Output<int> prefixPoolSizeIpv6;
+  /// The number of inbound IPv4 route prefixes in the connection prefix pool not yet allocated to a virtual interface.
+  late final pulumi.Output<int> prefixPoolUnallocatedCountIpv4;
+  /// The number of inbound IPv6 route prefixes in the connection prefix pool not yet allocated to a virtual interface.
+  late final pulumi.Output<int> prefixPoolUnallocatedCountIpv6;
   /// The name of the service provider associated with the connection.
   late final pulumi.Output<String> providerName;
+  /// Rate limiter status for the connection. See `rateLimiterStatus` Block below.
+  late final pulumi.Output<List<ConnectionRateLimiterStatus>> rateLimiterStatuses;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Boolean value indicating whether you want the connection to support MAC Security (MACsec). MAC Security (MACsec) is only available on dedicated connections. See [MACsec prerequisites](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites) for more information about MAC Security (MACsec) prerequisites. Default value: `false`.
@@ -443,7 +454,7 @@ class Connection extends pulumi.CustomResource {
           'aws:directconnect/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsDevice = registerOutput<String>('awsDevice');
@@ -457,7 +468,12 @@ class Connection extends pulumi.CustomResource {
     ownerAccountId = registerOutput<String>('ownerAccountId');
     partnerName = registerOutput<String>('partnerName');
     portEncryptionStatus = registerOutput<String>('portEncryptionStatus');
+    prefixPoolSizeIpv4 = registerOutput<int>('prefixPoolSizeIpv4');
+    prefixPoolSizeIpv6 = registerOutput<int>('prefixPoolSizeIpv6');
+    prefixPoolUnallocatedCountIpv4 = registerOutput<int>('prefixPoolUnallocatedCountIpv4');
+    prefixPoolUnallocatedCountIpv6 = registerOutput<int>('prefixPoolUnallocatedCountIpv6');
     providerName = registerOutput<String>('providerName');
+    rateLimiterStatuses = registerOutput<List<ConnectionRateLimiterStatus>>('rateLimiterStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionRateLimiterStatus>(guardedValue, (value) => ConnectionRateLimiterStatus.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     requestMacsec = registerOutput<bool?>('requestMacsec');
     skipDestroy = registerOutput<bool?>('skipDestroy');
@@ -503,7 +519,12 @@ class Connection extends pulumi.CustomResource {
     ownerAccountId = registerOutput<String>('ownerAccountId');
     partnerName = registerOutput<String>('partnerName');
     portEncryptionStatus = registerOutput<String>('portEncryptionStatus');
+    prefixPoolSizeIpv4 = registerOutput<int>('prefixPoolSizeIpv4');
+    prefixPoolSizeIpv6 = registerOutput<int>('prefixPoolSizeIpv6');
+    prefixPoolUnallocatedCountIpv4 = registerOutput<int>('prefixPoolUnallocatedCountIpv4');
+    prefixPoolUnallocatedCountIpv6 = registerOutput<int>('prefixPoolUnallocatedCountIpv6');
     providerName = registerOutput<String>('providerName');
+    rateLimiterStatuses = registerOutput<List<ConnectionRateLimiterStatus>>('rateLimiterStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionRateLimiterStatus>(guardedValue, (value) => ConnectionRateLimiterStatus.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     requestMacsec = registerOutput<bool?>('requestMacsec');
     skipDestroy = registerOutput<bool?>('skipDestroy');
@@ -534,7 +555,12 @@ class Connection extends pulumi.CustomResource {
     ownerAccountId = registerOutput<String>('ownerAccountId');
     partnerName = registerOutput<String>('partnerName');
     portEncryptionStatus = registerOutput<String>('portEncryptionStatus');
+    prefixPoolSizeIpv4 = registerOutput<int>('prefixPoolSizeIpv4');
+    prefixPoolSizeIpv6 = registerOutput<int>('prefixPoolSizeIpv6');
+    prefixPoolUnallocatedCountIpv4 = registerOutput<int>('prefixPoolUnallocatedCountIpv4');
+    prefixPoolUnallocatedCountIpv6 = registerOutput<int>('prefixPoolUnallocatedCountIpv6');
     providerName = registerOutput<String>('providerName');
+    rateLimiterStatuses = registerOutput<List<ConnectionRateLimiterStatus>>('rateLimiterStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectionRateLimiterStatus>(guardedValue, (value) => ConnectionRateLimiterStatus.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     requestMacsec = registerOutput<bool?>('requestMacsec');
     skipDestroy = registerOutput<bool?>('skipDestroy');

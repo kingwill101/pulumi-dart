@@ -244,7 +244,7 @@ class CustomDomainAssociation extends pulumi.CustomResource {
           'aws:redshiftserverless/customDomainAssociation:CustomDomainAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     customDomainCertificateArn = registerOutput<String>('customDomainCertificateArn');
     customDomainCertificateExpiryTime = registerOutput<String>('customDomainCertificateExpiryTime');

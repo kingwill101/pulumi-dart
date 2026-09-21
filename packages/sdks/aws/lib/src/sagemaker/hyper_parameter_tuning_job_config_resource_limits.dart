@@ -30,9 +30,9 @@ class HyperParameterTuningJobConfigResourceLimits {
 
   factory HyperParameterTuningJobConfigResourceLimits.fromMap(Map<String, dynamic> map) {
     return HyperParameterTuningJobConfigResourceLimits(
-      maxNumberOfTrainingJobs: (() { final guardedValue = map['maxNumberOfTrainingJobs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxParallelTrainingJobs: pulumi.Input.fromValue((map['maxParallelTrainingJobs'] as num).toInt()),
-      maxRuntimeInSeconds: (() { final guardedValue = map['maxRuntimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxNumberOfTrainingJobs: (() { final guardedValue = map['maxNumberOfTrainingJobs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxParallelTrainingJobs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxParallelTrainingJobs'])),
+      maxRuntimeInSeconds: (() { final guardedValue = map['maxRuntimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

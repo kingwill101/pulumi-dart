@@ -66,10 +66,10 @@ class GetCapacityBlockOfferingResult {
     return GetCapacityBlockOfferingResult(
       availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
       capacityBlockOfferingId: (() { final guardedValue = map['capacityBlockOfferingId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      capacityDurationHours: (() { final guardedValue = map['capacityDurationHours']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      capacityDurationHours: (() { final guardedValue = map['capacityDurationHours']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       currencyCode: (() { final guardedValue = map['currencyCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       endDateRange: (() { final guardedValue = map['endDateRange']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       startDateRange: (() { final guardedValue = map['startDateRange']; if (guardedValue == null) return null; return guardedValue as String; })(),

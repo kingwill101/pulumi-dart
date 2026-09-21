@@ -44,9 +44,7 @@ class ClusterState {
   final pulumi.Input<String?>? engine;
   /// The database engine version. Updating this argument results in an outage.
   final pulumi.Input<String?>? engineVersion;
-  /// The name of your final DB snapshot
-  /// when this DB cluster is deleted. If omitted, no final snapshot will be
-  /// made.
+  /// The name of your final DB snapshot when this DB cluster is deleted. If omitted, no final snapshot will be made.
   final pulumi.Input<String?>? finalSnapshotIdentifier;
   /// The global cluster identifier specified on `aws.docdb.GlobalCluster`.
   final pulumi.Input<String?>? globalClusterIdentifier;
@@ -56,14 +54,12 @@ class ClusterState {
   final pulumi.Input<String?>? kmsKeyId;
   /// Set to `true` to allow Amazon DocumentDB to manage the master user password in AWS Secrets Manager. Cannot be set if `masterPassword` or `masterPasswordWo` is provided.
   final pulumi.Input<bool?>? manageMasterUserPassword;
-  /// Password for the master DB user. Note that this may
-  /// show up in logs, and it will be stored in the state file. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPasswordWo` and `manageMasterUserPassword`.
+  /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPasswordWo` and `manageMasterUserPassword`.
   final pulumi.Input<String?>? masterPassword;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Password for the master DB user. Note that this may
-  /// show up in logs. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPassword` and `manageMasterUserPassword`.
+  /// Password for the master DB user. Note that this will show up in logs. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPassword` and `manageMasterUserPassword`. If set, requires `masterPasswordWoVersion` to be set.
   final pulumi.Input<String?>? masterPasswordWo;
-  /// Used together with `masterPasswordWo` to trigger an update. Increment this value when an update to the `masterPasswordWo` is required.
+  /// Required when `masterPasswordWo` is set. Changing this value triggers an update to `masterPasswordWo`.
   final pulumi.Input<int?>? masterPasswordWoVersion;
   final pulumi.Input<List<ClusterMasterUserSecret>?>? masterUserSecrets;
   /// Username for the master DB user.
@@ -121,14 +117,14 @@ class ClusterState {
   /// [endpoint] The DNS address of the DocumentDB instance
   /// [engine] The name of the database engine to be used for this DB cluster. Defaults to `docdb`. Valid values: `docdb`.
   /// [engineVersion] The database engine version. Updating this argument results in an outage.
-  /// [finalSnapshotIdentifier] The name of your final DB snapshot
+  /// [finalSnapshotIdentifier] The name of your final DB snapshot when this DB cluster is deleted. If omitted, no final snapshot will be made.
   /// [globalClusterIdentifier] The global cluster identifier specified on `aws.docdb.GlobalCluster`.
   /// [hostedZoneId] The Route53 Hosted Zone ID of the endpoint
   /// [kmsKeyId] The ARN for the KMS encryption key. When specifying `kmsKeyId`, `storageEncrypted` needs to be set to true.
   /// [manageMasterUserPassword] Set to `true` to allow Amazon DocumentDB to manage the master user password in AWS Secrets Manager. Cannot be set if `masterPassword` or `masterPasswordWo` is provided.
-  /// [masterPassword] Password for the master DB user. Note that this may
+  /// [masterPassword] Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPasswordWo` and `manageMasterUserPassword`.
   /// [masterPasswordWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [masterPasswordWoVersion] Used together with `masterPasswordWo` to trigger an update. Increment this value when an update to the `masterPasswordWo` is required.
+  /// [masterPasswordWoVersion] Required when `masterPasswordWo` is set. Changing this value triggers an update to `masterPasswordWo`.
   /// [masterUserSecrets] Optional.
   /// [masterUsername] Username for the master DB user.
   /// [networkType] The network type of the DB cluster (`IPV4` or `DUAL`).
@@ -242,7 +238,7 @@ class ClusterState {
       applyImmediately: (() { final guardedValue = map['applyImmediately']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       availabilityZones: (() { final guardedValue = map['availabilityZones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      backupRetentionPeriod: (() { final guardedValue = map['backupRetentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      backupRetentionPeriod: (() { final guardedValue = map['backupRetentionPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       clusterIdentifier: (() { final guardedValue = map['clusterIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clusterIdentifierPrefix: (() { final guardedValue = map['clusterIdentifierPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clusterMembers: (() { final guardedValue = map['clusterMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -261,11 +257,11 @@ class ClusterState {
       manageMasterUserPassword: (() { final guardedValue = map['manageMasterUserPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       masterPassword: (() { final guardedValue = map['masterPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       masterPasswordWo: (() { final guardedValue = map['masterPasswordWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      masterPasswordWoVersion: (() { final guardedValue = map['masterPasswordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      masterPasswordWoVersion: (() { final guardedValue = map['masterPasswordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       masterUserSecrets: (() { final guardedValue = map['masterUserSecrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterMasterUserSecret>(guardedValue, (value) => ClusterMasterUserSecret.fromMap((value as Map).cast<String, dynamic>()))); })(),
       masterUsername: (() { final guardedValue = map['masterUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       preferredBackupWindow: (() { final guardedValue = map['preferredBackupWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       preferredMaintenanceWindow: (() { final guardedValue = map['preferredMaintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       readerEndpoint: (() { final guardedValue = map['readerEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

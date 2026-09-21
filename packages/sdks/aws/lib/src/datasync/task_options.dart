@@ -91,7 +91,7 @@ class TaskOptions {
   factory TaskOptions.fromMap(Map<String, dynamic> map) {
     return TaskOptions(
       atime: (() { final guardedValue = map['atime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      bytesPerSecond: (() { final guardedValue = map['bytesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bytesPerSecond: (() { final guardedValue = map['bytesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       gid: (() { final guardedValue = map['gid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       logLevel: (() { final guardedValue = map['logLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mtime: (() { final guardedValue = map['mtime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

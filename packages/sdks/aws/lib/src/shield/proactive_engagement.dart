@@ -467,7 +467,7 @@ class ProactiveEngagement extends pulumi.CustomResource {
           'aws:shield/proactiveEngagement:ProactiveEngagement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     emergencyContacts = registerOutput<List<ProactiveEngagementEmergencyContact>>('emergencyContacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProactiveEngagementEmergencyContact>(guardedValue, (value) => ProactiveEngagementEmergencyContact.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool>('enabled');

@@ -85,7 +85,7 @@ class ResourceGatewayState {
     return ResourceGatewayState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddressType: (() { final guardedValue = map['ipAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ipv4AddressesPerEni: (() { final guardedValue = map['ipv4AddressesPerEni']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ipv4AddressesPerEni: (() { final guardedValue = map['ipv4AddressesPerEni']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceConfigDnsResolution: (() { final guardedValue = map['resourceConfigDnsResolution']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -62,7 +62,7 @@ class GetListenerRuleResult {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetListenerRuleCondition>(guardedValue, (value) => GetListenerRuleCondition.fromMap((value as Map).cast<String, dynamic>())); })(),
       listenerArn: (() { final guardedValue = map['listenerArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       transforms: (() { final guardedValue = map['transforms']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetListenerRuleTransform>(guardedValue, (value) => GetListenerRuleTransform.fromMap((value as Map).cast<String, dynamic>())); })(),

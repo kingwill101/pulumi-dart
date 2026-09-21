@@ -296,7 +296,7 @@ class Monitor extends pulumi.CustomResource {
           'aws:networkflowmonitor/monitor:Monitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     localResources = registerOutput<List<MonitorLocalResource>>('localResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorLocalResource>(guardedValue, (value) => MonitorLocalResource.fromMap((value as Map).cast<String, dynamic>())); });
     monitorArn = registerOutput<String>('monitorArn');

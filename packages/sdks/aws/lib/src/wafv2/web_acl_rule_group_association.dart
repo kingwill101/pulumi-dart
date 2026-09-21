@@ -1951,7 +1951,7 @@ class WebAclRuleGroupAssociation extends pulumi.CustomResource {
           'aws:wafv2/webAclRuleGroupAssociation:WebAclRuleGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     managedRuleGroup = registerOutput<WebAclRuleGroupAssociationManagedRuleGroup?>('managedRuleGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleGroupAssociationManagedRuleGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     overrideAction = registerOutput<String>('overrideAction');

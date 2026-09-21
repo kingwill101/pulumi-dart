@@ -972,7 +972,7 @@ class AnalyticsApplication extends pulumi.CustomResource {
           'aws:kinesis/analyticsApplication:AnalyticsApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cloudwatchLoggingOptions = registerOutput<AnalyticsApplicationCloudwatchLoggingOptions?>('cloudwatchLoggingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsApplicationCloudwatchLoggingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

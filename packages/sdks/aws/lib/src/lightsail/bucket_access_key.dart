@@ -174,7 +174,7 @@ class BucketAccessKey extends pulumi.CustomResource {
           'aws:lightsail/bucketAccessKey:BucketAccessKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
           additionalSecretOutputs: const ['secretAccessKey'],
         ) {
     accessKeyId = registerOutput<String>('accessKeyId');

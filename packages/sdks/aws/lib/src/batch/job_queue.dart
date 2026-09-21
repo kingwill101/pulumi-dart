@@ -526,7 +526,7 @@ class JobQueue extends pulumi.CustomResource {
           'aws:batch/jobQueue:JobQueue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     computeEnvironmentOrders = registerOutput<List<JobQueueComputeEnvironmentOrder>?>('computeEnvironmentOrders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobQueueComputeEnvironmentOrder>(guardedValue, (value) => JobQueueComputeEnvironmentOrder.fromMap((value as Map).cast<String, dynamic>())); });

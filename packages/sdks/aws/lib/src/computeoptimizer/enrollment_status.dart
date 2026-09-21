@@ -135,7 +135,7 @@ class EnrollmentStatus extends pulumi.CustomResource {
           'aws:computeoptimizer/enrollmentStatus:EnrollmentStatus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     includeMemberAccounts = registerOutput<bool>('includeMemberAccounts');
     numberOfMemberAccountsOptedIn = registerOutput<int>('numberOfMemberAccountsOptedIn');

@@ -42,9 +42,9 @@ class ConnectorCapacityAutoscaling {
 
   factory ConnectorCapacityAutoscaling.fromMap(Map<String, dynamic> map) {
     return ConnectorCapacityAutoscaling(
-      maxWorkerCount: pulumi.Input.fromValue((map['maxWorkerCount'] as num).toInt()),
-      mcuCount: (() { final guardedValue = map['mcuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minWorkerCount: pulumi.Input.fromValue((map['minWorkerCount'] as num).toInt()),
+      maxWorkerCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxWorkerCount'])),
+      mcuCount: (() { final guardedValue = map['mcuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minWorkerCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minWorkerCount'])),
       scaleInPolicy: (() { final guardedValue = map['scaleInPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectorCapacityAutoscalingScaleInPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scaleOutPolicy: (() { final guardedValue = map['scaleOutPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectorCapacityAutoscalingScaleOutPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

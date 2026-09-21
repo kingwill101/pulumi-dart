@@ -84,7 +84,7 @@ class KeyState {
   factory KeyState.fromMap(Map<String, dynamic> map) {
     return KeyState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      deletionWindowInDays: (() { final guardedValue = map['deletionWindowInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      deletionWindowInDays: (() { final guardedValue = map['deletionWindowInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       exportable: (() { final guardedValue = map['exportable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       keyAttributes: (() { final guardedValue = map['keyAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KeyKeyAttribute>(guardedValue, (value) => KeyKeyAttribute.fromMap((value as Map).cast<String, dynamic>()))); })(),

@@ -223,7 +223,7 @@ class SecurityConfiguration extends pulumi.CustomResource {
           'aws:glue/securityConfiguration:SecurityConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     encryptionConfiguration = registerOutput<SecurityConfigurationEncryptionConfiguration>('encryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityConfigurationEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

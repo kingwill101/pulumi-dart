@@ -407,7 +407,7 @@ class AmiLaunchPermission extends pulumi.CustomResource {
           'aws:ec2/amiLaunchPermission:AmiLaunchPermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     group = registerOutput<String?>('group');

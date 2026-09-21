@@ -319,7 +319,7 @@ class Profile extends pulumi.CustomResource {
           'aws:rolesanywhere/profile:Profile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     acceptRoleSessionName = registerOutput<bool?>('acceptRoleSessionName');
     arn = registerOutput<String>('arn');

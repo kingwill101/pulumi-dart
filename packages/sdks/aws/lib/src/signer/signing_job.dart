@@ -300,7 +300,7 @@ class SigningJob extends pulumi.CustomResource {
           'aws:signer/signingJob:SigningJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     completedAt = registerOutput<String>('completedAt');
     createdAt = registerOutput<String>('createdAt');

@@ -511,7 +511,7 @@ class CoreNetworkConnector extends pulumi.CustomResource {
           'aws:lambda/coreNetworkConnector:CoreNetworkConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     configuration = registerOutput<CoreNetworkConnectorConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CoreNetworkConnectorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

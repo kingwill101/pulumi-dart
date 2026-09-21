@@ -534,7 +534,7 @@ class PipelineDefinition extends pulumi.CustomResource {
           'aws:datapipeline/pipelineDefinition:PipelineDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     parameterObjects = registerOutput<List<PipelineDefinitionParameterObject>?>('parameterObjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineDefinitionParameterObject>(guardedValue, (value) => PipelineDefinitionParameterObject.fromMap((value as Map).cast<String, dynamic>())); });
     parameterValues = registerOutput<List<PipelineDefinitionParameterValue>?>('parameterValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineDefinitionParameterValue>(guardedValue, (value) => PipelineDefinitionParameterValue.fromMap((value as Map).cast<String, dynamic>())); });

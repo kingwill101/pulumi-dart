@@ -223,7 +223,7 @@ class ApnsChannel extends pulumi.CustomResource {
           'aws:pinpoint/apnsChannel:ApnsChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
           additionalSecretOutputs: const ['bundleId', 'certificate', 'privateKey', 'teamId', 'tokenKey', 'tokenKeyId'],
         ) {
     applicationId = registerOutput<String>('applicationId');

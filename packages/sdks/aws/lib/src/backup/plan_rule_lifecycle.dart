@@ -30,8 +30,8 @@ class PlanRuleLifecycle {
 
   factory PlanRuleLifecycle.fromMap(Map<String, dynamic> map) {
     return PlanRuleLifecycle(
-      coldStorageAfter: (() { final guardedValue = map['coldStorageAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      deleteAfter: (() { final guardedValue = map['deleteAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      coldStorageAfter: (() { final guardedValue = map['coldStorageAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      deleteAfter: (() { final guardedValue = map['deleteAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       optInToArchiveForSupportedResources: (() { final guardedValue = map['optInToArchiveForSupportedResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

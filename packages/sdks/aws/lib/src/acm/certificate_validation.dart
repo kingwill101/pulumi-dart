@@ -733,7 +733,7 @@ class CertificateValidation extends pulumi.CustomResource {
           'aws:acm/certificateValidation:CertificateValidation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     certificateArn = registerOutput<String>('certificateArn');
     region = registerOutput<String>('region');

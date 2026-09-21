@@ -86,7 +86,7 @@ class TransitGatewayArgs {
 
   factory TransitGatewayArgs.fromMap(Map<String, dynamic> map) {
     return TransitGatewayArgs(
-      amazonSideAsn: (() { final guardedValue = map['amazonSideAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      amazonSideAsn: (() { final guardedValue = map['amazonSideAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       autoAcceptSharedAttachments: (() { final guardedValue = map['autoAcceptSharedAttachments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultRouteTableAssociation: (() { final guardedValue = map['defaultRouteTableAssociation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultRouteTablePropagation: (() { final guardedValue = map['defaultRouteTablePropagation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

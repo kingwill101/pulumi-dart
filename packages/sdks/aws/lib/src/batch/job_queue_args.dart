@@ -70,7 +70,7 @@ class JobQueueArgs {
       computeEnvironmentOrders: (() { final guardedValue = map['computeEnvironmentOrders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JobQueueComputeEnvironmentOrder>(guardedValue, (value) => JobQueueComputeEnvironmentOrder.fromMap((value as Map).cast<String, dynamic>()))); })(),
       jobStateTimeLimitActions: (() { final guardedValue = map['jobStateTimeLimitActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JobQueueJobStateTimeLimitAction>(guardedValue, (value) => JobQueueJobStateTimeLimitAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schedulingPolicyArn: (() { final guardedValue = map['schedulingPolicyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       state: pulumi.Input.fromValue(map['state'] as String),

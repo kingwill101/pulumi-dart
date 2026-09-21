@@ -32,7 +32,7 @@ class QueueReservationPlanSettings {
     return QueueReservationPlanSettings(
       commitment: pulumi.Input.fromValue(map['commitment'] as String),
       renewalType: pulumi.Input.fromValue(map['renewalType'] as String),
-      reservedSlots: pulumi.Input.fromValue((map['reservedSlots'] as num).toInt()),
+      reservedSlots: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['reservedSlots'])),
     );
   }
 }

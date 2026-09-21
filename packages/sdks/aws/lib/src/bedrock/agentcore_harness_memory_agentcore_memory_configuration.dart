@@ -38,7 +38,7 @@ class AgentcoreHarnessMemoryAgentcoreMemoryConfiguration {
     return AgentcoreHarnessMemoryAgentcoreMemoryConfiguration(
       actorId: (() { final guardedValue = map['actorId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      messagesCount: (() { final guardedValue = map['messagesCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      messagesCount: (() { final guardedValue = map['messagesCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       retrievalConfig: (() { final guardedValue = map['retrievalConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreHarnessMemoryAgentcoreMemoryConfigurationRetrievalConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

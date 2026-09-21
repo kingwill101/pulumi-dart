@@ -7,9 +7,9 @@ class GetClusterSnapshotResult {
   final int? allocatedStorage;
   /// List of EC2 Availability Zones that instances in the DB cluster snapshot can be restored in.
   final List<String>? availabilityZones;
-  /// Specifies the DB cluster identifier of the DB cluster that this DB cluster snapshot was created from.
+  /// DB cluster identifier of the DB cluster that this DB cluster snapshot was created from.
   final String? dbClusterIdentifier;
-  /// The ARN for the DB Cluster Snapshot.
+  /// ARN for the DB Cluster Snapshot.
   final String? dbClusterSnapshotArn;
   final String? dbClusterSnapshotIdentifier;
   /// Name of the database engine.
@@ -31,6 +31,7 @@ class GetClusterSnapshotResult {
   /// Time when the snapshot was taken, in Universal Coordinated Time (UTC).
   final String? snapshotCreateTime;
   final String? snapshotType;
+  /// DB Cluster Snapshot ARN that the DB Cluster Snapshot was copied from. It only has value in case of cross customer or cross region copy.
   final String? sourceDbClusterSnapshotArn;
   /// Status of this DB Cluster Snapshot.
   final String? status;
@@ -44,8 +45,8 @@ class GetClusterSnapshotResult {
   /// Creates a new [GetClusterSnapshotResult].
   /// [allocatedStorage] Allocated storage size in gigabytes (GB).
   /// [availabilityZones] List of EC2 Availability Zones that instances in the DB cluster snapshot can be restored in.
-  /// [dbClusterIdentifier] Specifies the DB cluster identifier of the DB cluster that this DB cluster snapshot was created from.
-  /// [dbClusterSnapshotArn] The ARN for the DB Cluster Snapshot.
+  /// [dbClusterIdentifier] DB cluster identifier of the DB cluster that this DB cluster snapshot was created from.
+  /// [dbClusterSnapshotArn] ARN for the DB Cluster Snapshot.
   /// [dbClusterSnapshotIdentifier] Optional.
   /// [engine] Name of the database engine.
   /// [engineVersion] Version of the database engine for this DB cluster snapshot.
@@ -59,7 +60,7 @@ class GetClusterSnapshotResult {
   /// [region] Optional.
   /// [snapshotCreateTime] Time when the snapshot was taken, in Universal Coordinated Time (UTC).
   /// [snapshotType] Optional.
-  /// [sourceDbClusterSnapshotArn] Optional.
+  /// [sourceDbClusterSnapshotArn] DB Cluster Snapshot ARN that the DB Cluster Snapshot was copied from. It only has value in case of cross customer or cross region copy.
   /// [status] Status of this DB Cluster Snapshot.
   /// [storageEncrypted] Whether the DB cluster snapshot is encrypted.
   /// [tags] Map of tags for the resource.
@@ -118,7 +119,7 @@ class GetClusterSnapshotResult {
 
   factory GetClusterSnapshotResult.fromMap(Map<String, dynamic> map) {
     return GetClusterSnapshotResult(
-      allocatedStorage: (() { final guardedValue = map['allocatedStorage']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      allocatedStorage: (() { final guardedValue = map['allocatedStorage']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       availabilityZones: (() { final guardedValue = map['availabilityZones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       dbClusterIdentifier: (() { final guardedValue = map['dbClusterIdentifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dbClusterSnapshotArn: (() { final guardedValue = map['dbClusterSnapshotArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -131,7 +132,7 @@ class GetClusterSnapshotResult {
       kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       licenseModel: (() { final guardedValue = map['licenseModel']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       snapshotCreateTime: (() { final guardedValue = map['snapshotCreateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       snapshotType: (() { final guardedValue = map['snapshotType']; if (guardedValue == null) return null; return guardedValue as String; })(),

@@ -530,7 +530,7 @@ class NetworkInsightsAccessScope extends pulumi.CustomResource {
           'aws:ec2/networkInsightsAccessScope:NetworkInsightsAccessScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     excludePaths = registerOutput<List<NetworkInsightsAccessScopeExcludePath>?>('excludePaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInsightsAccessScopeExcludePath>(guardedValue, (value) => NetworkInsightsAccessScopeExcludePath.fromMap((value as Map).cast<String, dynamic>())); });

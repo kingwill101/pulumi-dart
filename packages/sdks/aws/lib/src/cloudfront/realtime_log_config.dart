@@ -849,7 +849,7 @@ class RealtimeLogConfig extends pulumi.CustomResource {
           'aws:cloudfront/realtimeLogConfig:RealtimeLogConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     endpoint = registerOutput<RealtimeLogConfigEndpoint>('endpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RealtimeLogConfigEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -13,12 +13,12 @@ class AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironment {
   /// Name of the agent runtime the service derives for the harness.
   final pulumi.Input<String> agentRuntimeName;
   /// Filesystem configurations. See `filesystemConfiguration` Block below.
-  ///
-  /// The following attributes are exported under `agentcoreRuntimeEnvironment`:
   final pulumi.Input<List<AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironmentFilesystemConfiguration>> filesystemConfigurations;
   /// Lifecycle configuration. See `lifecycleConfiguration` Block below.
   final pulumi.Input<List<AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironmentLifecycleConfiguration>> lifecycleConfigurations;
   /// Network configuration. See `networkConfiguration` Block below.
+  ///
+  /// The following attributes are exported under `agentcoreRuntimeEnvironment`:
   final pulumi.Input<List<AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironmentNetworkConfiguration>> networkConfigurations;
 
   /// Creates a new [AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironment].

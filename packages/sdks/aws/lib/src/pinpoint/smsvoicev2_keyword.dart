@@ -634,7 +634,7 @@ class Smsvoicev2Keyword extends pulumi.CustomResource {
           'aws:pinpoint/smsvoicev2Keyword:Smsvoicev2Keyword',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     keyword = registerOutput<String>('keyword');
     keywordAction = registerOutput<String>('keywordAction');

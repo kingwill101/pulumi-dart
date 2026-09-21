@@ -179,7 +179,7 @@ class FilesFileSystem extends pulumi.CustomResource {
           'aws:s3/filesFileSystem:FilesFileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     acceptBucketWarning = registerOutput<bool?>('acceptBucketWarning');
     arn = registerOutput<String>('arn');

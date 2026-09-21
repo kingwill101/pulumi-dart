@@ -37,7 +37,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings {
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings(
-      bufferMsec: (() { final guardedValue = map['bufferMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bufferMsec: (() { final guardedValue = map['bufferMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       containerSettings: pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettings.fromMap((map['containerSettings']! as Map).cast<String, dynamic>())),
       destination: pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())),
       fecOutputSettings: (() { final guardedValue = map['fecOutputSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'link_aggregation_group_args.dart';
+import 'link_aggregation_group_rate_limiter_status.dart';
 import 'link_aggregation_group_state.dart';
 
 /// Provides a Direct Connect LAG. Connections can be added to the LAG via the `aws.directconnect.Connection` and `aws.directconnect.ConnectionAssociation` resources.
@@ -158,6 +159,8 @@ class LinkAggregationGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> ownerAccountId;
   /// The name of the service provider associated with the LAG.
   late final pulumi.Output<String> providerName;
+  /// Rate limiter status for the LAG. See `rateLimiterStatus` Block below.
+  late final pulumi.Output<List<LinkAggregationGroupRateLimiterStatus>> rateLimiterStatuses;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -177,7 +180,7 @@ class LinkAggregationGroup extends pulumi.CustomResource {
           'aws:directconnect/linkAggregationGroup:LinkAggregationGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionId = registerOutput<String?>('connectionId');
@@ -189,6 +192,7 @@ class LinkAggregationGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     ownerAccountId = registerOutput<String>('ownerAccountId');
     providerName = registerOutput<String>('providerName');
+    rateLimiterStatuses = registerOutput<List<LinkAggregationGroupRateLimiterStatus>>('rateLimiterStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkAggregationGroupRateLimiterStatus>(guardedValue, (value) => LinkAggregationGroupRateLimiterStatus.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
@@ -228,6 +232,7 @@ class LinkAggregationGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     ownerAccountId = registerOutput<String>('ownerAccountId');
     providerName = registerOutput<String>('providerName');
+    rateLimiterStatuses = registerOutput<List<LinkAggregationGroupRateLimiterStatus>>('rateLimiterStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkAggregationGroupRateLimiterStatus>(guardedValue, (value) => LinkAggregationGroupRateLimiterStatus.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
@@ -252,6 +257,7 @@ class LinkAggregationGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     ownerAccountId = registerOutput<String>('ownerAccountId');
     providerName = registerOutput<String>('providerName');
+    rateLimiterStatuses = registerOutput<List<LinkAggregationGroupRateLimiterStatus>>('rateLimiterStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkAggregationGroupRateLimiterStatus>(guardedValue, (value) => LinkAggregationGroupRateLimiterStatus.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

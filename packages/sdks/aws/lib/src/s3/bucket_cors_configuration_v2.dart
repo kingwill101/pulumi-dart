@@ -325,7 +325,7 @@ class BucketCorsConfigurationV2 extends pulumi.CustomResource {
           'aws:s3/bucketCorsConfigurationV2:BucketCorsConfigurationV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     corsRules = registerOutput<List<BucketCorsConfigurationV2CorsRule>>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketCorsConfigurationV2CorsRule>(guardedValue, (value) => BucketCorsConfigurationV2CorsRule.fromMap((value as Map).cast<String, dynamic>())); });

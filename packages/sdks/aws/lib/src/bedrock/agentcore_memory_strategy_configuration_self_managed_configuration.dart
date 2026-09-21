@@ -38,7 +38,7 @@ class AgentcoreMemoryStrategyConfigurationSelfManagedConfiguration {
 
   factory AgentcoreMemoryStrategyConfigurationSelfManagedConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreMemoryStrategyConfigurationSelfManagedConfiguration(
-      historicalContextWindowSize: (() { final guardedValue = map['historicalContextWindowSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      historicalContextWindowSize: (() { final guardedValue = map['historicalContextWindowSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       invocationConfiguration: pulumi.Input.fromValue(AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationInvocationConfiguration.fromMap((map['invocationConfiguration']! as Map).cast<String, dynamic>())),
       triggerConditions: (() { final guardedValue = map['triggerConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       triggerConditionsActuals: (() { final guardedValue = map['triggerConditionsActuals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditionsActual>(guardedValue, (value) => AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditionsActual.fromMap((value as Map).cast<String, dynamic>()))); })(),

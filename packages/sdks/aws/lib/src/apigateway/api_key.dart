@@ -149,7 +149,7 @@ class ApiKey extends pulumi.CustomResource {
           'aws:apigateway/apiKey:ApiKey',
           name,
           pulumi.Input.mapToInputs((args ?? ApiKeyArgs()).toMap()),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
           additionalSecretOutputs: const ['value'],
         ) {
     arn = registerOutput<String>('arn');

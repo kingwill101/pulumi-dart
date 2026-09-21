@@ -358,7 +358,7 @@ class MacsecKeyAssociation extends pulumi.CustomResource {
           'aws:directconnect/macsecKeyAssociation:MacsecKeyAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     cak = registerOutput<String?>('cak');
     ckn = registerOutput<String>('ckn');

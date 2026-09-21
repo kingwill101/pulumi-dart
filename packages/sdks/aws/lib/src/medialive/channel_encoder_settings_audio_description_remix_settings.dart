@@ -29,8 +29,8 @@ class ChannelEncoderSettingsAudioDescriptionRemixSettings {
   factory ChannelEncoderSettingsAudioDescriptionRemixSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionRemixSettings(
       channelMappings: pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping>(map['channelMappings']!, (value) => ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      channelsIn: (() { final guardedValue = map['channelsIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      channelsOut: (() { final guardedValue = map['channelsOut']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      channelsIn: (() { final guardedValue = map['channelsIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      channelsOut: (() { final guardedValue = map['channelsOut']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

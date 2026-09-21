@@ -64,8 +64,8 @@ class AutomationRuleActionFindingFieldsUpdate {
 
   factory AutomationRuleActionFindingFieldsUpdate.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionFindingFieldsUpdate(
-      confidence: (() { final guardedValue = map['confidence']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      criticality: (() { final guardedValue = map['criticality']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      confidence: (() { final guardedValue = map['confidence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      criticality: (() { final guardedValue = map['criticality']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       note: (() { final guardedValue = map['note']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutomationRuleActionFindingFieldsUpdateNote.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       relatedFindings: (() { final guardedValue = map['relatedFindings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AutomationRuleActionFindingFieldsUpdateRelatedFinding>(guardedValue, (value) => AutomationRuleActionFindingFieldsUpdateRelatedFinding.fromMap((value as Map).cast<String, dynamic>()))); })(),
       severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutomationRuleActionFindingFieldsUpdateSeverity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

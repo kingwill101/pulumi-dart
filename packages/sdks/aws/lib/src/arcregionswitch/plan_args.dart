@@ -101,7 +101,7 @@ class PlanArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       primaryRegion: (() { final guardedValue = map['primaryRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recoveryApproach: pulumi.Input.fromValue(map['recoveryApproach'] as String),
-      recoveryTimeObjectiveMinutes: (() { final guardedValue = map['recoveryTimeObjectiveMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      recoveryTimeObjectiveMinutes: (() { final guardedValue = map['recoveryTimeObjectiveMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       regions: pulumi.Input.fromValue((map['regions'] as List).cast<String>()),
       reportConfigurations: (() { final guardedValue = map['reportConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanReportConfiguration>(guardedValue, (value) => PlanReportConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),

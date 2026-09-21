@@ -73,12 +73,12 @@ class DomainClusterConfig {
   factory DomainClusterConfig.fromMap(Map<String, dynamic> map) {
     return DomainClusterConfig(
       coldStorageOptions: (() { final guardedValue = map['coldStorageOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainClusterConfigColdStorageOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      dedicatedMasterCount: (() { final guardedValue = map['dedicatedMasterCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dedicatedMasterCount: (() { final guardedValue = map['dedicatedMasterCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dedicatedMasterEnabled: (() { final guardedValue = map['dedicatedMasterEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dedicatedMasterType: (() { final guardedValue = map['dedicatedMasterType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      warmCount: (() { final guardedValue = map['warmCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      warmCount: (() { final guardedValue = map['warmCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       warmEnabled: (() { final guardedValue = map['warmEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       warmType: (() { final guardedValue = map['warmType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zoneAwarenessConfig: (() { final guardedValue = map['zoneAwarenessConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainClusterConfigZoneAwarenessConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

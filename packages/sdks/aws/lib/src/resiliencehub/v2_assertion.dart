@@ -162,7 +162,7 @@ class V2Assertion extends pulumi.CustomResource {
           'aws:resiliencehub/v2Assertion:V2Assertion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     assertionId = registerOutput<String>('assertionId');
     region = registerOutput<String>('region');

@@ -202,7 +202,7 @@ class BucketAbac extends pulumi.CustomResource {
           'aws:s3/bucketAbac:BucketAbac',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     abacStatus = registerOutput<BucketAbacAbacStatus>('abacStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAbacAbacStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bucket = registerOutput<String>('bucket');

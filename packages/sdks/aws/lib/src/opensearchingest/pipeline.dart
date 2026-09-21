@@ -600,7 +600,7 @@ class Pipeline extends pulumi.CustomResource {
           'aws:opensearchingest/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     bufferOptions = registerOutput<PipelineBufferOptions?>('bufferOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineBufferOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     encryptionAtRestOptions = registerOutput<PipelineEncryptionAtRestOptions?>('encryptionAtRestOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineEncryptionAtRestOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

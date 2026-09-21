@@ -27,7 +27,7 @@ class GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule {
   factory GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule(
       ruleDefinition: pulumi.Input.fromValue(GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition.fromMap((map['ruleDefinition']! as Map).cast<String, dynamic>())),
-      ruleNumber: pulumi.Input.fromValue((map['ruleNumber'] as num).toInt()),
+      ruleNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ruleNumber'])),
     );
   }
 }

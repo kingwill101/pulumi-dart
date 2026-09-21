@@ -56,7 +56,7 @@ class ProvisionedModelThroughputArgs {
     return ProvisionedModelThroughputArgs(
       commitmentDuration: (() { final guardedValue = map['commitmentDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       modelArn: pulumi.Input.fromValue(map['modelArn'] as String),
-      modelUnits: pulumi.Input.fromValue((map['modelUnits'] as num).toInt()),
+      modelUnits: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['modelUnits'])),
       provisionedModelName: pulumi.Input.fromValue(map['provisionedModelName'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

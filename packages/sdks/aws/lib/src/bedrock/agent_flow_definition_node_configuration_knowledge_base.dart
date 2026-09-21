@@ -45,7 +45,7 @@ class AgentFlowDefinitionNodeConfigurationKnowledgeBase {
       inferenceConfiguration: (() { final guardedValue = map['inferenceConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       knowledgeBaseId: pulumi.Input.fromValue(map['knowledgeBaseId'] as String),
       modelId: pulumi.Input.fromValue(map['modelId'] as String),
-      numberOfResults: (() { final guardedValue = map['numberOfResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numberOfResults: (() { final guardedValue = map['numberOfResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

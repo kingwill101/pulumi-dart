@@ -19,7 +19,7 @@ class GetVirtualGatewaySpecListenerConnectionPoolHttp2 {
 
   factory GetVirtualGatewaySpecListenerConnectionPoolHttp2.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerConnectionPoolHttp2(
-      maxRequests: pulumi.Input.fromValue((map['maxRequests'] as num).toInt()),
+      maxRequests: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRequests'])),
     );
   }
 }

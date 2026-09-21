@@ -2170,7 +2170,7 @@ class Integration extends pulumi.CustomResource {
           'aws:apigateway/integration:Integration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     cacheKeyParameters = registerOutput<List<String>?>('cacheKeyParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     cacheNamespace = registerOutput<String>('cacheNamespace');

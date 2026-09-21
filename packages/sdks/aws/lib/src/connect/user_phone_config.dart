@@ -35,7 +35,7 @@ class UserPhoneConfig {
 
   factory UserPhoneConfig.fromMap(Map<String, dynamic> map) {
     return UserPhoneConfig(
-      afterContactWorkTimeLimit: (() { final guardedValue = map['afterContactWorkTimeLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      afterContactWorkTimeLimit: (() { final guardedValue = map['afterContactWorkTimeLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       autoAccept: (() { final guardedValue = map['autoAccept']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deskPhoneNumber: (() { final guardedValue = map['deskPhoneNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       phoneType: pulumi.Input.fromValue(map['phoneType'] as String),

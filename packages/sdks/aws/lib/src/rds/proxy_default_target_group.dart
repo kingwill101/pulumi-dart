@@ -19,11 +19,11 @@ import 'proxy_default_target_group_state.dart';
 class ProxyDefaultTargetGroup extends pulumi.CustomResource {
   /// ARN representing the target group.
   late final pulumi.Output<String> arn;
-  /// The settings that determine the size and behavior of the connection pool for the target group.
+  /// Settings that determine the size and behavior of the connection pool for the target group. See `connectionPoolConfig` Block for details.
   late final pulumi.Output<ProxyDefaultTargetGroupConnectionPoolConfig> connectionPoolConfig;
   /// Name of the RDS DB Proxy.
   late final pulumi.Output<String> dbProxyName;
-  /// The name of the default target group.
+  /// Name of the default target group.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -40,7 +40,7 @@ class ProxyDefaultTargetGroup extends pulumi.CustomResource {
           'aws:rds/proxyDefaultTargetGroup:ProxyDefaultTargetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionPoolConfig = registerOutput<ProxyDefaultTargetGroupConnectionPoolConfig>('connectionPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProxyDefaultTargetGroupConnectionPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

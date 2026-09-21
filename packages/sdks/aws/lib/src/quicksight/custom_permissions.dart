@@ -174,7 +174,7 @@ class CustomPermissions extends pulumi.CustomResource {
           'aws:quicksight/customPermissions:CustomPermissions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

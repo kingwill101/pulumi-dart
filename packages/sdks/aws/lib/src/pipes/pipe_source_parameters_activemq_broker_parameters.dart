@@ -36,9 +36,9 @@ class PipeSourceParametersActivemqBrokerParameters {
 
   factory PipeSourceParametersActivemqBrokerParameters.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersActivemqBrokerParameters(
-      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       credentials: pulumi.Input.fromValue(PipeSourceParametersActivemqBrokerParametersCredentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())),
-      maximumBatchingWindowInSeconds: (() { final guardedValue = map['maximumBatchingWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumBatchingWindowInSeconds: (() { final guardedValue = map['maximumBatchingWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       queueName: pulumi.Input.fromValue(map['queueName'] as String),
     );
   }

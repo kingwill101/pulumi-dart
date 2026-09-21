@@ -715,7 +715,7 @@ class VoiceConnectorStreaming extends pulumi.CustomResource {
           'aws:chime/voiceConnectorStreaming:VoiceConnectorStreaming',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     dataRetention = registerOutput<int>('dataRetention');
     disabled = registerOutput<bool?>('disabled');

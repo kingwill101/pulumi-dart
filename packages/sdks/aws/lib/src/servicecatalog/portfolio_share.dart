@@ -172,7 +172,7 @@ class PortfolioShare extends pulumi.CustomResource {
           'aws:servicecatalog/portfolioShare:PortfolioShare',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     acceptLanguage = registerOutput<String?>('acceptLanguage');
     accepted = registerOutput<bool>('accepted');

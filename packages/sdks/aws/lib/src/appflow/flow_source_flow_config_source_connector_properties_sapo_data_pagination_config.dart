@@ -20,7 +20,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig {
 
   factory FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig(
-      maxPageSize: pulumi.Input.fromValue((map['maxPageSize'] as num).toInt()),
+      maxPageSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPageSize'])),
     );
   }
 }

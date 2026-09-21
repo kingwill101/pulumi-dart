@@ -25,8 +25,8 @@ class IndexCapacityUnits {
 
   factory IndexCapacityUnits.fromMap(Map<String, dynamic> map) {
     return IndexCapacityUnits(
-      queryCapacityUnits: (() { final guardedValue = map['queryCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      storageCapacityUnits: (() { final guardedValue = map['storageCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      queryCapacityUnits: (() { final guardedValue = map['queryCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      storageCapacityUnits: (() { final guardedValue = map['storageCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -44,7 +44,7 @@ class GetCoreNetworkPolicyDocumentRoutingPolicy {
       routingPolicyDescription: (() { final guardedValue = map['routingPolicyDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routingPolicyDirection: pulumi.Input.fromValue(map['routingPolicyDirection'] as String),
       routingPolicyName: pulumi.Input.fromValue(map['routingPolicyName'] as String),
-      routingPolicyNumber: pulumi.Input.fromValue((map['routingPolicyNumber'] as num).toInt()),
+      routingPolicyNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['routingPolicyNumber'])),
       routingPolicyRules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule>(map['routingPolicyRules']!, (value) => GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

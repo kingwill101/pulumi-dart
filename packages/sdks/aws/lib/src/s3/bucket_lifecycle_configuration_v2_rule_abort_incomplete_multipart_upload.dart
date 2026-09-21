@@ -20,7 +20,7 @@ class BucketLifecycleConfigurationV2RuleAbortIncompleteMultipartUpload {
 
   factory BucketLifecycleConfigurationV2RuleAbortIncompleteMultipartUpload.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationV2RuleAbortIncompleteMultipartUpload(
-      daysAfterInitiation: (() { final guardedValue = map['daysAfterInitiation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      daysAfterInitiation: (() { final guardedValue = map['daysAfterInitiation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

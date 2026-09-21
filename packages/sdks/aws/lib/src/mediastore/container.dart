@@ -139,7 +139,7 @@ class Container extends pulumi.CustomResource {
           'aws:mediastore/container:Container',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     endpoint = registerOutput<String>('endpoint');

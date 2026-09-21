@@ -177,7 +177,7 @@ class PlaybackKeyPair extends pulumi.CustomResource {
           'aws:ivs/playbackKeyPair:PlaybackKeyPair',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     fingerprint = registerOutput<String>('fingerprint');

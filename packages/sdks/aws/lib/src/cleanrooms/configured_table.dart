@@ -259,7 +259,7 @@ class ConfiguredTable extends pulumi.CustomResource {
           'aws:cleanrooms/configuredTable:ConfiguredTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     allowedColumns = registerOutput<List<String>>('allowedColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     analysisMethod = registerOutput<String>('analysisMethod');

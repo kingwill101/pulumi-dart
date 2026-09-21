@@ -218,7 +218,7 @@ class UserStackAssociation extends pulumi.CustomResource {
           'aws:appstream/userStackAssociation:UserStackAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     authenticationType = registerOutput<String>('authenticationType');
     region = registerOutput<String>('region');

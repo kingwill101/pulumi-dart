@@ -25,8 +25,8 @@ class ClusterKubeApiServerConfigServiceNodePortRange {
 
   factory ClusterKubeApiServerConfigServiceNodePortRange.fromMap(Map<String, dynamic> map) {
     return ClusterKubeApiServerConfigServiceNodePortRange(
-      maxPort: (() { final guardedValue = map['maxPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minPort: (() { final guardedValue = map['minPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxPort: (() { final guardedValue = map['maxPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minPort: (() { final guardedValue = map['minPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

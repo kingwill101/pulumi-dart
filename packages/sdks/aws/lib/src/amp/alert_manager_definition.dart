@@ -188,7 +188,7 @@ class AlertManagerDefinition extends pulumi.CustomResource {
           'aws:amp/alertManagerDefinition:AlertManagerDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     definition = registerOutput<String>('definition');
     region = registerOutput<String>('region');

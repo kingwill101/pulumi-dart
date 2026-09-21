@@ -151,7 +151,7 @@ class SnapshotCopy extends pulumi.CustomResource {
           'aws:redshift/snapshotCopy:SnapshotCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     destinationRegion = registerOutput<String>('destinationRegion');

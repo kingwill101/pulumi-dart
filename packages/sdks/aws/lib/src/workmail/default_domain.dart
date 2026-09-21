@@ -184,7 +184,7 @@ class DefaultDomain extends pulumi.CustomResource {
           'aws:workmail/defaultDomain:DefaultDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     domainName = registerOutput<String>('domainName');
     organizationId = registerOutput<String>('organizationId');

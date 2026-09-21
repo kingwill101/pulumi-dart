@@ -26,7 +26,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
 
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration(
-      executionTimeoutSeconds: (() { final guardedValue = map['executionTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      executionTimeoutSeconds: (() { final guardedValue = map['executionTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       generationContext: (() { final guardedValue = map['generationContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

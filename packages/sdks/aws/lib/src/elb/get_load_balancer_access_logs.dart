@@ -34,7 +34,7 @@ class GetLoadBalancerAccessLogs {
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       bucketPrefix: pulumi.Input.fromValue(map['bucketPrefix'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      interval: pulumi.Input.fromValue((map['interval'] as num).toInt()),
+      interval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interval'])),
     );
   }
 }

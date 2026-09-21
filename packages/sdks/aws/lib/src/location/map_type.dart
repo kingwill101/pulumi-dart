@@ -171,7 +171,7 @@ class MapType extends pulumi.CustomResource {
           'aws:location/map:Map',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     configuration = registerOutput<MapConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MapConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

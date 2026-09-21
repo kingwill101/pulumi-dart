@@ -199,23 +199,23 @@ import 'cluster_parameter_group_state.dart';
 /// $ pulumi import aws:rds/clusterParameterGroup:ClusterParameterGroup cluster_pg production-pg-1
 /// ```
 class ClusterParameterGroup extends pulumi.CustomResource {
-  /// The ARN of the db cluster parameter group.
+  /// ARN of the DB cluster parameter group.
   late final pulumi.Output<String> arn;
-  /// The description of the DB cluster parameter group. Defaults to "Managed by Pulumi".
+  /// Description of the DB cluster parameter group. Defaults to "Managed by Pulumi".
   late final pulumi.Output<String> description;
-  /// The family of the DB cluster parameter group.
+  /// Family of the DB cluster parameter group.
   late final pulumi.Output<String> family;
-  /// The name of the DB parameter.
+  /// Name of the DB cluster parameter group. If omitted, the provider will assign a random, unique name.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
-  /// A list of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-cluster-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-cluster-parameters.html) after initial creation of the group.
+  /// Set of DB parameters to apply. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-cluster-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-cluster-parameters.html) after initial creation of the group. See `parameter` Block below for details.
   late final pulumi.Output<List<ClusterParameterGroupParameter>?> parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ClusterParameterGroup].
@@ -230,7 +230,7 @@ class ClusterParameterGroup extends pulumi.CustomResource {
           'aws:rds/clusterParameterGroup:ClusterParameterGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');

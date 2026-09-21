@@ -876,7 +876,7 @@ class Environment extends pulumi.CustomResource {
           'aws:mwaa/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
           additionalSecretOutputs: const ['airflowConfigurationOptions'],
         ) {
     airflowConfigurationOptions = registerOutput<Map<String, String>?>('airflowConfigurationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);

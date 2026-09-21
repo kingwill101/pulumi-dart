@@ -561,7 +561,7 @@ class Connector extends pulumi.CustomResource {
           'aws:transfer/connector:Connector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accessRole = registerOutput<String>('accessRole');
     arn = registerOutput<String>('arn');

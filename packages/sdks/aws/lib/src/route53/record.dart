@@ -1357,7 +1357,7 @@ class Record extends pulumi.CustomResource {
           'aws:route53/record:Record',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     aliases = registerOutput<List<RecordAlias>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordAlias>(guardedValue, (value) => RecordAlias.fromMap((value as Map).cast<String, dynamic>())); });
     allowOverwrite = registerOutput<bool>('allowOverwrite');

@@ -50,9 +50,9 @@ class WebAclRuleStatementRateBasedStatement {
     return WebAclRuleStatementRateBasedStatement(
       aggregateKeyType: pulumi.Input.fromValue(map['aggregateKeyType'] as String),
       customKeys: (() { final guardedValue = map['customKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKey>(guardedValue, (value) => WebAclRuleStatementRateBasedStatementCustomKey.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      evaluationWindowSec: (() { final guardedValue = map['evaluationWindowSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      evaluationWindowSec: (() { final guardedValue = map['evaluationWindowSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       forwardedIpConfig: (() { final guardedValue = map['forwardedIpConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleStatementRateBasedStatementForwardedIpConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      limit: pulumi.Input.fromValue((map['limit'] as num).toInt()),
+      limit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['limit'])),
       scopeDownStatement: (() { final guardedValue = map['scopeDownStatement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleStatementRateBasedStatementScopeDownStatement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

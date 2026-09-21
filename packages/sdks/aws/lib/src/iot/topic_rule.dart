@@ -612,7 +612,7 @@ class TopicRule extends pulumi.CustomResource {
           'aws:iot/topicRule:TopicRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cloudwatchAlarms = registerOutput<List<TopicRuleCloudwatchAlarm>?>('cloudwatchAlarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TopicRuleCloudwatchAlarm>(guardedValue, (value) => TopicRuleCloudwatchAlarm.fromMap((value as Map).cast<String, dynamic>())); });

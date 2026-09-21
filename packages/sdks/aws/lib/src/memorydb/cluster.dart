@@ -263,7 +263,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:memorydb/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     aclName = registerOutput<String>('aclName');
     arn = registerOutput<String>('arn');

@@ -31,9 +31,9 @@ class GetFirewallFirewallStatusCapacityUsageSummaryCidr {
 
   factory GetFirewallFirewallStatusCapacityUsageSummaryCidr.fromMap(Map<String, dynamic> map) {
     return GetFirewallFirewallStatusCapacityUsageSummaryCidr(
-      availableCidrCount: pulumi.Input.fromValue((map['availableCidrCount'] as num).toInt()),
+      availableCidrCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['availableCidrCount'])),
       ipSetReferences: pulumi.Input.fromValue(pulumi.Input.decodeList<GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference>(map['ipSetReferences']!, (value) => GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference.fromMap((value as Map).cast<String, dynamic>()))),
-      utilizedCidrCount: pulumi.Input.fromValue((map['utilizedCidrCount'] as num).toInt()),
+      utilizedCidrCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['utilizedCidrCount'])),
     );
   }
 }

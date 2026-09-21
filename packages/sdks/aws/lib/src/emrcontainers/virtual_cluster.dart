@@ -209,7 +209,7 @@ class VirtualCluster extends pulumi.CustomResource {
           'aws:emrcontainers/virtualCluster:VirtualCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     containerProvider = registerOutput<VirtualClusterContainerProvider>('containerProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualClusterContainerProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });

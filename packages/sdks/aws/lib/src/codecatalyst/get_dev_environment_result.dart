@@ -99,7 +99,7 @@ class GetDevEnvironmentResult {
       envId: (() { final guardedValue = map['envId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ides: (() { final guardedValue = map['ides']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDevEnvironmentIde>(guardedValue, (value) => GetDevEnvironmentIde.fromMap((value as Map).cast<String, dynamic>())); })(),
-      inactivityTimeoutMinutes: (() { final guardedValue = map['inactivityTimeoutMinutes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      inactivityTimeoutMinutes: (() { final guardedValue = map['inactivityTimeoutMinutes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastUpdatedTime: (() { final guardedValue = map['lastUpdatedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       persistentStorages: (() { final guardedValue = map['persistentStorages']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDevEnvironmentPersistentStorage>(guardedValue, (value) => GetDevEnvironmentPersistentStorage.fromMap((value as Map).cast<String, dynamic>())); })(),

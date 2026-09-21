@@ -276,7 +276,7 @@ class InstanceAccessControlAttributes extends pulumi.CustomResource {
           'aws:ssoadmin/instanceAccessControlAttributes:InstanceAccessControlAttributes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     attributes = registerOutput<List<InstanceAccessControlAttributesAttribute>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceAccessControlAttributesAttribute>(guardedValue, (value) => InstanceAccessControlAttributesAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     instanceArn = registerOutput<String>('instanceArn');

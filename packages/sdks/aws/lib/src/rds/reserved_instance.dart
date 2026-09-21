@@ -217,7 +217,7 @@ class ReservedInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> offeringType;
   /// Description of the reserved DB instance.
   late final pulumi.Output<String> productDescription;
-  /// Recurring price charged to run this reserved DB instance.
+  /// Recurring price charged to run this reserved DB instance. See `recurringCharges` below.
   late final pulumi.Output<List<ReservedInstanceRecurringCharge>> recurringCharges;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -246,7 +246,7 @@ class ReservedInstance extends pulumi.CustomResource {
           'aws:rds/reservedInstance:ReservedInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     currencyCode = registerOutput<String>('currencyCode');

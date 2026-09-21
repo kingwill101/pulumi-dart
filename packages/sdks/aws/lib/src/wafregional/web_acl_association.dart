@@ -591,7 +591,7 @@ class WebAclAssociation extends pulumi.CustomResource {
           'aws:wafregional/webAclAssociation:WebAclAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

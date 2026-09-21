@@ -550,7 +550,7 @@ class BlockPublicAccessConfiguration extends pulumi.CustomResource {
           'aws:emr/blockPublicAccessConfiguration:BlockPublicAccessConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     blockPublicSecurityGroupRules = registerOutput<bool>('blockPublicSecurityGroupRules');
     permittedPublicSecurityGroupRuleRanges = registerOutput<List<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>?>('permittedPublicSecurityGroupRuleRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>(guardedValue, (value) => BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange.fromMap((value as Map).cast<String, dynamic>())); });

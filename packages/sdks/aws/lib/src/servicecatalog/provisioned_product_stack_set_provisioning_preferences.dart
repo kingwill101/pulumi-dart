@@ -46,10 +46,10 @@ class ProvisionedProductStackSetProvisioningPreferences {
   factory ProvisionedProductStackSetProvisioningPreferences.fromMap(Map<String, dynamic> map) {
     return ProvisionedProductStackSetProvisioningPreferences(
       accounts: (() { final guardedValue = map['accounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      failureToleranceCount: (() { final guardedValue = map['failureToleranceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      failureTolerancePercentage: (() { final guardedValue = map['failureTolerancePercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxConcurrencyCount: (() { final guardedValue = map['maxConcurrencyCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxConcurrencyPercentage: (() { final guardedValue = map['maxConcurrencyPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      failureToleranceCount: (() { final guardedValue = map['failureToleranceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      failureTolerancePercentage: (() { final guardedValue = map['failureTolerancePercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxConcurrencyCount: (() { final guardedValue = map['maxConcurrencyCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxConcurrencyPercentage: (() { final guardedValue = map['maxConcurrencyPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

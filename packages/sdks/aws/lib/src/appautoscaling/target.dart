@@ -879,7 +879,7 @@ class Target extends pulumi.CustomResource {
           'aws:appautoscaling/target:Target',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     maxCapacity = registerOutput<int>('maxCapacity');

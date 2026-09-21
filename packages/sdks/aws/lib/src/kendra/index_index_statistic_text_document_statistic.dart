@@ -25,8 +25,8 @@ class IndexIndexStatisticTextDocumentStatistic {
 
   factory IndexIndexStatisticTextDocumentStatistic.fromMap(Map<String, dynamic> map) {
     return IndexIndexStatisticTextDocumentStatistic(
-      indexedTextBytes: (() { final guardedValue = map['indexedTextBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      indexedTextDocumentsCount: (() { final guardedValue = map['indexedTextDocumentsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      indexedTextBytes: (() { final guardedValue = map['indexedTextBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      indexedTextDocumentsCount: (() { final guardedValue = map['indexedTextDocumentsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

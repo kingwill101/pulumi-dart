@@ -177,7 +177,7 @@ class Stage extends pulumi.CustomResource {
           'aws:apigatewayv2/stage:Stage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accessLogSettings = registerOutput<StageAccessLogSettings?>('accessLogSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StageAccessLogSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     apiId = registerOutput<String>('apiId');

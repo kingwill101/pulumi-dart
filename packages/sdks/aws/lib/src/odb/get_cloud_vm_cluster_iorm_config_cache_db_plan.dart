@@ -29,7 +29,7 @@ class GetCloudVmClusterIormConfigCacheDbPlan {
     return GetCloudVmClusterIormConfigCacheDbPlan(
       dbName: pulumi.Input.fromValue(map['dbName'] as String),
       flashCacheLimit: pulumi.Input.fromValue(map['flashCacheLimit'] as String),
-      share: pulumi.Input.fromValue((map['share'] as num).toInt()),
+      share: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['share'])),
     );
   }
 }

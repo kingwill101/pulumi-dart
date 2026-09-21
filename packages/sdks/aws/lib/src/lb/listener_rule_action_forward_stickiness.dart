@@ -25,7 +25,7 @@ class ListenerRuleActionForwardStickiness {
 
   factory ListenerRuleActionForwardStickiness.fromMap(Map<String, dynamic> map) {
     return ListenerRuleActionForwardStickiness(
-      duration: pulumi.Input.fromValue((map['duration'] as num).toInt()),
+      duration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['duration'])),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

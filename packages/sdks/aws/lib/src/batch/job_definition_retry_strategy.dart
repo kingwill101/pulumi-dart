@@ -26,7 +26,7 @@ class JobDefinitionRetryStrategy {
 
   factory JobDefinitionRetryStrategy.fromMap(Map<String, dynamic> map) {
     return JobDefinitionRetryStrategy(
-      attempts: (() { final guardedValue = map['attempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      attempts: (() { final guardedValue = map['attempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       evaluateOnExits: (() { final guardedValue = map['evaluateOnExits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JobDefinitionRetryStrategyEvaluateOnExit>(guardedValue, (value) => JobDefinitionRetryStrategyEvaluateOnExit.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

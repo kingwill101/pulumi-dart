@@ -779,7 +779,7 @@ class WebApp extends pulumi.CustomResource {
           'aws:transfer/webApp:WebApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     accessEndpoint = registerOutput<String>('accessEndpoint');
     arn = registerOutput<String>('arn');

@@ -634,7 +634,7 @@ class TargetGroupAttachment extends pulumi.CustomResource {
           'aws:alb/targetGroupAttachment:TargetGroupAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     availabilityZone = registerOutput<String?>('availabilityZone');
     port = registerOutput<int?>('port');

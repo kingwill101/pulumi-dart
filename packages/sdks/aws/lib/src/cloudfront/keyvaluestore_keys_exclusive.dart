@@ -321,7 +321,7 @@ class KeyvaluestoreKeysExclusive extends pulumi.CustomResource {
           'aws:cloudfront/keyvaluestoreKeysExclusive:KeyvaluestoreKeysExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
     maxBatchSize = registerOutput<int>('maxBatchSize');

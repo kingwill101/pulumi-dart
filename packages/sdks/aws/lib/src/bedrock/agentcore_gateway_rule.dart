@@ -820,7 +820,7 @@ class AgentcoreGatewayRule extends pulumi.CustomResource {
           'aws:bedrock/agentcoreGatewayRule:AgentcoreGatewayRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     actions = registerOutput<List<AgentcoreGatewayRuleAction>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayRuleAction>(guardedValue, (value) => AgentcoreGatewayRuleAction.fromMap((value as Map).cast<String, dynamic>())); });
     conditions = registerOutput<List<AgentcoreGatewayRuleCondition>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreGatewayRuleCondition>(guardedValue, (value) => AgentcoreGatewayRuleCondition.fromMap((value as Map).cast<String, dynamic>())); });

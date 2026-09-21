@@ -174,7 +174,7 @@ class ProvisionedModelThroughput extends pulumi.CustomResource {
           'aws:bedrock/provisionedModelThroughput:ProvisionedModelThroughput',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     commitmentDuration = registerOutput<String?>('commitmentDuration');
     modelArn = registerOutput<String>('modelArn');

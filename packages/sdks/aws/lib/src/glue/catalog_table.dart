@@ -1187,6 +1187,20 @@ import 'catalog_table_view_definition.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `catalogId` - (String) ID of the Glue Catalog.
+/// * `databaseName` - (String) Name of the Glue Catalog Database.
+/// * `name` - (String) Name of the Glue Catalog Table.
+///
+/// #### Optional
+///
+/// * `accountId` - (String) AWS Account where this resource is managed.
+/// * `region` - (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Glue Tables using the catalog ID (usually AWS account ID), database name, and table name. For example:
 ///
 /// ```sh
@@ -1226,7 +1240,7 @@ class CatalogTable extends pulumi.CustomResource {
   /// Configuration block of a target table for resource linking. See `targetTable` below.
   late final pulumi.Output<CatalogTableTargetTable?> targetTable;
   /// Structure that contains all the information that defines the view, including the dialect or dialects for the view, and the query. See `viewDefinition` below.
-  late final pulumi.Output<CatalogTableViewDefinition?> viewDefinition;
+  late final pulumi.Output<CatalogTableViewDefinition> viewDefinition;
   /// If the table is a view, the expanded text of the view; otherwise null.
   late final pulumi.Output<String?> viewExpandedText;
   /// If the table is a view, the original text of the view; otherwise null.
@@ -1244,7 +1258,7 @@ class CatalogTable extends pulumi.CustomResource {
           'aws:glue/catalogTable:CatalogTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     catalogId = registerOutput<String>('catalogId');
@@ -1261,7 +1275,7 @@ class CatalogTable extends pulumi.CustomResource {
     storageDescriptor = registerOutput<CatalogTableStorageDescriptor>('storageDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableStorageDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableType = registerOutput<String>('tableType');
     targetTable = registerOutput<CatalogTableTargetTable?>('targetTable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableTargetTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    viewDefinition = registerOutput<CatalogTableViewDefinition?>('viewDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableViewDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    viewDefinition = registerOutput<CatalogTableViewDefinition>('viewDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableViewDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     viewExpandedText = registerOutput<String?>('viewExpandedText');
     viewOriginalText = registerOutput<String?>('viewOriginalText');
   }
@@ -1305,7 +1319,7 @@ class CatalogTable extends pulumi.CustomResource {
     storageDescriptor = registerOutput<CatalogTableStorageDescriptor>('storageDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableStorageDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableType = registerOutput<String>('tableType');
     targetTable = registerOutput<CatalogTableTargetTable?>('targetTable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableTargetTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    viewDefinition = registerOutput<CatalogTableViewDefinition?>('viewDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableViewDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    viewDefinition = registerOutput<CatalogTableViewDefinition>('viewDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableViewDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     viewExpandedText = registerOutput<String?>('viewExpandedText');
     viewOriginalText = registerOutput<String?>('viewOriginalText');
   }
@@ -1334,7 +1348,7 @@ class CatalogTable extends pulumi.CustomResource {
     storageDescriptor = registerOutput<CatalogTableStorageDescriptor>('storageDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableStorageDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableType = registerOutput<String>('tableType');
     targetTable = registerOutput<CatalogTableTargetTable?>('targetTable', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableTargetTable.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    viewDefinition = registerOutput<CatalogTableViewDefinition?>('viewDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableViewDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    viewDefinition = registerOutput<CatalogTableViewDefinition>('viewDefinition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableViewDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     viewExpandedText = registerOutput<String?>('viewExpandedText');
     viewOriginalText = registerOutput<String?>('viewOriginalText');
   }

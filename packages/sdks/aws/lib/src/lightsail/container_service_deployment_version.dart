@@ -317,7 +317,7 @@ class ContainerServiceDeploymentVersion extends pulumi.CustomResource {
           'aws:lightsail/containerServiceDeploymentVersion:ContainerServiceDeploymentVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     containers = registerOutput<List<ContainerServiceDeploymentVersionContainer>>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerServiceDeploymentVersionContainer>(guardedValue, (value) => ContainerServiceDeploymentVersionContainer.fromMap((value as Map).cast<String, dynamic>())); });
     createdAt = registerOutput<String>('createdAt');

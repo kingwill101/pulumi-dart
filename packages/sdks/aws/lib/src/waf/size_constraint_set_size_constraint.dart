@@ -39,7 +39,7 @@ class SizeConstraintSetSizeConstraint {
     return SizeConstraintSetSizeConstraint(
       comparisonOperator: pulumi.Input.fromValue(map['comparisonOperator'] as String),
       fieldToMatch: pulumi.Input.fromValue(SizeConstraintSetSizeConstraintFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())),
-      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
+      size: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['size'])),
       textTransformation: pulumi.Input.fromValue(map['textTransformation'] as String),
     );
   }

@@ -3,6 +3,7 @@ import 'agentcore_oauth2_credential_provider_args.dart';
 import 'agentcore_oauth2_credential_provider_client_secret_arn.dart';
 import 'agentcore_oauth2_credential_provider_oauth2_provider_config.dart';
 import 'agentcore_oauth2_credential_provider_state.dart';
+import 'agentcore_oauth2_credential_provider_timeouts.dart';
 
 /// Manages an AWS Bedrock AgentCore OAuth2 Credential Provider. OAuth2 credential providers enable secure authentication with external OAuth2/OpenID Connect identity providers for agent runtimes.
 ///
@@ -374,6 +375,7 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 ///                         "code",
 ///                         "id_token",
 ///                     ],
+///                     tokenEndpointAuthMethods: ["client_secret_basic"],
 ///                 },
 ///             },
 ///             clientIdWo: "keycloak-client-id",
@@ -401,6 +403,7 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 ///                         "code",
 ///                         "id_token",
 ///                     ],
+///                     "token_endpoint_auth_methods": ["client_secret_basic"],
 ///                 },
 ///             },
 ///             "client_id_wo": "keycloak-client-id",
@@ -437,6 +440,10 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 ///                             "code",
 ///                             "id_token",
 ///                         },
+///                         TokenEndpointAuthMethods = new[]
+///                         {
+///                             "client_secret_basic",
+///                         },
 ///                     },
 ///                 },
 ///                 ClientIdWo = "keycloak-client-id",
@@ -472,6 +479,9 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 /// 								pulumi.String("code"),
 /// 								pulumi.String("id_token"),
 /// 							},
+/// 							TokenEndpointAuthMethods: pulumi.StringArray{
+/// 								pulumi.String("client_secret_basic"),
+/// 							},
 /// 						},
 /// 					},
 /// 					ClientIdWo:                 pulumi.String("keycloak-client-id"),
@@ -503,10 +513,11 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 ///     custom_oauth2_provider_config = {
 ///       oauth_discovery = {
 ///         authorization_server_metadata = {
-///           issuer                 = "https://auth.company.com/realms/production"
-///           authorization_endpoint = "https://auth.company.com/realms/production/protocol/openid-connect/auth"
-///           token_endpoint         = "https://auth.company.com/realms/production/protocol/openid-connect/token"
-///           response_types         = ["code", "id_token"]
+///           issuer                      = "https://auth.company.com/realms/production"
+///           authorization_endpoint      = "https://auth.company.com/realms/production/protocol/openid-connect/auth"
+///           token_endpoint              = "https://auth.company.com/realms/production/protocol/openid-connect/token"
+///           response_types              = ["code", "id_token"]
+///           token_endpoint_auth_methods = ["client_secret_basic"]
 ///         }
 ///       }
 ///       client_id_wo                  = "keycloak-client-id"
@@ -554,6 +565,7 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 ///                             .responseTypes(
 ///                                 "code",
 ///                                 "id_token")
+///                             .tokenEndpointAuthMethods("client_secret_basic")
 ///                             .build())
 ///                         .build())
 ///                     .clientIdWo("keycloak-client-id")
@@ -583,6 +595,8 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 ///               responseTypes:
 ///                 - code
 ///                 - id_token
+///               tokenEndpointAuthMethods:
+///                 - client_secret_basic
 ///           clientIdWo: keycloak-client-id
 ///           clientSecretWo: keycloak-client-secret
 ///           clientCredentialsWoVersion: 1
@@ -593,30 +607,48 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Bedrock AgentCore OAuth2 Credential Provider using the provider name. For example:
+/// &gt; **Note:** OAuth2 client credentials are input-only in the AgentCore API and are not returned by the read operation. On import, `clientId`, `clientSecret`, `clientSecretSource`, `clientSecretConfig`, and the write-only `clientIdWo`/`clientSecretWo`/`clientCredentialsWoVersion` arguments cannot be recovered from the service, so the first `pulumi preview` after import shows them as additions. Run `pulumi up` once to reconcile state from your configuration; subsequent plans are clean.
+///
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) OAuth2 credential provider name.
+///
+/// #### Optional
+///
+/// * `accountId` (String) Account ID where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Bedrock AgentCore OAuth2 Credential Provider using `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:bedrock/agentcoreOauth2CredentialProvider:AgentcoreOauth2CredentialProvider example oauth2-provider-name
+/// $ pulumi import aws:bedrock/agentcoreOauth2CredentialProvider:AgentcoreOauth2CredentialProvider example example-oauth2-provider
 /// ```
 class AgentcoreOauth2CredentialProvider extends pulumi.CustomResource {
+  /// Callback URL to register on the OAuth2 credential provider as an allowed callback URL. This URL is where the OAuth2 authorization server redirects users after they complete the authorization flow.
+  late final pulumi.Output<String> callbackUrl;
   /// ARN of the AWS Secrets Manager secret containing the client secret.
   late final pulumi.Output<List<AgentcoreOauth2CredentialProviderClientSecretArn>> clientSecretArns;
   /// ARN of the OAuth2 credential provider.
   late final pulumi.Output<String> credentialProviderArn;
-  /// Vendor of the OAuth2 credential provider. Valid values: `CustomOauth2`, `GithubOauth2`, `GoogleOauth2`, `Microsoft`, `SalesforceOauth2`, `SlackOauth2`.
+  /// Vendor of the OAuth2 credential provider. Valid values include `CustomOauth2`, `GithubOauth2`, `GoogleOauth2`, `MicrosoftOauth2`, `SalesforceOauth2`, `SlackOauth2`, `AtlassianOauth2`, `LinkedinOauth2`, and a number of additional supported vendors (e.g. `XOauth2`, `FacebookOauth2`, `SpotifyOauth2`) configured via `includedOauth2ProviderConfig`. Refer to the AWS API for the full, current list. See the note under `includedOauth2ProviderConfig` for vendors that are not yet supported.
   late final pulumi.Output<String> credentialProviderVendor;
   /// Name of the OAuth2 credential provider.
   late final pulumi.Output<String> name;
   /// OAuth2 provider configuration. Must contain exactly one provider type. See `oauth2ProviderConfig` below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?> oauth2ProviderConfig;
+  late final pulumi.Output<AgentcoreOauth2CredentialProviderOauth2ProviderConfig> oauth2ProviderConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<AgentcoreOauth2CredentialProviderTimeouts?> timeouts;
 
   /// Creates a new [AgentcoreOauth2CredentialProvider].
   /// [name] The Pulumi resource name.
@@ -630,16 +662,18 @@ class AgentcoreOauth2CredentialProvider extends pulumi.CustomResource {
           'aws:bedrock/agentcoreOauth2CredentialProvider:AgentcoreOauth2CredentialProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
+    callbackUrl = registerOutput<String>('callbackUrl');
     clientSecretArns = registerOutput<List<AgentcoreOauth2CredentialProviderClientSecretArn>>('clientSecretArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreOauth2CredentialProviderClientSecretArn>(guardedValue, (value) => AgentcoreOauth2CredentialProviderClientSecretArn.fromMap((value as Map).cast<String, dynamic>())); });
     credentialProviderArn = registerOutput<String>('credentialProviderArn');
     credentialProviderVendor = registerOutput<String>('credentialProviderVendor');
     this.name = registerOutput<String>('name');
-    oauth2ProviderConfig = registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?>('oauth2ProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    oauth2ProviderConfig = registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig>('oauth2ProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentcoreOauth2CredentialProviderTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AgentcoreOauth2CredentialProvider] resource's state with the given [name] and [id].
@@ -666,14 +700,16 @@ class AgentcoreOauth2CredentialProvider extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    callbackUrl = registerOutput<String>('callbackUrl');
     clientSecretArns = registerOutput<List<AgentcoreOauth2CredentialProviderClientSecretArn>>('clientSecretArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreOauth2CredentialProviderClientSecretArn>(guardedValue, (value) => AgentcoreOauth2CredentialProviderClientSecretArn.fromMap((value as Map).cast<String, dynamic>())); });
     credentialProviderArn = registerOutput<String>('credentialProviderArn');
     credentialProviderVendor = registerOutput<String>('credentialProviderVendor');
     this.name = registerOutput<String>('name');
-    oauth2ProviderConfig = registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?>('oauth2ProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    oauth2ProviderConfig = registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig>('oauth2ProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentcoreOauth2CredentialProviderTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Creates a typed reference to an existing [AgentcoreOauth2CredentialProvider] resource.
@@ -685,13 +721,15 @@ class AgentcoreOauth2CredentialProvider extends pulumi.CustomResource {
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
         isResourceReference: true,
       ) {
+    callbackUrl = registerOutput<String>('callbackUrl');
     clientSecretArns = registerOutput<List<AgentcoreOauth2CredentialProviderClientSecretArn>>('clientSecretArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreOauth2CredentialProviderClientSecretArn>(guardedValue, (value) => AgentcoreOauth2CredentialProviderClientSecretArn.fromMap((value as Map).cast<String, dynamic>())); });
     credentialProviderArn = registerOutput<String>('credentialProviderArn');
     credentialProviderVendor = registerOutput<String>('credentialProviderVendor');
     this.name = registerOutput<String>('name');
-    oauth2ProviderConfig = registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?>('oauth2ProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    oauth2ProviderConfig = registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig>('oauth2ProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentcoreOauth2CredentialProviderTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

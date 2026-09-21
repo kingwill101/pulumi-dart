@@ -410,7 +410,7 @@ class ServiceIntegration extends pulumi.CustomResource {
           'aws:devopsguru/serviceIntegration:ServiceIntegration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     kmsServerSideEncryption = registerOutput<ServiceIntegrationKmsServerSideEncryption>('kmsServerSideEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIntegrationKmsServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logsAnomalyDetection = registerOutput<ServiceIntegrationLogsAnomalyDetection>('logsAnomalyDetection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIntegrationLogsAnomalyDetection.fromMap((guardedValue as Map).cast<String, dynamic>()); });

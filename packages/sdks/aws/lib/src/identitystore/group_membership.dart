@@ -292,7 +292,7 @@ class GroupMembership extends pulumi.CustomResource {
           'aws:identitystore/groupMembership:GroupMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     groupId = registerOutput<String>('groupId');
     identityStoreId = registerOutput<String>('identityStoreId');

@@ -160,7 +160,7 @@ class MultiRegionEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> endpointName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// List of active routes. See `routes` below.
+  /// List of active routes. See `routes` Block below.
   late final pulumi.Output<List<MultiRegionEndpointRoute>> routes;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -180,7 +180,7 @@ class MultiRegionEndpoint extends pulumi.CustomResource {
           'aws:sesv2/multiRegionEndpoint:MultiRegionEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     details = registerOutput<MultiRegionEndpointDetails?>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiRegionEndpointDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });

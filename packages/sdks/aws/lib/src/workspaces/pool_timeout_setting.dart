@@ -30,9 +30,9 @@ class PoolTimeoutSetting {
 
   factory PoolTimeoutSetting.fromMap(Map<String, dynamic> map) {
     return PoolTimeoutSetting(
-      disconnectTimeoutInSeconds: pulumi.Input.fromValue((map['disconnectTimeoutInSeconds'] as num).toInt()),
-      idleDisconnectTimeoutInSeconds: pulumi.Input.fromValue((map['idleDisconnectTimeoutInSeconds'] as num).toInt()),
-      maxUserDurationInSeconds: pulumi.Input.fromValue((map['maxUserDurationInSeconds'] as num).toInt()),
+      disconnectTimeoutInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['disconnectTimeoutInSeconds'])),
+      idleDisconnectTimeoutInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['idleDisconnectTimeoutInSeconds'])),
+      maxUserDurationInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxUserDurationInSeconds'])),
     );
   }
 }

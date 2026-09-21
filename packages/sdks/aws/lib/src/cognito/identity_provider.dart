@@ -262,7 +262,7 @@ class IdentityProvider extends pulumi.CustomResource {
           'aws:cognito/identityProvider:IdentityProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.47.0').merge(options),
         ) {
     attributeMapping = registerOutput<Map<String, String>>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     idpIdentifiers = registerOutput<List<String>?>('idpIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

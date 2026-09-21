@@ -43,7 +43,7 @@ class V2modelsIntentConfirmationSettingPromptSpecification {
   factory V2modelsIntentConfirmationSettingPromptSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingPromptSpecification(
       allowInterrupt: (() { final guardedValue = map['allowInterrupt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxRetries: pulumi.Input.fromValue((map['maxRetries'] as num).toInt()),
+      maxRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRetries'])),
       messageGroups: (() { final guardedValue = map['messageGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup>(guardedValue, (value) => V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
       messageSelectionStrategy: (() { final guardedValue = map['messageSelectionStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       promptAttemptsSpecifications: (() { final guardedValue = map['promptAttemptsSpecifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification>(guardedValue, (value) => V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),

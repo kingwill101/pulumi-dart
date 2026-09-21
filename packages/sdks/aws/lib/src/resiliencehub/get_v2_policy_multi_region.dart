@@ -31,8 +31,8 @@ class GetV2PolicyMultiRegion {
   factory GetV2PolicyMultiRegion.fromMap(Map<String, dynamic> map) {
     return GetV2PolicyMultiRegion(
       disasterRecoveryApproach: pulumi.Input.fromValue(map['disasterRecoveryApproach'] as String),
-      rpoInMinutes: pulumi.Input.fromValue((map['rpoInMinutes'] as num).toInt()),
-      rtoInMinutes: pulumi.Input.fromValue((map['rtoInMinutes'] as num).toInt()),
+      rpoInMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rpoInMinutes'])),
+      rtoInMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rtoInMinutes'])),
     );
   }
 }

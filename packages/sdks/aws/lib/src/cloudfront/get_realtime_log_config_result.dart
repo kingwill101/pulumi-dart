@@ -51,7 +51,7 @@ class GetRealtimeLogConfigResult {
       fields: (() { final guardedValue = map['fields']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      samplingRate: (() { final guardedValue = map['samplingRate']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      samplingRate: (() { final guardedValue = map['samplingRate']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }
