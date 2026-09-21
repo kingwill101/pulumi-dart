@@ -98,7 +98,7 @@ import 'random_pet_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = aws.NewInstance(ctx, "server", &aws.InstanceArgs{
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]pulumi.String{
 /// 				"name": pulumi.Sprintf("web-server-%v", server.ID()),
 /// 			},
 /// 			Ami: server.Keepers.AmiId,
@@ -215,9 +215,9 @@ class RandomPet extends pulumi.CustomResource {
           'random:index/randomPet:RandomPet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.21.2').merge(options),
         ) {
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     length = registerOutput<int>('length');
     prefix = registerOutput<String?>('prefix');
     separator = registerOutput<String>('separator');
@@ -228,11 +228,12 @@ class RandomPet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RandomPetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RandomPet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -246,7 +247,22 @@ class RandomPet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    length = registerOutput<int>('length');
+    prefix = registerOutput<String?>('prefix');
+    separator = registerOutput<String>('separator');
+  }
+
+  /// Creates a typed reference to an existing [RandomPet] resource.
+  RandomPet.reference(String urn)
+    : super(
+        'random:index/randomPet:RandomPet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     length = registerOutput<int>('length');
     prefix = registerOutput<String?>('prefix');
     separator = registerOutput<String>('separator');

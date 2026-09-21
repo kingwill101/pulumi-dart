@@ -262,9 +262,9 @@ class RandomInteger extends pulumi.CustomResource {
           'random:index/randomInteger:RandomInteger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.21.2').merge(options),
         ) {
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     max = registerOutput<int>('max');
     min = registerOutput<int>('min');
     result = registerOutput<int>('result');
@@ -276,11 +276,12 @@ class RandomInteger extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RandomIntegerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RandomInteger._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -294,7 +295,23 @@ class RandomInteger extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    max = registerOutput<int>('max');
+    min = registerOutput<int>('min');
+    result = registerOutput<int>('result');
+    seed = registerOutput<String?>('seed');
+  }
+
+  /// Creates a typed reference to an existing [RandomInteger] resource.
+  RandomInteger.reference(String urn)
+    : super(
+        'random:index/randomInteger:RandomInteger',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     max = registerOutput<int>('max');
     min = registerOutput<int>('min');
     result = registerOutput<int>('result');
