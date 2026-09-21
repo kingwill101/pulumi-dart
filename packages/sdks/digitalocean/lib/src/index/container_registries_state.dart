@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering ContainerRegistries resources.
 class ContainerRegistriesState {
-  final pulumi.Input<String>? createdAt;
-  final pulumi.Input<String>? endpoint;
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? region;
-  final pulumi.Input<String>? serverUrl;
-  final pulumi.Input<int>? storageUsageBytes;
-  final pulumi.Input<String>? subscriptionTierSlug;
+  final pulumi.Input<String?>? createdAt;
+  final pulumi.Input<String?>? endpoint;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<String?>? serverUrl;
+  final pulumi.Input<int?>? storageUsageBytes;
+  final pulumi.Input<String?>? subscriptionTierSlug;
 
   /// Creates a new [ContainerRegistriesState].
   /// [createdAt] Optional.
@@ -49,7 +49,7 @@ class ContainerRegistriesState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverUrl: (() { final guardedValue = map['serverUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageUsageBytes: (() { final guardedValue = map['storageUsageBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageUsageBytes: (() { final guardedValue = map['storageUsageBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       subscriptionTierSlug: (() { final guardedValue = map['subscriptionTierSlug']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

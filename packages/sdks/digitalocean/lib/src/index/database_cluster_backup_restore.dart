@@ -5,8 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatabaseClusterBackupRestore {
   /// The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
   ///
-  /// This resource supports customized create timeouts. The default timeout is 30 minutes.
-  final pulumi.Input<String>? backupCreatedAt;
+  /// This resource supports customized create and delete timeouts. The default timeout is 30 minutes.
+  final pulumi.Input<String?>? backupCreatedAt;
   /// The name of an existing database cluster from which the backup will be restored.
   final pulumi.Input<String> databaseName;
 

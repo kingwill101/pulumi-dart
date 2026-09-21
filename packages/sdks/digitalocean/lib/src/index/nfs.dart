@@ -524,7 +524,7 @@ class Nfs extends pulumi.CustomResource {
           'digitalocean:index/nfs:Nfs',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     host = registerOutput<String>('host');
     mountPath = registerOutput<String>('mountPath');
@@ -533,9 +533,9 @@ class Nfs extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     size = registerOutput<int>('size');
     status = registerOutput<String>('status');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vpcId = registerOutput<String>('vpcId');
-    vpcIds = registerOutput<List<String>>('vpcIds');
+    vpcIds = registerOutput<List<String>>('vpcIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Nfs] resource's state with the given [name] and [id].
@@ -543,11 +543,12 @@ class Nfs extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NfsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Nfs._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -568,8 +569,29 @@ class Nfs extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     size = registerOutput<int>('size');
     status = registerOutput<String>('status');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vpcId = registerOutput<String>('vpcId');
-    vpcIds = registerOutput<List<String>>('vpcIds');
+    vpcIds = registerOutput<List<String>>('vpcIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Nfs] resource.
+  Nfs.reference(String urn)
+    : super(
+        'digitalocean:index/nfs:Nfs',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    host = registerOutput<String>('host');
+    mountPath = registerOutput<String>('mountPath');
+    this.name = registerOutput<String>('name');
+    performanceTier = registerOutput<String?>('performanceTier');
+    region = registerOutput<String>('region');
+    size = registerOutput<int>('size');
+    status = registerOutput<String>('status');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcId = registerOutput<String>('vpcId');
+    vpcIds = registerOutput<List<String>>('vpcIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

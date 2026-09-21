@@ -31,7 +31,7 @@ class GetDedicatedInferenceModelDeploymentAccelerator {
   factory GetDedicatedInferenceModelDeploymentAccelerator.fromMap(Map<String, dynamic> map) {
     return GetDedicatedInferenceModelDeploymentAccelerator(
       acceleratorSlug: pulumi.Input.fromValue(map['acceleratorSlug'] as String),
-      scale: pulumi.Input.fromValue(map['scale'] as int),
+      scale: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scale'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

@@ -27,7 +27,7 @@ class GenaiAgentRoute extends pulumi.CustomResource {
           'digitalocean:index/genaiAgentRoute:GenaiAgentRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     childAgentUuid = registerOutput<String>('childAgentUuid');
     ifCase = registerOutput<String?>('ifCase');
@@ -42,11 +42,12 @@ class GenaiAgentRoute extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GenaiAgentRouteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GenaiAgentRoute._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -60,6 +61,23 @@ class GenaiAgentRoute extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    childAgentUuid = registerOutput<String>('childAgentUuid');
+    ifCase = registerOutput<String?>('ifCase');
+    parentAgentUuid = registerOutput<String>('parentAgentUuid');
+    rollback = registerOutput<bool?>('rollback');
+    routeName = registerOutput<String?>('routeName');
+    uuid = registerOutput<String>('uuid');
+  }
+
+  /// Creates a typed reference to an existing [GenaiAgentRoute] resource.
+  GenaiAgentRoute.reference(String urn)
+    : super(
+        'digitalocean:index/genaiAgentRoute:GenaiAgentRoute',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     childAgentUuid = registerOutput<String>('childAgentUuid');
     ifCase = registerOutput<String?>('ifCase');
     parentAgentUuid = registerOutput<String>('parentAgentUuid');

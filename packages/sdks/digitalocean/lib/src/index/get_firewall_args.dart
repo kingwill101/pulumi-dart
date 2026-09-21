@@ -11,14 +11,14 @@ import 'get_firewall_outbound_rule.dart';
 class GetFirewallArgs {
   /// The list of the IDs of the Droplets assigned to
   /// the Firewall.
-  final pulumi.Input<List<int>>? dropletIds;
+  final pulumi.Input<List<int>?>? dropletIds;
   /// The ID of the firewall to retrieve information
   /// about.
   final pulumi.Input<String> firewallId;
-  final pulumi.Input<List<GetFirewallInboundRule>>? inboundRules;
-  final pulumi.Input<List<GetFirewallOutboundRule>>? outboundRules;
+  final pulumi.Input<List<GetFirewallInboundRule>?>? inboundRules;
+  final pulumi.Input<List<GetFirewallOutboundRule>?>? outboundRules;
   /// The names of the Tags assigned to the Firewall.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
 
   /// Creates a new [GetFirewallArgs].
   /// [dropletIds] The list of the IDs of the Droplets assigned to

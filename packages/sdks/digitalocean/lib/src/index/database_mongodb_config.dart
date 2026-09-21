@@ -243,7 +243,7 @@ class DatabaseMongodbConfig extends pulumi.CustomResource {
           'digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
     defaultReadConcern = registerOutput<String>('defaultReadConcern');
@@ -258,11 +258,12 @@ class DatabaseMongodbConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseMongodbConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseMongodbConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -276,6 +277,23 @@ class DatabaseMongodbConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    clusterId = registerOutput<String>('clusterId');
+    defaultReadConcern = registerOutput<String>('defaultReadConcern');
+    defaultWriteConcern = registerOutput<String>('defaultWriteConcern');
+    slowOpThresholdMs = registerOutput<int>('slowOpThresholdMs');
+    transactionLifetimeLimitSeconds = registerOutput<int>('transactionLifetimeLimitSeconds');
+    verbosity = registerOutput<int>('verbosity');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseMongodbConfig] resource.
+  DatabaseMongodbConfig.reference(String urn)
+    : super(
+        'digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clusterId = registerOutput<String>('clusterId');
     defaultReadConcern = registerOutput<String>('defaultReadConcern');
     defaultWriteConcern = registerOutput<String>('defaultWriteConcern');

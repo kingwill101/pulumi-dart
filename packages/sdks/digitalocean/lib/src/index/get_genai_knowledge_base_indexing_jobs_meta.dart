@@ -30,9 +30,9 @@ class GetGenaiKnowledgeBaseIndexingJobsMeta {
 
   factory GetGenaiKnowledgeBaseIndexingJobsMeta.fromMap(Map<String, dynamic> map) {
     return GetGenaiKnowledgeBaseIndexingJobsMeta(
-      page: pulumi.Input.fromValue(map['page'] as int),
-      pages: pulumi.Input.fromValue(map['pages'] as int),
-      total: pulumi.Input.fromValue(map['total'] as int),
+      page: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['page'])),
+      pages: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['pages'])),
+      total: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['total'])),
     );
   }
 }

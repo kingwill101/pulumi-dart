@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDedicatedInferencesFilter {
   /// Set to `true` to require that a field match all of the `values` instead of just one.
-  final pulumi.Input<bool>? all;
+  final pulumi.Input<bool?>? all;
   /// Filter the dedicated inference endpoints by this key. This may be one of `id`, `name`, `region`, `status`, `vpcUuid`, `publicEndpointFqdn`, `privateEndpointFqdn`, `createdAt`, `updatedAt`.
   final pulumi.Input<String> key;
   /// One of `exact` (default), `re`, or `substring`. For string-typed fields, the match mode controls how the filter is applied.
-  final pulumi.Input<String>? matchBy;
+  final pulumi.Input<String?>? matchBy;
   /// A list of values to match against the `key` field.
   final pulumi.Input<List<String>> values;
 

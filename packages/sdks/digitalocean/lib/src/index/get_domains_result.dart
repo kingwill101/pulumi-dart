@@ -8,10 +8,10 @@ import 'get_domains_sort.dart';
 /// Result data returned by getDomains.
 class GetDomainsResult {
   /// A list of domains satisfying any `filter` and `sort` criteria. Each domain has the following attributes:
-  final List<GetDomainsDomain> domains;
+  final List<GetDomainsDomain>? domains;
   final List<GetDomainsFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final List<GetDomainsSort>? sorts;
 
   /// Creates a new [GetDomainsResult].
@@ -20,26 +20,26 @@ class GetDomainsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [sorts] Optional.
   const GetDomainsResult({
-    required this.domains,
+    this.domains,
     this.filters,
-    required this.id,
+    this.id,
     this.sorts,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'domains': pulumi.Input.encodeList<GetDomainsDomain, Map<String, dynamic>>(domains, (value) => value.toMap()),
+      'domains': ?(() { final guardedValue = domains; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDomainsDomain, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDomainsFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
+      'id': ?id,
       'sorts': ?(() { final guardedValue = sorts; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDomainsSort, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetDomainsResult.fromMap(Map<String, dynamic> map) {
     return GetDomainsResult(
-      domains: pulumi.Input.decodeList<GetDomainsDomain>(map['domains']!, (value) => GetDomainsDomain.fromMap((value as Map).cast<String, dynamic>())),
+      domains: (() { final guardedValue = map['domains']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDomainsDomain>(guardedValue, (value) => GetDomainsDomain.fromMap((value as Map).cast<String, dynamic>())); })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDomainsFilter>(guardedValue, (value) => GetDomainsFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sorts: (() { final guardedValue = map['sorts']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDomainsSort>(guardedValue, (value) => GetDomainsSort.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }

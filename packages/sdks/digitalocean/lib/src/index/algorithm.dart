@@ -1,8 +1,11 @@
-enum Algorithm {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum Algorithm implements pulumi.PulumiEnum<String> {
   roundRobin("round_robin"),
   leastConnections("least_connections");
 
   const Algorithm(this.wireValue);
+  @override
   final String wireValue;
 
   static Algorithm fromValue(String value) {

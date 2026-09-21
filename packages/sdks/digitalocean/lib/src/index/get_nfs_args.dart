@@ -10,7 +10,7 @@ class GetNfsArgs {
   /// The name of the NFS share.
   final pulumi.Input<String> name;
   /// The region where the NFS share is located.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetNfsArgs].
   /// [name] The name of the NFS share.

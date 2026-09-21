@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gradientai_knowledge_base_args.dart';
+import 'gradientai_knowledge_base_data_source.dart';
+import 'gradientai_knowledge_base_last_indexing_job.dart';
 import 'gradientai_knowledge_base_state.dart';
 
 class GradientaiKnowledgeBase extends pulumi.CustomResource {
@@ -10,13 +12,13 @@ class GradientaiKnowledgeBase extends pulumi.CustomResource {
   /// The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
   late final pulumi.Output<String?> databaseId;
   /// Data sources for the knowledge base
-  late final pulumi.Output<List<Map<String, dynamic>>> datasources;
+  late final pulumi.Output<List<GradientaiKnowledgeBaseDataSource>> datasources;
   /// The unique identifier of the embedding model
   late final pulumi.Output<String> embeddingModelUuid;
   /// Indicates whether the knowledge base is public or private.
   late final pulumi.Output<bool?> isPublic;
   /// The last indexing job for the knowledge base.
-  late final pulumi.Output<List<Map<String, dynamic>>?> lastIndexingJobs;
+  late final pulumi.Output<List<GradientaiKnowledgeBaseLastIndexingJob>?> lastIndexingJobs;
   /// The name of the knowledge base.
   late final pulumi.Output<String> name;
   /// The unique identifier of the project to which the knowledge base belongs.
@@ -38,19 +40,19 @@ class GradientaiKnowledgeBase extends pulumi.CustomResource {
           'digitalocean:index/gradientaiKnowledgeBase:GradientaiKnowledgeBase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     addedToAgentAt = registerOutput<String?>('addedToAgentAt');
     createdAt = registerOutput<String>('createdAt');
     databaseId = registerOutput<String?>('databaseId');
-    datasources = registerOutput<List<Map<String, dynamic>>>('datasources');
+    datasources = registerOutput<List<GradientaiKnowledgeBaseDataSource>>('datasources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GradientaiKnowledgeBaseDataSource>(guardedValue, (value) => GradientaiKnowledgeBaseDataSource.fromMap((value as Map).cast<String, dynamic>())); });
     embeddingModelUuid = registerOutput<String>('embeddingModelUuid');
     isPublic = registerOutput<bool?>('isPublic');
-    lastIndexingJobs = registerOutput<List<Map<String, dynamic>>?>('lastIndexingJobs');
+    lastIndexingJobs = registerOutput<List<GradientaiKnowledgeBaseLastIndexingJob>?>('lastIndexingJobs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GradientaiKnowledgeBaseLastIndexingJob>(guardedValue, (value) => GradientaiKnowledgeBaseLastIndexingJob.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     projectId = registerOutput<String>('projectId');
     region = registerOutput<String>('region');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vpcUuid = registerOutput<String?>('vpcUuid');
   }
 
@@ -59,11 +61,12 @@ class GradientaiKnowledgeBase extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GradientaiKnowledgeBaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GradientaiKnowledgeBase._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -80,14 +83,37 @@ class GradientaiKnowledgeBase extends pulumi.CustomResource {
     addedToAgentAt = registerOutput<String?>('addedToAgentAt');
     createdAt = registerOutput<String>('createdAt');
     databaseId = registerOutput<String?>('databaseId');
-    datasources = registerOutput<List<Map<String, dynamic>>>('datasources');
+    datasources = registerOutput<List<GradientaiKnowledgeBaseDataSource>>('datasources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GradientaiKnowledgeBaseDataSource>(guardedValue, (value) => GradientaiKnowledgeBaseDataSource.fromMap((value as Map).cast<String, dynamic>())); });
     embeddingModelUuid = registerOutput<String>('embeddingModelUuid');
     isPublic = registerOutput<bool?>('isPublic');
-    lastIndexingJobs = registerOutput<List<Map<String, dynamic>>?>('lastIndexingJobs');
+    lastIndexingJobs = registerOutput<List<GradientaiKnowledgeBaseLastIndexingJob>?>('lastIndexingJobs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GradientaiKnowledgeBaseLastIndexingJob>(guardedValue, (value) => GradientaiKnowledgeBaseLastIndexingJob.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     projectId = registerOutput<String>('projectId');
     region = registerOutput<String>('region');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vpcUuid = registerOutput<String?>('vpcUuid');
+  }
+
+  /// Creates a typed reference to an existing [GradientaiKnowledgeBase] resource.
+  GradientaiKnowledgeBase.reference(String urn)
+    : super(
+        'digitalocean:index/gradientaiKnowledgeBase:GradientaiKnowledgeBase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addedToAgentAt = registerOutput<String?>('addedToAgentAt');
+    createdAt = registerOutput<String>('createdAt');
+    databaseId = registerOutput<String?>('databaseId');
+    datasources = registerOutput<List<GradientaiKnowledgeBaseDataSource>>('datasources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GradientaiKnowledgeBaseDataSource>(guardedValue, (value) => GradientaiKnowledgeBaseDataSource.fromMap((value as Map).cast<String, dynamic>())); });
+    embeddingModelUuid = registerOutput<String>('embeddingModelUuid');
+    isPublic = registerOutput<bool?>('isPublic');
+    lastIndexingJobs = registerOutput<List<GradientaiKnowledgeBaseLastIndexingJob>?>('lastIndexingJobs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GradientaiKnowledgeBaseLastIndexingJob>(guardedValue, (value) => GradientaiKnowledgeBaseLastIndexingJob.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    projectId = registerOutput<String>('projectId');
+    region = registerOutput<String>('region');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vpcUuid = registerOutput<String?>('vpcUuid');
   }
 }

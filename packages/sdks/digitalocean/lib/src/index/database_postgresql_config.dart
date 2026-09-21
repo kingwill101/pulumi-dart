@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_postgresql_config_args.dart';
+import 'database_postgresql_config_pgbouncer.dart';
 import 'database_postgresql_config_state.dart';
+import 'database_postgresql_config_timescaledb.dart';
 
 /// Provides a virtual resource that can be used to change advanced configuration
 /// options for a DigitalOcean managed PostgreSQL database cluster.
@@ -278,13 +280,13 @@ class DatabasePostgresqlConfig extends pulumi.CustomResource {
   /// Controls which statements are counted. Specify 'top' to track top-level statements (those issued directly by clients), 'all' to also track nested statements (such as statements invoked within functions), or 'none' to disable statement statistics collection. The default value is top. Supported values are: `all`, `top`, `none`.
   late final pulumi.Output<String> pgStatStatementsTrack;
   /// PGBouncer connection pooling settings
-  late final pulumi.Output<List<Map<String, dynamic>>> pgbouncers;
+  late final pulumi.Output<List<DatabasePostgresqlConfigPgbouncer>> pgbouncers;
   /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
   late final pulumi.Output<double> sharedBuffersPercentage;
   /// PostgreSQL temporary file limit in KiB. If -1, sets to unlimited.
   late final pulumi.Output<int> tempFileLimit;
   /// TimescaleDB extension configuration values
-  late final pulumi.Output<List<Map<String, dynamic>>> timescaledbs;
+  late final pulumi.Output<List<DatabasePostgresqlConfigTimescaledb>> timescaledbs;
   /// PostgreSQL service timezone
   late final pulumi.Output<String> timezone;
   /// Specifies the number of bytes reserved to track the currently executing command for each active session.
@@ -314,7 +316,7 @@ class DatabasePostgresqlConfig extends pulumi.CustomResource {
           'digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     autovacuumAnalyzeScaleFactor = registerOutput<double>('autovacuumAnalyzeScaleFactor');
     autovacuumAnalyzeThreshold = registerOutput<int>('autovacuumAnalyzeThreshold');
@@ -356,10 +358,10 @@ class DatabasePostgresqlConfig extends pulumi.CustomResource {
     pgPartmanBgwInterval = registerOutput<int>('pgPartmanBgwInterval');
     pgPartmanBgwRole = registerOutput<String>('pgPartmanBgwRole');
     pgStatStatementsTrack = registerOutput<String>('pgStatStatementsTrack');
-    pgbouncers = registerOutput<List<Map<String, dynamic>>>('pgbouncers');
+    pgbouncers = registerOutput<List<DatabasePostgresqlConfigPgbouncer>>('pgbouncers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabasePostgresqlConfigPgbouncer>(guardedValue, (value) => DatabasePostgresqlConfigPgbouncer.fromMap((value as Map).cast<String, dynamic>())); });
     sharedBuffersPercentage = registerOutput<double>('sharedBuffersPercentage');
     tempFileLimit = registerOutput<int>('tempFileLimit');
-    timescaledbs = registerOutput<List<Map<String, dynamic>>>('timescaledbs');
+    timescaledbs = registerOutput<List<DatabasePostgresqlConfigTimescaledb>>('timescaledbs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabasePostgresqlConfigTimescaledb>(guardedValue, (value) => DatabasePostgresqlConfigTimescaledb.fromMap((value as Map).cast<String, dynamic>())); });
     timezone = registerOutput<String>('timezone');
     trackActivityQuerySize = registerOutput<int>('trackActivityQuerySize');
     trackCommitTimestamp = registerOutput<String>('trackCommitTimestamp');
@@ -375,11 +377,12 @@ class DatabasePostgresqlConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabasePostgresqlConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabasePostgresqlConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -433,10 +436,73 @@ class DatabasePostgresqlConfig extends pulumi.CustomResource {
     pgPartmanBgwInterval = registerOutput<int>('pgPartmanBgwInterval');
     pgPartmanBgwRole = registerOutput<String>('pgPartmanBgwRole');
     pgStatStatementsTrack = registerOutput<String>('pgStatStatementsTrack');
-    pgbouncers = registerOutput<List<Map<String, dynamic>>>('pgbouncers');
+    pgbouncers = registerOutput<List<DatabasePostgresqlConfigPgbouncer>>('pgbouncers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabasePostgresqlConfigPgbouncer>(guardedValue, (value) => DatabasePostgresqlConfigPgbouncer.fromMap((value as Map).cast<String, dynamic>())); });
     sharedBuffersPercentage = registerOutput<double>('sharedBuffersPercentage');
     tempFileLimit = registerOutput<int>('tempFileLimit');
-    timescaledbs = registerOutput<List<Map<String, dynamic>>>('timescaledbs');
+    timescaledbs = registerOutput<List<DatabasePostgresqlConfigTimescaledb>>('timescaledbs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabasePostgresqlConfigTimescaledb>(guardedValue, (value) => DatabasePostgresqlConfigTimescaledb.fromMap((value as Map).cast<String, dynamic>())); });
+    timezone = registerOutput<String>('timezone');
+    trackActivityQuerySize = registerOutput<int>('trackActivityQuerySize');
+    trackCommitTimestamp = registerOutput<String>('trackCommitTimestamp');
+    trackFunctions = registerOutput<String>('trackFunctions');
+    trackIoTiming = registerOutput<String>('trackIoTiming');
+    walSenderTimeout = registerOutput<int>('walSenderTimeout');
+    walWriterDelay = registerOutput<int>('walWriterDelay');
+    workMem = registerOutput<int>('workMem');
+  }
+
+  /// Creates a typed reference to an existing [DatabasePostgresqlConfig] resource.
+  DatabasePostgresqlConfig.reference(String urn)
+    : super(
+        'digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autovacuumAnalyzeScaleFactor = registerOutput<double>('autovacuumAnalyzeScaleFactor');
+    autovacuumAnalyzeThreshold = registerOutput<int>('autovacuumAnalyzeThreshold');
+    autovacuumFreezeMaxAge = registerOutput<int>('autovacuumFreezeMaxAge');
+    autovacuumMaxWorkers = registerOutput<int>('autovacuumMaxWorkers');
+    autovacuumNaptime = registerOutput<int>('autovacuumNaptime');
+    autovacuumVacuumCostDelay = registerOutput<int>('autovacuumVacuumCostDelay');
+    autovacuumVacuumCostLimit = registerOutput<int>('autovacuumVacuumCostLimit');
+    autovacuumVacuumScaleFactor = registerOutput<double>('autovacuumVacuumScaleFactor');
+    autovacuumVacuumThreshold = registerOutput<int>('autovacuumVacuumThreshold');
+    backupHour = registerOutput<int>('backupHour');
+    backupMinute = registerOutput<int>('backupMinute');
+    bgwriterDelay = registerOutput<int>('bgwriterDelay');
+    bgwriterFlushAfter = registerOutput<int>('bgwriterFlushAfter');
+    bgwriterLruMaxpages = registerOutput<int>('bgwriterLruMaxpages');
+    bgwriterLruMultiplier = registerOutput<double>('bgwriterLruMultiplier');
+    clusterId = registerOutput<String>('clusterId');
+    deadlockTimeout = registerOutput<int>('deadlockTimeout');
+    defaultToastCompression = registerOutput<String>('defaultToastCompression');
+    idleInTransactionSessionTimeout = registerOutput<int>('idleInTransactionSessionTimeout');
+    jit = registerOutput<bool>('jit');
+    logAutovacuumMinDuration = registerOutput<int>('logAutovacuumMinDuration');
+    logErrorVerbosity = registerOutput<String>('logErrorVerbosity');
+    logLinePrefix = registerOutput<String>('logLinePrefix');
+    logMinDurationStatement = registerOutput<int>('logMinDurationStatement');
+    maxFilesPerProcess = registerOutput<int>('maxFilesPerProcess');
+    maxLocksPerTransaction = registerOutput<int>('maxLocksPerTransaction');
+    maxLogicalReplicationWorkers = registerOutput<int>('maxLogicalReplicationWorkers');
+    maxParallelWorkers = registerOutput<int>('maxParallelWorkers');
+    maxParallelWorkersPerGather = registerOutput<int>('maxParallelWorkersPerGather');
+    maxPredLocksPerTransaction = registerOutput<int>('maxPredLocksPerTransaction');
+    maxPreparedTransactions = registerOutput<int>('maxPreparedTransactions');
+    maxReplicationSlots = registerOutput<int>('maxReplicationSlots');
+    maxStackDepth = registerOutput<int>('maxStackDepth');
+    maxStandbyArchiveDelay = registerOutput<int>('maxStandbyArchiveDelay');
+    maxStandbyStreamingDelay = registerOutput<int>('maxStandbyStreamingDelay');
+    maxWalSenders = registerOutput<int>('maxWalSenders');
+    maxWorkerProcesses = registerOutput<int>('maxWorkerProcesses');
+    pgPartmanBgwInterval = registerOutput<int>('pgPartmanBgwInterval');
+    pgPartmanBgwRole = registerOutput<String>('pgPartmanBgwRole');
+    pgStatStatementsTrack = registerOutput<String>('pgStatStatementsTrack');
+    pgbouncers = registerOutput<List<DatabasePostgresqlConfigPgbouncer>>('pgbouncers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabasePostgresqlConfigPgbouncer>(guardedValue, (value) => DatabasePostgresqlConfigPgbouncer.fromMap((value as Map).cast<String, dynamic>())); });
+    sharedBuffersPercentage = registerOutput<double>('sharedBuffersPercentage');
+    tempFileLimit = registerOutput<int>('tempFileLimit');
+    timescaledbs = registerOutput<List<DatabasePostgresqlConfigTimescaledb>>('timescaledbs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabasePostgresqlConfigTimescaledb>(guardedValue, (value) => DatabasePostgresqlConfigTimescaledb.fromMap((value as Map).cast<String, dynamic>())); });
     timezone = registerOutput<String>('timezone');
     trackActivityQuerySize = registerOutput<int>('trackActivityQuerySize');
     trackCommitTimestamp = registerOutput<String>('trackCommitTimestamp');

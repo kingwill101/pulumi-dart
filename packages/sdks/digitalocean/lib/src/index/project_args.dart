@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_project_project_args_doc}
 class ProjectArgs {
   /// the description of the project
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
-  final pulumi.Input<String>? environment;
+  final pulumi.Input<String?>? environment;
   /// a boolean indicating whether or not the project is the default project. (Default: "false")
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// The name of the Project
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// the purpose of the project, (Default: "Web Application")
-  final pulumi.Input<String>? purpose;
+  final pulumi.Input<String?>? purpose;
   /// a list of uniform resource names (URNs) for the resources associated with the project
-  final pulumi.Input<List<String>>? resources;
+  final pulumi.Input<List<String>?>? resources;
 
   /// Creates a new [ProjectArgs].
   /// [description] the description of the project

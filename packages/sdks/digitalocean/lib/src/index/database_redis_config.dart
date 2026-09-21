@@ -245,7 +245,7 @@ class DatabaseRedisConfig extends pulumi.CustomResource {
           'digitalocean:index/databaseRedisConfig:DatabaseRedisConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     aclChannelsDefault = registerOutput<String>('aclChannelsDefault');
     clusterId = registerOutput<String>('clusterId');
@@ -266,11 +266,12 @@ class DatabaseRedisConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseRedisConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseRedisConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -284,6 +285,29 @@ class DatabaseRedisConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    aclChannelsDefault = registerOutput<String>('aclChannelsDefault');
+    clusterId = registerOutput<String>('clusterId');
+    ioThreads = registerOutput<int>('ioThreads');
+    lfuDecayTime = registerOutput<int>('lfuDecayTime');
+    lfuLogFactor = registerOutput<int>('lfuLogFactor');
+    maxmemoryPolicy = registerOutput<String>('maxmemoryPolicy');
+    notifyKeyspaceEvents = registerOutput<String>('notifyKeyspaceEvents');
+    numberOfDatabases = registerOutput<int>('numberOfDatabases');
+    persistence = registerOutput<String>('persistence');
+    pubsubClientOutputBufferLimit = registerOutput<int>('pubsubClientOutputBufferLimit');
+    ssl = registerOutput<bool>('ssl');
+    timeout = registerOutput<int>('timeout');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseRedisConfig] resource.
+  DatabaseRedisConfig.reference(String urn)
+    : super(
+        'digitalocean:index/databaseRedisConfig:DatabaseRedisConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     aclChannelsDefault = registerOutput<String>('aclChannelsDefault');
     clusterId = registerOutput<String>('clusterId');
     ioThreads = registerOutput<int>('ioThreads');

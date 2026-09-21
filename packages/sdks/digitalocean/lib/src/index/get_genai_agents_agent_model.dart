@@ -6,31 +6,31 @@ import 'get_genai_agents_agent_model_version.dart';
 
 class GetGenaiAgentsAgentModel {
   /// Agreement information for the model
-  final pulumi.Input<List<GetGenaiAgentsAgentModelAgreement>>? agreements;
+  final pulumi.Input<List<GetGenaiAgentsAgentModelAgreement>?>? agreements;
   /// Created At timestamp for the Knowledge Base
   final pulumi.Input<String> createdAt;
   /// Inference name of the model
-  final pulumi.Input<String>? inferenceName;
+  final pulumi.Input<String?>? inferenceName;
   /// Infernce version of the model
-  final pulumi.Input<String>? inferenceVersion;
+  final pulumi.Input<String?>? inferenceVersion;
   /// Indicates if the Model Base is foundational
-  final pulumi.Input<bool>? isFoundational;
+  final pulumi.Input<bool?>? isFoundational;
   /// Name of the Knowledge Base
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Parent UUID of the Model
-  final pulumi.Input<String>? parentUuid;
+  final pulumi.Input<String?>? parentUuid;
   /// Provider of the Model
-  final pulumi.Input<String>? provider;
+  final pulumi.Input<String?>? provider;
   /// Timestamp when the Knowledge Base was updated
   final pulumi.Input<String> updatedAt;
   /// Indicates if the Model upload is complete
-  final pulumi.Input<bool>? uploadComplete;
+  final pulumi.Input<bool?>? uploadComplete;
   /// URL of the Model
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
   /// List of Usecases for the Model
-  final pulumi.Input<List<String>>? usecases;
+  final pulumi.Input<List<String>?>? usecases;
   /// URL of the Model
-  final pulumi.Input<List<GetGenaiAgentsAgentModelVersion>>? versions;
+  final pulumi.Input<List<GetGenaiAgentsAgentModelVersion>?>? versions;
 
   /// Creates a new [GetGenaiAgentsAgentModel].
   /// [agreements] Agreement information for the model

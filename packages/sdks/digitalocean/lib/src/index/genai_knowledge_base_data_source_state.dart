@@ -7,9 +7,9 @@ import 'genai_knowledge_base_data_source_web_crawler_data_source.dart';
 /// Input properties used for looking up and filtering GenaiKnowledgeBaseDataSource resources.
 class GenaiKnowledgeBaseDataSourceState {
   /// UUID of the Knowledge Base
-  final pulumi.Input<String>? knowledgeBaseUuid;
-  final pulumi.Input<GenaiKnowledgeBaseDataSourceSpacesDataSource>? spacesDataSource;
-  final pulumi.Input<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource>? webCrawlerDataSource;
+  final pulumi.Input<String?>? knowledgeBaseUuid;
+  final pulumi.Input<GenaiKnowledgeBaseDataSourceSpacesDataSource?>? spacesDataSource;
+  final pulumi.Input<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource?>? webCrawlerDataSource;
 
   /// Creates a new [GenaiKnowledgeBaseDataSourceState].
   /// [knowledgeBaseUuid] UUID of the Knowledge Base

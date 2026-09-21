@@ -796,11 +796,12 @@ class DatabaseLogsinkRsyslog extends pulumi.CustomResource {
           'digitalocean:index/databaseLogsinkRsyslog:DatabaseLogsinkRsyslog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
+          additionalSecretOutputs: const ['caCert', 'clientKey'],
         ) {
-    caCert = registerOutput<String?>('caCert');
+    caCert = registerOutput<String?>('caCert', isSecret: true);
     clientCert = registerOutput<String?>('clientCert');
-    clientKey = registerOutput<String?>('clientKey');
+    clientKey = registerOutput<String?>('clientKey', isSecret: true);
     clusterId = registerOutput<String>('clusterId');
     format = registerOutput<String?>('format');
     logline = registerOutput<String?>('logline');
@@ -817,11 +818,12 @@ class DatabaseLogsinkRsyslog extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseLogsinkRsyslogState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseLogsinkRsyslog._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -835,9 +837,33 @@ class DatabaseLogsinkRsyslog extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    caCert = registerOutput<String?>('caCert');
+    caCert = registerOutput<String?>('caCert', isSecret: true);
     clientCert = registerOutput<String?>('clientCert');
-    clientKey = registerOutput<String?>('clientKey');
+    clientKey = registerOutput<String?>('clientKey', isSecret: true);
+    clusterId = registerOutput<String>('clusterId');
+    format = registerOutput<String?>('format');
+    logline = registerOutput<String?>('logline');
+    logsinkId = registerOutput<String>('logsinkId');
+    this.name = registerOutput<String>('name');
+    port = registerOutput<int>('port');
+    server = registerOutput<String>('server');
+    structuredData = registerOutput<String?>('structuredData');
+    tls = registerOutput<bool?>('tls');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseLogsinkRsyslog] resource.
+  DatabaseLogsinkRsyslog.reference(String urn)
+    : super(
+        'digitalocean:index/databaseLogsinkRsyslog:DatabaseLogsinkRsyslog',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['caCert', 'clientKey'],
+        isResourceReference: true,
+      ) {
+    caCert = registerOutput<String?>('caCert', isSecret: true);
+    clientCert = registerOutput<String?>('clientCert');
+    clientKey = registerOutput<String?>('clientKey', isSecret: true);
     clusterId = registerOutput<String>('clusterId');
     format = registerOutput<String?>('format');
     logline = registerOutput<String?>('logline');

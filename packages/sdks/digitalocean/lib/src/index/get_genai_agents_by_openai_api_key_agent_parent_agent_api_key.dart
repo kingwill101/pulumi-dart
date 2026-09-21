@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey {
   /// API Key value
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
 
   /// Creates a new [GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey].
   /// [apiKey] API Key value

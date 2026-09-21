@@ -546,7 +546,7 @@ class DatabaseOpensearchConfig extends pulumi.CustomResource {
           'digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     actionAutoCreateIndexEnabled = registerOutput<bool>('actionAutoCreateIndexEnabled');
     actionDestructiveRequiresName = registerOutput<bool>('actionDestructiveRequiresName');
@@ -573,7 +573,7 @@ class DatabaseOpensearchConfig extends pulumi.CustomResource {
     ismHistoryRolloverRetentionPeriodDays = registerOutput<int>('ismHistoryRolloverRetentionPeriodDays');
     overrideMainResponseVersion = registerOutput<bool>('overrideMainResponseVersion');
     pluginsAlertingFilterByBackendRolesEnabled = registerOutput<bool>('pluginsAlertingFilterByBackendRolesEnabled');
-    reindexRemoteWhitelists = registerOutput<List<String>?>('reindexRemoteWhitelists');
+    reindexRemoteWhitelists = registerOutput<List<String>?>('reindexRemoteWhitelists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     scriptMaxCompilationsRate = registerOutput<String>('scriptMaxCompilationsRate');
     searchMaxBuckets = registerOutput<int>('searchMaxBuckets');
     threadPoolAnalyzeQueueSize = registerOutput<int>('threadPoolAnalyzeQueueSize');
@@ -594,11 +594,12 @@ class DatabaseOpensearchConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseOpensearchConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseOpensearchConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -637,7 +638,57 @@ class DatabaseOpensearchConfig extends pulumi.CustomResource {
     ismHistoryRolloverRetentionPeriodDays = registerOutput<int>('ismHistoryRolloverRetentionPeriodDays');
     overrideMainResponseVersion = registerOutput<bool>('overrideMainResponseVersion');
     pluginsAlertingFilterByBackendRolesEnabled = registerOutput<bool>('pluginsAlertingFilterByBackendRolesEnabled');
-    reindexRemoteWhitelists = registerOutput<List<String>?>('reindexRemoteWhitelists');
+    reindexRemoteWhitelists = registerOutput<List<String>?>('reindexRemoteWhitelists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scriptMaxCompilationsRate = registerOutput<String>('scriptMaxCompilationsRate');
+    searchMaxBuckets = registerOutput<int>('searchMaxBuckets');
+    threadPoolAnalyzeQueueSize = registerOutput<int>('threadPoolAnalyzeQueueSize');
+    threadPoolAnalyzeSize = registerOutput<int>('threadPoolAnalyzeSize');
+    threadPoolForceMergeSize = registerOutput<int>('threadPoolForceMergeSize');
+    threadPoolGetQueueSize = registerOutput<int>('threadPoolGetQueueSize');
+    threadPoolGetSize = registerOutput<int>('threadPoolGetSize');
+    threadPoolSearchQueueSize = registerOutput<int>('threadPoolSearchQueueSize');
+    threadPoolSearchSize = registerOutput<int>('threadPoolSearchSize');
+    threadPoolSearchThrottledQueueSize = registerOutput<int>('threadPoolSearchThrottledQueueSize');
+    threadPoolSearchThrottledSize = registerOutput<int>('threadPoolSearchThrottledSize');
+    threadPoolWriteQueueSize = registerOutput<int>('threadPoolWriteQueueSize');
+    threadPoolWriteSize = registerOutput<int>('threadPoolWriteSize');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseOpensearchConfig] resource.
+  DatabaseOpensearchConfig.reference(String urn)
+    : super(
+        'digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actionAutoCreateIndexEnabled = registerOutput<bool>('actionAutoCreateIndexEnabled');
+    actionDestructiveRequiresName = registerOutput<bool>('actionDestructiveRequiresName');
+    clusterId = registerOutput<String>('clusterId');
+    clusterMaxShardsPerNode = registerOutput<int>('clusterMaxShardsPerNode');
+    clusterRoutingAllocationNodeConcurrentRecoveries = registerOutput<int>('clusterRoutingAllocationNodeConcurrentRecoveries');
+    enableSecurityAudit = registerOutput<bool>('enableSecurityAudit');
+    httpMaxContentLengthBytes = registerOutput<int>('httpMaxContentLengthBytes');
+    httpMaxHeaderSizeBytes = registerOutput<int>('httpMaxHeaderSizeBytes');
+    httpMaxInitialLineLengthBytes = registerOutput<int>('httpMaxInitialLineLengthBytes');
+    indicesFielddataCacheSizePercentage = registerOutput<int>('indicesFielddataCacheSizePercentage');
+    indicesMemoryIndexBufferSizePercentage = registerOutput<int>('indicesMemoryIndexBufferSizePercentage');
+    indicesMemoryMaxIndexBufferSizeMb = registerOutput<int>('indicesMemoryMaxIndexBufferSizeMb');
+    indicesMemoryMinIndexBufferSizeMb = registerOutput<int>('indicesMemoryMinIndexBufferSizeMb');
+    indicesQueriesCacheSizePercentage = registerOutput<int>('indicesQueriesCacheSizePercentage');
+    indicesQueryBoolMaxClauseCount = registerOutput<int>('indicesQueryBoolMaxClauseCount');
+    indicesRecoveryMaxConcurrentFileChunks = registerOutput<int>('indicesRecoveryMaxConcurrentFileChunks');
+    indicesRecoveryMaxMbPerSec = registerOutput<int>('indicesRecoveryMaxMbPerSec');
+    ismEnabled = registerOutput<bool>('ismEnabled');
+    ismHistoryEnabled = registerOutput<bool>('ismHistoryEnabled');
+    ismHistoryMaxAgeHours = registerOutput<int>('ismHistoryMaxAgeHours');
+    ismHistoryMaxDocs = registerOutput<int>('ismHistoryMaxDocs');
+    ismHistoryRolloverCheckPeriodHours = registerOutput<int>('ismHistoryRolloverCheckPeriodHours');
+    ismHistoryRolloverRetentionPeriodDays = registerOutput<int>('ismHistoryRolloverRetentionPeriodDays');
+    overrideMainResponseVersion = registerOutput<bool>('overrideMainResponseVersion');
+    pluginsAlertingFilterByBackendRolesEnabled = registerOutput<bool>('pluginsAlertingFilterByBackendRolesEnabled');
+    reindexRemoteWhitelists = registerOutput<List<String>?>('reindexRemoteWhitelists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     scriptMaxCompilationsRate = registerOutput<String>('scriptMaxCompilationsRate');
     searchMaxBuckets = registerOutput<int>('searchMaxBuckets');
     threadPoolAnalyzeQueueSize = registerOutput<int>('threadPoolAnalyzeQueueSize');

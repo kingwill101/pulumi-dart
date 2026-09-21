@@ -11,15 +11,15 @@ class UptimeAlertArgs {
   /// A unique identifier for a check
   final pulumi.Input<String> checkId;
   /// The comparison operator used against the alert's threshold. Must be one of `greaterThan` or `lessThan`.
-  final pulumi.Input<String>? comparison;
+  final pulumi.Input<String?>? comparison;
   /// A human-friendly display name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The notification settings for a trigger alert.
   final pulumi.Input<List<UptimeAlertNotification>> notifications;
   /// Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
-  final pulumi.Input<String>? period;
+  final pulumi.Input<String?>? period;
   /// The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
-  final pulumi.Input<int>? threshold;
+  final pulumi.Input<int?>? threshold;
   /// The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
   final pulumi.Input<String> type;
 
@@ -60,7 +60,7 @@ class UptimeAlertArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notifications: pulumi.Input.fromValue(pulumi.Input.decodeList<UptimeAlertNotification>(map['notifications']!, (value) => UptimeAlertNotification.fromMap((value as Map).cast<String, dynamic>()))),
       period: (() { final guardedValue = map['period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

@@ -240,7 +240,7 @@ class CustomImage extends pulumi.CustomResource {
           'digitalocean:index/customImage:CustomImage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
@@ -249,11 +249,11 @@ class CustomImage extends pulumi.CustomResource {
     minDiskSize = registerOutput<int>('minDiskSize');
     this.name = registerOutput<String>('name');
     public = registerOutput<bool>('public');
-    regions = registerOutput<List<String>>('regions');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sizeGigabytes = registerOutput<double>('sizeGigabytes');
     slug = registerOutput<String>('slug');
     status = registerOutput<String>('status');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
     url = registerOutput<String>('url');
   }
@@ -263,11 +263,12 @@ class CustomImage extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomImageState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomImage._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -288,11 +289,36 @@ class CustomImage extends pulumi.CustomResource {
     minDiskSize = registerOutput<int>('minDiskSize');
     this.name = registerOutput<String>('name');
     public = registerOutput<bool>('public');
-    regions = registerOutput<List<String>>('regions');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sizeGigabytes = registerOutput<double>('sizeGigabytes');
     slug = registerOutput<String>('slug');
     status = registerOutput<String>('status');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [CustomImage] resource.
+  CustomImage.reference(String urn)
+    : super(
+        'digitalocean:index/customImage:CustomImage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    distribution = registerOutput<String?>('distribution');
+    imageId = registerOutput<int>('imageId');
+    minDiskSize = registerOutput<int>('minDiskSize');
+    this.name = registerOutput<String>('name');
+    public = registerOutput<bool>('public');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sizeGigabytes = registerOutput<double>('sizeGigabytes');
+    slug = registerOutput<String>('slug');
+    status = registerOutput<String>('status');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
     url = registerOutput<String>('url');
   }

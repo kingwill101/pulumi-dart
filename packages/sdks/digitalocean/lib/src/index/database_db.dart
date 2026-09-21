@@ -205,7 +205,7 @@ class DatabaseDb extends pulumi.CustomResource {
           'digitalocean:index/databaseDb:DatabaseDb',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
     this.name = registerOutput<String>('name');
@@ -216,11 +216,12 @@ class DatabaseDb extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseDbState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseDb._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -234,6 +235,19 @@ class DatabaseDb extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    clusterId = registerOutput<String>('clusterId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseDb] resource.
+  DatabaseDb.reference(String urn)
+    : super(
+        'digitalocean:index/databaseDb:DatabaseDb',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clusterId = registerOutput<String>('clusterId');
     this.name = registerOutput<String>('name');
   }

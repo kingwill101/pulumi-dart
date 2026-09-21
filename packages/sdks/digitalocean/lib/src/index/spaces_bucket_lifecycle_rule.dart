@@ -7,19 +7,19 @@ import 'spaces_bucket_lifecycle_rule_noncurrent_version_expiration.dart';
 class SpacesBucketLifecycleRule {
   /// Specifies the number of days after initiating a multipart
   /// upload when the multipart upload must be completed or else Spaces will abort the upload.
-  final pulumi.Input<int>? abortIncompleteMultipartUploadDays;
+  final pulumi.Input<int?>? abortIncompleteMultipartUploadDays;
   /// Specifies lifecycle rule status.
   final pulumi.Input<bool> enabled;
   /// Specifies a time period after which applicable objects expire (documented below).
-  final pulumi.Input<SpacesBucketLifecycleRuleExpiration>? expiration;
+  final pulumi.Input<SpacesBucketLifecycleRuleExpiration?>? expiration;
   /// Unique identifier for the rule.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Specifies when non-current object versions expire (documented below).
   ///
   /// At least one of `expiration` or `noncurrentVersionExpiration` must be specified.
-  final pulumi.Input<SpacesBucketLifecycleRuleNoncurrentVersionExpiration>? noncurrentVersionExpiration;
+  final pulumi.Input<SpacesBucketLifecycleRuleNoncurrentVersionExpiration?>? noncurrentVersionExpiration;
   /// Object key prefix identifying one or more objects to which the rule applies.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [SpacesBucketLifecycleRule].
   /// [abortIncompleteMultipartUploadDays] Specifies the number of days after initiating a multipart
@@ -50,7 +50,7 @@ class SpacesBucketLifecycleRule {
 
   factory SpacesBucketLifecycleRule.fromMap(Map<String, dynamic> map) {
     return SpacesBucketLifecycleRule(
-      abortIncompleteMultipartUploadDays: (() { final guardedValue = map['abortIncompleteMultipartUploadDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      abortIncompleteMultipartUploadDays: (() { final guardedValue = map['abortIncompleteMultipartUploadDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       expiration: (() { final guardedValue = map['expiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SpacesBucketLifecycleRuleExpiration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

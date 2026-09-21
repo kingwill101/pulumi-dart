@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_args.dart';
+import 'load_balancer_domain.dart';
 import 'load_balancer_firewall.dart';
+import 'load_balancer_forwarding_rule.dart';
 import 'load_balancer_glb_settings.dart';
 import 'load_balancer_healthcheck.dart';
 import 'load_balancer_state.dart';
@@ -281,7 +283,7 @@ class LoadBalancer extends pulumi.CustomResource {
   /// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
   late final pulumi.Output<bool?> disableLetsEncryptDnsRecords;
   /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> domains;
+  late final pulumi.Output<List<LoadBalancerDomain>> domains;
   /// A list of the IDs of each droplet to be attached to the Load Balancer.
   late final pulumi.Output<List<int>> dropletIds;
   /// The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
@@ -296,7 +298,7 @@ class LoadBalancer extends pulumi.CustomResource {
   late final pulumi.Output<LoadBalancerFirewall> firewall;
   /// A list of `forwardingRule` to be assigned to the
   /// Load Balancer. The `forwardingRule` block is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> forwardingRules;
+  late final pulumi.Output<List<LoadBalancerForwardingRule>?> forwardingRules;
   /// A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
   late final pulumi.Output<LoadBalancerGlbSettings> glbSettings;
   /// A `healthcheck` block to be assigned to the
@@ -354,17 +356,17 @@ class LoadBalancer extends pulumi.CustomResource {
           'digitalocean:index/loadBalancer:LoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     algorithm = registerOutput<String?>('algorithm');
     disableLetsEncryptDnsRecords = registerOutput<bool?>('disableLetsEncryptDnsRecords');
-    domains = registerOutput<List<Map<String, dynamic>>>('domains');
-    dropletIds = registerOutput<List<int>>('dropletIds');
+    domains = registerOutput<List<LoadBalancerDomain>>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerDomain>(guardedValue, (value) => LoadBalancerDomain.fromMap((value as Map).cast<String, dynamic>())); });
+    dropletIds = registerOutput<List<int>>('dropletIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     dropletTag = registerOutput<String?>('dropletTag');
     enableBackendKeepalive = registerOutput<bool?>('enableBackendKeepalive');
     enableProxyProtocol = registerOutput<bool?>('enableProxyProtocol');
     firewall = registerOutput<LoadBalancerFirewall>('firewall', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerFirewall.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    forwardingRules = registerOutput<List<Map<String, dynamic>>?>('forwardingRules');
+    forwardingRules = registerOutput<List<LoadBalancerForwardingRule>?>('forwardingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerForwardingRule>(guardedValue, (value) => LoadBalancerForwardingRule.fromMap((value as Map).cast<String, dynamic>())); });
     glbSettings = registerOutput<LoadBalancerGlbSettings>('glbSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerGlbSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     healthcheck = registerOutput<LoadBalancerHealthcheck>('healthcheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerHealthcheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpIdleTimeoutSeconds = registerOutput<int>('httpIdleTimeoutSeconds');
@@ -382,7 +384,7 @@ class LoadBalancer extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     stickySessions = registerOutput<LoadBalancerStickySessions>('stickySessions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerStickySessions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subnetUuid = registerOutput<String>('subnetUuid');
-    targetLoadBalancerIds = registerOutput<List<String>>('targetLoadBalancerIds');
+    targetLoadBalancerIds = registerOutput<List<String>>('targetLoadBalancerIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tlsCipherPolicy = registerOutput<String?>('tlsCipherPolicy');
     type = registerOutput<String>('type');
     vpcUuid = registerOutput<String>('vpcUuid');
@@ -393,11 +395,12 @@ class LoadBalancer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LoadBalancerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LoadBalancer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -413,13 +416,13 @@ class LoadBalancer extends pulumi.CustomResource {
         ) {
     algorithm = registerOutput<String?>('algorithm');
     disableLetsEncryptDnsRecords = registerOutput<bool?>('disableLetsEncryptDnsRecords');
-    domains = registerOutput<List<Map<String, dynamic>>>('domains');
-    dropletIds = registerOutput<List<int>>('dropletIds');
+    domains = registerOutput<List<LoadBalancerDomain>>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerDomain>(guardedValue, (value) => LoadBalancerDomain.fromMap((value as Map).cast<String, dynamic>())); });
+    dropletIds = registerOutput<List<int>>('dropletIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     dropletTag = registerOutput<String?>('dropletTag');
     enableBackendKeepalive = registerOutput<bool?>('enableBackendKeepalive');
     enableProxyProtocol = registerOutput<bool?>('enableProxyProtocol');
     firewall = registerOutput<LoadBalancerFirewall>('firewall', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerFirewall.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    forwardingRules = registerOutput<List<Map<String, dynamic>>?>('forwardingRules');
+    forwardingRules = registerOutput<List<LoadBalancerForwardingRule>?>('forwardingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerForwardingRule>(guardedValue, (value) => LoadBalancerForwardingRule.fromMap((value as Map).cast<String, dynamic>())); });
     glbSettings = registerOutput<LoadBalancerGlbSettings>('glbSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerGlbSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     healthcheck = registerOutput<LoadBalancerHealthcheck>('healthcheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerHealthcheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpIdleTimeoutSeconds = registerOutput<int>('httpIdleTimeoutSeconds');
@@ -437,7 +440,48 @@ class LoadBalancer extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     stickySessions = registerOutput<LoadBalancerStickySessions>('stickySessions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerStickySessions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subnetUuid = registerOutput<String>('subnetUuid');
-    targetLoadBalancerIds = registerOutput<List<String>>('targetLoadBalancerIds');
+    targetLoadBalancerIds = registerOutput<List<String>>('targetLoadBalancerIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tlsCipherPolicy = registerOutput<String?>('tlsCipherPolicy');
+    type = registerOutput<String>('type');
+    vpcUuid = registerOutput<String>('vpcUuid');
+  }
+
+  /// Creates a typed reference to an existing [LoadBalancer] resource.
+  LoadBalancer.reference(String urn)
+    : super(
+        'digitalocean:index/loadBalancer:LoadBalancer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    algorithm = registerOutput<String?>('algorithm');
+    disableLetsEncryptDnsRecords = registerOutput<bool?>('disableLetsEncryptDnsRecords');
+    domains = registerOutput<List<LoadBalancerDomain>>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerDomain>(guardedValue, (value) => LoadBalancerDomain.fromMap((value as Map).cast<String, dynamic>())); });
+    dropletIds = registerOutput<List<int>>('dropletIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    dropletTag = registerOutput<String?>('dropletTag');
+    enableBackendKeepalive = registerOutput<bool?>('enableBackendKeepalive');
+    enableProxyProtocol = registerOutput<bool?>('enableProxyProtocol');
+    firewall = registerOutput<LoadBalancerFirewall>('firewall', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerFirewall.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    forwardingRules = registerOutput<List<LoadBalancerForwardingRule>?>('forwardingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerForwardingRule>(guardedValue, (value) => LoadBalancerForwardingRule.fromMap((value as Map).cast<String, dynamic>())); });
+    glbSettings = registerOutput<LoadBalancerGlbSettings>('glbSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerGlbSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    healthcheck = registerOutput<LoadBalancerHealthcheck>('healthcheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerHealthcheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpIdleTimeoutSeconds = registerOutput<int>('httpIdleTimeoutSeconds');
+    ip = registerOutput<String>('ip');
+    ipv6 = registerOutput<String>('ipv6');
+    loadBalancerUrn = registerOutput<String>('loadBalancerUrn');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String?>('network');
+    networkStack = registerOutput<String?>('networkStack');
+    projectId = registerOutput<String>('projectId');
+    redirectHttpToHttps = registerOutput<bool?>('redirectHttpToHttps');
+    region = registerOutput<String?>('region');
+    size = registerOutput<String?>('size');
+    sizeUnit = registerOutput<int>('sizeUnit');
+    status = registerOutput<String>('status');
+    stickySessions = registerOutput<LoadBalancerStickySessions>('stickySessions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerStickySessions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subnetUuid = registerOutput<String>('subnetUuid');
+    targetLoadBalancerIds = registerOutput<List<String>>('targetLoadBalancerIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tlsCipherPolicy = registerOutput<String?>('tlsCipherPolicy');
     type = registerOutput<String>('type');
     vpcUuid = registerOutput<String>('vpcUuid');

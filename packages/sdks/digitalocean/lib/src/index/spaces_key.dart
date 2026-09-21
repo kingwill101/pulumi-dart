@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spaces_key_args.dart';
+import 'spaces_key_grant.dart';
 import 'spaces_key_state.dart';
 
 /// Provides a key resource for Spaces, DigitalOcean's object storage product.
@@ -396,7 +397,7 @@ class SpacesKey extends pulumi.CustomResource {
   /// The creation time of the key
   late final pulumi.Output<String> createdAt;
   /// A grant for the key (documented below).
-  late final pulumi.Output<List<Map<String, dynamic>>?> grants;
+  late final pulumi.Output<List<SpacesKeyGrant>?> grants;
   /// The name of the key
   late final pulumi.Output<String> name;
   /// The access key secret of the key
@@ -414,13 +415,14 @@ class SpacesKey extends pulumi.CustomResource {
           'digitalocean:index/spacesKey:SpacesKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
+          additionalSecretOutputs: const ['secretKey'],
         ) {
     accessKey = registerOutput<String>('accessKey');
     createdAt = registerOutput<String>('createdAt');
-    grants = registerOutput<List<Map<String, dynamic>>?>('grants');
+    grants = registerOutput<List<SpacesKeyGrant>?>('grants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacesKeyGrant>(guardedValue, (value) => SpacesKeyGrant.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    secretKey = registerOutput<String>('secretKey');
+    secretKey = registerOutput<String>('secretKey', isSecret: true);
   }
 
   /// Gets an existing [SpacesKey] resource's state with the given [name] and [id].
@@ -428,11 +430,12 @@ class SpacesKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpacesKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpacesKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -448,8 +451,25 @@ class SpacesKey extends pulumi.CustomResource {
         ) {
     accessKey = registerOutput<String>('accessKey');
     createdAt = registerOutput<String>('createdAt');
-    grants = registerOutput<List<Map<String, dynamic>>?>('grants');
+    grants = registerOutput<List<SpacesKeyGrant>?>('grants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacesKeyGrant>(guardedValue, (value) => SpacesKeyGrant.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    secretKey = registerOutput<String>('secretKey');
+    secretKey = registerOutput<String>('secretKey', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [SpacesKey] resource.
+  SpacesKey.reference(String urn)
+    : super(
+        'digitalocean:index/spacesKey:SpacesKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secretKey'],
+        isResourceReference: true,
+      ) {
+    accessKey = registerOutput<String>('accessKey');
+    createdAt = registerOutput<String>('createdAt');
+    grants = registerOutput<List<SpacesKeyGrant>?>('grants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacesKeyGrant>(guardedValue, (value) => SpacesKeyGrant.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    secretKey = registerOutput<String>('secretKey', isSecret: true);
   }
 }

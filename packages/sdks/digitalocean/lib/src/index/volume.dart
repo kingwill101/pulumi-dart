@@ -426,10 +426,10 @@ class Volume extends pulumi.CustomResource {
           'digitalocean:index/volume:Volume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
-    dropletIds = registerOutput<List<int>>('dropletIds');
+    dropletIds = registerOutput<List<int>>('dropletIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     filesystemLabel = registerOutput<String>('filesystemLabel');
     filesystemType = registerOutput<String>('filesystemType');
     initialFilesystemLabel = registerOutput<String?>('initialFilesystemLabel');
@@ -438,7 +438,7 @@ class Volume extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     size = registerOutput<int>('size');
     snapshotId = registerOutput<String?>('snapshotId');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     volumeUrn = registerOutput<String>('volumeUrn');
   }
 
@@ -447,11 +447,12 @@ class Volume extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Volume._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -466,7 +467,7 @@ class Volume extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     description = registerOutput<String?>('description');
-    dropletIds = registerOutput<List<int>>('dropletIds');
+    dropletIds = registerOutput<List<int>>('dropletIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     filesystemLabel = registerOutput<String>('filesystemLabel');
     filesystemType = registerOutput<String>('filesystemType');
     initialFilesystemLabel = registerOutput<String?>('initialFilesystemLabel');
@@ -475,7 +476,30 @@ class Volume extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     size = registerOutput<int>('size');
     snapshotId = registerOutput<String?>('snapshotId');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    volumeUrn = registerOutput<String>('volumeUrn');
+  }
+
+  /// Creates a typed reference to an existing [Volume] resource.
+  Volume.reference(String urn)
+    : super(
+        'digitalocean:index/volume:Volume',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    dropletIds = registerOutput<List<int>>('dropletIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    filesystemLabel = registerOutput<String>('filesystemLabel');
+    filesystemType = registerOutput<String>('filesystemType');
+    initialFilesystemLabel = registerOutput<String?>('initialFilesystemLabel');
+    initialFilesystemType = registerOutput<String?>('initialFilesystemType');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    size = registerOutput<int>('size');
+    snapshotId = registerOutput<String?>('snapshotId');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     volumeUrn = registerOutput<String>('volumeUrn');
   }
 }

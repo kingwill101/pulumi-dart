@@ -135,7 +135,7 @@ class ReservedIpv6 extends pulumi.CustomResource {
           'digitalocean:index/reservedIpv6:ReservedIpv6',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     dropletId = registerOutput<int>('dropletId');
     ip = registerOutput<String>('ip');
@@ -148,11 +148,12 @@ class ReservedIpv6 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReservedIpv6State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReservedIpv6._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -166,6 +167,21 @@ class ReservedIpv6 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dropletId = registerOutput<int>('dropletId');
+    ip = registerOutput<String>('ip');
+    regionSlug = registerOutput<String>('regionSlug');
+    reservedIpv6Urn = registerOutput<String>('reservedIpv6Urn');
+  }
+
+  /// Creates a typed reference to an existing [ReservedIpv6] resource.
+  ReservedIpv6.reference(String urn)
+    : super(
+        'digitalocean:index/reservedIpv6:ReservedIpv6',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dropletId = registerOutput<int>('dropletId');
     ip = registerOutput<String>('ip');
     regionSlug = registerOutput<String>('regionSlug');

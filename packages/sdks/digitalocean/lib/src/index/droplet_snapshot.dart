@@ -245,13 +245,13 @@ class DropletSnapshot extends pulumi.CustomResource {
           'digitalocean:index/dropletSnapshot:DropletSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     dropletId = registerOutput<String>('dropletId');
     minDiskSize = registerOutput<int>('minDiskSize');
     this.name = registerOutput<String>('name');
-    regions = registerOutput<List<String>>('regions');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     size = registerOutput<double>('size');
   }
 
@@ -260,11 +260,12 @@ class DropletSnapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DropletSnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DropletSnapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -282,7 +283,24 @@ class DropletSnapshot extends pulumi.CustomResource {
     dropletId = registerOutput<String>('dropletId');
     minDiskSize = registerOutput<int>('minDiskSize');
     this.name = registerOutput<String>('name');
-    regions = registerOutput<List<String>>('regions');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    size = registerOutput<double>('size');
+  }
+
+  /// Creates a typed reference to an existing [DropletSnapshot] resource.
+  DropletSnapshot.reference(String urn)
+    : super(
+        'digitalocean:index/dropletSnapshot:DropletSnapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    dropletId = registerOutput<String>('dropletId');
+    minDiskSize = registerOutput<int>('minDiskSize');
+    this.name = registerOutput<String>('name');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     size = registerOutput<double>('size');
   }
 }

@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GenaiAgentChatbotIdentifier {
-  final pulumi.Input<String>? chatbotId;
+  final pulumi.Input<String?>? chatbotId;
 
   /// Creates a new [GenaiAgentChatbotIdentifier].
   /// [chatbotId] Optional.

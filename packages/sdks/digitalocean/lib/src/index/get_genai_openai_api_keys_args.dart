@@ -9,8 +9,8 @@ import 'get_genai_openai_api_keys_sort.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_genai_openai_api_keys_get_genai_openai_api_keys_args_doc}
 class GetGenaiOpenaiApiKeysArgs {
-  final pulumi.Input<List<GetGenaiOpenaiApiKeysFilter>>? filters;
-  final pulumi.Input<List<GetGenaiOpenaiApiKeysSort>>? sorts;
+  final pulumi.Input<List<GetGenaiOpenaiApiKeysFilter>?>? filters;
+  final pulumi.Input<List<GetGenaiOpenaiApiKeysSort>?>? sorts;
 
   /// Creates a new [GetGenaiOpenaiApiKeysArgs].
   /// [filters] Optional.

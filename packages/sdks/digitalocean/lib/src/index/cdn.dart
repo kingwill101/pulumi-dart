@@ -443,7 +443,7 @@ class Cdn extends pulumi.CustomResource {
           'digitalocean:index/cdn:Cdn',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     certificateId = registerOutput<String>('certificateId');
     certificateName = registerOutput<String>('certificateName');
@@ -459,11 +459,12 @@ class Cdn extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CdnState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cdn._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -477,6 +478,24 @@ class Cdn extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    certificateId = registerOutput<String>('certificateId');
+    certificateName = registerOutput<String>('certificateName');
+    createdAt = registerOutput<String>('createdAt');
+    customDomain = registerOutput<String?>('customDomain');
+    endpoint = registerOutput<String>('endpoint');
+    origin = registerOutput<String>('origin');
+    ttl = registerOutput<int>('ttl');
+  }
+
+  /// Creates a typed reference to an existing [Cdn] resource.
+  Cdn.reference(String urn)
+    : super(
+        'digitalocean:index/cdn:Cdn',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     certificateId = registerOutput<String>('certificateId');
     certificateName = registerOutput<String>('certificateName');
     createdAt = registerOutput<String>('createdAt');

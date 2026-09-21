@@ -17,34 +17,34 @@ import 'get_app_spec_worker.dart';
 
 class GetAppSpec {
   /// Describes an alert policy for the component.
-  final pulumi.Input<List<GetAppSpecAlert>>? alerts;
-  final pulumi.Input<List<GetAppSpecDatabase>>? databases;
+  final pulumi.Input<List<GetAppSpecAlert>?>? alerts;
+  final pulumi.Input<List<GetAppSpecDatabase>?>? databases;
   /// Whether to disable the edge cache for the app. Default is false, which enables the edge cache.
-  final pulumi.Input<bool>? disableEdgeCache;
+  final pulumi.Input<bool?>? disableEdgeCache;
   /// Email obfuscation configuration for the app. Default is false, which keeps the email obfuscated.
-  final pulumi.Input<bool>? disableEmailObfuscation;
+  final pulumi.Input<bool?>? disableEmailObfuscation;
   final pulumi.Input<List<GetAppSpecDomain>> domain;
   final pulumi.Input<List<String>> domains;
-  final pulumi.Input<List<GetAppSpecEgress>>? egresses;
+  final pulumi.Input<List<GetAppSpecEgress>?>? egresses;
   /// Whether to enable enhanced threat control for the app. Default is false. Set to true to enable enhanced threat control, putting additional security measures for Layer 7 DDoS attacks.
-  final pulumi.Input<bool>? enhancedThreatControlEnabled;
+  final pulumi.Input<bool?>? enhancedThreatControlEnabled;
   /// Describes an environment variable made available to an app competent.
-  final pulumi.Input<List<GetAppSpecEnv>>? envs;
+  final pulumi.Input<List<GetAppSpecEnv>?>? envs;
   /// List of features which is applied to the app
   final pulumi.Input<List<String>> features;
-  final pulumi.Input<List<GetAppSpecFunction>>? functions;
+  final pulumi.Input<List<GetAppSpecFunction>?>? functions;
   final pulumi.Input<GetAppSpecIngress> ingress;
-  final pulumi.Input<List<GetAppSpecJob>>? jobs;
+  final pulumi.Input<List<GetAppSpecJob>?>? jobs;
   /// Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
-  final pulumi.Input<GetAppSpecMaintenance>? maintenance;
+  final pulumi.Input<GetAppSpecMaintenance?>? maintenance;
   /// The name of the component.
   final pulumi.Input<String> name;
   /// The slug for the DigitalOcean data center region hosting the app
-  final pulumi.Input<String>? region;
-  final pulumi.Input<List<GetAppSpecService>>? services;
-  final pulumi.Input<List<GetAppSpecStaticSite>>? staticSites;
-  final pulumi.Input<List<GetAppSpecVpc>>? vpcs;
-  final pulumi.Input<List<GetAppSpecWorker>>? workers;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<List<GetAppSpecService>?>? services;
+  final pulumi.Input<List<GetAppSpecStaticSite>?>? staticSites;
+  final pulumi.Input<List<GetAppSpecVpc>?>? vpcs;
+  final pulumi.Input<List<GetAppSpecWorker>?>? workers;
 
   /// Creates a new [GetAppSpec].
   /// [alerts] Describes an alert policy for the component.

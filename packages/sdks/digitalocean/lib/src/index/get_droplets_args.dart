@@ -11,12 +11,12 @@ import 'get_droplets_sort.dart';
 class GetDropletsArgs {
   /// Filter the results.
   /// The `filter` block is documented below.
-  final pulumi.Input<List<GetDropletsFilter>>? filters;
+  final pulumi.Input<List<GetDropletsFilter>?>? filters;
   /// A boolean value specifying whether or not to list GPU Droplets
-  final pulumi.Input<bool>? gpus;
+  final pulumi.Input<bool?>? gpus;
   /// Sort the results.
   /// The `sort` block is documented below.
-  final pulumi.Input<List<GetDropletsSort>>? sorts;
+  final pulumi.Input<List<GetDropletsSort>?>? sorts;
 
   /// Creates a new [GetDropletsArgs].
   /// [filters] Filter the results.

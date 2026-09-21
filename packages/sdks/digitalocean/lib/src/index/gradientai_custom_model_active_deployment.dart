@@ -5,19 +5,19 @@ import 'gradientai_custom_model_active_deployment_endpoint.dart';
 
 class GradientaiCustomModelActiveDeployment {
   /// Timestamp when the deployment was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Endpoint URLs exposed by the deployment.
-  final pulumi.Input<List<GradientaiCustomModelActiveDeploymentEndpoint>>? endpoints;
+  final pulumi.Input<List<GradientaiCustomModelActiveDeploymentEndpoint>?>? endpoints;
   /// ID of the dedicated inference deployment.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the dedicated inference deployment.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Region slug of the dedicated inference deployment.
-  final pulumi.Input<String>? regionSlug;
+  final pulumi.Input<String?>? regionSlug;
   /// Current state of the deployment.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Timestamp when the deployment was last updated.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [GradientaiCustomModelActiveDeployment].
   /// [createdAt] Timestamp when the deployment was created.

@@ -7,27 +7,27 @@ import 'vector_database_endpoint.dart';
 /// Input properties used for looking up and filtering VectorDatabase resources.
 class VectorDatabaseState {
   /// Advanced configuration for the vector database. The structure is documented below.
-  final pulumi.Input<VectorDatabaseConfig>? config;
+  final pulumi.Input<VectorDatabaseConfig?>? config;
   /// The date and time when the vector database was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// The connection endpoints for the vector database. The structure is documented below.
-  final pulumi.Input<List<VectorDatabaseEndpoint>>? endpoints;
+  final pulumi.Input<List<VectorDatabaseEndpoint>?>? endpoints;
   /// The name of the vector database. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The UUID of the account that owns the vector database.
-  final pulumi.Input<String>? ownerUuid;
+  final pulumi.Input<String?>? ownerUuid;
   /// The ID of the project that the vector database is assigned to. If excluded, the database will be assigned to your default project. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// The slug identifier for the region where the vector database will be created (ex. `nyc1`). Changing this forces a new resource to be created.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The slug identifier representing the size of the vector database (ex. `db-s-1vcpu-1gb`).
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// The current status of the vector database (ex. `active`).
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// A list of tag names to be applied to the vector database.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// The date and time when the vector database was last updated.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [VectorDatabaseState].
   /// [config] Advanced configuration for the vector database. The structure is documented below.

@@ -330,7 +330,7 @@ class SpacesBucketLogging extends pulumi.CustomResource {
           'digitalocean:index/spacesBucketLogging:SpacesBucketLogging',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');
@@ -343,11 +343,12 @@ class SpacesBucketLogging extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpacesBucketLoggingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpacesBucketLogging._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -361,6 +362,21 @@ class SpacesBucketLogging extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    region = registerOutput<String>('region');
+    targetBucket = registerOutput<String>('targetBucket');
+    targetPrefix = registerOutput<String>('targetPrefix');
+  }
+
+  /// Creates a typed reference to an existing [SpacesBucketLogging] resource.
+  SpacesBucketLogging.reference(String urn)
+    : super(
+        'digitalocean:index/spacesBucketLogging:SpacesBucketLogging',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');
     targetBucket = registerOutput<String>('targetBucket');

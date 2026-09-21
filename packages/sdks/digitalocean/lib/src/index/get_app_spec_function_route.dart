@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecFunctionRoute {
   /// Paths must start with `/` and must be unique within the app.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// An optional flag to preserve the path that is forwarded to the backend service.
-  final pulumi.Input<bool>? preservePathPrefix;
+  final pulumi.Input<bool?>? preservePathPrefix;
 
   /// Creates a new [GetAppSpecFunctionRoute].
   /// [path] Paths must start with `/` and must be unique within the app.

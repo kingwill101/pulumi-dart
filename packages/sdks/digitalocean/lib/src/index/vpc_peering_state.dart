@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VpcPeering resources.
 class VpcPeeringState {
   /// The date and time of when the VPC Peering was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The status of the VPC Peering.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// A set of two VPC IDs to be peered.
-  final pulumi.Input<List<String>>? vpcIds;
+  final pulumi.Input<List<String>?>? vpcIds;
 
   /// Creates a new [VpcPeeringState].
   /// [createdAt] The date and time of when the VPC Peering was created.

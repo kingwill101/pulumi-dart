@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_args.dart';
+import 'app_dedicated_ip.dart';
 import 'app_spec.dart';
 import 'app_state.dart';
 
@@ -1288,7 +1289,7 @@ class App extends pulumi.CustomResource {
   /// The date and time of when the app was created.
   late final pulumi.Output<String> createdAt;
   /// The dedicated egress IP addresses associated with the app.
-  late final pulumi.Output<List<Map<String, dynamic>>> dedicatedIps;
+  late final pulumi.Output<List<AppDedicatedIp>> dedicatedIps;
   /// The default URL to access the app.
   late final pulumi.Output<String> defaultIngress;
   /// (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
@@ -1320,12 +1321,12 @@ class App extends pulumi.CustomResource {
           'digitalocean:index/app:App',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     activeDeploymentId = registerOutput<String>('activeDeploymentId');
     appUrn = registerOutput<String>('appUrn');
     createdAt = registerOutput<String>('createdAt');
-    dedicatedIps = registerOutput<List<Map<String, dynamic>>>('dedicatedIps');
+    dedicatedIps = registerOutput<List<AppDedicatedIp>>('dedicatedIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppDedicatedIp>(guardedValue, (value) => AppDedicatedIp.fromMap((value as Map).cast<String, dynamic>())); });
     defaultIngress = registerOutput<String>('defaultIngress');
     deploymentPerPage = registerOutput<int?>('deploymentPerPage');
     liveDomain = registerOutput<String>('liveDomain');
@@ -1340,11 +1341,12 @@ class App extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return App._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1361,7 +1363,29 @@ class App extends pulumi.CustomResource {
     activeDeploymentId = registerOutput<String>('activeDeploymentId');
     appUrn = registerOutput<String>('appUrn');
     createdAt = registerOutput<String>('createdAt');
-    dedicatedIps = registerOutput<List<Map<String, dynamic>>>('dedicatedIps');
+    dedicatedIps = registerOutput<List<AppDedicatedIp>>('dedicatedIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppDedicatedIp>(guardedValue, (value) => AppDedicatedIp.fromMap((value as Map).cast<String, dynamic>())); });
+    defaultIngress = registerOutput<String>('defaultIngress');
+    deploymentPerPage = registerOutput<int?>('deploymentPerPage');
+    liveDomain = registerOutput<String>('liveDomain');
+    liveUrl = registerOutput<String>('liveUrl');
+    projectId = registerOutput<String>('projectId');
+    spec = registerOutput<AppSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updatedAt = registerOutput<String>('updatedAt');
+  }
+
+  /// Creates a typed reference to an existing [App] resource.
+  App.reference(String urn)
+    : super(
+        'digitalocean:index/app:App',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeDeploymentId = registerOutput<String>('activeDeploymentId');
+    appUrn = registerOutput<String>('appUrn');
+    createdAt = registerOutput<String>('createdAt');
+    dedicatedIps = registerOutput<List<AppDedicatedIp>>('dedicatedIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppDedicatedIp>(guardedValue, (value) => AppDedicatedIp.fromMap((value as Map).cast<String, dynamic>())); });
     defaultIngress = registerOutput<String>('defaultIngress');
     deploymentPerPage = registerOutput<int?>('deploymentPerPage');
     liveDomain = registerOutput<String>('liveDomain');

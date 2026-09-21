@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ReservedIpv6Assignment resources.
 class ReservedIpv6AssignmentState {
   /// The ID of Droplet that the reserved IPv6 will be assigned to.
-  final pulumi.Input<int>? dropletId;
+  final pulumi.Input<int?>? dropletId;
   /// The reserved IPv6 to assign to the Droplet.
-  final pulumi.Input<String>? ip;
+  final pulumi.Input<String?>? ip;
 
   /// Creates a new [ReservedIpv6AssignmentState].
   /// [dropletId] The ID of Droplet that the reserved IPv6 will be assigned to.
@@ -26,7 +26,7 @@ class ReservedIpv6AssignmentState {
 
   factory ReservedIpv6AssignmentState.fromMap(Map<String, dynamic> map) {
     return ReservedIpv6AssignmentState(
-      dropletId: (() { final guardedValue = map['dropletId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dropletId: (() { final guardedValue = map['dropletId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ip: (() { final guardedValue = map['ip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

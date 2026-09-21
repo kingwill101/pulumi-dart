@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'gradientai_custom_model_active_deployment.dart';
 import 'gradientai_custom_model_args.dart';
 import 'gradientai_custom_model_source_ref.dart';
 import 'gradientai_custom_model_state.dart';
@@ -7,7 +8,7 @@ class GradientaiCustomModel extends pulumi.CustomResource {
   /// Whether the caller accepts the model provider's terms and conditions. Write-only.
   late final pulumi.Output<bool?> acceptTermsAndConditions;
   /// Active dedicated inference deployments referencing this custom model.
-  late final pulumi.Output<List<Map<String, dynamic>>> activeDeployments;
+  late final pulumi.Output<List<GradientaiCustomModelActiveDeployment>> activeDeployments;
   /// Model architecture as reported by the importer.
   late final pulumi.Output<String> architecture;
   /// Maximum context length supported by the model.
@@ -65,10 +66,10 @@ class GradientaiCustomModel extends pulumi.CustomResource {
           'digitalocean:index/gradientaiCustomModel:GradientaiCustomModel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     acceptTermsAndConditions = registerOutput<bool?>('acceptTermsAndConditions');
-    activeDeployments = registerOutput<List<Map<String, dynamic>>>('activeDeployments');
+    activeDeployments = registerOutput<List<GradientaiCustomModelActiveDeployment>>('activeDeployments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GradientaiCustomModelActiveDeployment>(guardedValue, (value) => GradientaiCustomModelActiveDeployment.fromMap((value as Map).cast<String, dynamic>())); });
     architecture = registerOutput<String>('architecture');
     contextLength = registerOutput<int>('contextLength');
     costEstimatePerMonth = registerOutput<int>('costEstimatePerMonth');
@@ -76,17 +77,17 @@ class GradientaiCustomModel extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     errorMessage = registerOutput<String>('errorMessage');
     fileCount = registerOutput<int>('fileCount');
-    inputModalities = registerOutput<List<String>>('inputModalities');
+    inputModalities = registerOutput<List<String>>('inputModalities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     license = registerOutput<String>('license');
     this.name = registerOutput<String>('name');
-    outputModalities = registerOutput<List<String>>('outputModalities');
+    outputModalities = registerOutput<List<String>>('outputModalities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     parameters = registerOutput<String>('parameters');
     preferredGpuRegion = registerOutput<String?>('preferredGpuRegion');
     sourceRef = registerOutput<GradientaiCustomModelSourceRef>('sourceRef', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GradientaiCustomModelSourceRef.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceType = registerOutput<String>('sourceType');
     status = registerOutput<String>('status');
     storageRegion = registerOutput<String>('storageRegion');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     teamId = registerOutput<String>('teamId');
     totalSizeBytes = registerOutput<String>('totalSizeBytes');
     updatedAt = registerOutput<String>('updatedAt');
@@ -98,11 +99,12 @@ class GradientaiCustomModel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GradientaiCustomModelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GradientaiCustomModel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -117,7 +119,7 @@ class GradientaiCustomModel extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     acceptTermsAndConditions = registerOutput<bool?>('acceptTermsAndConditions');
-    activeDeployments = registerOutput<List<Map<String, dynamic>>>('activeDeployments');
+    activeDeployments = registerOutput<List<GradientaiCustomModelActiveDeployment>>('activeDeployments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GradientaiCustomModelActiveDeployment>(guardedValue, (value) => GradientaiCustomModelActiveDeployment.fromMap((value as Map).cast<String, dynamic>())); });
     architecture = registerOutput<String>('architecture');
     contextLength = registerOutput<int>('contextLength');
     costEstimatePerMonth = registerOutput<int>('costEstimatePerMonth');
@@ -125,17 +127,52 @@ class GradientaiCustomModel extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     errorMessage = registerOutput<String>('errorMessage');
     fileCount = registerOutput<int>('fileCount');
-    inputModalities = registerOutput<List<String>>('inputModalities');
+    inputModalities = registerOutput<List<String>>('inputModalities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     license = registerOutput<String>('license');
     this.name = registerOutput<String>('name');
-    outputModalities = registerOutput<List<String>>('outputModalities');
+    outputModalities = registerOutput<List<String>>('outputModalities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     parameters = registerOutput<String>('parameters');
     preferredGpuRegion = registerOutput<String?>('preferredGpuRegion');
     sourceRef = registerOutput<GradientaiCustomModelSourceRef>('sourceRef', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GradientaiCustomModelSourceRef.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceType = registerOutput<String>('sourceType');
     status = registerOutput<String>('status');
     storageRegion = registerOutput<String>('storageRegion');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    teamId = registerOutput<String>('teamId');
+    totalSizeBytes = registerOutput<String>('totalSizeBytes');
+    updatedAt = registerOutput<String>('updatedAt');
+    uuid = registerOutput<String>('uuid');
+  }
+
+  /// Creates a typed reference to an existing [GradientaiCustomModel] resource.
+  GradientaiCustomModel.reference(String urn)
+    : super(
+        'digitalocean:index/gradientaiCustomModel:GradientaiCustomModel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acceptTermsAndConditions = registerOutput<bool?>('acceptTermsAndConditions');
+    activeDeployments = registerOutput<List<GradientaiCustomModelActiveDeployment>>('activeDeployments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GradientaiCustomModelActiveDeployment>(guardedValue, (value) => GradientaiCustomModelActiveDeployment.fromMap((value as Map).cast<String, dynamic>())); });
+    architecture = registerOutput<String>('architecture');
+    contextLength = registerOutput<int>('contextLength');
+    costEstimatePerMonth = registerOutput<int>('costEstimatePerMonth');
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    errorMessage = registerOutput<String>('errorMessage');
+    fileCount = registerOutput<int>('fileCount');
+    inputModalities = registerOutput<List<String>>('inputModalities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    license = registerOutput<String>('license');
+    this.name = registerOutput<String>('name');
+    outputModalities = registerOutput<List<String>>('outputModalities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    parameters = registerOutput<String>('parameters');
+    preferredGpuRegion = registerOutput<String?>('preferredGpuRegion');
+    sourceRef = registerOutput<GradientaiCustomModelSourceRef>('sourceRef', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GradientaiCustomModelSourceRef.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceType = registerOutput<String>('sourceType');
+    status = registerOutput<String>('status');
+    storageRegion = registerOutput<String>('storageRegion');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     teamId = registerOutput<String>('teamId');
     totalSizeBytes = registerOutput<String>('totalSizeBytes');
     updatedAt = registerOutput<String>('updatedAt');

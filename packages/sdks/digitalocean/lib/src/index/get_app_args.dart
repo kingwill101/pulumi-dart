@@ -11,7 +11,7 @@ class GetAppArgs {
   /// The ID of the app to retrieve information about.
   final pulumi.Input<String> appId;
   /// A list of dedicated egress IP addresses associated with the app.
-  final pulumi.Input<List<GetAppDedicatedIp>>? dedicatedIps;
+  final pulumi.Input<List<GetAppDedicatedIp>?>? dedicatedIps;
 
   /// Creates a new [GetAppArgs].
   /// [appId] The ID of the app to retrieve information about.

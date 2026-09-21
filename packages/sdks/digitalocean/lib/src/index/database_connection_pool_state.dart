@@ -5,29 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DatabaseConnectionPool resources.
 class DatabaseConnectionPoolState {
   /// The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// The database for use with the connection pool.
-  final pulumi.Input<String>? dbName;
+  final pulumi.Input<String?>? dbName;
   /// The hostname used to connect to the database connection pool.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The name for the database connection pool.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Password for the connection pool's user.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Network port that the database connection pool is listening on.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Same as `host`, but only accessible from resources within the account and in the same region.
-  final pulumi.Input<String>? privateHost;
+  final pulumi.Input<String?>? privateHost;
   /// Same as `uri`, but only accessible from resources within the account and in the same region.
-  final pulumi.Input<String>? privateUri;
+  final pulumi.Input<String?>? privateUri;
   /// The desired size of the PGBouncer connection pool.
-  final pulumi.Input<int>? size;
+  final pulumi.Input<int?>? size;
   /// The full URI for connecting to the database connection pool.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
   /// The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [DatabaseConnectionPoolState].
   /// [clusterId] The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
@@ -82,10 +82,10 @@ class DatabaseConnectionPoolState {
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       privateHost: (() { final guardedValue = map['privateHost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateUri: (() { final guardedValue = map['privateUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

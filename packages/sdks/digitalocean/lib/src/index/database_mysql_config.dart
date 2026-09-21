@@ -231,7 +231,7 @@ class DatabaseMysqlConfig extends pulumi.CustomResource {
   late final pulumi.Output<int> interactiveTimeout;
   /// The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
   late final pulumi.Output<String> internalTmpMemStorageEngine;
-  /// The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
+  /// The time, in seconds, for a query to take to execute before being captured by `slowQueryLog`. `0` logs all queries. Default is `10` seconds.
   late final pulumi.Output<double> longQueryTime;
   /// The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
   late final pulumi.Output<int> maxAllowedPacket;
@@ -266,7 +266,7 @@ class DatabaseMysqlConfig extends pulumi.CustomResource {
           'digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     backupHour = registerOutput<int>('backupHour');
     backupMinute = registerOutput<int>('backupMinute');
@@ -303,11 +303,12 @@ class DatabaseMysqlConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseMysqlConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseMysqlConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -321,6 +322,45 @@ class DatabaseMysqlConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    backupHour = registerOutput<int>('backupHour');
+    backupMinute = registerOutput<int>('backupMinute');
+    binlogRetentionPeriod = registerOutput<int>('binlogRetentionPeriod');
+    clusterId = registerOutput<String>('clusterId');
+    connectTimeout = registerOutput<int>('connectTimeout');
+    defaultTimeZone = registerOutput<String>('defaultTimeZone');
+    groupConcatMaxLen = registerOutput<int>('groupConcatMaxLen');
+    informationSchemaStatsExpiry = registerOutput<int>('informationSchemaStatsExpiry');
+    innodbFtMinTokenSize = registerOutput<int>('innodbFtMinTokenSize');
+    innodbFtServerStopwordTable = registerOutput<String>('innodbFtServerStopwordTable');
+    innodbLockWaitTimeout = registerOutput<int>('innodbLockWaitTimeout');
+    innodbLogBufferSize = registerOutput<int>('innodbLogBufferSize');
+    innodbOnlineAlterLogMaxSize = registerOutput<int>('innodbOnlineAlterLogMaxSize');
+    innodbPrintAllDeadlocks = registerOutput<bool>('innodbPrintAllDeadlocks');
+    innodbRollbackOnTimeout = registerOutput<bool>('innodbRollbackOnTimeout');
+    interactiveTimeout = registerOutput<int>('interactiveTimeout');
+    internalTmpMemStorageEngine = registerOutput<String>('internalTmpMemStorageEngine');
+    longQueryTime = registerOutput<double>('longQueryTime');
+    maxAllowedPacket = registerOutput<int>('maxAllowedPacket');
+    maxHeapTableSize = registerOutput<int>('maxHeapTableSize');
+    netReadTimeout = registerOutput<int>('netReadTimeout');
+    netWriteTimeout = registerOutput<int>('netWriteTimeout');
+    slowQueryLog = registerOutput<bool>('slowQueryLog');
+    sortBufferSize = registerOutput<int>('sortBufferSize');
+    sqlMode = registerOutput<String>('sqlMode');
+    sqlRequirePrimaryKey = registerOutput<bool>('sqlRequirePrimaryKey');
+    tmpTableSize = registerOutput<int>('tmpTableSize');
+    waitTimeout = registerOutput<int>('waitTimeout');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseMysqlConfig] resource.
+  DatabaseMysqlConfig.reference(String urn)
+    : super(
+        'digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backupHour = registerOutput<int>('backupHour');
     backupMinute = registerOutput<int>('backupMinute');
     binlogRetentionPeriod = registerOutput<int>('binlogRetentionPeriod');

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spaces_bucket_cors_configuration_args.dart';
+import 'spaces_bucket_cors_configuration_cors_rule.dart';
 import 'spaces_bucket_cors_configuration_state.dart';
 
 /// Provides a CORS configuration resource for Spaces, DigitalOcean's object storage product.
@@ -355,7 +356,7 @@ class SpacesBucketCorsConfiguration extends pulumi.CustomResource {
   /// The name of the bucket to which to apply the CORS configuration.
   late final pulumi.Output<String> bucket;
   /// Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
-  late final pulumi.Output<List<Map<String, dynamic>>> corsRules;
+  late final pulumi.Output<List<SpacesBucketCorsConfigurationCorsRule>> corsRules;
   /// The region where the bucket resides.
   late final pulumi.Output<String> region;
 
@@ -371,10 +372,10 @@ class SpacesBucketCorsConfiguration extends pulumi.CustomResource {
           'digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
-    corsRules = registerOutput<List<Map<String, dynamic>>>('corsRules');
+    corsRules = registerOutput<List<SpacesBucketCorsConfigurationCorsRule>>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacesBucketCorsConfigurationCorsRule>(guardedValue, (value) => SpacesBucketCorsConfigurationCorsRule.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 
@@ -383,11 +384,12 @@ class SpacesBucketCorsConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpacesBucketCorsConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpacesBucketCorsConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -402,7 +404,21 @@ class SpacesBucketCorsConfiguration extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bucket = registerOutput<String>('bucket');
-    corsRules = registerOutput<List<Map<String, dynamic>>>('corsRules');
+    corsRules = registerOutput<List<SpacesBucketCorsConfigurationCorsRule>>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacesBucketCorsConfigurationCorsRule>(guardedValue, (value) => SpacesBucketCorsConfigurationCorsRule.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [SpacesBucketCorsConfiguration] resource.
+  SpacesBucketCorsConfiguration.reference(String urn)
+    : super(
+        'digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    corsRules = registerOutput<List<SpacesBucketCorsConfigurationCorsRule>>('corsRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacesBucketCorsConfigurationCorsRule>(guardedValue, (value) => SpacesBucketCorsConfigurationCorsRule.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
   }
 }

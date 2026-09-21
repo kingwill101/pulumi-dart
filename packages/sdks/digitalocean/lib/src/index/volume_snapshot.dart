@@ -200,14 +200,14 @@ class VolumeSnapshot extends pulumi.CustomResource {
           'digitalocean:index/volumeSnapshot:VolumeSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     minDiskSize = registerOutput<int>('minDiskSize');
     this.name = registerOutput<String>('name');
-    regions = registerOutput<List<String>>('regions');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     size = registerOutput<double>('size');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     volumeId = registerOutput<String>('volumeId');
   }
 
@@ -216,11 +216,12 @@ class VolumeSnapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeSnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VolumeSnapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -237,9 +238,27 @@ class VolumeSnapshot extends pulumi.CustomResource {
     createdAt = registerOutput<String>('createdAt');
     minDiskSize = registerOutput<int>('minDiskSize');
     this.name = registerOutput<String>('name');
-    regions = registerOutput<List<String>>('regions');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     size = registerOutput<double>('size');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    volumeId = registerOutput<String>('volumeId');
+  }
+
+  /// Creates a typed reference to an existing [VolumeSnapshot] resource.
+  VolumeSnapshot.reference(String urn)
+    : super(
+        'digitalocean:index/volumeSnapshot:VolumeSnapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    minDiskSize = registerOutput<int>('minDiskSize');
+    this.name = registerOutput<String>('name');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    size = registerOutput<double>('size');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     volumeId = registerOutput<String>('volumeId');
   }
 }

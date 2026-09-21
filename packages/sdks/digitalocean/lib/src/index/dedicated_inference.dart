@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dedicated_inference_args.dart';
+import 'dedicated_inference_model_deployment.dart';
 import 'dedicated_inference_state.dart';
 
 /// Provides a DigitalOcean Dedicated Inference resource. This can be used to create,
@@ -590,7 +591,7 @@ class DedicatedInference extends pulumi.CustomResource {
   /// A HuggingFace token for accessing gated models.
   late final pulumi.Output<String?> huggingFaceToken;
   /// The list of model deployments to run on the dedicated inference endpoint. Each `modelDeployments` block supports:
-  late final pulumi.Output<List<Map<String, dynamic>>> modelDeployments;
+  late final pulumi.Output<List<DedicatedInferenceModelDeployment>> modelDeployments;
   /// A human-readable name for the dedicated inference endpoint.
   late final pulumi.Output<String> name;
   /// The fully-qualified domain name of the private endpoint.
@@ -618,12 +619,13 @@ class DedicatedInference extends pulumi.CustomResource {
           'digitalocean:index/dedicatedInference:DedicatedInference',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
+          additionalSecretOutputs: const ['huggingFaceToken'],
         ) {
     createdAt = registerOutput<String>('createdAt');
     enablePublicEndpoint = registerOutput<bool?>('enablePublicEndpoint');
-    huggingFaceToken = registerOutput<String?>('huggingFaceToken');
-    modelDeployments = registerOutput<List<Map<String, dynamic>>>('modelDeployments');
+    huggingFaceToken = registerOutput<String?>('huggingFaceToken', isSecret: true);
+    modelDeployments = registerOutput<List<DedicatedInferenceModelDeployment>>('modelDeployments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DedicatedInferenceModelDeployment>(guardedValue, (value) => DedicatedInferenceModelDeployment.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     privateEndpointFqdn = registerOutput<String>('privateEndpointFqdn');
     publicEndpointFqdn = registerOutput<String>('publicEndpointFqdn');
@@ -638,11 +640,12 @@ class DedicatedInference extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DedicatedInferenceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DedicatedInference._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -658,8 +661,31 @@ class DedicatedInference extends pulumi.CustomResource {
         ) {
     createdAt = registerOutput<String>('createdAt');
     enablePublicEndpoint = registerOutput<bool?>('enablePublicEndpoint');
-    huggingFaceToken = registerOutput<String?>('huggingFaceToken');
-    modelDeployments = registerOutput<List<Map<String, dynamic>>>('modelDeployments');
+    huggingFaceToken = registerOutput<String?>('huggingFaceToken', isSecret: true);
+    modelDeployments = registerOutput<List<DedicatedInferenceModelDeployment>>('modelDeployments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DedicatedInferenceModelDeployment>(guardedValue, (value) => DedicatedInferenceModelDeployment.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    privateEndpointFqdn = registerOutput<String>('privateEndpointFqdn');
+    publicEndpointFqdn = registerOutput<String>('publicEndpointFqdn');
+    region = registerOutput<String>('region');
+    status = registerOutput<String>('status');
+    updatedAt = registerOutput<String>('updatedAt');
+    vpcUuid = registerOutput<String?>('vpcUuid');
+  }
+
+  /// Creates a typed reference to an existing [DedicatedInference] resource.
+  DedicatedInference.reference(String urn)
+    : super(
+        'digitalocean:index/dedicatedInference:DedicatedInference',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['huggingFaceToken'],
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    enablePublicEndpoint = registerOutput<bool?>('enablePublicEndpoint');
+    huggingFaceToken = registerOutput<String?>('huggingFaceToken', isSecret: true);
+    modelDeployments = registerOutput<List<DedicatedInferenceModelDeployment>>('modelDeployments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DedicatedInferenceModelDeployment>(guardedValue, (value) => DedicatedInferenceModelDeployment.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     privateEndpointFqdn = registerOutput<String>('privateEndpointFqdn');
     publicEndpointFqdn = registerOutput<String>('publicEndpointFqdn');

@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGenaiAgentsByOpenaiApiKeyAgentFunction {
   /// API Key value
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// Created At timestamp for the Function
   final pulumi.Input<String> createdAt;
   /// Description of the Function
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of function
-  final pulumi.Input<String>? faasname;
+  final pulumi.Input<String?>? faasname;
   /// Namespace of function
-  final pulumi.Input<String>? faasnamespace;
+  final pulumi.Input<String?>? faasnamespace;
   /// Guardrail UUID for the Function
-  final pulumi.Input<String>? guardrailUuid;
+  final pulumi.Input<String?>? guardrailUuid;
   /// Name of function
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Updated At timestamp for the Agent
   final pulumi.Input<String> updatedAt;
   /// Url of the Deployment
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
   /// API Key value
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [GetGenaiAgentsByOpenaiApiKeyAgentFunction].
   /// [apiKey] API Key value

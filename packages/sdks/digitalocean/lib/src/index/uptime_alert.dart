@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'uptime_alert_args.dart';
+import 'uptime_alert_notification.dart';
 import 'uptime_alert_state.dart';
 
 /// Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Uptime/operation/uptime_create_alert)
@@ -21,7 +22,7 @@ class UptimeAlert extends pulumi.CustomResource {
   /// A human-friendly display name.
   late final pulumi.Output<String> name;
   /// The notification settings for a trigger alert.
-  late final pulumi.Output<List<Map<String, dynamic>>> notifications;
+  late final pulumi.Output<List<UptimeAlertNotification>> notifications;
   /// Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
   late final pulumi.Output<String?> period;
   /// The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
@@ -41,12 +42,12 @@ class UptimeAlert extends pulumi.CustomResource {
           'digitalocean:index/uptimeAlert:UptimeAlert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     checkId = registerOutput<String>('checkId');
     comparison = registerOutput<String?>('comparison');
     this.name = registerOutput<String>('name');
-    notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
+    notifications = registerOutput<List<UptimeAlertNotification>>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UptimeAlertNotification>(guardedValue, (value) => UptimeAlertNotification.fromMap((value as Map).cast<String, dynamic>())); });
     period = registerOutput<String?>('period');
     threshold = registerOutput<int?>('threshold');
     type = registerOutput<String>('type');
@@ -57,11 +58,12 @@ class UptimeAlert extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UptimeAlertState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UptimeAlert._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -78,7 +80,25 @@ class UptimeAlert extends pulumi.CustomResource {
     checkId = registerOutput<String>('checkId');
     comparison = registerOutput<String?>('comparison');
     this.name = registerOutput<String>('name');
-    notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
+    notifications = registerOutput<List<UptimeAlertNotification>>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UptimeAlertNotification>(guardedValue, (value) => UptimeAlertNotification.fromMap((value as Map).cast<String, dynamic>())); });
+    period = registerOutput<String?>('period');
+    threshold = registerOutput<int?>('threshold');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [UptimeAlert] resource.
+  UptimeAlert.reference(String urn)
+    : super(
+        'digitalocean:index/uptimeAlert:UptimeAlert',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    checkId = registerOutput<String>('checkId');
+    comparison = registerOutput<String?>('comparison');
+    this.name = registerOutput<String>('name');
+    notifications = registerOutput<List<UptimeAlertNotification>>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UptimeAlertNotification>(guardedValue, (value) => UptimeAlertNotification.fromMap((value as Map).cast<String, dynamic>())); });
     period = registerOutput<String?>('period');
     threshold = registerOutput<int?>('threshold');
     type = registerOutput<String>('type');

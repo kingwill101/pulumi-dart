@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kubernetes_node_pool_args.dart';
+import 'kubernetes_node_pool_node.dart';
 import 'kubernetes_node_pool_state.dart';
+import 'kubernetes_node_pool_taint.dart';
 
 /// Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `digitalocean.KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
 ///
@@ -467,13 +469,13 @@ class KubernetesNodePool extends pulumi.CustomResource {
   /// The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
   late final pulumi.Output<int?> nodeCount;
   /// A list of nodes in the pool. Each node exports the following attributes:
-  late final pulumi.Output<List<Map<String, dynamic>>> nodes;
+  late final pulumi.Output<List<KubernetesNodePoolNode>> nodes;
   /// The slug identifier for the type of Droplet to be used as workers in the node pool.
   late final pulumi.Output<String> size;
   /// A list of tag names to be applied to the Kubernetes cluster.
   late final pulumi.Output<List<String>?> tags;
   /// A list of taints applied to all nodes in the pool.
-  late final pulumi.Output<List<Map<String, dynamic>>?> taints;
+  late final pulumi.Output<List<KubernetesNodePoolTaint>?> taints;
 
   /// Creates a new [KubernetesNodePool].
   /// [name] The Pulumi resource name.
@@ -487,21 +489,21 @@ class KubernetesNodePool extends pulumi.CustomResource {
           'digitalocean:index/kubernetesNodePool:KubernetesNodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     actualNodeCount = registerOutput<int>('actualNodeCount');
     autoScale = registerOutput<bool?>('autoScale');
     clusterId = registerOutput<String>('clusterId');
     gpuPartitionMode = registerOutput<String?>('gpuPartitionMode');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     maxNodes = registerOutput<int?>('maxNodes');
     minNodes = registerOutput<int?>('minNodes');
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int?>('nodeCount');
-    nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
+    nodes = registerOutput<List<KubernetesNodePoolNode>>('nodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesNodePoolNode>(guardedValue, (value) => KubernetesNodePoolNode.fromMap((value as Map).cast<String, dynamic>())); });
     size = registerOutput<String>('size');
-    tags = registerOutput<List<String>?>('tags');
-    taints = registerOutput<List<Map<String, dynamic>>?>('taints');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    taints = registerOutput<List<KubernetesNodePoolTaint>?>('taints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesNodePoolTaint>(guardedValue, (value) => KubernetesNodePoolTaint.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [KubernetesNodePool] resource's state with the given [name] and [id].
@@ -509,11 +511,12 @@ class KubernetesNodePool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KubernetesNodePoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KubernetesNodePool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -531,14 +534,38 @@ class KubernetesNodePool extends pulumi.CustomResource {
     autoScale = registerOutput<bool?>('autoScale');
     clusterId = registerOutput<String>('clusterId');
     gpuPartitionMode = registerOutput<String?>('gpuPartitionMode');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     maxNodes = registerOutput<int?>('maxNodes');
     minNodes = registerOutput<int?>('minNodes');
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int?>('nodeCount');
-    nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
+    nodes = registerOutput<List<KubernetesNodePoolNode>>('nodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesNodePoolNode>(guardedValue, (value) => KubernetesNodePoolNode.fromMap((value as Map).cast<String, dynamic>())); });
     size = registerOutput<String>('size');
-    tags = registerOutput<List<String>?>('tags');
-    taints = registerOutput<List<Map<String, dynamic>>?>('taints');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    taints = registerOutput<List<KubernetesNodePoolTaint>?>('taints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesNodePoolTaint>(guardedValue, (value) => KubernetesNodePoolTaint.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [KubernetesNodePool] resource.
+  KubernetesNodePool.reference(String urn)
+    : super(
+        'digitalocean:index/kubernetesNodePool:KubernetesNodePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actualNodeCount = registerOutput<int>('actualNodeCount');
+    autoScale = registerOutput<bool?>('autoScale');
+    clusterId = registerOutput<String>('clusterId');
+    gpuPartitionMode = registerOutput<String?>('gpuPartitionMode');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    maxNodes = registerOutput<int?>('maxNodes');
+    minNodes = registerOutput<int?>('minNodes');
+    this.name = registerOutput<String>('name');
+    nodeCount = registerOutput<int?>('nodeCount');
+    nodes = registerOutput<List<KubernetesNodePoolNode>>('nodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesNodePoolNode>(guardedValue, (value) => KubernetesNodePoolNode.fromMap((value as Map).cast<String, dynamic>())); });
+    size = registerOutput<String>('size');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    taints = registerOutput<List<KubernetesNodePoolTaint>?>('taints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesNodePoolTaint>(guardedValue, (value) => KubernetesNodePoolTaint.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -6,21 +6,21 @@ import 'genai_openai_api_key_model.dart';
 /// Input properties used for looking up and filtering GenaiOpenaiApiKey resources.
 class GenaiOpenaiApiKeyState {
   /// The OpenAI API key.
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// When the API key was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Who created the API key.
-  final pulumi.Input<String>? createdBy;
+  final pulumi.Input<String?>? createdBy;
   /// When the API key was deleted.
-  final pulumi.Input<String>? deletedAt;
+  final pulumi.Input<String?>? deletedAt;
   /// Models associated with the OpenAI API key
-  final pulumi.Input<List<GenaiOpenaiApiKeyModel>>? models;
+  final pulumi.Input<List<GenaiOpenaiApiKeyModel>?>? models;
   /// A name for the API key.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// When the API key was last updated.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
   /// The UUID of the API key.
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [GenaiOpenaiApiKeyState].
   /// [apiKey] The OpenAI API key.

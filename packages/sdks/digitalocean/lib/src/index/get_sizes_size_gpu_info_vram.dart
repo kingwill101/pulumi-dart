@@ -25,7 +25,7 @@ class GetSizesSizeGpuInfoVram {
 
   factory GetSizesSizeGpuInfoVram.fromMap(Map<String, dynamic> map) {
     return GetSizesSizeGpuInfoVram(
-      amount: pulumi.Input.fromValue(map['amount'] as int),
+      amount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['amount'])),
       unit: pulumi.Input.fromValue(map['unit'] as String),
     );
   }

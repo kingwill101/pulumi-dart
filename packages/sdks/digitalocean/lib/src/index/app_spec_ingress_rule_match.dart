@@ -6,9 +6,9 @@ import 'app_spec_ingress_rule_match_path.dart';
 
 class AppSpecIngressRuleMatch {
   /// The authority (domain) to match on.
-  final pulumi.Input<AppSpecIngressRuleMatchAuthority>? authority;
+  final pulumi.Input<AppSpecIngressRuleMatchAuthority?>? authority;
   /// The path to match on.
-  final pulumi.Input<AppSpecIngressRuleMatchPath>? path;
+  final pulumi.Input<AppSpecIngressRuleMatchPath?>? path;
 
   /// Creates a new [AppSpecIngressRuleMatch].
   /// [authority] The authority (domain) to match on.

@@ -5,9 +5,9 @@ import 'app_spec_service_alert_destinations.dart';
 
 class AppSpecServiceAlert {
   /// Specification for alert destination.
-  final pulumi.Input<AppSpecServiceAlertDestinations>? destinations;
+  final pulumi.Input<AppSpecServiceAlertDestinations?>? destinations;
   /// Determines whether or not the alert is disabled (default: `false`).
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
   final pulumi.Input<String> operator;
   /// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
@@ -50,7 +50,7 @@ class AppSpecServiceAlert {
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       operator: pulumi.Input.fromValue(map['operator'] as String),
       rule: pulumi.Input.fromValue(map['rule'] as String),
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
       window: pulumi.Input.fromValue(map['window'] as String),
     );
   }

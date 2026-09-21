@@ -329,22 +329,23 @@ class DatabaseReplica extends pulumi.CustomResource {
           'digitalocean:index/databaseReplica:DatabaseReplica',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
+          additionalSecretOutputs: const ['password', 'privateUri', 'uri'],
         ) {
     clusterId = registerOutput<String>('clusterId');
     database = registerOutput<String>('database');
     host = registerOutput<String>('host');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     port = registerOutput<int>('port');
     privateHost = registerOutput<String>('privateHost');
     privateNetworkUuid = registerOutput<String>('privateNetworkUuid');
-    privateUri = registerOutput<String>('privateUri');
+    privateUri = registerOutput<String>('privateUri', isSecret: true);
     region = registerOutput<String?>('region');
     size = registerOutput<String?>('size');
     storageSizeMib = registerOutput<String>('storageSizeMib');
-    tags = registerOutput<List<String>?>('tags');
-    uri = registerOutput<String>('uri');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    uri = registerOutput<String>('uri', isSecret: true);
     user = registerOutput<String>('user');
     uuid = registerOutput<String>('uuid');
   }
@@ -354,11 +355,12 @@ class DatabaseReplica extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseReplicaState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseReplica._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -376,16 +378,44 @@ class DatabaseReplica extends pulumi.CustomResource {
     database = registerOutput<String>('database');
     host = registerOutput<String>('host');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     port = registerOutput<int>('port');
     privateHost = registerOutput<String>('privateHost');
     privateNetworkUuid = registerOutput<String>('privateNetworkUuid');
-    privateUri = registerOutput<String>('privateUri');
+    privateUri = registerOutput<String>('privateUri', isSecret: true);
     region = registerOutput<String?>('region');
     size = registerOutput<String?>('size');
     storageSizeMib = registerOutput<String>('storageSizeMib');
-    tags = registerOutput<List<String>?>('tags');
-    uri = registerOutput<String>('uri');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    uri = registerOutput<String>('uri', isSecret: true);
+    user = registerOutput<String>('user');
+    uuid = registerOutput<String>('uuid');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseReplica] resource.
+  DatabaseReplica.reference(String urn)
+    : super(
+        'digitalocean:index/databaseReplica:DatabaseReplica',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password', 'privateUri', 'uri'],
+        isResourceReference: true,
+      ) {
+    clusterId = registerOutput<String>('clusterId');
+    database = registerOutput<String>('database');
+    host = registerOutput<String>('host');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password', isSecret: true);
+    port = registerOutput<int>('port');
+    privateHost = registerOutput<String>('privateHost');
+    privateNetworkUuid = registerOutput<String>('privateNetworkUuid');
+    privateUri = registerOutput<String>('privateUri', isSecret: true);
+    region = registerOutput<String?>('region');
+    size = registerOutput<String?>('size');
+    storageSizeMib = registerOutput<String>('storageSizeMib');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    uri = registerOutput<String>('uri', isSecret: true);
     user = registerOutput<String>('user');
     uuid = registerOutput<String>('uuid');
   }

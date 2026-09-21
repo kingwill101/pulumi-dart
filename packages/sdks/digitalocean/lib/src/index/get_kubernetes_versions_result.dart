@@ -4,11 +4,11 @@
 /// Result data returned by getKubernetesVersions.
 class GetKubernetesVersionsResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The most recent version available.
-  final String latestVersion;
+  final String? latestVersion;
   /// A list of available versions.
-  final List<String> validVersions;
+  final List<String>? validVersions;
   final String? versionPrefix;
 
   /// Creates a new [GetKubernetesVersionsResult].
@@ -17,26 +17,26 @@ class GetKubernetesVersionsResult {
   /// [validVersions] A list of available versions.
   /// [versionPrefix] Optional.
   const GetKubernetesVersionsResult({
-    required this.id,
-    required this.latestVersion,
-    required this.validVersions,
+    this.id,
+    this.latestVersion,
+    this.validVersions,
     this.versionPrefix,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'latestVersion': latestVersion,
-      'validVersions': validVersions,
+      'id': ?id,
+      'latestVersion': ?latestVersion,
+      'validVersions': ?validVersions,
       'versionPrefix': ?versionPrefix,
     };
   }
 
   factory GetKubernetesVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetKubernetesVersionsResult(
-      id: map['id'] as String,
-      latestVersion: map['latestVersion'] as String,
-      validVersions: (map['validVersions'] as List).cast<String>(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      latestVersion: (() { final guardedValue = map['latestVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      validVersions: (() { final guardedValue = map['validVersions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       versionPrefix: (() { final guardedValue = map['versionPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

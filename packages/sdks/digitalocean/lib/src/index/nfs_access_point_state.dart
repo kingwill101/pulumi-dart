@@ -6,23 +6,23 @@ import 'nfs_access_point_access_policy.dart';
 /// Input properties used for looking up and filtering NfsAccessPoint resources.
 class NfsAccessPointState {
   /// Access policy configuration for the access point. See Access Policy below.
-  final pulumi.Input<NfsAccessPointAccessPolicy>? accessPolicy;
+  final pulumi.Input<NfsAccessPointAccessPolicy?>? accessPolicy;
   /// The date and time when the access point was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Whether this is the default access point for the share.
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// A name for the NFS access point.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The export path for the access point.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The ID of the NFS share.
-  final pulumi.Input<String>? shareId;
+  final pulumi.Input<String?>? shareId;
   /// The status of the access point.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The date and time when the access point was last updated.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
   /// The ID of the VPC that can access this access point. The VPC must be attached to the NFS share.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [NfsAccessPointState].
   /// [accessPolicy] Access policy configuration for the access point. See Access Policy below.

@@ -52,9 +52,9 @@ class GetLoadBalancerForwardingRule {
     return GetLoadBalancerForwardingRule(
       certificateId: pulumi.Input.fromValue(map['certificateId'] as String),
       certificateName: pulumi.Input.fromValue(map['certificateName'] as String),
-      entryPort: pulumi.Input.fromValue(map['entryPort'] as int),
+      entryPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['entryPort'])),
       entryProtocol: pulumi.Input.fromValue(map['entryProtocol'] as String),
-      targetPort: pulumi.Input.fromValue(map['targetPort'] as int),
+      targetPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetPort'])),
       targetProtocol: pulumi.Input.fromValue(map['targetProtocol'] as String),
       tlsPassthrough: pulumi.Input.fromValue(map['tlsPassthrough'] as bool),
     );

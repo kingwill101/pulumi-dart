@@ -10,25 +10,25 @@ import 'gradientai_knowledge_base_data_source.dart';
 /// {@macro pulumi_index_genai_knowledge_base_genai_knowledge_base_args_doc}
 class GenaiKnowledgeBaseArgs {
   /// The time when the knowledge base was added to the agent.
-  final pulumi.Input<String>? addedToAgentAt;
+  final pulumi.Input<String?>? addedToAgentAt;
   /// The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
-  final pulumi.Input<String>? databaseId;
+  final pulumi.Input<String?>? databaseId;
   /// Data sources for the knowledge base
   final pulumi.Input<List<GradientaiKnowledgeBaseDataSource>> datasources;
   /// The unique identifier of the embedding model
   final pulumi.Input<String> embeddingModelUuid;
   /// Indicates whether the knowledge base is public or private.
-  final pulumi.Input<bool>? isPublic;
+  final pulumi.Input<bool?>? isPublic;
   /// The last indexing job for the knowledge base.
-  final pulumi.Input<List<GenaiKnowledgeBaseLastIndexingJob>>? lastIndexingJobs;
+  final pulumi.Input<List<GenaiKnowledgeBaseLastIndexingJob>?>? lastIndexingJobs;
   /// The name of the knowledge base.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The unique identifier of the project to which the knowledge base belongs.
   final pulumi.Input<String> projectId;
   final pulumi.Input<String> region;
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// The unique identifier of the VPC to which the knowledge base belongs.
-  final pulumi.Input<String>? vpcUuid;
+  final pulumi.Input<String?>? vpcUuid;
 
   /// Creates a new [GenaiKnowledgeBaseArgs].
   /// [addedToAgentAt] The time when the knowledge base was added to the agent.

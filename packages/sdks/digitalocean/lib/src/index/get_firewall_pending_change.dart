@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetFirewallPendingChange {
-  final pulumi.Input<int>? dropletId;
-  final pulumi.Input<bool>? removing;
+  final pulumi.Input<int?>? dropletId;
+  final pulumi.Input<bool?>? removing;
   /// A status string indicating the current state of the Firewall.
   /// This can be "waiting", "succeeded", or "failed".
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [GetFirewallPendingChange].
   /// [dropletId] Optional.
@@ -29,7 +29,7 @@ class GetFirewallPendingChange {
 
   factory GetFirewallPendingChange.fromMap(Map<String, dynamic> map) {
     return GetFirewallPendingChange(
-      dropletId: (() { final guardedValue = map['dropletId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dropletId: (() { final guardedValue = map['dropletId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       removing: (() { final guardedValue = map['removing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

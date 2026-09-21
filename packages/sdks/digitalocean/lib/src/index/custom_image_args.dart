@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_custom_image_custom_image_args_doc}
 class CustomImageArgs {
   /// An optional description for the image.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
-  final pulumi.Input<String>? distribution;
+  final pulumi.Input<String?>? distribution;
   /// A name for the Custom Image.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of regions. (Currently only one is supported).
   final pulumi.Input<List<String>> regions;
   /// A list of optional tags for the image.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// A URL from which the custom Linux virtual machine image may be retrieved.
   final pulumi.Input<String> url;
 

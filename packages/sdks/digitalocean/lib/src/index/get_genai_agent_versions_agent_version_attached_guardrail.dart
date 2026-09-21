@@ -37,7 +37,7 @@ class GetGenaiAgentVersionsAgentVersionAttachedGuardrail {
     return GetGenaiAgentVersionsAgentVersionAttachedGuardrail(
       isDeleted: pulumi.Input.fromValue(map['isDeleted'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       uuid: pulumi.Input.fromValue(map['uuid'] as String),
     );
   }

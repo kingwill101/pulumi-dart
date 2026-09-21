@@ -760,9 +760,10 @@ class DatabaseLogsinkOpensearch extends pulumi.CustomResource {
           'digitalocean:index/databaseLogsinkOpensearch:DatabaseLogsinkOpensearch',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
+          additionalSecretOutputs: const ['caCert'],
         ) {
-    caCert = registerOutput<String?>('caCert');
+    caCert = registerOutput<String?>('caCert', isSecret: true);
     clusterId = registerOutput<String>('clusterId');
     endpoint = registerOutput<String>('endpoint');
     indexDaysMax = registerOutput<int?>('indexDaysMax');
@@ -777,11 +778,12 @@ class DatabaseLogsinkOpensearch extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseLogsinkOpensearchState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseLogsinkOpensearch._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -795,7 +797,27 @@ class DatabaseLogsinkOpensearch extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    caCert = registerOutput<String?>('caCert');
+    caCert = registerOutput<String?>('caCert', isSecret: true);
+    clusterId = registerOutput<String>('clusterId');
+    endpoint = registerOutput<String>('endpoint');
+    indexDaysMax = registerOutput<int?>('indexDaysMax');
+    indexPrefix = registerOutput<String>('indexPrefix');
+    logsinkId = registerOutput<String>('logsinkId');
+    this.name = registerOutput<String>('name');
+    timeoutSeconds = registerOutput<int?>('timeoutSeconds');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseLogsinkOpensearch] resource.
+  DatabaseLogsinkOpensearch.reference(String urn)
+    : super(
+        'digitalocean:index/databaseLogsinkOpensearch:DatabaseLogsinkOpensearch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['caCert'],
+        isResourceReference: true,
+      ) {
+    caCert = registerOutput<String?>('caCert', isSecret: true);
     clusterId = registerOutput<String>('clusterId');
     endpoint = registerOutput<String>('endpoint');
     indexDaysMax = registerOutput<int?>('indexDaysMax');

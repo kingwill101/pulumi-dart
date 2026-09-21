@@ -8,8 +8,8 @@ class DatabaseUserSetting {
   /// A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
   ///
   /// An individual ACL includes the following:
-  final pulumi.Input<List<DatabaseUserSettingAcl>>? acls;
-  final pulumi.Input<List<DatabaseUserSettingOpensearchAcl>>? opensearchAcls;
+  final pulumi.Input<List<DatabaseUserSettingAcl>?>? acls;
+  final pulumi.Input<List<DatabaseUserSettingOpensearchAcl>?>? opensearchAcls;
 
   /// Creates a new [DatabaseUserSetting].
   /// [acls] A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:

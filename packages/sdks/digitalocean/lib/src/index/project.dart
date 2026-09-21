@@ -376,7 +376,7 @@ class Project extends pulumi.CustomResource {
           'digitalocean:index/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String?>('description');
@@ -386,7 +386,7 @@ class Project extends pulumi.CustomResource {
     ownerId = registerOutput<int>('ownerId');
     ownerUuid = registerOutput<String>('ownerUuid');
     purpose = registerOutput<String?>('purpose');
-    resources = registerOutput<List<String>>('resources');
+    resources = registerOutput<List<String>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updatedAt = registerOutput<String>('updatedAt');
   }
 
@@ -395,11 +395,12 @@ class Project extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Project._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -421,7 +422,28 @@ class Project extends pulumi.CustomResource {
     ownerId = registerOutput<int>('ownerId');
     ownerUuid = registerOutput<String>('ownerUuid');
     purpose = registerOutput<String?>('purpose');
-    resources = registerOutput<List<String>>('resources');
+    resources = registerOutput<List<String>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    updatedAt = registerOutput<String>('updatedAt');
+  }
+
+  /// Creates a typed reference to an existing [Project] resource.
+  Project.reference(String urn)
+    : super(
+        'digitalocean:index/project:Project',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String?>('description');
+    environment = registerOutput<String?>('environment');
+    isDefault = registerOutput<bool?>('isDefault');
+    this.name = registerOutput<String>('name');
+    ownerId = registerOutput<int>('ownerId');
+    ownerUuid = registerOutput<String>('ownerUuid');
+    purpose = registerOutput<String?>('purpose');
+    resources = registerOutput<List<String>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updatedAt = registerOutput<String>('updatedAt');
   }
 }

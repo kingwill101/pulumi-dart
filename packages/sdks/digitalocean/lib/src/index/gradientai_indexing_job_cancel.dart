@@ -46,11 +46,11 @@ class GradientaiIndexingJobCancel extends pulumi.CustomResource {
           'digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.80.1').merge(options),
         ) {
     completedDatasources = registerOutput<int>('completedDatasources');
     createdAt = registerOutput<String>('createdAt');
-    dataSourceUuids = registerOutput<List<String>>('dataSourceUuids');
+    dataSourceUuids = registerOutput<List<String>>('dataSourceUuids', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     finishedAt = registerOutput<String>('finishedAt');
     knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
     phase = registerOutput<String>('phase');
@@ -70,11 +70,12 @@ class GradientaiIndexingJobCancel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GradientaiIndexingJobCancelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GradientaiIndexingJobCancel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -90,7 +91,33 @@ class GradientaiIndexingJobCancel extends pulumi.CustomResource {
         ) {
     completedDatasources = registerOutput<int>('completedDatasources');
     createdAt = registerOutput<String>('createdAt');
-    dataSourceUuids = registerOutput<List<String>>('dataSourceUuids');
+    dataSourceUuids = registerOutput<List<String>>('dataSourceUuids', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    finishedAt = registerOutput<String>('finishedAt');
+    knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
+    phase = registerOutput<String>('phase');
+    startedAt = registerOutput<String>('startedAt');
+    status = registerOutput<String>('status');
+    tokens = registerOutput<int>('tokens');
+    totalDatasources = registerOutput<int>('totalDatasources');
+    totalItemsFailed = registerOutput<int>('totalItemsFailed');
+    totalItemsIndexed = registerOutput<int>('totalItemsIndexed');
+    totalItemsSkipped = registerOutput<int>('totalItemsSkipped');
+    updatedAt = registerOutput<String>('updatedAt');
+    uuid = registerOutput<String>('uuid');
+  }
+
+  /// Creates a typed reference to an existing [GradientaiIndexingJobCancel] resource.
+  GradientaiIndexingJobCancel.reference(String urn)
+    : super(
+        'digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    completedDatasources = registerOutput<int>('completedDatasources');
+    createdAt = registerOutput<String>('createdAt');
+    dataSourceUuids = registerOutput<List<String>>('dataSourceUuids', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     finishedAt = registerOutput<String>('finishedAt');
     knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
     phase = registerOutput<String>('phase');
