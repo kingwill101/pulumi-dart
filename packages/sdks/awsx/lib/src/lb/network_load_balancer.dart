@@ -25,7 +25,7 @@ class NetworkLoadBalancer extends pulumi.ComponentResource {
           'awsx:lb:NetworkLoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.ComponentResourceOptions(version: '3.9.0').merge(options),
+          pulumi.ComponentResourceOptions(version: '3.10.0').merge(options),
           remote: true,
         ) {
     defaultTargetGroup = registerOutput<pulumi_aws_lb.TargetGroup?>('defaultTargetGroup');

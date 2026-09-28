@@ -187,7 +187,7 @@ class Vpc extends pulumi.ComponentResource {
           'awsx:ec2:Vpc',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.ComponentResourceOptions(version: '3.9.0').merge(options),
+          pulumi.ComponentResourceOptions(version: '3.10.0').merge(options),
           remote: true,
         ) {
     eips = registerOutput<List<pulumi_aws_ec2.Eip>?>('eips', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<pulumi_aws_ec2.Eip>(); });

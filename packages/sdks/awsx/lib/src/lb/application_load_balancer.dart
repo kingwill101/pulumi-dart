@@ -28,7 +28,7 @@ class ApplicationLoadBalancer extends pulumi.ComponentResource {
           'awsx:lb:ApplicationLoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.ComponentResourceOptions(version: '3.9.0').merge(options),
+          pulumi.ComponentResourceOptions(version: '3.10.0').merge(options),
           remote: true,
         ) {
     defaultSecurityGroup = registerOutput<pulumi_aws_ec2.SecurityGroup?>('defaultSecurityGroup');

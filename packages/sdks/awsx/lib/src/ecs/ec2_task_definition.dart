@@ -31,7 +31,7 @@ class EC2TaskDefinition extends pulumi.ComponentResource {
           'awsx:ecs:EC2TaskDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.ComponentResourceOptions(version: '3.9.0').merge(options),
+          pulumi.ComponentResourceOptions(version: '3.10.0').merge(options),
           remote: true,
         ) {
     executionRole = registerOutput<pulumi_aws_iam.Role?>('executionRole');
