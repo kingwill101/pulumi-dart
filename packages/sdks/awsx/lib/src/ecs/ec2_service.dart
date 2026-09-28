@@ -22,7 +22,7 @@ class EC2Service extends pulumi.ComponentResource {
           'awsx:ecs:EC2Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.ComponentResourceOptions(version: '3.9.0').merge(options),
+          pulumi.ComponentResourceOptions(version: '3.10.0').merge(options),
           remote: true,
         ) {
     service = registerOutput<pulumi_aws_ecs.Service?>('service');

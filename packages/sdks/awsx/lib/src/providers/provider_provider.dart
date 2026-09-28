@@ -11,6 +11,6 @@ class ProviderProvider extends pulumi.ProviderResource {
           'awsx',
           name,
           const <String, pulumi.Input<dynamic>>{},
-          pulumi.CustomResourceOptions(version: '3.9.0').merge(options),
+          pulumi.CustomResourceOptions(version: '3.10.0').merge(options),
         );
 }

@@ -18,7 +18,7 @@ class Image extends pulumi.ComponentResource {
           'awsx:ecr:Image',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.ComponentResourceOptions(version: '3.9.0').merge(options),
+          pulumi.ComponentResourceOptions(version: '3.10.0').merge(options),
           remote: true,
         ) {
     imageUri = registerOutput<String?>('imageUri');
