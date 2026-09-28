@@ -138,7 +138,7 @@ class ServiceSpecPatch {
       externalIPs: (() { final guardedValue = map['externalIPs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       externalName: (() { final guardedValue = map['externalName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalTrafficPolicy: (() { final guardedValue = map['externalTrafficPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      healthCheckNodePort: (() { final guardedValue = map['healthCheckNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      healthCheckNodePort: (() { final guardedValue = map['healthCheckNodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       internalTrafficPolicy: (() { final guardedValue = map['internalTrafficPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipFamilies: (() { final guardedValue = map['ipFamilies']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipFamily: (() { final guardedValue = map['ipFamily']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

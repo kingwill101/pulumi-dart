@@ -101,11 +101,11 @@ class PodSecurityContextPatch {
   factory PodSecurityContextPatch.fromMap(Map<String, dynamic> map) {
     return PodSecurityContextPatch(
       appArmorProfile: (() { final guardedValue = map['appArmorProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppArmorProfilePatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      fsGroup: (() { final guardedValue = map['fsGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      fsGroup: (() { final guardedValue = map['fsGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       fsGroupChangePolicy: (() { final guardedValue = map['fsGroupChangePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      runAsGroup: (() { final guardedValue = map['runAsGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      runAsGroup: (() { final guardedValue = map['runAsGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       runAsNonRoot: (() { final guardedValue = map['runAsNonRoot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      runAsUser: (() { final guardedValue = map['runAsUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      runAsUser: (() { final guardedValue = map['runAsUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       seLinuxChangePolicy: (() { final guardedValue = map['seLinuxChangePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       seLinuxOptions: (() { final guardedValue = map['seLinuxOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SELinuxOptionsPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       seccompProfile: (() { final guardedValue = map['seccompProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SeccompProfilePatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

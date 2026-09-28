@@ -59,7 +59,7 @@ class NamedResourcesAttribute {
   factory NamedResourcesAttribute.fromMap(Map<String, dynamic> map) {
     return NamedResourcesAttribute(
       bool_: (() { final guardedValue = map['bool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      int_: (() { final guardedValue = map['int']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      int_: (() { final guardedValue = map['int']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       intSlice: (() { final guardedValue = map['intSlice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NamedResourcesIntSlice.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       quantity: (() { final guardedValue = map['quantity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

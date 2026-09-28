@@ -45,9 +45,9 @@ class HorizontalPodAutoscalerSpecAutoscalingV2beta2 {
   factory HorizontalPodAutoscalerSpecAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscalerSpecAutoscalingV2beta2(
       behavior: (() { final guardedValue = map['behavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HorizontalPodAutoscalerBehaviorAutoscalingV2beta2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxReplicas: pulumi.Input.fromValue((map['maxReplicas'] as num).toInt()),
+      maxReplicas: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxReplicas'])),
       metrics: (() { final guardedValue = map['metrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MetricSpecAutoscalingV2beta2>(guardedValue, (value) => MetricSpecAutoscalingV2beta2.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       scaleTargetRef: pulumi.Input.fromValue(CrossVersionObjectReferenceAutoscalingV2beta2.fromMap((map['scaleTargetRef']! as Map).cast<String, dynamic>())),
     );
   }

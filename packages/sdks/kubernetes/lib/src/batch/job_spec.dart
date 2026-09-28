@@ -117,15 +117,15 @@ class JobSpec {
 
   factory JobSpec.fromMap(Map<String, dynamic> map) {
     return JobSpec(
-      activeDeadlineSeconds: (() { final guardedValue = map['activeDeadlineSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      backoffLimit: (() { final guardedValue = map['backoffLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      backoffLimitPerIndex: (() { final guardedValue = map['backoffLimitPerIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      activeDeadlineSeconds: (() { final guardedValue = map['activeDeadlineSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      backoffLimit: (() { final guardedValue = map['backoffLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      backoffLimitPerIndex: (() { final guardedValue = map['backoffLimitPerIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       completionMode: (() { final guardedValue = map['completionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      completions: (() { final guardedValue = map['completions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      completions: (() { final guardedValue = map['completions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       managedBy: (() { final guardedValue = map['managedBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       manualSelector: (() { final guardedValue = map['manualSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxFailedIndexes: (() { final guardedValue = map['maxFailedIndexes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      parallelism: (() { final guardedValue = map['parallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxFailedIndexes: (() { final guardedValue = map['maxFailedIndexes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      parallelism: (() { final guardedValue = map['parallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       podFailurePolicy: (() { final guardedValue = map['podFailurePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PodFailurePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       podReplacementPolicy: (() { final guardedValue = map['podReplacementPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scheduling: (() { final guardedValue = map['scheduling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobSchedulingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -133,7 +133,7 @@ class JobSpec {
       successPolicy: (() { final guardedValue = map['successPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SuccessPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       suspend: (() { final guardedValue = map['suspend']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       template: pulumi.Input.fromValue(PodTemplateSpec.fromMap((map['template']! as Map).cast<String, dynamic>())),
-      ttlSecondsAfterFinished: (() { final guardedValue = map['ttlSecondsAfterFinished']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ttlSecondsAfterFinished: (() { final guardedValue = map['ttlSecondsAfterFinished']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

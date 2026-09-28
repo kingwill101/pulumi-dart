@@ -38,7 +38,7 @@ class ContainerResourceMetricSourcePatchAutoscalingV2beta1 {
     return ContainerResourceMetricSourcePatchAutoscalingV2beta1(
       container: (() { final guardedValue = map['container']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      targetAverageUtilization: (() { final guardedValue = map['targetAverageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetAverageUtilization: (() { final guardedValue = map['targetAverageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetAverageValue: (() { final guardedValue = map['targetAverageValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

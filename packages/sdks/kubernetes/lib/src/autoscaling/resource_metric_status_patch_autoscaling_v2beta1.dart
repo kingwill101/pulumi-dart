@@ -31,7 +31,7 @@ class ResourceMetricStatusPatchAutoscalingV2beta1 {
 
   factory ResourceMetricStatusPatchAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return ResourceMetricStatusPatchAutoscalingV2beta1(
-      currentAverageUtilization: (() { final guardedValue = map['currentAverageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      currentAverageUtilization: (() { final guardedValue = map['currentAverageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       currentAverageValue: (() { final guardedValue = map['currentAverageValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
