@@ -1067,7 +1067,7 @@ class ManagedNodeGroup extends pulumi.ComponentResource {
           'eks:index:ManagedNodeGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
+          pulumi.ComponentResourceOptions(version: '4.4.0').merge(options),
           remote: true,
         ) {
     nodeGroup = registerOutput<pulumi_aws_eks.NodeGroup?>('nodeGroup');
