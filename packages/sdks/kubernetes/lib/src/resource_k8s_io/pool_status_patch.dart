@@ -78,17 +78,17 @@ class PoolStatusPatch {
 
   factory PoolStatusPatch.fromMap(Map<String, dynamic> map) {
     return PoolStatusPatch(
-      allocatedDevices: (() { final guardedValue = map['allocatedDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      availableDevices: (() { final guardedValue = map['availableDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      allocatedDevices: (() { final guardedValue = map['allocatedDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      availableDevices: (() { final guardedValue = map['availableDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       driver: (() { final guardedValue = map['driver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nodeName: (() { final guardedValue = map['nodeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       partitionSummary: (() { final guardedValue = map['partitionSummary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PartitionTypeStatusPatch>(guardedValue, (value) => PartitionTypeStatusPatch.fromMap((value as Map).cast<String, dynamic>()))); })(),
       poolName: (() { final guardedValue = map['poolName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      resourceSliceCount: (() { final guardedValue = map['resourceSliceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      resourceSliceCount: (() { final guardedValue = map['resourceSliceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       shareableSummary: (() { final guardedValue = map['shareableSummary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ShareableSummaryStatusPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      totalDevices: (() { final guardedValue = map['totalDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      unavailableDevices: (() { final guardedValue = map['unavailableDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      totalDevices: (() { final guardedValue = map['totalDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      unavailableDevices: (() { final guardedValue = map['unavailableDevices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       validationError: (() { final guardedValue = map['validationError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

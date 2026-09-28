@@ -28,7 +28,7 @@ class WeightedPodAffinityTerm {
   factory WeightedPodAffinityTerm.fromMap(Map<String, dynamic> map) {
     return WeightedPodAffinityTerm(
       podAffinityTerm: pulumi.Input.fromValue(PodAffinityTerm.fromMap((map['podAffinityTerm']! as Map).cast<String, dynamic>())),
-      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
+      weight: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['weight'])),
     );
   }
 }

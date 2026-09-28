@@ -40,7 +40,7 @@ class FlowSchemaSpec {
   factory FlowSchemaSpec.fromMap(Map<String, dynamic> map) {
     return FlowSchemaSpec(
       distinguisherMethod: (() { final guardedValue = map['distinguisherMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FlowDistinguisherMethod.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      matchingPrecedence: (() { final guardedValue = map['matchingPrecedence']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      matchingPrecedence: (() { final guardedValue = map['matchingPrecedence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       priorityLevelConfiguration: pulumi.Input.fromValue(PriorityLevelConfigurationReference.fromMap((map['priorityLevelConfiguration']! as Map).cast<String, dynamic>())),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyRulesWithSubjects>(guardedValue, (value) => PolicyRulesWithSubjects.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

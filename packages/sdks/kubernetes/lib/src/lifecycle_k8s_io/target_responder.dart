@@ -54,7 +54,7 @@ class TargetResponder {
   factory TargetResponder.fromMap(Map<String, dynamic> map) {
     return TargetResponder(
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }

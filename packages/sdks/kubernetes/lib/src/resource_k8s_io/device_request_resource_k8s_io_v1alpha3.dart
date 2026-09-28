@@ -69,7 +69,7 @@ class DeviceRequestResourceK8sIoV1alpha3 {
     return DeviceRequestResourceK8sIoV1alpha3(
       adminAccess: (() { final guardedValue = map['adminAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       allocationMode: (() { final guardedValue = map['allocationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       deviceClassName: pulumi.Input.fromValue(map['deviceClassName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       selectors: (() { final guardedValue = map['selectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeviceSelectorResourceK8sIoV1alpha3>(guardedValue, (value) => DeviceSelectorResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))); })(),

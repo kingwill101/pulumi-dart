@@ -45,7 +45,7 @@ class ListMetaPatch {
   factory ListMetaPatch.fromMap(Map<String, dynamic> map) {
     return ListMetaPatch(
       continue_: (() { final guardedValue = map['continue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      remainingItemCount: (() { final guardedValue = map['remainingItemCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      remainingItemCount: (() { final guardedValue = map['remainingItemCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceVersion: (() { final guardedValue = map['resourceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       shardInfo: (() { final guardedValue = map['shardInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ShardInfoPatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

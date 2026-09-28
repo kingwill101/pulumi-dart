@@ -59,7 +59,7 @@ class DeleteOptions {
     return DeleteOptions(
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dryRun: (() { final guardedValue = map['dryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      gracePeriodSeconds: (() { final guardedValue = map['gracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      gracePeriodSeconds: (() { final guardedValue = map['gracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ignoreStoreReadErrorWithClusterBreakingPotential: (() { final guardedValue = map['ignoreStoreReadErrorWithClusterBreakingPotential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       orphanDependents: (() { final guardedValue = map['orphanDependents']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

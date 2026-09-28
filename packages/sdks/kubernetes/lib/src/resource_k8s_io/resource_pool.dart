@@ -37,9 +37,9 @@ class ResourcePool {
 
   factory ResourcePool.fromMap(Map<String, dynamic> map) {
     return ResourcePool(
-      generation: pulumi.Input.fromValue((map['generation'] as num).toInt()),
+      generation: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['generation'])),
       name: pulumi.Input.fromValue(map['name'] as String),
-      resourceSliceCount: pulumi.Input.fromValue((map['resourceSliceCount'] as num).toInt()),
+      resourceSliceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['resourceSliceCount'])),
     );
   }
 }

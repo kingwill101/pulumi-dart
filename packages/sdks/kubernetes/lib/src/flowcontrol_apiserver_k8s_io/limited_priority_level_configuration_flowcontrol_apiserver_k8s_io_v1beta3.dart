@@ -49,10 +49,10 @@ class LimitedPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta3 {
 
   factory LimitedPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta3.fromMap(Map<String, dynamic> map) {
     return LimitedPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta3(
-      borrowingLimitPercent: (() { final guardedValue = map['borrowingLimitPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      lendablePercent: (() { final guardedValue = map['lendablePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      borrowingLimitPercent: (() { final guardedValue = map['borrowingLimitPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      lendablePercent: (() { final guardedValue = map['lendablePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       limitResponse: (() { final guardedValue = map['limitResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LimitResponseFlowcontrolApiserverK8sIoV1beta3.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      nominalConcurrencyShares: (() { final guardedValue = map['nominalConcurrencyShares']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      nominalConcurrencyShares: (() { final guardedValue = map['nominalConcurrencyShares']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

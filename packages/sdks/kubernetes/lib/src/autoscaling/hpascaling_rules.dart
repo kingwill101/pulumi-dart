@@ -45,7 +45,7 @@ class HPAScalingRules {
     return HPAScalingRules(
       policies: (() { final guardedValue = map['policies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HPAScalingPolicy>(guardedValue, (value) => HPAScalingPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       selectPolicy: (() { final guardedValue = map['selectPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      stabilizationWindowSeconds: (() { final guardedValue = map['stabilizationWindowSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      stabilizationWindowSeconds: (() { final guardedValue = map['stabilizationWindowSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tolerance: (() { final guardedValue = map['tolerance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
