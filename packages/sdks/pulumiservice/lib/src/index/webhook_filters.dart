@@ -1,4 +1,6 @@
-enum WebhookFilters {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum WebhookFilters implements pulumi.PulumiEnum<String> {
   stackCreated("stack_created"),
   stackDeleted("stack_deleted"),
   updateSucceeded("update_succeeded"),
@@ -33,6 +35,7 @@ enum WebhookFilters {
   environmentRotationFailed("environment_rotation_failed");
 
   const WebhookFilters(this.wireValue);
+  @override
   final String wireValue;
 
   static WebhookFilters fromValue(String value) {

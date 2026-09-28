@@ -4,6 +4,8 @@ import 'organization_role_args.dart';
 /// A custom (fine-grained) role defined on a Pulumi Cloud organization. Custom roles allow precise permission control beyond the built-in `admin` / `member` / `billing-manager` roles. Assign them to members via the `OrganizationMember.roleId` field or to teams via `TeamRoleAssignment`.
 ///
 /// Requires the Custom Roles feature to be enabled on the organization. See the [Pulumi Cloud RBAC docs](https://www.pulumi.com/docs/pulumi-cloud/access-management/rbac/) for the shape of the `permissions` descriptor.
+///
+/// This resource manages only permission descriptors with `uxPurpose="role"`. Pulumi Cloud uses `uxPurpose` to split the permission-descriptor table into roles and other kinds (for example `policy`). Use `pulumiservice:api:Role`, which exposes `uxPurpose` directly, to manage the other kinds.
 class OrganizationRole extends pulumi.CustomResource {
   /// Human-readable description of what the role grants.
   late final pulumi.Output<String?> description;
@@ -44,12 +46,30 @@ class OrganizationRole extends pulumi.CustomResource {
           'pulumiservice:index:OrganizationRole',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['organizationName']).merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     organizationName = registerOutput<String>('organizationName');
-    permissions = registerOutput<Map<String, dynamic>>('permissions');
+    permissions = registerOutput<Map<String, dynamic>>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
+    resourceType = registerOutput<String?>('resourceType');
+    roleId = registerOutput<String>('roleId');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationRole] resource.
+  OrganizationRole.reference(String urn)
+    : super(
+        'pulumiservice:index:OrganizationRole',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    organizationName = registerOutput<String>('organizationName');
+    permissions = registerOutput<Map<String, dynamic>>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
     resourceType = registerOutput<String?>('resourceType');
     roleId = registerOutput<String>('roleId');
     version = registerOutput<int>('version');

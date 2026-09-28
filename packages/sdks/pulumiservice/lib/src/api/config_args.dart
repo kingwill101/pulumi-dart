@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_api_stacks_config_args_doc}
 class ConfigArgs {
   /// Deprecated: this field is no longer used by the service. Stacks that use a service-backed configuration store all config (including secrets) in ESC, which uses its own encryption. New callers should omit this field.
-  final pulumi.Input<String>? encryptedKey;
+  final pulumi.Input<String?>? encryptedKey;
   /// Deprecated: this field is no longer used by the service. Stacks that use a service-backed configuration store all config (including secrets) in ESC, which uses its own encryption. New callers should omit this field.
-  final pulumi.Input<String>? encryptionSalt;
+  final pulumi.Input<String?>? encryptionSalt;
   /// Reference to ESC environment to use as stack configuration.
   final pulumi.Input<String> environment;
   /// The organization name
@@ -18,7 +18,7 @@ class ConfigArgs {
   /// The project name
   final pulumi.Input<String> projectName;
   /// Deprecated: this field is no longer used by the service. Stacks that use a service-backed configuration store all config (including secrets) in ESC, which uses its own encryption. New callers should omit this field.
-  final pulumi.Input<String>? secretsProvider;
+  final pulumi.Input<String?>? secretsProvider;
   /// The stack name
   final pulumi.Input<String> stackName;
 

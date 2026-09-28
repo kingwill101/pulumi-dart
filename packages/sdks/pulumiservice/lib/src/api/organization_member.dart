@@ -44,7 +44,26 @@ class OrganizationMember extends pulumi.CustomResource {
     knownToPulumi = registerOutput<bool>('knownToPulumi');
     links = registerOutput<dynamic>('links');
     role = registerOutput<String>('role');
-    teams = registerOutput<List<String>?>('teams');
+    teams = registerOutput<List<String>?>('teams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    user = registerOutput<dynamic>('user');
+    virtualAdmin = registerOutput<bool>('virtualAdmin');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationMember] resource.
+  OrganizationMember.reference(String urn)
+    : super(
+        'pulumiservice:api:OrganizationMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    created = registerOutput<String>('created');
+    fgaRole = registerOutput<dynamic>('fgaRole');
+    knownToPulumi = registerOutput<bool>('knownToPulumi');
+    links = registerOutput<dynamic>('links');
+    role = registerOutput<String>('role');
+    teams = registerOutput<List<String>?>('teams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     user = registerOutput<dynamic>('user');
     virtualAdmin = registerOutput<bool>('virtualAdmin');
   }

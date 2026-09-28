@@ -26,12 +26,30 @@ class OrgAccessToken extends pulumi.CustomResource {
           'pulumiservice:index:OrgAccessToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['admin', 'description', 'name', 'organizationName']).merge(options),
+          additionalSecretOutputs: const ['value'],
         ) {
     admin = registerOutput<bool?>('admin');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     organizationName = registerOutput<String>('organizationName');
-    value = registerOutput<String>('value');
+    value = registerOutput<String>('value', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [OrgAccessToken] resource.
+  OrgAccessToken.reference(String urn)
+    : super(
+        'pulumiservice:index:OrgAccessToken',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['value'],
+        isResourceReference: true,
+      ) {
+    admin = registerOutput<bool?>('admin');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    organizationName = registerOutput<String>('organizationName');
+    value = registerOutput<String>('value', isSecret: true);
   }
 }

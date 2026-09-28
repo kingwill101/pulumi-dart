@@ -18,10 +18,11 @@ class ProviderProvider extends pulumi.ProviderResource {
   }) : super(
           'pulumiservice',
           name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          pulumi.Input.mapToInputs((args ?? ProviderArgs()).toMap()),
           options ?? pulumi.CustomResourceOptions(),
+          additionalSecretOutputs: const ['accessToken'],
         ) {
-    accessToken = registerOutput<String?>('accessToken');
+    accessToken = registerOutput<String?>('accessToken', isSecret: true);
     apiUrl = registerOutput<String?>('apiUrl');
   }
 }

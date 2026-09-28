@@ -22,4 +22,16 @@ class EnvironmentSettings extends pulumi.CustomResource {
         ) {
     deletionProtected = registerOutput<bool>('deletionProtected');
   }
+
+  /// Creates a typed reference to an existing [EnvironmentSettings] resource.
+  EnvironmentSettings.reference(String urn)
+    : super(
+        'pulumiservice:api/esc:EnvironmentSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionProtected = registerOutput<bool>('deletionProtected');
+  }
 }

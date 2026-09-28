@@ -26,12 +26,30 @@ class TeamAccessToken extends pulumi.CustomResource {
           'pulumiservice:index:TeamAccessToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['description', 'name', 'organizationName', 'teamName']).merge(options),
+          additionalSecretOutputs: const ['value'],
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     organizationName = registerOutput<String>('organizationName');
     teamName = registerOutput<String>('teamName');
-    value = registerOutput<String>('value');
+    value = registerOutput<String>('value', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [TeamAccessToken] resource.
+  TeamAccessToken.reference(String urn)
+    : super(
+        'pulumiservice:index:TeamAccessToken',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['value'],
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    organizationName = registerOutput<String>('organizationName');
+    teamName = registerOutput<String>('teamName');
+    value = registerOutput<String>('value', isSecret: true);
   }
 }

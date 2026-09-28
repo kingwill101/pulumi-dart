@@ -1,8 +1,11 @@
-enum AuthPolicyDecision {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum AuthPolicyDecision implements pulumi.PulumiEnum<String> {
   valueDeny("deny"),
   valueAllow("allow");
 
   const AuthPolicyDecision(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthPolicyDecision fromValue(String value) {

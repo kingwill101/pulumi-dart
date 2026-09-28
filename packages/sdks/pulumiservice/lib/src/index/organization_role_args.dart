@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_organization_role_args_doc}
 class OrganizationRoleArgs {
   /// Human-readable description of what the role grants.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The role's display name. Must be unique within the organization.
   final pulumi.Input<String> name;
   /// The Pulumi Cloud organization name.
@@ -28,7 +28,7 @@ class OrganizationRoleArgs {
   /// Note: the `__type` field name uses Pulumi's `__`-prefixed-key passthrough (pulumi/pulumi#22834, available in pulumi 3.235.0+). Earlier pulumi runtimes will drop these keys at the SDK boundary; the Python SDK pins the minimum runtime version automatically.
   final pulumi.Input<Map<String, dynamic>> permissions;
   /// The resource type the role's permissions apply to. Defaults to `global` (the org-wide role that can be assigned to members and teams). Other valid values: `stack`, `environment`, `insights-account`.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
 
   /// Creates a new [OrganizationRoleArgs].
   /// [description] Human-readable description of what the role grants.

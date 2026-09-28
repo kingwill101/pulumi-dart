@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_api_policy_group_args_doc}
 class PolicyGroupArgs {
   /// Agent pool ID for policy evaluation. Defaults to Pulumi hosted pool if not specified.
-  final pulumi.Input<String>? agentPoolId;
+  final pulumi.Input<String?>? agentPoolId;
   /// The type of entities this policy group applies to (stacks or accounts).
   final pulumi.Input<String> entityType;
   /// The enforcement mode for the policy group (audit or preventative). Defaults to 'audit' for account policy groups, 'preventative' for stack policy groups.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The name of the new policy group.
   final pulumi.Input<String> name;
   /// The organization name

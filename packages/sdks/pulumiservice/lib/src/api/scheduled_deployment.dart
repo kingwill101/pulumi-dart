@@ -41,7 +41,29 @@ class ScheduledDeployment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     created = registerOutput<String>('created');
-    definition = registerOutput<Map<String, dynamic>>('definition');
+    definition = registerOutput<Map<String, dynamic>>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
+    kind = registerOutput<String>('kind');
+    lastExecuted = registerOutput<String>('lastExecuted');
+    modified = registerOutput<String>('modified');
+    nextExecution = registerOutput<String>('nextExecution');
+    orgID = registerOutput<String>('orgID');
+    paused = registerOutput<bool>('paused');
+    scheduleCron = registerOutput<String?>('scheduleCron');
+    scheduleID = registerOutput<String>('scheduleID');
+    scheduleOnce = registerOutput<String?>('scheduleOnce');
+  }
+
+  /// Creates a typed reference to an existing [ScheduledDeployment] resource.
+  ScheduledDeployment.reference(String urn)
+    : super(
+        'pulumiservice:api/deployments:ScheduledDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    created = registerOutput<String>('created');
+    definition = registerOutput<Map<String, dynamic>>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
     kind = registerOutput<String>('kind');
     lastExecuted = registerOutput<String>('lastExecuted');
     modified = registerOutput<String>('modified');

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TemplateSourceDestination {
   /// Destination URL that gets filled in on new project creation.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [TemplateSourceDestination].
   /// [url] Destination URL that gets filled in on new project creation.

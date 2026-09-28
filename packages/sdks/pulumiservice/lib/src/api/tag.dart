@@ -17,4 +17,14 @@ class Tag extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         );
+
+  /// Creates a typed reference to an existing [Tag] resource.
+  Tag.reference(String urn)
+    : super(
+        'pulumiservice:api/stacks:Tag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      );
 }

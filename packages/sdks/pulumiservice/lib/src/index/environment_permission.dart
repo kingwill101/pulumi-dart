@@ -1,4 +1,6 @@
-enum EnvironmentPermission {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum EnvironmentPermission implements pulumi.PulumiEnum<String> {
   valueNone("none"),
   valueRead("read"),
   valueOpen("open"),
@@ -6,6 +8,7 @@ enum EnvironmentPermission {
   valueAdmin("admin");
 
   const EnvironmentPermission(this.wireValue);
+  @override
   final String wireValue;
 
   static EnvironmentPermission fromValue(String value) {

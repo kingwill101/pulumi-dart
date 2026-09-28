@@ -20,9 +20,24 @@ class AccessToken extends pulumi.CustomResource {
           'pulumiservice:index:AccessToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['description']).merge(options),
+          additionalSecretOutputs: const ['value'],
         ) {
     description = registerOutput<String>('description');
-    value = registerOutput<String>('value');
+    value = registerOutput<String>('value', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [AccessToken] resource.
+  AccessToken.reference(String urn)
+    : super(
+        'pulumiservice:index:AccessToken',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['value'],
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String>('description');
+    value = registerOutput<String>('value', isSecret: true);
   }
 }

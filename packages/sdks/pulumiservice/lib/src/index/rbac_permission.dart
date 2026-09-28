@@ -1,4 +1,6 @@
-enum RbacPermission {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum RbacPermission implements pulumi.PulumiEnum<String> {
   read("environment:read"),
   readDecrypt("environment:read_decrypt"),
   open("environment:open"),
@@ -8,6 +10,7 @@ enum RbacPermission {
   rotate("environment:rotate");
 
   const RbacPermission(this.wireValue);
+  @override
   final String wireValue;
 
   static RbacPermission fromValue(String value) {

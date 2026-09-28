@@ -24,8 +24,23 @@ class TeamRoleAssignment extends pulumi.CustomResource {
           'pulumiservice:index:TeamRoleAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['organizationName', 'roleId', 'teamName']).merge(options),
         ) {
+    organizationName = registerOutput<String>('organizationName');
+    roleId = registerOutput<String>('roleId');
+    roleName = registerOutput<String>('roleName');
+    teamName = registerOutput<String>('teamName');
+  }
+
+  /// Creates a typed reference to an existing [TeamRoleAssignment] resource.
+  TeamRoleAssignment.reference(String urn)
+    : super(
+        'pulumiservice:index:TeamRoleAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     organizationName = registerOutput<String>('organizationName');
     roleId = registerOutput<String>('roleId');
     roleName = registerOutput<String>('roleName');

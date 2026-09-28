@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_team_access_token_args_doc}
 class TeamAccessTokenArgs {
   /// Optional. Description for the token.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name for the token. This must be unique amongst all machine tokens within your organization.
   final pulumi.Input<String> name;
   /// The organization's name.

@@ -12,13 +12,13 @@ class CustomVCSIntegrationArgs {
   /// ESC environment reference in 'project/envName' format containing VCS credentials (e.g. SSH keys, access tokens) used for repository operations
   final pulumi.Input<String> environment;
   /// The custom VCS integration identifier
-  final pulumi.Input<String>? integrationId;
+  final pulumi.Input<String?>? integrationId;
   /// Human-readable name for the integration, unique within the organization (e.g. 'Gitea Production')
   final pulumi.Input<String> name;
   /// The organization name
   final pulumi.Input<String> orgName;
   /// Version control system type. Defaults to 'git' if not specified.
-  final pulumi.Input<String>? vcsType;
+  final pulumi.Input<String?>? vcsType;
 
   /// Creates a new [CustomVCSIntegrationArgs].
   /// [baseUrl] URL prefix for repositories covered by this integration (e.g. 'https://gitea.example.com/myorg'). Used to match repositories to integrations.

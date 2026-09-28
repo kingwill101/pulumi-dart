@@ -12,7 +12,7 @@ class GetEnvironmentArgs {
   /// The Pulumi Cloud organization that owns the environment.
   final pulumi.Input<String> organizationName;
   /// The ESC project name. Defaults to `default`.
-  final pulumi.Input<String>? projectName;
+  final pulumi.Input<String?>? projectName;
 
   /// Creates a new [GetEnvironmentArgs].
   /// [name] The environment name.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_drift_schedule_args_doc}
 class DriftScheduleArgs {
   /// Whether any drift detected should be remediated after a drift run.
-  final pulumi.Input<bool>? autoRemediate;
+  final pulumi.Input<bool?>? autoRemediate;
   /// Organization name.
   final pulumi.Input<String> organization;
   /// Project name.
@@ -24,13 +24,13 @@ class DriftScheduleArgs {
   /// [project] Project name.
   /// [scheduleCron] Cron expression for when to run drift detection.
   /// [stack] Stack name.
-  const DriftScheduleArgs({
-    this.autoRemediate,
+  DriftScheduleArgs({
+    pulumi.Input<bool?>? autoRemediate,
     required this.organization,
     required this.project,
     required this.scheduleCron,
     required this.stack,
-  });
+  }) : autoRemediate = autoRemediate ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

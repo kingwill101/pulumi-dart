@@ -7,7 +7,7 @@ class Service extends pulumi.CustomResource {
   /// items. Will be nil once all items have been returned.
   late final pulumi.Output<String?> continuationToken;
   /// The list of service items
-  late final pulumi.Output<List<Map<String, dynamic>>> items;
+  late final pulumi.Output<List<dynamic>> items;
 
   /// Creates a new [Service].
   /// [name] The Pulumi resource name.
@@ -24,6 +24,19 @@ class Service extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     continuationToken = registerOutput<String?>('continuationToken');
-    items = registerOutput<List<Map<String, dynamic>>>('items');
+    items = registerOutput<List<dynamic>>('items', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'pulumiservice:api/services:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    continuationToken = registerOutput<String?>('continuationToken');
+    items = registerOutput<List<dynamic>>('items', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
   }
 }

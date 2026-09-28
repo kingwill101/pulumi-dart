@@ -1,4 +1,6 @@
-enum CloudProvider {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum CloudProvider implements pulumi.PulumiEnum<String> {
   aws("aws"),
   azureNative("azure-native"),
   gcp("gcp"),
@@ -6,6 +8,7 @@ enum CloudProvider {
   oci("oci");
 
   const CloudProvider(this.wireValue);
+  @override
   final String wireValue;
 
   static CloudProvider fromValue(String value) {

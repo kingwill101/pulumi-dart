@@ -37,4 +37,21 @@ class Environment extends pulumi.CustomResource {
     revision = registerOutput<int>('revision');
     yaml = registerOutput<dynamic>('yaml');
   }
+
+  /// Creates a typed reference to an existing [Environment] resource.
+  Environment.reference(String urn)
+    : super(
+        'pulumiservice:index:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    environmentId = registerOutput<String?>('environmentId');
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    project = registerOutput<String>('project');
+    revision = registerOutput<int>('revision');
+    yaml = registerOutput<dynamic>('yaml');
+  }
 }

@@ -7,11 +7,11 @@ import 'gcpoidcconfiguration.dart';
 
 class OperationContextOIDC {
   /// AWS-specific OIDC configuration.
-  final pulumi.Input<AWSOIDCConfiguration>? aws;
+  final pulumi.Input<AWSOIDCConfiguration?>? aws;
   /// Azure-specific OIDC configuration.
-  final pulumi.Input<AzureOIDCConfiguration>? azure;
+  final pulumi.Input<AzureOIDCConfiguration?>? azure;
   /// GCP-specific OIDC configuration.
-  final pulumi.Input<GCPOIDCConfiguration>? gcp;
+  final pulumi.Input<GCPOIDCConfiguration?>? gcp;
 
   /// Creates a new [OperationContextOIDC].
   /// [aws] AWS-specific OIDC configuration.

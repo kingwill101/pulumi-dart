@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_org_access_token_args_doc}
 class OrgAccessTokenArgs {
   /// Optional. True if this is an admin token.
-  final pulumi.Input<bool>? admin;
+  final pulumi.Input<bool?>? admin;
   /// Optional. Description for the token.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name for the token.
   final pulumi.Input<String> name;
   /// The organization's name.
@@ -21,12 +21,12 @@ class OrgAccessTokenArgs {
   /// [description] Optional. Description for the token.
   /// [name] The name for the token.
   /// [organizationName] The organization's name.
-  const OrgAccessTokenArgs({
-    this.admin,
+  OrgAccessTokenArgs({
+    pulumi.Input<bool?>? admin,
     this.description,
     required this.name,
     required this.organizationName,
-  });
+  }) : admin = admin ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
