@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_extension_extension_args_doc}
 class ExtensionArgs {
   /// When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)
-  final pulumi.Input<bool>? createCascade;
+  final pulumi.Input<bool?>? createCascade;
   /// Which database to create the extension on. Defaults to provider database.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// When true, will also drop all the objects that depend on the extension, and in turn all objects that depend on those objects. (Default: false)
-  final pulumi.Input<bool>? dropCascade;
+  final pulumi.Input<bool?>? dropCascade;
   /// The name of the extension.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Sets the schema of an extension.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
   /// Sets the version number of the extension.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ExtensionArgs].
   /// [createCascade] When true, will also create any extensions that this extension depends on that are not already installed. (Default: false)

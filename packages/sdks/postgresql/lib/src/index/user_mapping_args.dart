@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_user_mapping_user_mapping_args_doc}
 class UserMappingArgs {
   /// This clause specifies the options of the user mapping. The options typically define the actual user name and password of the mapping. Option names must be unique. The allowed option names and values are specific to the server's foreign-data wrapper.
-  final pulumi.Input<Map<String, String>>? options;
+  final pulumi.Input<Map<String, String>?>? options;
   /// The name of an existing server for which the user mapping is to be created.
   /// Changing this value
   /// will force the creation of a new resource as this value can only be set

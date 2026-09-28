@@ -280,7 +280,7 @@ class GrantRole extends pulumi.CustomResource {
           'postgresql:index/grantRole:GrantRole',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.18.1').merge(options),
         ) {
     grantRole = registerOutput<String>('grantRole');
     role = registerOutput<String>('role');
@@ -292,11 +292,12 @@ class GrantRole extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GrantRoleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GrantRole._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -310,6 +311,20 @@ class GrantRole extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    grantRole = registerOutput<String>('grantRole');
+    role = registerOutput<String>('role');
+    withAdminOption = registerOutput<bool?>('withAdminOption');
+  }
+
+  /// Creates a typed reference to an existing [GrantRole] resource.
+  GrantRole.reference(String urn)
+    : super(
+        'postgresql:index/grantRole:GrantRole',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     grantRole = registerOutput<String>('grantRole');
     role = registerOutput<String>('role');
     withAdminOption = registerOutput<bool?>('withAdminOption');

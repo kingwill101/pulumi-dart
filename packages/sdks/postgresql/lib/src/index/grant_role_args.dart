@@ -12,7 +12,7 @@ class GrantRoleArgs {
   /// The name of the role that is granted a new membership.
   final pulumi.Input<String> role;
   /// Giving ability to grant membership to others or not for `role`. (Default: false)
-  final pulumi.Input<bool>? withAdminOption;
+  final pulumi.Input<bool?>? withAdminOption;
 
   /// Creates a new [GrantRoleArgs].
   /// [grantRole] The name of the role that is added to `role`.

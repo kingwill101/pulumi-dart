@@ -10,15 +10,15 @@ class SubscriptionArgs {
   /// The connection string to the publisher. It should follow the [keyword/value format](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
   final pulumi.Input<String> conninfo;
   /// Specifies whether the command should create the replication slot on the publisher. Default behavior is true
-  final pulumi.Input<bool>? createSlot;
+  final pulumi.Input<bool?>? createSlot;
   /// Which database to create the subscription on. Defaults to provider database.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The name of the publication.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Names of the publications on the publisher to subscribe to
   final pulumi.Input<List<String>> publications;
   /// Name of the replication slot to use. The default behavior is to use the name of the subscription for the slot name
-  final pulumi.Input<String>? slotName;
+  final pulumi.Input<String?>? slotName;
 
   /// Creates a new [SubscriptionArgs].
   /// [conninfo] The connection string to the publisher. It should follow the [keyword/value format](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)

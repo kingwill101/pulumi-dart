@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering PhysicalReplicationSlot resources.
 class PhysicalReplicationSlotState {
   /// The name of the replication slot.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [PhysicalReplicationSlotState].
   /// [name] The name of the replication slot.
