@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_role_role_args_doc}
 class RoleArgs {
   /// The name of the role.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [RoleArgs].
   /// [name] The name of the role.

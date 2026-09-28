@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering UserPassword resources.
 class UserPasswordState {
   /// The encrypted password, base64 encoded.
-  final pulumi.Input<String>? encryptedPassword;
+  final pulumi.Input<String?>? encryptedPassword;
   /// The source host of the user. Defaults to `localhost`.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// The fingerprint of the PGP key used to encrypt the password
-  final pulumi.Input<String>? keyFingerprint;
+  final pulumi.Input<String?>? keyFingerprint;
   /// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
-  final pulumi.Input<String>? pgpKey;
+  final pulumi.Input<String?>? pgpKey;
   /// The IAM user to associate with this access key.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [UserPasswordState].
   /// [encryptedPassword] The encrypted password, base64 encoded.

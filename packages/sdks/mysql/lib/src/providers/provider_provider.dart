@@ -25,8 +25,8 @@ class ProviderProvider extends pulumi.ProviderResource {
   }) : super(
           'mysql',
           name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.Input.mapToInputs((args ?? ProviderArgs()).toMap()),
+          pulumi.CustomResourceOptions(version: '3.3.2').merge(options),
         ) {
     authenticationPlugin = registerOutput<String?>('authenticationPlugin');
     endpoint = registerOutput<String?>('endpoint');

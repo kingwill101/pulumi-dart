@@ -271,12 +271,13 @@ class User extends pulumi.CustomResource {
           'mysql:index/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.3.2').merge(options),
+          additionalSecretOutputs: const ['password', 'plaintextPassword'],
         ) {
     authPlugin = registerOutput<String?>('authPlugin');
     host = registerOutput<String?>('host');
-    password = registerOutput<String?>('password');
-    plaintextPassword = registerOutput<String?>('plaintextPassword');
+    password = registerOutput<String?>('password', isSecret: true);
+    plaintextPassword = registerOutput<String?>('plaintextPassword', isSecret: true);
     tlsOption = registerOutput<String?>('tlsOption');
     user = registerOutput<String>('user');
   }
@@ -286,11 +287,12 @@ class User extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return User._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -306,8 +308,26 @@ class User extends pulumi.CustomResource {
         ) {
     authPlugin = registerOutput<String?>('authPlugin');
     host = registerOutput<String?>('host');
-    password = registerOutput<String?>('password');
-    plaintextPassword = registerOutput<String?>('plaintextPassword');
+    password = registerOutput<String?>('password', isSecret: true);
+    plaintextPassword = registerOutput<String?>('plaintextPassword', isSecret: true);
+    tlsOption = registerOutput<String?>('tlsOption');
+    user = registerOutput<String>('user');
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'mysql:index/user:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password', 'plaintextPassword'],
+        isResourceReference: true,
+      ) {
+    authPlugin = registerOutput<String?>('authPlugin');
+    host = registerOutput<String?>('host');
+    password = registerOutput<String?>('password', isSecret: true);
+    plaintextPassword = registerOutput<String?>('plaintextPassword', isSecret: true);
     tlsOption = registerOutput<String?>('tlsOption');
     user = registerOutput<String>('user');
   }
