@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrganizationMemberInfo {
   /// The member's built-in role (member, admin, billing-manager). Absent when a custom role is assigned — check `roleId` in that case.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// The custom role ID assigned to this member, if any.
-  final pulumi.Input<String>? roleId;
+  final pulumi.Input<String?>? roleId;
   /// The name of the currently assigned role (custom role name, or built-in role).
-  final pulumi.Input<String>? roleName;
+  final pulumi.Input<String?>? roleName;
   /// The member's Pulumi Cloud username.
   final pulumi.Input<String> username;
   /// Whether this member is an admin in Pulumi Cloud without admin access on the backing identity provider.

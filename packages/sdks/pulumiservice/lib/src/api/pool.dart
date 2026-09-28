@@ -4,7 +4,7 @@ import 'pool_args.dart';
 /// Creates a new agent pool for an organization. Agent pools enable self-hosted deployment agents, allowing organizations to run Pulumi Deployments on their own infrastructure rather than Pulumi-managed infrastructure. This is useful for accessing private networks, meeting compliance requirements, or using custom execution environments. The response includes an access token (agent pool secret) that self-hosted agents use to authenticate when polling for deployment work. This token is only returned once at creation time and cannot be retrieved later.
 class Pool extends pulumi.CustomResource {
   /// The agents
-  late final pulumi.Output<List<Map<String, dynamic>>> agents;
+  late final pulumi.Output<List<dynamic>> agents;
   /// The creation timestamp
   late final pulumi.Output<int> created;
   /// The description
@@ -29,12 +29,31 @@ class Pool extends pulumi.CustomResource {
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
+          additionalSecretOutputs: const ['tokenValue'],
         ) {
-    agents = registerOutput<List<Map<String, dynamic>>>('agents');
+    agents = registerOutput<List<dynamic>>('agents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     created = registerOutput<int>('created');
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');
     poolId = registerOutput<String>('poolId');
-    tokenValue = registerOutput<String?>('tokenValue');
+    tokenValue = registerOutput<String?>('tokenValue', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [Pool] resource.
+  Pool.reference(String urn)
+    : super(
+        'pulumiservice:api/agents:Pool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['tokenValue'],
+        isResourceReference: true,
+      ) {
+    agents = registerOutput<List<dynamic>>('agents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    created = registerOutput<int>('created');
+    description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    poolId = registerOutput<String>('poolId');
+    tokenValue = registerOutput<String?>('tokenValue', isSecret: true);
   }
 }

@@ -10,19 +10,19 @@ import 'policy_group_stack_reference.dart';
 /// {@macro pulumi_index_policy_group_args_doc}
 class PolicyGroupArgs {
   /// List of accounts that belong to this policy group.
-  final pulumi.Input<List<String>>? accounts;
+  final pulumi.Input<List<String>?>? accounts;
   /// The entity type for the policy group. Valid values are 'stacks' or 'accounts'. Defaults to 'stacks'.
-  final pulumi.Input<String>? entityType;
+  final pulumi.Input<String?>? entityType;
   /// The mode for the policy group. Valid values are 'audit' (reports violations) or 'preventative' (blocks operations). Defaults to 'audit'.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The name of the policy group.
   final pulumi.Input<String> name;
   /// The name of the Pulumi organization the policy group belongs to.
   final pulumi.Input<String> organizationName;
   /// List of policy packs applied to this policy group.
-  final pulumi.Input<List<PolicyGroupPolicyPackReferenceInput>>? policyPacks;
+  final pulumi.Input<List<PolicyGroupPolicyPackReferenceInput>?>? policyPacks;
   /// List of stack references that belong to this policy group.
-  final pulumi.Input<List<PolicyGroupStackReference>>? stacks;
+  final pulumi.Input<List<PolicyGroupStackReference>?>? stacks;
 
   /// Creates a new [PolicyGroupArgs].
   /// [accounts] List of accounts that belong to this policy group.
@@ -32,15 +32,15 @@ class PolicyGroupArgs {
   /// [organizationName] The name of the Pulumi organization the policy group belongs to.
   /// [policyPacks] List of policy packs applied to this policy group.
   /// [stacks] List of stack references that belong to this policy group.
-  const PolicyGroupArgs({
+  PolicyGroupArgs({
     this.accounts,
-    this.entityType,
-    this.mode,
+    pulumi.Input<String?>? entityType,
+    pulumi.Input<String?>? mode,
     required this.name,
     required this.organizationName,
     this.policyPacks,
     this.stacks,
-  });
+  }) : entityType = entityType ?? pulumi.Input.fromValue('stacks'), mode = mode ?? pulumi.Input.fromValue('audit');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

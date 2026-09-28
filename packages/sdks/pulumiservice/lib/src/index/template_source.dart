@@ -25,8 +25,23 @@ class TemplateSource extends pulumi.CustomResource {
           'pulumiservice:index:TemplateSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['organizationName']).merge(options),
         ) {
+    destination = registerOutput<TemplateSourceDestination?>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TemplateSourceDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    organizationName = registerOutput<String>('organizationName');
+    sourceName = registerOutput<String>('sourceName');
+    sourceURL = registerOutput<String>('sourceURL');
+  }
+
+  /// Creates a typed reference to an existing [TemplateSource] resource.
+  TemplateSource.reference(String urn)
+    : super(
+        'pulumiservice:index:TemplateSource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     destination = registerOutput<TemplateSourceDestination?>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TemplateSourceDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     organizationName = registerOutput<String>('organizationName');
     sourceName = registerOutput<String>('sourceName');

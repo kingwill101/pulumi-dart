@@ -29,8 +29,25 @@ class TeamEnvironmentPermission extends pulumi.CustomResource {
           'pulumiservice:index:TeamEnvironmentPermission',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['environment', 'maxOpenDuration', 'organization', 'permission', 'project', 'team']).merge(options),
         ) {
+    environment = registerOutput<String>('environment');
+    maxOpenDuration = registerOutput<String?>('maxOpenDuration');
+    organization = registerOutput<String>('organization');
+    permission = registerOutput<EnvironmentPermission>('permission', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentPermission.fromValue(guardedValue as String); });
+    project = registerOutput<String?>('project');
+    team = registerOutput<String>('team');
+  }
+
+  /// Creates a typed reference to an existing [TeamEnvironmentPermission] resource.
+  TeamEnvironmentPermission.reference(String urn)
+    : super(
+        'pulumiservice:index:TeamEnvironmentPermission',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     environment = registerOutput<String>('environment');
     maxOpenDuration = registerOutput<String?>('maxOpenDuration');
     organization = registerOutput<String>('organization');

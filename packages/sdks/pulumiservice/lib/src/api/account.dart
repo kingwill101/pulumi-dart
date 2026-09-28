@@ -42,7 +42,27 @@ class Account extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     ownedBy = registerOutput<dynamic>('ownedBy');
     provider = registerOutput<String>('provider');
-    providerConfig = registerOutput<Map<String, dynamic>?>('providerConfig');
+    providerConfig = registerOutput<Map<String, dynamic>?>('providerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
+    providerEnvRef = registerOutput<String?>('providerEnvRef');
+    providerVersion = registerOutput<String?>('providerVersion');
+    scanStatus = registerOutput<dynamic>('scanStatus');
+    scheduledScanEnabled = registerOutput<bool>('scheduledScanEnabled');
+  }
+
+  /// Creates a typed reference to an existing [Account] resource.
+  Account.reference(String urn)
+    : super(
+        'pulumiservice:api/insights:Account',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentPoolID = registerOutput<String?>('agentPoolID');
+    this.name = registerOutput<String>('name');
+    ownedBy = registerOutput<dynamic>('ownedBy');
+    provider = registerOutput<String>('provider');
+    providerConfig = registerOutput<Map<String, dynamic>?>('providerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
     providerEnvRef = registerOutput<String?>('providerEnvRef');
     providerVersion = registerOutput<String?>('providerVersion');
     scanStatus = registerOutput<dynamic>('scanStatus');

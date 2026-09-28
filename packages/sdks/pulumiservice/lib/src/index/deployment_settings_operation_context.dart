@@ -7,13 +7,13 @@ import 'operation_context_options.dart';
 /// Settings related to the Pulumi operation environment during the deployment.
 class DeploymentSettingsOperationContext {
   /// Environment variables to set for the deployment.
-  final pulumi.Input<Map<String, String>>? environmentVariables;
+  final pulumi.Input<Map<String, String>?>? environmentVariables;
   /// OIDC configuration to use during the deployment.
-  final pulumi.Input<OperationContextOIDC>? oidc;
+  final pulumi.Input<OperationContextOIDC?>? oidc;
   /// Options to override default behavior during the deployment.
-  final pulumi.Input<OperationContextOptions>? options;
+  final pulumi.Input<OperationContextOptions?>? options;
   /// Shell commands to run before the Pulumi operation executes.
-  final pulumi.Input<List<String>>? preRunCommands;
+  final pulumi.Input<List<String>?>? preRunCommands;
 
   /// Creates a new [DeploymentSettingsOperationContext].
   /// [environmentVariables] Environment variables to set for the deployment.

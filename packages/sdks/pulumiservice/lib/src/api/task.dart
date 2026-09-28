@@ -1,7 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'task_args.dart';
 
-/// Creates a new agent task for the specified organization. The request must include a prompt (the user event message) that initiates the task. Set the 'permissionMode' field in the request body to restrict the agent to read-only operations. Returns the created task details including task ID, name, status, and timestamp.
+/// Creates a new agent task for the specified organization. The request must include a prompt (the user event message) that initiates the task. The message is a user message, so its discriminator field must be set to "type": "user_message". Set the 'permissionMode' field in the request body to restrict the agent to read-only operations. Returns the created task details including task ID, name, status, and timestamp.
 class Task extends pulumi.CustomResource {
   /// Approval mode for this task. Valid values: 'manual', 'auto', 'balanced'.
   late final pulumi.Output<String> approvalMode;
@@ -18,7 +18,7 @@ class Task extends pulumi.CustomResource {
   /// Information about the user who created this task.
   late final pulumi.Output<dynamic> createdBy;
   /// Pulumi entities (stacks, projects, etc.) that provide context for the agent.
-  late final pulumi.Output<List<Map<String, dynamic>>> entities;
+  late final pulumi.Output<List<dynamic>> entities;
   /// Whether this task is shared with other org members.
   late final pulumi.Output<bool> isShared;
   /// When the task runtime last reported a heartbeat. Null if the runtime has never checked in.
@@ -29,11 +29,13 @@ class Task extends pulumi.CustomResource {
   late final pulumi.Output<String?> permissionMode;
   /// Whether the task is in plan mode. Set based on the first user message.
   late final pulumi.Output<bool> planMode;
+  /// The id of the RBAC role this task assumes. Null when the task runs with the creating user's own permissions (no assumed role).
+  late final pulumi.Output<String?> role;
   /// The current runtime phase for this task. Null until the runtime checks in.
   late final pulumi.Output<String?> runtimePhase;
   /// When the task was first shared. Null if never shared.
   late final pulumi.Output<String?> sharedAt;
-  /// The origin that triggered this task. Valid values: 'console', 'cli', 'slack', 'schedule', 'api', 'github'.
+  /// The origin that triggered this task. Valid values: 'console', 'cli', 'slack', 'schedule', 'api', 'github', 'code-review'.
   late final pulumi.Output<String?> source;
   /// The automation that spawned this task, if the task was created by an automation run.
   late final pulumi.Output<String?> sourceAutomationID;
@@ -45,6 +47,8 @@ class Task extends pulumi.CustomResource {
   late final pulumi.Output<int> tokensUsed;
   /// Where tools are executed for this task. Valid values: 'cloud', 'cli'.
   late final pulumi.Output<String?> toolExecutionMode;
+  /// The version control system this task operates against. Set for tasks that target a specific VCS platform (e.g. code reviews). Null for tasks with no VCS context.
+  late final pulumi.Output<String?> vcsProvider;
 
   /// Creates a new [Task].
   /// [name] The Pulumi resource name.
@@ -67,12 +71,13 @@ class Task extends pulumi.CustomResource {
     contextWindowTokens = registerOutput<int?>('contextWindowTokens');
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<dynamic>('createdBy');
-    entities = registerOutput<List<Map<String, dynamic>>>('entities');
+    entities = registerOutput<List<dynamic>>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     isShared = registerOutput<bool>('isShared');
     lastHeartbeat = registerOutput<String?>('lastHeartbeat');
     this.name = registerOutput<String>('name');
     permissionMode = registerOutput<String?>('permissionMode');
     planMode = registerOutput<bool>('planMode');
+    role = registerOutput<String?>('role');
     runtimePhase = registerOutput<String?>('runtimePhase');
     sharedAt = registerOutput<String?>('sharedAt');
     source = registerOutput<String?>('source');
@@ -81,5 +86,40 @@ class Task extends pulumi.CustomResource {
     taskType = registerOutput<String>('taskType');
     tokensUsed = registerOutput<int>('tokensUsed');
     toolExecutionMode = registerOutput<String?>('toolExecutionMode');
+    vcsProvider = registerOutput<String?>('vcsProvider');
+  }
+
+  /// Creates a typed reference to an existing [Task] resource.
+  Task.reference(String urn)
+    : super(
+        'pulumiservice:api/agents:Task',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    approvalMode = registerOutput<String>('approvalMode');
+    asyncTriggerType = registerOutput<String?>('asyncTriggerType');
+    contextCompactionThresholdPercent = registerOutput<int?>('contextCompactionThresholdPercent');
+    contextUsedTokens = registerOutput<int?>('contextUsedTokens');
+    contextWindowTokens = registerOutput<int?>('contextWindowTokens');
+    createdAt = registerOutput<String>('createdAt');
+    createdBy = registerOutput<dynamic>('createdBy');
+    entities = registerOutput<List<dynamic>>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    isShared = registerOutput<bool>('isShared');
+    lastHeartbeat = registerOutput<String?>('lastHeartbeat');
+    this.name = registerOutput<String>('name');
+    permissionMode = registerOutput<String?>('permissionMode');
+    planMode = registerOutput<bool>('planMode');
+    role = registerOutput<String?>('role');
+    runtimePhase = registerOutput<String?>('runtimePhase');
+    sharedAt = registerOutput<String?>('sharedAt');
+    source = registerOutput<String?>('source');
+    sourceAutomationID = registerOutput<String?>('sourceAutomationID');
+    status = registerOutput<String>('status');
+    taskType = registerOutput<String>('taskType');
+    tokensUsed = registerOutput<int>('tokensUsed');
+    toolExecutionMode = registerOutput<String?>('toolExecutionMode');
+    vcsProvider = registerOutput<String?>('vcsProvider');
   }
 }

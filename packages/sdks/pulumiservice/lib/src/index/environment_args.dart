@@ -12,7 +12,7 @@ class EnvironmentArgs {
   /// Organization name.
   final pulumi.Input<String> organization;
   /// Project name.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Environment's yaml file.
   final pulumi.Input<dynamic> yaml;
 
@@ -21,12 +21,12 @@ class EnvironmentArgs {
   /// [organization] Organization name.
   /// [project] Project name.
   /// [yaml] Environment's yaml file.
-  const EnvironmentArgs({
+  EnvironmentArgs({
     required this.name,
     required this.organization,
-    this.project,
+    pulumi.Input<String?>? project,
     required this.yaml,
-  });
+  }) : project = project ?? pulumi.Input.fromValue('default');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

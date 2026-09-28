@@ -14,7 +14,7 @@ class EnvironmentArgs {
   /// The project name for the environment.
   final pulumi.Input<String> project;
   /// Raw YAML body content.
-  final pulumi.Input<String>? yaml;
+  final pulumi.Input<String?>? yaml;
 
   /// Creates a new [EnvironmentArgs].
   /// [name] The name of the environment.

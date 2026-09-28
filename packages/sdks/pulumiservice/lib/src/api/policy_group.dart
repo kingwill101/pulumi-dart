@@ -8,7 +8,7 @@ class PolicyGroup extends pulumi.CustomResource {
   /// Agent pool ID for audit policy evaluation. Defaults to Pulumi hosted pool if not specified.
   late final pulumi.Output<String?> agentPoolId;
   /// List of policy packs that are applied to this policy group.
-  late final pulumi.Output<List<Map<String, dynamic>>> appliedPolicyPacks;
+  late final pulumi.Output<List<dynamic>> appliedPolicyPacks;
   /// The type of entities this policy group applies to (stacks or accounts).
   late final pulumi.Output<String> entityType;
   /// True if this is either the default stacks or default accounts policy group for the organization.
@@ -18,7 +18,7 @@ class PolicyGroup extends pulumi.CustomResource {
   /// The name of the policy group.
   late final pulumi.Output<String> name;
   /// List of stacks that are members of this policy group.
-  late final pulumi.Output<List<Map<String, dynamic>>> stacks;
+  late final pulumi.Output<List<dynamic>> stacks;
 
   /// Creates a new [PolicyGroup].
   /// [name] The Pulumi resource name.
@@ -34,13 +34,32 @@ class PolicyGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accounts = registerOutput<List<String>>('accounts');
+    accounts = registerOutput<List<String>>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     agentPoolId = registerOutput<String?>('agentPoolId');
-    appliedPolicyPacks = registerOutput<List<Map<String, dynamic>>>('appliedPolicyPacks');
+    appliedPolicyPacks = registerOutput<List<dynamic>>('appliedPolicyPacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     entityType = registerOutput<String>('entityType');
     isOrgDefault = registerOutput<bool>('isOrgDefault');
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    stacks = registerOutput<List<Map<String, dynamic>>>('stacks');
+    stacks = registerOutput<List<dynamic>>('stacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+  }
+
+  /// Creates a typed reference to an existing [PolicyGroup] resource.
+  PolicyGroup.reference(String urn)
+    : super(
+        'pulumiservice:api:PolicyGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accounts = registerOutput<List<String>>('accounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    agentPoolId = registerOutput<String?>('agentPoolId');
+    appliedPolicyPacks = registerOutput<List<dynamic>>('appliedPolicyPacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    entityType = registerOutput<String>('entityType');
+    isOrgDefault = registerOutput<bool>('isOrgDefault');
+    mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    stacks = registerOutput<List<dynamic>>('stacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
   }
 }

@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_providers_provider_args_doc}
 class ProviderArgs {
   /// Access Token to authenticate with Pulumi Cloud.
-  final pulumi.Input<String>? accessToken;
+  final pulumi.Input<String?>? accessToken;
   /// Optional override of Pulumi Cloud API endpoint.
-  final pulumi.Input<String>? apiUrl;
+  final pulumi.Input<String?>? apiUrl;
 
   /// Creates a new [ProviderArgs].
   /// [accessToken] Access Token to authenticate with Pulumi Cloud.
   /// [apiUrl] Optional override of Pulumi Cloud API endpoint.
-  const ProviderArgs({
+  ProviderArgs({
     this.accessToken,
-    this.apiUrl,
-  });
+    pulumi.Input<String?>? apiUrl,
+  }) : apiUrl = apiUrl ?? pulumi.Input.fromValue('https://api.pulumi.com');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

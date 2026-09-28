@@ -10,19 +10,19 @@ class ScheduledScanSettingsArgs {
   /// The Insights account name
   final pulumi.Input<String> accountName;
   /// The batch size for processing resources during the scan.
-  final pulumi.Input<int>? batchSize;
+  final pulumi.Input<int?>? batchSize;
   /// The concurrency level for list operations during the scan.
-  final pulumi.Input<int>? listConcurrency;
+  final pulumi.Input<int?>? listConcurrency;
   /// The organization name
   final pulumi.Input<String> orgName;
   /// Whether the scheduled scan is paused.
   final pulumi.Input<bool> paused;
   /// The concurrency level for read operations during the scan.
-  final pulumi.Input<int>? readConcurrency;
+  final pulumi.Input<int?>? readConcurrency;
   /// The timeout duration for read operations, as a Go duration string (e.g., '30s', '5m').
-  final pulumi.Input<String>? readTimeout;
+  final pulumi.Input<String?>? readTimeout;
   /// The cron expression defining the scan schedule.
-  final pulumi.Input<String>? scheduleCron;
+  final pulumi.Input<String?>? scheduleCron;
 
   /// Creates a new [ScheduledScanSettingsArgs].
   /// [accountName] The Insights account name
@@ -60,11 +60,11 @@ class ScheduledScanSettingsArgs {
   factory ScheduledScanSettingsArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledScanSettingsArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
-      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      listConcurrency: (() { final guardedValue = map['listConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      listConcurrency: (() { final guardedValue = map['listConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       orgName: pulumi.Input.fromValue(map['orgName'] as String),
       paused: pulumi.Input.fromValue(map['paused'] as bool),
-      readConcurrency: (() { final guardedValue = map['readConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      readConcurrency: (() { final guardedValue = map['readConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       readTimeout: (() { final guardedValue = map['readTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scheduleCron: (() { final guardedValue = map['scheduleCron']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

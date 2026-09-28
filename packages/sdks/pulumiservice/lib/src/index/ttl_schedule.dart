@@ -28,8 +28,25 @@ class TtlSchedule extends pulumi.CustomResource {
           'pulumiservice:index:TtlSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['organization', 'project', 'stack', 'timestamp']).merge(options),
         ) {
+    deleteAfterDestroy = registerOutput<bool?>('deleteAfterDestroy');
+    organization = registerOutput<String>('organization');
+    project = registerOutput<String>('project');
+    scheduleId = registerOutput<String>('scheduleId');
+    stack = registerOutput<String>('stack');
+    timestamp = registerOutput<String>('timestamp');
+  }
+
+  /// Creates a typed reference to an existing [TtlSchedule] resource.
+  TtlSchedule.reference(String urn)
+    : super(
+        'pulumiservice:index:TtlSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deleteAfterDestroy = registerOutput<bool?>('deleteAfterDestroy');
     organization = registerOutput<String>('organization');
     project = registerOutput<String>('project');

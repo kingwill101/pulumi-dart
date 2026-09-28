@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_stack_args_doc}
 class StackArgs {
   /// Optional. Flag indicating whether to delete the stack even if it still contains resources.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// The name of the organization.
   final pulumi.Input<String> organizationName;
   /// The name of the project.

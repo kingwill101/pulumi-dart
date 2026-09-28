@@ -28,8 +28,25 @@ class DriftSchedule extends pulumi.CustomResource {
           'pulumiservice:index:DriftSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['organization', 'project', 'stack']).merge(options),
         ) {
+    autoRemediate = registerOutput<bool?>('autoRemediate');
+    organization = registerOutput<String>('organization');
+    project = registerOutput<String>('project');
+    scheduleCron = registerOutput<String>('scheduleCron');
+    scheduleId = registerOutput<String>('scheduleId');
+    stack = registerOutput<String>('stack');
+  }
+
+  /// Creates a typed reference to an existing [DriftSchedule] resource.
+  DriftSchedule.reference(String urn)
+    : super(
+        'pulumiservice:index:DriftSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoRemediate = registerOutput<bool?>('autoRemediate');
     organization = registerOutput<String>('organization');
     project = registerOutput<String>('project');

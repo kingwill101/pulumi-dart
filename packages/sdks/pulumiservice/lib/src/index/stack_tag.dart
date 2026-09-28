@@ -26,8 +26,24 @@ class StackTag extends pulumi.CustomResource {
           'pulumiservice:index:StackTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['name', 'organization', 'project', 'stack', 'value']).merge(options),
         ) {
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    project = registerOutput<String>('project');
+    stack = registerOutput<String>('stack');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [StackTag] resource.
+  StackTag.reference(String urn)
+    : super(
+        'pulumiservice:index:StackTag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     organization = registerOutput<String>('organization');
     project = registerOutput<String>('project');

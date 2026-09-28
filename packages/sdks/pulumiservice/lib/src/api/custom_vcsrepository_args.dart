@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_api_integrations_custom_vcsrepository_args_doc}
 class CustomVCSRepositoryArgs {
   /// Human-readable display name for the repository. If not provided, the name is used for display purposes.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The custom VCS integration identifier
   final pulumi.Input<String> integrationId;
   /// Repository name or path, joined with the integration's base URL to form the clone URL (e.g. 'myrepo' or 'subgroup/myrepo')

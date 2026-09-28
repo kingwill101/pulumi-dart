@@ -31,8 +31,26 @@ class DeploymentSchedule extends pulumi.CustomResource {
           'pulumiservice:index:DeploymentSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['organization', 'project', 'stack', 'timestamp']).merge(options),
         ) {
+    organization = registerOutput<String>('organization');
+    project = registerOutput<String>('project');
+    pulumiOperation = registerOutput<PulumiOperation>('pulumiOperation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PulumiOperation.fromValue(guardedValue as String); });
+    scheduleCron = registerOutput<String?>('scheduleCron');
+    scheduleId = registerOutput<String>('scheduleId');
+    stack = registerOutput<String>('stack');
+    timestamp = registerOutput<String?>('timestamp');
+  }
+
+  /// Creates a typed reference to an existing [DeploymentSchedule] resource.
+  DeploymentSchedule.reference(String urn)
+    : super(
+        'pulumiservice:index:DeploymentSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     organization = registerOutput<String>('organization');
     project = registerOutput<String>('project');
     pulumiOperation = registerOutput<PulumiOperation>('pulumiOperation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PulumiOperation.fromValue(guardedValue as String); });

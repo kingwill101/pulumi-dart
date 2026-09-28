@@ -31,4 +31,19 @@ class PolicyGroupStackAttachment extends pulumi.CustomResource {
     policyGroup = registerOutput<String>('policyGroup');
     routingProject = registerOutput<String>('routingProject');
   }
+
+  /// Creates a typed reference to an existing [PolicyGroupStackAttachment] resource.
+  PolicyGroupStackAttachment.reference(String urn)
+    : super(
+        'pulumiservice:api:PolicyGroupStackAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    this.name = registerOutput<String>('name');
+    orgName = registerOutput<String>('orgName');
+    policyGroup = registerOutput<String>('policyGroup');
+    routingProject = registerOutput<String>('routingProject');
+  }
 }

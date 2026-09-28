@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_api_deployments_settings_args_doc}
 class SettingsArgs {
   /// The identifier of the agent pool to use for deployments.
-  final pulumi.Input<String>? agentPoolID;
+  final pulumi.Input<String?>? agentPoolID;
   /// Cache options for the deployment.
   final pulumi.Input<dynamic>? cacheOptions;
   /// The executor context defining the execution environment.
@@ -26,7 +26,7 @@ class SettingsArgs {
   /// The stack name
   final pulumi.Input<String> stackName;
   /// A tag to identify the deployment settings configuration.
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
   /// VCS provider settings
   final pulumi.Input<dynamic>? vcs;
 

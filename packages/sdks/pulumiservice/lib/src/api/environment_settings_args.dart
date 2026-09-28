@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_api_esc_environment_settings_args_doc}
 class EnvironmentSettingsArgs {
   /// DeletionProtected indicates whether deletion protection should be enabled for this environment. Null means no change.
-  final pulumi.Input<bool>? deletionProtected;
+  final pulumi.Input<bool?>? deletionProtected;
   /// The environment name
   final pulumi.Input<String> envName;
   /// The organization name

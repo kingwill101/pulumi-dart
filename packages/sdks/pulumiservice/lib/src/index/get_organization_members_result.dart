@@ -5,23 +5,23 @@ import 'organization_member_info.dart';
 
 /// Result data returned by getOrganizationMembers.
 class GetOrganizationMembersResult {
-  final List<OrganizationMemberInfo> members;
+  final List<OrganizationMemberInfo>? members;
 
   /// Creates a new [GetOrganizationMembersResult].
-  /// [members] Required.
+  /// [members] Optional.
   const GetOrganizationMembersResult({
-    required this.members,
+    this.members,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'members': pulumi.Input.encodeList<OrganizationMemberInfo, Map<String, dynamic>>(members, (value) => value.toMap()),
+      'members': ?(() { final guardedValue = members; if (guardedValue == null) return null; return pulumi.Input.encodeList<OrganizationMemberInfo, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetOrganizationMembersResult.fromMap(Map<String, dynamic> map) {
     return GetOrganizationMembersResult(
-      members: pulumi.Input.decodeList<OrganizationMemberInfo>(map['members']!, (value) => OrganizationMemberInfo.fromMap((value as Map).cast<String, dynamic>())),
+      members: (() { final guardedValue = map['members']; if (guardedValue == null) return null; return pulumi.Input.decodeList<OrganizationMemberInfo>(guardedValue, (value) => OrganizationMemberInfo.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

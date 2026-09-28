@@ -49,4 +49,25 @@ class Settings extends pulumi.CustomResource {
     vcs = registerOutput<dynamic>('vcs');
     version = registerOutput<int?>('version');
   }
+
+  /// Creates a typed reference to an existing [Settings] resource.
+  Settings.reference(String urn)
+    : super(
+        'pulumiservice:api/deployments:Settings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentPoolID = registerOutput<String?>('agentPoolID');
+    cacheOptions = registerOutput<dynamic>('cacheOptions');
+    executorContext = registerOutput<dynamic>('executorContext');
+    gitHub = registerOutput<dynamic>('gitHub');
+    operationContext = registerOutput<dynamic>('operationContext');
+    source = registerOutput<String?>('source');
+    sourceContext = registerOutput<dynamic>('sourceContext');
+    tag = registerOutput<String?>('tag');
+    vcs = registerOutput<dynamic>('vcs');
+    version = registerOutput<int?>('version');
+  }
 }

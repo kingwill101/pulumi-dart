@@ -10,9 +10,9 @@ class OrganizationMemberArgs {
   /// The Pulumi Cloud organization name.
   final pulumi.Input<String> organizationName;
   /// The built-in organization role. One of `member`, `admin`, `billing-manager`. Defaults to `member` on create. Ignored when `roleId` is set.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// The ID of a custom (fine-grained) organization role to assign. Takes precedence over `role`.
-  final pulumi.Input<String>? roleId;
+  final pulumi.Input<String?>? roleId;
   /// The Pulumi Cloud username of the member.
   final pulumi.Input<String> username;
 

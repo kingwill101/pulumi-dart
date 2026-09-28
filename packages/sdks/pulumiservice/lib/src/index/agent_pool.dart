@@ -28,13 +28,32 @@ class AgentPool extends pulumi.CustomResource {
           'pulumiservice:index:AgentPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['organizationName']).merge(options),
+          additionalSecretOutputs: const ['tokenValue'],
         ) {
     agentPoolId = registerOutput<String>('agentPoolId');
     description = registerOutput<String?>('description');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     this.name = registerOutput<String>('name');
     organizationName = registerOutput<String>('organizationName');
-    tokenValue = registerOutput<String>('tokenValue');
+    tokenValue = registerOutput<String>('tokenValue', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [AgentPool] resource.
+  AgentPool.reference(String urn)
+    : super(
+        'pulumiservice:index:AgentPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['tokenValue'],
+        isResourceReference: true,
+      ) {
+    agentPoolId = registerOutput<String>('agentPoolId');
+    description = registerOutput<String?>('description');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    this.name = registerOutput<String>('name');
+    organizationName = registerOutput<String>('organizationName');
+    tokenValue = registerOutput<String>('tokenValue', isSecret: true);
   }
 }

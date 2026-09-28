@@ -28,11 +28,26 @@ class StackTags extends pulumi.CustomResource {
           'pulumiservice:index:StackTags',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['organization', 'project', 'stack']).merge(options),
         ) {
     organization = registerOutput<String>('organization');
     project = registerOutput<String>('project');
     stack = registerOutput<String>('stack');
-    tags = registerOutput<Map<String, String>>('tags');
+    tags = registerOutput<Map<String, String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [StackTags] resource.
+  StackTags.reference(String urn)
+    : super(
+        'pulumiservice:index:StackTags',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    organization = registerOutput<String>('organization');
+    project = registerOutput<String>('project');
+    stack = registerOutput<String>('stack');
+    tags = registerOutput<Map<String, String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

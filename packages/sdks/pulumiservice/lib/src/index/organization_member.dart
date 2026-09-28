@@ -32,8 +32,27 @@ class OrganizationMember extends pulumi.CustomResource {
           'pulumiservice:index:OrganizationMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(replaceOnChanges: ['organizationName', 'username']).merge(options),
         ) {
+    adopted = registerOutput<bool>('adopted');
+    email = registerOutput<String>('email');
+    this.name = registerOutput<String>('name');
+    organizationName = registerOutput<String>('organizationName');
+    role = registerOutput<String?>('role');
+    roleId = registerOutput<String?>('roleId');
+    roleName = registerOutput<String>('roleName');
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationMember] resource.
+  OrganizationMember.reference(String urn)
+    : super(
+        'pulumiservice:index:OrganizationMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     adopted = registerOutput<bool>('adopted');
     email = registerOutput<String>('email');
     this.name = registerOutput<String>('name');

@@ -14,7 +14,7 @@ class PoolArgs {
   /// The organization name
   final pulumi.Input<String> orgName;
   /// The agent pool identifier
-  final pulumi.Input<String>? poolId;
+  final pulumi.Input<String?>? poolId;
 
   /// Creates a new [PoolArgs].
   /// [description] The description

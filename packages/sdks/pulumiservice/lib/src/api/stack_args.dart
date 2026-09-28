@@ -18,9 +18,9 @@ class StackArgs {
   /// An optional state to initialize the stack with.
   final pulumi.Input<dynamic>? state;
   /// An optional set of tags to apply to the stack.
-  final pulumi.Input<Map<String, dynamic>>? tags;
+  final pulumi.Input<Map<String, dynamic>?>? tags;
   /// An optional set of teams to assign to the stack.
-  final pulumi.Input<List<String>>? teams;
+  final pulumi.Input<List<String>?>? teams;
 
   /// Creates a new [StackArgs].
   /// [config] The configuration for the new stack.

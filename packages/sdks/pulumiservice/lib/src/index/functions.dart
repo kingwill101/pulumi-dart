@@ -41,6 +41,17 @@ Future<BuildAllowPermissionsResult> buildAllowPermissions(
   return BuildAllowPermissionsResult.fromMap(result);
 }
 
+pulumi.Output<BuildAllowPermissionsResult> buildAllowPermissionsOutput(
+  BuildAllowPermissionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'pulumiservice:index:buildAllowPermissions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(BuildAllowPermissionsResult.fromMap);
+}
+
 /// Builds an `OrganizationRole.permissions` descriptor that grants the supplied scopes only on the named environment. Pair with `Environment.environmentId` (or the `getEnvironment` data source) to avoid hand-rolling the `PermissionDescriptorCondition` tree yourself. The result is directly assignable to `OrganizationRole.permissions`. To grant scopes on more than one entity in a single role, hand-roll a `PermissionDescriptorGroup` whose `entries` list pulls the output of each helper.
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_build_environment_scoped_permissions_args_doc}
 /// [options] Invoke options controlling this call.
@@ -55,6 +66,17 @@ Future<BuildEnvironmentScopedPermissionsResult> buildEnvironmentScopedPermission
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return BuildEnvironmentScopedPermissionsResult.fromMap(result);
+}
+
+pulumi.Output<BuildEnvironmentScopedPermissionsResult> buildEnvironmentScopedPermissionsOutput(
+  BuildEnvironmentScopedPermissionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'pulumiservice:index:buildEnvironmentScopedPermissions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(BuildEnvironmentScopedPermissionsResult.fromMap);
 }
 
 /// Builds an `OrganizationRole.permissions` descriptor that grants the supplied scopes only on the named insights account. Pair with `InsightsAccount.insightsAccountId` (or the `getInsightsAccount` data source). The result is directly assignable to `OrganizationRole.permissions`. To grant scopes on more than one entity in a single role, hand-roll a `PermissionDescriptorGroup` whose `entries` list pulls the output of each helper.
@@ -73,6 +95,17 @@ Future<BuildInsightsAccountScopedPermissionsResult> buildInsightsAccountScopedPe
   return BuildInsightsAccountScopedPermissionsResult.fromMap(result);
 }
 
+pulumi.Output<BuildInsightsAccountScopedPermissionsResult> buildInsightsAccountScopedPermissionsOutput(
+  BuildInsightsAccountScopedPermissionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'pulumiservice:index:buildInsightsAccountScopedPermissions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(BuildInsightsAccountScopedPermissionsResult.fromMap);
+}
+
 /// Builds an `OrganizationRole.permissions` descriptor that grants the supplied scopes only on the named stack. The `stackId` is the stack's opaque Pulumi Cloud identifier — distinct from the `organization/project/stack` triple. The result is directly assignable to `OrganizationRole.permissions`. To grant scopes on more than one entity in a single role, hand-roll a `PermissionDescriptorGroup` whose `entries` list pulls the output of each helper.
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_build_stack_scoped_permissions_args_doc}
 /// [options] Invoke options controlling this call.
@@ -89,6 +122,17 @@ Future<BuildStackScopedPermissionsResult> buildStackScopedPermissions(
   return BuildStackScopedPermissionsResult.fromMap(result);
 }
 
+pulumi.Output<BuildStackScopedPermissionsResult> buildStackScopedPermissionsOutput(
+  BuildStackScopedPermissionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'pulumiservice:index:buildStackScopedPermissions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(BuildStackScopedPermissionsResult.fromMap);
+}
+
 /// Returns the Pulumi Cloud user that the provider's access token belongs to. Useful for seeding a newly-created `Team` with the creator as a member, since Pulumi Cloud auto-adds the creator. Omitting this user from the team will result in a refresh drift.
 /// [options] Invoke options controlling this call.
 Future<GetCurrentUserResult> getCurrentUser(
@@ -102,6 +146,17 @@ Future<GetCurrentUserResult> getCurrentUser(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCurrentUserResult.fromMap(result);
+}
+
+pulumi.Output<GetCurrentUserResult> getCurrentUserOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'pulumiservice:index:getCurrentUser',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetCurrentUserResult.fromMap);
 }
 
 /// Looks up an existing ESC environment by name and returns its UUID. Use this to scope a custom RBAC role to a specific environment — pass the returned UUID into `buildEnvironmentScopedPermissions`, or use it as the `identity` field of a hand-rolled `PermissionLiteralExpressionEnvironment` in `OrganizationRole.permissions`. Errors when the environment is not found.
@@ -120,6 +175,17 @@ Future<GetEnvironmentResult> getEnvironment(
   return GetEnvironmentResult.fromMap(result);
 }
 
+pulumi.Output<GetEnvironmentResult> getEnvironmentOutput(
+  GetEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'pulumiservice:index:getEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentResult.fromMap);
+}
+
 /// Get details about a specific Insights account.
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_insights_account_args_doc}
 /// [options] Invoke options controlling this call.
@@ -134,6 +200,17 @@ Future<GetInsightsAccountResult> getInsightsAccount(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInsightsAccountResult.fromMap(result);
+}
+
+pulumi.Output<GetInsightsAccountResult> getInsightsAccountOutput(
+  GetInsightsAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'pulumiservice:index:getInsightsAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInsightsAccountResult.fromMap);
 }
 
 /// Get a list of all Insights accounts for an organization.
@@ -152,6 +229,17 @@ Future<GetInsightsAccountsResult> getInsightsAccounts(
   return GetInsightsAccountsResult.fromMap(result);
 }
 
+pulumi.Output<GetInsightsAccountsResult> getInsightsAccountsOutput(
+  GetInsightsAccountsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'pulumiservice:index:getInsightsAccounts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInsightsAccountsResult.fromMap);
+}
+
 /// Looks up a single member of a Pulumi Cloud organization by username (the backing identity-provider login, e.g. GitHub login). Returns an error when the member is not found.
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_organization_member_args_doc}
 /// [options] Invoke options controlling this call.
@@ -166,6 +254,17 @@ Future<GetOrganizationMemberResult> getOrganizationMember(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationMemberResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationMemberResult> getOrganizationMemberOutput(
+  GetOrganizationMemberArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'pulumiservice:index:getOrganizationMember',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationMemberResult.fromMap);
 }
 
 /// Lists all members of a Pulumi Cloud organization, including their role assignments. Merges Pulumi Cloud's identity-provider roster (paginated; includes users who haven't signed in to Pulumi yet) with the seat-count roster, deduped by username, so SAML- and non-SAML-provisioned members both appear regardless of which roster they're tracked in.
@@ -184,6 +283,17 @@ Future<GetOrganizationMembersResult> getOrganizationMembers(
   return GetOrganizationMembersResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationMembersResult> getOrganizationMembersOutput(
+  GetOrganizationMembersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'pulumiservice:index:getOrganizationMembers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationMembersResult.fromMap);
+}
+
 /// Lists the permission scopes available for custom roles in an organization. Use this to discover valid scope names before setting `OrganizationRole.permissions`. The catalogue is flattened into a single list with resource type and group context, sorted deterministically.
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_organization_role_scopes_args_doc}
 /// [options] Invoke options controlling this call.
@@ -198,6 +308,17 @@ Future<GetOrganizationRoleScopesResult> getOrganizationRoleScopes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationRoleScopesResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationRoleScopesResult> getOrganizationRoleScopesOutput(
+  GetOrganizationRoleScopesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'pulumiservice:index:getOrganizationRoleScopes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationRoleScopesResult.fromMap);
 }
 
 /// Get details about a specific version of a policy pack.
@@ -216,6 +337,17 @@ Future<GetPolicyPackResult> getPolicyPack(
   return GetPolicyPackResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicyPackResult> getPolicyPackOutput(
+  GetPolicyPackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'pulumiservice:index:getPolicyPack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyPackResult.fromMap);
+}
+
 /// Get a list of all policy packs for an organization.
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_policy_packs_args_doc}
 /// [options] Invoke options controlling this call.
@@ -230,4 +362,15 @@ Future<GetPolicyPacksResult> getPolicyPacks(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPolicyPacksResult.fromMap(result);
+}
+
+pulumi.Output<GetPolicyPacksResult> getPolicyPacksOutput(
+  GetPolicyPacksArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'pulumiservice:index:getPolicyPacks',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyPacksResult.fromMap);
 }
