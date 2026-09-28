@@ -84,22 +84,22 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings(
-      audioFramesPerPes: (() { final guardedValue = map['audioFramesPerPes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      audioFramesPerPes: (() { final guardedValue = map['audioFramesPerPes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       audioPids: (() { final guardedValue = map['audioPids']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ecmPid: (() { final guardedValue = map['ecmPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nielsenId3Behavior: (() { final guardedValue = map['nielsenId3Behavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      patInterval: (() { final guardedValue = map['patInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      patInterval: (() { final guardedValue = map['patInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       pcrControl: (() { final guardedValue = map['pcrControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      pcrPeriod: (() { final guardedValue = map['pcrPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      pcrPeriod: (() { final guardedValue = map['pcrPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       pcrPid: (() { final guardedValue = map['pcrPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      pmtInterval: (() { final guardedValue = map['pmtInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      pmtInterval: (() { final guardedValue = map['pmtInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       pmtPid: (() { final guardedValue = map['pmtPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      programNum: (() { final guardedValue = map['programNum']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      programNum: (() { final guardedValue = map['programNum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       scte35Behavior: (() { final guardedValue = map['scte35Behavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scte35Pid: (() { final guardedValue = map['scte35Pid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timedMetadataBehavior: (() { final guardedValue = map['timedMetadataBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timedMetadataPid: (() { final guardedValue = map['timedMetadataPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      transportStreamId: (() { final guardedValue = map['transportStreamId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      transportStreamId: (() { final guardedValue = map['transportStreamId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       videoPid: (() { final guardedValue = map['videoPid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

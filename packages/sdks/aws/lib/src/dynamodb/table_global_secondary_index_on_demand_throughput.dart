@@ -25,8 +25,8 @@ class TableGlobalSecondaryIndexOnDemandThroughput {
 
   factory TableGlobalSecondaryIndexOnDemandThroughput.fromMap(Map<String, dynamic> map) {
     return TableGlobalSecondaryIndexOnDemandThroughput(
-      maxReadRequestUnits: (() { final guardedValue = map['maxReadRequestUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxWriteRequestUnits: (() { final guardedValue = map['maxWriteRequestUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxReadRequestUnits: (() { final guardedValue = map['maxReadRequestUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxWriteRequestUnits: (() { final guardedValue = map['maxWriteRequestUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

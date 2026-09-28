@@ -5,22 +5,23 @@ import 'agent_flow_definition_node_configuration_knowledge_base_guardrail_config
 import 'agent_flow_definition_node_configuration_knowledge_base_inference_configuration.dart';
 
 class AgentFlowDefinitionNodeConfigurationKnowledgeBase {
-  /// Configures a guardrail for knowledge base query and response generation. See Guardrail Configuration for more information.
+  /// Configuration of a guardrail for prompt generation. See `definition.node.configuration.prompt.guardrail_configuration` Block for details.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration?>? guardrailConfiguration;
-  /// Configures model inference for knowledge base query and response generation. See Inference Configuration for more information.
+  /// Inference configurations for the prompt. See `definition.node.configuration.prompt.source_configuration.inline.inference_configuration` Block for details.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration?>? inferenceConfiguration;
-  /// The unique identifier of the knowledge base to query.
+  /// Unique identifier of the knowledge base to query.
   final pulumi.Input<String> knowledgeBaseId;
-  /// The unique identifier of the model or inference profile to use to generate a response from the query results. Omit this field if you want to return the retrieved results as an array.
+  /// Unique identifier of the model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) to run inference with.
   final pulumi.Input<String> modelId;
+  /// Maximum number of results to retrieve from the knowledge base. Valid values are between 1 and 100.
   final pulumi.Input<int?>? numberOfResults;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationKnowledgeBase].
-  /// [guardrailConfiguration] Configures a guardrail for knowledge base query and response generation. See Guardrail Configuration for more information.
-  /// [inferenceConfiguration] Configures model inference for knowledge base query and response generation. See Inference Configuration for more information.
-  /// [knowledgeBaseId] The unique identifier of the knowledge base to query.
-  /// [modelId] The unique identifier of the model or inference profile to use to generate a response from the query results. Omit this field if you want to return the retrieved results as an array.
-  /// [numberOfResults] Optional.
+  /// [guardrailConfiguration] Configuration of a guardrail for prompt generation. See `definition.node.configuration.prompt.guardrail_configuration` Block for details.
+  /// [inferenceConfiguration] Inference configurations for the prompt. See `definition.node.configuration.prompt.source_configuration.inline.inference_configuration` Block for details.
+  /// [knowledgeBaseId] Unique identifier of the knowledge base to query.
+  /// [modelId] Unique identifier of the model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) to run inference with.
+  /// [numberOfResults] Maximum number of results to retrieve from the knowledge base. Valid values are between 1 and 100.
   const AgentFlowDefinitionNodeConfigurationKnowledgeBase({
     this.guardrailConfiguration,
     this.inferenceConfiguration,
@@ -45,7 +46,7 @@ class AgentFlowDefinitionNodeConfigurationKnowledgeBase {
       inferenceConfiguration: (() { final guardedValue = map['inferenceConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       knowledgeBaseId: pulumi.Input.fromValue(map['knowledgeBaseId'] as String),
       modelId: pulumi.Input.fromValue(map['modelId'] as String),
-      numberOfResults: (() { final guardedValue = map['numberOfResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numberOfResults: (() { final guardedValue = map['numberOfResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -25,7 +25,7 @@ class TrainingJobResourceConfigInstancePlacementConfigPlacementSpecification {
 
   factory TrainingJobResourceConfigInstancePlacementConfigPlacementSpecification.fromMap(Map<String, dynamic> map) {
     return TrainingJobResourceConfigInstancePlacementConfigPlacementSpecification(
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ultraServerId: (() { final guardedValue = map['ultraServerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

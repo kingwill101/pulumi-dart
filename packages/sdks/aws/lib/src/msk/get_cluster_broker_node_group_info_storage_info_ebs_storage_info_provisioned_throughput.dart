@@ -24,7 +24,7 @@ class GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughpu
   factory GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput.fromMap(Map<String, dynamic> map) {
     return GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      volumeThroughput: pulumi.Input.fromValue((map['volumeThroughput'] as num).toInt()),
+      volumeThroughput: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['volumeThroughput'])),
     );
   }
 }

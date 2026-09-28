@@ -108,6 +108,18 @@ import 'access_point_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) ID of the access point.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import the EFS access points using the `id`. For example:
 ///
 /// ```sh
@@ -144,7 +156,7 @@ class AccessPoint extends pulumi.CustomResource {
           'aws:efs/accessPoint:AccessPoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     fileSystemArn = registerOutput<String>('fileSystemArn');

@@ -3,19 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ParameterGroupParameter {
-  /// "immediate" (default), or "pending-reboot". Some
-  /// engines can't apply some parameters without a reboot, and you will need to
-  /// specify "pending-reboot" here.
+  /// "immediate" (default), or "pending-reboot". Some engines can't apply some parameters without a reboot, and you will need to specify "pending-reboot" here.
   final pulumi.Input<String?>? applyMethod;
-  /// The name of the DB parameter.
+  /// Name of the DB parameter.
   final pulumi.Input<String> name;
-  /// The value of the DB parameter.
+  /// Value of the DB parameter.
   final pulumi.Input<String> value;
 
   /// Creates a new [ParameterGroupParameter].
-  /// [applyMethod] "immediate" (default), or "pending-reboot". Some
-  /// [name] The name of the DB parameter.
-  /// [value] The value of the DB parameter.
+  /// [applyMethod] "immediate" (default), or "pending-reboot". Some engines can't apply some parameters without a reboot, and you will need to specify "pending-reboot" here.
+  /// [name] Name of the DB parameter.
+  /// [value] Value of the DB parameter.
   ParameterGroupParameter({
     pulumi.Input<String?>? applyMethod,
     required this.name,

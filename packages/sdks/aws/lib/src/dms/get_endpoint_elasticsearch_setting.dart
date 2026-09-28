@@ -32,8 +32,8 @@ class GetEndpointElasticsearchSetting {
   factory GetEndpointElasticsearchSetting.fromMap(Map<String, dynamic> map) {
     return GetEndpointElasticsearchSetting(
       endpointUri: pulumi.Input.fromValue(map['endpointUri'] as String),
-      errorRetryDuration: pulumi.Input.fromValue((map['errorRetryDuration'] as num).toInt()),
-      fullLoadErrorPercentage: pulumi.Input.fromValue((map['fullLoadErrorPercentage'] as num).toInt()),
+      errorRetryDuration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['errorRetryDuration'])),
+      fullLoadErrorPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['fullLoadErrorPercentage'])),
       serviceAccessRoleArn: pulumi.Input.fromValue(map['serviceAccessRoleArn'] as String),
     );
   }

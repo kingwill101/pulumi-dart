@@ -107,7 +107,7 @@ class DomainArgs {
       billingContacts: (() { final guardedValue = map['billingContacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainBillingContact>(guardedValue, (value) => DomainBillingContact.fromMap((value as Map).cast<String, dynamic>()))); })(),
       billingPrivacy: (() { final guardedValue = map['billingPrivacy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
-      durationInYears: (() { final guardedValue = map['durationInYears']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      durationInYears: (() { final guardedValue = map['durationInYears']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nameServers: (() { final guardedValue = map['nameServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainNameServer>(guardedValue, (value) => DomainNameServer.fromMap((value as Map).cast<String, dynamic>()))); })(),
       registrantContact: pulumi.Input.fromValue(DomainRegistrantContact.fromMap((map['registrantContact']! as Map).cast<String, dynamic>())),
       registrantPrivacy: (() { final guardedValue = map['registrantPrivacy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

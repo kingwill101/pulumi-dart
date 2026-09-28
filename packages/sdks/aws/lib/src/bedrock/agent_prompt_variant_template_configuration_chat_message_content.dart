@@ -4,12 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_prompt_variant_template_configuration_chat_message_content_cache_point.dart';
 
 class AgentPromptVariantTemplateConfigurationChatMessageContent {
+  /// Cache checkpoint within a message. See `cachePoint` Block for more information.
   final pulumi.Input<AgentPromptVariantTemplateConfigurationChatMessageContentCachePoint?>? cachePoint;
+  /// Text in the message.
   final pulumi.Input<String?>? text;
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatMessageContent].
-  /// [cachePoint] Optional.
-  /// [text] Optional.
+  /// [cachePoint] Cache checkpoint within a message. See `cachePoint` Block for more information.
+  /// [text] Text in the message.
   const AgentPromptVariantTemplateConfigurationChatMessageContent({
     this.cachePoint,
     this.text,

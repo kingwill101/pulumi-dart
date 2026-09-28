@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetAutoAdjustDataHistoricalOptions {
-  /// (Required) - The number of budget periods included in the moving-average calculation that determines your auto-adjusted budget amount.
+  /// Number of budget periods included in the moving-average calculation that determines your auto-adjusted budget amount.
   final pulumi.Input<int> budgetAdjustmentPeriod;
-  /// (Optional) - The integer that describes how many budget periods in your BudgetAdjustmentPeriod are included in the calculation of your current budget limit. If the first budget period in your BudgetAdjustmentPeriod has no cost data, then that budget period isn’t included in the average that determines your budget limit. You can’t set your own LookBackAvailablePeriods. The value is automatically calculated from the `budgetAdjustmentPeriod` and your historical cost data.
+  /// Integer that describes how many budget periods in your BudgetAdjustmentPeriod are included in the calculation of your current budget limit. If the first budget period in your BudgetAdjustmentPeriod has no cost data, then that budget period isn’t included in the average that determines your budget limit. You can’t set your own LookBackAvailablePeriods. The value is automatically calculated from the `budgetAdjustmentPeriod` and your historical cost data.
   final pulumi.Input<int?>? lookbackAvailablePeriods;
 
   /// Creates a new [BudgetAutoAdjustDataHistoricalOptions].
-  /// [budgetAdjustmentPeriod] (Required) - The number of budget periods included in the moving-average calculation that determines your auto-adjusted budget amount.
-  /// [lookbackAvailablePeriods] (Optional) - The integer that describes how many budget periods in your BudgetAdjustmentPeriod are included in the calculation of your current budget limit. If the first budget period in your BudgetAdjustmentPeriod has no cost data, then that budget period isn’t included in the average that determines your budget limit. You can’t set your own LookBackAvailablePeriods. The value is automatically calculated from the `budgetAdjustmentPeriod` and your historical cost data.
+  /// [budgetAdjustmentPeriod] Number of budget periods included in the moving-average calculation that determines your auto-adjusted budget amount.
+  /// [lookbackAvailablePeriods] Integer that describes how many budget periods in your BudgetAdjustmentPeriod are included in the calculation of your current budget limit. If the first budget period in your BudgetAdjustmentPeriod has no cost data, then that budget period isn’t included in the average that determines your budget limit. You can’t set your own LookBackAvailablePeriods. The value is automatically calculated from the `budgetAdjustmentPeriod` and your historical cost data.
   const BudgetAutoAdjustDataHistoricalOptions({
     required this.budgetAdjustmentPeriod,
     this.lookbackAvailablePeriods,
@@ -25,8 +25,8 @@ class BudgetAutoAdjustDataHistoricalOptions {
 
   factory BudgetAutoAdjustDataHistoricalOptions.fromMap(Map<String, dynamic> map) {
     return BudgetAutoAdjustDataHistoricalOptions(
-      budgetAdjustmentPeriod: pulumi.Input.fromValue((map['budgetAdjustmentPeriod'] as num).toInt()),
-      lookbackAvailablePeriods: (() { final guardedValue = map['lookbackAvailablePeriods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      budgetAdjustmentPeriod: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['budgetAdjustmentPeriod'])),
+      lookbackAvailablePeriods: (() { final guardedValue = map['lookbackAvailablePeriods']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

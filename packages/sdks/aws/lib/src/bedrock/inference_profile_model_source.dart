@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InferenceProfileModelSource {
-  /// The ARN of the model.
+  /// ARN of the model.
   final pulumi.Input<String> copyFrom;
 
   /// Creates a new [InferenceProfileModelSource].
-  /// [copyFrom] The ARN of the model.
+  /// [copyFrom] ARN of the model.
   const InferenceProfileModelSource({
     required this.copyFrom,
   });

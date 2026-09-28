@@ -11,15 +11,15 @@ import 'agent_flow_timeouts.dart';
 class AgentFlowArgs {
   /// ARN of the KMS key to encrypt the flow.
   final pulumi.Input<String?>? customerEncryptionKeyArn;
-  /// A definition of the nodes and connections between nodes in the flow. See Definition for more information.
+  /// Nodes and connections between nodes in the flow. See `definition` Block for details.
   final pulumi.Input<AgentFlowDefinition?>? definition;
-  /// A description for the flow.
+  /// Description for the flow.
   final pulumi.Input<String?>? description;
   /// ARN of the service role with permissions to create and manage a flow. For more information, see [Create a service role for flows in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-permissions.html) in the Amazon Bedrock User Guide.
+  final pulumi.Input<String> executionRoleArn;
+  /// Name for the flow.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<String> executionRoleArn;
-  /// A name for the flow.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -29,10 +29,10 @@ class AgentFlowArgs {
 
   /// Creates a new [AgentFlowArgs].
   /// [customerEncryptionKeyArn] ARN of the KMS key to encrypt the flow.
-  /// [definition] A definition of the nodes and connections between nodes in the flow. See Definition for more information.
-  /// [description] A description for the flow.
+  /// [definition] Nodes and connections between nodes in the flow. See `definition` Block for details.
+  /// [description] Description for the flow.
   /// [executionRoleArn] ARN of the service role with permissions to create and manage a flow. For more information, see [Create a service role for flows in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-permissions.html) in the Amazon Bedrock User Guide.
-  /// [name] A name for the flow.
+  /// [name] Name for the flow.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.

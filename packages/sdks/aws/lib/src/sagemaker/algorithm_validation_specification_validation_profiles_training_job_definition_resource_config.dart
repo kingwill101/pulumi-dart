@@ -57,14 +57,14 @@ class AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionRes
 
   factory AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfig.fromMap(Map<String, dynamic> map) {
     return AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfig(
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceGroups: (() { final guardedValue = map['instanceGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfigInstanceGroup>(guardedValue, (value) => AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfigInstanceGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
       instancePlacementConfig: (() { final guardedValue = map['instancePlacementConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AlgorithmValidationSpecificationValidationProfilesTrainingJobDefinitionResourceConfigInstancePlacementConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      keepAlivePeriodInSeconds: (() { final guardedValue = map['keepAlivePeriodInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      keepAlivePeriodInSeconds: (() { final guardedValue = map['keepAlivePeriodInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       trainingPlanArn: (() { final guardedValue = map['trainingPlanArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumeKmsKeyId: (() { final guardedValue = map['volumeKmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      volumeSizeInGb: (() { final guardedValue = map['volumeSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      volumeSizeInGb: (() { final guardedValue = map['volumeSizeInGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

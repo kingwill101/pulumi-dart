@@ -103,9 +103,9 @@ class GetVpcIpamPoolsIpamPool {
   factory GetVpcIpamPoolsIpamPool.fromMap(Map<String, dynamic> map) {
     return GetVpcIpamPoolsIpamPool(
       addressFamily: pulumi.Input.fromValue(map['addressFamily'] as String),
-      allocationDefaultNetmaskLength: pulumi.Input.fromValue((map['allocationDefaultNetmaskLength'] as num).toInt()),
-      allocationMaxNetmaskLength: pulumi.Input.fromValue((map['allocationMaxNetmaskLength'] as num).toInt()),
-      allocationMinNetmaskLength: pulumi.Input.fromValue((map['allocationMinNetmaskLength'] as num).toInt()),
+      allocationDefaultNetmaskLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['allocationDefaultNetmaskLength'])),
+      allocationMaxNetmaskLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['allocationMaxNetmaskLength'])),
+      allocationMinNetmaskLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['allocationMinNetmaskLength'])),
       allocationResourceTags: pulumi.Input.fromValue((map['allocationResourceTags'] as Map).cast<String, String>()),
       arn: pulumi.Input.fromValue(map['arn'] as String),
       autoImport: pulumi.Input.fromValue(map['autoImport'] as bool),
@@ -115,7 +115,7 @@ class GetVpcIpamPoolsIpamPool {
       ipamScopeId: pulumi.Input.fromValue(map['ipamScopeId'] as String),
       ipamScopeType: pulumi.Input.fromValue(map['ipamScopeType'] as String),
       locale: pulumi.Input.fromValue(map['locale'] as String),
-      poolDepth: pulumi.Input.fromValue((map['poolDepth'] as num).toInt()),
+      poolDepth: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['poolDepth'])),
       publiclyAdvertisable: pulumi.Input.fromValue(map['publiclyAdvertisable'] as bool),
       sourceIpamPoolId: pulumi.Input.fromValue(map['sourceIpamPoolId'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),

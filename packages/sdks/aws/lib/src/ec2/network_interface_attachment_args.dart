@@ -44,9 +44,9 @@ class NetworkInterfaceAttachmentArgs {
 
   factory NetworkInterfaceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceAttachmentArgs(
-      deviceIndex: pulumi.Input.fromValue((map['deviceIndex'] as num).toInt()),
+      deviceIndex: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['deviceIndex'])),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      networkCardIndex: (() { final guardedValue = map['networkCardIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      networkCardIndex: (() { final guardedValue = map['networkCardIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       networkInterfaceId: pulumi.Input.fromValue(map['networkInterfaceId'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

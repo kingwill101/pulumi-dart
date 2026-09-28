@@ -30,8 +30,8 @@ class AccessPointRootDirectoryCreationInfo {
 
   factory AccessPointRootDirectoryCreationInfo.fromMap(Map<String, dynamic> map) {
     return AccessPointRootDirectoryCreationInfo(
-      ownerGid: pulumi.Input.fromValue((map['ownerGid'] as num).toInt()),
-      ownerUid: pulumi.Input.fromValue((map['ownerUid'] as num).toInt()),
+      ownerGid: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ownerGid'])),
+      ownerUid: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ownerUid'])),
       permissions: pulumi.Input.fromValue(map['permissions'] as String),
     );
   }

@@ -40,11 +40,11 @@ class GetFleetComputeConfiguration {
 
   factory GetFleetComputeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetFleetComputeConfiguration(
-      disk: pulumi.Input.fromValue((map['disk'] as num).toInt()),
+      disk: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['disk'])),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       machineType: pulumi.Input.fromValue(map['machineType'] as String),
-      memory: pulumi.Input.fromValue((map['memory'] as num).toInt()),
-      vcpu: pulumi.Input.fromValue((map['vcpu'] as num).toInt()),
+      memory: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memory'])),
+      vcpu: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vcpu'])),
     );
   }
 }

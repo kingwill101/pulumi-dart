@@ -790,6 +790,7 @@ class AgentAgentCollaborator extends pulumi.CustomResource {
   late final pulumi.Output<AgentAgentCollaboratorAgentDescriptor> agentDescriptor;
   /// ID if the agent to associate the collaborator.
   late final pulumi.Output<String> agentId;
+  /// Version of the agent to associate the collaborator. Defaults to `DRAFT`.
   late final pulumi.Output<String> agentVersion;
   /// Instruction to give the collaborator.
   late final pulumi.Output<String> collaborationInstruction;
@@ -819,7 +820,7 @@ class AgentAgentCollaborator extends pulumi.CustomResource {
           'aws:bedrock/agentAgentCollaborator:AgentAgentCollaborator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     agentDescriptor = registerOutput<AgentAgentCollaboratorAgentDescriptor>('agentDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentCollaboratorAgentDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     agentId = registerOutput<String>('agentId');

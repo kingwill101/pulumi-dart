@@ -69,7 +69,7 @@ class ContainerServiceArgs {
       privateRegistryAccess: (() { final guardedValue = map['privateRegistryAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerServicePrivateRegistryAccess.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       publicDomainNames: (() { final guardedValue = map['publicDomainNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerServicePublicDomainNames.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scale: pulumi.Input.fromValue((map['scale'] as num).toInt()),
+      scale: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scale'])),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

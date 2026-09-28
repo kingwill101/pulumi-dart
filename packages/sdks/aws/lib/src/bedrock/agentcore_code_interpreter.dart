@@ -450,7 +450,7 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreCodeInterpreterTimeouts?> timeouts;
 
@@ -466,7 +466,7 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
           'aws:bedrock/agentcoreCodeInterpreter:AgentcoreCodeInterpreter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     certificates = registerOutput<List<AgentcoreCodeInterpreterCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreCodeInterpreterCertificate>(guardedValue, (value) => AgentcoreCodeInterpreterCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     codeInterpreterArn = registerOutput<String>('codeInterpreterArn');

@@ -41,7 +41,7 @@ class LbStickinessPolicyArgs {
 
   factory LbStickinessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LbStickinessPolicyArgs(
-      cookieDuration: pulumi.Input.fromValue((map['cookieDuration'] as num).toInt()),
+      cookieDuration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cookieDuration'])),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       lbName: pulumi.Input.fromValue(map['lbName'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

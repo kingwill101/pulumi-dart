@@ -20,7 +20,7 @@ class GetModelResult {
   /// Model provider name.
   final String? providerName;
   final String? region;
-  /// Indicates whether the model supports streaming.
+  /// Whether the model supports streaming.
   final bool? responseStreamingSupported;
 
   /// Creates a new [GetModelResult].
@@ -34,7 +34,7 @@ class GetModelResult {
   /// [outputModalities] Output modalities that the model supports.
   /// [providerName] Model provider name.
   /// [region] Optional.
-  /// [responseStreamingSupported] Indicates whether the model supports streaming.
+  /// [responseStreamingSupported] Whether the model supports streaming.
   const GetModelResult({
     this.customizationsSupporteds,
     this.id,

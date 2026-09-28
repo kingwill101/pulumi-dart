@@ -30,8 +30,8 @@ class BucketLifecycleConfigurationV2RuleNoncurrentVersionTransition {
 
   factory BucketLifecycleConfigurationV2RuleNoncurrentVersionTransition.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationV2RuleNoncurrentVersionTransition(
-      newerNoncurrentVersions: (() { final guardedValue = map['newerNoncurrentVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      noncurrentDays: pulumi.Input.fromValue((map['noncurrentDays'] as num).toInt()),
+      newerNoncurrentVersions: (() { final guardedValue = map['newerNoncurrentVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      noncurrentDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['noncurrentDays'])),
       storageClass: pulumi.Input.fromValue(map['storageClass'] as String),
     );
   }

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_gateway_target_target_configuration_mcp_api_gateway_api_gateway_tool_configuration.dart';
 
 class AgentcoreGatewayTargetTargetConfigurationMcpApiGateway {
-  /// Configuration for API Gateway tools. See `apiGatewayToolConfiguration` below.
+  /// Configuration for API Gateway tools. See `apiGatewayToolConfiguration` Block below.
   final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpApiGatewayApiGatewayToolConfiguration?>? apiGatewayToolConfiguration;
   /// ID of the API Gateway REST API to invoke.
   final pulumi.Input<String> restApiId;
@@ -12,7 +12,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpApiGateway {
   final pulumi.Input<String> stage;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpApiGateway].
-  /// [apiGatewayToolConfiguration] Configuration for API Gateway tools. See `apiGatewayToolConfiguration` below.
+  /// [apiGatewayToolConfiguration] Configuration for API Gateway tools. See `apiGatewayToolConfiguration` Block below.
   /// [restApiId] ID of the API Gateway REST API to invoke.
   /// [stage] Stage name of the REST API to add as a target.
   const AgentcoreGatewayTargetTargetConfigurationMcpApiGateway({

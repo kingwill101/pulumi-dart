@@ -33,7 +33,7 @@ class GetCatalogTableStorageDescriptorSchemaReference {
     return GetCatalogTableStorageDescriptorSchemaReference(
       schemaIds: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCatalogTableStorageDescriptorSchemaReferenceSchemaId>(map['schemaIds']!, (value) => GetCatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap((value as Map).cast<String, dynamic>()))),
       schemaVersionId: pulumi.Input.fromValue(map['schemaVersionId'] as String),
-      schemaVersionNumber: pulumi.Input.fromValue((map['schemaVersionNumber'] as num).toInt()),
+      schemaVersionNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['schemaVersionNumber'])),
     );
   }
 }

@@ -43,9 +43,9 @@ class LoadBalancerListener {
 
   factory LoadBalancerListener.fromMap(Map<String, dynamic> map) {
     return LoadBalancerListener(
-      instancePort: pulumi.Input.fromValue((map['instancePort'] as num).toInt()),
+      instancePort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instancePort'])),
       instanceProtocol: pulumi.Input.fromValue(map['instanceProtocol'] as String),
-      lbPort: pulumi.Input.fromValue((map['lbPort'] as num).toInt()),
+      lbPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lbPort'])),
       lbProtocol: pulumi.Input.fromValue(map['lbProtocol'] as String),
       sslCertificateId: (() { final guardedValue = map['sslCertificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -11,29 +11,29 @@ import 'mount_target_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const foo = new aws.ec2.Vpc("foo", {cidrBlock: "10.0.0.0/16"});
-/// const alphaSubnet = new aws.ec2.Subnet("alpha", {
-///     vpcId: foo.id,
+/// const exampleVpc = new aws.ec2.Vpc("example", {cidrBlock: "10.0.0.0/16"});
+/// const exampleSubnet = new aws.ec2.Subnet("example", {
+///     vpcId: exampleVpc.id,
 ///     availabilityZone: "us-west-2a",
 ///     cidrBlock: "10.0.1.0/24",
 /// });
-/// const alpha = new aws.efs.MountTarget("alpha", {
-///     fileSystemId: fooAwsEfsFileSystem.id,
-///     subnetId: alphaSubnet.id,
+/// const example = new aws.efs.MountTarget("example", {
+///     fileSystemId: exampleAwsEfsFileSystem.id,
+///     subnetId: exampleSubnet.id,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// foo = aws.ec2.Vpc("foo", cidr_block="10.0.0.0/16")
-/// alpha_subnet = aws.ec2.Subnet("alpha",
-///     vpc_id=foo.id,
+/// example_vpc = aws.ec2.Vpc("example", cidr_block="10.0.0.0/16")
+/// example_subnet = aws.ec2.Subnet("example",
+///     vpc_id=example_vpc.id,
 ///     availability_zone="us-west-2a",
 ///     cidr_block="10.0.1.0/24")
-/// alpha = aws.efs.MountTarget("alpha",
-///     file_system_id=foo_aws_efs_file_system["id"],
-///     subnet_id=alpha_subnet.id)
+/// example = aws.efs.MountTarget("example",
+///     file_system_id=example_aws_efs_file_system["id"],
+///     subnet_id=example_subnet.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -43,22 +43,22 @@ import 'mount_target_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var foo = new Aws.Ec2.Vpc("foo", new()
+///     var exampleVpc = new Aws.Ec2.Vpc("example", new()
 ///     {
 ///         CidrBlock = "10.0.0.0/16",
 ///     });
 ///
-///     var alphaSubnet = new Aws.Ec2.Subnet("alpha", new()
+///     var exampleSubnet = new Aws.Ec2.Subnet("example", new()
 ///     {
-///         VpcId = foo.Id,
+///         VpcId = exampleVpc.Id,
 ///         AvailabilityZone = "us-west-2a",
 ///         CidrBlock = "10.0.1.0/24",
 ///     });
 ///
-///     var alpha = new Aws.Efs.MountTarget("alpha", new()
+///     var example = new Aws.Efs.MountTarget("example", new()
 ///     {
-///         FileSystemId = fooAwsEfsFileSystem.Id,
-///         SubnetId = alphaSubnet.Id,
+///         FileSystemId = exampleAwsEfsFileSystem.Id,
+///         SubnetId = exampleSubnet.Id,
 ///     });
 ///
 /// });
@@ -74,23 +74,23 @@ import 'mount_target_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		foo, err := ec2.NewVpc(ctx, "foo", &ec2.VpcArgs{
+/// 		exampleVpc, err := ec2.NewVpc(ctx, "example", &ec2.VpcArgs{
 /// 			CidrBlock: pulumi.String("10.0.0.0/16"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		alphaSubnet, err := ec2.NewSubnet(ctx, "alpha", &ec2.SubnetArgs{
-/// 			VpcId:            foo.ID().ToIDOutput().ToStringOutput(),
+/// 		exampleSubnet, err := ec2.NewSubnet(ctx, "example", &ec2.SubnetArgs{
+/// 			VpcId:            exampleVpc.ID().ToIDOutput().ToStringOutput(),
 /// 			AvailabilityZone: pulumi.String("us-west-2a"),
 /// 			CidrBlock:        pulumi.String("10.0.1.0/24"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = efs.NewMountTarget(ctx, "alpha", &efs.MountTargetArgs{
-/// 			FileSystemId: pulumi.Any(fooAwsEfsFileSystem.Id),
-/// 			SubnetId:     alphaSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 		_, err = efs.NewMountTarget(ctx, "example", &efs.MountTargetArgs{
+/// 			FileSystemId: pulumi.Any(exampleAwsEfsFileSystem.Id),
+/// 			SubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -108,15 +108,15 @@ import 'mount_target_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_efs_mounttarget" "alpha" {
-///   file_system_id = fooAwsEfsFileSystem.id
-///   subnet_id      = aws_ec2_subnet.alpha.id
+/// resource "aws_efs_mounttarget" "example" {
+///   file_system_id = exampleAwsEfsFileSystem.id
+///   subnet_id      = aws_ec2_subnet.example.id
 /// }
-/// resource "aws_ec2_vpc" "foo" {
+/// resource "aws_ec2_vpc" "example" {
 ///   cidr_block = "10.0.0.0/16"
 /// }
-/// resource "aws_ec2_subnet" "alpha" {
-///   vpc_id            = aws_ec2_vpc.foo.id
+/// resource "aws_ec2_subnet" "example" {
+///   vpc_id            = aws_ec2_vpc.example.id
 ///   availability_zone = "us-west-2a"
 ///   cidr_block        = "10.0.1.0/24"
 /// }
@@ -146,19 +146,19 @@ import 'mount_target_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var foo = new Vpc("foo", VpcArgs.builder()
+///         var exampleVpc = new Vpc("exampleVpc", VpcArgs.builder()
 ///             .cidrBlock("10.0.0.0/16")
 ///             .build());
 ///
-///         var alphaSubnet = new Subnet("alphaSubnet", SubnetArgs.builder()
-///             .vpcId(foo.id())
+///         var exampleSubnet = new Subnet("exampleSubnet", SubnetArgs.builder()
+///             .vpcId(exampleVpc.id())
 ///             .availabilityZone("us-west-2a")
 ///             .cidrBlock("10.0.1.0/24")
 ///             .build());
 ///
-///         var alpha = new MountTarget("alpha", MountTargetArgs.builder()
-///             .fileSystemId(fooAwsEfsFileSystem.id())
-///             .subnetId(alphaSubnet.id())
+///         var example = new MountTarget("example", MountTargetArgs.builder()
+///             .fileSystemId(exampleAwsEfsFileSystem.id())
+///             .subnetId(exampleSubnet.id())
 ///             .build());
 ///
 ///     }
@@ -166,20 +166,21 @@ import 'mount_target_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   alpha:
+///   example:
 ///     type: aws:efs:MountTarget
 ///     properties:
-///       fileSystemId: ${fooAwsEfsFileSystem.id}
-///       subnetId: ${alphaSubnet.id}
-///   foo:
+///       fileSystemId: ${exampleAwsEfsFileSystem.id}
+///       subnetId: ${exampleSubnet.id}
+///   exampleVpc:
 ///     type: aws:ec2:Vpc
+///     name: example
 ///     properties:
 ///       cidrBlock: 10.0.0.0/16
-///   alphaSubnet:
+///   exampleSubnet:
 ///     type: aws:ec2:Subnet
-///     name: alpha
+///     name: example
 ///     properties:
-///       vpcId: ${foo.id}
+///       vpcId: ${exampleVpc.id}
 ///       availabilityZone: us-west-2a
 ///       cidrBlock: 10.0.1.0/24
 /// ```
@@ -187,10 +188,22 @@ import 'mount_target_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) ID of the mount target.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import the EFS mount targets using the `id`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:efs/mountTarget:MountTarget alpha fsmt-52a643fb
+/// $ pulumi import aws:efs/mountTarget:MountTarget example fsmt-52a643fb
 /// ```
 class MountTarget extends pulumi.CustomResource {
   /// The unique and consistent identifier of the Availability Zone (AZ) that the mount target resides in.
@@ -236,7 +249,7 @@ class MountTarget extends pulumi.CustomResource {
           'aws:efs/mountTarget:MountTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     availabilityZoneId = registerOutput<String>('availabilityZoneId');
     availabilityZoneName = registerOutput<String>('availabilityZoneName');

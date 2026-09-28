@@ -119,7 +119,7 @@ class GetFileSystemResult {
       protections: (() { final guardedValue = map['protections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFileSystemProtection>(guardedValue, (value) => GetFileSystemProtection.fromMap((value as Map).cast<String, dynamic>())); })(),
       provisionedThroughputInMibps: (() { final guardedValue = map['provisionedThroughputInMibps']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      sizeInBytes: (() { final guardedValue = map['sizeInBytes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      sizeInBytes: (() { final guardedValue = map['sizeInBytes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       throughputMode: (() { final guardedValue = map['throughputMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

@@ -114,8 +114,8 @@ class GatewayArgs {
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
       activationKey: (() { final guardedValue = map['activationKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      averageDownloadRateLimitInBitsPerSec: (() { final guardedValue = map['averageDownloadRateLimitInBitsPerSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      averageUploadRateLimitInBitsPerSec: (() { final guardedValue = map['averageUploadRateLimitInBitsPerSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      averageDownloadRateLimitInBitsPerSec: (() { final guardedValue = map['averageDownloadRateLimitInBitsPerSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      averageUploadRateLimitInBitsPerSec: (() { final guardedValue = map['averageUploadRateLimitInBitsPerSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       cloudwatchLogGroupArn: (() { final guardedValue = map['cloudwatchLogGroupArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gatewayIpAddress: (() { final guardedValue = map['gatewayIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gatewayName: pulumi.Input.fromValue(map['gatewayName'] as String),

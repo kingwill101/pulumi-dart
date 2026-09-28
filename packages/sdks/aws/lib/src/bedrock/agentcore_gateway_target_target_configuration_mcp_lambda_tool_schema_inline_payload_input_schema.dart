@@ -5,17 +5,20 @@ import 'agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_inl
 import 'agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_inline_payload_input_schema_property.dart';
 
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchema {
-  /// Description of the gateway target.
+  /// Description of the schema element.
   final pulumi.Input<String?>? description;
+  /// Schema definition for array items. Can only be used when `type` is `array`. See `target_configuration.mcp.lambda.tool_schema.inline_payload.input_schema.items` Block below.
   final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaItems?>? items;
+  /// Set of property definitions for object types. Can only be used when `type` is `object`. See `target_configuration.mcp.lambda.tool_schema.inline_payload.input_schema.property` Block below.
   final pulumi.Input<List<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaProperty>?>? properties;
+  /// Data type of the schema. Valid values: `string`, `number`, `integer`, `boolean`, `array`, `object`.
   final pulumi.Input<String> type;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchema].
-  /// [description] Description of the gateway target.
-  /// [items] Optional.
-  /// [properties] Optional.
-  /// [type] Required.
+  /// [description] Description of the schema element.
+  /// [items] Schema definition for array items. Can only be used when `type` is `array`. See `target_configuration.mcp.lambda.tool_schema.inline_payload.input_schema.items` Block below.
+  /// [properties] Set of property definitions for object types. Can only be used when `type` is `object`. See `target_configuration.mcp.lambda.tool_schema.inline_payload.input_schema.property` Block below.
+  /// [type] Data type of the schema. Valid values: `string`, `number`, `integer`, `boolean`, `array`, `object`.
   const AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchema({
     this.description,
     this.items,

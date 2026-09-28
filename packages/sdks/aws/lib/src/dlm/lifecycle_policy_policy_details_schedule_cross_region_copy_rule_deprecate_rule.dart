@@ -23,7 +23,7 @@ class LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule {
 
   factory LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule(
-      interval: pulumi.Input.fromValue((map['interval'] as num).toInt()),
+      interval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interval'])),
       intervalUnit: pulumi.Input.fromValue(map['intervalUnit'] as String),
     );
   }

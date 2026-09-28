@@ -45,7 +45,7 @@ class PlanWorkflowStepCustomActionLambdaConfig {
       lambdas: (() { final guardedValue = map['lambdas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepCustomActionLambdaConfigLambda>(guardedValue, (value) => PlanWorkflowStepCustomActionLambdaConfigLambda.fromMap((value as Map).cast<String, dynamic>()))); })(),
       regionToRun: pulumi.Input.fromValue(map['regionToRun'] as String),
       retryIntervalMinutes: pulumi.Input.fromValue((map['retryIntervalMinutes'] as num).toDouble()),
-      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ungracefuls: (() { final guardedValue = map['ungracefuls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepCustomActionLambdaConfigUngraceful>(guardedValue, (value) => PlanWorkflowStepCustomActionLambdaConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

@@ -16,9 +16,9 @@ class WindowsFileSystemSelfManagedActiveDirectory {
   /// Password for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain. Conflicts with `domainJoinServiceAccountSecret` and `passwordWo`.
   final pulumi.Input<String?>? password;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Password for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain. This is a write-only argument which is not persisted to state. Conflicts with `domainJoinServiceAccountSecret` and `password`. Required with `passwordWoVersion`.
+  /// Password for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain. This argument is not persisted to state. Conflicts with `domainJoinServiceAccountSecret` and `password`. If set, requires `passwordWoVersion` to be set.
   final pulumi.Input<String?>? passwordWo;
-  /// Version of the password. Required with `passwordWo`. Update this argument when the value of `passwordWo` has changed to trigger an update to the remote password.
+  /// Required when `passwordWo` is set. Changing this value triggers an update to `passwordWo`.
   final pulumi.Input<int?>? passwordWoVersion;
   /// User name for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain. Conflicts with `domainJoinServiceAccountSecret`.
   final pulumi.Input<String?>? username;
@@ -31,7 +31,7 @@ class WindowsFileSystemSelfManagedActiveDirectory {
   /// [organizationalUnitDistinguishedName] Fully qualified distinguished name of the organizational unit within your self-managed AD directory that the Windows File Server instance will join. For example, `OU=FSx,DC=yourdomain,DC=corp,DC=com`. Only accepts OU as the direct parent of the file system. If none is provided, the FSx file system is created in the default location of your self-managed AD directory. To learn more, see [RFC 2253](https://tools.ietf.org/html/rfc2253).
   /// [password] Password for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain. Conflicts with `domainJoinServiceAccountSecret` and `passwordWo`.
   /// [passwordWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [passwordWoVersion] Version of the password. Required with `passwordWo`. Update this argument when the value of `passwordWo` has changed to trigger an update to the remote password.
+  /// [passwordWoVersion] Required when `passwordWo` is set. Changing this value triggers an update to `passwordWo`.
   /// [username] User name for the service account on your self-managed AD domain that Amazon FSx will use to join to your AD domain. Conflicts with `domainJoinServiceAccountSecret`.
   const WindowsFileSystemSelfManagedActiveDirectory({
     required this.dnsIps,
@@ -68,7 +68,7 @@ class WindowsFileSystemSelfManagedActiveDirectory {
       organizationalUnitDistinguishedName: (() { final guardedValue = map['organizationalUnitDistinguishedName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       passwordWo: (() { final guardedValue = map['passwordWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      passwordWoVersion: (() { final guardedValue = map['passwordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      passwordWoVersion: (() { final guardedValue = map['passwordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

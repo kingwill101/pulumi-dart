@@ -5,36 +5,36 @@ import 'get_inference_profile_model.dart';
 
 /// Result data returned by getInferenceProfile.
 class GetInferenceProfileResult {
-  /// The time at which the inference profile was created.
+  /// Time at which the inference profile was created.
   final String? createdAt;
-  /// The description of the inference profile.
+  /// Description of the inference profile.
   final String? description;
-  /// The ARN of the inference profile.
+  /// ARN of the inference profile.
   final String? inferenceProfileArn;
   final String? inferenceProfileId;
-  /// The unique identifier of the inference profile.
+  /// Unique identifier of the inference profile.
   final String? inferenceProfileName;
-  /// A list of information about each model in the inference profile. See `models`.
+  /// List of information about each model in the inference profile. See `models`.
   final List<GetInferenceProfileModel>? models;
   final String? region;
-  /// The status of the inference profile. `ACTIVE` means that the inference profile is available to use.
+  /// Status of the inference profile. `ACTIVE` means that the inference profile is available to use.
   final String? status;
-  /// The type of the inference profile. `SYSTEM_DEFINED` means that the inference profile is defined by Amazon Bedrock. `APPLICATION` means that the inference profile is defined by the user.
+  /// Type of the inference profile. `SYSTEM_DEFINED` means that the inference profile is defined by Amazon Bedrock. `APPLICATION` means that the inference profile is defined by the user.
   final String? type;
-  /// The time at which the inference profile was last updated.
+  /// Time at which the inference profile was last updated.
   final String? updatedAt;
 
   /// Creates a new [GetInferenceProfileResult].
-  /// [createdAt] The time at which the inference profile was created.
-  /// [description] The description of the inference profile.
-  /// [inferenceProfileArn] The ARN of the inference profile.
+  /// [createdAt] Time at which the inference profile was created.
+  /// [description] Description of the inference profile.
+  /// [inferenceProfileArn] ARN of the inference profile.
   /// [inferenceProfileId] Optional.
-  /// [inferenceProfileName] The unique identifier of the inference profile.
-  /// [models] A list of information about each model in the inference profile. See `models`.
+  /// [inferenceProfileName] Unique identifier of the inference profile.
+  /// [models] List of information about each model in the inference profile. See `models`.
   /// [region] Optional.
-  /// [status] The status of the inference profile. `ACTIVE` means that the inference profile is available to use.
-  /// [type] The type of the inference profile. `SYSTEM_DEFINED` means that the inference profile is defined by Amazon Bedrock. `APPLICATION` means that the inference profile is defined by the user.
-  /// [updatedAt] The time at which the inference profile was last updated.
+  /// [status] Status of the inference profile. `ACTIVE` means that the inference profile is available to use.
+  /// [type] Type of the inference profile. `SYSTEM_DEFINED` means that the inference profile is defined by Amazon Bedrock. `APPLICATION` means that the inference profile is defined by the user.
+  /// [updatedAt] Time at which the inference profile was last updated.
   const GetInferenceProfileResult({
     this.createdAt,
     this.description,

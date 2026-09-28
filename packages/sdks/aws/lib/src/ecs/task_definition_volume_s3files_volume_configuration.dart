@@ -38,7 +38,7 @@ class TaskDefinitionVolumeS3filesVolumeConfiguration {
       accessPointArn: (() { final guardedValue = map['accessPointArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fileSystemArn: pulumi.Input.fromValue(map['fileSystemArn'] as String),
       rootDirectory: (() { final guardedValue = map['rootDirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      transitEncryptionPort: (() { final guardedValue = map['transitEncryptionPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      transitEncryptionPort: (() { final guardedValue = map['transitEncryptionPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

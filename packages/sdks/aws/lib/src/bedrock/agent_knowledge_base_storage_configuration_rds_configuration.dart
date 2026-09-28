@@ -8,7 +8,7 @@ class AgentKnowledgeBaseStorageConfigurationRdsConfiguration {
   final pulumi.Input<String> credentialsSecretArn;
   /// Name of your Amazon RDS database.
   final pulumi.Input<String> databaseName;
-  /// Names of the fields to which to map information about the vector store. This block supports the following arguments:
+  /// Names of the fields to which to map information about the vector store. See `storage_configuration.rds_configuration.field_mapping` Block for details.
   final pulumi.Input<AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping> fieldMapping;
   /// ARN of the vector store.
   final pulumi.Input<String> resourceArn;
@@ -18,7 +18,7 @@ class AgentKnowledgeBaseStorageConfigurationRdsConfiguration {
   /// Creates a new [AgentKnowledgeBaseStorageConfigurationRdsConfiguration].
   /// [credentialsSecretArn] ARN of the secret that you created in AWS Secrets Manager that is linked to your Amazon RDS database.
   /// [databaseName] Name of your Amazon RDS database.
-  /// [fieldMapping] Names of the fields to which to map information about the vector store. This block supports the following arguments:
+  /// [fieldMapping] Names of the fields to which to map information about the vector store. See `storage_configuration.rds_configuration.field_mapping` Block for details.
   /// [resourceArn] ARN of the vector store.
   /// [tableName] Name of the table in the database.
   const AgentKnowledgeBaseStorageConfigurationRdsConfiguration({

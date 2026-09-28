@@ -28,7 +28,7 @@ class DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption {
   factory DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption(
       actionOnTimeout: (() { final guardedValue = map['actionOnTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      waitTimeInMinutes: (() { final guardedValue = map['waitTimeInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      waitTimeInMinutes: (() { final guardedValue = map['waitTimeInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

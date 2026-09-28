@@ -8,7 +8,7 @@ import 'budget_notification.dart';
 import 'budget_planned_limit.dart';
 import 'budget_state.dart';
 
-/// Provides a budgets budget resource. Budgets use the cost visualization provided by Cost Explorer to show you the status of your budgets, to provide forecasts of your estimated costs, and to track your AWS usage, including your free tier usage.
+/// Manages a budgets budget resource. Budgets use the cost visualization provided by Cost Explorer to show you the status of your budgets, to provide forecasts of your estimated costs, and to track your AWS usage, including your free tier usage. For more detailed documentation about each argument, refer to the [AWS official documentation](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/data-type-budget.html).
 ///
 /// ## Example Usage
 ///
@@ -2791,9 +2791,9 @@ import 'budget_state.dart';
 /// $ pulumi import aws:budgets/budget:Budget myBudget 123456789012:myBudget
 /// ```
 class Budget extends pulumi.CustomResource {
-  /// The ID of the target account for budget. Will use current user's accountId by default if omitted.
+  /// ID of the target account for budget. Uses the current user's account ID by default if omitted.
   late final pulumi.Output<String> accountId;
-  /// The ARN of the budget.
+  /// ARN of the budget.
   late final pulumi.Output<String> arn;
   /// Object containing AutoAdjustData which determines the budget amount for an auto-adjusting budget.
   late final pulumi.Output<BudgetAutoAdjustData?> autoAdjustData;
@@ -2801,21 +2801,21 @@ class Budget extends pulumi.CustomResource {
   late final pulumi.Output<String?> billingViewArn;
   /// Whether this budget tracks monetary cost or usage.
   late final pulumi.Output<String> budgetType;
-  /// A list of CostFilter name/values pair to apply to budget. Conflicts with `filterExpression`.
+  /// List of CostFilter name/values pair to apply to budget. Conflicts with `filterExpression`.
   late final pulumi.Output<List<BudgetCostFilter>> costFilters;
-  /// Object containing CostTypes The types of cost included in a budget, such as tax and subscriptions.
+  /// Object containing CostTypes that defines the types of cost included in a budget, such as tax and subscriptions.
   late final pulumi.Output<BudgetCostTypes> costTypes;
   /// Object containing Filter Expression to apply to budget. Conflicts with `costFilter` and requires `metrics`.
   late final pulumi.Output<BudgetFilterExpression?> filterExpression;
-  /// The amount of cost or usage being measured for a budget.
+  /// Amount of cost or usage being measured for a budget.
   late final pulumi.Output<String> limitAmount;
-  /// The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars or GB. See [Spend](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/data-type-spend.html) documentation.
+  /// Unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars or GB. See [Spend](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/data-type-spend.html) documentation.
   late final pulumi.Output<String> limitUnit;
-  /// List containing definition for how the budget data is aggregated. Conflicts with `costTypes` and requires `filterExpression`.
+  /// List containing definition for how the budget data is aggregated. Valid values are `UnblendedCost`, `BlendedCost`, `AmortizedCost`, `NetUnblendedCost`, `NetAmortizedCost`, `UsageQuantity`, `NormalizedUsageAmount`, and `Hours`. Conflicts with `costTypes` and requires `filterExpression`.
   late final pulumi.Output<String?> metrics;
-  /// The name of a budget. Unique within accounts.
+  /// Name of a budget. Unique within accounts.
   late final pulumi.Output<String> name;
-  /// The prefix of the name of a budget. Unique within accounts.
+  /// Prefix of the name of a budget. Unique within accounts.
   late final pulumi.Output<String> namePrefix;
   /// Object containing Budget Notifications. Can be used multiple times to define more than one budget notification.
   late final pulumi.Output<List<BudgetNotification>?> notifications;
@@ -2825,14 +2825,11 @@ class Budget extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The end of the time period covered by the budget. There are no restrictions on the end date. Format: `2017-01-01_12:00`.
+  /// End of the time period covered by the budget. There are no restrictions on the end date. Format: `2017-01-01_12:00`.
   late final pulumi.Output<String?> timePeriodEnd;
-  /// The start of the time period covered by the budget. If you don't specify a start date, AWS defaults to the start of your chosen time period. The start date must come before the end date. Format: `2017-01-01_12:00`.
-  ///
-  /// For more detailed documentation about each argument, refer to the [AWS official
-  /// documentation](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/data-type-budget.html).
+  /// Start of the time period covered by the budget. If you don't specify a start date, AWS defaults to the start of your chosen time period. The start date must come before the end date. Format: `2017-01-01_12:00`.
   late final pulumi.Output<String> timePeriodStart;
-  /// The length of time until a budget resets the actual and forecasted spend. Valid values: `MONTHLY`, `QUARTERLY`, `ANNUALLY`, and `DAILY`.
+  /// Length of time until a budget resets the actual and forecasted spend. Valid values: `MONTHLY`, `QUARTERLY`, `ANNUALLY`, and `DAILY`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> timeUnit;
@@ -2849,7 +2846,7 @@ class Budget extends pulumi.CustomResource {
           'aws:budgets/budget:Budget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');

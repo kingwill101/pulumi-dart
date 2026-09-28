@@ -47,7 +47,7 @@ class ReportPlanReportSetting {
     return ReportPlanReportSetting(
       accounts: (() { final guardedValue = map['accounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       frameworkArns: (() { final guardedValue = map['frameworkArns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      numberOfFrameworks: (() { final guardedValue = map['numberOfFrameworks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numberOfFrameworks: (() { final guardedValue = map['numberOfFrameworks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       organizationUnits: (() { final guardedValue = map['organizationUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       reportTemplate: pulumi.Input.fromValue(map['reportTemplate'] as String),

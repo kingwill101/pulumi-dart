@@ -15,12 +15,13 @@ class GuardrailState {
   final pulumi.Input<String?>? blockedInputMessaging;
   /// Message to return when the guardrail blocks a model response.
   final pulumi.Input<String?>? blockedOutputsMessaging;
-  /// Content policy config for a guardrail. See Content Policy Config for more information.
+  /// Content policy config for a guardrail. See `contentPolicyConfig` Block for more information.
   final pulumi.Input<GuardrailContentPolicyConfig?>? contentPolicyConfig;
-  /// Contextual grounding policy config for a guardrail. See Contextual Grounding Policy Config for more information.
+  /// Contextual grounding policy config for a guardrail. See `contextualGroundingPolicyConfig` Block for more information.
   final pulumi.Input<GuardrailContextualGroundingPolicyConfig?>? contextualGroundingPolicyConfig;
   /// Unix epoch timestamp in seconds for when the Guardrail was created.
   final pulumi.Input<String?>? createdAt;
+  /// Configuration block to enable cross-region routing for bedrock guardrails. See `crossRegionConfig` Block for more information. Note see [available regions](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-cross-region.html) here.
   final pulumi.Input<GuardrailCrossRegionConfig?>? crossRegionConfig;
   /// Description of the guardrail or its version.
   final pulumi.Input<String?>? description;
@@ -28,7 +29,7 @@ class GuardrailState {
   final pulumi.Input<String?>? guardrailArn;
   /// ID of the Guardrail.
   final pulumi.Input<String?>? guardrailId;
-  /// The KMS key with which the guardrail was encrypted at rest.
+  /// KMS key with which the guardrail was encrypted at rest.
   final pulumi.Input<String?>? kmsKeyArn;
   /// Name of the guardrail.
   ///
@@ -36,7 +37,7 @@ class GuardrailState {
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Sensitive information policy config for a guardrail. See Sensitive Information Policy Config for more information.
+  /// Sensitive information policy config for a guardrail. See `sensitiveInformationPolicyConfig` Block for more information.
   final pulumi.Input<GuardrailSensitiveInformationPolicyConfig?>? sensitiveInformationPolicyConfig;
   /// Status of the Bedrock Guardrail. One of `READY`, `FAILED`.
   final pulumi.Input<String?>? status;
@@ -44,37 +45,37 @@ class GuardrailState {
   final pulumi.Input<Map<String, String>?>? tags;
   final pulumi.Input<Map<String, String>?>? tagsAll;
   final pulumi.Input<GuardrailTimeouts?>? timeouts;
-  /// Topic policy config for a guardrail. See Topic Policy Config for more information.
+  /// Topic policy config for a guardrail. See `topicPolicyConfig` Block for more information.
   final pulumi.Input<GuardrailTopicPolicyConfig?>? topicPolicyConfig;
   /// Date and time that the Guardrail list was last updated.
   final pulumi.Input<String?>? updatedAt;
   /// Version of the Guardrail.
   final pulumi.Input<String?>? version;
-  /// Word policy config for a guardrail. See Word Policy Config for more information.
+  /// Word policy config for a guardrail. See `wordPolicyConfig` Block for more information.
   final pulumi.Input<GuardrailWordPolicyConfig?>? wordPolicyConfig;
 
   /// Creates a new [GuardrailState].
   /// [blockedInputMessaging] Message to return when the guardrail blocks a prompt.
   /// [blockedOutputsMessaging] Message to return when the guardrail blocks a model response.
-  /// [contentPolicyConfig] Content policy config for a guardrail. See Content Policy Config for more information.
-  /// [contextualGroundingPolicyConfig] Contextual grounding policy config for a guardrail. See Contextual Grounding Policy Config for more information.
+  /// [contentPolicyConfig] Content policy config for a guardrail. See `contentPolicyConfig` Block for more information.
+  /// [contextualGroundingPolicyConfig] Contextual grounding policy config for a guardrail. See `contextualGroundingPolicyConfig` Block for more information.
   /// [createdAt] Unix epoch timestamp in seconds for when the Guardrail was created.
-  /// [crossRegionConfig] Optional.
+  /// [crossRegionConfig] Configuration block to enable cross-region routing for bedrock guardrails. See `crossRegionConfig` Block for more information. Note see [available regions](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-cross-region.html) here.
   /// [description] Description of the guardrail or its version.
   /// [guardrailArn] ARN of the Guardrail.
   /// [guardrailId] ID of the Guardrail.
-  /// [kmsKeyArn] The KMS key with which the guardrail was encrypted at rest.
+  /// [kmsKeyArn] KMS key with which the guardrail was encrypted at rest.
   /// [name] Name of the guardrail.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [sensitiveInformationPolicyConfig] Sensitive information policy config for a guardrail. See Sensitive Information Policy Config for more information.
+  /// [sensitiveInformationPolicyConfig] Sensitive information policy config for a guardrail. See `sensitiveInformationPolicyConfig` Block for more information.
   /// [status] Status of the Bedrock Guardrail. One of `READY`, `FAILED`.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
-  /// [topicPolicyConfig] Topic policy config for a guardrail. See Topic Policy Config for more information.
+  /// [topicPolicyConfig] Topic policy config for a guardrail. See `topicPolicyConfig` Block for more information.
   /// [updatedAt] Date and time that the Guardrail list was last updated.
   /// [version] Version of the Guardrail.
-  /// [wordPolicyConfig] Word policy config for a guardrail. See Word Policy Config for more information.
+  /// [wordPolicyConfig] Word policy config for a guardrail. See `wordPolicyConfig` Block for more information.
   const GuardrailState({
     this.blockedInputMessaging,
     this.blockedOutputsMessaging,

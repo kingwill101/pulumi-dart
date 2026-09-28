@@ -41,8 +41,8 @@ class EndpointElasticsearchSettings {
   factory EndpointElasticsearchSettings.fromMap(Map<String, dynamic> map) {
     return EndpointElasticsearchSettings(
       endpointUri: pulumi.Input.fromValue(map['endpointUri'] as String),
-      errorRetryDuration: (() { final guardedValue = map['errorRetryDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      fullLoadErrorPercentage: (() { final guardedValue = map['fullLoadErrorPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      errorRetryDuration: (() { final guardedValue = map['errorRetryDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      fullLoadErrorPercentage: (() { final guardedValue = map['fullLoadErrorPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       serviceAccessRoleArn: pulumi.Input.fromValue(map['serviceAccessRoleArn'] as String),
       useNewMappingType: (() { final guardedValue = map['useNewMappingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

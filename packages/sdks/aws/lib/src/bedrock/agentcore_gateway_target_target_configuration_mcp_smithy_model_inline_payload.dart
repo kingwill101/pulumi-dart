@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload {
-  /// The inline schema payload content.
+  /// Inline schema payload content.
   final pulumi.Input<String> payload;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload].
-  /// [payload] The inline schema payload content.
+  /// [payload] Inline schema payload content.
   const AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload({
     required this.payload,
   });

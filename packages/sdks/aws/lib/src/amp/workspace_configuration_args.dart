@@ -58,10 +58,10 @@ class WorkspaceConfigurationArgs {
   factory WorkspaceConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceConfigurationArgs(
       limitsPerLabelSets: (() { final guardedValue = map['limitsPerLabelSets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkspaceConfigurationLimitsPerLabelSet>(guardedValue, (value) => WorkspaceConfigurationLimitsPerLabelSet.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      outOfOrderTimeWindowInSeconds: (() { final guardedValue = map['outOfOrderTimeWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      outOfOrderTimeWindowInSeconds: (() { final guardedValue = map['outOfOrderTimeWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retentionPeriodInDays: (() { final guardedValue = map['retentionPeriodInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      ruleQueryOffsetInSeconds: (() { final guardedValue = map['ruleQueryOffsetInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retentionPeriodInDays: (() { final guardedValue = map['retentionPeriodInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      ruleQueryOffsetInSeconds: (() { final guardedValue = map['ruleQueryOffsetInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkspaceConfigurationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );

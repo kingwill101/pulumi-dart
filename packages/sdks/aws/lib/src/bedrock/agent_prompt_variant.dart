@@ -7,31 +7,31 @@ import 'agent_prompt_variant_metadata.dart';
 import 'agent_prompt_variant_template_configuration.dart';
 
 class AgentPromptVariant {
-  /// Contains model-specific inference configurations that aren’t in the inferenceConfiguration field. To see model-specific inference parameters, see [Inference request parameters and response fields for foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
+  /// Model-specific inference configurations that aren’t in the inferenceConfiguration field. To see model-specific inference parameters, see [Inference request parameters and response fields for foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
   final pulumi.Input<String?>? additionalModelRequestFields;
-  /// Specifies a generative AI resource with which to use the prompt. If this is not supplied, then a `genAiResource` must be defined. See Generative AI Resource for more information.
+  /// Generative AI resource with which to use the prompt. If this is not supplied, then a `modelId` must be defined. See `genAiResource` Block for more information.
   final pulumi.Input<AgentPromptVariantGenAiResource?>? genAiResource;
-  /// Contains inference configurations for the prompt variant. See Inference Configuration for more information.
+  /// Inference configurations for the prompt variant. See `inferenceConfiguration` Block for more information.
   final pulumi.Input<AgentPromptVariantInferenceConfiguration?>? inferenceConfiguration;
-  /// A list of objects, each containing a key-value pair that defines a metadata tag and value to attach to a prompt variant. See Metadata for more information.
+  /// List of objects, each containing a key-value pair that defines a metadata tag and value to attach to a prompt variant. See `metadata` Block for more information.
   final pulumi.Input<List<AgentPromptVariantMetadata>?>? metadatas;
   /// Unique identifier of the model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) with which to run inference on the prompt. If this is not supplied, then a `genAiResource` must be defined.
   final pulumi.Input<String?>? modelId;
-  /// Name of the prompt variant.
+  /// Name of the tool.
   final pulumi.Input<String> name;
-  /// Contains configurations for the prompt template. See Template Configuration for more information.
+  /// Configurations for the prompt template. See `templateConfiguration` Block for more information.
   final pulumi.Input<AgentPromptVariantTemplateConfiguration?>? templateConfiguration;
   /// Type of prompt template to use. Valid values: `CHAT`, `TEXT`.
   final pulumi.Input<String> templateType;
 
   /// Creates a new [AgentPromptVariant].
-  /// [additionalModelRequestFields] Contains model-specific inference configurations that aren’t in the inferenceConfiguration field. To see model-specific inference parameters, see [Inference request parameters and response fields for foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
-  /// [genAiResource] Specifies a generative AI resource with which to use the prompt. If this is not supplied, then a `genAiResource` must be defined. See Generative AI Resource for more information.
-  /// [inferenceConfiguration] Contains inference configurations for the prompt variant. See Inference Configuration for more information.
-  /// [metadatas] A list of objects, each containing a key-value pair that defines a metadata tag and value to attach to a prompt variant. See Metadata for more information.
+  /// [additionalModelRequestFields] Model-specific inference configurations that aren’t in the inferenceConfiguration field. To see model-specific inference parameters, see [Inference request parameters and response fields for foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
+  /// [genAiResource] Generative AI resource with which to use the prompt. If this is not supplied, then a `modelId` must be defined. See `genAiResource` Block for more information.
+  /// [inferenceConfiguration] Inference configurations for the prompt variant. See `inferenceConfiguration` Block for more information.
+  /// [metadatas] List of objects, each containing a key-value pair that defines a metadata tag and value to attach to a prompt variant. See `metadata` Block for more information.
   /// [modelId] Unique identifier of the model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) with which to run inference on the prompt. If this is not supplied, then a `genAiResource` must be defined.
-  /// [name] Name of the prompt variant.
-  /// [templateConfiguration] Contains configurations for the prompt template. See Template Configuration for more information.
+  /// [name] Name of the tool.
+  /// [templateConfiguration] Configurations for the prompt template. See `templateConfiguration` Block for more information.
   /// [templateType] Type of prompt template to use. Valid values: `CHAT`, `TEXT`.
   const AgentPromptVariant({
     this.additionalModelRequestFields,

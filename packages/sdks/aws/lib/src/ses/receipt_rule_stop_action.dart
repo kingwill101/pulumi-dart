@@ -30,7 +30,7 @@ class ReceiptRuleStopAction {
 
   factory ReceiptRuleStopAction.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleStopAction(
-      position: pulumi.Input.fromValue((map['position'] as num).toInt()),
+      position: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['position'])),
       scope: pulumi.Input.fromValue(map['scope'] as String),
       topicArn: (() { final guardedValue = map['topicArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

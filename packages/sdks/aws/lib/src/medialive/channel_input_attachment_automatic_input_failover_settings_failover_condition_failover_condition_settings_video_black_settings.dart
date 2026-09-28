@@ -26,7 +26,7 @@ class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailo
   factory ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsVideoBlackSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsVideoBlackSettings(
       blackDetectThreshold: (() { final guardedValue = map['blackDetectThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
-      videoBlackThresholdMsec: (() { final guardedValue = map['videoBlackThresholdMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      videoBlackThresholdMsec: (() { final guardedValue = map['videoBlackThresholdMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -3,15 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter {
+  /// One or more exclusion regular expression patterns to exclude object types that match the pattern.
   final pulumi.Input<List<String>?>? exclusionFilters;
+  /// One or more inclusion regular expression patterns to include object types that match the pattern.
   final pulumi.Input<List<String>?>? inclusionFilters;
-  /// The supported object type or content type of the data source.
+  /// Object type or content type of the data source.
   final pulumi.Input<String> objectType;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter].
-  /// [exclusionFilters] Optional.
-  /// [inclusionFilters] Optional.
-  /// [objectType] The supported object type or content type of the data source.
+  /// [exclusionFilters] One or more exclusion regular expression patterns to exclude object types that match the pattern.
+  /// [inclusionFilters] One or more inclusion regular expression patterns to include object types that match the pattern.
+  /// [objectType] Object type or content type of the data source.
   const AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter({
     this.exclusionFilters,
     this.inclusionFilters,

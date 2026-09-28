@@ -1082,7 +1082,7 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 class AgentDataSource extends pulumi.CustomResource {
   /// Data deletion policy for a data source. Valid values: `RETAIN`, `DELETE`.
   late final pulumi.Output<String> dataDeletionPolicy;
-  /// Details about how the data source is stored. See `dataSourceConfiguration` block for details.
+  /// Details about how the data source is stored. See `dataSourceConfiguration` Block for details.
   late final pulumi.Output<AgentDataSourceDataSourceConfiguration> dataSourceConfiguration;
   /// Unique identifier of the data source.
   late final pulumi.Output<String> dataSourceId;
@@ -1096,10 +1096,10 @@ class AgentDataSource extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Details about the configuration of the server-side encryption. See `serverSideEncryptionConfiguration` block for details.
+  /// Details about the configuration of the server-side encryption. See `serverSideEncryptionConfiguration` Block for details.
   late final pulumi.Output<AgentDataSourceServerSideEncryptionConfiguration?> serverSideEncryptionConfiguration;
   late final pulumi.Output<AgentDataSourceTimeouts?> timeouts;
-  /// Details about the configuration of the server-side encryption. See `vectorIngestionConfiguration` block for details.
+  /// Details about how to ingest the documents in the data source. See `vectorIngestionConfiguration` Block for details.
   late final pulumi.Output<AgentDataSourceVectorIngestionConfiguration?> vectorIngestionConfiguration;
 
   /// Creates a new [AgentDataSource].
@@ -1114,7 +1114,7 @@ class AgentDataSource extends pulumi.CustomResource {
           'aws:bedrock/agentDataSource:AgentDataSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     dataDeletionPolicy = registerOutput<String>('dataDeletionPolicy');
     dataSourceConfiguration = registerOutput<AgentDataSourceDataSourceConfiguration>('dataSourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentDataSourceDataSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

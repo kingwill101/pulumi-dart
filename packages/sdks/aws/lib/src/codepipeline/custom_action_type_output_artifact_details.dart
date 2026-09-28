@@ -25,8 +25,8 @@ class CustomActionTypeOutputArtifactDetails {
 
   factory CustomActionTypeOutputArtifactDetails.fromMap(Map<String, dynamic> map) {
     return CustomActionTypeOutputArtifactDetails(
-      maximumCount: pulumi.Input.fromValue((map['maximumCount'] as num).toInt()),
-      minimumCount: pulumi.Input.fromValue((map['minimumCount'] as num).toInt()),
+      maximumCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maximumCount'])),
+      minimumCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minimumCount'])),
     );
   }
 }

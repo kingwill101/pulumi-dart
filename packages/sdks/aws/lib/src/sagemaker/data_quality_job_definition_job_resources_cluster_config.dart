@@ -35,10 +35,10 @@ class DataQualityJobDefinitionJobResourcesClusterConfig {
 
   factory DataQualityJobDefinitionJobResourcesClusterConfig.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionJobResourcesClusterConfig(
-      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toInt()),
+      instanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instanceCount'])),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       volumeKmsKeyId: (() { final guardedValue = map['volumeKmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      volumeSizeInGb: pulumi.Input.fromValue((map['volumeSizeInGb'] as num).toInt()),
+      volumeSizeInGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['volumeSizeInGb'])),
     );
   }
 }

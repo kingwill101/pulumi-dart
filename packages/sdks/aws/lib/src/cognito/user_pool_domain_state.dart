@@ -77,7 +77,7 @@ class UserPoolDomainState {
       cloudfrontDistributionArn: (() { final guardedValue = map['cloudfrontDistributionArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cloudfrontDistributionZoneId: (() { final guardedValue = map['cloudfrontDistributionZoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      managedLoginVersion: (() { final guardedValue = map['managedLoginVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      managedLoginVersion: (() { final guardedValue = map['managedLoginVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3Bucket: (() { final guardedValue = map['s3Bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userPoolId: (() { final guardedValue = map['userPoolId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

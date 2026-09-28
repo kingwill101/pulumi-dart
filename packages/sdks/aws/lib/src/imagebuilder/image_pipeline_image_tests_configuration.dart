@@ -26,7 +26,7 @@ class ImagePipelineImageTestsConfiguration {
   factory ImagePipelineImageTestsConfiguration.fromMap(Map<String, dynamic> map) {
     return ImagePipelineImageTestsConfiguration(
       imageTestsEnabled: (() { final guardedValue = map['imageTestsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

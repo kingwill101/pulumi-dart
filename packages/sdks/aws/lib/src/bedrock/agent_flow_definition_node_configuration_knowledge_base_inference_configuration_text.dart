@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfigurationText {
   /// Maximum number of tokens to return in the response.
   final pulumi.Input<int?>? maxTokens;
-  /// List of strings that define sequences after which the model will stop generating.
+  /// List of strings that define sequences after which the model stops generating.
   final pulumi.Input<List<String>?>? stopSequences;
   /// Controls the randomness of the response. Choose a lower value for more predictable outputs and a higher value for more surprising outputs.
   final pulumi.Input<double?>? temperature;
@@ -14,7 +14,7 @@ class AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfigurationTex
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfigurationText].
   /// [maxTokens] Maximum number of tokens to return in the response.
-  /// [stopSequences] List of strings that define sequences after which the model will stop generating.
+  /// [stopSequences] List of strings that define sequences after which the model stops generating.
   /// [temperature] Controls the randomness of the response. Choose a lower value for more predictable outputs and a higher value for more surprising outputs.
   /// [topP] Percentage of most-likely candidates that the model considers for the next token.
   const AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfigurationText({
@@ -35,7 +35,7 @@ class AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfigurationTex
 
   factory AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfigurationText.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfigurationText(
-      maxTokens: (() { final guardedValue = map['maxTokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxTokens: (() { final guardedValue = map['maxTokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       stopSequences: (() { final guardedValue = map['stopSequences']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       temperature: (() { final guardedValue = map['temperature']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       topP: (() { final guardedValue = map['topP']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),

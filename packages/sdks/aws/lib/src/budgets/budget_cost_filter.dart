@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetCostFilter {
-  /// The name of a budget. Unique within accounts.
+  /// Name of the cost filter. Valid values are `AZ`, `BillingEntity`, `CostCategory`, `InstanceType`, `InvoicingEntity`, `LegalEntityName`, `LinkedAccount`, `Operation`, `PurchaseType`, `Region`, `Service`, `TagKeyValue`, `UsageType`, and `UsageTypeGroup`.
   final pulumi.Input<String> name;
-  /// (Optional) A list of cost category values to match. At least one value is required.
+  /// List of values used for filtering.
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [BudgetCostFilter].
-  /// [name] The name of a budget. Unique within accounts.
-  /// [values] (Optional) A list of cost category values to match. At least one value is required.
+  /// [name] Name of the cost filter. Valid values are `AZ`, `BillingEntity`, `CostCategory`, `InstanceType`, `InvoicingEntity`, `LegalEntityName`, `LinkedAccount`, `Operation`, `PurchaseType`, `Region`, `Service`, `TagKeyValue`, `UsageType`, and `UsageTypeGroup`.
+  /// [values] List of values used for filtering.
   const BudgetCostFilter({
     required this.name,
     required this.values,

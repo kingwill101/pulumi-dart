@@ -85,7 +85,7 @@ class GetPlanResult {
       owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return guardedValue as String; })(),
       primaryRegion: (() { final guardedValue = map['primaryRegion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       recoveryApproach: (() { final guardedValue = map['recoveryApproach']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      recoveryTimeObjectiveMinutes: (() { final guardedValue = map['recoveryTimeObjectiveMinutes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      recoveryTimeObjectiveMinutes: (() { final guardedValue = map['recoveryTimeObjectiveMinutes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),

@@ -60,12 +60,12 @@ class DistributionCacheBehaviorSettings {
     return DistributionCacheBehaviorSettings(
       allowedHttpMethods: (() { final guardedValue = map['allowedHttpMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cachedHttpMethods: (() { final guardedValue = map['cachedHttpMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       forwardedCookies: (() { final guardedValue = map['forwardedCookies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DistributionCacheBehaviorSettingsForwardedCookies.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       forwardedHeaders: (() { final guardedValue = map['forwardedHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DistributionCacheBehaviorSettingsForwardedHeaders.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       forwardedQueryStrings: (() { final guardedValue = map['forwardedQueryStrings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DistributionCacheBehaviorSettingsForwardedQueryStrings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maximumTtl: (() { final guardedValue = map['maximumTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minimumTtl: (() { final guardedValue = map['minimumTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumTtl: (() { final guardedValue = map['maximumTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minimumTtl: (() { final guardedValue = map['minimumTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

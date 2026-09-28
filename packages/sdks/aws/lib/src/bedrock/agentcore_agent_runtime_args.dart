@@ -30,8 +30,6 @@ class AgentcoreAgentRuntimeArgs {
   /// Runtime session and resource lifecycle configuration for the agent runtime. See `lifecycleConfiguration` below.
   final pulumi.Input<List<AgentcoreAgentRuntimeLifecycleConfiguration>?>? lifecycleConfigurations;
   /// Network configuration for the agent runtime. See `networkConfiguration` below.
-  ///
-  /// The following arguments are optional:
   final pulumi.Input<AgentcoreAgentRuntimeNetworkConfiguration> networkConfiguration;
   /// Protocol configuration for the agent runtime. See `protocolConfiguration` below.
   final pulumi.Input<AgentcoreAgentRuntimeProtocolConfiguration?>? protocolConfiguration;
@@ -40,6 +38,8 @@ class AgentcoreAgentRuntimeArgs {
   /// Configuration for HTTP request headers that will be passed through to the runtime. See `requestHeaderConfiguration` below.
   final pulumi.Input<AgentcoreAgentRuntimeRequestHeaderConfiguration?>? requestHeaderConfiguration;
   /// ARN of the IAM role that the agent runtime assumes to access AWS services.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> roleArn;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;

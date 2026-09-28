@@ -8,18 +8,18 @@ import 'agent_data_source_vector_ingestion_configuration_chunking_configuration_
 class AgentDataSourceVectorIngestionConfigurationChunkingConfiguration {
   /// Option for chunking your source data, either in fixed-sized chunks or as one chunk. Valid values: `FIXED_SIZE`, `HIERARCHICAL`, `SEMANTIC`, `NONE`.
   final pulumi.Input<String> chunkingStrategy;
-  /// Configurations for when you choose fixed-size chunking. Requires chunkingStrategy as `FIXED_SIZE`. See `fixedSizeChunkingConfiguration` for details.
+  /// Configurations for when you choose fixed-size chunking. Requires `chunkingStrategy` as `FIXED_SIZE`. See `fixedSizeChunkingConfiguration` Block for details.
   final pulumi.Input<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration?>? fixedSizeChunkingConfiguration;
-  /// Configurations for when you choose hierarchical chunking. Requires chunkingStrategy as `HIERARCHICAL`. See `hierarchicalChunkingConfiguration` for details.
+  /// Configurations for when you choose hierarchical chunking. Requires `chunkingStrategy` as `HIERARCHICAL`. See `hierarchicalChunkingConfiguration` Block for details.
   final pulumi.Input<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration?>? hierarchicalChunkingConfiguration;
-  /// Configurations for when you choose semantic chunking. Requires chunkingStrategy as `SEMANTIC`. See `semanticChunkingConfiguration` for details.
+  /// Configurations for when you choose semantic chunking. Requires `chunkingStrategy` as `SEMANTIC`. See `semanticChunkingConfiguration` Block for details.
   final pulumi.Input<AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration?>? semanticChunkingConfiguration;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationChunkingConfiguration].
   /// [chunkingStrategy] Option for chunking your source data, either in fixed-sized chunks or as one chunk. Valid values: `FIXED_SIZE`, `HIERARCHICAL`, `SEMANTIC`, `NONE`.
-  /// [fixedSizeChunkingConfiguration] Configurations for when you choose fixed-size chunking. Requires chunkingStrategy as `FIXED_SIZE`. See `fixedSizeChunkingConfiguration` for details.
-  /// [hierarchicalChunkingConfiguration] Configurations for when you choose hierarchical chunking. Requires chunkingStrategy as `HIERARCHICAL`. See `hierarchicalChunkingConfiguration` for details.
-  /// [semanticChunkingConfiguration] Configurations for when you choose semantic chunking. Requires chunkingStrategy as `SEMANTIC`. See `semanticChunkingConfiguration` for details.
+  /// [fixedSizeChunkingConfiguration] Configurations for when you choose fixed-size chunking. Requires `chunkingStrategy` as `FIXED_SIZE`. See `fixedSizeChunkingConfiguration` Block for details.
+  /// [hierarchicalChunkingConfiguration] Configurations for when you choose hierarchical chunking. Requires `chunkingStrategy` as `HIERARCHICAL`. See `hierarchicalChunkingConfiguration` Block for details.
+  /// [semanticChunkingConfiguration] Configurations for when you choose semantic chunking. Requires `chunkingStrategy` as `SEMANTIC`. See `semanticChunkingConfiguration` Block for details.
   const AgentDataSourceVectorIngestionConfigurationChunkingConfiguration({
     required this.chunkingStrategy,
     this.fixedSizeChunkingConfiguration,

@@ -8,9 +8,9 @@ import 'option_group_option.dart';
 /// {@endtemplate}
 /// {@macro pulumi_rds_option_group_option_group_args_doc}
 class OptionGroupArgs {
-  /// Specifies the name of the engine that this option group should be associated with.
+  /// Name of the engine that this option group should be associated with.
   final pulumi.Input<String> engineName;
-  /// Specifies the major version of the engine that this option group should be associated with.
+  /// Major version of the engine that this option group should be associated with.
   final pulumi.Input<String> majorEngineVersion;
   /// Name of the option group. If omitted, the provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
   final pulumi.Input<String?>? name;
@@ -18,7 +18,7 @@ class OptionGroupArgs {
   final pulumi.Input<String?>? namePrefix;
   /// Description of the option group. Defaults to "Managed by Pulumi".
   final pulumi.Input<String?>? optionGroupDescription;
-  /// The options to apply. See `option` Block below for more details.
+  /// Options to apply. See `option` Block below for more details.
   final pulumi.Input<List<OptionGroupOption>?>? options;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -28,12 +28,12 @@ class OptionGroupArgs {
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [OptionGroupArgs].
-  /// [engineName] Specifies the name of the engine that this option group should be associated with.
-  /// [majorEngineVersion] Specifies the major version of the engine that this option group should be associated with.
+  /// [engineName] Name of the engine that this option group should be associated with.
+  /// [majorEngineVersion] Major version of the engine that this option group should be associated with.
   /// [name] Name of the option group. If omitted, the provider will assign a random, unique name. Must be lowercase, to match as it is stored in AWS.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`. Must be lowercase, to match as it is stored in AWS.
   /// [optionGroupDescription] Description of the option group. Defaults to "Managed by Pulumi".
-  /// [options] The options to apply. See `option` Block below for more details.
+  /// [options] Options to apply. See `option` Block below for more details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [skipDestroy] Set to true if you do not wish the option group to be deleted at destroy time, and instead just remove the option group from the Pulumi state.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

@@ -39,7 +39,7 @@ class ServiceSpecificCredentialArgs {
 
   factory ServiceSpecificCredentialArgs.fromMap(Map<String, dynamic> map) {
     return ServiceSpecificCredentialArgs(
-      credentialAgeDays: (() { final guardedValue = map['credentialAgeDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      credentialAgeDays: (() { final guardedValue = map['credentialAgeDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userName: pulumi.Input.fromValue(map['userName'] as String),

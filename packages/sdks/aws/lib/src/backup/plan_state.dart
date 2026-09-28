@@ -7,34 +7,34 @@ import 'plan_scan_setting.dart';
 
 /// Input properties used for looking up and filtering Plan resources.
 class PlanState {
-  /// An object that specifies backup options for each resource type.
+  /// Object that specifies backup options for each resource type. Detailed below.
   final pulumi.Input<List<PlanAdvancedBackupSetting>?>? advancedBackupSettings;
-  /// The ARN of the backup plan.
+  /// ARN of the backup plan.
   final pulumi.Input<String?>? arn;
-  /// The display name of a backup plan.
+  /// Display name of a backup plan.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A rule object that specifies a scheduled task that is used to back up a selection of resources.
+  /// Rule that specifies a scheduled task used to back up a selection of resources. Detailed below.
   final pulumi.Input<List<PlanRule>?>? rules;
   /// Block for scanning configuration for the backup rule and includes the malware scanner, and scan mode of either full or incremental. Detailed below.
   final pulumi.Input<List<PlanScanSetting>?>? scanSettings;
   /// Metadata that you can assign to help organize the plans you create. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
   final pulumi.Input<String?>? version;
 
   /// Creates a new [PlanState].
-  /// [advancedBackupSettings] An object that specifies backup options for each resource type.
-  /// [arn] The ARN of the backup plan.
-  /// [name] The display name of a backup plan.
+  /// [advancedBackupSettings] Object that specifies backup options for each resource type. Detailed below.
+  /// [arn] ARN of the backup plan.
+  /// [name] Display name of a backup plan.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [rules] A rule object that specifies a scheduled task that is used to back up a selection of resources.
+  /// [rules] Rule that specifies a scheduled task used to back up a selection of resources. Detailed below.
   /// [scanSettings] Block for scanning configuration for the backup rule and includes the malware scanner, and scan mode of either full or incremental. Detailed below.
   /// [tags] Metadata that you can assign to help organize the plans you create. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [version] Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
   const PlanState({
     this.advancedBackupSettings,

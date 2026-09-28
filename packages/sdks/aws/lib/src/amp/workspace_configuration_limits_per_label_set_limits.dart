@@ -20,7 +20,7 @@ class WorkspaceConfigurationLimitsPerLabelSetLimits {
 
   factory WorkspaceConfigurationLimitsPerLabelSetLimits.fromMap(Map<String, dynamic> map) {
     return WorkspaceConfigurationLimitsPerLabelSetLimits(
-      maxSeries: pulumi.Input.fromValue((map['maxSeries'] as num).toInt()),
+      maxSeries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxSeries'])),
     );
   }
 }

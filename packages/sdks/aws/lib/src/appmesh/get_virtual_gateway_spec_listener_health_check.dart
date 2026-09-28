@@ -43,13 +43,13 @@ class GetVirtualGatewaySpecListenerHealthCheck {
 
   factory GetVirtualGatewaySpecListenerHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerHealthCheck(
-      healthyThreshold: pulumi.Input.fromValue((map['healthyThreshold'] as num).toInt()),
-      intervalMillis: pulumi.Input.fromValue((map['intervalMillis'] as num).toInt()),
+      healthyThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['healthyThreshold'])),
+      intervalMillis: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['intervalMillis'])),
       path: pulumi.Input.fromValue(map['path'] as String),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      timeoutMillis: pulumi.Input.fromValue((map['timeoutMillis'] as num).toInt()),
-      unhealthyThreshold: pulumi.Input.fromValue((map['unhealthyThreshold'] as num).toInt()),
+      timeoutMillis: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeoutMillis'])),
+      unhealthyThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['unhealthyThreshold'])),
     );
   }
 }

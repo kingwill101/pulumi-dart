@@ -5,12 +5,14 @@ import 'agent_data_source_data_source_configuration_web_configuration_crawler_co
 import 'agent_data_source_data_source_configuration_web_configuration_source_configuration.dart';
 
 class AgentDataSourceDataSourceConfigurationWebConfiguration {
+  /// Configuration for web content. See `data_source_configuration.web_configuration.crawler_configuration` Block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration?>? crawlerConfiguration;
+  /// Endpoint information to connect to your web data source. See `data_source_configuration.web_configuration.source_configuration` Block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration?>? sourceConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationWebConfiguration].
-  /// [crawlerConfiguration] Optional.
-  /// [sourceConfiguration] Optional.
+  /// [crawlerConfiguration] Configuration for web content. See `data_source_configuration.web_configuration.crawler_configuration` Block for details.
+  /// [sourceConfiguration] Endpoint information to connect to your web data source. See `data_source_configuration.web_configuration.source_configuration` Block for details.
   const AgentDataSourceDataSourceConfigurationWebConfiguration({
     this.crawlerConfiguration,
     this.sourceConfiguration,

@@ -25,8 +25,8 @@ class GetLinkBandwidth {
 
   factory GetLinkBandwidth.fromMap(Map<String, dynamic> map) {
     return GetLinkBandwidth(
-      downloadSpeed: pulumi.Input.fromValue((map['downloadSpeed'] as num).toInt()),
-      uploadSpeed: pulumi.Input.fromValue((map['uploadSpeed'] as num).toInt()),
+      downloadSpeed: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['downloadSpeed'])),
+      uploadSpeed: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['uploadSpeed'])),
     );
   }
 }

@@ -4,17 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_chat_tool_configuration_tool_tool_spec_input_schema.dart';
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec {
-  /// The description of the tool.
+  /// Description for the flow.
   final pulumi.Input<String?>? description;
-  /// The input schema of the tool. See Tool Input Schema for more information.
+  /// Input schema of the tool. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.chat.tool_configuration.tool.tool_spec.input_schema` Block for details.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema?>? inputSchema;
-  /// The name of the tool.
+  /// Name for the flow.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> name;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec].
-  /// [description] The description of the tool.
-  /// [inputSchema] The input schema of the tool. See Tool Input Schema for more information.
-  /// [name] The name of the tool.
+  /// [description] Description for the flow.
+  /// [inputSchema] Input schema of the tool. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.chat.tool_configuration.tool.tool_spec.input_schema` Block for details.
+  /// [name] Name for the flow.
   const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec({
     this.description,
     this.inputSchema,

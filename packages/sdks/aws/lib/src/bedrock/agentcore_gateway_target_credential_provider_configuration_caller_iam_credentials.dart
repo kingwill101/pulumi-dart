@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayTargetCredentialProviderConfigurationCallerIamCredentials {
-  /// The AWS region for the credentials.
+  /// AWS region for the credentials.
   final pulumi.Input<String?>? region;
-  /// The service name for the credentials.
+  /// Service name for the credentials.
   final pulumi.Input<String> service;
 
   /// Creates a new [AgentcoreGatewayTargetCredentialProviderConfigurationCallerIamCredentials].
-  /// [region] The AWS region for the credentials.
-  /// [service] The service name for the credentials.
+  /// [region] AWS region for the credentials.
+  /// [service] Service name for the credentials.
   const AgentcoreGatewayTargetCredentialProviderConfigurationCallerIamCredentials({
     this.region,
     required this.service,

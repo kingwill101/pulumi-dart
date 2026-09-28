@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_browser_certificate_location.dart';
 
 class AgentcoreBrowserCertificate {
-  /// Location from which to retrieve the certificate. See `certificates.location` below.
+  /// Location from which to retrieve the certificate. See `certificate.location` below.
   final pulumi.Input<AgentcoreBrowserCertificateLocation> location;
 
   /// Creates a new [AgentcoreBrowserCertificate].
-  /// [location] Location from which to retrieve the certificate. See `certificates.location` below.
+  /// [location] Location from which to retrieve the certificate. See `certificate.location` below.
   const AgentcoreBrowserCertificate({
     required this.location,
   });

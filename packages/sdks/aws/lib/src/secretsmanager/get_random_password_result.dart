@@ -68,7 +68,7 @@ class GetRandomPasswordResult {
       excludeUppercase: (() { final guardedValue = map['excludeUppercase']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       includeSpace: (() { final guardedValue = map['includeSpace']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      passwordLength: (() { final guardedValue = map['passwordLength']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      passwordLength: (() { final guardedValue = map['passwordLength']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       randomPassword: (() { final guardedValue = map['randomPassword']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       requireEachIncludedType: (() { final guardedValue = map['requireEachIncludedType']; if (guardedValue == null) return null; return guardedValue as bool; })(),

@@ -45,8 +45,8 @@ class GetContactsRotationRecurrence {
     return GetContactsRotationRecurrence(
       dailySettings: pulumi.Input.fromValue(pulumi.Input.decodeList<GetContactsRotationRecurrenceDailySetting>(map['dailySettings']!, (value) => GetContactsRotationRecurrenceDailySetting.fromMap((value as Map).cast<String, dynamic>()))),
       monthlySettings: pulumi.Input.fromValue(pulumi.Input.decodeList<GetContactsRotationRecurrenceMonthlySetting>(map['monthlySettings']!, (value) => GetContactsRotationRecurrenceMonthlySetting.fromMap((value as Map).cast<String, dynamic>()))),
-      numberOfOnCalls: pulumi.Input.fromValue((map['numberOfOnCalls'] as num).toInt()),
-      recurrenceMultiplier: pulumi.Input.fromValue((map['recurrenceMultiplier'] as num).toInt()),
+      numberOfOnCalls: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfOnCalls'])),
+      recurrenceMultiplier: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['recurrenceMultiplier'])),
       shiftCoverages: pulumi.Input.fromValue(pulumi.Input.decodeList<GetContactsRotationRecurrenceShiftCoverage>(map['shiftCoverages']!, (value) => GetContactsRotationRecurrenceShiftCoverage.fromMap((value as Map).cast<String, dynamic>()))),
       weeklySettings: pulumi.Input.fromValue(pulumi.Input.decodeList<GetContactsRotationRecurrenceWeeklySetting>(map['weeklySettings']!, (value) => GetContactsRotationRecurrenceWeeklySetting.fromMap((value as Map).cast<String, dynamic>()))),
     );

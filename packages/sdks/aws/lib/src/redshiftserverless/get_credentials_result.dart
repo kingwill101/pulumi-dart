@@ -54,7 +54,7 @@ class GetCredentialsResult {
       dbName: (() { final guardedValue = map['dbName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dbPassword: (() { final guardedValue = map['dbPassword']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dbUser: (() { final guardedValue = map['dbUser']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      durationSeconds: (() { final guardedValue = map['durationSeconds']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      durationSeconds: (() { final guardedValue = map['durationSeconds']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       expiration: (() { final guardedValue = map['expiration']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),

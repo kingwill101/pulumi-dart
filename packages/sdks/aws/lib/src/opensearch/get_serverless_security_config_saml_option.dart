@@ -37,7 +37,7 @@ class GetServerlessSecurityConfigSamlOption {
     return GetServerlessSecurityConfigSamlOption(
       groupAttribute: pulumi.Input.fromValue(map['groupAttribute'] as String),
       metadata: pulumi.Input.fromValue(map['metadata'] as String),
-      sessionTimeout: pulumi.Input.fromValue((map['sessionTimeout'] as num).toInt()),
+      sessionTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sessionTimeout'])),
       userAttribute: pulumi.Input.fromValue(map['userAttribute'] as String),
     );
   }

@@ -32,7 +32,7 @@ class GetManagedRuleGroupRuleActionBlockCustomResponse {
   factory GetManagedRuleGroupRuleActionBlockCustomResponse.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRuleActionBlockCustomResponse(
       customResponseBodyKey: pulumi.Input.fromValue(map['customResponseBodyKey'] as String),
-      responseCode: pulumi.Input.fromValue((map['responseCode'] as num).toInt()),
+      responseCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['responseCode'])),
       responseHeaders: pulumi.Input.fromValue(pulumi.Input.decodeList<GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader>(map['responseHeaders']!, (value) => GetManagedRuleGroupRuleActionBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

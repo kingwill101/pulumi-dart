@@ -5,12 +5,14 @@ import 'agent_data_source_data_source_configuration_share_point_configuration_cr
 import 'agent_data_source_data_source_configuration_share_point_configuration_source_configuration.dart';
 
 class AgentDataSourceDataSourceConfigurationSharePointConfiguration {
+  /// Configuration for SharePoint content. See `data_source_configuration.share_point_configuration.crawler_configuration` Block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationSharePointConfigurationCrawlerConfiguration?>? crawlerConfiguration;
+  /// Endpoint information to connect to your SharePoint data source. See `data_source_configuration.share_point_configuration.source_configuration` Block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationSharePointConfigurationSourceConfiguration?>? sourceConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationSharePointConfiguration].
-  /// [crawlerConfiguration] Optional.
-  /// [sourceConfiguration] Optional.
+  /// [crawlerConfiguration] Configuration for SharePoint content. See `data_source_configuration.share_point_configuration.crawler_configuration` Block for details.
+  /// [sourceConfiguration] Endpoint information to connect to your SharePoint data source. See `data_source_configuration.share_point_configuration.source_configuration` Block for details.
   const AgentDataSourceDataSourceConfigurationSharePointConfiguration({
     this.crawlerConfiguration,
     this.sourceConfiguration,

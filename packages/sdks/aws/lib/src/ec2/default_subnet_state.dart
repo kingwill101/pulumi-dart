@@ -129,7 +129,7 @@ class DefaultSubnetState {
       cidrBlock: (() { final guardedValue = map['cidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customerOwnedIpv4Pool: (() { final guardedValue = map['customerOwnedIpv4Pool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableDns64: (() { final guardedValue = map['enableDns64']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      enableLniAtDeviceIndex: (() { final guardedValue = map['enableLniAtDeviceIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      enableLniAtDeviceIndex: (() { final guardedValue = map['enableLniAtDeviceIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       enableResourceNameDnsARecordOnLaunch: (() { final guardedValue = map['enableResourceNameDnsARecordOnLaunch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableResourceNameDnsAaaaRecordOnLaunch: (() { final guardedValue = map['enableResourceNameDnsAaaaRecordOnLaunch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       existingDefaultSubnet: (() { final guardedValue = map['existingDefaultSubnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

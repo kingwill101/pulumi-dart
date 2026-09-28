@@ -41,10 +41,10 @@ class GetNetworkInterfaceAttachment {
   factory GetNetworkInterfaceAttachment.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceAttachment(
       attachmentId: pulumi.Input.fromValue(map['attachmentId'] as String),
-      deviceIndex: pulumi.Input.fromValue((map['deviceIndex'] as num).toInt()),
+      deviceIndex: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['deviceIndex'])),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       instanceOwnerId: pulumi.Input.fromValue(map['instanceOwnerId'] as String),
-      networkCardIndex: pulumi.Input.fromValue((map['networkCardIndex'] as num).toInt()),
+      networkCardIndex: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['networkCardIndex'])),
     );
   }
 }

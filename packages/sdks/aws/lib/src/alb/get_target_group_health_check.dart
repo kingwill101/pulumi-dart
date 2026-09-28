@@ -52,14 +52,14 @@ class GetTargetGroupHealthCheck {
   factory GetTargetGroupHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetTargetGroupHealthCheck(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      healthyThreshold: pulumi.Input.fromValue((map['healthyThreshold'] as num).toInt()),
-      interval: pulumi.Input.fromValue((map['interval'] as num).toInt()),
+      healthyThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['healthyThreshold'])),
+      interval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interval'])),
       matcher: pulumi.Input.fromValue(map['matcher'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
       port: pulumi.Input.fromValue(map['port'] as String),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      timeout: pulumi.Input.fromValue((map['timeout'] as num).toInt()),
-      unhealthyThreshold: pulumi.Input.fromValue((map['unhealthyThreshold'] as num).toInt()),
+      timeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeout'])),
+      unhealthyThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['unhealthyThreshold'])),
     );
   }
 }

@@ -79,14 +79,14 @@ class LabelingJobHumanTaskConfig {
   factory LabelingJobHumanTaskConfig.fromMap(Map<String, dynamic> map) {
     return LabelingJobHumanTaskConfig(
       annotationConsolidationConfig: (() { final guardedValue = map['annotationConsolidationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LabelingJobHumanTaskConfigAnnotationConsolidationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxConcurrentTaskCount: (() { final guardedValue = map['maxConcurrentTaskCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      numberOfHumanWorkersPerDataObject: pulumi.Input.fromValue((map['numberOfHumanWorkersPerDataObject'] as num).toInt()),
+      maxConcurrentTaskCount: (() { final guardedValue = map['maxConcurrentTaskCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      numberOfHumanWorkersPerDataObject: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfHumanWorkersPerDataObject'])),
       preHumanTaskLambdaArn: (() { final guardedValue = map['preHumanTaskLambdaArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publicWorkforceTaskPrice: (() { final guardedValue = map['publicWorkforceTaskPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LabelingJobHumanTaskConfigPublicWorkforceTaskPrice.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      taskAvailabilityLifetimeInSeconds: (() { final guardedValue = map['taskAvailabilityLifetimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      taskAvailabilityLifetimeInSeconds: (() { final guardedValue = map['taskAvailabilityLifetimeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       taskDescription: pulumi.Input.fromValue(map['taskDescription'] as String),
       taskKeywords: (() { final guardedValue = map['taskKeywords']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      taskTimeLimitInSeconds: pulumi.Input.fromValue((map['taskTimeLimitInSeconds'] as num).toInt()),
+      taskTimeLimitInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['taskTimeLimitInSeconds'])),
       taskTitle: pulumi.Input.fromValue(map['taskTitle'] as String),
       uiConfig: pulumi.Input.fromValue(LabelingJobHumanTaskConfigUiConfig.fromMap((map['uiConfig']! as Map).cast<String, dynamic>())),
       workteamArn: pulumi.Input.fromValue(map['workteamArn'] as String),

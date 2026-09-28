@@ -1,3 +1,8 @@
+export 'mailmanager/archive.dart';
+export 'mailmanager/archive_args.dart';
+export 'mailmanager/archive_retention.dart';
+export 'mailmanager/archive_retention_actual.dart';
+export 'mailmanager/archive_state.dart';
 export 'mailmanager/ingress_point.dart';
 export 'mailmanager/ingress_point_args.dart';
 export 'mailmanager/ingress_point_ingress_point_configuration.dart';

@@ -110,14 +110,14 @@ class TableExportState {
   factory TableExportState.fromMap(Map<String, dynamic> map) {
     return TableExportState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      billedSizeInBytes: (() { final guardedValue = map['billedSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      billedSizeInBytes: (() { final guardedValue = map['billedSizeInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exportFormat: (() { final guardedValue = map['exportFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exportStatus: (() { final guardedValue = map['exportStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exportTime: (() { final guardedValue = map['exportTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exportType: (() { final guardedValue = map['exportType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       incrementalExportSpecification: (() { final guardedValue = map['incrementalExportSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableExportIncrementalExportSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      itemCount: (() { final guardedValue = map['itemCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      itemCount: (() { final guardedValue = map['itemCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       manifestFilesS3Key: (() { final guardedValue = map['manifestFilesS3Key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3Bucket: (() { final guardedValue = map['s3Bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

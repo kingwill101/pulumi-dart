@@ -6,44 +6,44 @@ import 'plan_rule_lifecycle.dart';
 import 'plan_rule_scan_action.dart';
 
 class PlanRule {
-  /// The amount of time in minutes AWS Backup attempts a backup before canceling the job and returning an error.
+  /// Amount of time in minutes AWS Backup attempts a backup before canceling the job and returning an error.
   final pulumi.Input<int?>? completionWindow;
   /// Configuration block(s) with copy operation settings. Detailed below.
   final pulumi.Input<List<PlanRuleCopyAction>?>? copyActions;
   /// Enable continuous backups for supported resources.
   final pulumi.Input<bool?>? enableContinuousBackup;
-  /// The lifecycle defines when a protected resource is transitioned to cold storage and when it expires.  Fields documented below.
+  /// Lifecycle that defines when a protected resource is transitioned to cold storage and when it expires. Detailed below.
   final pulumi.Input<PlanRuleLifecycle?>? lifecycle;
   /// Metadata that you can assign to help organize the resources that you create.
   final pulumi.Input<Map<String, String>?>? recoveryPointTags;
-  /// An display name for a backup rule.
+  /// Display name for a backup rule.
   final pulumi.Input<String> ruleName;
-  /// Block for scanning configuration for the backup rule and includes the malware scanner, and scan mode of either full or incremental.
+  /// Block for scanning configuration for the backup rule and includes the malware scanner, and scan mode of either full or incremental. Detailed below.
   final pulumi.Input<List<PlanRuleScanAction>?>? scanActions;
-  /// A CRON expression specifying when AWS Backup initiates a backup job.
+  /// CRON expression specifying when AWS Backup initiates a backup job.
   final pulumi.Input<String?>? schedule;
-  /// The timezone in which the schedule expression is set. Default value: `"Etc/UTC"`.
+  /// Timezone in which the schedule expression is set. Default value: `"Etc/UTC"`.
   final pulumi.Input<String?>? scheduleExpressionTimezone;
-  /// The amount of time in minutes before beginning a backup.
+  /// Amount of time in minutes before beginning a backup.
   final pulumi.Input<int?>? startWindow;
-  /// The ARN of a logically air-gapped vault. ARN must be in the same account and region. If provided, supported fully managed resources back up directly to logically air-gapped vault, while other supported resources create a temporary (billable) snapshot in backup vault, then copy it to logically air-gapped vault. Unsupported resources only back up to the specified backup vault.
+  /// ARN of a logically air-gapped vault. ARN must be in the same account and region. If provided, supported fully managed resources back up directly to logically air-gapped vault, while other supported resources create a temporary (billable) snapshot in backup vault, then copy it to logically air-gapped vault. Unsupported resources only back up to the specified backup vault.
   final pulumi.Input<String?>? targetLogicallyAirGappedBackupVaultArn;
-  /// The name of a logical container where backups are stored.
+  /// Name of a logical container where backups are stored.
   final pulumi.Input<String> targetVaultName;
 
   /// Creates a new [PlanRule].
-  /// [completionWindow] The amount of time in minutes AWS Backup attempts a backup before canceling the job and returning an error.
+  /// [completionWindow] Amount of time in minutes AWS Backup attempts a backup before canceling the job and returning an error.
   /// [copyActions] Configuration block(s) with copy operation settings. Detailed below.
   /// [enableContinuousBackup] Enable continuous backups for supported resources.
-  /// [lifecycle] The lifecycle defines when a protected resource is transitioned to cold storage and when it expires.  Fields documented below.
+  /// [lifecycle] Lifecycle that defines when a protected resource is transitioned to cold storage and when it expires. Detailed below.
   /// [recoveryPointTags] Metadata that you can assign to help organize the resources that you create.
-  /// [ruleName] An display name for a backup rule.
-  /// [scanActions] Block for scanning configuration for the backup rule and includes the malware scanner, and scan mode of either full or incremental.
-  /// [schedule] A CRON expression specifying when AWS Backup initiates a backup job.
-  /// [scheduleExpressionTimezone] The timezone in which the schedule expression is set. Default value: `"Etc/UTC"`.
-  /// [startWindow] The amount of time in minutes before beginning a backup.
-  /// [targetLogicallyAirGappedBackupVaultArn] The ARN of a logically air-gapped vault. ARN must be in the same account and region. If provided, supported fully managed resources back up directly to logically air-gapped vault, while other supported resources create a temporary (billable) snapshot in backup vault, then copy it to logically air-gapped vault. Unsupported resources only back up to the specified backup vault.
-  /// [targetVaultName] The name of a logical container where backups are stored.
+  /// [ruleName] Display name for a backup rule.
+  /// [scanActions] Block for scanning configuration for the backup rule and includes the malware scanner, and scan mode of either full or incremental. Detailed below.
+  /// [schedule] CRON expression specifying when AWS Backup initiates a backup job.
+  /// [scheduleExpressionTimezone] Timezone in which the schedule expression is set. Default value: `"Etc/UTC"`.
+  /// [startWindow] Amount of time in minutes before beginning a backup.
+  /// [targetLogicallyAirGappedBackupVaultArn] ARN of a logically air-gapped vault. ARN must be in the same account and region. If provided, supported fully managed resources back up directly to logically air-gapped vault, while other supported resources create a temporary (billable) snapshot in backup vault, then copy it to logically air-gapped vault. Unsupported resources only back up to the specified backup vault.
+  /// [targetVaultName] Name of a logical container where backups are stored.
   const PlanRule({
     this.completionWindow,
     this.copyActions,
@@ -78,7 +78,7 @@ class PlanRule {
 
   factory PlanRule.fromMap(Map<String, dynamic> map) {
     return PlanRule(
-      completionWindow: (() { final guardedValue = map['completionWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      completionWindow: (() { final guardedValue = map['completionWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       copyActions: (() { final guardedValue = map['copyActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanRuleCopyAction>(guardedValue, (value) => PlanRuleCopyAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       enableContinuousBackup: (() { final guardedValue = map['enableContinuousBackup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       lifecycle: (() { final guardedValue = map['lifecycle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PlanRuleLifecycle.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -87,7 +87,7 @@ class PlanRule {
       scanActions: (() { final guardedValue = map['scanActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanRuleScanAction>(guardedValue, (value) => PlanRuleScanAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scheduleExpressionTimezone: (() { final guardedValue = map['scheduleExpressionTimezone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      startWindow: (() { final guardedValue = map['startWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      startWindow: (() { final guardedValue = map['startWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetLogicallyAirGappedBackupVaultArn: (() { final guardedValue = map['targetLogicallyAirGappedBackupVaultArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetVaultName: pulumi.Input.fromValue(map['targetVaultName'] as String),
     );

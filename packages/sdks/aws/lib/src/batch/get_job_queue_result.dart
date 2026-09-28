@@ -8,49 +8,40 @@ import 'get_job_queue_job_state_time_limit_action.dart';
 class GetJobQueueResult {
   /// ARN of the job queue.
   final String? arn;
-  /// The compute environments that are attached to the job queue and the order in
-  /// which job placement is preferred. Compute environments are selected for job placement in ascending order.
-  /// * `compute_environment_order.#.order` - The order of the compute environment.
-  /// * `compute_environment_order.#.compute_environment` - The ARN of the compute environment.
+  /// Compute environments that are attached to the job queue and the order in which job placement is preferred. Compute environments are selected for job placement in ascending order.
   final List<GetJobQueueComputeEnvironmentOrder>? computeEnvironmentOrders;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// Specifies an action that AWS Batch will take after the job has remained at the head of the queue in the specified state for longer than the specified time.
-  /// * `job_state_time_limit_action.#.action` - The action to take when a job is at the head of the job queue in the specified state for the specified period of time.
-  /// * `job_state_time_limit_action.#.max_time_seconds` - The approximate amount of time, in seconds, that must pass with the job in the specified state before the action is taken.
-  /// * `job_state_time_limit_action.#.reason` - The reason to log for the action being taken.
-  /// * `job_state_time_limit_action.#.state` - The state of the job needed to trigger the action.
+  /// Action that AWS Batch takes after the job has remained at the head of the queue in the specified state for longer than the specified time.
   final List<GetJobQueueJobStateTimeLimitAction>? jobStateTimeLimitActions;
   final String? name;
-  /// Priority of the job queue. Job queues with a higher priority are evaluated first when
-  /// associated with the same compute environment.
+  /// Priority of the job queue. Job queues with a higher priority are evaluated first when associated with the same compute environment.
   final int? priority;
   final String? region;
-  /// The ARN of the fair share scheduling policy. If this attribute has a value, the job queue uses a fair share scheduling policy. If this attribute does not have a value, the job queue uses a first in, first out (FIFO) scheduling policy.
+  /// ARN of the fair share scheduling policy. If this attribute has a value, the job queue uses a fair share scheduling policy. If this attribute does not have a value, the job queue uses a first in, first out (FIFO) scheduling policy.
   final String? schedulingPolicyArn;
-  /// Describes the ability of the queue to accept new jobs (for example, `ENABLED` or `DISABLED`).
+  /// Ability of the queue to accept new jobs (for example, `ENABLED` or `DISABLED`).
   final String? state;
   /// Current status of the job queue (for example, `CREATING` or `VALID`).
   final String? status;
-  /// Short, human-readable string to provide additional details about the current status
-  /// of the job queue.
+  /// Short, human-readable string to provide additional details about the current status of the job queue.
   final String? statusReason;
-  /// Key-value map of resource tags
+  /// Key-value map of resource tags.
   final Map<String, String>? tags;
 
   /// Creates a new [GetJobQueueResult].
   /// [arn] ARN of the job queue.
-  /// [computeEnvironmentOrders] The compute environments that are attached to the job queue and the order in
+  /// [computeEnvironmentOrders] Compute environments that are attached to the job queue and the order in which job placement is preferred. Compute environments are selected for job placement in ascending order.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [jobStateTimeLimitActions] Specifies an action that AWS Batch will take after the job has remained at the head of the queue in the specified state for longer than the specified time.
+  /// [jobStateTimeLimitActions] Action that AWS Batch takes after the job has remained at the head of the queue in the specified state for longer than the specified time.
   /// [name] Optional.
-  /// [priority] Priority of the job queue. Job queues with a higher priority are evaluated first when
+  /// [priority] Priority of the job queue. Job queues with a higher priority are evaluated first when associated with the same compute environment.
   /// [region] Optional.
-  /// [schedulingPolicyArn] The ARN of the fair share scheduling policy. If this attribute has a value, the job queue uses a fair share scheduling policy. If this attribute does not have a value, the job queue uses a first in, first out (FIFO) scheduling policy.
-  /// [state] Describes the ability of the queue to accept new jobs (for example, `ENABLED` or `DISABLED`).
+  /// [schedulingPolicyArn] ARN of the fair share scheduling policy. If this attribute has a value, the job queue uses a fair share scheduling policy. If this attribute does not have a value, the job queue uses a first in, first out (FIFO) scheduling policy.
+  /// [state] Ability of the queue to accept new jobs (for example, `ENABLED` or `DISABLED`).
   /// [status] Current status of the job queue (for example, `CREATING` or `VALID`).
-  /// [statusReason] Short, human-readable string to provide additional details about the current status
-  /// [tags] Key-value map of resource tags
+  /// [statusReason] Short, human-readable string to provide additional details about the current status of the job queue.
+  /// [tags] Key-value map of resource tags.
   const GetJobQueueResult({
     this.arn,
     this.computeEnvironmentOrders,
@@ -90,7 +81,7 @@ class GetJobQueueResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       jobStateTimeLimitActions: (() { final guardedValue = map['jobStateTimeLimitActions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetJobQueueJobStateTimeLimitAction>(guardedValue, (value) => GetJobQueueJobStateTimeLimitAction.fromMap((value as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       schedulingPolicyArn: (() { final guardedValue = map['schedulingPolicyArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),

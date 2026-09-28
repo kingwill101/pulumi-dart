@@ -25,8 +25,8 @@ class GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime {
 
   factory GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime.fromMap(Map<String, dynamic> map) {
     return GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime(
-      hours: pulumi.Input.fromValue((map['hours'] as num).toInt()),
-      minutes: pulumi.Input.fromValue((map['minutes'] as num).toInt()),
+      hours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hours'])),
+      minutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minutes'])),
     );
   }
 }

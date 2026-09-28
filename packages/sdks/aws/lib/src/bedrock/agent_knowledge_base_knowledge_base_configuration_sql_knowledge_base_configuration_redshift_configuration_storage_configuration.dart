@@ -5,16 +5,16 @@ import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_con
 import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_storage_configuration_redshift_configuration.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration {
-  /// Configurations for storage in AWS Glue Data Catalog. See `awsDataCatalogConfiguration` block for details.
+  /// Configurations for storage in AWS Glue Data Catalog. See `awsDataCatalogConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationAwsDataCatalogConfiguration?>? awsDataCatalogConfiguration;
-  /// Configurations for storage in Amazon Redshift. See `redshiftConfiguration` block for details.
+  /// Configurations for storage in Amazon Redshift. See `knowledge_base_configuration.sql_knowledge_base_configuration.redshift_configuration.storage_configuration.redshift_configuration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationRedshiftConfiguration?>? redshiftConfiguration;
   /// Vector store service in which the knowledge base is stored. Valid Values: `MONGO_DB_ATLAS`, `OPENSEARCH_SERVERLESS`, `OPENSEARCH_MANAGED_CLUSTER`, `PINECONE`, `REDIS_ENTERPRISE_CLOUD`, `RDS`, `S3_VECTORS`, `NEPTUNE_ANALYTICS`.
   final pulumi.Input<String> type;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration].
-  /// [awsDataCatalogConfiguration] Configurations for storage in AWS Glue Data Catalog. See `awsDataCatalogConfiguration` block for details.
-  /// [redshiftConfiguration] Configurations for storage in Amazon Redshift. See `redshiftConfiguration` block for details.
+  /// [awsDataCatalogConfiguration] Configurations for storage in AWS Glue Data Catalog. See `awsDataCatalogConfiguration` Block for details.
+  /// [redshiftConfiguration] Configurations for storage in Amazon Redshift. See `knowledge_base_configuration.sql_knowledge_base_configuration.redshift_configuration.storage_configuration.redshift_configuration` Block for details.
   /// [type] Vector store service in which the knowledge base is stored. Valid Values: `MONGO_DB_ATLAS`, `OPENSEARCH_SERVERLESS`, `OPENSEARCH_MANAGED_CLUSTER`, `PINECONE`, `REDIS_ENTERPRISE_CLOUD`, `RDS`, `S3_VECTORS`, `NEPTUNE_ANALYTICS`.
   const AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration({
     this.awsDataCatalogConfiguration,

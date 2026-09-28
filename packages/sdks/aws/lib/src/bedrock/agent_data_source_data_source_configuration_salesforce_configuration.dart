@@ -5,12 +5,14 @@ import 'agent_data_source_data_source_configuration_salesforce_configuration_cra
 import 'agent_data_source_data_source_configuration_salesforce_configuration_source_configuration.dart';
 
 class AgentDataSourceDataSourceConfigurationSalesforceConfiguration {
+  /// Configuration for Salesforce content. See `data_source_configuration.salesforce_configuration.crawler_configuration` Block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration?>? crawlerConfiguration;
+  /// Endpoint information to connect to your Salesforce data source. See `data_source_configuration.salesforce_configuration.source_configuration` Block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationSalesforceConfigurationSourceConfiguration?>? sourceConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationSalesforceConfiguration].
-  /// [crawlerConfiguration] Optional.
-  /// [sourceConfiguration] Optional.
+  /// [crawlerConfiguration] Configuration for Salesforce content. See `data_source_configuration.salesforce_configuration.crawler_configuration` Block for details.
+  /// [sourceConfiguration] Endpoint information to connect to your Salesforce data source. See `data_source_configuration.salesforce_configuration.source_configuration` Block for details.
   const AgentDataSourceDataSourceConfigurationSalesforceConfiguration({
     this.crawlerConfiguration,
     this.sourceConfiguration,

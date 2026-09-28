@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ComputeEnvironmentEksConfiguration {
   /// ARN of the Amazon EKS cluster.
   final pulumi.Input<String> eksClusterArn;
-  /// The namespace of the Amazon EKS cluster. AWS Batch manages pods in this namespace.
+  /// Namespace of the Amazon EKS cluster. AWS Batch manages pods in this namespace.
   final pulumi.Input<String> kubernetesNamespace;
 
   /// Creates a new [ComputeEnvironmentEksConfiguration].
   /// [eksClusterArn] ARN of the Amazon EKS cluster.
-  /// [kubernetesNamespace] The namespace of the Amazon EKS cluster. AWS Batch manages pods in this namespace.
+  /// [kubernetesNamespace] Namespace of the Amazon EKS cluster. AWS Batch manages pods in this namespace.
   const ComputeEnvironmentEksConfiguration({
     required this.eksClusterArn,
     required this.kubernetesNamespace,

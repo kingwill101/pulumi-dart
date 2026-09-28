@@ -12,7 +12,7 @@ class ViewState {
   final pulumi.Input<String?>? billingViewType;
   /// Timestamp when the billing view was created.
   final pulumi.Input<String?>? createdAt;
-  /// Filter Cost Explorer APIs using the expression. Refer to the data-filter-expression block documentation for more details.
+  /// Filter Cost Explorer APIs using the expression. See `dataFilterExpression` below for details.
   final pulumi.Input<ViewDataFilterExpression?>? dataFilterExpression;
   /// Number of billing views that use this billing view as a source.
   final pulumi.Input<int?>? derivedViewCount;
@@ -30,7 +30,7 @@ class ViewState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<String>?>? sourceViews;
-  /// List of key value map specifying tags associated to the billing view being created.
+  /// Key-value map of tags associated with the billing view being created.
   final pulumi.Input<Map<String, String>?>? tags;
   /// List of key value map specifying tags associated to the billing view.
   final pulumi.Input<Map<String, String>?>? tagsAll;
@@ -44,7 +44,7 @@ class ViewState {
   /// [arn] ARN of the View.
   /// [billingViewType] Type of billing group. Valid values are PRIMARY|BILLING_GROUP|CUSTOM.
   /// [createdAt] Timestamp when the billing view was created.
-  /// [dataFilterExpression] Filter Cost Explorer APIs using the expression. Refer to the data-filter-expression block documentation for more details.
+  /// [dataFilterExpression] Filter Cost Explorer APIs using the expression. See `dataFilterExpression` below for details.
   /// [derivedViewCount] Number of billing views that use this billing view as a source.
   /// [description] Description of the custom billing view.
   /// [name] Name of the custom billing view to be created.
@@ -52,7 +52,7 @@ class ViewState {
   /// [sourceAccountId] AWS account ID that owns the source billing view, if this is a derived billing view.
   /// [sourceViewCount] Number of source views associated with this billing view.
   /// [sourceViews] List of ARNs of the source data views for the custom billing view.
-  /// [tags] List of key value map specifying tags associated to the billing view being created.
+  /// [tags] Key-value map of tags associated with the billing view being created.
   /// [tagsAll] List of key value map specifying tags associated to the billing view.
   /// [timeouts] Optional.
   /// [updatedAt] Time when the billing view was last updated.
@@ -103,12 +103,12 @@ class ViewState {
       billingViewType: (() { final guardedValue = map['billingViewType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataFilterExpression: (() { final guardedValue = map['dataFilterExpression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ViewDataFilterExpression.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      derivedViewCount: (() { final guardedValue = map['derivedViewCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      derivedViewCount: (() { final guardedValue = map['derivedViewCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ownerAccountId: (() { final guardedValue = map['ownerAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceAccountId: (() { final guardedValue = map['sourceAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sourceViewCount: (() { final guardedValue = map['sourceViewCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      sourceViewCount: (() { final guardedValue = map['sourceViewCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sourceViews: (() { final guardedValue = map['sourceViews']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

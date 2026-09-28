@@ -6,17 +6,17 @@ import 'agent_data_source_data_source_configuration_managed_knowledge_base_conne
 import 'agent_data_source_data_source_configuration_managed_knowledge_base_connector_configuration_media_extraction_configuration_video_extraction_configuration.dart';
 
 class AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationMediaExtractionConfiguration {
-  /// Configuration for extracting audio content. See `audioExtractionConfiguration` block for details.
+  /// Configuration for extracting audio content. See `audioExtractionConfiguration` Block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationMediaExtractionConfigurationAudioExtractionConfiguration?>? audioExtractionConfiguration;
-  /// Configuration for extracting image content. See `imageExtractionConfiguration` block for details.
+  /// Configuration for extracting image content. See `imageExtractionConfiguration` Block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationMediaExtractionConfigurationImageExtractionConfiguration?>? imageExtractionConfiguration;
-  /// Configuration for extracting video content. See `videoExtractionConfiguration` block for details.
+  /// Configuration for extracting video content. See `videoExtractionConfiguration` Block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationMediaExtractionConfigurationVideoExtractionConfiguration?>? videoExtractionConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationMediaExtractionConfiguration].
-  /// [audioExtractionConfiguration] Configuration for extracting audio content. See `audioExtractionConfiguration` block for details.
-  /// [imageExtractionConfiguration] Configuration for extracting image content. See `imageExtractionConfiguration` block for details.
-  /// [videoExtractionConfiguration] Configuration for extracting video content. See `videoExtractionConfiguration` block for details.
+  /// [audioExtractionConfiguration] Configuration for extracting audio content. See `audioExtractionConfiguration` Block for details.
+  /// [imageExtractionConfiguration] Configuration for extracting image content. See `imageExtractionConfiguration` Block for details.
+  /// [videoExtractionConfiguration] Configuration for extracting video content. See `videoExtractionConfiguration` Block for details.
   const AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationMediaExtractionConfiguration({
     this.audioExtractionConfiguration,
     this.imageExtractionConfiguration,

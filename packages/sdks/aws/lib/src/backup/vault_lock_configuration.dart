@@ -136,15 +136,15 @@ import 'vault_lock_configuration_state.dart';
 /// $ pulumi import aws:backup/vaultLockConfiguration:VaultLockConfiguration test TestVault
 /// ```
 class VaultLockConfiguration extends pulumi.CustomResource {
-  /// The ARN of the vault.
+  /// ARN of the vault.
   late final pulumi.Output<String> backupVaultArn;
   /// Name of the backup vault to add a lock configuration for.
   late final pulumi.Output<String> backupVaultName;
-  /// The number of days before the lock date. If omitted creates a vault lock in `governance` mode, otherwise it will create a vault lock in `compliance` mode.
+  /// Number of days before the lock date. If omitted creates a vault lock in `governance` mode, otherwise it will create a vault lock in `compliance` mode.
   late final pulumi.Output<int?> changeableForDays;
-  /// The maximum retention period that the vault retains its recovery points.
+  /// Maximum retention period that the vault retains its recovery points.
   late final pulumi.Output<int?> maxRetentionDays;
-  /// The minimum retention period that the vault retains its recovery points.
+  /// Minimum retention period that the vault retains its recovery points.
   late final pulumi.Output<int?> minRetentionDays;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -161,7 +161,7 @@ class VaultLockConfiguration extends pulumi.CustomResource {
           'aws:backup/vaultLockConfiguration:VaultLockConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     backupVaultArn = registerOutput<String>('backupVaultArn');
     backupVaultName = registerOutput<String>('backupVaultName');

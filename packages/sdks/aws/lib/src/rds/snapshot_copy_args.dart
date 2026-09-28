@@ -9,13 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotCopyArgs {
   /// Whether to copy existing tags. Defaults to `false`.
   final pulumi.Input<bool?>? copyTags;
-  /// The Destination region to place snapshot copy.
+  /// Destination Region to place snapshot copy.
   final pulumi.Input<String?>? destinationRegion;
   /// KMS key ID.
   final pulumi.Input<String?>? kmsKeyId;
-  /// The name of an option group to associate with the copy of the snapshot.
+  /// Name of an option group to associate with the copy of the snapshot.
   final pulumi.Input<String?>? optionGroupName;
-  /// he URL that contains a Signature Version 4 signed request.
+  /// URL that contains a Signature Version 4 signed request.
   final pulumi.Input<String?>? presignedUrl;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -25,23 +25,23 @@ class SnapshotCopyArgs {
   final pulumi.Input<String> sourceDbSnapshotIdentifier;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// The external custom Availability Zone.
+  /// External custom Availability Zone.
   final pulumi.Input<String?>? targetCustomAvailabilityZone;
-  /// The Identifier for the snapshot.
+  /// Identifier for the snapshot.
   final pulumi.Input<String> targetDbSnapshotIdentifier;
 
   /// Creates a new [SnapshotCopyArgs].
   /// [copyTags] Whether to copy existing tags. Defaults to `false`.
-  /// [destinationRegion] The Destination region to place snapshot copy.
+  /// [destinationRegion] Destination Region to place snapshot copy.
   /// [kmsKeyId] KMS key ID.
-  /// [optionGroupName] The name of an option group to associate with the copy of the snapshot.
-  /// [presignedUrl] he URL that contains a Signature Version 4 signed request.
+  /// [optionGroupName] Name of an option group to associate with the copy of the snapshot.
+  /// [presignedUrl] URL that contains a Signature Version 4 signed request.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sharedAccounts] List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
   /// [sourceDbSnapshotIdentifier] Snapshot identifier of the source snapshot.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [targetCustomAvailabilityZone] The external custom Availability Zone.
-  /// [targetDbSnapshotIdentifier] The Identifier for the snapshot.
+  /// [targetCustomAvailabilityZone] External custom Availability Zone.
+  /// [targetDbSnapshotIdentifier] Identifier for the snapshot.
   const SnapshotCopyArgs({
     this.copyTags,
     this.destinationRegion,

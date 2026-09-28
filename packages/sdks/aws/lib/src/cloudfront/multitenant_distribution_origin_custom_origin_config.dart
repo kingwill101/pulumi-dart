@@ -56,13 +56,13 @@ class MultitenantDistributionOriginCustomOriginConfig {
 
   factory MultitenantDistributionOriginCustomOriginConfig.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionOriginCustomOriginConfig(
-      httpPort: pulumi.Input.fromValue((map['httpPort'] as num).toInt()),
-      httpsPort: pulumi.Input.fromValue((map['httpsPort'] as num).toInt()),
+      httpPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['httpPort'])),
+      httpsPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['httpsPort'])),
       ipAddressType: (() { final guardedValue = map['ipAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      originKeepaliveTimeout: (() { final guardedValue = map['originKeepaliveTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      originKeepaliveTimeout: (() { final guardedValue = map['originKeepaliveTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       originMtlsConfig: (() { final guardedValue = map['originMtlsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MultitenantDistributionOriginCustomOriginConfigOriginMtlsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       originProtocolPolicy: pulumi.Input.fromValue(map['originProtocolPolicy'] as String),
-      originReadTimeout: (() { final guardedValue = map['originReadTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      originReadTimeout: (() { final guardedValue = map['originReadTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       originSslProtocols: pulumi.Input.fromValue((map['originSslProtocols'] as List).cast<String>()),
     );
   }

@@ -31,9 +31,9 @@ class GetJobDefinitionNodeProperty {
 
   factory GetJobDefinitionNodeProperty.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodeProperty(
-      mainNode: pulumi.Input.fromValue((map['mainNode'] as num).toInt()),
+      mainNode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['mainNode'])),
       nodeRangeProperties: pulumi.Input.fromValue(pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangeProperty>(map['nodeRangeProperties']!, (value) => GetJobDefinitionNodePropertyNodeRangeProperty.fromMap((value as Map).cast<String, dynamic>()))),
-      numNodes: pulumi.Input.fromValue((map['numNodes'] as num).toInt()),
+      numNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numNodes'])),
     );
   }
 }

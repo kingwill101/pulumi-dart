@@ -45,8 +45,8 @@ class AnomalyDetectorConfigurationRandomCutForest {
       ignoreNearExpectedFromAbove: (() { final guardedValue = map['ignoreNearExpectedFromAbove']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnomalyDetectorConfigurationRandomCutForestIgnoreNearExpectedFromAbove.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ignoreNearExpectedFromBelow: (() { final guardedValue = map['ignoreNearExpectedFromBelow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnomalyDetectorConfigurationRandomCutForestIgnoreNearExpectedFromBelow.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       query: pulumi.Input.fromValue(map['query'] as String),
-      sampleSize: (() { final guardedValue = map['sampleSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      shingleSize: (() { final guardedValue = map['shingleSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      sampleSize: (() { final guardedValue = map['sampleSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      shingleSize: (() { final guardedValue = map['shingleSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

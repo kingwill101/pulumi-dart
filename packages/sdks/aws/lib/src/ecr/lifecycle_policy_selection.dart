@@ -46,7 +46,7 @@ class LifecyclePolicySelection {
 
   factory LifecyclePolicySelection.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicySelection(
-      countNumber: pulumi.Input.fromValue((map['countNumber'] as num).toInt()),
+      countNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['countNumber'])),
       countType: pulumi.Input.fromValue(map['countType']),
       countUnit: (() { final guardedValue = map['countUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageClass: (() { final guardedValue = map['storageClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

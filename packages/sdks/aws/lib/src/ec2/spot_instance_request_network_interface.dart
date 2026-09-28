@@ -36,8 +36,8 @@ class SpotInstanceRequestNetworkInterface {
   factory SpotInstanceRequestNetworkInterface.fromMap(Map<String, dynamic> map) {
     return SpotInstanceRequestNetworkInterface(
       deleteOnTermination: (() { final guardedValue = map['deleteOnTermination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      deviceIndex: pulumi.Input.fromValue((map['deviceIndex'] as num).toInt()),
-      networkCardIndex: (() { final guardedValue = map['networkCardIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      deviceIndex: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['deviceIndex'])),
+      networkCardIndex: (() { final guardedValue = map['networkCardIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       networkInterfaceId: pulumi.Input.fromValue(map['networkInterfaceId'] as String),
     );
   }

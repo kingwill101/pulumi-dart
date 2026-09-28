@@ -32,8 +32,8 @@ class AppImageConfigJupyterLabImageConfigFileSystemConfig {
 
   factory AppImageConfigJupyterLabImageConfigFileSystemConfig.fromMap(Map<String, dynamic> map) {
     return AppImageConfigJupyterLabImageConfigFileSystemConfig(
-      defaultGid: (() { final guardedValue = map['defaultGid']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      defaultUid: (() { final guardedValue = map['defaultUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultGid: (() { final guardedValue = map['defaultGid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      defaultUid: (() { final guardedValue = map['defaultUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       mountPath: (() { final guardedValue = map['mountPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -633,29 +633,29 @@ import 'budget_action_subscriber.dart';
 /// $ pulumi import aws:budgets/budgetAction:BudgetAction myBudget 123456789012:some-id:myBudget
 /// ```
 class BudgetAction extends pulumi.CustomResource {
-  /// The ID of the target account for budget. Will use current user's accountId by default if omitted.
+  /// ID of the target account for the budget. Uses the current user's account ID by default if omitted.
   late final pulumi.Output<String> accountId;
-  /// The id of the budget action.
+  /// ID of the budget action.
   late final pulumi.Output<String> actionId;
-  /// The trigger threshold of the action. See Action Threshold.
+  /// Trigger threshold of the action. See `actionThreshold` Block.
   late final pulumi.Output<BudgetActionActionThreshold> actionThreshold;
-  /// The type of action. This defines the type of tasks that can be carried out by this action. This field also determines the format for definition. Valid values are `APPLY_IAM_POLICY`, `APPLY_SCP_POLICY`, and `RUN_SSM_DOCUMENTS`.
+  /// Type of action. This defines the type of tasks that can be carried out by this action. This field also determines the format for definition. Valid values are `APPLY_IAM_POLICY`, `APPLY_SCP_POLICY`, and `RUN_SSM_DOCUMENTS`.
   late final pulumi.Output<String> actionType;
-  /// This specifies if the action needs manual or automatic approval. Valid values are `AUTOMATIC` and `MANUAL`.
+  /// Whether the action needs manual or automatic approval. Valid values are `AUTOMATIC` and `MANUAL`.
   late final pulumi.Output<String> approvalModel;
-  /// The ARN of the budget action.
+  /// ARN of the budget action.
   late final pulumi.Output<String> arn;
-  /// The name of a budget.
+  /// Name of a budget.
   late final pulumi.Output<String> budgetName;
-  /// Specifies all of the type-specific parameters. See Definition.
+  /// Type-specific parameters. See `definition` Block.
   late final pulumi.Output<BudgetActionDefinition> definition;
-  /// The role passed for action execution and reversion. Roles and actions must be in the same account.
+  /// Role passed for action execution and reversion. Roles and actions must be in the same account.
   late final pulumi.Output<String> executionRoleArn;
-  /// The type of a notification. Valid values are `ACTUAL` or `FORECASTED`.
+  /// Type of a notification. Valid values are `ACTUAL` or `FORECASTED`.
   late final pulumi.Output<String> notificationType;
-  /// The status of the budget action.
+  /// Status of the budget action.
   late final pulumi.Output<String> status;
-  /// A list of subscribers. See Subscriber.
+  /// Set of subscribers. See `subscriber` Block.
   late final pulumi.Output<List<BudgetActionSubscriber>> subscribers;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -674,7 +674,7 @@ class BudgetAction extends pulumi.CustomResource {
           'aws:budgets/budgetAction:BudgetAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     actionId = registerOutput<String>('actionId');

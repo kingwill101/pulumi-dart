@@ -175,20 +175,21 @@ import 'restore_testing_plan_state.dart';
 class RestoreTestingPlan extends pulumi.CustomResource {
   /// ARN of the Restore Testing Plan.
   late final pulumi.Output<String> arn;
-  /// The name of the restore testing plan. Must be between 1 and 50 characters long and contain only alphanumeric characters and underscores.
+  /// Name of the restore testing plan. Must be between 1 and 50 characters long and contain only alphanumeric characters and underscores.
   late final pulumi.Output<String> name;
-  /// Specifies the recovery point selection configuration. See RecoveryPointSelection section for more details.
+  /// Recovery point selection configuration. See `recoveryPointSelection` below.
   late final pulumi.Output<RestoreTestingPlanRecoveryPointSelection> recoveryPointSelection;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The schedule expression for the restore testing plan.
+  /// Schedule expression for the restore testing plan.
   late final pulumi.Output<String> scheduleExpression;
-  /// The timezone for the schedule expression. If not provided, the state value will be used.
+  /// Timezone for the schedule expression. If not provided, the state value will be used.
   late final pulumi.Output<String> scheduleExpressionTimezone;
-  /// The number of hours in the start window for the restore testing plan. Must be between 1 and 168.
+  /// Number of hours in the start window for the restore testing plan. Must be between 1 and 168.
   late final pulumi.Output<int> startWindowHours;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [RestoreTestingPlan].
@@ -203,7 +204,7 @@ class RestoreTestingPlan extends pulumi.CustomResource {
           'aws:backup/restoreTestingPlan:RestoreTestingPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

@@ -30,7 +30,7 @@ class LaunchScheduledSplitsConfigStepSegmentOverride {
 
   factory LaunchScheduledSplitsConfigStepSegmentOverride.fromMap(Map<String, dynamic> map) {
     return LaunchScheduledSplitsConfigStepSegmentOverride(
-      evaluationOrder: pulumi.Input.fromValue((map['evaluationOrder'] as num).toInt()),
+      evaluationOrder: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['evaluationOrder'])),
       segment: pulumi.Input.fromValue(map['segment'] as String),
       weights: pulumi.Input.fromValue((map['weights'] as Map).cast<String, int>()),
     );

@@ -39,7 +39,7 @@ class LoadBalancerBackendServerPolicyArgs {
 
   factory LoadBalancerBackendServerPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendServerPolicyArgs(
-      instancePort: pulumi.Input.fromValue((map['instancePort'] as num).toInt()),
+      instancePort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instancePort'])),
       loadBalancerName: pulumi.Input.fromValue(map['loadBalancerName'] as String),
       policyNames: (() { final guardedValue = map['policyNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

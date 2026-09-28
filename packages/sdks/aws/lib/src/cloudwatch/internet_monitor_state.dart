@@ -78,14 +78,14 @@ class InternetMonitorState {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       healthEventsConfig: (() { final guardedValue = map['healthEventsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InternetMonitorHealthEventsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       internetMeasurementsLogDelivery: (() { final guardedValue = map['internetMeasurementsLogDelivery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InternetMonitorInternetMeasurementsLogDelivery.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxCityNetworksToMonitor: (() { final guardedValue = map['maxCityNetworksToMonitor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxCityNetworksToMonitor: (() { final guardedValue = map['maxCityNetworksToMonitor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       monitorName: (() { final guardedValue = map['monitorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      trafficPercentageToMonitor: (() { final guardedValue = map['trafficPercentageToMonitor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      trafficPercentageToMonitor: (() { final guardedValue = map['trafficPercentageToMonitor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

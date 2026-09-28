@@ -25,7 +25,7 @@ class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailo
   factory ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsAudioSilenceSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsAudioSilenceSettings(
       audioSelectorName: pulumi.Input.fromValue(map['audioSelectorName'] as String),
-      audioSilenceThresholdMsec: (() { final guardedValue = map['audioSilenceThresholdMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      audioSilenceThresholdMsec: (() { final guardedValue = map['audioSilenceThresholdMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -3,14 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPlanScanSetting {
+  /// Malware scanner used for the scan setting.
   final pulumi.Input<String> malwareScanner;
+  /// Resource types to scan.
   final pulumi.Input<List<String>> resourceTypes;
+  /// ARN of the IAM role used by the scanner.
   final pulumi.Input<String> scannerRoleArn;
 
   /// Creates a new [GetPlanScanSetting].
-  /// [malwareScanner] Required.
-  /// [resourceTypes] Required.
-  /// [scannerRoleArn] Required.
+  /// [malwareScanner] Malware scanner used for the scan setting.
+  /// [resourceTypes] Resource types to scan.
+  /// [scannerRoleArn] ARN of the IAM role used by the scanner.
   const GetPlanScanSetting({
     required this.malwareScanner,
     required this.resourceTypes,

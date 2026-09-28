@@ -25,8 +25,8 @@ class BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange {
 
   factory BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange.fromMap(Map<String, dynamic> map) {
     return BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange(
-      maxRange: pulumi.Input.fromValue((map['maxRange'] as num).toInt()),
-      minRange: pulumi.Input.fromValue((map['minRange'] as num).toInt()),
+      maxRange: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRange'])),
+      minRange: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minRange'])),
     );
   }
 }

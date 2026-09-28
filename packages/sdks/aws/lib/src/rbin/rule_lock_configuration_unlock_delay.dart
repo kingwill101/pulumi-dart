@@ -26,7 +26,7 @@ class RuleLockConfigurationUnlockDelay {
   factory RuleLockConfigurationUnlockDelay.fromMap(Map<String, dynamic> map) {
     return RuleLockConfigurationUnlockDelay(
       unlockDelayUnit: pulumi.Input.fromValue(map['unlockDelayUnit'] as String),
-      unlockDelayValue: pulumi.Input.fromValue((map['unlockDelayValue'] as num).toInt()),
+      unlockDelayValue: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['unlockDelayValue'])),
     );
   }
 }

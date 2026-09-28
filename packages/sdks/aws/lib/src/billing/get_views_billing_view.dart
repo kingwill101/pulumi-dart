@@ -5,6 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetViewsBillingView {
   /// ARN of the billing view.
   final pulumi.Input<String> arn;
+  /// Type of the billing view.
   final pulumi.Input<String> billingViewType;
   /// Description of the billing view.
   final pulumi.Input<String> description;
@@ -15,7 +16,7 @@ class GetViewsBillingView {
 
   /// Creates a new [GetViewsBillingView].
   /// [arn] ARN of the billing view.
-  /// [billingViewType] Required.
+  /// [billingViewType] Type of the billing view.
   /// [description] Description of the billing view.
   /// [name] Name of the billing view.
   /// [ownerAccountId] Account ID of the billing view owner.

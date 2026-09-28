@@ -20,7 +20,7 @@ class GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold {
 
   factory GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold(
-      minutes: pulumi.Input.fromValue((map['minutes'] as num).toInt()),
+      minutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minutes'])),
     );
   }
 }

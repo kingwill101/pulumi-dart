@@ -1618,12 +1618,10 @@ import 'graph_qlapi_user_pool_config.dart';
 ///                     .block(Arrays.asList(Map.ofEntries(
 ///                     )))
 ///                     .build())
-///                 .statement(WebAclRuleStatementArgs.builder()
-///                     .managedRuleGroupStatement(WebAclRuleStatementManagedRuleGroupStatementArgs.builder()
-///                         .name("AWSManagedRulesCommonRuleSet")
-///                         .vendorName("AWS")
-///                         .build())
-///                     .build())
+///                 .statement(Map.of("managedRuleGroupStatement", WebAclRuleStatementManagedRuleGroupStatementArgs.builder()
+///                     .name("AWSManagedRulesCommonRuleSet")
+///                     .vendorName("AWS")
+///                     .build()))
 ///                 .visibilityConfig(WebAclRuleVisibilityConfigArgs.builder()
 ///                     .cloudwatchMetricsEnabled(false)
 ///                     .metricName("friendly-rule-metric-name")
@@ -1886,7 +1884,7 @@ class GraphQLApi extends pulumi.CustomResource {
           'aws:appsync/graphQLApi:GraphQLApi',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     additionalAuthenticationProviders = registerOutput<List<GraphQLApiAdditionalAuthenticationProvider>?>('additionalAuthenticationProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GraphQLApiAdditionalAuthenticationProvider>(guardedValue, (value) => GraphQLApiAdditionalAuthenticationProvider.fromMap((value as Map).cast<String, dynamic>())); });
     apiType = registerOutput<String?>('apiType');

@@ -6,13 +6,14 @@ import 'get_scheduling_policy_fair_share_policy_share_distribution.dart';
 class GetSchedulingPolicyFairSharePolicy {
   /// Value used to reserve some of the available maximum vCPU for fair share identifiers that have not yet been used. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html).
   final pulumi.Input<int> computeReservation;
+  /// Time period to use to calculate a fair share percentage for each fair share identifier in use, in seconds. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html).
   final pulumi.Input<int> shareDecaySeconds;
   /// One or more share distribution blocks which define the weights for the fair share identifiers for the fair share policy. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html). The `shareDistribution` block is documented below.
   final pulumi.Input<List<GetSchedulingPolicyFairSharePolicyShareDistribution>> shareDistributions;
 
   /// Creates a new [GetSchedulingPolicyFairSharePolicy].
   /// [computeReservation] Value used to reserve some of the available maximum vCPU for fair share identifiers that have not yet been used. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html).
-  /// [shareDecaySeconds] Required.
+  /// [shareDecaySeconds] Time period to use to calculate a fair share percentage for each fair share identifier in use, in seconds. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html).
   /// [shareDistributions] One or more share distribution blocks which define the weights for the fair share identifiers for the fair share policy. For more information, see [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html). The `shareDistribution` block is documented below.
   const GetSchedulingPolicyFairSharePolicy({
     required this.computeReservation,
@@ -30,8 +31,8 @@ class GetSchedulingPolicyFairSharePolicy {
 
   factory GetSchedulingPolicyFairSharePolicy.fromMap(Map<String, dynamic> map) {
     return GetSchedulingPolicyFairSharePolicy(
-      computeReservation: pulumi.Input.fromValue((map['computeReservation'] as num).toInt()),
-      shareDecaySeconds: pulumi.Input.fromValue((map['shareDecaySeconds'] as num).toInt()),
+      computeReservation: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['computeReservation'])),
+      shareDecaySeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['shareDecaySeconds'])),
       shareDistributions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSchedulingPolicyFairSharePolicyShareDistribution>(map['shareDistributions']!, (value) => GetSchedulingPolicyFairSharePolicyShareDistribution.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

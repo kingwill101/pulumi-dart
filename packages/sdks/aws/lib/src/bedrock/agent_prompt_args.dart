@@ -22,7 +22,7 @@ class AgentPromptArgs {
   final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A list of objects, each containing details about a variant of the prompt. See Variant for more information.
+  /// List of objects, each containing details about a variant of the prompt. See `variant` Block for more information.
   final pulumi.Input<List<AgentPromptVariant>?>? variants;
 
   /// Creates a new [AgentPromptArgs].
@@ -32,7 +32,7 @@ class AgentPromptArgs {
   /// [name] Name of the prompt.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [variants] A list of objects, each containing details about a variant of the prompt. See Variant for more information.
+  /// [variants] List of objects, each containing details about a variant of the prompt. See `variant` Block for more information.
   const AgentPromptArgs({
     this.customerEncryptionKeyArn,
     this.defaultVariant,

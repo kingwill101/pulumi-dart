@@ -49,7 +49,7 @@ class CloudAutonomousVmClusterMaintenanceWindow {
     return CloudAutonomousVmClusterMaintenanceWindow(
       daysOfWeeks: (() { final guardedValue = map['daysOfWeeks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek>(guardedValue, (value) => CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek.fromMap((value as Map).cast<String, dynamic>()))); })(),
       hoursOfDays: (() { final guardedValue = map['hoursOfDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
-      leadTimeInWeeks: (() { final guardedValue = map['leadTimeInWeeks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      leadTimeInWeeks: (() { final guardedValue = map['leadTimeInWeeks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       months: (() { final guardedValue = map['months']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CloudAutonomousVmClusterMaintenanceWindowMonth>(guardedValue, (value) => CloudAutonomousVmClusterMaintenanceWindowMonth.fromMap((value as Map).cast<String, dynamic>()))); })(),
       preference: pulumi.Input.fromValue(map['preference'] as String),
       weeksOfMonths: (() { final guardedValue = map['weeksOfMonths']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),

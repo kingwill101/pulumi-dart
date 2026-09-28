@@ -7,23 +7,23 @@ import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_con
 import 'agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_configuration.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfiguration {
-  /// Settings for an Amazon Kendra knowledge base. See `kendraKnowledgeBaseConfiguration` block for details.
+  /// Settings for an Amazon Kendra knowledge base. See `kendraKnowledgeBaseConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration?>? kendraKnowledgeBaseConfiguration;
-  /// Settings for a managed knowledge base where Amazon Bedrock manages the vector store. See `managedKnowledgeBaseConfiguration` block for details.
+  /// Settings for a managed knowledge base where Amazon Bedrock manages the vector store. See `managedKnowledgeBaseConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfiguration?>? managedKnowledgeBaseConfiguration;
-  /// Configurations for a knowledge base connected to an SQL database. See `sqlKnowledgeBaseConfiguration` block for details.
+  /// Configurations for a knowledge base connected to an SQL database. See `sqlKnowledgeBaseConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration?>? sqlKnowledgeBaseConfiguration;
   /// Type of data that the data source is converted into for the knowledge base. Valid Values: `VECTOR`, `KENDRA`, `SQL`, `MANAGED`.
   final pulumi.Input<String> type;
-  /// Details about the model that's used to convert the data source into vector embeddings. See `vectorKnowledgeBaseConfiguration` block for details.
+  /// Details about the model that's used to convert the data source into vector embeddings. See `vectorKnowledgeBaseConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfiguration?>? vectorKnowledgeBaseConfiguration;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfiguration].
-  /// [kendraKnowledgeBaseConfiguration] Settings for an Amazon Kendra knowledge base. See `kendraKnowledgeBaseConfiguration` block for details.
-  /// [managedKnowledgeBaseConfiguration] Settings for a managed knowledge base where Amazon Bedrock manages the vector store. See `managedKnowledgeBaseConfiguration` block for details.
-  /// [sqlKnowledgeBaseConfiguration] Configurations for a knowledge base connected to an SQL database. See `sqlKnowledgeBaseConfiguration` block for details.
+  /// [kendraKnowledgeBaseConfiguration] Settings for an Amazon Kendra knowledge base. See `kendraKnowledgeBaseConfiguration` Block for details.
+  /// [managedKnowledgeBaseConfiguration] Settings for a managed knowledge base where Amazon Bedrock manages the vector store. See `managedKnowledgeBaseConfiguration` Block for details.
+  /// [sqlKnowledgeBaseConfiguration] Configurations for a knowledge base connected to an SQL database. See `sqlKnowledgeBaseConfiguration` Block for details.
   /// [type] Type of data that the data source is converted into for the knowledge base. Valid Values: `VECTOR`, `KENDRA`, `SQL`, `MANAGED`.
-  /// [vectorKnowledgeBaseConfiguration] Details about the model that's used to convert the data source into vector embeddings. See `vectorKnowledgeBaseConfiguration` block for details.
+  /// [vectorKnowledgeBaseConfiguration] Details about the model that's used to convert the data source into vector embeddings. See `vectorKnowledgeBaseConfiguration` Block for details.
   const AgentKnowledgeBaseKnowledgeBaseConfiguration({
     this.kendraKnowledgeBaseConfiguration,
     this.managedKnowledgeBaseConfiguration,

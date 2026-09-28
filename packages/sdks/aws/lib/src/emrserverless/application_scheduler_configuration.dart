@@ -25,8 +25,8 @@ class ApplicationSchedulerConfiguration {
 
   factory ApplicationSchedulerConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationSchedulerConfiguration(
-      maxConcurrentRuns: (() { final guardedValue = map['maxConcurrentRuns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      queueTimeoutMinutes: (() { final guardedValue = map['queueTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConcurrentRuns: (() { final guardedValue = map['maxConcurrentRuns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      queueTimeoutMinutes: (() { final guardedValue = map['queueTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

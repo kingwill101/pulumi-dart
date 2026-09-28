@@ -23,8 +23,8 @@ class GetLaunchTemplateInstanceRequirementMemoryMib {
 
   factory GetLaunchTemplateInstanceRequirementMemoryMib.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceRequirementMemoryMib(
-      max: pulumi.Input.fromValue((map['max'] as num).toInt()),
-      min: pulumi.Input.fromValue((map['min'] as num).toInt()),
+      max: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['max'])),
+      min: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['min'])),
     );
   }
 }

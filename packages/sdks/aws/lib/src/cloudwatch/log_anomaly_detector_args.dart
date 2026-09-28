@@ -64,7 +64,7 @@ class LogAnomalyDetectorArgs {
 
   factory LogAnomalyDetectorArgs.fromMap(Map<String, dynamic> map) {
     return LogAnomalyDetectorArgs(
-      anomalyVisibilityTime: (() { final guardedValue = map['anomalyVisibilityTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      anomalyVisibilityTime: (() { final guardedValue = map['anomalyVisibilityTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       detectorName: (() { final guardedValue = map['detectorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       evaluationFrequency: (() { final guardedValue = map['evaluationFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

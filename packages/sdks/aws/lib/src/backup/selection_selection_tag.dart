@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SelectionSelectionTag {
   /// Key for the filter.
   final pulumi.Input<String> key;
-  /// An operation, such as `STRINGEQUALS`, that is applied to the key-value pair used to filter resources in a selection.
+  /// Operation, such as `STRINGEQUALS`, that is applied to the key-value pair used to filter resources in a selection.
   final pulumi.Input<String> type;
   /// Value for the filter.
   final pulumi.Input<String> value;
 
   /// Creates a new [SelectionSelectionTag].
   /// [key] Key for the filter.
-  /// [type] An operation, such as `STRINGEQUALS`, that is applied to the key-value pair used to filter resources in a selection.
+  /// [type] Operation, such as `STRINGEQUALS`, that is applied to the key-value pair used to filter resources in a selection.
   /// [value] Value for the filter.
   const SelectionSelectionTag({
     required this.key,

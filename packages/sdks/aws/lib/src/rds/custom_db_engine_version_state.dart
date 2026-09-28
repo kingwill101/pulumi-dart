@@ -6,66 +6,66 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomDbEngineVersionState {
   /// ARN for the custom engine version.
   final pulumi.Input<String?>? arn;
-  /// The date and time that the CEV was created.
+  /// Date and time that the CEV was created.
   final pulumi.Input<String?>? createTime;
-  /// The name of the Amazon S3 bucket that contains the database installation files.
+  /// Name of the Amazon S3 bucket that contains the database installation files.
   final pulumi.Input<String?>? databaseInstallationFilesS3BucketName;
-  /// The prefix for the Amazon S3 bucket that contains the database installation files.
+  /// Prefix for the Amazon S3 bucket that contains the database installation files.
   final pulumi.Input<String?>? databaseInstallationFilesS3Prefix;
-  /// The name of the DB parameter group family for the CEV.
+  /// Name of the DB parameter group family for the CEV.
   final pulumi.Input<String?>? dbParameterGroupFamily;
-  /// The description of the CEV.
+  /// Description of the CEV.
   final pulumi.Input<String?>? description;
-  /// The name of the database engine. Valid values are `custom-oracle*`, `custom-sqlserver*`.
+  /// Name of the database engine. Valid values are `custom-oracle*`, `custom-sqlserver*`.
   final pulumi.Input<String?>? engine;
-  /// The version of the database engine.
+  /// Version of the database engine.
   final pulumi.Input<String?>? engineVersion;
-  /// The name of the manifest file within the local filesystem. Conflicts with `manifest`.
+  /// Name of the manifest file within the local filesystem. Conflicts with `manifest`.
   final pulumi.Input<String?>? filename;
-  /// The ID of the AMI that was created with the CEV.
+  /// ID of the AMI that was created with the CEV.
   final pulumi.Input<String?>? imageId;
-  /// The ARN of the AWS KMS key that is used to encrypt the database installation files. Required for RDS Custom for Oracle.
+  /// ARN of the AWS KMS key that is used to encrypt the database installation files. Required for RDS Custom for Oracle.
   final pulumi.Input<String?>? kmsKeyId;
-  /// The major version of the database engine.
+  /// Major version of the database engine.
   final pulumi.Input<String?>? majorEngineVersion;
-  /// The manifest file, in JSON format, that contains the list of database installation files. Conflicts with `filename`.
+  /// Manifest file, in JSON format, that contains the list of database installation files. Conflicts with `filename`.
   final pulumi.Input<String?>? manifest;
-  /// The returned manifest file, in JSON format, service generated and often different from input `manifest`.
+  /// Returned manifest file, in JSON format, service generated and often different from input `manifest`.
   final pulumi.Input<String?>? manifestComputed;
-  /// Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the manifest source specified with `filename`. The usual way to set this is filebase64sha256("manifest.json") where "manifest.json" is the local filename of the manifest source.
+  /// Triggers updates. Must be set to a base64-encoded SHA256 hash of the manifest source specified with `filename`. The usual way to set this is filebase64sha256("manifest.json") where "manifest.json" is the local filename of the manifest source.
   final pulumi.Input<String?>? manifestHash;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The ID of the AMI to create the CEV from. Required for RDS Custom for SQL Server. For RDS Custom for Oracle, you can specify an AMI ID that was used in a different Oracle CEV.
+  /// ID of the AMI to create the CEV from. Required for RDS Custom for SQL Server. For RDS Custom for Oracle, you can specify an AMI ID that was used in a different Oracle CEV.
   final pulumi.Input<String?>? sourceImageId;
-  /// The status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
+  /// Status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
   final pulumi.Input<String?>? status;
-  /// A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [CustomDbEngineVersionState].
   /// [arn] ARN for the custom engine version.
-  /// [createTime] The date and time that the CEV was created.
-  /// [databaseInstallationFilesS3BucketName] The name of the Amazon S3 bucket that contains the database installation files.
-  /// [databaseInstallationFilesS3Prefix] The prefix for the Amazon S3 bucket that contains the database installation files.
-  /// [dbParameterGroupFamily] The name of the DB parameter group family for the CEV.
-  /// [description] The description of the CEV.
-  /// [engine] The name of the database engine. Valid values are `custom-oracle*`, `custom-sqlserver*`.
-  /// [engineVersion] The version of the database engine.
-  /// [filename] The name of the manifest file within the local filesystem. Conflicts with `manifest`.
-  /// [imageId] The ID of the AMI that was created with the CEV.
-  /// [kmsKeyId] The ARN of the AWS KMS key that is used to encrypt the database installation files. Required for RDS Custom for Oracle.
-  /// [majorEngineVersion] The major version of the database engine.
-  /// [manifest] The manifest file, in JSON format, that contains the list of database installation files. Conflicts with `filename`.
-  /// [manifestComputed] The returned manifest file, in JSON format, service generated and often different from input `manifest`.
-  /// [manifestHash] Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the manifest source specified with `filename`. The usual way to set this is filebase64sha256("manifest.json") where "manifest.json" is the local filename of the manifest source.
+  /// [createTime] Date and time that the CEV was created.
+  /// [databaseInstallationFilesS3BucketName] Name of the Amazon S3 bucket that contains the database installation files.
+  /// [databaseInstallationFilesS3Prefix] Prefix for the Amazon S3 bucket that contains the database installation files.
+  /// [dbParameterGroupFamily] Name of the DB parameter group family for the CEV.
+  /// [description] Description of the CEV.
+  /// [engine] Name of the database engine. Valid values are `custom-oracle*`, `custom-sqlserver*`.
+  /// [engineVersion] Version of the database engine.
+  /// [filename] Name of the manifest file within the local filesystem. Conflicts with `manifest`.
+  /// [imageId] ID of the AMI that was created with the CEV.
+  /// [kmsKeyId] ARN of the AWS KMS key that is used to encrypt the database installation files. Required for RDS Custom for Oracle.
+  /// [majorEngineVersion] Major version of the database engine.
+  /// [manifest] Manifest file, in JSON format, that contains the list of database installation files. Conflicts with `filename`.
+  /// [manifestComputed] Returned manifest file, in JSON format, service generated and often different from input `manifest`.
+  /// [manifestHash] Triggers updates. Must be set to a base64-encoded SHA256 hash of the manifest source specified with `filename`. The usual way to set this is filebase64sha256("manifest.json") where "manifest.json" is the local filename of the manifest source.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [sourceImageId] The ID of the AMI to create the CEV from. Required for RDS Custom for SQL Server. For RDS Custom for Oracle, you can specify an AMI ID that was used in a different Oracle CEV.
-  /// [status] The status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
-  /// [tags] A mapping of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [sourceImageId] ID of the AMI to create the CEV from. Required for RDS Custom for SQL Server. For RDS Custom for Oracle, you can specify an AMI ID that was used in a different Oracle CEV.
+  /// [status] Status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const CustomDbEngineVersionState({
     this.arn,
     this.createTime,

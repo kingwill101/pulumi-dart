@@ -8,13 +8,13 @@ class InvocationLoggingConfigurationLoggingConfigCloudwatchConfig {
   final pulumi.Input<InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config?>? largeDataDeliveryS3Config;
   /// Log group name.
   final pulumi.Input<String> logGroupName;
-  /// The role ARN.
+  /// Role ARN.
   final pulumi.Input<String> roleArn;
 
   /// Creates a new [InvocationLoggingConfigurationLoggingConfigCloudwatchConfig].
   /// [largeDataDeliveryS3Config] S3 configuration for delivering a large amount of data. See `largeDataDeliveryS3Config` Block for details.
   /// [logGroupName] Log group name.
-  /// [roleArn] The role ARN.
+  /// [roleArn] Role ARN.
   const InvocationLoggingConfigurationLoggingConfigCloudwatchConfig({
     this.largeDataDeliveryS3Config,
     required this.logGroupName,

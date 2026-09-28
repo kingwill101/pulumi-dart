@@ -67,8 +67,8 @@ class GetPublicIpv4PoolResult {
       poolId: (() { final guardedValue = map['poolId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      totalAddressCount: (() { final guardedValue = map['totalAddressCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      totalAvailableAddressCount: (() { final guardedValue = map['totalAvailableAddressCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      totalAddressCount: (() { final guardedValue = map['totalAddressCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      totalAvailableAddressCount: (() { final guardedValue = map['totalAvailableAddressCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

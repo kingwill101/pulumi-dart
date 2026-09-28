@@ -32,7 +32,7 @@ class DataSourceParametersPostgresql {
     return DataSourceParametersPostgresql(
       database: pulumi.Input.fromValue(map['database'] as String),
       host: pulumi.Input.fromValue(map['host'] as String),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
     );
   }
 }

@@ -53,7 +53,7 @@ class RecordingConfigurationArgs {
     return RecordingConfigurationArgs(
       destinationConfiguration: pulumi.Input.fromValue(RecordingConfigurationDestinationConfiguration.fromMap((map['destinationConfiguration']! as Map).cast<String, dynamic>())),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      recordingReconnectWindowSeconds: (() { final guardedValue = map['recordingReconnectWindowSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      recordingReconnectWindowSeconds: (() { final guardedValue = map['recordingReconnectWindowSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       thumbnailConfiguration: (() { final guardedValue = map['thumbnailConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RecordingConfigurationThumbnailConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

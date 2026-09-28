@@ -31,7 +31,7 @@ class SafetyRuleRuleConfig {
   factory SafetyRuleRuleConfig.fromMap(Map<String, dynamic> map) {
     return SafetyRuleRuleConfig(
       inverted: pulumi.Input.fromValue(map['inverted'] as bool),
-      threshold: pulumi.Input.fromValue((map['threshold'] as num).toInt()),
+      threshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['threshold'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

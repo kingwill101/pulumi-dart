@@ -37,8 +37,8 @@ class GroupWarmPool {
   factory GroupWarmPool.fromMap(Map<String, dynamic> map) {
     return GroupWarmPool(
       instanceReusePolicy: (() { final guardedValue = map['instanceReusePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GroupWarmPoolInstanceReusePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxGroupPreparedCapacity: (() { final guardedValue = map['maxGroupPreparedCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxGroupPreparedCapacity: (() { final guardedValue = map['maxGroupPreparedCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       poolState: (() { final guardedValue = map['poolState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

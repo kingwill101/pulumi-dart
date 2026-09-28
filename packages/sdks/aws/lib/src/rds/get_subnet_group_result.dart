@@ -13,9 +13,9 @@ class GetSubnetGroupResult {
   final String? region;
   /// Provides the status of the DB subnet group.
   final String? status;
-  /// Contains a list of subnet identifiers.
+  /// List of subnet identifiers.
   final List<String>? subnetIds;
-  /// The network type of the DB subnet group.
+  /// Network type of the DB subnet group.
   final List<String>? supportedNetworkTypes;
   /// Provides the VPC ID of the DB subnet group.
   final String? vpcId;
@@ -27,8 +27,8 @@ class GetSubnetGroupResult {
   /// [name] Optional.
   /// [region] Optional.
   /// [status] Provides the status of the DB subnet group.
-  /// [subnetIds] Contains a list of subnet identifiers.
-  /// [supportedNetworkTypes] The network type of the DB subnet group.
+  /// [subnetIds] List of subnet identifiers.
+  /// [supportedNetworkTypes] Network type of the DB subnet group.
   /// [vpcId] Provides the VPC ID of the DB subnet group.
   const GetSubnetGroupResult({
     this.arn,

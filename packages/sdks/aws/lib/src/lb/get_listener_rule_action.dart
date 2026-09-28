@@ -72,7 +72,7 @@ class GetListenerRuleAction {
       fixedResponses: (() { final guardedValue = map['fixedResponses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetListenerRuleActionFixedResponse>(guardedValue, (value) => GetListenerRuleActionFixedResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       forwards: (() { final guardedValue = map['forwards']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetListenerRuleActionForward>(guardedValue, (value) => GetListenerRuleActionForward.fromMap((value as Map).cast<String, dynamic>()))); })(),
       jwtValidations: (() { final guardedValue = map['jwtValidations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetListenerRuleActionJwtValidation>(guardedValue, (value) => GetListenerRuleActionJwtValidation.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      order: pulumi.Input.fromValue((map['order'] as num).toInt()),
+      order: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['order'])),
       redirects: (() { final guardedValue = map['redirects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetListenerRuleActionRedirect>(guardedValue, (value) => GetListenerRuleActionRedirect.fromMap((value as Map).cast<String, dynamic>()))); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );

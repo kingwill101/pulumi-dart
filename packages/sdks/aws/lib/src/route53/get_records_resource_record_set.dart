@@ -107,9 +107,9 @@ class GetRecordsResourceRecordSet {
       resourceRecords: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRecordsResourceRecordSetResourceRecord>(map['resourceRecords']!, (value) => GetRecordsResourceRecordSetResourceRecord.fromMap((value as Map).cast<String, dynamic>()))),
       setIdentifier: pulumi.Input.fromValue(map['setIdentifier'] as String),
       trafficPolicyInstanceId: pulumi.Input.fromValue(map['trafficPolicyInstanceId'] as String),
-      ttl: pulumi.Input.fromValue((map['ttl'] as num).toInt()),
+      ttl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ttl'])),
       type: pulumi.Input.fromValue(map['type'] as String),
-      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
+      weight: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['weight'])),
     );
   }
 }

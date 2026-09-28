@@ -426,11 +426,11 @@ class AgentPrompt extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Time at which the prompt was last updated.
   late final pulumi.Output<String> updatedAt;
-  /// A list of objects, each containing details about a variant of the prompt. See Variant for more information.
+  /// List of objects, each containing details about a variant of the prompt. See `variant` Block for more information.
   late final pulumi.Output<List<AgentPromptVariant>?> variants;
   /// Version of the prompt. When you create a prompt, the version created is the `DRAFT` version.
   late final pulumi.Output<String> version;
@@ -447,7 +447,7 @@ class AgentPrompt extends pulumi.CustomResource {
           'aws:bedrock/agentPrompt:AgentPrompt',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

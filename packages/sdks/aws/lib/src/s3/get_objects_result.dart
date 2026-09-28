@@ -83,7 +83,7 @@ class GetObjectsResult {
       fetchOwner: (() { final guardedValue = map['fetchOwner']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       keys: (() { final guardedValue = map['keys']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      maxKeys: (() { final guardedValue = map['maxKeys']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxKeys: (() { final guardedValue = map['maxKeys']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       owners: (() { final guardedValue = map['owners']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),

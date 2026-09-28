@@ -902,8 +902,6 @@ import 'agent_agent_action_group_timeouts.dart';
 /// ```
 class AgentAgentActionGroup extends pulumi.CustomResource {
   /// ARN of the Lambda function containing the business logic that is carried out upon invoking the action or custom control method for handling the information elicited from the user. See `actionGroupExecutor` Block for details.
-  ///
-  /// The following arguments are optional:
   late final pulumi.Output<AgentAgentActionGroupActionGroupExecutor?> actionGroupExecutor;
   /// Unique identifier of the action group.
   late final pulumi.Output<String> actionGroupId;
@@ -911,17 +909,17 @@ class AgentAgentActionGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> actionGroupName;
   /// Whether the action group is available for the agent to invoke or not when sending an [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html) request. Valid values: `ENABLED`, `DISABLED`.
   late final pulumi.Output<String> actionGroupState;
-  /// The unique identifier of the agent for which to create the action group.
+  /// Unique identifier of the agent for which to create the action group.
   late final pulumi.Output<String> agentId;
   /// Version of the agent for which to create the action group. Valid values: `DRAFT`.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> agentVersion;
   /// Either details about the S3 object containing the OpenAPI schema for the action group or the JSON or YAML-formatted payload defining the schema. For more information, see [Action group OpenAPI schemas](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html). See `apiSchema` Block for details.
   late final pulumi.Output<AgentAgentActionGroupApiSchema?> apiSchema;
   /// Description of the action group.
   late final pulumi.Output<String?> description;
-  /// Describes the function schema for the action group.
-  /// Each function represents an action in an action group.
-  /// See `functionSchema` Block for details.
+  /// Function schema for the action group. Each function represents an action in an action group. See `functionSchema` Block for details.
   late final pulumi.Output<AgentAgentActionGroupFunctionSchema?> functionSchema;
   /// To allow your agent to request the user for additional information when trying to complete a task, set this argument to `AMAZON.UserInput`. You must leave the `description`, `apiSchema`, and `actionGroupExecutor` arguments blank for this action group. Valid values: `AMAZON.UserInput`.
   late final pulumi.Output<String?> parentActionGroupSignature;
@@ -945,7 +943,7 @@ class AgentAgentActionGroup extends pulumi.CustomResource {
           'aws:bedrock/agentAgentActionGroup:AgentAgentActionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     actionGroupExecutor = registerOutput<AgentAgentActionGroupActionGroupExecutor?>('actionGroupExecutor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentActionGroupActionGroupExecutor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     actionGroupId = registerOutput<String>('actionGroupId');

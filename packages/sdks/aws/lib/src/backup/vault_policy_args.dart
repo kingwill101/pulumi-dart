@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VaultPolicyArgs {
   /// Name of the backup vault to add policy for.
   final pulumi.Input<String> backupVaultName;
-  /// The backup vault access policy document in JSON format.
+  /// Backup vault access policy document in JSON format.
   final pulumi.Input<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [VaultPolicyArgs].
   /// [backupVaultName] Name of the backup vault to add policy for.
-  /// [policy] The backup vault access policy document in JSON format.
+  /// [policy] Backup vault access policy document in JSON format.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const VaultPolicyArgs({
     required this.backupVaultName,

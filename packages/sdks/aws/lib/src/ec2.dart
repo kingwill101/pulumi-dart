@@ -613,6 +613,7 @@ export 'ec2/network_acl_association.dart';
 export 'ec2/network_acl_association_args.dart';
 export 'ec2/network_acl_association_state.dart';
 export 'ec2/network_acl_egress.dart';
+export 'ec2/network_acl_filter.dart';
 export 'ec2/network_acl_ingress.dart';
 export 'ec2/network_acl_rule.dart';
 export 'ec2/network_acl_rule_args.dart';

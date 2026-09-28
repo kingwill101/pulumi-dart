@@ -5,17 +5,17 @@ import 'cluster_snapshot_copy_timeouts.dart';
 
 /// Input properties used for looking up and filtering ClusterSnapshotCopy resources.
 class ClusterSnapshotCopyState {
-  /// Specifies the allocated storage size in gigabytes (GB).
+  /// Allocated storage size in gigabytes (GB).
   final pulumi.Input<int?>? allocatedStorage;
   /// Whether to copy existing tags. Defaults to `false`.
   final pulumi.Input<bool?>? copyTags;
   /// ARN for the DB cluster snapshot.
   final pulumi.Input<String?>? dbClusterSnapshotArn;
-  /// The Destination region to place snapshot copy.
+  /// Destination region to place the snapshot copy.
   final pulumi.Input<String?>? destinationRegion;
-  /// Specifies the name of the database engine.
+  /// Name of the database engine.
   final pulumi.Input<String?>? engine;
-  /// Specifies the version of the database engine.
+  /// Version of the database engine.
   final pulumi.Input<String?>? engineVersion;
   /// KMS key ID.
   final pulumi.Input<String?>? kmsKeyId;
@@ -27,16 +27,17 @@ class ClusterSnapshotCopyState {
   final pulumi.Input<String?>? region;
   /// List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
   final pulumi.Input<List<String>?>? sharedAccounts;
+  /// Type of the DB cluster snapshot.
   final pulumi.Input<String?>? snapshotType;
   /// Identifier of the source snapshot.
   final pulumi.Input<String?>? sourceDbClusterSnapshotIdentifier;
-  /// Specifies whether the DB cluster snapshot is encrypted.
+  /// Whether the DB cluster snapshot is encrypted.
   final pulumi.Input<bool?>? storageEncrypted;
-  /// Specifies the storage type associated with DB cluster snapshot.
+  /// Storage type associated with DB cluster snapshot.
   final pulumi.Input<String?>? storageType;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Identifier for the snapshot.
   ///
@@ -47,23 +48,23 @@ class ClusterSnapshotCopyState {
   final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [ClusterSnapshotCopyState].
-  /// [allocatedStorage] Specifies the allocated storage size in gigabytes (GB).
+  /// [allocatedStorage] Allocated storage size in gigabytes (GB).
   /// [copyTags] Whether to copy existing tags. Defaults to `false`.
   /// [dbClusterSnapshotArn] ARN for the DB cluster snapshot.
-  /// [destinationRegion] The Destination region to place snapshot copy.
-  /// [engine] Specifies the name of the database engine.
-  /// [engineVersion] Specifies the version of the database engine.
+  /// [destinationRegion] Destination region to place the snapshot copy.
+  /// [engine] Name of the database engine.
+  /// [engineVersion] Version of the database engine.
   /// [kmsKeyId] KMS key ID.
   /// [licenseModel] License model information for the restored DB instance.
   /// [presignedUrl] URL that contains a Signature Version 4 signed request.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sharedAccounts] List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
-  /// [snapshotType] Optional.
+  /// [snapshotType] Type of the DB cluster snapshot.
   /// [sourceDbClusterSnapshotIdentifier] Identifier of the source snapshot.
-  /// [storageEncrypted] Specifies whether the DB cluster snapshot is encrypted.
-  /// [storageType] Specifies the storage type associated with DB cluster snapshot.
+  /// [storageEncrypted] Whether the DB cluster snapshot is encrypted.
+  /// [storageType] Storage type associated with DB cluster snapshot.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [targetDbClusterSnapshotIdentifier] Identifier for the snapshot.
   /// [timeouts] Optional.
   /// [vpcId] Provides the VPC ID associated with the DB cluster snapshot.
@@ -117,7 +118,7 @@ class ClusterSnapshotCopyState {
 
   factory ClusterSnapshotCopyState.fromMap(Map<String, dynamic> map) {
     return ClusterSnapshotCopyState(
-      allocatedStorage: (() { final guardedValue = map['allocatedStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      allocatedStorage: (() { final guardedValue = map['allocatedStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       copyTags: (() { final guardedValue = map['copyTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dbClusterSnapshotArn: (() { final guardedValue = map['dbClusterSnapshotArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationRegion: (() { final guardedValue = map['destinationRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

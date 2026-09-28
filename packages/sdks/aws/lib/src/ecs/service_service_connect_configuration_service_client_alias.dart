@@ -32,7 +32,7 @@ class ServiceServiceConnectConfigurationServiceClientAlias {
   factory ServiceServiceConnectConfigurationServiceClientAlias.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationServiceClientAlias(
       dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       testTrafficRules: (() { final guardedValue = map['testTrafficRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule>(guardedValue, (value) => ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

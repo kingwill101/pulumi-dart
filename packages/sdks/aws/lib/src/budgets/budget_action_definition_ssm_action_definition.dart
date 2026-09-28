@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetActionDefinitionSsmActionDefinition {
-  /// The action subType. Valid values are `STOP_EC2_INSTANCES` or `STOP_RDS_INSTANCES`.
+  /// Action subType. Valid values are `STOP_EC2_INSTANCES` or `STOP_RDS_INSTANCES`.
   final pulumi.Input<String> actionSubType;
-  /// The EC2 and RDS instance IDs.
+  /// EC2 and RDS instance IDs.
   final pulumi.Input<List<String>> instanceIds;
-  /// The Region to run the SSM document.
+  /// Region to run the SSM document.
   final pulumi.Input<String> region;
 
   /// Creates a new [BudgetActionDefinitionSsmActionDefinition].
-  /// [actionSubType] The action subType. Valid values are `STOP_EC2_INSTANCES` or `STOP_RDS_INSTANCES`.
-  /// [instanceIds] The EC2 and RDS instance IDs.
-  /// [region] The Region to run the SSM document.
+  /// [actionSubType] Action subType. Valid values are `STOP_EC2_INSTANCES` or `STOP_RDS_INSTANCES`.
+  /// [instanceIds] EC2 and RDS instance IDs.
+  /// [region] Region to run the SSM document.
   const BudgetActionDefinitionSsmActionDefinition({
     required this.actionSubType,
     required this.instanceIds,

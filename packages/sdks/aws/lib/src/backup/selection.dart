@@ -1052,13 +1052,13 @@ import 'selection_state.dart';
 class Selection extends pulumi.CustomResource {
   /// Condition-based filters used to specify sets of resources for a backup plan. See below for details.
   late final pulumi.Output<List<SelectionCondition>> conditions;
-  /// The ARN of the IAM role that AWS Backup uses to authenticate when restoring and backing up the target resource. See the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/access-control.html#managed-policies) for additional information about using AWS managed policies or creating custom policies attached to the IAM role.
+  /// ARN of the IAM role that AWS Backup uses to authenticate when restoring and backing up the target resource. See the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/access-control.html#managed-policies) for additional information about using AWS managed policies or creating custom policies attached to the IAM role.
   late final pulumi.Output<String> iamRoleArn;
-  /// The display name of a resource selection document.
+  /// Display name of a resource selection document.
   late final pulumi.Output<String> name;
   /// Array of strings that either contain ARNs or match patterns of resources to exclude from a backup plan.
   late final pulumi.Output<List<String>> notResources;
-  /// The backup plan ID to be associated with the selection of resources.
+  /// Backup plan ID to be associated with the selection of resources.
   late final pulumi.Output<String> planId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -1079,7 +1079,7 @@ class Selection extends pulumi.CustomResource {
           'aws:backup/selection:Selection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     conditions = registerOutput<List<SelectionCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SelectionCondition>(guardedValue, (value) => SelectionCondition.fromMap((value as Map).cast<String, dynamic>())); });
     iamRoleArn = registerOutput<String>('iamRoleArn');

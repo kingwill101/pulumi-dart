@@ -25,7 +25,7 @@ class DataSourceParametersTwitter {
 
   factory DataSourceParametersTwitter.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersTwitter(
-      maxRows: pulumi.Input.fromValue((map['maxRows'] as num).toInt()),
+      maxRows: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRows'])),
       query: pulumi.Input.fromValue(map['query'] as String),
     );
   }

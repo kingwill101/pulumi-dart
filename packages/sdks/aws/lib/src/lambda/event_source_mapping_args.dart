@@ -177,7 +177,7 @@ class EventSourceMappingArgs {
   factory EventSourceMappingArgs.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingArgs(
       amazonManagedKafkaEventSourceConfig: (() { final guardedValue = map['amazonManagedKafkaEventSourceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventSourceMappingAmazonManagedKafkaEventSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       bisectBatchOnFunctionError: (() { final guardedValue = map['bisectBatchOnFunctionError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       destinationConfig: (() { final guardedValue = map['destinationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventSourceMappingDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       documentDbEventSourceConfig: (() { final guardedValue = map['documentDbEventSourceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventSourceMappingDocumentDbEventSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -187,11 +187,11 @@ class EventSourceMappingArgs {
       functionName: pulumi.Input.fromValue(map['functionName'] as String),
       functionResponseTypes: (() { final guardedValue = map['functionResponseTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       kmsKeyArn: (() { final guardedValue = map['kmsKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maximumBatchingWindowInSeconds: (() { final guardedValue = map['maximumBatchingWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maximumRecordAgeInSeconds: (() { final guardedValue = map['maximumRecordAgeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maximumRetryAttempts: (() { final guardedValue = map['maximumRetryAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumBatchingWindowInSeconds: (() { final guardedValue = map['maximumBatchingWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maximumRecordAgeInSeconds: (() { final guardedValue = map['maximumRecordAgeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maximumRetryAttempts: (() { final guardedValue = map['maximumRetryAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       metricsConfig: (() { final guardedValue = map['metricsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventSourceMappingMetricsConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      parallelizationFactor: (() { final guardedValue = map['parallelizationFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      parallelizationFactor: (() { final guardedValue = map['parallelizationFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       provisionedPollerConfig: (() { final guardedValue = map['provisionedPollerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventSourceMappingProvisionedPollerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       queues: (() { final guardedValue = map['queues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -203,7 +203,7 @@ class EventSourceMappingArgs {
       startingPositionTimestamp: (() { final guardedValue = map['startingPositionTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       topics: (() { final guardedValue = map['topics']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      tumblingWindowInSeconds: (() { final guardedValue = map['tumblingWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tumblingWindowInSeconds: (() { final guardedValue = map['tumblingWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       useResourceTimeoutForPropagation: (() { final guardedValue = map['useResourceTimeoutForPropagation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

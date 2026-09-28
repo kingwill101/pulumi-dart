@@ -5,14 +5,14 @@ import 'agent_flow_definition_node_configuration_prompt_guardrail_configuration.
 import 'agent_flow_definition_node_configuration_prompt_source_configuration.dart';
 
 class AgentFlowDefinitionNodeConfigurationPrompt {
-  /// Configures a guardrail for prompt generation. See Guardrail Configuration for more information.
+  /// Configuration of a guardrail for prompt generation. See `definition.node.configuration.prompt.guardrail_configuration` Block for details.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptGuardrailConfiguration?>? guardrailConfiguration;
-  /// Configures the prompt source, either inline or from Prompt management. See Source Configuration for more information.
+  /// Configuration of the prompt source, either inline or from Prompt management. See `definition.node.configuration.prompt.source_configuration` Block for details.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration?>? sourceConfiguration;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPrompt].
-  /// [guardrailConfiguration] Configures a guardrail for prompt generation. See Guardrail Configuration for more information.
-  /// [sourceConfiguration] Configures the prompt source, either inline or from Prompt management. See Source Configuration for more information.
+  /// [guardrailConfiguration] Configuration of a guardrail for prompt generation. See `definition.node.configuration.prompt.guardrail_configuration` Block for details.
+  /// [sourceConfiguration] Configuration of the prompt source, either inline or from Prompt management. See `definition.node.configuration.prompt.source_configuration` Block for details.
   const AgentFlowDefinitionNodeConfigurationPrompt({
     this.guardrailConfiguration,
     this.sourceConfiguration,

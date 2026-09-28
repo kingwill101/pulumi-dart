@@ -25,8 +25,8 @@ class FunctionScalingConfigFunctionScalingConfig {
 
   factory FunctionScalingConfigFunctionScalingConfig.fromMap(Map<String, dynamic> map) {
     return FunctionScalingConfigFunctionScalingConfig(
-      maxExecutionEnvironments: (() { final guardedValue = map['maxExecutionEnvironments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minExecutionEnvironments: (() { final guardedValue = map['minExecutionEnvironments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxExecutionEnvironments: (() { final guardedValue = map['maxExecutionEnvironments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minExecutionEnvironments: (() { final guardedValue = map['minExecutionEnvironments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

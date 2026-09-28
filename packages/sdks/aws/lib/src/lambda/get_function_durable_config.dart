@@ -25,8 +25,8 @@ class GetFunctionDurableConfig {
 
   factory GetFunctionDurableConfig.fromMap(Map<String, dynamic> map) {
     return GetFunctionDurableConfig(
-      executionTimeout: pulumi.Input.fromValue((map['executionTimeout'] as num).toInt()),
-      retentionPeriod: pulumi.Input.fromValue((map['retentionPeriod'] as num).toInt()),
+      executionTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['executionTimeout'])),
+      retentionPeriod: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionPeriod'])),
     );
   }
 }

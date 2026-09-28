@@ -79,7 +79,7 @@ class GetQueueResult {
       hoursOfOperationId: (() { final guardedValue = map['hoursOfOperationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxContacts: (() { final guardedValue = map['maxContacts']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxContacts: (() { final guardedValue = map['maxContacts']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       outboundCallerConfigs: (() { final guardedValue = map['outboundCallerConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetQueueOutboundCallerConfig>(guardedValue, (value) => GetQueueOutboundCallerConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       queueId: (() { final guardedValue = map['queueId']; if (guardedValue == null) return null; return guardedValue as String; })(),

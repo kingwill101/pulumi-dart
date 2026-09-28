@@ -70,7 +70,7 @@ class DevEnvironmentArgs {
     return DevEnvironmentArgs(
       alias: (() { final guardedValue = map['alias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ides: pulumi.Input.fromValue(DevEnvironmentIdes.fromMap((map['ides']! as Map).cast<String, dynamic>())),
-      inactivityTimeoutMinutes: (() { final guardedValue = map['inactivityTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      inactivityTimeoutMinutes: (() { final guardedValue = map['inactivityTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       persistentStorage: pulumi.Input.fromValue(DevEnvironmentPersistentStorage.fromMap((map['persistentStorage']! as Map).cast<String, dynamic>())),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),

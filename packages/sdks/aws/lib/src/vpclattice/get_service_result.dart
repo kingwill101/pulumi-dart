@@ -80,7 +80,7 @@ class GetServiceResult {
       customDomainName: (() { final guardedValue = map['customDomainName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dnsEntries: (() { final guardedValue = map['dnsEntries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceDnsEntry>(guardedValue, (value) => GetServiceDnsEntry.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      idleTimeoutSeconds: (() { final guardedValue = map['idleTimeoutSeconds']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      idleTimeoutSeconds: (() { final guardedValue = map['idleTimeoutSeconds']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serviceIdentifier: (() { final guardedValue = map['serviceIdentifier']; if (guardedValue == null) return null; return guardedValue as String; })(),

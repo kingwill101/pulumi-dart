@@ -7,29 +7,29 @@ import 'budget_action_subscriber.dart';
 
 /// Input properties used for looking up and filtering BudgetAction resources.
 class BudgetActionState {
-  /// The ID of the target account for budget. Will use current user's accountId by default if omitted.
+  /// ID of the target account for the budget. Uses the current user's account ID by default if omitted.
   final pulumi.Input<String?>? accountId;
-  /// The id of the budget action.
+  /// ID of the budget action.
   final pulumi.Input<String?>? actionId;
-  /// The trigger threshold of the action. See Action Threshold.
+  /// Trigger threshold of the action. See `actionThreshold` Block.
   final pulumi.Input<BudgetActionActionThreshold?>? actionThreshold;
-  /// The type of action. This defines the type of tasks that can be carried out by this action. This field also determines the format for definition. Valid values are `APPLY_IAM_POLICY`, `APPLY_SCP_POLICY`, and `RUN_SSM_DOCUMENTS`.
+  /// Type of action. This defines the type of tasks that can be carried out by this action. This field also determines the format for definition. Valid values are `APPLY_IAM_POLICY`, `APPLY_SCP_POLICY`, and `RUN_SSM_DOCUMENTS`.
   final pulumi.Input<String?>? actionType;
-  /// This specifies if the action needs manual or automatic approval. Valid values are `AUTOMATIC` and `MANUAL`.
+  /// Whether the action needs manual or automatic approval. Valid values are `AUTOMATIC` and `MANUAL`.
   final pulumi.Input<String?>? approvalModel;
-  /// The ARN of the budget action.
+  /// ARN of the budget action.
   final pulumi.Input<String?>? arn;
-  /// The name of a budget.
+  /// Name of a budget.
   final pulumi.Input<String?>? budgetName;
-  /// Specifies all of the type-specific parameters. See Definition.
+  /// Type-specific parameters. See `definition` Block.
   final pulumi.Input<BudgetActionDefinition?>? definition;
-  /// The role passed for action execution and reversion. Roles and actions must be in the same account.
+  /// Role passed for action execution and reversion. Roles and actions must be in the same account.
   final pulumi.Input<String?>? executionRoleArn;
-  /// The type of a notification. Valid values are `ACTUAL` or `FORECASTED`.
+  /// Type of a notification. Valid values are `ACTUAL` or `FORECASTED`.
   final pulumi.Input<String?>? notificationType;
-  /// The status of the budget action.
+  /// Status of the budget action.
   final pulumi.Input<String?>? status;
-  /// A list of subscribers. See Subscriber.
+  /// Set of subscribers. See `subscriber` Block.
   final pulumi.Input<List<BudgetActionSubscriber>?>? subscribers;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
@@ -37,18 +37,18 @@ class BudgetActionState {
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [BudgetActionState].
-  /// [accountId] The ID of the target account for budget. Will use current user's accountId by default if omitted.
-  /// [actionId] The id of the budget action.
-  /// [actionThreshold] The trigger threshold of the action. See Action Threshold.
-  /// [actionType] The type of action. This defines the type of tasks that can be carried out by this action. This field also determines the format for definition. Valid values are `APPLY_IAM_POLICY`, `APPLY_SCP_POLICY`, and `RUN_SSM_DOCUMENTS`.
-  /// [approvalModel] This specifies if the action needs manual or automatic approval. Valid values are `AUTOMATIC` and `MANUAL`.
-  /// [arn] The ARN of the budget action.
-  /// [budgetName] The name of a budget.
-  /// [definition] Specifies all of the type-specific parameters. See Definition.
-  /// [executionRoleArn] The role passed for action execution and reversion. Roles and actions must be in the same account.
-  /// [notificationType] The type of a notification. Valid values are `ACTUAL` or `FORECASTED`.
-  /// [status] The status of the budget action.
-  /// [subscribers] A list of subscribers. See Subscriber.
+  /// [accountId] ID of the target account for the budget. Uses the current user's account ID by default if omitted.
+  /// [actionId] ID of the budget action.
+  /// [actionThreshold] Trigger threshold of the action. See `actionThreshold` Block.
+  /// [actionType] Type of action. This defines the type of tasks that can be carried out by this action. This field also determines the format for definition. Valid values are `APPLY_IAM_POLICY`, `APPLY_SCP_POLICY`, and `RUN_SSM_DOCUMENTS`.
+  /// [approvalModel] Whether the action needs manual or automatic approval. Valid values are `AUTOMATIC` and `MANUAL`.
+  /// [arn] ARN of the budget action.
+  /// [budgetName] Name of a budget.
+  /// [definition] Type-specific parameters. See `definition` Block.
+  /// [executionRoleArn] Role passed for action execution and reversion. Roles and actions must be in the same account.
+  /// [notificationType] Type of a notification. Valid values are `ACTUAL` or `FORECASTED`.
+  /// [status] Status of the budget action.
+  /// [subscribers] Set of subscribers. See `subscriber` Block.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const BudgetActionState({

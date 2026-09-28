@@ -6,32 +6,44 @@ import 'get_plan_rule_lifecycle.dart';
 import 'get_plan_rule_scan_action.dart';
 
 class GetPlanRule {
+  /// Amount of time in minutes AWS Backup attempts a backup before canceling the job and returning an error.
   final pulumi.Input<int> completionWindow;
+  /// Configuration block(s) with copy operation settings. See below.
   final pulumi.Input<List<GetPlanRuleCopyAction>> copyActions;
+  /// Whether AWS Backup creates continuous backups.
   final pulumi.Input<bool> enableContinuousBackup;
+  /// Lifecycle defining when a recovery point transitions to cold storage and when it expires. See below.
   final pulumi.Input<List<GetPlanRuleLifecycle>> lifecycles;
+  /// Metadata that you can assign to help organize the resources that you create.
   final pulumi.Input<Map<String, String>?>? recoveryPointTags;
+  /// Display name of a backup rule.
   final pulumi.Input<String> ruleName;
+  /// Configuration block(s) with malware scanning settings. See below.
   final pulumi.Input<List<GetPlanRuleScanAction>> scanActions;
+  /// CRON expression specifying when AWS Backup initiates a backup job.
   final pulumi.Input<String> schedule;
+  /// Timezone in which the schedule expression is set.
   final pulumi.Input<String> scheduleExpressionTimezone;
+  /// Amount of time in minutes before beginning a backup.
   final pulumi.Input<int> startWindow;
+  /// ARN of the logically air-gapped backup vault where the recovery point is copied.
   final pulumi.Input<String> targetLogicallyAirGappedBackupVaultArn;
+  /// Name of a logical container where backups are stored.
   final pulumi.Input<String> targetVaultName;
 
   /// Creates a new [GetPlanRule].
-  /// [completionWindow] Required.
-  /// [copyActions] Required.
-  /// [enableContinuousBackup] Required.
-  /// [lifecycles] Required.
-  /// [recoveryPointTags] Optional.
-  /// [ruleName] Required.
-  /// [scanActions] Required.
-  /// [schedule] Required.
-  /// [scheduleExpressionTimezone] Required.
-  /// [startWindow] Required.
-  /// [targetLogicallyAirGappedBackupVaultArn] Required.
-  /// [targetVaultName] Required.
+  /// [completionWindow] Amount of time in minutes AWS Backup attempts a backup before canceling the job and returning an error.
+  /// [copyActions] Configuration block(s) with copy operation settings. See below.
+  /// [enableContinuousBackup] Whether AWS Backup creates continuous backups.
+  /// [lifecycles] Lifecycle defining when a recovery point transitions to cold storage and when it expires. See below.
+  /// [recoveryPointTags] Metadata that you can assign to help organize the resources that you create.
+  /// [ruleName] Display name of a backup rule.
+  /// [scanActions] Configuration block(s) with malware scanning settings. See below.
+  /// [schedule] CRON expression specifying when AWS Backup initiates a backup job.
+  /// [scheduleExpressionTimezone] Timezone in which the schedule expression is set.
+  /// [startWindow] Amount of time in minutes before beginning a backup.
+  /// [targetLogicallyAirGappedBackupVaultArn] ARN of the logically air-gapped backup vault where the recovery point is copied.
+  /// [targetVaultName] Name of a logical container where backups are stored.
   const GetPlanRule({
     required this.completionWindow,
     required this.copyActions,
@@ -66,7 +78,7 @@ class GetPlanRule {
 
   factory GetPlanRule.fromMap(Map<String, dynamic> map) {
     return GetPlanRule(
-      completionWindow: pulumi.Input.fromValue((map['completionWindow'] as num).toInt()),
+      completionWindow: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['completionWindow'])),
       copyActions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPlanRuleCopyAction>(map['copyActions']!, (value) => GetPlanRuleCopyAction.fromMap((value as Map).cast<String, dynamic>()))),
       enableContinuousBackup: pulumi.Input.fromValue(map['enableContinuousBackup'] as bool),
       lifecycles: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPlanRuleLifecycle>(map['lifecycles']!, (value) => GetPlanRuleLifecycle.fromMap((value as Map).cast<String, dynamic>()))),
@@ -75,7 +87,7 @@ class GetPlanRule {
       scanActions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetPlanRuleScanAction>(map['scanActions']!, (value) => GetPlanRuleScanAction.fromMap((value as Map).cast<String, dynamic>()))),
       schedule: pulumi.Input.fromValue(map['schedule'] as String),
       scheduleExpressionTimezone: pulumi.Input.fromValue(map['scheduleExpressionTimezone'] as String),
-      startWindow: pulumi.Input.fromValue((map['startWindow'] as num).toInt()),
+      startWindow: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startWindow'])),
       targetLogicallyAirGappedBackupVaultArn: pulumi.Input.fromValue(map['targetLogicallyAirGappedBackupVaultArn'] as String),
       targetVaultName: pulumi.Input.fromValue(map['targetVaultName'] as String),
     );

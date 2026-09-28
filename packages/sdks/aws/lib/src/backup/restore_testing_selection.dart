@@ -325,23 +325,23 @@ import 'restore_testing_selection_state.dart';
 /// $ pulumi import aws:backup/restoreTestingSelection:RestoreTestingSelection example restore_testing_selection_12345678:restore_testing_plan_12345678
 /// ```
 class RestoreTestingSelection extends pulumi.CustomResource {
-  /// The ARN of the IAM role.
+  /// ARN of the IAM role.
   late final pulumi.Output<String> iamRoleArn;
-  /// The name of the backup restore testing selection.
+  /// Name of the backup restore testing selection.
   late final pulumi.Output<String> name;
-  /// The ARNs for the protected resources.
+  /// ARNs for the protected resources.
   late final pulumi.Output<List<String>> protectedResourceArns;
-  /// The conditions for the protected resource.
+  /// Conditions for the protected resource. See `protectedResourceConditions` below.
   late final pulumi.Output<RestoreTestingSelectionProtectedResourceConditions?> protectedResourceConditions;
-  /// The type of the protected resource.
+  /// Type of the protected resource.
   late final pulumi.Output<String> protectedResourceType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Override certain restore metadata keys. See the complete list of [restore testing inferred metadata](https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html) .
   late final pulumi.Output<Map<String, String>> restoreMetadataOverrides;
-  /// The name of the restore testing plan.
+  /// Name of the restore testing plan.
   late final pulumi.Output<String> restoreTestingPlanName;
-  /// The amount of hours available to run a validation script on the data. Valid range is `1` to `168`.
+  /// Amount of hours available to run a validation script on the data. Valid range is `1` to `168`.
   late final pulumi.Output<int> validationWindowHours;
 
   /// Creates a new [RestoreTestingSelection].
@@ -356,7 +356,7 @@ class RestoreTestingSelection extends pulumi.CustomResource {
           'aws:backup/restoreTestingSelection:RestoreTestingSelection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     iamRoleArn = registerOutput<String>('iamRoleArn');
     this.name = registerOutput<String>('name');

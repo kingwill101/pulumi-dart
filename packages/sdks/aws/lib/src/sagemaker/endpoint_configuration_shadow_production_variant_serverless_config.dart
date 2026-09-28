@@ -30,9 +30,9 @@ class EndpointConfigurationShadowProductionVariantServerlessConfig {
 
   factory EndpointConfigurationShadowProductionVariantServerlessConfig.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationShadowProductionVariantServerlessConfig(
-      maxConcurrency: pulumi.Input.fromValue((map['maxConcurrency'] as num).toInt()),
-      memorySizeInMb: pulumi.Input.fromValue((map['memorySizeInMb'] as num).toInt()),
-      provisionedConcurrency: (() { final guardedValue = map['provisionedConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConcurrency: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConcurrency'])),
+      memorySizeInMb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memorySizeInMb'])),
+      provisionedConcurrency: (() { final guardedValue = map['provisionedConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

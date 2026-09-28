@@ -8,7 +8,7 @@ class AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguratio
   final pulumi.Input<String> domainArn;
   /// Endpoint URL of the OpenSearch domain.
   final pulumi.Input<String> domainEndpoint;
-  /// The names of the fields to which to map information about the vector store. This block supports the following arguments:
+  /// Names of the fields to which to map information about the vector store. See `storage_configuration.opensearch_managed_cluster_configuration.field_mapping` Block for details.
   final pulumi.Input<AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationFieldMapping> fieldMapping;
   /// Name of the vector store.
   final pulumi.Input<String> vectorIndexName;
@@ -16,7 +16,7 @@ class AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguratio
   /// Creates a new [AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration].
   /// [domainArn] ARN of the OpenSearch domain.
   /// [domainEndpoint] Endpoint URL of the OpenSearch domain.
-  /// [fieldMapping] The names of the fields to which to map information about the vector store. This block supports the following arguments:
+  /// [fieldMapping] Names of the fields to which to map information about the vector store. See `storage_configuration.opensearch_managed_cluster_configuration.field_mapping` Block for details.
   /// [vectorIndexName] Name of the vector store.
   const AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration({
     required this.domainArn,

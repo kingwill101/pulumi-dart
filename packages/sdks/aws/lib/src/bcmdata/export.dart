@@ -410,7 +410,7 @@ class Export extends pulumi.CustomResource {
   /// ARN for this export.
   /// * `export[0].export_arn` - ARN for this export.
   late final pulumi.Output<String> arn;
-  /// The details of the export, including data query, name, description, and destination configuration.  See the `export` argument reference below.
+  /// Details of the export, including data query, name, description, and destination configuration. See the `export` block below.
   late final pulumi.Output<ExportExport?> export;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -429,7 +429,7 @@ class Export extends pulumi.CustomResource {
           'aws:bcmdata/export:Export',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     export = registerOutput<ExportExport?>('export', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportExport.fromMap((guardedValue as Map).cast<String, dynamic>()); });

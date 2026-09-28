@@ -94,10 +94,10 @@ class GetServiceLinkVirtualInterfaceResult {
       outpostLagId: (() { final guardedValue = map['outpostLagId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ownerId: (() { final guardedValue = map['ownerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       peerAddress: (() { final guardedValue = map['peerAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      peerBgpAsn: (() { final guardedValue = map['peerBgpAsn']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      peerBgpAsn: (() { final guardedValue = map['peerBgpAsn']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

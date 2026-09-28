@@ -5,17 +5,17 @@ import 'agentcore_harness_memory_agentcore_memory_configuration.dart';
 import 'agentcore_harness_memory_managed_memory_configuration.dart';
 
 class AgentcoreHarnessMemory {
-  /// AgentCore memory configuration. Use this to connect to an existing AgentCore memory resource. See `agentcoreMemoryConfiguration` Block below.
+  /// AgentCore memory configuration. Use this to connect to an existing AgentCore memory resource. See `memory.agentcore_memory_configuration` Block below.
   final pulumi.Input<AgentcoreHarnessMemoryAgentcoreMemoryConfiguration?>? agentcoreMemoryConfiguration;
-  /// Explicitly disable memory for this harness. See `disabled` Block below.
+  /// Explicitly disable memory for this harness. See `memory.disabled` Block below.
   final pulumi.Input<Map<String, dynamic>?>? disabled;
-  /// Managed memory configuration. Creates and manages a memory resource automatically. See `managedMemoryConfiguration` Block below.
+  /// Managed memory configuration. Creates and manages a memory resource automatically. See `memory.managed_memory_configuration` Block below.
   final pulumi.Input<AgentcoreHarnessMemoryManagedMemoryConfiguration?>? managedMemoryConfiguration;
 
   /// Creates a new [AgentcoreHarnessMemory].
-  /// [agentcoreMemoryConfiguration] AgentCore memory configuration. Use this to connect to an existing AgentCore memory resource. See `agentcoreMemoryConfiguration` Block below.
-  /// [disabled] Explicitly disable memory for this harness. See `disabled` Block below.
-  /// [managedMemoryConfiguration] Managed memory configuration. Creates and manages a memory resource automatically. See `managedMemoryConfiguration` Block below.
+  /// [agentcoreMemoryConfiguration] AgentCore memory configuration. Use this to connect to an existing AgentCore memory resource. See `memory.agentcore_memory_configuration` Block below.
+  /// [disabled] Explicitly disable memory for this harness. See `memory.disabled` Block below.
+  /// [managedMemoryConfiguration] Managed memory configuration. Creates and manages a memory resource automatically. See `memory.managed_memory_configuration` Block below.
   const AgentcoreHarnessMemory({
     this.agentcoreMemoryConfiguration,
     this.disabled,

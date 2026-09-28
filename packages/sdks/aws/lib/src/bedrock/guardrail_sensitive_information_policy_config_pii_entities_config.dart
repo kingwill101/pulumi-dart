@@ -13,7 +13,7 @@ class GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig {
   final pulumi.Input<String?>? outputAction;
   /// Whether to enable guardrail evaluation on the output. When disabled, you aren't charged for the evaluation.
   final pulumi.Input<bool?>? outputEnabled;
-  /// The currently supported PII entities.
+  /// Currently supported PII entities.
   final pulumi.Input<String> type;
 
   /// Creates a new [GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig].
@@ -22,7 +22,7 @@ class GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig {
   /// [inputEnabled] Whether to enable guardrail evaluation on the input. When disabled, you aren't charged for the evaluation.
   /// [outputAction] Action to take when harmful content is detected in the output. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
   /// [outputEnabled] Whether to enable guardrail evaluation on the output. When disabled, you aren't charged for the evaluation.
-  /// [type] The currently supported PII entities.
+  /// [type] Currently supported PII entities.
   const GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig({
     required this.action,
     this.inputAction,

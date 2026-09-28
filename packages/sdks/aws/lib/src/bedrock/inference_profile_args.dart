@@ -9,13 +9,13 @@ import 'inference_profile_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_bedrock_inference_profile_inference_profile_args_doc}
 class InferenceProfileArgs {
-  /// The description of the inference profile.
+  /// Description of the inference profile.
   final pulumi.Input<String?>? description;
-  /// The source of the model this inference profile will track metrics and cost for. See `modelSource`.
+  /// Source of the model this inference profile will track metrics and cost for. See `modelSource`.
+  final pulumi.Input<InferenceProfileModelSource?>? modelSource;
+  /// Name of the inference profile.
   ///
   /// The following arguments are optional:
-  final pulumi.Input<InferenceProfileModelSource?>? modelSource;
-  /// The name of the inference profile.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -24,9 +24,9 @@ class InferenceProfileArgs {
   final pulumi.Input<InferenceProfileTimeouts?>? timeouts;
 
   /// Creates a new [InferenceProfileArgs].
-  /// [description] The description of the inference profile.
-  /// [modelSource] The source of the model this inference profile will track metrics and cost for. See `modelSource`.
-  /// [name] The name of the inference profile.
+  /// [description] Description of the inference profile.
+  /// [modelSource] Source of the model this inference profile will track metrics and cost for. See `modelSource`.
+  /// [name] Name of the inference profile.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags for the inference profile.
   /// [timeouts] Optional.

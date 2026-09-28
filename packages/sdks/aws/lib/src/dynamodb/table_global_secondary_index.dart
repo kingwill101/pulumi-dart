@@ -75,9 +75,9 @@ class TableGlobalSecondaryIndex {
       onDemandThroughput: (() { final guardedValue = map['onDemandThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableGlobalSecondaryIndexOnDemandThroughput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       projectionType: pulumi.Input.fromValue(map['projectionType'] as String),
       rangeKey: (() { final guardedValue = map['rangeKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      readCapacity: (() { final guardedValue = map['readCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      readCapacity: (() { final guardedValue = map['readCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       warmThroughput: (() { final guardedValue = map['warmThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableGlobalSecondaryIndexWarmThroughput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      writeCapacity: (() { final guardedValue = map['writeCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      writeCapacity: (() { final guardedValue = map['writeCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

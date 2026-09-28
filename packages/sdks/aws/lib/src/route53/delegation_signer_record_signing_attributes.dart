@@ -30,8 +30,8 @@ class DelegationSignerRecordSigningAttributes {
 
   factory DelegationSignerRecordSigningAttributes.fromMap(Map<String, dynamic> map) {
     return DelegationSignerRecordSigningAttributes(
-      algorithm: pulumi.Input.fromValue((map['algorithm'] as num).toInt()),
-      flags: pulumi.Input.fromValue((map['flags'] as num).toInt()),
+      algorithm: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['algorithm'])),
+      flags: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['flags'])),
       publicKey: pulumi.Input.fromValue(map['publicKey'] as String),
     );
   }

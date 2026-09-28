@@ -41,9 +41,9 @@ class GetDomainEbsOption {
   factory GetDomainEbsOption.fromMap(Map<String, dynamic> map) {
     return GetDomainEbsOption(
       ebsEnabled: pulumi.Input.fromValue(map['ebsEnabled'] as bool),
-      iops: pulumi.Input.fromValue((map['iops'] as num).toInt()),
-      throughput: pulumi.Input.fromValue((map['throughput'] as num).toInt()),
-      volumeSize: pulumi.Input.fromValue((map['volumeSize'] as num).toInt()),
+      iops: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['iops'])),
+      throughput: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['throughput'])),
+      volumeSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['volumeSize'])),
       volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }

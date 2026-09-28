@@ -47,8 +47,8 @@ class TrafficPolicyInstanceArgs {
       hostedZoneId: pulumi.Input.fromValue(map['hostedZoneId'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       trafficPolicyId: pulumi.Input.fromValue(map['trafficPolicyId'] as String),
-      trafficPolicyVersion: pulumi.Input.fromValue((map['trafficPolicyVersion'] as num).toInt()),
-      ttl: pulumi.Input.fromValue((map['ttl'] as num).toInt()),
+      trafficPolicyVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['trafficPolicyVersion'])),
+      ttl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ttl'])),
     );
   }
 }

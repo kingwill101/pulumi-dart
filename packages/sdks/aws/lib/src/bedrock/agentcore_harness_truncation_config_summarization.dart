@@ -30,7 +30,7 @@ class AgentcoreHarnessTruncationConfigSummarization {
 
   factory AgentcoreHarnessTruncationConfigSummarization.fromMap(Map<String, dynamic> map) {
     return AgentcoreHarnessTruncationConfigSummarization(
-      preserveRecentMessages: pulumi.Input.fromValue((map['preserveRecentMessages'] as num).toInt()),
+      preserveRecentMessages: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['preserveRecentMessages'])),
       summarizationSystemPrompt: pulumi.Input.fromValue(map['summarizationSystemPrompt'] as String),
       summaryRatio: pulumi.Input.fromValue((map['summaryRatio'] as num).toDouble()),
     );
