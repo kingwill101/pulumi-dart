@@ -12,19 +12,19 @@ class GetGenaiAgentsByOpenaiApiKeyAgentParentAgent {
   /// ID of the child agent
   final pulumi.Input<String> agentId;
   /// Anthropic API Key information
-  final pulumi.Input<List<GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey>>? anthropicApiKeys;
+  final pulumi.Input<List<GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey>?>? anthropicApiKeys;
   /// List of API Key Infos
-  final pulumi.Input<List<GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo>>? apiKeyInfos;
+  final pulumi.Input<List<GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo>?>? apiKeyInfos;
   /// List of API Keys
-  final pulumi.Input<List<GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey>>? apiKeys;
+  final pulumi.Input<List<GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey>?>? apiKeys;
   /// List of Chatbot Identifiers
-  final pulumi.Input<List<GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier>>? chatbotIdentifiers;
+  final pulumi.Input<List<GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier>?>? chatbotIdentifiers;
   /// ChatBot configuration
-  final pulumi.Input<List<GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot>>? chatbots;
+  final pulumi.Input<List<GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot>?>? chatbots;
   /// List of API Key Infos
-  final pulumi.Input<List<GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment>>? deployments;
+  final pulumi.Input<List<GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment>?>? deployments;
   /// Description for the Agent
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Instruction for the Agent
   final pulumi.Input<String> instruction;
   /// Model UUID of the Agent

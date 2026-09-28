@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VectorDatabaseConfig {
   /// The default vector quantization method applied to new collections.
-  final pulumi.Input<String>? defaultQuantization;
+  final pulumi.Input<String?>? defaultQuantization;
   /// Whether Weaviate's auto-schema feature is enabled.
-  final pulumi.Input<bool>? enableAutoSchema;
+  final pulumi.Input<bool?>? enableAutoSchema;
   /// The Weaviate engine version used by the vector database.
-  final pulumi.Input<String>? weaviateVersion;
+  final pulumi.Input<String?>? weaviateVersion;
 
   /// Creates a new [VectorDatabaseConfig].
   /// [defaultQuantization] The default vector quantization method applied to new collections.

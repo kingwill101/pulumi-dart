@@ -10,21 +10,21 @@ import 'genai_agent_child_agent_deployment.dart';
 
 class GenaiAgentChildAgent {
   /// ID of the child agent
-  final pulumi.Input<String>? agentId;
+  final pulumi.Input<String?>? agentId;
   /// Anthropic API Key information
-  final pulumi.Input<List<GenaiAgentChildAgentAnthropicApiKey>>? anthropicApiKeys;
+  final pulumi.Input<List<GenaiAgentChildAgentAnthropicApiKey>?>? anthropicApiKeys;
   /// List of API Key Infos
-  final pulumi.Input<List<GenaiAgentChildAgentApiKeyInfo>>? apiKeyInfos;
+  final pulumi.Input<List<GenaiAgentChildAgentApiKeyInfo>?>? apiKeyInfos;
   /// List of API Keys
-  final pulumi.Input<List<GenaiAgentChildAgentApiKey>>? apiKeys;
+  final pulumi.Input<List<GenaiAgentChildAgentApiKey>?>? apiKeys;
   /// List of Chatbot Identifiers
-  final pulumi.Input<List<GenaiAgentChildAgentChatbotIdentifier>>? chatbotIdentifiers;
+  final pulumi.Input<List<GenaiAgentChildAgentChatbotIdentifier>?>? chatbotIdentifiers;
   /// ChatBot configuration
-  final pulumi.Input<List<GenaiAgentChildAgentChatbot>>? chatbots;
+  final pulumi.Input<List<GenaiAgentChildAgentChatbot>?>? chatbots;
   /// List of API Key Infos
-  final pulumi.Input<List<GenaiAgentChildAgentDeployment>>? deployments;
+  final pulumi.Input<List<GenaiAgentChildAgentDeployment>?>? deployments;
   /// Description for the Agent
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Instruction for the Agent
   final pulumi.Input<String> instruction;
   /// Model UUID of the Agent

@@ -20,77 +20,77 @@ import 'kubernetes_cluster_sso.dart';
 /// Input properties used for looking up and filtering KubernetesCluster resources.
 class KubernetesClusterState {
   /// Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
-  final pulumi.Input<KubernetesClusterAmdGpuDeviceMetricsExporterPlugin>? amdGpuDeviceMetricsExporterPlugin;
+  final pulumi.Input<KubernetesClusterAmdGpuDeviceMetricsExporterPlugin?>? amdGpuDeviceMetricsExporterPlugin;
   /// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amdGpuDraDriver`.
-  final pulumi.Input<KubernetesClusterAmdGpuDevicePlugin>? amdGpuDevicePlugin;
+  final pulumi.Input<KubernetesClusterAmdGpuDevicePlugin?>? amdGpuDevicePlugin;
   /// Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amdGpuDevicePlugin`.
-  final pulumi.Input<KubernetesClusterAmdGpuDraDriver>? amdGpuDraDriver;
+  final pulumi.Input<KubernetesClusterAmdGpuDraDriver?>? amdGpuDraDriver;
   /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-  final pulumi.Input<bool>? autoUpgrade;
+  final pulumi.Input<bool?>? autoUpgrade;
   /// Block containing options for cluster auto-scaling. For more information.
-  final pulumi.Input<List<KubernetesClusterClusterAutoscalerConfiguration>>? clusterAutoscalerConfigurations;
+  final pulumi.Input<List<KubernetesClusterClusterAutoscalerConfiguration>?>? clusterAutoscalerConfigurations;
   /// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
-  final pulumi.Input<String>? clusterSubnet;
+  final pulumi.Input<String?>? clusterSubnet;
   /// The uniform resource name (URN) for the Kubernetes cluster.
-  final pulumi.Input<String>? clusterUrn;
+  final pulumi.Input<String?>? clusterUrn;
   /// A block representing the cluster's control plane firewall
-  final pulumi.Input<KubernetesClusterControlPlaneFirewall>? controlPlaneFirewall;
+  final pulumi.Input<KubernetesClusterControlPlaneFirewall?>? controlPlaneFirewall;
   /// Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
-  final pulumi.Input<KubernetesClusterCorednsAutoscaler>? corednsAutoscaler;
+  final pulumi.Input<KubernetesClusterCorednsAutoscaler?>? corednsAutoscaler;
   /// The date and time when the node was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-  final pulumi.Input<bool>? destroyAllAssociatedResources;
+  final pulumi.Input<bool?>? destroyAllAssociatedResources;
   /// The base URL of the API server on the Kubernetes master node.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
-  final pulumi.Input<bool>? ha;
+  final pulumi.Input<bool?>? ha;
   /// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
-  final pulumi.Input<String>? ipv4Address;
+  final pulumi.Input<String?>? ipv4Address;
   /// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
-  final pulumi.Input<bool>? isolatedWorkers;
+  final pulumi.Input<bool?>? isolatedWorkers;
   /// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-  final pulumi.Input<List<KubernetesClusterKubeConfig>>? kubeConfigs;
+  final pulumi.Input<List<KubernetesClusterKubeConfig>?>? kubeConfigs;
   /// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-  final pulumi.Input<int>? kubeconfigExpireSeconds;
+  final pulumi.Input<int?>? kubeconfigExpireSeconds;
   /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
-  final pulumi.Input<KubernetesClusterMaintenancePolicy>? maintenancePolicy;
+  final pulumi.Input<KubernetesClusterMaintenancePolicy?>? maintenancePolicy;
   /// A name for the Kubernetes cluster.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
-  final pulumi.Input<KubernetesClusterNodePool>? nodePool;
+  final pulumi.Input<KubernetesClusterNodePool?>? nodePool;
   /// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
-  final pulumi.Input<KubernetesClusterNvidiaGpuDevicePlugin>? nvidiaGpuDevicePlugin;
+  final pulumi.Input<KubernetesClusterNvidiaGpuDevicePlugin?>? nvidiaGpuDevicePlugin;
   /// Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidiaGpuDevicePlugin`.
-  final pulumi.Input<KubernetesClusterNvidiaGpuDraDriver>? nvidiaGpuDraDriver;
+  final pulumi.Input<KubernetesClusterNvidiaGpuDraDriver?>? nvidiaGpuDraDriver;
   /// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
-  final pulumi.Input<KubernetesClusterP2pOciRegistryPlugin>? p2pOciRegistryPlugin;
+  final pulumi.Input<KubernetesClusterP2pOciRegistryPlugin?>? p2pOciRegistryPlugin;
   /// Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
-  final pulumi.Input<KubernetesClusterRdmaSharedDevicePlugin>? rdmaSharedDevicePlugin;
+  final pulumi.Input<KubernetesClusterRdmaSharedDevicePlugin?>? rdmaSharedDevicePlugin;
   /// The slug identifier for the region where the Kubernetes cluster will be created.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<dynamic>? region;
   /// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
-  final pulumi.Input<bool>? registryIntegration;
+  final pulumi.Input<bool?>? registryIntegration;
   /// Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
-  final pulumi.Input<KubernetesClusterRoutingAgent>? routingAgent;
+  final pulumi.Input<KubernetesClusterRoutingAgent?>? routingAgent;
   /// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
-  final pulumi.Input<String>? serviceSubnet;
+  final pulumi.Input<String?>? serviceSubnet;
   /// Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
-  final pulumi.Input<List<KubernetesClusterSso>>? ssos;
+  final pulumi.Input<List<KubernetesClusterSso>?>? ssos;
   /// A string indicating the current status of the individual node.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Enable/disable surge upgrades for a cluster. Default: true
-  final pulumi.Input<bool>? surgeUpgrade;
+  final pulumi.Input<bool?>? surgeUpgrade;
   /// A list of tag names to be applied to the Kubernetes cluster.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// The date and time when the node was last updated.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
   /// The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// The ID of the VPC where the Kubernetes cluster will be located.
-  final pulumi.Input<String>? vpcUuid;
+  final pulumi.Input<String?>? vpcUuid;
   /// The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpcUuid` is also set.
-  final pulumi.Input<String>? workerSubnetUuid;
+  final pulumi.Input<String?>? workerSubnetUuid;
 
   /// Creates a new [KubernetesClusterState].
   /// [amdGpuDeviceMetricsExporterPlugin] Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
@@ -227,7 +227,7 @@ class KubernetesClusterState {
       ipv4Address: (() { final guardedValue = map['ipv4Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isolatedWorkers: (() { final guardedValue = map['isolatedWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kubeConfigs: (() { final guardedValue = map['kubeConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KubernetesClusterKubeConfig>(guardedValue, (value) => KubernetesClusterKubeConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      kubeconfigExpireSeconds: (() { final guardedValue = map['kubeconfigExpireSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      kubeconfigExpireSeconds: (() { final guardedValue = map['kubeconfigExpireSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       maintenancePolicy: (() { final guardedValue = map['maintenancePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubernetesClusterMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodePool: (() { final guardedValue = map['nodePool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubernetesClusterNodePool.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -235,7 +235,7 @@ class KubernetesClusterState {
       nvidiaGpuDraDriver: (() { final guardedValue = map['nvidiaGpuDraDriver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubernetesClusterNvidiaGpuDraDriver.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       p2pOciRegistryPlugin: (() { final guardedValue = map['p2pOciRegistryPlugin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubernetesClusterP2pOciRegistryPlugin.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rdmaSharedDevicePlugin: (() { final guardedValue = map['rdmaSharedDevicePlugin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubernetesClusterRdmaSharedDevicePlugin.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       registryIntegration: (() { final guardedValue = map['registryIntegration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       routingAgent: (() { final guardedValue = map['routingAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubernetesClusterRoutingAgent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceSubnet: (() { final guardedValue = map['serviceSubnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

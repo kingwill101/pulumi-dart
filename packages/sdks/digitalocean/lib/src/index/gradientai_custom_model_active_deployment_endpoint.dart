@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GradientaiCustomModelActiveDeploymentEndpoint {
   /// Private endpoint FQDN.
-  final pulumi.Input<String>? privateEndpointFqdn;
+  final pulumi.Input<String?>? privateEndpointFqdn;
   /// Public endpoint FQDN, if enabled.
-  final pulumi.Input<String>? publicEndpointFqdn;
+  final pulumi.Input<String?>? publicEndpointFqdn;
 
   /// Creates a new [GradientaiCustomModelActiveDeploymentEndpoint].
   /// [privateEndpointFqdn] Private endpoint FQDN.

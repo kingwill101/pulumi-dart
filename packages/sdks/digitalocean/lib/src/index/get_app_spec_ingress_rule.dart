@@ -7,11 +7,11 @@ import 'get_app_spec_ingress_rule_match.dart';
 import 'get_app_spec_ingress_rule_redirect.dart';
 
 class GetAppSpecIngressRule {
-  final pulumi.Input<GetAppSpecIngressRuleComponent>? component;
+  final pulumi.Input<GetAppSpecIngressRuleComponent?>? component;
   /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-  final pulumi.Input<GetAppSpecIngressRuleCors>? cors;
-  final pulumi.Input<GetAppSpecIngressRuleMatch>? match;
-  final pulumi.Input<GetAppSpecIngressRuleRedirect>? redirect;
+  final pulumi.Input<GetAppSpecIngressRuleCors?>? cors;
+  final pulumi.Input<GetAppSpecIngressRuleMatch?>? match;
+  final pulumi.Input<GetAppSpecIngressRuleRedirect?>? redirect;
 
   /// Creates a new [GetAppSpecIngressRule].
   /// [component] Optional.

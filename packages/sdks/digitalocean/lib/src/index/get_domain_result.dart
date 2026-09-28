@@ -4,46 +4,46 @@
 /// Result data returned by getDomain.
 class GetDomainResult {
   /// The uniform resource name of the domain
-  final String domainUrn;
+  final String? domainUrn;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
+  final String? id;
+  final String? name;
   /// The TTL of the domain.
-  final int ttl;
+  final int? ttl;
   /// The zone file of the domain.
-  final String zoneFile;
+  final String? zoneFile;
 
   /// Creates a new [GetDomainResult].
   /// [domainUrn] The uniform resource name of the domain
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
+  /// [name] Optional.
   /// [ttl] The TTL of the domain.
   /// [zoneFile] The zone file of the domain.
   const GetDomainResult({
-    required this.domainUrn,
-    required this.id,
-    required this.name,
-    required this.ttl,
-    required this.zoneFile,
+    this.domainUrn,
+    this.id,
+    this.name,
+    this.ttl,
+    this.zoneFile,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'domainUrn': domainUrn,
-      'id': id,
-      'name': name,
-      'ttl': ttl,
-      'zoneFile': zoneFile,
+      'domainUrn': ?domainUrn,
+      'id': ?id,
+      'name': ?name,
+      'ttl': ?ttl,
+      'zoneFile': ?zoneFile,
     };
   }
 
   factory GetDomainResult.fromMap(Map<String, dynamic> map) {
     return GetDomainResult(
-      domainUrn: map['domainUrn'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      ttl: map['ttl'] as int,
-      zoneFile: map['zoneFile'] as String,
+      domainUrn: (() { final guardedValue = map['domainUrn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      zoneFile: (() { final guardedValue = map['zoneFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

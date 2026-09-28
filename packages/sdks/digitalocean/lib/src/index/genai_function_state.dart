@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering GenaiFunction resources.
 class GenaiFunctionState {
   /// The name of the GradientAI resource.
-  final pulumi.Input<String>? agentId;
+  final pulumi.Input<String?>? agentId;
   /// The region where the GradientAI resource will be created.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The model to use for the GradientAI resource.
-  final pulumi.Input<String>? faasName;
+  final pulumi.Input<String?>? faasName;
   /// The current status of the GradientAI resource.
-  final pulumi.Input<String>? faasNamespace;
+  final pulumi.Input<String?>? faasNamespace;
   /// The creation timestamp of the GradientAI resource.
-  final pulumi.Input<String>? functionName;
+  final pulumi.Input<String?>? functionName;
   /// The unique identifier of the GradientAI function.
-  final pulumi.Input<String>? functionUuid;
+  final pulumi.Input<String?>? functionUuid;
   /// The input schema of the GradientAI resource.
-  final pulumi.Input<String>? inputSchema;
+  final pulumi.Input<String?>? inputSchema;
   /// The output schema of the GradientAI resource.
-  final pulumi.Input<String>? outputSchema;
+  final pulumi.Input<String?>? outputSchema;
 
   /// Creates a new [GenaiFunctionState].
   /// [agentId] The name of the GradientAI resource.

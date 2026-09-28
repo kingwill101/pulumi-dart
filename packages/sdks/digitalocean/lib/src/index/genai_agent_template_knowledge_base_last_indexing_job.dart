@@ -4,27 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GenaiAgentTemplateKnowledgeBaseLastIndexingJob {
   /// Number of completed datasources in the last indexing job
-  final pulumi.Input<int>? completedDatasources;
+  final pulumi.Input<int?>? completedDatasources;
   /// Created At timestamp for the last indexing job
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Datasource UUIDs for the last indexing job
-  final pulumi.Input<List<String>>? dataSourceUuids;
+  final pulumi.Input<List<String>?>? dataSourceUuids;
   /// Timestamp when the last indexing job finished
-  final pulumi.Input<String>? finishedAt;
+  final pulumi.Input<String?>? finishedAt;
   /// UUID  of the Knowledge Base for the last indexing job
-  final pulumi.Input<String>? knowledgeBaseUuid;
+  final pulumi.Input<String?>? knowledgeBaseUuid;
   /// Phase of the last indexing job
-  final pulumi.Input<String>? phase;
+  final pulumi.Input<String?>? phase;
   /// Timestamp when the last indexing job started
-  final pulumi.Input<String>? startedAt;
+  final pulumi.Input<String?>? startedAt;
   /// Number of tokens processed in the last indexing job
-  final pulumi.Input<int>? tokens;
+  final pulumi.Input<int?>? tokens;
   /// Total number of datasources in the last indexing job
-  final pulumi.Input<int>? totalDatasources;
+  final pulumi.Input<int?>? totalDatasources;
   /// Timestamp when the last indexing job updated
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
   /// UUID  of the last indexing job
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [GenaiAgentTemplateKnowledgeBaseLastIndexingJob].
   /// [completedDatasources] Number of completed datasources in the last indexing job
@@ -70,15 +70,15 @@ class GenaiAgentTemplateKnowledgeBaseLastIndexingJob {
 
   factory GenaiAgentTemplateKnowledgeBaseLastIndexingJob.fromMap(Map<String, dynamic> map) {
     return GenaiAgentTemplateKnowledgeBaseLastIndexingJob(
-      completedDatasources: (() { final guardedValue = map['completedDatasources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      completedDatasources: (() { final guardedValue = map['completedDatasources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataSourceUuids: (() { final guardedValue = map['dataSourceUuids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       finishedAt: (() { final guardedValue = map['finishedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       knowledgeBaseUuid: (() { final guardedValue = map['knowledgeBaseUuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       phase: (() { final guardedValue = map['phase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startedAt: (() { final guardedValue = map['startedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tokens: (() { final guardedValue = map['tokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      totalDatasources: (() { final guardedValue = map['totalDatasources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tokens: (() { final guardedValue = map['tokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      totalDatasources: (() { final guardedValue = map['totalDatasources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

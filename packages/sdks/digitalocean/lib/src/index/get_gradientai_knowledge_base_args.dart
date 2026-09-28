@@ -8,17 +8,17 @@ import 'get_gradientai_knowledge_base_last_indexing_job.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_gradientai_knowledge_base_get_gradientai_knowledge_base_args_doc}
 class GetGradientaiKnowledgeBaseArgs {
-  final pulumi.Input<String>? addedToAgentAt;
-  final pulumi.Input<String>? databaseId;
-  final pulumi.Input<String>? embeddingModelUuid;
-  final pulumi.Input<bool>? isPublic;
-  final pulumi.Input<List<GetGradientaiKnowledgeBaseLastIndexingJob>>? lastIndexingJobs;
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? projectId;
-  final pulumi.Input<String>? region;
-  final pulumi.Input<List<String>>? tags;
-  final pulumi.Input<String>? userId;
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? addedToAgentAt;
+  final pulumi.Input<String?>? databaseId;
+  final pulumi.Input<String?>? embeddingModelUuid;
+  final pulumi.Input<bool?>? isPublic;
+  final pulumi.Input<List<GetGradientaiKnowledgeBaseLastIndexingJob>?>? lastIndexingJobs;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? projectId;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<List<String>?>? tags;
+  final pulumi.Input<String?>? userId;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [GetGradientaiKnowledgeBaseArgs].
   /// [addedToAgentAt] Optional.

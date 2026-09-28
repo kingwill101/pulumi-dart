@@ -10,17 +10,17 @@ import 'app_spec.dart';
 /// {@macro pulumi_index_app_app_args_doc}
 class AppArgs {
   /// The dedicated egress IP addresses associated with the app.
-  final pulumi.Input<List<AppDedicatedIp>>? dedicatedIps;
+  final pulumi.Input<List<AppDedicatedIp>?>? dedicatedIps;
   /// (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
-  final pulumi.Input<int>? deploymentPerPage;
+  final pulumi.Input<int?>? deploymentPerPage;
   /// The ID of the project that the app is assigned to.
   ///
   /// A spec can contain multiple components.
   ///
   /// A `service` can contain:
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// A DigitalOcean App spec describing the app.
-  final pulumi.Input<AppSpec>? spec;
+  final pulumi.Input<AppSpec?>? spec;
 
   /// Creates a new [AppArgs].
   /// [dedicatedIps] The dedicated egress IP addresses associated with the app.
@@ -46,7 +46,7 @@ class AppArgs {
   factory AppArgs.fromMap(Map<String, dynamic> map) {
     return AppArgs(
       dedicatedIps: (() { final guardedValue = map['dedicatedIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppDedicatedIp>(guardedValue, (value) => AppDedicatedIp.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      deploymentPerPage: (() { final guardedValue = map['deploymentPerPage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deploymentPerPage: (() { final guardedValue = map['deploymentPerPage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       spec: (() { final guardedValue = map['spec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

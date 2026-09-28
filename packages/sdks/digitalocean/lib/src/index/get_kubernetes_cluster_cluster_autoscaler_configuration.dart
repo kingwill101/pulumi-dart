@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKubernetesClusterClusterAutoscalerConfiguration {
-  final pulumi.Input<List<String>>? expanders;
-  final pulumi.Input<String>? scaleDownUnneededTime;
-  final pulumi.Input<double>? scaleDownUtilizationThreshold;
+  final pulumi.Input<List<String>?>? expanders;
+  final pulumi.Input<String?>? scaleDownUnneededTime;
+  final pulumi.Input<double?>? scaleDownUtilizationThreshold;
 
   /// Creates a new [GetKubernetesClusterClusterAutoscalerConfiguration].
   /// [expanders] Optional.
@@ -29,7 +29,7 @@ class GetKubernetesClusterClusterAutoscalerConfiguration {
     return GetKubernetesClusterClusterAutoscalerConfiguration(
       expanders: (() { final guardedValue = map['expanders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       scaleDownUnneededTime: (() { final guardedValue = map['scaleDownUnneededTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scaleDownUtilizationThreshold: (() { final guardedValue = map['scaleDownUtilizationThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      scaleDownUtilizationThreshold: (() { final guardedValue = map['scaleDownUtilizationThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

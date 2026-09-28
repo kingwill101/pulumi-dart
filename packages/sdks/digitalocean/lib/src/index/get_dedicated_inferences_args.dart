@@ -10,9 +10,9 @@ import 'get_dedicated_inferences_sort.dart';
 /// {@macro pulumi_index_get_dedicated_inferences_get_dedicated_inferences_args_doc}
 class GetDedicatedInferencesArgs {
   /// Filter the results. The `filter` block is documented below.
-  final pulumi.Input<List<GetDedicatedInferencesFilter>>? filters;
+  final pulumi.Input<List<GetDedicatedInferencesFilter>?>? filters;
   /// Sort the results. The `sort` block is documented below.
-  final pulumi.Input<List<GetDedicatedInferencesSort>>? sorts;
+  final pulumi.Input<List<GetDedicatedInferencesSort>?>? sorts;
 
   /// Creates a new [GetDedicatedInferencesArgs].
   /// [filters] Filter the results. The `filter` block is documented below.

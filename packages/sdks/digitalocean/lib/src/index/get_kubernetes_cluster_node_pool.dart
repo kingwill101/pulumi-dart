@@ -81,15 +81,15 @@ class GetKubernetesClusterNodePool {
 
   factory GetKubernetesClusterNodePool.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterNodePool(
-      actualNodeCount: pulumi.Input.fromValue(map['actualNodeCount'] as int),
+      actualNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['actualNodeCount'])),
       autoScale: pulumi.Input.fromValue(map['autoScale'] as bool),
       gpuPartitionMode: pulumi.Input.fromValue(map['gpuPartitionMode'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
-      maxNodes: pulumi.Input.fromValue(map['maxNodes'] as int),
-      minNodes: pulumi.Input.fromValue(map['minNodes'] as int),
+      maxNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNodes'])),
+      minNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNodes'])),
       name: pulumi.Input.fromValue(map['name'] as String),
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      nodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodeCount'])),
       nodes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetKubernetesClusterNodePoolNode>(map['nodes']!, (value) => GetKubernetesClusterNodePoolNode.fromMap((value as Map).cast<String, dynamic>()))),
       size: pulumi.Input.fromValue(map['size'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),

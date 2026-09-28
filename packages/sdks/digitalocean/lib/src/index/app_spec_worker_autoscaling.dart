@@ -31,9 +31,9 @@ class AppSpecWorkerAutoscaling {
 
   factory AppSpecWorkerAutoscaling.fromMap(Map<String, dynamic> map) {
     return AppSpecWorkerAutoscaling(
-      maxInstanceCount: pulumi.Input.fromValue(map['maxInstanceCount'] as int),
+      maxInstanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxInstanceCount'])),
       metrics: pulumi.Input.fromValue(AppSpecWorkerAutoscalingMetrics.fromMap((map['metrics']! as Map).cast<String, dynamic>())),
-      minInstanceCount: pulumi.Input.fromValue(map['minInstanceCount'] as int),
+      minInstanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minInstanceCount'])),
     );
   }
 }

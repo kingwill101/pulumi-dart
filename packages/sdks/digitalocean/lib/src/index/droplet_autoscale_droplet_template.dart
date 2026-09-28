@@ -6,11 +6,11 @@ class DropletAutoscaleDropletTemplate {
   /// Image slug of the Droplet Autoscale pool underlying resource(s).
   final pulumi.Input<String> image;
   /// Boolean flag to enable IPv6 networking on the Droplet Autoscale pool underlying resource(s).
-  final pulumi.Input<bool>? ipv6;
+  final pulumi.Input<bool?>? ipv6;
   /// Project UUID to create the Droplet Autoscale pool underlying resource(s).
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
-  final pulumi.Input<bool>? publicNetworking;
+  final pulumi.Input<bool?>? publicNetworking;
   /// Region slug of the Droplet Autoscale pool underlying resource(s).
   final pulumi.Input<String> region;
   /// Size slug of the Droplet Autoscale pool underlying resource(s).
@@ -18,16 +18,16 @@ class DropletAutoscaleDropletTemplate {
   /// SSH fingerprints to add to the Droplet Autoscale pool underlying resource(s).
   final pulumi.Input<List<String>> sshKeys;
   /// List of tags to add to the Droplet Autoscale pool underlying resource(s).
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a
   /// cloud init script that user may configure to setup their application workload.
-  final pulumi.Input<String>? userData;
+  final pulumi.Input<String?>? userData;
   /// VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
   /// from the specified `region` (default VPC).
-  final pulumi.Input<String>? vpcUuid;
+  final pulumi.Input<String?>? vpcUuid;
   /// Boolean flag to enable metric agent on the Droplet Autoscale pool underlying resource(s). The
   /// metric agent enables collecting resource utilization metrics, which allows making resource based scaling decisions.
-  final pulumi.Input<bool>? withDropletAgent;
+  final pulumi.Input<bool?>? withDropletAgent;
 
   /// Creates a new [DropletAutoscaleDropletTemplate].
   /// [image] Image slug of the Droplet Autoscale pool underlying resource(s).

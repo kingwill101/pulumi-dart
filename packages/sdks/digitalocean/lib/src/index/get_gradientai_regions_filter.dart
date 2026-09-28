@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiRegionsFilter {
-  final pulumi.Input<bool>? all;
+  final pulumi.Input<bool?>? all;
   final pulumi.Input<String> key;
-  final pulumi.Input<String>? matchBy;
+  final pulumi.Input<String?>? matchBy;
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetGradientaiRegionsFilter].

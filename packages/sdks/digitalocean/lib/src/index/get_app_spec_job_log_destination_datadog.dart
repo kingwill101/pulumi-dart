@@ -6,7 +6,7 @@ class GetAppSpecJobLogDestinationDatadog {
   /// Datadog API key.
   final pulumi.Input<String> apiKey;
   /// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
 
   /// Creates a new [GetAppSpecJobLogDestinationDatadog].
   /// [apiKey] Datadog API key.

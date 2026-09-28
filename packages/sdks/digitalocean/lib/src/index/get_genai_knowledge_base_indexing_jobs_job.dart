@@ -90,7 +90,7 @@ class GetGenaiKnowledgeBaseIndexingJobsJob {
 
   factory GetGenaiKnowledgeBaseIndexingJobsJob.fromMap(Map<String, dynamic> map) {
     return GetGenaiKnowledgeBaseIndexingJobsJob(
-      completedDatasources: pulumi.Input.fromValue(map['completedDatasources'] as int),
+      completedDatasources: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['completedDatasources'])),
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
       dataSourceUuids: pulumi.Input.fromValue((map['dataSourceUuids'] as List).cast<String>()),
       finishedAt: pulumi.Input.fromValue(map['finishedAt'] as String),
@@ -98,8 +98,8 @@ class GetGenaiKnowledgeBaseIndexingJobsJob {
       phase: pulumi.Input.fromValue(map['phase'] as String),
       startedAt: pulumi.Input.fromValue(map['startedAt'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      tokens: pulumi.Input.fromValue(map['tokens'] as int),
-      totalDatasources: pulumi.Input.fromValue(map['totalDatasources'] as int),
+      tokens: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tokens'])),
+      totalDatasources: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalDatasources'])),
       totalItemsFailed: pulumi.Input.fromValue(map['totalItemsFailed'] as String),
       totalItemsIndexed: pulumi.Input.fromValue(map['totalItemsIndexed'] as String),
       totalItemsSkipped: pulumi.Input.fromValue(map['totalItemsSkipped'] as String),

@@ -6,8 +6,8 @@ import 'app_spec_ingress_secure_header.dart';
 
 class AppSpecIngress {
   /// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
-  final pulumi.Input<List<AppSpecIngressRule>>? rules;
-  final pulumi.Input<AppSpecIngressSecureHeader>? secureHeader;
+  final pulumi.Input<List<AppSpecIngressRule>?>? rules;
+  final pulumi.Input<AppSpecIngressSecureHeader?>? secureHeader;
 
   /// Creates a new [AppSpecIngress].
   /// [rules] Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.

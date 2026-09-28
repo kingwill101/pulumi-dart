@@ -10,7 +10,7 @@ class DropletSnapshotArgs {
   /// The ID of the Droplet from which the snapshot will be taken.
   final pulumi.Input<String> dropletId;
   /// A name for the Droplet snapshot.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DropletSnapshotArgs].
   /// [dropletId] The ID of the Droplet from which the snapshot will be taken.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecWorkerLogDestinationOpenSearchBasicAuth {
   /// Password for basic authentication.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// user for basic authentication.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [AppSpecWorkerLogDestinationOpenSearchBasicAuth].
   /// [password] Password for basic authentication.

@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGenaiKnowledgeBasesSort {
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   final pulumi.Input<String> key;
 
   /// Creates a new [GetGenaiKnowledgeBasesSort].

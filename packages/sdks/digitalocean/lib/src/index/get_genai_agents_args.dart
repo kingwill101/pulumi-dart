@@ -9,9 +9,9 @@ import 'get_genai_agents_sort.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_genai_agents_get_genai_agents_args_doc}
 class GetGenaiAgentsArgs {
-  final pulumi.Input<List<GetGenaiAgentsFilter>>? filters;
-  final pulumi.Input<bool>? onlyDeployed;
-  final pulumi.Input<List<GetGenaiAgentsSort>>? sorts;
+  final pulumi.Input<List<GetGenaiAgentsFilter>?>? filters;
+  final pulumi.Input<bool?>? onlyDeployed;
+  final pulumi.Input<List<GetGenaiAgentsSort>?>? sorts;
 
   /// Creates a new [GetGenaiAgentsArgs].
   /// [filters] Optional.

@@ -1,4 +1,6 @@
-enum DropletSlug {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum DropletSlug implements pulumi.PulumiEnum<String> {
   dropletS1VCPU512MB10GB("s-1vcpu-512mb-10gb"),
   dropletS1VCPU1GB("s-1vcpu-1gb"),
   dropletS1VCPU1GBAMD("s-1vcpu-1gb-amd"),
@@ -168,6 +170,7 @@ enum DropletSlug {
   dropletSO158VCPU64GB2("so1_5-8vcpu-64gb");
 
   const DropletSlug(this.wireValue);
+  @override
   final String wireValue;
 
   static DropletSlug fromValue(String value) {

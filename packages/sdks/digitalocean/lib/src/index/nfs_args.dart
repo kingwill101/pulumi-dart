@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_nfs_nfs_args_doc}
 class NfsArgs {
   /// A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
   /// &gt; **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
-  final pulumi.Input<String>? performanceTier;
+  final pulumi.Input<String?>? performanceTier;
   /// The region where the NFS share will be created.
   final pulumi.Input<String> region;
   /// The size of the NFS share in GiB. Minimum size is 50 GiB.
   final pulumi.Input<int> size;
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// The ID of the VPC where the NFS share will be created.
   final pulumi.Input<String> vpcId;
 
@@ -52,7 +52,7 @@ class NfsArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       performanceTier: (() { final guardedValue = map['performanceTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      size: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['size'])),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       vpcId: pulumi.Input.fromValue(map['vpcId'] as String),
     );

@@ -5,35 +5,35 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering GradientaiIndexingJobCancel resources.
 class GradientaiIndexingJobCancelState {
   /// Number of data sources that were completed before cancellation.
-  final pulumi.Input<int>? completedDatasources;
+  final pulumi.Input<int?>? completedDatasources;
   /// When the indexing job was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// List of data source UUIDs associated with this indexing job.
-  final pulumi.Input<List<String>>? dataSourceUuids;
+  final pulumi.Input<List<String>?>? dataSourceUuids;
   /// When the indexing job was finished.
-  final pulumi.Input<String>? finishedAt;
+  final pulumi.Input<String?>? finishedAt;
   /// The UUID of the knowledge base associated with this indexing job.
-  final pulumi.Input<String>? knowledgeBaseUuid;
+  final pulumi.Input<String?>? knowledgeBaseUuid;
   /// Current phase of the indexing job.
-  final pulumi.Input<String>? phase;
+  final pulumi.Input<String?>? phase;
   /// When the indexing job was started.
-  final pulumi.Input<String>? startedAt;
+  final pulumi.Input<String?>? startedAt;
   /// The status of the indexing job after cancellation.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Number of tokens processed before cancellation.
-  final pulumi.Input<int>? tokens;
+  final pulumi.Input<int?>? tokens;
   /// Total number of data sources in the indexing job.
-  final pulumi.Input<int>? totalDatasources;
+  final pulumi.Input<int?>? totalDatasources;
   /// Total number of items that failed during indexing.
-  final pulumi.Input<int>? totalItemsFailed;
+  final pulumi.Input<int?>? totalItemsFailed;
   /// Total number of items that were successfully indexed.
-  final pulumi.Input<int>? totalItemsIndexed;
+  final pulumi.Input<int?>? totalItemsIndexed;
   /// Total number of items that were skipped during indexing.
-  final pulumi.Input<int>? totalItemsSkipped;
+  final pulumi.Input<int?>? totalItemsSkipped;
   /// When the indexing job was last updated.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
   /// The UUID of the indexing job to cancel.
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [GradientaiIndexingJobCancelState].
   /// [completedDatasources] Number of data sources that were completed before cancellation.
@@ -91,7 +91,7 @@ class GradientaiIndexingJobCancelState {
 
   factory GradientaiIndexingJobCancelState.fromMap(Map<String, dynamic> map) {
     return GradientaiIndexingJobCancelState(
-      completedDatasources: (() { final guardedValue = map['completedDatasources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      completedDatasources: (() { final guardedValue = map['completedDatasources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataSourceUuids: (() { final guardedValue = map['dataSourceUuids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       finishedAt: (() { final guardedValue = map['finishedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -99,11 +99,11 @@ class GradientaiIndexingJobCancelState {
       phase: (() { final guardedValue = map['phase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startedAt: (() { final guardedValue = map['startedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tokens: (() { final guardedValue = map['tokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      totalDatasources: (() { final guardedValue = map['totalDatasources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      totalItemsFailed: (() { final guardedValue = map['totalItemsFailed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      totalItemsIndexed: (() { final guardedValue = map['totalItemsIndexed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      totalItemsSkipped: (() { final guardedValue = map['totalItemsSkipped']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tokens: (() { final guardedValue = map['tokens']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      totalDatasources: (() { final guardedValue = map['totalDatasources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      totalItemsFailed: (() { final guardedValue = map['totalItemsFailed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      totalItemsIndexed: (() { final guardedValue = map['totalItemsIndexed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      totalItemsSkipped: (() { final guardedValue = map['totalItemsSkipped']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

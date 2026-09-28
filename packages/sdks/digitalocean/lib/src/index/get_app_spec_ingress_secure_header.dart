@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecIngressSecureHeader {
   /// The name of the environment variable.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The threshold for the type of the warning.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [GetAppSpecIngressSecureHeader].
   /// [key] The name of the environment variable.

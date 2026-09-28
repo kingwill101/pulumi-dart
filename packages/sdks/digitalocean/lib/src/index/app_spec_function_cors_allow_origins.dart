@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecFunctionCorsAllowOrigins {
   /// Exact string match.
-  final pulumi.Input<String>? exact;
+  final pulumi.Input<String?>? exact;
   /// Prefix-based match.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// RE2 style regex-based match.
-  final pulumi.Input<String>? regex;
+  final pulumi.Input<String?>? regex;
 
   /// Creates a new [AppSpecFunctionCorsAllowOrigins].
   /// [exact] Exact string match.

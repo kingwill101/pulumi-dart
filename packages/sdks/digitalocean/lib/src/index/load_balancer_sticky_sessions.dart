@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerStickySessions {
   /// The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
-  final pulumi.Input<String>? cookieName;
+  final pulumi.Input<String?>? cookieName;
   /// The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
-  final pulumi.Input<int>? cookieTtlSeconds;
+  final pulumi.Input<int?>? cookieTtlSeconds;
   /// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [LoadBalancerStickySessions].
   /// [cookieName] The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
@@ -31,7 +31,7 @@ class LoadBalancerStickySessions {
   factory LoadBalancerStickySessions.fromMap(Map<String, dynamic> map) {
     return LoadBalancerStickySessions(
       cookieName: (() { final guardedValue = map['cookieName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cookieTtlSeconds: (() { final guardedValue = map['cookieTtlSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cookieTtlSeconds: (() { final guardedValue = map['cookieTtlSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

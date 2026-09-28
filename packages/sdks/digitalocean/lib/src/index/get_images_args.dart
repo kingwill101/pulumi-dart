@@ -11,10 +11,10 @@ import 'get_images_sort.dart';
 class GetImagesArgs {
   /// Filter the results.
   /// The `filter` block is documented below.
-  final pulumi.Input<List<GetImagesFilter>>? filters;
+  final pulumi.Input<List<GetImagesFilter>?>? filters;
   /// Sort the results.
   /// The `sort` block is documented below.
-  final pulumi.Input<List<GetImagesSort>>? sorts;
+  final pulumi.Input<List<GetImagesSort>?>? sorts;
 
   /// Creates a new [GetImagesArgs].
   /// [filters] Filter the results.

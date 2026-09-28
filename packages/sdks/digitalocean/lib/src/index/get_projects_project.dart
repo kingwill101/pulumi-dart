@@ -75,7 +75,7 @@ class GetProjectsProject {
       id: pulumi.Input.fromValue(map['id'] as String),
       isDefault: pulumi.Input.fromValue(map['isDefault'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
-      ownerId: pulumi.Input.fromValue(map['ownerId'] as int),
+      ownerId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ownerId'])),
       ownerUuid: pulumi.Input.fromValue(map['ownerUuid'] as String),
       purpose: pulumi.Input.fromValue(map['purpose'] as String),
       resources: pulumi.Input.fromValue((map['resources'] as List).cast<String>()),

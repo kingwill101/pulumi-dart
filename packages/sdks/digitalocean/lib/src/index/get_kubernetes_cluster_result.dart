@@ -19,73 +19,73 @@ import 'get_kubernetes_cluster_sso.dart';
 
 /// Result data returned by getKubernetesCluster.
 class GetKubernetesClusterResult {
-  final GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin amdGpuDeviceMetricsExporterPlugin;
-  final GetKubernetesClusterAmdGpuDevicePlugin amdGpuDevicePlugin;
-  final GetKubernetesClusterAmdGpuDraDriver amdGpuDraDriver;
+  final GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin? amdGpuDeviceMetricsExporterPlugin;
+  final GetKubernetesClusterAmdGpuDevicePlugin? amdGpuDevicePlugin;
+  final GetKubernetesClusterAmdGpuDraDriver? amdGpuDraDriver;
   /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-  final bool autoUpgrade;
+  final bool? autoUpgrade;
   final List<GetKubernetesClusterClusterAutoscalerConfiguration>? clusterAutoscalerConfigurations;
   /// The range of IP addresses in the overlay network of the Kubernetes cluster.
-  final String clusterSubnet;
-  final List<GetKubernetesClusterControlPlaneFirewall> controlPlaneFirewalls;
-  final GetKubernetesClusterCorednsAutoscaler corednsAutoscaler;
+  final String? clusterSubnet;
+  final List<GetKubernetesClusterControlPlaneFirewall>? controlPlaneFirewalls;
+  final GetKubernetesClusterCorednsAutoscaler? corednsAutoscaler;
   /// The date and time when the node was created.
-  final String createdAt;
+  final String? createdAt;
   /// The base URL of the API server on the Kubernetes master node.
-  final String endpoint;
-  final bool ha;
+  final String? endpoint;
+  final bool? ha;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The public IPv4 address of the Kubernetes master node.
-  final String ipv4Address;
+  final String? ipv4Address;
   /// A boolean value indicating whether the cluster has isolated worker nodes enabled.
-  final bool isolatedWorkers;
+  final bool? isolatedWorkers;
   /// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-  final List<GetKubernetesClusterKubeConfig> kubeConfigs;
+  final List<GetKubernetesClusterKubeConfig>? kubeConfigs;
   final int? kubeconfigExpireSeconds;
   /// The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
-  final List<GetKubernetesClusterMaintenancePolicy> maintenancePolicies;
+  final List<GetKubernetesClusterMaintenancePolicy>? maintenancePolicies;
   /// The auto-generated name for the node.
-  final String name;
+  final String? name;
   /// A list of node pools associated with the cluster. Each node pool exports the following attributes:
-  final List<GetKubernetesClusterNodePool> nodePools;
-  final GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin;
-  final GetKubernetesClusterNvidiaGpuDraDriver nvidiaGpuDraDriver;
-  final GetKubernetesClusterP2pOciRegistryPlugin p2pOciRegistryPlugin;
-  final GetKubernetesClusterRdmaSharedDevicePlugin rdmaSharedDevicePlugin;
+  final List<GetKubernetesClusterNodePool>? nodePools;
+  final GetKubernetesClusterNvidiaGpuDevicePlugin? nvidiaGpuDevicePlugin;
+  final GetKubernetesClusterNvidiaGpuDraDriver? nvidiaGpuDraDriver;
+  final GetKubernetesClusterP2pOciRegistryPlugin? p2pOciRegistryPlugin;
+  final GetKubernetesClusterRdmaSharedDevicePlugin? rdmaSharedDevicePlugin;
   /// The slug identifier for the region where the Kubernetes cluster is located.
-  final String region;
-  final GetKubernetesClusterRoutingAgent routingAgent;
+  final String? region;
+  final GetKubernetesClusterRoutingAgent? routingAgent;
   /// The range of assignable IP addresses for services running in the Kubernetes cluster.
-  final String serviceSubnet;
-  final List<GetKubernetesClusterSso> ssos;
+  final String? serviceSubnet;
+  final List<GetKubernetesClusterSso>? ssos;
   /// A string indicating the current status of the individual node.
-  final String status;
-  final bool surgeUpgrade;
+  final String? status;
+  final bool? surgeUpgrade;
   /// A list of tag names applied to the node pool.
   final List<String>? tags;
   /// The date and time when the node was last updated.
-  final String updatedAt;
+  final String? updatedAt;
   /// The uniform resource name (URN) for the Kubernetes cluster.
-  final String urn;
+  final String? urn;
   /// The slug identifier for the version of Kubernetes used for the cluster.
-  final String version;
+  final String? version;
   /// The ID of the VPC where the Kubernetes cluster is located.
-  final String vpcUuid;
-  final String workerSubnetUuid;
+  final String? vpcUuid;
+  final String? workerSubnetUuid;
 
   /// Creates a new [GetKubernetesClusterResult].
-  /// [amdGpuDeviceMetricsExporterPlugin] Required.
-  /// [amdGpuDevicePlugin] Required.
-  /// [amdGpuDraDriver] Required.
+  /// [amdGpuDeviceMetricsExporterPlugin] Optional.
+  /// [amdGpuDevicePlugin] Optional.
+  /// [amdGpuDraDriver] Optional.
   /// [autoUpgrade] A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
   /// [clusterAutoscalerConfigurations] Optional.
   /// [clusterSubnet] The range of IP addresses in the overlay network of the Kubernetes cluster.
-  /// [controlPlaneFirewalls] Required.
-  /// [corednsAutoscaler] Required.
+  /// [controlPlaneFirewalls] Optional.
+  /// [corednsAutoscaler] Optional.
   /// [createdAt] The date and time when the node was created.
   /// [endpoint] The base URL of the API server on the Kubernetes master node.
-  /// [ha] Required.
+  /// [ha] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ipv4Address] The public IPv4 address of the Kubernetes master node.
   /// [isolatedWorkers] A boolean value indicating whether the cluster has isolated worker nodes enabled.
@@ -94,137 +94,137 @@ class GetKubernetesClusterResult {
   /// [maintenancePolicies] The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
   /// [name] The auto-generated name for the node.
   /// [nodePools] A list of node pools associated with the cluster. Each node pool exports the following attributes:
-  /// [nvidiaGpuDevicePlugin] Required.
-  /// [nvidiaGpuDraDriver] Required.
-  /// [p2pOciRegistryPlugin] Required.
-  /// [rdmaSharedDevicePlugin] Required.
+  /// [nvidiaGpuDevicePlugin] Optional.
+  /// [nvidiaGpuDraDriver] Optional.
+  /// [p2pOciRegistryPlugin] Optional.
+  /// [rdmaSharedDevicePlugin] Optional.
   /// [region] The slug identifier for the region where the Kubernetes cluster is located.
-  /// [routingAgent] Required.
+  /// [routingAgent] Optional.
   /// [serviceSubnet] The range of assignable IP addresses for services running in the Kubernetes cluster.
-  /// [ssos] Required.
+  /// [ssos] Optional.
   /// [status] A string indicating the current status of the individual node.
-  /// [surgeUpgrade] Required.
+  /// [surgeUpgrade] Optional.
   /// [tags] A list of tag names applied to the node pool.
   /// [updatedAt] The date and time when the node was last updated.
   /// [urn] The uniform resource name (URN) for the Kubernetes cluster.
   /// [version] The slug identifier for the version of Kubernetes used for the cluster.
   /// [vpcUuid] The ID of the VPC where the Kubernetes cluster is located.
-  /// [workerSubnetUuid] Required.
+  /// [workerSubnetUuid] Optional.
   const GetKubernetesClusterResult({
-    required this.amdGpuDeviceMetricsExporterPlugin,
-    required this.amdGpuDevicePlugin,
-    required this.amdGpuDraDriver,
-    required this.autoUpgrade,
+    this.amdGpuDeviceMetricsExporterPlugin,
+    this.amdGpuDevicePlugin,
+    this.amdGpuDraDriver,
+    this.autoUpgrade,
     this.clusterAutoscalerConfigurations,
-    required this.clusterSubnet,
-    required this.controlPlaneFirewalls,
-    required this.corednsAutoscaler,
-    required this.createdAt,
-    required this.endpoint,
-    required this.ha,
-    required this.id,
-    required this.ipv4Address,
-    required this.isolatedWorkers,
-    required this.kubeConfigs,
+    this.clusterSubnet,
+    this.controlPlaneFirewalls,
+    this.corednsAutoscaler,
+    this.createdAt,
+    this.endpoint,
+    this.ha,
+    this.id,
+    this.ipv4Address,
+    this.isolatedWorkers,
+    this.kubeConfigs,
     this.kubeconfigExpireSeconds,
-    required this.maintenancePolicies,
-    required this.name,
-    required this.nodePools,
-    required this.nvidiaGpuDevicePlugin,
-    required this.nvidiaGpuDraDriver,
-    required this.p2pOciRegistryPlugin,
-    required this.rdmaSharedDevicePlugin,
-    required this.region,
-    required this.routingAgent,
-    required this.serviceSubnet,
-    required this.ssos,
-    required this.status,
-    required this.surgeUpgrade,
+    this.maintenancePolicies,
+    this.name,
+    this.nodePools,
+    this.nvidiaGpuDevicePlugin,
+    this.nvidiaGpuDraDriver,
+    this.p2pOciRegistryPlugin,
+    this.rdmaSharedDevicePlugin,
+    this.region,
+    this.routingAgent,
+    this.serviceSubnet,
+    this.ssos,
+    this.status,
+    this.surgeUpgrade,
     this.tags,
-    required this.updatedAt,
-    required this.urn,
-    required this.version,
-    required this.vpcUuid,
-    required this.workerSubnetUuid,
+    this.updatedAt,
+    this.urn,
+    this.version,
+    this.vpcUuid,
+    this.workerSubnetUuid,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'amdGpuDeviceMetricsExporterPlugin': amdGpuDeviceMetricsExporterPlugin.toMap(),
-      'amdGpuDevicePlugin': amdGpuDevicePlugin.toMap(),
-      'amdGpuDraDriver': amdGpuDraDriver.toMap(),
-      'autoUpgrade': autoUpgrade,
+      'amdGpuDeviceMetricsExporterPlugin': ?amdGpuDeviceMetricsExporterPlugin?.toMap(),
+      'amdGpuDevicePlugin': ?amdGpuDevicePlugin?.toMap(),
+      'amdGpuDraDriver': ?amdGpuDraDriver?.toMap(),
+      'autoUpgrade': ?autoUpgrade,
       'clusterAutoscalerConfigurations': ?(() { final guardedValue = clusterAutoscalerConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetKubernetesClusterClusterAutoscalerConfiguration, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'clusterSubnet': clusterSubnet,
-      'controlPlaneFirewalls': pulumi.Input.encodeList<GetKubernetesClusterControlPlaneFirewall, Map<String, dynamic>>(controlPlaneFirewalls, (value) => value.toMap()),
-      'corednsAutoscaler': corednsAutoscaler.toMap(),
-      'createdAt': createdAt,
-      'endpoint': endpoint,
-      'ha': ha,
-      'id': id,
-      'ipv4Address': ipv4Address,
-      'isolatedWorkers': isolatedWorkers,
-      'kubeConfigs': pulumi.Input.encodeList<GetKubernetesClusterKubeConfig, Map<String, dynamic>>(kubeConfigs, (value) => value.toMap()),
+      'clusterSubnet': ?clusterSubnet,
+      'controlPlaneFirewalls': ?(() { final guardedValue = controlPlaneFirewalls; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetKubernetesClusterControlPlaneFirewall, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'corednsAutoscaler': ?corednsAutoscaler?.toMap(),
+      'createdAt': ?createdAt,
+      'endpoint': ?endpoint,
+      'ha': ?ha,
+      'id': ?id,
+      'ipv4Address': ?ipv4Address,
+      'isolatedWorkers': ?isolatedWorkers,
+      'kubeConfigs': ?(() { final guardedValue = kubeConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetKubernetesClusterKubeConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'kubeconfigExpireSeconds': ?kubeconfigExpireSeconds,
-      'maintenancePolicies': pulumi.Input.encodeList<GetKubernetesClusterMaintenancePolicy, Map<String, dynamic>>(maintenancePolicies, (value) => value.toMap()),
-      'name': name,
-      'nodePools': pulumi.Input.encodeList<GetKubernetesClusterNodePool, Map<String, dynamic>>(nodePools, (value) => value.toMap()),
-      'nvidiaGpuDevicePlugin': nvidiaGpuDevicePlugin.toMap(),
-      'nvidiaGpuDraDriver': nvidiaGpuDraDriver.toMap(),
-      'p2pOciRegistryPlugin': p2pOciRegistryPlugin.toMap(),
-      'rdmaSharedDevicePlugin': rdmaSharedDevicePlugin.toMap(),
-      'region': region,
-      'routingAgent': routingAgent.toMap(),
-      'serviceSubnet': serviceSubnet,
-      'ssos': pulumi.Input.encodeList<GetKubernetesClusterSso, Map<String, dynamic>>(ssos, (value) => value.toMap()),
-      'status': status,
-      'surgeUpgrade': surgeUpgrade,
+      'maintenancePolicies': ?(() { final guardedValue = maintenancePolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetKubernetesClusterMaintenancePolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'nodePools': ?(() { final guardedValue = nodePools; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetKubernetesClusterNodePool, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'nvidiaGpuDevicePlugin': ?nvidiaGpuDevicePlugin?.toMap(),
+      'nvidiaGpuDraDriver': ?nvidiaGpuDraDriver?.toMap(),
+      'p2pOciRegistryPlugin': ?p2pOciRegistryPlugin?.toMap(),
+      'rdmaSharedDevicePlugin': ?rdmaSharedDevicePlugin?.toMap(),
+      'region': ?region,
+      'routingAgent': ?routingAgent?.toMap(),
+      'serviceSubnet': ?serviceSubnet,
+      'ssos': ?(() { final guardedValue = ssos; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetKubernetesClusterSso, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'status': ?status,
+      'surgeUpgrade': ?surgeUpgrade,
       'tags': ?tags,
-      'updatedAt': updatedAt,
-      'urn': urn,
-      'version': version,
-      'vpcUuid': vpcUuid,
-      'workerSubnetUuid': workerSubnetUuid,
+      'updatedAt': ?updatedAt,
+      'urn': ?urn,
+      'version': ?version,
+      'vpcUuid': ?vpcUuid,
+      'workerSubnetUuid': ?workerSubnetUuid,
     };
   }
 
   factory GetKubernetesClusterResult.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterResult(
-      amdGpuDeviceMetricsExporterPlugin: GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin.fromMap((map['amdGpuDeviceMetricsExporterPlugin']! as Map).cast<String, dynamic>()),
-      amdGpuDevicePlugin: GetKubernetesClusterAmdGpuDevicePlugin.fromMap((map['amdGpuDevicePlugin']! as Map).cast<String, dynamic>()),
-      amdGpuDraDriver: GetKubernetesClusterAmdGpuDraDriver.fromMap((map['amdGpuDraDriver']! as Map).cast<String, dynamic>()),
-      autoUpgrade: map['autoUpgrade'] as bool,
+      amdGpuDeviceMetricsExporterPlugin: (() { final guardedValue = map['amdGpuDeviceMetricsExporterPlugin']; if (guardedValue == null) return null; return GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      amdGpuDevicePlugin: (() { final guardedValue = map['amdGpuDevicePlugin']; if (guardedValue == null) return null; return GetKubernetesClusterAmdGpuDevicePlugin.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      amdGpuDraDriver: (() { final guardedValue = map['amdGpuDraDriver']; if (guardedValue == null) return null; return GetKubernetesClusterAmdGpuDraDriver.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      autoUpgrade: (() { final guardedValue = map['autoUpgrade']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       clusterAutoscalerConfigurations: (() { final guardedValue = map['clusterAutoscalerConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetKubernetesClusterClusterAutoscalerConfiguration>(guardedValue, (value) => GetKubernetesClusterClusterAutoscalerConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),
-      clusterSubnet: map['clusterSubnet'] as String,
-      controlPlaneFirewalls: pulumi.Input.decodeList<GetKubernetesClusterControlPlaneFirewall>(map['controlPlaneFirewalls']!, (value) => GetKubernetesClusterControlPlaneFirewall.fromMap((value as Map).cast<String, dynamic>())),
-      corednsAutoscaler: GetKubernetesClusterCorednsAutoscaler.fromMap((map['corednsAutoscaler']! as Map).cast<String, dynamic>()),
-      createdAt: map['createdAt'] as String,
-      endpoint: map['endpoint'] as String,
-      ha: map['ha'] as bool,
-      id: map['id'] as String,
-      ipv4Address: map['ipv4Address'] as String,
-      isolatedWorkers: map['isolatedWorkers'] as bool,
-      kubeConfigs: pulumi.Input.decodeList<GetKubernetesClusterKubeConfig>(map['kubeConfigs']!, (value) => GetKubernetesClusterKubeConfig.fromMap((value as Map).cast<String, dynamic>())),
-      kubeconfigExpireSeconds: (() { final guardedValue = map['kubeconfigExpireSeconds']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      maintenancePolicies: pulumi.Input.decodeList<GetKubernetesClusterMaintenancePolicy>(map['maintenancePolicies']!, (value) => GetKubernetesClusterMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      nodePools: pulumi.Input.decodeList<GetKubernetesClusterNodePool>(map['nodePools']!, (value) => GetKubernetesClusterNodePool.fromMap((value as Map).cast<String, dynamic>())),
-      nvidiaGpuDevicePlugin: GetKubernetesClusterNvidiaGpuDevicePlugin.fromMap((map['nvidiaGpuDevicePlugin']! as Map).cast<String, dynamic>()),
-      nvidiaGpuDraDriver: GetKubernetesClusterNvidiaGpuDraDriver.fromMap((map['nvidiaGpuDraDriver']! as Map).cast<String, dynamic>()),
-      p2pOciRegistryPlugin: GetKubernetesClusterP2pOciRegistryPlugin.fromMap((map['p2pOciRegistryPlugin']! as Map).cast<String, dynamic>()),
-      rdmaSharedDevicePlugin: GetKubernetesClusterRdmaSharedDevicePlugin.fromMap((map['rdmaSharedDevicePlugin']! as Map).cast<String, dynamic>()),
-      region: map['region'] as String,
-      routingAgent: GetKubernetesClusterRoutingAgent.fromMap((map['routingAgent']! as Map).cast<String, dynamic>()),
-      serviceSubnet: map['serviceSubnet'] as String,
-      ssos: pulumi.Input.decodeList<GetKubernetesClusterSso>(map['ssos']!, (value) => GetKubernetesClusterSso.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] as String,
-      surgeUpgrade: map['surgeUpgrade'] as bool,
+      clusterSubnet: (() { final guardedValue = map['clusterSubnet']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      controlPlaneFirewalls: (() { final guardedValue = map['controlPlaneFirewalls']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetKubernetesClusterControlPlaneFirewall>(guardedValue, (value) => GetKubernetesClusterControlPlaneFirewall.fromMap((value as Map).cast<String, dynamic>())); })(),
+      corednsAutoscaler: (() { final guardedValue = map['corednsAutoscaler']; if (guardedValue == null) return null; return GetKubernetesClusterCorednsAutoscaler.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ha: (() { final guardedValue = map['ha']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipv4Address: (() { final guardedValue = map['ipv4Address']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isolatedWorkers: (() { final guardedValue = map['isolatedWorkers']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      kubeConfigs: (() { final guardedValue = map['kubeConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetKubernetesClusterKubeConfig>(guardedValue, (value) => GetKubernetesClusterKubeConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      kubeconfigExpireSeconds: (() { final guardedValue = map['kubeconfigExpireSeconds']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      maintenancePolicies: (() { final guardedValue = map['maintenancePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetKubernetesClusterMaintenancePolicy>(guardedValue, (value) => GetKubernetesClusterMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nodePools: (() { final guardedValue = map['nodePools']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetKubernetesClusterNodePool>(guardedValue, (value) => GetKubernetesClusterNodePool.fromMap((value as Map).cast<String, dynamic>())); })(),
+      nvidiaGpuDevicePlugin: (() { final guardedValue = map['nvidiaGpuDevicePlugin']; if (guardedValue == null) return null; return GetKubernetesClusterNvidiaGpuDevicePlugin.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      nvidiaGpuDraDriver: (() { final guardedValue = map['nvidiaGpuDraDriver']; if (guardedValue == null) return null; return GetKubernetesClusterNvidiaGpuDraDriver.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      p2pOciRegistryPlugin: (() { final guardedValue = map['p2pOciRegistryPlugin']; if (guardedValue == null) return null; return GetKubernetesClusterP2pOciRegistryPlugin.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      rdmaSharedDevicePlugin: (() { final guardedValue = map['rdmaSharedDevicePlugin']; if (guardedValue == null) return null; return GetKubernetesClusterRdmaSharedDevicePlugin.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      routingAgent: (() { final guardedValue = map['routingAgent']; if (guardedValue == null) return null; return GetKubernetesClusterRoutingAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      serviceSubnet: (() { final guardedValue = map['serviceSubnet']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ssos: (() { final guardedValue = map['ssos']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetKubernetesClusterSso>(guardedValue, (value) => GetKubernetesClusterSso.fromMap((value as Map).cast<String, dynamic>())); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      surgeUpgrade: (() { final guardedValue = map['surgeUpgrade']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      updatedAt: map['updatedAt'] as String,
-      urn: map['urn'] as String,
-      version: map['version'] as String,
-      vpcUuid: map['vpcUuid'] as String,
-      workerSubnetUuid: map['workerSubnetUuid'] as String,
+      updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      urn: (() { final guardedValue = map['urn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpcUuid: (() { final guardedValue = map['vpcUuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      workerSubnetUuid: (() { final guardedValue = map['workerSubnetUuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -9,22 +9,22 @@ import 'droplet_autoscale_droplet_template.dart';
 class DropletAutoscaleState {
   /// The configuration parameters for Droplet Autoscale pool, the supported arguments are
   /// documented below.
-  final pulumi.Input<DropletAutoscaleConfig>? config;
+  final pulumi.Input<DropletAutoscaleConfig?>? config;
   /// Created at timestamp for the Droplet Autoscale pool.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// The current average resource utilization of the Droplet Autoscale pool, this attribute further
   /// embeds `memory` and `cpu` attributes to respectively report utilization data.
-  final pulumi.Input<List<DropletAutoscaleCurrentUtilization>>? currentUtilizations;
+  final pulumi.Input<List<DropletAutoscaleCurrentUtilization>?>? currentUtilizations;
   /// The droplet template parameters for Droplet Autoscale pool, the supported arguments
   /// are documented below.
-  final pulumi.Input<DropletAutoscaleDropletTemplate>? dropletTemplate;
+  final pulumi.Input<DropletAutoscaleDropletTemplate?>? dropletTemplate;
   /// The name of the Droplet Autoscale pool.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Droplet Autoscale pool health status; this reflects if the pool is currently healthy and ready to accept
   /// traffic, or in an error state and needs user intervention.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Updated at timestamp for the Droplet Autoscale pool.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [DropletAutoscaleState].
   /// [config] The configuration parameters for Droplet Autoscale pool, the supported arguments are

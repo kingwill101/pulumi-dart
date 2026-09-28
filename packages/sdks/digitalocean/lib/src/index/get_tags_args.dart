@@ -11,10 +11,10 @@ import 'get_tags_sort.dart';
 class GetTagsArgs {
   /// Filter the results.
   /// The `filter` block is documented below.
-  final pulumi.Input<List<GetTagsFilter>>? filters;
+  final pulumi.Input<List<GetTagsFilter>?>? filters;
   /// Sort the results.
   /// The `sort` block is documented below.
-  final pulumi.Input<List<GetTagsSort>>? sorts;
+  final pulumi.Input<List<GetTagsSort>?>? sorts;
 
   /// Creates a new [GetTagsArgs].
   /// [filters] Filter the results.

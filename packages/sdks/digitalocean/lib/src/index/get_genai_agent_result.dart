@@ -19,33 +19,33 @@ import 'get_genai_agent_template.dart';
 /// Result data returned by getGenaiAgent.
 class GetGenaiAgentResult {
   final List<GetGenaiAgentAgentGuardrail>? agentGuardrails;
-  final String agentId;
+  final String? agentId;
   final List<GetGenaiAgentAnthropicApiKey>? anthropicApiKeys;
   final List<GetGenaiAgentApiKeyInfo>? apiKeyInfos;
   final List<GetGenaiAgentApiKey>? apiKeys;
   final List<GetGenaiAgentChatbotIdentifier>? chatbotIdentifiers;
   final List<GetGenaiAgentChatbot>? chatbots;
-  final List<GetGenaiAgentChildAgent> childAgents;
-  final String createdAt;
+  final List<GetGenaiAgentChildAgent>? childAgents;
+  final String? createdAt;
   final List<GetGenaiAgentDeployment>? deployments;
   final String? description;
   final List<GetGenaiAgentFunction>? functions;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final String? ifCase;
-  final String instruction;
+  final String? instruction;
   final int? k;
   final List<GetGenaiAgentKnowledgeBase>? knowledgeBases;
   final int? maxTokens;
-  final String modelUuid;
-  final List<GetGenaiAgentModel> models;
-  final String name;
+  final String? modelUuid;
+  final List<GetGenaiAgentModel>? models;
+  final String? name;
   final List<GetGenaiAgentOpenAiApiKey>? openAiApiKeys;
-  final List<GetGenaiAgentParentAgent> parentAgents;
-  final String projectId;
-  final String region;
+  final List<GetGenaiAgentParentAgent>? parentAgents;
+  final String? projectId;
+  final String? region;
   final String? retrievalMethod;
-  final String routeCreatedAt;
+  final String? routeCreatedAt;
   final String? routeCreatedBy;
   final String? routeName;
   final String? routeUuid;
@@ -53,38 +53,38 @@ class GetGenaiAgentResult {
   final double? temperature;
   final List<GetGenaiAgentTemplate>? templates;
   final double? topP;
-  final String updatedAt;
+  final String? updatedAt;
   final String? url;
   final String? userId;
 
   /// Creates a new [GetGenaiAgentResult].
   /// [agentGuardrails] Optional.
-  /// [agentId] Required.
+  /// [agentId] Optional.
   /// [anthropicApiKeys] Optional.
   /// [apiKeyInfos] Optional.
   /// [apiKeys] Optional.
   /// [chatbotIdentifiers] Optional.
   /// [chatbots] Optional.
-  /// [childAgents] Required.
-  /// [createdAt] Required.
+  /// [childAgents] Optional.
+  /// [createdAt] Optional.
   /// [deployments] Optional.
   /// [description] Optional.
   /// [functions] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ifCase] Optional.
-  /// [instruction] Required.
+  /// [instruction] Optional.
   /// [k] Optional.
   /// [knowledgeBases] Optional.
   /// [maxTokens] Optional.
-  /// [modelUuid] Required.
-  /// [models] Required.
-  /// [name] Required.
+  /// [modelUuid] Optional.
+  /// [models] Optional.
+  /// [name] Optional.
   /// [openAiApiKeys] Optional.
-  /// [parentAgents] Required.
-  /// [projectId] Required.
-  /// [region] Required.
+  /// [parentAgents] Optional.
+  /// [projectId] Optional.
+  /// [region] Optional.
   /// [retrievalMethod] Optional.
-  /// [routeCreatedAt] Required.
+  /// [routeCreatedAt] Optional.
   /// [routeCreatedBy] Optional.
   /// [routeName] Optional.
   /// [routeUuid] Optional.
@@ -92,37 +92,37 @@ class GetGenaiAgentResult {
   /// [temperature] Optional.
   /// [templates] Optional.
   /// [topP] Optional.
-  /// [updatedAt] Required.
+  /// [updatedAt] Optional.
   /// [url] Optional.
   /// [userId] Optional.
   const GetGenaiAgentResult({
     this.agentGuardrails,
-    required this.agentId,
+    this.agentId,
     this.anthropicApiKeys,
     this.apiKeyInfos,
     this.apiKeys,
     this.chatbotIdentifiers,
     this.chatbots,
-    required this.childAgents,
-    required this.createdAt,
+    this.childAgents,
+    this.createdAt,
     this.deployments,
     this.description,
     this.functions,
-    required this.id,
+    this.id,
     this.ifCase,
-    required this.instruction,
+    this.instruction,
     this.k,
     this.knowledgeBases,
     this.maxTokens,
-    required this.modelUuid,
-    required this.models,
-    required this.name,
+    this.modelUuid,
+    this.models,
+    this.name,
     this.openAiApiKeys,
-    required this.parentAgents,
-    required this.projectId,
-    required this.region,
+    this.parentAgents,
+    this.projectId,
+    this.region,
     this.retrievalMethod,
-    required this.routeCreatedAt,
+    this.routeCreatedAt,
     this.routeCreatedBy,
     this.routeName,
     this.routeUuid,
@@ -130,7 +130,7 @@ class GetGenaiAgentResult {
     this.temperature,
     this.templates,
     this.topP,
-    required this.updatedAt,
+    this.updatedAt,
     this.url,
     this.userId,
   });
@@ -138,32 +138,32 @@ class GetGenaiAgentResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'agentGuardrails': ?(() { final guardedValue = agentGuardrails; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGenaiAgentAgentGuardrail, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'agentId': agentId,
+      'agentId': ?agentId,
       'anthropicApiKeys': ?(() { final guardedValue = anthropicApiKeys; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGenaiAgentAnthropicApiKey, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'apiKeyInfos': ?(() { final guardedValue = apiKeyInfos; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGenaiAgentApiKeyInfo, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'apiKeys': ?(() { final guardedValue = apiKeys; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGenaiAgentApiKey, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'chatbotIdentifiers': ?(() { final guardedValue = chatbotIdentifiers; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGenaiAgentChatbotIdentifier, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'chatbots': ?(() { final guardedValue = chatbots; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGenaiAgentChatbot, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'childAgents': pulumi.Input.encodeList<GetGenaiAgentChildAgent, Map<String, dynamic>>(childAgents, (value) => value.toMap()),
-      'createdAt': createdAt,
+      'childAgents': ?(() { final guardedValue = childAgents; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGenaiAgentChildAgent, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'createdAt': ?createdAt,
       'deployments': ?(() { final guardedValue = deployments; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGenaiAgentDeployment, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'description': ?description,
       'functions': ?(() { final guardedValue = functions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGenaiAgentFunction, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
+      'id': ?id,
       'ifCase': ?ifCase,
-      'instruction': instruction,
+      'instruction': ?instruction,
       'k': ?k,
       'knowledgeBases': ?(() { final guardedValue = knowledgeBases; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGenaiAgentKnowledgeBase, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'maxTokens': ?maxTokens,
-      'modelUuid': modelUuid,
-      'models': pulumi.Input.encodeList<GetGenaiAgentModel, Map<String, dynamic>>(models, (value) => value.toMap()),
-      'name': name,
+      'modelUuid': ?modelUuid,
+      'models': ?(() { final guardedValue = models; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGenaiAgentModel, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
       'openAiApiKeys': ?(() { final guardedValue = openAiApiKeys; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGenaiAgentOpenAiApiKey, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'parentAgents': pulumi.Input.encodeList<GetGenaiAgentParentAgent, Map<String, dynamic>>(parentAgents, (value) => value.toMap()),
-      'projectId': projectId,
-      'region': region,
+      'parentAgents': ?(() { final guardedValue = parentAgents; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGenaiAgentParentAgent, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'projectId': ?projectId,
+      'region': ?region,
       'retrievalMethod': ?retrievalMethod,
-      'routeCreatedAt': routeCreatedAt,
+      'routeCreatedAt': ?routeCreatedAt,
       'routeCreatedBy': ?routeCreatedBy,
       'routeName': ?routeName,
       'routeUuid': ?routeUuid,
@@ -171,7 +171,7 @@ class GetGenaiAgentResult {
       'temperature': ?temperature,
       'templates': ?(() { final guardedValue = templates; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetGenaiAgentTemplate, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'topP': ?topP,
-      'updatedAt': updatedAt,
+      'updatedAt': ?updatedAt,
       'url': ?url,
       'userId': ?userId,
     };
@@ -180,40 +180,40 @@ class GetGenaiAgentResult {
   factory GetGenaiAgentResult.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentResult(
       agentGuardrails: (() { final guardedValue = map['agentGuardrails']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGenaiAgentAgentGuardrail>(guardedValue, (value) => GetGenaiAgentAgentGuardrail.fromMap((value as Map).cast<String, dynamic>())); })(),
-      agentId: map['agentId'] as String,
+      agentId: (() { final guardedValue = map['agentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       anthropicApiKeys: (() { final guardedValue = map['anthropicApiKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGenaiAgentAnthropicApiKey>(guardedValue, (value) => GetGenaiAgentAnthropicApiKey.fromMap((value as Map).cast<String, dynamic>())); })(),
       apiKeyInfos: (() { final guardedValue = map['apiKeyInfos']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGenaiAgentApiKeyInfo>(guardedValue, (value) => GetGenaiAgentApiKeyInfo.fromMap((value as Map).cast<String, dynamic>())); })(),
       apiKeys: (() { final guardedValue = map['apiKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGenaiAgentApiKey>(guardedValue, (value) => GetGenaiAgentApiKey.fromMap((value as Map).cast<String, dynamic>())); })(),
       chatbotIdentifiers: (() { final guardedValue = map['chatbotIdentifiers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGenaiAgentChatbotIdentifier>(guardedValue, (value) => GetGenaiAgentChatbotIdentifier.fromMap((value as Map).cast<String, dynamic>())); })(),
       chatbots: (() { final guardedValue = map['chatbots']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGenaiAgentChatbot>(guardedValue, (value) => GetGenaiAgentChatbot.fromMap((value as Map).cast<String, dynamic>())); })(),
-      childAgents: pulumi.Input.decodeList<GetGenaiAgentChildAgent>(map['childAgents']!, (value) => GetGenaiAgentChildAgent.fromMap((value as Map).cast<String, dynamic>())),
-      createdAt: map['createdAt'] as String,
+      childAgents: (() { final guardedValue = map['childAgents']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGenaiAgentChildAgent>(guardedValue, (value) => GetGenaiAgentChildAgent.fromMap((value as Map).cast<String, dynamic>())); })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deployments: (() { final guardedValue = map['deployments']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGenaiAgentDeployment>(guardedValue, (value) => GetGenaiAgentDeployment.fromMap((value as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       functions: (() { final guardedValue = map['functions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGenaiAgentFunction>(guardedValue, (value) => GetGenaiAgentFunction.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ifCase: (() { final guardedValue = map['ifCase']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      instruction: map['instruction'] as String,
-      k: (() { final guardedValue = map['k']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      instruction: (() { final guardedValue = map['instruction']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      k: (() { final guardedValue = map['k']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       knowledgeBases: (() { final guardedValue = map['knowledgeBases']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGenaiAgentKnowledgeBase>(guardedValue, (value) => GetGenaiAgentKnowledgeBase.fromMap((value as Map).cast<String, dynamic>())); })(),
-      maxTokens: (() { final guardedValue = map['maxTokens']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      modelUuid: map['modelUuid'] as String,
-      models: pulumi.Input.decodeList<GetGenaiAgentModel>(map['models']!, (value) => GetGenaiAgentModel.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
+      maxTokens: (() { final guardedValue = map['maxTokens']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      modelUuid: (() { final guardedValue = map['modelUuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      models: (() { final guardedValue = map['models']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGenaiAgentModel>(guardedValue, (value) => GetGenaiAgentModel.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       openAiApiKeys: (() { final guardedValue = map['openAiApiKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGenaiAgentOpenAiApiKey>(guardedValue, (value) => GetGenaiAgentOpenAiApiKey.fromMap((value as Map).cast<String, dynamic>())); })(),
-      parentAgents: pulumi.Input.decodeList<GetGenaiAgentParentAgent>(map['parentAgents']!, (value) => GetGenaiAgentParentAgent.fromMap((value as Map).cast<String, dynamic>())),
-      projectId: map['projectId'] as String,
-      region: map['region'] as String,
+      parentAgents: (() { final guardedValue = map['parentAgents']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGenaiAgentParentAgent>(guardedValue, (value) => GetGenaiAgentParentAgent.fromMap((value as Map).cast<String, dynamic>())); })(),
+      projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       retrievalMethod: (() { final guardedValue = map['retrievalMethod']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      routeCreatedAt: map['routeCreatedAt'] as String,
+      routeCreatedAt: (() { final guardedValue = map['routeCreatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       routeCreatedBy: (() { final guardedValue = map['routeCreatedBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       routeName: (() { final guardedValue = map['routeName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       routeUuid: (() { final guardedValue = map['routeUuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      temperature: (() { final guardedValue = map['temperature']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      temperature: (() { final guardedValue = map['temperature']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       templates: (() { final guardedValue = map['templates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGenaiAgentTemplate>(guardedValue, (value) => GetGenaiAgentTemplate.fromMap((value as Map).cast<String, dynamic>())); })(),
-      topP: (() { final guardedValue = map['topP']; if (guardedValue == null) return null; return guardedValue as double; })(),
-      updatedAt: map['updatedAt'] as String,
+      topP: (() { final guardedValue = map['topP']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return guardedValue as String; })(),
       userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

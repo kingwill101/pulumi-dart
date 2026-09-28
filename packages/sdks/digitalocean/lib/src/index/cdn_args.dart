@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_cdn_cdn_args_doc}
 class CdnArgs {
   /// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
-  final pulumi.Input<String>? certificateId;
+  final pulumi.Input<String?>? certificateId;
   /// The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
-  final pulumi.Input<String>? certificateName;
+  final pulumi.Input<String?>? certificateName;
   /// The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
-  final pulumi.Input<String>? customDomain;
+  final pulumi.Input<String?>? customDomain;
   /// The fully qualified domain name, (FQDN) for a Space.
   final pulumi.Input<String> origin;
   /// The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-  final pulumi.Input<int>? ttl;
+  final pulumi.Input<int?>? ttl;
 
   /// Creates a new [CdnArgs].
   /// [certificateId] **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
@@ -48,7 +48,7 @@ class CdnArgs {
       certificateName: (() { final guardedValue = map['certificateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customDomain: (() { final guardedValue = map['customDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       origin: pulumi.Input.fromValue(map['origin'] as String),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecMaintenance {
   /// Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
-  final pulumi.Input<bool>? archive;
+  final pulumi.Input<bool?>? archive;
   /// Whether to automatically deploy images pushed to DOCR.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// A custom offline page to display when maintenance mode is enabled or the app is archived.
-  final pulumi.Input<String>? offlinePageUrl;
+  final pulumi.Input<String?>? offlinePageUrl;
 
   /// Creates a new [GetAppSpecMaintenance].
   /// [archive] Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
