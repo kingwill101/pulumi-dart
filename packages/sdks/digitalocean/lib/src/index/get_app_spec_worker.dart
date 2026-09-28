@@ -15,42 +15,42 @@ import 'get_app_spec_worker_termination.dart';
 
 class GetAppSpecWorker {
   /// Describes an alert policy for the component.
-  final pulumi.Input<List<GetAppSpecWorkerAlert>>? alerts;
+  final pulumi.Input<List<GetAppSpecWorkerAlert>?>? alerts;
   /// Configuration for automatically scaling this component based on metrics.
-  final pulumi.Input<GetAppSpecWorkerAutoscaling>? autoscaling;
+  final pulumi.Input<GetAppSpecWorkerAutoscaling?>? autoscaling;
   /// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
-  final pulumi.Input<GetAppSpecWorkerBitbucket>? bitbucket;
+  final pulumi.Input<GetAppSpecWorkerBitbucket?>? bitbucket;
   /// An optional build command to run while building this component from source.
-  final pulumi.Input<String>? buildCommand;
+  final pulumi.Input<String?>? buildCommand;
   /// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
-  final pulumi.Input<String>? dockerfilePath;
+  final pulumi.Input<String?>? dockerfilePath;
   /// An environment slug describing the type of this app.
-  final pulumi.Input<String>? environmentSlug;
+  final pulumi.Input<String?>? environmentSlug;
   /// Describes an environment variable made available to an app competent.
-  final pulumi.Input<List<GetAppSpecWorkerEnv>>? envs;
+  final pulumi.Input<List<GetAppSpecWorkerEnv>?>? envs;
   /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
-  final pulumi.Input<GetAppSpecWorkerGit>? git;
+  final pulumi.Input<GetAppSpecWorkerGit?>? git;
   /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-  final pulumi.Input<GetAppSpecWorkerGithub>? github;
+  final pulumi.Input<GetAppSpecWorkerGithub?>? github;
   /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-  final pulumi.Input<GetAppSpecWorkerGitlab>? gitlab;
+  final pulumi.Input<GetAppSpecWorkerGitlab?>? gitlab;
   /// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-  final pulumi.Input<GetAppSpecWorkerImage>? image;
+  final pulumi.Input<GetAppSpecWorkerImage?>? image;
   /// The amount of instances that this component should be scaled to.
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
   /// The instance size to use for this component.
-  final pulumi.Input<String>? instanceSizeSlug;
-  final pulumi.Input<GetAppSpecWorkerLivenessHealthCheck>? livenessHealthCheck;
+  final pulumi.Input<String?>? instanceSizeSlug;
+  final pulumi.Input<GetAppSpecWorkerLivenessHealthCheck?>? livenessHealthCheck;
   /// Describes a log forwarding destination.
-  final pulumi.Input<List<GetAppSpecWorkerLogDestination>>? logDestinations;
+  final pulumi.Input<List<GetAppSpecWorkerLogDestination>?>? logDestinations;
   /// The name of the component.
   final pulumi.Input<String> name;
   /// An optional run command to override the component's default.
-  final pulumi.Input<String>? runCommand;
+  final pulumi.Input<String?>? runCommand;
   /// An optional path to the working directory to use for the build.
-  final pulumi.Input<String>? sourceDir;
+  final pulumi.Input<String?>? sourceDir;
   /// Contains a component's termination parameters.
-  final pulumi.Input<GetAppSpecWorkerTermination>? termination;
+  final pulumi.Input<GetAppSpecWorkerTermination?>? termination;
 
   /// Creates a new [GetAppSpecWorker].
   /// [alerts] Describes an alert policy for the component.
@@ -131,7 +131,7 @@ class GetAppSpecWorker {
       github: (() { final guardedValue = map['github']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetAppSpecWorkerGithub.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       gitlab: (() { final guardedValue = map['gitlab']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetAppSpecWorkerGitlab.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetAppSpecWorkerImage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceSizeSlug: (() { final guardedValue = map['instanceSizeSlug']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       livenessHealthCheck: (() { final guardedValue = map['livenessHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GetAppSpecWorkerLivenessHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       logDestinations: (() { final guardedValue = map['logDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppSpecWorkerLogDestination>(guardedValue, (value) => GetAppSpecWorkerLogDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),

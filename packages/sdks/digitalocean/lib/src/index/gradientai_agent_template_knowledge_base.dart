@@ -5,31 +5,31 @@ import 'gradientai_agent_template_knowledge_base_last_indexing_job.dart';
 
 class GradientaiAgentTemplateKnowledgeBase {
   /// Timestamp when the Knowledge Base was added to the Agent
-  final pulumi.Input<String>? addedToAgentAt;
+  final pulumi.Input<String?>? addedToAgentAt;
   /// Created At timestamp for the Knowledge Base
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Database ID of the Knowledge Base
-  final pulumi.Input<String>? databaseId;
+  final pulumi.Input<String?>? databaseId;
   /// Embedding model UUID for the Knowledge Base
-  final pulumi.Input<String>? embeddingModelUuid;
+  final pulumi.Input<String?>? embeddingModelUuid;
   /// Indicates if the Knowledge Base is public
-  final pulumi.Input<bool>? isPublic;
+  final pulumi.Input<bool?>? isPublic;
   /// Last indexing job for the Knowledge Base
-  final pulumi.Input<GradientaiAgentTemplateKnowledgeBaseLastIndexingJob>? lastIndexingJob;
+  final pulumi.Input<GradientaiAgentTemplateKnowledgeBaseLastIndexingJob?>? lastIndexingJob;
   /// Name of the Knowledge Base
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Project ID of the Knowledge Base
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// Region of the Knowledge Base
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// List of tags
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// Timestamp when the Knowledge Base was updated
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
   /// User ID of the Knowledge Base
-  final pulumi.Input<String>? userId;
+  final pulumi.Input<String?>? userId;
   /// UUID of the Knowledge Base
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [GradientaiAgentTemplateKnowledgeBase].
   /// [addedToAgentAt] Timestamp when the Knowledge Base was added to the Agent

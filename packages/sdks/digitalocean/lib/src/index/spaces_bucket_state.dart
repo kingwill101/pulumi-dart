@@ -8,25 +8,25 @@ import 'spaces_bucket_versioning.dart';
 /// Input properties used for looking up and filtering SpacesBucket resources.
 class SpacesBucketState {
   /// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
-  final pulumi.Input<String>? acl;
+  final pulumi.Input<String?>? acl;
   /// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
-  final pulumi.Input<String>? bucketDomainName;
+  final pulumi.Input<String?>? bucketDomainName;
   /// The uniform resource name for the bucket
-  final pulumi.Input<String>? bucketUrn;
+  final pulumi.Input<String?>? bucketUrn;
   /// A rule of Cross-Origin Resource Sharing (documented below).
-  final pulumi.Input<List<SpacesBucketCorsRule>>? corsRules;
+  final pulumi.Input<List<SpacesBucketCorsRule>?>? corsRules;
   /// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// A configuration of object lifecycle management (documented below).
-  final pulumi.Input<List<SpacesBucketLifecycleRule>>? lifecycleRules;
+  final pulumi.Input<List<SpacesBucketLifecycleRule>?>? lifecycleRules;
   /// The name of the bucket
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The region where the bucket resides (Defaults to `nyc3`)
-  final pulumi.Input<String>? region;
+  final pulumi.Input<dynamic>? region;
   /// A state of versioning (documented below)
-  final pulumi.Input<SpacesBucketVersioning>? versioning;
+  final pulumi.Input<SpacesBucketVersioning?>? versioning;
 
   /// Creates a new [SpacesBucketState].
   /// [acl] Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
@@ -77,7 +77,7 @@ class SpacesBucketState {
       forceDestroy: (() { final guardedValue = map['forceDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       lifecycleRules: (() { final guardedValue = map['lifecycleRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SpacesBucketLifecycleRule>(guardedValue, (value) => SpacesBucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       versioning: (() { final guardedValue = map['versioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SpacesBucketVersioning.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -10,17 +10,17 @@ class GetGenaiKnowledgeBaseDataSourcesDatasource {
   /// Created At timestamp for the Knowledge Base
   final pulumi.Input<String> createdAt;
   /// File upload data source configuration
-  final pulumi.Input<List<GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource>>? fileUploadDataSources;
+  final pulumi.Input<List<GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource>?>? fileUploadDataSources;
   /// Last indexing job for the data source
-  final pulumi.Input<List<GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob>>? lastIndexingJobs;
+  final pulumi.Input<List<GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob>?>? lastIndexingJobs;
   /// Spaces data source configuration
-  final pulumi.Input<List<GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource>>? spacesDataSources;
+  final pulumi.Input<List<GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource>?>? spacesDataSources;
   /// Timestamp when the Knowledge Base was updated
   final pulumi.Input<String> updatedAt;
   /// UUID of the Knowledge Base
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
   /// Web crawler data source configuration
-  final pulumi.Input<List<GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource>>? webCrawlerDataSources;
+  final pulumi.Input<List<GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource>?>? webCrawlerDataSources;
 
   /// Creates a new [GetGenaiKnowledgeBaseDataSourcesDatasource].
   /// [createdAt] Created At timestamp for the Knowledge Base

@@ -7,8 +7,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_reserved_ipv6_reserved_ipv6_args_doc}
 class ReservedIpv6Args {
-  final pulumi.Input<int>? dropletId;
-  final pulumi.Input<String>? ip;
+  final pulumi.Input<int?>? dropletId;
+  final pulumi.Input<String?>? ip;
   /// The region that the reserved IPv6 needs to be reserved to.
   final pulumi.Input<String> regionSlug;
 
@@ -32,7 +32,7 @@ class ReservedIpv6Args {
 
   factory ReservedIpv6Args.fromMap(Map<String, dynamic> map) {
     return ReservedIpv6Args(
-      dropletId: (() { final guardedValue = map['dropletId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dropletId: (() { final guardedValue = map['dropletId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ip: (() { final guardedValue = map['ip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       regionSlug: pulumi.Input.fromValue(map['regionSlug'] as String),
     );

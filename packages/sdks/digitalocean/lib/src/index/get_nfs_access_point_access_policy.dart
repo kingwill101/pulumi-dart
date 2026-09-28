@@ -35,8 +35,8 @@ class GetNfsAccessPointAccessPolicy {
 
   factory GetNfsAccessPointAccessPolicy.fromMap(Map<String, dynamic> map) {
     return GetNfsAccessPointAccessPolicy(
-      anongid: pulumi.Input.fromValue(map['anongid'] as int),
-      anonuid: pulumi.Input.fromValue(map['anonuid'] as int),
+      anongid: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['anongid'])),
+      anonuid: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['anonuid'])),
       identityEnforcementEnabled: pulumi.Input.fromValue(map['identityEnforcementEnabled'] as bool),
       protocols: pulumi.Input.fromValue((map['protocols'] as List).cast<String>()),
       squashConfig: pulumi.Input.fromValue(map['squashConfig'] as String),

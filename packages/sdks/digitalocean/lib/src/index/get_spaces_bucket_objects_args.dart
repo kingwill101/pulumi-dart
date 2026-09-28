@@ -10,13 +10,13 @@ class GetSpacesBucketObjectsArgs {
   /// Lists object keys in this Spaces bucket
   final pulumi.Input<String> bucket;
   /// A character used to group keys (Default: none)
-  final pulumi.Input<String>? delimiter;
+  final pulumi.Input<String?>? delimiter;
   /// Encodes keys using this method (Default: none; besides none, only "url" can be used)
-  final pulumi.Input<String>? encodingType;
+  final pulumi.Input<String?>? encodingType;
   /// Maximum object keys to return (Default: 1000)
-  final pulumi.Input<int>? maxKeys;
+  final pulumi.Input<int?>? maxKeys;
   /// Limits results to object keys with this prefix (Default: none)
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// The slug of the region where the bucket is stored.
   final pulumi.Input<String> region;
 
@@ -52,7 +52,7 @@ class GetSpacesBucketObjectsArgs {
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       delimiter: (() { final guardedValue = map['delimiter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encodingType: (() { final guardedValue = map['encodingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxKeys: (() { final guardedValue = map['maxKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxKeys: (() { final guardedValue = map['maxKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: pulumi.Input.fromValue(map['region'] as String),
     );

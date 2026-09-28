@@ -8,19 +8,19 @@ import 'gradientai_knowledge_base_data_source_web_crawler_data_source.dart';
 
 class GradientaiKnowledgeBaseDataSource {
   /// Created At timestamp for the Knowledge Base
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// File upload data source configuration
-  final pulumi.Input<List<GradientaiKnowledgeBaseDataSourceFileUploadDataSource>>? fileUploadDataSources;
+  final pulumi.Input<List<GradientaiKnowledgeBaseDataSourceFileUploadDataSource>?>? fileUploadDataSources;
   /// Last indexing job for the data source
-  final pulumi.Input<List<GradientaiKnowledgeBaseDataSourceLastIndexingJob>>? lastIndexingJobs;
+  final pulumi.Input<List<GradientaiKnowledgeBaseDataSourceLastIndexingJob>?>? lastIndexingJobs;
   /// Spaces data source configuration
-  final pulumi.Input<List<GradientaiKnowledgeBaseDataSourceSpacesDataSource>>? spacesDataSources;
+  final pulumi.Input<List<GradientaiKnowledgeBaseDataSourceSpacesDataSource>?>? spacesDataSources;
   /// Timestamp when the Knowledge Base was updated
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
   /// UUID of the Knowledge Base
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
   /// Web crawler data source configuration
-  final pulumi.Input<List<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource>>? webCrawlerDataSources;
+  final pulumi.Input<List<GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource>?>? webCrawlerDataSources;
 
   /// Creates a new [GradientaiKnowledgeBaseDataSource].
   /// [createdAt] Created At timestamp for the Knowledge Base

@@ -9,9 +9,9 @@ import 'get_gradientai_agents_sort.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_gradientai_agents_get_gradientai_agents_args_doc}
 class GetGradientaiAgentsArgs {
-  final pulumi.Input<List<GetGradientaiAgentsFilter>>? filters;
-  final pulumi.Input<bool>? onlyDeployed;
-  final pulumi.Input<List<GetGradientaiAgentsSort>>? sorts;
+  final pulumi.Input<List<GetGradientaiAgentsFilter>?>? filters;
+  final pulumi.Input<bool?>? onlyDeployed;
+  final pulumi.Input<List<GetGradientaiAgentsSort>?>? sorts;
 
   /// Creates a new [GetGradientaiAgentsArgs].
   /// [filters] Optional.

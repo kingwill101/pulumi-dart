@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_app_spec_alert_destinations.dart';
 
 class GetAppSpecAlert {
-  final pulumi.Input<GetAppSpecAlertDestinations>? destinations;
+  final pulumi.Input<GetAppSpecAlertDestinations?>? destinations;
   /// Determines whether or not the alert is disabled (default: `false`).
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
   final pulumi.Input<String> rule;
 

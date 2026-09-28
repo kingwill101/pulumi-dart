@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource {
   /// The base URL to crawl
-  final pulumi.Input<String>? baseUrl;
+  final pulumi.Input<String?>? baseUrl;
   /// Options for specifying how URLs found on pages should be handled.
   /// - UNKNOWN: Default unknown value
   /// - SCOPED: Only include the base URL.
   /// - PATH: Crawl the base URL and linked pages within the URL path.
   /// - DOMAIN: Crawl the base URL and linked pages within the same domain.
   /// - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
-  final pulumi.Input<String>? crawlingOption;
+  final pulumi.Input<String?>? crawlingOption;
   /// Whether to embed media content
-  final pulumi.Input<bool>? embedMedia;
+  final pulumi.Input<bool?>? embedMedia;
 
   /// Creates a new [GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource].
   /// [baseUrl] The base URL to crawl

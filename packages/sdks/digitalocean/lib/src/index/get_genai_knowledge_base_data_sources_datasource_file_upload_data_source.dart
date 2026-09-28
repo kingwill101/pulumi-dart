@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource {
   /// The original name of the uploaded file
-  final pulumi.Input<String>? originalFileName;
+  final pulumi.Input<String?>? originalFileName;
   /// The size of the file in bytes
-  final pulumi.Input<String>? sizeInBytes;
+  final pulumi.Input<String?>? sizeInBytes;
   /// The stored object key for the file
-  final pulumi.Input<String>? storedObjectKey;
+  final pulumi.Input<String?>? storedObjectKey;
 
   /// Creates a new [GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource].
   /// [originalFileName] The original name of the uploaded file

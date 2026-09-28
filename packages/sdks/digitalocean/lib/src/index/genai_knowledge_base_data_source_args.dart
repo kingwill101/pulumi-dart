@@ -11,8 +11,8 @@ import 'genai_knowledge_base_data_source_web_crawler_data_source.dart';
 class GenaiKnowledgeBaseDataSourceArgs {
   /// UUID of the Knowledge Base
   final pulumi.Input<String> knowledgeBaseUuid;
-  final pulumi.Input<GenaiKnowledgeBaseDataSourceSpacesDataSource>? spacesDataSource;
-  final pulumi.Input<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource>? webCrawlerDataSource;
+  final pulumi.Input<GenaiKnowledgeBaseDataSourceSpacesDataSource?>? spacesDataSource;
+  final pulumi.Input<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource?>? webCrawlerDataSource;
 
   /// Creates a new [GenaiKnowledgeBaseDataSourceArgs].
   /// [knowledgeBaseUuid] UUID of the Knowledge Base

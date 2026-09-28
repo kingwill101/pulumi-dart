@@ -7,53 +7,53 @@ import 'gradientai_custom_model_source_ref.dart';
 /// Input properties used for looking up and filtering GradientaiCustomModel resources.
 class GradientaiCustomModelState {
   /// Whether the caller accepts the model provider's terms and conditions. Write-only.
-  final pulumi.Input<bool>? acceptTermsAndConditions;
+  final pulumi.Input<bool?>? acceptTermsAndConditions;
   /// Active dedicated inference deployments referencing this custom model.
-  final pulumi.Input<List<GradientaiCustomModelActiveDeployment>>? activeDeployments;
+  final pulumi.Input<List<GradientaiCustomModelActiveDeployment>?>? activeDeployments;
   /// Model architecture as reported by the importer.
-  final pulumi.Input<String>? architecture;
+  final pulumi.Input<String?>? architecture;
   /// Maximum context length supported by the model.
-  final pulumi.Input<int>? contextLength;
+  final pulumi.Input<int?>? contextLength;
   /// Estimated monthly cost of running the custom model.
-  final pulumi.Input<int>? costEstimatePerMonth;
+  final pulumi.Input<int?>? costEstimatePerMonth;
   /// Timestamp when the custom model was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Description of the custom model.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Error message if the custom model import failed.
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// Number of files that make up the imported model.
-  final pulumi.Input<int>? fileCount;
+  final pulumi.Input<int?>? fileCount;
   /// Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
-  final pulumi.Input<List<String>>? inputModalities;
+  final pulumi.Input<List<String>?>? inputModalities;
   /// License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
-  final pulumi.Input<String>? license;
+  final pulumi.Input<String?>? license;
   /// A human-readable name for the custom model.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
-  final pulumi.Input<List<String>>? outputModalities;
+  final pulumi.Input<List<String>?>? outputModalities;
   /// Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
-  final pulumi.Input<String>? parameters;
+  final pulumi.Input<String?>? parameters;
   /// Preferred GPU region where the model artifacts should be staged.
-  final pulumi.Input<String>? preferredGpuRegion;
+  final pulumi.Input<String?>? preferredGpuRegion;
   /// Reference to the source from which to import the custom model.
-  final pulumi.Input<GradientaiCustomModelSourceRef>? sourceRef;
+  final pulumi.Input<GradientaiCustomModelSourceRef?>? sourceRef;
   /// Source of the model to import. One of SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET, SOURCE_TYPE_SDK_UPLOAD, SOURCE_TYPE_FINE_TUNING.
-  final pulumi.Input<String>? sourceType;
+  final pulumi.Input<String?>? sourceType;
   /// Current status of the custom model.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Region where the custom model artifacts are stored.
-  final pulumi.Input<String>? storageRegion;
+  final pulumi.Input<String?>? storageRegion;
   /// User-defined tags associated with the custom model.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// ID of the team that owns the custom model.
-  final pulumi.Input<String>? teamId;
+  final pulumi.Input<String?>? teamId;
   /// Total size of the imported model artifacts in bytes.
-  final pulumi.Input<String>? totalSizeBytes;
+  final pulumi.Input<String?>? totalSizeBytes;
   /// Timestamp when the custom model was last updated.
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
   /// UUID of the custom model.
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [GradientaiCustomModelState].
   /// [acceptTermsAndConditions] Whether the caller accepts the model provider's terms and conditions. Write-only.
@@ -141,12 +141,12 @@ class GradientaiCustomModelState {
       acceptTermsAndConditions: (() { final guardedValue = map['acceptTermsAndConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       activeDeployments: (() { final guardedValue = map['activeDeployments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GradientaiCustomModelActiveDeployment>(guardedValue, (value) => GradientaiCustomModelActiveDeployment.fromMap((value as Map).cast<String, dynamic>()))); })(),
       architecture: (() { final guardedValue = map['architecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      contextLength: (() { final guardedValue = map['contextLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      costEstimatePerMonth: (() { final guardedValue = map['costEstimatePerMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      contextLength: (() { final guardedValue = map['contextLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      costEstimatePerMonth: (() { final guardedValue = map['costEstimatePerMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      fileCount: (() { final guardedValue = map['fileCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fileCount: (() { final guardedValue = map['fileCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       inputModalities: (() { final guardedValue = map['inputModalities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       license: (() { final guardedValue = map['license']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

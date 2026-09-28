@@ -4,29 +4,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail {
   /// Agent UUID for the Guardrail
-  final pulumi.Input<String>? agentUuid;
+  final pulumi.Input<String?>? agentUuid;
   /// Created At timestamp for the Guardrail
   final pulumi.Input<String> createdAt;
   /// Default response for the Guardrail
-  final pulumi.Input<String>? defaultResponse;
+  final pulumi.Input<String?>? defaultResponse;
   /// Description of the Guardrail
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Guardrail UUID
-  final pulumi.Input<String>? guardrailUuid;
+  final pulumi.Input<String?>? guardrailUuid;
   /// Indicates if the Guardrail is attached
   final pulumi.Input<bool> isAttached;
   /// Indicates if the Guardrail is default
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// Name of Guardrail
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Priority of the Guardrail
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// Type of the Guardrail
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Updated At timestamp for the Guardrail
   final pulumi.Input<String> updatedAt;
   /// Guardrail UUID
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail].
   /// [agentUuid] Agent UUID for the Guardrail
@@ -83,7 +83,7 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail {
       isAttached: pulumi.Input.fromValue(map['isAttached'] as bool),
       isDefault: (() { final guardedValue = map['isDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),
       uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

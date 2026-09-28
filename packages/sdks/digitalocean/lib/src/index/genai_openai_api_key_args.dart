@@ -11,9 +11,9 @@ class GenaiOpenaiApiKeyArgs {
   /// The OpenAI API key.
   final pulumi.Input<String> apiKey;
   /// Models associated with the OpenAI API key
-  final pulumi.Input<List<GenaiOpenaiApiKeyModel>>? models;
+  final pulumi.Input<List<GenaiOpenaiApiKeyModel>?>? models;
   /// A name for the API key.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GenaiOpenaiApiKeyArgs].
   /// [apiKey] The OpenAI API key.

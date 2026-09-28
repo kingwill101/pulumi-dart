@@ -25,8 +25,8 @@ class GetDropletAutoscaleCurrentUtilization {
 
   factory GetDropletAutoscaleCurrentUtilization.fromMap(Map<String, dynamic> map) {
     return GetDropletAutoscaleCurrentUtilization(
-      cpu: pulumi.Input.fromValue(map['cpu'] as double),
-      memory: pulumi.Input.fromValue(map['memory'] as double),
+      cpu: pulumi.Input.fromValue((map['cpu'] as num).toDouble()),
+      memory: pulumi.Input.fromValue((map['memory'] as num).toDouble()),
     );
   }
 }

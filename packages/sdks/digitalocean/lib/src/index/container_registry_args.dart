@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_container_registry_container_registry_args_doc}
 class ContainerRegistryArgs {
   /// The name of the container_registry
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
   final pulumi.Input<String> subscriptionTierSlug;
 

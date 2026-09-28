@@ -9,8 +9,8 @@ import 'get_gradientai_knowledge_bases_sort.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_get_gradientai_knowledge_bases_get_gradientai_knowledge_bases_args_doc}
 class GetGradientaiKnowledgeBasesArgs {
-  final pulumi.Input<List<GetGradientaiKnowledgeBasesFilter>>? filters;
-  final pulumi.Input<List<GetGradientaiKnowledgeBasesSort>>? sorts;
+  final pulumi.Input<List<GetGradientaiKnowledgeBasesFilter>?>? filters;
+  final pulumi.Input<List<GetGradientaiKnowledgeBasesSort>?>? sorts;
 
   /// Creates a new [GetGradientaiKnowledgeBasesArgs].
   /// [filters] Optional.

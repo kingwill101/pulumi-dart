@@ -9,17 +9,17 @@ import 'dedicated_inference_model_deployment.dart';
 /// {@macro pulumi_index_dedicated_inference_dedicated_inference_args_doc}
 class DedicatedInferenceArgs {
   /// Whether to enable a public HTTPS endpoint for the dedicated inference endpoint. Defaults to `false`. This field is immutable after creation and changing it forces a new resource.
-  final pulumi.Input<bool>? enablePublicEndpoint;
+  final pulumi.Input<bool?>? enablePublicEndpoint;
   /// A HuggingFace token for accessing gated models.
-  final pulumi.Input<String>? huggingFaceToken;
+  final pulumi.Input<String?>? huggingFaceToken;
   /// The list of model deployments to run on the dedicated inference endpoint. Each `modelDeployments` block supports:
   final pulumi.Input<List<DedicatedInferenceModelDeployment>> modelDeployments;
   /// A human-readable name for the dedicated inference endpoint.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The region slug where the dedicated inference endpoint will be deployed. Changing this forces a new resource.
   final pulumi.Input<String> region;
   /// The UUID of the VPC to deploy the dedicated inference endpoint into. Changing this forces a new resource.
-  final pulumi.Input<String>? vpcUuid;
+  final pulumi.Input<String?>? vpcUuid;
 
   /// Creates a new [DedicatedInferenceArgs].
   /// [enablePublicEndpoint] Whether to enable a public HTTPS endpoint for the dedicated inference endpoint. Defaults to `false`. This field is immutable after creation and changing it forces a new resource.

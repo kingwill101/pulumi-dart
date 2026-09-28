@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GradientaiCustomModelSourceRef {
   /// Access type for the source repository. One of ACCESS_TYPE_PUBLIC, ACCESS_TYPE_PRIVATE, ACCESS_TYPE_GATED.
-  final pulumi.Input<String>? accessType;
+  final pulumi.Input<String?>? accessType;
   /// Spaces bucket name for SOURCE_TYPE_SPACES_BUCKET sources.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Commit SHA to pin for the import. If omitted, the API resolves and returns the SHA actually imported.
-  final pulumi.Input<String>? commitSha;
+  final pulumi.Input<String?>? commitSha;
   /// HuggingFace token used to access ACCESS_TYPE_PRIVATE or ACCESS_TYPE_GATED repositories. Write-only.
-  final pulumi.Input<String>? hfToken;
+  final pulumi.Input<String?>? hfToken;
   /// Key prefix inside the source bucket.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Region of the source bucket.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Repository identifier (e.g. the HuggingFace repo). Required for SOURCE_TYPE_HUGGINGFACE sources.
-  final pulumi.Input<String>? repoId;
+  final pulumi.Input<String?>? repoId;
 
   /// Creates a new [GradientaiCustomModelSourceRef].
   /// [accessType] Access type for the source repository. One of ACCESS_TYPE_PUBLIC, ACCESS_TYPE_PRIVATE, ACCESS_TYPE_GATED.
