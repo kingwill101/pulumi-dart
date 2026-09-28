@@ -121,7 +121,7 @@ class Role extends pulumi.CustomResource {
           'mysql:index/role:Role',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.3.2').merge(options),
         ) {
     this.name = registerOutput<String>('name');
   }
@@ -131,11 +131,12 @@ class Role extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RoleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Role._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -149,6 +150,18 @@ class Role extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [Role] resource.
+  Role.reference(String urn)
+    : super(
+        'mysql:index/role:Role',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
   }
 }

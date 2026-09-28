@@ -10,7 +10,7 @@ class DatabaseArgs {
   /// The default character set to use when
   /// a table is created without specifying an explicit character set. Defaults
   /// to "utf8".
-  final pulumi.Input<String>? defaultCharacterSet;
+  final pulumi.Input<String?>? defaultCharacterSet;
   /// The default collation to use when a table
   /// is created without specifying an explicit collation. Defaults to
   /// ``utf8GeneralCi``. Each character set has its own set of collations, so
@@ -22,11 +22,11 @@ class DatabaseArgs {
   /// you wish to use the server's defaults you must consult the server's
   /// configuration and then set the ``defaultCharacterSet`` and
   /// ``defaultCollation`` to match.
-  final pulumi.Input<String>? defaultCollation;
+  final pulumi.Input<String?>? defaultCollation;
   /// The name of the database. This must be unique within
   /// a given MySQL server and may or may not be case-sensitive depending on
   /// the operating system on which the MySQL server is running.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DatabaseArgs].
   /// [defaultCharacterSet] The default character set to use when

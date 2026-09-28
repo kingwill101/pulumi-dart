@@ -581,14 +581,14 @@ class Grant extends pulumi.CustomResource {
           'mysql:index/grant:Grant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.3.2').merge(options),
         ) {
     database = registerOutput<String>('database');
     grant = registerOutput<bool?>('grant');
     host = registerOutput<String?>('host');
-    privileges = registerOutput<List<String>?>('privileges');
+    privileges = registerOutput<List<String>?>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String?>('role');
-    roles = registerOutput<List<String>?>('roles');
+    roles = registerOutput<List<String>?>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     table = registerOutput<String?>('table');
     tlsOption = registerOutput<String?>('tlsOption');
     user = registerOutput<String?>('user');
@@ -599,11 +599,12 @@ class Grant extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GrantState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Grant._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -620,9 +621,29 @@ class Grant extends pulumi.CustomResource {
     database = registerOutput<String>('database');
     grant = registerOutput<bool?>('grant');
     host = registerOutput<String?>('host');
-    privileges = registerOutput<List<String>?>('privileges');
+    privileges = registerOutput<List<String>?>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String?>('role');
-    roles = registerOutput<List<String>?>('roles');
+    roles = registerOutput<List<String>?>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    table = registerOutput<String?>('table');
+    tlsOption = registerOutput<String?>('tlsOption');
+    user = registerOutput<String?>('user');
+  }
+
+  /// Creates a typed reference to an existing [Grant] resource.
+  Grant.reference(String urn)
+    : super(
+        'mysql:index/grant:Grant',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    database = registerOutput<String>('database');
+    grant = registerOutput<bool?>('grant');
+    host = registerOutput<String?>('host');
+    privileges = registerOutput<List<String>?>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    role = registerOutput<String?>('role');
+    roles = registerOutput<List<String>?>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     table = registerOutput<String?>('table');
     tlsOption = registerOutput<String?>('tlsOption');
     user = registerOutput<String?>('user');
