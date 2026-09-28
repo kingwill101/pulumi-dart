@@ -8,7 +8,7 @@ class Clientcert {
   /// The SSL client certificate private key file path. The file must contain PEM encoded data.
   final pulumi.Input<String> key;
   /// Must be set to true if you are inlining the cert/key instead of using a file path.
-  final pulumi.Input<bool>? sslinline;
+  final pulumi.Input<bool?>? sslinline;
 
   /// Creates a new [Clientcert].
   /// [cert] The SSL client certificate file path. The file must contain PEM encoded data.

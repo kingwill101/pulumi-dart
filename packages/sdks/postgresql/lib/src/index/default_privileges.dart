@@ -474,12 +474,12 @@ class DefaultPrivileges extends pulumi.CustomResource {
           'postgresql:index/defaultPrivileges:DefaultPrivileges',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.18.1').merge(options),
         ) {
     database = registerOutput<String>('database');
     objectType = registerOutput<String>('objectType');
     owner = registerOutput<String>('owner');
-    privileges = registerOutput<List<String>>('privileges');
+    privileges = registerOutput<List<String>>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
     schema = registerOutput<String?>('schema');
     withGrantOption = registerOutput<bool?>('withGrantOption');
@@ -490,11 +490,12 @@ class DefaultPrivileges extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefaultPrivilegesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DefaultPrivileges._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -511,7 +512,25 @@ class DefaultPrivileges extends pulumi.CustomResource {
     database = registerOutput<String>('database');
     objectType = registerOutput<String>('objectType');
     owner = registerOutput<String>('owner');
-    privileges = registerOutput<List<String>>('privileges');
+    privileges = registerOutput<List<String>>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    role = registerOutput<String>('role');
+    schema = registerOutput<String?>('schema');
+    withGrantOption = registerOutput<bool?>('withGrantOption');
+  }
+
+  /// Creates a typed reference to an existing [DefaultPrivileges] resource.
+  DefaultPrivileges.reference(String urn)
+    : super(
+        'postgresql:index/defaultPrivileges:DefaultPrivileges',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    database = registerOutput<String>('database');
+    objectType = registerOutput<String>('objectType');
+    owner = registerOutput<String>('owner');
+    privileges = registerOutput<List<String>>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
     schema = registerOutput<String?>('schema');
     withGrantOption = registerOutput<bool?>('withGrantOption');

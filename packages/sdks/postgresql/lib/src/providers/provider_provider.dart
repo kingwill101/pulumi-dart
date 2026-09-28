@@ -47,8 +47,9 @@ class ProviderProvider extends pulumi.ProviderResource {
   }) : super(
           'postgresql',
           name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.Input.mapToInputs((args ?? ProviderArgs()).toMap()),
+          pulumi.CustomResourceOptions(version: '3.18.1').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     awsRdsIamProfile = registerOutput<String?>('awsRdsIamProfile');
     awsRdsIamProviderRoleArn = registerOutput<String?>('awsRdsIamProviderRoleArn');
@@ -59,7 +60,7 @@ class ProviderProvider extends pulumi.ProviderResource {
     expectedVersion = registerOutput<String?>('expectedVersion');
     gcpIamImpersonateServiceAccount = registerOutput<String?>('gcpIamImpersonateServiceAccount');
     host = registerOutput<String?>('host');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     scheme = registerOutput<String?>('scheme');
     sslMode = registerOutput<String?>('sslMode');
     sslmode = registerOutput<String?>('sslmode');

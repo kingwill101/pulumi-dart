@@ -135,7 +135,7 @@ class ReplicationSlot extends pulumi.CustomResource {
           'postgresql:index/replicationSlot:ReplicationSlot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.18.1').merge(options),
         ) {
     database = registerOutput<String>('database');
     this.name = registerOutput<String>('name');
@@ -147,11 +147,12 @@ class ReplicationSlot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReplicationSlotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReplicationSlot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -165,6 +166,20 @@ class ReplicationSlot extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    database = registerOutput<String>('database');
+    this.name = registerOutput<String>('name');
+    plugin = registerOutput<String>('plugin');
+  }
+
+  /// Creates a typed reference to an existing [ReplicationSlot] resource.
+  ReplicationSlot.reference(String urn)
+    : super(
+        'postgresql:index/replicationSlot:ReplicationSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     database = registerOutput<String>('database');
     this.name = registerOutput<String>('name');
     plugin = registerOutput<String>('plugin');

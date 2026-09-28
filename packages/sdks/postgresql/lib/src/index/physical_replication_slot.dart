@@ -122,7 +122,7 @@ class PhysicalReplicationSlot extends pulumi.CustomResource {
           'postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.18.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
   }
@@ -132,11 +132,12 @@ class PhysicalReplicationSlot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PhysicalReplicationSlotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PhysicalReplicationSlot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -150,6 +151,18 @@ class PhysicalReplicationSlot extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [PhysicalReplicationSlot] resource.
+  PhysicalReplicationSlot.reference(String urn)
+    : super(
+        'postgresql:index/physicalReplicationSlot:PhysicalReplicationSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
   }
 }

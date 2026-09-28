@@ -311,9 +311,9 @@ class UserMapping extends pulumi.CustomResource {
           'postgresql:index/userMapping:UserMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.18.1').merge(options),
         ) {
-    this.options = registerOutput<Map<String, String>?>('options');
+    this.options = registerOutput<Map<String, String>?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     serverName = registerOutput<String>('serverName');
     userName = registerOutput<String>('userName');
   }
@@ -323,11 +323,12 @@ class UserMapping extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserMappingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserMapping._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -341,7 +342,21 @@ class UserMapping extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.options = registerOutput<Map<String, String>?>('options');
+    this.options = registerOutput<Map<String, String>?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    serverName = registerOutput<String>('serverName');
+    userName = registerOutput<String>('userName');
+  }
+
+  /// Creates a typed reference to an existing [UserMapping] resource.
+  UserMapping.reference(String urn)
+    : super(
+        'postgresql:index/userMapping:UserMapping',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    this.options = registerOutput<Map<String, String>?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     serverName = registerOutput<String>('serverName');
     userName = registerOutput<String>('userName');
   }

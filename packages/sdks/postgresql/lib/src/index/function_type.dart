@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'function_arg.dart';
 import 'function_args.dart';
 import 'function_state.dart';
 
@@ -194,7 +195,7 @@ import 'function_state.dart';
 /// populated as a result of the command.
 class FunctionType extends pulumi.CustomResource {
   /// List of arguments for the function.
-  late final pulumi.Output<List<Map<String, dynamic>>?> args;
+  late final pulumi.Output<List<FunctionArg>?> args;
   /// Function body.
   /// This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
   late final pulumi.Output<String> body;
@@ -234,9 +235,9 @@ class FunctionType extends pulumi.CustomResource {
           'postgresql:index/function:Function',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.18.1').merge(options),
         ) {
-    this.args = registerOutput<List<Map<String, dynamic>>?>('args');
+    this.args = registerOutput<List<FunctionArg>?>('args', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionArg>(guardedValue, (value) => FunctionArg.fromMap((value as Map).cast<String, dynamic>())); });
     body = registerOutput<String>('body');
     database = registerOutput<String>('database');
     dropCascade = registerOutput<bool?>('dropCascade');
@@ -255,11 +256,12 @@ class FunctionType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FunctionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FunctionType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -273,7 +275,30 @@ class FunctionType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    args = registerOutput<List<Map<String, dynamic>>?>('args');
+    args = registerOutput<List<FunctionArg>?>('args', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionArg>(guardedValue, (value) => FunctionArg.fromMap((value as Map).cast<String, dynamic>())); });
+    body = registerOutput<String>('body');
+    database = registerOutput<String>('database');
+    dropCascade = registerOutput<bool?>('dropCascade');
+    language = registerOutput<String?>('language');
+    this.name = registerOutput<String>('name');
+    parallel = registerOutput<String?>('parallel');
+    returns = registerOutput<String>('returns');
+    schema = registerOutput<String>('schema');
+    securityDefiner = registerOutput<bool?>('securityDefiner');
+    strict = registerOutput<bool?>('strict');
+    volatility = registerOutput<String?>('volatility');
+  }
+
+  /// Creates a typed reference to an existing [FunctionType] resource.
+  FunctionType.reference(String urn)
+    : super(
+        'postgresql:index/function:Function',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    this.args = registerOutput<List<FunctionArg>?>('args', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionArg>(guardedValue, (value) => FunctionArg.fromMap((value as Map).cast<String, dynamic>())); });
     body = registerOutput<String>('body');
     database = registerOutput<String>('database');
     dropCascade = registerOutput<bool?>('dropCascade');

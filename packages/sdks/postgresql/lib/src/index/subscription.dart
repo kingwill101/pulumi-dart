@@ -157,13 +157,14 @@ class Subscription extends pulumi.CustomResource {
           'postgresql:index/subscription:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.18.1').merge(options),
+          additionalSecretOutputs: const ['conninfo'],
         ) {
-    conninfo = registerOutput<String>('conninfo');
+    conninfo = registerOutput<String>('conninfo', isSecret: true);
     createSlot = registerOutput<bool?>('createSlot');
     database = registerOutput<String>('database');
     this.name = registerOutput<String>('name');
-    publications = registerOutput<List<String>>('publications');
+    publications = registerOutput<List<String>>('publications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     slotName = registerOutput<String?>('slotName');
   }
 
@@ -172,11 +173,12 @@ class Subscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Subscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -190,11 +192,29 @@ class Subscription extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    conninfo = registerOutput<String>('conninfo');
+    conninfo = registerOutput<String>('conninfo', isSecret: true);
     createSlot = registerOutput<bool?>('createSlot');
     database = registerOutput<String>('database');
     this.name = registerOutput<String>('name');
-    publications = registerOutput<List<String>>('publications');
+    publications = registerOutput<List<String>>('publications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    slotName = registerOutput<String?>('slotName');
+  }
+
+  /// Creates a typed reference to an existing [Subscription] resource.
+  Subscription.reference(String urn)
+    : super(
+        'postgresql:index/subscription:Subscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['conninfo'],
+        isResourceReference: true,
+      ) {
+    conninfo = registerOutput<String>('conninfo', isSecret: true);
+    createSlot = registerOutput<bool?>('createSlot');
+    database = registerOutput<String>('database');
+    this.name = registerOutput<String>('name');
+    publications = registerOutput<List<String>>('publications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     slotName = registerOutput<String?>('slotName');
   }
 }

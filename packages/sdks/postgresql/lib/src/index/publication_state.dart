@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Publication resources.
 class PublicationState {
   /// Should be ALL TABLES added to the publication. Defaults to 'false'
-  final pulumi.Input<bool>? allTables;
+  final pulumi.Input<bool?>? allTables;
   /// Which database to create the publication on. Defaults to provider database.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// Should all subsequent resources of the publication be dropped. Defaults to 'false'
-  final pulumi.Input<bool>? dropCascade;
+  final pulumi.Input<bool?>? dropCascade;
   /// The name of the publication.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Who owns the publication. Defaults to provider user.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// Which 'publish' options should be turned on. Default to 'insert','update','delete'
-  final pulumi.Input<List<String>>? publishParams;
+  final pulumi.Input<List<String>?>? publishParams;
   /// Should be option 'publish_via_partition_root' be turned on. Default to 'false'
-  final pulumi.Input<bool>? publishViaPartitionRootParam;
+  final pulumi.Input<bool?>? publishViaPartitionRootParam;
   /// Which tables add to the publication. By defaults no tables added. Format of table is `&lt;schema_name&gt;.&lt;table_name&gt;`. If `&lt;schema_name&gt;` is not specified - default database schema will be used.  Table string must be listed in alphabetical order.
-  final pulumi.Input<List<String>>? tables;
+  final pulumi.Input<List<String>?>? tables;
 
   /// Creates a new [PublicationState].
   /// [allTables] Should be ALL TABLES added to the publication. Defaults to 'false'

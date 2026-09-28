@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ReplicationSlot resources.
 class ReplicationSlotState {
   /// Which database to create the replication slot on. Defaults to provider database.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The name of the replication slot.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Sets the output plugin.
-  final pulumi.Input<String>? plugin;
+  final pulumi.Input<String?>? plugin;
 
   /// Creates a new [ReplicationSlotState].
   /// [database] Which database to create the replication slot on. Defaults to provider database.

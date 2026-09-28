@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SchemaPolicy {
   /// Should the specified ROLE have CREATE privileges to the specified SCHEMA.
-  final pulumi.Input<bool>? create;
+  final pulumi.Input<bool?>? create;
   /// Should the specified ROLE have CREATE privileges to the specified SCHEMA and the ability to GRANT the CREATE privilege to other ROLEs.
-  final pulumi.Input<bool>? createWithGrant;
+  final pulumi.Input<bool?>? createWithGrant;
   /// The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// Should the specified ROLE have USAGE privileges to the specified SCHEMA.
-  final pulumi.Input<bool>? usage;
+  final pulumi.Input<bool?>? usage;
   /// Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
   ///
   /// &gt; **NOTE on `policy`:** The permissions of a role specified in multiple policy blocks is cumulative.  For example, if the same role is specified in two different `policy` each with different permissions (e.g. `create` and `usageWithGrant`, respectively), then the specified role with have both `create` and `usageWithGrant` privileges.
-  final pulumi.Input<bool>? usageWithGrant;
+  final pulumi.Input<bool?>? usageWithGrant;
 
   /// Creates a new [SchemaPolicy].
   /// [create] Should the specified ROLE have CREATE privileges to the specified SCHEMA.

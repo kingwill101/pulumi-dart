@@ -169,16 +169,16 @@ class Publication extends pulumi.CustomResource {
           'postgresql:index/publication:Publication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.18.1').merge(options),
         ) {
     allTables = registerOutput<bool>('allTables');
     database = registerOutput<String>('database');
     dropCascade = registerOutput<bool?>('dropCascade');
     this.name = registerOutput<String>('name');
     owner = registerOutput<String>('owner');
-    publishParams = registerOutput<List<String>>('publishParams');
+    publishParams = registerOutput<List<String>>('publishParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     publishViaPartitionRootParam = registerOutput<bool?>('publishViaPartitionRootParam');
-    tables = registerOutput<List<String>>('tables');
+    tables = registerOutput<List<String>>('tables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Publication] resource's state with the given [name] and [id].
@@ -186,11 +186,12 @@ class Publication extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PublicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Publication._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -209,8 +210,27 @@ class Publication extends pulumi.CustomResource {
     dropCascade = registerOutput<bool?>('dropCascade');
     this.name = registerOutput<String>('name');
     owner = registerOutput<String>('owner');
-    publishParams = registerOutput<List<String>>('publishParams');
+    publishParams = registerOutput<List<String>>('publishParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     publishViaPartitionRootParam = registerOutput<bool?>('publishViaPartitionRootParam');
-    tables = registerOutput<List<String>>('tables');
+    tables = registerOutput<List<String>>('tables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Publication] resource.
+  Publication.reference(String urn)
+    : super(
+        'postgresql:index/publication:Publication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allTables = registerOutput<bool>('allTables');
+    database = registerOutput<String>('database');
+    dropCascade = registerOutput<bool?>('dropCascade');
+    this.name = registerOutput<String>('name');
+    owner = registerOutput<String>('owner');
+    publishParams = registerOutput<List<String>>('publishParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    publishViaPartitionRootParam = registerOutput<bool?>('publishViaPartitionRootParam');
+    tables = registerOutput<List<String>>('tables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

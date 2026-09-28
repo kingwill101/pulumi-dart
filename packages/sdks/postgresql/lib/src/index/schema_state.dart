@@ -6,19 +6,19 @@ import 'schema_policy.dart';
 /// Input properties used for looking up and filtering Schema resources.
 class SchemaState {
   /// The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// When true, will also drop all the objects that are contained in the schema. (Default: false)
-  final pulumi.Input<bool>? dropCascade;
+  final pulumi.Input<bool?>? dropCascade;
   /// When true, use the existing schema if it exists. (Default: true)
-  final pulumi.Input<bool>? ifNotExists;
+  final pulumi.Input<bool?>? ifNotExists;
   /// The name of the schema. Must be unique in the PostgreSQL
   /// database instance where it is configured.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ROLE who owns the schema.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// Can be specified multiple times for each policy.  Each
   /// policy block supports fields documented below.
-  final pulumi.Input<List<SchemaPolicy>>? policies;
+  final pulumi.Input<List<SchemaPolicy>?>? policies;
 
   /// Creates a new [SchemaState].
   /// [database] The DATABASE in which where this schema will be created. (Default: The database used by your `provider` configuration)
