@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Predefined AMI types for EKS optimized AMIs. Can be used to select the latest EKS optimized AMI for a node group.
-enum AmiType {
+enum AmiType implements pulumi.PulumiEnum<String> {
   aL2X8664("AL2_x86_64"),
   aL2X8664GPU("AL2_x86_64_GPU"),
   aL2Arm64("AL2_ARM_64"),
@@ -12,6 +14,7 @@ enum AmiType {
   bottlerocketX8664Nvidia("BOTTLEROCKET_x86_64_NVIDIA");
 
   const AmiType(this.wireValue);
+  @override
   final String wireValue;
 
   static AmiType fromValue(String value) {

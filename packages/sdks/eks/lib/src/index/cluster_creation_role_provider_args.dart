@@ -7,8 +7,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_cluster_creation_role_provider_args_doc}
 class ClusterCreationRoleProviderArgs {
-  final pulumi.Input<String>? profile;
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? profile;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ClusterCreationRoleProviderArgs].
   /// [profile] Optional.
