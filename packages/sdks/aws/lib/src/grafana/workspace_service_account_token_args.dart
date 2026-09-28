@@ -46,7 +46,7 @@ class WorkspaceServiceAccountTokenArgs {
     return WorkspaceServiceAccountTokenArgs(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      secondsToLive: pulumi.Input.fromValue((map['secondsToLive'] as num).toInt()),
+      secondsToLive: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['secondsToLive'])),
       serviceAccountId: pulumi.Input.fromValue(map['serviceAccountId'] as String),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );

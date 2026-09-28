@@ -25,8 +25,8 @@ class FilterFilterCriteriaPortRange {
 
   factory FilterFilterCriteriaPortRange.fromMap(Map<String, dynamic> map) {
     return FilterFilterCriteriaPortRange(
-      beginInclusive: pulumi.Input.fromValue((map['beginInclusive'] as num).toInt()),
-      endInclusive: pulumi.Input.fromValue((map['endInclusive'] as num).toInt()),
+      beginInclusive: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['beginInclusive'])),
+      endInclusive: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['endInclusive'])),
     );
   }
 }

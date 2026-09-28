@@ -31,7 +31,7 @@ class CapacityProviderCapacityProviderScalingConfig {
 
   factory CapacityProviderCapacityProviderScalingConfig.fromMap(Map<String, dynamic> map) {
     return CapacityProviderCapacityProviderScalingConfig(
-      maxVcpuCount: pulumi.Input.fromValue((map['maxVcpuCount'] as num).toInt()),
+      maxVcpuCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxVcpuCount'])),
       scalingMode: pulumi.Input.fromValue(map['scalingMode'] as String),
       scalingPolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<CapacityProviderCapacityProviderScalingConfigScalingPolicy>(map['scalingPolicies']!, (value) => CapacityProviderCapacityProviderScalingConfigScalingPolicy.fromMap((value as Map).cast<String, dynamic>()))),
     );

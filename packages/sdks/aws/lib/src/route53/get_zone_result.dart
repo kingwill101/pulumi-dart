@@ -100,7 +100,7 @@ class GetZoneResult {
       nameServers: (() { final guardedValue = map['nameServers']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       primaryNameServer: (() { final guardedValue = map['primaryNameServer']; if (guardedValue == null) return null; return guardedValue as String; })(),
       privateZone: (() { final guardedValue = map['privateZone']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      resourceRecordSetCount: (() { final guardedValue = map['resourceRecordSetCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      resourceRecordSetCount: (() { final guardedValue = map['resourceRecordSetCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       zoneId: (() { final guardedValue = map['zoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),

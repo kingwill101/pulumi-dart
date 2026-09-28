@@ -104,7 +104,7 @@ class GetFleetResult {
   factory GetFleetResult.fromMap(Map<String, dynamic> map) {
     return GetFleetResult(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      baseCapacity: (() { final guardedValue = map['baseCapacity']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      baseCapacity: (() { final guardedValue = map['baseCapacity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       computeConfigurations: (() { final guardedValue = map['computeConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFleetComputeConfiguration>(guardedValue, (value) => GetFleetComputeConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),
       computeType: (() { final guardedValue = map['computeType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return guardedValue as String; })(),

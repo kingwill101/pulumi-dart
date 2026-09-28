@@ -73,7 +73,7 @@ class QueueArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hoursOfOperationId: pulumi.Input.fromValue(map['hoursOfOperationId'] as String),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
-      maxContacts: (() { final guardedValue = map['maxContacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxContacts: (() { final guardedValue = map['maxContacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       outboundCallerConfig: (() { final guardedValue = map['outboundCallerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QueueOutboundCallerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       quickConnectIds: (() { final guardedValue = map['quickConnectIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

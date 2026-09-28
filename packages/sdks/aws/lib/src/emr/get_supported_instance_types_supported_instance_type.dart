@@ -77,10 +77,10 @@ class GetSupportedInstanceTypesSupportedInstanceType {
       instanceFamilyId: pulumi.Input.fromValue(map['instanceFamilyId'] as String),
       is64BitsOnly: pulumi.Input.fromValue(map['is64BitsOnly'] as bool),
       memoryGb: pulumi.Input.fromValue((map['memoryGb'] as num).toDouble()),
-      numberOfDisks: pulumi.Input.fromValue((map['numberOfDisks'] as num).toInt()),
-      storageGb: pulumi.Input.fromValue((map['storageGb'] as num).toInt()),
+      numberOfDisks: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfDisks'])),
+      storageGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['storageGb'])),
       type: pulumi.Input.fromValue(map['type'] as String),
-      vcpu: pulumi.Input.fromValue((map['vcpu'] as num).toInt()),
+      vcpu: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vcpu'])),
     );
   }
 }

@@ -19,7 +19,7 @@ class GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout {
 
   factory GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout(
-      tcpIdleTimeoutSeconds: pulumi.Input.fromValue((map['tcpIdleTimeoutSeconds'] as num).toInt()),
+      tcpIdleTimeoutSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tcpIdleTimeoutSeconds'])),
     );
   }
 }

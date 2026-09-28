@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetFilterExpressionAndAndTags {
-  /// (Optional) The cost category key to filter on.
+  /// Tag key to filter on.
   final pulumi.Input<String?>? key;
-  /// (Optional) The match options for the cost category filter. Valid values are `EQUALS`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `GREATER_THAN_OR_EQUAL`, `CASE_SENSITIVE`, `CASE_INSENSITIVE`. Note: `ABSENT` is not supported due to AWS API contradictions (it requires values to be absent but also cannot have values set).
+  /// Match options for the tag filter. Valid values are `EQUALS`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `GREATER_THAN_OR_EQUAL`, `CASE_SENSITIVE`, `CASE_INSENSITIVE`. Note: `ABSENT` is not supported due to AWS API contradictions (it requires values to be absent but also cannot have values set).
   final pulumi.Input<List<String>?>? matchOptions;
-  /// (Optional) A list of cost category values to match. At least one value is required.
+  /// List of tag values to match. At least one value is required.
   final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [BudgetFilterExpressionAndAndTags].
-  /// [key] (Optional) The cost category key to filter on.
-  /// [matchOptions] (Optional) The match options for the cost category filter. Valid values are `EQUALS`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `GREATER_THAN_OR_EQUAL`, `CASE_SENSITIVE`, `CASE_INSENSITIVE`. Note: `ABSENT` is not supported due to AWS API contradictions (it requires values to be absent but also cannot have values set).
-  /// [values] (Optional) A list of cost category values to match. At least one value is required.
+  /// [key] Tag key to filter on.
+  /// [matchOptions] Match options for the tag filter. Valid values are `EQUALS`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `GREATER_THAN_OR_EQUAL`, `CASE_SENSITIVE`, `CASE_INSENSITIVE`. Note: `ABSENT` is not supported due to AWS API contradictions (it requires values to be absent but also cannot have values set).
+  /// [values] List of tag values to match. At least one value is required.
   const BudgetFilterExpressionAndAndTags({
     this.key,
     this.matchOptions,

@@ -46,10 +46,10 @@ class GetGroupMixedInstancesPolicyInstancesDistribution {
   factory GetGroupMixedInstancesPolicyInstancesDistribution.fromMap(Map<String, dynamic> map) {
     return GetGroupMixedInstancesPolicyInstancesDistribution(
       onDemandAllocationStrategy: pulumi.Input.fromValue(map['onDemandAllocationStrategy'] as String),
-      onDemandBaseCapacity: pulumi.Input.fromValue((map['onDemandBaseCapacity'] as num).toInt()),
-      onDemandPercentageAboveBaseCapacity: pulumi.Input.fromValue((map['onDemandPercentageAboveBaseCapacity'] as num).toInt()),
+      onDemandBaseCapacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['onDemandBaseCapacity'])),
+      onDemandPercentageAboveBaseCapacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['onDemandPercentageAboveBaseCapacity'])),
       spotAllocationStrategy: pulumi.Input.fromValue(map['spotAllocationStrategy'] as String),
-      spotInstancePools: pulumi.Input.fromValue((map['spotInstancePools'] as num).toInt()),
+      spotInstancePools: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['spotInstancePools'])),
       spotMaxPrice: pulumi.Input.fromValue(map['spotMaxPrice'] as String),
     );
   }

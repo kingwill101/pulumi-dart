@@ -7,23 +7,23 @@ import 'agentcore_gateway_target_credential_provider_configuration_gateway_iam_r
 import 'agentcore_gateway_target_credential_provider_configuration_oauth.dart';
 
 class AgentcoreGatewayTargetCredentialProviderConfiguration {
-  /// API key-based authentication configuration. See `apiKey` below.
+  /// API key-based authentication configuration. See `apiKey` Block below.
   final pulumi.Input<AgentcoreGatewayTargetCredentialProviderConfigurationApiKey?>? apiKey;
-  /// Caller IAM credentials-based authentication configuration. See `callerIamCredentials` below.
+  /// Caller IAM credentials-based authentication configuration. See `callerIamCredentials` Block below.
   final pulumi.Input<AgentcoreGatewayTargetCredentialProviderConfigurationCallerIamCredentials?>? callerIamCredentials;
-  /// Use the gateway's IAM role for authentication. See `gatewayIamRole` below.
+  /// Use the gateway's IAM role for authentication. See `gatewayIamRole` Block below.
   final pulumi.Input<AgentcoreGatewayTargetCredentialProviderConfigurationGatewayIamRole?>? gatewayIamRole;
   /// JWT passthrough-based authentication configuration. This is an empty configuration block.
   final pulumi.Input<Map<String, dynamic>?>? jwtPassthrough;
-  /// OAuth-based authentication configuration. See `oauth` below.
+  /// OAuth-based authentication configuration. See `oauth` Block below.
   final pulumi.Input<AgentcoreGatewayTargetCredentialProviderConfigurationOauth?>? oauth;
 
   /// Creates a new [AgentcoreGatewayTargetCredentialProviderConfiguration].
-  /// [apiKey] API key-based authentication configuration. See `apiKey` below.
-  /// [callerIamCredentials] Caller IAM credentials-based authentication configuration. See `callerIamCredentials` below.
-  /// [gatewayIamRole] Use the gateway's IAM role for authentication. See `gatewayIamRole` below.
+  /// [apiKey] API key-based authentication configuration. See `apiKey` Block below.
+  /// [callerIamCredentials] Caller IAM credentials-based authentication configuration. See `callerIamCredentials` Block below.
+  /// [gatewayIamRole] Use the gateway's IAM role for authentication. See `gatewayIamRole` Block below.
   /// [jwtPassthrough] JWT passthrough-based authentication configuration. This is an empty configuration block.
-  /// [oauth] OAuth-based authentication configuration. See `oauth` below.
+  /// [oauth] OAuth-based authentication configuration. See `oauth` Block below.
   const AgentcoreGatewayTargetCredentialProviderConfiguration({
     this.apiKey,
     this.callerIamCredentials,

@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_budget_auto_adjust_data_historical_option.dart';
 
 class GetBudgetAutoAdjustData {
-  /// (Required) - The string that defines whether your budget auto-adjusts based on historical or forecasted data. Valid values: `FORECAST`,`HISTORICAL`.
+  /// String that defines whether the budget auto-adjusts based on historical or forecasted data. Valid values: `FORECAST`, `HISTORICAL`.
   final pulumi.Input<String> autoAdjustType;
-  /// (Optional) - Configuration block of Historical Options. Required for `autoAdjustType` of `HISTORICAL` Configuration block that defines the historical data that your auto-adjusting budget is based on.
+  /// Historical data that the auto-adjusting budget is based on. See `historicalOptions` Block for details.
   final pulumi.Input<List<GetBudgetAutoAdjustDataHistoricalOption>> historicalOptions;
-  /// (Optional) - The last time that your budget was auto-adjusted.
+  /// Last time that the budget was auto-adjusted.
   final pulumi.Input<String> lastAutoAdjustTime;
 
   /// Creates a new [GetBudgetAutoAdjustData].
-  /// [autoAdjustType] (Required) - The string that defines whether your budget auto-adjusts based on historical or forecasted data. Valid values: `FORECAST`,`HISTORICAL`.
-  /// [historicalOptions] (Optional) - Configuration block of Historical Options. Required for `autoAdjustType` of `HISTORICAL` Configuration block that defines the historical data that your auto-adjusting budget is based on.
-  /// [lastAutoAdjustTime] (Optional) - The last time that your budget was auto-adjusted.
+  /// [autoAdjustType] String that defines whether the budget auto-adjusts based on historical or forecasted data. Valid values: `FORECAST`, `HISTORICAL`.
+  /// [historicalOptions] Historical data that the auto-adjusting budget is based on. See `historicalOptions` Block for details.
+  /// [lastAutoAdjustTime] Last time that the budget was auto-adjusted.
   const GetBudgetAutoAdjustData({
     required this.autoAdjustType,
     required this.historicalOptions,

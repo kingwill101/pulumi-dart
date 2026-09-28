@@ -3,15 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBudgetCostFilter {
-  /// The name of a budget. Unique within accounts.
+  /// Name of the budget. Unique within an account.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> name;
+  /// Values of the cost filter.
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetBudgetCostFilter].
-  /// [name] The name of a budget. Unique within accounts.
-  /// [values] Required.
+  /// [name] Name of the budget. Unique within an account.
+  /// [values] Values of the cost filter.
   const GetBudgetCostFilter({
     required this.name,
     required this.values,

@@ -133,7 +133,7 @@ class GetSavingsPlanResult {
       start: (() { final guardedValue = map['start']; if (guardedValue == null) return null; return guardedValue as String; })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      termDurationInSeconds: (() { final guardedValue = map['termDurationInSeconds']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      termDurationInSeconds: (() { final guardedValue = map['termDurationInSeconds']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       upfrontPaymentAmount: (() { final guardedValue = map['upfrontPaymentAmount']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

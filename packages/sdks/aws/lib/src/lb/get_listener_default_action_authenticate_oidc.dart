@@ -67,7 +67,7 @@ class GetListenerDefaultActionAuthenticateOidc {
       onUnauthenticatedRequest: pulumi.Input.fromValue(map['onUnauthenticatedRequest'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),
       sessionCookieName: pulumi.Input.fromValue(map['sessionCookieName'] as String),
-      sessionTimeout: pulumi.Input.fromValue((map['sessionTimeout'] as num).toInt()),
+      sessionTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sessionTimeout'])),
       tokenEndpoint: pulumi.Input.fromValue(map['tokenEndpoint'] as String),
       userInfoEndpoint: pulumi.Input.fromValue(map['userInfoEndpoint'] as String),
     );

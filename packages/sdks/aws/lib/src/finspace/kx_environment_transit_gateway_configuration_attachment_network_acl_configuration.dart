@@ -52,7 +52,7 @@ class KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration 
       portRange: (() { final guardedValue = map['portRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       ruleAction: pulumi.Input.fromValue(map['ruleAction'] as String),
-      ruleNumber: pulumi.Input.fromValue((map['ruleNumber'] as num).toInt()),
+      ruleNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ruleNumber'])),
     );
   }
 }

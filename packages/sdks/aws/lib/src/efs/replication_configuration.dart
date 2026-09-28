@@ -448,10 +448,22 @@ import 'replication_configuration_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) ID of the file system.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import EFS Replication Configurations using the file system ID of either the source or destination file system. When importing, the `availabilityZoneName` and `kmsKeyId` attributes must **not** be set in the configuration. The AWS API does not return these values when querying the replication configuration and their presence will therefore show as a diff in a subsequent plan. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:efs/replicationConfiguration:ReplicationConfiguration example fs-id
+/// $ pulumi import aws:efs/replicationConfiguration:ReplicationConfiguration example fs-6fa144c6
 /// ```
 class ReplicationConfiguration extends pulumi.CustomResource {
   /// When the replication configuration was created.
@@ -483,7 +495,7 @@ class ReplicationConfiguration extends pulumi.CustomResource {
           'aws:efs/replicationConfiguration:ReplicationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     destination = registerOutput<ReplicationConfigurationDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationConfigurationDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });

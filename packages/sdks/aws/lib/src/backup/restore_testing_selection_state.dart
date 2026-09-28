@@ -5,35 +5,35 @@ import 'restore_testing_selection_protected_resource_conditions.dart';
 
 /// Input properties used for looking up and filtering RestoreTestingSelection resources.
 class RestoreTestingSelectionState {
-  /// The ARN of the IAM role.
+  /// ARN of the IAM role.
   final pulumi.Input<String?>? iamRoleArn;
-  /// The name of the backup restore testing selection.
+  /// Name of the backup restore testing selection.
   final pulumi.Input<String?>? name;
-  /// The ARNs for the protected resources.
+  /// ARNs for the protected resources.
   final pulumi.Input<List<String>?>? protectedResourceArns;
-  /// The conditions for the protected resource.
+  /// Conditions for the protected resource. See `protectedResourceConditions` below.
   final pulumi.Input<RestoreTestingSelectionProtectedResourceConditions?>? protectedResourceConditions;
-  /// The type of the protected resource.
+  /// Type of the protected resource.
   final pulumi.Input<String?>? protectedResourceType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// Override certain restore metadata keys. See the complete list of [restore testing inferred metadata](https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html) .
   final pulumi.Input<Map<String, String>?>? restoreMetadataOverrides;
-  /// The name of the restore testing plan.
+  /// Name of the restore testing plan.
   final pulumi.Input<String?>? restoreTestingPlanName;
-  /// The amount of hours available to run a validation script on the data. Valid range is `1` to `168`.
+  /// Amount of hours available to run a validation script on the data. Valid range is `1` to `168`.
   final pulumi.Input<int?>? validationWindowHours;
 
   /// Creates a new [RestoreTestingSelectionState].
-  /// [iamRoleArn] The ARN of the IAM role.
-  /// [name] The name of the backup restore testing selection.
-  /// [protectedResourceArns] The ARNs for the protected resources.
-  /// [protectedResourceConditions] The conditions for the protected resource.
-  /// [protectedResourceType] The type of the protected resource.
+  /// [iamRoleArn] ARN of the IAM role.
+  /// [name] Name of the backup restore testing selection.
+  /// [protectedResourceArns] ARNs for the protected resources.
+  /// [protectedResourceConditions] Conditions for the protected resource. See `protectedResourceConditions` below.
+  /// [protectedResourceType] Type of the protected resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restoreMetadataOverrides] Override certain restore metadata keys. See the complete list of [restore testing inferred metadata](https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html) .
-  /// [restoreTestingPlanName] The name of the restore testing plan.
-  /// [validationWindowHours] The amount of hours available to run a validation script on the data. Valid range is `1` to `168`.
+  /// [restoreTestingPlanName] Name of the restore testing plan.
+  /// [validationWindowHours] Amount of hours available to run a validation script on the data. Valid range is `1` to `168`.
   const RestoreTestingSelectionState({
     this.iamRoleArn,
     this.name,
@@ -70,7 +70,7 @@ class RestoreTestingSelectionState {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       restoreMetadataOverrides: (() { final guardedValue = map['restoreMetadataOverrides']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       restoreTestingPlanName: (() { final guardedValue = map['restoreTestingPlanName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      validationWindowHours: (() { final guardedValue = map['validationWindowHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      validationWindowHours: (() { final guardedValue = map['validationWindowHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

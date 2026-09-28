@@ -80,6 +80,8 @@ class ProviderEndpoint {
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? bedrockagentcore;
   /// Use this to override the default service endpoint URL
+  final pulumi.Input<String?>? bedrockruntime;
+  /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? billing;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? budgets;
@@ -683,6 +685,7 @@ class ProviderEndpoint {
   /// [bedrock] Use this to override the default service endpoint URL
   /// [bedrockagent] Use this to override the default service endpoint URL
   /// [bedrockagentcore] Use this to override the default service endpoint URL
+  /// [bedrockruntime] Use this to override the default service endpoint URL
   /// [billing] Use this to override the default service endpoint URL
   /// [budgets] Use this to override the default service endpoint URL
   /// [ce] Use this to override the default service endpoint URL
@@ -1004,6 +1007,7 @@ class ProviderEndpoint {
     this.bedrock,
     this.bedrockagent,
     this.bedrockagentcore,
+    this.bedrockruntime,
     this.billing,
     this.budgets,
     this.ce,
@@ -1328,6 +1332,7 @@ class ProviderEndpoint {
       'bedrock': ?bedrock,
       'bedrockagent': ?bedrockagent,
       'bedrockagentcore': ?bedrockagentcore,
+      'bedrockruntime': ?bedrockruntime,
       'billing': ?billing,
       'budgets': ?budgets,
       'ce': ?ce,
@@ -1653,6 +1658,7 @@ class ProviderEndpoint {
       bedrock: (() { final guardedValue = map['bedrock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bedrockagent: (() { final guardedValue = map['bedrockagent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bedrockagentcore: (() { final guardedValue = map['bedrockagentcore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bedrockruntime: (() { final guardedValue = map['bedrockruntime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       billing: (() { final guardedValue = map['billing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       budgets: (() { final guardedValue = map['budgets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ce: (() { final guardedValue = map['ce']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

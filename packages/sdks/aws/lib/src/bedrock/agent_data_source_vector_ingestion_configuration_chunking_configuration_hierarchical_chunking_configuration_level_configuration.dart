@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration {
-  /// The maximum number of tokens that a chunk can contain in this layer.
+  /// Maximum number of tokens that a chunk can contain in this layer.
   final pulumi.Input<int> maxTokens;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration].
-  /// [maxTokens] The maximum number of tokens that a chunk can contain in this layer.
+  /// [maxTokens] Maximum number of tokens that a chunk can contain in this layer.
   const AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration({
     required this.maxTokens,
   });
@@ -20,7 +20,7 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchic
 
   factory AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration(
-      maxTokens: pulumi.Input.fromValue((map['maxTokens'] as num).toInt()),
+      maxTokens: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxTokens'])),
     );
   }
 }

@@ -73,7 +73,7 @@ class AuthorizerState {
     return AuthorizerState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       authorizerCredentials: (() { final guardedValue = map['authorizerCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      authorizerResultTtlInSeconds: (() { final guardedValue = map['authorizerResultTtlInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      authorizerResultTtlInSeconds: (() { final guardedValue = map['authorizerResultTtlInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       authorizerUri: (() { final guardedValue = map['authorizerUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identitySource: (() { final guardedValue = map['identitySource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identityValidationExpression: (() { final guardedValue = map['identityValidationExpression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

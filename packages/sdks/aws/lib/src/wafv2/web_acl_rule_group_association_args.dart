@@ -71,7 +71,7 @@ class WebAclRuleGroupAssociationArgs {
     return WebAclRuleGroupAssociationArgs(
       managedRuleGroup: (() { final guardedValue = map['managedRuleGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleGroupAssociationManagedRuleGroup.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       overrideAction: (() { final guardedValue = map['overrideAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleGroupReference: (() { final guardedValue = map['ruleGroupReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleGroupAssociationRuleGroupReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ruleName: pulumi.Input.fromValue(map['ruleName'] as String),

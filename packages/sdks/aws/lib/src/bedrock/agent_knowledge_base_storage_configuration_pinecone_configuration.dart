@@ -8,7 +8,7 @@ class AgentKnowledgeBaseStorageConfigurationPineconeConfiguration {
   final pulumi.Input<String> connectionString;
   /// ARN of the secret that you created in AWS Secrets Manager that is linked to your Pinecone API key.
   final pulumi.Input<String> credentialsSecretArn;
-  /// The names of the fields to which to map information about the vector store. This block supports the following arguments:
+  /// Names of the fields to which to map information about the vector store. See `storage_configuration.pinecone_configuration.field_mapping` Block for details.
   final pulumi.Input<AgentKnowledgeBaseStorageConfigurationPineconeConfigurationFieldMapping> fieldMapping;
   /// Namespace to be used to write new data to your database.
   final pulumi.Input<String?>? namespace;
@@ -16,7 +16,7 @@ class AgentKnowledgeBaseStorageConfigurationPineconeConfiguration {
   /// Creates a new [AgentKnowledgeBaseStorageConfigurationPineconeConfiguration].
   /// [connectionString] Endpoint URL for your index management page.
   /// [credentialsSecretArn] ARN of the secret that you created in AWS Secrets Manager that is linked to your Pinecone API key.
-  /// [fieldMapping] The names of the fields to which to map information about the vector store. This block supports the following arguments:
+  /// [fieldMapping] Names of the fields to which to map information about the vector store. See `storage_configuration.pinecone_configuration.field_mapping` Block for details.
   /// [namespace] Namespace to be used to write new data to your database.
   const AgentKnowledgeBaseStorageConfigurationPineconeConfiguration({
     required this.connectionString,

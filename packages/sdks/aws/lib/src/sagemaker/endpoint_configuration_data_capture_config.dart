@@ -51,7 +51,7 @@ class EndpointConfigurationDataCaptureConfig {
       captureOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointConfigurationDataCaptureConfigCaptureOption>(map['captureOptions']!, (value) => EndpointConfigurationDataCaptureConfigCaptureOption.fromMap((value as Map).cast<String, dynamic>()))),
       destinationS3Uri: pulumi.Input.fromValue(map['destinationS3Uri'] as String),
       enableCapture: (() { final guardedValue = map['enableCapture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      initialSamplingPercentage: pulumi.Input.fromValue((map['initialSamplingPercentage'] as num).toInt()),
+      initialSamplingPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['initialSamplingPercentage'])),
       kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

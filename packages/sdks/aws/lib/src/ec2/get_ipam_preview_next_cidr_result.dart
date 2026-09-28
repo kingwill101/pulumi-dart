@@ -45,7 +45,7 @@ class GetIpamPreviewNextCidrResult {
       disallowedCidrs: (() { final guardedValue = map['disallowedCidrs']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipamPoolId: (() { final guardedValue = map['ipamPoolId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      netmaskLength: (() { final guardedValue = map['netmaskLength']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      netmaskLength: (() { final guardedValue = map['netmaskLength']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

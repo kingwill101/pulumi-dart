@@ -12,7 +12,7 @@ class ReplicatorState {
   final pulumi.Input<String?>? currentVersion;
   /// A summary description of the replicator.
   final pulumi.Input<String?>? description;
-  /// A list of Kafka clusters which are targets of the replicator.
+  /// The source and target Kafka clusters for the replicator. Exactly two blocks are required. Detailed below.
   final pulumi.Input<List<ReplicatorKafkaCluster>?>? kafkaClusters;
   /// Configuration block for delivering replicator logs to customer destinations. Detailed below.
   final pulumi.Input<ReplicatorLogDelivery?>? logDelivery;
@@ -33,7 +33,7 @@ class ReplicatorState {
   /// [arn] ARN of the Replicator.
   /// [currentVersion] Optional.
   /// [description] A summary description of the replicator.
-  /// [kafkaClusters] A list of Kafka clusters which are targets of the replicator.
+  /// [kafkaClusters] The source and target Kafka clusters for the replicator. Exactly two blocks are required. Detailed below.
   /// [logDelivery] Configuration block for delivering replicator logs to customer destinations. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [replicationInfoList] A list of replication configurations, where each configuration targets a given source cluster to target cluster replication flow.

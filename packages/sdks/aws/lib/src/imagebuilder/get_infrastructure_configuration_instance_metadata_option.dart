@@ -25,7 +25,7 @@ class GetInfrastructureConfigurationInstanceMetadataOption {
 
   factory GetInfrastructureConfigurationInstanceMetadataOption.fromMap(Map<String, dynamic> map) {
     return GetInfrastructureConfigurationInstanceMetadataOption(
-      httpPutResponseHopLimit: pulumi.Input.fromValue((map['httpPutResponseHopLimit'] as num).toInt()),
+      httpPutResponseHopLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['httpPutResponseHopLimit'])),
       httpTokens: pulumi.Input.fromValue(map['httpTokens'] as String),
     );
   }

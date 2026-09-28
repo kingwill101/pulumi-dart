@@ -78,7 +78,7 @@ class ListenerRuleActionAuthenticateOidc {
       onUnauthenticatedRequest: (() { final guardedValue = map['onUnauthenticatedRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sessionCookieName: (() { final guardedValue = map['sessionCookieName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sessionTimeout: (() { final guardedValue = map['sessionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      sessionTimeout: (() { final guardedValue = map['sessionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tokenEndpoint: pulumi.Input.fromValue(map['tokenEndpoint'] as String),
       userInfoEndpoint: pulumi.Input.fromValue(map['userInfoEndpoint'] as String),
     );

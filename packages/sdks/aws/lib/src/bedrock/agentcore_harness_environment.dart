@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_harness_environment_agentcore_runtime_environment.dart';
 
 class AgentcoreHarnessEnvironment {
-  /// AgentCore runtime environment configuration. See `agentcoreRuntimeEnvironment` Block below.
+  /// AgentCore runtime environment configuration. See `environment.agentcore_runtime_environment` Block below.
   final pulumi.Input<List<AgentcoreHarnessEnvironmentAgentcoreRuntimeEnvironment>?>? agentcoreRuntimeEnvironments;
 
   /// Creates a new [AgentcoreHarnessEnvironment].
-  /// [agentcoreRuntimeEnvironments] AgentCore runtime environment configuration. See `agentcoreRuntimeEnvironment` Block below.
+  /// [agentcoreRuntimeEnvironments] AgentCore runtime environment configuration. See `environment.agentcore_runtime_environment` Block below.
   const AgentcoreHarnessEnvironment({
     this.agentcoreRuntimeEnvironments,
   });

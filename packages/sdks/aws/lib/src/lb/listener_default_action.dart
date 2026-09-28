@@ -73,7 +73,7 @@ class ListenerDefaultAction {
       fixedResponse: (() { final guardedValue = map['fixedResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListenerDefaultActionFixedResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       forward: (() { final guardedValue = map['forward']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListenerDefaultActionForward.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       jwtValidation: (() { final guardedValue = map['jwtValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListenerDefaultActionJwtValidation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       redirect: (() { final guardedValue = map['redirect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListenerDefaultActionRedirect.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       targetGroupArn: (() { final guardedValue = map['targetGroupArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),

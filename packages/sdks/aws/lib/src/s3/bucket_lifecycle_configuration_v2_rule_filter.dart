@@ -43,8 +43,8 @@ class BucketLifecycleConfigurationV2RuleFilter {
   factory BucketLifecycleConfigurationV2RuleFilter.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationV2RuleFilter(
       and: (() { final guardedValue = map['and']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BucketLifecycleConfigurationV2RuleFilterAnd.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      objectSizeGreaterThan: (() { final guardedValue = map['objectSizeGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      objectSizeLessThan: (() { final guardedValue = map['objectSizeLessThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      objectSizeGreaterThan: (() { final guardedValue = map['objectSizeGreaterThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      objectSizeLessThan: (() { final guardedValue = map['objectSizeLessThan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BucketLifecycleConfigurationV2RuleFilterTag.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

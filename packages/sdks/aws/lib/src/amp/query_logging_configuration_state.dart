@@ -6,7 +6,7 @@ import 'query_logging_configuration_timeouts.dart';
 
 /// Input properties used for looking up and filtering QueryLoggingConfiguration resources.
 class QueryLoggingConfigurationState {
-  /// Configuration block for the logging destinations. See `destinations`.
+  /// Configuration block for the logging destinations. See `destination`.
   final pulumi.Input<List<QueryLoggingConfigurationDestination>?>? destinations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -17,7 +17,7 @@ class QueryLoggingConfigurationState {
   final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [QueryLoggingConfigurationState].
-  /// [destinations] Configuration block for the logging destinations. See `destinations`.
+  /// [destinations] Configuration block for the logging destinations. See `destination`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   /// [workspaceId] The ID of the AMP workspace for which to configure query logging.

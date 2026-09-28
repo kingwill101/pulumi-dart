@@ -35,8 +35,8 @@ class GetPublicIpv4PoolPoolAddressRange {
 
   factory GetPublicIpv4PoolPoolAddressRange.fromMap(Map<String, dynamic> map) {
     return GetPublicIpv4PoolPoolAddressRange(
-      addressCount: pulumi.Input.fromValue((map['addressCount'] as num).toInt()),
-      availableAddressCount: pulumi.Input.fromValue((map['availableAddressCount'] as num).toInt()),
+      addressCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['addressCount'])),
+      availableAddressCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['availableAddressCount'])),
       firstAddress: pulumi.Input.fromValue(map['firstAddress'] as String),
       lastAddress: pulumi.Input.fromValue(map['lastAddress'] as String),
     );

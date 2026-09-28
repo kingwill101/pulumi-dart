@@ -63,7 +63,7 @@ class GetAssetResult {
       hostId: (() { final guardedValue = map['hostId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       instanceFamilies: (() { final guardedValue = map['instanceFamilies']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      rackElevation: (() { final guardedValue = map['rackElevation']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      rackElevation: (() { final guardedValue = map['rackElevation']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       rackId: (() { final guardedValue = map['rackId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

@@ -9,6 +9,7 @@ class AgentAgentCollaboratorState {
   final pulumi.Input<AgentAgentCollaboratorAgentDescriptor?>? agentDescriptor;
   /// ID if the agent to associate the collaborator.
   final pulumi.Input<String?>? agentId;
+  /// Version of the agent to associate the collaborator. Defaults to `DRAFT`.
   final pulumi.Input<String?>? agentVersion;
   /// Instruction to give the collaborator.
   final pulumi.Input<String?>? collaborationInstruction;
@@ -29,7 +30,7 @@ class AgentAgentCollaboratorState {
   /// Creates a new [AgentAgentCollaboratorState].
   /// [agentDescriptor] Optional.
   /// [agentId] ID if the agent to associate the collaborator.
-  /// [agentVersion] Optional.
+  /// [agentVersion] Version of the agent to associate the collaborator. Defaults to `DRAFT`.
   /// [collaborationInstruction] Instruction to give the collaborator.
   /// [collaboratorId] ID of the Agent Collaborator.
   /// [collaboratorName] Name of this collaborator.

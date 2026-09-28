@@ -25,7 +25,7 @@ class RouteServerPeerBgpOptions {
 
   factory RouteServerPeerBgpOptions.fromMap(Map<String, dynamic> map) {
     return RouteServerPeerBgpOptions(
-      peerAsn: pulumi.Input.fromValue((map['peerAsn'] as num).toInt()),
+      peerAsn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['peerAsn'])),
       peerLivenessDetection: (() { final guardedValue = map['peerLivenessDetection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

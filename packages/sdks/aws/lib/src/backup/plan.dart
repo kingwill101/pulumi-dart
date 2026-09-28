@@ -239,21 +239,21 @@ import 'plan_state.dart';
 /// $ pulumi import aws:backup/plan:Plan example abc123
 /// ```
 class Plan extends pulumi.CustomResource {
-  /// An object that specifies backup options for each resource type.
+  /// Object that specifies backup options for each resource type. Detailed below.
   late final pulumi.Output<List<PlanAdvancedBackupSetting>?> advancedBackupSettings;
-  /// The ARN of the backup plan.
+  /// ARN of the backup plan.
   late final pulumi.Output<String> arn;
-  /// The display name of a backup plan.
+  /// Display name of a backup plan.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A rule object that specifies a scheduled task that is used to back up a selection of resources.
+  /// Rule that specifies a scheduled task used to back up a selection of resources. Detailed below.
   late final pulumi.Output<List<PlanRule>> rules;
   /// Block for scanning configuration for the backup rule and includes the malware scanner, and scan mode of either full or incremental. Detailed below.
   late final pulumi.Output<List<PlanScanSetting>?> scanSettings;
   /// Metadata that you can assign to help organize the plans you create. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
   late final pulumi.Output<String> version;
@@ -270,7 +270,7 @@ class Plan extends pulumi.CustomResource {
           'aws:backup/plan:Plan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     advancedBackupSettings = registerOutput<List<PlanAdvancedBackupSetting>?>('advancedBackupSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlanAdvancedBackupSetting>(guardedValue, (value) => PlanAdvancedBackupSetting.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

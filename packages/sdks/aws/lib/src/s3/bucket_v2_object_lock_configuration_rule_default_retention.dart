@@ -30,9 +30,9 @@ class BucketV2ObjectLockConfigurationRuleDefaultRetention {
 
   factory BucketV2ObjectLockConfigurationRuleDefaultRetention.fromMap(Map<String, dynamic> map) {
     return BucketV2ObjectLockConfigurationRuleDefaultRetention(
-      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       mode: pulumi.Input.fromValue(map['mode'] as String),
-      years: (() { final guardedValue = map['years']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      years: (() { final guardedValue = map['years']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

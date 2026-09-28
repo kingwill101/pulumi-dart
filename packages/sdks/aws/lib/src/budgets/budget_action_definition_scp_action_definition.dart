@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetActionDefinitionScpActionDefinition {
-  /// The policy ID attached.
+  /// Policy ID attached.
   final pulumi.Input<String> policyId;
-  /// A list of target IDs.
+  /// List of target IDs.
   final pulumi.Input<List<String>> targetIds;
 
   /// Creates a new [BudgetActionDefinitionScpActionDefinition].
-  /// [policyId] The policy ID attached.
-  /// [targetIds] A list of target IDs.
+  /// [policyId] Policy ID attached.
+  /// [targetIds] List of target IDs.
   const BudgetActionDefinitionScpActionDefinition({
     required this.policyId,
     required this.targetIds,

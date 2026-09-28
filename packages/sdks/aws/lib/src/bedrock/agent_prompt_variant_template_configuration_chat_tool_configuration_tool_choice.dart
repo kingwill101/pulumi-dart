@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_prompt_variant_template_configuration_chat_tool_configuration_tool_choice_tool.dart';
 
 class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoice {
-  /// Defines tools, at least one of which must be requested by the model. No text is generated but the results of tool use are sent back to the model to help generate a response. This object has no fields.
+  /// Tools, at least one of which must be requested by the model. No text is generated but the results of tool use are sent back to the model to help generate a response. This object has no fields.
   final pulumi.Input<Map<String, dynamic>?>? any;
-  /// Defines tools. The model automatically decides whether to call a tool or to generate text instead. This object has no fields.
+  /// Tools from which the model automatically decides whether to call a tool or to generate text instead. This object has no fields.
   final pulumi.Input<Map<String, dynamic>?>? auto;
-  /// Defines a specific tool that the model must request. No text is generated but the results of tool use are sent back to the model to help generate a response. See Named Tool for more information.
+  /// Specific tool that the model must request. No text is generated but the results of tool use are sent back to the model to help generate a response. See `variant.template_configuration.chat.tool_configuration.tool_choice.tool` Block for more information.
   final pulumi.Input<AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoiceTool?>? tool;
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoice].
-  /// [any] Defines tools, at least one of which must be requested by the model. No text is generated but the results of tool use are sent back to the model to help generate a response. This object has no fields.
-  /// [auto] Defines tools. The model automatically decides whether to call a tool or to generate text instead. This object has no fields.
-  /// [tool] Defines a specific tool that the model must request. No text is generated but the results of tool use are sent back to the model to help generate a response. See Named Tool for more information.
+  /// [any] Tools, at least one of which must be requested by the model. No text is generated but the results of tool use are sent back to the model to help generate a response. This object has no fields.
+  /// [auto] Tools from which the model automatically decides whether to call a tool or to generate text instead. This object has no fields.
+  /// [tool] Specific tool that the model must request. No text is generated but the results of tool use are sent back to the model to help generate a response. See `variant.template_configuration.chat.tool_configuration.tool_choice.tool` Block for more information.
   const AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoice({
     this.any,
     this.auto,

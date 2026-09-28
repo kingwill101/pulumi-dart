@@ -57,7 +57,7 @@ class GetConfigurationResult {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kafkaVersions: (() { final guardedValue = map['kafkaVersions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      latestRevision: (() { final guardedValue = map['latestRevision']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      latestRevision: (() { final guardedValue = map['latestRevision']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serverProperties: (() { final guardedValue = map['serverProperties']; if (guardedValue == null) return null; return guardedValue as String; })(),

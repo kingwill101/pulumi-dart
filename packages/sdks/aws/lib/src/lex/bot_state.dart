@@ -143,7 +143,7 @@ class BotState {
       detectSentiment: (() { final guardedValue = map['detectSentiment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableModelImprovements: (() { final guardedValue = map['enableModelImprovements']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       failureReason: (() { final guardedValue = map['failureReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      idleSessionTtlInSeconds: (() { final guardedValue = map['idleSessionTtlInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      idleSessionTtlInSeconds: (() { final guardedValue = map['idleSessionTtlInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       intents: (() { final guardedValue = map['intents']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BotIntent>(guardedValue, (value) => BotIntent.fromMap((value as Map).cast<String, dynamic>()))); })(),
       lastUpdatedDate: (() { final guardedValue = map['lastUpdatedDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       locale: (() { final guardedValue = map['locale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

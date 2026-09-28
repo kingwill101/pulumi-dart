@@ -124,7 +124,7 @@ class GetClusterResult {
       customerActionStatus: (() { final guardedValue = map['customerActionStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kafkaVersion: (() { final guardedValue = map['kafkaVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      numberOfBrokerNodes: (() { final guardedValue = map['numberOfBrokerNodes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      numberOfBrokerNodes: (() { final guardedValue = map['numberOfBrokerNodes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       zookeeperConnectString: (() { final guardedValue = map['zookeeperConnectString']; if (guardedValue == null) return null; return guardedValue as String; })(),

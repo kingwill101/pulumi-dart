@@ -20,7 +20,7 @@ class CanaryScheduleRetryConfig {
 
   factory CanaryScheduleRetryConfig.fromMap(Map<String, dynamic> map) {
     return CanaryScheduleRetryConfig(
-      maxRetries: pulumi.Input.fromValue((map['maxRetries'] as num).toInt()),
+      maxRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRetries'])),
     );
   }
 }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_data_source_vector_ingestion_configuration_custom_transformation_configuration_intermediate_storage_s3_location.dart';
 
 class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage {
-  /// Configuration block for intermedia S3 storage.
+  /// Configuration block for intermediate S3 storage. See `s3Location` Block for details.
   final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorageS3Location?>? s3Location;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage].
-  /// [s3Location] Configuration block for intermedia S3 storage.
+  /// [s3Location] Configuration block for intermediate S3 storage. See `s3Location` Block for details.
   const AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage({
     this.s3Location,
   });

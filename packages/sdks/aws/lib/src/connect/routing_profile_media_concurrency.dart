@@ -32,7 +32,7 @@ class RoutingProfileMediaConcurrency {
   factory RoutingProfileMediaConcurrency.fromMap(Map<String, dynamic> map) {
     return RoutingProfileMediaConcurrency(
       channel: pulumi.Input.fromValue(map['channel'] as String),
-      concurrency: pulumi.Input.fromValue((map['concurrency'] as num).toInt()),
+      concurrency: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['concurrency'])),
       crossChannelBehavior: (() { final guardedValue = map['crossChannelBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingProfileMediaConcurrencyCrossChannelBehavior.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

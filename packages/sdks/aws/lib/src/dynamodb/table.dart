@@ -1337,7 +1337,7 @@ import 'table_warm_throughput.dart';
 /// ```
 ///
 ///
-/// ### Global Tables with Multi-Region Strong Consistency
+/// #### Global Tables with Multi-Region Strong Consistency
 ///
 /// A global table configured for Multi-Region strong consistency (MRSC) provides the ability to perform a strongly consistent read with multi-Region scope. Performing a strongly consistent read on an MRSC table ensures you're always reading the latest version of an item, irrespective of the Region in which you're performing the read.
 ///
@@ -1347,7 +1347,7 @@ import 'table_warm_throughput.dart';
 ///
 /// Consistency Mode (`consistencyMode`) on the embedded `replica` allows you to configure consistency mode for Global Tables.
 ///
-/// ##### Consistency mode with 3 Replicas
+/// ### Consistency mode with 3 Replicas
 ///
 ///
 /// ```typescript
@@ -1578,7 +1578,7 @@ import 'table_warm_throughput.dart';
 /// ```
 ///
 ///
-/// ##### Consistency Mode with 2 Replicas and Witness Region
+/// ### Consistency Mode with 2 Replicas and Witness Region
 ///
 ///
 /// ```typescript
@@ -2294,7 +2294,7 @@ class Table extends pulumi.CustomResource {
           'aws:dynamodb/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attributes = registerOutput<List<TableAttribute>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableAttribute>(guardedValue, (value) => TableAttribute.fromMap((value as Map).cast<String, dynamic>())); });

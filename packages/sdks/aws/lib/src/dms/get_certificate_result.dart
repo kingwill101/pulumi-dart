@@ -84,7 +84,7 @@ class GetCertificateResult {
       certificatePem: (() { final guardedValue = map['certificatePem']; if (guardedValue == null) return null; return guardedValue as String; })(),
       certificateWallet: (() { final guardedValue = map['certificateWallet']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      keyLength: (() { final guardedValue = map['keyLength']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      keyLength: (() { final guardedValue = map['keyLength']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       signingAlgorithm: (() { final guardedValue = map['signingAlgorithm']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),

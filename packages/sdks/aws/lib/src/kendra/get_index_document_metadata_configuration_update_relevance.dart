@@ -42,7 +42,7 @@ class GetIndexDocumentMetadataConfigurationUpdateRelevance {
     return GetIndexDocumentMetadataConfigurationUpdateRelevance(
       duration: pulumi.Input.fromValue(map['duration'] as String),
       freshness: pulumi.Input.fromValue(map['freshness'] as bool),
-      importance: pulumi.Input.fromValue((map['importance'] as num).toInt()),
+      importance: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['importance'])),
       rankOrder: pulumi.Input.fromValue(map['rankOrder'] as String),
       valuesImportanceMap: pulumi.Input.fromValue((map['valuesImportanceMap'] as Map).cast<String, int>()),
     );

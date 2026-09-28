@@ -48,9 +48,9 @@ class GetJobDefinitionEksPropertyPodPropertyContainerSecurityContext {
       allowPrivilegeEscalation: pulumi.Input.fromValue(map['allowPrivilegeEscalation'] as bool),
       privileged: pulumi.Input.fromValue(map['privileged'] as bool),
       readOnlyRootFileSystem: pulumi.Input.fromValue(map['readOnlyRootFileSystem'] as bool),
-      runAsGroup: pulumi.Input.fromValue((map['runAsGroup'] as num).toInt()),
+      runAsGroup: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['runAsGroup'])),
       runAsNonRoot: pulumi.Input.fromValue(map['runAsNonRoot'] as bool),
-      runAsUser: pulumi.Input.fromValue((map['runAsUser'] as num).toInt()),
+      runAsUser: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['runAsUser'])),
     );
   }
 }

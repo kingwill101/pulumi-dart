@@ -6,23 +6,25 @@ import 'agent_flow_definition_node_input.dart';
 import 'agent_flow_definition_node_output.dart';
 
 class AgentFlowDefinitionNode {
-  /// Contains configurations for the node. See Node Configuration for more information.
+  /// Configurations for the node. See `definition.node.configuration` Block for details.
   final pulumi.Input<AgentFlowDefinitionNodeConfiguration?>? configuration;
-  /// A list of objects containing information about an input into the node. See Node Input for more information.
+  /// Configurations for an input flow node in your flow. The node `inputs` can't be specified for this node. This block has no arguments.
   final pulumi.Input<List<AgentFlowDefinitionNodeInput>?>? inputs;
-  /// A name for the node.
+  /// Name for the flow.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> name;
-  /// A list of objects containing information about an output from the node. See Node Output for more information.
+  /// Configurations for an output flow node in your flow. The node `outputs` can't be specified for this node. This block has no arguments.
   final pulumi.Input<List<AgentFlowDefinitionNodeOutput>?>? outputs;
-  /// Type of node. This value must match the name of the key you provide in `configuration`. Valid values: `Agent`, `Collector`, `Condition`, `InlineCode`, `Input`, `Iterator`, `KnowledgeBase`, `LambdaFunction`, `Lex`, `Output`, `Prompt`, `Retrieval`, `Storage`
+  /// Data type of the output. If the output doesn't match this type at runtime, a validation error is thrown.
   final pulumi.Input<String> type;
 
   /// Creates a new [AgentFlowDefinitionNode].
-  /// [configuration] Contains configurations for the node. See Node Configuration for more information.
-  /// [inputs] A list of objects containing information about an input into the node. See Node Input for more information.
-  /// [name] A name for the node.
-  /// [outputs] A list of objects containing information about an output from the node. See Node Output for more information.
-  /// [type] Type of node. This value must match the name of the key you provide in `configuration`. Valid values: `Agent`, `Collector`, `Condition`, `InlineCode`, `Input`, `Iterator`, `KnowledgeBase`, `LambdaFunction`, `Lex`, `Output`, `Prompt`, `Retrieval`, `Storage`
+  /// [configuration] Configurations for the node. See `definition.node.configuration` Block for details.
+  /// [inputs] Configurations for an input flow node in your flow. The node `inputs` can't be specified for this node. This block has no arguments.
+  /// [name] Name for the flow.
+  /// [outputs] Configurations for an output flow node in your flow. The node `outputs` can't be specified for this node. This block has no arguments.
+  /// [type] Data type of the output. If the output doesn't match this type at runtime, a validation error is thrown.
   const AgentFlowDefinitionNode({
     this.configuration,
     this.inputs,

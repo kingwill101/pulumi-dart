@@ -60,7 +60,7 @@ class LicenseConfigurationArgs {
   factory LicenseConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return LicenseConfigurationArgs(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      licenseCount: (() { final guardedValue = map['licenseCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      licenseCount: (() { final guardedValue = map['licenseCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       licenseCountHardLimit: (() { final guardedValue = map['licenseCountHardLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       licenseCountingType: pulumi.Input.fromValue(map['licenseCountingType'] as String),
       licenseRules: (() { final guardedValue = map['licenseRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

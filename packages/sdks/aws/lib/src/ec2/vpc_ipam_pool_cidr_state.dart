@@ -51,7 +51,7 @@ class VpcIpamPoolCidrState {
       cidrAuthorizationContext: (() { final guardedValue = map['cidrAuthorizationContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VpcIpamPoolCidrCidrAuthorizationContext.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ipamPoolCidrId: (() { final guardedValue = map['ipamPoolCidrId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipamPoolId: (() { final guardedValue = map['ipamPoolId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      netmaskLength: (() { final guardedValue = map['netmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      netmaskLength: (() { final guardedValue = map['netmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

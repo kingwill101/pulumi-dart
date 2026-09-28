@@ -76,7 +76,7 @@ class GetResolverFirewallDomainListResult {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       creatorRequestId: (() { final guardedValue = map['creatorRequestId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      domainCount: (() { final guardedValue = map['domainCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      domainCount: (() { final guardedValue = map['domainCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       firewallDomainListId: (() { final guardedValue = map['firewallDomainListId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       managedOwnerName: (() { final guardedValue = map['managedOwnerName']; if (guardedValue == null) return null; return guardedValue as String; })(),

@@ -51,7 +51,7 @@ class OpenZfsFileSystemRootVolumeConfiguration {
       dataCompressionType: (() { final guardedValue = map['dataCompressionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nfsExports: (() { final guardedValue = map['nfsExports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OpenZfsFileSystemRootVolumeConfigurationNfsExports.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      recordSizeKib: (() { final guardedValue = map['recordSizeKib']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      recordSizeKib: (() { final guardedValue = map['recordSizeKib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       userAndGroupQuotas: (() { final guardedValue = map['userAndGroupQuotas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota>(guardedValue, (value) => OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

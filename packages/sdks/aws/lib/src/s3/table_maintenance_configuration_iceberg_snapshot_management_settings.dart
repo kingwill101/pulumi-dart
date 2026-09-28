@@ -25,8 +25,8 @@ class TableMaintenanceConfigurationIcebergSnapshotManagementSettings {
 
   factory TableMaintenanceConfigurationIcebergSnapshotManagementSettings.fromMap(Map<String, dynamic> map) {
     return TableMaintenanceConfigurationIcebergSnapshotManagementSettings(
-      maxSnapshotAgeHours: pulumi.Input.fromValue((map['maxSnapshotAgeHours'] as num).toInt()),
-      minSnapshotsToKeep: pulumi.Input.fromValue((map['minSnapshotsToKeep'] as num).toInt()),
+      maxSnapshotAgeHours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxSnapshotAgeHours'])),
+      minSnapshotsToKeep: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minSnapshotsToKeep'])),
     );
   }
 }

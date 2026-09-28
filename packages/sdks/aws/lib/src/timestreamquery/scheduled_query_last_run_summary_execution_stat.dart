@@ -45,12 +45,12 @@ class ScheduledQueryLastRunSummaryExecutionStat {
 
   factory ScheduledQueryLastRunSummaryExecutionStat.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummaryExecutionStat(
-      bytesMetered: (() { final guardedValue = map['bytesMetered']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      cumulativeBytesScanned: (() { final guardedValue = map['cumulativeBytesScanned']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      dataWrites: (() { final guardedValue = map['dataWrites']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      executionTimeInMillis: (() { final guardedValue = map['executionTimeInMillis']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      queryResultRows: (() { final guardedValue = map['queryResultRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      recordsIngested: (() { final guardedValue = map['recordsIngested']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bytesMetered: (() { final guardedValue = map['bytesMetered']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      cumulativeBytesScanned: (() { final guardedValue = map['cumulativeBytesScanned']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      dataWrites: (() { final guardedValue = map['dataWrites']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      executionTimeInMillis: (() { final guardedValue = map['executionTimeInMillis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      queryResultRows: (() { final guardedValue = map['queryResultRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      recordsIngested: (() { final guardedValue = map['recordsIngested']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

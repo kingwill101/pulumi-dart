@@ -231,14 +231,15 @@ import 'scheduling_policy_state.dart';
 class SchedulingPolicy extends pulumi.CustomResource {
   /// ARN of the scheduling policy.
   late final pulumi.Output<String> arn;
+  /// Fair share scheduling policy details. The `fairSharePolicy` block is documented below.
   late final pulumi.Output<SchedulingPolicyFairSharePolicy?> fairSharePolicy;
-  /// Specifies the name of the scheduling policy.
+  /// Name of the scheduling policy.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [SchedulingPolicy].
@@ -253,7 +254,7 @@ class SchedulingPolicy extends pulumi.CustomResource {
           'aws:batch/schedulingPolicy:SchedulingPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     fairSharePolicy = registerOutput<SchedulingPolicyFairSharePolicy?>('fairSharePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchedulingPolicyFairSharePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

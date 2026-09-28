@@ -332,11 +332,11 @@ import 'vault_policy_state.dart';
 /// $ pulumi import aws:backup/vaultPolicy:VaultPolicy test TestVault
 /// ```
 class VaultPolicy extends pulumi.CustomResource {
-  /// The ARN of the vault.
+  /// ARN of the vault.
   late final pulumi.Output<String> backupVaultArn;
   /// Name of the backup vault to add policy for.
   late final pulumi.Output<String> backupVaultName;
-  /// The backup vault access policy document in JSON format.
+  /// Backup vault access policy document in JSON format.
   late final pulumi.Output<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -353,7 +353,7 @@ class VaultPolicy extends pulumi.CustomResource {
           'aws:backup/vaultPolicy:VaultPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     backupVaultArn = registerOutput<String>('backupVaultArn');
     backupVaultName = registerOutput<String>('backupVaultName');

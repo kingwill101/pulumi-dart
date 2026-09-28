@@ -97,7 +97,7 @@ class LifecyclePolicyPolicyDetails {
     return LifecyclePolicyPolicyDetails(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LifecyclePolicyPolicyDetailsAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       copyTags: (() { final guardedValue = map['copyTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      createInterval: (() { final guardedValue = map['createInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      createInterval: (() { final guardedValue = map['createInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       eventSource: (() { final guardedValue = map['eventSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LifecyclePolicyPolicyDetailsEventSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       exclusions: (() { final guardedValue = map['exclusions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LifecyclePolicyPolicyDetailsExclusions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       extendDeletion: (() { final guardedValue = map['extendDeletion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -107,7 +107,7 @@ class LifecyclePolicyPolicyDetails {
       resourceLocations: (() { final guardedValue = map['resourceLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceTypes: (() { final guardedValue = map['resourceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      retainInterval: (() { final guardedValue = map['retainInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retainInterval: (() { final guardedValue = map['retainInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       schedules: (() { final guardedValue = map['schedules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LifecyclePolicyPolicyDetailsSchedule>(guardedValue, (value) => LifecyclePolicyPolicyDetailsSchedule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       targetTags: (() { final guardedValue = map['targetTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

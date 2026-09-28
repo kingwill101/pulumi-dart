@@ -32,7 +32,7 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentC
     return MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration(
       ruleName: pulumi.Input.fromValue(map['ruleName'] as String),
       sentimentType: pulumi.Input.fromValue(map['sentimentType'] as String),
-      timePeriod: pulumi.Input.fromValue((map['timePeriod'] as num).toInt()),
+      timePeriod: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timePeriod'])),
     );
   }
 }

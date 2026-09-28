@@ -69,7 +69,7 @@ class VectorsIndexArgs {
   factory VectorsIndexArgs.fromMap(Map<String, dynamic> map) {
     return VectorsIndexArgs(
       dataType: pulumi.Input.fromValue(map['dataType'] as String),
-      dimension: pulumi.Input.fromValue((map['dimension'] as num).toInt()),
+      dimension: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dimension'])),
       distanceMetric: pulumi.Input.fromValue(map['distanceMetric'] as String),
       encryptionConfigurations: (() { final guardedValue = map['encryptionConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VectorsIndexEncryptionConfiguration>(guardedValue, (value) => VectorsIndexEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       indexName: pulumi.Input.fromValue(map['indexName'] as String),

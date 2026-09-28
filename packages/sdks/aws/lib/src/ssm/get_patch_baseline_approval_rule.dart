@@ -41,7 +41,7 @@ class GetPatchBaselineApprovalRule {
 
   factory GetPatchBaselineApprovalRule.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselineApprovalRule(
-      approveAfterDays: pulumi.Input.fromValue((map['approveAfterDays'] as num).toInt()),
+      approveAfterDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['approveAfterDays'])),
       approveUntilDate: pulumi.Input.fromValue(map['approveUntilDate'] as String),
       complianceLevel: pulumi.Input.fromValue(map['complianceLevel'] as String),
       enableNonSecurity: pulumi.Input.fromValue(map['enableNonSecurity'] as bool),

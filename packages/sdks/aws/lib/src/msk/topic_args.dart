@@ -59,9 +59,9 @@ class TopicArgs {
       clusterArn: pulumi.Input.fromValue(map['clusterArn'] as String),
       configs: (() { final guardedValue = map['configs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      partitionCount: pulumi.Input.fromValue((map['partitionCount'] as num).toInt()),
+      partitionCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['partitionCount'])),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      replicationFactor: pulumi.Input.fromValue((map['replicationFactor'] as num).toInt()),
+      replicationFactor: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['replicationFactor'])),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TopicTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

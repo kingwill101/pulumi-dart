@@ -42,7 +42,7 @@ class RecordsExclusiveResourceRecordSetGeoproximityLocation {
   factory RecordsExclusiveResourceRecordSetGeoproximityLocation.fromMap(Map<String, dynamic> map) {
     return RecordsExclusiveResourceRecordSetGeoproximityLocation(
       awsRegion: (() { final guardedValue = map['awsRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      bias: (() { final guardedValue = map['bias']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bias: (() { final guardedValue = map['bias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       coordinates: (() { final guardedValue = map['coordinates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RecordsExclusiveResourceRecordSetGeoproximityLocationCoordinates.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       localZoneGroup: (() { final guardedValue = map['localZoneGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

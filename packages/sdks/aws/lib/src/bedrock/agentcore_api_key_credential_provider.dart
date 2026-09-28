@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_api_key_credential_provider_api_key_secret_arn.dart';
+import 'agentcore_api_key_credential_provider_api_key_secret_config.dart';
 import 'agentcore_api_key_credential_provider_args.dart';
 import 'agentcore_api_key_credential_provider_state.dart';
 
@@ -236,7 +237,160 @@ import 'agentcore_api_key_credential_provider_state.dart';
 /// ```
 ///
 ///
+/// ### Customer-Managed Secret
+///
+/// Reference an API key already stored in a customer-managed AWS Secrets Manager secret instead of having AgentCore create and manage one.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.bedrock.AgentcoreApiKeyCredentialProvider("example", {
+///     apiKeySecretConfig: {
+///         secretId: exampleAwsSecretsmanagerSecret.id,
+///         jsonKey: "apiKey",
+///     },
+///     name: "example-api-key-provider",
+///     apiKeySecretSource: "EXTERNAL",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.bedrock.AgentcoreApiKeyCredentialProvider("example",
+///     api_key_secret_config={
+///         "secret_id": example_aws_secretsmanager_secret["id"],
+///         "json_key": "apiKey",
+///     },
+///     name="example-api-key-provider",
+///     api_key_secret_source="EXTERNAL")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Bedrock.AgentcoreApiKeyCredentialProvider("example", new()
+///     {
+///         ApiKeySecretConfig = new Aws.Bedrock.Inputs.AgentcoreApiKeyCredentialProviderApiKeySecretConfigArgs
+///         {
+///             SecretId = exampleAwsSecretsmanagerSecret.Id,
+///             JsonKey = "apiKey",
+///         },
+///         Name = "example-api-key-provider",
+///         ApiKeySecretSource = "EXTERNAL",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/bedrock"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := bedrock.NewAgentcoreApiKeyCredentialProvider(ctx, "example", &bedrock.AgentcoreApiKeyCredentialProviderArgs{
+/// 			ApiKeySecretConfig: &bedrock.AgentcoreApiKeyCredentialProviderApiKeySecretConfigArgs{
+/// 				SecretId: pulumi.Any(exampleAwsSecretsmanagerSecret.Id),
+/// 				JsonKey:  pulumi.String("apiKey"),
+/// 			},
+/// 			Name:               pulumi.String("example-api-key-provider"),
+/// 			ApiKeySecretSource: pulumi.String("EXTERNAL"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentcoreapikeycredentialprovider" "example" {
+///   api_key_secret_config = {
+///     secret_id = exampleAwsSecretsmanagerSecret.id
+///     json_key  = "apiKey"
+///   }
+///   name                  = "example-api-key-provider"
+///   api_key_secret_source = "EXTERNAL"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.bedrock.AgentcoreApiKeyCredentialProvider;
+/// import com.pulumi.aws.bedrock.AgentcoreApiKeyCredentialProviderArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreApiKeyCredentialProviderApiKeySecretConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new AgentcoreApiKeyCredentialProvider("example", AgentcoreApiKeyCredentialProviderArgs.builder()
+///             .apiKeySecretConfig(AgentcoreApiKeyCredentialProviderApiKeySecretConfigArgs.builder()
+///                 .secretId(exampleAwsSecretsmanagerSecret.id())
+///                 .jsonKey("apiKey")
+///                 .build())
+///             .name("example-api-key-provider")
+///             .apiKeySecretSource("EXTERNAL")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:bedrock:AgentcoreApiKeyCredentialProvider
+///     properties:
+///       apiKeySecretConfig:
+///         secretId: ${exampleAwsSecretsmanagerSecret.id}
+///         jsonKey: apiKey
+///       name: example-api-key-provider
+///       apiKeySecretSource: EXTERNAL
+/// ```
+///
+///
 /// ## Import
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) API key credential provider name.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
 ///
 /// Using `pulumi import`, import Bedrock AgentCore API Key Credential Provider using the provider name. For example:
 ///
@@ -244,16 +398,18 @@ import 'agentcore_api_key_credential_provider_state.dart';
 /// $ pulumi import aws:bedrock/agentcoreApiKeyCredentialProvider:AgentcoreApiKeyCredentialProvider example example-api-key-provider
 /// ```
 class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
-  /// API key value. Cannot be used with `apiKeyWo`. This value will be visible in pulumi preview outputs and logs.
-  ///
-  /// **Write-Only API Key (choose one approach):**
+  /// API key value. Conflicts with `apiKeyWo` and `apiKeySecretConfig`. This value will be visible in pulumi preview outputs and logs.
   late final pulumi.Output<String?> apiKey;
   /// ARN of the AWS Secrets Manager secret containing the API key.
   late final pulumi.Output<List<AgentcoreApiKeyCredentialProviderApiKeySecretArn>> apiKeySecretArns;
+  /// Reference to a customer-managed AWS Secrets Manager secret that stores the API key. Requires `apiKeySecretSource = "EXTERNAL"`. See below.
+  late final pulumi.Output<AgentcoreApiKeyCredentialProviderApiKeySecretConfig?> apiKeySecretConfig;
+  /// Source of the secret backing the credential provider. Valid values are `MANAGED` (AgentCore creates and manages the secret from the supplied `apiKey`) and `EXTERNAL` (the provider references a customer-managed AWS Secrets Manager secret via `apiKeySecretConfig`). Changing between `MANAGED` and `EXTERNAL` forces replacement of the resource.
+  late final pulumi.Output<String> apiKeySecretSource;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Write-only API key value. Cannot be used with `apiKey`. Must be used together with `apiKeyWoVersion`.
+  /// Write-only API key value. Conflicts with `apiKey` and `apiKeySecretConfig`. If set, requires `apiKeyWoVersion` to be set.
   late final pulumi.Output<String?> apiKeyWo;
-  /// Used together with `apiKeyWo` to trigger an update. Increment this value when an update to `apiKeyWo` is required.
+  /// Required when `apiKeyWo` is set. Changing this value triggers an update to `apiKeyWo`.
   late final pulumi.Output<int?> apiKeyWoVersion;
   /// ARN of the API Key credential provider.
   late final pulumi.Output<String> credentialProviderArn;
@@ -264,10 +420,8 @@ class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ///
-  /// **Standard API Key (choose one approach):**
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [AgentcoreApiKeyCredentialProvider].
@@ -282,11 +436,13 @@ class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
           'aws:bedrock/agentcoreApiKeyCredentialProvider:AgentcoreApiKeyCredentialProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
           additionalSecretOutputs: const ['apiKey', 'apiKeyWo'],
         ) {
     apiKey = registerOutput<String?>('apiKey', isSecret: true);
     apiKeySecretArns = registerOutput<List<AgentcoreApiKeyCredentialProviderApiKeySecretArn>>('apiKeySecretArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreApiKeyCredentialProviderApiKeySecretArn>(guardedValue, (value) => AgentcoreApiKeyCredentialProviderApiKeySecretArn.fromMap((value as Map).cast<String, dynamic>())); });
+    apiKeySecretConfig = registerOutput<AgentcoreApiKeyCredentialProviderApiKeySecretConfig?>('apiKeySecretConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreApiKeyCredentialProviderApiKeySecretConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    apiKeySecretSource = registerOutput<String>('apiKeySecretSource');
     apiKeyWo = registerOutput<String?>('apiKeyWo', isSecret: true);
     apiKeyWoVersion = registerOutput<int?>('apiKeyWoVersion');
     credentialProviderArn = registerOutput<String>('credentialProviderArn');
@@ -322,6 +478,8 @@ class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
         ) {
     apiKey = registerOutput<String?>('apiKey', isSecret: true);
     apiKeySecretArns = registerOutput<List<AgentcoreApiKeyCredentialProviderApiKeySecretArn>>('apiKeySecretArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreApiKeyCredentialProviderApiKeySecretArn>(guardedValue, (value) => AgentcoreApiKeyCredentialProviderApiKeySecretArn.fromMap((value as Map).cast<String, dynamic>())); });
+    apiKeySecretConfig = registerOutput<AgentcoreApiKeyCredentialProviderApiKeySecretConfig?>('apiKeySecretConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreApiKeyCredentialProviderApiKeySecretConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    apiKeySecretSource = registerOutput<String>('apiKeySecretSource');
     apiKeyWo = registerOutput<String?>('apiKeyWo', isSecret: true);
     apiKeyWoVersion = registerOutput<int?>('apiKeyWoVersion');
     credentialProviderArn = registerOutput<String>('credentialProviderArn');
@@ -343,6 +501,8 @@ class AgentcoreApiKeyCredentialProvider extends pulumi.CustomResource {
       ) {
     apiKey = registerOutput<String?>('apiKey', isSecret: true);
     apiKeySecretArns = registerOutput<List<AgentcoreApiKeyCredentialProviderApiKeySecretArn>>('apiKeySecretArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreApiKeyCredentialProviderApiKeySecretArn>(guardedValue, (value) => AgentcoreApiKeyCredentialProviderApiKeySecretArn.fromMap((value as Map).cast<String, dynamic>())); });
+    apiKeySecretConfig = registerOutput<AgentcoreApiKeyCredentialProviderApiKeySecretConfig?>('apiKeySecretConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreApiKeyCredentialProviderApiKeySecretConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    apiKeySecretSource = registerOutput<String>('apiKeySecretSource');
     apiKeyWo = registerOutput<String?>('apiKeyWo', isSecret: true);
     apiKeyWoVersion = registerOutput<int?>('apiKeyWoVersion');
     credentialProviderArn = registerOutput<String>('credentialProviderArn');

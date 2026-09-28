@@ -1250,7 +1250,7 @@ class ComputeEnvironment extends pulumi.CustomResource {
   late final pulumi.Output<String> ecsClusterArn;
   /// Details for the Amazon EKS cluster that supports the compute environment. See details below.
   late final pulumi.Output<ComputeEnvironmentEksConfiguration?> eksConfiguration;
-  /// The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed. If omitted, the provider will assign a random, unique name.
+  /// Name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed. If omitted, the provider will assign a random, unique name.
   late final pulumi.Output<String> name;
   /// Creates a unique compute environment name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
@@ -1258,19 +1258,19 @@ class ComputeEnvironment extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Full ARN of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
   late final pulumi.Output<String> serviceRole;
-  /// The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
+  /// State of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
   late final pulumi.Output<String?> state;
-  /// The current status of the compute environment (for example, CREATING or VALID).
+  /// Current status of the compute environment (for example, CREATING or VALID).
   late final pulumi.Output<String> status;
-  /// A short, human-readable string to provide additional details about the current status of the compute environment.
+  /// Short, human-readable string to provide additional details about the current status of the compute environment.
   late final pulumi.Output<String> statusReason;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
+  /// Type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
   late final pulumi.Output<String> type;
-  /// Specifies the infrastructure update policy for the compute environment. See details below.
+  /// Infrastructure update policy for the compute environment. See details below.
   late final pulumi.Output<ComputeEnvironmentUpdatePolicy> updatePolicy;
 
   /// Creates a new [ComputeEnvironment].
@@ -1285,7 +1285,7 @@ class ComputeEnvironment extends pulumi.CustomResource {
           'aws:batch/computeEnvironment:ComputeEnvironment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     computeResources = registerOutput<ComputeEnvironmentComputeResources>('computeResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEnvironmentComputeResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });

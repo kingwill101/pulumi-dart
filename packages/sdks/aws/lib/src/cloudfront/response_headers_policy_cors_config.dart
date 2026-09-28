@@ -59,7 +59,7 @@ class ResponseHeadersPolicyCorsConfig {
       accessControlAllowMethods: pulumi.Input.fromValue(ResponseHeadersPolicyCorsConfigAccessControlAllowMethods.fromMap((map['accessControlAllowMethods']! as Map).cast<String, dynamic>())),
       accessControlAllowOrigins: pulumi.Input.fromValue(ResponseHeadersPolicyCorsConfigAccessControlAllowOrigins.fromMap((map['accessControlAllowOrigins']! as Map).cast<String, dynamic>())),
       accessControlExposeHeaders: (() { final guardedValue = map['accessControlExposeHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResponseHeadersPolicyCorsConfigAccessControlExposeHeaders.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      accessControlMaxAgeSec: (() { final guardedValue = map['accessControlMaxAgeSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      accessControlMaxAgeSec: (() { final guardedValue = map['accessControlMaxAgeSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       originOverride: pulumi.Input.fromValue(map['originOverride'] as bool),
     );
   }

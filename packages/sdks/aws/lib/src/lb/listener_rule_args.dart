@@ -60,7 +60,7 @@ class ListenerRuleArgs {
       actions: pulumi.Input.fromValue(pulumi.Input.decodeList<ListenerRuleAction>(map['actions']!, (value) => ListenerRuleAction.fromMap((value as Map).cast<String, dynamic>()))),
       conditions: pulumi.Input.fromValue(pulumi.Input.decodeList<ListenerRuleCondition>(map['conditions']!, (value) => ListenerRuleCondition.fromMap((value as Map).cast<String, dynamic>()))),
       listenerArn: pulumi.Input.fromValue(map['listenerArn'] as String),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       transforms: (() { final guardedValue = map['transforms']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ListenerRuleTransform>(guardedValue, (value) => ListenerRuleTransform.fromMap((value as Map).cast<String, dynamic>()))); })(),

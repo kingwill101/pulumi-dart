@@ -117,7 +117,7 @@ class ReplicationConfigurationTemplateState {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       associateDefaultSecurityGroup: (() { final guardedValue = map['associateDefaultSecurityGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       autoReplicateNewDisks: (() { final guardedValue = map['autoReplicateNewDisks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      bandwidthThrottling: (() { final guardedValue = map['bandwidthThrottling']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bandwidthThrottling: (() { final guardedValue = map['bandwidthThrottling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       createPublicIp: (() { final guardedValue = map['createPublicIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dataPlaneRouting: (() { final guardedValue = map['dataPlaneRouting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultLargeStagingDiskType: (() { final guardedValue = map['defaultLargeStagingDiskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -142,7 +142,7 @@ import 'global_settings_state.dart';
 /// $ pulumi import aws:backup/globalSettings:GlobalSettings example 123456789012
 /// ```
 class GlobalSettings extends pulumi.CustomResource {
-  /// A list of resources along with the opt-in preferences for the account. For a list of inputs, see [UpdateGlobalSettings](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_UpdateGlobalSettings.html) in the AWS Backup Developer Guide.
+  /// Resources and their opt-in preferences for the account. For a list of inputs, see [UpdateGlobalSettings](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_UpdateGlobalSettings.html) in the AWS Backup Developer Guide.
   late final pulumi.Output<Map<String, String>> globalSettings;
 
   /// Creates a new [GlobalSettings].
@@ -157,7 +157,7 @@ class GlobalSettings extends pulumi.CustomResource {
           'aws:backup/globalSettings:GlobalSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     globalSettings = registerOutput<Map<String, String>>('globalSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }

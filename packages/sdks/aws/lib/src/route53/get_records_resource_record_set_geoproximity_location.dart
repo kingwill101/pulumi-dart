@@ -37,7 +37,7 @@ class GetRecordsResourceRecordSetGeoproximityLocation {
   factory GetRecordsResourceRecordSetGeoproximityLocation.fromMap(Map<String, dynamic> map) {
     return GetRecordsResourceRecordSetGeoproximityLocation(
       awsRegion: pulumi.Input.fromValue(map['awsRegion'] as String),
-      bias: pulumi.Input.fromValue((map['bias'] as num).toInt()),
+      bias: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bias'])),
       coordinates: pulumi.Input.fromValue(GetRecordsResourceRecordSetGeoproximityLocationCoordinates.fromMap((map['coordinates']! as Map).cast<String, dynamic>())),
       localZoneGroup: pulumi.Input.fromValue(map['localZoneGroup'] as String),
     );

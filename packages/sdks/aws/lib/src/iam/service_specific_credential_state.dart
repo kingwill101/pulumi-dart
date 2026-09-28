@@ -72,7 +72,7 @@ class ServiceSpecificCredentialState {
   factory ServiceSpecificCredentialState.fromMap(Map<String, dynamic> map) {
     return ServiceSpecificCredentialState(
       createDate: (() { final guardedValue = map['createDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      credentialAgeDays: (() { final guardedValue = map['credentialAgeDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      credentialAgeDays: (() { final guardedValue = map['credentialAgeDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       expirationDate: (() { final guardedValue = map['expirationDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceCredentialAlias: (() { final guardedValue = map['serviceCredentialAlias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceCredentialSecret: (() { final guardedValue = map['serviceCredentialSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -12,8 +12,6 @@ class ClusterS3Import {
   /// Source engine for the backup
   final pulumi.Input<String> sourceEngine;
   /// Version of the source engine used to make the backup
-  ///
-  /// This will not recreate the resource if the S3 object changes in some way. It's only used to initialize the database. This only works currently with the aurora engine. See AWS for currently supported engines and options. See [Aurora S3 Migration Docs](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.ExtMySQL.html#AuroraMySQL.Migrating.ExtMySQL.S3).
   final pulumi.Input<String> sourceEngineVersion;
 
   /// Creates a new [ClusterS3Import].

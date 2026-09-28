@@ -217,7 +217,7 @@ import 'stage_state.dart';
 /// $ pulumi import aws:apigateway/stage:Stage example 12345abcde/example
 /// ```
 class Stage extends pulumi.CustomResource {
-  /// Enables access logs for the API stage. See Access Log Settings below.
+  /// Enables access logs for the API stage. See `accessLogSettings` Block below.
   late final pulumi.Output<StageAccessLogSettings?> accessLogSettings;
   /// ARN
   late final pulumi.Output<String> arn;
@@ -225,7 +225,7 @@ class Stage extends pulumi.CustomResource {
   late final pulumi.Output<bool?> cacheClusterEnabled;
   /// Size of the cache cluster for the stage, if enabled. Allowed values include `0.5`, `1.6`, `6.1`, `13.5`, `28.4`, `58.2`, `118` and `237`.
   late final pulumi.Output<String?> cacheClusterSize;
-  /// Configuration settings of a canary deployment. See Canary Settings below.
+  /// Configuration settings of a canary deployment. See `canarySettings` Block below.
   late final pulumi.Output<StageCanarySettings?> canarySettings;
   /// Identifier of a client certificate for the stage.
   late final pulumi.Output<String?> clientCertificateId;
@@ -268,7 +268,7 @@ class Stage extends pulumi.CustomResource {
           'aws:apigateway/stage:Stage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     accessLogSettings = registerOutput<StageAccessLogSettings?>('accessLogSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StageAccessLogSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

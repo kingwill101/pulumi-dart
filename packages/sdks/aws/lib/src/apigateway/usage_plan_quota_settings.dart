@@ -32,8 +32,8 @@ class UsagePlanQuotaSettings {
 
   factory UsagePlanQuotaSettings.fromMap(Map<String, dynamic> map) {
     return UsagePlanQuotaSettings(
-      limit: pulumi.Input.fromValue((map['limit'] as num).toInt()),
-      offset: (() { final guardedValue = map['offset']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      limit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['limit'])),
+      offset: (() { final guardedValue = map['offset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       period: pulumi.Input.fromValue(map['period'] as String),
     );
   }

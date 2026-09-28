@@ -1285,8 +1285,6 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
   /// Runtime session and resource lifecycle configuration for the agent runtime. See `lifecycleConfiguration` below.
   late final pulumi.Output<List<AgentcoreAgentRuntimeLifecycleConfiguration>> lifecycleConfigurations;
   /// Network configuration for the agent runtime. See `networkConfiguration` below.
-  ///
-  /// The following arguments are optional:
   late final pulumi.Output<AgentcoreAgentRuntimeNetworkConfiguration> networkConfiguration;
   /// Protocol configuration for the agent runtime. See `protocolConfiguration` below.
   late final pulumi.Output<AgentcoreAgentRuntimeProtocolConfiguration?> protocolConfiguration;
@@ -1295,10 +1293,12 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
   /// Configuration for HTTP request headers that will be passed through to the runtime. See `requestHeaderConfiguration` below.
   late final pulumi.Output<AgentcoreAgentRuntimeRequestHeaderConfiguration?> requestHeaderConfiguration;
   /// ARN of the IAM role that the agent runtime assumes to access AWS services.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> roleArn;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreAgentRuntimeTimeouts?> timeouts;
   /// Workload identity details for the agent runtime. See `workloadIdentityDetails` below.
@@ -1316,7 +1316,7 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
           'aws:bedrock/agentcoreAgentRuntime:AgentcoreAgentRuntime',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
     agentRuntimeArtifact = registerOutput<AgentcoreAgentRuntimeAgentRuntimeArtifact>('agentRuntimeArtifact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeAgentRuntimeArtifact.fromMap((guardedValue as Map).cast<String, dynamic>()); });

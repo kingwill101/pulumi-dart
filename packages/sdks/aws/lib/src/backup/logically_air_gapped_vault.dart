@@ -132,9 +132,9 @@ import 'logically_air_gapped_vault_timeouts.dart';
 /// $ pulumi import aws:backup/logicallyAirGappedVault:LogicallyAirGappedVault example lag-example-vault
 /// ```
 class LogicallyAirGappedVault extends pulumi.CustomResource {
-  /// The ARN of the Logically Air Gapped Backup Vault.
+  /// ARN of the Logically Air Gapped Backup Vault.
   late final pulumi.Output<String> arn;
-  /// The AWS KMS key identifier (ARN) used to encrypt the backups in the logically air-gapped vault.
+  /// AWS KMS key identifier (ARN) used to encrypt the backups in the logically air-gapped vault.
   late final pulumi.Output<String> encryptionKeyArn;
   /// Maximum retention period that the Logically Air Gapped Backup Vault retains recovery points.
   late final pulumi.Output<int> maxRetentionDays;
@@ -146,7 +146,7 @@ class LogicallyAirGappedVault extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Metadata that you can assign to help organize the resources that you create. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<LogicallyAirGappedVaultTimeouts?> timeouts;
 
@@ -162,7 +162,7 @@ class LogicallyAirGappedVault extends pulumi.CustomResource {
           'aws:backup/logicallyAirGappedVault:LogicallyAirGappedVault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     encryptionKeyArn = registerOutput<String>('encryptionKeyArn');

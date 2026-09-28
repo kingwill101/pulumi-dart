@@ -46,8 +46,8 @@ class RoutingProfileQueueConfig {
   factory RoutingProfileQueueConfig.fromMap(Map<String, dynamic> map) {
     return RoutingProfileQueueConfig(
       channel: pulumi.Input.fromValue(map['channel'] as String),
-      delay: pulumi.Input.fromValue((map['delay'] as num).toInt()),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      delay: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['delay'])),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       queueArn: (() { final guardedValue = map['queueArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       queueId: pulumi.Input.fromValue(map['queueId'] as String),
       queueName: (() { final guardedValue = map['queueName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

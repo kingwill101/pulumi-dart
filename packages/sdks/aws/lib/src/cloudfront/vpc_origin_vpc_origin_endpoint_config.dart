@@ -47,8 +47,8 @@ class VpcOriginVpcOriginEndpointConfig {
   factory VpcOriginVpcOriginEndpointConfig.fromMap(Map<String, dynamic> map) {
     return VpcOriginVpcOriginEndpointConfig(
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      httpPort: pulumi.Input.fromValue((map['httpPort'] as num).toInt()),
-      httpsPort: pulumi.Input.fromValue((map['httpsPort'] as num).toInt()),
+      httpPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['httpPort'])),
+      httpsPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['httpsPort'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       originProtocolPolicy: pulumi.Input.fromValue(map['originProtocolPolicy'] as String),
       originSslProtocols: pulumi.Input.fromValue(VpcOriginVpcOriginEndpointConfigOriginSslProtocols.fromMap((map['originSslProtocols']! as Map).cast<String, dynamic>())),

@@ -37,7 +37,7 @@ class ConnectPeerConfigurationBgpConfiguration {
   factory ConnectPeerConfigurationBgpConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectPeerConfigurationBgpConfiguration(
       coreNetworkAddress: (() { final guardedValue = map['coreNetworkAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      coreNetworkAsn: (() { final guardedValue = map['coreNetworkAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      coreNetworkAsn: (() { final guardedValue = map['coreNetworkAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       peerAddress: (() { final guardedValue = map['peerAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       peerAsn: (() { final guardedValue = map['peerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

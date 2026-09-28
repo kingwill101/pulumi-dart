@@ -42,10 +42,10 @@ class FleetTargetCapacitySpecification {
   factory FleetTargetCapacitySpecification.fromMap(Map<String, dynamic> map) {
     return FleetTargetCapacitySpecification(
       defaultTargetCapacityType: pulumi.Input.fromValue(map['defaultTargetCapacityType'] as String),
-      onDemandTargetCapacity: (() { final guardedValue = map['onDemandTargetCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      spotTargetCapacity: (() { final guardedValue = map['spotTargetCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      onDemandTargetCapacity: (() { final guardedValue = map['onDemandTargetCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      spotTargetCapacity: (() { final guardedValue = map['spotTargetCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetCapacityUnitType: (() { final guardedValue = map['targetCapacityUnitType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      totalTargetCapacity: pulumi.Input.fromValue((map['totalTargetCapacity'] as num).toInt()),
+      totalTargetCapacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalTargetCapacity'])),
     );
   }
 }

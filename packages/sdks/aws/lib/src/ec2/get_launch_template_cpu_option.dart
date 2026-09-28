@@ -32,9 +32,9 @@ class GetLaunchTemplateCpuOption {
   factory GetLaunchTemplateCpuOption.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateCpuOption(
       amdSevSnp: pulumi.Input.fromValue(map['amdSevSnp'] as String),
-      coreCount: pulumi.Input.fromValue((map['coreCount'] as num).toInt()),
+      coreCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['coreCount'])),
       nestedVirtualization: pulumi.Input.fromValue(map['nestedVirtualization'] as String),
-      threadsPerCore: pulumi.Input.fromValue((map['threadsPerCore'] as num).toInt()),
+      threadsPerCore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['threadsPerCore'])),
     );
   }
 }

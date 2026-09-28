@@ -25,8 +25,8 @@ class ServiceServiceConnectConfigurationServiceTimeout {
 
   factory ServiceServiceConnectConfigurationServiceTimeout.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationServiceTimeout(
-      idleTimeoutSeconds: (() { final guardedValue = map['idleTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      perRequestTimeoutSeconds: (() { final guardedValue = map['perRequestTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      idleTimeoutSeconds: (() { final guardedValue = map['idleTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      perRequestTimeoutSeconds: (() { final guardedValue = map['perRequestTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -145,7 +145,7 @@ class View extends pulumi.CustomResource {
   late final pulumi.Output<String> billingViewType;
   /// Timestamp when the billing view was created.
   late final pulumi.Output<String> createdAt;
-  /// Filter Cost Explorer APIs using the expression. Refer to the data-filter-expression block documentation for more details.
+  /// Filter Cost Explorer APIs using the expression. See `dataFilterExpression` below for details.
   late final pulumi.Output<ViewDataFilterExpression?> dataFilterExpression;
   /// Number of billing views that use this billing view as a source.
   late final pulumi.Output<int> derivedViewCount;
@@ -163,7 +163,7 @@ class View extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<String>?> sourceViews;
-  /// List of key value map specifying tags associated to the billing view being created.
+  /// Key-value map of tags associated with the billing view being created.
   late final pulumi.Output<Map<String, String>?> tags;
   /// List of key value map specifying tags associated to the billing view.
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -185,7 +185,7 @@ class View extends pulumi.CustomResource {
           'aws:billing/view:View',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     billingViewType = registerOutput<String>('billingViewType');

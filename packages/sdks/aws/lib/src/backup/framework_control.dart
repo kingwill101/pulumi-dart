@@ -7,15 +7,15 @@ import 'framework_control_scope.dart';
 class FrameworkControl {
   /// One or more input parameter blocks. An example of a control with two parameters is: "backup plan frequency is at least daily and the retention period is at least 1 year". The first parameter is daily. The second parameter is 1 year. Detailed below.
   final pulumi.Input<List<FrameworkControlInputParameter>?>? inputParameters;
-  /// The name of a control. This name is between 1 and 256 characters.
+  /// Name of a control. This name is between 1 and 256 characters.
   final pulumi.Input<String> name;
-  /// The scope of a control. The control scope defines what the control will evaluate. Three examples of control scopes are: a specific backup plan, all backup plans with a specific tag, or all backup plans. Detailed below.
+  /// Scope of a control. The control scope defines what the control will evaluate. Three examples of control scopes are: a specific backup plan, all backup plans with a specific tag, or all backup plans. Detailed below.
   final pulumi.Input<FrameworkControlScope?>? scope;
 
   /// Creates a new [FrameworkControl].
   /// [inputParameters] One or more input parameter blocks. An example of a control with two parameters is: "backup plan frequency is at least daily and the retention period is at least 1 year". The first parameter is daily. The second parameter is 1 year. Detailed below.
-  /// [name] The name of a control. This name is between 1 and 256 characters.
-  /// [scope] The scope of a control. The control scope defines what the control will evaluate. Three examples of control scopes are: a specific backup plan, all backup plans with a specific tag, or all backup plans. Detailed below.
+  /// [name] Name of a control. This name is between 1 and 256 characters.
+  /// [scope] Scope of a control. The control scope defines what the control will evaluate. Three examples of control scopes are: a specific backup plan, all backup plans with a specific tag, or all backup plans. Detailed below.
   const FrameworkControl({
     this.inputParameters,
     required this.name,

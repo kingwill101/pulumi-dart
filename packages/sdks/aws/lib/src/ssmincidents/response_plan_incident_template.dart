@@ -47,7 +47,7 @@ class ResponsePlanIncidentTemplate {
   factory ResponsePlanIncidentTemplate.fromMap(Map<String, dynamic> map) {
     return ResponsePlanIncidentTemplate(
       dedupeString: (() { final guardedValue = map['dedupeString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      impact: pulumi.Input.fromValue((map['impact'] as num).toInt()),
+      impact: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['impact'])),
       incidentTags: (() { final guardedValue = map['incidentTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       notificationTargets: (() { final guardedValue = map['notificationTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResponsePlanIncidentTemplateNotificationTarget>(guardedValue, (value) => ResponsePlanIncidentTemplateNotificationTarget.fromMap((value as Map).cast<String, dynamic>()))); })(),
       summary: (() { final guardedValue = map['summary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

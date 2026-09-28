@@ -32,6 +32,7 @@ class GetSnapshotResult {
   final String? optionGroupName;
   /// Provides the time when the snapshot was taken, in Universal Coordinated Time (UTC). Doesn't change when the snapshot is copied.
   final String? originalSnapshotCreateTime;
+  /// Port that the database engine was listening on at the time of the snapshot.
   final int? port;
   final String? region;
   /// Provides the time when the snapshot was taken, in Universal Coordinated Time (UTC). Changes for the copy when the snapshot is copied.
@@ -67,7 +68,7 @@ class GetSnapshotResult {
   /// [mostRecent] Optional.
   /// [optionGroupName] Provides the option group name for the DB snapshot.
   /// [originalSnapshotCreateTime] Provides the time when the snapshot was taken, in Universal Coordinated Time (UTC). Doesn't change when the snapshot is copied.
-  /// [port] Optional.
+  /// [port] Port that the database engine was listening on at the time of the snapshot.
   /// [region] Optional.
   /// [snapshotCreateTime] Provides the time when the snapshot was taken, in Universal Coordinated Time (UTC). Changes for the copy when the snapshot is copied.
   /// [snapshotType] Optional.
@@ -141,7 +142,7 @@ class GetSnapshotResult {
 
   factory GetSnapshotResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotResult(
-      allocatedStorage: (() { final guardedValue = map['allocatedStorage']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      allocatedStorage: (() { final guardedValue = map['allocatedStorage']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dbInstanceIdentifier: (() { final guardedValue = map['dbInstanceIdentifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dbSnapshotArn: (() { final guardedValue = map['dbSnapshotArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -152,13 +153,13 @@ class GetSnapshotResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       includePublic: (() { final guardedValue = map['includePublic']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       includeShared: (() { final guardedValue = map['includeShared']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       licenseModel: (() { final guardedValue = map['licenseModel']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       optionGroupName: (() { final guardedValue = map['optionGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       originalSnapshotCreateTime: (() { final guardedValue = map['originalSnapshotCreateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       snapshotCreateTime: (() { final guardedValue = map['snapshotCreateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       snapshotType: (() { final guardedValue = map['snapshotType']; if (guardedValue == null) return null; return guardedValue as String; })(),

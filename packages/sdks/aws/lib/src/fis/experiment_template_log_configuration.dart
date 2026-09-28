@@ -33,7 +33,7 @@ class ExperimentTemplateLogConfiguration {
   factory ExperimentTemplateLogConfiguration.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateLogConfiguration(
       cloudwatchLogsConfiguration: (() { final guardedValue = map['cloudwatchLogsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      logSchemaVersion: pulumi.Input.fromValue((map['logSchemaVersion'] as num).toInt()),
+      logSchemaVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['logSchemaVersion'])),
       s3Configuration: (() { final guardedValue = map['s3Configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExperimentTemplateLogConfigurationS3Configuration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -35,7 +35,7 @@ class IntentFollowUpPromptPrompt {
 
   factory IntentFollowUpPromptPrompt.fromMap(Map<String, dynamic> map) {
     return IntentFollowUpPromptPrompt(
-      maxAttempts: pulumi.Input.fromValue((map['maxAttempts'] as num).toInt()),
+      maxAttempts: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxAttempts'])),
       messages: pulumi.Input.fromValue(pulumi.Input.decodeList<IntentFollowUpPromptPromptMessage>(map['messages']!, (value) => IntentFollowUpPromptPromptMessage.fromMap((value as Map).cast<String, dynamic>()))),
       responseCard: (() { final guardedValue = map['responseCard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

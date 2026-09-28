@@ -55,7 +55,7 @@ class AssessmentTemplateArgs {
 
   factory AssessmentTemplateArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentTemplateArgs(
-      duration: pulumi.Input.fromValue((map['duration'] as num).toInt()),
+      duration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['duration'])),
       eventSubscriptions: (() { final guardedValue = map['eventSubscriptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AssessmentTemplateEventSubscription>(guardedValue, (value) => AssessmentTemplateEventSubscription.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

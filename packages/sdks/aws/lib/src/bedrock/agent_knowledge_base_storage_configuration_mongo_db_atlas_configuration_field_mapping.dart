@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfigurationFieldMapping {
-  /// The name of the field in which Amazon Bedrock stores metadata about the vector store.
+  /// Name of the field in which Amazon Bedrock stores metadata about the vector store.
   final pulumi.Input<String> metadataField;
-  /// The name of the field in which Amazon Bedrock stores the raw text from your data. The text is split according to the chunking strategy you choose.
+  /// Name of the field in which Amazon Bedrock stores the raw text from your data. The text is split according to the chunking strategy you choose.
   final pulumi.Input<String> textField;
-  /// The name of the field in which Amazon Bedrock stores the vector embeddings for your data sources.
+  /// Name of the field in which Amazon Bedrock stores the vector embeddings for your data sources.
   final pulumi.Input<String> vectorField;
 
   /// Creates a new [AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfigurationFieldMapping].
-  /// [metadataField] The name of the field in which Amazon Bedrock stores metadata about the vector store.
-  /// [textField] The name of the field in which Amazon Bedrock stores the raw text from your data. The text is split according to the chunking strategy you choose.
-  /// [vectorField] The name of the field in which Amazon Bedrock stores the vector embeddings for your data sources.
+  /// [metadataField] Name of the field in which Amazon Bedrock stores metadata about the vector store.
+  /// [textField] Name of the field in which Amazon Bedrock stores the raw text from your data. The text is split according to the chunking strategy you choose.
+  /// [vectorField] Name of the field in which Amazon Bedrock stores the vector embeddings for your data sources.
   const AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfigurationFieldMapping({
     required this.metadataField,
     required this.textField,

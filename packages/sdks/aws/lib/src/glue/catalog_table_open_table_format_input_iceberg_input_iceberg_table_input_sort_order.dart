@@ -27,7 +27,7 @@ class CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSortOrder {
   factory CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSortOrder.fromMap(Map<String, dynamic> map) {
     return CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSortOrder(
       fields: pulumi.Input.fromValue(pulumi.Input.decodeList<CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSortOrderField>(map['fields']!, (value) => CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSortOrderField.fromMap((value as Map).cast<String, dynamic>()))),
-      orderId: pulumi.Input.fromValue((map['orderId'] as num).toInt()),
+      orderId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['orderId'])),
     );
   }
 }

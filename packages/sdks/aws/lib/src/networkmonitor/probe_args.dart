@@ -60,9 +60,9 @@ class ProbeArgs {
   factory ProbeArgs.fromMap(Map<String, dynamic> map) {
     return ProbeArgs(
       destination: pulumi.Input.fromValue(map['destination'] as String),
-      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       monitorName: pulumi.Input.fromValue(map['monitorName'] as String),
-      packetSize: (() { final guardedValue = map['packetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      packetSize: (() { final guardedValue = map['packetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceArn: pulumi.Input.fromValue(map['sourceArn'] as String),

@@ -31,8 +31,8 @@ class V2modelsIntentOutputContext {
   factory V2modelsIntentOutputContext.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentOutputContext(
       name: pulumi.Input.fromValue(map['name'] as String),
-      timeToLiveInSeconds: pulumi.Input.fromValue((map['timeToLiveInSeconds'] as num).toInt()),
-      turnsToLive: pulumi.Input.fromValue((map['turnsToLive'] as num).toInt()),
+      timeToLiveInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeToLiveInSeconds'])),
+      turnsToLive: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['turnsToLive'])),
     );
   }
 }

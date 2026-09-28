@@ -20,7 +20,7 @@ class AgentcoreOnlineEvaluationConfigRuleSessionConfig {
 
   factory AgentcoreOnlineEvaluationConfigRuleSessionConfig.fromMap(Map<String, dynamic> map) {
     return AgentcoreOnlineEvaluationConfigRuleSessionConfig(
-      sessionTimeoutMinutes: pulumi.Input.fromValue((map['sessionTimeoutMinutes'] as num).toInt()),
+      sessionTimeoutMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sessionTimeoutMinutes'])),
     );
   }
 }

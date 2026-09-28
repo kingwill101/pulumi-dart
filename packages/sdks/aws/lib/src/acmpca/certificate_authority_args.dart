@@ -69,7 +69,7 @@ class CertificateAuthorityArgs {
       certificateAuthorityConfiguration: pulumi.Input.fromValue(CertificateAuthorityCertificateAuthorityConfiguration.fromMap((map['certificateAuthorityConfiguration']! as Map).cast<String, dynamic>())),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       keyStorageSecurityStandard: (() { final guardedValue = map['keyStorageSecurityStandard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      permanentDeletionTimeInDays: (() { final guardedValue = map['permanentDeletionTimeInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      permanentDeletionTimeInDays: (() { final guardedValue = map['permanentDeletionTimeInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       revocationConfiguration: (() { final guardedValue = map['revocationConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CertificateAuthorityRevocationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

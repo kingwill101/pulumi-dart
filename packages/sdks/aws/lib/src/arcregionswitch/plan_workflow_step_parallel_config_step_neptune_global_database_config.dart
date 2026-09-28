@@ -56,7 +56,7 @@ class PlanWorkflowStepParallelConfigStepNeptuneGlobalDatabaseConfig {
       externalId: (() { final guardedValue = map['externalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       globalClusterIdentifier: pulumi.Input.fromValue(map['globalClusterIdentifier'] as String),
       regionDatabaseClusterArns: pulumi.Input.fromValue((map['regionDatabaseClusterArns'] as Map).cast<String, String>()),
-      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutMinutes: (() { final guardedValue = map['timeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ungracefuls: (() { final guardedValue = map['ungracefuls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepNeptuneGlobalDatabaseConfigUngraceful>(guardedValue, (value) => PlanWorkflowStepParallelConfigStepNeptuneGlobalDatabaseConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

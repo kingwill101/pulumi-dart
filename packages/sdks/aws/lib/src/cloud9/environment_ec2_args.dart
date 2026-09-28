@@ -77,7 +77,7 @@ class EnvironmentEC2Args {
 
   factory EnvironmentEC2Args.fromMap(Map<String, dynamic> map) {
     return EnvironmentEC2Args(
-      automaticStopTimeMinutes: (() { final guardedValue = map['automaticStopTimeMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      automaticStopTimeMinutes: (() { final guardedValue = map['automaticStopTimeMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       connectionType: (() { final guardedValue = map['connectionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       imageId: pulumi.Input.fromValue(map['imageId'] as String),

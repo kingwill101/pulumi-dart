@@ -159,6 +159,18 @@ import 'backup_policy_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) ID of the file system.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import the EFS backup policies using the `id`. For example:
 ///
 /// ```sh
@@ -184,7 +196,7 @@ class BackupPolicy extends pulumi.CustomResource {
           'aws:efs/backupPolicy:BackupPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     backupPolicy = registerOutput<BackupPolicyBackupPolicy>('backupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPolicyBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fileSystemId = registerOutput<String>('fileSystemId');

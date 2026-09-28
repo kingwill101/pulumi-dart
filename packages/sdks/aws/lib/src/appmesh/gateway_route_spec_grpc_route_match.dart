@@ -25,7 +25,7 @@ class GatewayRouteSpecGrpcRouteMatch {
 
   factory GatewayRouteSpecGrpcRouteMatch.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecGrpcRouteMatch(
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }

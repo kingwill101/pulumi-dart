@@ -30,8 +30,8 @@ class EventSourceMappingProvisionedPollerConfig {
 
   factory EventSourceMappingProvisionedPollerConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingProvisionedPollerConfig(
-      maximumPollers: (() { final guardedValue = map['maximumPollers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minimumPollers: (() { final guardedValue = map['minimumPollers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumPollers: (() { final guardedValue = map['maximumPollers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minimumPollers: (() { final guardedValue = map['minimumPollers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       pollerGroupName: (() { final guardedValue = map['pollerGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

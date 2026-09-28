@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_oauth2_credential_provider_oauth2_provider_config_custom_oauth2_provider_config_oauth_discovery_authorization_server_metadata.dart';
 
 class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscovery {
-  /// Manual OAuth2 authorization server metadata configuration. Cannot be used together with `discoveryUrl`. See `authorizationServerMetadata` below.
+  /// OAuth2 authorization server metadata resolved by the service. See `authorizationServerMetadata` Block below.
   final pulumi.Input<AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata?>? authorizationServerMetadata;
-  /// OpenID Connect discovery URL (e.g., `https://provider.com/.well-known/openid-configuration`). Cannot be used together with `authorizationServerMetadata`.
+  /// OpenID Connect discovery URL resolved by the service.
   final pulumi.Input<String?>? discoveryUrl;
 
   /// Creates a new [AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscovery].
-  /// [authorizationServerMetadata] Manual OAuth2 authorization server metadata configuration. Cannot be used together with `discoveryUrl`. See `authorizationServerMetadata` below.
-  /// [discoveryUrl] OpenID Connect discovery URL (e.g., `https://provider.com/.well-known/openid-configuration`). Cannot be used together with `authorizationServerMetadata`.
+  /// [authorizationServerMetadata] OAuth2 authorization server metadata resolved by the service. See `authorizationServerMetadata` Block below.
+  /// [discoveryUrl] OpenID Connect discovery URL resolved by the service.
   const AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscovery({
     this.authorizationServerMetadata,
     this.discoveryUrl,

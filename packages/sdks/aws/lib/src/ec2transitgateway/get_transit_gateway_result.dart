@@ -110,7 +110,7 @@ class GetTransitGatewayResult {
 
   factory GetTransitGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetTransitGatewayResult(
-      amazonSideAsn: (() { final guardedValue = map['amazonSideAsn']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      amazonSideAsn: (() { final guardedValue = map['amazonSideAsn']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       associationDefaultRouteTableId: (() { final guardedValue = map['associationDefaultRouteTableId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       autoAcceptSharedAttachments: (() { final guardedValue = map['autoAcceptSharedAttachments']; if (guardedValue == null) return null; return guardedValue as String; })(),

@@ -49,9 +49,9 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter(
       devices: pulumi.Input.fromValue(pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice>(map['devices']!, (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice.fromMap((value as Map).cast<String, dynamic>()))),
       initProcessEnabled: pulumi.Input.fromValue(map['initProcessEnabled'] as bool),
-      maxSwap: pulumi.Input.fromValue((map['maxSwap'] as num).toInt()),
-      sharedMemorySize: pulumi.Input.fromValue((map['sharedMemorySize'] as num).toInt()),
-      swappiness: pulumi.Input.fromValue((map['swappiness'] as num).toInt()),
+      maxSwap: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxSwap'])),
+      sharedMemorySize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sharedMemorySize'])),
+      swappiness: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['swappiness'])),
       tmpfs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf>(map['tmpfs']!, (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

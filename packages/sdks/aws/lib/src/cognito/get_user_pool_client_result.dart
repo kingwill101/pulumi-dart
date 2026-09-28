@@ -144,7 +144,7 @@ class GetUserPoolClientResult {
 
   factory GetUserPoolClientResult.fromMap(Map<String, dynamic> map) {
     return GetUserPoolClientResult(
-      accessTokenValidity: (() { final guardedValue = map['accessTokenValidity']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      accessTokenValidity: (() { final guardedValue = map['accessTokenValidity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       allowedOauthFlows: (() { final guardedValue = map['allowedOauthFlows']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       allowedOauthFlowsUserPoolClient: (() { final guardedValue = map['allowedOauthFlowsUserPoolClient']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       allowedOauthScopes: (() { final guardedValue = map['allowedOauthScopes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
@@ -158,13 +158,13 @@ class GetUserPoolClientResult {
       explicitAuthFlows: (() { final guardedValue = map['explicitAuthFlows']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       generateSecret: (() { final guardedValue = map['generateSecret']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      idTokenValidity: (() { final guardedValue = map['idTokenValidity']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      idTokenValidity: (() { final guardedValue = map['idTokenValidity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       logoutUrls: (() { final guardedValue = map['logoutUrls']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       preventUserExistenceErrors: (() { final guardedValue = map['preventUserExistenceErrors']; if (guardedValue == null) return null; return guardedValue as String; })(),
       readAttributes: (() { final guardedValue = map['readAttributes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       refreshTokenRotations: (() { final guardedValue = map['refreshTokenRotations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetUserPoolClientRefreshTokenRotation>(guardedValue, (value) => GetUserPoolClientRefreshTokenRotation.fromMap((value as Map).cast<String, dynamic>())); })(),
-      refreshTokenValidity: (() { final guardedValue = map['refreshTokenValidity']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      refreshTokenValidity: (() { final guardedValue = map['refreshTokenValidity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       supportedIdentityProviders: (() { final guardedValue = map['supportedIdentityProviders']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       tokenValidityUnits: (() { final guardedValue = map['tokenValidityUnits']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetUserPoolClientTokenValidityUnit>(guardedValue, (value) => GetUserPoolClientTokenValidityUnit.fromMap((value as Map).cast<String, dynamic>())); })(),

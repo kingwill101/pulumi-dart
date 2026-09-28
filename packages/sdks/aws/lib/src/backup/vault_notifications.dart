@@ -341,9 +341,9 @@ import 'vault_notifications_state.dart';
 /// $ pulumi import aws:backup/vaultNotifications:VaultNotifications test TestVault
 /// ```
 class VaultNotifications extends pulumi.CustomResource {
-  /// The ARN of the vault.
+  /// ARN of the vault.
   late final pulumi.Output<String> backupVaultArn;
-  /// An array of events that indicate the status of jobs to back up resources to the backup vault.
+  /// Array of events that indicate the status of jobs to back up resources to the backup vault.
   late final pulumi.Output<List<String>> backupVaultEvents;
   /// Name of the backup vault to add notifications for.
   late final pulumi.Output<String> backupVaultName;
@@ -364,7 +364,7 @@ class VaultNotifications extends pulumi.CustomResource {
           'aws:backup/vaultNotifications:VaultNotifications',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     backupVaultArn = registerOutput<String>('backupVaultArn');
     backupVaultEvents = registerOutput<List<String>>('backupVaultEvents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

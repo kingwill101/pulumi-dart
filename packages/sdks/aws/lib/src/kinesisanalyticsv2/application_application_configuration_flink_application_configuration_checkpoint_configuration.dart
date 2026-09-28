@@ -38,10 +38,10 @@ class ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpoint
 
   factory ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration(
-      checkpointInterval: (() { final guardedValue = map['checkpointInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      checkpointInterval: (() { final guardedValue = map['checkpointInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       checkpointingEnabled: (() { final guardedValue = map['checkpointingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       configurationType: pulumi.Input.fromValue(map['configurationType'] as String),
-      minPauseBetweenCheckpoints: (() { final guardedValue = map['minPauseBetweenCheckpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minPauseBetweenCheckpoints: (() { final guardedValue = map['minPauseBetweenCheckpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

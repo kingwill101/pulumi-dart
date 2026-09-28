@@ -14,9 +14,9 @@ class GetPlanResult {
   final String? name;
   final String? planId;
   final String? region;
-  /// Rules of a backup plan.
+  /// Rules of a backup plan. See below.
   final List<GetPlanRule>? rules;
-  /// Scanning configuration for the backup rule.
+  /// Scanning configuration for the backup rule. See below.
   final List<GetPlanScanSetting>? scanSettings;
   /// Metadata that you can assign to help organize the plans you create.
   final Map<String, String>? tags;
@@ -29,8 +29,8 @@ class GetPlanResult {
   /// [name] Display name of a backup plan.
   /// [planId] Optional.
   /// [region] Optional.
-  /// [rules] Rules of a backup plan.
-  /// [scanSettings] Scanning configuration for the backup rule.
+  /// [rules] Rules of a backup plan. See below.
+  /// [scanSettings] Scanning configuration for the backup rule. See below.
   /// [tags] Metadata that you can assign to help organize the plans you create.
   /// [version] Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
   const GetPlanResult({

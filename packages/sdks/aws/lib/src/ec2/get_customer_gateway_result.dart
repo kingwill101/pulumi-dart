@@ -70,8 +70,8 @@ class GetCustomerGatewayResult {
   factory GetCustomerGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetCustomerGatewayResult(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      bgpAsn: (() { final guardedValue = map['bgpAsn']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      bgpAsnExtended: (() { final guardedValue = map['bgpAsnExtended']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      bgpAsn: (() { final guardedValue = map['bgpAsn']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      bgpAsnExtended: (() { final guardedValue = map['bgpAsnExtended']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       certificateArn: (() { final guardedValue = map['certificateArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deviceName: (() { final guardedValue = map['deviceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCustomerGatewayFilter>(guardedValue, (value) => GetCustomerGatewayFilter.fromMap((value as Map).cast<String, dynamic>())); })(),

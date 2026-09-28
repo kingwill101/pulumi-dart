@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_rds_get_global_cluster_get_global_cluster_args_doc}
 class GetGlobalClusterArgs {
-  /// The global cluster identifier of the RDS global cluster.
+  /// Global cluster identifier of the RDS global cluster.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> identifier;
@@ -15,7 +15,7 @@ class GetGlobalClusterArgs {
   final pulumi.Input<String?>? region;
 
   /// Creates a new [GetGlobalClusterArgs].
-  /// [identifier] The global cluster identifier of the RDS global cluster.
+  /// [identifier] Global cluster identifier of the RDS global cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetGlobalClusterArgs({
     required this.identifier,

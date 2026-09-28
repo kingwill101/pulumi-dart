@@ -67,7 +67,7 @@ class DevEnvironmentState {
     return DevEnvironmentState(
       alias: (() { final guardedValue = map['alias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ides: (() { final guardedValue = map['ides']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DevEnvironmentIdes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      inactivityTimeoutMinutes: (() { final guardedValue = map['inactivityTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      inactivityTimeoutMinutes: (() { final guardedValue = map['inactivityTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       persistentStorage: (() { final guardedValue = map['persistentStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DevEnvironmentPersistentStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       projectName: (() { final guardedValue = map['projectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

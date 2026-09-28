@@ -47,7 +47,7 @@ class ProvisionedConcurrencyConfigArgs {
   factory ProvisionedConcurrencyConfigArgs.fromMap(Map<String, dynamic> map) {
     return ProvisionedConcurrencyConfigArgs(
       functionName: pulumi.Input.fromValue(map['functionName'] as String),
-      provisionedConcurrentExecutions: pulumi.Input.fromValue((map['provisionedConcurrentExecutions'] as num).toInt()),
+      provisionedConcurrentExecutions: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['provisionedConcurrentExecutions'])),
       qualifier: pulumi.Input.fromValue(map['qualifier'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       skipDestroy: (() { final guardedValue = map['skipDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

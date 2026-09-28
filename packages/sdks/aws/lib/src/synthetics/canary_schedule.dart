@@ -31,7 +31,7 @@ class CanarySchedule {
 
   factory CanarySchedule.fromMap(Map<String, dynamic> map) {
     return CanarySchedule(
-      durationInSeconds: (() { final guardedValue = map['durationInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      durationInSeconds: (() { final guardedValue = map['durationInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       expression: pulumi.Input.fromValue(map['expression'] as String),
       retryConfig: (() { final guardedValue = map['retryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CanaryScheduleRetryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

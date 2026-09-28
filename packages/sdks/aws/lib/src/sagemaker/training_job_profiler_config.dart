@@ -36,7 +36,7 @@ class TrainingJobProfilerConfig {
   factory TrainingJobProfilerConfig.fromMap(Map<String, dynamic> map) {
     return TrainingJobProfilerConfig(
       disableProfiler: (() { final guardedValue = map['disableProfiler']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      profilingIntervalInMilliseconds: (() { final guardedValue = map['profilingIntervalInMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      profilingIntervalInMilliseconds: (() { final guardedValue = map['profilingIntervalInMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       profilingParameters: (() { final guardedValue = map['profilingParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       s3OutputPath: (() { final guardedValue = map['s3OutputPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -38,7 +38,7 @@ class MultiplexProgramMultiplexProgramSettings {
   factory MultiplexProgramMultiplexProgramSettings.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramMultiplexProgramSettings(
       preferredChannelPipeline: pulumi.Input.fromValue(map['preferredChannelPipeline'] as String),
-      programNumber: pulumi.Input.fromValue((map['programNumber'] as num).toInt()),
+      programNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['programNumber'])),
       serviceDescriptor: (() { final guardedValue = map['serviceDescriptor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MultiplexProgramMultiplexProgramSettingsServiceDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       videoSettings: (() { final guardedValue = map['videoSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MultiplexProgramMultiplexProgramSettingsVideoSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

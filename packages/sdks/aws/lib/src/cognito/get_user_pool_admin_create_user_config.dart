@@ -33,7 +33,7 @@ class GetUserPoolAdminCreateUserConfig {
     return GetUserPoolAdminCreateUserConfig(
       allowAdminCreateUserOnly: pulumi.Input.fromValue(map['allowAdminCreateUserOnly'] as bool),
       inviteMessageTemplates: pulumi.Input.fromValue(pulumi.Input.decodeList<GetUserPoolAdminCreateUserConfigInviteMessageTemplate>(map['inviteMessageTemplates']!, (value) => GetUserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap((value as Map).cast<String, dynamic>()))),
-      unusedAccountValidityDays: pulumi.Input.fromValue((map['unusedAccountValidityDays'] as num).toInt()),
+      unusedAccountValidityDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['unusedAccountValidityDays'])),
     );
   }
 }

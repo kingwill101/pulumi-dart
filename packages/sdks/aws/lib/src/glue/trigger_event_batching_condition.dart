@@ -25,8 +25,8 @@ class TriggerEventBatchingCondition {
 
   factory TriggerEventBatchingCondition.fromMap(Map<String, dynamic> map) {
     return TriggerEventBatchingCondition(
-      batchSize: pulumi.Input.fromValue((map['batchSize'] as num).toInt()),
-      batchWindow: (() { final guardedValue = map['batchWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      batchSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['batchSize'])),
+      batchWindow: (() { final guardedValue = map['batchWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

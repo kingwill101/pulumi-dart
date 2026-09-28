@@ -27,7 +27,7 @@ class ClusterState {
   /// Ordered list of bootstrap actions that will be run before Hadoop is started on the cluster nodes. See below.
   final pulumi.Input<List<ClusterBootstrapAction>?>? bootstrapActions;
   final pulumi.Input<String?>? clusterState;
-  /// List of configurations supplied for the EMR cluster you are creating. Supply a configuration object for applications to override their default configuration. See [AWS Documentation](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html) for more information.
+  /// List of configurations supplied for the EMR cluster you are creating, expressed as a string: an HTTP(S) URL to a JSON file, a path to a local `.json` file, or a raw JSON string. To supply configuration objects using Pulumi syntax instead, use `configurationsJson`. See [AWS Documentation](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html) for more information.
   final pulumi.Input<String?>? configurations;
   /// JSON string for supplying list of configurations for the EMR cluster.
   ///
@@ -284,7 +284,7 @@ class ClusterState {
   /// [autoscalingRole] IAM role for automatic scaling policies. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.
   /// [bootstrapActions] Ordered list of bootstrap actions that will be run before Hadoop is started on the cluster nodes. See below.
   /// [clusterState] Optional.
-  /// [configurations] List of configurations supplied for the EMR cluster you are creating. Supply a configuration object for applications to override their default configuration. See [AWS Documentation](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html) for more information.
+  /// [configurations] List of configurations supplied for the EMR cluster you are creating, expressed as a string: an HTTP(S) URL to a JSON file, a path to a local `.json` file, or a raw JSON string. To supply configuration objects using Pulumi syntax instead, use `configurationsJson`. See [AWS Documentation](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html) for more information.
   /// [configurationsJson] JSON string for supplying list of configurations for the EMR cluster.
   /// [coreInstanceFleet] Configuration block to use an [Instance Fleet](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-fleet.html) for the core node type. Cannot be specified if any `coreInstanceGroup` configuration blocks are set. Detailed below.
   /// [coreInstanceGroup] Configuration block to use an [Instance Group](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-instance-group-configuration.html#emr-plan-instance-groups) for the [core node type](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-master-core-task-nodes.html#emr-plan-core).
@@ -410,7 +410,7 @@ class ClusterState {
       coreInstanceFleet: (() { final guardedValue = map['coreInstanceFleet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterCoreInstanceFleet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       coreInstanceGroup: (() { final guardedValue = map['coreInstanceGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterCoreInstanceGroup.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customAmiId: (() { final guardedValue = map['customAmiId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ebsRootVolumeSize: (() { final guardedValue = map['ebsRootVolumeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ebsRootVolumeSize: (() { final guardedValue = map['ebsRootVolumeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ec2Attributes: (() { final guardedValue = map['ec2Attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterEc2Attributes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keepJobFlowAliveWhenNoSteps: (() { final guardedValue = map['keepJobFlowAliveWhenNoSteps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kerberosAttributes: (() { final guardedValue = map['kerberosAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterKerberosAttributes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -428,7 +428,7 @@ class ClusterState {
       scaleDownBehavior: (() { final guardedValue = map['scaleDownBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securityConfiguration: (() { final guardedValue = map['securityConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceRole: (() { final guardedValue = map['serviceRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      stepConcurrencyLevel: (() { final guardedValue = map['stepConcurrencyLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      stepConcurrencyLevel: (() { final guardedValue = map['stepConcurrencyLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       steps: (() { final guardedValue = map['steps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterStep>(guardedValue, (value) => ClusterStep.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

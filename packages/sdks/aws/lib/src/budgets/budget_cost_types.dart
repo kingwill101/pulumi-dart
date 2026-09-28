@@ -3,41 +3,41 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetCostTypes {
-  /// A boolean value whether to include credits in the cost budget. Defaults to `true`
+  /// Whether to include credits in the cost budget. Defaults to `true`.
   final pulumi.Input<bool?>? includeCredit;
-  /// Whether a budget includes discounts. Defaults to `true`
+  /// Whether a budget includes discounts. Defaults to `true`.
   final pulumi.Input<bool?>? includeDiscount;
-  /// A boolean value whether to include other subscription costs in the cost budget. Defaults to `true`
+  /// Whether to include other subscription costs in the cost budget. Defaults to `true`.
   final pulumi.Input<bool?>? includeOtherSubscription;
-  /// A boolean value whether to include recurring costs in the cost budget. Defaults to `true`
+  /// Whether to include recurring costs in the cost budget. Defaults to `true`.
   final pulumi.Input<bool?>? includeRecurring;
-  /// A boolean value whether to include refunds in the cost budget. Defaults to `true`
+  /// Whether to include refunds in the cost budget. Defaults to `true`.
   final pulumi.Input<bool?>? includeRefund;
-  /// A boolean value whether to include subscriptions in the cost budget. Defaults to `true`
+  /// Whether to include subscriptions in the cost budget. Defaults to `true`.
   final pulumi.Input<bool?>? includeSubscription;
-  /// A boolean value whether to include support costs in the cost budget. Defaults to `true`
+  /// Whether to include support costs in the cost budget. Defaults to `true`.
   final pulumi.Input<bool?>? includeSupport;
-  /// A boolean value whether to include tax in the cost budget. Defaults to `true`
+  /// Whether to include tax in the cost budget. Defaults to `true`.
   final pulumi.Input<bool?>? includeTax;
-  /// A boolean value whether to include upfront costs in the cost budget. Defaults to `true`
+  /// Whether to include upfront costs in the cost budget. Defaults to `true`.
   final pulumi.Input<bool?>? includeUpfront;
-  /// Whether a budget uses the amortized rate. Defaults to `false`
+  /// Whether a budget uses the amortized rate. Defaults to `false`.
   final pulumi.Input<bool?>? useAmortized;
-  /// A boolean value whether to use blended costs in the cost budget. Defaults to `false`
+  /// Whether to use blended costs in the cost budget. Defaults to `false`.
   final pulumi.Input<bool?>? useBlended;
 
   /// Creates a new [BudgetCostTypes].
-  /// [includeCredit] A boolean value whether to include credits in the cost budget. Defaults to `true`
-  /// [includeDiscount] Whether a budget includes discounts. Defaults to `true`
-  /// [includeOtherSubscription] A boolean value whether to include other subscription costs in the cost budget. Defaults to `true`
-  /// [includeRecurring] A boolean value whether to include recurring costs in the cost budget. Defaults to `true`
-  /// [includeRefund] A boolean value whether to include refunds in the cost budget. Defaults to `true`
-  /// [includeSubscription] A boolean value whether to include subscriptions in the cost budget. Defaults to `true`
-  /// [includeSupport] A boolean value whether to include support costs in the cost budget. Defaults to `true`
-  /// [includeTax] A boolean value whether to include tax in the cost budget. Defaults to `true`
-  /// [includeUpfront] A boolean value whether to include upfront costs in the cost budget. Defaults to `true`
-  /// [useAmortized] Whether a budget uses the amortized rate. Defaults to `false`
-  /// [useBlended] A boolean value whether to use blended costs in the cost budget. Defaults to `false`
+  /// [includeCredit] Whether to include credits in the cost budget. Defaults to `true`.
+  /// [includeDiscount] Whether a budget includes discounts. Defaults to `true`.
+  /// [includeOtherSubscription] Whether to include other subscription costs in the cost budget. Defaults to `true`.
+  /// [includeRecurring] Whether to include recurring costs in the cost budget. Defaults to `true`.
+  /// [includeRefund] Whether to include refunds in the cost budget. Defaults to `true`.
+  /// [includeSubscription] Whether to include subscriptions in the cost budget. Defaults to `true`.
+  /// [includeSupport] Whether to include support costs in the cost budget. Defaults to `true`.
+  /// [includeTax] Whether to include tax in the cost budget. Defaults to `true`.
+  /// [includeUpfront] Whether to include upfront costs in the cost budget. Defaults to `true`.
+  /// [useAmortized] Whether a budget uses the amortized rate. Defaults to `false`.
+  /// [useBlended] Whether to use blended costs in the cost budget. Defaults to `false`.
   const BudgetCostTypes({
     this.includeCredit,
     this.includeDiscount,

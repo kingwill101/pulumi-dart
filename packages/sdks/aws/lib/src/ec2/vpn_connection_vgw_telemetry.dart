@@ -45,7 +45,7 @@ class VpnConnectionVgwTelemetry {
 
   factory VpnConnectionVgwTelemetry.fromMap(Map<String, dynamic> map) {
     return VpnConnectionVgwTelemetry(
-      acceptedRouteCount: (() { final guardedValue = map['acceptedRouteCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      acceptedRouteCount: (() { final guardedValue = map['acceptedRouteCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       certificateArn: (() { final guardedValue = map['certificateArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastStatusChange: (() { final guardedValue = map['lastStatusChange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       outsideIpAddress: (() { final guardedValue = map['outsideIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

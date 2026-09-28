@@ -19,7 +19,7 @@ class MultiRegionEndpointState {
   final pulumi.Input<String?>? endpointName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// List of active routes. See `routes` below.
+  /// List of active routes. See `routes` Block below.
   final pulumi.Input<List<MultiRegionEndpointRoute>?>? routes;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
@@ -33,7 +33,7 @@ class MultiRegionEndpointState {
   /// [endpointId] ID assigned to the multi-region endpoint.
   /// [endpointName] Name of the multi-region endpoint.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [routes] List of active routes. See `routes` below.
+  /// [routes] List of active routes. See `routes` Block below.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.

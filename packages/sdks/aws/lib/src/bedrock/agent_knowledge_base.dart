@@ -2047,8 +2047,9 @@ class AgentKnowledgeBase extends pulumi.CustomResource {
   late final pulumi.Output<String> createdAt;
   /// Description of the knowledge base.
   late final pulumi.Output<String?> description;
+  /// List of failure reasons reported when the knowledge base is in a failed state.
   late final pulumi.Output<List<String>> failureReasons;
-  /// Details about the embeddings configuration of the knowledge base. See `knowledgeBaseConfiguration` block for details.
+  /// Details about the embeddings configuration of the knowledge base. See `knowledgeBaseConfiguration` Block for details.
   late final pulumi.Output<AgentKnowledgeBaseKnowledgeBaseConfiguration> knowledgeBaseConfiguration;
   /// Name of the knowledge base.
   late final pulumi.Output<String> name;
@@ -2058,7 +2059,7 @@ class AgentKnowledgeBase extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> roleArn;
-  /// Details about the storage configuration of the knowledge base. See `storageConfiguration` block for details.
+  /// Details about the storage configuration of the knowledge base. See `storageConfiguration` Block for details.
   late final pulumi.Output<AgentKnowledgeBaseStorageConfiguration?> storageConfiguration;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -2080,7 +2081,7 @@ class AgentKnowledgeBase extends pulumi.CustomResource {
           'aws:bedrock/agentKnowledgeBase:AgentKnowledgeBase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

@@ -6,16 +6,16 @@ import 'budget_filter_expression_and_not_dimensions.dart';
 import 'budget_filter_expression_and_not_tags.dart';
 
 class BudgetFilterExpressionAndNot {
-  /// (Optional) A Cost Category Filter block.
+  /// Cost Categories block.
   final pulumi.Input<BudgetFilterExpressionAndNotCostCategories?>? costCategories;
-  /// (Optional) A Dimension Filter block.
+  /// Dimensions block.
   final pulumi.Input<BudgetFilterExpressionAndNotDimensions?>? dimensions;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<BudgetFilterExpressionAndNotTags?>? tags;
 
   /// Creates a new [BudgetFilterExpressionAndNot].
-  /// [costCategories] (Optional) A Cost Category Filter block.
-  /// [dimensions] (Optional) A Dimension Filter block.
+  /// [costCategories] Cost Categories block.
+  /// [dimensions] Dimensions block.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const BudgetFilterExpressionAndNot({
     this.costCategories,

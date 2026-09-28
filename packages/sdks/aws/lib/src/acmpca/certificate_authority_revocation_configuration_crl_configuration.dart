@@ -48,7 +48,7 @@ class CertificateAuthorityRevocationConfigurationCrlConfiguration {
       customCname: (() { final guardedValue = map['customCname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customPath: (() { final guardedValue = map['customPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      expirationInDays: (() { final guardedValue = map['expirationInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      expirationInDays: (() { final guardedValue = map['expirationInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       s3BucketName: (() { final guardedValue = map['s3BucketName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3ObjectAcl: (() { final guardedValue = map['s3ObjectAcl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

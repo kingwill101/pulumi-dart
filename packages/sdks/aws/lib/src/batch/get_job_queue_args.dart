@@ -11,13 +11,13 @@ class GetJobQueueArgs {
   final pulumi.Input<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Key-value map of resource tags
+  /// Key-value map of resource tags.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetJobQueueArgs].
   /// [name] Name of the job queue.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Key-value map of resource tags
+  /// [tags] Key-value map of resource tags.
   const GetJobQueueArgs({
     required this.name,
     this.region,

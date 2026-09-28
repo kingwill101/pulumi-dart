@@ -8,24 +8,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_rds_proxy_target_proxy_target_args_doc}
 class ProxyTargetArgs {
   /// DB cluster identifier.
-  ///
-  /// **NOTE:** Either `dbInstanceIdentifier` or `dbClusterIdentifier` should be specified and both should not be specified together
   final pulumi.Input<String?>? dbClusterIdentifier;
   /// DB instance identifier.
   final pulumi.Input<String?>? dbInstanceIdentifier;
-  /// The name of the DB proxy.
+  /// Name of the DB proxy.
   final pulumi.Input<String> dbProxyName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The name of the target group.
+  /// Name of the target group.
   final pulumi.Input<String> targetGroupName;
 
   /// Creates a new [ProxyTargetArgs].
   /// [dbClusterIdentifier] DB cluster identifier.
   /// [dbInstanceIdentifier] DB instance identifier.
-  /// [dbProxyName] The name of the DB proxy.
+  /// [dbProxyName] Name of the DB proxy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [targetGroupName] The name of the target group.
+  /// [targetGroupName] Name of the target group.
   const ProxyTargetArgs({
     this.dbClusterIdentifier,
     this.dbInstanceIdentifier,

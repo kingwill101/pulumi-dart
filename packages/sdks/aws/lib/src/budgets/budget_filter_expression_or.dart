@@ -9,25 +9,25 @@ import 'budget_filter_expression_or_or.dart';
 import 'budget_filter_expression_or_tags.dart';
 
 class BudgetFilterExpressionOr {
-  /// (Optional) A list of filter expressions to combine with AND logic. Each `and` block is one operand and must itself contain exactly one root.
+  /// List of filter expressions to combine with AND logic. Each `and` block is one operand and must itself contain exactly one root.
   final pulumi.Input<List<BudgetFilterExpressionOrAnd>?>? ands;
-  /// (Optional) A Cost Category Filter block.
+  /// Cost Categories block.
   final pulumi.Input<BudgetFilterExpressionOrCostCategories?>? costCategories;
-  /// (Optional) A Dimension Filter block.
+  /// Dimensions block.
   final pulumi.Input<BudgetFilterExpressionOrDimensions?>? dimensions;
-  /// (Optional) A single filter expression to negate. Must contain exactly one root.
+  /// Single filter expression to negate. Must contain exactly one root.
   final pulumi.Input<BudgetFilterExpressionOrNot?>? not;
-  /// (Optional) A list of filter expressions to combine with OR logic. Each `or` block is one operand and must itself contain exactly one root.
+  /// List of filter expressions to combine with OR logic. Each `or` block is one operand and must itself contain exactly one root.
   final pulumi.Input<List<BudgetFilterExpressionOrOr>?>? ors;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<BudgetFilterExpressionOrTags?>? tags;
 
   /// Creates a new [BudgetFilterExpressionOr].
-  /// [ands] (Optional) A list of filter expressions to combine with AND logic. Each `and` block is one operand and must itself contain exactly one root.
-  /// [costCategories] (Optional) A Cost Category Filter block.
-  /// [dimensions] (Optional) A Dimension Filter block.
-  /// [not] (Optional) A single filter expression to negate. Must contain exactly one root.
-  /// [ors] (Optional) A list of filter expressions to combine with OR logic. Each `or` block is one operand and must itself contain exactly one root.
+  /// [ands] List of filter expressions to combine with AND logic. Each `and` block is one operand and must itself contain exactly one root.
+  /// [costCategories] Cost Categories block.
+  /// [dimensions] Dimensions block.
+  /// [not] Single filter expression to negate. Must contain exactly one root.
+  /// [ors] List of filter expressions to combine with OR logic. Each `or` block is one operand and must itself contain exactly one root.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const BudgetFilterExpressionOr({
     this.ands,

@@ -25,7 +25,7 @@ class GetComputeEnvironmentResult {
   final Map<String, String>? tags;
   /// Type of the compute environment (for example, `MANAGED` or `UNMANAGED`).
   final String? type;
-  /// Specifies the infrastructure update policy for the compute environment.
+  /// Infrastructure update policy for the compute environment.
   final List<GetComputeEnvironmentUpdatePolicy>? updatePolicies;
 
   /// Creates a new [GetComputeEnvironmentResult].
@@ -40,7 +40,7 @@ class GetComputeEnvironmentResult {
   /// [statusReason] Short, human-readable string to provide additional details about the current status of the compute environment.
   /// [tags] Key-value map of resource tags
   /// [type] Type of the compute environment (for example, `MANAGED` or `UNMANAGED`).
-  /// [updatePolicies] Specifies the infrastructure update policy for the compute environment.
+  /// [updatePolicies] Infrastructure update policy for the compute environment.
   const GetComputeEnvironmentResult({
     this.arn,
     this.ecsClusterArn,

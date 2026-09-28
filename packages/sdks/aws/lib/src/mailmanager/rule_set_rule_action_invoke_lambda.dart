@@ -43,7 +43,7 @@ class RuleSetRuleActionInvokeLambda {
       actionFailurePolicy: (() { final guardedValue = map['actionFailurePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       functionArn: pulumi.Input.fromValue(map['functionArn'] as String),
       invocationType: pulumi.Input.fromValue(map['invocationType'] as String),
-      retryTimeMinutes: (() { final guardedValue = map['retryTimeMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retryTimeMinutes: (() { final guardedValue = map['retryTimeMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
     );
   }

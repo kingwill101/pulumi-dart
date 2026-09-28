@@ -4,80 +4,82 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering SnapshotCopy resources.
 class SnapshotCopyState {
-  /// Specifies the allocated storage size in gigabytes (GB).
+  /// Allocated storage size in gigabytes (GB).
   final pulumi.Input<int?>? allocatedStorage;
-  /// Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.
+  /// Name of the Availability Zone the DB instance was located in at the time of the DB snapshot.
   final pulumi.Input<String?>? availabilityZone;
   /// Whether to copy existing tags. Defaults to `false`.
   final pulumi.Input<bool?>? copyTags;
   /// ARN for the DB snapshot.
   final pulumi.Input<String?>? dbSnapshotArn;
-  /// The Destination region to place snapshot copy.
+  /// Destination Region to place snapshot copy.
   final pulumi.Input<String?>? destinationRegion;
-  /// Specifies whether the DB snapshot is encrypted.
+  /// Whether the DB snapshot is encrypted.
   final pulumi.Input<bool?>? encrypted;
-  /// Specifies the name of the database engine.
+  /// Name of the database engine.
   final pulumi.Input<String?>? engine;
-  /// Specifies the version of the database engine.
+  /// Version of the database engine.
   final pulumi.Input<String?>? engineVersion;
-  /// Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.
+  /// Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.
   final pulumi.Input<int?>? iops;
   /// KMS key ID.
   final pulumi.Input<String?>? kmsKeyId;
   /// License model information for the restored DB instance.
   final pulumi.Input<String?>? licenseModel;
-  /// The name of an option group to associate with the copy of the snapshot.
+  /// Name of an option group to associate with the copy of the snapshot.
   final pulumi.Input<String?>? optionGroupName;
+  /// Port that the database engine is listening on.
   final pulumi.Input<int?>? port;
-  /// he URL that contains a Signature Version 4 signed request.
+  /// URL that contains a Signature Version 4 signed request.
   final pulumi.Input<String?>? presignedUrl;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
   final pulumi.Input<List<String>?>? sharedAccounts;
+  /// Type of the DB snapshot.
   final pulumi.Input<String?>? snapshotType;
   /// Snapshot identifier of the source snapshot.
   final pulumi.Input<String?>? sourceDbSnapshotIdentifier;
-  /// The region that the DB snapshot was created in or copied from.
+  /// Region that the DB snapshot was created in or copied from.
   final pulumi.Input<String?>? sourceRegion;
-  /// Specifies the storage type associated with DB snapshot.
+  /// Storage type associated with DB snapshot.
   final pulumi.Input<String?>? storageType;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
-  /// The external custom Availability Zone.
+  /// External custom Availability Zone.
   final pulumi.Input<String?>? targetCustomAvailabilityZone;
-  /// The Identifier for the snapshot.
+  /// Identifier for the snapshot.
   final pulumi.Input<String?>? targetDbSnapshotIdentifier;
   /// Provides the VPC ID associated with the DB snapshot.
   final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [SnapshotCopyState].
-  /// [allocatedStorage] Specifies the allocated storage size in gigabytes (GB).
-  /// [availabilityZone] Specifies the name of the Availability Zone the DB instance was located in at the time of the DB snapshot.
+  /// [allocatedStorage] Allocated storage size in gigabytes (GB).
+  /// [availabilityZone] Name of the Availability Zone the DB instance was located in at the time of the DB snapshot.
   /// [copyTags] Whether to copy existing tags. Defaults to `false`.
   /// [dbSnapshotArn] ARN for the DB snapshot.
-  /// [destinationRegion] The Destination region to place snapshot copy.
-  /// [encrypted] Specifies whether the DB snapshot is encrypted.
-  /// [engine] Specifies the name of the database engine.
-  /// [engineVersion] Specifies the version of the database engine.
-  /// [iops] Specifies the Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.
+  /// [destinationRegion] Destination Region to place snapshot copy.
+  /// [encrypted] Whether the DB snapshot is encrypted.
+  /// [engine] Name of the database engine.
+  /// [engineVersion] Version of the database engine.
+  /// [iops] Provisioned IOPS (I/O operations per second) value of the DB instance at the time of the snapshot.
   /// [kmsKeyId] KMS key ID.
   /// [licenseModel] License model information for the restored DB instance.
-  /// [optionGroupName] The name of an option group to associate with the copy of the snapshot.
-  /// [port] Optional.
-  /// [presignedUrl] he URL that contains a Signature Version 4 signed request.
+  /// [optionGroupName] Name of an option group to associate with the copy of the snapshot.
+  /// [port] Port that the database engine is listening on.
+  /// [presignedUrl] URL that contains a Signature Version 4 signed request.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sharedAccounts] List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
-  /// [snapshotType] Optional.
+  /// [snapshotType] Type of the DB snapshot.
   /// [sourceDbSnapshotIdentifier] Snapshot identifier of the source snapshot.
-  /// [sourceRegion] The region that the DB snapshot was created in or copied from.
-  /// [storageType] Specifies the storage type associated with DB snapshot.
+  /// [sourceRegion] Region that the DB snapshot was created in or copied from.
+  /// [storageType] Storage type associated with DB snapshot.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [targetCustomAvailabilityZone] The external custom Availability Zone.
-  /// [targetDbSnapshotIdentifier] The Identifier for the snapshot.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [targetCustomAvailabilityZone] External custom Availability Zone.
+  /// [targetDbSnapshotIdentifier] Identifier for the snapshot.
   /// [vpcId] Provides the VPC ID associated with the DB snapshot.
   const SnapshotCopyState({
     this.allocatedStorage,
@@ -139,7 +141,7 @@ class SnapshotCopyState {
 
   factory SnapshotCopyState.fromMap(Map<String, dynamic> map) {
     return SnapshotCopyState(
-      allocatedStorage: (() { final guardedValue = map['allocatedStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      allocatedStorage: (() { final guardedValue = map['allocatedStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       copyTags: (() { final guardedValue = map['copyTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dbSnapshotArn: (() { final guardedValue = map['dbSnapshotArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -147,11 +149,11 @@ class SnapshotCopyState {
       encrypted: (() { final guardedValue = map['encrypted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       engine: (() { final guardedValue = map['engine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       engineVersion: (() { final guardedValue = map['engineVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      iops: (() { final guardedValue = map['iops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       licenseModel: (() { final guardedValue = map['licenseModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       optionGroupName: (() { final guardedValue = map['optionGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       presignedUrl: (() { final guardedValue = map['presignedUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sharedAccounts: (() { final guardedValue = map['sharedAccounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

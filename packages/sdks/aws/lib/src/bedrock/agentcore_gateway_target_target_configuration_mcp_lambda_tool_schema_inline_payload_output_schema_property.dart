@@ -7,11 +7,11 @@ import 'agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_inl
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaProperty {
   /// Description of the property.
   final pulumi.Input<String?>? description;
-  /// Items definition for array properties. See `items` above.
+  /// Items definition for array properties. See `target_configuration.mcp.lambda.tool_schema.inline_payload.output_schema.property.items` Block below.
   final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItems?>? items;
   /// Name of the property.
   final pulumi.Input<String> name;
-  /// Set of nested property definitions for object properties.
+  /// Set of nested property definitions for object properties. See `target_configuration.mcp.lambda.tool_schema.inline_payload.output_schema.property.property` Block below.
   final pulumi.Input<List<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyProperty>?>? properties;
   /// Whether this property is required. Defaults to `false`.
   final pulumi.Input<bool?>? required;
@@ -20,9 +20,9 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaProperty].
   /// [description] Description of the property.
-  /// [items] Items definition for array properties. See `items` above.
+  /// [items] Items definition for array properties. See `target_configuration.mcp.lambda.tool_schema.inline_payload.output_schema.property.items` Block below.
   /// [name] Name of the property.
-  /// [properties] Set of nested property definitions for object properties.
+  /// [properties] Set of nested property definitions for object properties. See `target_configuration.mcp.lambda.tool_schema.inline_payload.output_schema.property.property` Block below.
   /// [required] Whether this property is required. Defaults to `false`.
   /// [type] Data type of the property.
   const AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaProperty({

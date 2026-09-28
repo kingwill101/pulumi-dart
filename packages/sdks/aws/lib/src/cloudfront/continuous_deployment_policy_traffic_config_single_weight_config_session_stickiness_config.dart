@@ -25,8 +25,8 @@ class ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickiness
 
   factory ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig.fromMap(Map<String, dynamic> map) {
     return ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig(
-      idleTtl: pulumi.Input.fromValue((map['idleTtl'] as num).toInt()),
-      maximumTtl: pulumi.Input.fromValue((map['maximumTtl'] as num).toInt()),
+      idleTtl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['idleTtl'])),
+      maximumTtl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maximumTtl'])),
     );
   }
 }

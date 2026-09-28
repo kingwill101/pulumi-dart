@@ -25,8 +25,8 @@ class BucketLifecycleConfigurationRuleNoncurrentVersionExpiration {
 
   factory BucketLifecycleConfigurationRuleNoncurrentVersionExpiration.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationRuleNoncurrentVersionExpiration(
-      newerNoncurrentVersions: (() { final guardedValue = map['newerNoncurrentVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      noncurrentDays: pulumi.Input.fromValue((map['noncurrentDays'] as num).toInt()),
+      newerNoncurrentVersions: (() { final guardedValue = map['newerNoncurrentVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      noncurrentDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['noncurrentDays'])),
     );
   }
 }

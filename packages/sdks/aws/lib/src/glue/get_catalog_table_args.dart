@@ -54,7 +54,7 @@ class GetCatalogTableArgs {
       name: pulumi.Input.fromValue(map['name'] as String),
       queryAsOfTime: (() { final guardedValue = map['queryAsOfTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      transactionId: (() { final guardedValue = map['transactionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      transactionId: (() { final guardedValue = map['transactionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

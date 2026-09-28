@@ -42,10 +42,10 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponse {
 
   factory ScheduledQueryLastRunSummaryQueryInsightsResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummaryQueryInsightsResponse(
-      outputBytes: (() { final guardedValue = map['outputBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      outputRows: (() { final guardedValue = map['outputRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      outputBytes: (() { final guardedValue = map['outputBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      outputRows: (() { final guardedValue = map['outputRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       querySpatialCoverages: (() { final guardedValue = map['querySpatialCoverages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage>(guardedValue, (value) => ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      queryTableCount: (() { final guardedValue = map['queryTableCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      queryTableCount: (() { final guardedValue = map['queryTableCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       queryTemporalRanges: (() { final guardedValue = map['queryTemporalRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange>(guardedValue, (value) => ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

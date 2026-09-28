@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobQueueComputeEnvironmentOrder {
   /// ARN of the compute environment.
   final pulumi.Input<String> computeEnvironment;
-  /// The order of the compute environment. Compute environments are tried in ascending order. For example, if two compute environments are associated with a job queue, the compute environment with a lower order integer value is tried for job placement first.
+  /// Order of the compute environment. Compute environments are tried in ascending order. For example, if two compute environments are associated with a job queue, the compute environment with a lower order integer value is tried for job placement first.
   final pulumi.Input<int> order;
 
   /// Creates a new [JobQueueComputeEnvironmentOrder].
   /// [computeEnvironment] ARN of the compute environment.
-  /// [order] The order of the compute environment. Compute environments are tried in ascending order. For example, if two compute environments are associated with a job queue, the compute environment with a lower order integer value is tried for job placement first.
+  /// [order] Order of the compute environment. Compute environments are tried in ascending order. For example, if two compute environments are associated with a job queue, the compute environment with a lower order integer value is tried for job placement first.
   const JobQueueComputeEnvironmentOrder({
     required this.computeEnvironment,
     required this.order,
@@ -26,7 +26,7 @@ class JobQueueComputeEnvironmentOrder {
   factory JobQueueComputeEnvironmentOrder.fromMap(Map<String, dynamic> map) {
     return JobQueueComputeEnvironmentOrder(
       computeEnvironment: pulumi.Input.fromValue(map['computeEnvironment'] as String),
-      order: pulumi.Input.fromValue((map['order'] as num).toInt()),
+      order: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['order'])),
     );
   }
 }

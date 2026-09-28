@@ -42,7 +42,7 @@ class GetClusterCacheNode {
       availabilityZone: pulumi.Input.fromValue(map['availabilityZone'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       outpostArn: pulumi.Input.fromValue(map['outpostArn'] as String),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
     );
   }
 }

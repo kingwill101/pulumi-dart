@@ -98,7 +98,7 @@ class GetSecurityGroupRuleResult {
       cidrIpv6: (() { final guardedValue = map['cidrIpv6']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSecurityGroupRuleFilter>(guardedValue, (value) => GetSecurityGroupRuleFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipProtocol: (() { final guardedValue = map['ipProtocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isEgress: (() { final guardedValue = map['isEgress']; if (guardedValue == null) return null; return guardedValue as bool; })(),
@@ -108,7 +108,7 @@ class GetSecurityGroupRuleResult {
       securityGroupId: (() { final guardedValue = map['securityGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       securityGroupRuleId: (() { final guardedValue = map['securityGroupRuleId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

@@ -6,17 +6,17 @@ import 'agent_data_source_vector_ingestion_configuration_custom_transformation_c
 import 'agent_data_source_vector_ingestion_configuration_parsing_configuration.dart';
 
 class AgentDataSourceVectorIngestionConfiguration {
-  /// Details about how to chunk the documents in the data source. A chunk refers to an excerpt from a data source that is returned when the knowledge base that it belongs to is queried. See `chunkingConfiguration` block for details.
+  /// Details about how to chunk the documents in the data source. A chunk refers to an excerpt from a data source that is returned when the knowledge base that it belongs to is queried. See `chunkingConfiguration` Block for details.
   final pulumi.Input<AgentDataSourceVectorIngestionConfigurationChunkingConfiguration?>? chunkingConfiguration;
-  /// Configuration for custom transformation of data source documents.
+  /// Configuration for custom transformation of data source documents. See `customTransformationConfiguration` Block for details.
   final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration?>? customTransformationConfiguration;
-  /// Configuration for custom parsing of data source documents. See `parsingConfiguration` block for details.
+  /// Configuration for custom parsing of data source documents. See `parsingConfiguration` Block for details.
   final pulumi.Input<AgentDataSourceVectorIngestionConfigurationParsingConfiguration?>? parsingConfiguration;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfiguration].
-  /// [chunkingConfiguration] Details about how to chunk the documents in the data source. A chunk refers to an excerpt from a data source that is returned when the knowledge base that it belongs to is queried. See `chunkingConfiguration` block for details.
-  /// [customTransformationConfiguration] Configuration for custom transformation of data source documents.
-  /// [parsingConfiguration] Configuration for custom parsing of data source documents. See `parsingConfiguration` block for details.
+  /// [chunkingConfiguration] Details about how to chunk the documents in the data source. A chunk refers to an excerpt from a data source that is returned when the knowledge base that it belongs to is queried. See `chunkingConfiguration` Block for details.
+  /// [customTransformationConfiguration] Configuration for custom transformation of data source documents. See `customTransformationConfiguration` Block for details.
+  /// [parsingConfiguration] Configuration for custom parsing of data source documents. See `parsingConfiguration` Block for details.
   const AgentDataSourceVectorIngestionConfiguration({
     this.chunkingConfiguration,
     this.customTransformationConfiguration,

@@ -5,17 +5,17 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 import 'agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_text_input_variable.dart';
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationText {
-  /// A cache checkpoint within a template configuration. See Cache Point for more information.
+  /// Cache checkpoint within a template configuration. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.text.cache_point` Block for details.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextCachePoint?>? cachePoint;
-  /// A list of variables in the prompt template. See Input Variable for more information.
+  /// Variables in the prompt template. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.text.input_variable` Block for details.
   final pulumi.Input<List<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextInputVariable>?>? inputVariables;
-  /// The message for the prompt.
+  /// Message for the prompt.
   final pulumi.Input<String> text;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationText].
-  /// [cachePoint] A cache checkpoint within a template configuration. See Cache Point for more information.
-  /// [inputVariables] A list of variables in the prompt template. See Input Variable for more information.
-  /// [text] The message for the prompt.
+  /// [cachePoint] Cache checkpoint within a template configuration. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.text.cache_point` Block for details.
+  /// [inputVariables] Variables in the prompt template. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.text.input_variable` Block for details.
+  /// [text] Message for the prompt.
   const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationText({
     this.cachePoint,
     this.inputVariables,

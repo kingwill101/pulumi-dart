@@ -3,20 +3,26 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetProxyAuth {
+  /// Type of authentication that the proxy uses for connections from the proxy to the underlying database.
   final pulumi.Input<String> authScheme;
+  /// Type of authentication the proxy uses for connections from clients.
   final pulumi.Input<String> clientPasswordAuthType;
+  /// User-specified description about the authentication used by a proxy to log in as a specific database user.
   final pulumi.Input<String> description;
+  /// Whether to require or disallow AWS Identity and Access Management (IAM) authentication for connections to the proxy.
   final pulumi.Input<String> iamAuth;
+  /// ARN representing the secret that the proxy uses to authenticate to the RDS DB instance or Aurora DB cluster.
   final pulumi.Input<String> secretArn;
+  /// Name of the database user to which the proxy connects.
   final pulumi.Input<String> username;
 
   /// Creates a new [GetProxyAuth].
-  /// [authScheme] Required.
-  /// [clientPasswordAuthType] Required.
-  /// [description] Required.
-  /// [iamAuth] Required.
-  /// [secretArn] Required.
-  /// [username] Required.
+  /// [authScheme] Type of authentication that the proxy uses for connections from the proxy to the underlying database.
+  /// [clientPasswordAuthType] Type of authentication the proxy uses for connections from clients.
+  /// [description] User-specified description about the authentication used by a proxy to log in as a specific database user.
+  /// [iamAuth] Whether to require or disallow AWS Identity and Access Management (IAM) authentication for connections to the proxy.
+  /// [secretArn] ARN representing the secret that the proxy uses to authenticate to the RDS DB instance or Aurora DB cluster.
+  /// [username] Name of the database user to which the proxy connects.
   const GetProxyAuth({
     required this.authScheme,
     required this.clientPasswordAuthType,

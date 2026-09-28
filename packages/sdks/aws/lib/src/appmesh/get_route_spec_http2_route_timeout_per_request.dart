@@ -24,7 +24,7 @@ class GetRouteSpecHttp2RouteTimeoutPerRequest {
   factory GetRouteSpecHttp2RouteTimeoutPerRequest.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttp2RouteTimeoutPerRequest(
       unit: pulumi.Input.fromValue(map['unit'] as String),
-      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
+      value: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['value'])),
     );
   }
 }

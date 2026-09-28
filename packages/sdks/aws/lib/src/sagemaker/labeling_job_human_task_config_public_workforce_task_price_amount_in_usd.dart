@@ -30,9 +30,9 @@ class LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd {
 
   factory LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd.fromMap(Map<String, dynamic> map) {
     return LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd(
-      cents: (() { final guardedValue = map['cents']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      dollars: (() { final guardedValue = map['dollars']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      tenthFractionsOfACent: (() { final guardedValue = map['tenthFractionsOfACent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cents: (() { final guardedValue = map['cents']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      dollars: (() { final guardedValue = map['dollars']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      tenthFractionsOfACent: (() { final guardedValue = map['tenthFractionsOfACent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

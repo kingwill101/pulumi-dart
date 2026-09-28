@@ -36,7 +36,7 @@ class ChannelInputAttachmentAutomaticInputFailoverSettings {
 
   factory ChannelInputAttachmentAutomaticInputFailoverSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentAutomaticInputFailoverSettings(
-      errorClearTimeMsec: (() { final guardedValue = map['errorClearTimeMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      errorClearTimeMsec: (() { final guardedValue = map['errorClearTimeMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       failoverConditions: (() { final guardedValue = map['failoverConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition>(guardedValue, (value) => ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       inputPreference: (() { final guardedValue = map['inputPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secondaryInputId: pulumi.Input.fromValue(map['secondaryInputId'] as String),

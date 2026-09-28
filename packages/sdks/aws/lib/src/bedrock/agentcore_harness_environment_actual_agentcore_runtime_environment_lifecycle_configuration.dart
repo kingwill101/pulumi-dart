@@ -25,8 +25,8 @@ class AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironmentLifecycleConfi
 
   factory AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironmentLifecycleConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironmentLifecycleConfiguration(
-      idleRuntimeSessionTimeout: pulumi.Input.fromValue((map['idleRuntimeSessionTimeout'] as num).toInt()),
-      maxLifetime: pulumi.Input.fromValue((map['maxLifetime'] as num).toInt()),
+      idleRuntimeSessionTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['idleRuntimeSessionTimeout'])),
+      maxLifetime: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxLifetime'])),
     );
   }
 }

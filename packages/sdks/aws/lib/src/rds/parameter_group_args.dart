@@ -8,32 +8,32 @@ import 'parameter_group_parameter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_rds_parameter_group_parameter_group_args_doc}
 class ParameterGroupArgs {
-  /// The description of the DB parameter group. Defaults to "Managed by Pulumi".
+  /// Description of the DB parameter group. Defaults to "Managed by Pulumi".
   final pulumi.Input<String?>? description;
-  /// The family of the DB parameter group.
+  /// Family of the DB parameter group.
   final pulumi.Input<String> family;
-  /// The name of the DB parameter group. If omitted, this provider will assign a random, unique name.
+  /// Name of the DB parameter group. If omitted, the provider will assign a random, unique name.
   final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String?>? namePrefix;
-  /// The DB parameters to apply. See `parameter` Block below for more details. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-parameters.html) after initial creation of the group.
+  /// DB parameters to apply. See `parameter` Block below for more details. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-parameters.html) after initial creation of the group.
   final pulumi.Input<List<ParameterGroupParameter>?>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// Set to true if you do not wish the parameter group to be deleted at destroy time, and instead just remove the parameter group from the Terraform state.
   final pulumi.Input<bool?>? skipDestroy;
-  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ParameterGroupArgs].
-  /// [description] The description of the DB parameter group. Defaults to "Managed by Pulumi".
-  /// [family] The family of the DB parameter group.
-  /// [name] The name of the DB parameter group. If omitted, this provider will assign a random, unique name.
+  /// [description] Description of the DB parameter group. Defaults to "Managed by Pulumi".
+  /// [family] Family of the DB parameter group.
+  /// [name] Name of the DB parameter group. If omitted, the provider will assign a random, unique name.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  /// [parameters] The DB parameters to apply. See `parameter` Block below for more details. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-parameters.html) after initial creation of the group.
+  /// [parameters] DB parameters to apply. See `parameter` Block below for more details. Note that parameters may differ from a family to an other. Full list of all parameters can be discovered via [`aws rds describe-db-parameters`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-parameters.html) after initial creation of the group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [skipDestroy] Set to true if you do not wish the parameter group to be deleted at destroy time, and instead just remove the parameter group from the Terraform state.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ParameterGroupArgs({
     pulumi.Input<String?>? description,
     required this.family,

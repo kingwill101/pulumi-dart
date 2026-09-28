@@ -62,7 +62,7 @@ class GetListenerDefaultAction {
       fixedResponses: pulumi.Input.fromValue(pulumi.Input.decodeList<GetListenerDefaultActionFixedResponse>(map['fixedResponses']!, (value) => GetListenerDefaultActionFixedResponse.fromMap((value as Map).cast<String, dynamic>()))),
       forwards: pulumi.Input.fromValue(pulumi.Input.decodeList<GetListenerDefaultActionForward>(map['forwards']!, (value) => GetListenerDefaultActionForward.fromMap((value as Map).cast<String, dynamic>()))),
       jwtValidations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetListenerDefaultActionJwtValidation>(map['jwtValidations']!, (value) => GetListenerDefaultActionJwtValidation.fromMap((value as Map).cast<String, dynamic>()))),
-      order: pulumi.Input.fromValue((map['order'] as num).toInt()),
+      order: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['order'])),
       redirects: pulumi.Input.fromValue(pulumi.Input.decodeList<GetListenerDefaultActionRedirect>(map['redirects']!, (value) => GetListenerDefaultActionRedirect.fromMap((value as Map).cast<String, dynamic>()))),
       targetGroupArn: pulumi.Input.fromValue(map['targetGroupArn'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),

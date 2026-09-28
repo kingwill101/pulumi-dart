@@ -284,42 +284,42 @@ import 'custom_model_vpc_config.dart';
 class CustomModel extends pulumi.CustomResource {
   /// ARN of the base model.
   late final pulumi.Output<String> baseModelIdentifier;
-  /// The ARN of the output model.
+  /// ARN of the output model.
   late final pulumi.Output<String> customModelArn;
-  /// The custom model is encrypted at rest using this key. Specify the key ARN.
+  /// Key ARN used to encrypt the custom model at rest.
   late final pulumi.Output<String?> customModelKmsKeyId;
   /// Name for the custom model.
   late final pulumi.Output<String> customModelName;
-  /// The customization type. Valid values: `FINE_TUNING`, `CONTINUED_PRE_TRAINING`.
+  /// Customization type. Valid values: `FINE_TUNING`, `CONTINUED_PRE_TRAINING`.
   late final pulumi.Output<String> customizationType;
   /// [Parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models-hp.html) related to tuning the model.
   late final pulumi.Output<Map<String, String>> hyperparameters;
-  /// The ARN of the customization job.
+  /// ARN of the customization job.
   late final pulumi.Output<String> jobArn;
-  /// A name for the customization job.
+  /// Name for the customization job.
   late final pulumi.Output<String> jobName;
-  /// The status of the customization job. A successful job transitions from `InProgress` to `Completed` when the output model is ready to use.
+  /// Status of the customization job. A successful job transitions from `InProgress` to `Completed` when the output model is ready to use.
   late final pulumi.Output<String> jobStatus;
-  /// S3 location for the output data.
+  /// S3 location for the output data. See `outputDataConfig` below.
   late final pulumi.Output<CustomModelOutputDataConfig> outputDataConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// ARN of an IAM role that Bedrock can assume to perform tasks on your behalf.
   late final pulumi.Output<String> roleArn;
-  /// A map of tags to assign to the customization job and custom model. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the customization job and custom model. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<CustomModelTimeouts?> timeouts;
-  /// Information about the training dataset.
+  /// Information about the training dataset. See `trainingDataConfig` below.
   late final pulumi.Output<CustomModelTrainingDataConfig> trainingDataConfig;
   /// Metrics associated with the customization job.
   late final pulumi.Output<List<CustomModelTrainingMetric>> trainingMetrics;
-  /// Information about the validation dataset.
+  /// Information about the validation dataset. See `validationDataConfig` below.
   late final pulumi.Output<CustomModelValidationDataConfig?> validationDataConfig;
-  /// The loss metric for each validator that you provided.
+  /// Loss metric for each validator that you provided.
   late final pulumi.Output<List<CustomModelValidationMetric>> validationMetrics;
-  /// Configuration parameters for the private VPC that contains the resources you are using for this job.
+  /// Configuration parameters for the private VPC that contains the resources you are using for this job. See `vpcConfig` below.
   late final pulumi.Output<CustomModelVpcConfig?> vpcConfig;
 
   /// Creates a new [CustomModel].
@@ -334,7 +334,7 @@ class CustomModel extends pulumi.CustomResource {
           'aws:bedrock/customModel:CustomModel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     baseModelIdentifier = registerOutput<String>('baseModelIdentifier');
     customModelArn = registerOutput<String>('customModelArn');

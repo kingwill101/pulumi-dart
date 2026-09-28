@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'connection_rate_limiter_status.dart';
 
 /// Input properties used for looking up and filtering Connection resources.
 class ConnectionState {
@@ -28,8 +29,18 @@ class ConnectionState {
   final pulumi.Input<String?>? partnerName;
   /// The MAC Security (MACsec) port link status of the connection.
   final pulumi.Input<String?>? portEncryptionStatus;
+  /// The total number of inbound IPv4 route prefixes that can be allocated across the virtual interfaces on the connection.
+  final pulumi.Input<int?>? prefixPoolSizeIpv4;
+  /// The total number of inbound IPv6 route prefixes that can be allocated across the virtual interfaces on the connection.
+  final pulumi.Input<int?>? prefixPoolSizeIpv6;
+  /// The number of inbound IPv4 route prefixes in the connection prefix pool not yet allocated to a virtual interface.
+  final pulumi.Input<int?>? prefixPoolUnallocatedCountIpv4;
+  /// The number of inbound IPv6 route prefixes in the connection prefix pool not yet allocated to a virtual interface.
+  final pulumi.Input<int?>? prefixPoolUnallocatedCountIpv6;
   /// The name of the service provider associated with the connection.
   final pulumi.Input<String?>? providerName;
+  /// Rate limiter status for the connection. See `rateLimiterStatus` Block below.
+  final pulumi.Input<List<ConnectionRateLimiterStatus>?>? rateLimiterStatuses;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// Boolean value indicating whether you want the connection to support MAC Security (MACsec). MAC Security (MACsec) is only available on dedicated connections. See [MACsec prerequisites](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites) for more information about MAC Security (MACsec) prerequisites. Default value: `false`.
@@ -60,7 +71,12 @@ class ConnectionState {
   /// [ownerAccountId] The ID of the AWS account that owns the connection.
   /// [partnerName] The name of the AWS Direct Connect service provider associated with the connection.
   /// [portEncryptionStatus] The MAC Security (MACsec) port link status of the connection.
+  /// [prefixPoolSizeIpv4] The total number of inbound IPv4 route prefixes that can be allocated across the virtual interfaces on the connection.
+  /// [prefixPoolSizeIpv6] The total number of inbound IPv6 route prefixes that can be allocated across the virtual interfaces on the connection.
+  /// [prefixPoolUnallocatedCountIpv4] The number of inbound IPv4 route prefixes in the connection prefix pool not yet allocated to a virtual interface.
+  /// [prefixPoolUnallocatedCountIpv6] The number of inbound IPv6 route prefixes in the connection prefix pool not yet allocated to a virtual interface.
   /// [providerName] The name of the service provider associated with the connection.
+  /// [rateLimiterStatuses] Rate limiter status for the connection. See `rateLimiterStatus` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [requestMacsec] Boolean value indicating whether you want the connection to support MAC Security (MACsec). MAC Security (MACsec) is only available on dedicated connections. See [MACsec prerequisites](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites) for more information about MAC Security (MACsec) prerequisites. Default value: `false`.
   /// [skipDestroy] Set to true if you do not wish the connection to be deleted at destroy time, and instead just removed from the state.
@@ -81,7 +97,12 @@ class ConnectionState {
     this.ownerAccountId,
     this.partnerName,
     this.portEncryptionStatus,
+    this.prefixPoolSizeIpv4,
+    this.prefixPoolSizeIpv6,
+    this.prefixPoolUnallocatedCountIpv4,
+    this.prefixPoolUnallocatedCountIpv6,
     this.providerName,
+    this.rateLimiterStatuses,
     this.region,
     this.requestMacsec,
     this.skipDestroy,
@@ -105,7 +126,12 @@ class ConnectionState {
       'ownerAccountId': ?ownerAccountId,
       'partnerName': ?partnerName,
       'portEncryptionStatus': ?portEncryptionStatus,
+      'prefixPoolSizeIpv4': ?prefixPoolSizeIpv4,
+      'prefixPoolSizeIpv6': ?prefixPoolSizeIpv6,
+      'prefixPoolUnallocatedCountIpv4': ?prefixPoolUnallocatedCountIpv4,
+      'prefixPoolUnallocatedCountIpv6': ?prefixPoolUnallocatedCountIpv6,
       'providerName': ?providerName,
+      'rateLimiterStatuses': ?pulumi.Input.mapOptionalInputValue<List<ConnectionRateLimiterStatus>, List<Map<String, dynamic>>>(rateLimiterStatuses, (value) => pulumi.Input.encodeList<ConnectionRateLimiterStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': ?region,
       'requestMacsec': ?requestMacsec,
       'skipDestroy': ?skipDestroy,
@@ -130,14 +156,19 @@ class ConnectionState {
       ownerAccountId: (() { final guardedValue = map['ownerAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       partnerName: (() { final guardedValue = map['partnerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       portEncryptionStatus: (() { final guardedValue = map['portEncryptionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      prefixPoolSizeIpv4: (() { final guardedValue = map['prefixPoolSizeIpv4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      prefixPoolSizeIpv6: (() { final guardedValue = map['prefixPoolSizeIpv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      prefixPoolUnallocatedCountIpv4: (() { final guardedValue = map['prefixPoolUnallocatedCountIpv4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      prefixPoolUnallocatedCountIpv6: (() { final guardedValue = map['prefixPoolUnallocatedCountIpv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       providerName: (() { final guardedValue = map['providerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rateLimiterStatuses: (() { final guardedValue = map['rateLimiterStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionRateLimiterStatus>(guardedValue, (value) => ConnectionRateLimiterStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requestMacsec: (() { final guardedValue = map['requestMacsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       skipDestroy: (() { final guardedValue = map['skipDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

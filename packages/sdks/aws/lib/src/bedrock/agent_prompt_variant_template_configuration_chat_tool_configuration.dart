@@ -5,14 +5,14 @@ import 'agent_prompt_variant_template_configuration_chat_tool_configuration_tool
 import 'agent_prompt_variant_template_configuration_chat_tool_configuration_tool_choice.dart';
 
 class AgentPromptVariantTemplateConfigurationChatToolConfiguration {
-  /// Defines which tools the model should request when invoked. See Tool Choice for more information.
+  /// Configuration for which tools the model should request when invoked. See `toolChoice` Block for more information.
   final pulumi.Input<AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoice?>? toolChoice;
-  /// A list of tools to pass to a model. See Tool for more information.
+  /// List of tools to pass to a model. See `variant.template_configuration.chat.tool_configuration.tool` Block for more information.
   final pulumi.Input<List<AgentPromptVariantTemplateConfigurationChatToolConfigurationTool>?>? tools;
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatToolConfiguration].
-  /// [toolChoice] Defines which tools the model should request when invoked. See Tool Choice for more information.
-  /// [tools] A list of tools to pass to a model. See Tool for more information.
+  /// [toolChoice] Configuration for which tools the model should request when invoked. See `toolChoice` Block for more information.
+  /// [tools] List of tools to pass to a model. See `variant.template_configuration.chat.tool_configuration.tool` Block for more information.
   const AgentPromptVariantTemplateConfigurationChatToolConfiguration({
     this.toolChoice,
     this.tools,

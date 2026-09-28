@@ -41,7 +41,7 @@ class PatchBaselineApprovalRule {
 
   factory PatchBaselineApprovalRule.fromMap(Map<String, dynamic> map) {
     return PatchBaselineApprovalRule(
-      approveAfterDays: (() { final guardedValue = map['approveAfterDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      approveAfterDays: (() { final guardedValue = map['approveAfterDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       approveUntilDate: (() { final guardedValue = map['approveUntilDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       complianceLevel: (() { final guardedValue = map['complianceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableNonSecurity: (() { final guardedValue = map['enableNonSecurity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

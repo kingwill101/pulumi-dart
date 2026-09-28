@@ -6,17 +6,17 @@ import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_con
 import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_storage_configuration.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration {
-  /// Configurations for an Amazon Redshift query engine. See `queryEngineConfiguration` block for details.
+  /// Configurations for an Amazon Redshift query engine. See `queryEngineConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfiguration> queryEngineConfiguration;
-  /// Configurations for generating queries. See `queryGenerationConfiguration` block for details.
+  /// Configurations for generating queries. See `queryGenerationConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration?>? queryGenerationConfiguration;
-  /// Configurations for Amazon Redshift database storage. See `storageConfiguration` block for details.
+  /// Configurations for Amazon Redshift database storage. See `knowledge_base_configuration.sql_knowledge_base_configuration.redshift_configuration.storage_configuration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration> storageConfiguration;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration].
-  /// [queryEngineConfiguration] Configurations for an Amazon Redshift query engine. See `queryEngineConfiguration` block for details.
-  /// [queryGenerationConfiguration] Configurations for generating queries. See `queryGenerationConfiguration` block for details.
-  /// [storageConfiguration] Configurations for Amazon Redshift database storage. See `storageConfiguration` block for details.
+  /// [queryEngineConfiguration] Configurations for an Amazon Redshift query engine. See `queryEngineConfiguration` Block for details.
+  /// [queryGenerationConfiguration] Configurations for generating queries. See `queryGenerationConfiguration` Block for details.
+  /// [storageConfiguration] Configurations for Amazon Redshift database storage. See `knowledge_base_configuration.sql_knowledge_base_configuration.redshift_configuration.storage_configuration` Block for details.
   const AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration({
     required this.queryEngineConfiguration,
     this.queryGenerationConfiguration,

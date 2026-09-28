@@ -48,7 +48,7 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern {
   factory DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern.fromMap(Map<String, dynamic> map) {
     return DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern(
       builtInPatternId: (() { final guardedValue = map['builtInPatternId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      confidenceLevel: (() { final guardedValue = map['confidenceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      confidenceLevel: (() { final guardedValue = map['confidenceLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       customPattern: (() { final guardedValue = map['customPattern']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enforcedUrls: (() { final guardedValue = map['enforcedUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       exemptUrls: (() { final guardedValue = map['exemptUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

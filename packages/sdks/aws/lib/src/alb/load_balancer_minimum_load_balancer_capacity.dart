@@ -20,7 +20,7 @@ class LoadBalancerMinimumLoadBalancerCapacity {
 
   factory LoadBalancerMinimumLoadBalancerCapacity.fromMap(Map<String, dynamic> map) {
     return LoadBalancerMinimumLoadBalancerCapacity(
-      capacityUnits: pulumi.Input.fromValue((map['capacityUnits'] as num).toInt()),
+      capacityUnits: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['capacityUnits'])),
     );
   }
 }

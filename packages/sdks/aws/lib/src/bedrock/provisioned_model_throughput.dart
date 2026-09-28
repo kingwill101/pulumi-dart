@@ -150,13 +150,13 @@ class ProvisionedModelThroughput extends pulumi.CustomResource {
   late final pulumi.Output<String> modelArn;
   /// Number of model units to allocate. A model unit delivers a specific throughput level for the specified model.
   late final pulumi.Output<int> modelUnits;
-  /// The ARN of the Provisioned Throughput.
+  /// ARN of the Provisioned Throughput.
   late final pulumi.Output<String> provisionedModelArn;
   /// Unique name for this Provisioned Throughput.
   late final pulumi.Output<String> provisionedModelName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -174,7 +174,7 @@ class ProvisionedModelThroughput extends pulumi.CustomResource {
           'aws:bedrock/provisionedModelThroughput:ProvisionedModelThroughput',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     commitmentDuration = registerOutput<String?>('commitmentDuration');
     modelArn = registerOutput<String>('modelArn');

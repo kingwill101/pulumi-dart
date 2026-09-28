@@ -32,9 +32,9 @@ class GetInstanceTypeMediaAccelerator {
 
   factory GetInstanceTypeMediaAccelerator.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeMediaAccelerator(
-      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
       manufacturer: pulumi.Input.fromValue(map['manufacturer'] as String),
-      memorySize: pulumi.Input.fromValue((map['memorySize'] as num).toInt()),
+      memorySize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memorySize'])),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

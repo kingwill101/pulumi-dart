@@ -222,6 +222,7 @@ export 'cloudwatch/metric_alarm_evaluation_criteria_promql_criteria.dart';
 export 'cloudwatch/metric_alarm_metric_query.dart';
 export 'cloudwatch/metric_alarm_metric_query_metric.dart';
 export 'cloudwatch/metric_alarm_state.dart';
+export 'cloudwatch/metric_alarm_warm_up_configuration.dart';
 export 'cloudwatch/metric_stream.dart';
 export 'cloudwatch/metric_stream_args.dart';
 export 'cloudwatch/metric_stream_exclude_filter.dart';

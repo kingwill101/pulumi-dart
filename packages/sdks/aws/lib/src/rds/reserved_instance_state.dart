@@ -29,7 +29,7 @@ class ReservedInstanceState {
   final pulumi.Input<String?>? offeringType;
   /// Description of the reserved DB instance.
   final pulumi.Input<String?>? productDescription;
-  /// Recurring price charged to run this reserved DB instance.
+  /// Recurring price charged to run this reserved DB instance. See `recurringCharges` below.
   final pulumi.Input<List<ReservedInstanceRecurringCharge>?>? recurringCharges;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -58,7 +58,7 @@ class ReservedInstanceState {
   /// [offeringId] ID of the Reserved DB instance offering to purchase. To determine an `offeringId`, see the `aws.rds.getReservedInstanceOffering` data source.
   /// [offeringType] Offering type of this reserved DB instance.
   /// [productDescription] Description of the reserved DB instance.
-  /// [recurringCharges] Recurring price charged to run this reserved DB instance.
+  /// [recurringCharges] Recurring price charged to run this reserved DB instance. See `recurringCharges` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [reservationId] Customer-specified identifier to track this reservation.
   /// [startTime] Time the reservation started.
@@ -117,9 +117,9 @@ class ReservedInstanceState {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       currencyCode: (() { final guardedValue = map['currencyCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dbInstanceClass: (() { final guardedValue = map['dbInstanceClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       fixedPrice: (() { final guardedValue = map['fixedPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       leaseId: (() { final guardedValue = map['leaseId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       multiAz: (() { final guardedValue = map['multiAz']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       offeringId: (() { final guardedValue = map['offeringId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

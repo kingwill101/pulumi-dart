@@ -13,7 +13,7 @@ import 'search_result.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = aws.resourceexplorer.Search({
+/// const example = aws.resourceexplorer.search({
 ///     queryString: "region:us-west-2",
 ///     viewArn: test.arn,
 /// });

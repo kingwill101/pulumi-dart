@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrameworkControlInputParameter {
-  /// The name of a parameter, for example, BackupPlanFrequency.
+  /// Name of a parameter, for example, BackupPlanFrequency.
   final pulumi.Input<String?>? name;
-  /// The value of parameter, for example, hourly.
+  /// Value of parameter, for example, hourly.
   final pulumi.Input<String?>? value;
 
   /// Creates a new [FrameworkControlInputParameter].
-  /// [name] The name of a parameter, for example, BackupPlanFrequency.
-  /// [value] The value of parameter, for example, hourly.
+  /// [name] Name of a parameter, for example, BackupPlanFrequency.
+  /// [value] Value of parameter, for example, hourly.
   const FrameworkControlInputParameter({
     this.name,
     this.value,

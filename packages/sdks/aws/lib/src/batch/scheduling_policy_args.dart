@@ -8,8 +8,9 @@ import 'scheduling_policy_fair_share_policy.dart';
 /// {@endtemplate}
 /// {@macro pulumi_batch_scheduling_policy_scheduling_policy_args_doc}
 class SchedulingPolicyArgs {
+  /// Fair share scheduling policy details. The `fairSharePolicy` block is documented below.
   final pulumi.Input<SchedulingPolicyFairSharePolicy?>? fairSharePolicy;
-  /// Specifies the name of the scheduling policy.
+  /// Name of the scheduling policy.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -17,8 +18,8 @@ class SchedulingPolicyArgs {
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SchedulingPolicyArgs].
-  /// [fairSharePolicy] Optional.
-  /// [name] Specifies the name of the scheduling policy.
+  /// [fairSharePolicy] Fair share scheduling policy details. The `fairSharePolicy` block is documented below.
+  /// [name] Name of the scheduling policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const SchedulingPolicyArgs({

@@ -16,7 +16,7 @@ import 'file_system_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const foo = new aws.efs.FileSystem("foo", {
+/// const example = new aws.efs.FileSystem("example", {
 ///     creationToken: "my-product",
 ///     tags: {
 ///         Name: "MyProduct",
@@ -27,7 +27,7 @@ import 'file_system_state.dart';
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// foo = aws.efs.FileSystem("foo",
+/// example = aws.efs.FileSystem("example",
 ///     creation_token="my-product",
 ///     tags={
 ///         "Name": "MyProduct",
@@ -41,7 +41,7 @@ import 'file_system_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var foo = new Aws.Efs.FileSystem("foo", new()
+///     var example = new Aws.Efs.FileSystem("example", new()
 ///     {
 ///         CreationToken = "my-product",
 ///         Tags =
@@ -62,7 +62,7 @@ import 'file_system_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := efs.NewFileSystem(ctx, "foo", &efs.FileSystemArgs{
+/// 		_, err := efs.NewFileSystem(ctx, "example", &efs.FileSystemArgs{
 /// 			CreationToken: pulumi.String("my-product"),
 /// 			Tags: pulumi.StringMap{
 /// 				"Name": pulumi.String("MyProduct"),
@@ -84,7 +84,7 @@ import 'file_system_state.dart';
 ///   }
 /// }
 ///
-/// resource "aws_efs_filesystem" "foo" {
+/// resource "aws_efs_filesystem" "example" {
 ///   creation_token = "my-product"
 ///   tags = {
 ///     "Name" = "MyProduct"
@@ -112,7 +112,7 @@ import 'file_system_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var foo = new FileSystem("foo", FileSystemArgs.builder()
+///         var example = new FileSystem("example", FileSystemArgs.builder()
 ///             .creationToken("my-product")
 ///             .tags(Map.of("Name", "MyProduct"))
 ///             .build());
@@ -122,7 +122,7 @@ import 'file_system_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   foo:
+///   example:
 ///     type: aws:efs:FileSystem
 ///     properties:
 ///       creationToken: my-product
@@ -264,10 +264,22 @@ import 'file_system_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `id` (String) ID of the file system.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import the EFS file systems using the `id`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:efs/fileSystem:FileSystem foo fs-6fa144c6
+/// $ pulumi import aws:efs/fileSystem:FileSystem example fs-6fa144c6
 /// ```
 class FileSystem extends pulumi.CustomResource {
   /// ARN of the file system.
@@ -324,7 +336,7 @@ class FileSystem extends pulumi.CustomResource {
           'aws:efs/fileSystem:FileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.48.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZoneId = registerOutput<String>('availabilityZoneId');

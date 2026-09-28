@@ -58,7 +58,7 @@ class GetIpRangesResult {
       ipv6CidrBlocks: (() { final guardedValue = map['ipv6CidrBlocks']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       services: (() { final guardedValue = map['services']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      syncToken: (() { final guardedValue = map['syncToken']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      syncToken: (() { final guardedValue = map['syncToken']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

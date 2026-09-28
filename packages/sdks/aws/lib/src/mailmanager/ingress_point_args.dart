@@ -20,6 +20,8 @@ class IngressPointArgs {
   final pulumi.Input<String?>? region;
   /// Identifier of the rule set applied to the ingress point.
   final pulumi.Input<String> ruleSetId;
+  /// Status to apply to the ingress point. Valid values are `ACTIVE` and `CLOSED`.
+  final pulumi.Input<String?>? statusToUpdate;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   final pulumi.Input<IngressPointTimeouts?>? timeouts;
@@ -38,6 +40,7 @@ class IngressPointArgs {
   /// [networkConfiguration] Network configuration for the ingress point. See `networkConfiguration` Block for details. Changing this value forces a new resource.
   /// [region] Region where this resource is managed.
   /// [ruleSetId] Identifier of the rule set applied to the ingress point.
+  /// [statusToUpdate] Status to apply to the ingress point. Valid values are `ACTIVE` and `CLOSED`.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [tlsPolicy] TLS policy for the ingress point. Valid values are `REQUIRED`, `OPTIONAL`, and `FIPS`.
@@ -49,6 +52,7 @@ class IngressPointArgs {
     this.networkConfiguration,
     this.region,
     required this.ruleSetId,
+    this.statusToUpdate,
     this.tags,
     this.timeouts,
     this.tlsPolicy,
@@ -63,6 +67,7 @@ class IngressPointArgs {
       'networkConfiguration': ?pulumi.Input.mapOptionalInputValue<IngressPointNetworkConfiguration, Map<String, dynamic>>(networkConfiguration, (value) => value.toMap()),
       'region': ?region,
       'ruleSetId': ruleSetId,
+      'statusToUpdate': ?statusToUpdate,
       'tags': ?tags,
       'timeouts': ?pulumi.Input.mapOptionalInputValue<IngressPointTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
       'tlsPolicy': ?tlsPolicy,
@@ -78,6 +83,7 @@ class IngressPointArgs {
       networkConfiguration: (() { final guardedValue = map['networkConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IngressPointNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleSetId: pulumi.Input.fromValue(map['ruleSetId'] as String),
+      statusToUpdate: (() { final guardedValue = map['statusToUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IngressPointTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tlsPolicy: (() { final guardedValue = map['tlsPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
