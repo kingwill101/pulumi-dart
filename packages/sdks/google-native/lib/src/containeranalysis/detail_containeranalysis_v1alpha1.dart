@@ -7,27 +7,27 @@ import 'vulnerability_location.dart';
 /// Identifies all occurrences of this vulnerability in the package for a specific distro/location For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
 class DetailContaineranalysisV1alpha1 {
   /// The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar. This field can be used as a filter in list requests.
-  final pulumi.Input<String>? cpeUri;
+  final pulumi.Input<String?>? cpeUri;
   /// A vendor-specific description of this note.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The fix for this specific package version.
-  final pulumi.Input<VulnerabilityLocation>? fixedLocation;
+  final pulumi.Input<VulnerabilityLocation?>? fixedLocation;
   /// Whether this Detail is obsolete. Occurrences are expected not to point to obsolete details.
-  final pulumi.Input<bool>? isObsolete;
+  final pulumi.Input<bool?>? isObsolete;
   /// The max version of the package in which the vulnerability exists.
-  final pulumi.Input<VersionContaineranalysisV1alpha1>? maxAffectedVersion;
+  final pulumi.Input<VersionContaineranalysisV1alpha1?>? maxAffectedVersion;
   /// The min version of the package in which the vulnerability exists.
-  final pulumi.Input<VersionContaineranalysisV1alpha1>? minAffectedVersion;
+  final pulumi.Input<VersionContaineranalysisV1alpha1?>? minAffectedVersion;
   /// The name of the package where the vulnerability was found. This field can be used as a filter in list requests.
-  final pulumi.Input<String>? package;
+  final pulumi.Input<String?>? package;
   /// The type of package; whether native or non native(ruby gems, node.js packages etc)
-  final pulumi.Input<String>? packageType;
+  final pulumi.Input<String?>? packageType;
   /// The severity (eg: distro assigned severity) for this vulnerability.
-  final pulumi.Input<String>? severityName;
+  final pulumi.Input<String?>? severityName;
   /// The source from which the information in this Detail was obtained.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// The vendor of the product. e.g. "google"
-  final pulumi.Input<String>? vendor;
+  final pulumi.Input<String?>? vendor;
 
   /// Creates a new [DetailContaineranalysisV1alpha1].
   /// [cpeUri] The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar. This field can be used as a filter in list requests.

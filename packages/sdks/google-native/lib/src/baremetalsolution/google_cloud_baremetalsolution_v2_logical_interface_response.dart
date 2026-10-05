@@ -32,7 +32,7 @@ class GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse {
 
   factory GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse(
-      interfaceIndex: pulumi.Input.fromValue(map['interfaceIndex'] as int),
+      interfaceIndex: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interfaceIndex'])),
       logicalNetworkInterfaces: pulumi.Input.fromValue(pulumi.Input.decodeList<LogicalNetworkInterfaceResponse>(map['logicalNetworkInterfaces']!, (value) => LogicalNetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
     );

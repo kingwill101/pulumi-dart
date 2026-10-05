@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'attribute_response_healthcare_v1beta1.dart';
 import 'user_data_mapping_healthcare_v1beta1_args.dart';
 
 /// Creates a new User data mapping in the parent consent store.
@@ -16,7 +17,7 @@ class UserDataMappingHealthcareV1beta1 extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   /// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
-  late final pulumi.Output<List<Map<String, dynamic>>> resourceAttributes;
+  late final pulumi.Output<List<AttributeResponseHealthcareV1beta1>> resourceAttributes;
   /// User's UUID provided by the client.
   late final pulumi.Output<String> userId;
 
@@ -32,7 +33,7 @@ class UserDataMappingHealthcareV1beta1 extends pulumi.CustomResource {
           'google-native:healthcare/v1beta1:UserDataMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['consentStoreId', 'datasetId', 'location', 'project']).merge(options),
         ) {
     archiveTime = registerOutput<String>('archiveTime');
     archived = registerOutput<bool>('archived');
@@ -42,7 +43,28 @@ class UserDataMappingHealthcareV1beta1 extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    resourceAttributes = registerOutput<List<Map<String, dynamic>>>('resourceAttributes');
+    resourceAttributes = registerOutput<List<AttributeResponseHealthcareV1beta1>>('resourceAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AttributeResponseHealthcareV1beta1>(guardedValue, (value) => AttributeResponseHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    userId = registerOutput<String>('userId');
+  }
+
+  /// Creates a typed reference to an existing [UserDataMappingHealthcareV1beta1] resource.
+  UserDataMappingHealthcareV1beta1.reference(String urn)
+    : super(
+        'google-native:healthcare/v1beta1:UserDataMapping',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    archiveTime = registerOutput<String>('archiveTime');
+    archived = registerOutput<bool>('archived');
+    consentStoreId = registerOutput<String>('consentStoreId');
+    dataId = registerOutput<String>('dataId');
+    datasetId = registerOutput<String>('datasetId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    resourceAttributes = registerOutput<List<AttributeResponseHealthcareV1beta1>>('resourceAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AttributeResponseHealthcareV1beta1>(guardedValue, (value) => AttributeResponseHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     userId = registerOutput<String>('userId');
   }
 }

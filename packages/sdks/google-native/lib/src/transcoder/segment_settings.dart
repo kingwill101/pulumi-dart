@@ -7,7 +7,7 @@ class SegmentSettings {
   /// Create an individual segment file. The default is `false`.
   final pulumi.Input<bool> individualSegments;
   /// Duration of the segments in seconds. The default is `6.0s`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
-  final pulumi.Input<String>? segmentDuration;
+  final pulumi.Input<String?>? segmentDuration;
 
   /// Creates a new [SegmentSettings].
   /// [individualSegments] Create an individual segment file. The default is `false`.

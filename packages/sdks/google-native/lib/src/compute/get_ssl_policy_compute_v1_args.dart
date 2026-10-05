@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_v1_get_ssl_policy_compute_v1_args_doc}
 class GetSslPolicyComputeV1Args {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> sslPolicy;
 
   /// Creates a new [GetSslPolicyComputeV1Args].

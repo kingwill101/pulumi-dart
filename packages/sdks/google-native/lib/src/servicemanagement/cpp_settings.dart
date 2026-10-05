@@ -6,7 +6,7 @@ import 'common_language_settings.dart';
 /// Settings for C++ client libraries.
 class CppSettings {
   /// Some settings.
-  final pulumi.Input<CommonLanguageSettings>? common;
+  final pulumi.Input<CommonLanguageSettings?>? common;
 
   /// Creates a new [CppSettings].
   /// [common] Some settings.

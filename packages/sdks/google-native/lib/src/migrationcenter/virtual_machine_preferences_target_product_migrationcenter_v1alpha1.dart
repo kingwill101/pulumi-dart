@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Target product for assets using this preference set. Specify either target product or business goal, but not both.
-enum VirtualMachinePreferencesTargetProductMigrationcenterV1alpha1 {
+enum VirtualMachinePreferencesTargetProductMigrationcenterV1alpha1 implements pulumi.PulumiEnum<String> {
   computeMigrationTargetProductUnspecified("COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED"),
   computeMigrationTargetProductComputeEngine("COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE"),
   computeMigrationTargetProductVmwareEngine("COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE"),
   computeMigrationTargetProductSoleTenancy("COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY");
 
   const VirtualMachinePreferencesTargetProductMigrationcenterV1alpha1(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualMachinePreferencesTargetProductMigrationcenterV1alpha1 fromValue(String value) {

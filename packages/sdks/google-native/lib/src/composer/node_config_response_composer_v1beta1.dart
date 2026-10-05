@@ -72,12 +72,12 @@ class NodeConfigResponseComposerV1beta1 {
 
   factory NodeConfigResponseComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodeConfigResponseComposerV1beta1(
-      diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
+      diskSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSizeGb'])),
       enableIpMasqAgent: pulumi.Input.fromValue(map['enableIpMasqAgent'] as bool),
       ipAllocationPolicy: pulumi.Input.fromValue(IPAllocationPolicyResponseComposerV1beta1.fromMap((map['ipAllocationPolicy']! as Map).cast<String, dynamic>())),
       location: pulumi.Input.fromValue(map['location'] as String),
       machineType: pulumi.Input.fromValue(map['machineType'] as String),
-      maxPodsPerNode: pulumi.Input.fromValue(map['maxPodsPerNode'] as int),
+      maxPodsPerNode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPodsPerNode'])),
       network: pulumi.Input.fromValue(map['network'] as String),
       oauthScopes: pulumi.Input.fromValue((map['oauthScopes'] as List).cast<String>()),
       serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),

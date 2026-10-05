@@ -26,8 +26,8 @@ class GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse {
 
   factory GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse(
-      transcriptIndex: pulumi.Input.fromValue(map['transcriptIndex'] as int),
-      wordIndex: pulumi.Input.fromValue(map['wordIndex'] as int),
+      transcriptIndex: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['transcriptIndex'])),
+      wordIndex: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['wordIndex'])),
     );
   }
 }

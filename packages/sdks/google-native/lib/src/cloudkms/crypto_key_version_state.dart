@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The current state of the CryptoKeyVersion.
-enum CryptoKeyVersionState {
+enum CryptoKeyVersionState implements pulumi.PulumiEnum<String> {
   cryptoKeyVersionStateUnspecified("CRYPTO_KEY_VERSION_STATE_UNSPECIFIED"),
   pendingGeneration("PENDING_GENERATION"),
   enabled("ENABLED"),
@@ -13,6 +15,7 @@ enum CryptoKeyVersionState {
   externalDestructionFailed("EXTERNAL_DESTRUCTION_FAILED");
 
   const CryptoKeyVersionState(this.wireValue);
+  @override
   final String wireValue;
 
   static CryptoKeyVersionState fromValue(String value) {

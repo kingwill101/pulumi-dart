@@ -6,8 +6,8 @@ import 'dataset_reference.dart';
 
 class DatasetAccessEntry {
   /// [Required] The dataset this entry applies to.
-  final pulumi.Input<DatasetReference>? dataset;
-  final pulumi.Input<List<DatasetAccessEntryTargetTypesItem>>? targetTypes;
+  final pulumi.Input<DatasetReference?>? dataset;
+  final pulumi.Input<List<DatasetAccessEntryTargetTypesItem>?>? targetTypes;
 
   /// Creates a new [DatasetAccessEntry].
   /// [dataset] [Required] The dataset this entry applies to.

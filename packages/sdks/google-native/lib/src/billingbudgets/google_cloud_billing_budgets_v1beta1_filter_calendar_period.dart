@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
-enum GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod {
+enum GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod implements pulumi.PulumiEnum<String> {
   calendarPeriodUnspecified("CALENDAR_PERIOD_UNSPECIFIED"),
   month("MONTH"),
   quarter("QUARTER"),
   year("YEAR");
 
   const GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod fromValue(String value) {

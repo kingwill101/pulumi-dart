@@ -43,10 +43,10 @@ class GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse {
   factory GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse(
       effectsProfileId: pulumi.Input.fromValue((map['effectsProfileId'] as List).cast<String>()),
-      pitch: pulumi.Input.fromValue(map['pitch'] as double),
-      speakingRate: pulumi.Input.fromValue(map['speakingRate'] as double),
+      pitch: pulumi.Input.fromValue((map['pitch'] as num).toDouble()),
+      speakingRate: pulumi.Input.fromValue((map['speakingRate'] as num).toDouble()),
       voice: pulumi.Input.fromValue(GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponse.fromMap((map['voice']! as Map).cast<String, dynamic>())),
-      volumeGainDb: pulumi.Input.fromValue(map['volumeGainDb'] as double),
+      volumeGainDb: pulumi.Input.fromValue((map['volumeGainDb'] as num).toDouble()),
     );
   }
 }

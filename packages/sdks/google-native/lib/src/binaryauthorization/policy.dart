@@ -30,8 +30,26 @@ class Policy extends pulumi.CustomResource {
           'google-native:binaryauthorization/v1:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['platformId', 'policyId', 'project']).merge(options),
         ) {
+    description = registerOutput<String>('description');
+    gkePolicy = registerOutput<GkePolicyResponse>('gkePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GkePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    platformId = registerOutput<String>('platformId');
+    policyId = registerOutput<String>('policyId');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'google-native:binaryauthorization/v1:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String>('description');
     gkePolicy = registerOutput<GkePolicyResponse>('gkePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GkePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

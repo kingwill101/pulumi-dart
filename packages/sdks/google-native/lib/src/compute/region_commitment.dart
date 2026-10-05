@@ -2,6 +2,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'commitment_resource_status_response.dart';
 import 'license_resource_commitment_response.dart';
 import 'region_commitment_args.dart';
+import 'reservation_response.dart';
+import 'resource_commitment_response.dart';
 
 /// Creates a commitment in the specified project using the data included in the request.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
@@ -34,11 +36,11 @@ class RegionCommitment extends pulumi.CustomResource {
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
   /// List of create-on-create reseravtions for this commitment.
-  late final pulumi.Output<List<Map<String, dynamic>>> reservations;
+  late final pulumi.Output<List<ReservationResponse>> reservations;
   /// Status information for Commitment resource.
   late final pulumi.Output<CommitmentResourceStatusResponse> resourceStatus;
   /// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
-  late final pulumi.Output<List<Map<String, dynamic>>> resources;
+  late final pulumi.Output<List<ResourceCommitmentResponse>> resources;
   /// Server-defined URL for the resource.
   late final pulumi.Output<String> selfLink;
   /// Server-defined URL for this resource with the resource id.
@@ -66,25 +68,60 @@ class RegionCommitment extends pulumi.CustomResource {
           'google-native:compute/alpha:RegionCommitment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     autoRenew = registerOutput<bool>('autoRenew');
     category = registerOutput<String>('category');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     endTimestamp = registerOutput<String>('endTimestamp');
-    existingReservations = registerOutput<List<String>>('existingReservations');
+    existingReservations = registerOutput<List<String>>('existingReservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kind = registerOutput<String>('kind');
     licenseResource = registerOutput<LicenseResourceCommitmentResponse>('licenseResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LicenseResourceCommitmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    mergeSourceCommitments = registerOutput<List<String>>('mergeSourceCommitments');
+    mergeSourceCommitments = registerOutput<List<String>>('mergeSourceCommitments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     plan = registerOutput<String>('plan');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
-    reservations = registerOutput<List<Map<String, dynamic>>>('reservations');
+    reservations = registerOutput<List<ReservationResponse>>('reservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservationResponse>(guardedValue, (value) => ReservationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     resourceStatus = registerOutput<CommitmentResourceStatusResponse>('resourceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CommitmentResourceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    resources = registerOutput<List<Map<String, dynamic>>>('resources');
+    resources = registerOutput<List<ResourceCommitmentResponse>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceCommitmentResponse>(guardedValue, (value) => ResourceCommitmentResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    splitSourceCommitment = registerOutput<String>('splitSourceCommitment');
+    startTimestamp = registerOutput<String>('startTimestamp');
+    status = registerOutput<String>('status');
+    statusMessage = registerOutput<String>('statusMessage');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RegionCommitment] resource.
+  RegionCommitment.reference(String urn)
+    : super(
+        'google-native:compute/alpha:RegionCommitment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoRenew = registerOutput<bool>('autoRenew');
+    category = registerOutput<String>('category');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    endTimestamp = registerOutput<String>('endTimestamp');
+    existingReservations = registerOutput<List<String>>('existingReservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kind = registerOutput<String>('kind');
+    licenseResource = registerOutput<LicenseResourceCommitmentResponse>('licenseResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LicenseResourceCommitmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mergeSourceCommitments = registerOutput<List<String>>('mergeSourceCommitments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    plan = registerOutput<String>('plan');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    reservations = registerOutput<List<ReservationResponse>>('reservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReservationResponse>(guardedValue, (value) => ReservationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceStatus = registerOutput<CommitmentResourceStatusResponse>('resourceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CommitmentResourceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resources = registerOutput<List<ResourceCommitmentResponse>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceCommitmentResponse>(guardedValue, (value) => ResourceCommitmentResponse.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
     splitSourceCommitment = registerOutput<String>('splitSourceCommitment');

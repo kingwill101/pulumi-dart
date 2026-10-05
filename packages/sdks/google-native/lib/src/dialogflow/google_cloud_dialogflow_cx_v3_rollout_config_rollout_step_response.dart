@@ -33,7 +33,7 @@ class GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse {
     return GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       minDuration: pulumi.Input.fromValue(map['minDuration'] as String),
-      trafficPercent: pulumi.Input.fromValue(map['trafficPercent'] as int),
+      trafficPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['trafficPercent'])),
     );
   }
 }

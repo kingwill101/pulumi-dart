@@ -12,19 +12,19 @@ import 'google_cloud_dialogflow_cx_v3beta1_environment_webhook_config.dart';
 class EnvironmentDialogflowV3beta1Args {
   final pulumi.Input<String> agentId;
   /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
   final pulumi.Input<String> displayName;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the environment. Format: `projects//locations//agents//environments/`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// The test cases config for continuous tests of this environment.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig>? testCasesConfig;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig?>? testCasesConfig;
   /// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>>? versionConfigs;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>?>? versionConfigs;
   /// The webhook configuration for this environment.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig>? webhookConfig;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig?>? webhookConfig;
 
   /// Creates a new [EnvironmentDialogflowV3beta1Args].
   /// [agentId] Required.

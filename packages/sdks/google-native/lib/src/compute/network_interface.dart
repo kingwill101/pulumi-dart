@@ -10,35 +10,35 @@ import 'network_interface_sub_interface.dart';
 /// A network interface resource attached to an instance.
 class NetworkInterface {
   /// An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If there are no accessConfigs specified, then this instance will have no external internet access.
-  final pulumi.Input<List<AccessConfig>>? accessConfigs;
+  final pulumi.Input<List<AccessConfig>?>? accessConfigs;
   /// An array of alias IP ranges for this network interface. You can only specify this field for network interfaces in VPC networks.
-  final pulumi.Input<List<AliasIpRange>>? aliasIpRanges;
+  final pulumi.Input<List<AliasIpRange>?>? aliasIpRanges;
   /// The prefix length of the primary internal IPv6 range.
-  final pulumi.Input<int>? internalIpv6PrefixLength;
+  final pulumi.Input<int?>? internalIpv6PrefixLength;
   /// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
-  final pulumi.Input<List<AccessConfig>>? ipv6AccessConfigs;
+  final pulumi.Input<List<AccessConfig>?>? ipv6AccessConfigs;
   /// An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
-  final pulumi.Input<String>? ipv6Address;
+  final pulumi.Input<String?>? ipv6Address;
   /// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
-  final pulumi.Input<String>? networkAttachment;
+  final pulumi.Input<String?>? networkAttachment;
   /// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
-  final pulumi.Input<String>? networkIP;
+  final pulumi.Input<String?>? networkIP;
   /// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
-  final pulumi.Input<NetworkInterfaceNicType>? nicType;
+  final pulumi.Input<NetworkInterfaceNicType?>? nicType;
   /// Name of the parent network interface of a VLAN based nic. If this field is specified, vlan must be set.
-  final pulumi.Input<String>? parentNicName;
+  final pulumi.Input<String?>? parentNicName;
   /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
-  final pulumi.Input<int>? queueCount;
+  final pulumi.Input<int?>? queueCount;
   /// The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
-  final pulumi.Input<NetworkInterfaceStackType>? stackType;
+  final pulumi.Input<NetworkInterfaceStackType?>? stackType;
   /// SubInterfaces help enable L2 communication for the instance over subnetworks that support L2. Every network interface will get a default untagged (vlan not specified) subinterface. Users can specify additional tagged subinterfaces which are sub-fields to the Network Interface.
-  final pulumi.Input<List<NetworkInterfaceSubInterface>>? subinterfaces;
+  final pulumi.Input<List<NetworkInterfaceSubInterface>?>? subinterfaces;
   /// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
   /// VLAN tag of a VLAN based network interface, must be in range from 2 to 4094 inclusively. This field is mandatory if the parent network interface name is set.
-  final pulumi.Input<int>? vlan;
+  final pulumi.Input<int?>? vlan;
 
   /// Creates a new [NetworkInterface].
   /// [accessConfigs] An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If there are no accessConfigs specified, then this instance will have no external internet access.
@@ -98,7 +98,7 @@ class NetworkInterface {
     return NetworkInterface(
       accessConfigs: (() { final guardedValue = map['accessConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessConfig>(guardedValue, (value) => AccessConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       aliasIpRanges: (() { final guardedValue = map['aliasIpRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AliasIpRange>(guardedValue, (value) => AliasIpRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      internalIpv6PrefixLength: (() { final guardedValue = map['internalIpv6PrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      internalIpv6PrefixLength: (() { final guardedValue = map['internalIpv6PrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipv6AccessConfigs: (() { final guardedValue = map['ipv6AccessConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessConfig>(guardedValue, (value) => AccessConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipv6Address: (() { final guardedValue = map['ipv6Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -106,11 +106,11 @@ class NetworkInterface {
       networkIP: (() { final guardedValue = map['networkIP']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nicType: (() { final guardedValue = map['nicType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkInterfaceNicType.fromValue(guardedValue as String)); })(),
       parentNicName: (() { final guardedValue = map['parentNicName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      queueCount: (() { final guardedValue = map['queueCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      queueCount: (() { final guardedValue = map['queueCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       stackType: (() { final guardedValue = map['stackType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkInterfaceStackType.fromValue(guardedValue as String)); })(),
       subinterfaces: (() { final guardedValue = map['subinterfaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInterfaceSubInterface>(guardedValue, (value) => NetworkInterfaceSubInterface.fromMap((value as Map).cast<String, dynamic>()))); })(),
       subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -6,23 +6,23 @@ import 'storage_config_response.dart';
 /// Result data returned by getEnvironment.
 class GetEnvironmentResult {
   /// Configuration parameters for this environment.
-  final EnvironmentConfigResponse config;
+  final EnvironmentConfigResponse? config;
   /// The time at which this environment was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be &lt;= 128 bytes in size.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
-  final String name;
+  final String? name;
   /// Reserved for future use.
-  final bool satisfiesPzs;
+  final bool? satisfiesPzs;
   /// The current state of the environment.
-  final String state;
+  final String? state;
   /// Optional. Storage configuration for this environment.
-  final StorageConfigResponse storageConfig;
+  final StorageConfigResponse? storageConfig;
   /// The time at which this environment was last modified.
-  final String updateTime;
+  final String? updateTime;
   /// The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
-  final String uuid;
+  final String? uuid;
 
   /// Creates a new [GetEnvironmentResult].
   /// [config] Configuration parameters for this environment.
@@ -35,42 +35,42 @@ class GetEnvironmentResult {
   /// [updateTime] The time at which this environment was last modified.
   /// [uuid] The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
   const GetEnvironmentResult({
-    required this.config,
-    required this.createTime,
-    required this.labels,
-    required this.name,
-    required this.satisfiesPzs,
-    required this.state,
-    required this.storageConfig,
-    required this.updateTime,
-    required this.uuid,
+    this.config,
+    this.createTime,
+    this.labels,
+    this.name,
+    this.satisfiesPzs,
+    this.state,
+    this.storageConfig,
+    this.updateTime,
+    this.uuid,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config': config.toMap(),
-      'createTime': createTime,
-      'labels': labels,
-      'name': name,
-      'satisfiesPzs': satisfiesPzs,
-      'state': state,
-      'storageConfig': storageConfig.toMap(),
-      'updateTime': updateTime,
-      'uuid': uuid,
+      'config': ?config?.toMap(),
+      'createTime': ?createTime,
+      'labels': ?labels,
+      'name': ?name,
+      'satisfiesPzs': ?satisfiesPzs,
+      'state': ?state,
+      'storageConfig': ?storageConfig?.toMap(),
+      'updateTime': ?updateTime,
+      'uuid': ?uuid,
     };
   }
 
   factory GetEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentResult(
-      config: EnvironmentConfigResponse.fromMap((map['config']! as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      satisfiesPzs: map['satisfiesPzs'] as bool,
-      state: map['state'] as String,
-      storageConfig: StorageConfigResponse.fromMap((map['storageConfig']! as Map).cast<String, dynamic>()),
-      updateTime: map['updateTime'] as String,
-      uuid: map['uuid'] as String,
+      config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return EnvironmentConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      satisfiesPzs: (() { final guardedValue = map['satisfiesPzs']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageConfig: (() { final guardedValue = map['storageConfig']; if (guardedValue == null) return null; return StorageConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

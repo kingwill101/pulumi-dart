@@ -6,7 +6,7 @@ import 'logging_component_config.dart';
 /// LoggingConfig is cluster logging configuration.
 class LoggingConfig {
   /// Logging components configuration
-  final pulumi.Input<LoggingComponentConfig>? componentConfig;
+  final pulumi.Input<LoggingComponentConfig?>? componentConfig;
 
   /// Creates a new [LoggingConfig].
   /// [componentConfig] Logging components configuration

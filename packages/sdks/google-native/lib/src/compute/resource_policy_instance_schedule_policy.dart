@@ -6,15 +6,15 @@ import 'resource_policy_instance_schedule_policy_schedule.dart';
 /// An InstanceSchedulePolicy specifies when and how frequent certain operations are performed on the instance.
 class ResourcePolicyInstanceSchedulePolicy {
   /// The expiration time of the schedule. The timestamp is an RFC3339 string.
-  final pulumi.Input<String>? expirationTime;
+  final pulumi.Input<String?>? expirationTime;
   /// The start time of the schedule. The timestamp is an RFC3339 string.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// Specifies the schedule for starting instances.
-  final pulumi.Input<ResourcePolicyInstanceSchedulePolicySchedule>? vmStartSchedule;
+  final pulumi.Input<ResourcePolicyInstanceSchedulePolicySchedule?>? vmStartSchedule;
   /// Specifies the schedule for stopping instances.
-  final pulumi.Input<ResourcePolicyInstanceSchedulePolicySchedule>? vmStopSchedule;
+  final pulumi.Input<ResourcePolicyInstanceSchedulePolicySchedule?>? vmStopSchedule;
 
   /// Creates a new [ResourcePolicyInstanceSchedulePolicy].
   /// [expirationTime] The expiration time of the schedule. The timestamp is an RFC3339 string.

@@ -7,15 +7,15 @@ import 'google_cloud_contentwarehouse_v1_rule_trigger_type.dart';
 /// Represents the rule for a content warehouse trigger.
 class GoogleCloudContentwarehouseV1Rule {
   /// List of actions that are executed when the rule is satisfied.
-  final pulumi.Input<List<GoogleCloudContentwarehouseV1Action>>? actions;
+  final pulumi.Input<List<GoogleCloudContentwarehouseV1Action>?>? actions;
   /// Represents the conditional expression to be evaluated. Expression should evaluate to a boolean result. When the condition is true actions are executed. Example: user_role = "hsbc_role_1" AND doc.salary &gt; 20000
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
   /// Short description of the rule and its context.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ID of the rule. It has to be unique across all the examples. This is managed internally.
-  final pulumi.Input<String>? ruleId;
+  final pulumi.Input<String?>? ruleId;
   /// Identifies the trigger type for running the policy.
-  final pulumi.Input<GoogleCloudContentwarehouseV1RuleTriggerType>? triggerType;
+  final pulumi.Input<GoogleCloudContentwarehouseV1RuleTriggerType?>? triggerType;
 
   /// Creates a new [GoogleCloudContentwarehouseV1Rule].
   /// [actions] List of actions that are executed when the rule is satisfied.

@@ -6,7 +6,7 @@ import 'google_cloud_documentai_v1_document_page_table_table_cell.dart';
 /// A row of table cells.
 class GoogleCloudDocumentaiV1DocumentPageTableTableRow {
   /// Cells that make up this row.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageTableTableCell>>? cells;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageTableTableCell>?>? cells;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageTableTableRow].
   /// [cells] Cells that make up this row.

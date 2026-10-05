@@ -27,7 +27,7 @@ class InstanceSelectionResultResponse {
   factory InstanceSelectionResultResponse.fromMap(Map<String, dynamic> map) {
     return InstanceSelectionResultResponse(
       machineType: pulumi.Input.fromValue(map['machineType'] as String),
-      vmCount: pulumi.Input.fromValue(map['vmCount'] as int),
+      vmCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vmCount'])),
     );
   }
 }

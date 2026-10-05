@@ -1,9 +1,12 @@
-enum ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch implements pulumi.PulumiEnum<String> {
   doNotRetroactivelyApply("DO_NOT_RETROACTIVELY_APPLY"),
   retroactivelyApply("RETROACTIVELY_APPLY"),
   unspecifiedOnPolicySwitch("UNSPECIFIED_ON_POLICY_SWITCH");
 
   const ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Layer holds metadata specific to a layer of a Docker image.
 class Layer {
   /// The recovered arguments to the Dockerfile directive.
-  final pulumi.Input<String>? arguments;
+  final pulumi.Input<String?>? arguments;
   /// The recovered Dockerfile directive used to construct this layer. See https://docs.docker.com/engine/reference/builder/ for more information.
   final pulumi.Input<String> directive;
 

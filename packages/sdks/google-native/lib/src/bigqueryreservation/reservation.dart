@@ -39,8 +39,31 @@ class Reservation extends pulumi.CustomResource {
           'google-native:bigqueryreservation/v1:Reservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    autoscale = registerOutput<AutoscaleResponse>('autoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscaleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    concurrency = registerOutput<String>('concurrency');
+    creationTime = registerOutput<String>('creationTime');
+    edition = registerOutput<String>('edition');
+    ignoreIdleSlots = registerOutput<bool>('ignoreIdleSlots');
+    location = registerOutput<String>('location');
+    multiRegionAuxiliary = registerOutput<bool>('multiRegionAuxiliary');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    reservationId = registerOutput<String?>('reservationId');
+    slotCapacity = registerOutput<String>('slotCapacity');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Reservation] resource.
+  Reservation.reference(String urn)
+    : super(
+        'google-native:bigqueryreservation/v1:Reservation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoscale = registerOutput<AutoscaleResponse>('autoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscaleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     concurrency = registerOutput<String>('concurrency');
     creationTime = registerOutput<String>('creationTime');

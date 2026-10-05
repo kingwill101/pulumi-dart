@@ -50,9 +50,9 @@ class Spec extends pulumi.CustomResource {
           'google-native:apigeeregistry/v1:Spec',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['apiId', 'apiSpecId', 'location', 'project', 'versionId']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     apiId = registerOutput<String>('apiId');
     apiSpecId = registerOutput<String>('apiSpecId');
     contents = registerOutput<String>('contents');
@@ -60,7 +60,37 @@ class Spec extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     filename = registerOutput<String>('filename');
     hash = registerOutput<String>('hash');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    mimeType = registerOutput<String>('mimeType');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    revisionId = registerOutput<String>('revisionId');
+    revisionUpdateTime = registerOutput<String>('revisionUpdateTime');
+    sizeBytes = registerOutput<int>('sizeBytes');
+    sourceUri = registerOutput<String>('sourceUri');
+    versionId = registerOutput<String>('versionId');
+  }
+
+  /// Creates a typed reference to an existing [Spec] resource.
+  Spec.reference(String urn)
+    : super(
+        'google-native:apigeeregistry/v1:Spec',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    apiId = registerOutput<String>('apiId');
+    apiSpecId = registerOutput<String>('apiSpecId');
+    contents = registerOutput<String>('contents');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    filename = registerOutput<String>('filename');
+    hash = registerOutput<String>('hash');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     mimeType = registerOutput<String>('mimeType');
     this.name = registerOutput<String>('name');

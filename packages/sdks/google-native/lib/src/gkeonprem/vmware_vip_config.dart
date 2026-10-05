@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the VIP config for the VMware user cluster load balancer.
 class VmwareVipConfig {
   /// The VIP which you previously set aside for the Kubernetes API of this cluster.
-  final pulumi.Input<String>? controlPlaneVip;
+  final pulumi.Input<String?>? controlPlaneVip;
   /// The VIP which you previously set aside for ingress traffic into this cluster.
-  final pulumi.Input<String>? ingressVip;
+  final pulumi.Input<String?>? ingressVip;
 
   /// Creates a new [VmwareVipConfig].
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes API of this cluster.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'public_advertised_prefix_args.dart';
+import 'public_advertised_prefix_public_delegated_prefix_response.dart';
 
 /// Creates a PublicAdvertisedPrefix in the specified project using the parameters that are included in the request.
 class PublicAdvertisedPrefix extends pulumi.CustomResource {
@@ -23,7 +24,7 @@ class PublicAdvertisedPrefix extends pulumi.CustomResource {
   late final pulumi.Output<String> pdpScope;
   late final pulumi.Output<String> project;
   /// The list of public delegated prefixes that exist for this public advertised prefix.
-  late final pulumi.Output<List<Map<String, dynamic>>> publicDelegatedPrefixs;
+  late final pulumi.Output<List<PublicAdvertisedPrefixPublicDelegatedPrefixResponse>> publicDelegatedPrefixs;
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
   /// Server-defined URL for the resource.
@@ -47,7 +48,7 @@ class PublicAdvertisedPrefix extends pulumi.CustomResource {
           'google-native:compute/alpha:PublicAdvertisedPrefix',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     byoipApiVersion = registerOutput<String>('byoipApiVersion');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -59,7 +60,34 @@ class PublicAdvertisedPrefix extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     pdpScope = registerOutput<String>('pdpScope');
     project = registerOutput<String>('project');
-    publicDelegatedPrefixs = registerOutput<List<Map<String, dynamic>>>('publicDelegatedPrefixs');
+    publicDelegatedPrefixs = registerOutput<List<PublicAdvertisedPrefixPublicDelegatedPrefixResponse>>('publicDelegatedPrefixs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PublicAdvertisedPrefixPublicDelegatedPrefixResponse>(guardedValue, (value) => PublicAdvertisedPrefixPublicDelegatedPrefixResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    sharedSecret = registerOutput<String>('sharedSecret');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [PublicAdvertisedPrefix] resource.
+  PublicAdvertisedPrefix.reference(String urn)
+    : super(
+        'google-native:compute/alpha:PublicAdvertisedPrefix',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    byoipApiVersion = registerOutput<String>('byoipApiVersion');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    dnsVerificationIp = registerOutput<String>('dnsVerificationIp');
+    fingerprint = registerOutput<String>('fingerprint');
+    ipCidrRange = registerOutput<String>('ipCidrRange');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    pdpScope = registerOutput<String>('pdpScope');
+    project = registerOutput<String>('project');
+    publicDelegatedPrefixs = registerOutput<List<PublicAdvertisedPrefixPublicDelegatedPrefixResponse>>('publicDelegatedPrefixs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PublicAdvertisedPrefixPublicDelegatedPrefixResponse>(guardedValue, (value) => PublicAdvertisedPrefixPublicDelegatedPrefixResponse.fromMap((value as Map).cast<String, dynamic>())); });
     requestId = registerOutput<String?>('requestId');
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');

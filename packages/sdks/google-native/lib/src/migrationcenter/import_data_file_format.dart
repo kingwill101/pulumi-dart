@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The payload format.
-enum ImportDataFileFormat {
+enum ImportDataFileFormat implements pulumi.PulumiEnum<String> {
   importJobFormatUnspecified("IMPORT_JOB_FORMAT_UNSPECIFIED"),
   importJobFormatRvtoolsXlsx("IMPORT_JOB_FORMAT_RVTOOLS_XLSX"),
   importJobFormatRvtoolsCsv("IMPORT_JOB_FORMAT_RVTOOLS_CSV"),
@@ -8,6 +10,7 @@ enum ImportDataFileFormat {
   importJobFormatStratozoneCsv("IMPORT_JOB_FORMAT_STRATOZONE_CSV");
 
   const ImportDataFileFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static ImportDataFileFormat fromValue(String value) {

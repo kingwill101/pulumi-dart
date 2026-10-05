@@ -37,9 +37,9 @@ class VirtualMachinePreferencesSizingOptimizationCustomParametersResponse {
   factory VirtualMachinePreferencesSizingOptimizationCustomParametersResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePreferencesSizingOptimizationCustomParametersResponse(
       aggregationMethod: pulumi.Input.fromValue(map['aggregationMethod'] as String),
-      cpuUsagePercentage: pulumi.Input.fromValue(map['cpuUsagePercentage'] as int),
-      memoryUsagePercentage: pulumi.Input.fromValue(map['memoryUsagePercentage'] as int),
-      storageMultiplier: pulumi.Input.fromValue(map['storageMultiplier'] as double),
+      cpuUsagePercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpuUsagePercentage'])),
+      memoryUsagePercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memoryUsagePercentage'])),
+      storageMultiplier: pulumi.Input.fromValue((map['storageMultiplier'] as num).toDouble()),
     );
   }
 }

@@ -1,4 +1,6 @@
-enum BasicPerfSampleSeriesPerfUnit {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum BasicPerfSampleSeriesPerfUnit implements pulumi.PulumiEnum<String> {
   perfUnitUnspecified("perfUnitUnspecified"),
   kibibyte("kibibyte"),
   percent("percent"),
@@ -7,6 +9,7 @@ enum BasicPerfSampleSeriesPerfUnit {
   byte("byte");
 
   const BasicPerfSampleSeriesPerfUnit(this.wireValue);
+  @override
   final String wireValue;
 
   static BasicPerfSampleSeriesPerfUnit fromValue(String value) {

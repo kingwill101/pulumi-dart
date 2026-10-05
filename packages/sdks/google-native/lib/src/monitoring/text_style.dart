@@ -10,19 +10,19 @@ import 'text_style_vertical_alignment.dart';
 /// Properties that determine how the title and content are styled
 class TextStyle {
   /// The background color as a hex string. "#RRGGBB" or "#RGB"
-  final pulumi.Input<String>? backgroundColor;
+  final pulumi.Input<String?>? backgroundColor;
   /// Font sizes for both the title and content. The title will still be larger relative to the content.
-  final pulumi.Input<TextStyleFontSize>? fontSize;
+  final pulumi.Input<TextStyleFontSize?>? fontSize;
   /// The horizontal alignment of both the title and content
-  final pulumi.Input<TextStyleHorizontalAlignment>? horizontalAlignment;
+  final pulumi.Input<TextStyleHorizontalAlignment?>? horizontalAlignment;
   /// The amount of padding around the widget
-  final pulumi.Input<TextStylePadding>? padding;
+  final pulumi.Input<TextStylePadding?>? padding;
   /// The pointer location for this widget (also sometimes called a "tail")
-  final pulumi.Input<TextStylePointerLocation>? pointerLocation;
+  final pulumi.Input<TextStylePointerLocation?>? pointerLocation;
   /// The text color as a hex string. "#RRGGBB" or "#RGB"
-  final pulumi.Input<String>? textColor;
+  final pulumi.Input<String?>? textColor;
   /// The vertical alignment of both the title and content
-  final pulumi.Input<TextStyleVerticalAlignment>? verticalAlignment;
+  final pulumi.Input<TextStyleVerticalAlignment?>? verticalAlignment;
 
   /// Creates a new [TextStyle].
   /// [backgroundColor] The background color as a hex string. "#RRGGBB" or "#RGB"

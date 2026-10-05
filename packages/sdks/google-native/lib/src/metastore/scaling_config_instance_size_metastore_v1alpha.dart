@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
-enum ScalingConfigInstanceSizeMetastoreV1alpha {
+enum ScalingConfigInstanceSizeMetastoreV1alpha implements pulumi.PulumiEnum<String> {
   instanceSizeUnspecified("INSTANCE_SIZE_UNSPECIFIED"),
   extraSmall("EXTRA_SMALL"),
   small("SMALL"),
@@ -8,6 +10,7 @@ enum ScalingConfigInstanceSizeMetastoreV1alpha {
   extraLarge("EXTRA_LARGE");
 
   const ScalingConfigInstanceSizeMetastoreV1alpha(this.wireValue);
+  @override
   final String wireValue;
 
   static ScalingConfigInstanceSizeMetastoreV1alpha fromValue(String value) {

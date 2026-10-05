@@ -29,8 +29,24 @@ class InboundSamlSsoProfile extends pulumi.CustomResource {
           'google-native:cloudidentity/v1:InboundSamlSsoProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
+    customer = registerOutput<String>('customer');
+    displayName = registerOutput<String>('displayName');
+    idpConfig = registerOutput<SamlIdpConfigResponse>('idpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SamlIdpConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    spConfig = registerOutput<SamlSpConfigResponse>('spConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SamlSpConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [InboundSamlSsoProfile] resource.
+  InboundSamlSsoProfile.reference(String urn)
+    : super(
+        'google-native:cloudidentity/v1:InboundSamlSsoProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     customer = registerOutput<String>('customer');
     displayName = registerOutput<String>('displayName');
     idpConfig = registerOutput<SamlIdpConfigResponse>('idpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SamlIdpConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

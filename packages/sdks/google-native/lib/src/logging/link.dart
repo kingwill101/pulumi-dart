@@ -32,8 +32,28 @@ class Link extends pulumi.CustomResource {
           'google-native:logging/v2:Link',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['bucketId', 'linkId', 'location', 'project']).merge(options),
         ) {
+    bigqueryDataset = registerOutput<BigQueryDatasetResponse>('bigqueryDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bucketId = registerOutput<String>('bucketId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    lifecycleState = registerOutput<String>('lifecycleState');
+    linkId = registerOutput<String>('linkId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [Link] resource.
+  Link.reference(String urn)
+    : super(
+        'google-native:logging/v2:Link',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bigqueryDataset = registerOutput<BigQueryDatasetResponse>('bigqueryDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bucketId = registerOutput<String>('bucketId');
     createTime = registerOutput<String>('createTime');

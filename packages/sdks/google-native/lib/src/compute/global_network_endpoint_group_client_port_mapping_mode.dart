@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Only valid when networkEndpointType is "GCE_VM_IP_PORT" and the NEG is regional.
-enum GlobalNetworkEndpointGroupClientPortMappingMode {
+enum GlobalNetworkEndpointGroupClientPortMappingMode implements pulumi.PulumiEnum<String> {
   clientPortPerEndpoint("CLIENT_PORT_PER_ENDPOINT"),
   portMappingDisabled("PORT_MAPPING_DISABLED");
 
   const GlobalNetworkEndpointGroupClientPortMappingMode(this.wireValue);
+  @override
   final String wireValue;
 
   static GlobalNetworkEndpointGroupClientPortMappingMode fromValue(String value) {

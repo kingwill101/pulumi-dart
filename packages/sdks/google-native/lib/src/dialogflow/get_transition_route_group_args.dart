@@ -9,9 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTransitionRouteGroupArgs {
   final pulumi.Input<String> agentId;
   final pulumi.Input<String> flowId;
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> transitionRouteGroupId;
 
   /// Creates a new [GetTransitionRouteGroupArgs].

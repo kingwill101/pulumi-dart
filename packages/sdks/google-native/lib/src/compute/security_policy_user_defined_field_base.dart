@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
-enum SecurityPolicyUserDefinedFieldBase {
+enum SecurityPolicyUserDefinedFieldBase implements pulumi.PulumiEnum<String> {
   ipv4("IPV4"),
   ipv6("IPV6"),
   tcp("TCP"),
   udp("UDP");
 
   const SecurityPolicyUserDefinedFieldBase(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityPolicyUserDefinedFieldBase fromValue(String value) {

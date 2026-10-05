@@ -31,8 +31,25 @@ class FolderReplayPolicysimulatorV1beta extends pulumi.CustomResource {
           'google-native:policysimulator/v1beta:FolderReplay',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['folderId', 'location']).merge(options),
         ) {
+    config = registerOutput<GoogleCloudPolicysimulatorV1betaReplayConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudPolicysimulatorV1betaReplayConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    folderId = registerOutput<String>('folderId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resultsSummary = registerOutput<GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponse>('resultsSummary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [FolderReplayPolicysimulatorV1beta] resource.
+  FolderReplayPolicysimulatorV1beta.reference(String urn)
+    : super(
+        'google-native:policysimulator/v1beta:FolderReplay',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     config = registerOutput<GoogleCloudPolicysimulatorV1betaReplayConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudPolicysimulatorV1betaReplayConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     folderId = registerOutput<String>('folderId');
     location = registerOutput<String>('location');

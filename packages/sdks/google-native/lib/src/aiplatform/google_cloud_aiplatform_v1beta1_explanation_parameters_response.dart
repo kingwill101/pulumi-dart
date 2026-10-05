@@ -54,7 +54,7 @@ class GoogleCloudAiplatformV1beta1ExplanationParametersResponse {
       integratedGradientsAttribution: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionResponse.fromMap((map['integratedGradientsAttribution']! as Map).cast<String, dynamic>())),
       outputIndices: pulumi.Input.fromValue((map['outputIndices'] as List).cast<dynamic>()),
       sampledShapleyAttribution: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1SampledShapleyAttributionResponse.fromMap((map['sampledShapleyAttribution']! as Map).cast<String, dynamic>())),
-      topK: pulumi.Input.fromValue(map['topK'] as int),
+      topK: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['topK'])),
       xraiAttribution: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1XraiAttributionResponse.fromMap((map['xraiAttribution']! as Map).cast<String, dynamic>())),
     );
   }

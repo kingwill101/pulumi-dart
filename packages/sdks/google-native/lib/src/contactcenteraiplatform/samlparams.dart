@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Message storing SAML params to enable Google as IDP.
 class SAMLParams {
   /// SAML certificate
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// IdP field that maps to the user’s email address
-  final pulumi.Input<String>? emailMapping;
+  final pulumi.Input<String?>? emailMapping;
   /// Entity id URL
-  final pulumi.Input<String>? entityId;
+  final pulumi.Input<String?>? entityId;
   /// Single sign-on URL
-  final pulumi.Input<String>? ssoUri;
+  final pulumi.Input<String?>? ssoUri;
   /// Email address of the first admin users.
-  final pulumi.Input<String>? userEmail;
+  final pulumi.Input<String?>? userEmail;
 
   /// Creates a new [SAMLParams].
   /// [certificate] SAML certificate

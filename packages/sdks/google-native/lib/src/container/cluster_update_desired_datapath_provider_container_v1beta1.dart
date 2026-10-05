@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The desired datapath provider for the cluster.
-enum ClusterUpdateDesiredDatapathProviderContainerV1beta1 {
+enum ClusterUpdateDesiredDatapathProviderContainerV1beta1 implements pulumi.PulumiEnum<String> {
   datapathProviderUnspecified("DATAPATH_PROVIDER_UNSPECIFIED"),
   legacyDatapath("LEGACY_DATAPATH"),
   advancedDatapath("ADVANCED_DATAPATH");
 
   const ClusterUpdateDesiredDatapathProviderContainerV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static ClusterUpdateDesiredDatapathProviderContainerV1beta1 fromValue(String value) {

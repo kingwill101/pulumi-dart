@@ -43,8 +43,32 @@ class ZoneQueuedResource extends pulumi.CustomResource {
           'google-native:compute/alpha:ZoneQueuedResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'zone']).merge(options),
         ) {
+    bulkInsertInstanceResource = registerOutput<BulkInsertInstanceResourceResponse>('bulkInsertInstanceResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BulkInsertInstanceResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    queuingPolicy = registerOutput<QueuingPolicyResponse>('queuingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueuingPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    state = registerOutput<String>('state');
+    status = registerOutput<QueuedResourceStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueuedResourceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [ZoneQueuedResource] resource.
+  ZoneQueuedResource.reference(String urn)
+    : super(
+        'google-native:compute/alpha:ZoneQueuedResource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bulkInsertInstanceResource = registerOutput<BulkInsertInstanceResourceResponse>('bulkInsertInstanceResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BulkInsertInstanceResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');

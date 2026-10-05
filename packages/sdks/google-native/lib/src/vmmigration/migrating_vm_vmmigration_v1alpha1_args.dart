@@ -12,30 +12,30 @@ import 'target_vmdetails.dart';
 /// {@macro pulumi_vmmigration_v1alpha1_migrating_vm_vmmigration_v1alpha1_args_doc}
 class MigratingVmVmmigrationV1alpha1Args {
   /// Details of the target Persistent Disks in Compute Engine.
-  final pulumi.Input<ComputeEngineDisksTargetDefaultsVmmigrationV1alpha1>? computeEngineDisksTargetDefaults;
+  final pulumi.Input<ComputeEngineDisksTargetDefaultsVmmigrationV1alpha1?>? computeEngineDisksTargetDefaults;
   /// Details of the target VM in Compute Engine.
-  final pulumi.Input<ComputeEngineTargetDefaultsVmmigrationV1alpha1>? computeEngineTargetDefaults;
+  final pulumi.Input<ComputeEngineTargetDefaultsVmmigrationV1alpha1?>? computeEngineTargetDefaults;
   /// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
-  final pulumi.Input<TargetVMDetails>? computeEngineVmDefaults;
+  final pulumi.Input<TargetVMDetails?>? computeEngineVmDefaults;
   /// The description attached to the migrating VM by the user.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name attached to the MigratingVm by the user.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The labels of the migrating VM.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Required. The migratingVm identifier.
   final pulumi.Input<String> migratingVmId;
   /// The replication schedule policy.
-  final pulumi.Input<SchedulePolicyVmmigrationV1alpha1>? policy;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<SchedulePolicyVmmigrationV1alpha1?>? policy;
+  final pulumi.Input<String?>? project;
   /// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   final pulumi.Input<String> sourceId;
   /// The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
-  final pulumi.Input<String>? sourceVmId;
+  final pulumi.Input<String?>? sourceVmId;
   /// The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
-  final pulumi.Input<TargetVMDetails>? targetDefaults;
+  final pulumi.Input<TargetVMDetails?>? targetDefaults;
 
   /// Creates a new [MigratingVmVmmigrationV1alpha1Args].
   /// [computeEngineDisksTargetDefaults] Details of the target Persistent Disks in Compute Engine.

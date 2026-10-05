@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF.
-enum ManagedZoneDnsSecConfigNonExistence {
+enum ManagedZoneDnsSecConfigNonExistence implements pulumi.PulumiEnum<String> {
   nsec("nsec"),
   nsec3("nsec3");
 
   const ManagedZoneDnsSecConfigNonExistence(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedZoneDnsSecConfigNonExistence fromValue(String value) {

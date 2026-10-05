@@ -10,10 +10,10 @@ class GroupArgs {
   /// The display name of the group.
   final pulumi.Input<String> displayName;
   /// Optional. The "alias" to use for the group, which will become the final component of the group's resource name. This value must be unique per project. The field is named `groupId` to comply with AIP guidance for user-specified IDs. This value should be 4-63 characters, and valid characters are `/a-z-/`. If not set, it will be generated based on the display name.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// The name of the group resource. Format: `projects/{project_number}/groups/{group_alias}`
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GroupArgs].
   /// [displayName] The display name of the group.

@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-enum AppDatabaseTypeAppengineV1beta {
+enum AppDatabaseTypeAppengineV1beta implements pulumi.PulumiEnum<String> {
   databaseTypeUnspecified("DATABASE_TYPE_UNSPECIFIED"),
   cloudDatastore("CLOUD_DATASTORE"),
   cloudFirestore("CLOUD_FIRESTORE"),
   cloudDatastoreCompatibility("CLOUD_DATASTORE_COMPATIBILITY");
 
   const AppDatabaseTypeAppengineV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static AppDatabaseTypeAppengineV1beta fromValue(String value) {

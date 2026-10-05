@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies network collocation
-enum ResourcePolicyGroupPlacementPolicyCollocationComputeBeta {
+enum ResourcePolicyGroupPlacementPolicyCollocationComputeBeta implements pulumi.PulumiEnum<String> {
   collocated("COLLOCATED"),
   unspecifiedCollocation("UNSPECIFIED_COLLOCATION");
 
   const ResourcePolicyGroupPlacementPolicyCollocationComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourcePolicyGroupPlacementPolicyCollocationComputeBeta fromValue(String value) {

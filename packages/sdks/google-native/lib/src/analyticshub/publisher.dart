@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contains details of the listing publisher.
 class Publisher {
   /// Optional. Name of the listing publisher.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Optional. Email or URL of the listing publisher. Max Length: 1000 bytes.
-  final pulumi.Input<String>? primaryContact;
+  final pulumi.Input<String?>? primaryContact;
 
   /// Creates a new [Publisher].
   /// [name] Optional. Name of the listing publisher.

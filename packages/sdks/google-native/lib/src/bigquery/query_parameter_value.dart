@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QueryParameterValue {
   /// [Optional] The array values, if this is an array type.
-  final pulumi.Input<List<QueryParameterValue>>? arrayValues;
+  final pulumi.Input<List<QueryParameterValue>?>? arrayValues;
   /// [Optional] The struct field values, in order of the struct type's declaration.
-  final pulumi.Input<Map<String, String>>? structValues;
+  final pulumi.Input<Map<String, String>?>? structValues;
   /// [Optional] The value of this value, if a simple scalar type.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [QueryParameterValue].
   /// [arrayValues] [Optional] The array values, if this is an array type.

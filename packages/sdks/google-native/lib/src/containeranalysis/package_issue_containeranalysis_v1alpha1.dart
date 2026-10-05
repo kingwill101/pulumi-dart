@@ -6,12 +6,12 @@ import 'vulnerability_location.dart';
 /// This message wraps a location affected by a vulnerability and its associated fix (if one is available).
 class PackageIssueContaineranalysisV1alpha1 {
   /// The location of the vulnerability.
-  final pulumi.Input<VulnerabilityLocation>? affectedLocation;
+  final pulumi.Input<VulnerabilityLocation?>? affectedLocation;
   /// The location of the available fix for vulnerability.
-  final pulumi.Input<VulnerabilityLocation>? fixedLocation;
+  final pulumi.Input<VulnerabilityLocation?>? fixedLocation;
   /// The type of package (e.g. OS, MAVEN, GO).
-  final pulumi.Input<String>? packageType;
-  final pulumi.Input<String>? severityName;
+  final pulumi.Input<String?>? packageType;
+  final pulumi.Input<String?>? severityName;
 
   /// Creates a new [PackageIssueContaineranalysisV1alpha1].
   /// [affectedLocation] The location of the vulnerability.

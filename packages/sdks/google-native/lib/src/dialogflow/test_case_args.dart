@@ -14,19 +14,19 @@ class TestCaseArgs {
   /// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
   final pulumi.Input<String> displayName;
   /// The latest test result.
-  final pulumi.Input<GoogleCloudDialogflowCxV3TestCaseResult>? lastTestResult;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<GoogleCloudDialogflowCxV3TestCaseResult?>? lastTestResult;
+  final pulumi.Input<String?>? location;
   /// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Additional freeform notes about the test case. Limit of 400 characters.
-  final pulumi.Input<String>? notes;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? notes;
+  final pulumi.Input<String?>? project;
   /// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3ConversationTurn>>? testCaseConversationTurns;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3ConversationTurn>?>? testCaseConversationTurns;
   /// Config for the test case.
-  final pulumi.Input<GoogleCloudDialogflowCxV3TestConfig>? testConfig;
+  final pulumi.Input<GoogleCloudDialogflowCxV3TestConfig?>? testConfig;
 
   /// Creates a new [TestCaseArgs].
   /// [agentId] Required.

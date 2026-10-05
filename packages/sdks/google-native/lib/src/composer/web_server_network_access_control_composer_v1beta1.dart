@@ -6,7 +6,7 @@ import 'allowed_ip_range_composer_v1beta1.dart';
 /// Network-level access control policy for the Airflow web server.
 class WebServerNetworkAccessControlComposerV1beta1 {
   /// A collection of allowed IP ranges with descriptions.
-  final pulumi.Input<List<AllowedIpRangeComposerV1beta1>>? allowedIpRanges;
+  final pulumi.Input<List<AllowedIpRangeComposerV1beta1>?>? allowedIpRanges;
 
   /// Creates a new [WebServerNetworkAccessControlComposerV1beta1].
   /// [allowedIpRanges] A collection of allowed IP ranges with descriptions.

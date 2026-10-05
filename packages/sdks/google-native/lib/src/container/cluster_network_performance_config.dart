@@ -6,7 +6,7 @@ import 'cluster_network_performance_config_total_egress_bandwidth_tier.dart';
 /// Configuration of network bandwidth tiers
 class ClusterNetworkPerformanceConfig {
   /// Specifies the total network bandwidth tier for NodePools in the cluster.
-  final pulumi.Input<ClusterNetworkPerformanceConfigTotalEgressBandwidthTier>? totalEgressBandwidthTier;
+  final pulumi.Input<ClusterNetworkPerformanceConfigTotalEgressBandwidthTier?>? totalEgressBandwidthTier;
 
   /// Creates a new [ClusterNetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] Specifies the total network bandwidth tier for NodePools in the cluster.

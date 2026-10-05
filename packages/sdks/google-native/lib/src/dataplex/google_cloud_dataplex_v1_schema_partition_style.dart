@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The structure of paths containing partition data within the entity.
-enum GoogleCloudDataplexV1SchemaPartitionStyle {
+enum GoogleCloudDataplexV1SchemaPartitionStyle implements pulumi.PulumiEnum<String> {
   partitionStyleUnspecified("PARTITION_STYLE_UNSPECIFIED"),
   hiveCompatible("HIVE_COMPATIBLE");
 
   const GoogleCloudDataplexV1SchemaPartitionStyle(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDataplexV1SchemaPartitionStyle fromValue(String value) {

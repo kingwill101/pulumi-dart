@@ -6,9 +6,9 @@ import 'mysql_column_datastream_v1alpha1.dart';
 /// MySQL table.
 class MysqlTableDatastreamV1alpha1 {
   /// MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
-  final pulumi.Input<List<MysqlColumnDatastreamV1alpha1>>? mysqlColumns;
+  final pulumi.Input<List<MysqlColumnDatastreamV1alpha1>?>? mysqlColumns;
   /// Table name.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
 
   /// Creates a new [MysqlTableDatastreamV1alpha1].
   /// [mysqlColumns] MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.

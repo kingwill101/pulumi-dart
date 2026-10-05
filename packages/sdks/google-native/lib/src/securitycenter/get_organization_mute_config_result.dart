@@ -4,19 +4,19 @@
 /// Result data returned by getOrganizationMuteConfig.
 class GetOrganizationMuteConfigResult {
   /// The time at which the mute config was created. This field is set by the server and will be ignored if provided on config creation.
-  final String createTime;
+  final String? createTime;
   /// A description of the mute config.
-  final String description;
+  final String? description;
   /// The human readable name to be displayed for the mute config.
-  final String displayName;
+  final String? displayName;
   /// An expression that defines the filter to apply across create/update events of findings. While creating a filter string, be mindful of the scope in which the mute configuration is being created. E.g., If a filter contains project = X but is created under the project = Y scope, it might not match any findings. The following field and operator combinations are supported: * severity: `=`, `:` * category: `=`, `:` * resource.name: `=`, `:` * resource.project_name: `=`, `:` * resource.project_display_name: `=`, `:` * resource.folders.resource_folder: `=`, `:` * resource.parent_name: `=`, `:` * resource.parent_display_name: `=`, `:` * resource.type: `=`, `:` * finding_class: `=`, `:` * indicator.ip_addresses: `=`, `:` * indicator.domains: `=`, `:`
-  final String filter;
+  final String? filter;
   /// Email address of the user who last edited the mute config. This field is set by the server and will be ignored if provided on config creation or update.
-  final String mostRecentEditor;
+  final String? mostRecentEditor;
   /// This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}" "organizations/{organization}/locations/global/muteConfigs/{mute_config}" "folders/{folder}/locations/global/muteConfigs/{mute_config}" "projects/{project}/locations/global/muteConfigs/{mute_config}"
-  final String name;
+  final String? name;
   /// The most recent time at which the mute config was updated. This field is set by the server and will be ignored if provided on config creation or update.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetOrganizationMuteConfigResult].
   /// [createTime] The time at which the mute config was created. This field is set by the server and will be ignored if provided on config creation.
@@ -27,36 +27,36 @@ class GetOrganizationMuteConfigResult {
   /// [name] This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}" "organizations/{organization}/locations/global/muteConfigs/{mute_config}" "folders/{folder}/locations/global/muteConfigs/{mute_config}" "projects/{project}/locations/global/muteConfigs/{mute_config}"
   /// [updateTime] The most recent time at which the mute config was updated. This field is set by the server and will be ignored if provided on config creation or update.
   const GetOrganizationMuteConfigResult({
-    required this.createTime,
-    required this.description,
-    required this.displayName,
-    required this.filter,
-    required this.mostRecentEditor,
-    required this.name,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.filter,
+    this.mostRecentEditor,
+    this.name,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
-      'filter': filter,
-      'mostRecentEditor': mostRecentEditor,
-      'name': name,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'filter': ?filter,
+      'mostRecentEditor': ?mostRecentEditor,
+      'name': ?name,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetOrganizationMuteConfigResult.fromMap(Map<String, dynamic> map) {
     return GetOrganizationMuteConfigResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      filter: map['filter'] as String,
-      mostRecentEditor: map['mostRecentEditor'] as String,
-      name: map['name'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      mostRecentEditor: (() { final guardedValue = map['mostRecentEditor']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

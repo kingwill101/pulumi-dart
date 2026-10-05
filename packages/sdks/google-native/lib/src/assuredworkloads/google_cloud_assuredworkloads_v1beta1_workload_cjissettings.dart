@@ -6,7 +6,7 @@ import 'google_cloud_assuredworkloads_v1beta1_workload_kmssettings.dart';
 /// Settings specific to resources needed for CJIS.
 class GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings {
   /// Input only. Immutable. Settings used to create a CMEK crypto key.
-  final pulumi.Input<GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings>? kmsSettings;
+  final pulumi.Input<GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings?>? kmsSettings;
 
   /// Creates a new [GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings].
   /// [kmsSettings] Input only. Immutable. Settings used to create a CMEK crypto key.

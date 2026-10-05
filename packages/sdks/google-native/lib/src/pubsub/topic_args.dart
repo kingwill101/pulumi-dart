@@ -10,20 +10,20 @@ import 'schema_settings.dart';
 /// {@macro pulumi_pubsub_v1_topic_args_doc}
 class TopicArgs {
   /// Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Optional. Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
-  final pulumi.Input<String>? messageRetentionDuration;
+  final pulumi.Input<String?>? messageRetentionDuration;
   /// Optional. Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
-  final pulumi.Input<MessageStoragePolicy>? messageStoragePolicy;
+  final pulumi.Input<MessageStoragePolicy?>? messageStoragePolicy;
   /// The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Optional. Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
-  final pulumi.Input<bool>? satisfiesPzs;
+  final pulumi.Input<bool?>? satisfiesPzs;
   /// Optional. Settings for validating messages published against a schema.
-  final pulumi.Input<SchemaSettings>? schemaSettings;
+  final pulumi.Input<SchemaSettings?>? schemaSettings;
   final pulumi.Input<String> topicId;
 
   /// Creates a new [TopicArgs].

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Database instance operation error.
 class OperationErrorSqladminV1beta4 {
   /// Identifies the specific error that occurred.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// This is always `sql#operationError`.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Additional information about the error encountered.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [OperationErrorSqladminV1beta4].
   /// [code] Identifies the specific error that occurred.

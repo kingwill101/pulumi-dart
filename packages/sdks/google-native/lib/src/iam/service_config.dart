@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for a service.
 class ServiceConfig {
   /// Optional. Domain name of the service. Example: console.cloud.google
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
 
   /// Creates a new [ServiceConfig].
   /// [domain] Optional. Domain name of the service. Example: console.cloud.google

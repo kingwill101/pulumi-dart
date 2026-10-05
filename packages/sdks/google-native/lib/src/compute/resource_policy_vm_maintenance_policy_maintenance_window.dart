@@ -5,7 +5,7 @@ import 'resource_policy_daily_cycle.dart';
 
 /// A maintenance window for VMs. When set, we restrict our maintenance operations to this window.
 class ResourcePolicyVmMaintenancePolicyMaintenanceWindow {
-  final pulumi.Input<ResourcePolicyDailyCycle>? dailyMaintenanceWindow;
+  final pulumi.Input<ResourcePolicyDailyCycle?>? dailyMaintenanceWindow;
 
   /// Creates a new [ResourcePolicyVmMaintenancePolicyMaintenanceWindow].
   /// [dailyMaintenanceWindow] Optional.

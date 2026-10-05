@@ -7,9 +7,9 @@ import 'peripherals_config.dart';
 /// Environment configuration for a workload.
 class EnvironmentConfig {
   /// Optional. Execution configuration for a workload.
-  final pulumi.Input<ExecutionConfig>? executionConfig;
+  final pulumi.Input<ExecutionConfig?>? executionConfig;
   /// Optional. Peripherals configuration that workload has access to.
-  final pulumi.Input<PeripheralsConfig>? peripheralsConfig;
+  final pulumi.Input<PeripheralsConfig?>? peripheralsConfig;
 
   /// Creates a new [EnvironmentConfig].
   /// [executionConfig] Optional. Execution configuration for a workload.

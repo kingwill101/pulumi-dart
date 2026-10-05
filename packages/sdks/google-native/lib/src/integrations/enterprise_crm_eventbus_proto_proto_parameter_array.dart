@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseCrmEventbusProtoProtoParameterArray {
-  final pulumi.Input<List<Map<String, String>>>? protoValues;
+  final pulumi.Input<List<Map<String, String>>?>? protoValues;
 
   /// Creates a new [EnterpriseCrmEventbusProtoProtoParameterArray].
   /// [protoValues] Optional.
@@ -19,7 +19,7 @@ class EnterpriseCrmEventbusProtoProtoParameterArray {
 
   factory EnterpriseCrmEventbusProtoProtoParameterArray.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoProtoParameterArray(
-      protoValues: (() { final guardedValue = map['protoValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<Map<String, String>>()); })(),
+      protoValues: (() { final guardedValue = map['protoValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>())); })(),
     );
   }
 }

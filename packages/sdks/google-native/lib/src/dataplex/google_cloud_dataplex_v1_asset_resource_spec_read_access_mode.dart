@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
-enum GoogleCloudDataplexV1AssetResourceSpecReadAccessMode {
+enum GoogleCloudDataplexV1AssetResourceSpecReadAccessMode implements pulumi.PulumiEnum<String> {
   accessModeUnspecified("ACCESS_MODE_UNSPECIFIED"),
   direct("DIRECT"),
   managed("MANAGED");
 
   const GoogleCloudDataplexV1AssetResourceSpecReadAccessMode(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDataplexV1AssetResourceSpecReadAccessMode fromValue(String value) {

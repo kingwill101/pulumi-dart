@@ -16,36 +16,36 @@ import 'user_password_alloydb_v1beta.dart';
 /// {@macro pulumi_alloydb_v1beta_cluster_alloydb_v1beta_args_doc}
 class ClusterAlloydbV1betaArgs {
   /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The automated backup policy for this cluster. If no policy is provided then the default policy will be used. If backups are supported for the cluster, the default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days. For more information on the defaults, consult the documentation for the message type.
-  final pulumi.Input<AutomatedBackupPolicyAlloydbV1beta>? automatedBackupPolicy;
+  final pulumi.Input<AutomatedBackupPolicyAlloydbV1beta?>? automatedBackupPolicy;
   /// Required. ID of the requesting object.
   final pulumi.Input<String> clusterId;
   /// Optional. Continuous backup configuration for this cluster.
-  final pulumi.Input<ContinuousBackupConfigAlloydbV1beta>? continuousBackupConfig;
+  final pulumi.Input<ContinuousBackupConfigAlloydbV1beta?>? continuousBackupConfig;
   /// Optional. The database engine major version. This is an optional field and it is populated at the Cluster creation time. If a database version is not supplied at cluster creation time, then a default database version will be used.
-  final pulumi.Input<ClusterDatabaseVersionAlloydbV1beta>? databaseVersion;
+  final pulumi.Input<ClusterDatabaseVersionAlloydbV1beta?>? databaseVersion;
   /// User-settable and human-readable display name for the Cluster.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
-  final pulumi.Input<EncryptionConfigAlloydbV1beta>? encryptionConfig;
+  final pulumi.Input<EncryptionConfigAlloydbV1beta?>? encryptionConfig;
   /// For Resource freshness validation (https://google.aip.dev/154)
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is ignored.
-  final pulumi.Input<UserPasswordAlloydbV1beta>? initialUser;
+  final pulumi.Input<UserPasswordAlloydbV1beta?>? initialUser;
   /// Labels as key value pairs
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
   final pulumi.Input<String> network;
-  final pulumi.Input<NetworkConfigAlloydbV1beta>? networkConfig;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<NetworkConfigAlloydbV1beta?>? networkConfig;
+  final pulumi.Input<String?>? project;
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Cross Region replication config specific to SECONDARY cluster.
-  final pulumi.Input<SecondaryConfigAlloydbV1beta>? secondaryConfig;
+  final pulumi.Input<SecondaryConfigAlloydbV1beta?>? secondaryConfig;
   /// SSL configuration for this AlloyDB cluster.
-  final pulumi.Input<SslConfigAlloydbV1beta>? sslConfig;
+  final pulumi.Input<SslConfigAlloydbV1beta?>? sslConfig;
 
   /// Creates a new [ClusterAlloydbV1betaArgs].
   /// [annotations] Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128

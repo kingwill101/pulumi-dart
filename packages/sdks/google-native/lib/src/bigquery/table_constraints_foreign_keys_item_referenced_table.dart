@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableConstraintsForeignKeysItemReferencedTable {
-  final pulumi.Input<String>? datasetId;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? tableId;
+  final pulumi.Input<String?>? datasetId;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? tableId;
 
   /// Creates a new [TableConstraintsForeignKeysItemReferencedTable].
   /// [datasetId] Optional.

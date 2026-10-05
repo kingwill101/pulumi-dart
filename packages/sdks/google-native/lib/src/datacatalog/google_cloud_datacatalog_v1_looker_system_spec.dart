@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specification that applies to entries that are part `LOOKER` system (user_specified_type)
 class GoogleCloudDatacatalogV1LookerSystemSpec {
   /// Name of the parent Looker Instance. Empty if it does not exist.
-  final pulumi.Input<String>? parentInstanceDisplayName;
+  final pulumi.Input<String?>? parentInstanceDisplayName;
   /// ID of the parent Looker Instance. Empty if it does not exist. Example value: `someinstance.looker.com`
-  final pulumi.Input<String>? parentInstanceId;
+  final pulumi.Input<String?>? parentInstanceId;
   /// Name of the parent Model. Empty if it does not exist.
-  final pulumi.Input<String>? parentModelDisplayName;
+  final pulumi.Input<String?>? parentModelDisplayName;
   /// ID of the parent Model. Empty if it does not exist.
-  final pulumi.Input<String>? parentModelId;
+  final pulumi.Input<String?>? parentModelId;
   /// Name of the parent View. Empty if it does not exist.
-  final pulumi.Input<String>? parentViewDisplayName;
+  final pulumi.Input<String?>? parentViewDisplayName;
   /// ID of the parent View. Empty if it does not exist.
-  final pulumi.Input<String>? parentViewId;
+  final pulumi.Input<String?>? parentViewId;
 
   /// Creates a new [GoogleCloudDatacatalogV1LookerSystemSpec].
   /// [parentInstanceDisplayName] Name of the parent Looker Instance. Empty if it does not exist.

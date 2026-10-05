@@ -10,8 +10,8 @@ import 'workforce_pool_key_use.dart';
 /// {@macro pulumi_iam_v1_workforce_pool_key_args_doc}
 class WorkforcePoolKeyArgs {
   /// Immutable. Public half of the asymmetric key.
-  final pulumi.Input<KeyData>? keyData;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<KeyData?>? keyData;
+  final pulumi.Input<String?>? location;
   final pulumi.Input<String> providerId;
   /// The purpose of the key.
   final pulumi.Input<WorkforcePoolKeyUse> use;

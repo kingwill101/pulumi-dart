@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The state of the stream.
-enum StreamStateDatastreamV1alpha1 {
+enum StreamStateDatastreamV1alpha1 implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   created("CREATED"),
   running("RUNNING"),
@@ -11,6 +13,7 @@ enum StreamStateDatastreamV1alpha1 {
   draining("DRAINING");
 
   const StreamStateDatastreamV1alpha1(this.wireValue);
+  @override
   final String wireValue;
 
   static StreamStateDatastreamV1alpha1 fromValue(String value) {

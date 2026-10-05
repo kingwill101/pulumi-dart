@@ -80,7 +80,7 @@ class Backup extends pulumi.CustomResource {
           'google-native:gkebackup/v1:Backup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['backupPlanId', 'location', 'project']).merge(options),
         ) {
     allNamespaces = registerOutput<bool>('allNamespaces');
     backupId = registerOutput<String?>('backupId');
@@ -96,7 +96,49 @@ class Backup extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     encryptionKey = registerOutput<EncryptionKeyResponse>('encryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    manual = registerOutput<bool>('manual');
+    this.name = registerOutput<String>('name');
+    podCount = registerOutput<int>('podCount');
+    project = registerOutput<String>('project');
+    resourceCount = registerOutput<int>('resourceCount');
+    retainDays = registerOutput<int>('retainDays');
+    retainExpireTime = registerOutput<String>('retainExpireTime');
+    selectedApplications = registerOutput<NamespacedNamesResponse>('selectedApplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespacedNamesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selectedNamespaces = registerOutput<NamespacesResponse>('selectedNamespaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespacesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sizeBytes = registerOutput<String>('sizeBytes');
+    state = registerOutput<String>('state');
+    stateReason = registerOutput<String>('stateReason');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    volumeCount = registerOutput<int>('volumeCount');
+  }
+
+  /// Creates a typed reference to an existing [Backup] resource.
+  Backup.reference(String urn)
+    : super(
+        'google-native:gkebackup/v1:Backup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allNamespaces = registerOutput<bool>('allNamespaces');
+    backupId = registerOutput<String?>('backupId');
+    backupPlanId = registerOutput<String>('backupPlanId');
+    clusterMetadata = registerOutput<ClusterMetadataResponse>('clusterMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    completeTime = registerOutput<String>('completeTime');
+    configBackupSizeBytes = registerOutput<String>('configBackupSizeBytes');
+    containsSecrets = registerOutput<bool>('containsSecrets');
+    containsVolumeData = registerOutput<bool>('containsVolumeData');
+    createTime = registerOutput<String>('createTime');
+    deleteLockDays = registerOutput<int>('deleteLockDays');
+    deleteLockExpireTime = registerOutput<String>('deleteLockExpireTime');
+    description = registerOutput<String>('description');
+    encryptionKey = registerOutput<EncryptionKeyResponse>('encryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     manual = registerOutput<bool>('manual');
     this.name = registerOutput<String>('name');

@@ -27,8 +27,24 @@ class Policy extends pulumi.CustomResource {
           'google-native:orgpolicy/v2:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    alternate = registerOutput<GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>('alternate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudOrgpolicyV2AlternatePolicySpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dryRunSpec = registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('dryRunSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudOrgpolicyV2PolicySpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    spec = registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudOrgpolicyV2PolicySpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'google-native:orgpolicy/v2:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     alternate = registerOutput<GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>('alternate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudOrgpolicyV2AlternatePolicySpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dryRunSpec = registerOutput<GoogleCloudOrgpolicyV2PolicySpecResponse>('dryRunSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudOrgpolicyV2PolicySpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

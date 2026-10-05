@@ -6,11 +6,11 @@ import 'reservation_affinity_consume_reservation_type_dataproc_v1beta2.dart';
 /// Reservation Affinity for consuming Zonal reservation.
 class ReservationAffinityDataprocV1beta2 {
   /// Optional. Type of reservation to consume
-  final pulumi.Input<ReservationAffinityConsumeReservationTypeDataprocV1beta2>? consumeReservationType;
+  final pulumi.Input<ReservationAffinityConsumeReservationTypeDataprocV1beta2?>? consumeReservationType;
   /// Optional. Corresponds to the label key of reservation resource.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Optional. Corresponds to the label values of reservation resource.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ReservationAffinityDataprocV1beta2].
   /// [consumeReservationType] Optional. Type of reservation to consume

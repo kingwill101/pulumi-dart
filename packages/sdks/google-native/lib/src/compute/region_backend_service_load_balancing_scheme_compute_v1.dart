@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
-enum RegionBackendServiceLoadBalancingSchemeComputeV1 {
+enum RegionBackendServiceLoadBalancingSchemeComputeV1 implements pulumi.PulumiEnum<String> {
   external("EXTERNAL"),
   externalManaged("EXTERNAL_MANAGED"),
   internal("INTERNAL"),
@@ -8,6 +10,7 @@ enum RegionBackendServiceLoadBalancingSchemeComputeV1 {
   invalidLoadBalancingScheme("INVALID_LOAD_BALANCING_SCHEME");
 
   const RegionBackendServiceLoadBalancingSchemeComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static RegionBackendServiceLoadBalancingSchemeComputeV1 fromValue(String value) {

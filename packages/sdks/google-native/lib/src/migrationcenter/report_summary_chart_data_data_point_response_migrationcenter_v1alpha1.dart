@@ -27,7 +27,7 @@ class ReportSummaryChartDataDataPointResponseMigrationcenterV1alpha1 {
   factory ReportSummaryChartDataDataPointResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return ReportSummaryChartDataDataPointResponseMigrationcenterV1alpha1(
       label: pulumi.Input.fromValue(map['label'] as String),
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

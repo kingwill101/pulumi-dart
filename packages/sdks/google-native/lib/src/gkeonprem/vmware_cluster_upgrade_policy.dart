@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VmwareClusterUpgradePolicy defines the cluster upgrade policy.
 class VmwareClusterUpgradePolicy {
   /// Controls whether the upgrade applies to the control plane only.
-  final pulumi.Input<bool>? controlPlaneOnly;
+  final pulumi.Input<bool?>? controlPlaneOnly;
 
   /// Creates a new [VmwareClusterUpgradePolicy].
   /// [controlPlaneOnly] Controls whether the upgrade applies to the control plane only.

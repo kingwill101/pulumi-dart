@@ -7,25 +7,25 @@ import 'vmware_vsphere_config.dart';
 /// Parameters that describe the configuration of all nodes within a given node pool.
 class VmwareNodeConfig {
   /// VMware disk size to be used during creation.
-  final pulumi.Input<String>? bootDiskSizeGb;
+  final pulumi.Input<String?>? bootDiskSizeGb;
   /// The number of CPUs for each node in the node pool.
-  final pulumi.Input<String>? cpus;
+  final pulumi.Input<String?>? cpus;
   /// Allow node pool traffic to be load balanced. Only works for clusters with MetalLB load balancers.
-  final pulumi.Input<bool>? enableLoadBalancer;
+  final pulumi.Input<bool?>? enableLoadBalancer;
   /// The OS image name in vCenter, only valid when using Windows.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// The OS image to be used for each node in a node pool. Currently `cos`, `ubuntu`, `ubuntu_containerd` and `windows` are supported.
   final pulumi.Input<String> imageType;
   /// The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and conflicts should be avoided. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The megabytes of memory for each node in the node pool.
-  final pulumi.Input<String>? memoryMb;
+  final pulumi.Input<String?>? memoryMb;
   /// The number of nodes in the node pool.
-  final pulumi.Input<String>? replicas;
+  final pulumi.Input<String?>? replicas;
   /// The initial taints assigned to nodes of this node pool.
-  final pulumi.Input<List<NodeTaint>>? taints;
+  final pulumi.Input<List<NodeTaint>?>? taints;
   /// Specifies the vSphere config for node pool.
-  final pulumi.Input<VmwareVsphereConfig>? vsphereConfig;
+  final pulumi.Input<VmwareVsphereConfig?>? vsphereConfig;
 
   /// Creates a new [VmwareNodeConfig].
   /// [bootDiskSizeGb] VMware disk size to be used during creation.

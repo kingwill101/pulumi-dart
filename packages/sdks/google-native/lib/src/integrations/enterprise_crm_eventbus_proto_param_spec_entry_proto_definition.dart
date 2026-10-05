@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition {
   /// The fully-qualified proto name. This message, for example, would be "enterprise.crm.eventbus.proto.ParamSpecEntry.ProtoDefinition".
-  final pulumi.Input<String>? fullName;
+  final pulumi.Input<String?>? fullName;
   /// Path to the proto file that contains the message type's definition.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition].
   /// [fullName] The fully-qualified proto name. This message, for example, would be "enterprise.crm.eventbus.proto.ParamSpecEntry.ProtoDefinition".

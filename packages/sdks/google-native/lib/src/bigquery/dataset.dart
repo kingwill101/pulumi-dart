@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'dataset_access_item_response.dart';
 import 'dataset_args.dart';
 import 'dataset_reference_response.dart';
+import 'dataset_tags_item_response.dart';
 import 'encryption_configuration_response.dart';
 import 'external_dataset_reference_response.dart';
 
@@ -8,7 +10,7 @@ import 'external_dataset_reference_response.dart';
 /// Auto-naming is currently not supported for this resource.
 class Dataset extends pulumi.CustomResource {
   /// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
-  late final pulumi.Output<List<Map<String, dynamic>>> access;
+  late final pulumi.Output<List<DatasetAccessItemResponse>> access;
   /// The time when this dataset was created, in milliseconds since the epoch.
   late final pulumi.Output<String> creationTime;
   /// [Required] A reference that identifies the dataset.
@@ -50,7 +52,7 @@ class Dataset extends pulumi.CustomResource {
   /// [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
   late final pulumi.Output<String> storageBillingModel;
   /// [Optional]The tags associated with this dataset. Tag keys are globally unique.
-  late final pulumi.Output<List<Map<String, dynamic>>> tags;
+  late final pulumi.Output<List<DatasetTagsItemResponse>> tags;
 
   /// Creates a new [Dataset].
   /// [name] The Pulumi resource name.
@@ -64,9 +66,9 @@ class Dataset extends pulumi.CustomResource {
           'google-native:bigquery/v2:Dataset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
-    access = registerOutput<List<Map<String, dynamic>>>('access');
+    access = registerOutput<List<DatasetAccessItemResponse>>('access', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetAccessItemResponse>(guardedValue, (value) => DatasetAccessItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<String>('creationTime');
     datasetReference = registerOutput<DatasetReferenceResponse>('datasetReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultCollation = registerOutput<String>('defaultCollation');
@@ -80,7 +82,7 @@ class Dataset extends pulumi.CustomResource {
     friendlyName = registerOutput<String>('friendlyName');
     isCaseInsensitive = registerOutput<bool>('isCaseInsensitive');
     kind = registerOutput<String>('kind');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     location = registerOutput<String>('location');
     maxTimeTravelHours = registerOutput<String>('maxTimeTravelHours');
@@ -88,6 +90,40 @@ class Dataset extends pulumi.CustomResource {
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');
     storageBillingModel = registerOutput<String>('storageBillingModel');
-    tags = registerOutput<List<Map<String, dynamic>>>('tags');
+    tags = registerOutput<List<DatasetTagsItemResponse>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetTagsItemResponse>(guardedValue, (value) => DatasetTagsItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Dataset] resource.
+  Dataset.reference(String urn)
+    : super(
+        'google-native:bigquery/v2:Dataset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    access = registerOutput<List<DatasetAccessItemResponse>>('access', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetAccessItemResponse>(guardedValue, (value) => DatasetAccessItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTime = registerOutput<String>('creationTime');
+    datasetReference = registerOutput<DatasetReferenceResponse>('datasetReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultCollation = registerOutput<String>('defaultCollation');
+    defaultEncryptionConfiguration = registerOutput<EncryptionConfigurationResponse>('defaultEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultPartitionExpirationMs = registerOutput<String>('defaultPartitionExpirationMs');
+    defaultRoundingMode = registerOutput<String>('defaultRoundingMode');
+    defaultTableExpirationMs = registerOutput<String>('defaultTableExpirationMs');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    externalDatasetReference = registerOutput<ExternalDatasetReferenceResponse>('externalDatasetReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExternalDatasetReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    friendlyName = registerOutput<String>('friendlyName');
+    isCaseInsensitive = registerOutput<bool>('isCaseInsensitive');
+    kind = registerOutput<String>('kind');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    location = registerOutput<String>('location');
+    maxTimeTravelHours = registerOutput<String>('maxTimeTravelHours');
+    project = registerOutput<String>('project');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    selfLink = registerOutput<String>('selfLink');
+    storageBillingModel = registerOutput<String>('storageBillingModel');
+    tags = registerOutput<List<DatasetTagsItemResponse>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetTagsItemResponse>(guardedValue, (value) => DatasetTagsItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

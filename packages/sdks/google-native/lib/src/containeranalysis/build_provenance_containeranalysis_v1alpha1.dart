@@ -8,31 +8,31 @@ import 'source_containeranalysis_v1alpha1.dart';
 /// Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
 class BuildProvenanceContaineranalysisV1alpha1 {
   /// Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
-  final pulumi.Input<Map<String, String>>? buildOptions;
+  final pulumi.Input<Map<String, String>?>? buildOptions;
   /// Version string of the builder at the time this build was executed.
-  final pulumi.Input<String>? builderVersion;
+  final pulumi.Input<String?>? builderVersion;
   /// Output of the build.
-  final pulumi.Input<List<ArtifactContaineranalysisV1alpha1>>? builtArtifacts;
+  final pulumi.Input<List<ArtifactContaineranalysisV1alpha1>?>? builtArtifacts;
   /// Commands requested by the build.
-  final pulumi.Input<List<CommandContaineranalysisV1alpha1>>? commands;
+  final pulumi.Input<List<CommandContaineranalysisV1alpha1>?>? commands;
   /// Time at which the build was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// E-mail address of the user who initiated this build. Note that this was the user's e-mail address at the time the build was initiated; this address may not represent the same end-user for all time.
-  final pulumi.Input<String>? creator;
+  final pulumi.Input<String?>? creator;
   /// Time at which execution of the build was finished.
-  final pulumi.Input<String>? finishTime;
+  final pulumi.Input<String?>? finishTime;
   /// Unique identifier of the build.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Google Cloud Storage bucket where logs were written.
-  final pulumi.Input<String>? logsBucket;
+  final pulumi.Input<String?>? logsBucket;
   /// ID of the project.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Details of the Source input to the build.
-  final pulumi.Input<SourceContaineranalysisV1alpha1>? sourceProvenance;
+  final pulumi.Input<SourceContaineranalysisV1alpha1?>? sourceProvenance;
   /// Time at which execution of the build was started.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Trigger identifier if the build was triggered automatically; empty if not.
-  final pulumi.Input<String>? triggerId;
+  final pulumi.Input<String?>? triggerId;
 
   /// Creates a new [BuildProvenanceContaineranalysisV1alpha1].
   /// [buildOptions] Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.

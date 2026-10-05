@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'global_public_delegated_prefix_args.dart';
+import 'public_delegated_prefix_public_delegated_sub_prefix_response.dart';
 
 /// Creates a global PublicDelegatedPrefix in the specified project using the parameters that are included in the request.
 class GlobalPublicDelegatedPrefix extends pulumi.CustomResource {
@@ -27,7 +28,7 @@ class GlobalPublicDelegatedPrefix extends pulumi.CustomResource {
   late final pulumi.Output<String> parentPrefix;
   late final pulumi.Output<String> project;
   /// The list of sub public delegated prefixes that exist for this public delegated prefix.
-  late final pulumi.Output<List<Map<String, dynamic>>> publicDelegatedSubPrefixs;
+  late final pulumi.Output<List<PublicDelegatedPrefixPublicDelegatedSubPrefixResponse>> publicDelegatedSubPrefixs;
   /// URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
   late final pulumi.Output<String> region;
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -51,7 +52,7 @@ class GlobalPublicDelegatedPrefix extends pulumi.CustomResource {
           'google-native:compute/alpha:GlobalPublicDelegatedPrefix',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     allocatablePrefixLength = registerOutput<int>('allocatablePrefixLength');
     byoipApiVersion = registerOutput<String>('byoipApiVersion');
@@ -65,7 +66,36 @@ class GlobalPublicDelegatedPrefix extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parentPrefix = registerOutput<String>('parentPrefix');
     project = registerOutput<String>('project');
-    publicDelegatedSubPrefixs = registerOutput<List<Map<String, dynamic>>>('publicDelegatedSubPrefixs');
+    publicDelegatedSubPrefixs = registerOutput<List<PublicDelegatedPrefixPublicDelegatedSubPrefixResponse>>('publicDelegatedSubPrefixs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefixResponse>(guardedValue, (value) => PublicDelegatedPrefixPublicDelegatedSubPrefixResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [GlobalPublicDelegatedPrefix] resource.
+  GlobalPublicDelegatedPrefix.reference(String urn)
+    : super(
+        'google-native:compute/alpha:GlobalPublicDelegatedPrefix',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocatablePrefixLength = registerOutput<int>('allocatablePrefixLength');
+    byoipApiVersion = registerOutput<String>('byoipApiVersion');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    ipCidrRange = registerOutput<String>('ipCidrRange');
+    isLiveMigration = registerOutput<bool>('isLiveMigration');
+    kind = registerOutput<String>('kind');
+    mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    parentPrefix = registerOutput<String>('parentPrefix');
+    project = registerOutput<String>('project');
+    publicDelegatedSubPrefixs = registerOutput<List<PublicDelegatedPrefixPublicDelegatedSubPrefixResponse>>('publicDelegatedSubPrefixs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefixResponse>(guardedValue, (value) => PublicDelegatedPrefixPublicDelegatedSubPrefixResponse.fromMap((value as Map).cast<String, dynamic>())); });
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
     selfLink = registerOutput<String>('selfLink');

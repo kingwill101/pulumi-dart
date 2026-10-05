@@ -9,14 +9,14 @@ import 'invocation_config.dart';
 /// {@macro pulumi_dataform_v1beta1_workflow_invocation_args_doc}
 class WorkflowInvocationArgs {
   /// Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
-  final pulumi.Input<String>? compilationResult;
+  final pulumi.Input<String?>? compilationResult;
   /// Immutable. If left unset, a default InvocationConfig will be used.
-  final pulumi.Input<InvocationConfig>? invocationConfig;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<InvocationConfig?>? invocationConfig;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> repositoryId;
   /// Immutable. The name of the workflow config to invoke. Must be in the format `projects/*/locations/*/repositories/*/workflowConfigs/*`.
-  final pulumi.Input<String>? workflowConfig;
+  final pulumi.Input<String?>? workflowConfig;
 
   /// Creates a new [WorkflowInvocationArgs].
   /// [compilationResult] Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.

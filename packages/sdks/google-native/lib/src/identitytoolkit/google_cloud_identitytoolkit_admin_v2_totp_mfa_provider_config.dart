@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// TotpMFAProviderConfig represents the TOTP based MFA provider.
 class GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig {
   /// The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
-  final pulumi.Input<int>? adjacentIntervals;
+  final pulumi.Input<int?>? adjacentIntervals;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig].
   /// [adjacentIntervals] The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
@@ -21,7 +21,7 @@ class GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig {
 
   factory GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig(
-      adjacentIntervals: (() { final guardedValue = map['adjacentIntervals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      adjacentIntervals: (() { final guardedValue = map['adjacentIntervals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -7,9 +7,9 @@ import 'policy_binding.dart';
 /// BinaryAuthorizationConfig defines the fleet level configuration of binary authorization feature.
 class BinaryAuthorizationConfig {
   /// Optional. Mode of operation for binauthz policy evaluation.
-  final pulumi.Input<BinaryAuthorizationConfigEvaluationMode>? evaluationMode;
+  final pulumi.Input<BinaryAuthorizationConfigEvaluationMode?>? evaluationMode;
   /// Optional. Binauthz policies that apply to this cluster.
-  final pulumi.Input<List<PolicyBinding>>? policyBindings;
+  final pulumi.Input<List<PolicyBinding>?>? policyBindings;
 
   /// Creates a new [BinaryAuthorizationConfig].
   /// [evaluationMode] Optional. Mode of operation for binauthz policy evaluation.

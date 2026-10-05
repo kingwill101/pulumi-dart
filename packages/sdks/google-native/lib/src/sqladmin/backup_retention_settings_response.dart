@@ -26,7 +26,7 @@ class BackupRetentionSettingsResponse {
 
   factory BackupRetentionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return BackupRetentionSettingsResponse(
-      retainedBackups: pulumi.Input.fromValue(map['retainedBackups'] as int),
+      retainedBackups: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retainedBackups'])),
       retentionUnit: pulumi.Input.fromValue(map['retentionUnit'] as String),
     );
   }

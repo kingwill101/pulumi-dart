@@ -6,7 +6,7 @@ import 'google_privacy_dlp_v2_value.dart';
 /// Replace each input value with a given `Value`.
 class GooglePrivacyDlpV2ReplaceValueConfig {
   /// Value to replace it with.
-  final pulumi.Input<GooglePrivacyDlpV2Value>? newValue;
+  final pulumi.Input<GooglePrivacyDlpV2Value?>? newValue;
 
   /// Creates a new [GooglePrivacyDlpV2ReplaceValueConfig].
   /// [newValue] Value to replace it with.

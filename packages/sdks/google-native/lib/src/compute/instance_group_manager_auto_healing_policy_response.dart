@@ -39,7 +39,7 @@ class InstanceGroupManagerAutoHealingPolicyResponse {
     return InstanceGroupManagerAutoHealingPolicyResponse(
       autoHealingTriggers: pulumi.Input.fromValue(InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse.fromMap((map['autoHealingTriggers']! as Map).cast<String, dynamic>())),
       healthCheck: pulumi.Input.fromValue(map['healthCheck'] as String),
-      initialDelaySec: pulumi.Input.fromValue(map['initialDelaySec'] as int),
+      initialDelaySec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['initialDelaySec'])),
       maxUnavailable: pulumi.Input.fromValue(FixedOrPercentResponse.fromMap((map['maxUnavailable']! as Map).cast<String, dynamic>())),
     );
   }

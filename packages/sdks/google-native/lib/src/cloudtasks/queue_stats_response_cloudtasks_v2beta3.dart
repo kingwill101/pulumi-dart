@@ -42,7 +42,7 @@ class QueueStatsResponseCloudtasksV2beta3 {
   factory QueueStatsResponseCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
     return QueueStatsResponseCloudtasksV2beta3(
       concurrentDispatchesCount: pulumi.Input.fromValue(map['concurrentDispatchesCount'] as String),
-      effectiveExecutionRate: pulumi.Input.fromValue(map['effectiveExecutionRate'] as double),
+      effectiveExecutionRate: pulumi.Input.fromValue((map['effectiveExecutionRate'] as num).toDouble()),
       executedLastMinuteCount: pulumi.Input.fromValue(map['executedLastMinuteCount'] as String),
       oldestEstimatedArrivalTime: pulumi.Input.fromValue(map['oldestEstimatedArrivalTime'] as String),
       tasksCount: pulumi.Input.fromValue(map['tasksCount'] as String),

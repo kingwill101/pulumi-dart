@@ -13,38 +13,38 @@ import 'operation_error.dart';
 /// {@macro pulumi_sqladmin_v1_backup_run_args_doc}
 class BackupRunArgs {
   /// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
-  final pulumi.Input<BackupRunBackupKind>? backupKind;
+  final pulumi.Input<BackupRunBackupKind?>? backupKind;
   /// The description of this run, only applicable to on-demand backups.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Encryption configuration specific to a backup.
-  final pulumi.Input<DiskEncryptionConfiguration>? diskEncryptionConfiguration;
+  final pulumi.Input<DiskEncryptionConfiguration?>? diskEncryptionConfiguration;
   /// Encryption status specific to a backup.
-  final pulumi.Input<DiskEncryptionStatus>? diskEncryptionStatus;
+  final pulumi.Input<DiskEncryptionStatus?>? diskEncryptionStatus;
   /// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
-  final pulumi.Input<String>? enqueuedTime;
+  final pulumi.Input<String?>? enqueuedTime;
   /// Information about why the backup operation failed. This is only present if the run has the FAILED status.
-  final pulumi.Input<OperationError>? error;
+  final pulumi.Input<OperationError?>? error;
   /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the database instance.
   final pulumi.Input<String> instance;
   /// This is always `sql#backupRun`.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Location of the backups.
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// The URI of this resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
-  final pulumi.Input<BackupRunType>? type;
+  final pulumi.Input<BackupRunType?>? type;
   /// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
-  final pulumi.Input<String>? windowStartTime;
+  final pulumi.Input<String?>? windowStartTime;
 
   /// Creates a new [BackupRunArgs].
   /// [backupKind] Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.

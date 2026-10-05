@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
-enum JsonPathMatcherJsonMatcher {
+enum JsonPathMatcherJsonMatcher implements pulumi.PulumiEnum<String> {
   jsonPathMatcherOptionUnspecified("JSON_PATH_MATCHER_OPTION_UNSPECIFIED"),
   exactMatch("EXACT_MATCH"),
   regexMatch("REGEX_MATCH");
 
   const JsonPathMatcherJsonMatcher(this.wireValue);
+  @override
   final String wireValue;
 
   static JsonPathMatcherJsonMatcher fromValue(String value) {

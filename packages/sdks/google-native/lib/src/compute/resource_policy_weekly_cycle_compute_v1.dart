@@ -6,7 +6,7 @@ import 'resource_policy_weekly_cycle_day_of_week_compute_v1.dart';
 /// Time window specified for weekly operations.
 class ResourcePolicyWeeklyCycleComputeV1 {
   /// Up to 7 intervals/windows, one for each day of the week.
-  final pulumi.Input<List<ResourcePolicyWeeklyCycleDayOfWeekComputeV1>>? dayOfWeeks;
+  final pulumi.Input<List<ResourcePolicyWeeklyCycleDayOfWeekComputeV1>?>? dayOfWeeks;
 
   /// Creates a new [ResourcePolicyWeeklyCycleComputeV1].
   /// [dayOfWeeks] Up to 7 intervals/windows, one for each day of the week.

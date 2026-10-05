@@ -44,7 +44,7 @@ class GceRegionalPersistentDiskResponseWorkstationsV1beta {
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
       fsType: pulumi.Input.fromValue(map['fsType'] as String),
       reclaimPolicy: pulumi.Input.fromValue(map['reclaimPolicy'] as String),
-      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as int),
+      sizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeGb'])),
       sourceSnapshot: pulumi.Input.fromValue(map['sourceSnapshot'] as String),
     );
   }

@@ -37,13 +37,35 @@ class BackupManagedidentitiesV1beta1 extends pulumi.CustomResource {
           'google-native:managedidentities/v1beta1:Backup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['backupId', 'domainId', 'project']).merge(options),
         ) {
     backupId = registerOutput<String>('backupId');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     domainId = registerOutput<String>('domainId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    statusMessage = registerOutput<String>('statusMessage');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [BackupManagedidentitiesV1beta1] resource.
+  BackupManagedidentitiesV1beta1.reference(String urn)
+    : super(
+        'google-native:managedidentities/v1beta1:Backup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backupId = registerOutput<String>('backupId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    domainId = registerOutput<String>('domainId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');

@@ -81,21 +81,63 @@ class Job extends pulumi.CustomResource {
           'google-native:jobs/v3:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
-    addresses = registerOutput<List<String>>('addresses');
+    addresses = registerOutput<List<String>>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     applicationInfo = registerOutput<ApplicationInfoResponse>('applicationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     companyDisplayName = registerOutput<String>('companyDisplayName');
     companyName = registerOutput<String>('companyName');
     compensationInfo = registerOutput<CompensationInfoResponse>('compensationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CompensationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    customAttributes = registerOutput<Map<String, String>>('customAttributes');
-    degreeTypes = registerOutput<List<String>>('degreeTypes');
+    customAttributes = registerOutput<Map<String, String>>('customAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    degreeTypes = registerOutput<List<String>>('degreeTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     department = registerOutput<String>('department');
     derivedInfo = registerOutput<JobDerivedInfoResponse>('derivedInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobDerivedInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
-    employmentTypes = registerOutput<List<String>>('employmentTypes');
+    employmentTypes = registerOutput<List<String>>('employmentTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     incentives = registerOutput<String>('incentives');
-    jobBenefits = registerOutput<List<String>>('jobBenefits');
+    jobBenefits = registerOutput<List<String>>('jobBenefits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    jobEndTime = registerOutput<String>('jobEndTime');
+    jobLevel = registerOutput<String>('jobLevel');
+    jobStartTime = registerOutput<String>('jobStartTime');
+    languageCode = registerOutput<String>('languageCode');
+    this.name = registerOutput<String>('name');
+    postingCreateTime = registerOutput<String>('postingCreateTime');
+    postingExpireTime = registerOutput<String>('postingExpireTime');
+    postingPublishTime = registerOutput<String>('postingPublishTime');
+    postingRegion = registerOutput<String>('postingRegion');
+    postingUpdateTime = registerOutput<String>('postingUpdateTime');
+    processingOptions = registerOutput<ProcessingOptionsResponse>('processingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProcessingOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    promotionValue = registerOutput<int>('promotionValue');
+    qualifications = registerOutput<String>('qualifications');
+    requisitionId = registerOutput<String>('requisitionId');
+    responsibilities = registerOutput<String>('responsibilities');
+    title = registerOutput<String>('title');
+    visibility = registerOutput<String>('visibility');
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'google-native:jobs/v3:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addresses = registerOutput<List<String>>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    applicationInfo = registerOutput<ApplicationInfoResponse>('applicationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    companyDisplayName = registerOutput<String>('companyDisplayName');
+    companyName = registerOutput<String>('companyName');
+    compensationInfo = registerOutput<CompensationInfoResponse>('compensationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CompensationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customAttributes = registerOutput<Map<String, String>>('customAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    degreeTypes = registerOutput<List<String>>('degreeTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    department = registerOutput<String>('department');
+    derivedInfo = registerOutput<JobDerivedInfoResponse>('derivedInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobDerivedInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    employmentTypes = registerOutput<List<String>>('employmentTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    incentives = registerOutput<String>('incentives');
+    jobBenefits = registerOutput<List<String>>('jobBenefits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     jobEndTime = registerOutput<String>('jobEndTime');
     jobLevel = registerOutput<String>('jobLevel');
     jobStartTime = registerOutput<String>('jobStartTime');

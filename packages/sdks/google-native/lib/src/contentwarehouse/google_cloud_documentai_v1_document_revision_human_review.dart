@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Human Review information of the document.
 class GoogleCloudDocumentaiV1DocumentRevisionHumanReview {
   /// Human review state. e.g. `requested`, `succeeded`, `rejected`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// A message providing more details about the current state of processing. For example, the rejection reason when the state is `rejected`.
-  final pulumi.Input<String>? stateMessage;
+  final pulumi.Input<String?>? stateMessage;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentRevisionHumanReview].
   /// [state] Human review state. e.g. `requested`, `succeeded`, `rejected`.

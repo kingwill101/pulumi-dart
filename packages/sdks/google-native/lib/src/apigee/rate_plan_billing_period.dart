@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Frequency at which the customer will be billed.
-enum RatePlanBillingPeriod {
+enum RatePlanBillingPeriod implements pulumi.PulumiEnum<String> {
   billingPeriodUnspecified("BILLING_PERIOD_UNSPECIFIED"),
   weekly("WEEKLY"),
   monthly("MONTHLY");
 
   const RatePlanBillingPeriod(this.wireValue);
+  @override
   final String wireValue;
 
   static RatePlanBillingPeriod fromValue(String value) {

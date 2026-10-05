@@ -21,7 +21,7 @@ class GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse {
 
   factory GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse(
-      adjacentIntervals: pulumi.Input.fromValue(map['adjacentIntervals'] as int),
+      adjacentIntervals: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['adjacentIntervals'])),
     );
   }
 }

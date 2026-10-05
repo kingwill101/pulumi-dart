@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
 class LivenessCheckAppengineV1beta {
   /// Interval between health checks.
-  final pulumi.Input<String>? checkInterval;
+  final pulumi.Input<String?>? checkInterval;
   /// Number of consecutive failed checks required before considering the VM unhealthy.
-  final pulumi.Input<int>? failureThreshold;
+  final pulumi.Input<int?>? failureThreshold;
   /// Host header to send when performing a HTTP Liveness check. Example: "myapp.appspot.com"
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// The initial delay before starting to execute the checks.
-  final pulumi.Input<String>? initialDelay;
+  final pulumi.Input<String?>? initialDelay;
   /// The request path.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Number of consecutive successful checks required before considering the VM healthy.
-  final pulumi.Input<int>? successThreshold;
+  final pulumi.Input<int?>? successThreshold;
   /// Time before the check is considered failed.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [LivenessCheckAppengineV1beta].
   /// [checkInterval] Interval between health checks.
@@ -52,11 +52,11 @@ class LivenessCheckAppengineV1beta {
   factory LivenessCheckAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return LivenessCheckAppengineV1beta(
       checkInterval: (() { final guardedValue = map['checkInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      failureThreshold: (() { final guardedValue = map['failureThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      failureThreshold: (() { final guardedValue = map['failureThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       initialDelay: (() { final guardedValue = map['initialDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      successThreshold: (() { final guardedValue = map['successThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      successThreshold: (() { final guardedValue = map['successThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

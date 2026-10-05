@@ -7,7 +7,7 @@ class TimeInterval {
   /// The end of the time interval.
   final pulumi.Input<String> endTime;
   /// Optional. The beginning of the time interval. The default value for the start time is the end time. The start time must not be later than the end time.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [TimeInterval].
   /// [endTime] The end of the time interval.

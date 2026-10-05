@@ -5,7 +5,7 @@ import 'security_policy_rule_http_header_action_http_header_option_compute_v1.da
 
 class SecurityPolicyRuleHttpHeaderActionComputeV1 {
   /// The list of request headers to add or overwrite if they're already present.
-  final pulumi.Input<List<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionComputeV1>>? requestHeadersToAdds;
+  final pulumi.Input<List<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionComputeV1>?>? requestHeadersToAdds;
 
   /// Creates a new [SecurityPolicyRuleHttpHeaderActionComputeV1].
   /// [requestHeadersToAdds] The list of request headers to add or overwrite if they're already present.

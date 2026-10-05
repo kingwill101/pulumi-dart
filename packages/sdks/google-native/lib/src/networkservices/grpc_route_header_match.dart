@@ -8,7 +8,7 @@ class GrpcRouteHeaderMatch {
   /// The key of the header.
   final pulumi.Input<String> key;
   /// Optional. Specifies how to match against the value of the header. If not specified, a default value of EXACT is used.
-  final pulumi.Input<GrpcRouteHeaderMatchType>? type;
+  final pulumi.Input<GrpcRouteHeaderMatchType?>? type;
   /// The value of the header.
   final pulumi.Input<String> value;
 

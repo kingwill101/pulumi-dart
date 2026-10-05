@@ -12,21 +12,21 @@ import 'yum_repository.dart';
 /// Remote repository configuration.
 class RemoteRepositoryConfig {
   /// Specific settings for an Apt remote repository.
-  final pulumi.Input<AptRepository>? aptRepository;
+  final pulumi.Input<AptRepository?>? aptRepository;
   /// The description of the remote source.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specific settings for a Docker remote repository.
-  final pulumi.Input<DockerRepository>? dockerRepository;
+  final pulumi.Input<DockerRepository?>? dockerRepository;
   /// Specific settings for a Maven remote repository.
-  final pulumi.Input<MavenRepository>? mavenRepository;
+  final pulumi.Input<MavenRepository?>? mavenRepository;
   /// Specific settings for an Npm remote repository.
-  final pulumi.Input<NpmRepository>? npmRepository;
+  final pulumi.Input<NpmRepository?>? npmRepository;
   /// Specific settings for a Python remote repository.
-  final pulumi.Input<PythonRepository>? pythonRepository;
+  final pulumi.Input<PythonRepository?>? pythonRepository;
   /// Optional. The credentials used to access the remote repository.
-  final pulumi.Input<UpstreamCredentials>? upstreamCredentials;
+  final pulumi.Input<UpstreamCredentials?>? upstreamCredentials;
   /// Specific settings for a Yum remote repository.
-  final pulumi.Input<YumRepository>? yumRepository;
+  final pulumi.Input<YumRepository?>? yumRepository;
 
   /// Creates a new [RemoteRepositoryConfig].
   /// [aptRepository] Specific settings for an Apt remote repository.

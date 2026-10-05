@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KMSEnvMap {
   /// The value of the cipherText response from the `encrypt` method.
-  final pulumi.Input<String>? cipherText;
+  final pulumi.Input<String?>? cipherText;
   /// The name of the KMS key that will be used to decrypt the cipher text.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
 
   /// Creates a new [KMSEnvMap].
   /// [cipherText] The value of the cipherText response from the `encrypt` method.

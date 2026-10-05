@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a Replica for this Secret.
 class ReplicaSecretmanagerV1beta1 {
   /// The canonical IDs of the location to replicate data. For example: `"us-east1"`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
 
   /// Creates a new [ReplicaSecretmanagerV1beta1].
   /// [location] The canonical IDs of the location to replicate data. For example: `"us-east1"`.

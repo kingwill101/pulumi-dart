@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The specification for modifying HTTP header in HTTP request and HTTP response.
 class HttpRouteHeaderModifierNetworkservicesV1beta1 {
   /// Add the headers with given map where key is the name of the header, value is the value of the header.
-  final pulumi.Input<Map<String, String>>? add;
+  final pulumi.Input<Map<String, String>?>? add;
   /// Remove headers (matching by header names) specified in the list.
-  final pulumi.Input<List<String>>? remove;
+  final pulumi.Input<List<String>?>? remove;
   /// Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
-  final pulumi.Input<Map<String, String>>? set;
+  final pulumi.Input<Map<String, String>?>? set;
 
   /// Creates a new [HttpRouteHeaderModifierNetworkservicesV1beta1].
   /// [add] Add the headers with given map where key is the name of the header, value is the value of the header.

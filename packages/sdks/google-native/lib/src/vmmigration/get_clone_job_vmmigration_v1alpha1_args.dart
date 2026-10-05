@@ -10,7 +10,7 @@ class GetCloneJobVmmigrationV1alpha1Args {
   final pulumi.Input<String> cloneJobId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> migratingVmId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> sourceId;
 
   /// Creates a new [GetCloneJobVmmigrationV1alpha1Args].

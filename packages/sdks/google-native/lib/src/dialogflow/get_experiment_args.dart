@@ -11,7 +11,7 @@ class GetExperimentArgs {
   final pulumi.Input<String> environmentId;
   final pulumi.Input<String> experimentId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetExperimentArgs].
   /// [agentId] Required.

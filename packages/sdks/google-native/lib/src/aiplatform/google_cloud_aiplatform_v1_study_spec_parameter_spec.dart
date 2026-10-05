@@ -11,19 +11,19 @@ import 'google_cloud_aiplatform_v1_study_spec_parameter_spec_scale_type.dart';
 /// Represents a single parameter to optimize.
 class GoogleCloudAiplatformV1StudySpecParameterSpec {
   /// The value spec for a 'CATEGORICAL' parameter.
-  final pulumi.Input<GoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec>? categoricalValueSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec?>? categoricalValueSpec;
   /// A conditional parameter node is active if the parameter's value matches the conditional node's parent_value_condition. If two items in conditional_parameter_specs have the same name, they must have disjoint parent_value_condition.
-  final pulumi.Input<List<GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpec>>? conditionalParameterSpecs;
+  final pulumi.Input<List<GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpec>?>? conditionalParameterSpecs;
   /// The value spec for a 'DISCRETE' parameter.
-  final pulumi.Input<GoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpec>? discreteValueSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpec?>? discreteValueSpec;
   /// The value spec for a 'DOUBLE' parameter.
-  final pulumi.Input<GoogleCloudAiplatformV1StudySpecParameterSpecDoubleValueSpec>? doubleValueSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecParameterSpecDoubleValueSpec?>? doubleValueSpec;
   /// The value spec for an 'INTEGER' parameter.
-  final pulumi.Input<GoogleCloudAiplatformV1StudySpecParameterSpecIntegerValueSpec>? integerValueSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecParameterSpecIntegerValueSpec?>? integerValueSpec;
   /// The ID of the parameter. Must not contain whitespaces and must be unique amongst all ParameterSpecs.
   final pulumi.Input<String> parameterId;
   /// How the parameter should be scaled. Leave unset for `CATEGORICAL` parameters.
-  final pulumi.Input<GoogleCloudAiplatformV1StudySpecParameterSpecScaleType>? scaleType;
+  final pulumi.Input<GoogleCloudAiplatformV1StudySpecParameterSpecScaleType?>? scaleType;
 
   /// Creates a new [GoogleCloudAiplatformV1StudySpecParameterSpec].
   /// [categoricalValueSpec] The value spec for a 'CATEGORICAL' parameter.

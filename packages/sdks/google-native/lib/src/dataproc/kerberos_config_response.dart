@@ -103,7 +103,7 @@ class KerberosConfigResponse {
       kmsKeyUri: pulumi.Input.fromValue(map['kmsKeyUri'] as String),
       realm: pulumi.Input.fromValue(map['realm'] as String),
       rootPrincipalPasswordUri: pulumi.Input.fromValue(map['rootPrincipalPasswordUri'] as String),
-      tgtLifetimeHours: pulumi.Input.fromValue(map['tgtLifetimeHours'] as int),
+      tgtLifetimeHours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tgtLifetimeHours'])),
       truststorePasswordUri: pulumi.Input.fromValue(map['truststorePasswordUri'] as String),
       truststoreUri: pulumi.Input.fromValue(map['truststoreUri'] as String),
     );

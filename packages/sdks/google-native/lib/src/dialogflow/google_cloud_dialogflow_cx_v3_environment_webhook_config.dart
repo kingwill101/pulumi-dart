@@ -6,7 +6,7 @@ import 'google_cloud_dialogflow_cx_v3_webhook.dart';
 /// Configuration for webhooks.
 class GoogleCloudDialogflowCxV3EnvironmentWebhookConfig {
   /// The list of webhooks to override for the agent environment. The webhook must exist in the agent. You can override fields in `generic_web_service` and `service_directory`.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3Webhook>>? webhookOverrides;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3Webhook>?>? webhookOverrides;
 
   /// Creates a new [GoogleCloudDialogflowCxV3EnvironmentWebhookConfig].
   /// [webhookOverrides] The list of webhooks to override for the agent environment. The webhook must exist in the agent. You can override fields in `generic_web_service` and `service_directory`.

@@ -38,8 +38,31 @@ class Channel extends pulumi.CustomResource {
           'google-native:eventarc/v1:Channel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['channelId', 'location', 'project']).merge(options),
         ) {
+    activationToken = registerOutput<String>('activationToken');
+    channelId = registerOutput<String>('channelId');
+    createTime = registerOutput<String>('createTime');
+    cryptoKeyName = registerOutput<String>('cryptoKeyName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    provider = registerOutput<String>('provider');
+    pubsubTopic = registerOutput<String>('pubsubTopic');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Channel] resource.
+  Channel.reference(String urn)
+    : super(
+        'google-native:eventarc/v1:Channel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     activationToken = registerOutput<String>('activationToken');
     channelId = registerOutput<String>('channelId');
     createTime = registerOutput<String>('createTime');

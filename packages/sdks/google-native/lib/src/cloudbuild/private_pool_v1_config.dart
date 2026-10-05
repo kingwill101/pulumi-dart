@@ -7,9 +7,9 @@ import 'worker_config.dart';
 /// Configuration for a V1 `PrivatePool`.
 class PrivatePoolV1Config {
   /// Network configuration for the pool.
-  final pulumi.Input<NetworkConfig>? networkConfig;
+  final pulumi.Input<NetworkConfig?>? networkConfig;
   /// Machine configuration for the workers in the pool.
-  final pulumi.Input<WorkerConfig>? workerConfig;
+  final pulumi.Input<WorkerConfig?>? workerConfig;
 
   /// Creates a new [PrivatePoolV1Config].
   /// [networkConfig] Network configuration for the pool.

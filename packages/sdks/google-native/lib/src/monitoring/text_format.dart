@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// How the text content is formatted.
-enum TextFormat {
+enum TextFormat implements pulumi.PulumiEnum<String> {
   formatUnspecified("FORMAT_UNSPECIFIED"),
   markdown("MARKDOWN"),
   raw("RAW");
 
   const TextFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static TextFormat fromValue(String value) {

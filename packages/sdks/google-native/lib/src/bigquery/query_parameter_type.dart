@@ -5,11 +5,11 @@ import 'query_parameter_type_struct_types_item.dart';
 
 class QueryParameterType {
   /// [Optional] The type of the array's elements, if this is an array.
-  final pulumi.Input<QueryParameterType>? arrayType;
+  final pulumi.Input<QueryParameterType?>? arrayType;
   /// [Optional] The types of the fields of this struct, in order, if this is a struct.
-  final pulumi.Input<List<QueryParameterTypeStructTypesItem>>? structTypes;
+  final pulumi.Input<List<QueryParameterTypeStructTypesItem>?>? structTypes;
   /// [Required] The top level type of this field.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [QueryParameterType].
   /// [arrayType] [Optional] The type of the array's elements, if this is an array.

@@ -6,9 +6,9 @@ import 'hash_type.dart';
 /// Container message for hash values.
 class Hash {
   /// The type of hash that was performed.
-  final pulumi.Input<HashType>? type;
+  final pulumi.Input<HashType?>? type;
   /// The hash value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [Hash].
   /// [type] The type of hash that was performed.

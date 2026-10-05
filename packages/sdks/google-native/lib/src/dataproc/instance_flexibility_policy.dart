@@ -6,7 +6,7 @@ import 'instance_selection.dart';
 /// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
 class InstanceFlexibilityPolicy {
   /// Optional. List of instance selection options that the group will use when creating new VMs.
-  final pulumi.Input<List<InstanceSelection>>? instanceSelectionList;
+  final pulumi.Input<List<InstanceSelection>?>? instanceSelectionList;
 
   /// Creates a new [InstanceFlexibilityPolicy].
   /// [instanceSelectionList] Optional. List of instance selection options that the group will use when creating new VMs.

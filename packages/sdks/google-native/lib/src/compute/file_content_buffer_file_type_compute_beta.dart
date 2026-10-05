@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The file type of source file.
-enum FileContentBufferFileTypeComputeBeta {
+enum FileContentBufferFileTypeComputeBeta implements pulumi.PulumiEnum<String> {
   bin("BIN"),
   undefined("UNDEFINED"),
   x509("X509");
 
   const FileContentBufferFileTypeComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static FileContentBufferFileTypeComputeBeta fromValue(String value) {

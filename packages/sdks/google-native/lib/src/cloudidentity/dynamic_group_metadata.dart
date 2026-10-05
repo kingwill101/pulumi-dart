@@ -6,7 +6,7 @@ import 'dynamic_group_query.dart';
 /// Dynamic group metadata like queries and status.
 class DynamicGroupMetadata {
   /// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
-  final pulumi.Input<List<DynamicGroupQuery>>? queries;
+  final pulumi.Input<List<DynamicGroupQuery>?>? queries;
 
   /// Creates a new [DynamicGroupMetadata].
   /// [queries] Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.

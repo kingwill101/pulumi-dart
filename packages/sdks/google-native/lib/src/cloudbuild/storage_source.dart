@@ -6,13 +6,13 @@ import 'storage_source_source_fetcher.dart';
 /// Location of the source in an archive file in Cloud Storage.
 class StorageSource {
   /// Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
-  final pulumi.Input<String>? generation;
+  final pulumi.Input<String?>? generation;
   /// Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
-  final pulumi.Input<String>? object_;
+  final pulumi.Input<String?>? object_;
   /// Optional. Option to specify the tool to fetch the source file for the build.
-  final pulumi.Input<StorageSourceSourceFetcher>? sourceFetcher;
+  final pulumi.Input<StorageSourceSourceFetcher?>? sourceFetcher;
 
   /// Creates a new [StorageSource].
   /// [bucket] Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).

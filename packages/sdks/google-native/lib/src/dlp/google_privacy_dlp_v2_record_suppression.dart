@@ -6,7 +6,7 @@ import 'google_privacy_dlp_v2_record_condition.dart';
 /// Configuration to suppress records whose suppression conditions evaluate to true.
 class GooglePrivacyDlpV2RecordSuppression {
   /// A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
-  final pulumi.Input<GooglePrivacyDlpV2RecordCondition>? condition;
+  final pulumi.Input<GooglePrivacyDlpV2RecordCondition?>? condition;
 
   /// Creates a new [GooglePrivacyDlpV2RecordSuppression].
   /// [condition] A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.

@@ -8,15 +8,15 @@ import 'condition_sys.dart';
 /// This is deprecated and has no effect. Do not use.
 class Condition {
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<ConditionIam>? iam;
+  final pulumi.Input<ConditionIam?>? iam;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<ConditionOp>? op;
+  final pulumi.Input<ConditionOp?>? op;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<String>? svc;
+  final pulumi.Input<String?>? svc;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<ConditionSys>? sys;
+  final pulumi.Input<ConditionSys?>? sys;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [Condition].
   /// [iam] This is deprecated and has no effect. Do not use.

@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_servicemanagement_v1_service_args_doc}
 class ServiceArgs {
   /// ID of the project that produces and owns this service.
-  final pulumi.Input<String>? producerProjectId;
+  final pulumi.Input<String?>? producerProjectId;
   /// The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
 
   /// Creates a new [ServiceArgs].
   /// [producerProjectId] ID of the project that produces and owns this service.

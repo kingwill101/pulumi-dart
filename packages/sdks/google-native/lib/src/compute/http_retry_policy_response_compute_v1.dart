@@ -32,7 +32,7 @@ class HttpRetryPolicyResponseComputeV1 {
 
   factory HttpRetryPolicyResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return HttpRetryPolicyResponseComputeV1(
-      numRetries: pulumi.Input.fromValue(map['numRetries'] as int),
+      numRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numRetries'])),
       perTryTimeout: pulumi.Input.fromValue(DurationResponseComputeV1.fromMap((map['perTryTimeout']! as Map).cast<String, dynamic>())),
       retryConditions: pulumi.Input.fromValue((map['retryConditions'] as List).cast<String>()),
     );

@@ -11,35 +11,35 @@ import 'test_case_database_persistence_policy.dart';
 /// {@macro pulumi_integrations_v1alpha_test_case_args_doc}
 class TestCaseArgs {
   /// Auto-generated.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Optional. The creator's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-  final pulumi.Input<String>? creatorEmail;
+  final pulumi.Input<String?>? creatorEmail;
   /// Optional. Various policies for how to persist the test execution info including execution info, execution export info, execution metadata index and execution param index..
-  final pulumi.Input<TestCaseDatabasePersistencePolicy>? databasePersistencePolicy;
+  final pulumi.Input<TestCaseDatabasePersistencePolicy?>? databasePersistencePolicy;
   /// Optional. Description of the test case.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of test case.
   final pulumi.Input<String> displayName;
   final pulumi.Input<String> integrationId;
   /// The last modifer's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-  final pulumi.Input<String>? lastModifierEmail;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? lastModifierEmail;
+  final pulumi.Input<String?>? location;
   /// Optional. The edit lock holder's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-  final pulumi.Input<String>? lockHolderEmail;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? lockHolderEmail;
+  final pulumi.Input<String?>? project;
   /// Required. Required
   final pulumi.Input<String> testCaseId;
   /// Optional. Parameters that are expected to be passed to the test case when the test case is triggered. This gives the user the ability to provide default values. This should include all the output variables of the trigger as input variables.
-  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaIntegrationParameter>>? testInputParameters;
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaIntegrationParameter>?>? testInputParameters;
   /// Optional. However, the test case doesn't mock or assert anything without test_task_configs.
-  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaTestTaskConfig>>? testTaskConfigs;
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaTestTaskConfig>?>? testTaskConfigs;
   /// This defines the trigger ID in workflow which is considered to be executed as starting point of the test case
   final pulumi.Input<String> triggerId;
   /// Auto-generated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   final pulumi.Input<String> versionId;
   /// ID of the workflow with which this test case is associated
-  final pulumi.Input<String>? workflowId;
+  final pulumi.Input<String?>? workflowId;
 
   /// Creates a new [TestCaseArgs].
   /// [createTime] Auto-generated.

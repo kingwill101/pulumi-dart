@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2 {
   /// The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
-  final pulumi.Input<String>? deletionTime;
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? deletionTime;
+  final pulumi.Input<String?>? kind;
   /// The fully qualified URL of the namespace associated with the zone. Format must be https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
-  final pulumi.Input<String>? namespaceUrl;
+  final pulumi.Input<String?>? namespaceUrl;
 
   /// Creates a new [ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2].
   /// [deletionTime] The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.

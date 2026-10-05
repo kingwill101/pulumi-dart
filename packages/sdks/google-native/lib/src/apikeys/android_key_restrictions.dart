@@ -6,7 +6,7 @@ import 'android_application.dart';
 /// The Android apps that are allowed to use the key.
 class AndroidKeyRestrictions {
   /// A list of Android applications that are allowed to make API calls with this key.
-  final pulumi.Input<List<AndroidApplication>>? allowedApplications;
+  final pulumi.Input<List<AndroidApplication>?>? allowedApplications;
 
   /// Creates a new [AndroidKeyRestrictions].
   /// [allowedApplications] A list of Android applications that are allowed to make API calls with this key.

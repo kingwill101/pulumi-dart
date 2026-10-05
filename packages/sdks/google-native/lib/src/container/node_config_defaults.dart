@@ -7,9 +7,9 @@ import 'node_pool_logging_config.dart';
 /// Subset of NodeConfig message that has defaults.
 class NodeConfigDefaults {
   /// GCFS (Google Container File System, also known as Riptide) options.
-  final pulumi.Input<GcfsConfig>? gcfsConfig;
+  final pulumi.Input<GcfsConfig?>? gcfsConfig;
   /// Logging configuration for node pools.
-  final pulumi.Input<NodePoolLoggingConfig>? loggingConfig;
+  final pulumi.Input<NodePoolLoggingConfig?>? loggingConfig;
 
   /// Creates a new [NodeConfigDefaults].
   /// [gcfsConfig] GCFS (Google Container File System, also known as Riptide) options.

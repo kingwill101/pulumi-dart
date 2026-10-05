@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
-enum AccessConfigNetworkTierComputeBeta {
+enum AccessConfigNetworkTierComputeBeta implements pulumi.PulumiEnum<String> {
   fixedStandard("FIXED_STANDARD"),
   premium("PREMIUM"),
   standard("STANDARD"),
   standardOverridesFixedStandard("STANDARD_OVERRIDES_FIXED_STANDARD");
 
   const AccessConfigNetworkTierComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static AccessConfigNetworkTierComputeBeta fromValue(String value) {

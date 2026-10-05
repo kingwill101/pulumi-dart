@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// This is not supported or used by Cloud Run.
 class OwnerReference {
   /// This is not supported or used by Cloud Run.
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// This is not supported or used by Cloud Run.
-  final pulumi.Input<bool>? blockOwnerDeletion;
+  final pulumi.Input<bool?>? blockOwnerDeletion;
   /// This is not supported or used by Cloud Run.
-  final pulumi.Input<bool>? controller;
+  final pulumi.Input<bool?>? controller;
   /// This is not supported or used by Cloud Run.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// This is not supported or used by Cloud Run.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// This is not supported or used by Cloud Run.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [OwnerReference].
   /// [apiVersion] This is not supported or used by Cloud Run.

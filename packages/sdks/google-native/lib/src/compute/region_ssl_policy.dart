@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_ssl_policy_args.dart';
+import 'region_ssl_policy_warnings_item_response.dart';
 import 'server_tls_settings_response.dart';
 
 /// Creates a new policy in the specified project and region using the data included in the request.
@@ -33,7 +34,7 @@ class RegionSslPolicy extends pulumi.CustomResource {
   /// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   late final pulumi.Output<ServerTlsSettingsResponse> tlsSettings;
   /// If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-  late final pulumi.Output<List<Map<String, dynamic>>> warnings;
+  late final pulumi.Output<List<RegionSslPolicyWarningsItemResponse>> warnings;
 
   /// Creates a new [RegionSslPolicy].
   /// [name] The Pulumi resource name.
@@ -47,12 +48,12 @@ class RegionSslPolicy extends pulumi.CustomResource {
           'google-native:compute/alpha:RegionSslPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
-    customFeatures = registerOutput<List<String>>('customFeatures');
+    customFeatures = registerOutput<List<String>>('customFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String>('description');
-    enabledFeatures = registerOutput<List<String>>('enabledFeatures');
+    enabledFeatures = registerOutput<List<String>>('enabledFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     fingerprint = registerOutput<String>('fingerprint');
     kind = registerOutput<String>('kind');
     minTlsVersion = registerOutput<String>('minTlsVersion');
@@ -64,6 +65,33 @@ class RegionSslPolicy extends pulumi.CustomResource {
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
     tlsSettings = registerOutput<ServerTlsSettingsResponse>('tlsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerTlsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    warnings = registerOutput<List<Map<String, dynamic>>>('warnings');
+    warnings = registerOutput<List<RegionSslPolicyWarningsItemResponse>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionSslPolicyWarningsItemResponse>(guardedValue, (value) => RegionSslPolicyWarningsItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [RegionSslPolicy] resource.
+  RegionSslPolicy.reference(String urn)
+    : super(
+        'google-native:compute/alpha:RegionSslPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customFeatures = registerOutput<List<String>>('customFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String>('description');
+    enabledFeatures = registerOutput<List<String>>('enabledFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    fingerprint = registerOutput<String>('fingerprint');
+    kind = registerOutput<String>('kind');
+    minTlsVersion = registerOutput<String>('minTlsVersion');
+    this.name = registerOutput<String>('name');
+    profile = registerOutput<String>('profile');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    tlsSettings = registerOutput<ServerTlsSettingsResponse>('tlsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerTlsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    warnings = registerOutput<List<RegionSslPolicyWarningsItemResponse>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionSslPolicyWarningsItemResponse>(guardedValue, (value) => RegionSslPolicyWarningsItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

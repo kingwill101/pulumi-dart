@@ -7,11 +7,11 @@ import 'google_devtools_containeranalysis_v1alpha1_repo_id.dart';
 /// A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.
 class GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext {
   /// An alias, which may be a branch or tag.
-  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1AliasContext>? aliasContext;
+  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1AliasContext?>? aliasContext;
   /// The ID of the repo.
-  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1RepoId>? repoId;
+  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1RepoId?>? repoId;
   /// A revision ID.
-  final pulumi.Input<String>? revisionId;
+  final pulumi.Input<String?>? revisionId;
 
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext].
   /// [aliasContext] An alias, which may be a branch or tag.

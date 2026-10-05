@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_dialogflow_v3beta1_args.dart';
 import 'google_cloud_dialogflow_cx_v3beta1_environment_test_cases_config_response.dart';
+import 'google_cloud_dialogflow_cx_v3beta1_environment_version_config_response.dart';
 import 'google_cloud_dialogflow_cx_v3beta1_environment_webhook_config_response.dart';
 
 /// Creates an Environment in the specified Agent. This method is a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`: Environment
@@ -19,7 +20,7 @@ class EnvironmentDialogflowV3beta1 extends pulumi.CustomResource {
   /// Update time of this environment.
   late final pulumi.Output<String> updateTime;
   /// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
-  late final pulumi.Output<List<Map<String, dynamic>>> versionConfigs;
+  late final pulumi.Output<List<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse>> versionConfigs;
   /// The webhook configuration for this environment.
   late final pulumi.Output<GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponse> webhookConfig;
 
@@ -35,7 +36,7 @@ class EnvironmentDialogflowV3beta1 extends pulumi.CustomResource {
           'google-native:dialogflow/v3beta1:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['agentId', 'location', 'project']).merge(options),
         ) {
     agentId = registerOutput<String>('agentId');
     description = registerOutput<String>('description');
@@ -45,7 +46,28 @@ class EnvironmentDialogflowV3beta1 extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     testCasesConfig = registerOutput<GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponse>('testCasesConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
-    versionConfigs = registerOutput<List<Map<String, dynamic>>>('versionConfigs');
+    versionConfigs = registerOutput<List<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse>>('versionConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    webhookConfig = registerOutput<GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponse>('webhookConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentDialogflowV3beta1] resource.
+  EnvironmentDialogflowV3beta1.reference(String urn)
+    : super(
+        'google-native:dialogflow/v3beta1:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentId = registerOutput<String>('agentId');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    testCasesConfig = registerOutput<GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponse>('testCasesConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+    versionConfigs = registerOutput<List<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse>>('versionConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     webhookConfig = registerOutput<GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponse>('webhookConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

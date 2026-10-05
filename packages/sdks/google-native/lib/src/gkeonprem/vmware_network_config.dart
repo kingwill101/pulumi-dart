@@ -9,19 +9,19 @@ import 'vmware_static_ip_config.dart';
 /// Specifies network config for the VMware user cluster.
 class VmwareNetworkConfig {
   /// Configuration for control plane V2 mode.
-  final pulumi.Input<VmwareControlPlaneV2Config>? controlPlaneV2Config;
+  final pulumi.Input<VmwareControlPlaneV2Config?>? controlPlaneV2Config;
   /// Configuration settings for a DHCP IP configuration.
-  final pulumi.Input<VmwareDhcpIpConfig>? dhcpIpConfig;
+  final pulumi.Input<VmwareDhcpIpConfig?>? dhcpIpConfig;
   /// Represents common network settings irrespective of the host's IP address.
-  final pulumi.Input<VmwareHostConfig>? hostConfig;
+  final pulumi.Input<VmwareHostConfig?>? hostConfig;
   /// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
   final pulumi.Input<List<String>> podAddressCidrBlocks;
   /// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
   final pulumi.Input<List<String>> serviceAddressCidrBlocks;
   /// Configuration settings for a static IP configuration.
-  final pulumi.Input<VmwareStaticIpConfig>? staticIpConfig;
+  final pulumi.Input<VmwareStaticIpConfig?>? staticIpConfig;
   /// vcenter_network specifies vCenter network name. Inherited from the admin cluster.
-  final pulumi.Input<String>? vcenterNetwork;
+  final pulumi.Input<String?>? vcenterNetwork;
 
   /// Creates a new [VmwareNetworkConfig].
   /// [controlPlaneV2Config] Configuration for control plane V2 mode.

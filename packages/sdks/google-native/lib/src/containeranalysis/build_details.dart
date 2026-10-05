@@ -9,15 +9,15 @@ import 'in_toto_statement_containeranalysis_v1alpha1.dart';
 /// Message encapsulating build provenance details.
 class BuildDetails {
   /// In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec, wrapped in an in-toto statement. This allows for direct jsonification of a to-spec in-toto slsa statement with a to-spec slsa provenance.
-  final pulumi.Input<InTotoSlsaProvenanceV1ContaineranalysisV1alpha1>? inTotoSlsaProvenanceV1;
+  final pulumi.Input<InTotoSlsaProvenanceV1ContaineranalysisV1alpha1?>? inTotoSlsaProvenanceV1;
   /// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
-  final pulumi.Input<InTotoProvenanceContaineranalysisV1alpha1>? intotoProvenance;
+  final pulumi.Input<InTotoProvenanceContaineranalysisV1alpha1?>? intotoProvenance;
   /// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
-  final pulumi.Input<InTotoStatementContaineranalysisV1alpha1>? intotoStatement;
+  final pulumi.Input<InTotoStatementContaineranalysisV1alpha1?>? intotoStatement;
   /// The actual provenance
-  final pulumi.Input<BuildProvenanceContaineranalysisV1alpha1>? provenance;
+  final pulumi.Input<BuildProvenanceContaineranalysisV1alpha1?>? provenance;
   /// Serialized JSON representation of the provenance, used in generating the `BuildSignature` in the corresponding Result. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
-  final pulumi.Input<String>? provenanceBytes;
+  final pulumi.Input<String?>? provenanceBytes;
 
   /// Creates a new [BuildDetails].
   /// [inTotoSlsaProvenanceV1] In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa spec, wrapped in an in-toto statement. This allows for direct jsonification of a to-spec in-toto slsa statement with a to-spec slsa provenance.

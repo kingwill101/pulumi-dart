@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replication_response.dart';
 import 'rotation_response.dart';
 import 'secret_args.dart';
+import 'topic_response.dart';
 
 /// Creates a new Secret containing no SecretVersions.
 /// Auto-naming is currently not supported for this resource.
@@ -26,7 +27,7 @@ class Secret extends pulumi.CustomResource {
   /// Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
   late final pulumi.Output<String> secretId;
   /// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
-  late final pulumi.Output<List<Map<String, dynamic>>> topics;
+  late final pulumi.Output<List<TopicResponse>> topics;
   /// Input only. The TTL for the Secret.
   late final pulumi.Output<String> ttl;
   /// Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
@@ -44,20 +45,44 @@ class Secret extends pulumi.CustomResource {
           'google-native:secretmanager/v1:Secret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'secretId']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     replication = registerOutput<ReplicationResponse>('replication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rotation = registerOutput<RotationResponse>('rotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RotationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretId = registerOutput<String>('secretId');
-    topics = registerOutput<List<Map<String, dynamic>>>('topics');
+    topics = registerOutput<List<TopicResponse>>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TopicResponse>(guardedValue, (value) => TopicResponse.fromMap((value as Map).cast<String, dynamic>())); });
     ttl = registerOutput<String>('ttl');
-    versionAliases = registerOutput<Map<String, String>>('versionAliases');
+    versionAliases = registerOutput<Map<String, String>>('versionAliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Secret] resource.
+  Secret.reference(String urn)
+    : super(
+        'google-native:secretmanager/v1:Secret',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    createTime = registerOutput<String>('createTime');
+    etag = registerOutput<String>('etag');
+    expireTime = registerOutput<String>('expireTime');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    replication = registerOutput<ReplicationResponse>('replication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rotation = registerOutput<RotationResponse>('rotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RotationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secretId = registerOutput<String>('secretId');
+    topics = registerOutput<List<TopicResponse>>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TopicResponse>(guardedValue, (value) => TopicResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    ttl = registerOutput<String>('ttl');
+    versionAliases = registerOutput<Map<String, String>>('versionAliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

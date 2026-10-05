@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Conditions for actions to deal with task failures.
 class ActionCondition {
   /// Exit codes of a task execution. If there are more than 1 exit codes, when task executes with any of the exit code in the list, the condition is met and the action will be executed.
-  final pulumi.Input<List<int>>? exitCodes;
+  final pulumi.Input<List<int>?>? exitCodes;
 
   /// Creates a new [ActionCondition].
   /// [exitCodes] Exit codes of a task execution. If there are more than 1 exit codes, when task executes with any of the exit code in the list, the condition is met and the action will be executed.

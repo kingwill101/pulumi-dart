@@ -7,15 +7,15 @@ import 'tag_vmmigration_v1alpha1.dart';
 /// AwsSourceDetails message describes a specific source details for the AWS source type.
 class AwsSourceDetailsVmmigrationV1alpha1 {
   /// AWS Credentials using access key id and secret.
-  final pulumi.Input<AccessKeyCredentialsVmmigrationV1alpha1>? accessKeyCreds;
+  final pulumi.Input<AccessKeyCredentialsVmmigrationV1alpha1?>? accessKeyCreds;
   /// Immutable. The AWS region that the source VMs will be migrated from.
-  final pulumi.Input<String>? awsRegion;
+  final pulumi.Input<String?>? awsRegion;
   /// AWS security group names to limit the scope of the source inventory.
-  final pulumi.Input<List<String>>? inventorySecurityGroupNames;
+  final pulumi.Input<List<String>?>? inventorySecurityGroupNames;
   /// AWS resource tags to limit the scope of the source inventory.
-  final pulumi.Input<List<TagVmmigrationV1alpha1>>? inventoryTagList;
+  final pulumi.Input<List<TagVmmigrationV1alpha1>?>? inventoryTagList;
   /// User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`.
-  final pulumi.Input<Map<String, String>>? migrationResourcesUserTags;
+  final pulumi.Input<Map<String, String>?>? migrationResourcesUserTags;
 
   /// Creates a new [AwsSourceDetailsVmmigrationV1alpha1].
   /// [accessKeyCreds] AWS Credentials using access key id and secret.

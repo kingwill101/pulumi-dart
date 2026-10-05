@@ -36,8 +36,29 @@ class Cluster extends pulumi.CustomResource {
           'google-native:bigtableadmin/v2:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['clusterId', 'instanceId', 'project']).merge(options),
         ) {
+    clusterConfig = registerOutput<ClusterConfigResponse>('clusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterId = registerOutput<String>('clusterId');
+    defaultStorageType = registerOutput<String>('defaultStorageType');
+    encryptionConfig = registerOutput<EncryptionConfigResponse>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceId = registerOutput<String>('instanceId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    serveNodes = registerOutput<int>('serveNodes');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'google-native:bigtableadmin/v2:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clusterConfig = registerOutput<ClusterConfigResponse>('clusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
     defaultStorageType = registerOutput<String>('defaultStorageType');

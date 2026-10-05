@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata for a Spanner connector used by the job.
 class SpannerIODetails {
   /// DatabaseId accessed in the connection.
-  final pulumi.Input<String>? databaseId;
+  final pulumi.Input<String?>? databaseId;
   /// InstanceId accessed in the connection.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// ProjectId accessed in the connection.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [SpannerIODetails].
   /// [databaseId] DatabaseId accessed in the connection.

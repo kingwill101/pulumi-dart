@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
 class BqmlTrainingRunTrainingOptions {
-  final pulumi.Input<bool>? earlyStop;
-  final pulumi.Input<double>? l1Reg;
-  final pulumi.Input<double>? l2Reg;
-  final pulumi.Input<double>? learnRate;
-  final pulumi.Input<String>? learnRateStrategy;
-  final pulumi.Input<double>? lineSearchInitLearnRate;
-  final pulumi.Input<String>? maxIteration;
-  final pulumi.Input<double>? minRelProgress;
-  final pulumi.Input<bool>? warmStart;
+  final pulumi.Input<bool?>? earlyStop;
+  final pulumi.Input<double?>? l1Reg;
+  final pulumi.Input<double?>? l2Reg;
+  final pulumi.Input<double?>? learnRate;
+  final pulumi.Input<String?>? learnRateStrategy;
+  final pulumi.Input<double?>? lineSearchInitLearnRate;
+  final pulumi.Input<String?>? maxIteration;
+  final pulumi.Input<double?>? minRelProgress;
+  final pulumi.Input<bool?>? warmStart;
 
   /// Creates a new [BqmlTrainingRunTrainingOptions].
   /// [earlyStop] Optional.
@@ -53,13 +53,13 @@ class BqmlTrainingRunTrainingOptions {
   factory BqmlTrainingRunTrainingOptions.fromMap(Map<String, dynamic> map) {
     return BqmlTrainingRunTrainingOptions(
       earlyStop: (() { final guardedValue = map['earlyStop']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      l1Reg: (() { final guardedValue = map['l1Reg']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      l2Reg: (() { final guardedValue = map['l2Reg']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      learnRate: (() { final guardedValue = map['learnRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      l1Reg: (() { final guardedValue = map['l1Reg']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      l2Reg: (() { final guardedValue = map['l2Reg']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      learnRate: (() { final guardedValue = map['learnRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       learnRateStrategy: (() { final guardedValue = map['learnRateStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      lineSearchInitLearnRate: (() { final guardedValue = map['lineSearchInitLearnRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      lineSearchInitLearnRate: (() { final guardedValue = map['lineSearchInitLearnRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       maxIteration: (() { final guardedValue = map['maxIteration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minRelProgress: (() { final guardedValue = map['minRelProgress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      minRelProgress: (() { final guardedValue = map['minRelProgress']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       warmStart: (() { final guardedValue = map['warmStart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

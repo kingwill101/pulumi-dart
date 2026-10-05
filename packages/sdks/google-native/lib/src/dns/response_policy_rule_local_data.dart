@@ -5,7 +5,7 @@ import 'resource_record_set.dart';
 
 class ResponsePolicyRuleLocalData {
   /// All resource record sets for this selector, one per resource record type. The name must match the dns_name.
-  final pulumi.Input<List<ResourceRecordSet>>? localDatas;
+  final pulumi.Input<List<ResourceRecordSet>?>? localDatas;
 
   /// Creates a new [ResponsePolicyRuleLocalData].
   /// [localDatas] All resource record sets for this selector, one per resource record type. The name must match the dns_name.

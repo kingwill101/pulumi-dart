@@ -11,28 +11,28 @@ import 'volume_config.dart';
 /// {@macro pulumi_baremetalsolution_v2_provisioning_config_args_doc}
 class ProvisioningConfigArgs {
   /// Optional. The user-defined identifier of the provisioning config.
-  final pulumi.Input<String>? customId;
+  final pulumi.Input<String?>? customId;
   /// Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// A service account to enable customers to access instance credentials upon handover.
-  final pulumi.Input<String>? handoverServiceAccount;
+  final pulumi.Input<String?>? handoverServiceAccount;
   /// Instances to be created.
-  final pulumi.Input<List<InstanceConfig>>? instances;
+  final pulumi.Input<List<InstanceConfig>?>? instances;
   /// Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Networks to be created.
-  final pulumi.Input<List<NetworkConfig>>? networks;
+  final pulumi.Input<List<NetworkConfig>?>? networks;
   /// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
-  final pulumi.Input<String>? pod;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? pod;
+  final pulumi.Input<String?>? project;
   /// Optional status messages associated with the FAILED state.
-  final pulumi.Input<String>? statusMessage;
+  final pulumi.Input<String?>? statusMessage;
   /// A generated ticket id to track provisioning request.
-  final pulumi.Input<String>? ticketId;
+  final pulumi.Input<String?>? ticketId;
   /// Volumes to be created.
-  final pulumi.Input<List<VolumeConfig>>? volumes;
+  final pulumi.Input<List<VolumeConfig>?>? volumes;
   /// If true, VPC SC is enabled for the cluster.
-  final pulumi.Input<bool>? vpcScEnabled;
+  final pulumi.Input<bool?>? vpcScEnabled;
 
   /// Creates a new [ProvisioningConfigArgs].
   /// [customId] Optional. The user-defined identifier of the provisioning config.

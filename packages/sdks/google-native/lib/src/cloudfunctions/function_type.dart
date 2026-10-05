@@ -2,6 +2,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_trigger_response.dart';
 import 'function_args.dart';
 import 'https_trigger_response.dart';
+import 'secret_env_var_response.dart';
+import 'secret_volume_response.dart';
 import 'source_repository_response.dart';
 
 /// Creates a new function. If a function with the given name already exists in the specified project, the long running operation will return `ALREADY_EXISTS` error.
@@ -49,9 +51,9 @@ class FunctionType extends pulumi.CustomResource {
   /// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
   late final pulumi.Output<String> runtime;
   /// Secret environment variables configuration.
-  late final pulumi.Output<List<Map<String, dynamic>>> secretEnvironmentVariables;
+  late final pulumi.Output<List<SecretEnvVarResponse>> secretEnvironmentVariables;
   /// Secret volumes configuration.
-  late final pulumi.Output<List<Map<String, dynamic>>> secretVolumes;
+  late final pulumi.Output<List<SecretVolumeResponse>> secretVolumes;
   /// The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
   late final pulumi.Output<String> serviceAccountEmail;
   /// The Google Cloud Storage URL, starting with `gs://`, pointing to the zip archive which contains the function.
@@ -87,10 +89,10 @@ class FunctionType extends pulumi.CustomResource {
           'google-native:cloudfunctions/v1:Function',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     availableMemoryMb = registerOutput<int>('availableMemoryMb');
-    buildEnvironmentVariables = registerOutput<Map<String, String>>('buildEnvironmentVariables');
+    buildEnvironmentVariables = registerOutput<Map<String, String>>('buildEnvironmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     buildId = registerOutput<String>('buildId');
     buildName = registerOutput<String>('buildName');
     buildWorkerPool = registerOutput<String>('buildWorkerPool');
@@ -98,12 +100,12 @@ class FunctionType extends pulumi.CustomResource {
     dockerRegistry = registerOutput<String>('dockerRegistry');
     dockerRepository = registerOutput<String>('dockerRepository');
     entryPoint = registerOutput<String>('entryPoint');
-    environmentVariables = registerOutput<Map<String, String>>('environmentVariables');
+    environmentVariables = registerOutput<Map<String, String>>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     eventTrigger = registerOutput<EventTriggerResponse>('eventTrigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventTriggerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpsTrigger = registerOutput<HttpsTriggerResponse>('httpsTrigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpsTriggerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ingressSettings = registerOutput<String>('ingressSettings');
     kmsKeyName = registerOutput<String>('kmsKeyName');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maxInstances = registerOutput<int>('maxInstances');
     minInstances = registerOutput<int>('minInstances');
@@ -111,8 +113,54 @@ class FunctionType extends pulumi.CustomResource {
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
     runtime = registerOutput<String>('runtime');
-    secretEnvironmentVariables = registerOutput<List<Map<String, dynamic>>>('secretEnvironmentVariables');
-    secretVolumes = registerOutput<List<Map<String, dynamic>>>('secretVolumes');
+    secretEnvironmentVariables = registerOutput<List<SecretEnvVarResponse>>('secretEnvironmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretEnvVarResponse>(guardedValue, (value) => SecretEnvVarResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    secretVolumes = registerOutput<List<SecretVolumeResponse>>('secretVolumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretVolumeResponse>(guardedValue, (value) => SecretVolumeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
+    sourceArchiveUrl = registerOutput<String>('sourceArchiveUrl');
+    sourceRepository = registerOutput<SourceRepositoryResponse>('sourceRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceRepositoryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceToken = registerOutput<String>('sourceToken');
+    sourceUploadUrl = registerOutput<String>('sourceUploadUrl');
+    status = registerOutput<String>('status');
+    timeout = registerOutput<String>('timeout');
+    updateTime = registerOutput<String>('updateTime');
+    versionId = registerOutput<String>('versionId');
+    vpcConnector = registerOutput<String>('vpcConnector');
+    vpcConnectorEgressSettings = registerOutput<String>('vpcConnectorEgressSettings');
+  }
+
+  /// Creates a typed reference to an existing [FunctionType] resource.
+  FunctionType.reference(String urn)
+    : super(
+        'google-native:cloudfunctions/v1:Function',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    availableMemoryMb = registerOutput<int>('availableMemoryMb');
+    buildEnvironmentVariables = registerOutput<Map<String, String>>('buildEnvironmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    buildId = registerOutput<String>('buildId');
+    buildName = registerOutput<String>('buildName');
+    buildWorkerPool = registerOutput<String>('buildWorkerPool');
+    description = registerOutput<String>('description');
+    dockerRegistry = registerOutput<String>('dockerRegistry');
+    dockerRepository = registerOutput<String>('dockerRepository');
+    entryPoint = registerOutput<String>('entryPoint');
+    environmentVariables = registerOutput<Map<String, String>>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    eventTrigger = registerOutput<EventTriggerResponse>('eventTrigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventTriggerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpsTrigger = registerOutput<HttpsTriggerResponse>('httpsTrigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpsTriggerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ingressSettings = registerOutput<String>('ingressSettings');
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    maxInstances = registerOutput<int>('maxInstances');
+    minInstances = registerOutput<int>('minInstances');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    runtime = registerOutput<String>('runtime');
+    secretEnvironmentVariables = registerOutput<List<SecretEnvVarResponse>>('secretEnvironmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretEnvVarResponse>(guardedValue, (value) => SecretEnvVarResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    secretVolumes = registerOutput<List<SecretVolumeResponse>>('secretVolumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretVolumeResponse>(guardedValue, (value) => SecretVolumeResponse.fromMap((value as Map).cast<String, dynamic>())); });
     serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
     sourceArchiveUrl = registerOutput<String>('sourceArchiveUrl');
     sourceRepository = registerOutput<SourceRepositoryResponse>('sourceRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceRepositoryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -12,27 +12,27 @@ import 'service_external_ips_config.dart';
 /// NetworkConfig reports the relative names of network & subnetwork.
 class NetworkConfig {
   /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
-  final pulumi.Input<NetworkConfigDatapathProvider>? datapathProvider;
+  final pulumi.Input<NetworkConfigDatapathProvider?>? datapathProvider;
   /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
-  final pulumi.Input<DefaultSnatStatus>? defaultSnatStatus;
+  final pulumi.Input<DefaultSnatStatus?>? defaultSnatStatus;
   /// DNSConfig contains clusterDNS config for this cluster.
-  final pulumi.Input<DNSConfig>? dnsConfig;
+  final pulumi.Input<DNSConfig?>? dnsConfig;
   /// Whether FQDN Network Policy is enabled on this cluster.
-  final pulumi.Input<bool>? enableFqdnNetworkPolicy;
+  final pulumi.Input<bool?>? enableFqdnNetworkPolicy;
   /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
-  final pulumi.Input<bool>? enableIntraNodeVisibility;
+  final pulumi.Input<bool?>? enableIntraNodeVisibility;
   /// Whether L4ILB Subsetting is enabled for this cluster.
-  final pulumi.Input<bool>? enableL4ilbSubsetting;
+  final pulumi.Input<bool?>? enableL4ilbSubsetting;
   /// Whether multi-networking is enabled for this cluster.
-  final pulumi.Input<bool>? enableMultiNetworking;
+  final pulumi.Input<bool?>? enableMultiNetworking;
   /// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
-  final pulumi.Input<GatewayAPIConfig>? gatewayApiConfig;
+  final pulumi.Input<GatewayAPIConfig?>? gatewayApiConfig;
   /// Network bandwidth tier configuration.
-  final pulumi.Input<ClusterNetworkPerformanceConfig>? networkPerformanceConfig;
+  final pulumi.Input<ClusterNetworkPerformanceConfig?>? networkPerformanceConfig;
   /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
-  final pulumi.Input<NetworkConfigPrivateIpv6GoogleAccess>? privateIpv6GoogleAccess;
+  final pulumi.Input<NetworkConfigPrivateIpv6GoogleAccess?>? privateIpv6GoogleAccess;
   /// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
-  final pulumi.Input<ServiceExternalIPsConfig>? serviceExternalIpsConfig;
+  final pulumi.Input<ServiceExternalIPsConfig?>? serviceExternalIpsConfig;
 
   /// Creates a new [NetworkConfig].
   /// [datapathProvider] The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.

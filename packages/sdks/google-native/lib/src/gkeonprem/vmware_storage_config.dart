@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies vSphere CSI components deployment config in the VMware user cluster.
 class VmwareStorageConfig {
   /// Whether or not to deploy vSphere CSI components in the VMware user cluster. Enabled by default.
-  final pulumi.Input<bool>? vsphereCsiDisabled;
+  final pulumi.Input<bool?>? vsphereCsiDisabled;
 
   /// Creates a new [VmwareStorageConfig].
   /// [vsphereCsiDisabled] Whether or not to deploy vSphere CSI components in the VMware user cluster. Enabled by default.

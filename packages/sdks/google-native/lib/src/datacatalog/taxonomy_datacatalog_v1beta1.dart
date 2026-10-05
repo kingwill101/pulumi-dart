@@ -35,9 +35,29 @@ class TaxonomyDatacatalogV1beta1 extends pulumi.CustomResource {
           'google-native:datacatalog/v1beta1:Taxonomy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
-    activatedPolicyTypes = registerOutput<List<String>>('activatedPolicyTypes');
+    activatedPolicyTypes = registerOutput<List<String>>('activatedPolicyTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    policyTagCount = registerOutput<int>('policyTagCount');
+    project = registerOutput<String>('project');
+    service = registerOutput<GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse>('service', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    taxonomyTimestamps = registerOutput<GoogleCloudDatacatalogV1beta1SystemTimestampsResponse>('taxonomyTimestamps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDatacatalogV1beta1SystemTimestampsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TaxonomyDatacatalogV1beta1] resource.
+  TaxonomyDatacatalogV1beta1.reference(String urn)
+    : super(
+        'google-native:datacatalog/v1beta1:Taxonomy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activatedPolicyTypes = registerOutput<List<String>>('activatedPolicyTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     location = registerOutput<String>('location');

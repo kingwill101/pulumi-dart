@@ -10,19 +10,19 @@ import 'google_cloud_dialogflow_v2_suggestion_feature.dart';
 /// Config for suggestion features.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
   /// Configs of custom conversation model.
-  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig>? conversationModelConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig?>? conversationModelConfig;
   /// Configs for processing conversation.
-  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig>? conversationProcessConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig?>? conversationProcessConfig;
   /// Optional. Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records. Supported features: KNOWLEDGE_SEARCH.
-  final pulumi.Input<bool>? disableAgentQueryLogging;
+  final pulumi.Input<bool?>? disableAgentQueryLogging;
   /// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
-  final pulumi.Input<bool>? enableEventBasedSuggestion;
+  final pulumi.Input<bool?>? enableEventBasedSuggestion;
   /// Configs of query.
-  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig>? queryConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig?>? queryConfig;
   /// The suggestion feature.
-  final pulumi.Input<GoogleCloudDialogflowV2SuggestionFeature>? suggestionFeature;
+  final pulumi.Input<GoogleCloudDialogflowV2SuggestionFeature?>? suggestionFeature;
   /// Settings of suggestion trigger. Currently, only ARTICLE_SUGGESTION and FAQ will use this field.
-  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings>? suggestionTriggerSettings;
+  final pulumi.Input<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings?>? suggestionTriggerSettings;
 
   /// Creates a new [GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig].
   /// [conversationModelConfig] Configs of custom conversation model.

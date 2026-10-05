@@ -6,25 +6,25 @@ import 'google_cloud_dataplex_v1_content_sql_script_response.dart';
 /// Result data returned by getContentitem.
 class GetContentitemResult {
   /// Content creation time.
-  final String createTime;
+  final String? createTime;
   /// Content data in string format.
-  final String dataText;
+  final String? dataText;
   /// Optional. Description of the content.
-  final String description;
+  final String? description;
   /// Optional. User defined labels for the content.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The relative resource name of the content, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
-  final String name;
+  final String? name;
   /// Notebook related configurations.
-  final GoogleCloudDataplexV1ContentNotebookResponse notebook;
+  final GoogleCloudDataplexV1ContentNotebookResponse? notebook;
   /// The path for the Content file, represented as directory structure. Unique within a lake. Limited to alphanumerics, hyphens, underscores, dots and slashes.
-  final String path;
+  final String? path;
   /// Sql Script related configurations.
-  final GoogleCloudDataplexV1ContentSqlScriptResponse sqlScript;
+  final GoogleCloudDataplexV1ContentSqlScriptResponse? sqlScript;
   /// System generated globally unique ID for the content. This ID will be different if the content is deleted and re-created with the same name.
-  final String uid;
+  final String? uid;
   /// The time when the content was last updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetContentitemResult].
   /// [createTime] Content creation time.
@@ -38,45 +38,45 @@ class GetContentitemResult {
   /// [uid] System generated globally unique ID for the content. This ID will be different if the content is deleted and re-created with the same name.
   /// [updateTime] The time when the content was last updated.
   const GetContentitemResult({
-    required this.createTime,
-    required this.dataText,
-    required this.description,
-    required this.labels,
-    required this.name,
-    required this.notebook,
-    required this.path,
-    required this.sqlScript,
-    required this.uid,
-    required this.updateTime,
+    this.createTime,
+    this.dataText,
+    this.description,
+    this.labels,
+    this.name,
+    this.notebook,
+    this.path,
+    this.sqlScript,
+    this.uid,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'dataText': dataText,
-      'description': description,
-      'labels': labels,
-      'name': name,
-      'notebook': notebook.toMap(),
-      'path': path,
-      'sqlScript': sqlScript.toMap(),
-      'uid': uid,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'dataText': ?dataText,
+      'description': ?description,
+      'labels': ?labels,
+      'name': ?name,
+      'notebook': ?notebook?.toMap(),
+      'path': ?path,
+      'sqlScript': ?sqlScript?.toMap(),
+      'uid': ?uid,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetContentitemResult.fromMap(Map<String, dynamic> map) {
     return GetContentitemResult(
-      createTime: map['createTime'] as String,
-      dataText: map['dataText'] as String,
-      description: map['description'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      notebook: GoogleCloudDataplexV1ContentNotebookResponse.fromMap((map['notebook']! as Map).cast<String, dynamic>()),
-      path: map['path'] as String,
-      sqlScript: GoogleCloudDataplexV1ContentSqlScriptResponse.fromMap((map['sqlScript']! as Map).cast<String, dynamic>()),
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataText: (() { final guardedValue = map['dataText']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      notebook: (() { final guardedValue = map['notebook']; if (guardedValue == null) return null; return GoogleCloudDataplexV1ContentNotebookResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sqlScript: (() { final guardedValue = map['sqlScript']; if (guardedValue == null) return null; return GoogleCloudDataplexV1ContentSqlScriptResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

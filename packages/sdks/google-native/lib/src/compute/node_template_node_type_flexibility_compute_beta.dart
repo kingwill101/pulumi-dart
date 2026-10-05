@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodeTemplateNodeTypeFlexibilityComputeBeta {
-  final pulumi.Input<String>? cpus;
-  final pulumi.Input<String>? localSsd;
-  final pulumi.Input<String>? memory;
+  final pulumi.Input<String?>? cpus;
+  final pulumi.Input<String?>? localSsd;
+  final pulumi.Input<String?>? memory;
 
   /// Creates a new [NodeTemplateNodeTypeFlexibilityComputeBeta].
   /// [cpus] Optional.

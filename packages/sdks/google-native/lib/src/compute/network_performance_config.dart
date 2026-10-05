@@ -5,8 +5,8 @@ import 'network_performance_config_external_ip_egress_bandwidth_tier.dart';
 import 'network_performance_config_total_egress_bandwidth_tier.dart';
 
 class NetworkPerformanceConfig {
-  final pulumi.Input<NetworkPerformanceConfigExternalIpEgressBandwidthTier>? externalIpEgressBandwidthTier;
-  final pulumi.Input<NetworkPerformanceConfigTotalEgressBandwidthTier>? totalEgressBandwidthTier;
+  final pulumi.Input<NetworkPerformanceConfigExternalIpEgressBandwidthTier?>? externalIpEgressBandwidthTier;
+  final pulumi.Input<NetworkPerformanceConfigTotalEgressBandwidthTier?>? totalEgressBandwidthTier;
 
   /// Creates a new [NetworkPerformanceConfig].
   /// [externalIpEgressBandwidthTier] Optional.

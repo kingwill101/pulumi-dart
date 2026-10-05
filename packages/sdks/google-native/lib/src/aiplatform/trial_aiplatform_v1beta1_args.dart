@@ -7,8 +7,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_aiplatform_v1beta1_trial_aiplatform_v1beta1_args_doc}
 class TrialAiplatformV1beta1Args {
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> studyId;
 
   /// Creates a new [TrialAiplatformV1beta1Args].

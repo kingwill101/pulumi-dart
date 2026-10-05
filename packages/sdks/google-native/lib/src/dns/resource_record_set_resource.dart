@@ -34,7 +34,7 @@ class ResourceRecordSetResource extends pulumi.CustomResource {
           'google-native:dns/v1beta2:ResourceRecordSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['managedZone', 'project']).merge(options),
         ) {
     clientOperationId = registerOutput<String?>('clientOperationId');
     kind = registerOutput<String>('kind');
@@ -42,8 +42,29 @@ class ResourceRecordSetResource extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     routingPolicy = registerOutput<RRSetRoutingPolicyResponseDnsV1beta2>('routingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RRSetRoutingPolicyResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    rrdatas = registerOutput<List<String>>('rrdatas');
-    signatureRrdatas = registerOutput<List<String>>('signatureRrdatas');
+    rrdatas = registerOutput<List<String>>('rrdatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    signatureRrdatas = registerOutput<List<String>>('signatureRrdatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ttl = registerOutput<int>('ttl');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ResourceRecordSetResource] resource.
+  ResourceRecordSetResource.reference(String urn)
+    : super(
+        'google-native:dns/v1beta2:ResourceRecordSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clientOperationId = registerOutput<String?>('clientOperationId');
+    kind = registerOutput<String>('kind');
+    managedZone = registerOutput<String>('managedZone');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    routingPolicy = registerOutput<RRSetRoutingPolicyResponseDnsV1beta2>('routingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RRSetRoutingPolicyResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rrdatas = registerOutput<List<String>>('rrdatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    signatureRrdatas = registerOutput<List<String>>('signatureRrdatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ttl = registerOutput<int>('ttl');
     type = registerOutput<String>('type');
   }

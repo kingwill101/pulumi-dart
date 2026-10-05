@@ -34,7 +34,7 @@ class ContinuousBackupConfigResponse {
     return ContinuousBackupConfigResponse(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       encryptionConfig: pulumi.Input.fromValue(EncryptionConfigResponse.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())),
-      recoveryWindowDays: pulumi.Input.fromValue(map['recoveryWindowDays'] as int),
+      recoveryWindowDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['recoveryWindowDays'])),
     );
   }
 }

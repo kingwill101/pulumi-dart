@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A common public repository base for Apt.
-enum GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase {
+enum GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase implements pulumi.PulumiEnum<String> {
   repositoryBaseUnspecified("REPOSITORY_BASE_UNSPECIFIED"),
   debian("DEBIAN"),
   ubuntu("UBUNTU"),
   debianSnapshot("DEBIAN_SNAPSHOT");
 
   const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase fromValue(String value) {

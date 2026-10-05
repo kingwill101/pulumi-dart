@@ -26,7 +26,7 @@ class SubsettingResponseComputeBeta {
   factory SubsettingResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return SubsettingResponseComputeBeta(
       policy: pulumi.Input.fromValue(map['policy'] as String),
-      subsetSize: pulumi.Input.fromValue(map['subsetSize'] as int),
+      subsetSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['subsetSize'])),
     );
   }
 }

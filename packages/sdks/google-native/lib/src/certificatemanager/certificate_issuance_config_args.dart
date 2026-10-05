@@ -14,17 +14,17 @@ class CertificateIssuanceConfigArgs {
   /// Required. A user-provided name of the certificate config.
   final pulumi.Input<String> certificateIssuanceConfigId;
   /// One or more paragraphs of text description of a CertificateIssuanceConfig.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The key algorithm to use when generating the private key.
   final pulumi.Input<CertificateIssuanceConfigKeyAlgorithm> keyAlgorithm;
   /// Set of labels associated with a CertificateIssuanceConfig.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Workload certificate lifetime requested.
   final pulumi.Input<String> lifetime;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A user-defined name of the certificate issuance config. CertificateIssuanceConfig names must be unique globally and match pattern `projects/*/locations/*/certificateIssuanceConfigs/*`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate. Must be a number between 1-99, inclusive.
   final pulumi.Input<int> rotationWindowPercentage;
 
@@ -78,7 +78,7 @@ class CertificateIssuanceConfigArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rotationWindowPercentage: pulumi.Input.fromValue(map['rotationWindowPercentage'] as int),
+      rotationWindowPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rotationWindowPercentage'])),
     );
   }
 }

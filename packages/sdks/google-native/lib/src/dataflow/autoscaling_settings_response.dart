@@ -27,7 +27,7 @@ class AutoscalingSettingsResponse {
   factory AutoscalingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AutoscalingSettingsResponse(
       algorithm: pulumi.Input.fromValue(map['algorithm'] as String),
-      maxNumWorkers: pulumi.Input.fromValue(map['maxNumWorkers'] as int),
+      maxNumWorkers: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNumWorkers'])),
     );
   }
 }

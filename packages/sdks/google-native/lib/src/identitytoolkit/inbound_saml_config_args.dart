@@ -10,18 +10,18 @@ import 'google_cloud_identitytoolkit_admin_v2_sp_config.dart';
 /// {@macro pulumi_identitytoolkit_v2_inbound_saml_config_args_doc}
 class InboundSamlConfigArgs {
   /// The config's display name set by developers.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// True if allows the user to sign in with the provider.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The SAML IdP (Identity Provider) configuration when the project acts as the relying party.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2IdpConfig>? idpConfig;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2IdpConfig?>? idpConfig;
   /// The id to use for this config.
-  final pulumi.Input<String>? inboundSamlConfigId;
+  final pulumi.Input<String?>? inboundSamlConfigId;
   /// The name of the InboundSamlConfig resource, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'. Ignored during create requests.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// The SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an authentication assertion issued by a SAML identity provider.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2SpConfig>? spConfig;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2SpConfig?>? spConfig;
   final pulumi.Input<String> tenantId;
 
   /// Creates a new [InboundSamlConfigArgs].

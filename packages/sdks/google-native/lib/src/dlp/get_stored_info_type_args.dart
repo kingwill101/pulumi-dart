@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dlp_v2_get_stored_info_type_args_doc}
 class GetStoredInfoTypeArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> storedInfoTypeId;
 
   /// Creates a new [GetStoredInfoTypeArgs].

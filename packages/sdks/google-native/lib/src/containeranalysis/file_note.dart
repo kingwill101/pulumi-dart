@@ -6,11 +6,11 @@ import 'file_note_file_type.dart';
 /// FileNote represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
 class FileNote {
   /// Provide a unique identifier to match analysis information on each specific file in a package
-  final pulumi.Input<List<String>>? checksum;
+  final pulumi.Input<List<String>?>? checksum;
   /// This field provides information about the type of file identified
-  final pulumi.Input<FileNoteFileType>? fileType;
+  final pulumi.Input<FileNoteFileType?>? fileType;
   /// Identify the full path and filename that corresponds to the file information in this section
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [FileNote].
   /// [checksum] Provide a unique identifier to match analysis information on each specific file in a package

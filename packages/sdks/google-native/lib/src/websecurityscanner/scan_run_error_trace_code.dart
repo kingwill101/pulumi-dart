@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates the error reason code.
-enum ScanRunErrorTraceCode {
+enum ScanRunErrorTraceCode implements pulumi.PulumiEnum<String> {
   codeUnspecified("CODE_UNSPECIFIED"),
   internalError("INTERNAL_ERROR"),
   scanConfigIssue("SCAN_CONFIG_ISSUE"),
@@ -10,6 +12,7 @@ enum ScanRunErrorTraceCode {
   startingUrlsCrawlHttpErrors("STARTING_URLS_CRAWL_HTTP_ERRORS");
 
   const ScanRunErrorTraceCode(this.wireValue);
+  @override
   final String wireValue;
 
   static ScanRunErrorTraceCode fromValue(String value) {

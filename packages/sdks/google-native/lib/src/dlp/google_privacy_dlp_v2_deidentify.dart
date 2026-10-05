@@ -10,11 +10,11 @@ class GooglePrivacyDlpV2Deidentify {
   /// User settable Cloud Storage bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output Cloud Storage bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
   final pulumi.Input<String> cloudStorageOutput;
   /// List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed. If empty, all supported files will be transformed. Supported types may be automatically added over time. If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started. Currently the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
-  final pulumi.Input<List<GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem>>? fileTypesToTransform;
+  final pulumi.Input<List<GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem>?>? fileTypesToTransform;
   /// User specified deidentify templates and configs for structured, unstructured, and image files.
-  final pulumi.Input<GooglePrivacyDlpV2TransformationConfig>? transformationConfig;
+  final pulumi.Input<GooglePrivacyDlpV2TransformationConfig?>? transformationConfig;
   /// Config for storing transformation details. This is separate from the de-identified content, and contains metadata about the successful transformations and/or failures that occurred while de-identifying. This needs to be set in order for users to access information about the status of each transformation (see TransformationDetails message for more information about what is noted).
-  final pulumi.Input<GooglePrivacyDlpV2TransformationDetailsStorageConfig>? transformationDetailsStorageConfig;
+  final pulumi.Input<GooglePrivacyDlpV2TransformationDetailsStorageConfig?>? transformationDetailsStorageConfig;
 
   /// Creates a new [GooglePrivacyDlpV2Deidentify].
   /// [cloudStorageOutput] User settable Cloud Storage bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output Cloud Storage bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_beta_get_network_compute_beta_args_doc}
 class GetNetworkComputeBetaArgs {
   final pulumi.Input<String> network;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetNetworkComputeBetaArgs].
   /// [network] Required.

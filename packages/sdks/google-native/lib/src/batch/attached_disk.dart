@@ -6,10 +6,10 @@ import 'disk.dart';
 /// A new or an existing persistent disk (PD) or a local ssd attached to a VM instance.
 class AttachedDisk {
   /// Device name that the guest operating system will see. It is used by Runnable.volumes field to mount disks. So please specify the device_name if you want Batch to help mount the disk, and it should match the device_name field in volumes.
-  final pulumi.Input<String>? deviceName;
+  final pulumi.Input<String?>? deviceName;
   /// Name of an existing PD.
-  final pulumi.Input<String>? existingDisk;
-  final pulumi.Input<Disk>? newDisk;
+  final pulumi.Input<String?>? existingDisk;
+  final pulumi.Input<Disk?>? newDisk;
 
   /// Creates a new [AttachedDisk].
   /// [deviceName] Device name that the guest operating system will see. It is used by Runnable.volumes field to mount disks. So please specify the device_name if you want Batch to help mount the disk, and it should match the device_name field in volumes.

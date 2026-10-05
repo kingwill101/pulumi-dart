@@ -27,7 +27,7 @@ class GoogleCloudDataplexV1DataQualityColumnResultResponse {
   factory GoogleCloudDataplexV1DataQualityColumnResultResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualityColumnResultResponse(
       column: pulumi.Input.fromValue(map['column'] as String),
-      score: pulumi.Input.fromValue(map['score'] as double),
+      score: pulumi.Input.fromValue((map['score'] as num).toDouble()),
     );
   }
 }

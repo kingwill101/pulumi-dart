@@ -16,27 +16,27 @@ import 'sprite_sheet.dart';
 /// Job configuration
 class JobConfig {
   /// List of ad breaks. Specifies where to insert ad break tags in the output manifests.
-  final pulumi.Input<List<AdBreak>>? adBreaks;
+  final pulumi.Input<List<AdBreak>?>? adBreaks;
   /// List of edit atoms. Defines the ultimate timeline of the resulting file or manifest.
-  final pulumi.Input<List<EditAtom>>? editList;
+  final pulumi.Input<List<EditAtom>?>? editList;
   /// List of elementary streams.
-  final pulumi.Input<List<ElementaryStream>>? elementaryStreams;
+  final pulumi.Input<List<ElementaryStream>?>? elementaryStreams;
   /// List of encryption configurations for the content. Each configuration has an ID. Specify this ID in the MuxStream.encryption_id field to indicate the configuration to use for that `MuxStream` output.
-  final pulumi.Input<List<Encryption>>? encryptions;
+  final pulumi.Input<List<Encryption>?>? encryptions;
   /// List of input assets stored in Cloud Storage.
-  final pulumi.Input<List<InputType>>? inputs;
+  final pulumi.Input<List<InputType>?>? inputs;
   /// List of output manifests.
-  final pulumi.Input<List<Manifest>>? manifests;
+  final pulumi.Input<List<Manifest>?>? manifests;
   /// List of multiplexing settings for output streams.
-  final pulumi.Input<List<MuxStream>>? muxStreams;
+  final pulumi.Input<List<MuxStream>?>? muxStreams;
   /// Output configuration.
-  final pulumi.Input<OutputType>? output;
+  final pulumi.Input<OutputType?>? output;
   /// List of overlays on the output video, in descending Z-order.
-  final pulumi.Input<List<Overlay>>? overlays;
+  final pulumi.Input<List<Overlay>?>? overlays;
   /// Destination on Pub/Sub.
-  final pulumi.Input<PubsubDestination>? pubsubDestination;
+  final pulumi.Input<PubsubDestination?>? pubsubDestination;
   /// List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig.
-  final pulumi.Input<List<SpriteSheet>>? spriteSheets;
+  final pulumi.Input<List<SpriteSheet>?>? spriteSheets;
 
   /// Creates a new [JobConfig].
   /// [adBreaks] List of ad breaks. Specifies where to insert ad break tags in the output manifests.

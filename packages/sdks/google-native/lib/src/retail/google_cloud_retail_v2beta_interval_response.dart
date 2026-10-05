@@ -36,10 +36,10 @@ class GoogleCloudRetailV2betaIntervalResponse {
 
   factory GoogleCloudRetailV2betaIntervalResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2betaIntervalResponse(
-      exclusiveMaximum: pulumi.Input.fromValue(map['exclusiveMaximum'] as double),
-      exclusiveMinimum: pulumi.Input.fromValue(map['exclusiveMinimum'] as double),
-      maximum: pulumi.Input.fromValue(map['maximum'] as double),
-      minimum: pulumi.Input.fromValue(map['minimum'] as double),
+      exclusiveMaximum: pulumi.Input.fromValue((map['exclusiveMaximum'] as num).toDouble()),
+      exclusiveMinimum: pulumi.Input.fromValue((map['exclusiveMinimum'] as num).toDouble()),
+      maximum: pulumi.Input.fromValue((map['maximum'] as num).toDouble()),
+      minimum: pulumi.Input.fromValue((map['minimum'] as num).toDouble()),
     );
   }
 }

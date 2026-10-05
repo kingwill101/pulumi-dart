@@ -5,19 +5,19 @@ import 'google_cloud_discoveryengine_v1beta_document_content_response.dart';
 /// Result data returned by getDocument.
 class GetDocumentDiscoveryengineV1betaResult {
   /// The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
-  final GoogleCloudDiscoveryengineV1betaDocumentContentResponse content;
+  final GoogleCloudDiscoveryengineV1betaDocumentContentResponse? content;
   /// This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
-  final Map<String, String> derivedStructData;
+  final Map<String, String>? derivedStructData;
   /// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
-  final String jsonData;
+  final String? jsonData;
   /// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
-  final String name;
+  final String? name;
   /// The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
-  final String parentDocumentId;
+  final String? parentDocumentId;
   /// The identifier of the schema located in the same data store.
-  final String schemaId;
+  final String? schemaId;
   /// The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
-  final Map<String, String> structData;
+  final Map<String, String>? structData;
 
   /// Creates a new [GetDocumentDiscoveryengineV1betaResult].
   /// [content] The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
@@ -28,36 +28,36 @@ class GetDocumentDiscoveryengineV1betaResult {
   /// [schemaId] The identifier of the schema located in the same data store.
   /// [structData] The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
   const GetDocumentDiscoveryengineV1betaResult({
-    required this.content,
-    required this.derivedStructData,
-    required this.jsonData,
-    required this.name,
-    required this.parentDocumentId,
-    required this.schemaId,
-    required this.structData,
+    this.content,
+    this.derivedStructData,
+    this.jsonData,
+    this.name,
+    this.parentDocumentId,
+    this.schemaId,
+    this.structData,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'content': content.toMap(),
-      'derivedStructData': derivedStructData,
-      'jsonData': jsonData,
-      'name': name,
-      'parentDocumentId': parentDocumentId,
-      'schemaId': schemaId,
-      'structData': structData,
+      'content': ?content?.toMap(),
+      'derivedStructData': ?derivedStructData,
+      'jsonData': ?jsonData,
+      'name': ?name,
+      'parentDocumentId': ?parentDocumentId,
+      'schemaId': ?schemaId,
+      'structData': ?structData,
     };
   }
 
   factory GetDocumentDiscoveryengineV1betaResult.fromMap(Map<String, dynamic> map) {
     return GetDocumentDiscoveryengineV1betaResult(
-      content: GoogleCloudDiscoveryengineV1betaDocumentContentResponse.fromMap((map['content']! as Map).cast<String, dynamic>()),
-      derivedStructData: (map['derivedStructData'] as Map).cast<String, String>(),
-      jsonData: map['jsonData'] as String,
-      name: map['name'] as String,
-      parentDocumentId: map['parentDocumentId'] as String,
-      schemaId: map['schemaId'] as String,
-      structData: (map['structData'] as Map).cast<String, String>(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return GoogleCloudDiscoveryengineV1betaDocumentContentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      derivedStructData: (() { final guardedValue = map['derivedStructData']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      jsonData: (() { final guardedValue = map['jsonData']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parentDocumentId: (() { final guardedValue = map['parentDocumentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      schemaId: (() { final guardedValue = map['schemaId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      structData: (() { final guardedValue = map['structData']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

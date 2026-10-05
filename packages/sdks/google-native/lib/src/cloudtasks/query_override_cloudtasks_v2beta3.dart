@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// QueryOverride. Query message defines query override for HTTP targets.
 class QueryOverrideCloudtasksV2beta3 {
   /// The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
-  final pulumi.Input<String>? queryParams;
+  final pulumi.Input<String?>? queryParams;
 
   /// Creates a new [QueryOverrideCloudtasksV2beta3].
   /// [queryParams] The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.

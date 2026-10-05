@@ -7,9 +7,9 @@ import 'google_privacy_dlp_v2_field_id.dart';
 /// Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
 class GooglePrivacyDlpV2DateShiftConfig {
   /// Points to the field that contains the context, for example, an entity id. If set, must also set cryptoKey. If set, shift will be consistent for the given context.
-  final pulumi.Input<GooglePrivacyDlpV2FieldId>? context;
+  final pulumi.Input<GooglePrivacyDlpV2FieldId?>? context;
   /// Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and crypto_key. If set, must also set context. Can only be applied to table items.
-  final pulumi.Input<GooglePrivacyDlpV2CryptoKey>? cryptoKey;
+  final pulumi.Input<GooglePrivacyDlpV2CryptoKey?>? cryptoKey;
   /// For example, -5 means shift date to at most 5 days back in the past.
   final pulumi.Input<int> lowerBoundDays;
   /// Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
@@ -40,8 +40,8 @@ class GooglePrivacyDlpV2DateShiftConfig {
     return GooglePrivacyDlpV2DateShiftConfig(
       context: (() { final guardedValue = map['context']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GooglePrivacyDlpV2FieldId.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cryptoKey: (() { final guardedValue = map['cryptoKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GooglePrivacyDlpV2CryptoKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      lowerBoundDays: pulumi.Input.fromValue(map['lowerBoundDays'] as int),
-      upperBoundDays: pulumi.Input.fromValue(map['upperBoundDays'] as int),
+      lowerBoundDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lowerBoundDays'])),
+      upperBoundDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['upperBoundDays'])),
     );
   }
 }

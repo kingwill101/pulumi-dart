@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The unit of measure for the target size.
-enum InstanceGroupManagerTargetSizeUnit {
+enum InstanceGroupManagerTargetSizeUnit implements pulumi.PulumiEnum<String> {
   instance("INSTANCE"),
   vcpu("VCPU");
 
   const InstanceGroupManagerTargetSizeUnit(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceGroupManagerTargetSizeUnit fromValue(String value) {

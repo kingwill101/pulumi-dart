@@ -11,19 +11,19 @@ import 'git_lab_secrets.dart';
 /// {@macro pulumi_cloudbuild_v1_git_lab_config_args_doc}
 class GitLabConfigArgs {
   /// Connected GitLab.com or GitLabEnterprise repositories for this config.
-  final pulumi.Input<List<GitLabRepositoryId>>? connectedRepositories;
+  final pulumi.Input<List<GitLabRepositoryId>?>? connectedRepositories;
   /// Optional. GitLabEnterprise config.
-  final pulumi.Input<GitLabEnterpriseConfig>? enterpriseConfig;
+  final pulumi.Input<GitLabEnterpriseConfig?>? enterpriseConfig;
   /// Optional. The ID to use for the GitLabConfig, which will become the final component of the GitLabConfig’s resource name. gitlab_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character
-  final pulumi.Input<String>? gitlabConfigId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? gitlabConfigId;
+  final pulumi.Input<String?>? location;
   /// The resource name for the config.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Secret Manager secrets needed by the config.
   final pulumi.Input<GitLabSecrets> secrets;
   /// Username of the GitLab.com or GitLab Enterprise account Cloud Build will use.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GitLabConfigArgs].
   /// [connectedRepositories] Connected GitLab.com or GitLabEnterprise repositories for this config.

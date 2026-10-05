@@ -48,24 +48,52 @@ class InternalRange extends pulumi.CustomResource {
           'google-native:networkconnectivity/v1:InternalRange',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     internalRangeId = registerOutput<String?>('internalRangeId');
     ipCidrRange = registerOutput<String>('ipCidrRange');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
-    overlaps = registerOutput<List<String>>('overlaps');
+    overlaps = registerOutput<List<String>>('overlaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     peering = registerOutput<String>('peering');
     prefixLength = registerOutput<int>('prefixLength');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    targetCidrRange = registerOutput<List<String>>('targetCidrRange');
+    targetCidrRange = registerOutput<List<String>>('targetCidrRange', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
     usage = registerOutput<String>('usage');
-    users = registerOutput<List<String>>('users');
+    users = registerOutput<List<String>>('users', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [InternalRange] resource.
+  InternalRange.reference(String urn)
+    : super(
+        'google-native:networkconnectivity/v1:InternalRange',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    internalRangeId = registerOutput<String?>('internalRangeId');
+    ipCidrRange = registerOutput<String>('ipCidrRange');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    overlaps = registerOutput<List<String>>('overlaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    peering = registerOutput<String>('peering');
+    prefixLength = registerOutput<int>('prefixLength');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    targetCidrRange = registerOutput<List<String>>('targetCidrRange', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    updateTime = registerOutput<String>('updateTime');
+    usage = registerOutput<String>('usage');
+    users = registerOutput<List<String>>('users', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

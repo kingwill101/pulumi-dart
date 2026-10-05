@@ -39,7 +39,7 @@ class DerivedResponseContaineranalysisV1beta1 {
   factory DerivedResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return DerivedResponseContaineranalysisV1beta1(
       baseResourceUrl: pulumi.Input.fromValue(map['baseResourceUrl'] as String),
-      distance: pulumi.Input.fromValue(map['distance'] as int),
+      distance: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['distance'])),
       fingerprint: pulumi.Input.fromValue(FingerprintResponseContaineranalysisV1beta1.fromMap((map['fingerprint']! as Map).cast<String, dynamic>())),
       layerInfo: pulumi.Input.fromValue(pulumi.Input.decodeList<LayerResponseContaineranalysisV1beta1>(map['layerInfo']!, (value) => LayerResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))),
     );

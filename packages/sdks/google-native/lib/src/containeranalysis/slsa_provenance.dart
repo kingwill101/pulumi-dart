@@ -8,12 +8,12 @@ import 'slsa_recipe.dart';
 
 class SlsaProvenance {
   /// required
-  final pulumi.Input<SlsaBuilder>? builder;
+  final pulumi.Input<SlsaBuilder?>? builder;
   /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
-  final pulumi.Input<List<Material>>? materials;
-  final pulumi.Input<SlsaMetadata>? metadata;
+  final pulumi.Input<List<Material>?>? materials;
+  final pulumi.Input<SlsaMetadata?>? metadata;
   /// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required
-  final pulumi.Input<SlsaRecipe>? recipe;
+  final pulumi.Input<SlsaRecipe?>? recipe;
 
   /// Creates a new [SlsaProvenance].
   /// [builder] required

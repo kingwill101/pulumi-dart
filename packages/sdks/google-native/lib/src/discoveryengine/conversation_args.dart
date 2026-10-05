@@ -11,16 +11,16 @@ import 'google_cloud_discoveryengine_v1alpha_conversation_message.dart';
 class ConversationArgs {
   final pulumi.Input<String> collectionId;
   final pulumi.Input<String> dataStoreId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Conversation messages.
-  final pulumi.Input<List<GoogleCloudDiscoveryengineV1alphaConversationMessage>>? messages;
+  final pulumi.Input<List<GoogleCloudDiscoveryengineV1alphaConversationMessage>?>? messages;
   /// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// The state of the Conversation.
-  final pulumi.Input<ConversationState>? state;
+  final pulumi.Input<ConversationState?>? state;
   /// A unique identifier for tracking users.
-  final pulumi.Input<String>? userPseudoId;
+  final pulumi.Input<String?>? userPseudoId;
 
   /// Creates a new [ConversationArgs].
   /// [collectionId] Required.

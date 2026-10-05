@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Subject {
   /// `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
-  final pulumi.Input<Map<String, String>>? digest;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<Map<String, String>?>? digest;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [Subject].
   /// [digest] `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet

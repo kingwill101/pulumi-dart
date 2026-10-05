@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A contact person for the entry.
 class GoogleCloudDatacatalogV1ContactsPerson {
   /// Designation of the person, for example, Data Steward.
-  final pulumi.Input<String>? designation;
+  final pulumi.Input<String?>? designation;
   /// Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
 
   /// Creates a new [GoogleCloudDatacatalogV1ContactsPerson].
   /// [designation] Designation of the person, for example, Data Steward.

@@ -6,9 +6,9 @@ import 'autoscaling_settings_algorithm.dart';
 /// Settings for WorkerPool autoscaling.
 class AutoscalingSettings {
   /// The algorithm to use for autoscaling.
-  final pulumi.Input<AutoscalingSettingsAlgorithm>? algorithm;
+  final pulumi.Input<AutoscalingSettingsAlgorithm?>? algorithm;
   /// The maximum number of workers to cap scaling at.
-  final pulumi.Input<int>? maxNumWorkers;
+  final pulumi.Input<int?>? maxNumWorkers;
 
   /// Creates a new [AutoscalingSettings].
   /// [algorithm] The algorithm to use for autoscaling.
@@ -28,7 +28,7 @@ class AutoscalingSettings {
   factory AutoscalingSettings.fromMap(Map<String, dynamic> map) {
     return AutoscalingSettings(
       algorithm: (() { final guardedValue = map['algorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscalingSettingsAlgorithm.fromValue(guardedValue as String)); })(),
-      maxNumWorkers: (() { final guardedValue = map['maxNumWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxNumWorkers: (() { final guardedValue = map['maxNumWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

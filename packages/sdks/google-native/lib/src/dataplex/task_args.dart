@@ -12,20 +12,20 @@ import 'google_cloud_dataplex_v1_task_trigger_spec.dart';
 /// {@macro pulumi_dataplex_v1_task_args_doc}
 class TaskArgs {
   /// Optional. Description of the task.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. User friendly display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Spec related to how a task is executed.
   final pulumi.Input<GoogleCloudDataplexV1TaskExecutionSpec> executionSpec;
   /// Optional. User-defined labels for the task.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   final pulumi.Input<String> lakeId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Config related to running scheduled Notebooks.
-  final pulumi.Input<GoogleCloudDataplexV1TaskNotebookTaskConfig>? notebook;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<GoogleCloudDataplexV1TaskNotebookTaskConfig?>? notebook;
+  final pulumi.Input<String?>? project;
   /// Config related to running custom Spark tasks.
-  final pulumi.Input<GoogleCloudDataplexV1TaskSparkTaskConfig>? spark;
+  final pulumi.Input<GoogleCloudDataplexV1TaskSparkTaskConfig?>? spark;
   /// Required. Task identifier.
   final pulumi.Input<String> taskId;
   /// Spec related to how often and when a task should be triggered.

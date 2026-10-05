@@ -10,7 +10,7 @@ class OracleConnectionProfile {
   /// Database service for the Oracle connection.
   final pulumi.Input<String> databaseService;
   /// Forward SSH tunnel connectivity.
-  final pulumi.Input<ForwardSshTunnelConnectivity>? forwardSshConnectivity;
+  final pulumi.Input<ForwardSshTunnelConnectivity?>? forwardSshConnectivity;
   /// The IP or hostname of the source Oracle database.
   final pulumi.Input<String> host;
   /// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
@@ -18,11 +18,11 @@ class OracleConnectionProfile {
   /// The network port of the source Oracle database.
   final pulumi.Input<int> port;
   /// Private connectivity.
-  final pulumi.Input<PrivateConnectivity>? privateConnectivity;
+  final pulumi.Input<PrivateConnectivity?>? privateConnectivity;
   /// SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above.
-  final pulumi.Input<SslConfig>? ssl;
+  final pulumi.Input<SslConfig?>? ssl;
   /// Static Service IP connectivity.
-  final pulumi.Input<Map<String, dynamic>>? staticServiceIpConnectivity;
+  final pulumi.Input<Map<String, dynamic>?>? staticServiceIpConnectivity;
   /// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
   final pulumi.Input<String> username;
 
@@ -68,7 +68,7 @@ class OracleConnectionProfile {
       forwardSshConnectivity: (() { final guardedValue = map['forwardSshConnectivity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ForwardSshTunnelConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       host: pulumi.Input.fromValue(map['host'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       privateConnectivity: (() { final guardedValue = map['privateConnectivity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ssl: (() { final guardedValue = map['ssl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SslConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       staticServiceIpConnectivity: (() { final guardedValue = map['staticServiceIpConnectivity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),

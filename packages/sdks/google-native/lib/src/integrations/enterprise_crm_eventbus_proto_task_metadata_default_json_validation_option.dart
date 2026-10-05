@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Controls whether JSON workflow parameters are validated against provided schemas before and/or after this task's execution.
-enum EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption {
+enum EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption implements pulumi.PulumiEnum<String> {
   unspecifiedJsonValidationOption("UNSPECIFIED_JSON_VALIDATION_OPTION"),
   skip("SKIP"),
   preExecution("PRE_EXECUTION"),
@@ -7,6 +9,7 @@ enum EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption {
   prePostExecution("PRE_POST_EXECUTION");
 
   const EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption fromValue(String value) {

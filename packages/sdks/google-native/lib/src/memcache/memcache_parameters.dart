@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MemcacheParameters {
   /// User defined set of parameters to use in the memcached process.
-  final pulumi.Input<Map<String, String>>? params;
+  final pulumi.Input<Map<String, String>?>? params;
 
   /// Creates a new [MemcacheParameters].
   /// [params] User defined set of parameters to use in the memcached process.

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_connection_iam_policy_args.dart';
+import 'google_iam_v1_audit_config_response.dart';
+import 'google_iam_v1_binding_response.dart';
 
 /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
@@ -7,9 +9,9 @@ import 'app_connection_iam_policy_args.dart';
 class AppConnectionIamPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> appConnectionId;
   /// Specifies cloud audit logging configuration for this policy.
-  late final pulumi.Output<List<Map<String, dynamic>>> auditConfigs;
+  late final pulumi.Output<List<GoogleIamV1AuditConfigResponse>> auditConfigs;
   /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
-  late final pulumi.Output<List<Map<String, dynamic>>> bindings;
+  late final pulumi.Output<List<GoogleIamV1BindingResponse>> bindings;
   /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
   late final pulumi.Output<String> etag;
   late final pulumi.Output<String> location;
@@ -29,11 +31,29 @@ class AppConnectionIamPolicy extends pulumi.CustomResource {
           'google-native:beyondcorp/v1:AppConnectionIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['appConnectionId', 'location', 'project']).merge(options),
         ) {
     appConnectionId = registerOutput<String>('appConnectionId');
-    auditConfigs = registerOutput<List<Map<String, dynamic>>>('auditConfigs');
-    bindings = registerOutput<List<Map<String, dynamic>>>('bindings');
+    auditConfigs = registerOutput<List<GoogleIamV1AuditConfigResponse>>('auditConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleIamV1AuditConfigResponse>(guardedValue, (value) => GoogleIamV1AuditConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    bindings = registerOutput<List<GoogleIamV1BindingResponse>>('bindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleIamV1BindingResponse>(guardedValue, (value) => GoogleIamV1BindingResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    project = registerOutput<String>('project');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [AppConnectionIamPolicy] resource.
+  AppConnectionIamPolicy.reference(String urn)
+    : super(
+        'google-native:beyondcorp/v1:AppConnectionIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appConnectionId = registerOutput<String>('appConnectionId');
+    auditConfigs = registerOutput<List<GoogleIamV1AuditConfigResponse>>('auditConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleIamV1AuditConfigResponse>(guardedValue, (value) => GoogleIamV1AuditConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    bindings = registerOutput<List<GoogleIamV1BindingResponse>>('bindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleIamV1BindingResponse>(guardedValue, (value) => GoogleIamV1BindingResponse.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');

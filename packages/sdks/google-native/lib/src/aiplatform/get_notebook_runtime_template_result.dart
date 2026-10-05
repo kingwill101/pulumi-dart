@@ -9,35 +9,35 @@ import 'google_cloud_aiplatform_v1_persistent_disk_spec_response.dart';
 /// Result data returned by getNotebookRuntimeTemplate.
 class GetNotebookRuntimeTemplateResult {
   /// Timestamp when this NotebookRuntimeTemplate was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. The specification of persistent disk attached to the runtime as data disk storage.
-  final GoogleCloudAiplatformV1PersistentDiskSpecResponse dataPersistentDiskSpec;
+  final GoogleCloudAiplatformV1PersistentDiskSpecResponse? dataPersistentDiskSpec;
   /// The description of the NotebookRuntimeTemplate.
-  final String description;
+  final String? description;
   /// The display name of the NotebookRuntimeTemplate. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-  final String displayName;
+  final String? displayName;
   /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final String etag;
+  final String? etag;
   /// EUC configuration of the NotebookRuntimeTemplate.
-  final GoogleCloudAiplatformV1NotebookEucConfigResponse eucConfig;
+  final GoogleCloudAiplatformV1NotebookEucConfigResponse? eucConfig;
   /// The idle shutdown configuration of NotebookRuntimeTemplate. This config will only be set when idle shutdown is enabled.
-  final GoogleCloudAiplatformV1NotebookIdleShutdownConfigResponse idleShutdownConfig;
+  final GoogleCloudAiplatformV1NotebookIdleShutdownConfigResponse? idleShutdownConfig;
   /// The default template to use if not specified.
-  final bool isDefault;
+  final bool? isDefault;
   /// The labels with user-defined metadata to organize the NotebookRuntimeTemplates. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Optional. Immutable. The specification of a single machine for the template.
-  final GoogleCloudAiplatformV1MachineSpecResponse machineSpec;
+  final GoogleCloudAiplatformV1MachineSpecResponse? machineSpec;
   /// The resource name of the NotebookRuntimeTemplate.
-  final String name;
+  final String? name;
   /// Optional. Network spec.
-  final GoogleCloudAiplatformV1NetworkSpecResponse networkSpec;
+  final GoogleCloudAiplatformV1NetworkSpecResponse? networkSpec;
   /// Optional. Immutable. The type of the notebook runtime template.
-  final String notebookRuntimeType;
+  final String? notebookRuntimeType;
   /// The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
-  final String serviceAccount;
+  final String? serviceAccount;
   /// Timestamp when this NotebookRuntimeTemplate was most recently updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetNotebookRuntimeTemplateResult].
   /// [createTime] Timestamp when this NotebookRuntimeTemplate was created.
@@ -56,60 +56,60 @@ class GetNotebookRuntimeTemplateResult {
   /// [serviceAccount] The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
   /// [updateTime] Timestamp when this NotebookRuntimeTemplate was most recently updated.
   const GetNotebookRuntimeTemplateResult({
-    required this.createTime,
-    required this.dataPersistentDiskSpec,
-    required this.description,
-    required this.displayName,
-    required this.etag,
-    required this.eucConfig,
-    required this.idleShutdownConfig,
-    required this.isDefault,
-    required this.labels,
-    required this.machineSpec,
-    required this.name,
-    required this.networkSpec,
-    required this.notebookRuntimeType,
-    required this.serviceAccount,
-    required this.updateTime,
+    this.createTime,
+    this.dataPersistentDiskSpec,
+    this.description,
+    this.displayName,
+    this.etag,
+    this.eucConfig,
+    this.idleShutdownConfig,
+    this.isDefault,
+    this.labels,
+    this.machineSpec,
+    this.name,
+    this.networkSpec,
+    this.notebookRuntimeType,
+    this.serviceAccount,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'dataPersistentDiskSpec': dataPersistentDiskSpec.toMap(),
-      'description': description,
-      'displayName': displayName,
-      'etag': etag,
-      'eucConfig': eucConfig.toMap(),
-      'idleShutdownConfig': idleShutdownConfig.toMap(),
-      'isDefault': isDefault,
-      'labels': labels,
-      'machineSpec': machineSpec.toMap(),
-      'name': name,
-      'networkSpec': networkSpec.toMap(),
-      'notebookRuntimeType': notebookRuntimeType,
-      'serviceAccount': serviceAccount,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'dataPersistentDiskSpec': ?dataPersistentDiskSpec?.toMap(),
+      'description': ?description,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'eucConfig': ?eucConfig?.toMap(),
+      'idleShutdownConfig': ?idleShutdownConfig?.toMap(),
+      'isDefault': ?isDefault,
+      'labels': ?labels,
+      'machineSpec': ?machineSpec?.toMap(),
+      'name': ?name,
+      'networkSpec': ?networkSpec?.toMap(),
+      'notebookRuntimeType': ?notebookRuntimeType,
+      'serviceAccount': ?serviceAccount,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetNotebookRuntimeTemplateResult.fromMap(Map<String, dynamic> map) {
     return GetNotebookRuntimeTemplateResult(
-      createTime: map['createTime'] as String,
-      dataPersistentDiskSpec: GoogleCloudAiplatformV1PersistentDiskSpecResponse.fromMap((map['dataPersistentDiskSpec']! as Map).cast<String, dynamic>()),
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      etag: map['etag'] as String,
-      eucConfig: GoogleCloudAiplatformV1NotebookEucConfigResponse.fromMap((map['eucConfig']! as Map).cast<String, dynamic>()),
-      idleShutdownConfig: GoogleCloudAiplatformV1NotebookIdleShutdownConfigResponse.fromMap((map['idleShutdownConfig']! as Map).cast<String, dynamic>()),
-      isDefault: map['isDefault'] as bool,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      machineSpec: GoogleCloudAiplatformV1MachineSpecResponse.fromMap((map['machineSpec']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      networkSpec: GoogleCloudAiplatformV1NetworkSpecResponse.fromMap((map['networkSpec']! as Map).cast<String, dynamic>()),
-      notebookRuntimeType: map['notebookRuntimeType'] as String,
-      serviceAccount: map['serviceAccount'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataPersistentDiskSpec: (() { final guardedValue = map['dataPersistentDiskSpec']; if (guardedValue == null) return null; return GoogleCloudAiplatformV1PersistentDiskSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      eucConfig: (() { final guardedValue = map['eucConfig']; if (guardedValue == null) return null; return GoogleCloudAiplatformV1NotebookEucConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      idleShutdownConfig: (() { final guardedValue = map['idleShutdownConfig']; if (guardedValue == null) return null; return GoogleCloudAiplatformV1NotebookIdleShutdownConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      isDefault: (() { final guardedValue = map['isDefault']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      machineSpec: (() { final guardedValue = map['machineSpec']; if (guardedValue == null) return null; return GoogleCloudAiplatformV1MachineSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkSpec: (() { final guardedValue = map['networkSpec']; if (guardedValue == null) return null; return GoogleCloudAiplatformV1NetworkSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      notebookRuntimeType: (() { final guardedValue = map['notebookRuntimeType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

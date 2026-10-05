@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Interconnect bandwidth. Set only when type is CLIENT.
-enum NetworkConfigBandwidth {
+enum NetworkConfigBandwidth implements pulumi.PulumiEnum<String> {
   bandwidthUnspecified("BANDWIDTH_UNSPECIFIED"),
   bw1Gbps("BW_1_GBPS"),
   bw2Gbps("BW_2_GBPS"),
@@ -7,6 +9,7 @@ enum NetworkConfigBandwidth {
   bw10Gbps("BW_10_GBPS");
 
   const NetworkConfigBandwidth(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkConfigBandwidth fromValue(String value) {

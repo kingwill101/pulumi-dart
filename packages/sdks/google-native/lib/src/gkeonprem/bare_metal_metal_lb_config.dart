@@ -9,7 +9,7 @@ class BareMetalMetalLbConfig {
   /// AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All addresses must be routable to load balancer nodes. IngressVIP must be included in the pools.
   final pulumi.Input<List<BareMetalLoadBalancerAddressPool>> addressPools;
   /// Specifies the node pool running the load balancer. L2 connectivity is required among nodes in this pool. If missing, the control plane node pool is used as the load balancer pool.
-  final pulumi.Input<BareMetalLoadBalancerNodePoolConfig>? loadBalancerNodePoolConfig;
+  final pulumi.Input<BareMetalLoadBalancerNodePoolConfig?>? loadBalancerNodePoolConfig;
 
   /// Creates a new [BareMetalMetalLbConfig].
   /// [addressPools] AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All addresses must be routable to load balancer nodes. IngressVIP must be included in the pools.

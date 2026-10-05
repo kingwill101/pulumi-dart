@@ -4,29 +4,29 @@
 /// Result data returned by getReservation.
 class GetReservationResult {
   /// The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
-  final String name;
+  final String? name;
   /// The reserved throughput capacity. Every unit of throughput capacity is equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed messages. Any topics which are declared as using capacity from a Reservation will consume resources from this reservation instead of being charged individually.
-  final String throughputCapacity;
+  final String? throughputCapacity;
 
   /// Creates a new [GetReservationResult].
   /// [name] The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
   /// [throughputCapacity] The reserved throughput capacity. Every unit of throughput capacity is equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed messages. Any topics which are declared as using capacity from a Reservation will consume resources from this reservation instead of being charged individually.
   const GetReservationResult({
-    required this.name,
-    required this.throughputCapacity,
+    this.name,
+    this.throughputCapacity,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'name': name,
-      'throughputCapacity': throughputCapacity,
+      'name': ?name,
+      'throughputCapacity': ?throughputCapacity,
     };
   }
 
   factory GetReservationResult.fromMap(Map<String, dynamic> map) {
     return GetReservationResult(
-      name: map['name'] as String,
-      throughputCapacity: map['throughputCapacity'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      throughputCapacity: (() { final guardedValue = map['throughputCapacity']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

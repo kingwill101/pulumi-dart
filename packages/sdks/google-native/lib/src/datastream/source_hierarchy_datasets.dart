@@ -6,7 +6,7 @@ import 'dataset_template.dart';
 /// Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
 class SourceHierarchyDatasets {
   /// The dataset template to use for dynamic dataset creation.
-  final pulumi.Input<DatasetTemplate>? datasetTemplate;
+  final pulumi.Input<DatasetTemplate?>? datasetTemplate;
 
   /// Creates a new [SourceHierarchyDatasets].
   /// [datasetTemplate] The dataset template to use for dynamic dataset creation.

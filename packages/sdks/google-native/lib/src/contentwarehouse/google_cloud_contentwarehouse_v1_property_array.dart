@@ -6,7 +6,7 @@ import 'google_cloud_contentwarehouse_v1_property.dart';
 /// Property values.
 class GoogleCloudContentwarehouseV1PropertyArray {
   /// List of property values.
-  final pulumi.Input<List<GoogleCloudContentwarehouseV1Property>>? properties;
+  final pulumi.Input<List<GoogleCloudContentwarehouseV1Property>?>? properties;
 
   /// Creates a new [GoogleCloudContentwarehouseV1PropertyArray].
   /// [properties] List of property values.

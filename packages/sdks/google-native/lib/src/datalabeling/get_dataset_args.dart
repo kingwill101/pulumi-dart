@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datalabeling_v1beta1_get_dataset_args_doc}
 class GetDatasetArgs {
   final pulumi.Input<String> datasetId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDatasetArgs].
   /// [datasetId] Required.

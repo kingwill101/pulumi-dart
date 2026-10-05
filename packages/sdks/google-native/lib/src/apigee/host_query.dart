@@ -47,8 +47,33 @@ class HostQuery extends pulumi.CustomResource {
           'google-native:apigee/v1:HostQuery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
+    created = registerOutput<String>('created');
+    envgroupHostname = registerOutput<String>('envgroupHostname');
+    error = registerOutput<String>('error');
+    executionTime = registerOutput<String>('executionTime');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    queryParams = registerOutput<GoogleCloudApigeeV1QueryMetadataResponse>('queryParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1QueryMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reportDefinitionId = registerOutput<String>('reportDefinitionId');
+    result = registerOutput<GoogleCloudApigeeV1AsyncQueryResultResponse>('result', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1AsyncQueryResultResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resultFileSize = registerOutput<String>('resultFileSize');
+    resultRows = registerOutput<String>('resultRows');
+    self = registerOutput<String>('self');
+    state = registerOutput<String>('state');
+    updated = registerOutput<String>('updated');
+  }
+
+  /// Creates a typed reference to an existing [HostQuery] resource.
+  HostQuery.reference(String urn)
+    : super(
+        'google-native:apigee/v1:HostQuery',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     created = registerOutput<String>('created');
     envgroupHostname = registerOutput<String>('envgroupHostname');
     error = registerOutput<String>('error');

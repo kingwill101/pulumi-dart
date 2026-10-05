@@ -6,9 +6,9 @@ import 'tile.dart';
 /// A mosaic layout divides the available space into a grid of blocks, and overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid blocks and can be placed at arbitrary locations in the grid.
 class MosaicLayout {
   /// The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
-  final pulumi.Input<int>? columns;
+  final pulumi.Input<int?>? columns;
   /// The tiles to display.
-  final pulumi.Input<List<Tile>>? tiles;
+  final pulumi.Input<List<Tile>?>? tiles;
 
   /// Creates a new [MosaicLayout].
   /// [columns] The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
@@ -27,7 +27,7 @@ class MosaicLayout {
 
   factory MosaicLayout.fromMap(Map<String, dynamic> map) {
     return MosaicLayout(
-      columns: (() { final guardedValue = map['columns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      columns: (() { final guardedValue = map['columns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tiles: (() { final guardedValue = map['tiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Tile>(guardedValue, (value) => Tile.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

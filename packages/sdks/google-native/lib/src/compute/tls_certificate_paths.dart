@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// [Deprecated] The paths to the mounted TLS Certificates and private key. The paths to the mounted TLS Certificates and private key.
 class TlsCertificatePaths {
   /// The path to the file holding the client or server TLS certificate to use.
-  final pulumi.Input<String>? certificatePath;
+  final pulumi.Input<String?>? certificatePath;
   /// The path to the file holding the client or server private key.
-  final pulumi.Input<String>? privateKeyPath;
+  final pulumi.Input<String?>? privateKeyPath;
 
   /// Creates a new [TlsCertificatePaths].
   /// [certificatePath] The path to the file holding the client or server TLS certificate to use.

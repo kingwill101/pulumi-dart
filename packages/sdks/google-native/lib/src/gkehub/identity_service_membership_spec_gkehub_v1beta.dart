@@ -6,7 +6,7 @@ import 'identity_service_auth_method_gkehub_v1beta.dart';
 /// **Anthos Identity Service**: Configuration for a single Membership.
 class IdentityServiceMembershipSpecGkehubV1beta {
   /// A member may support multiple auth methods.
-  final pulumi.Input<List<IdentityServiceAuthMethodGkehubV1beta>>? authMethods;
+  final pulumi.Input<List<IdentityServiceAuthMethodGkehubV1beta>?>? authMethods;
 
   /// Creates a new [IdentityServiceMembershipSpecGkehubV1beta].
   /// [authMethods] A member may support multiple auth methods.

@@ -6,7 +6,7 @@ import 'logging_variant_config_variant.dart';
 /// LoggingVariantConfig specifies the behaviour of the logging component.
 class LoggingVariantConfig {
   /// Logging variant deployed on nodes.
-  final pulumi.Input<LoggingVariantConfigVariant>? variant;
+  final pulumi.Input<LoggingVariantConfigVariant?>? variant;
 
   /// Creates a new [LoggingVariantConfig].
   /// [variant] Logging variant deployed on nodes.

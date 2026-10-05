@@ -7,11 +7,11 @@ import 'recurring_time_window.dart';
 /// MaintenanceWindow defines the maintenance window to be used for the cluster.
 class MaintenanceWindow {
   /// DailyMaintenanceWindow specifies a daily maintenance operation window.
-  final pulumi.Input<DailyMaintenanceWindow>? dailyMaintenanceWindow;
+  final pulumi.Input<DailyMaintenanceWindow?>? dailyMaintenanceWindow;
   /// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
-  final pulumi.Input<Map<String, String>>? maintenanceExclusions;
+  final pulumi.Input<Map<String, String>?>? maintenanceExclusions;
   /// RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
-  final pulumi.Input<RecurringTimeWindow>? recurringWindow;
+  final pulumi.Input<RecurringTimeWindow?>? recurringWindow;
 
   /// Creates a new [MaintenanceWindow].
   /// [dailyMaintenanceWindow] DailyMaintenanceWindow specifies a daily maintenance operation window.

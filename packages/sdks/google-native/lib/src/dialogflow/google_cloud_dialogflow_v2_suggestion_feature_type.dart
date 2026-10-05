@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of Human Agent Assistant API feature to request.
-enum GoogleCloudDialogflowV2SuggestionFeatureType {
+enum GoogleCloudDialogflowV2SuggestionFeatureType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   articleSuggestion("ARTICLE_SUGGESTION"),
   faq("FAQ"),
@@ -7,6 +9,7 @@ enum GoogleCloudDialogflowV2SuggestionFeatureType {
   knowledgeSearch("KNOWLEDGE_SEARCH");
 
   const GoogleCloudDialogflowV2SuggestionFeatureType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowV2SuggestionFeatureType fromValue(String value) {

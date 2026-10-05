@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetTagsItem {
   /// [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
-  final pulumi.Input<String>? tagKey;
+  final pulumi.Input<String?>? tagKey;
   /// [Required] Friendly short name of the tag value, e.g. "production".
-  final pulumi.Input<String>? tagValue;
+  final pulumi.Input<String?>? tagValue;
 
   /// Creates a new [DatasetTagsItem].
   /// [tagKey] [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.

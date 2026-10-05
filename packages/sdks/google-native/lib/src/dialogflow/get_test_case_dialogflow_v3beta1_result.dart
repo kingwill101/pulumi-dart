@@ -8,21 +8,21 @@ import 'google_cloud_dialogflow_cx_v3beta1_test_config_response.dart';
 /// Result data returned by getTestCase.
 class GetTestCaseDialogflowV3beta1Result {
   /// When the test was created.
-  final String creationTime;
+  final String? creationTime;
   /// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-  final String displayName;
+  final String? displayName;
   /// The latest test result.
-  final GoogleCloudDialogflowCxV3beta1TestCaseResultResponse lastTestResult;
+  final GoogleCloudDialogflowCxV3beta1TestCaseResultResponse? lastTestResult;
   /// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
-  final String name;
+  final String? name;
   /// Additional freeform notes about the test case. Limit of 400 characters.
-  final String notes;
+  final String? notes;
   /// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
-  final List<String> tags;
+  final List<String>? tags;
   /// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
-  final List<GoogleCloudDialogflowCxV3beta1ConversationTurnResponse> testCaseConversationTurns;
+  final List<GoogleCloudDialogflowCxV3beta1ConversationTurnResponse>? testCaseConversationTurns;
   /// Config for the test case.
-  final GoogleCloudDialogflowCxV3beta1TestConfigResponse testConfig;
+  final GoogleCloudDialogflowCxV3beta1TestConfigResponse? testConfig;
 
   /// Creates a new [GetTestCaseDialogflowV3beta1Result].
   /// [creationTime] When the test was created.
@@ -34,39 +34,39 @@ class GetTestCaseDialogflowV3beta1Result {
   /// [testCaseConversationTurns] The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
   /// [testConfig] Config for the test case.
   const GetTestCaseDialogflowV3beta1Result({
-    required this.creationTime,
-    required this.displayName,
-    required this.lastTestResult,
-    required this.name,
-    required this.notes,
-    required this.tags,
-    required this.testCaseConversationTurns,
-    required this.testConfig,
+    this.creationTime,
+    this.displayName,
+    this.lastTestResult,
+    this.name,
+    this.notes,
+    this.tags,
+    this.testCaseConversationTurns,
+    this.testConfig,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'creationTime': creationTime,
-      'displayName': displayName,
-      'lastTestResult': lastTestResult.toMap(),
-      'name': name,
-      'notes': notes,
-      'tags': tags,
-      'testCaseConversationTurns': pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1ConversationTurnResponse, Map<String, dynamic>>(testCaseConversationTurns, (value) => value.toMap()),
-      'testConfig': testConfig.toMap(),
+      'creationTime': ?creationTime,
+      'displayName': ?displayName,
+      'lastTestResult': ?lastTestResult?.toMap(),
+      'name': ?name,
+      'notes': ?notes,
+      'tags': ?tags,
+      'testCaseConversationTurns': ?(() { final guardedValue = testCaseConversationTurns; if (guardedValue == null) return null; return pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1ConversationTurnResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'testConfig': ?testConfig?.toMap(),
     };
   }
 
   factory GetTestCaseDialogflowV3beta1Result.fromMap(Map<String, dynamic> map) {
     return GetTestCaseDialogflowV3beta1Result(
-      creationTime: map['creationTime'] as String,
-      displayName: map['displayName'] as String,
-      lastTestResult: GoogleCloudDialogflowCxV3beta1TestCaseResultResponse.fromMap((map['lastTestResult']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      notes: map['notes'] as String,
-      tags: (map['tags'] as List).cast<String>(),
-      testCaseConversationTurns: pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ConversationTurnResponse>(map['testCaseConversationTurns']!, (value) => GoogleCloudDialogflowCxV3beta1ConversationTurnResponse.fromMap((value as Map).cast<String, dynamic>())),
-      testConfig: GoogleCloudDialogflowCxV3beta1TestConfigResponse.fromMap((map['testConfig']! as Map).cast<String, dynamic>()),
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastTestResult: (() { final guardedValue = map['lastTestResult']; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1TestCaseResultResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      testCaseConversationTurns: (() { final guardedValue = map['testCaseConversationTurns']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ConversationTurnResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3beta1ConversationTurnResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      testConfig: (() { final guardedValue = map['testConfig']; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1TestConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

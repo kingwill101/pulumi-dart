@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
-enum MaintenanceWindowUpdateTrack {
+enum MaintenanceWindowUpdateTrack implements pulumi.PulumiEnum<String> {
   sqlUpdateTrackUnspecified("SQL_UPDATE_TRACK_UNSPECIFIED"),
   canary("canary"),
   stable("stable"),
   week5("week5");
 
   const MaintenanceWindowUpdateTrack(this.wireValue);
+  @override
   final String wireValue;
 
   static MaintenanceWindowUpdateTrack fromValue(String value) {

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Target scaling by disk usage. Only applicable in the App Engine flexible environment.
 class DiskUtilizationAppengineV1beta {
   /// Target bytes read per second.
-  final pulumi.Input<int>? targetReadBytesPerSecond;
+  final pulumi.Input<int?>? targetReadBytesPerSecond;
   /// Target ops read per seconds.
-  final pulumi.Input<int>? targetReadOpsPerSecond;
+  final pulumi.Input<int?>? targetReadOpsPerSecond;
   /// Target bytes written per second.
-  final pulumi.Input<int>? targetWriteBytesPerSecond;
+  final pulumi.Input<int?>? targetWriteBytesPerSecond;
   /// Target ops written per second.
-  final pulumi.Input<int>? targetWriteOpsPerSecond;
+  final pulumi.Input<int?>? targetWriteOpsPerSecond;
 
   /// Creates a new [DiskUtilizationAppengineV1beta].
   /// [targetReadBytesPerSecond] Target bytes read per second.
@@ -36,10 +36,10 @@ class DiskUtilizationAppengineV1beta {
 
   factory DiskUtilizationAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return DiskUtilizationAppengineV1beta(
-      targetReadBytesPerSecond: (() { final guardedValue = map['targetReadBytesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      targetReadOpsPerSecond: (() { final guardedValue = map['targetReadOpsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      targetWriteBytesPerSecond: (() { final guardedValue = map['targetWriteBytesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      targetWriteOpsPerSecond: (() { final guardedValue = map['targetWriteOpsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetReadBytesPerSecond: (() { final guardedValue = map['targetReadBytesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      targetReadOpsPerSecond: (() { final guardedValue = map['targetReadOpsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      targetWriteBytesPerSecond: (() { final guardedValue = map['targetWriteBytesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      targetWriteOpsPerSecond: (() { final guardedValue = map['targetWriteOpsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -9,13 +9,13 @@ import 'google_cloud_dataplex_v1_storage_format_json_options.dart';
 /// Describes the format of the data within its storage location.
 class GoogleCloudDataplexV1StorageFormat {
   /// Optional. The compression type associated with the stored data. If unspecified, the data is uncompressed.
-  final pulumi.Input<GoogleCloudDataplexV1StorageFormatCompressionFormat>? compressionFormat;
+  final pulumi.Input<GoogleCloudDataplexV1StorageFormatCompressionFormat?>? compressionFormat;
   /// Optional. Additional information about CSV formatted data.
-  final pulumi.Input<GoogleCloudDataplexV1StorageFormatCsvOptions>? csv;
+  final pulumi.Input<GoogleCloudDataplexV1StorageFormatCsvOptions?>? csv;
   /// Optional. Additional information about iceberg tables.
-  final pulumi.Input<GoogleCloudDataplexV1StorageFormatIcebergOptions>? iceberg;
+  final pulumi.Input<GoogleCloudDataplexV1StorageFormatIcebergOptions?>? iceberg;
   /// Optional. Additional information about CSV formatted data.
-  final pulumi.Input<GoogleCloudDataplexV1StorageFormatJsonOptions>? json;
+  final pulumi.Input<GoogleCloudDataplexV1StorageFormatJsonOptions?>? json;
   /// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/x-parquet+iceberg application/x-avro+iceberg application/x-orc+iceberg application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
   final pulumi.Input<String> mimeType;
 

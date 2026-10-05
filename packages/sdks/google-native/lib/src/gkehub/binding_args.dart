@@ -8,16 +8,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_gkehub_v1_binding_args_doc}
 class BindingArgs {
   /// Optional. Labels for this MembershipBinding.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Required. The ID to use for the MembershipBinding.
   final pulumi.Input<String> membershipBindingId;
   final pulumi.Input<String> membershipId;
   /// The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// A Scope resource name in the format `projects/*/locations/*/scopes/*`.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [BindingArgs].
   /// [labels] Optional. Labels for this MembershipBinding.

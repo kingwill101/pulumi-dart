@@ -6,9 +6,9 @@ import 'method_policy.dart';
 /// Selects and configures the service controller used by the service. Example: control: environment: servicecontrol.googleapis.com
 class Control {
   /// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
-  final pulumi.Input<String>? environment;
+  final pulumi.Input<String?>? environment;
   /// Defines policies applying to the API methods of the service.
-  final pulumi.Input<List<MethodPolicy>>? methodPolicies;
+  final pulumi.Input<List<MethodPolicy>?>? methodPolicies;
 
   /// Creates a new [Control].
   /// [environment] The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com

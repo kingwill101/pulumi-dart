@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 class WorkloadIdentityConfigContainerV1beta1 {
   /// IAM Identity Namespace to attach all Kubernetes Service Accounts to.
-  final pulumi.Input<String>? identityNamespace;
+  final pulumi.Input<String?>? identityNamespace;
   /// identity provider is the third party identity provider.
-  final pulumi.Input<String>? identityProvider;
+  final pulumi.Input<String?>? identityProvider;
   /// The workload pool to attach all Kubernetes service accounts to.
-  final pulumi.Input<String>? workloadPool;
+  final pulumi.Input<String?>? workloadPool;
 
   /// Creates a new [WorkloadIdentityConfigContainerV1beta1].
   /// [identityNamespace] IAM Identity Namespace to attach all Kubernetes Service Accounts to.

@@ -29,8 +29,25 @@ class AccessLevelAccesscontextmanagerV1beta extends pulumi.CustomResource {
           'google-native:accesscontextmanager/v1beta:AccessLevel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['accessPolicyId']).merge(options),
         ) {
+    accessPolicyId = registerOutput<String>('accessPolicyId');
+    basic = registerOutput<BasicLevelResponseAccesscontextmanagerV1beta>('basic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BasicLevelResponseAccesscontextmanagerV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    custom = registerOutput<CustomLevelResponseAccesscontextmanagerV1beta>('custom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLevelResponseAccesscontextmanagerV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    title = registerOutput<String>('title');
+  }
+
+  /// Creates a typed reference to an existing [AccessLevelAccesscontextmanagerV1beta] resource.
+  AccessLevelAccesscontextmanagerV1beta.reference(String urn)
+    : super(
+        'google-native:accesscontextmanager/v1beta:AccessLevel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     basic = registerOutput<BasicLevelResponseAccesscontextmanagerV1beta>('basic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BasicLevelResponseAccesscontextmanagerV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     custom = registerOutput<CustomLevelResponseAccesscontextmanagerV1beta>('custom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLevelResponseAccesscontextmanagerV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });

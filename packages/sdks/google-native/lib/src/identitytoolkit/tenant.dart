@@ -61,7 +61,7 @@ class Tenant extends pulumi.CustomResource {
           'google-native:identitytoolkit/v2:Tenant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     allowPasswordSignup = registerOutput<bool>('allowPasswordSignup');
     autodeleteAnonymousUsers = registerOutput<bool>('autodeleteAnonymousUsers');
@@ -80,6 +80,35 @@ class Tenant extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     recaptchaConfig = registerOutput<GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse>('recaptchaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     smsRegionConfig = registerOutput<GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse>('smsRegionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    testPhoneNumbers = registerOutput<Map<String, String>>('testPhoneNumbers');
+    testPhoneNumbers = registerOutput<Map<String, String>>('testPhoneNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Tenant] resource.
+  Tenant.reference(String urn)
+    : super(
+        'google-native:identitytoolkit/v2:Tenant',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowPasswordSignup = registerOutput<bool>('allowPasswordSignup');
+    autodeleteAnonymousUsers = registerOutput<bool>('autodeleteAnonymousUsers');
+    client = registerOutput<GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponse>('client', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    disableAuth = registerOutput<bool>('disableAuth');
+    displayName = registerOutput<String>('displayName');
+    emailPrivacyConfig = registerOutput<GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse>('emailPrivacyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enableAnonymousUser = registerOutput<bool>('enableAnonymousUser');
+    enableEmailLinkSignin = registerOutput<bool>('enableEmailLinkSignin');
+    hashConfig = registerOutput<GoogleCloudIdentitytoolkitAdminV2HashConfigResponse>('hashConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2HashConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inheritance = registerOutput<GoogleCloudIdentitytoolkitAdminV2InheritanceResponse>('inheritance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2InheritanceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mfaConfig = registerOutput<GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse>('mfaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitoring = registerOutput<GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse>('monitoring', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    passwordPolicyConfig = registerOutput<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse>('passwordPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    recaptchaConfig = registerOutput<GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse>('recaptchaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    smsRegionConfig = registerOutput<GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse>('smsRegionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    testPhoneNumbers = registerOutput<Map<String, String>>('testPhoneNumbers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

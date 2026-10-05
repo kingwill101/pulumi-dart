@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NodeManagement defines the set of node management services turned on for the node pool.
 class NodeManagementContainerV1beta1 {
   /// Whether the nodes will be automatically repaired.
-  final pulumi.Input<bool>? autoRepair;
+  final pulumi.Input<bool?>? autoRepair;
   /// Whether the nodes will be automatically upgraded.
-  final pulumi.Input<bool>? autoUpgrade;
+  final pulumi.Input<bool?>? autoUpgrade;
   /// Specifies the Auto Upgrade knobs for the node pool.
-  final pulumi.Input<Map<String, dynamic>>? upgradeOptions;
+  final pulumi.Input<Map<String, dynamic>?>? upgradeOptions;
 
   /// Creates a new [NodeManagementContainerV1beta1].
   /// [autoRepair] Whether the nodes will be automatically repaired.

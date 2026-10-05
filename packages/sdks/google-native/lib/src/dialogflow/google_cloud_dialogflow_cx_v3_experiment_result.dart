@@ -6,9 +6,9 @@ import 'google_cloud_dialogflow_cx_v3_experiment_result_version_metrics.dart';
 /// The inference result which includes an objective metric to optimize and the confidence interval.
 class GoogleCloudDialogflowCxV3ExperimentResult {
   /// The last time the experiment's stats data was updated. Will have default value if stats have never been computed for this experiment.
-  final pulumi.Input<String>? lastUpdateTime;
+  final pulumi.Input<String?>? lastUpdateTime;
   /// Version variants and metrics.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics>>? versionMetrics;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics>?>? versionMetrics;
 
   /// Creates a new [GoogleCloudDialogflowCxV3ExperimentResult].
   /// [lastUpdateTime] The last time the experiment's stats data was updated. Will have default value if stats have never been computed for this experiment.

@@ -21,7 +21,7 @@ class GoogleCloudRunV2TCPSocketActionResponse {
 
   factory GoogleCloudRunV2TCPSocketActionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2TCPSocketActionResponse(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
     );
   }
 }

@@ -10,19 +10,19 @@ import 'network_config.dart';
 /// {@macro pulumi_backupdr_v1_management_server_args_doc}
 class ManagementServerArgs {
   /// Optional. The description of the ManagementServer instance (2048 characters or less).
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Server specified ETag for the ManagementServer resource to prevent simultaneous updates from overwiting each other.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Optional. Resource labels to represent user provided metadata. Labels currently defined: 1. migrate_from_go= If set to true, the MS is created in migration ready mode.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Required. The name of the management server to create. The name must be unique for the specified project and location.
   final pulumi.Input<String> managementServerId;
   /// VPC networks to which the ManagementServer instance is connected. For this version, only a single network is supported.
   final pulumi.Input<List<NetworkConfig>> networks;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// The type of the ManagementServer resource.
   final pulumi.Input<ManagementServerType> type;
 

@@ -31,9 +31,9 @@ class RateLimitsResponse {
 
   factory RateLimitsResponse.fromMap(Map<String, dynamic> map) {
     return RateLimitsResponse(
-      maxBurstSize: pulumi.Input.fromValue(map['maxBurstSize'] as int),
-      maxConcurrentDispatches: pulumi.Input.fromValue(map['maxConcurrentDispatches'] as int),
-      maxDispatchesPerSecond: pulumi.Input.fromValue(map['maxDispatchesPerSecond'] as double),
+      maxBurstSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxBurstSize'])),
+      maxConcurrentDispatches: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConcurrentDispatches'])),
+      maxDispatchesPerSecond: pulumi.Input.fromValue((map['maxDispatchesPerSecond'] as num).toDouble()),
     );
   }
 }

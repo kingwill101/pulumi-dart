@@ -33,8 +33,27 @@ class Datastore extends pulumi.CustomResource {
           'google-native:apigee/v1:Datastore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    datastoreConfig = registerOutput<GoogleCloudApigeeV1DatastoreConfigResponse>('datastoreConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1DatastoreConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    lastUpdateTime = registerOutput<String>('lastUpdateTime');
+    org = registerOutput<String>('org');
+    organizationId = registerOutput<String>('organizationId');
+    self = registerOutput<String>('self');
+    targetType = registerOutput<String>('targetType');
+  }
+
+  /// Creates a typed reference to an existing [Datastore] resource.
+  Datastore.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Datastore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     datastoreConfig = registerOutput<GoogleCloudApigeeV1DatastoreConfigResponse>('datastoreConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1DatastoreConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');

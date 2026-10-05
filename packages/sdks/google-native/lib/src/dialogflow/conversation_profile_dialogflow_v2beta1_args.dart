@@ -15,33 +15,33 @@ import 'google_cloud_dialogflow_v2beta1_synthesize_speech_config.dart';
 /// {@macro pulumi_dialogflow_v2beta1_conversation_profile_dialogflow_v2beta1_args_doc}
 class ConversationProfileDialogflowV2beta1Args {
   /// Configuration for an automated agent to use with this profile.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1AutomatedAgentConfig>? automatedAgentConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1AutomatedAgentConfig?>? automatedAgentConfig;
   /// Human readable name for this profile. Max length 1024 bytes.
   final pulumi.Input<String> displayName;
   /// Configuration for agent assistance to use with this profile.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig>? humanAgentAssistantConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig?>? humanAgentAssistantConfig;
   /// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig>? humanAgentHandoffConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig?>? humanAgentHandoffConfig;
   /// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
-  final pulumi.Input<String>? languageCode;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? languageCode;
+  final pulumi.Input<String?>? location;
   /// Configuration for logging conversation lifecycle events.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1LoggingConfig>? loggingConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1LoggingConfig?>? loggingConfig;
   /// The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration for publishing new message events. Event will be sent in format of ConversationEvent
-  final pulumi.Input<GoogleCloudDialogflowV2beta1NotificationConfig>? newMessageEventNotificationConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1NotificationConfig?>? newMessageEventNotificationConfig;
   /// Configuration for publishing conversation lifecycle events.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1NotificationConfig>? notificationConfig;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1NotificationConfig?>? notificationConfig;
+  final pulumi.Input<String?>? project;
   /// Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
-  final pulumi.Input<String>? securitySettings;
+  final pulumi.Input<String?>? securitySettings;
   /// Settings for speech transcription.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1SpeechToTextConfig>? sttConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1SpeechToTextConfig?>? sttConfig;
   /// The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig>? ttsConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig?>? ttsConfig;
 
   /// Creates a new [ConversationProfileDialogflowV2beta1Args].
   /// [automatedAgentConfig] Configuration for an automated agent to use with this profile.

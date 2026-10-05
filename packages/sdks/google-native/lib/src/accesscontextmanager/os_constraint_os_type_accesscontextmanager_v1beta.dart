@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The allowed OS type.
-enum OsConstraintOsTypeAccesscontextmanagerV1beta {
+enum OsConstraintOsTypeAccesscontextmanagerV1beta implements pulumi.PulumiEnum<String> {
   osUnspecified("OS_UNSPECIFIED"),
   desktopMac("DESKTOP_MAC"),
   desktopWindows("DESKTOP_WINDOWS"),
@@ -9,6 +11,7 @@ enum OsConstraintOsTypeAccesscontextmanagerV1beta {
   ios("IOS");
 
   const OsConstraintOsTypeAccesscontextmanagerV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static OsConstraintOsTypeAccesscontextmanagerV1beta fromValue(String value) {

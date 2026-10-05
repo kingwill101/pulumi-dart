@@ -7,8 +7,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_beta_get_network_firewall_policy_iam_policy_compute_beta_args_doc}
 class GetNetworkFirewallPolicyIamPolicyComputeBetaArgs {
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> resource;
 
   /// Creates a new [GetNetworkFirewallPolicyIamPolicyComputeBetaArgs].
@@ -31,7 +31,7 @@ class GetNetworkFirewallPolicyIamPolicyComputeBetaArgs {
 
   factory GetNetworkFirewallPolicyIamPolicyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkFirewallPolicyIamPolicyComputeBetaArgs(
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resource: pulumi.Input.fromValue(map['resource'] as String),
     );

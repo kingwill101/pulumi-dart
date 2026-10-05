@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_containeranalysis_v1_get_occurrence_args_doc}
 class GetOccurrenceArgs {
   final pulumi.Input<String> occurrenceId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetOccurrenceArgs].
   /// [occurrenceId] Required.

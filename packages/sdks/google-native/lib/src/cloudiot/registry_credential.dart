@@ -6,7 +6,7 @@ import 'public_key_certificate.dart';
 /// A server-stored registry credential used to validate device credentials.
 class RegistryCredential {
   /// A public key certificate used to verify the device credentials.
-  final pulumi.Input<PublicKeyCertificate>? publicKeyCertificate;
+  final pulumi.Input<PublicKeyCertificate?>? publicKeyCertificate;
 
   /// Creates a new [RegistryCredential].
   /// [publicKeyCertificate] A public key certificate used to verify the device credentials.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of remediation that can be applied.
-enum RemediationRemediationType {
+enum RemediationRemediationType implements pulumi.PulumiEnum<String> {
   remediationTypeUnspecified("REMEDIATION_TYPE_UNSPECIFIED"),
   mitigation("MITIGATION"),
   noFixPlanned("NO_FIX_PLANNED"),
@@ -8,6 +10,7 @@ enum RemediationRemediationType {
   workaround("WORKAROUND");
 
   const RemediationRemediationType(this.wireValue);
+  @override
   final String wireValue;
 
   static RemediationRemediationType fromValue(String value) {

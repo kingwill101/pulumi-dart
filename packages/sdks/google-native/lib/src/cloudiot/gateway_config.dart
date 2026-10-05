@@ -7,9 +7,9 @@ import 'gateway_config_gateway_type.dart';
 /// Gateway-related configuration and state.
 class GatewayConfig {
   /// Indicates how to authorize and/or authenticate devices to access the gateway.
-  final pulumi.Input<GatewayConfigGatewayAuthMethod>? gatewayAuthMethod;
+  final pulumi.Input<GatewayConfigGatewayAuthMethod?>? gatewayAuthMethod;
   /// Indicates whether the device is a gateway.
-  final pulumi.Input<GatewayConfigGatewayType>? gatewayType;
+  final pulumi.Input<GatewayConfigGatewayType?>? gatewayType;
 
   /// Creates a new [GatewayConfig].
   /// [gatewayAuthMethod] Indicates how to authorize and/or authenticate devices to access the gateway.

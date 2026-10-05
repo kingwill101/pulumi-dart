@@ -28,7 +28,7 @@ class BareMetalLvpShareConfigResponse {
   factory BareMetalLvpShareConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalLvpShareConfigResponse(
       lvpConfig: pulumi.Input.fromValue(BareMetalLvpConfigResponse.fromMap((map['lvpConfig']! as Map).cast<String, dynamic>())),
-      sharedPathPvCount: pulumi.Input.fromValue(map['sharedPathPvCount'] as int),
+      sharedPathPvCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sharedPathPvCount'])),
     );
   }
 }

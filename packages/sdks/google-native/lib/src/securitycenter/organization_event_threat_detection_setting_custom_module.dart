@@ -34,9 +34,29 @@ class OrganizationEventThreatDetectionSettingCustomModule extends pulumi.CustomR
           'google-native:securitycenter/v1:OrganizationEventThreatDetectionSettingCustomModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
-    config = registerOutput<Map<String, String>>('config');
+    config = registerOutput<Map<String, String>>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    enablementState = registerOutput<String>('enablementState');
+    lastEditor = registerOutput<String>('lastEditor');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationEventThreatDetectionSettingCustomModule] resource.
+  OrganizationEventThreatDetectionSettingCustomModule.reference(String urn)
+    : super(
+        'google-native:securitycenter/v1:OrganizationEventThreatDetectionSettingCustomModule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    config = registerOutput<Map<String, String>>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     enablementState = registerOutput<String>('enablementState');

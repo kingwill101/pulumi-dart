@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and "shoes": * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
 class GoogleCloudRetailV2betaRuleTwowaySynonymsAction {
   /// Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
-  final pulumi.Input<List<String>>? synonyms;
+  final pulumi.Input<List<String>?>? synonyms;
 
   /// Creates a new [GoogleCloudRetailV2betaRuleTwowaySynonymsAction].
   /// [synonyms] Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.

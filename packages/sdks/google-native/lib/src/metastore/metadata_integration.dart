@@ -6,7 +6,7 @@ import 'data_catalog_config.dart';
 /// Specifies how metastore metadata should be integrated with external services.
 class MetadataIntegration {
   /// Optional. The integration config for the Data Catalog service.
-  final pulumi.Input<DataCatalogConfig>? dataCatalogConfig;
+  final pulumi.Input<DataCatalogConfig?>? dataCatalogConfig;
 
   /// Creates a new [MetadataIntegration].
   /// [dataCatalogConfig] Optional. The integration config for the Data Catalog service.

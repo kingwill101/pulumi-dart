@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The online availability of the Product. Default to Availability.IN_STOCK. Corresponding properties: Google Merchant Center property [availability](https://support.google.com/merchants/answer/6324448). Schema.org property [Offer.availability](https://schema.org/availability).
-enum ProductAvailability {
+enum ProductAvailability implements pulumi.PulumiEnum<String> {
   availabilityUnspecified("AVAILABILITY_UNSPECIFIED"),
   inStock("IN_STOCK"),
   outOfStock("OUT_OF_STOCK"),
@@ -7,6 +9,7 @@ enum ProductAvailability {
   backorder("BACKORDER");
 
   const ProductAvailability(this.wireValue);
+  @override
   final String wireValue;
 
   static ProductAvailability fromValue(String value) {

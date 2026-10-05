@@ -9,8 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGameServerDeploymentIamPolicyGameservicesV1betaArgs {
   final pulumi.Input<String> gameServerDeploymentId;
   final pulumi.Input<String> location;
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetGameServerDeploymentIamPolicyGameservicesV1betaArgs].
   /// [gameServerDeploymentId] Required.
@@ -37,7 +37,7 @@ class GetGameServerDeploymentIamPolicyGameservicesV1betaArgs {
     return GetGameServerDeploymentIamPolicyGameservicesV1betaArgs(
       gameServerDeploymentId: pulumi.Input.fromValue(map['gameServerDeploymentId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

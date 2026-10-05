@@ -34,6 +34,17 @@ Future<GetEnvironmentResult> getEnvironment(
   return GetEnvironmentResult.fromMap(result);
 }
 
+pulumi.Output<GetEnvironmentResult> getEnvironmentOutput(
+  GetEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:notebooks/v1:getEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentResult.fromMap);
+}
+
 /// Gets details of executions
 /// [args] Arguments passed to this invoke. {@macro pulumi_notebooks_v1_get_execution_args_doc}
 /// [options] Invoke options controlling this call.
@@ -48,6 +59,17 @@ Future<GetExecutionResult> getExecution(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExecutionResult.fromMap(result);
+}
+
+pulumi.Output<GetExecutionResult> getExecutionOutput(
+  GetExecutionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:notebooks/v1:getExecution',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExecutionResult.fromMap);
 }
 
 /// Gets details of a single Instance.
@@ -66,6 +88,17 @@ Future<GetInstanceResult> getInstance(
   return GetInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:notebooks/v1:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_notebooks_v1_get_instance_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -80,6 +113,17 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
+  GetInstanceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:notebooks/v1:getInstanceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceIamPolicyResult.fromMap);
 }
 
 /// Gets details of a single Runtime. The location must be a regional endpoint rather than zonal.
@@ -98,6 +142,17 @@ Future<GetRuntimeResult> getRuntime(
   return GetRuntimeResult.fromMap(result);
 }
 
+pulumi.Output<GetRuntimeResult> getRuntimeOutput(
+  GetRuntimeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:notebooks/v1:getRuntime',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRuntimeResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_notebooks_v1_get_runtime_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -112,6 +167,17 @@ Future<GetRuntimeIamPolicyResult> getRuntimeIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRuntimeIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRuntimeIamPolicyResult> getRuntimeIamPolicyOutput(
+  GetRuntimeIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:notebooks/v1:getRuntimeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRuntimeIamPolicyResult.fromMap);
 }
 
 /// Gets details of schedule
@@ -130,6 +196,17 @@ Future<GetScheduleResult> getSchedule(
   return GetScheduleResult.fromMap(result);
 }
 
+pulumi.Output<GetScheduleResult> getScheduleOutput(
+  GetScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:notebooks/v1:getSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScheduleResult.fromMap);
+}
+
 /// Gets details of a single Instance.
 /// [args] Arguments passed to this invoke. {@macro pulumi_notebooks_v2_get_instance_notebooks_v2_args_doc}
 /// [options] Invoke options controlling this call.
@@ -146,6 +223,17 @@ Future<GetInstanceNotebooksV2Result> getInstanceNotebooksV2(
   return GetInstanceNotebooksV2Result.fromMap(result);
 }
 
+pulumi.Output<GetInstanceNotebooksV2Result> getInstanceNotebooksV2Output(
+  GetInstanceNotebooksV2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:notebooks/v2:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceNotebooksV2Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_notebooks_v2_get_instance_iam_policy_notebooks_v2_args_doc}
 /// [options] Invoke options controlling this call.
@@ -160,4 +248,15 @@ Future<GetInstanceIamPolicyNotebooksV2Result> getInstanceIamPolicyNotebooksV2(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceIamPolicyNotebooksV2Result.fromMap(result);
+}
+
+pulumi.Output<GetInstanceIamPolicyNotebooksV2Result> getInstanceIamPolicyNotebooksV2Output(
+  GetInstanceIamPolicyNotebooksV2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:notebooks/v2:getInstanceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceIamPolicyNotebooksV2Result.fromMap);
 }

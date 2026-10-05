@@ -6,27 +6,27 @@ import 'google_devtools_remotebuildexecution_admin_v1alpha_accelerator_config.da
 /// Defines the configuration to be used for creating workers in the worker pool.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
   /// The accelerator card attached to each VM.
-  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig>? accelerator;
+  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig?>? accelerator;
   /// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
   final pulumi.Input<String> diskSizeGb;
   /// Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
   final pulumi.Input<String> diskType;
   /// Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
   final pulumi.Input<String> machineType;
   /// The maximum number of actions a worker can execute concurrently.
-  final pulumi.Input<String>? maxConcurrentActions;
+  final pulumi.Input<String?>? maxConcurrentActions;
   /// Minimum CPU platform to use when creating the worker. See [CPU Platforms](https://cloud.google.com/compute/docs/cpu-platforms).
-  final pulumi.Input<String>? minCpuPlatform;
+  final pulumi.Input<String?>? minCpuPlatform;
   /// Determines the type of network access granted to workers. Possible values: - "public": Workers can connect to the public internet. - "private": Workers can only connect to Google APIs and services. - "restricted-private": Workers can only connect to Google APIs that are reachable through `restricted.googleapis.com` (`199.36.153.4/30`).
-  final pulumi.Input<String>? networkAccess;
+  final pulumi.Input<String?>? networkAccess;
   /// Determines whether the worker is reserved (equivalent to a Compute Engine on-demand VM and therefore won't be preempted). See [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for more details.
-  final pulumi.Input<bool>? reserved;
+  final pulumi.Input<bool?>? reserved;
   /// The node type name to be used for sole-tenant nodes.
-  final pulumi.Input<String>? soleTenantNodeType;
+  final pulumi.Input<String?>? soleTenantNodeType;
   /// The name of the image used by each VM.
-  final pulumi.Input<String>? vmImage;
+  final pulumi.Input<String?>? vmImage;
 
   /// Creates a new [GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig].
   /// [accelerator] The accelerator card attached to each VM.

@@ -8,12 +8,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apigee_v1_resourcefile_args_doc}
 class ResourcefileArgs {
   /// The HTTP Content-Type header value specifying the content type of the body.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// The HTTP request/response body as raw binary.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   final pulumi.Input<String> environmentId;
   /// Application specific response metadata. Must be set in the first response for streaming APIs.
-  final pulumi.Input<List<Map<String, String>>>? extensions;
+  final pulumi.Input<List<Map<String, String>>?>? extensions;
   /// File to upload.
   final pulumi.Input<dynamic>? file;
   /// Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
@@ -60,7 +60,7 @@ class ResourcefileArgs {
       contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
-      extensions: (() { final guardedValue = map['extensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<Map<String, String>>()); })(),
+      extensions: (() { final guardedValue = map['extensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>())); })(),
       file: (() { final guardedValue = map['file']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),

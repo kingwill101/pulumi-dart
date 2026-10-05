@@ -53,11 +53,11 @@ class HealthCheckResponseAppengineV1beta {
     return HealthCheckResponseAppengineV1beta(
       checkInterval: pulumi.Input.fromValue(map['checkInterval'] as String),
       disableHealthCheck: pulumi.Input.fromValue(map['disableHealthCheck'] as bool),
-      healthyThreshold: pulumi.Input.fromValue(map['healthyThreshold'] as int),
+      healthyThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['healthyThreshold'])),
       host: pulumi.Input.fromValue(map['host'] as String),
-      restartThreshold: pulumi.Input.fromValue(map['restartThreshold'] as int),
+      restartThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['restartThreshold'])),
       timeout: pulumi.Input.fromValue(map['timeout'] as String),
-      unhealthyThreshold: pulumi.Input.fromValue(map['unhealthyThreshold'] as int),
+      unhealthyThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['unhealthyThreshold'])),
     );
   }
 }

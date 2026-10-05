@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
-enum BinaryAuthorizationEvaluationModeContainerV1beta1 {
+enum BinaryAuthorizationEvaluationModeContainerV1beta1 implements pulumi.PulumiEnum<String> {
   evaluationModeUnspecified("EVALUATION_MODE_UNSPECIFIED"),
   disabled("DISABLED"),
   projectSingletonPolicyEnforce("PROJECT_SINGLETON_POLICY_ENFORCE"),
@@ -7,6 +9,7 @@ enum BinaryAuthorizationEvaluationModeContainerV1beta1 {
   policyBindingsAndProjectSingletonPolicyEnforce("POLICY_BINDINGS_AND_PROJECT_SINGLETON_POLICY_ENFORCE");
 
   const BinaryAuthorizationEvaluationModeContainerV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static BinaryAuthorizationEvaluationModeContainerV1beta1 fromValue(String value) {

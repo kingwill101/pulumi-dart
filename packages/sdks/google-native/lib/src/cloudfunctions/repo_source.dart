@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Location of the source in a Google Cloud Source Repository.
 class RepoSource {
   /// Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-  final pulumi.Input<String>? branchName;
+  final pulumi.Input<String?>? branchName;
   /// Explicit commit SHA to build.
-  final pulumi.Input<String>? commitSha;
+  final pulumi.Input<String?>? commitSha;
   /// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution. eg. helloworld (no leading slash allowed)
-  final pulumi.Input<String>? dir;
+  final pulumi.Input<String?>? dir;
   /// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Name of the Cloud Source Repository.
-  final pulumi.Input<String>? repoName;
+  final pulumi.Input<String?>? repoName;
   /// Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-  final pulumi.Input<String>? tagName;
+  final pulumi.Input<String?>? tagName;
 
   /// Creates a new [RepoSource].
   /// [branchName] Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax

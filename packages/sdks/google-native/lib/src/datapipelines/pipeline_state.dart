@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through UpdatePipeline requests.
-enum PipelineState {
+enum PipelineState implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   stateResuming("STATE_RESUMING"),
   stateActive("STATE_ACTIVE"),
@@ -8,6 +10,7 @@ enum PipelineState {
   statePaused("STATE_PAUSED");
 
   const PipelineState(this.wireValue);
+  @override
   final String wireValue;
 
   static PipelineState fromValue(String value) {

@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDefaultObjectAccessControlArgs {
   final pulumi.Input<String> bucket;
   final pulumi.Input<String> entity;
-  final pulumi.Input<String>? userProject;
+  final pulumi.Input<String?>? userProject;
 
   /// Creates a new [GetDefaultObjectAccessControlArgs].
   /// [bucket] Required.

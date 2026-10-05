@@ -13,20 +13,20 @@ import 'cvssuser_interaction.dart';
 
 /// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing various versions of CVSS rather than making a separate proto for storing a specific version.
 class CVSS {
-  final pulumi.Input<CVSSAttackComplexity>? attackComplexity;
+  final pulumi.Input<CVSSAttackComplexity?>? attackComplexity;
   /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
-  final pulumi.Input<CVSSAttackVector>? attackVector;
-  final pulumi.Input<CVSSAuthentication>? authentication;
-  final pulumi.Input<CVSSAvailabilityImpact>? availabilityImpact;
+  final pulumi.Input<CVSSAttackVector?>? attackVector;
+  final pulumi.Input<CVSSAuthentication?>? authentication;
+  final pulumi.Input<CVSSAvailabilityImpact?>? availabilityImpact;
   /// The base score is a function of the base metric scores.
-  final pulumi.Input<double>? baseScore;
-  final pulumi.Input<CVSSConfidentialityImpact>? confidentialityImpact;
-  final pulumi.Input<double>? exploitabilityScore;
-  final pulumi.Input<double>? impactScore;
-  final pulumi.Input<CVSSIntegrityImpact>? integrityImpact;
-  final pulumi.Input<CVSSPrivilegesRequired>? privilegesRequired;
-  final pulumi.Input<CVSSScope>? scope;
-  final pulumi.Input<CVSSUserInteraction>? userInteraction;
+  final pulumi.Input<double?>? baseScore;
+  final pulumi.Input<CVSSConfidentialityImpact?>? confidentialityImpact;
+  final pulumi.Input<double?>? exploitabilityScore;
+  final pulumi.Input<double?>? impactScore;
+  final pulumi.Input<CVSSIntegrityImpact?>? integrityImpact;
+  final pulumi.Input<CVSSPrivilegesRequired?>? privilegesRequired;
+  final pulumi.Input<CVSSScope?>? scope;
+  final pulumi.Input<CVSSUserInteraction?>? userInteraction;
 
   /// Creates a new [CVSS].
   /// [attackComplexity] Optional.
@@ -79,10 +79,10 @@ class CVSS {
       attackVector: (() { final guardedValue = map['attackVector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSAttackVector.fromValue(guardedValue as String)); })(),
       authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSAuthentication.fromValue(guardedValue as String)); })(),
       availabilityImpact: (() { final guardedValue = map['availabilityImpact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSAvailabilityImpact.fromValue(guardedValue as String)); })(),
-      baseScore: (() { final guardedValue = map['baseScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      baseScore: (() { final guardedValue = map['baseScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       confidentialityImpact: (() { final guardedValue = map['confidentialityImpact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSConfidentialityImpact.fromValue(guardedValue as String)); })(),
-      exploitabilityScore: (() { final guardedValue = map['exploitabilityScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      impactScore: (() { final guardedValue = map['impactScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      exploitabilityScore: (() { final guardedValue = map['exploitabilityScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      impactScore: (() { final guardedValue = map['impactScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       integrityImpact: (() { final guardedValue = map['integrityImpact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSIntegrityImpact.fromValue(guardedValue as String)); })(),
       privilegesRequired: (() { final guardedValue = map['privilegesRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSPrivilegesRequired.fromValue(guardedValue as String)); })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSScope.fromValue(guardedValue as String)); })(),

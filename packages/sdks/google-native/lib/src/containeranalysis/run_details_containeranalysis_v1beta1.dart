@@ -6,9 +6,9 @@ import 'provenance_builder_containeranalysis_v1beta1.dart';
 import 'resource_descriptor_containeranalysis_v1beta1.dart';
 
 class RunDetailsContaineranalysisV1beta1 {
-  final pulumi.Input<ProvenanceBuilderContaineranalysisV1beta1>? builder;
-  final pulumi.Input<List<ResourceDescriptorContaineranalysisV1beta1>>? byproducts;
-  final pulumi.Input<BuildMetadataContaineranalysisV1beta1>? metadata;
+  final pulumi.Input<ProvenanceBuilderContaineranalysisV1beta1?>? builder;
+  final pulumi.Input<List<ResourceDescriptorContaineranalysisV1beta1>?>? byproducts;
+  final pulumi.Input<BuildMetadataContaineranalysisV1beta1?>? metadata;
 
   /// Creates a new [RunDetailsContaineranalysisV1beta1].
   /// [builder] Optional.

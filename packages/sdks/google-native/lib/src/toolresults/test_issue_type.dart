@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of issue. Required.
-enum TestIssueType {
+enum TestIssueType implements pulumi.PulumiEnum<String> {
   unspecifiedType("unspecifiedType"),
   fatalException("fatalException"),
   nativeCrash("nativeCrash"),
@@ -35,6 +37,7 @@ enum TestIssueType {
   assetIssue("assetIssue");
 
   const TestIssueType(this.wireValue);
+  @override
   final String wireValue;
 
   static TestIssueType fromValue(String value) {

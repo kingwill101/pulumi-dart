@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
-enum NetworkConfigConnectModeFileV1beta1 {
+enum NetworkConfigConnectModeFileV1beta1 implements pulumi.PulumiEnum<String> {
   connectModeUnspecified("CONNECT_MODE_UNSPECIFIED"),
   directPeering("DIRECT_PEERING"),
   privateServiceAccess("PRIVATE_SERVICE_ACCESS");
 
   const NetworkConfigConnectModeFileV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkConfigConnectModeFileV1beta1 fromValue(String value) {

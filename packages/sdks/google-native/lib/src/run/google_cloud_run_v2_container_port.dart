@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ContainerPort represents a network port in a single container.
 class GoogleCloudRunV2ContainerPort {
   /// Port number the container listens on. This must be a valid TCP port number, 0 &lt; container_port &lt; 65536.
-  final pulumi.Input<int>? containerPort;
+  final pulumi.Input<int?>? containerPort;
   /// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GoogleCloudRunV2ContainerPort].
   /// [containerPort] Port number the container listens on. This must be a valid TCP port number, 0 &lt; container_port &lt; 65536.
@@ -26,7 +26,7 @@ class GoogleCloudRunV2ContainerPort {
 
   factory GoogleCloudRunV2ContainerPort.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2ContainerPort(
-      containerPort: (() { final guardedValue = map['containerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      containerPort: (() { final guardedValue = map['containerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

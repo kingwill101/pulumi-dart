@@ -8,13 +8,13 @@ import 'google_firestore_admin_v1_vector_config.dart';
 /// A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
 class GoogleFirestoreAdminV1IndexField {
   /// Indicates that this field supports operations on `array_value`s.
-  final pulumi.Input<GoogleFirestoreAdminV1IndexFieldArrayConfig>? arrayConfig;
+  final pulumi.Input<GoogleFirestoreAdminV1IndexFieldArrayConfig?>? arrayConfig;
   /// Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
-  final pulumi.Input<String>? fieldPath;
+  final pulumi.Input<String?>? fieldPath;
   /// Indicates that this field supports ordering by the specified order or comparing using =, !=, &lt;, &lt;=, &gt;, &gt;=.
-  final pulumi.Input<GoogleFirestoreAdminV1IndexFieldOrder>? order;
+  final pulumi.Input<GoogleFirestoreAdminV1IndexFieldOrder?>? order;
   /// Indicates that this field supports nearest neighbors and distance operations on vector.
-  final pulumi.Input<GoogleFirestoreAdminV1VectorConfig>? vectorConfig;
+  final pulumi.Input<GoogleFirestoreAdminV1VectorConfig?>? vectorConfig;
 
   /// Creates a new [GoogleFirestoreAdminV1IndexField].
   /// [arrayConfig] Indicates that this field supports operations on `array_value`s.

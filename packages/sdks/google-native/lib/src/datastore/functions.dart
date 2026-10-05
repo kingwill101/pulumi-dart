@@ -17,3 +17,14 @@ Future<GetIndexResult> getIndex(
   );
   return GetIndexResult.fromMap(result);
 }
+
+pulumi.Output<GetIndexResult> getIndexOutput(
+  GetIndexArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datastore/v1:getIndex',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIndexResult.fromMap);
+}

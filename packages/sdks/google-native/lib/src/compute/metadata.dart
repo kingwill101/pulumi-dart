@@ -6,7 +6,7 @@ import 'metadata_items_item.dart';
 /// A metadata key/value entry.
 class Metadata {
   /// Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-  final pulumi.Input<List<MetadataItemsItem>>? items;
+  final pulumi.Input<List<MetadataItemsItem>?>? items;
 
   /// Creates a new [Metadata].
   /// [items] Array of key/value pairs. The total size of all keys and values must be less than 512 KB.

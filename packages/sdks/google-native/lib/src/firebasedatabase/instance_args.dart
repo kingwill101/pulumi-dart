@@ -9,13 +9,13 @@ import 'instance_type.dart';
 /// {@macro pulumi_firebasedatabase_v1beta_instance_args_doc}
 class InstanceArgs {
   /// The globally unique identifier of the database instance.
-  final pulumi.Input<String>? databaseId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? databaseId;
+  final pulumi.Input<String?>? location;
   /// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
-  final pulumi.Input<InstanceType>? type;
+  final pulumi.Input<InstanceType?>? type;
 
   /// Creates a new [InstanceArgs].
   /// [databaseId] The globally unique identifier of the database instance.

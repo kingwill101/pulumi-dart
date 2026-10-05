@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Configuration for VM IPs.
-enum GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration {
+enum GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration implements pulumi.PulumiEnum<String> {
   workerIpUnspecified("WORKER_IP_UNSPECIFIED"),
   workerIpPublic("WORKER_IP_PUBLIC"),
   workerIpPrivate("WORKER_IP_PRIVATE");
 
   const GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration fromValue(String value) {

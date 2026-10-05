@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with.
-enum VirtualMachinePreferencesSizingOptimizationStrategy {
+enum VirtualMachinePreferencesSizingOptimizationStrategy implements pulumi.PulumiEnum<String> {
   sizingOptimizationStrategyUnspecified("SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED"),
   sizingOptimizationStrategySameAsSource("SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE"),
   sizingOptimizationStrategyModerate("SIZING_OPTIMIZATION_STRATEGY_MODERATE"),
   sizingOptimizationStrategyAggressive("SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE");
 
   const VirtualMachinePreferencesSizingOptimizationStrategy(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualMachinePreferencesSizingOptimizationStrategy fromValue(String value) {

@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'binding_response_containeranalysis_v1beta1.dart';
 import 'note_iam_policy_containeranalysis_v1beta1_args.dart';
 
 /// Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
@@ -6,7 +7,7 @@ import 'note_iam_policy_containeranalysis_v1beta1_args.dart';
 /// on Google Cloud even though it will be deleted from Pulumi state.
 class NoteIamPolicyContaineranalysisV1beta1 extends pulumi.CustomResource {
   /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
-  late final pulumi.Output<List<Map<String, dynamic>>> bindings;
+  late final pulumi.Output<List<BindingResponseContaineranalysisV1beta1>> bindings;
   /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
   late final pulumi.Output<String> etag;
   late final pulumi.Output<String> noteId;
@@ -26,9 +27,25 @@ class NoteIamPolicyContaineranalysisV1beta1 extends pulumi.CustomResource {
           'google-native:containeranalysis/v1beta1:NoteIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['noteId', 'project']).merge(options),
         ) {
-    bindings = registerOutput<List<Map<String, dynamic>>>('bindings');
+    bindings = registerOutput<List<BindingResponseContaineranalysisV1beta1>>('bindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BindingResponseContaineranalysisV1beta1>(guardedValue, (value) => BindingResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String>('etag');
+    noteId = registerOutput<String>('noteId');
+    project = registerOutput<String>('project');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [NoteIamPolicyContaineranalysisV1beta1] resource.
+  NoteIamPolicyContaineranalysisV1beta1.reference(String urn)
+    : super(
+        'google-native:containeranalysis/v1beta1:NoteIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bindings = registerOutput<List<BindingResponseContaineranalysisV1beta1>>('bindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BindingResponseContaineranalysisV1beta1>(guardedValue, (value) => BindingResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     noteId = registerOutput<String>('noteId');
     project = registerOutput<String>('project');

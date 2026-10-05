@@ -66,11 +66,11 @@ class BackendRuleResponse {
   factory BackendRuleResponse.fromMap(Map<String, dynamic> map) {
     return BackendRuleResponse(
       address: pulumi.Input.fromValue(map['address'] as String),
-      deadline: pulumi.Input.fromValue(map['deadline'] as double),
+      deadline: pulumi.Input.fromValue((map['deadline'] as num).toDouble()),
       disableAuth: pulumi.Input.fromValue(map['disableAuth'] as bool),
       jwtAudience: pulumi.Input.fromValue(map['jwtAudience'] as String),
-      minDeadline: pulumi.Input.fromValue(map['minDeadline'] as double),
-      operationDeadline: pulumi.Input.fromValue(map['operationDeadline'] as double),
+      minDeadline: pulumi.Input.fromValue((map['minDeadline'] as num).toDouble()),
+      operationDeadline: pulumi.Input.fromValue((map['operationDeadline'] as num).toDouble()),
       overridesByRequestProtocol: pulumi.Input.fromValue((map['overridesByRequestProtocol'] as Map).cast<String, String>()),
       pathTranslation: pulumi.Input.fromValue(map['pathTranslation'] as String),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),

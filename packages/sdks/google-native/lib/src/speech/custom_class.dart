@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'class_item_response.dart';
 import 'custom_class_args.dart';
 
 /// Create a custom class.
@@ -16,7 +17,7 @@ class CustomClass extends pulumi.CustomResource {
   /// The time at which this resource will be purged. This field is not used.
   late final pulumi.Output<String> expireTime;
   /// A collection of class items.
-  late final pulumi.Output<List<Map<String, dynamic>>> items;
+  late final pulumi.Output<List<ClassItemResponse>> items;
   /// The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
   late final pulumi.Output<String> kmsKeyName;
   /// The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
@@ -44,15 +45,41 @@ class CustomClass extends pulumi.CustomResource {
           'google-native:speech/v1:CustomClass',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     customClassId = registerOutput<String>('customClassId');
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
-    items = registerOutput<List<Map<String, dynamic>>>('items');
+    items = registerOutput<List<ClassItemResponse>>('items', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClassItemResponse>(guardedValue, (value) => ClassItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    kmsKeyVersionName = registerOutput<String>('kmsKeyVersionName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+  }
+
+  /// Creates a typed reference to an existing [CustomClass] resource.
+  CustomClass.reference(String urn)
+    : super(
+        'google-native:speech/v1:CustomClass',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    customClassId = registerOutput<String>('customClassId');
+    deleteTime = registerOutput<String>('deleteTime');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    expireTime = registerOutput<String>('expireTime');
+    items = registerOutput<List<ClassItemResponse>>('items', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClassItemResponse>(guardedValue, (value) => ClassItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     kmsKeyName = registerOutput<String>('kmsKeyName');
     kmsKeyVersionName = registerOutput<String>('kmsKeyVersionName');
     location = registerOutput<String>('location');

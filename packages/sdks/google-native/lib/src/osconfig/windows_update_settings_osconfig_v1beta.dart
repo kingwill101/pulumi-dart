@@ -6,11 +6,11 @@ import 'windows_update_settings_classifications_item_osconfig_v1beta.dart';
 /// Windows patching is performed using the Windows Update Agent.
 class WindowsUpdateSettingsOsconfigV1beta {
   /// Only apply updates of these windows update classifications. If empty, all updates are applied.
-  final pulumi.Input<List<WindowsUpdateSettingsClassificationsItemOsconfigV1beta>>? classifications;
+  final pulumi.Input<List<WindowsUpdateSettingsClassificationsItemOsconfigV1beta>?>? classifications;
   /// List of KBs to exclude from update.
-  final pulumi.Input<List<String>>? excludes;
+  final pulumi.Input<List<String>?>? excludes;
   /// An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
-  final pulumi.Input<List<String>>? exclusivePatches;
+  final pulumi.Input<List<String>?>? exclusivePatches;
 
   /// Creates a new [WindowsUpdateSettingsOsconfigV1beta].
   /// [classifications] Only apply updates of these windows update classifications. If empty, all updates are applied.

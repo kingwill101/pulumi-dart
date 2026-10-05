@@ -6,9 +6,9 @@ import 'router_nat_log_config_filter_compute_v1.dart';
 /// Configuration of logging on a NAT.
 class RouterNatLogConfigComputeV1 {
   /// Indicates whether or not to export logs. This is false by default.
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
   /// Specify the desired filtering of logs on this NAT. If unspecified, logs are exported for all connections handled by this NAT. This option can take one of the following values: - ERRORS_ONLY: Export logs only for connection failures. - TRANSLATIONS_ONLY: Export logs only for successful connections. - ALL: Export logs for all connections, successful and unsuccessful.
-  final pulumi.Input<RouterNatLogConfigFilterComputeV1>? filter;
+  final pulumi.Input<RouterNatLogConfigFilterComputeV1?>? filter;
 
   /// Creates a new [RouterNatLogConfigComputeV1].
   /// [enable] Indicates whether or not to export logs. This is false by default.

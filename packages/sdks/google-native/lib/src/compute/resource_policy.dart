@@ -50,8 +50,35 @@ class ResourcePolicy extends pulumi.CustomResource {
           'google-native:compute/alpha:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    diskConsistencyGroupPolicy = registerOutput<Map<String, dynamic>>('diskConsistencyGroupPolicy');
+    groupPlacementPolicy = registerOutput<ResourcePolicyGroupPlacementPolicyResponse>('groupPlacementPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicyGroupPlacementPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceSchedulePolicy = registerOutput<ResourcePolicyInstanceSchedulePolicyResponse>('instanceSchedulePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicyInstanceSchedulePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    resourceStatus = registerOutput<ResourcePolicyResourceStatusResponse>('resourceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicyResourceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    snapshotSchedulePolicy = registerOutput<ResourcePolicySnapshotSchedulePolicyResponse>('snapshotSchedulePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicySnapshotSchedulePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    vmMaintenancePolicy = registerOutput<ResourcePolicyVmMaintenancePolicyResponse>('vmMaintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePolicyVmMaintenancePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ResourcePolicy] resource.
+  ResourcePolicy.reference(String urn)
+    : super(
+        'google-native:compute/alpha:ResourcePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     diskConsistencyGroupPolicy = registerOutput<Map<String, dynamic>>('diskConsistencyGroupPolicy');

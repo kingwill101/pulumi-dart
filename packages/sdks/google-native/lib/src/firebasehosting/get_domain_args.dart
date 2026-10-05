@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_firebasehosting_v1beta1_get_domain_args_doc}
 class GetDomainArgs {
   final pulumi.Input<String> domainId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> siteId;
 
   /// Creates a new [GetDomainArgs].

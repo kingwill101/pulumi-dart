@@ -7,11 +7,11 @@ import 'gcs_destination_config.dart';
 /// The configuration of the stream destination.
 class DestinationConfig {
   /// BigQuery destination configuration.
-  final pulumi.Input<BigQueryDestinationConfig>? bigqueryDestinationConfig;
+  final pulumi.Input<BigQueryDestinationConfig?>? bigqueryDestinationConfig;
   /// Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
   final pulumi.Input<String> destinationConnectionProfile;
   /// A configuration for how data should be loaded to Cloud Storage.
-  final pulumi.Input<GcsDestinationConfig>? gcsDestinationConfig;
+  final pulumi.Input<GcsDestinationConfig?>? gcsDestinationConfig;
 
   /// Creates a new [DestinationConfig].
   /// [bigqueryDestinationConfig] BigQuery destination configuration.

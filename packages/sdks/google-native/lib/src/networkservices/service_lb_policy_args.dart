@@ -11,19 +11,19 @@ import 'service_lb_policy_load_balancing_algorithm.dart';
 /// {@macro pulumi_networkservices_v1beta1_service_lb_policy_args_doc}
 class ServiceLbPolicyArgs {
   /// Optional. Configuration to automatically move traffic away for unhealthy IG/NEG for the associated Backend Service.
-  final pulumi.Input<ServiceLbPolicyAutoCapacityDrain>? autoCapacityDrain;
+  final pulumi.Input<ServiceLbPolicyAutoCapacityDrain?>? autoCapacityDrain;
   /// Optional. A free-text description of the resource. Max length 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Configuration related to health based failover.
-  final pulumi.Input<ServiceLbPolicyFailoverConfig>? failoverConfig;
+  final pulumi.Input<ServiceLbPolicyFailoverConfig?>? failoverConfig;
   /// Optional. Set of label tags associated with the ServiceLbPolicy resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Optional. The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
-  final pulumi.Input<ServiceLbPolicyLoadBalancingAlgorithm>? loadBalancingAlgorithm;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<ServiceLbPolicyLoadBalancingAlgorithm?>? loadBalancingAlgorithm;
+  final pulumi.Input<String?>? location;
   /// Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Required. Short name of the ServiceLbPolicy resource to be created. E.g. for resource name `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`. the id is value of {service_lb_policy_name}
   final pulumi.Input<String> serviceLbPolicyId;
 

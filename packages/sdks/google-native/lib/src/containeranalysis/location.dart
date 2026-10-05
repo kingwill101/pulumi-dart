@@ -6,11 +6,11 @@ import 'version.dart';
 /// An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
 class Location {
   /// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
-  final pulumi.Input<String>? cpeUri;
+  final pulumi.Input<String?>? cpeUri;
   /// The path from which we gathered that this package/version is installed.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Deprecated. The version installed at this location.
-  final pulumi.Input<Version>? version;
+  final pulumi.Input<Version?>? version;
 
   /// Creates a new [Location].
   /// [cpeUri] Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)

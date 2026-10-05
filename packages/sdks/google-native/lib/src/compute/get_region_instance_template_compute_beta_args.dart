@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_beta_get_region_instance_template_compute_beta_args_doc}
 class GetRegionInstanceTemplateComputeBetaArgs {
   final pulumi.Input<String> instanceTemplate;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
 
   /// Creates a new [GetRegionInstanceTemplateComputeBetaArgs].

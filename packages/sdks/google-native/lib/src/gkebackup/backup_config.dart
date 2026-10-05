@@ -8,17 +8,17 @@ import 'namespaces.dart';
 /// BackupConfig defines the configuration of Backups created via this BackupPlan.
 class BackupConfig {
   /// If True, include all namespaced resources
-  final pulumi.Input<bool>? allNamespaces;
+  final pulumi.Input<bool?>? allNamespaces;
   /// Optional. This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
-  final pulumi.Input<EncryptionKey>? encryptionKey;
+  final pulumi.Input<EncryptionKey?>? encryptionKey;
   /// Optional. This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
-  final pulumi.Input<bool>? includeSecrets;
+  final pulumi.Input<bool?>? includeSecrets;
   /// Optional. This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
-  final pulumi.Input<bool>? includeVolumeData;
+  final pulumi.Input<bool?>? includeVolumeData;
   /// If set, include just the resources referenced by the listed ProtectedApplications.
-  final pulumi.Input<NamespacedNames>? selectedApplications;
+  final pulumi.Input<NamespacedNames?>? selectedApplications;
   /// If set, include just the resources in the listed namespaces.
-  final pulumi.Input<Namespaces>? selectedNamespaces;
+  final pulumi.Input<Namespaces?>? selectedNamespaces;
 
   /// Creates a new [BackupConfig].
   /// [allNamespaces] If True, include all namespaced resources

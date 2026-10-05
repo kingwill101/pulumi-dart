@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_beyondcorp_v1alpha_get_organization_partner_tenant_proxy_config_iam_policy_beyondcorp_v1alpha_args_doc}
 class GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs {
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
   final pulumi.Input<String> organizationId;
   final pulumi.Input<String> partnerTenantId;
   final pulumi.Input<String> proxyConfigId;
@@ -35,7 +35,7 @@ class GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs {
 
   factory GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs(
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
       partnerTenantId: pulumi.Input.fromValue(map['partnerTenantId'] as String),
       proxyConfigId: pulumi.Input.fromValue(map['proxyConfigId'] as String),

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata for classification annotations.
 class GoogleCloudDatalabelingV1beta1ClassificationMetadata {
   /// Whether the classification task is multi-label or not.
-  final pulumi.Input<bool>? isMultiLabel;
+  final pulumi.Input<bool?>? isMultiLabel;
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1ClassificationMetadata].
   /// [isMultiLabel] Whether the classification task is multi-label or not.

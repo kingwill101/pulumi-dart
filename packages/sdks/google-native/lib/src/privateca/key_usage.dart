@@ -8,11 +8,11 @@ import 'object_id.dart';
 /// A KeyUsage describes key usage values that may appear in an X.509 certificate.
 class KeyUsage {
   /// Describes high-level ways in which a key may be used.
-  final pulumi.Input<KeyUsageOptions>? baseKeyUsage;
+  final pulumi.Input<KeyUsageOptions?>? baseKeyUsage;
   /// Detailed scenarios in which a key may be used.
-  final pulumi.Input<ExtendedKeyUsageOptions>? extendedKeyUsage;
+  final pulumi.Input<ExtendedKeyUsageOptions?>? extendedKeyUsage;
   /// Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
-  final pulumi.Input<List<ObjectId>>? unknownExtendedKeyUsages;
+  final pulumi.Input<List<ObjectId>?>? unknownExtendedKeyUsages;
 
   /// Creates a new [KeyUsage].
   /// [baseKeyUsage] Describes high-level ways in which a key may be used.

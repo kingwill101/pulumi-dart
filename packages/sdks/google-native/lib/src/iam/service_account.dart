@@ -34,8 +34,28 @@ class ServiceAccount extends pulumi.CustomResource {
           'google-native:iam/v1:ServiceAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    description = registerOutput<String>('description');
+    disabled = registerOutput<bool>('disabled');
+    displayName = registerOutput<String>('displayName');
+    email = registerOutput<String>('email');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    oauth2ClientId = registerOutput<String>('oauth2ClientId');
+    project = registerOutput<String>('project');
+    uniqueId = registerOutput<String>('uniqueId');
+  }
+
+  /// Creates a typed reference to an existing [ServiceAccount] resource.
+  ServiceAccount.reference(String urn)
+    : super(
+        'google-native:iam/v1:ServiceAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String>('description');
     disabled = registerOutput<bool>('disabled');
     displayName = registerOutput<String>('displayName');

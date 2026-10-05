@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SpecialistPoolAiplatformV1beta1Args {
   /// The user-defined name of the SpecialistPool. The name can be up to 128 characters long and can consist of any UTF-8 characters. This field should be unique on project-level.
   final pulumi.Input<String> displayName;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the SpecialistPool.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// The email addresses of the managers in the SpecialistPool.
-  final pulumi.Input<List<String>>? specialistManagerEmails;
+  final pulumi.Input<List<String>?>? specialistManagerEmails;
   /// The email addresses of workers in the SpecialistPool.
-  final pulumi.Input<List<String>>? specialistWorkerEmails;
+  final pulumi.Input<List<String>?>? specialistWorkerEmails;
 
   /// Creates a new [SpecialistPoolAiplatformV1beta1Args].
   /// [displayName] The user-defined name of the SpecialistPool. The name can be up to 128 characters long and can consist of any UTF-8 characters. This field should be unique on project-level.

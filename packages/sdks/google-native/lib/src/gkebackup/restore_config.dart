@@ -13,27 +13,27 @@ import 'transformation_rule.dart';
 /// Configuration of a restore. Next id: 13
 class RestoreConfig {
   /// Restore all namespaced resources in the Backup if set to "True". Specifying this field to "False" is an error.
-  final pulumi.Input<bool>? allNamespaces;
+  final pulumi.Input<bool?>? allNamespaces;
   /// Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
-  final pulumi.Input<RestoreConfigClusterResourceConflictPolicy>? clusterResourceConflictPolicy;
+  final pulumi.Input<RestoreConfigClusterResourceConflictPolicy?>? clusterResourceConflictPolicy;
   /// Optional. Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
-  final pulumi.Input<ClusterResourceRestoreScope>? clusterResourceRestoreScope;
+  final pulumi.Input<ClusterResourceRestoreScope?>? clusterResourceRestoreScope;
   /// A list of selected namespaces excluded from restoration. All namespaces except those in this list will be restored.
-  final pulumi.Input<Namespaces>? excludedNamespaces;
+  final pulumi.Input<Namespaces?>? excludedNamespaces;
   /// Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
-  final pulumi.Input<RestoreConfigNamespacedResourceRestoreMode>? namespacedResourceRestoreMode;
+  final pulumi.Input<RestoreConfigNamespacedResourceRestoreMode?>? namespacedResourceRestoreMode;
   /// Do not restore any namespaced resources if set to "True". Specifying this field to "False" is not allowed.
-  final pulumi.Input<bool>? noNamespaces;
+  final pulumi.Input<bool?>? noNamespaces;
   /// A list of selected ProtectedApplications to restore. The listed ProtectedApplications and all the resources to which they refer will be restored.
-  final pulumi.Input<NamespacedNames>? selectedApplications;
+  final pulumi.Input<NamespacedNames?>? selectedApplications;
   /// A list of selected Namespaces to restore from the Backup. The listed Namespaces and all resources contained in them will be restored.
-  final pulumi.Input<Namespaces>? selectedNamespaces;
+  final pulumi.Input<Namespaces?>? selectedNamespaces;
   /// Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
-  final pulumi.Input<List<SubstitutionRule>>? substitutionRules;
+  final pulumi.Input<List<SubstitutionRule>?>? substitutionRules;
   /// Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no transformation will occur.
-  final pulumi.Input<List<TransformationRule>>? transformationRules;
+  final pulumi.Input<List<TransformationRule>?>? transformationRules;
   /// Optional. Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
-  final pulumi.Input<RestoreConfigVolumeDataRestorePolicy>? volumeDataRestorePolicy;
+  final pulumi.Input<RestoreConfigVolumeDataRestorePolicy?>? volumeDataRestorePolicy;
 
   /// Creates a new [RestoreConfig].
   /// [allNamespaces] Restore all namespaced resources in the Backup if set to "True". Specifying this field to "False" is an error.

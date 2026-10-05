@@ -6,7 +6,7 @@ import 'gce_persistent_disk.dart';
 /// An ephemeral directory which won't persist across workstation sessions. It is freshly created on every workstation start operation.
 class EphemeralDirectory {
   /// An EphemeralDirectory backed by a Compute Engine persistent disk.
-  final pulumi.Input<GcePersistentDisk>? gcePd;
+  final pulumi.Input<GcePersistentDisk?>? gcePd;
   /// Location of this directory in the running workstation.
   final pulumi.Input<String> mountPath;
 

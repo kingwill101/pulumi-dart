@@ -26,8 +26,25 @@ class Reference extends pulumi.CustomResource {
           'google-native:apigee/v1:Reference',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['environmentId', 'organizationId']).merge(options),
         ) {
+    description = registerOutput<String>('description');
+    environmentId = registerOutput<String>('environmentId');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    refers = registerOutput<String>('refers');
+    resourceType = registerOutput<String>('resourceType');
+  }
+
+  /// Creates a typed reference to an existing [Reference] resource.
+  Reference.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Reference',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String>('description');
     environmentId = registerOutput<String>('environmentId');
     this.name = registerOutput<String>('name');

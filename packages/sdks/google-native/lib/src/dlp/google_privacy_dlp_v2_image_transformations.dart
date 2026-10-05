@@ -5,7 +5,7 @@ import 'google_privacy_dlp_v2_image_transformation.dart';
 
 /// A type of transformation that is applied over images.
 class GooglePrivacyDlpV2ImageTransformations {
-  final pulumi.Input<List<GooglePrivacyDlpV2ImageTransformation>>? transforms;
+  final pulumi.Input<List<GooglePrivacyDlpV2ImageTransformation>?>? transforms;
 
   /// Creates a new [GooglePrivacyDlpV2ImageTransformations].
   /// [transforms] Optional.

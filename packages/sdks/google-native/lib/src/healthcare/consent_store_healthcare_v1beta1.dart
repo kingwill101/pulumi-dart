@@ -29,13 +29,32 @@ class ConsentStoreHealthcareV1beta1 extends pulumi.CustomResource {
           'google-native:healthcare/v1beta1:ConsentStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['consentStoreId', 'datasetId', 'location', 'project']).merge(options),
         ) {
     consentStoreId = registerOutput<String>('consentStoreId');
     datasetId = registerOutput<String>('datasetId');
     defaultConsentTtl = registerOutput<String>('defaultConsentTtl');
     enableConsentCreateOnUpdate = registerOutput<bool>('enableConsentCreateOnUpdate');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [ConsentStoreHealthcareV1beta1] resource.
+  ConsentStoreHealthcareV1beta1.reference(String urn)
+    : super(
+        'google-native:healthcare/v1beta1:ConsentStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    consentStoreId = registerOutput<String>('consentStoreId');
+    datasetId = registerOutput<String>('datasetId');
+    defaultConsentTtl = registerOutput<String>('defaultConsentTtl');
+    enableConsentCreateOnUpdate = registerOutput<bool>('enableConsentCreateOnUpdate');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

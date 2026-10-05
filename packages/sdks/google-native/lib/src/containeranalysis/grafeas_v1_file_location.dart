@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Indicates the location at which a package was found.
 class GrafeasV1FileLocation {
   /// For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
-  final pulumi.Input<String>? filePath;
+  final pulumi.Input<String?>? filePath;
 
   /// Creates a new [GrafeasV1FileLocation].
   /// [filePath] For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.

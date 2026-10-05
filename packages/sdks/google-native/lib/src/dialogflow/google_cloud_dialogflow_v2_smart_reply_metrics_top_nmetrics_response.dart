@@ -26,8 +26,8 @@ class GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse {
 
   factory GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse(
-      n: pulumi.Input.fromValue(map['n'] as int),
-      recall: pulumi.Input.fromValue(map['recall'] as double),
+      n: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['n'])),
+      recall: pulumi.Input.fromValue((map['recall'] as num).toDouble()),
     );
   }
 }

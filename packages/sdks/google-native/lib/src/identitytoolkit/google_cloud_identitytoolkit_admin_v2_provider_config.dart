@@ -7,9 +7,9 @@ import 'google_cloud_identitytoolkit_admin_v2_totp_mfa_provider_config.dart';
 /// ProviderConfig describes the supported MFA providers along with their configurations.
 class GoogleCloudIdentitytoolkitAdminV2ProviderConfig {
   /// Describes the state of the MultiFactor Authentication type.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2ProviderConfigState>? state;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2ProviderConfigState?>? state;
   /// TOTP MFA provider config for this project.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig>? totpProviderConfig;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig?>? totpProviderConfig;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2ProviderConfig].
   /// [state] Describes the state of the MultiFactor Authentication type.

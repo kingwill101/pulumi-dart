@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_managedidentities_v1beta1_get_domain_managedidentities_v1beta1_args_doc}
 class GetDomainManagedidentitiesV1beta1Args {
   final pulumi.Input<String> domainId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDomainManagedidentitiesV1beta1Args].
   /// [domainId] Required.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Prevents `query_term` from being associated with specified terms during search. Example: Don't associate "gShoe" and "cheap".
 class GoogleCloudRetailV2alphaRuleDoNotAssociateAction {
   /// Cannot contain duplicates or the query term. Can specify up to 100 terms.
-  final pulumi.Input<List<String>>? doNotAssociateTerms;
+  final pulumi.Input<List<String>?>? doNotAssociateTerms;
   /// Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can specify up to 100 terms.
-  final pulumi.Input<List<String>>? queryTerms;
+  final pulumi.Input<List<String>?>? queryTerms;
   /// Will be [deprecated = true] post migration;
-  final pulumi.Input<List<String>>? terms;
+  final pulumi.Input<List<String>?>? terms;
 
   /// Creates a new [GoogleCloudRetailV2alphaRuleDoNotAssociateAction].
   /// [doNotAssociateTerms] Cannot contain duplicates or the query term. Can specify up to 100 terms.

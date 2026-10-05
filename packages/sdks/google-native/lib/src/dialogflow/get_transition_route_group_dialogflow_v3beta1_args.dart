@@ -9,9 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTransitionRouteGroupDialogflowV3beta1Args {
   final pulumi.Input<String> agentId;
   final pulumi.Input<String> flowId;
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> transitionRouteGroupId;
 
   /// Creates a new [GetTransitionRouteGroupDialogflowV3beta1Args].

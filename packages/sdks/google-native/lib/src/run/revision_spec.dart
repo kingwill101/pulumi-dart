@@ -8,18 +8,18 @@ import 'volume.dart';
 /// RevisionSpec holds the desired state of the Revision (from the client).
 class RevisionSpec {
   /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
-  final pulumi.Input<int>? containerConcurrency;
+  final pulumi.Input<int?>? containerConcurrency;
   /// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided.
-  final pulumi.Input<List<Container>>? containers;
+  final pulumi.Input<List<Container>?>? containers;
   /// Not supported by Cloud Run.
-  final pulumi.Input<bool>? enableServiceLinks;
+  final pulumi.Input<bool?>? enableServiceLinks;
   /// Not supported by Cloud Run.
-  final pulumi.Input<List<LocalObjectReference>>? imagePullSecrets;
+  final pulumi.Input<List<LocalObjectReference>?>? imagePullSecrets;
   /// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
-  final pulumi.Input<String>? serviceAccountName;
+  final pulumi.Input<String?>? serviceAccountName;
   /// TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour).
-  final pulumi.Input<int>? timeoutSeconds;
-  final pulumi.Input<List<Volume>>? volumes;
+  final pulumi.Input<int?>? timeoutSeconds;
+  final pulumi.Input<List<Volume>?>? volumes;
 
   /// Creates a new [RevisionSpec].
   /// [containerConcurrency] ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
@@ -53,12 +53,12 @@ class RevisionSpec {
 
   factory RevisionSpec.fromMap(Map<String, dynamic> map) {
     return RevisionSpec(
-      containerConcurrency: (() { final guardedValue = map['containerConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      containerConcurrency: (() { final guardedValue = map['containerConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       containers: (() { final guardedValue = map['containers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Container>(guardedValue, (value) => Container.fromMap((value as Map).cast<String, dynamic>()))); })(),
       enableServiceLinks: (() { final guardedValue = map['enableServiceLinks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       imagePullSecrets: (() { final guardedValue = map['imagePullSecrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LocalObjectReference>(guardedValue, (value) => LocalObjectReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
       serviceAccountName: (() { final guardedValue = map['serviceAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Volume>(guardedValue, (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

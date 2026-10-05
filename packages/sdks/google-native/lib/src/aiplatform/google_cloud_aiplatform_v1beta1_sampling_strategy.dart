@@ -6,7 +6,7 @@ import 'google_cloud_aiplatform_v1beta1_sampling_strategy_random_sample_config.d
 /// Sampling Strategy for logging, can be for both training and prediction dataset.
 class GoogleCloudAiplatformV1beta1SamplingStrategy {
   /// Random sample config. Will support more sampling strategies later.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig>? randomSampleConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig?>? randomSampleConfig;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1SamplingStrategy].
   /// [randomSampleConfig] Random sample config. Will support more sampling strategies later.

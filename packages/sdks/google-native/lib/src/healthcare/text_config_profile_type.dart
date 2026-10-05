@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Base profile type for text transformation.
-enum TextConfigProfileType {
+enum TextConfigProfileType implements pulumi.PulumiEnum<String> {
   profileTypeUnspecified("PROFILE_TYPE_UNSPECIFIED"),
   empty("EMPTY"),
   basic("BASIC");
 
   const TextConfigProfileType(this.wireValue);
+  @override
   final String wireValue;
 
   static TextConfigProfileType fromValue(String value) {

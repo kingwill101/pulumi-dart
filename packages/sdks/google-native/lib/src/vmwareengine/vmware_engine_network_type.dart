@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. VMware Engine network type.
-enum VmwareEngineNetworkType {
+enum VmwareEngineNetworkType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   legacy("LEGACY"),
   standard("STANDARD");
 
   const VmwareEngineNetworkType(this.wireValue);
+  @override
   final String wireValue;
 
   static VmwareEngineNetworkType fromValue(String value) {

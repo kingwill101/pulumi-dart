@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The progress of the SBOM generation.
-enum SBOMStatusSbomStateContaineranalysisV1beta1 {
+enum SBOMStatusSbomStateContaineranalysisV1beta1 implements pulumi.PulumiEnum<String> {
   sbomStateUnspecified("SBOM_STATE_UNSPECIFIED"),
   pending("PENDING"),
   complete("COMPLETE");
 
   const SBOMStatusSbomStateContaineranalysisV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static SBOMStatusSbomStateContaineranalysisV1beta1 fromValue(String value) {

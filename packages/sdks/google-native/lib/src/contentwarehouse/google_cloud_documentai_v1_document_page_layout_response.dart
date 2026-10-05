@@ -39,7 +39,7 @@ class GoogleCloudDocumentaiV1DocumentPageLayoutResponse {
   factory GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageLayoutResponse(
       boundingPoly: pulumi.Input.fromValue(GoogleCloudDocumentaiV1BoundingPolyResponse.fromMap((map['boundingPoly']! as Map).cast<String, dynamic>())),
-      confidence: pulumi.Input.fromValue(map['confidence'] as double),
+      confidence: pulumi.Input.fromValue((map['confidence'] as num).toDouble()),
       orientation: pulumi.Input.fromValue(map['orientation'] as String),
       textAnchor: pulumi.Input.fromValue(GoogleCloudDocumentaiV1DocumentTextAnchorResponse.fromMap((map['textAnchor']! as Map).cast<String, dynamic>())),
     );

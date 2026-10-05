@@ -7,9 +7,9 @@ import 'version_source_healthcare_v1beta1.dart';
 /// Root config for HL7v2 datatype definitions for a specific HL7v2 version.
 class Hl7TypesConfigHealthcareV1beta1 {
   /// The HL7v2 type definitions.
-  final pulumi.Input<List<TypeHealthcareV1beta1>>? type;
+  final pulumi.Input<List<TypeHealthcareV1beta1>?>? type;
   /// The version selectors that this config applies to. A message must match ALL version sources to apply.
-  final pulumi.Input<List<VersionSourceHealthcareV1beta1>>? version;
+  final pulumi.Input<List<VersionSourceHealthcareV1beta1>?>? version;
 
   /// Creates a new [Hl7TypesConfigHealthcareV1beta1].
   /// [type] The HL7v2 type definitions.

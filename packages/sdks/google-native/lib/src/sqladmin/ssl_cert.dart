@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SslCerts Resource
 class SslCert {
   /// PEM representation.
-  final pulumi.Input<String>? cert;
+  final pulumi.Input<String?>? cert;
   /// Serial number, as extracted from the certificate.
-  final pulumi.Input<String>? certSerialNumber;
+  final pulumi.Input<String?>? certSerialNumber;
   /// User supplied name. Constrained to [a-zA-Z.-_ ]+.
-  final pulumi.Input<String>? commonName;
+  final pulumi.Input<String?>? commonName;
   /// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
-  final pulumi.Input<String>? expirationTime;
+  final pulumi.Input<String?>? expirationTime;
   /// Name of the database instance.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// This is always `sql#sslCert`.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The URI of this resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// Sha1 Fingerprint.
-  final pulumi.Input<String>? sha1Fingerprint;
+  final pulumi.Input<String?>? sha1Fingerprint;
 
   /// Creates a new [SslCert].
   /// [cert] PEM representation.

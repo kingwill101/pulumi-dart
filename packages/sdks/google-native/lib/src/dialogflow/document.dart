@@ -40,16 +40,40 @@ class Document extends pulumi.CustomResource {
           'google-native:dialogflow/v2:Document',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['knowledgeBaseId', 'location', 'project']).merge(options),
         ) {
     contentUri = registerOutput<String>('contentUri');
     displayName = registerOutput<String>('displayName');
     enableAutoReload = registerOutput<bool>('enableAutoReload');
     knowledgeBaseId = registerOutput<String>('knowledgeBaseId');
-    knowledgeTypes = registerOutput<List<String>>('knowledgeTypes');
+    knowledgeTypes = registerOutput<List<String>>('knowledgeTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     latestReloadStatus = registerOutput<GoogleCloudDialogflowV2DocumentReloadStatusResponse>('latestReloadStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2DocumentReloadStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    mimeType = registerOutput<String>('mimeType');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rawContent = registerOutput<String>('rawContent');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Document] resource.
+  Document.reference(String urn)
+    : super(
+        'google-native:dialogflow/v2:Document',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    contentUri = registerOutput<String>('contentUri');
+    displayName = registerOutput<String>('displayName');
+    enableAutoReload = registerOutput<bool>('enableAutoReload');
+    knowledgeBaseId = registerOutput<String>('knowledgeBaseId');
+    knowledgeTypes = registerOutput<List<String>>('knowledgeTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    latestReloadStatus = registerOutput<GoogleCloudDialogflowV2DocumentReloadStatusResponse>('latestReloadStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2DocumentReloadStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     mimeType = registerOutput<String>('mimeType');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

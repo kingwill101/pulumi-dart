@@ -36,13 +36,34 @@ class WorkerPoolCloudbuildV1alpha1 extends pulumi.CustomResource {
           'google-native:cloudbuild/v1alpha1:WorkerPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    regions = registerOutput<List<String>>('regions');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
+    status = registerOutput<String>('status');
+    updateTime = registerOutput<String>('updateTime');
+    workerConfig = registerOutput<WorkerConfigResponseCloudbuildV1alpha1>('workerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerConfigResponseCloudbuildV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workerCount = registerOutput<String>('workerCount');
+  }
+
+  /// Creates a typed reference to an existing [WorkerPoolCloudbuildV1alpha1] resource.
+  WorkerPoolCloudbuildV1alpha1.reference(String urn)
+    : super(
+        'google-native:cloudbuild/v1alpha1:WorkerPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    regions = registerOutput<List<String>>('regions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
     status = registerOutput<String>('status');
     updateTime = registerOutput<String>('updateTime');

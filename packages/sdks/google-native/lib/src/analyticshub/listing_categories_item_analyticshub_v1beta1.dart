@@ -1,4 +1,6 @@
-enum ListingCategoriesItemAnalyticshubV1beta1 {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ListingCategoriesItemAnalyticshubV1beta1 implements pulumi.PulumiEnum<String> {
   categoryUnspecified("CATEGORY_UNSPECIFIED"),
   categoryOthers("CATEGORY_OTHERS"),
   categoryAdvertisingAndMarketing("CATEGORY_ADVERTISING_AND_MARKETING"),
@@ -21,6 +23,7 @@ enum ListingCategoriesItemAnalyticshubV1beta1 {
   categoryTravelAndTourism("CATEGORY_TRAVEL_AND_TOURISM");
 
   const ListingCategoriesItemAnalyticshubV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static ListingCategoriesItemAnalyticshubV1beta1 fromValue(String value) {

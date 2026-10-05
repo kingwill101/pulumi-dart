@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The edition of the instance.
-enum SettingsEditionSqladminV1beta4 {
+enum SettingsEditionSqladminV1beta4 implements pulumi.PulumiEnum<String> {
   editionUnspecified("EDITION_UNSPECIFIED"),
   enterprise("ENTERPRISE"),
   enterprisePlus("ENTERPRISE_PLUS");
 
   const SettingsEditionSqladminV1beta4(this.wireValue);
+  @override
   final String wireValue;
 
   static SettingsEditionSqladminV1beta4 fromValue(String value) {

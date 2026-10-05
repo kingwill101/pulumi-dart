@@ -6,26 +6,26 @@ import 'user_password_validation_policy_response_sqladmin_v1beta4.dart';
 /// Result data returned by getUser.
 class GetUserSqladminV1beta4Result {
   /// Dual password status for the user.
-  final String dualPasswordType;
+  final String? dualPasswordType;
   /// This field is deprecated and will be removed from a future version of the API.
-  final String etag;
+  final String? etag;
   /// Optional. The host from which the user can connect. For `insert` operations, host defaults to an empty string. For `update` operations, host is specified as part of the request URL. The host name cannot be updated after insertion. For a MySQL instance, it's required; for a PostgreSQL or SQL Server instance, it's optional.
-  final String host;
+  final String? host;
   /// The name of the Cloud SQL instance. This does not include the project ID. Can be omitted for *update* because it is already specified on the URL.
-  final String instance;
+  final String? instance;
   /// This is always `sql#user`.
-  final String kind;
+  final String? kind;
   /// The name of the user in the Cloud SQL instance. Can be omitted for `update` because it is already specified in the URL.
-  final String name;
+  final String? name;
   /// The password for the user.
-  final String password;
+  final String? password;
   /// User level password validation policy.
-  final UserPasswordValidationPolicyResponseSqladminV1beta4 passwordPolicy;
+  final UserPasswordValidationPolicyResponseSqladminV1beta4? passwordPolicy;
   /// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable. Can be omitted for *update* because it is already specified on the URL.
-  final String project;
-  final SqlServerUserDetailsResponseSqladminV1beta4 sqlserverUserDetails;
+  final String? project;
+  final SqlServerUserDetailsResponseSqladminV1beta4? sqlserverUserDetails;
   /// The user type. It determines the method to authenticate the user during login. The default is the database's built-in user type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetUserSqladminV1beta4Result].
   /// [dualPasswordType] Dual password status for the user.
@@ -37,51 +37,51 @@ class GetUserSqladminV1beta4Result {
   /// [password] The password for the user.
   /// [passwordPolicy] User level password validation policy.
   /// [project] The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable. Can be omitted for *update* because it is already specified on the URL.
-  /// [sqlserverUserDetails] Required.
+  /// [sqlserverUserDetails] Optional.
   /// [type] The user type. It determines the method to authenticate the user during login. The default is the database's built-in user type.
   const GetUserSqladminV1beta4Result({
-    required this.dualPasswordType,
-    required this.etag,
-    required this.host,
-    required this.instance,
-    required this.kind,
-    required this.name,
-    required this.password,
-    required this.passwordPolicy,
-    required this.project,
-    required this.sqlserverUserDetails,
-    required this.type,
+    this.dualPasswordType,
+    this.etag,
+    this.host,
+    this.instance,
+    this.kind,
+    this.name,
+    this.password,
+    this.passwordPolicy,
+    this.project,
+    this.sqlserverUserDetails,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dualPasswordType': dualPasswordType,
-      'etag': etag,
-      'host': host,
-      'instance': instance,
-      'kind': kind,
-      'name': name,
-      'password': password,
-      'passwordPolicy': passwordPolicy.toMap(),
-      'project': project,
-      'sqlserverUserDetails': sqlserverUserDetails.toMap(),
-      'type': type,
+      'dualPasswordType': ?dualPasswordType,
+      'etag': ?etag,
+      'host': ?host,
+      'instance': ?instance,
+      'kind': ?kind,
+      'name': ?name,
+      'password': ?password,
+      'passwordPolicy': ?passwordPolicy?.toMap(),
+      'project': ?project,
+      'sqlserverUserDetails': ?sqlserverUserDetails?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetUserSqladminV1beta4Result.fromMap(Map<String, dynamic> map) {
     return GetUserSqladminV1beta4Result(
-      dualPasswordType: map['dualPasswordType'] as String,
-      etag: map['etag'] as String,
-      host: map['host'] as String,
-      instance: map['instance'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      password: map['password'] as String,
-      passwordPolicy: UserPasswordValidationPolicyResponseSqladminV1beta4.fromMap((map['passwordPolicy']! as Map).cast<String, dynamic>()),
-      project: map['project'] as String,
-      sqlserverUserDetails: SqlServerUserDetailsResponseSqladminV1beta4.fromMap((map['sqlserverUserDetails']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      dualPasswordType: (() { final guardedValue = map['dualPasswordType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      passwordPolicy: (() { final guardedValue = map['passwordPolicy']; if (guardedValue == null) return null; return UserPasswordValidationPolicyResponseSqladminV1beta4.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sqlserverUserDetails: (() { final guardedValue = map['sqlserverUserDetails']; if (guardedValue == null) return null; return SqlServerUserDetailsResponseSqladminV1beta4.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

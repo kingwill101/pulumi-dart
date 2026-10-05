@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Message representing a set of files in Cloud Storage.
 class GooglePrivacyDlpV2CloudStorageFileSet {
   /// The url, in the format `gs:///`. Trailing wildcard in the path is allowed.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [GooglePrivacyDlpV2CloudStorageFileSet].
   /// [url] The url, in the format `gs:///`. Trailing wildcard in the path is allowed.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Association links that an entitlement has to other entitlements.
 class GoogleCloudChannelV1AssociationInfo {
   /// The name of the base entitlement, for which this entitlement is an add-on.
-  final pulumi.Input<String>? baseEntitlement;
+  final pulumi.Input<String?>? baseEntitlement;
 
   /// Creates a new [GoogleCloudChannelV1AssociationInfo].
   /// [baseEntitlement] The name of the base entitlement, for which this entitlement is an add-on.

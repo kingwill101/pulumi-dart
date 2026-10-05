@@ -6,13 +6,13 @@ import 'transformation_rule_action_op.dart';
 /// TransformationRuleAction defines a TransformationRule action based on the JSON Patch RFC (https://www.rfc-editor.org/rfc/rfc6902)
 class TransformationRuleAction {
   /// Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from.
-  final pulumi.Input<String>? fromPath;
+  final pulumi.Input<String?>? fromPath;
   /// op specifies the operation to perform.
   final pulumi.Input<TransformationRuleActionOp> op;
   /// Optional. A string containing a JSON-Pointer value that references a location within the target document where the operation is performed.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Optional. A string that specifies the desired value in string format to use for transformation.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TransformationRuleAction].
   /// [fromPath] Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from.

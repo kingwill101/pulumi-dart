@@ -6,13 +6,13 @@ import 'input_mapping_location_deploymentmanager_v2beta.dart';
 /// InputMapping creates a 'virtual' property that will be injected into the properties before sending the request to the underlying API.
 class InputMappingDeploymentmanagerV2beta {
   /// The name of the field that is going to be injected.
-  final pulumi.Input<String>? fieldName;
+  final pulumi.Input<String?>? fieldName;
   /// The location where this mapping applies.
-  final pulumi.Input<InputMappingLocationDeploymentmanagerV2beta>? location;
+  final pulumi.Input<InputMappingLocationDeploymentmanagerV2beta?>? location;
   /// Regex to evaluate on method to decide if input applies.
-  final pulumi.Input<String>? methodMatch;
+  final pulumi.Input<String?>? methodMatch;
   /// A jsonPath expression to select an element.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [InputMappingDeploymentmanagerV2beta].
   /// [fieldName] The name of the field that is going to be injected.

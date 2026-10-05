@@ -6,7 +6,7 @@ import 'ospolicy_resource_file.dart';
 /// An RPM package file. RPM packages only support INSTALLED state.
 class OSPolicyResourcePackageResourceRPM {
   /// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
-  final pulumi.Input<bool>? pullDeps;
+  final pulumi.Input<bool?>? pullDeps;
   /// An rpm package.
   final pulumi.Input<OSPolicyResourceFile> source;
 

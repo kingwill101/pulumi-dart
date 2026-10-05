@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Standard rollout policy is the default policy for blue-green.
 class StandardRolloutPolicy {
   /// Number of blue nodes to drain in a batch.
-  final pulumi.Input<int>? batchNodeCount;
+  final pulumi.Input<int?>? batchNodeCount;
   /// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
-  final pulumi.Input<double>? batchPercentage;
+  final pulumi.Input<double?>? batchPercentage;
   /// Soak time after each batch gets drained. Default to zero.
-  final pulumi.Input<String>? batchSoakDuration;
+  final pulumi.Input<String?>? batchSoakDuration;
 
   /// Creates a new [StandardRolloutPolicy].
   /// [batchNodeCount] Number of blue nodes to drain in a batch.
@@ -31,8 +31,8 @@ class StandardRolloutPolicy {
 
   factory StandardRolloutPolicy.fromMap(Map<String, dynamic> map) {
     return StandardRolloutPolicy(
-      batchNodeCount: (() { final guardedValue = map['batchNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      batchPercentage: (() { final guardedValue = map['batchPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      batchNodeCount: (() { final guardedValue = map['batchNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      batchPercentage: (() { final guardedValue = map['batchPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       batchSoakDuration: (() { final guardedValue = map['batchSoakDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

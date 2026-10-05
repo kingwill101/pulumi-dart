@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The data type of the parameter.
-enum EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType {
+enum EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType implements pulumi.PulumiEnum<String> {
   dataTypeUnspecified("DATA_TYPE_UNSPECIFIED"),
   stringValue("STRING_VALUE"),
   intValue("INT_VALUE"),
@@ -20,6 +22,7 @@ enum EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType {
   jsonValue("JSON_VALUE");
 
   const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType fromValue(String value) {

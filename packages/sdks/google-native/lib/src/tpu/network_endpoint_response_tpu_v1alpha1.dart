@@ -27,7 +27,7 @@ class NetworkEndpointResponseTpuV1alpha1 {
   factory NetworkEndpointResponseTpuV1alpha1.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointResponseTpuV1alpha1(
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
     );
   }
 }

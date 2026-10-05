@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Label object for CompositeTypes
 class CompositeTypeLabelEntryDeploymentmanagerV2beta {
   /// Key of the label
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Value of the label
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CompositeTypeLabelEntryDeploymentmanagerV2beta].
   /// [key] Key of the label

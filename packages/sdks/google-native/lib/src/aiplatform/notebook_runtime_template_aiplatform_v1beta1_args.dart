@@ -14,31 +14,31 @@ import 'notebook_runtime_template_notebook_runtime_type_aiplatform_v1beta1.dart'
 /// {@macro pulumi_aiplatform_v1beta1_notebook_runtime_template_aiplatform_v1beta1_args_doc}
 class NotebookRuntimeTemplateAiplatformV1beta1Args {
   /// Optional. The specification of persistent disk attached to the runtime as data disk storage.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1PersistentDiskSpec>? dataPersistentDiskSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1PersistentDiskSpec?>? dataPersistentDiskSpec;
   /// The description of the NotebookRuntimeTemplate.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the NotebookRuntimeTemplate. The name can be up to 128 characters long and can consist of any UTF-8 characters.
   final pulumi.Input<String> displayName;
   /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// EUC configuration of the NotebookRuntimeTemplate.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1NotebookEucConfig>? eucConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1NotebookEucConfig?>? eucConfig;
   /// The idle shutdown configuration of NotebookRuntimeTemplate. This config will only be set when idle shutdown is enabled.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig>? idleShutdownConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig?>? idleShutdownConfig;
   /// The labels with user-defined metadata to organize the NotebookRuntimeTemplates. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Optional. Immutable. The specification of a single machine for the template.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1MachineSpec>? machineSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1MachineSpec?>? machineSpec;
   /// Optional. Network spec.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1NetworkSpec>? networkSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1NetworkSpec?>? networkSpec;
   /// Optional. User specified ID for the notebook runtime template.
-  final pulumi.Input<String>? notebookRuntimeTemplateId;
+  final pulumi.Input<String?>? notebookRuntimeTemplateId;
   /// Optional. Immutable. The type of the notebook runtime template.
-  final pulumi.Input<NotebookRuntimeTemplateNotebookRuntimeTypeAiplatformV1beta1>? notebookRuntimeType;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<NotebookRuntimeTemplateNotebookRuntimeTypeAiplatformV1beta1?>? notebookRuntimeType;
+  final pulumi.Input<String?>? project;
   /// The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
 
   /// Creates a new [NotebookRuntimeTemplateAiplatformV1beta1Args].
   /// [dataPersistentDiskSpec] Optional. The specification of persistent disk attached to the runtime as data disk storage.

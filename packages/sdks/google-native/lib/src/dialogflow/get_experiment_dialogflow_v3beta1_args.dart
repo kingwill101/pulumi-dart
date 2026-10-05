@@ -11,7 +11,7 @@ class GetExperimentDialogflowV3beta1Args {
   final pulumi.Input<String> environmentId;
   final pulumi.Input<String> experimentId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetExperimentDialogflowV3beta1Args].
   /// [agentId] Required.

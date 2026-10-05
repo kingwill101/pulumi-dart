@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// [Optional] The primary key of the table.
 class TableConstraintsPrimaryKey {
-  final pulumi.Input<List<String>>? columns;
+  final pulumi.Input<List<String>?>? columns;
 
   /// Creates a new [TableConstraintsPrimaryKey].
   /// [columns] Optional.

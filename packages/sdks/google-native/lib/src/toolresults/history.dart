@@ -29,8 +29,25 @@ class History extends pulumi.CustomResource {
           'google-native:toolresults/v1beta3:History',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    displayName = registerOutput<String>('displayName');
+    historyId = registerOutput<String>('historyId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    testPlatform = registerOutput<String>('testPlatform');
+  }
+
+  /// Creates a typed reference to an existing [History] resource.
+  History.reference(String urn)
+    : super(
+        'google-native:toolresults/v1beta3:History',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     displayName = registerOutput<String>('displayName');
     historyId = registerOutput<String>('historyId');
     this.name = registerOutput<String>('name');

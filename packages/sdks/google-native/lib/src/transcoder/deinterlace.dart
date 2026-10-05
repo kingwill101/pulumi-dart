@@ -7,9 +7,9 @@ import 'yadif_config.dart';
 /// Deinterlace configuration for input video.
 class Deinterlace {
   /// Specifies the Bob Weaver Deinterlacing Filter Configuration.
-  final pulumi.Input<BwdifConfig>? bwdif;
+  final pulumi.Input<BwdifConfig?>? bwdif;
   /// Specifies the Yet Another Deinterlacing Filter Configuration.
-  final pulumi.Input<YadifConfig>? yadif;
+  final pulumi.Input<YadifConfig?>? yadif;
 
   /// Creates a new [Deinterlace].
   /// [bwdif] Specifies the Bob Weaver Deinterlacing Filter Configuration.

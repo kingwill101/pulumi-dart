@@ -24,6 +24,17 @@ Future<GetDeviceResult> getDevice(
   return GetDeviceResult.fromMap(result);
 }
 
+pulumi.Output<GetDeviceResult> getDeviceOutput(
+  GetDeviceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudiot/v1:getDevice',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeviceResult.fromMap);
+}
+
 /// Gets a device registry configuration.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudiot_v1_get_registry_args_doc}
 /// [options] Invoke options controlling this call.
@@ -38,6 +49,17 @@ Future<GetRegistryResult> getRegistry(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistryResult.fromMap(result);
+}
+
+pulumi.Output<GetRegistryResult> getRegistryOutput(
+  GetRegistryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudiot/v1:getRegistry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -56,6 +78,17 @@ Future<GetRegistryGroupIamPolicyResult> getRegistryGroupIamPolicy(
   return GetRegistryGroupIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRegistryGroupIamPolicyResult> getRegistryGroupIamPolicyOutput(
+  GetRegistryGroupIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudiot/v1:getRegistryGroupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryGroupIamPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudiot_v1_get_registry_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -70,4 +103,15 @@ Future<GetRegistryIamPolicyResult> getRegistryIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistryIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRegistryIamPolicyResult> getRegistryIamPolicyOutput(
+  GetRegistryIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudiot/v1:getRegistryIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryIamPolicyResult.fromMap);
 }

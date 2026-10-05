@@ -7,8 +7,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_deploymentmanager_v2_get_deployment_iam_policy_deploymentmanager_v2_args_doc}
 class GetDeploymentIamPolicyDeploymentmanagerV2Args {
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> resource;
 
   /// Creates a new [GetDeploymentIamPolicyDeploymentmanagerV2Args].
@@ -31,7 +31,7 @@ class GetDeploymentIamPolicyDeploymentmanagerV2Args {
 
   factory GetDeploymentIamPolicyDeploymentmanagerV2Args.fromMap(Map<String, dynamic> map) {
     return GetDeploymentIamPolicyDeploymentmanagerV2Args(
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resource: pulumi.Input.fromValue(map['resource'] as String),
     );

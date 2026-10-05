@@ -6,9 +6,9 @@ import 'google_cloud_contactcenterinsights_v1_issue_model_input_data_config_medi
 /// Configs for the input data used to create the issue model.
 class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
   /// A filter to reduce the conversations used for training the model to a specific subset.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
-  final pulumi.Input<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium>? medium;
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium?>? medium;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig].
   /// [filter] A filter to reduce the conversations used for training the model to a specific subset.

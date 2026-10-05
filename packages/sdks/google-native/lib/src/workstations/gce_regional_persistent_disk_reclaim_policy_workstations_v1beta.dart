@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
-enum GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta {
+enum GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta implements pulumi.PulumiEnum<String> {
   reclaimPolicyUnspecified("RECLAIM_POLICY_UNSPECIFIED"),
   delete("DELETE"),
   retain("RETAIN");
 
   const GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta fromValue(String value) {

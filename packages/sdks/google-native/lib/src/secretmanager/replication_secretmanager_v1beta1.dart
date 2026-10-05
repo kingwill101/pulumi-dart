@@ -6,9 +6,9 @@ import 'user_managed_secretmanager_v1beta1.dart';
 /// A policy that defines the replication configuration of data.
 class ReplicationSecretmanagerV1beta1 {
   /// The Secret will automatically be replicated without any restrictions.
-  final pulumi.Input<Map<String, dynamic>>? automatic;
+  final pulumi.Input<Map<String, dynamic>?>? automatic;
   /// The Secret will only be replicated into the locations specified.
-  final pulumi.Input<UserManagedSecretmanagerV1beta1>? userManaged;
+  final pulumi.Input<UserManagedSecretmanagerV1beta1?>? userManaged;
 
   /// Creates a new [ReplicationSecretmanagerV1beta1].
   /// [automatic] The Secret will automatically be replicated without any restrictions.

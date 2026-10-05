@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Pricing model used for consumption-based charges.
-enum RatePlanConsumptionPricingType {
+enum RatePlanConsumptionPricingType implements pulumi.PulumiEnum<String> {
   consumptionPricingTypeUnspecified("CONSUMPTION_PRICING_TYPE_UNSPECIFIED"),
   fixedPerUnit("FIXED_PER_UNIT"),
   banded("BANDED"),
@@ -7,6 +9,7 @@ enum RatePlanConsumptionPricingType {
   stairstep("STAIRSTEP");
 
   const RatePlanConsumptionPricingType(this.wireValue);
+  @override
   final String wireValue;
 
   static RatePlanConsumptionPricingType fromValue(String value) {

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The storage type of the underlying volume.
-enum NfsShareStorageType {
+enum NfsShareStorageType implements pulumi.PulumiEnum<String> {
   storageTypeUnspecified("STORAGE_TYPE_UNSPECIFIED"),
   ssd("SSD"),
   hdd("HDD");
 
   const NfsShareStorageType(this.wireValue);
+  @override
   final String wireValue;
 
   static NfsShareStorageType fromValue(String value) {

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gce_setup_response.dart';
 import 'instance_notebooks_v2_args.dart';
+import 'upgrade_history_entry_response_notebooks_v2.dart';
 
 /// Creates a new Instance in a given project and location.
 /// Auto-naming is currently not supported for this resource.
@@ -36,7 +37,7 @@ class InstanceNotebooksV2 extends pulumi.CustomResource {
   /// Instance update time.
   late final pulumi.Output<String> updateTime;
   /// The upgrade history of this instance.
-  late final pulumi.Output<List<Map<String, dynamic>>> upgradeHistory;
+  late final pulumi.Output<List<UpgradeHistoryEntryResponseNotebooksV2>> upgradeHistory;
 
   /// Creates a new [InstanceNotebooksV2].
   /// [name] The Pulumi resource name.
@@ -50,17 +51,17 @@ class InstanceNotebooksV2 extends pulumi.CustomResource {
           'google-native:notebooks/v2:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceId', 'location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
     disableProxyAccess = registerOutput<bool>('disableProxyAccess');
     gceSetup = registerOutput<GceSetupResponse>('gceSetup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GceSetupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    healthInfo = registerOutput<Map<String, String>>('healthInfo');
+    healthInfo = registerOutput<Map<String, String>>('healthInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     healthState = registerOutput<String>('healthState');
     instanceId = registerOutput<String>('instanceId');
-    instanceOwners = registerOutput<List<String>>('instanceOwners');
-    labels = registerOutput<Map<String, String>>('labels');
+    instanceOwners = registerOutput<List<String>>('instanceOwners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -68,6 +69,34 @@ class InstanceNotebooksV2 extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
-    upgradeHistory = registerOutput<List<Map<String, dynamic>>>('upgradeHistory');
+    upgradeHistory = registerOutput<List<UpgradeHistoryEntryResponseNotebooksV2>>('upgradeHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UpgradeHistoryEntryResponseNotebooksV2>(guardedValue, (value) => UpgradeHistoryEntryResponseNotebooksV2.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [InstanceNotebooksV2] resource.
+  InstanceNotebooksV2.reference(String urn)
+    : super(
+        'google-native:notebooks/v2:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<String>('creator');
+    disableProxyAccess = registerOutput<bool>('disableProxyAccess');
+    gceSetup = registerOutput<GceSetupResponse>('gceSetup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GceSetupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    healthInfo = registerOutput<Map<String, String>>('healthInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    healthState = registerOutput<String>('healthState');
+    instanceId = registerOutput<String>('instanceId');
+    instanceOwners = registerOutput<List<String>>('instanceOwners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    proxyUri = registerOutput<String>('proxyUri');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    upgradeHistory = registerOutput<List<UpgradeHistoryEntryResponseNotebooksV2>>('upgradeHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UpgradeHistoryEntryResponseNotebooksV2>(guardedValue, (value) => UpgradeHistoryEntryResponseNotebooksV2.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

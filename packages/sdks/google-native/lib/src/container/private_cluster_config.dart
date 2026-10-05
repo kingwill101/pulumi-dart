@@ -6,15 +6,15 @@ import 'private_cluster_master_global_access_config.dart';
 /// Configuration options for private clusters.
 class PrivateClusterConfig {
   /// Whether the master's internal IP address is used as the cluster endpoint.
-  final pulumi.Input<bool>? enablePrivateEndpoint;
+  final pulumi.Input<bool?>? enablePrivateEndpoint;
   /// Whether nodes have internal IP addresses only. If enabled, all nodes are given only RFC 1918 private addresses and communicate with the master via private networking.
-  final pulumi.Input<bool>? enablePrivateNodes;
+  final pulumi.Input<bool?>? enablePrivateNodes;
   /// Controls master global access settings.
-  final pulumi.Input<PrivateClusterMasterGlobalAccessConfig>? masterGlobalAccessConfig;
+  final pulumi.Input<PrivateClusterMasterGlobalAccessConfig?>? masterGlobalAccessConfig;
   /// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network.
-  final pulumi.Input<String>? masterIpv4CidrBlock;
+  final pulumi.Input<String?>? masterIpv4CidrBlock;
   /// Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
-  final pulumi.Input<String>? privateEndpointSubnetwork;
+  final pulumi.Input<String?>? privateEndpointSubnetwork;
 
   /// Creates a new [PrivateClusterConfig].
   /// [enablePrivateEndpoint] Whether the master's internal IP address is used as the cluster endpoint.

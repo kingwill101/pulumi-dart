@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The location to begin a discovery scan. Denotes an organization ID or folder ID within an organization.
 class GooglePrivacyDlpV2DiscoveryStartingLocation {
   /// The ID of the Folder within an organization to scan.
-  final pulumi.Input<String>? folderId;
+  final pulumi.Input<String?>? folderId;
   /// The ID of an organization to scan.
-  final pulumi.Input<String>? organizationId;
+  final pulumi.Input<String?>? organizationId;
 
   /// Creates a new [GooglePrivacyDlpV2DiscoveryStartingLocation].
   /// [folderId] The ID of the Folder within an organization to scan.

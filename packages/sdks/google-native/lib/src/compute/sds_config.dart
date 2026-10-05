@@ -6,7 +6,7 @@ import 'grpc_service_config.dart';
 /// [Deprecated] The configuration to access the SDS server. The configuration to access the SDS server.
 class SdsConfig {
   /// The configuration to access the SDS server over GRPC.
-  final pulumi.Input<GrpcServiceConfig>? grpcServiceConfig;
+  final pulumi.Input<GrpcServiceConfig?>? grpcServiceConfig;
 
   /// Creates a new [SdsConfig].
   /// [grpcServiceConfig] The configuration to access the SDS server over GRPC.

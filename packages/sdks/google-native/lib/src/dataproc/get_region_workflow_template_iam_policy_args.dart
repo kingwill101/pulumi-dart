@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_dataproc_v1_get_region_workflow_template_iam_policy_args_doc}
 class GetRegionWorkflowTemplateIamPolicyArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> regionId;
   final pulumi.Input<String> workflowTemplateId;
 

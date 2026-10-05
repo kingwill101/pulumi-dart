@@ -10,8 +10,8 @@ class GetDatasetVersionAiplatformV1beta1Args {
   final pulumi.Input<String> datasetId;
   final pulumi.Input<String> datasetVersionId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? readMask;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? readMask;
 
   /// Creates a new [GetDatasetVersionAiplatformV1beta1Args].
   /// [datasetId] Required.

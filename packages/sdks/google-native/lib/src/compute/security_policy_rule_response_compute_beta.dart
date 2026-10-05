@@ -117,11 +117,11 @@ class SecurityPolicyRuleResponseComputeBeta {
       networkMatch: pulumi.Input.fromValue(SecurityPolicyRuleNetworkMatcherResponseComputeBeta.fromMap((map['networkMatch']! as Map).cast<String, dynamic>())),
       preconfiguredWafConfig: pulumi.Input.fromValue(SecurityPolicyRulePreconfiguredWafConfigResponseComputeBeta.fromMap((map['preconfiguredWafConfig']! as Map).cast<String, dynamic>())),
       preview: pulumi.Input.fromValue(map['preview'] as bool),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       rateLimitOptions: pulumi.Input.fromValue(SecurityPolicyRuleRateLimitOptionsResponseComputeBeta.fromMap((map['rateLimitOptions']! as Map).cast<String, dynamic>())),
       redirectOptions: pulumi.Input.fromValue(SecurityPolicyRuleRedirectOptionsResponseComputeBeta.fromMap((map['redirectOptions']! as Map).cast<String, dynamic>())),
       ruleNumber: pulumi.Input.fromValue(map['ruleNumber'] as String),
-      ruleTupleCount: pulumi.Input.fromValue(map['ruleTupleCount'] as int),
+      ruleTupleCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ruleTupleCount'])),
       targetResources: pulumi.Input.fromValue((map['targetResources'] as List).cast<String>()),
       targetServiceAccounts: pulumi.Input.fromValue((map['targetServiceAccounts'] as List).cast<String>()),
     );

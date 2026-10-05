@@ -29,8 +29,25 @@ class BrowserDlpRule extends pulumi.CustomResource {
           'google-native:beyondcorp/v1alpha:BrowserDlpRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId', 'partnerTenantId']).merge(options),
         ) {
+    group = registerOutput<GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse>('group', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    partnerTenantId = registerOutput<String>('partnerTenantId');
+    requestId = registerOutput<String?>('requestId');
+    ruleSetting = registerOutput<GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse>('ruleSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [BrowserDlpRule] resource.
+  BrowserDlpRule.reference(String urn)
+    : super(
+        'google-native:beyondcorp/v1alpha:BrowserDlpRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     group = registerOutput<GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse>('group', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBeyondcorpPartnerservicesV1alphaGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');

@@ -33,8 +33,28 @@ class FolderBucketLink extends pulumi.CustomResource {
           'google-native:logging/v2:FolderBucketLink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['bucketId', 'folderId', 'linkId', 'location']).merge(options),
         ) {
+    bigqueryDataset = registerOutput<BigQueryDatasetResponse>('bigqueryDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bucketId = registerOutput<String>('bucketId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    folderId = registerOutput<String>('folderId');
+    lifecycleState = registerOutput<String>('lifecycleState');
+    linkId = registerOutput<String>('linkId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [FolderBucketLink] resource.
+  FolderBucketLink.reference(String urn)
+    : super(
+        'google-native:logging/v2:FolderBucketLink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bigqueryDataset = registerOutput<BigQueryDatasetResponse>('bigqueryDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bucketId = registerOutput<String>('bucketId');
     createTime = registerOutput<String>('createTime');

@@ -49,7 +49,7 @@ class SubnetworkLogConfigResponseComputeBeta {
       aggregationInterval: pulumi.Input.fromValue(map['aggregationInterval'] as String),
       enable: pulumi.Input.fromValue(map['enable'] as bool),
       filterExpr: pulumi.Input.fromValue(map['filterExpr'] as String),
-      flowSampling: pulumi.Input.fromValue(map['flowSampling'] as double),
+      flowSampling: pulumi.Input.fromValue((map['flowSampling'] as num).toDouble()),
       metadata: pulumi.Input.fromValue(map['metadata'] as String),
       metadataFields: pulumi.Input.fromValue((map['metadataFields'] as List).cast<String>()),
     );

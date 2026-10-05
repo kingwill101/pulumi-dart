@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
-enum DnsKeySpecKeyTypeDnsV1beta2 {
+enum DnsKeySpecKeyTypeDnsV1beta2 implements pulumi.PulumiEnum<String> {
   keySigning("keySigning"),
   zoneSigning("zoneSigning");
 
   const DnsKeySpecKeyTypeDnsV1beta2(this.wireValue);
+  @override
   final String wireValue;
 
   static DnsKeySpecKeyTypeDnsV1beta2 fromValue(String value) {

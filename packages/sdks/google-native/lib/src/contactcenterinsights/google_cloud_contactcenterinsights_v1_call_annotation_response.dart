@@ -79,7 +79,7 @@ class GoogleCloudContactcenterinsightsV1CallAnnotationResponse {
     return GoogleCloudContactcenterinsightsV1CallAnnotationResponse(
       annotationEndBoundary: pulumi.Input.fromValue(GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse.fromMap((map['annotationEndBoundary']! as Map).cast<String, dynamic>())),
       annotationStartBoundary: pulumi.Input.fromValue(GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse.fromMap((map['annotationStartBoundary']! as Map).cast<String, dynamic>())),
-      channelTag: pulumi.Input.fromValue(map['channelTag'] as int),
+      channelTag: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['channelTag'])),
       entityMentionData: pulumi.Input.fromValue(GoogleCloudContactcenterinsightsV1EntityMentionDataResponse.fromMap((map['entityMentionData']! as Map).cast<String, dynamic>())),
       holdData: pulumi.Input.fromValue((map['holdData']! as Map).cast<String, dynamic>()),
       intentMatchData: pulumi.Input.fromValue(GoogleCloudContactcenterinsightsV1IntentMatchDataResponse.fromMap((map['intentMatchData']! as Map).cast<String, dynamic>())),

@@ -6,9 +6,9 @@ import 'google_devtools_containeranalysis_v1alpha1_project_repo_id.dart';
 /// A unique identifier for a Cloud Repo.
 class GoogleDevtoolsContaineranalysisV1alpha1RepoId {
   /// A combination of a project ID and a repo name.
-  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId>? projectRepoId;
+  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId?>? projectRepoId;
   /// A server-assigned, globally unique identifier.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1RepoId].
   /// [projectRepoId] A combination of a project ID and a repo name.

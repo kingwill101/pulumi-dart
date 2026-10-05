@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specified snapshot properties for scheduled snapshots created by this policy.
 class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeV1 {
   /// Chain name that the snapshot is created in.
-  final pulumi.Input<String>? chainName;
+  final pulumi.Input<String?>? chainName;
   /// Indication to perform a 'guest aware' snapshot.
-  final pulumi.Input<bool>? guestFlush;
+  final pulumi.Input<bool?>? guestFlush;
   /// Labels to apply to scheduled snapshots. These can be later modified by the setLabels method. Label values may be empty.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Cloud Storage bucket storage location of the auto snapshot (regional or multi-regional).
-  final pulumi.Input<List<String>>? storageLocations;
+  final pulumi.Input<List<String>?>? storageLocations;
 
   /// Creates a new [ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeV1].
   /// [chainName] Chain name that the snapshot is created in.

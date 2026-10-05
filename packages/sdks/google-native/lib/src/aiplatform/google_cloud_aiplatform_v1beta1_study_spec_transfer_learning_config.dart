@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// This contains flag for manually disabling transfer learning for a study. The names of prior studies being used for transfer learning (if any) are also listed here.
 class GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig {
   /// Flag to to manually prevent vizier from using transfer learning on a new study. Otherwise, vizier will automatically determine whether or not to use transfer learning.
-  final pulumi.Input<bool>? disableTransferLearning;
+  final pulumi.Input<bool?>? disableTransferLearning;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfig].
   /// [disableTransferLearning] Flag to to manually prevent vizier from using transfer learning on a new study. Otherwise, vizier will automatically determine whether or not to use transfer learning.

@@ -1,4 +1,6 @@
-enum JobDegreeTypesItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum JobDegreeTypesItem implements pulumi.PulumiEnum<String> {
   degreeTypeUnspecified("DEGREE_TYPE_UNSPECIFIED"),
   primaryEducation("PRIMARY_EDUCATION"),
   lowerSecondaryEducation("LOWER_SECONDARY_EDUCATION"),
@@ -10,6 +12,7 @@ enum JobDegreeTypesItem {
   doctoralOrEquivalent("DOCTORAL_OR_EQUIVALENT");
 
   const JobDegreeTypesItem(this.wireValue);
+  @override
   final String wireValue;
 
   static JobDegreeTypesItem fromValue(String value) {

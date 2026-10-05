@@ -21,7 +21,7 @@ class SecurityContextResponse {
 
   factory SecurityContextResponse.fromMap(Map<String, dynamic> map) {
     return SecurityContextResponse(
-      runAsUser: pulumi.Input.fromValue(map['runAsUser'] as int),
+      runAsUser: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['runAsUser'])),
     );
   }
 }

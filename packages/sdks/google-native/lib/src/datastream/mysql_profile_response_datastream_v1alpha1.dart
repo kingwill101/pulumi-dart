@@ -44,7 +44,7 @@ class MysqlProfileResponseDatastreamV1alpha1 {
     return MysqlProfileResponseDatastreamV1alpha1(
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       sslConfig: pulumi.Input.fromValue(MysqlSslConfigResponseDatastreamV1alpha1.fromMap((map['sslConfig']! as Map).cast<String, dynamic>())),
       username: pulumi.Input.fromValue(map['username'] as String),
     );

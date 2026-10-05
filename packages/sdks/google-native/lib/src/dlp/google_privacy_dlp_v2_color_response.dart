@@ -31,9 +31,9 @@ class GooglePrivacyDlpV2ColorResponse {
 
   factory GooglePrivacyDlpV2ColorResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ColorResponse(
-      blue: pulumi.Input.fromValue(map['blue'] as double),
-      green: pulumi.Input.fromValue(map['green'] as double),
-      red: pulumi.Input.fromValue(map['red'] as double),
+      blue: pulumi.Input.fromValue((map['blue'] as num).toDouble()),
+      green: pulumi.Input.fromValue((map['green'] as num).toDouble()),
+      red: pulumi.Input.fromValue((map['red'] as num).toDouble()),
     );
   }
 }

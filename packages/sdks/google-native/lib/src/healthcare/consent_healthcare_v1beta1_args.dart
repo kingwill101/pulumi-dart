@@ -14,19 +14,19 @@ class ConsentHealthcareV1beta1Args {
   final pulumi.Input<String> consentStoreId;
   final pulumi.Input<String> datasetId;
   /// Timestamp in UTC of when this Consent is considered expired.
-  final pulumi.Input<String>? expireTime;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? expireTime;
+  final pulumi.Input<String?>? location;
   /// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
-  final pulumi.Input<List<GoogleCloudHealthcareV1beta1ConsentPolicy>>? policies;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<List<GoogleCloudHealthcareV1beta1ConsentPolicy>?>? policies;
+  final pulumi.Input<String?>? project;
   /// Indicates the current state of this Consent.
   final pulumi.Input<ConsentStateHealthcareV1beta1> state;
   /// Input only. The time to live for this Consent from when it is created.
-  final pulumi.Input<String>? ttl;
+  final pulumi.Input<String?>? ttl;
   /// User's UUID provided by the client.
   final pulumi.Input<String> userId;
 

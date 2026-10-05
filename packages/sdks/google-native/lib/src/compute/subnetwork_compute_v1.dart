@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnetwork_compute_v1_args.dart';
 import 'subnetwork_log_config_response_compute_v1.dart';
+import 'subnetwork_secondary_range_response_compute_v1.dart';
 
 /// Creates a subnetwork in the specified project using the data included in the request.
 class SubnetworkComputeV1 extends pulumi.CustomResource {
@@ -45,7 +46,7 @@ class SubnetworkComputeV1 extends pulumi.CustomResource {
   /// The role of subnetwork. Currently, this field is only used when purpose = REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
   late final pulumi.Output<String> role;
   /// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
-  late final pulumi.Output<List<Map<String, dynamic>>> secondaryIpRanges;
+  late final pulumi.Output<List<SubnetworkSecondaryRangeResponseComputeV1>> secondaryIpRanges;
   /// Server-defined URL for the resource.
   late final pulumi.Output<String> selfLink;
   /// The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
@@ -65,7 +66,7 @@ class SubnetworkComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:Subnetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
@@ -88,7 +89,43 @@ class SubnetworkComputeV1 extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
     role = registerOutput<String>('role');
-    secondaryIpRanges = registerOutput<List<Map<String, dynamic>>>('secondaryIpRanges');
+    secondaryIpRanges = registerOutput<List<SubnetworkSecondaryRangeResponseComputeV1>>('secondaryIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetworkSecondaryRangeResponseComputeV1>(guardedValue, (value) => SubnetworkSecondaryRangeResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+    selfLink = registerOutput<String>('selfLink');
+    stackType = registerOutput<String>('stackType');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [SubnetworkComputeV1] resource.
+  SubnetworkComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:Subnetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    enableFlowLogs = registerOutput<bool>('enableFlowLogs');
+    externalIpv6Prefix = registerOutput<String>('externalIpv6Prefix');
+    fingerprint = registerOutput<String>('fingerprint');
+    gatewayAddress = registerOutput<String>('gatewayAddress');
+    internalIpv6Prefix = registerOutput<String>('internalIpv6Prefix');
+    ipCidrRange = registerOutput<String>('ipCidrRange');
+    ipv6AccessType = registerOutput<String>('ipv6AccessType');
+    ipv6CidrRange = registerOutput<String>('ipv6CidrRange');
+    kind = registerOutput<String>('kind');
+    logConfig = registerOutput<SubnetworkLogConfigResponseComputeV1>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetworkLogConfigResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    privateIpGoogleAccess = registerOutput<bool>('privateIpGoogleAccess');
+    privateIpv6GoogleAccess = registerOutput<String>('privateIpv6GoogleAccess');
+    project = registerOutput<String>('project');
+    purpose = registerOutput<String>('purpose');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    role = registerOutput<String>('role');
+    secondaryIpRanges = registerOutput<List<SubnetworkSecondaryRangeResponseComputeV1>>('secondaryIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetworkSecondaryRangeResponseComputeV1>(guardedValue, (value) => SubnetworkSecondaryRangeResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     stackType = registerOutput<String>('stackType');
     state = registerOutput<String>('state');

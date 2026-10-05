@@ -28,7 +28,7 @@ class HttpFaultDelayResponseComputeV1 {
   factory HttpFaultDelayResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return HttpFaultDelayResponseComputeV1(
       fixedDelay: pulumi.Input.fromValue(DurationResponseComputeV1.fromMap((map['fixedDelay']! as Map).cast<String, dynamic>())),
-      percentage: pulumi.Input.fromValue(map['percentage'] as double),
+      percentage: pulumi.Input.fromValue((map['percentage'] as num).toDouble()),
     );
   }
 }

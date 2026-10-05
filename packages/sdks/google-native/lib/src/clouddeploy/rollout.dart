@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metadata_response.dart';
+import 'phase_response.dart';
 import 'rollout_args.dart';
 
 /// Creates a new Rollout in a given project and location.
@@ -41,7 +42,7 @@ class Rollout extends pulumi.CustomResource {
   /// Optional. Name of the `Rollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
   late final pulumi.Output<String> name;
   /// The phases that represent the workflows of this `Rollout`.
-  late final pulumi.Output<List<Map<String, dynamic>>> phases;
+  late final pulumi.Output<List<PhaseResponse>> phases;
   late final pulumi.Output<String> project;
   late final pulumi.Output<String> releaseId;
   /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -73,9 +74,9 @@ class Rollout extends pulumi.CustomResource {
           'google-native:clouddeploy/v1:Rollout',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['deliveryPipelineId', 'location', 'project', 'releaseId', 'rolloutId']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     approvalState = registerOutput<String>('approvalState');
     approveTime = registerOutput<String>('approveTime');
     controllerRollout = registerOutput<String>('controllerRollout');
@@ -89,16 +90,56 @@ class Rollout extends pulumi.CustomResource {
     enqueueTime = registerOutput<String>('enqueueTime');
     etag = registerOutput<String>('etag');
     failureReason = registerOutput<String>('failureReason');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     metadata = registerOutput<MetadataResponse>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    phases = registerOutput<List<Map<String, dynamic>>>('phases');
+    phases = registerOutput<List<PhaseResponse>>('phases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PhaseResponse>(guardedValue, (value) => PhaseResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     releaseId = registerOutput<String>('releaseId');
     requestId = registerOutput<String?>('requestId');
     rollbackOfRollout = registerOutput<String>('rollbackOfRollout');
-    rolledBackByRollouts = registerOutput<List<String>>('rolledBackByRollouts');
+    rolledBackByRollouts = registerOutput<List<String>>('rolledBackByRollouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    rolloutId = registerOutput<String>('rolloutId');
+    startingPhaseId = registerOutput<String?>('startingPhaseId');
+    state = registerOutput<String>('state');
+    targetId = registerOutput<String>('targetId');
+    uid = registerOutput<String>('uid');
+  }
+
+  /// Creates a typed reference to an existing [Rollout] resource.
+  Rollout.reference(String urn)
+    : super(
+        'google-native:clouddeploy/v1:Rollout',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    approvalState = registerOutput<String>('approvalState');
+    approveTime = registerOutput<String>('approveTime');
+    controllerRollout = registerOutput<String>('controllerRollout');
+    createTime = registerOutput<String>('createTime');
+    deliveryPipelineId = registerOutput<String>('deliveryPipelineId');
+    deployEndTime = registerOutput<String>('deployEndTime');
+    deployFailureCause = registerOutput<String>('deployFailureCause');
+    deployStartTime = registerOutput<String>('deployStartTime');
+    deployingBuild = registerOutput<String>('deployingBuild');
+    description = registerOutput<String>('description');
+    enqueueTime = registerOutput<String>('enqueueTime');
+    etag = registerOutput<String>('etag');
+    failureReason = registerOutput<String>('failureReason');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    metadata = registerOutput<MetadataResponse>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    phases = registerOutput<List<PhaseResponse>>('phases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PhaseResponse>(guardedValue, (value) => PhaseResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    releaseId = registerOutput<String>('releaseId');
+    requestId = registerOutput<String?>('requestId');
+    rollbackOfRollout = registerOutput<String>('rollbackOfRollout');
+    rolledBackByRollouts = registerOutput<List<String>>('rolledBackByRollouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     rolloutId = registerOutput<String>('rolloutId');
     startingPhaseId = registerOutput<String?>('startingPhaseId');
     state = registerOutput<String>('state');

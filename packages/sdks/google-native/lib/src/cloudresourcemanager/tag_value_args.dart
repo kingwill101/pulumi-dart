@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudresourcemanager_v3_tag_value_args_doc}
 class TagValueArgs {
   /// Optional. User-assigned description of the TagValue. Must not exceed 256 characters. Read-write.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagValueRequest for details.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Immutable. Resource name for TagValue in the format `tagValues/456`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
   final pulumi.Input<String> shortName;
 

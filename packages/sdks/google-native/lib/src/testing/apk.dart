@@ -6,9 +6,9 @@ import 'file_reference.dart';
 /// An Android package file to install.
 class Apk {
   /// The path to an APK to be installed on the device before the test begins.
-  final pulumi.Input<FileReference>? location;
+  final pulumi.Input<FileReference?>? location;
   /// The java package for the APK to be installed. Value is determined by examining the application's manifest.
-  final pulumi.Input<String>? packageName;
+  final pulumi.Input<String?>? packageName;
 
   /// Creates a new [Apk].
   /// [location] The path to an APK to be installed on the device before the test begins.

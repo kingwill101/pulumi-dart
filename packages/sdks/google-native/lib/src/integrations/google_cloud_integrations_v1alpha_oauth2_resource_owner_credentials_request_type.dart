@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Represent how to pass parameters to fetch access token
-enum GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType {
+enum GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType implements pulumi.PulumiEnum<String> {
   requestTypeUnspecified("REQUEST_TYPE_UNSPECIFIED"),
   requestBody("REQUEST_BODY"),
   queryParameters("QUERY_PARAMETERS"),
   encodedHeader("ENCODED_HEADER");
 
   const GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType fromValue(String value) {

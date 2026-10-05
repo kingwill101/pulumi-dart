@@ -36,7 +36,7 @@ class GoogleCloudMlV1TrialParameterResponse {
 
   factory GoogleCloudMlV1TrialParameterResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1TrialParameterResponse(
-      floatValue: pulumi.Input.fromValue(map['floatValue'] as double),
+      floatValue: pulumi.Input.fromValue((map['floatValue'] as num).toDouble()),
       intValue: pulumi.Input.fromValue(map['intValue'] as String),
       parameter: pulumi.Input.fromValue(map['parameter'] as String),
       stringValue: pulumi.Input.fromValue(map['stringValue'] as String),

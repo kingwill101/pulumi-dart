@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_args.dart';
+import 'network_peering_response.dart';
 import 'network_routing_config_response.dart';
 
 /// Creates a network in the specified project using the data included in the request.
@@ -29,7 +30,7 @@ class Network extends pulumi.CustomResource {
   /// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
   late final pulumi.Output<String> networkFirewallPolicyEnforcementOrder;
   /// A list of network peerings for the resource.
-  late final pulumi.Output<List<Map<String, dynamic>>> peerings;
+  late final pulumi.Output<List<NetworkPeeringResponse>> peerings;
   late final pulumi.Output<String> project;
   /// URL of the region where the regional network resides. This field is not applicable to global network. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
   late final pulumi.Output<String> region;
@@ -56,7 +57,7 @@ class Network extends pulumi.CustomResource {
           'google-native:compute/alpha:Network',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     autoCreateSubnetworks = registerOutput<bool>('autoCreateSubnetworks');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -70,13 +71,44 @@ class Network extends pulumi.CustomResource {
     mtu = registerOutput<int>('mtu');
     this.name = registerOutput<String>('name');
     networkFirewallPolicyEnforcementOrder = registerOutput<String>('networkFirewallPolicyEnforcementOrder');
-    peerings = registerOutput<List<Map<String, dynamic>>>('peerings');
+    peerings = registerOutput<List<NetworkPeeringResponse>>('peerings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkPeeringResponse>(guardedValue, (value) => NetworkPeeringResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
     routingConfig = registerOutput<NetworkRoutingConfigResponse>('routingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkRoutingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
-    subnetworks = registerOutput<List<String>>('subnetworks');
+    subnetworks = registerOutput<List<String>>('subnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Network] resource.
+  Network.reference(String urn)
+    : super(
+        'google-native:compute/alpha:Network',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoCreateSubnetworks = registerOutput<bool>('autoCreateSubnetworks');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    enableUlaInternalIpv6 = registerOutput<bool>('enableUlaInternalIpv6');
+    firewallPolicy = registerOutput<String>('firewallPolicy');
+    gatewayIPv4 = registerOutput<String>('gatewayIPv4');
+    internalIpv6Range = registerOutput<String>('internalIpv6Range');
+    ipv4Range = registerOutput<String>('ipv4Range');
+    kind = registerOutput<String>('kind');
+    mtu = registerOutput<int>('mtu');
+    this.name = registerOutput<String>('name');
+    networkFirewallPolicyEnforcementOrder = registerOutput<String>('networkFirewallPolicyEnforcementOrder');
+    peerings = registerOutput<List<NetworkPeeringResponse>>('peerings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkPeeringResponse>(guardedValue, (value) => NetworkPeeringResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    routingConfig = registerOutput<NetworkRoutingConfigResponse>('routingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkRoutingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    subnetworks = registerOutput<List<String>>('subnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

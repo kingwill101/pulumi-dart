@@ -8,19 +8,19 @@ import 'instance_group_config_preemptibility_dataproc_v1beta2.dart';
 /// The config settings for Compute Engine resources in an instance group, such as a master or worker group.
 class InstanceGroupConfigDataprocV1beta2 {
   /// Optional. The Compute Engine accelerator configuration for these instances.
-  final pulumi.Input<List<AcceleratorConfigDataprocV1beta2>>? accelerators;
+  final pulumi.Input<List<AcceleratorConfigDataprocV1beta2>?>? accelerators;
   /// Optional. Disk option config settings.
-  final pulumi.Input<DiskConfigDataprocV1beta2>? diskConfig;
+  final pulumi.Input<DiskConfigDataprocV1beta2?>? diskConfig;
   /// Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples: https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id] projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most recent image from the family: https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default.
-  final pulumi.Input<String>? imageUri;
+  final pulumi.Input<String?>? imageUri;
   /// Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
-  final pulumi.Input<String>? machineTypeUri;
+  final pulumi.Input<String?>? machineTypeUri;
   /// Specifies the minimum cpu platform for the Instance Group. See Dataproc -&gt; Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
-  final pulumi.Input<String>? minCpuPlatform;
+  final pulumi.Input<String?>? minCpuPlatform;
   /// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
-  final pulumi.Input<int>? numInstances;
+  final pulumi.Input<int?>? numInstances;
   /// Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
-  final pulumi.Input<InstanceGroupConfigPreemptibilityDataprocV1beta2>? preemptibility;
+  final pulumi.Input<InstanceGroupConfigPreemptibilityDataprocV1beta2?>? preemptibility;
 
   /// Creates a new [InstanceGroupConfigDataprocV1beta2].
   /// [accelerators] Optional. The Compute Engine accelerator configuration for these instances.
@@ -59,7 +59,7 @@ class InstanceGroupConfigDataprocV1beta2 {
       imageUri: (() { final guardedValue = map['imageUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       machineTypeUri: (() { final guardedValue = map['machineTypeUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minCpuPlatform: (() { final guardedValue = map['minCpuPlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numInstances: (() { final guardedValue = map['numInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numInstances: (() { final guardedValue = map['numInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       preemptibility: (() { final guardedValue = map['preemptibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGroupConfigPreemptibilityDataprocV1beta2.fromValue(guardedValue as String)); })(),
     );
   }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Determines whether or no a connection is locked. If locked, a reason must be specified.
 class LockConfig {
   /// Indicates whether or not the connection is locked.
-  final pulumi.Input<bool>? locked;
+  final pulumi.Input<bool?>? locked;
   /// Describes why a connection is locked.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
 
   /// Creates a new [LockConfig].
   /// [locked] Indicates whether or not the connection is locked.

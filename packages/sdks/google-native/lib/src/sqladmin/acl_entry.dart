@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An entry for an Access Control list.
 class AclEntry {
   /// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
-  final pulumi.Input<String>? expirationTime;
+  final pulumi.Input<String?>? expirationTime;
   /// This is always `sql#aclEntry`.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Optional. A label to identify this entry.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The allowlisted value for the access control list.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AclEntry].
   /// [expirationTime] The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.

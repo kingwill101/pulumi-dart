@@ -7,17 +7,17 @@ import 'push_filter.dart';
 /// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 class GitHubEventsConfig {
   /// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
-  final pulumi.Input<String>? enterpriseConfigResourceName;
+  final pulumi.Input<String?>? enterpriseConfigResourceName;
   /// The installationID that emits the GitHub event.
-  final pulumi.Input<String>? installationId;
+  final pulumi.Input<String?>? installationId;
   /// Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// filter to match changes in pull requests.
-  final pulumi.Input<PullRequestFilter>? pullRequest;
+  final pulumi.Input<PullRequestFilter?>? pullRequest;
   /// filter to match changes in refs like branches, tags.
-  final pulumi.Input<PushFilter>? push;
+  final pulumi.Input<PushFilter?>? push;
 
   /// Creates a new [GitHubEventsConfig].
   /// [enterpriseConfigResourceName] Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"

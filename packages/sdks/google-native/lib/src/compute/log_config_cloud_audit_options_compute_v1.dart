@@ -7,9 +7,9 @@ import 'log_config_cloud_audit_options_log_name_compute_v1.dart';
 /// This is deprecated and has no effect. Do not use.
 class LogConfigCloudAuditOptionsComputeV1 {
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<AuthorizationLoggingOptionsComputeV1>? authorizationLoggingOptions;
+  final pulumi.Input<AuthorizationLoggingOptionsComputeV1?>? authorizationLoggingOptions;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<LogConfigCloudAuditOptionsLogNameComputeV1>? logName;
+  final pulumi.Input<LogConfigCloudAuditOptionsLogNameComputeV1?>? logName;
 
   /// Creates a new [LogConfigCloudAuditOptionsComputeV1].
   /// [authorizationLoggingOptions] This is deprecated and has no effect. Do not use.

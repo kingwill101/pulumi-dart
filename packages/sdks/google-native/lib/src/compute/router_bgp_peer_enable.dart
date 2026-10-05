@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
-enum RouterBgpPeerEnable {
+enum RouterBgpPeerEnable implements pulumi.PulumiEnum<String> {
   false_("FALSE"),
   true_("TRUE");
 
   const RouterBgpPeerEnable(this.wireValue);
+  @override
   final String wireValue;
 
   static RouterBgpPeerEnable fromValue(String value) {

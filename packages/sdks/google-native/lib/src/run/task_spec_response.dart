@@ -44,7 +44,7 @@ class TaskSpecResponse {
   factory TaskSpecResponse.fromMap(Map<String, dynamic> map) {
     return TaskSpecResponse(
       containers: pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerResponse>(map['containers']!, (value) => ContainerResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      maxRetries: pulumi.Input.fromValue(map['maxRetries'] as int),
+      maxRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRetries'])),
       serviceAccountName: pulumi.Input.fromValue(map['serviceAccountName'] as String),
       timeoutSeconds: pulumi.Input.fromValue(map['timeoutSeconds'] as String),
       volumes: pulumi.Input.fromValue(pulumi.Input.decodeList<VolumeResponse>(map['volumes']!, (value) => VolumeResponse.fromMap((value as Map).cast<String, dynamic>()))),

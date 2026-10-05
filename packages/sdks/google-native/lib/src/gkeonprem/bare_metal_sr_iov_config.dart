@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the SR-IOV networking operator config.
 class BareMetalSrIovConfig {
   /// Whether to install the SR-IOV operator.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [BareMetalSrIovConfig].
   /// [enabled] Whether to install the SR-IOV operator.

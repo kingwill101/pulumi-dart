@@ -9,7 +9,7 @@ class ResultStorage {
   /// Required.
   final pulumi.Input<GoogleCloudStorage> googleCloudStorage;
   /// The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
-  final pulumi.Input<ToolResultsHistory>? toolResultsHistory;
+  final pulumi.Input<ToolResultsHistory?>? toolResultsHistory;
 
   /// Creates a new [ResultStorage].
   /// [googleCloudStorage] Required.

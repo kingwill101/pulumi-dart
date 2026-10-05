@@ -9,12 +9,12 @@ import 'google_cloud_contactcenterinsights_v1_annotator_selector.dart';
 /// {@macro pulumi_contactcenterinsights_v1_analysis_args_doc}
 class AnalysisArgs {
   /// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
-  final pulumi.Input<GoogleCloudContactcenterinsightsV1AnnotatorSelector>? annotatorSelector;
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1AnnotatorSelector?>? annotatorSelector;
   final pulumi.Input<String> conversationId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [AnalysisArgs].
   /// [annotatorSelector] To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.

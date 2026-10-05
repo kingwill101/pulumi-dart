@@ -33,7 +33,7 @@ class ScanRunErrorTraceResponse {
   factory ScanRunErrorTraceResponse.fromMap(Map<String, dynamic> map) {
     return ScanRunErrorTraceResponse(
       code: pulumi.Input.fromValue(map['code'] as String),
-      mostCommonHttpErrorCode: pulumi.Input.fromValue(map['mostCommonHttpErrorCode'] as int),
+      mostCommonHttpErrorCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['mostCommonHttpErrorCode'])),
       scanConfigError: pulumi.Input.fromValue(ScanConfigErrorResponse.fromMap((map['scanConfigError']! as Map).cast<String, dynamic>())),
     );
   }

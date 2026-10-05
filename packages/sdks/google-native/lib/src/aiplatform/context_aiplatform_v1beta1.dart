@@ -43,19 +43,45 @@ class ContextAiplatformV1beta1 extends pulumi.CustomResource {
           'google-native:aiplatform/v1beta1:Context',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'metadataStoreId', 'project']).merge(options),
         ) {
     contextId = registerOutput<String?>('contextId');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     metadataStoreId = registerOutput<String>('metadataStoreId');
     this.name = registerOutput<String>('name');
-    parentContexts = registerOutput<List<String>>('parentContexts');
+    parentContexts = registerOutput<List<String>>('parentContexts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    schemaTitle = registerOutput<String>('schemaTitle');
+    schemaVersion = registerOutput<String>('schemaVersion');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ContextAiplatformV1beta1] resource.
+  ContextAiplatformV1beta1.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1beta1:Context',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    contextId = registerOutput<String?>('contextId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    metadataStoreId = registerOutput<String>('metadataStoreId');
+    this.name = registerOutput<String>('name');
+    parentContexts = registerOutput<List<String>>('parentContexts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     schemaTitle = registerOutput<String>('schemaTitle');
     schemaVersion = registerOutput<String>('schemaVersion');

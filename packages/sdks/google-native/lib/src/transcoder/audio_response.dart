@@ -33,7 +33,7 @@ class AudioResponse {
     return AudioResponse(
       highBoost: pulumi.Input.fromValue(map['highBoost'] as bool),
       lowBoost: pulumi.Input.fromValue(map['lowBoost'] as bool),
-      lufs: pulumi.Input.fromValue(map['lufs'] as double),
+      lufs: pulumi.Input.fromValue((map['lufs'] as num).toDouble()),
     );
   }
 }

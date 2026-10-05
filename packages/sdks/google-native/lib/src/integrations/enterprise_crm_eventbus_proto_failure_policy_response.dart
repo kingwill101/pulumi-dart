@@ -32,7 +32,7 @@ class EnterpriseCrmEventbusProtoFailurePolicyResponse {
   factory EnterpriseCrmEventbusProtoFailurePolicyResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoFailurePolicyResponse(
       intervalInSeconds: pulumi.Input.fromValue(map['intervalInSeconds'] as String),
-      maxNumRetries: pulumi.Input.fromValue(map['maxNumRetries'] as int),
+      maxNumRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNumRetries'])),
       retryStrategy: pulumi.Input.fromValue(map['retryStrategy'] as String),
     );
   }

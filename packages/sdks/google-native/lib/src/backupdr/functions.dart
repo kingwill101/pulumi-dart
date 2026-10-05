@@ -20,6 +20,17 @@ Future<GetManagementServerResult> getManagementServer(
   return GetManagementServerResult.fromMap(result);
 }
 
+pulumi.Output<GetManagementServerResult> getManagementServerOutput(
+  GetManagementServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:backupdr/v1:getManagementServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagementServerResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_backupdr_v1_get_management_server_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetManagementServerIamPolicyResult> getManagementServerIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagementServerIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetManagementServerIamPolicyResult> getManagementServerIamPolicyOutput(
+  GetManagementServerIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:backupdr/v1:getManagementServerIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagementServerIamPolicyResult.fromMap);
 }

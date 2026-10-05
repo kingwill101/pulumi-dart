@@ -26,7 +26,7 @@ class DenoiseResponse {
 
   factory DenoiseResponse.fromMap(Map<String, dynamic> map) {
     return DenoiseResponse(
-      strength: pulumi.Input.fromValue(map['strength'] as double),
+      strength: pulumi.Input.fromValue((map['strength'] as num).toDouble()),
       tune: pulumi.Input.fromValue(map['tune'] as String),
     );
   }

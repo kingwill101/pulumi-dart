@@ -6,7 +6,7 @@ import 'google_cloud_beyondcorp_appconnectors_v1_app_connector_principal_info_se
 /// PrincipalInfo represents an Identity oneof.
 class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo {
   /// A GCP service account.
-  final pulumi.Input<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount>? serviceAccount;
+  final pulumi.Input<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount?>? serviceAccount;
 
   /// Creates a new [GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo].
   /// [serviceAccount] A GCP service account.

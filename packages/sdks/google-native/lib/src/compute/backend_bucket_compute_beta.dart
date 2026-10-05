@@ -42,13 +42,37 @@ class BackendBucketComputeBeta extends pulumi.CustomResource {
           'google-native:compute/beta:BackendBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     bucketName = registerOutput<String>('bucketName');
     cdnPolicy = registerOutput<BackendBucketCdnPolicyResponseComputeBeta>('cdnPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendBucketCdnPolicyResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compressionMode = registerOutput<String>('compressionMode');
     creationTimestamp = registerOutput<String>('creationTimestamp');
-    customResponseHeaders = registerOutput<List<String>>('customResponseHeaders');
+    customResponseHeaders = registerOutput<List<String>>('customResponseHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String>('description');
+    edgeSecurityPolicy = registerOutput<String>('edgeSecurityPolicy');
+    enableCdn = registerOutput<bool>('enableCdn');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [BackendBucketComputeBeta] resource.
+  BackendBucketComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:BackendBucket',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucketName = registerOutput<String>('bucketName');
+    cdnPolicy = registerOutput<BackendBucketCdnPolicyResponseComputeBeta>('cdnPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendBucketCdnPolicyResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    compressionMode = registerOutput<String>('compressionMode');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customResponseHeaders = registerOutput<List<String>>('customResponseHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String>('description');
     edgeSecurityPolicy = registerOutput<String>('edgeSecurityPolicy');
     enableCdn = registerOutput<bool>('enableCdn');

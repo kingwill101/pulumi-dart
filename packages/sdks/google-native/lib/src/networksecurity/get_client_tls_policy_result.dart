@@ -7,21 +7,21 @@ import 'validation_caresponse.dart';
 /// Result data returned by getClientTlsPolicy.
 class GetClientTlsPolicyResult {
   /// Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
-  final GoogleCloudNetworksecurityV1CertificateProviderResponse clientCertificate;
+  final GoogleCloudNetworksecurityV1CertificateProviderResponse? clientCertificate;
   /// The timestamp when the resource was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. Free-text description of the resource.
-  final String description;
+  final String? description;
   /// Optional. Set of label tags associated with the resource.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
-  final String name;
+  final String? name;
   /// Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
-  final List<ValidationCAResponse> serverValidationCa;
+  final List<ValidationCAResponse>? serverValidationCa;
   /// Optional. Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
-  final String sni;
+  final String? sni;
   /// The timestamp when the resource was updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetClientTlsPolicyResult].
   /// [clientCertificate] Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
@@ -33,39 +33,39 @@ class GetClientTlsPolicyResult {
   /// [sni] Optional. Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
   /// [updateTime] The timestamp when the resource was updated.
   const GetClientTlsPolicyResult({
-    required this.clientCertificate,
-    required this.createTime,
-    required this.description,
-    required this.labels,
-    required this.name,
-    required this.serverValidationCa,
-    required this.sni,
-    required this.updateTime,
+    this.clientCertificate,
+    this.createTime,
+    this.description,
+    this.labels,
+    this.name,
+    this.serverValidationCa,
+    this.sni,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clientCertificate': clientCertificate.toMap(),
-      'createTime': createTime,
-      'description': description,
-      'labels': labels,
-      'name': name,
-      'serverValidationCa': pulumi.Input.encodeList<ValidationCAResponse, Map<String, dynamic>>(serverValidationCa, (value) => value.toMap()),
-      'sni': sni,
-      'updateTime': updateTime,
+      'clientCertificate': ?clientCertificate?.toMap(),
+      'createTime': ?createTime,
+      'description': ?description,
+      'labels': ?labels,
+      'name': ?name,
+      'serverValidationCa': ?(() { final guardedValue = serverValidationCa; if (guardedValue == null) return null; return pulumi.Input.encodeList<ValidationCAResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'sni': ?sni,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetClientTlsPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetClientTlsPolicyResult(
-      clientCertificate: GoogleCloudNetworksecurityV1CertificateProviderResponse.fromMap((map['clientCertificate']! as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      serverValidationCa: pulumi.Input.decodeList<ValidationCAResponse>(map['serverValidationCa']!, (value) => ValidationCAResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sni: map['sni'] as String,
-      updateTime: map['updateTime'] as String,
+      clientCertificate: (() { final guardedValue = map['clientCertificate']; if (guardedValue == null) return null; return GoogleCloudNetworksecurityV1CertificateProviderResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serverValidationCa: (() { final guardedValue = map['serverValidationCa']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ValidationCAResponse>(guardedValue, (value) => ValidationCAResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      sni: (() { final guardedValue = map['sni']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

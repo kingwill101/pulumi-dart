@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// How the rule is applied, see MatchingType documentation for details.
-enum GooglePrivacyDlpV2ExclusionRuleMatchingType {
+enum GooglePrivacyDlpV2ExclusionRuleMatchingType implements pulumi.PulumiEnum<String> {
   matchingTypeUnspecified("MATCHING_TYPE_UNSPECIFIED"),
   matchingTypeFullMatch("MATCHING_TYPE_FULL_MATCH"),
   matchingTypePartialMatch("MATCHING_TYPE_PARTIAL_MATCH"),
   matchingTypeInverseMatch("MATCHING_TYPE_INVERSE_MATCH");
 
   const GooglePrivacyDlpV2ExclusionRuleMatchingType(this.wireValue);
+  @override
   final String wireValue;
 
   static GooglePrivacyDlpV2ExclusionRuleMatchingType fromValue(String value) {

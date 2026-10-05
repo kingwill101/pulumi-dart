@@ -9,13 +9,13 @@ import 'subject.dart';
 /// Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
 class InTotoStatement {
   /// `https://slsa.dev/provenance/v0.1` for SlsaProvenance.
-  final pulumi.Input<String>? predicateType;
-  final pulumi.Input<InTotoProvenance>? provenance;
-  final pulumi.Input<SlsaProvenance>? slsaProvenance;
-  final pulumi.Input<SlsaProvenanceZeroTwo>? slsaProvenanceZeroTwo;
-  final pulumi.Input<List<Subject>>? subject;
+  final pulumi.Input<String?>? predicateType;
+  final pulumi.Input<InTotoProvenance?>? provenance;
+  final pulumi.Input<SlsaProvenance?>? slsaProvenance;
+  final pulumi.Input<SlsaProvenanceZeroTwo?>? slsaProvenanceZeroTwo;
+  final pulumi.Input<List<Subject>?>? subject;
   /// Always `https://in-toto.io/Statement/v0.1`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [InTotoStatement].
   /// [predicateType] `https://slsa.dev/provenance/v0.1` for SlsaProvenance.

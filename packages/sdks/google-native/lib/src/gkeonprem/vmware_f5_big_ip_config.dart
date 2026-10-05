@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents configuration parameters for an F5 BIG-IP load balancer.
 class VmwareF5BigIpConfig {
   /// The load balancer's IP address.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// The preexisting partition to be used by the load balancer. This partition is usually created for the admin cluster for example: 'my-f5-admin-partition'.
-  final pulumi.Input<String>? partition;
+  final pulumi.Input<String?>? partition;
   /// The pool name. Only necessary, if using SNAT.
-  final pulumi.Input<String>? snatPool;
+  final pulumi.Input<String?>? snatPool;
 
   /// Creates a new [VmwareF5BigIpConfig].
   /// [address] The load balancer's IP address.

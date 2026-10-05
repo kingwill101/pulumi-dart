@@ -9,13 +9,13 @@ import 'vmware_vip_config.dart';
 /// Specifies the locad balancer config for the VMware user cluster.
 class VmwareLoadBalancerConfig {
   /// Configuration for F5 Big IP typed load balancers.
-  final pulumi.Input<VmwareF5BigIpConfig>? f5Config;
+  final pulumi.Input<VmwareF5BigIpConfig?>? f5Config;
   /// Manually configured load balancers.
-  final pulumi.Input<VmwareManualLbConfig>? manualLbConfig;
+  final pulumi.Input<VmwareManualLbConfig?>? manualLbConfig;
   /// Configuration for MetalLB typed load balancers.
-  final pulumi.Input<VmwareMetalLbConfig>? metalLbConfig;
+  final pulumi.Input<VmwareMetalLbConfig?>? metalLbConfig;
   /// The VIPs used by the load balancer.
-  final pulumi.Input<VmwareVipConfig>? vipConfig;
+  final pulumi.Input<VmwareVipConfig?>? vipConfig;
 
   /// Creates a new [VmwareLoadBalancerConfig].
   /// [f5Config] Configuration for F5 Big IP typed load balancers.

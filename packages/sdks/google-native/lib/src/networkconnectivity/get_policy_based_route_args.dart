@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkconnectivity_v1_get_policy_based_route_args_doc}
 class GetPolicyBasedRouteArgs {
   final pulumi.Input<String> policyBasedRouteId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetPolicyBasedRouteArgs].
   /// [policyBasedRouteId] Required.

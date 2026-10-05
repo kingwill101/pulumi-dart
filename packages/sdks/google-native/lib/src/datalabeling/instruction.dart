@@ -38,9 +38,30 @@ class Instruction extends pulumi.CustomResource {
           'google-native:datalabeling/v1beta1:Instruction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
-    blockingResources = registerOutput<List<String>>('blockingResources');
+    blockingResources = registerOutput<List<String>>('blockingResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    csvInstruction = registerOutput<GoogleCloudDatalabelingV1beta1CsvInstructionResponse>('csvInstruction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDatalabelingV1beta1CsvInstructionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataType = registerOutput<String>('dataType');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    pdfInstruction = registerOutput<GoogleCloudDatalabelingV1beta1PdfInstructionResponse>('pdfInstruction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDatalabelingV1beta1PdfInstructionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Instruction] resource.
+  Instruction.reference(String urn)
+    : super(
+        'google-native:datalabeling/v1beta1:Instruction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    blockingResources = registerOutput<List<String>>('blockingResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     csvInstruction = registerOutput<GoogleCloudDatalabelingV1beta1CsvInstructionResponse>('csvInstruction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDatalabelingV1beta1CsvInstructionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataType = registerOutput<String>('dataType');

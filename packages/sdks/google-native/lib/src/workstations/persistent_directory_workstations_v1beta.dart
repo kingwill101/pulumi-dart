@@ -6,9 +6,9 @@ import 'gce_regional_persistent_disk_workstations_v1beta.dart';
 /// A directory to persist across workstation sessions.
 class PersistentDirectoryWorkstationsV1beta {
   /// A PersistentDirectory backed by a Compute Engine persistent disk.
-  final pulumi.Input<GceRegionalPersistentDiskWorkstationsV1beta>? gcePd;
+  final pulumi.Input<GceRegionalPersistentDiskWorkstationsV1beta?>? gcePd;
   /// Optional. Location of this directory in the running workstation.
-  final pulumi.Input<String>? mountPath;
+  final pulumi.Input<String?>? mountPath;
 
   /// Creates a new [PersistentDirectoryWorkstationsV1beta].
   /// [gcePd] A PersistentDirectory backed by a Compute Engine persistent disk.

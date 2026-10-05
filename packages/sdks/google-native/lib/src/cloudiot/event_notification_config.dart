@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration for forwarding telemetry events.
 class EventNotificationConfig {
   /// A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
-  final pulumi.Input<String>? pubsubTopicName;
+  final pulumi.Input<String?>? pubsubTopicName;
   /// If the subfolder name matches this string exactly, this configuration will be used. The string must not include the leading '/' character. If empty, all strings are matched. This field is used only for telemetry events; subfolders are not supported for state changes.
-  final pulumi.Input<String>? subfolderMatches;
+  final pulumi.Input<String?>? subfolderMatches;
 
   /// Creates a new [EventNotificationConfig].
   /// [pubsubTopicName] A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.

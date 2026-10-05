@@ -10,33 +10,33 @@ import 'google_rpc_status_response_aiplatform_v1beta1.dart';
 /// Result data returned by getPersistentResource.
 class GetPersistentResourceResult {
   /// Time when the PersistentResource was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. The display name of the PersistentResource. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-  final String displayName;
+  final String? displayName;
   /// Optional. Customer-managed encryption key spec for a PersistentResource. If set, this PersistentResource and all sub-resources of this PersistentResource will be secured by this key.
-  final GoogleCloudAiplatformV1beta1EncryptionSpecResponse encryptionSpec;
+  final GoogleCloudAiplatformV1beta1EncryptionSpecResponse? encryptionSpec;
   /// Only populated when persistent resource's state is `STOPPING` or `ERROR`.
-  final GoogleRpcStatusResponseAiplatformV1beta1 error;
+  final GoogleRpcStatusResponseAiplatformV1beta1? error;
   /// Optional. The labels with user-defined metadata to organize PersistentResource. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Immutable. Resource name of a PersistentResource.
-  final String name;
+  final String? name;
   /// Optional. The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to peered with Vertex AI to host the persistent resources. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. To specify this field, you must have already [configured VPC Network Peering for Vertex AI](https://cloud.google.com/vertex-ai/docs/general/vpc-peering). If this field is left unspecified, the resources aren't peered with any network.
-  final String network;
+  final String? network;
   /// Optional. A list of names for the reserved IP ranges under the VPC network that can be used for this persistent resource. If set, we will deploy the persistent resource within the provided IP ranges. Otherwise, the persistent resource is deployed to any IP ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
-  final List<String> reservedIpRanges;
+  final List<String>? reservedIpRanges;
   /// The spec of the pools of different resources.
-  final List<GoogleCloudAiplatformV1beta1ResourcePoolResponse> resourcePools;
+  final List<GoogleCloudAiplatformV1beta1ResourcePoolResponse>? resourcePools;
   /// Runtime information of the Persistent Resource.
-  final GoogleCloudAiplatformV1beta1ResourceRuntimeResponse resourceRuntime;
+  final GoogleCloudAiplatformV1beta1ResourceRuntimeResponse? resourceRuntime;
   /// Optional. Persistent Resource runtime spec. For example, used for Ray cluster configuration.
-  final GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse resourceRuntimeSpec;
+  final GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse? resourceRuntimeSpec;
   /// Time when the PersistentResource for the first time entered the `RUNNING` state.
-  final String startTime;
+  final String? startTime;
   /// The detailed state of a Study.
-  final String state;
+  final String? state;
   /// Time when the PersistentResource was most recently updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetPersistentResourceResult].
   /// [createTime] Time when the PersistentResource was created.
@@ -54,57 +54,57 @@ class GetPersistentResourceResult {
   /// [state] The detailed state of a Study.
   /// [updateTime] Time when the PersistentResource was most recently updated.
   const GetPersistentResourceResult({
-    required this.createTime,
-    required this.displayName,
-    required this.encryptionSpec,
-    required this.error,
-    required this.labels,
-    required this.name,
-    required this.network,
-    required this.reservedIpRanges,
-    required this.resourcePools,
-    required this.resourceRuntime,
-    required this.resourceRuntimeSpec,
-    required this.startTime,
-    required this.state,
-    required this.updateTime,
+    this.createTime,
+    this.displayName,
+    this.encryptionSpec,
+    this.error,
+    this.labels,
+    this.name,
+    this.network,
+    this.reservedIpRanges,
+    this.resourcePools,
+    this.resourceRuntime,
+    this.resourceRuntimeSpec,
+    this.startTime,
+    this.state,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'displayName': displayName,
-      'encryptionSpec': encryptionSpec.toMap(),
-      'error': error.toMap(),
-      'labels': labels,
-      'name': name,
-      'network': network,
-      'reservedIpRanges': reservedIpRanges,
-      'resourcePools': pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1ResourcePoolResponse, Map<String, dynamic>>(resourcePools, (value) => value.toMap()),
-      'resourceRuntime': resourceRuntime.toMap(),
-      'resourceRuntimeSpec': resourceRuntimeSpec.toMap(),
-      'startTime': startTime,
-      'state': state,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'encryptionSpec': ?encryptionSpec?.toMap(),
+      'error': ?error?.toMap(),
+      'labels': ?labels,
+      'name': ?name,
+      'network': ?network,
+      'reservedIpRanges': ?reservedIpRanges,
+      'resourcePools': ?(() { final guardedValue = resourcePools; if (guardedValue == null) return null; return pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1ResourcePoolResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'resourceRuntime': ?resourceRuntime?.toMap(),
+      'resourceRuntimeSpec': ?resourceRuntimeSpec?.toMap(),
+      'startTime': ?startTime,
+      'state': ?state,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetPersistentResourceResult.fromMap(Map<String, dynamic> map) {
     return GetPersistentResourceResult(
-      createTime: map['createTime'] as String,
-      displayName: map['displayName'] as String,
-      encryptionSpec: GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>()),
-      error: GoogleRpcStatusResponseAiplatformV1beta1.fromMap((map['error']! as Map).cast<String, dynamic>()),
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      network: map['network'] as String,
-      reservedIpRanges: (map['reservedIpRanges'] as List).cast<String>(),
-      resourcePools: pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ResourcePoolResponse>(map['resourcePools']!, (value) => GoogleCloudAiplatformV1beta1ResourcePoolResponse.fromMap((value as Map).cast<String, dynamic>())),
-      resourceRuntime: GoogleCloudAiplatformV1beta1ResourceRuntimeResponse.fromMap((map['resourceRuntime']! as Map).cast<String, dynamic>()),
-      resourceRuntimeSpec: GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse.fromMap((map['resourceRuntimeSpec']! as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] as String,
-      state: map['state'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      encryptionSpec: (() { final guardedValue = map['encryptionSpec']; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return GoogleRpcStatusResponseAiplatformV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      reservedIpRanges: (() { final guardedValue = map['reservedIpRanges']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      resourcePools: (() { final guardedValue = map['resourcePools']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ResourcePoolResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1ResourcePoolResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      resourceRuntime: (() { final guardedValue = map['resourceRuntime']; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1ResourceRuntimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      resourceRuntimeSpec: (() { final guardedValue = map['resourceRuntimeSpec']; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_v1_get_object_iam_policy_args_doc}
 class GetObjectIamPolicyArgs {
   final pulumi.Input<String> bucket;
-  final pulumi.Input<String>? generation;
+  final pulumi.Input<String?>? generation;
   final pulumi.Input<String> object_;
-  final pulumi.Input<String>? userProject;
+  final pulumi.Input<String?>? userProject;
 
   /// Creates a new [GetObjectIamPolicyArgs].
   /// [bucket] Required.

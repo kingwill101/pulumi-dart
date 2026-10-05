@@ -6,7 +6,7 @@ import 'google_cloud_datacatalog_v1_dataplex_fileset_spec.dart';
 /// Specification that applies to a fileset. Valid only for entries with the 'FILESET' type.
 class GoogleCloudDatacatalogV1FilesetSpec {
   /// Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
-  final pulumi.Input<GoogleCloudDatacatalogV1DataplexFilesetSpec>? dataplexFileset;
+  final pulumi.Input<GoogleCloudDatacatalogV1DataplexFilesetSpec?>? dataplexFileset;
 
   /// Creates a new [GoogleCloudDatacatalogV1FilesetSpec].
   /// [dataplexFileset] Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.

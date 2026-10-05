@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
-enum GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition {
+enum GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition implements pulumi.PulumiEnum<String> {
   writeDispositionUnspecified("WRITE_DISPOSITION_UNSPECIFIED"),
   writeEmpty("WRITE_EMPTY"),
   writeTruncate("WRITE_TRUNCATE"),
   writeAppend("WRITE_APPEND");
 
   const GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition fromValue(String value) {

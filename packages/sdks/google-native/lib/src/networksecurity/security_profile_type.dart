@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The single ProfileType that the SecurityProfile resource configures.
-enum SecurityProfileType {
+enum SecurityProfileType implements pulumi.PulumiEnum<String> {
   profileTypeUnspecified("PROFILE_TYPE_UNSPECIFIED"),
   threatPrevention("THREAT_PREVENTION");
 
   const SecurityProfileType(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityProfileType fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Barrier runnable blocks until all tasks in a taskgroup reach it.
 class Barrier {
   /// Barriers are identified by their index in runnable list. Names are not required, but if present should be an identifier.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [Barrier].
   /// [name] Barriers are identified by their index in runnable list. Names are not required, but if present should be an identifier.

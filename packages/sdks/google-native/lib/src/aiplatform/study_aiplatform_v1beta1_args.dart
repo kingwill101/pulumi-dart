@@ -10,8 +10,8 @@ import 'google_cloud_aiplatform_v1beta1_study_spec.dart';
 class StudyAiplatformV1beta1Args {
   /// Describes the Study, default value is empty string.
   final pulumi.Input<String> displayName;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Configuration of the Study.
   final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpec> studySpec;
 

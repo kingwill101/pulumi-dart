@@ -67,7 +67,7 @@ class NodeConfigResponse {
 
   factory NodeConfigResponse.fromMap(Map<String, dynamic> map) {
     return NodeConfigResponse(
-      diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
+      diskSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSizeGb'])),
       enableIpMasqAgent: pulumi.Input.fromValue(map['enableIpMasqAgent'] as bool),
       ipAllocationPolicy: pulumi.Input.fromValue(IPAllocationPolicyResponse.fromMap((map['ipAllocationPolicy']! as Map).cast<String, dynamic>())),
       location: pulumi.Input.fromValue(map['location'] as String),

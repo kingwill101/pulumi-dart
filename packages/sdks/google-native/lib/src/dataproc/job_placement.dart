@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dataproc job config.
 class JobPlacement {
   /// Optional. Cluster labels to identify a cluster where the job will be submitted.
-  final pulumi.Input<Map<String, String>>? clusterLabels;
+  final pulumi.Input<Map<String, String>?>? clusterLabels;
   /// The name of the cluster where the job will be submitted.
   final pulumi.Input<String> clusterName;
 

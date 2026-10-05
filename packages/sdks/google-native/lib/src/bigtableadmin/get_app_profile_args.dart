@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppProfileArgs {
   final pulumi.Input<String> appProfileId;
   final pulumi.Input<String> instanceId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAppProfileArgs].
   /// [appProfileId] Required.

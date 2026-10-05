@@ -8,11 +8,11 @@ import 'repair_rollout_rule.dart';
 /// `AutomationRule` defines the automation activities.
 class AutomationRule {
   /// Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
-  final pulumi.Input<AdvanceRolloutRule>? advanceRolloutRule;
+  final pulumi.Input<AdvanceRolloutRule?>? advanceRolloutRule;
   /// Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
-  final pulumi.Input<PromoteReleaseRule>? promoteReleaseRule;
+  final pulumi.Input<PromoteReleaseRule?>? promoteReleaseRule;
   /// Optional. The `RepairRolloutRule` will automatically repair a failed rollout.
-  final pulumi.Input<RepairRolloutRule>? repairRolloutRule;
+  final pulumi.Input<RepairRolloutRule?>? repairRolloutRule;
 
   /// Creates a new [AutomationRule].
   /// [advanceRolloutRule] Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.

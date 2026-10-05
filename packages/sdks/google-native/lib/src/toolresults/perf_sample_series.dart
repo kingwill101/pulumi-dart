@@ -28,8 +28,25 @@ class PerfSampleSeries extends pulumi.CustomResource {
           'google-native:toolresults/v1beta3:PerfSampleSeries',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['executionId', 'historyId', 'project', 'stepId']).merge(options),
         ) {
+    basicPerfSampleSeries = registerOutput<BasicPerfSampleSeriesResponse>('basicPerfSampleSeries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BasicPerfSampleSeriesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    executionId = registerOutput<String>('executionId');
+    historyId = registerOutput<String>('historyId');
+    project = registerOutput<String>('project');
+    sampleSeriesId = registerOutput<String>('sampleSeriesId');
+    stepId = registerOutput<String>('stepId');
+  }
+
+  /// Creates a typed reference to an existing [PerfSampleSeries] resource.
+  PerfSampleSeries.reference(String urn)
+    : super(
+        'google-native:toolresults/v1beta3:PerfSampleSeries',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     basicPerfSampleSeries = registerOutput<BasicPerfSampleSeriesResponse>('basicPerfSampleSeries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BasicPerfSampleSeriesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     executionId = registerOutput<String>('executionId');
     historyId = registerOutput<String>('historyId');

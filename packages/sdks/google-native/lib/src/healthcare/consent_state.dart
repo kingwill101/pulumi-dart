@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Indicates the current state of this Consent.
-enum ConsentState {
+enum ConsentState implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   active("ACTIVE"),
   archived("ARCHIVED"),
@@ -8,6 +10,7 @@ enum ConsentState {
   rejected("REJECTED");
 
   const ConsentState(this.wireValue);
+  @override
   final String wireValue;
 
   static ConsentState fromValue(String value) {

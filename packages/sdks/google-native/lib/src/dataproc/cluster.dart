@@ -27,7 +27,7 @@ class Cluster extends pulumi.CustomResource {
   /// Cluster status.
   late final pulumi.Output<ClusterStatusResponse> status;
   /// The previous cluster status.
-  late final pulumi.Output<List<Map<String, dynamic>>> statusHistory;
+  late final pulumi.Output<List<ClusterStatusResponse>> statusHistory;
   /// Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview). Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtual_cluster_config must be specified.
   late final pulumi.Output<VirtualClusterConfigResponse> virtualClusterConfig;
 
@@ -43,19 +43,42 @@ class Cluster extends pulumi.CustomResource {
           'google-native:dataproc/v1:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     actionOnFailedPrimaryWorkers = registerOutput<String?>('actionOnFailedPrimaryWorkers');
     clusterName = registerOutput<String>('clusterName');
     clusterUuid = registerOutput<String>('clusterUuid');
     config = registerOutput<ClusterConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     metrics = registerOutput<ClusterMetricsResponse>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMetricsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
     status = registerOutput<ClusterStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    statusHistory = registerOutput<List<Map<String, dynamic>>>('statusHistory');
+    statusHistory = registerOutput<List<ClusterStatusResponse>>('statusHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterStatusResponse>(guardedValue, (value) => ClusterStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    virtualClusterConfig = registerOutput<VirtualClusterConfigResponse>('virtualClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualClusterConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'google-native:dataproc/v1:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actionOnFailedPrimaryWorkers = registerOutput<String?>('actionOnFailedPrimaryWorkers');
+    clusterName = registerOutput<String>('clusterName');
+    clusterUuid = registerOutput<String>('clusterUuid');
+    config = registerOutput<ClusterConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    metrics = registerOutput<ClusterMetricsResponse>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMetricsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    status = registerOutput<ClusterStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    statusHistory = registerOutput<List<ClusterStatusResponse>>('statusHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterStatusResponse>(guardedValue, (value) => ClusterStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
     virtualClusterConfig = registerOutput<VirtualClusterConfigResponse>('virtualClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualClusterConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

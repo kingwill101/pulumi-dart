@@ -1,4 +1,6 @@
-enum GkeNodePoolTargetRolesItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum GkeNodePoolTargetRolesItem implements pulumi.PulumiEnum<String> {
   roleUnspecified("ROLE_UNSPECIFIED"),
   default_("DEFAULT"),
   controller("CONTROLLER"),
@@ -6,6 +8,7 @@ enum GkeNodePoolTargetRolesItem {
   sparkExecutor("SPARK_EXECUTOR");
 
   const GkeNodePoolTargetRolesItem(this.wireValue);
+  @override
   final String wireValue;
 
   static GkeNodePoolTargetRolesItem fromValue(String value) {

@@ -68,9 +68,9 @@ class BackupAlloydbV1beta extends pulumi.CustomResource {
           'google-native:alloydb/v1beta:Backup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['backupId', 'location', 'project']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     backupId = registerOutput<String>('backupId');
     clusterName = registerOutput<String>('clusterName');
     clusterUid = registerOutput<String>('clusterUid');
@@ -84,7 +84,43 @@ class BackupAlloydbV1beta extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     expiryQuantity = registerOutput<QuantityBasedExpiryResponseAlloydbV1beta>('expiryQuantity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuantityBasedExpiryResponseAlloydbV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     expiryTime = registerOutput<String>('expiryTime');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    requestId = registerOutput<String?>('requestId');
+    sizeBytes = registerOutput<String>('sizeBytes');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [BackupAlloydbV1beta] resource.
+  BackupAlloydbV1beta.reference(String urn)
+    : super(
+        'google-native:alloydb/v1beta:Backup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    backupId = registerOutput<String>('backupId');
+    clusterName = registerOutput<String>('clusterName');
+    clusterUid = registerOutput<String>('clusterUid');
+    createTime = registerOutput<String>('createTime');
+    databaseVersion = registerOutput<String>('databaseVersion');
+    deleteTime = registerOutput<String>('deleteTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    encryptionConfig = registerOutput<EncryptionConfigResponseAlloydbV1beta>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionConfigResponseAlloydbV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionInfo = registerOutput<EncryptionInfoResponseAlloydbV1beta>('encryptionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionInfoResponseAlloydbV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    expiryQuantity = registerOutput<QuantityBasedExpiryResponseAlloydbV1beta>('expiryQuantity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QuantityBasedExpiryResponseAlloydbV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    expiryTime = registerOutput<String>('expiryTime');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

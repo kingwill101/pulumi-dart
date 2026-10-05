@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The type of data this data collector will collect.
-enum DataCollectorType {
+enum DataCollectorType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   integer("INTEGER"),
   float("FLOAT"),
@@ -8,6 +10,7 @@ enum DataCollectorType {
   datetime("DATETIME");
 
   const DataCollectorType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataCollectorType fromValue(String value) {

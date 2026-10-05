@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The frequency unit of this recurring schedule.
-enum RecurringScheduleFrequency {
+enum RecurringScheduleFrequency implements pulumi.PulumiEnum<String> {
   frequencyUnspecified("FREQUENCY_UNSPECIFIED"),
   weekly("WEEKLY"),
   monthly("MONTHLY"),
   daily("DAILY");
 
   const RecurringScheduleFrequency(this.wireValue);
+  @override
   final String wireValue;
 
   static RecurringScheduleFrequency fromValue(String value) {

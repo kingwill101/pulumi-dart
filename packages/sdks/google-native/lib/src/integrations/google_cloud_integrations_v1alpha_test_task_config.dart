@@ -7,9 +7,9 @@ import 'google_cloud_integrations_v1alpha_mock_config.dart';
 /// The task mock configuration details and assertions for functional tests. Next available id: 5
 class GoogleCloudIntegrationsV1alphaTestTaskConfig {
   /// Optional. List of conditions or expressions which should be evaluated to true unless there is a bug/problem in the integration. These are evaluated one the task execution is completed as per the mock strategy in test case
-  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaAssertion>>? assertions;
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaAssertion>?>? assertions;
   /// Optional. Defines how to mock the given task during test execution
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaMockConfig>? mockConfig;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaMockConfig?>? mockConfig;
   /// This defines in the test case, the task name in integration which will be mocked by this test task config
   final pulumi.Input<String> task;
   /// This defines in the test case, the task in integration which will be mocked by this test task config

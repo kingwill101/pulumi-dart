@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
-enum ServiceLevelObjectiveCalendarPeriod {
+enum ServiceLevelObjectiveCalendarPeriod implements pulumi.PulumiEnum<String> {
   calendarPeriodUnspecified("CALENDAR_PERIOD_UNSPECIFIED"),
   day("DAY"),
   week("WEEK"),
@@ -10,6 +12,7 @@ enum ServiceLevelObjectiveCalendarPeriod {
   year("YEAR");
 
   const ServiceLevelObjectiveCalendarPeriod(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceLevelObjectiveCalendarPeriod fromValue(String value) {

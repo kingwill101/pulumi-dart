@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_metastore_v1beta_get_service_metastore_v1beta_args_doc}
 class GetServiceMetastoreV1betaArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> serviceId;
 
   /// Creates a new [GetServiceMetastoreV1betaArgs].

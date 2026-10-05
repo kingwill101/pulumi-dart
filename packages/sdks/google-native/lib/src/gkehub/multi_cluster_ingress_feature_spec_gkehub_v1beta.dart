@@ -6,9 +6,9 @@ import 'multi_cluster_ingress_feature_spec_billing_gkehub_v1beta.dart';
 /// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 class MultiClusterIngressFeatureSpecGkehubV1beta {
   /// Deprecated: This field will be ignored and should not be set. Customer's billing structure.
-  final pulumi.Input<MultiClusterIngressFeatureSpecBillingGkehubV1beta>? billing;
+  final pulumi.Input<MultiClusterIngressFeatureSpecBillingGkehubV1beta?>? billing;
   /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
-  final pulumi.Input<String>? configMembership;
+  final pulumi.Input<String?>? configMembership;
 
   /// Creates a new [MultiClusterIngressFeatureSpecGkehubV1beta].
   /// [billing] Deprecated: This field will be ignored and should not be set. Customer's billing structure.

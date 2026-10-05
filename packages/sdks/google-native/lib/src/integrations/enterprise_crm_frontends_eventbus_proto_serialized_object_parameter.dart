@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter {
-  final pulumi.Input<String>? objectValue;
+  final pulumi.Input<String?>? objectValue;
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter].
   /// [objectValue] Optional.

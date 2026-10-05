@@ -8,15 +8,15 @@ import 'statistical_time_series_filter.dart';
 /// A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
 class TimeSeriesFilter {
   /// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
-  final pulumi.Input<Aggregation>? aggregation;
+  final pulumi.Input<Aggregation?>? aggregation;
   /// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
   final pulumi.Input<String> filter;
   /// Ranking based time series filter.
-  final pulumi.Input<PickTimeSeriesFilter>? pickTimeSeriesFilter;
+  final pulumi.Input<PickTimeSeriesFilter?>? pickTimeSeriesFilter;
   /// Apply a second aggregation after aggregation is applied.
-  final pulumi.Input<Aggregation>? secondaryAggregation;
+  final pulumi.Input<Aggregation?>? secondaryAggregation;
   /// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-  final pulumi.Input<StatisticalTimeSeriesFilter>? statisticalTimeSeriesFilter;
+  final pulumi.Input<StatisticalTimeSeriesFilter?>? statisticalTimeSeriesFilter;
 
   /// Creates a new [TimeSeriesFilter].
   /// [aggregation] By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.

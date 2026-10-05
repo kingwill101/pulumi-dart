@@ -38,14 +38,36 @@ class ScopeGkehubV1alpha extends pulumi.CustomResource {
           'google-native:gkehub/v1alpha:Scope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'scopeId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    namespaceLabels = registerOutput<Map<String, String>>('namespaceLabels');
+    namespaceLabels = registerOutput<Map<String, String>>('namespaceLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    project = registerOutput<String>('project');
+    scopeId = registerOutput<String>('scopeId');
+    state = registerOutput<ScopeLifecycleStateResponseGkehubV1alpha>('state', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScopeLifecycleStateResponseGkehubV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ScopeGkehubV1alpha] resource.
+  ScopeGkehubV1alpha.reference(String urn)
+    : super(
+        'google-native:gkehub/v1alpha:Scope',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    namespaceLabels = registerOutput<Map<String, String>>('namespaceLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
     scopeId = registerOutput<String>('scopeId');
     state = registerOutput<ScopeLifecycleStateResponseGkehubV1alpha>('state', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScopeLifecycleStateResponseGkehubV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });

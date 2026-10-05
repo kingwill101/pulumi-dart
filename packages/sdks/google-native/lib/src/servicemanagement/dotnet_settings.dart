@@ -6,17 +6,17 @@ import 'common_language_settings.dart';
 /// Settings for Dotnet client libraries.
 class DotnetSettings {
   /// Some settings.
-  final pulumi.Input<CommonLanguageSettings>? common;
+  final pulumi.Input<CommonLanguageSettings?>? common;
   /// Namespaces which must be aliased in snippets due to a known (but non-generator-predictable) naming collision
-  final pulumi.Input<List<String>>? forcedNamespaceAliases;
+  final pulumi.Input<List<String>?>? forcedNamespaceAliases;
   /// Method signatures (in the form "service.method(signature)") which are provided separately, so shouldn't be generated. Snippets *calling* these methods are still generated, however.
-  final pulumi.Input<List<String>>? handwrittenSignatures;
+  final pulumi.Input<List<String>?>? handwrittenSignatures;
   /// List of full resource types to ignore during generation. This is typically used for API-specific Location resources, which should be handled by the generator as if they were actually the common Location resources. Example entry: "documentai.googleapis.com/Location"
-  final pulumi.Input<List<String>>? ignoredResources;
+  final pulumi.Input<List<String>?>? ignoredResources;
   /// Map from full resource types to the effective short name for the resource. This is used when otherwise resource named from different services would cause naming collisions. Example entry: "datalabeling.googleapis.com/Dataset": "DataLabelingDataset"
-  final pulumi.Input<Map<String, String>>? renamedResources;
+  final pulumi.Input<Map<String, String>?>? renamedResources;
   /// Map from original service names to renamed versions. This is used when the default generated types would cause a naming conflict. (Neither name is fully-qualified.) Example: Subscriber to SubscriberServiceApi.
-  final pulumi.Input<Map<String, String>>? renamedServices;
+  final pulumi.Input<Map<String, String>?>? renamedServices;
 
   /// Creates a new [DotnetSettings].
   /// [common] Some settings.

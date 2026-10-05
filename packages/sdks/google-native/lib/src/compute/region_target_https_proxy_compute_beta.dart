@@ -56,7 +56,7 @@ class RegionTargetHttpsProxyComputeBeta extends pulumi.CustomResource {
           'google-native:compute/beta:RegionTargetHttpsProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     authentication = registerOutput<String>('authentication');
     authorization = registerOutput<String>('authorization');
@@ -65,7 +65,7 @@ class RegionTargetHttpsProxyComputeBeta extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     fingerprint = registerOutput<String>('fingerprint');
-    httpFilters = registerOutput<List<String>>('httpFilters');
+    httpFilters = registerOutput<List<String>>('httpFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     httpKeepAliveTimeoutSec = registerOutput<int>('httpKeepAliveTimeoutSec');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
@@ -76,7 +76,39 @@ class RegionTargetHttpsProxyComputeBeta extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     selfLink = registerOutput<String>('selfLink');
     serverTlsPolicy = registerOutput<String>('serverTlsPolicy');
-    sslCertificates = registerOutput<List<String>>('sslCertificates');
+    sslCertificates = registerOutput<List<String>>('sslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sslPolicy = registerOutput<String>('sslPolicy');
+    urlMap = registerOutput<String>('urlMap');
+  }
+
+  /// Creates a typed reference to an existing [RegionTargetHttpsProxyComputeBeta] resource.
+  RegionTargetHttpsProxyComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:RegionTargetHttpsProxy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authentication = registerOutput<String>('authentication');
+    authorization = registerOutput<String>('authorization');
+    authorizationPolicy = registerOutput<String>('authorizationPolicy');
+    certificateMap = registerOutput<String>('certificateMap');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    httpFilters = registerOutput<List<String>>('httpFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    httpKeepAliveTimeoutSec = registerOutput<int>('httpKeepAliveTimeoutSec');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    proxyBind = registerOutput<bool>('proxyBind');
+    quicOverride = registerOutput<String>('quicOverride');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    serverTlsPolicy = registerOutput<String>('serverTlsPolicy');
+    sslCertificates = registerOutput<List<String>>('sslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sslPolicy = registerOutput<String>('sslPolicy');
     urlMap = registerOutput<String>('urlMap');
   }

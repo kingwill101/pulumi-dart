@@ -38,7 +38,7 @@ class ReverseSshConnectivityResponse {
     return ReverseSshConnectivityResponse(
       vm: pulumi.Input.fromValue(map['vm'] as String),
       vmIp: pulumi.Input.fromValue(map['vmIp'] as String),
-      vmPort: pulumi.Input.fromValue(map['vmPort'] as int),
+      vmPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vmPort'])),
       vpc: pulumi.Input.fromValue(map['vpc'] as String),
     );
   }

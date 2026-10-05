@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_testing_v1_get_device_session_args_doc}
 class GetDeviceSessionArgs {
   final pulumi.Input<String> deviceSessionId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDeviceSessionArgs].
   /// [deviceSessionId] Required.

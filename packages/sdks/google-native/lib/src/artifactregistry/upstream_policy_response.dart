@@ -26,7 +26,7 @@ class UpstreamPolicyResponse {
 
   factory UpstreamPolicyResponse.fromMap(Map<String, dynamic> map) {
     return UpstreamPolicyResponse(
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       repository: pulumi.Input.fromValue(map['repository'] as String),
     );
   }

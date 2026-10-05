@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The idle shutdown configuration of NotebookRuntimeTemplate, which contains the idle_timeout as required field.
 class GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig {
   /// Whether Idle Shutdown is disabled in this NotebookRuntimeTemplate.
-  final pulumi.Input<bool>? idleShutdownDisabled;
+  final pulumi.Input<bool?>? idleShutdownDisabled;
   /// Duration is accurate to the second. In Notebook, Idle Timeout is accurate to minute so the range of idle_timeout (second) is: 10 * 60 ~ 1440 * 60.
   final pulumi.Input<String> idleTimeout;
 

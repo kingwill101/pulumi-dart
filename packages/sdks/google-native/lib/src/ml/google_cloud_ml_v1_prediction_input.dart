@@ -7,29 +7,29 @@ import 'google_cloud_ml_v1_prediction_input_output_data_format.dart';
 /// Represents input parameters for a prediction job.
 class GoogleCloudMlV1PredictionInput {
   /// Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of records in memory before invoking one Tensorflow prediction call internally. So take the record size and memory available into consideration when setting this parameter.
-  final pulumi.Input<String>? batchSize;
+  final pulumi.Input<String?>? batchSize;
   /// The format of the input data files.
   final pulumi.Input<GoogleCloudMlV1PredictionInputDataFormat> dataFormat;
   /// The Cloud Storage location of the input data files. May contain wildcards.
   final pulumi.Input<List<String>> inputPaths;
   /// Optional. The maximum number of workers to be used for parallel processing. Defaults to 10 if not specified.
-  final pulumi.Input<String>? maxWorkerCount;
+  final pulumi.Input<String?>? maxWorkerCount;
   /// Use this field if you want to use the default version for the specified model. The string must use the following format: `"projects/YOUR_PROJECT/models/YOUR_MODEL"`
-  final pulumi.Input<String>? modelName;
+  final pulumi.Input<String?>? modelName;
   /// Optional. Format of the output data files, defaults to JSON.
-  final pulumi.Input<GoogleCloudMlV1PredictionInputOutputDataFormat>? outputDataFormat;
+  final pulumi.Input<GoogleCloudMlV1PredictionInputOutputDataFormat?>? outputDataFormat;
   /// The output Google Cloud Storage location.
   final pulumi.Input<String> outputPath;
   /// The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
   final pulumi.Input<String> region;
   /// Optional. The AI Platform runtime version to use for this batch prediction. If not set, AI Platform will pick the runtime version used during the CreateVersion request for this model version, or choose the latest stable version when model version information is not available such as when the model is specified by uri.
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
   /// Optional. The name of the signature defined in the SavedModel to use for this job. Please refer to [SavedModel](https://tensorflow.github.io/serving/serving_basic.html) for information about how to use signatures. Defaults to [DEFAULT_SERVING_SIGNATURE_DEF_KEY](https://www.tensorflow.org/api_docs/python/tf/saved_model/signature_constants) , which is "serving_default".
-  final pulumi.Input<String>? signatureName;
+  final pulumi.Input<String?>? signatureName;
   /// Use this field if you want to specify a Google Cloud Storage path for the model to use.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
   /// Use this field if you want to specify a version of the model to use. The string is formatted the same way as `model_version`, with the addition of the version information: `"projects/YOUR_PROJECT/models/YOUR_MODEL/versions/YOUR_VERSION"`
-  final pulumi.Input<String>? versionName;
+  final pulumi.Input<String?>? versionName;
 
   /// Creates a new [GoogleCloudMlV1PredictionInput].
   /// [batchSize] Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of records in memory before invoking one Tensorflow prediction call internally. So take the record size and memory available into consideration when setting this parameter.

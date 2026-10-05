@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The rule scope
-enum MappingRuleRuleScope {
+enum MappingRuleRuleScope implements pulumi.PulumiEnum<String> {
   databaseEntityTypeUnspecified("DATABASE_ENTITY_TYPE_UNSPECIFIED"),
   databaseEntityTypeSchema("DATABASE_ENTITY_TYPE_SCHEMA"),
   databaseEntityTypeTable("DATABASE_ENTITY_TYPE_TABLE"),
@@ -18,6 +20,7 @@ enum MappingRuleRuleScope {
   databaseEntityTypeDatabase("DATABASE_ENTITY_TYPE_DATABASE");
 
   const MappingRuleRuleScope(this.wireValue);
+  @override
   final String wireValue;
 
   static MappingRuleRuleScope fromValue(String value) {

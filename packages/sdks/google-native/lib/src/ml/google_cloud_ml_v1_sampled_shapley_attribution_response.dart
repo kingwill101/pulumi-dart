@@ -21,7 +21,7 @@ class GoogleCloudMlV1SampledShapleyAttributionResponse {
 
   factory GoogleCloudMlV1SampledShapleyAttributionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1SampledShapleyAttributionResponse(
-      numPaths: pulumi.Input.fromValue(map['numPaths'] as int),
+      numPaths: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numPaths'])),
     );
   }
 }

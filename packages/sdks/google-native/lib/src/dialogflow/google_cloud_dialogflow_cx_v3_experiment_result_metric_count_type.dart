@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Count-based metric type. Only one of type or count_type is specified in each Metric.
-enum GoogleCloudDialogflowCxV3ExperimentResultMetricCountType {
+enum GoogleCloudDialogflowCxV3ExperimentResultMetricCountType implements pulumi.PulumiEnum<String> {
   countTypeUnspecified("COUNT_TYPE_UNSPECIFIED"),
   totalNoMatchCount("TOTAL_NO_MATCH_COUNT"),
   totalTurnCount("TOTAL_TURN_COUNT"),
   averageTurnCount("AVERAGE_TURN_COUNT");
 
   const GoogleCloudDialogflowCxV3ExperimentResultMetricCountType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowCxV3ExperimentResultMetricCountType fromValue(String value) {

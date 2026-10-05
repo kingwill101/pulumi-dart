@@ -27,7 +27,7 @@ class GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse {
   factory GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse(
       spendBasis: pulumi.Input.fromValue(map['spendBasis'] as String),
-      thresholdPercent: pulumi.Input.fromValue(map['thresholdPercent'] as double),
+      thresholdPercent: pulumi.Input.fromValue((map['thresholdPercent'] as num).toDouble()),
     );
   }
 }

@@ -12,19 +12,19 @@ import 'pad.dart';
 /// Preprocessing configurations.
 class PreprocessingConfig {
   /// Audio preprocessing configuration.
-  final pulumi.Input<Audio>? audio;
+  final pulumi.Input<Audio?>? audio;
   /// Color preprocessing configuration.
-  final pulumi.Input<Color>? color;
+  final pulumi.Input<Color?>? color;
   /// Specify the video cropping configuration.
-  final pulumi.Input<Crop>? crop;
+  final pulumi.Input<Crop?>? crop;
   /// Deblock preprocessing configuration.
-  final pulumi.Input<Deblock>? deblock;
+  final pulumi.Input<Deblock?>? deblock;
   /// Specify the video deinterlace configuration.
-  final pulumi.Input<Deinterlace>? deinterlace;
+  final pulumi.Input<Deinterlace?>? deinterlace;
   /// Denoise preprocessing configuration.
-  final pulumi.Input<Denoise>? denoise;
+  final pulumi.Input<Denoise?>? denoise;
   /// Specify the video pad filter configuration.
-  final pulumi.Input<Pad>? pad;
+  final pulumi.Input<Pad?>? pad;
 
   /// Creates a new [PreprocessingConfig].
   /// [audio] Audio preprocessing configuration.

@@ -72,7 +72,7 @@ class FirewallInfoResponse {
       firewallRuleType: pulumi.Input.fromValue(map['firewallRuleType'] as String),
       networkUri: pulumi.Input.fromValue(map['networkUri'] as String),
       policy: pulumi.Input.fromValue(map['policy'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       targetServiceAccounts: pulumi.Input.fromValue((map['targetServiceAccounts'] as List).cast<String>()),
       targetTags: pulumi.Input.fromValue((map['targetTags'] as List).cast<String>()),
       uri: pulumi.Input.fromValue(map['uri'] as String),

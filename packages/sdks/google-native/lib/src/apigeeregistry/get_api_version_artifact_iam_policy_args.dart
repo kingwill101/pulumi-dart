@@ -10,8 +10,8 @@ class GetApiVersionArtifactIamPolicyArgs {
   final pulumi.Input<String> apiId;
   final pulumi.Input<String> artifactId;
   final pulumi.Input<String> location;
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> versionId;
 
   /// Creates a new [GetApiVersionArtifactIamPolicyArgs].
@@ -46,7 +46,7 @@ class GetApiVersionArtifactIamPolicyArgs {
       apiId: pulumi.Input.fromValue(map['apiId'] as String),
       artifactId: pulumi.Input.fromValue(map['artifactId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       versionId: pulumi.Input.fromValue(map['versionId'] as String),
     );

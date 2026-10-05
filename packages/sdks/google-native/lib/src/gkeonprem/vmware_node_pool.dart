@@ -52,9 +52,38 @@ class VmwareNodePool extends pulumi.CustomResource {
           'google-native:gkeonprem/v1:VmwareNodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'vmwareClusterId']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    config = registerOutput<VmwareNodeConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareNodeConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nodePoolAutoscaling = registerOutput<VmwareNodePoolAutoscalingConfigResponse>('nodePoolAutoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareNodePoolAutoscalingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    onPremVersion = registerOutput<String>('onPremVersion');
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String>('state');
+    status = registerOutput<ResourceStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    vmwareClusterId = registerOutput<String>('vmwareClusterId');
+    vmwareNodePoolId = registerOutput<String?>('vmwareNodePoolId');
+  }
+
+  /// Creates a typed reference to an existing [VmwareNodePool] resource.
+  VmwareNodePool.reference(String urn)
+    : super(
+        'google-native:gkeonprem/v1:VmwareNodePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     config = registerOutput<VmwareNodeConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareNodeConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');

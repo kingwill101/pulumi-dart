@@ -4,35 +4,35 @@
 /// Result data returned by getTagTemplate.
 class GetTagTemplateDatacatalogV1beta1Result {
   /// The display name for this template. Defaults to an empty string.
-  final String displayName;
+  final String? displayName;
   /// Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
-  final Map<String, String> fields;
+  final Map<String, String>? fields;
   /// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
-  final String name;
+  final String? name;
 
   /// Creates a new [GetTagTemplateDatacatalogV1beta1Result].
   /// [displayName] The display name for this template. Defaults to an empty string.
   /// [fields] Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
   /// [name] The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
   const GetTagTemplateDatacatalogV1beta1Result({
-    required this.displayName,
-    required this.fields,
-    required this.name,
+    this.displayName,
+    this.fields,
+    this.name,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'displayName': displayName,
-      'fields': fields,
-      'name': name,
+      'displayName': ?displayName,
+      'fields': ?fields,
+      'name': ?name,
     };
   }
 
   factory GetTagTemplateDatacatalogV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetTagTemplateDatacatalogV1beta1Result(
-      displayName: map['displayName'] as String,
-      fields: (map['fields'] as Map).cast<String, String>(),
-      name: map['name'] as String,
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fields: (() { final guardedValue = map['fields']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

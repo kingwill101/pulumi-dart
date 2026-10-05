@@ -7,9 +7,9 @@ import 'policy_binding_gkehub_v1alpha.dart';
 /// BinaryAuthorizationConfig defines the fleet level configuration of binary authorization feature.
 class BinaryAuthorizationConfigGkehubV1alpha {
   /// Optional. Mode of operation for binauthz policy evaluation.
-  final pulumi.Input<BinaryAuthorizationConfigEvaluationModeGkehubV1alpha>? evaluationMode;
+  final pulumi.Input<BinaryAuthorizationConfigEvaluationModeGkehubV1alpha?>? evaluationMode;
   /// Optional. Binauthz policies that apply to this cluster.
-  final pulumi.Input<List<PolicyBindingGkehubV1alpha>>? policyBindings;
+  final pulumi.Input<List<PolicyBindingGkehubV1alpha>?>? policyBindings;
 
   /// Creates a new [BinaryAuthorizationConfigGkehubV1alpha].
   /// [evaluationMode] Optional. Mode of operation for binauthz policy evaluation.

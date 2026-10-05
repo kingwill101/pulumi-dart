@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Immutable. The type of the notebook runtime template.
-enum NotebookRuntimeTemplateNotebookRuntimeType {
+enum NotebookRuntimeTemplateNotebookRuntimeType implements pulumi.PulumiEnum<String> {
   notebookRuntimeTypeUnspecified("NOTEBOOK_RUNTIME_TYPE_UNSPECIFIED"),
   userDefined("USER_DEFINED"),
   oneClick("ONE_CLICK");
 
   const NotebookRuntimeTemplateNotebookRuntimeType(this.wireValue);
+  @override
   final String wireValue;
 
   static NotebookRuntimeTemplateNotebookRuntimeType fromValue(String value) {

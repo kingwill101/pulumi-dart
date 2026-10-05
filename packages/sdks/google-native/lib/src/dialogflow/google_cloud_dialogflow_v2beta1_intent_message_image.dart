@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The image response message.
 class GoogleCloudDialogflowV2beta1IntentMessageImage {
   /// A text description of the image to be used for accessibility, e.g., screen readers. Required if image_uri is set for CarouselSelect.
-  final pulumi.Input<String>? accessibilityText;
+  final pulumi.Input<String?>? accessibilityText;
   /// Optional. The public URI to an image file.
-  final pulumi.Input<String>? imageUri;
+  final pulumi.Input<String?>? imageUri;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageImage].
   /// [accessibilityText] A text description of the image to be used for accessibility, e.g., screen readers. Required if image_uri is set for CarouselSelect.

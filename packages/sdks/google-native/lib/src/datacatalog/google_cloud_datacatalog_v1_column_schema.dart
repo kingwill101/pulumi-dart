@@ -9,21 +9,21 @@ class GoogleCloudDatacatalogV1ColumnSchema {
   /// Name of the column. Must be a UTF-8 string without dots (.). The maximum size is 64 bytes.
   final pulumi.Input<String> column;
   /// Optional. Default value for the column.
-  final pulumi.Input<String>? defaultValue;
+  final pulumi.Input<String?>? defaultValue;
   /// Optional. Description of the column. Default value is an empty string. The description must be a UTF-8 string with the maximum size of 2000 bytes.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Garbage collection policy for the column or column family. Applies to systems like Cloud Bigtable.
-  final pulumi.Input<String>? gcRule;
+  final pulumi.Input<String?>? gcRule;
   /// Optional. Most important inclusion of this column.
-  final pulumi.Input<GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType>? highestIndexingType;
+  final pulumi.Input<GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType?>? highestIndexingType;
   /// Looker specific column info of this column.
-  final pulumi.Input<GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec>? lookerColumnSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec?>? lookerColumnSpec;
   /// Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Optional. Ordinal position
-  final pulumi.Input<int>? ordinalPosition;
+  final pulumi.Input<int?>? ordinalPosition;
   /// Optional. Schema of sub-columns. A column can have zero or more sub-columns.
-  final pulumi.Input<List<GoogleCloudDatacatalogV1ColumnSchema>>? subcolumns;
+  final pulumi.Input<List<GoogleCloudDatacatalogV1ColumnSchema>?>? subcolumns;
   /// Type of the column. Must be a UTF-8 string with the maximum size of 128 bytes.
   final pulumi.Input<String> type;
 
@@ -75,7 +75,7 @@ class GoogleCloudDatacatalogV1ColumnSchema {
       highestIndexingType: (() { final guardedValue = map['highestIndexingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType.fromValue(guardedValue as String)); })(),
       lookerColumnSpec: (() { final guardedValue = map['lookerColumnSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ordinalPosition: (() { final guardedValue = map['ordinalPosition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ordinalPosition: (() { final guardedValue = map['ordinalPosition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       subcolumns: (() { final guardedValue = map['subcolumns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchema>(guardedValue, (value) => GoogleCloudDatacatalogV1ColumnSchema.fromMap((value as Map).cast<String, dynamic>()))); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );

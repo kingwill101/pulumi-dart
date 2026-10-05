@@ -24,8 +24,23 @@ class TraceSink extends pulumi.CustomResource {
           'google-native:cloudtrace/v2beta1:TraceSink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    this.name = registerOutput<String>('name');
+    outputConfig = registerOutput<OutputConfigResponse>('outputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutputConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    writerIdentity = registerOutput<String>('writerIdentity');
+  }
+
+  /// Creates a typed reference to an existing [TraceSink] resource.
+  TraceSink.reference(String urn)
+    : super(
+        'google-native:cloudtrace/v2beta1:TraceSink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     outputConfig = registerOutput<OutputConfigResponse>('outputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutputConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');

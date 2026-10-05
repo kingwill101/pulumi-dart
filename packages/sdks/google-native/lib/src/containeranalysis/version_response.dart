@@ -46,7 +46,7 @@ class VersionResponse {
 
   factory VersionResponse.fromMap(Map<String, dynamic> map) {
     return VersionResponse(
-      epoch: pulumi.Input.fromValue(map['epoch'] as int),
+      epoch: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['epoch'])),
       fullName: pulumi.Input.fromValue(map['fullName'] as String),
       inclusive: pulumi.Input.fromValue(map['inclusive'] as bool),
       kind: pulumi.Input.fromValue(map['kind'] as String),

@@ -30,8 +30,26 @@ class AttestorBinaryauthorizationV1beta1 extends pulumi.CustomResource {
           'google-native:binaryauthorization/v1beta1:Attestor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['attestorId', 'project']).merge(options),
         ) {
+    attestorId = registerOutput<String>('attestorId');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+    userOwnedDrydockNote = registerOutput<UserOwnedDrydockNoteResponse>('userOwnedDrydockNote', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserOwnedDrydockNoteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AttestorBinaryauthorizationV1beta1] resource.
+  AttestorBinaryauthorizationV1beta1.reference(String urn)
+    : super(
+        'google-native:binaryauthorization/v1beta1:Attestor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     attestorId = registerOutput<String>('attestorId');
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');

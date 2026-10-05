@@ -11,21 +11,21 @@ import 'phrase_matcher_type.dart';
 /// {@macro pulumi_contactcenterinsights_v1_phrase_matcher_args_doc}
 class PhraseMatcherArgs {
   /// Applies the phrase matcher only when it is active.
-  final pulumi.Input<bool>? active;
+  final pulumi.Input<bool?>? active;
   /// The human-readable name of the phrase matcher.
-  final pulumi.Input<String>? displayName;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? displayName;
+  final pulumi.Input<String?>? location;
   /// The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of phase match rule groups that are included in this matcher.
-  final pulumi.Input<List<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>>? phraseMatchRuleGroups;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<List<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>?>? phraseMatchRuleGroups;
+  final pulumi.Input<String?>? project;
   /// The role whose utterances the phrase matcher should be matched against. If the role is ROLE_UNSPECIFIED it will be matched against any utterances in the transcript.
-  final pulumi.Input<PhraseMatcherRoleMatch>? roleMatch;
+  final pulumi.Input<PhraseMatcherRoleMatch?>? roleMatch;
   /// The type of this phrase matcher.
   final pulumi.Input<PhraseMatcherType> type;
   /// The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`.
-  final pulumi.Input<String>? versionTag;
+  final pulumi.Input<String?>? versionTag;
 
   /// Creates a new [PhraseMatcherArgs].
   /// [active] Applies the phrase matcher only when it is active.

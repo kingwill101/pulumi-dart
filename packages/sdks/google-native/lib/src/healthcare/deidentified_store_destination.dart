@@ -6,9 +6,9 @@ import 'deidentify_config.dart';
 /// Contains configuration for streaming de-identified FHIR export.
 class DeidentifiedStoreDestination {
   /// The configuration to use when de-identifying resources that are added to this store.
-  final pulumi.Input<DeidentifyConfig>? config;
+  final pulumi.Input<DeidentifyConfig?>? config;
   /// The full resource name of a Cloud Healthcare FHIR store, for example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
-  final pulumi.Input<String>? store;
+  final pulumi.Input<String?>? store;
 
   /// Creates a new [DeidentifiedStoreDestination].
   /// [config] The configuration to use when de-identifying resources that are added to this store.

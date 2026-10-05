@@ -6,9 +6,9 @@ import 'fleet_observability_routing_config_gkehub_v1alpha.dart';
 /// LoggingConfig defines the configuration for different types of logs.
 class FleetObservabilityLoggingConfigGkehubV1alpha {
   /// Specified if applying the default routing config to logs not specified in other configs.
-  final pulumi.Input<FleetObservabilityRoutingConfigGkehubV1alpha>? defaultConfig;
+  final pulumi.Input<FleetObservabilityRoutingConfigGkehubV1alpha?>? defaultConfig;
   /// Specified if applying the routing config to all logs for all fleet scopes.
-  final pulumi.Input<FleetObservabilityRoutingConfigGkehubV1alpha>? fleetScopeLogsConfig;
+  final pulumi.Input<FleetObservabilityRoutingConfigGkehubV1alpha?>? fleetScopeLogsConfig;
 
   /// Creates a new [FleetObservabilityLoggingConfigGkehubV1alpha].
   /// [defaultConfig] Specified if applying the default routing config to logs not specified in other configs.

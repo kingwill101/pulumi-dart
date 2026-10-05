@@ -6,9 +6,9 @@ import 'consumer_metastore_v1alpha.dart';
 /// Network configuration for the Dataproc Metastore service.
 class NetworkConfigMetastoreV1alpha {
   /// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
-  final pulumi.Input<List<ConsumerMetastoreV1alpha>>? consumers;
+  final pulumi.Input<List<ConsumerMetastoreV1alpha>?>? consumers;
   /// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
-  final pulumi.Input<bool>? customRoutesEnabled;
+  final pulumi.Input<bool?>? customRoutesEnabled;
 
   /// Creates a new [NetworkConfigMetastoreV1alpha].
   /// [consumers] Immutable. The consumer-side network configuration for the Dataproc Metastore instance.

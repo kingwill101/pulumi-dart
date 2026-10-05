@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Destination node where the edge ends. It can only be a task config.
-enum EnterpriseCrmEventbusProtoNodeIdentifierElementType {
+enum EnterpriseCrmEventbusProtoNodeIdentifierElementType implements pulumi.PulumiEnum<String> {
   unknownType("UNKNOWN_TYPE"),
   taskConfig("TASK_CONFIG"),
   triggerConfig("TRIGGER_CONFIG");
 
   const EnterpriseCrmEventbusProtoNodeIdentifierElementType(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmEventbusProtoNodeIdentifierElementType fromValue(String value) {

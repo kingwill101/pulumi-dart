@@ -6,7 +6,7 @@ import 'dynamic_group_query_cloudidentity_v1beta1.dart';
 /// Dynamic group metadata like queries and status.
 class DynamicGroupMetadataCloudidentityV1beta1 {
   /// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
-  final pulumi.Input<List<DynamicGroupQueryCloudidentityV1beta1>>? queries;
+  final pulumi.Input<List<DynamicGroupQueryCloudidentityV1beta1>?>? queries;
 
   /// Creates a new [DynamicGroupMetadataCloudidentityV1beta1].
   /// [queries] Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.

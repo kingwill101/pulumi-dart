@@ -6,13 +6,13 @@ import 'google_cloud_datacatalog_v1_physical_schema.dart';
 /// Common Dataplex fields.
 class GoogleCloudDatacatalogV1DataplexSpec {
   /// Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
-  final pulumi.Input<String>? asset;
+  final pulumi.Input<String?>? asset;
   /// Compression format of the data, e.g., zip, gzip etc.
-  final pulumi.Input<String>? compressionFormat;
+  final pulumi.Input<String?>? compressionFormat;
   /// Format of the data.
-  final pulumi.Input<GoogleCloudDatacatalogV1PhysicalSchema>? dataFormat;
+  final pulumi.Input<GoogleCloudDatacatalogV1PhysicalSchema?>? dataFormat;
   /// Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GoogleCloudDatacatalogV1DataplexSpec].
   /// [asset] Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.

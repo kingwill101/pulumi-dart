@@ -13,23 +13,23 @@ import 'google_privacy_dlp_v2_stored_type.dart';
 /// Custom information type provided by the user. Used to find domain-specific sensitive information configurable to the data in question.
 class GooglePrivacyDlpV2CustomInfoType {
   /// Set of detection rules to apply to all findings of this CustomInfoType. Rules are applied in order that they are specified. Not supported for the `surrogate_type` CustomInfoType.
-  final pulumi.Input<List<GooglePrivacyDlpV2DetectionRule>>? detectionRules;
+  final pulumi.Input<List<GooglePrivacyDlpV2DetectionRule>?>? detectionRules;
   /// A list of phrases to detect as a CustomInfoType.
-  final pulumi.Input<GooglePrivacyDlpV2Dictionary>? dictionary;
+  final pulumi.Input<GooglePrivacyDlpV2Dictionary?>? dictionary;
   /// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-  final pulumi.Input<GooglePrivacyDlpV2CustomInfoTypeExclusionType>? exclusionType;
+  final pulumi.Input<GooglePrivacyDlpV2CustomInfoTypeExclusionType?>? exclusionType;
   /// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field. Specifying the latter adds findings to the one detected by the system. If built-in info type is not specified in `InspectContent.info_types` list then the name is treated as a custom info type.
-  final pulumi.Input<GooglePrivacyDlpV2InfoType>? infoType;
+  final pulumi.Input<GooglePrivacyDlpV2InfoType?>? infoType;
   /// Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria specified by the rule. Defaults to `VERY_LIKELY` if not specified.
-  final pulumi.Input<GooglePrivacyDlpV2CustomInfoTypeLikelihood>? likelihood;
+  final pulumi.Input<GooglePrivacyDlpV2CustomInfoTypeLikelihood?>? likelihood;
   /// Regular expression based CustomInfoType.
-  final pulumi.Input<GooglePrivacyDlpV2Regex>? regex;
+  final pulumi.Input<GooglePrivacyDlpV2Regex?>? regex;
   /// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedence over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
-  final pulumi.Input<GooglePrivacyDlpV2SensitivityScore>? sensitivityScore;
+  final pulumi.Input<GooglePrivacyDlpV2SensitivityScore?>? sensitivityScore;
   /// Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
-  final pulumi.Input<GooglePrivacyDlpV2StoredType>? storedType;
+  final pulumi.Input<GooglePrivacyDlpV2StoredType?>? storedType;
   /// Message for detecting output from deidentification transformations that support reversing.
-  final pulumi.Input<Map<String, dynamic>>? surrogateType;
+  final pulumi.Input<Map<String, dynamic>?>? surrogateType;
 
   /// Creates a new [GooglePrivacyDlpV2CustomInfoType].
   /// [detectionRules] Set of detection rules to apply to all findings of this CustomInfoType. Rules are applied in order that they are specified. Not supported for the `surrogate_type` CustomInfoType.

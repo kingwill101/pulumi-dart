@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// What kind of diversity to use - data driven or rule based. If unset, the server behavior defaults to RULE_BASED_DIVERSITY.
-enum ServingConfigDiversityTypeRetailV2alpha {
+enum ServingConfigDiversityTypeRetailV2alpha implements pulumi.PulumiEnum<String> {
   diversityTypeUnspecified("DIVERSITY_TYPE_UNSPECIFIED"),
   ruleBasedDiversity("RULE_BASED_DIVERSITY"),
   dataDrivenDiversity("DATA_DRIVEN_DIVERSITY");
 
   const ServingConfigDiversityTypeRetailV2alpha(this.wireValue);
+  @override
   final String wireValue;
 
   static ServingConfigDiversityTypeRetailV2alpha fromValue(String value) {

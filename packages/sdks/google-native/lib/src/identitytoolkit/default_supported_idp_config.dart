@@ -31,8 +31,27 @@ class DefaultSupportedIdpConfig extends pulumi.CustomResource {
           'google-native:identitytoolkit/v2:DefaultSupportedIdpConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'tenantId']).merge(options),
         ) {
+    appleSignInConfig = registerOutput<GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse>('appleSignInConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientId = registerOutput<String>('clientId');
+    clientSecret = registerOutput<String>('clientSecret');
+    enabled = registerOutput<bool>('enabled');
+    idpId = registerOutput<String?>('idpId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [DefaultSupportedIdpConfig] resource.
+  DefaultSupportedIdpConfig.reference(String urn)
+    : super(
+        'google-native:identitytoolkit/v2:DefaultSupportedIdpConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appleSignInConfig = registerOutput<GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse>('appleSignInConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');

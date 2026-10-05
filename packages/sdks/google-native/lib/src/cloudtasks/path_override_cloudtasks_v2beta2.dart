@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// PathOverride. Path message defines path override for HTTP targets.
 class PathOverrideCloudtasksV2beta2 {
   /// The URI path (e.g., /users/1234). Default is an empty string.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [PathOverrideCloudtasksV2beta2].
   /// [path] The URI path (e.g., /users/1234). Default is an empty string.

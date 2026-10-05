@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SlsaBuilder encapsulates the identity of the builder of this provenance.
 class SlsaBuilderContaineranalysisV1alpha1 {
   /// id is the id of the slsa provenance builder
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [SlsaBuilderContaineranalysisV1alpha1].
   /// [id] id is the id of the slsa provenance builder

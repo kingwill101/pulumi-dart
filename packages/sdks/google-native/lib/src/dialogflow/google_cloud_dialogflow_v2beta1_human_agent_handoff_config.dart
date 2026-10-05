@@ -7,9 +7,9 @@ import 'google_cloud_dialogflow_v2beta1_human_agent_handoff_config_salesforce_li
 /// Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation. Currently, this feature is not general available, please contact Google to get access.
 class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig {
   /// Uses LivePerson (https://www.liveperson.com).
-  final pulumi.Input<GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig>? livePersonConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig?>? livePersonConfig;
   /// Uses Salesforce Live Agent.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfig>? salesforceLiveAgentConfig;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfig?>? salesforceLiveAgentConfig;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig].
   /// [livePersonConfig] Uses LivePerson (https://www.liveperson.com).

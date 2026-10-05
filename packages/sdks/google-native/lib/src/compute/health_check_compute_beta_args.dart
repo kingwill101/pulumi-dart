@@ -16,32 +16,32 @@ import 'tcphealth_check_compute_beta.dart';
 /// {@macro pulumi_compute_beta_health_check_compute_beta_args_doc}
 class HealthCheckComputeBetaArgs {
   /// How often (in seconds) to send a health check. The default value is 5 seconds.
-  final pulumi.Input<int>? checkIntervalSec;
+  final pulumi.Input<int?>? checkIntervalSec;
   /// An optional description of this resource. Provide this property when you create the resource.
-  final pulumi.Input<String>? description;
-  final pulumi.Input<GRPCHealthCheckComputeBeta>? grpcHealthCheck;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<GRPCHealthCheckComputeBeta?>? grpcHealthCheck;
   /// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
-  final pulumi.Input<int>? healthyThreshold;
-  final pulumi.Input<HTTP2HealthCheckComputeBeta>? http2HealthCheck;
-  final pulumi.Input<HTTPHealthCheckComputeBeta>? httpHealthCheck;
-  final pulumi.Input<HTTPSHealthCheckComputeBeta>? httpsHealthCheck;
+  final pulumi.Input<int?>? healthyThreshold;
+  final pulumi.Input<HTTP2HealthCheckComputeBeta?>? http2HealthCheck;
+  final pulumi.Input<HTTPHealthCheckComputeBeta?>? httpHealthCheck;
+  final pulumi.Input<HTTPSHealthCheckComputeBeta?>? httpsHealthCheck;
   /// Type of the resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Configure logging on this health check.
-  final pulumi.Input<HealthCheckLogConfigComputeBeta>? logConfig;
+  final pulumi.Input<HealthCheckLogConfigComputeBeta?>? logConfig;
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
-  final pulumi.Input<SSLHealthCheckComputeBeta>? sslHealthCheck;
-  final pulumi.Input<TCPHealthCheckComputeBeta>? tcpHealthCheck;
+  final pulumi.Input<String?>? requestId;
+  final pulumi.Input<SSLHealthCheckComputeBeta?>? sslHealthCheck;
+  final pulumi.Input<TCPHealthCheckComputeBeta?>? tcpHealthCheck;
   /// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
-  final pulumi.Input<int>? timeoutSec;
+  final pulumi.Input<int?>? timeoutSec;
   /// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
-  final pulumi.Input<HealthCheckTypeComputeBeta>? type;
+  final pulumi.Input<HealthCheckTypeComputeBeta?>? type;
   /// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
-  final pulumi.Input<int>? unhealthyThreshold;
+  final pulumi.Input<int?>? unhealthyThreshold;
 
   /// Creates a new [HealthCheckComputeBetaArgs].
   /// [checkIntervalSec] How often (in seconds) to send a health check. The default value is 5 seconds.
@@ -105,10 +105,10 @@ class HealthCheckComputeBetaArgs {
 
   factory HealthCheckComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return HealthCheckComputeBetaArgs(
-      checkIntervalSec: (() { final guardedValue = map['checkIntervalSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      checkIntervalSec: (() { final guardedValue = map['checkIntervalSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       grpcHealthCheck: (() { final guardedValue = map['grpcHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GRPCHealthCheckComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      healthyThreshold: (() { final guardedValue = map['healthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      healthyThreshold: (() { final guardedValue = map['healthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       http2HealthCheck: (() { final guardedValue = map['http2HealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HTTP2HealthCheckComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       httpHealthCheck: (() { final guardedValue = map['httpHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HTTPHealthCheckComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       httpsHealthCheck: (() { final guardedValue = map['httpsHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HTTPSHealthCheckComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -119,9 +119,9 @@ class HealthCheckComputeBetaArgs {
       requestId: (() { final guardedValue = map['requestId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslHealthCheck: (() { final guardedValue = map['sslHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SSLHealthCheckComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tcpHealthCheck: (() { final guardedValue = map['tcpHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TCPHealthCheckComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckTypeComputeBeta.fromValue(guardedValue as String)); })(),
-      unhealthyThreshold: (() { final guardedValue = map['unhealthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      unhealthyThreshold: (() { final guardedValue = map['unhealthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

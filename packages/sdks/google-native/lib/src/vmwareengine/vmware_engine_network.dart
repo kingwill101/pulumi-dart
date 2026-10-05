@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vmware_engine_network_args.dart';
+import 'vpc_network_response.dart';
 
 /// Creates a new VMware Engine network that can be used by a private cloud.
 /// Auto-naming is currently not supported for this resource.
@@ -27,7 +28,7 @@ class VmwareEngineNetwork extends pulumi.CustomResource {
   /// Required. The user-provided identifier of the new VMware Engine network. This identifier must be unique among VMware Engine network resources within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * For networks of type LEGACY, adheres to the format: `{region-id}-default`. Replace `{region-id}` with the region where you want to create the VMware Engine network. For example, "us-central1-default". * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
   late final pulumi.Output<String> vmwareEngineNetworkId;
   /// VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects, the internet, and other Google Cloud services.
-  late final pulumi.Output<List<Map<String, dynamic>>> vpcNetworks;
+  late final pulumi.Output<List<VpcNetworkResponse>> vpcNetworks;
 
   /// Creates a new [VmwareEngineNetwork].
   /// [name] The Pulumi resource name.
@@ -41,7 +42,7 @@ class VmwareEngineNetwork extends pulumi.CustomResource {
           'google-native:vmwareengine/v1:VmwareEngineNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'vmwareEngineNetworkId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
@@ -55,6 +56,30 @@ class VmwareEngineNetwork extends pulumi.CustomResource {
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     vmwareEngineNetworkId = registerOutput<String>('vmwareEngineNetworkId');
-    vpcNetworks = registerOutput<List<Map<String, dynamic>>>('vpcNetworks');
+    vpcNetworks = registerOutput<List<VpcNetworkResponse>>('vpcNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcNetworkResponse>(guardedValue, (value) => VpcNetworkResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [VmwareEngineNetwork] resource.
+  VmwareEngineNetwork.reference(String urn)
+    : super(
+        'google-native:vmwareengine/v1:VmwareEngineNetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    vmwareEngineNetworkId = registerOutput<String>('vmwareEngineNetworkId');
+    vpcNetworks = registerOutput<List<VpcNetworkResponse>>('vpcNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpcNetworkResponse>(guardedValue, (value) => VpcNetworkResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

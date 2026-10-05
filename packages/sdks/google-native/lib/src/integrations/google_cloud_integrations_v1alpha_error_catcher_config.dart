@@ -7,15 +7,15 @@ import 'google_cloud_integrations_v1alpha_next_task.dart';
 /// Configuration detail of a error catch task
 class GoogleCloudIntegrationsV1alphaErrorCatcherConfig {
   /// Optional. User-provided description intended to give more business context about the error catcher config.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// An error catcher id is string representation for the error catcher config. Within a workflow, error_catcher_id uniquely identifies an error catcher config among all error catcher configs for the workflow
   final pulumi.Input<String> errorCatcherId;
   /// A number to uniquely identify each error catcher config within the workflow on UI.
   final pulumi.Input<String> errorCatcherNumber;
   /// Optional. The user created label for a particular error catcher. Optional.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Optional. Informs the front-end application where to draw this error catcher config on the UI.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaCoordinate>? position;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaCoordinate?>? position;
   /// The set of start tasks that are to be executed for the error catch flow
   final pulumi.Input<List<GoogleCloudIntegrationsV1alphaNextTask>> startErrorTasks;
 

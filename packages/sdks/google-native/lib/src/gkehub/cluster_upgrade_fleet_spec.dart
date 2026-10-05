@@ -7,11 +7,11 @@ import 'cluster_upgrade_post_conditions.dart';
 /// **ClusterUpgrade**: The configuration for the fleet-level ClusterUpgrade feature.
 class ClusterUpgradeFleetSpec {
   /// Allow users to override some properties of each GKE upgrade.
-  final pulumi.Input<List<ClusterUpgradeGKEUpgradeOverride>>? gkeUpgradeOverrides;
+  final pulumi.Input<List<ClusterUpgradeGKEUpgradeOverride>?>? gkeUpgradeOverrides;
   /// Post conditions to evaluate to mark an upgrade COMPLETE. Required.
   final pulumi.Input<ClusterUpgradePostConditions> postConditions;
   /// This fleet consumes upgrades that have COMPLETE status code in the upstream fleets. See UpgradeStatus.Code for code definitions. The fleet name should be either fleet project number or id. This is defined as repeated for future proof reasons. Initial implementation will enforce at most one upstream fleet.
-  final pulumi.Input<List<String>>? upstreamFleets;
+  final pulumi.Input<List<String>?>? upstreamFleets;
 
   /// Creates a new [ClusterUpgradeFleetSpec].
   /// [gkeUpgradeOverrides] Allow users to override some properties of each GKE upgrade.

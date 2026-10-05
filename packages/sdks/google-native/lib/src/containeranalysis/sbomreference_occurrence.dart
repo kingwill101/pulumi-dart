@@ -7,11 +7,11 @@ import 'sbom_reference_intoto_payload.dart';
 /// The occurrence representing an SBOM reference as applied to a specific resource. The occurrence follows the DSSE specification. See https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
 class SBOMReferenceOccurrence {
   /// The actual payload that contains the SBOM reference data.
-  final pulumi.Input<SbomReferenceIntotoPayload>? payload;
+  final pulumi.Input<SbomReferenceIntotoPayload?>? payload;
   /// The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
-  final pulumi.Input<String>? payloadType;
+  final pulumi.Input<String?>? payloadType;
   /// The signatures over the payload.
-  final pulumi.Input<List<EnvelopeSignature>>? signatures;
+  final pulumi.Input<List<EnvelopeSignature>?>? signatures;
 
   /// Creates a new [SBOMReferenceOccurrence].
   /// [payload] The actual payload that contains the SBOM reference data.

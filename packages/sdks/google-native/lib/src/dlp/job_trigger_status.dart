@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. A status for this trigger.
-enum JobTriggerStatus {
+enum JobTriggerStatus implements pulumi.PulumiEnum<String> {
   statusUnspecified("STATUS_UNSPECIFIED"),
   healthy("HEALTHY"),
   paused("PAUSED"),
   cancelled("CANCELLED");
 
   const JobTriggerStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static JobTriggerStatus fromValue(String value) {

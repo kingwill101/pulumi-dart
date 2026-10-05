@@ -32,8 +32,25 @@ class Template extends pulumi.CustomResource {
           'google-native:dataflow/v1b3:Template',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    location = registerOutput<String>('location');
+    metadata = registerOutput<TemplateMetadataResponse>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TemplateMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    runtimeMetadata = registerOutput<RuntimeMetadataResponse>('runtimeMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<StatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    templateType = registerOutput<String>('templateType');
+  }
+
+  /// Creates a typed reference to an existing [Template] resource.
+  Template.reference(String urn)
+    : super(
+        'google-native:dataflow/v1b3:Template',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     location = registerOutput<String>('location');
     metadata = registerOutput<TemplateMetadataResponse>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TemplateMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');

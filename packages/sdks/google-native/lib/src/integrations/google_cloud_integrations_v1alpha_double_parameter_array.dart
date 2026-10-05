@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// This message only contains a field of double number array.
 class GoogleCloudIntegrationsV1alphaDoubleParameterArray {
   /// Double number array.
-  final pulumi.Input<List<double>>? doubleValues;
+  final pulumi.Input<List<double>?>? doubleValues;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaDoubleParameterArray].
   /// [doubleValues] Double number array.

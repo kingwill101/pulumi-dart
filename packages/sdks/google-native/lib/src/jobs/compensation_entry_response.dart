@@ -50,7 +50,7 @@ class CompensationEntryResponse {
     return CompensationEntryResponse(
       amount: pulumi.Input.fromValue(MoneyResponse.fromMap((map['amount']! as Map).cast<String, dynamic>())),
       description: pulumi.Input.fromValue(map['description'] as String),
-      expectedUnitsPerYear: pulumi.Input.fromValue(map['expectedUnitsPerYear'] as double),
+      expectedUnitsPerYear: pulumi.Input.fromValue((map['expectedUnitsPerYear'] as num).toDouble()),
       range: pulumi.Input.fromValue(CompensationRangeResponse.fromMap((map['range']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
       unit: pulumi.Input.fromValue(map['unit'] as String),

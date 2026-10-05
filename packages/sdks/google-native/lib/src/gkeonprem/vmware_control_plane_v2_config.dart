@@ -6,7 +6,7 @@ import 'vmware_ip_block.dart';
 /// Specifies control plane V2 config.
 class VmwareControlPlaneV2Config {
   /// Static IP addresses for the control plane nodes.
-  final pulumi.Input<VmwareIpBlock>? controlPlaneIpBlock;
+  final pulumi.Input<VmwareIpBlock?>? controlPlaneIpBlock;
 
   /// Creates a new [VmwareControlPlaneV2Config].
   /// [controlPlaneIpBlock] Static IP addresses for the control plane nodes.

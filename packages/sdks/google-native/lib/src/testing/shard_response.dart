@@ -38,8 +38,8 @@ class ShardResponse {
   factory ShardResponse.fromMap(Map<String, dynamic> map) {
     return ShardResponse(
       estimatedShardDuration: pulumi.Input.fromValue(map['estimatedShardDuration'] as String),
-      numShards: pulumi.Input.fromValue(map['numShards'] as int),
-      shardIndex: pulumi.Input.fromValue(map['shardIndex'] as int),
+      numShards: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numShards'])),
+      shardIndex: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['shardIndex'])),
       testTargetsForShard: pulumi.Input.fromValue(TestTargetsForShardResponse.fromMap((map['testTargetsForShard']! as Map).cast<String, dynamic>())),
     );
   }

@@ -9,9 +9,9 @@ class KubernetesClusterConfig {
   /// The configuration for running the Dataproc cluster on GKE.
   final pulumi.Input<GkeClusterConfig> gkeClusterConfig;
   /// Optional. A namespace within the Kubernetes cluster to deploy into. If this namespace does not exist, it is created. If it exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it. If not specified, the name of the Dataproc Cluster is used.
-  final pulumi.Input<String>? kubernetesNamespace;
+  final pulumi.Input<String?>? kubernetesNamespace;
   /// Optional. The software configuration for this Dataproc cluster running on Kubernetes.
-  final pulumi.Input<KubernetesSoftwareConfig>? kubernetesSoftwareConfig;
+  final pulumi.Input<KubernetesSoftwareConfig?>? kubernetesSoftwareConfig;
 
   /// Creates a new [KubernetesClusterConfig].
   /// [gkeClusterConfig] The configuration for running the Dataproc cluster on GKE.

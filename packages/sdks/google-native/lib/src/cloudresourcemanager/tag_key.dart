@@ -36,7 +36,7 @@ class TagKey extends pulumi.CustomResource {
           'google-native:cloudresourcemanager/v3:TagKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
@@ -45,7 +45,28 @@ class TagKey extends pulumi.CustomResource {
     namespacedName = registerOutput<String>('namespacedName');
     parent = registerOutput<String>('parent');
     purpose = registerOutput<String>('purpose');
-    purposeData = registerOutput<Map<String, String>>('purposeData');
+    purposeData = registerOutput<Map<String, String>>('purposeData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    shortName = registerOutput<String>('shortName');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [TagKey] resource.
+  TagKey.reference(String urn)
+    : super(
+        'google-native:cloudresourcemanager/v3:TagKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    namespacedName = registerOutput<String>('namespacedName');
+    parent = registerOutput<String>('parent');
+    purpose = registerOutput<String>('purpose');
+    purposeData = registerOutput<Map<String, String>>('purposeData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     shortName = registerOutput<String>('shortName');
     updateTime = registerOutput<String>('updateTime');
   }

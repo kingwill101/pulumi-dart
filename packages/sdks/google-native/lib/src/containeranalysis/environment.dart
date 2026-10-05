@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines an object for the environment field in in-toto links. The suggested fields are "variables", "filesystem", and "workdir".
 class Environment {
-  final pulumi.Input<Map<String, String>>? customValues;
+  final pulumi.Input<Map<String, String>?>? customValues;
 
   /// Creates a new [Environment].
   /// [customValues] Optional.

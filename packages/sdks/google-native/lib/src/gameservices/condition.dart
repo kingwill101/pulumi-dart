@@ -8,15 +8,15 @@ import 'condition_sys.dart';
 /// A condition to be met.
 class Condition {
   /// Trusted attributes supplied by the IAM system.
-  final pulumi.Input<ConditionIam>? iam;
+  final pulumi.Input<ConditionIam?>? iam;
   /// An operator to apply the subject with.
-  final pulumi.Input<ConditionOp>? op;
+  final pulumi.Input<ConditionOp?>? op;
   /// Trusted attributes discharged by the service.
-  final pulumi.Input<String>? svc;
+  final pulumi.Input<String?>? svc;
   /// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
-  final pulumi.Input<ConditionSys>? sys;
+  final pulumi.Input<ConditionSys?>? sys;
   /// The objects of the condition.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [Condition].
   /// [iam] Trusted attributes supplied by the IAM system.

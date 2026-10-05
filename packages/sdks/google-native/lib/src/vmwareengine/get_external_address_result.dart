@@ -4,21 +4,21 @@
 /// Result data returned by getExternalAddress.
 class GetExternalAddressResult {
   /// Creation time of this resource.
-  final String createTime;
+  final String? createTime;
   /// User-provided description for this resource.
-  final String description;
+  final String? description;
   /// The external IP address of a workload VM.
-  final String externalIp;
+  final String? externalIp;
   /// The internal IP address of a workload VM.
-  final String internalIp;
+  final String? internalIp;
   /// The resource name of this external IP address. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-address`
-  final String name;
+  final String? name;
   /// The state of the resource.
-  final String state;
+  final String? state;
   /// System-generated unique identifier for the resource.
-  final String uid;
+  final String? uid;
   /// Last update time of this resource.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetExternalAddressResult].
   /// [createTime] Creation time of this resource.
@@ -30,39 +30,39 @@ class GetExternalAddressResult {
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last update time of this resource.
   const GetExternalAddressResult({
-    required this.createTime,
-    required this.description,
-    required this.externalIp,
-    required this.internalIp,
-    required this.name,
-    required this.state,
-    required this.uid,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.externalIp,
+    this.internalIp,
+    this.name,
+    this.state,
+    this.uid,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'externalIp': externalIp,
-      'internalIp': internalIp,
-      'name': name,
-      'state': state,
-      'uid': uid,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'externalIp': ?externalIp,
+      'internalIp': ?internalIp,
+      'name': ?name,
+      'state': ?state,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetExternalAddressResult.fromMap(Map<String, dynamic> map) {
     return GetExternalAddressResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      externalIp: map['externalIp'] as String,
-      internalIp: map['internalIp'] as String,
-      name: map['name'] as String,
-      state: map['state'] as String,
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      externalIp: (() { final guardedValue = map['externalIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      internalIp: (() { final guardedValue = map['internalIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

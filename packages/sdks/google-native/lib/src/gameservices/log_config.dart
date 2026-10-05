@@ -8,11 +8,11 @@ import 'data_access_options.dart';
 /// Specifies what kind of log the caller must write
 class LogConfig {
   /// Cloud audit options.
-  final pulumi.Input<CloudAuditOptions>? cloudAudit;
+  final pulumi.Input<CloudAuditOptions?>? cloudAudit;
   /// Counter options.
-  final pulumi.Input<CounterOptions>? counter;
+  final pulumi.Input<CounterOptions?>? counter;
   /// Data access options.
-  final pulumi.Input<DataAccessOptions>? dataAccess;
+  final pulumi.Input<DataAccessOptions?>? dataAccess;
 
   /// Creates a new [LogConfig].
   /// [cloudAudit] Cloud audit options.

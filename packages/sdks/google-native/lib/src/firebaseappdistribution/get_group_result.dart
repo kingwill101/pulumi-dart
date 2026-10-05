@@ -4,15 +4,15 @@
 /// Result data returned by getGroup.
 class GetGroupResult {
   /// The display name of the group.
-  final String displayName;
+  final String? displayName;
   /// The number of invite links for this group.
-  final int inviteLinkCount;
+  final int? inviteLinkCount;
   /// The name of the group resource. Format: `projects/{project_number}/groups/{group_alias}`
-  final String name;
+  final String? name;
   /// The number of releases this group is permitted to access.
-  final int releaseCount;
+  final int? releaseCount;
   /// The number of testers who are members of this group.
-  final int testerCount;
+  final int? testerCount;
 
   /// Creates a new [GetGroupResult].
   /// [displayName] The display name of the group.
@@ -21,30 +21,30 @@ class GetGroupResult {
   /// [releaseCount] The number of releases this group is permitted to access.
   /// [testerCount] The number of testers who are members of this group.
   const GetGroupResult({
-    required this.displayName,
-    required this.inviteLinkCount,
-    required this.name,
-    required this.releaseCount,
-    required this.testerCount,
+    this.displayName,
+    this.inviteLinkCount,
+    this.name,
+    this.releaseCount,
+    this.testerCount,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'displayName': displayName,
-      'inviteLinkCount': inviteLinkCount,
-      'name': name,
-      'releaseCount': releaseCount,
-      'testerCount': testerCount,
+      'displayName': ?displayName,
+      'inviteLinkCount': ?inviteLinkCount,
+      'name': ?name,
+      'releaseCount': ?releaseCount,
+      'testerCount': ?testerCount,
     };
   }
 
   factory GetGroupResult.fromMap(Map<String, dynamic> map) {
     return GetGroupResult(
-      displayName: map['displayName'] as String,
-      inviteLinkCount: map['inviteLinkCount'] as int,
-      name: map['name'] as String,
-      releaseCount: map['releaseCount'] as int,
-      testerCount: map['testerCount'] as int,
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      inviteLinkCount: (() { final guardedValue = map['inviteLinkCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      releaseCount: (() { final guardedValue = map['releaseCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      testerCount: (() { final guardedValue = map['testerCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

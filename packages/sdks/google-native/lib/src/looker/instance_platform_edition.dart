@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Platform edition.
-enum InstancePlatformEdition {
+enum InstancePlatformEdition implements pulumi.PulumiEnum<String> {
   platformEditionUnspecified("PLATFORM_EDITION_UNSPECIFIED"),
   lookerCoreTrial("LOOKER_CORE_TRIAL"),
   lookerCoreStandard("LOOKER_CORE_STANDARD"),
@@ -8,6 +10,7 @@ enum InstancePlatformEdition {
   lookerCoreEmbedAnnual("LOOKER_CORE_EMBED_ANNUAL");
 
   const InstancePlatformEdition(this.wireValue);
+  @override
   final String wireValue;
 
   static InstancePlatformEdition fromValue(String value) {

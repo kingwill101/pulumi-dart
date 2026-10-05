@@ -53,8 +53,36 @@ class JobCloudschedulerV1beta1 extends pulumi.CustomResource {
           'google-native:cloudscheduler/v1beta1:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    appEngineHttpTarget = registerOutput<AppEngineHttpTargetResponseCloudschedulerV1beta1>('appEngineHttpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineHttpTargetResponseCloudschedulerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    attemptDeadline = registerOutput<String>('attemptDeadline');
+    description = registerOutput<String>('description');
+    httpTarget = registerOutput<HttpTargetResponseCloudschedulerV1beta1>('httpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpTargetResponseCloudschedulerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastAttemptTime = registerOutput<String>('lastAttemptTime');
+    legacyAppEngineCron = registerOutput<bool>('legacyAppEngineCron');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pubsubTarget = registerOutput<PubsubTargetResponseCloudschedulerV1beta1>('pubsubTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PubsubTargetResponseCloudschedulerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retryConfig = registerOutput<RetryConfigResponseCloudschedulerV1beta1>('retryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RetryConfigResponseCloudschedulerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schedule = registerOutput<String>('schedule');
+    scheduleTime = registerOutput<String>('scheduleTime');
+    state = registerOutput<String>('state');
+    status = registerOutput<StatusResponseCloudschedulerV1beta1>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponseCloudschedulerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeZone = registerOutput<String>('timeZone');
+    userUpdateTime = registerOutput<String>('userUpdateTime');
+  }
+
+  /// Creates a typed reference to an existing [JobCloudschedulerV1beta1] resource.
+  JobCloudschedulerV1beta1.reference(String urn)
+    : super(
+        'google-native:cloudscheduler/v1beta1:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appEngineHttpTarget = registerOutput<AppEngineHttpTargetResponseCloudschedulerV1beta1>('appEngineHttpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineHttpTargetResponseCloudschedulerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     attemptDeadline = registerOutput<String>('attemptDeadline');
     description = registerOutput<String>('description');

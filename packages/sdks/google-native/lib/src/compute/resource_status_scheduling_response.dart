@@ -25,7 +25,7 @@ class ResourceStatusSchedulingResponse {
 
   factory ResourceStatusSchedulingResponse.fromMap(Map<String, dynamic> map) {
     return ResourceStatusSchedulingResponse(
-      availabilityDomain: pulumi.Input.fromValue(map['availabilityDomain'] as int),
+      availabilityDomain: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['availabilityDomain'])),
       terminationTimestamp: pulumi.Input.fromValue(map['terminationTimestamp'] as String),
     );
   }

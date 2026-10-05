@@ -43,7 +43,7 @@ class FacetOptionsResponse {
   factory FacetOptionsResponse.fromMap(Map<String, dynamic> map) {
     return FacetOptionsResponse(
       integerFacetingOptions: pulumi.Input.fromValue(IntegerFacetingOptionsResponse.fromMap((map['integerFacetingOptions']! as Map).cast<String, dynamic>())),
-      numFacetBuckets: pulumi.Input.fromValue(map['numFacetBuckets'] as int),
+      numFacetBuckets: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numFacetBuckets'])),
       objectType: pulumi.Input.fromValue(map['objectType'] as String),
       operatorName: pulumi.Input.fromValue(map['operatorName'] as String),
       sourceName: pulumi.Input.fromValue(map['sourceName'] as String),

@@ -1,8 +1,11 @@
-enum SecuritySettingPurgeDataTypesItemDialogflowV3beta1 {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum SecuritySettingPurgeDataTypesItemDialogflowV3beta1 implements pulumi.PulumiEnum<String> {
   purgeDataTypeUnspecified("PURGE_DATA_TYPE_UNSPECIFIED"),
   dialogflowHistory("DIALOGFLOW_HISTORY");
 
   const SecuritySettingPurgeDataTypesItemDialogflowV3beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static SecuritySettingPurgeDataTypesItemDialogflowV3beta1 fromValue(String value) {

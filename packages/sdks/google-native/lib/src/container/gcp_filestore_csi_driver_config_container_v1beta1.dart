@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for the GCP Filestore CSI driver.
 class GcpFilestoreCsiDriverConfigContainerV1beta1 {
   /// Whether the GCP Filestore CSI driver is enabled for this cluster.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [GcpFilestoreCsiDriverConfigContainerV1beta1].
   /// [enabled] Whether the GCP Filestore CSI driver is enabled for this cluster.

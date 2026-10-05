@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExperimentArgs {
   final pulumi.Input<String> experimentId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> tensorboardId;
 
   /// Creates a new [GetExperimentArgs].

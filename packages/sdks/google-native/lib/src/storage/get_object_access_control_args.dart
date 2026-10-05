@@ -9,9 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetObjectAccessControlArgs {
   final pulumi.Input<String> bucket;
   final pulumi.Input<String> entity;
-  final pulumi.Input<String>? generation;
+  final pulumi.Input<String?>? generation;
   final pulumi.Input<String> object_;
-  final pulumi.Input<String>? userProject;
+  final pulumi.Input<String?>? userProject;
 
   /// Creates a new [GetObjectAccessControlArgs].
   /// [bucket] Required.

@@ -6,15 +6,15 @@ import 'sql_acl_entry.dart';
 /// IP Management configuration.
 class SqlIpConfig {
   /// Optional. The name of the allocated IP address range for the private IP Cloud SQL instance. This name refers to an already allocated IP range address. If set, the instance IP address will be created in the allocated range. Note that this IP address range can't be modified after the instance is created. If you change the VPC when configuring connectivity settings for the migration job, this field is not relevant.
-  final pulumi.Input<String>? allocatedIpRange;
+  final pulumi.Input<String?>? allocatedIpRange;
   /// The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
-  final pulumi.Input<List<SqlAclEntry>>? authorizedNetworks;
+  final pulumi.Input<List<SqlAclEntry>?>? authorizedNetworks;
   /// Whether the instance should be assigned an IPv4 address or not.
-  final pulumi.Input<bool>? enableIpv4;
+  final pulumi.Input<bool?>? enableIpv4;
   /// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
-  final pulumi.Input<String>? privateNetwork;
+  final pulumi.Input<String?>? privateNetwork;
   /// Whether SSL connections over IP should be enforced or not.
-  final pulumi.Input<bool>? requireSsl;
+  final pulumi.Input<bool?>? requireSsl;
 
   /// Creates a new [SqlIpConfig].
   /// [allocatedIpRange] Optional. The name of the allocated IP address range for the private IP Cloud SQL instance. This name refers to an already allocated IP range address. If set, the instance IP address will be created in the allocated range. Note that this IP address range can't be modified after the instance is created. If you change the VPC when configuring connectivity settings for the migration job, this field is not relevant.

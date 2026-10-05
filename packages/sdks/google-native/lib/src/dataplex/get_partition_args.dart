@@ -11,7 +11,7 @@ class GetPartitionArgs {
   final pulumi.Input<String> lakeId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> partitionId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> zone;
 
   /// Creates a new [GetPartitionArgs].

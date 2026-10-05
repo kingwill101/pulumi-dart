@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'directory_services_config_response.dart';
+import 'file_share_config_response_file_v1beta1.dart';
 import 'instance_file_v1beta1_args.dart';
+import 'network_config_response_file_v1beta1.dart';
 
 /// Creates an instance. When creating from a backup, the capacity of the new instance needs to be equal to or larger than the capacity of the backup (and also equal to or larger than the minimum capacity of the tier).
 /// Auto-naming is currently not supported for this resource.
@@ -18,7 +20,7 @@ class InstanceFileV1beta1 extends pulumi.CustomResource {
   /// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
   late final pulumi.Output<String> etag;
   /// File system shares on the instance. For this version, only a single file share is supported.
-  late final pulumi.Output<List<Map<String, dynamic>>> fileShares;
+  late final pulumi.Output<List<FileShareConfigResponseFileV1beta1>> fileShares;
   /// Required. The ID of the instance to create. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
   late final pulumi.Output<String> instanceId;
   /// KMS key name used for data encryption.
@@ -35,7 +37,7 @@ class InstanceFileV1beta1 extends pulumi.CustomResource {
   /// The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
   late final pulumi.Output<String> name;
   /// VPC networks to which the instance is connected. For this version, only a single network is supported.
-  late final pulumi.Output<List<Map<String, dynamic>>> networks;
+  late final pulumi.Output<List<NetworkConfigResponseFileV1beta1>> networks;
   late final pulumi.Output<String> project;
   /// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
   late final pulumi.Output<String> protocol;
@@ -62,7 +64,7 @@ class InstanceFileV1beta1 extends pulumi.CustomResource {
           'google-native:file/v1beta1:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceId', 'location', 'project']).merge(options),
         ) {
     capacityGb = registerOutput<String>('capacityGb');
     capacityStepSizeGb = registerOutput<String>('capacityStepSizeGb');
@@ -70,22 +72,56 @@ class InstanceFileV1beta1 extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     directoryServices = registerOutput<DirectoryServicesConfigResponse>('directoryServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryServicesConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    fileShares = registerOutput<List<Map<String, dynamic>>>('fileShares');
+    fileShares = registerOutput<List<FileShareConfigResponseFileV1beta1>>('fileShares', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FileShareConfigResponseFileV1beta1>(guardedValue, (value) => FileShareConfigResponseFileV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     instanceId = registerOutput<String>('instanceId');
     kmsKeyName = registerOutput<String>('kmsKeyName');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maxCapacityGb = registerOutput<String>('maxCapacityGb');
     maxShareCount = registerOutput<String>('maxShareCount');
     multiShareEnabled = registerOutput<bool>('multiShareEnabled');
     this.name = registerOutput<String>('name');
-    networks = registerOutput<List<Map<String, dynamic>>>('networks');
+    networks = registerOutput<List<NetworkConfigResponseFileV1beta1>>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConfigResponseFileV1beta1>(guardedValue, (value) => NetworkConfigResponseFileV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     protocol = registerOutput<String>('protocol');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     state = registerOutput<String>('state');
     statusMessage = registerOutput<String>('statusMessage');
-    suspensionReasons = registerOutput<List<String>>('suspensionReasons');
+    suspensionReasons = registerOutput<List<String>>('suspensionReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tier = registerOutput<String>('tier');
+  }
+
+  /// Creates a typed reference to an existing [InstanceFileV1beta1] resource.
+  InstanceFileV1beta1.reference(String urn)
+    : super(
+        'google-native:file/v1beta1:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    capacityGb = registerOutput<String>('capacityGb');
+    capacityStepSizeGb = registerOutput<String>('capacityStepSizeGb');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    directoryServices = registerOutput<DirectoryServicesConfigResponse>('directoryServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryServicesConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    fileShares = registerOutput<List<FileShareConfigResponseFileV1beta1>>('fileShares', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FileShareConfigResponseFileV1beta1>(guardedValue, (value) => FileShareConfigResponseFileV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceId = registerOutput<String>('instanceId');
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    maxCapacityGb = registerOutput<String>('maxCapacityGb');
+    maxShareCount = registerOutput<String>('maxShareCount');
+    multiShareEnabled = registerOutput<bool>('multiShareEnabled');
+    this.name = registerOutput<String>('name');
+    networks = registerOutput<List<NetworkConfigResponseFileV1beta1>>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConfigResponseFileV1beta1>(guardedValue, (value) => NetworkConfigResponseFileV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String>('protocol');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    state = registerOutput<String>('state');
+    statusMessage = registerOutput<String>('statusMessage');
+    suspensionReasons = registerOutput<List<String>>('suspensionReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tier = registerOutput<String>('tier');
   }
 }

@@ -36,10 +36,10 @@ class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse {
 
   factory GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponse(
-      acknowledgedResourceViolationCount: pulumi.Input.fromValue(map['acknowledgedResourceViolationCount'] as int),
-      acknowledgedViolationCount: pulumi.Input.fromValue(map['acknowledgedViolationCount'] as int),
-      activeResourceViolationCount: pulumi.Input.fromValue(map['activeResourceViolationCount'] as int),
-      activeViolationCount: pulumi.Input.fromValue(map['activeViolationCount'] as int),
+      acknowledgedResourceViolationCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['acknowledgedResourceViolationCount'])),
+      acknowledgedViolationCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['acknowledgedViolationCount'])),
+      activeResourceViolationCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['activeResourceViolationCount'])),
+      activeViolationCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['activeViolationCount'])),
     );
   }
 }

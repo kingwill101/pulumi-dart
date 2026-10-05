@@ -9,7 +9,7 @@ class ImageOccurrence {
   /// The fingerprint of the derived image.
   final pulumi.Input<Fingerprint> fingerprint;
   /// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
-  final pulumi.Input<List<Layer>>? layerInfo;
+  final pulumi.Input<List<Layer>?>? layerInfo;
 
   /// Creates a new [ImageOccurrence].
   /// [fingerprint] The fingerprint of the derived image.

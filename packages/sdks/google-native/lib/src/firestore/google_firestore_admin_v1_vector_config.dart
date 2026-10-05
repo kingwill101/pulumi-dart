@@ -7,7 +7,7 @@ class GoogleFirestoreAdminV1VectorConfig {
   /// The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
   final pulumi.Input<int> dimension;
   /// Indicates the vector index is a flat index.
-  final pulumi.Input<Map<String, dynamic>>? flat;
+  final pulumi.Input<Map<String, dynamic>?>? flat;
 
   /// Creates a new [GoogleFirestoreAdminV1VectorConfig].
   /// [dimension] The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
@@ -26,7 +26,7 @@ class GoogleFirestoreAdminV1VectorConfig {
 
   factory GoogleFirestoreAdminV1VectorConfig.fromMap(Map<String, dynamic> map) {
     return GoogleFirestoreAdminV1VectorConfig(
-      dimension: pulumi.Input.fromValue(map['dimension'] as int),
+      dimension: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dimension'])),
       flat: (() { final guardedValue = map['flat']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }

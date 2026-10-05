@@ -8,17 +8,17 @@ import 'date_shift_config.dart';
 /// A transformation to apply to text that is identified as a specific info_type.
 class InfoTypeTransformation {
   /// Config for character mask.
-  final pulumi.Input<CharacterMaskConfig>? characterMaskConfig;
+  final pulumi.Input<CharacterMaskConfig?>? characterMaskConfig;
   /// Config for crypto hash.
-  final pulumi.Input<CryptoHashConfig>? cryptoHashConfig;
+  final pulumi.Input<CryptoHashConfig?>? cryptoHashConfig;
   /// Config for date shift.
-  final pulumi.Input<DateShiftConfig>? dateShiftConfig;
+  final pulumi.Input<DateShiftConfig?>? dateShiftConfig;
   /// InfoTypes to apply this transformation to. If this is not specified, the transformation applies to any info_type.
-  final pulumi.Input<List<String>>? infoTypes;
+  final pulumi.Input<List<String>?>? infoTypes;
   /// Config for text redaction.
-  final pulumi.Input<Map<String, dynamic>>? redactConfig;
+  final pulumi.Input<Map<String, dynamic>?>? redactConfig;
   /// Config for replace with InfoType.
-  final pulumi.Input<Map<String, dynamic>>? replaceWithInfoTypeConfig;
+  final pulumi.Input<Map<String, dynamic>?>? replaceWithInfoTypeConfig;
 
   /// Creates a new [InfoTypeTransformation].
   /// [characterMaskConfig] Config for character mask.

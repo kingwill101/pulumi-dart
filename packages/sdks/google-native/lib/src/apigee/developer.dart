@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'developer_args.dart';
+import 'google_cloud_apigee_v1_attribute_response.dart';
 
 /// Creates a developer. Once created, the developer can register an app and obtain an API key. At creation time, a developer is set as `active`. To change the developer status, use the SetDeveloperStatus API.
 /// Auto-naming is currently not supported for this resource.
@@ -11,7 +12,7 @@ class Developer extends pulumi.CustomResource {
   /// List of apps associated with the developer.
   late final pulumi.Output<List<String>> apps;
   /// Optional. Developer attributes (name/value pairs). The custom attribute limit is 18.
-  late final pulumi.Output<List<Map<String, dynamic>>> attributes;
+  late final pulumi.Output<List<GoogleCloudApigeeV1AttributeResponse>> attributes;
   /// List of companies associated with the developer.
   late final pulumi.Output<List<String>> companies;
   /// Time at which the developer was created in milliseconds since epoch.
@@ -46,13 +47,39 @@ class Developer extends pulumi.CustomResource {
           'google-native:apigee/v1:Developer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
     accessType = registerOutput<String>('accessType');
     appFamily = registerOutput<String>('appFamily');
-    apps = registerOutput<List<String>>('apps');
-    attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
-    companies = registerOutput<List<String>>('companies');
+    apps = registerOutput<List<String>>('apps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    attributes = registerOutput<List<GoogleCloudApigeeV1AttributeResponse>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(guardedValue, (value) => GoogleCloudApigeeV1AttributeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    companies = registerOutput<List<String>>('companies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createdAt = registerOutput<String>('createdAt');
+    developerId = registerOutput<String>('developerId');
+    email = registerOutput<String>('email');
+    firstName = registerOutput<String>('firstName');
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    lastName = registerOutput<String>('lastName');
+    organizationId = registerOutput<String>('organizationId');
+    organizationName = registerOutput<String>('organizationName');
+    status = registerOutput<String>('status');
+    userName = registerOutput<String>('userName');
+  }
+
+  /// Creates a typed reference to an existing [Developer] resource.
+  Developer.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Developer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessType = registerOutput<String>('accessType');
+    appFamily = registerOutput<String>('appFamily');
+    apps = registerOutput<List<String>>('apps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    attributes = registerOutput<List<GoogleCloudApigeeV1AttributeResponse>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(guardedValue, (value) => GoogleCloudApigeeV1AttributeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    companies = registerOutput<List<String>>('companies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createdAt = registerOutput<String>('createdAt');
     developerId = registerOutput<String>('developerId');
     email = registerOutput<String>('email');

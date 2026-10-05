@@ -41,10 +41,10 @@ class RecipeResponseContaineranalysisV1alpha1 {
 
   factory RecipeResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return RecipeResponseContaineranalysisV1alpha1(
-      arguments: pulumi.Input.fromValue((map['arguments'] as List).cast<Map<String, String>>()),
+      arguments: pulumi.Input.fromValue(pulumi.Input.decodeList<Map<String, String>>(map['arguments']!, (value) => (value as Map).cast<String, String>())),
       definedInMaterial: pulumi.Input.fromValue(map['definedInMaterial'] as String),
       entryPoint: pulumi.Input.fromValue(map['entryPoint'] as String),
-      environment: pulumi.Input.fromValue((map['environment'] as List).cast<Map<String, String>>()),
+      environment: pulumi.Input.fromValue(pulumi.Input.decodeList<Map<String, String>>(map['environment']!, (value) => (value as Map).cast<String, String>())),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

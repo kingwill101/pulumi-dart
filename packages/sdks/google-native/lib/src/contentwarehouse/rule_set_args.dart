@@ -9,15 +9,15 @@ import 'google_cloud_contentwarehouse_v1_rule.dart';
 /// {@macro pulumi_contentwarehouse_v1_rule_set_args_doc}
 class RuleSetArgs {
   /// Short description of the rule-set.
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? location;
   /// The resource name of the rule set. Managed internally. Format: projects/{project_number}/locations/{location}/ruleSet/{rule_set_id}. The name is ignored when creating a rule set.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// List of rules given by the customer.
-  final pulumi.Input<List<GoogleCloudContentwarehouseV1Rule>>? rules;
+  final pulumi.Input<List<GoogleCloudContentwarehouseV1Rule>?>? rules;
   /// Source of the rules i.e., customer name.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [RuleSetArgs].
   /// [description] Short description of the rule-set.

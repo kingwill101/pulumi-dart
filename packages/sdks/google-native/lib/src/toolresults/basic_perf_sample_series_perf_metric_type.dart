@@ -1,4 +1,6 @@
-enum BasicPerfSampleSeriesPerfMetricType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum BasicPerfSampleSeriesPerfMetricType implements pulumi.PulumiEnum<String> {
   perfMetricTypeUnspecified("perfMetricTypeUnspecified"),
   memory("memory"),
   cpu("cpu"),
@@ -6,6 +8,7 @@ enum BasicPerfSampleSeriesPerfMetricType {
   graphics("graphics");
 
   const BasicPerfSampleSeriesPerfMetricType(this.wireValue);
+  @override
   final String wireValue;
 
   static BasicPerfSampleSeriesPerfMetricType fromValue(String value) {

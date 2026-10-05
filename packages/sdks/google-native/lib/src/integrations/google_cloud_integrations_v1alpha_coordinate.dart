@@ -26,8 +26,8 @@ class GoogleCloudIntegrationsV1alphaCoordinate {
 
   factory GoogleCloudIntegrationsV1alphaCoordinate.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaCoordinate(
-      x: pulumi.Input.fromValue(map['x'] as int),
-      y: pulumi.Input.fromValue(map['y'] as int),
+      x: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['x'])),
+      y: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['y'])),
     );
   }
 }

@@ -7,9 +7,9 @@ import 'google_privacy_dlp_v2_inspection_rule.dart';
 /// Rule set for modifying a set of infoTypes to alter behavior under certain circumstances, depending on the specific details of the rules within the set.
 class GooglePrivacyDlpV2InspectionRuleSet {
   /// List of infoTypes this rule set is applied to.
-  final pulumi.Input<List<GooglePrivacyDlpV2InfoType>>? infoTypes;
+  final pulumi.Input<List<GooglePrivacyDlpV2InfoType>?>? infoTypes;
   /// Set of rules to be applied to infoTypes. The rules are applied in order.
-  final pulumi.Input<List<GooglePrivacyDlpV2InspectionRule>>? rules;
+  final pulumi.Input<List<GooglePrivacyDlpV2InspectionRule>?>? rules;
 
   /// Creates a new [GooglePrivacyDlpV2InspectionRuleSet].
   /// [infoTypes] List of infoTypes this rule set is applied to.

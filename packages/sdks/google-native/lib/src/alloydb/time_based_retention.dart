@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A time based retention policy specifies that all backups within a certain time period should be retained.
 class TimeBasedRetention {
   /// The retention period.
-  final pulumi.Input<String>? retentionPeriod;
+  final pulumi.Input<String?>? retentionPeriod;
 
   /// Creates a new [TimeBasedRetention].
   /// [retentionPeriod] The retention period.

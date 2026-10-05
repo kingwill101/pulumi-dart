@@ -1,9 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'backend_response_compute_beta.dart';
 import 'backend_service_cdn_policy_response_compute_beta.dart';
 import 'backend_service_connection_tracking_policy_response_compute_beta.dart';
 import 'backend_service_failover_policy_response_compute_beta.dart';
 import 'backend_service_iapresponse_compute_beta.dart';
+import 'backend_service_locality_load_balancing_policy_config_response_compute_beta.dart';
 import 'backend_service_log_config_response_compute_beta.dart';
+import 'backend_service_used_by_response_compute_beta.dart';
 import 'circuit_breakers_response_compute_beta.dart';
 import 'connection_draining_response_compute_beta.dart';
 import 'consistent_hash_load_balancer_settings_response_compute_beta.dart';
@@ -18,7 +21,7 @@ class RegionBackendServiceComputeBeta extends pulumi.CustomResource {
   /// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   late final pulumi.Output<int> affinityCookieTtlSec;
   /// The list of backends that serve this BackendService.
-  late final pulumi.Output<List<Map<String, dynamic>>> backends;
+  late final pulumi.Output<List<BackendResponseComputeBeta>> backends;
   /// Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
   late final pulumi.Output<BackendServiceCdnPolicyResponseComputeBeta> cdnPolicy;
   late final pulumi.Output<CircuitBreakersResponseComputeBeta> circuitBreakers;
@@ -56,7 +59,7 @@ class RegionBackendServiceComputeBeta extends pulumi.CustomResource {
   /// Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
   late final pulumi.Output<String> loadBalancingScheme;
   /// A list of locality load-balancing policies to be used in order of preference. When you use localityLbPolicies, you must set at least one value for either the localityLbPolicies[].policy or the localityLbPolicies[].customPolicy field. localityLbPolicies overrides any value set in the localityLbPolicy field. For an example of how to use this field, see Define a list of preferred policies. Caution: This field and its children are intended for use in a service mesh that includes gRPC clients only. Envoy proxies can't use backend services that have this configuration.
-  late final pulumi.Output<List<Map<String, dynamic>>> localityLbPolicies;
+  late final pulumi.Output<List<BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta>> localityLbPolicies;
   /// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   late final pulumi.Output<String> localityLbPolicy;
   /// This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
@@ -96,7 +99,7 @@ class RegionBackendServiceComputeBeta extends pulumi.CustomResource {
   late final pulumi.Output<SubsettingResponseComputeBeta> subsetting;
   /// The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings. The default is 30 seconds. The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
   late final pulumi.Output<int> timeoutSec;
-  late final pulumi.Output<List<Map<String, dynamic>>> usedBy;
+  late final pulumi.Output<List<BackendServiceUsedByResponseComputeBeta>> usedBy;
 
   /// Creates a new [RegionBackendServiceComputeBeta].
   /// [name] The Pulumi resource name.
@@ -110,10 +113,10 @@ class RegionBackendServiceComputeBeta extends pulumi.CustomResource {
           'google-native:compute/beta:RegionBackendService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     affinityCookieTtlSec = registerOutput<int>('affinityCookieTtlSec');
-    backends = registerOutput<List<Map<String, dynamic>>>('backends');
+    backends = registerOutput<List<BackendResponseComputeBeta>>('backends', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendResponseComputeBeta>(guardedValue, (value) => BackendResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
     cdnPolicy = registerOutput<BackendServiceCdnPolicyResponseComputeBeta>('cdnPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceCdnPolicyResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     circuitBreakers = registerOutput<CircuitBreakersResponseComputeBeta>('circuitBreakers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CircuitBreakersResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compressionMode = registerOutput<String>('compressionMode');
@@ -121,23 +124,23 @@ class RegionBackendServiceComputeBeta extends pulumi.CustomResource {
     connectionTrackingPolicy = registerOutput<BackendServiceConnectionTrackingPolicyResponseComputeBeta>('connectionTrackingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceConnectionTrackingPolicyResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consistentHash = registerOutput<ConsistentHashLoadBalancerSettingsResponseComputeBeta>('consistentHash', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsistentHashLoadBalancerSettingsResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
-    customRequestHeaders = registerOutput<List<String>>('customRequestHeaders');
-    customResponseHeaders = registerOutput<List<String>>('customResponseHeaders');
+    customRequestHeaders = registerOutput<List<String>>('customRequestHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    customResponseHeaders = registerOutput<List<String>>('customResponseHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String>('description');
     edgeSecurityPolicy = registerOutput<String>('edgeSecurityPolicy');
     enableCDN = registerOutput<bool>('enableCDN');
     failoverPolicy = registerOutput<BackendServiceFailoverPolicyResponseComputeBeta>('failoverPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceFailoverPolicyResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fingerprint = registerOutput<String>('fingerprint');
-    healthChecks = registerOutput<List<String>>('healthChecks');
+    healthChecks = registerOutput<List<String>>('healthChecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     iap = registerOutput<BackendServiceIAPResponseComputeBeta>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceIAPResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipAddressSelectionPolicy = registerOutput<String>('ipAddressSelectionPolicy');
     kind = registerOutput<String>('kind');
     loadBalancingScheme = registerOutput<String>('loadBalancingScheme');
-    localityLbPolicies = registerOutput<List<Map<String, dynamic>>>('localityLbPolicies');
+    localityLbPolicies = registerOutput<List<BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta>>('localityLbPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta>(guardedValue, (value) => BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
     localityLbPolicy = registerOutput<String>('localityLbPolicy');
     logConfig = registerOutput<BackendServiceLogConfigResponseComputeBeta>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceLogConfigResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxStreamDuration = registerOutput<DurationResponseComputeBeta>('maxStreamDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DurationResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    metadatas = registerOutput<Map<String, String>>('metadatas');
+    metadatas = registerOutput<Map<String, String>>('metadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     outlierDetection = registerOutput<OutlierDetectionResponseComputeBeta>('outlierDetection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutlierDetectionResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -150,11 +153,66 @@ class RegionBackendServiceComputeBeta extends pulumi.CustomResource {
     securityPolicy = registerOutput<String>('securityPolicy');
     securitySettings = registerOutput<SecuritySettingsResponseComputeBeta>('securitySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecuritySettingsResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     selfLink = registerOutput<String>('selfLink');
-    serviceBindings = registerOutput<List<String>>('serviceBindings');
+    serviceBindings = registerOutput<List<String>>('serviceBindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     serviceLbPolicy = registerOutput<String>('serviceLbPolicy');
     sessionAffinity = registerOutput<String>('sessionAffinity');
     subsetting = registerOutput<SubsettingResponseComputeBeta>('subsetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubsettingResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeoutSec = registerOutput<int>('timeoutSec');
-    usedBy = registerOutput<List<Map<String, dynamic>>>('usedBy');
+    usedBy = registerOutput<List<BackendServiceUsedByResponseComputeBeta>>('usedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendServiceUsedByResponseComputeBeta>(guardedValue, (value) => BackendServiceUsedByResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [RegionBackendServiceComputeBeta] resource.
+  RegionBackendServiceComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:RegionBackendService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    affinityCookieTtlSec = registerOutput<int>('affinityCookieTtlSec');
+    backends = registerOutput<List<BackendResponseComputeBeta>>('backends', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendResponseComputeBeta>(guardedValue, (value) => BackendResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
+    cdnPolicy = registerOutput<BackendServiceCdnPolicyResponseComputeBeta>('cdnPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceCdnPolicyResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    circuitBreakers = registerOutput<CircuitBreakersResponseComputeBeta>('circuitBreakers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CircuitBreakersResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    compressionMode = registerOutput<String>('compressionMode');
+    connectionDraining = registerOutput<ConnectionDrainingResponseComputeBeta>('connectionDraining', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionDrainingResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionTrackingPolicy = registerOutput<BackendServiceConnectionTrackingPolicyResponseComputeBeta>('connectionTrackingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceConnectionTrackingPolicyResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    consistentHash = registerOutput<ConsistentHashLoadBalancerSettingsResponseComputeBeta>('consistentHash', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsistentHashLoadBalancerSettingsResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customRequestHeaders = registerOutput<List<String>>('customRequestHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    customResponseHeaders = registerOutput<List<String>>('customResponseHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String>('description');
+    edgeSecurityPolicy = registerOutput<String>('edgeSecurityPolicy');
+    enableCDN = registerOutput<bool>('enableCDN');
+    failoverPolicy = registerOutput<BackendServiceFailoverPolicyResponseComputeBeta>('failoverPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceFailoverPolicyResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fingerprint = registerOutput<String>('fingerprint');
+    healthChecks = registerOutput<List<String>>('healthChecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    iap = registerOutput<BackendServiceIAPResponseComputeBeta>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceIAPResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipAddressSelectionPolicy = registerOutput<String>('ipAddressSelectionPolicy');
+    kind = registerOutput<String>('kind');
+    loadBalancingScheme = registerOutput<String>('loadBalancingScheme');
+    localityLbPolicies = registerOutput<List<BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta>>('localityLbPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta>(guardedValue, (value) => BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
+    localityLbPolicy = registerOutput<String>('localityLbPolicy');
+    logConfig = registerOutput<BackendServiceLogConfigResponseComputeBeta>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendServiceLogConfigResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxStreamDuration = registerOutput<DurationResponseComputeBeta>('maxStreamDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DurationResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadatas = registerOutput<Map<String, String>>('metadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    outlierDetection = registerOutput<OutlierDetectionResponseComputeBeta>('outlierDetection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutlierDetectionResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    port = registerOutput<int>('port');
+    portName = registerOutput<String>('portName');
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String>('protocol');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    securityPolicy = registerOutput<String>('securityPolicy');
+    securitySettings = registerOutput<SecuritySettingsResponseComputeBeta>('securitySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecuritySettingsResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selfLink = registerOutput<String>('selfLink');
+    serviceBindings = registerOutput<List<String>>('serviceBindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    serviceLbPolicy = registerOutput<String>('serviceLbPolicy');
+    sessionAffinity = registerOutput<String>('sessionAffinity');
+    subsetting = registerOutput<SubsettingResponseComputeBeta>('subsetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubsettingResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeoutSec = registerOutput<int>('timeoutSec');
+    usedBy = registerOutput<List<BackendServiceUsedByResponseComputeBeta>>('usedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendServiceUsedByResponseComputeBeta>(guardedValue, (value) => BackendServiceUsedByResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -7,17 +7,17 @@ import 'google_cloud_dialogflow_cx_v3beta1_webhook_service_directory_config.dart
 /// Webhooks host the developer's business logic. During a session, webhooks allow the developer to use the data extracted by Dialogflow's natural language processing to generate dynamic responses, validate collected data, or trigger actions on the backend.
 class GoogleCloudDialogflowCxV3beta1Webhook {
   /// Indicates whether the webhook is disabled.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The human-readable name of the webhook, unique within the agent.
   final pulumi.Input<String> displayName;
   /// Configuration for a generic web service.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1WebhookGenericWebService>? genericWebService;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1WebhookGenericWebService?>? genericWebService;
   /// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig>? serviceDirectory;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig?>? serviceDirectory;
   /// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1Webhook].
   /// [disabled] Indicates whether the webhook is disabled.

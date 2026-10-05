@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The database provider.
-enum ConnectionProfileProvider {
+enum ConnectionProfileProvider implements pulumi.PulumiEnum<String> {
   databaseProviderUnspecified("DATABASE_PROVIDER_UNSPECIFIED"),
   cloudsql("CLOUDSQL"),
   rds("RDS"),
@@ -7,6 +9,7 @@ enum ConnectionProfileProvider {
   alloydb("ALLOYDB");
 
   const ConnectionProfileProvider(this.wireValue);
+  @override
   final String wireValue;
 
   static ConnectionProfileProvider fromValue(String value) {

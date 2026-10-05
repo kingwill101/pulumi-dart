@@ -36,12 +36,33 @@ class Notification extends pulumi.CustomResource {
           'google-native:storage/v1:Notification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['bucket']).merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
-    customAttributes = registerOutput<Map<String, String>>('customAttributes');
+    customAttributes = registerOutput<Map<String, String>>('customAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     etag = registerOutput<String>('etag');
-    eventTypes = registerOutput<List<String>>('eventTypes');
+    eventTypes = registerOutput<List<String>>('eventTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kind = registerOutput<String>('kind');
+    objectNamePrefix = registerOutput<String>('objectNamePrefix');
+    payloadFormat = registerOutput<String>('payloadFormat');
+    selfLink = registerOutput<String>('selfLink');
+    topic = registerOutput<String>('topic');
+    userProject = registerOutput<String?>('userProject');
+  }
+
+  /// Creates a typed reference to an existing [Notification] resource.
+  Notification.reference(String urn)
+    : super(
+        'google-native:storage/v1:Notification',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    customAttributes = registerOutput<Map<String, String>>('customAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    etag = registerOutput<String>('etag');
+    eventTypes = registerOutput<List<String>>('eventTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kind = registerOutput<String>('kind');
     objectNamePrefix = registerOutput<String>('objectNamePrefix');
     payloadFormat = registerOutput<String>('payloadFormat');

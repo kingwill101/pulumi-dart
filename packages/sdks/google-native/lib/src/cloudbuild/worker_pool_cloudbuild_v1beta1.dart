@@ -45,9 +45,34 @@ class WorkerPoolCloudbuildV1beta1 extends pulumi.CustomResource {
           'google-native:cloudbuild/v1beta1:WorkerPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'workerPoolId']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkConfig = registerOutput<NetworkConfigResponseCloudbuildV1beta1>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkConfigResponseCloudbuildV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    workerConfig = registerOutput<WorkerConfigResponseCloudbuildV1beta1>('workerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerConfigResponseCloudbuildV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workerPoolId = registerOutput<String>('workerPoolId');
+  }
+
+  /// Creates a typed reference to an existing [WorkerPoolCloudbuildV1beta1] resource.
+  WorkerPoolCloudbuildV1beta1.reference(String urn)
+    : super(
+        'google-native:cloudbuild/v1beta1:WorkerPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String>('displayName');

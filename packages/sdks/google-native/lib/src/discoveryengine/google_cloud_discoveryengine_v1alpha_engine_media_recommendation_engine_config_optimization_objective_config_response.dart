@@ -27,7 +27,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOpti
   factory GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigResponse(
       targetField: pulumi.Input.fromValue(map['targetField'] as String),
-      targetFieldValueFloat: pulumi.Input.fromValue(map['targetFieldValueFloat'] as double),
+      targetFieldValueFloat: pulumi.Input.fromValue((map['targetFieldValueFloat'] as num).toDouble()),
     );
   }
 }

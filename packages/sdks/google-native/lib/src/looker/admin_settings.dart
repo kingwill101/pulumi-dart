@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Looker instance Admin settings fields.
 class AdminSettings {
   /// Email domain allowlist for the instance.
-  final pulumi.Input<List<String>>? allowedEmailDomains;
+  final pulumi.Input<List<String>?>? allowedEmailDomains;
 
   /// Creates a new [AdminSettings].
   /// [allowedEmailDomains] Email domain allowlist for the instance.

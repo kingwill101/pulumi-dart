@@ -32,8 +32,8 @@ class ExecutionSpecResponse {
 
   factory ExecutionSpecResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionSpecResponse(
-      parallelism: pulumi.Input.fromValue(map['parallelism'] as int),
-      taskCount: pulumi.Input.fromValue(map['taskCount'] as int),
+      parallelism: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['parallelism'])),
+      taskCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['taskCount'])),
       template: pulumi.Input.fromValue(TaskTemplateSpecResponse.fromMap((map['template']! as Map).cast<String, dynamic>())),
     );
   }

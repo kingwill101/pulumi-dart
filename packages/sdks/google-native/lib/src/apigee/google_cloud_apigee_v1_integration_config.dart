@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for the Integration add-on.
 class GoogleCloudApigeeV1IntegrationConfig {
   /// Flag that specifies whether the Integration add-on is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [GoogleCloudApigeeV1IntegrationConfig].
   /// [enabled] Flag that specifies whether the Integration add-on is enabled.

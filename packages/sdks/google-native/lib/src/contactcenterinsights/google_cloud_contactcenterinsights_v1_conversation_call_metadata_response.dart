@@ -26,8 +26,8 @@ class GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse {
 
   factory GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse(
-      agentChannel: pulumi.Input.fromValue(map['agentChannel'] as int),
-      customerChannel: pulumi.Input.fromValue(map['customerChannel'] as int),
+      agentChannel: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['agentChannel'])),
+      customerChannel: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['customerChannel'])),
     );
   }
 }

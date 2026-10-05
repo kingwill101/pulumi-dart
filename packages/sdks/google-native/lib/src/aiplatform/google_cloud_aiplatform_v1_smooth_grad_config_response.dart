@@ -33,8 +33,8 @@ class GoogleCloudAiplatformV1SmoothGradConfigResponse {
   factory GoogleCloudAiplatformV1SmoothGradConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1SmoothGradConfigResponse(
       featureNoiseSigma: pulumi.Input.fromValue(GoogleCloudAiplatformV1FeatureNoiseSigmaResponse.fromMap((map['featureNoiseSigma']! as Map).cast<String, dynamic>())),
-      noiseSigma: pulumi.Input.fromValue(map['noiseSigma'] as double),
-      noisySampleCount: pulumi.Input.fromValue(map['noisySampleCount'] as int),
+      noiseSigma: pulumi.Input.fromValue((map['noiseSigma'] as num).toDouble()),
+      noisySampleCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['noisySampleCount'])),
     );
   }
 }

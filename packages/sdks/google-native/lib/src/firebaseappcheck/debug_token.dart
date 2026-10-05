@@ -24,8 +24,24 @@ class DebugToken extends pulumi.CustomResource {
           'google-native:firebaseappcheck/v1:DebugToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['appId', 'project']).merge(options),
         ) {
+    appId = registerOutput<String>('appId');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    token = registerOutput<String>('token');
+  }
+
+  /// Creates a typed reference to an existing [DebugToken] resource.
+  DebugToken.reference(String urn)
+    : super(
+        'google-native:firebaseappcheck/v1:DebugToken',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appId = registerOutput<String>('appId');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');

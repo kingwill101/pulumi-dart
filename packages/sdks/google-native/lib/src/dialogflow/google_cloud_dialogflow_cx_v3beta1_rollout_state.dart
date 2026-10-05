@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// State of the auto-rollout process.
 class GoogleCloudDialogflowCxV3beta1RolloutState {
   /// Start time of the current step.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Display name of the current auto rollout step.
-  final pulumi.Input<String>? step;
+  final pulumi.Input<String?>? step;
   /// Index of the current step in the auto rollout steps list.
-  final pulumi.Input<int>? stepIndex;
+  final pulumi.Input<int?>? stepIndex;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1RolloutState].
   /// [startTime] Start time of the current step.
@@ -33,7 +33,7 @@ class GoogleCloudDialogflowCxV3beta1RolloutState {
     return GoogleCloudDialogflowCxV3beta1RolloutState(
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       step: (() { final guardedValue = map['step']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      stepIndex: (() { final guardedValue = map['stepIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      stepIndex: (() { final guardedValue = map['stepIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

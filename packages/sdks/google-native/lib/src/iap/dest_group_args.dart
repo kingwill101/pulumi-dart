@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iap_v1_dest_group_args_doc}
 class DestGroupArgs {
   /// Unordered list. List of CIDRs that this group applies to.
-  final pulumi.Input<List<String>>? cidrs;
+  final pulumi.Input<List<String>?>? cidrs;
   /// Unordered list. List of FQDNs that this group applies to.
-  final pulumi.Input<List<String>>? fqdns;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<List<String>?>? fqdns;
+  final pulumi.Input<String?>? location;
   /// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `[a-z]-`.
   final pulumi.Input<String> tunnelDestGroupId;
 

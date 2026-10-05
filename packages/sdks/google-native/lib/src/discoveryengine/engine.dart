@@ -55,14 +55,43 @@ class Engine extends pulumi.CustomResource {
           'google-native:discoveryengine/v1alpha:Engine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['collectionId', 'engineId', 'location', 'project']).merge(options),
         ) {
     chatEngineConfig = registerOutput<GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse>('chatEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     chatEngineMetadata = registerOutput<GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse>('chatEngineMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     collectionId = registerOutput<String>('collectionId');
     commonConfig = registerOutput<GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
-    dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    dataStoreIds = registerOutput<List<String>>('dataStoreIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String>('displayName');
+    engineId = registerOutput<String>('engineId');
+    industryVertical = registerOutput<String>('industryVertical');
+    location = registerOutput<String>('location');
+    mediaRecommendationEngineConfig = registerOutput<GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResponse>('mediaRecommendationEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    recommendationMetadata = registerOutput<GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse>('recommendationMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDiscoveryengineV1alphaEngineRecommendationMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    searchEngineConfig = registerOutput<GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse>('searchEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    similarDocumentsConfig = registerOutput<Map<String, dynamic>>('similarDocumentsConfig');
+    solutionType = registerOutput<String>('solutionType');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Engine] resource.
+  Engine.reference(String urn)
+    : super(
+        'google-native:discoveryengine/v1alpha:Engine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    chatEngineConfig = registerOutput<GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse>('chatEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    chatEngineMetadata = registerOutput<GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse>('chatEngineMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    collectionId = registerOutput<String>('collectionId');
+    commonConfig = registerOutput<GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDiscoveryengineV1alphaEngineCommonConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    dataStoreIds = registerOutput<List<String>>('dataStoreIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
     industryVertical = registerOutput<String>('industryVertical');

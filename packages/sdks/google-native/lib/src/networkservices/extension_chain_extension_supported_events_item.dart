@@ -1,4 +1,6 @@
-enum ExtensionChainExtensionSupportedEventsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ExtensionChainExtensionSupportedEventsItem implements pulumi.PulumiEnum<String> {
   eventTypeUnspecified("EVENT_TYPE_UNSPECIFIED"),
   requestHeaders("REQUEST_HEADERS"),
   requestBody("REQUEST_BODY"),
@@ -6,6 +8,7 @@ enum ExtensionChainExtensionSupportedEventsItem {
   responseBody("RESPONSE_BODY");
 
   const ExtensionChainExtensionSupportedEventsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static ExtensionChainExtensionSupportedEventsItem fromValue(String value) {

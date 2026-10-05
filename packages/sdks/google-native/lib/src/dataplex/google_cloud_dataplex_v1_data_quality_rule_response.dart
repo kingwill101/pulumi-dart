@@ -104,7 +104,7 @@ class GoogleCloudDataplexV1DataQualityRuleResponse {
       setExpectation: pulumi.Input.fromValue(GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse.fromMap((map['setExpectation']! as Map).cast<String, dynamic>())),
       statisticRangeExpectation: pulumi.Input.fromValue(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse.fromMap((map['statisticRangeExpectation']! as Map).cast<String, dynamic>())),
       tableConditionExpectation: pulumi.Input.fromValue(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse.fromMap((map['tableConditionExpectation']! as Map).cast<String, dynamic>())),
-      threshold: pulumi.Input.fromValue(map['threshold'] as double),
+      threshold: pulumi.Input.fromValue((map['threshold'] as num).toDouble()),
       uniquenessExpectation: pulumi.Input.fromValue((map['uniquenessExpectation']! as Map).cast<String, dynamic>()),
     );
   }

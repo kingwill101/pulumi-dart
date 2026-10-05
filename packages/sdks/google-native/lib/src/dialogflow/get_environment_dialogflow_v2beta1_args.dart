@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEnvironmentDialogflowV2beta1Args {
   final pulumi.Input<String> environmentId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetEnvironmentDialogflowV2beta1Args].
   /// [environmentId] Required.

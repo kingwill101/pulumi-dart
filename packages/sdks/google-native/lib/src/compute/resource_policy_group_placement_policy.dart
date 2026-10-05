@@ -9,23 +9,23 @@ import 'resource_policy_group_placement_policy_style.dart';
 /// A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
 class ResourcePolicyGroupPlacementPolicy {
   /// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
-  final pulumi.Input<int>? availabilityDomainCount;
+  final pulumi.Input<int?>? availabilityDomainCount;
   /// Specifies network collocation
-  final pulumi.Input<ResourcePolicyGroupPlacementPolicyCollocation>? collocation;
+  final pulumi.Input<ResourcePolicyGroupPlacementPolicyCollocation?>? collocation;
   /// Specifies network locality
-  final pulumi.Input<ResourcePolicyGroupPlacementPolicyLocality>? locality;
+  final pulumi.Input<ResourcePolicyGroupPlacementPolicyLocality?>? locality;
   /// Specifies the number of max logical switches.
-  final pulumi.Input<int>? maxDistance;
+  final pulumi.Input<int?>? maxDistance;
   /// Scope specifies the availability domain to which the VMs should be spread.
-  final pulumi.Input<ResourcePolicyGroupPlacementPolicyScope>? scope;
+  final pulumi.Input<ResourcePolicyGroupPlacementPolicyScope?>? scope;
   /// Specifies the number of slices in a multislice workload.
-  final pulumi.Input<int>? sliceCount;
+  final pulumi.Input<int?>? sliceCount;
   /// Specifies instances to hosts placement relationship
-  final pulumi.Input<ResourcePolicyGroupPlacementPolicyStyle>? style;
+  final pulumi.Input<ResourcePolicyGroupPlacementPolicyStyle?>? style;
   /// Specifies the shape of the TPU slice
-  final pulumi.Input<String>? tpuTopology;
+  final pulumi.Input<String?>? tpuTopology;
   /// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
-  final pulumi.Input<int>? vmCount;
+  final pulumi.Input<int?>? vmCount;
 
   /// Creates a new [ResourcePolicyGroupPlacementPolicy].
   /// [availabilityDomainCount] The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
@@ -65,15 +65,15 @@ class ResourcePolicyGroupPlacementPolicy {
 
   factory ResourcePolicyGroupPlacementPolicy.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyGroupPlacementPolicy(
-      availabilityDomainCount: (() { final guardedValue = map['availabilityDomainCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      availabilityDomainCount: (() { final guardedValue = map['availabilityDomainCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       collocation: (() { final guardedValue = map['collocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourcePolicyGroupPlacementPolicyCollocation.fromValue(guardedValue as String)); })(),
       locality: (() { final guardedValue = map['locality']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourcePolicyGroupPlacementPolicyLocality.fromValue(guardedValue as String)); })(),
-      maxDistance: (() { final guardedValue = map['maxDistance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxDistance: (() { final guardedValue = map['maxDistance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourcePolicyGroupPlacementPolicyScope.fromValue(guardedValue as String)); })(),
-      sliceCount: (() { final guardedValue = map['sliceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sliceCount: (() { final guardedValue = map['sliceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       style: (() { final guardedValue = map['style']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourcePolicyGroupPlacementPolicyStyle.fromValue(guardedValue as String)); })(),
       tpuTopology: (() { final guardedValue = map['tpuTopology']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vmCount: (() { final guardedValue = map['vmCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vmCount: (() { final guardedValue = map['vmCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

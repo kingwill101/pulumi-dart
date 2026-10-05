@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_beta_get_autoscaler_compute_beta_args_doc}
 class GetAutoscalerComputeBetaArgs {
   final pulumi.Input<String> autoscaler;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> zone;
 
   /// Creates a new [GetAutoscalerComputeBetaArgs].

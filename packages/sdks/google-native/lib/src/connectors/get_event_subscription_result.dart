@@ -7,23 +7,23 @@ import 'jmsresponse.dart';
 /// Result data returned by getEventSubscription.
 class GetEventSubscriptionResult {
   /// Created time.
-  final String createTime;
+  final String? createTime;
   /// Optional. The destination to hit when we receive an event
-  final EventSubscriptionDestinationResponse destinations;
+  final EventSubscriptionDestinationResponse? destinations;
   /// Optional. Event type id of the event of current EventSubscription.
-  final String eventTypeId;
+  final String? eventTypeId;
   /// Optional. JMS is the source for the event listener.
-  final JMSResponse jms;
+  final JMSResponse? jms;
   /// Resource name of the EventSubscription. Format: projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription}
-  final String name;
+  final String? name;
   /// Optional. Status indicates the status of the event subscription resource
-  final EventSubscriptionStatusResponse status;
+  final EventSubscriptionStatusResponse? status;
   /// Optional. name of the Subscriber for the current EventSubscription.
-  final String subscriber;
+  final String? subscriber;
   /// Optional. Link for Subscriber of the current EventSubscription.
-  final String subscriberLink;
+  final String? subscriberLink;
   /// Updated time.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetEventSubscriptionResult].
   /// [createTime] Created time.
@@ -36,42 +36,42 @@ class GetEventSubscriptionResult {
   /// [subscriberLink] Optional. Link for Subscriber of the current EventSubscription.
   /// [updateTime] Updated time.
   const GetEventSubscriptionResult({
-    required this.createTime,
-    required this.destinations,
-    required this.eventTypeId,
-    required this.jms,
-    required this.name,
-    required this.status,
-    required this.subscriber,
-    required this.subscriberLink,
-    required this.updateTime,
+    this.createTime,
+    this.destinations,
+    this.eventTypeId,
+    this.jms,
+    this.name,
+    this.status,
+    this.subscriber,
+    this.subscriberLink,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'destinations': destinations.toMap(),
-      'eventTypeId': eventTypeId,
-      'jms': jms.toMap(),
-      'name': name,
-      'status': status.toMap(),
-      'subscriber': subscriber,
-      'subscriberLink': subscriberLink,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'destinations': ?destinations?.toMap(),
+      'eventTypeId': ?eventTypeId,
+      'jms': ?jms?.toMap(),
+      'name': ?name,
+      'status': ?status?.toMap(),
+      'subscriber': ?subscriber,
+      'subscriberLink': ?subscriberLink,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetEventSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetEventSubscriptionResult(
-      createTime: map['createTime'] as String,
-      destinations: EventSubscriptionDestinationResponse.fromMap((map['destinations']! as Map).cast<String, dynamic>()),
-      eventTypeId: map['eventTypeId'] as String,
-      jms: JMSResponse.fromMap((map['jms']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      status: EventSubscriptionStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
-      subscriber: map['subscriber'] as String,
-      subscriberLink: map['subscriberLink'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      destinations: (() { final guardedValue = map['destinations']; if (guardedValue == null) return null; return EventSubscriptionDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      eventTypeId: (() { final guardedValue = map['eventTypeId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      jms: (() { final guardedValue = map['jms']; if (guardedValue == null) return null; return JMSResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return EventSubscriptionStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      subscriber: (() { final guardedValue = map['subscriber']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      subscriberLink: (() { final guardedValue = map['subscriberLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

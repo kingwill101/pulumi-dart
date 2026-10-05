@@ -10,13 +10,13 @@ class SharedflowArgs {
   /// Required. Must be set to either `import` or `validate`.
   final pulumi.Input<String> action;
   /// The HTTP Content-Type header value specifying the content type of the body.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// The HTTP request/response body as raw binary.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// Application specific response metadata. Must be set in the first response for streaming APIs.
-  final pulumi.Input<List<Map<String, String>>>? extensions;
+  final pulumi.Input<List<Map<String, String>>?>? extensions;
   /// Required. The name to give the shared flow
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
 
   /// Creates a new [SharedflowArgs].
@@ -51,7 +51,7 @@ class SharedflowArgs {
       action: pulumi.Input.fromValue(map['action'] as String),
       contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      extensions: (() { final guardedValue = map['extensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<Map<String, String>>()); })(),
+      extensions: (() { final guardedValue = map['extensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );

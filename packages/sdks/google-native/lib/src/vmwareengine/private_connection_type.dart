@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Private connection type.
-enum PrivateConnectionType {
+enum PrivateConnectionType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   privateServiceAccess("PRIVATE_SERVICE_ACCESS"),
   netappCloudVolumes("NETAPP_CLOUD_VOLUMES"),
@@ -7,6 +9,7 @@ enum PrivateConnectionType {
   thirdPartyService("THIRD_PARTY_SERVICE");
 
   const PrivateConnectionType(this.wireValue);
+  @override
   final String wireValue;
 
   static PrivateConnectionType fromValue(String value) {

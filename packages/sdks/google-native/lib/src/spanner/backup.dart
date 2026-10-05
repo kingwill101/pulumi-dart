@@ -49,7 +49,7 @@ class Backup extends pulumi.CustomResource {
           'google-native:spanner/v1:Backup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['backupId', 'encryptionConfigEncryptionType', 'instanceId', 'project']).merge(options),
         ) {
     backupId = registerOutput<String>('backupId');
     createTime = registerOutput<String>('createTime');
@@ -63,8 +63,36 @@ class Backup extends pulumi.CustomResource {
     maxExpireTime = registerOutput<String>('maxExpireTime');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    referencingBackups = registerOutput<List<String>>('referencingBackups');
-    referencingDatabases = registerOutput<List<String>>('referencingDatabases');
+    referencingBackups = registerOutput<List<String>>('referencingBackups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    referencingDatabases = registerOutput<List<String>>('referencingDatabases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sizeBytes = registerOutput<String>('sizeBytes');
+    state = registerOutput<String>('state');
+    versionTime = registerOutput<String>('versionTime');
+  }
+
+  /// Creates a typed reference to an existing [Backup] resource.
+  Backup.reference(String urn)
+    : super(
+        'google-native:spanner/v1:Backup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backupId = registerOutput<String>('backupId');
+    createTime = registerOutput<String>('createTime');
+    database = registerOutput<String>('database');
+    databaseDialect = registerOutput<String>('databaseDialect');
+    encryptionConfigEncryptionType = registerOutput<String>('encryptionConfigEncryptionType');
+    encryptionConfigKmsKeyName = registerOutput<String?>('encryptionConfigKmsKeyName');
+    encryptionInfo = registerOutput<EncryptionInfoResponse>('encryptionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    expireTime = registerOutput<String>('expireTime');
+    instanceId = registerOutput<String>('instanceId');
+    maxExpireTime = registerOutput<String>('maxExpireTime');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    referencingBackups = registerOutput<List<String>>('referencingBackups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    referencingDatabases = registerOutput<List<String>>('referencingDatabases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sizeBytes = registerOutput<String>('sizeBytes');
     state = registerOutput<String>('state');
     versionTime = registerOutput<String>('versionTime');

@@ -10,11 +10,11 @@ class GoogleCloudApigeeV1GraphQLOperationConfig {
   /// Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.
   final pulumi.Input<String> apiSource;
   /// Custom attributes associated with the operation.
-  final pulumi.Input<List<GoogleCloudApigeeV1Attribute>>? attributes;
+  final pulumi.Input<List<GoogleCloudApigeeV1Attribute>?>? attributes;
   /// List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name. **Note**: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
   final pulumi.Input<List<GoogleCloudApigeeV1GraphQLOperation>> operations;
   /// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
-  final pulumi.Input<GoogleCloudApigeeV1Quota>? quota;
+  final pulumi.Input<GoogleCloudApigeeV1Quota?>? quota;
 
   /// Creates a new [GoogleCloudApigeeV1GraphQLOperationConfig].
   /// [apiSource] Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.

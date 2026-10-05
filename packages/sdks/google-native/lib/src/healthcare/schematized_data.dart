@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The content of an HL7v2 message in a structured format as specified by a schema.
 class SchematizedData {
   /// JSON output of the parser.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// The error output of the parser.
-  final pulumi.Input<String>? error;
+  final pulumi.Input<String?>? error;
 
   /// Creates a new [SchematizedData].
   /// [data] JSON output of the parser.

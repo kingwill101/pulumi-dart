@@ -6,7 +6,7 @@ import 'google_privacy_dlp_v2_big_query_regexes.dart';
 /// Specifies a collection of BigQuery tables. Used for Discovery.
 class GooglePrivacyDlpV2BigQueryTableCollection {
   /// A collection of regular expressions to match a BigQuery table against.
-  final pulumi.Input<GooglePrivacyDlpV2BigQueryRegexes>? includeRegexes;
+  final pulumi.Input<GooglePrivacyDlpV2BigQueryRegexes?>? includeRegexes;
 
   /// Creates a new [GooglePrivacyDlpV2BigQueryTableCollection].
   /// [includeRegexes] A collection of regular expressions to match a BigQuery table against.

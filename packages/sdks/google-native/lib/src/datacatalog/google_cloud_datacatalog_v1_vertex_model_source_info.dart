@@ -6,9 +6,9 @@ import 'google_cloud_datacatalog_v1_vertex_model_source_info_source_type.dart';
 /// Detail description of the source information of a Vertex model.
 class GoogleCloudDatacatalogV1VertexModelSourceInfo {
   /// If this Model is copy of another Model. If true then source_type pertains to the original.
-  final pulumi.Input<bool>? copy;
+  final pulumi.Input<bool?>? copy;
   /// Type of the model source.
-  final pulumi.Input<GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType>? sourceType;
+  final pulumi.Input<GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType?>? sourceType;
 
   /// Creates a new [GoogleCloudDatacatalogV1VertexModelSourceInfo].
   /// [copy] If this Model is copy of another Model. If true then source_type pertains to the original.

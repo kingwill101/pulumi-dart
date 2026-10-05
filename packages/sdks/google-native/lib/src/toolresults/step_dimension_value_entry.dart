@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StepDimensionValueEntry {
-  final pulumi.Input<String>? key;
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? key;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [StepDimensionValueEntry].
   /// [key] Optional.

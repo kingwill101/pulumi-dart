@@ -11,19 +11,19 @@ import 'private_cloud_type.dart';
 /// {@macro pulumi_vmwareengine_v1_private_cloud_args_doc}
 class PrivateCloudArgs {
   /// User-provided description for this private cloud.
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? location;
   /// Input only. The management cluster for this private cloud. This field is required during creation of the private cloud to provide details for the default cluster. The following fields can't be changed after private cloud creation: `ManagementCluster.clusterId`, `ManagementCluster.nodeTypeId`.
   final pulumi.Input<ManagementCluster> managementCluster;
   /// Network configuration of the private cloud.
   final pulumi.Input<NetworkConfig> networkConfig;
   /// Required. The user-provided identifier of the private cloud to be created. This identifier must be unique among each `PrivateCloud` within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
   final pulumi.Input<String> privateCloudId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Optional. Type of the private cloud. Defaults to STANDARD.
-  final pulumi.Input<PrivateCloudType>? type;
+  final pulumi.Input<PrivateCloudType?>? type;
 
   /// Creates a new [PrivateCloudArgs].
   /// [description] User-provided description for this private cloud.

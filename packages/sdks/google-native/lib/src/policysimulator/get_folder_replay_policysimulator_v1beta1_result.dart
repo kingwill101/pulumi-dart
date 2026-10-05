@@ -6,13 +6,13 @@ import 'google_cloud_policysimulator_v1beta1_replay_results_summary_response.dar
 /// Result data returned by getFolderReplay.
 class GetFolderReplayPolicysimulatorV1beta1Result {
   /// The configuration used for the `Replay`.
-  final GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse config;
+  final GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse? config;
   /// The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-  final String name;
+  final String? name;
   /// Summary statistics about the replayed log entries.
-  final GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse resultsSummary;
+  final GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse? resultsSummary;
   /// The current state of the `Replay`.
-  final String state;
+  final String? state;
 
   /// Creates a new [GetFolderReplayPolicysimulatorV1beta1Result].
   /// [config] The configuration used for the `Replay`.
@@ -20,27 +20,27 @@ class GetFolderReplayPolicysimulatorV1beta1Result {
   /// [resultsSummary] Summary statistics about the replayed log entries.
   /// [state] The current state of the `Replay`.
   const GetFolderReplayPolicysimulatorV1beta1Result({
-    required this.config,
-    required this.name,
-    required this.resultsSummary,
-    required this.state,
+    this.config,
+    this.name,
+    this.resultsSummary,
+    this.state,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'config': config.toMap(),
-      'name': name,
-      'resultsSummary': resultsSummary.toMap(),
-      'state': state,
+      'config': ?config?.toMap(),
+      'name': ?name,
+      'resultsSummary': ?resultsSummary?.toMap(),
+      'state': ?state,
     };
   }
 
   factory GetFolderReplayPolicysimulatorV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetFolderReplayPolicysimulatorV1beta1Result(
-      config: GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse.fromMap((map['config']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      resultsSummary: GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse.fromMap((map['resultsSummary']! as Map).cast<String, dynamic>()),
-      state: map['state'] as String,
+      config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resultsSummary: (() { final guardedValue = map['resultsSummary']; if (guardedValue == null) return null; return GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

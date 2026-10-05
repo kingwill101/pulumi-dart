@@ -9,13 +9,13 @@ import 'saml_idp_config_cloudidentity_v1beta1.dart';
 /// {@macro pulumi_cloudidentity_v1beta1_inbound_saml_sso_profile_cloudidentity_v1beta1_args_doc}
 class InboundSamlSsoProfileCloudidentityV1beta1Args {
   /// Immutable. The customer. For example: `customers/C0123abc`.
-  final pulumi.Input<String>? customer;
+  final pulumi.Input<String?>? customer;
   /// Human-readable name of the SAML SSO profile.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// SAML identity provider configuration.
-  final pulumi.Input<SamlIdpConfigCloudidentityV1beta1>? idpConfig;
+  final pulumi.Input<SamlIdpConfigCloudidentityV1beta1?>? idpConfig;
   /// SAML service provider configuration for this SAML SSO profile. These are the service provider details provided by Google that should be configured on the corresponding identity provider.
-  final pulumi.Input<Map<String, dynamic>>? spConfig;
+  final pulumi.Input<Map<String, dynamic>?>? spConfig;
 
   /// Creates a new [InboundSamlSsoProfileCloudidentityV1beta1Args].
   /// [customer] Immutable. The customer. For example: `customers/C0123abc`.

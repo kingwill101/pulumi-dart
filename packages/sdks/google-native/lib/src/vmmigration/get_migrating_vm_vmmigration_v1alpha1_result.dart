@@ -18,55 +18,55 @@ import 'vmware_source_vm_details_response_vmmigration_v1alpha1.dart';
 /// Result data returned by getMigratingVm.
 class GetMigratingVmVmmigrationV1alpha1Result {
   /// Details of the VM from an AWS source.
-  final AwsSourceVmDetailsResponseVmmigrationV1alpha1 awsSourceVmDetails;
+  final AwsSourceVmDetailsResponseVmmigrationV1alpha1? awsSourceVmDetails;
   /// Details of the VM from an Azure source.
-  final AzureSourceVmDetailsResponseVmmigrationV1alpha1 azureSourceVmDetails;
+  final AzureSourceVmDetailsResponseVmmigrationV1alpha1? azureSourceVmDetails;
   /// Details of the target Persistent Disks in Compute Engine.
-  final ComputeEngineDisksTargetDefaultsResponseVmmigrationV1alpha1 computeEngineDisksTargetDefaults;
+  final ComputeEngineDisksTargetDefaultsResponseVmmigrationV1alpha1? computeEngineDisksTargetDefaults;
   /// Details of the target VM in Compute Engine.
-  final ComputeEngineTargetDefaultsResponseVmmigrationV1alpha1 computeEngineTargetDefaults;
+  final ComputeEngineTargetDefaultsResponseVmmigrationV1alpha1? computeEngineTargetDefaults;
   /// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
-  final TargetVMDetailsResponse computeEngineVmDefaults;
+  final TargetVMDetailsResponse? computeEngineVmDefaults;
   /// The time the migrating VM was created (this refers to this resource and not to the time it was installed in the source).
-  final String createTime;
+  final String? createTime;
   /// Details of the current running replication cycle.
-  final ReplicationCycleResponseVmmigrationV1alpha1 currentSyncInfo;
+  final ReplicationCycleResponseVmmigrationV1alpha1? currentSyncInfo;
   /// Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable.
-  final CutoverForecastResponseVmmigrationV1alpha1 cutoverForecast;
+  final CutoverForecastResponseVmmigrationV1alpha1? cutoverForecast;
   /// The description attached to the migrating VM by the user.
-  final String description;
+  final String? description;
   /// The display name attached to the MigratingVm by the user.
-  final String displayName;
+  final String? displayName;
   /// Provides details on the state of the Migrating VM in case of an error in replication.
-  final StatusResponseVmmigrationV1alpha1 error;
+  final StatusResponseVmmigrationV1alpha1? error;
   /// The group this migrating vm is included in, if any. The group is represented by the full path of the appropriate Group resource.
-  final String group;
+  final String? group;
   /// The labels of the migrating VM.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Details of the last replication cycle. This will be updated whenever a replication cycle is finished and is not to be confused with last_sync which is only updated on successful replication cycles.
-  final ReplicationCycleResponseVmmigrationV1alpha1 lastReplicationCycle;
+  final ReplicationCycleResponseVmmigrationV1alpha1? lastReplicationCycle;
   /// The most updated snapshot created time in the source that finished replication.
-  final ReplicationSyncResponseVmmigrationV1alpha1 lastSync;
+  final ReplicationSyncResponseVmmigrationV1alpha1? lastSync;
   /// The identifier of the MigratingVm.
-  final String name;
+  final String? name;
   /// The replication schedule policy.
-  final SchedulePolicyResponseVmmigrationV1alpha1 policy;
+  final SchedulePolicyResponseVmmigrationV1alpha1? policy;
   /// The recent clone jobs performed on the migrating VM. This field holds the vm's last completed clone job and the vm's running clone job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request.
-  final List<CloneJobResponseVmmigrationV1alpha1> recentCloneJobs;
+  final List<CloneJobResponseVmmigrationV1alpha1>? recentCloneJobs;
   /// The recent cutover jobs performed on the migrating VM. This field holds the vm's last completed cutover job and the vm's running cutover job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request.
-  final List<CutoverJobResponseVmmigrationV1alpha1> recentCutoverJobs;
+  final List<CutoverJobResponseVmmigrationV1alpha1>? recentCutoverJobs;
   /// The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
-  final String sourceVmId;
+  final String? sourceVmId;
   /// State of the MigratingVm.
-  final String state;
+  final String? state;
   /// The last time the migrating VM state was updated.
-  final String stateTime;
+  final String? stateTime;
   /// The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
-  final TargetVMDetailsResponse targetDefaults;
+  final TargetVMDetailsResponse? targetDefaults;
   /// The last time the migrating VM resource was updated.
-  final String updateTime;
+  final String? updateTime;
   /// Details of the VM from a Vmware source.
-  final VmwareSourceVmDetailsResponseVmmigrationV1alpha1 vmwareSourceVmDetails;
+  final VmwareSourceVmDetailsResponseVmmigrationV1alpha1? vmwareSourceVmDetails;
 
   /// Creates a new [GetMigratingVmVmmigrationV1alpha1Result].
   /// [awsSourceVmDetails] Details of the VM from an AWS source.
@@ -95,90 +95,90 @@ class GetMigratingVmVmmigrationV1alpha1Result {
   /// [updateTime] The last time the migrating VM resource was updated.
   /// [vmwareSourceVmDetails] Details of the VM from a Vmware source.
   const GetMigratingVmVmmigrationV1alpha1Result({
-    required this.awsSourceVmDetails,
-    required this.azureSourceVmDetails,
-    required this.computeEngineDisksTargetDefaults,
-    required this.computeEngineTargetDefaults,
-    required this.computeEngineVmDefaults,
-    required this.createTime,
-    required this.currentSyncInfo,
-    required this.cutoverForecast,
-    required this.description,
-    required this.displayName,
-    required this.error,
-    required this.group,
-    required this.labels,
-    required this.lastReplicationCycle,
-    required this.lastSync,
-    required this.name,
-    required this.policy,
-    required this.recentCloneJobs,
-    required this.recentCutoverJobs,
-    required this.sourceVmId,
-    required this.state,
-    required this.stateTime,
-    required this.targetDefaults,
-    required this.updateTime,
-    required this.vmwareSourceVmDetails,
+    this.awsSourceVmDetails,
+    this.azureSourceVmDetails,
+    this.computeEngineDisksTargetDefaults,
+    this.computeEngineTargetDefaults,
+    this.computeEngineVmDefaults,
+    this.createTime,
+    this.currentSyncInfo,
+    this.cutoverForecast,
+    this.description,
+    this.displayName,
+    this.error,
+    this.group,
+    this.labels,
+    this.lastReplicationCycle,
+    this.lastSync,
+    this.name,
+    this.policy,
+    this.recentCloneJobs,
+    this.recentCutoverJobs,
+    this.sourceVmId,
+    this.state,
+    this.stateTime,
+    this.targetDefaults,
+    this.updateTime,
+    this.vmwareSourceVmDetails,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'awsSourceVmDetails': awsSourceVmDetails.toMap(),
-      'azureSourceVmDetails': azureSourceVmDetails.toMap(),
-      'computeEngineDisksTargetDefaults': computeEngineDisksTargetDefaults.toMap(),
-      'computeEngineTargetDefaults': computeEngineTargetDefaults.toMap(),
-      'computeEngineVmDefaults': computeEngineVmDefaults.toMap(),
-      'createTime': createTime,
-      'currentSyncInfo': currentSyncInfo.toMap(),
-      'cutoverForecast': cutoverForecast.toMap(),
-      'description': description,
-      'displayName': displayName,
-      'error': error.toMap(),
-      'group': group,
-      'labels': labels,
-      'lastReplicationCycle': lastReplicationCycle.toMap(),
-      'lastSync': lastSync.toMap(),
-      'name': name,
-      'policy': policy.toMap(),
-      'recentCloneJobs': pulumi.Input.encodeList<CloneJobResponseVmmigrationV1alpha1, Map<String, dynamic>>(recentCloneJobs, (value) => value.toMap()),
-      'recentCutoverJobs': pulumi.Input.encodeList<CutoverJobResponseVmmigrationV1alpha1, Map<String, dynamic>>(recentCutoverJobs, (value) => value.toMap()),
-      'sourceVmId': sourceVmId,
-      'state': state,
-      'stateTime': stateTime,
-      'targetDefaults': targetDefaults.toMap(),
-      'updateTime': updateTime,
-      'vmwareSourceVmDetails': vmwareSourceVmDetails.toMap(),
+      'awsSourceVmDetails': ?awsSourceVmDetails?.toMap(),
+      'azureSourceVmDetails': ?azureSourceVmDetails?.toMap(),
+      'computeEngineDisksTargetDefaults': ?computeEngineDisksTargetDefaults?.toMap(),
+      'computeEngineTargetDefaults': ?computeEngineTargetDefaults?.toMap(),
+      'computeEngineVmDefaults': ?computeEngineVmDefaults?.toMap(),
+      'createTime': ?createTime,
+      'currentSyncInfo': ?currentSyncInfo?.toMap(),
+      'cutoverForecast': ?cutoverForecast?.toMap(),
+      'description': ?description,
+      'displayName': ?displayName,
+      'error': ?error?.toMap(),
+      'group': ?group,
+      'labels': ?labels,
+      'lastReplicationCycle': ?lastReplicationCycle?.toMap(),
+      'lastSync': ?lastSync?.toMap(),
+      'name': ?name,
+      'policy': ?policy?.toMap(),
+      'recentCloneJobs': ?(() { final guardedValue = recentCloneJobs; if (guardedValue == null) return null; return pulumi.Input.encodeList<CloneJobResponseVmmigrationV1alpha1, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'recentCutoverJobs': ?(() { final guardedValue = recentCutoverJobs; if (guardedValue == null) return null; return pulumi.Input.encodeList<CutoverJobResponseVmmigrationV1alpha1, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'sourceVmId': ?sourceVmId,
+      'state': ?state,
+      'stateTime': ?stateTime,
+      'targetDefaults': ?targetDefaults?.toMap(),
+      'updateTime': ?updateTime,
+      'vmwareSourceVmDetails': ?vmwareSourceVmDetails?.toMap(),
     };
   }
 
   factory GetMigratingVmVmmigrationV1alpha1Result.fromMap(Map<String, dynamic> map) {
     return GetMigratingVmVmmigrationV1alpha1Result(
-      awsSourceVmDetails: AwsSourceVmDetailsResponseVmmigrationV1alpha1.fromMap((map['awsSourceVmDetails']! as Map).cast<String, dynamic>()),
-      azureSourceVmDetails: AzureSourceVmDetailsResponseVmmigrationV1alpha1.fromMap((map['azureSourceVmDetails']! as Map).cast<String, dynamic>()),
-      computeEngineDisksTargetDefaults: ComputeEngineDisksTargetDefaultsResponseVmmigrationV1alpha1.fromMap((map['computeEngineDisksTargetDefaults']! as Map).cast<String, dynamic>()),
-      computeEngineTargetDefaults: ComputeEngineTargetDefaultsResponseVmmigrationV1alpha1.fromMap((map['computeEngineTargetDefaults']! as Map).cast<String, dynamic>()),
-      computeEngineVmDefaults: TargetVMDetailsResponse.fromMap((map['computeEngineVmDefaults']! as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      currentSyncInfo: ReplicationCycleResponseVmmigrationV1alpha1.fromMap((map['currentSyncInfo']! as Map).cast<String, dynamic>()),
-      cutoverForecast: CutoverForecastResponseVmmigrationV1alpha1.fromMap((map['cutoverForecast']! as Map).cast<String, dynamic>()),
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      error: StatusResponseVmmigrationV1alpha1.fromMap((map['error']! as Map).cast<String, dynamic>()),
-      group: map['group'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      lastReplicationCycle: ReplicationCycleResponseVmmigrationV1alpha1.fromMap((map['lastReplicationCycle']! as Map).cast<String, dynamic>()),
-      lastSync: ReplicationSyncResponseVmmigrationV1alpha1.fromMap((map['lastSync']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      policy: SchedulePolicyResponseVmmigrationV1alpha1.fromMap((map['policy']! as Map).cast<String, dynamic>()),
-      recentCloneJobs: pulumi.Input.decodeList<CloneJobResponseVmmigrationV1alpha1>(map['recentCloneJobs']!, (value) => CloneJobResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
-      recentCutoverJobs: pulumi.Input.decodeList<CutoverJobResponseVmmigrationV1alpha1>(map['recentCutoverJobs']!, (value) => CutoverJobResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
-      sourceVmId: map['sourceVmId'] as String,
-      state: map['state'] as String,
-      stateTime: map['stateTime'] as String,
-      targetDefaults: TargetVMDetailsResponse.fromMap((map['targetDefaults']! as Map).cast<String, dynamic>()),
-      updateTime: map['updateTime'] as String,
-      vmwareSourceVmDetails: VmwareSourceVmDetailsResponseVmmigrationV1alpha1.fromMap((map['vmwareSourceVmDetails']! as Map).cast<String, dynamic>()),
+      awsSourceVmDetails: (() { final guardedValue = map['awsSourceVmDetails']; if (guardedValue == null) return null; return AwsSourceVmDetailsResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      azureSourceVmDetails: (() { final guardedValue = map['azureSourceVmDetails']; if (guardedValue == null) return null; return AzureSourceVmDetailsResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      computeEngineDisksTargetDefaults: (() { final guardedValue = map['computeEngineDisksTargetDefaults']; if (guardedValue == null) return null; return ComputeEngineDisksTargetDefaultsResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      computeEngineTargetDefaults: (() { final guardedValue = map['computeEngineTargetDefaults']; if (guardedValue == null) return null; return ComputeEngineTargetDefaultsResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      computeEngineVmDefaults: (() { final guardedValue = map['computeEngineVmDefaults']; if (guardedValue == null) return null; return TargetVMDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      currentSyncInfo: (() { final guardedValue = map['currentSyncInfo']; if (guardedValue == null) return null; return ReplicationCycleResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      cutoverForecast: (() { final guardedValue = map['cutoverForecast']; if (guardedValue == null) return null; return CutoverForecastResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return StatusResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      lastReplicationCycle: (() { final guardedValue = map['lastReplicationCycle']; if (guardedValue == null) return null; return ReplicationCycleResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      lastSync: (() { final guardedValue = map['lastSync']; if (guardedValue == null) return null; return ReplicationSyncResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return SchedulePolicyResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      recentCloneJobs: (() { final guardedValue = map['recentCloneJobs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloneJobResponseVmmigrationV1alpha1>(guardedValue, (value) => CloneJobResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())); })(),
+      recentCutoverJobs: (() { final guardedValue = map['recentCutoverJobs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<CutoverJobResponseVmmigrationV1alpha1>(guardedValue, (value) => CutoverJobResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())); })(),
+      sourceVmId: (() { final guardedValue = map['sourceVmId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      stateTime: (() { final guardedValue = map['stateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      targetDefaults: (() { final guardedValue = map['targetDefaults']; if (guardedValue == null) return null; return TargetVMDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vmwareSourceVmDetails: (() { final guardedValue = map['vmwareSourceVmDetails']; if (guardedValue == null) return null; return VmwareSourceVmDetailsResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

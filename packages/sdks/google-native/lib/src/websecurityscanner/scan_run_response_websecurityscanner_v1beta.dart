@@ -78,7 +78,7 @@ class ScanRunResponseWebsecurityscannerV1beta {
       executionState: pulumi.Input.fromValue(map['executionState'] as String),
       hasVulnerabilities: pulumi.Input.fromValue(map['hasVulnerabilities'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
-      progressPercent: pulumi.Input.fromValue(map['progressPercent'] as int),
+      progressPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['progressPercent'])),
       resultState: pulumi.Input.fromValue(map['resultState'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       urlsCrawledCount: pulumi.Input.fromValue(map['urlsCrawledCount'] as String),

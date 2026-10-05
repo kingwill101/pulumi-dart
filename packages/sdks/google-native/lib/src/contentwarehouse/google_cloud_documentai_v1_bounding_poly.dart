@@ -7,9 +7,9 @@ import 'google_cloud_documentai_v1_vertex.dart';
 /// A bounding polygon for the detected image annotation.
 class GoogleCloudDocumentaiV1BoundingPoly {
   /// The bounding polygon normalized vertices.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1NormalizedVertex>>? normalizedVertices;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1NormalizedVertex>?>? normalizedVertices;
   /// The bounding polygon vertices.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1Vertex>>? vertices;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1Vertex>?>? vertices;
 
   /// Creates a new [GoogleCloudDocumentaiV1BoundingPoly].
   /// [normalizedVertices] The bounding polygon normalized vertices.

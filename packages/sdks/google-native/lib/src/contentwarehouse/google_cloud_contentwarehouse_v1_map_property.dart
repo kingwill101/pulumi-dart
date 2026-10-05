@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Map property value. Represents a structured entries of key value pairs, consisting of field names which map to dynamically typed values.
 class GoogleCloudContentwarehouseV1MapProperty {
   /// Unordered map of dynamically typed values.
-  final pulumi.Input<Map<String, String>>? fields;
+  final pulumi.Input<Map<String, String>?>? fields;
 
   /// Creates a new [GoogleCloudContentwarehouseV1MapProperty].
   /// [fields] Unordered map of dynamically typed values.

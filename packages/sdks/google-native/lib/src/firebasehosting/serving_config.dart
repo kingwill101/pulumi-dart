@@ -11,19 +11,19 @@ import 'serving_config_trailing_slash_behavior.dart';
 /// The configuration for how incoming requests to a site should be routed and processed before serving content. The URL request paths are matched against the specified URL patterns in the configuration, then Hosting applies the applicable configuration according to a specific [priority order](https://firebase.google.com/docs/hosting/full-config#hosting_priority_order).
 class ServingConfig {
   /// How to handle well known App Association files.
-  final pulumi.Input<ServingConfigAppAssociation>? appAssociation;
+  final pulumi.Input<ServingConfigAppAssociation?>? appAssociation;
   /// Defines whether to drop the file extension from uploaded files.
-  final pulumi.Input<bool>? cleanUrls;
+  final pulumi.Input<bool?>? cleanUrls;
   /// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
-  final pulumi.Input<List<Header>>? headers;
+  final pulumi.Input<List<Header>?>? headers;
   /// Optional. Defines i18n rewrite behavior.
-  final pulumi.Input<I18nConfig>? i18n;
+  final pulumi.Input<I18nConfig?>? i18n;
   /// An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
-  final pulumi.Input<List<Redirect>>? redirects;
+  final pulumi.Input<List<Redirect>?>? redirects;
   /// An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
-  final pulumi.Input<List<Rewrite>>? rewrites;
+  final pulumi.Input<List<Rewrite>?>? rewrites;
   /// Defines how to handle a trailing slash in the URL path.
-  final pulumi.Input<ServingConfigTrailingSlashBehavior>? trailingSlashBehavior;
+  final pulumi.Input<ServingConfigTrailingSlashBehavior?>? trailingSlashBehavior;
 
   /// Creates a new [ServingConfig].
   /// [appAssociation] How to handle well known App Association files.

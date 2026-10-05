@@ -6,7 +6,7 @@ import 'google_cloud_dialogflow_cx_v3_version_variants_variant.dart';
 /// A list of flow version variants.
 class GoogleCloudDialogflowCxV3VersionVariants {
   /// A list of flow version variants.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3VersionVariantsVariant>>? variants;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3VersionVariantsVariant>?>? variants;
 
   /// Creates a new [GoogleCloudDialogflowCxV3VersionVariants].
   /// [variants] A list of flow version variants.

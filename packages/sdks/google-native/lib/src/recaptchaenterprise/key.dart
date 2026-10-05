@@ -40,13 +40,34 @@ class Key extends pulumi.CustomResource {
           'google-native:recaptchaenterprise/v1:Key',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     androidSettings = registerOutput<GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse>('androidSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     iosSettings = registerOutput<GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse>('iosSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    testingOptions = registerOutput<GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse>('testingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    wafSettings = registerOutput<GoogleCloudRecaptchaenterpriseV1WafSettingsResponse>('wafSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRecaptchaenterpriseV1WafSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    webSettings = registerOutput<GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse>('webSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Key] resource.
+  Key.reference(String urn)
+    : super(
+        'google-native:recaptchaenterprise/v1:Key',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    androidSettings = registerOutput<GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse>('androidSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    iosSettings = registerOutput<GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse>('iosSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     testingOptions = registerOutput<GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse>('testingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

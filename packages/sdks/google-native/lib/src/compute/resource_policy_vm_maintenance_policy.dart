@@ -5,9 +5,9 @@ import 'resource_policy_vm_maintenance_policy_concurrency_control.dart';
 import 'resource_policy_vm_maintenance_policy_maintenance_window.dart';
 
 class ResourcePolicyVmMaintenancePolicy {
-  final pulumi.Input<ResourcePolicyVmMaintenancePolicyConcurrencyControl>? concurrencyControlGroup;
+  final pulumi.Input<ResourcePolicyVmMaintenancePolicyConcurrencyControl?>? concurrencyControlGroup;
   /// Maintenance windows that are applied to VMs covered by this policy.
-  final pulumi.Input<ResourcePolicyVmMaintenancePolicyMaintenanceWindow>? maintenanceWindow;
+  final pulumi.Input<ResourcePolicyVmMaintenancePolicyMaintenanceWindow?>? maintenanceWindow;
 
   /// Creates a new [ResourcePolicyVmMaintenancePolicy].
   /// [concurrencyControlGroup] Optional.

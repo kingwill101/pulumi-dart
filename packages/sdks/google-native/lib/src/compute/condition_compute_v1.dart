@@ -8,15 +8,15 @@ import 'condition_sys_compute_v1.dart';
 /// This is deprecated and has no effect. Do not use.
 class ConditionComputeV1 {
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<ConditionIamComputeV1>? iam;
+  final pulumi.Input<ConditionIamComputeV1?>? iam;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<ConditionOpComputeV1>? op;
+  final pulumi.Input<ConditionOpComputeV1?>? op;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<String>? svc;
+  final pulumi.Input<String?>? svc;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<ConditionSysComputeV1>? sys;
+  final pulumi.Input<ConditionSysComputeV1?>? sys;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ConditionComputeV1].
   /// [iam] This is deprecated and has no effect. Do not use.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Volumes mounted within the app container. Only applicable in the App Engine flexible environment.
 class Volume {
   /// Unique name for the volume.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Volume size in gigabytes.
-  final pulumi.Input<double>? sizeGb;
+  final pulumi.Input<double?>? sizeGb;
   /// Underlying volume type, e.g. 'tmpfs'.
-  final pulumi.Input<String>? volumeType;
+  final pulumi.Input<String?>? volumeType;
 
   /// Creates a new [Volume].
   /// [name] Unique name for the volume.
@@ -32,7 +32,7 @@ class Volume {
   factory Volume.fromMap(Map<String, dynamic> map) {
     return Volume(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       volumeType: (() { final guardedValue = map['volumeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

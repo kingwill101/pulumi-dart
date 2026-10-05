@@ -1,9 +1,12 @@
-enum InternalRangeOverlapsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum InternalRangeOverlapsItem implements pulumi.PulumiEnum<String> {
   overlapUnspecified("OVERLAP_UNSPECIFIED"),
   overlapRouteRange("OVERLAP_ROUTE_RANGE"),
   overlapExistingSubnetRange("OVERLAP_EXISTING_SUBNET_RANGE");
 
   const InternalRangeOverlapsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static InternalRangeOverlapsItem fromValue(String value) {

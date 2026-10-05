@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
 class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText {
   /// The SSML text to be synthesized. For more information, see [SSML](/speech/text-to-speech/docs/ssml).
-  final pulumi.Input<String>? ssml;
+  final pulumi.Input<String?>? ssml;
   /// The raw text to be synthesized.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText].
   /// [ssml] The SSML text to be synthesized. For more information, see [SSML](/speech/text-to-speech/docs/ssml).

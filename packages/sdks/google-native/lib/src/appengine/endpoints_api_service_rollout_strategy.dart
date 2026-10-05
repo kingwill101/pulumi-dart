@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
-enum EndpointsApiServiceRolloutStrategy {
+enum EndpointsApiServiceRolloutStrategy implements pulumi.PulumiEnum<String> {
   unspecifiedRolloutStrategy("UNSPECIFIED_ROLLOUT_STRATEGY"),
   fixed("FIXED"),
   managed("MANAGED");
 
   const EndpointsApiServiceRolloutStrategy(this.wireValue);
+  @override
   final String wireValue;
 
   static EndpointsApiServiceRolloutStrategy fromValue(String value) {

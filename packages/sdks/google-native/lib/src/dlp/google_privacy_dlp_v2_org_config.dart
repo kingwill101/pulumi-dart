@@ -6,9 +6,9 @@ import 'google_privacy_dlp_v2_discovery_starting_location.dart';
 /// Project and scan location information. Only set when the parent is an org.
 class GooglePrivacyDlpV2OrgConfig {
   /// The data to scan: folder, org, or project
-  final pulumi.Input<GooglePrivacyDlpV2DiscoveryStartingLocation>? location;
+  final pulumi.Input<GooglePrivacyDlpV2DiscoveryStartingLocation?>? location;
   /// The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the Cloud DLP API must be enabled.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GooglePrivacyDlpV2OrgConfig].
   /// [location] The data to scan: folder, org, or project

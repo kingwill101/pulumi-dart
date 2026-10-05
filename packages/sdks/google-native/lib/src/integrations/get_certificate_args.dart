@@ -10,7 +10,7 @@ class GetCertificateArgs {
   final pulumi.Input<String> certificateId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> productId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetCertificateArgs].
   /// [certificateId] Required.

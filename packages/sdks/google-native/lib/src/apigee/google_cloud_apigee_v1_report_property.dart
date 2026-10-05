@@ -5,9 +5,9 @@ import 'google_cloud_apigee_v1_attribute.dart';
 
 class GoogleCloudApigeeV1ReportProperty {
   /// name of the property
-  final pulumi.Input<String>? property;
+  final pulumi.Input<String?>? property;
   /// property values
-  final pulumi.Input<List<GoogleCloudApigeeV1Attribute>>? value;
+  final pulumi.Input<List<GoogleCloudApigeeV1Attribute>?>? value;
 
   /// Creates a new [GoogleCloudApigeeV1ReportProperty].
   /// [property] name of the property

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Schema in Avro JSON format.
 class GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema {
   /// JSON source of the Avro schema.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema].
   /// [text] JSON source of the Avro schema.

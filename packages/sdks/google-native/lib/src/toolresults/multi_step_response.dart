@@ -32,7 +32,7 @@ class MultiStepResponse {
 
   factory MultiStepResponse.fromMap(Map<String, dynamic> map) {
     return MultiStepResponse(
-      multistepNumber: pulumi.Input.fromValue(map['multistepNumber'] as int),
+      multistepNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['multistepNumber'])),
       primaryStep: pulumi.Input.fromValue(PrimaryStepResponse.fromMap((map['primaryStep']! as Map).cast<String, dynamic>())),
       primaryStepId: pulumi.Input.fromValue(map['primaryStepId'] as String),
     );

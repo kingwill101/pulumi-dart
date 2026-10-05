@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backfill_all_strategy_response.dart';
 import 'destination_config_response.dart';
+import 'error_response.dart';
 import 'source_config_response.dart';
 import 'stream_args.dart';
 
@@ -20,7 +21,7 @@ class Stream extends pulumi.CustomResource {
   /// Display name.
   late final pulumi.Output<String> displayName;
   /// Errors on the Stream.
-  late final pulumi.Output<List<Map<String, dynamic>>> errors;
+  late final pulumi.Output<List<ErrorResponse>> errors;
   /// Optional. Create the stream without validating it.
   late final pulumi.Output<bool?> force;
   /// Labels.
@@ -54,7 +55,7 @@ class Stream extends pulumi.CustomResource {
           'google-native:datastream/v1:Stream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'streamId']).merge(options),
         ) {
     backfillAll = registerOutput<BackfillAllStrategyResponse>('backfillAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackfillAllStrategyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backfillNone = registerOutput<Map<String, dynamic>>('backfillNone');
@@ -62,9 +63,38 @@ class Stream extends pulumi.CustomResource {
     customerManagedEncryptionKey = registerOutput<String>('customerManagedEncryptionKey');
     destinationConfig = registerOutput<DestinationConfigResponse>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DestinationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
+    errors = registerOutput<List<ErrorResponse>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ErrorResponse>(guardedValue, (value) => ErrorResponse.fromMap((value as Map).cast<String, dynamic>())); });
     force = registerOutput<bool?>('force');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lastRecoveryTime = registerOutput<String>('lastRecoveryTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    sourceConfig = registerOutput<SourceConfigResponse>('sourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    streamId = registerOutput<String>('streamId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Stream] resource.
+  Stream.reference(String urn)
+    : super(
+        'google-native:datastream/v1:Stream',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backfillAll = registerOutput<BackfillAllStrategyResponse>('backfillAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackfillAllStrategyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backfillNone = registerOutput<Map<String, dynamic>>('backfillNone');
+    createTime = registerOutput<String>('createTime');
+    customerManagedEncryptionKey = registerOutput<String>('customerManagedEncryptionKey');
+    destinationConfig = registerOutput<DestinationConfigResponse>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DestinationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    errors = registerOutput<List<ErrorResponse>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ErrorResponse>(guardedValue, (value) => ErrorResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    force = registerOutput<bool?>('force');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastRecoveryTime = registerOutput<String>('lastRecoveryTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

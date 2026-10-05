@@ -35,8 +35,29 @@ class Connection extends pulumi.CustomResource {
           'google-native:bigqueryconnection/v1beta1:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    cloudSql = registerOutput<CloudSqlPropertiesResponse>('cloudSql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudSqlPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionId = registerOutput<String?>('connectionId');
+    creationTime = registerOutput<String>('creationTime');
+    description = registerOutput<String>('description');
+    friendlyName = registerOutput<String>('friendlyName');
+    hasCredential = registerOutput<bool>('hasCredential');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [Connection] resource.
+  Connection.reference(String urn)
+    : super(
+        'google-native:bigqueryconnection/v1beta1:Connection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cloudSql = registerOutput<CloudSqlPropertiesResponse>('cloudSql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudSqlPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionId = registerOutput<String?>('connectionId');
     creationTime = registerOutput<String>('creationTime');

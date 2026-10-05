@@ -6,9 +6,9 @@ import 'field_metadata.dart';
 /// Specifies how to handle de-identification of a FHIR store.
 class FhirConfig {
   /// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If true, all extensions are preserved during de-identification by default. If false or unspecified, all extensions are removed during de-identification by default.
-  final pulumi.Input<bool>? defaultKeepExtensions;
+  final pulumi.Input<bool?>? defaultKeepExtensions;
   /// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata is passed through to the output dataset unmodified. All extensions will be processed according to `default_keep_extensions`.
-  final pulumi.Input<List<FieldMetadata>>? fieldMetadataList;
+  final pulumi.Input<List<FieldMetadata>?>? fieldMetadataList;
 
   /// Creates a new [FhirConfig].
   /// [defaultKeepExtensions] The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If true, all extensions are preserved during de-identification by default. If false or unspecified, all extensions are removed during de-identification by default.

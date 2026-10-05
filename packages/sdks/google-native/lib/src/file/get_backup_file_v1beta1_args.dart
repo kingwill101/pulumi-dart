@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBackupFileV1beta1Args {
   final pulumi.Input<String> backupId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetBackupFileV1beta1Args].
   /// [backupId] Required.

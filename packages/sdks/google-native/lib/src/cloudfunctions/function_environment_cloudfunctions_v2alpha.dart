@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describe whether the function is 1st Gen or 2nd Gen.
-enum FunctionEnvironmentCloudfunctionsV2alpha {
+enum FunctionEnvironmentCloudfunctionsV2alpha implements pulumi.PulumiEnum<String> {
   environmentUnspecified("ENVIRONMENT_UNSPECIFIED"),
   gen1("GEN_1"),
   gen2("GEN_2");
 
   const FunctionEnvironmentCloudfunctionsV2alpha(this.wireValue);
+  @override
   final String wireValue;
 
   static FunctionEnvironmentCloudfunctionsV2alpha fromValue(String value) {

@@ -75,8 +75,41 @@ class OccurrenceContaineranalysisV1beta1 extends pulumi.CustomResource {
           'google-native:containeranalysis/v1beta1:Occurrence',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    attestation = registerOutput<DetailsResponse>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    build = registerOutput<GrafeasV1beta1BuildDetailsResponse>('build', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GrafeasV1beta1BuildDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deployment = registerOutput<GrafeasV1beta1DeploymentDetailsResponse>('deployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GrafeasV1beta1DeploymentDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    derivedImage = registerOutput<GrafeasV1beta1ImageDetailsResponse>('derivedImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GrafeasV1beta1ImageDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    discovered = registerOutput<GrafeasV1beta1DiscoveryDetailsResponse>('discovered', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GrafeasV1beta1DiscoveryDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    envelope = registerOutput<EnvelopeResponseContaineranalysisV1beta1>('envelope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvelopeResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    installation = registerOutput<GrafeasV1beta1PackageDetailsResponse>('installation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GrafeasV1beta1PackageDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    intoto = registerOutput<GrafeasV1beta1IntotoDetailsResponse>('intoto', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GrafeasV1beta1IntotoDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    noteName = registerOutput<String>('noteName');
+    project = registerOutput<String>('project');
+    remediation = registerOutput<String>('remediation');
+    resource = registerOutput<ResourceResponseContaineranalysisV1beta1>('resource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sbom = registerOutput<DocumentOccurrenceResponseContaineranalysisV1beta1>('sbom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DocumentOccurrenceResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sbomReference = registerOutput<SBOMReferenceOccurrenceResponseContaineranalysisV1beta1>('sbomReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SBOMReferenceOccurrenceResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spdxFile = registerOutput<FileOccurrenceResponseContaineranalysisV1beta1>('spdxFile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileOccurrenceResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spdxPackage = registerOutput<PackageInfoOccurrenceResponseContaineranalysisV1beta1>('spdxPackage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PackageInfoOccurrenceResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spdxRelationship = registerOutput<RelationshipOccurrenceResponseContaineranalysisV1beta1>('spdxRelationship', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RelationshipOccurrenceResponseContaineranalysisV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+    vulnerability = registerOutput<GrafeasV1beta1VulnerabilityDetailsResponse>('vulnerability', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GrafeasV1beta1VulnerabilityDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [OccurrenceContaineranalysisV1beta1] resource.
+  OccurrenceContaineranalysisV1beta1.reference(String urn)
+    : super(
+        'google-native:containeranalysis/v1beta1:Occurrence',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     attestation = registerOutput<DetailsResponse>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     build = registerOutput<GrafeasV1beta1BuildDetailsResponse>('build', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GrafeasV1beta1BuildDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

@@ -8,11 +8,11 @@ import 'google_cloud_documentai_v1_document_provenance.dart';
 /// A collection of lines that a human would perceive as a paragraph.
 class GoogleCloudDocumentaiV1DocumentPageParagraph {
   /// A list of detected languages together with confidence.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>>? detectedLanguages;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>?>? detectedLanguages;
   /// Layout for Paragraph.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout>? layout;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout?>? layout;
   /// The history of this annotation.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentProvenance>? provenance;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentProvenance?>? provenance;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageParagraph].
   /// [detectedLanguages] A list of detected languages together with confidence.

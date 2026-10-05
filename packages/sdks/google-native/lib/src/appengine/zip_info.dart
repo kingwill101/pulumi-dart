@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The zip file information for a zip deployment.
 class ZipInfo {
   /// An estimate of the number of files in a zip for a zip deployment. If set, must be greater than or equal to the actual number of files. Used for optimizing performance; if not provided, deployment may be slow.
-  final pulumi.Input<int>? filesCount;
+  final pulumi.Input<int?>? filesCount;
   /// URL of the zip file to deploy from. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
-  final pulumi.Input<String>? sourceUrl;
+  final pulumi.Input<String?>? sourceUrl;
 
   /// Creates a new [ZipInfo].
   /// [filesCount] An estimate of the number of files in a zip for a zip deployment. If set, must be greater than or equal to the actual number of files. Used for optimizing performance; if not provided, deployment may be slow.
@@ -26,7 +26,7 @@ class ZipInfo {
 
   factory ZipInfo.fromMap(Map<String, dynamic> map) {
     return ZipInfo(
-      filesCount: (() { final guardedValue = map['filesCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      filesCount: (() { final guardedValue = map['filesCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sourceUrl: (() { final guardedValue = map['sourceUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

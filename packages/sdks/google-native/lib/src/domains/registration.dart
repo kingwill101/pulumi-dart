@@ -50,15 +50,15 @@ class Registration extends pulumi.CustomResource {
           'google-native:domains/v1:Registration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     contactSettings = registerOutput<ContactSettingsResponse>('contactSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dnsSettings = registerOutput<DnsSettingsResponse>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domainName = registerOutput<String>('domainName');
     expireTime = registerOutput<String>('expireTime');
-    issues = registerOutput<List<String>>('issues');
-    labels = registerOutput<Map<String, String>>('labels');
+    issues = registerOutput<List<String>>('issues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     managementSettings = registerOutput<ManagementSettingsResponse>('managementSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -66,7 +66,34 @@ class Registration extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     registerFailureReason = registerOutput<String>('registerFailureReason');
     state = registerOutput<String>('state');
-    supportedPrivacy = registerOutput<List<String>>('supportedPrivacy');
+    supportedPrivacy = registerOutput<List<String>>('supportedPrivacy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    transferFailureReason = registerOutput<String>('transferFailureReason');
+  }
+
+  /// Creates a typed reference to an existing [Registration] resource.
+  Registration.reference(String urn)
+    : super(
+        'google-native:domains/v1:Registration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    contactSettings = registerOutput<ContactSettingsResponse>('contactSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    dnsSettings = registerOutput<DnsSettingsResponse>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    domainName = registerOutput<String>('domainName');
+    expireTime = registerOutput<String>('expireTime');
+    issues = registerOutput<List<String>>('issues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    managementSettings = registerOutput<ManagementSettingsResponse>('managementSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    pendingContactSettings = registerOutput<ContactSettingsResponse>('pendingContactSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    registerFailureReason = registerOutput<String>('registerFailureReason');
+    state = registerOutput<String>('state');
+    supportedPrivacy = registerOutput<List<String>>('supportedPrivacy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     transferFailureReason = registerOutput<String>('transferFailureReason');
   }
 }

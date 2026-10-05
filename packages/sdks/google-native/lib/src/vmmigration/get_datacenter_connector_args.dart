@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatacenterConnectorArgs {
   final pulumi.Input<String> datacenterConnectorId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> sourceId;
 
   /// Creates a new [GetDatacenterConnectorArgs].

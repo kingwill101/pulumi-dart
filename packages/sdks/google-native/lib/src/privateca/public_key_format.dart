@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The format of the public key.
-enum PublicKeyFormat {
+enum PublicKeyFormat implements pulumi.PulumiEnum<String> {
   keyFormatUnspecified("KEY_FORMAT_UNSPECIFIED"),
   pem("PEM");
 
   const PublicKeyFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static PublicKeyFormat fromValue(String value) {

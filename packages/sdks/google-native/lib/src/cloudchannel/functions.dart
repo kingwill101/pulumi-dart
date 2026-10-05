@@ -26,6 +26,17 @@ Future<GetChannelPartnerLinkResult> getChannelPartnerLink(
   return GetChannelPartnerLinkResult.fromMap(result);
 }
 
+pulumi.Output<GetChannelPartnerLinkResult> getChannelPartnerLinkOutput(
+  GetChannelPartnerLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudchannel/v1:getChannelPartnerLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetChannelPartnerLinkResult.fromMap);
+}
+
 /// Gets information about how a Distributor modifies their bill before sending it to a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * NOT_FOUND: The ChannelPartnerRepricingConfig was not found. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the ChannelPartnerRepricingConfig resource, otherwise returns an error.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudchannel_v1_get_channel_partner_repricing_config_args_doc}
 /// [options] Invoke options controlling this call.
@@ -40,6 +51,17 @@ Future<GetChannelPartnerRepricingConfigResult> getChannelPartnerRepricingConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetChannelPartnerRepricingConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetChannelPartnerRepricingConfigResult> getChannelPartnerRepricingConfigOutput(
+  GetChannelPartnerRepricingConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudchannel/v1:getChannelPartnerRepricingConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetChannelPartnerRepricingConfigResult.fromMap);
 }
 
 /// Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer resource.
@@ -58,6 +80,17 @@ Future<GetCustomerResult> getCustomer(
   return GetCustomerResult.fromMap(result);
 }
 
+pulumi.Output<GetCustomerResult> getCustomerOutput(
+  GetCustomerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudchannel/v1:getCustomer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomerResult.fromMap);
+}
+
 /// Gets information about how a Reseller modifies their bill before sending it to a Customer. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * NOT_FOUND: The CustomerRepricingConfig was not found. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the CustomerRepricingConfig resource, otherwise returns an error.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudchannel_v1_get_customer_repricing_config_args_doc}
 /// [options] Invoke options controlling this call.
@@ -74,6 +107,17 @@ Future<GetCustomerRepricingConfigResult> getCustomerRepricingConfig(
   return GetCustomerRepricingConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetCustomerRepricingConfigResult> getCustomerRepricingConfigOutput(
+  GetCustomerRepricingConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudchannel/v1:getCustomerRepricingConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomerRepricingConfigResult.fromMap);
+}
+
 /// Returns the requested Entitlement resource. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer entitlement was not found. Return value: The requested Entitlement resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudchannel_v1_get_entitlement_args_doc}
 /// [options] Invoke options controlling this call.
@@ -88,4 +132,15 @@ Future<GetEntitlementResult> getEntitlement(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEntitlementResult.fromMap(result);
+}
+
+pulumi.Output<GetEntitlementResult> getEntitlementOutput(
+  GetEntitlementArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudchannel/v1:getEntitlement',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEntitlementResult.fromMap);
 }

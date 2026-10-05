@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for the Cloud Storage Fuse CSI driver.
 class GcsFuseCsiDriverConfigContainerV1beta1 {
   /// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [GcsFuseCsiDriverConfigContainerV1beta1].
   /// [enabled] Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.

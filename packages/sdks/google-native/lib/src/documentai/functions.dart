@@ -20,6 +20,17 @@ Future<GetProcessorResult> getProcessor(
   return GetProcessorResult.fromMap(result);
 }
 
+pulumi.Output<GetProcessorResult> getProcessorOutput(
+  GetProcessorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:documentai/v1:getProcessor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProcessorResult.fromMap);
+}
+
 /// Gets a processor detail.
 /// [args] Arguments passed to this invoke. {@macro pulumi_documentai_v1beta3_get_processor_documentai_v1beta3_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetProcessorDocumentaiV1beta3Result> getProcessorDocumentaiV1beta3(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProcessorDocumentaiV1beta3Result.fromMap(result);
+}
+
+pulumi.Output<GetProcessorDocumentaiV1beta3Result> getProcessorDocumentaiV1beta3Output(
+  GetProcessorDocumentaiV1beta3Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:documentai/v1beta3:getProcessor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProcessorDocumentaiV1beta3Result.fromMap);
 }

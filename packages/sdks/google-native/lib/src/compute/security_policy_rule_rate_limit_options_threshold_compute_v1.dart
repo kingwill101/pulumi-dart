@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyRuleRateLimitOptionsThresholdComputeV1 {
   /// Number of HTTP(S) requests for calculating the threshold.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// Interval over which the threshold is computed.
-  final pulumi.Input<int>? intervalSec;
+  final pulumi.Input<int?>? intervalSec;
 
   /// Creates a new [SecurityPolicyRuleRateLimitOptionsThresholdComputeV1].
   /// [count] Number of HTTP(S) requests for calculating the threshold.
@@ -25,8 +25,8 @@ class SecurityPolicyRuleRateLimitOptionsThresholdComputeV1 {
 
   factory SecurityPolicyRuleRateLimitOptionsThresholdComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleRateLimitOptionsThresholdComputeV1(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      intervalSec: (() { final guardedValue = map['intervalSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      intervalSec: (() { final guardedValue = map['intervalSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

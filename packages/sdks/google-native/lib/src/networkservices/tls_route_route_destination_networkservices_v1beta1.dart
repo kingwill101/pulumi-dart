@@ -7,7 +7,7 @@ class TlsRouteRouteDestinationNetworkservicesV1beta1 {
   /// The URL of a BackendService to route traffic to.
   final pulumi.Input<String> serviceName;
   /// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: - weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
-  final pulumi.Input<int>? weight;
+  final pulumi.Input<int?>? weight;
 
   /// Creates a new [TlsRouteRouteDestinationNetworkservicesV1beta1].
   /// [serviceName] The URL of a BackendService to route traffic to.
@@ -27,7 +27,7 @@ class TlsRouteRouteDestinationNetworkservicesV1beta1 {
   factory TlsRouteRouteDestinationNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return TlsRouteRouteDestinationNetworkservicesV1beta1(
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
-      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

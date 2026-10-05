@@ -20,45 +20,45 @@ class VmwareClusterArgs {
   /// The admin cluster this VMware user cluster belongs to. This is the full resource name of the admin cluster's fleet membership. In the future, references to other resource types might be allowed if admin clusters are modeled as their own resources.
   final pulumi.Input<String> adminClusterMembership;
   /// Annotations on the VMware user cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// AAGConfig specifies whether to spread VMware user cluster nodes across at least three physical hosts in the datacenter.
-  final pulumi.Input<VmwareAAGConfig>? antiAffinityGroups;
+  final pulumi.Input<VmwareAAGConfig?>? antiAffinityGroups;
   /// RBAC policy that will be applied and managed by the Anthos On-Prem API.
-  final pulumi.Input<Authorization>? authorization;
+  final pulumi.Input<Authorization?>? authorization;
   /// Configuration for auto repairing.
-  final pulumi.Input<VmwareAutoRepairConfig>? autoRepairConfig;
+  final pulumi.Input<VmwareAutoRepairConfig?>? autoRepairConfig;
   /// VMware user cluster control plane nodes must have either 1 or 3 replicas.
-  final pulumi.Input<VmwareControlPlaneNodeConfig>? controlPlaneNode;
+  final pulumi.Input<VmwareControlPlaneNodeConfig?>? controlPlaneNode;
   /// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
-  final pulumi.Input<VmwareDataplaneV2Config>? dataplaneV2;
+  final pulumi.Input<VmwareDataplaneV2Config?>? dataplaneV2;
   /// A human readable description of this VMware user cluster.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Disable bundled ingress.
-  final pulumi.Input<bool>? disableBundledIngress;
+  final pulumi.Input<bool?>? disableBundledIngress;
   /// Enable control plane V2. Default to false.
-  final pulumi.Input<bool>? enableControlPlaneV2;
+  final pulumi.Input<bool?>? enableControlPlaneV2;
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. Allows clients to perform consistent read-modify-writes through optimistic concurrency control.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Load balancer configuration.
-  final pulumi.Input<VmwareLoadBalancerConfig>? loadBalancer;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<VmwareLoadBalancerConfig?>? loadBalancer;
+  final pulumi.Input<String?>? location;
   /// Immutable. The VMware user cluster resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The VMware user cluster network configuration.
-  final pulumi.Input<VmwareNetworkConfig>? networkConfig;
+  final pulumi.Input<VmwareNetworkConfig?>? networkConfig;
   /// The Anthos clusters on the VMware version for your user cluster.
   final pulumi.Input<String> onPremVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Storage configuration.
-  final pulumi.Input<VmwareStorageConfig>? storage;
+  final pulumi.Input<VmwareStorageConfig?>? storage;
   /// Specifies upgrade policy for the cluster.
-  final pulumi.Input<VmwareClusterUpgradePolicy>? upgradePolicy;
+  final pulumi.Input<VmwareClusterUpgradePolicy?>? upgradePolicy;
   /// VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
-  final pulumi.Input<VmwareVCenterConfig>? vcenter;
+  final pulumi.Input<VmwareVCenterConfig?>? vcenter;
   /// Enable VM tracking.
-  final pulumi.Input<bool>? vmTrackingEnabled;
+  final pulumi.Input<bool?>? vmTrackingEnabled;
   /// User provided identifier that is used as part of the resource name; This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.
-  final pulumi.Input<String>? vmwareClusterId;
+  final pulumi.Input<String?>? vmwareClusterId;
 
   /// Creates a new [VmwareClusterArgs].
   /// [adminClusterMembership] The admin cluster this VMware user cluster belongs to. This is the full resource name of the admin cluster's fleet membership. In the future, references to other resource types might be allowed if admin clusters are modeled as their own resources.

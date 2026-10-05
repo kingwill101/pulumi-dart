@@ -30,11 +30,29 @@ class Site extends pulumi.CustomResource {
           'google-native:firebasehosting/v1beta1:Site',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'siteId']).merge(options),
         ) {
     appId = registerOutput<String>('appId');
     defaultUrl = registerOutput<String>('defaultUrl');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    siteId = registerOutput<String>('siteId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Site] resource.
+  Site.reference(String urn)
+    : super(
+        'google-native:firebasehosting/v1beta1:Site',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appId = registerOutput<String>('appId');
+    defaultUrl = registerOutput<String>('defaultUrl');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     siteId = registerOutput<String>('siteId');

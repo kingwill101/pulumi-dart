@@ -6,7 +6,7 @@ import 'pub_sub.dart';
 /// NotificationConfig is the configuration of notifications.
 class NotificationConfig {
   /// Notification config for Pub/Sub.
-  final pulumi.Input<PubSub>? pubsub;
+  final pulumi.Input<PubSub?>? pubsub;
 
   /// Creates a new [NotificationConfig].
   /// [pubsub] Notification config for Pub/Sub.

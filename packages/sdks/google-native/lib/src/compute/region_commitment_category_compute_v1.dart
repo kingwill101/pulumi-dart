@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
-enum RegionCommitmentCategoryComputeV1 {
+enum RegionCommitmentCategoryComputeV1 implements pulumi.PulumiEnum<String> {
   categoryUnspecified("CATEGORY_UNSPECIFIED"),
   license("LICENSE"),
   machine("MACHINE");
 
   const RegionCommitmentCategoryComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static RegionCommitmentCategoryComputeV1 fromValue(String value) {

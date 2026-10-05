@@ -9,17 +9,17 @@ import 'google_devtools_containeranalysis_v1alpha1_slsa_provenance_zero_two_slsa
 /// SlsaProvenanceZeroTwo is the slsa provenance as defined by the slsa spec. See full explanation of fields at slsa.dev/provenance/v0.2.
 class SlsaProvenanceZeroTwoContaineranalysisV1alpha1 {
   /// Lists the steps in the build.
-  final pulumi.Input<Map<String, String>>? buildConfig;
+  final pulumi.Input<Map<String, String>?>? buildConfig;
   /// URI indicating what type of build was performed.
-  final pulumi.Input<String>? buildType;
+  final pulumi.Input<String?>? buildType;
   /// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
-  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder>? builder;
+  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder?>? builder;
   /// Identifies the event that kicked off the build.
-  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation>? invocation;
+  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation?>? invocation;
   /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
-  final pulumi.Input<List<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial>>? materials;
+  final pulumi.Input<List<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial>?>? materials;
   /// Other properties of the build.
-  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata>? metadata;
+  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata?>? metadata;
 
   /// Creates a new [SlsaProvenanceZeroTwoContaineranalysisV1alpha1].
   /// [buildConfig] Lists the steps in the build.

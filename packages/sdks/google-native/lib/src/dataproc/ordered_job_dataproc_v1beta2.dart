@@ -14,27 +14,27 @@ import 'spark_sql_job_dataproc_v1beta2.dart';
 /// A job executed by the workflow.
 class OrderedJobDataprocV1beta2 {
   /// Optional. Job is a Hadoop job.
-  final pulumi.Input<HadoopJobDataprocV1beta2>? hadoopJob;
+  final pulumi.Input<HadoopJobDataprocV1beta2?>? hadoopJob;
   /// Optional. Job is a Hive job.
-  final pulumi.Input<HiveJobDataprocV1beta2>? hiveJob;
+  final pulumi.Input<HiveJobDataprocV1beta2?>? hiveJob;
   /// Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Optional. Job is a Pig job.
-  final pulumi.Input<PigJobDataprocV1beta2>? pigJob;
+  final pulumi.Input<PigJobDataprocV1beta2?>? pigJob;
   /// Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
-  final pulumi.Input<List<String>>? prerequisiteStepIds;
+  final pulumi.Input<List<String>?>? prerequisiteStepIds;
   /// Optional. Job is a Presto job.
-  final pulumi.Input<PrestoJobDataprocV1beta2>? prestoJob;
+  final pulumi.Input<PrestoJobDataprocV1beta2?>? prestoJob;
   /// Optional. Job is a PySpark job.
-  final pulumi.Input<PySparkJobDataprocV1beta2>? pysparkJob;
+  final pulumi.Input<PySparkJobDataprocV1beta2?>? pysparkJob;
   /// Optional. Job scheduling configuration.
-  final pulumi.Input<JobSchedulingDataprocV1beta2>? scheduling;
+  final pulumi.Input<JobSchedulingDataprocV1beta2?>? scheduling;
   /// Optional. Job is a Spark job.
-  final pulumi.Input<SparkJobDataprocV1beta2>? sparkJob;
+  final pulumi.Input<SparkJobDataprocV1beta2?>? sparkJob;
   /// Optional. Job is a SparkR job.
-  final pulumi.Input<SparkRJobDataprocV1beta2>? sparkRJob;
+  final pulumi.Input<SparkRJobDataprocV1beta2?>? sparkRJob;
   /// Optional. Job is a SparkSql job.
-  final pulumi.Input<SparkSqlJobDataprocV1beta2>? sparkSqlJob;
+  final pulumi.Input<SparkSqlJobDataprocV1beta2?>? sparkSqlJob;
   /// The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
   final pulumi.Input<String> stepId;
 

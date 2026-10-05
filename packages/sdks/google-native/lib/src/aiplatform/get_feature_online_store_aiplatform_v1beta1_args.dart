@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetFeatureOnlineStoreAiplatformV1beta1Args {
   final pulumi.Input<String> featureOnlineStoreId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetFeatureOnlineStoreAiplatformV1beta1Args].
   /// [featureOnlineStoreId] Required.

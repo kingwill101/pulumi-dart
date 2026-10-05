@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The field type.
-enum FieldKind {
+enum FieldKind implements pulumi.PulumiEnum<String> {
   typeUnknown("TYPE_UNKNOWN"),
   typeDouble("TYPE_DOUBLE"),
   typeFloat("TYPE_FLOAT"),
@@ -21,6 +23,7 @@ enum FieldKind {
   typeSint64("TYPE_SINT64");
 
   const FieldKind(this.wireValue);
+  @override
   final String wireValue;
 
   static FieldKind fromValue(String value) {

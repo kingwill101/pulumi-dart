@@ -6,11 +6,11 @@ import 'vmware_vsphere_tag.dart';
 /// VmwareVsphereConfig represents configuration for the VMware VCenter for node pool.
 class VmwareVsphereConfig {
   /// The name of the vCenter datastore. Inherited from the user cluster.
-  final pulumi.Input<String>? datastore;
+  final pulumi.Input<String?>? datastore;
   /// Vsphere host groups to apply to all VMs in the node pool
-  final pulumi.Input<List<String>>? hostGroups;
+  final pulumi.Input<List<String>?>? hostGroups;
   /// Tags to apply to VMs.
-  final pulumi.Input<List<VmwareVsphereTag>>? tags;
+  final pulumi.Input<List<VmwareVsphereTag>?>? tags;
 
   /// Creates a new [VmwareVsphereConfig].
   /// [datastore] The name of the vCenter datastore. Inherited from the user cluster.

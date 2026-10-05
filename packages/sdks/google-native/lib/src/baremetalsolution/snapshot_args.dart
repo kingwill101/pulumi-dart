@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_baremetalsolution_v2_snapshot_args_doc}
 class SnapshotArgs {
   /// The description of the snapshot.
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? location;
   /// The name of the snapshot.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> volumeId;
 
   /// Creates a new [SnapshotArgs].

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// This is deprecated and has no effect. Do not use.
-enum RuleAction {
+enum RuleAction implements pulumi.PulumiEnum<String> {
   allow("ALLOW"),
   allowWithLog("ALLOW_WITH_LOG"),
   deny("DENY"),
@@ -8,6 +10,7 @@ enum RuleAction {
   noAction("NO_ACTION");
 
   const RuleAction(this.wireValue);
+  @override
   final String wireValue;
 
   static RuleAction fromValue(String value) {

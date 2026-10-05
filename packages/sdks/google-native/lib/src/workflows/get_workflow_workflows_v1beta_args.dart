@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_workflows_v1beta_get_workflow_workflows_v1beta_args_doc}
 class GetWorkflowWorkflowsV1betaArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> workflowId;
 
   /// Creates a new [GetWorkflowWorkflowsV1betaArgs].

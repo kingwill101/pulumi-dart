@@ -8,19 +8,19 @@ import 'rule_action_compute_v1.dart';
 /// This is deprecated and has no effect. Do not use.
 class RuleComputeV1 {
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<RuleActionComputeV1>? action;
+  final pulumi.Input<RuleActionComputeV1?>? action;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<ConditionComputeV1>>? conditions;
+  final pulumi.Input<List<ConditionComputeV1>?>? conditions;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<String>>? ins;
+  final pulumi.Input<List<String>?>? ins;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<LogConfigComputeV1>>? logConfigs;
+  final pulumi.Input<List<LogConfigComputeV1>?>? logConfigs;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<String>>? notIns;
+  final pulumi.Input<List<String>?>? notIns;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<String>>? permissions;
+  final pulumi.Input<List<String>?>? permissions;
 
   /// Creates a new [RuleComputeV1].
   /// [action] This is deprecated and has no effect. Do not use.

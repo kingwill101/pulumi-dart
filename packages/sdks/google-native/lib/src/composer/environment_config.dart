@@ -18,33 +18,33 @@ import 'workloads_config.dart';
 /// Configuration information for an environment.
 class EnvironmentConfig {
   /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
-  final pulumi.Input<DatabaseConfig>? databaseConfig;
+  final pulumi.Input<DatabaseConfig?>? databaseConfig;
   /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
-  final pulumi.Input<EncryptionConfig>? encryptionConfig;
+  final pulumi.Input<EncryptionConfig?>? encryptionConfig;
   /// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-  final pulumi.Input<EnvironmentConfigEnvironmentSize>? environmentSize;
+  final pulumi.Input<EnvironmentConfigEnvironmentSize?>? environmentSize;
   /// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
-  final pulumi.Input<MaintenanceWindow>? maintenanceWindow;
+  final pulumi.Input<MaintenanceWindow?>? maintenanceWindow;
   /// Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
-  final pulumi.Input<MasterAuthorizedNetworksConfig>? masterAuthorizedNetworksConfig;
+  final pulumi.Input<MasterAuthorizedNetworksConfig?>? masterAuthorizedNetworksConfig;
   /// The configuration used for the Kubernetes Engine cluster.
-  final pulumi.Input<NodeConfig>? nodeConfig;
+  final pulumi.Input<NodeConfig?>? nodeConfig;
   /// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-  final pulumi.Input<int>? nodeCount;
+  final pulumi.Input<int?>? nodeCount;
   /// The configuration used for the Private IP Cloud Composer environment.
-  final pulumi.Input<PrivateEnvironmentConfig>? privateEnvironmentConfig;
+  final pulumi.Input<PrivateEnvironmentConfig?>? privateEnvironmentConfig;
   /// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-  final pulumi.Input<RecoveryConfig>? recoveryConfig;
+  final pulumi.Input<RecoveryConfig?>? recoveryConfig;
   /// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer environments in versions composer-2.2.0-airflow-*.*.* and newer.
-  final pulumi.Input<EnvironmentConfigResilienceMode>? resilienceMode;
+  final pulumi.Input<EnvironmentConfigResilienceMode?>? resilienceMode;
   /// The configuration settings for software inside the environment.
-  final pulumi.Input<SoftwareConfig>? softwareConfig;
+  final pulumi.Input<SoftwareConfig?>? softwareConfig;
   /// Optional. The configuration settings for the Airflow web server App Engine instance.
-  final pulumi.Input<WebServerConfig>? webServerConfig;
+  final pulumi.Input<WebServerConfig?>? webServerConfig;
   /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
-  final pulumi.Input<WebServerNetworkAccessControl>? webServerNetworkAccessControl;
+  final pulumi.Input<WebServerNetworkAccessControl?>? webServerNetworkAccessControl;
   /// Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-  final pulumi.Input<WorkloadsConfig>? workloadsConfig;
+  final pulumi.Input<WorkloadsConfig?>? workloadsConfig;
 
   /// Creates a new [EnvironmentConfig].
   /// [databaseConfig] Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
@@ -105,7 +105,7 @@ class EnvironmentConfig {
       maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       masterAuthorizedNetworksConfig: (() { final guardedValue = map['masterAuthorizedNetworksConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MasterAuthorizedNetworksConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       nodeConfig: (() { final guardedValue = map['nodeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       privateEnvironmentConfig: (() { final guardedValue = map['privateEnvironmentConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateEnvironmentConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       recoveryConfig: (() { final guardedValue = map['recoveryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RecoveryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resilienceMode: (() { final guardedValue = map['resilienceMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnvironmentConfigResilienceMode.fromValue(guardedValue as String)); })(),

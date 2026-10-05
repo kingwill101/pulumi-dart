@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The log type that this config enables.
-enum AuditLogConfigLogTypeSecretmanagerV1beta1 {
+enum AuditLogConfigLogTypeSecretmanagerV1beta1 implements pulumi.PulumiEnum<String> {
   logTypeUnspecified("LOG_TYPE_UNSPECIFIED"),
   adminRead("ADMIN_READ"),
   dataWrite("DATA_WRITE"),
   dataRead("DATA_READ");
 
   const AuditLogConfigLogTypeSecretmanagerV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static AuditLogConfigLogTypeSecretmanagerV1beta1 fromValue(String value) {

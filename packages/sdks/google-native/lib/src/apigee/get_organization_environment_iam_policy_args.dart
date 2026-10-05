@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apigee_v1_get_organization_environment_iam_policy_args_doc}
 class GetOrganizationEnvironmentIamPolicyArgs {
   final pulumi.Input<String> environmentId;
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
   final pulumi.Input<String> organizationId;
 
   /// Creates a new [GetOrganizationEnvironmentIamPolicyArgs].
@@ -32,7 +32,7 @@ class GetOrganizationEnvironmentIamPolicyArgs {
   factory GetOrganizationEnvironmentIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationEnvironmentIamPolicyArgs(
       environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
     );
   }

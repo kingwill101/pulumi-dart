@@ -27,7 +27,7 @@ class MonthlyScheduleOsconfigV1beta {
 
   factory MonthlyScheduleOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return MonthlyScheduleOsconfigV1beta(
-      monthDay: pulumi.Input.fromValue(map['monthDay'] as int),
+      monthDay: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['monthDay'])),
       weekDayOfMonth: pulumi.Input.fromValue(WeekDayOfMonthOsconfigV1beta.fromMap((map['weekDayOfMonth']! as Map).cast<String, dynamic>())),
     );
   }

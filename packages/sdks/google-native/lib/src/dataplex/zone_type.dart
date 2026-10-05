@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Immutable. The type of the zone.
-enum ZoneType {
+enum ZoneType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   raw("RAW"),
   curated("CURATED");
 
   const ZoneType(this.wireValue);
+  @override
   final String wireValue;
 
   static ZoneType fromValue(String value) {

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_privacy_dlp_v2_error_response.dart';
 import 'google_privacy_dlp_v2_inspect_job_config_response.dart';
+import 'google_privacy_dlp_v2_trigger_response.dart';
 import 'organization_job_trigger_args.dart';
 
 /// Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
@@ -12,7 +14,7 @@ class OrganizationJobTrigger extends pulumi.CustomResource {
   /// Display name (max 100 chars)
   late final pulumi.Output<String> displayName;
   /// A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
-  late final pulumi.Output<List<Map<String, dynamic>>> errors;
+  late final pulumi.Output<List<GooglePrivacyDlpV2ErrorResponse>> errors;
   /// For inspect jobs, a snapshot of the configuration.
   late final pulumi.Output<GooglePrivacyDlpV2InspectJobConfigResponse> inspectJob;
   /// The timestamp of the last time this trigger executed.
@@ -24,7 +26,7 @@ class OrganizationJobTrigger extends pulumi.CustomResource {
   /// A status for this trigger.
   late final pulumi.Output<String> status;
   /// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
-  late final pulumi.Output<List<Map<String, dynamic>>> triggers;
+  late final pulumi.Output<List<GooglePrivacyDlpV2TriggerResponse>> triggers;
   /// The last update timestamp of a triggeredJob.
   late final pulumi.Output<String> updateTime;
 
@@ -40,19 +42,42 @@ class OrganizationJobTrigger extends pulumi.CustomResource {
           'google-native:dlp/v2:OrganizationJobTrigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'organizationId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
+    errors = registerOutput<List<GooglePrivacyDlpV2ErrorResponse>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GooglePrivacyDlpV2ErrorResponse>(guardedValue, (value) => GooglePrivacyDlpV2ErrorResponse.fromMap((value as Map).cast<String, dynamic>())); });
     inspectJob = registerOutput<GooglePrivacyDlpV2InspectJobConfigResponse>('inspectJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GooglePrivacyDlpV2InspectJobConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastRunTime = registerOutput<String>('lastRunTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
     status = registerOutput<String>('status');
-    triggers = registerOutput<List<Map<String, dynamic>>>('triggers');
+    triggers = registerOutput<List<GooglePrivacyDlpV2TriggerResponse>>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GooglePrivacyDlpV2TriggerResponse>(guardedValue, (value) => GooglePrivacyDlpV2TriggerResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationJobTrigger] resource.
+  OrganizationJobTrigger.reference(String urn)
+    : super(
+        'google-native:dlp/v2:OrganizationJobTrigger',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    errors = registerOutput<List<GooglePrivacyDlpV2ErrorResponse>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GooglePrivacyDlpV2ErrorResponse>(guardedValue, (value) => GooglePrivacyDlpV2ErrorResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    inspectJob = registerOutput<GooglePrivacyDlpV2InspectJobConfigResponse>('inspectJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GooglePrivacyDlpV2InspectJobConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastRunTime = registerOutput<String>('lastRunTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    status = registerOutput<String>('status');
+    triggers = registerOutput<List<GooglePrivacyDlpV2TriggerResponse>>('triggers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GooglePrivacyDlpV2TriggerResponse>(guardedValue, (value) => GooglePrivacyDlpV2TriggerResponse.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

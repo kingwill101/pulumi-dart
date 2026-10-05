@@ -64,7 +64,7 @@ class GoogleCloudDialogflowCxV3beta1IntentResponse {
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       parameters: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1IntentParameterResponse>(map['parameters']!, (value) => GoogleCloudDialogflowCxV3beta1IntentParameterResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       trainingPhrases: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse>(map['trainingPhrases']!, (value) => GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

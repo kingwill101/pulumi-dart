@@ -6,7 +6,7 @@ import 'authorization_logging_options_permission_type.dart';
 /// This is deprecated and has no effect. Do not use.
 class AuthorizationLoggingOptions {
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<AuthorizationLoggingOptionsPermissionType>? permissionType;
+  final pulumi.Input<AuthorizationLoggingOptionsPermissionType?>? permissionType;
 
   /// Creates a new [AuthorizationLoggingOptions].
   /// [permissionType] This is deprecated and has no effect. Do not use.

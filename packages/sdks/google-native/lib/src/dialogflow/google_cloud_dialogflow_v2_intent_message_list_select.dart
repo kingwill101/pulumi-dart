@@ -8,9 +8,9 @@ class GoogleCloudDialogflowV2IntentMessageListSelect {
   /// List items.
   final pulumi.Input<List<GoogleCloudDialogflowV2IntentMessageListSelectItem>> items;
   /// Optional. Subtitle of the list.
-  final pulumi.Input<String>? subtitle;
+  final pulumi.Input<String?>? subtitle;
   /// Optional. The overall title of the list.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageListSelect].
   /// [items] List items.

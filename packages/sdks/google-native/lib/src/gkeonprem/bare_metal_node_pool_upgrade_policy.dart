@@ -6,7 +6,7 @@ import 'bare_metal_parallel_upgrade_config.dart';
 /// BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy.
 class BareMetalNodePoolUpgradePolicy {
   /// The parallel upgrade settings for worker node pools.
-  final pulumi.Input<BareMetalParallelUpgradeConfig>? parallelUpgradeConfig;
+  final pulumi.Input<BareMetalParallelUpgradeConfig?>? parallelUpgradeConfig;
 
   /// Creates a new [BareMetalNodePoolUpgradePolicy].
   /// [parallelUpgradeConfig] The parallel upgrade settings for worker node pools.

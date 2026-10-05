@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
-enum BackendServiceLogConfigOptional {
+enum BackendServiceLogConfigOptional implements pulumi.PulumiEnum<String> {
   custom("CUSTOM"),
   excludeAllOptional("EXCLUDE_ALL_OPTIONAL"),
   includeAllOptional("INCLUDE_ALL_OPTIONAL"),
   unspecifiedOptionalMode("UNSPECIFIED_OPTIONAL_MODE");
 
   const BackendServiceLogConfigOptional(this.wireValue);
+  @override
   final String wireValue;
 
   static BackendServiceLogConfigOptional fromValue(String value) {

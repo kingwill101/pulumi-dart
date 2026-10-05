@@ -8,11 +8,11 @@ import 'monitoring_component_config_container_v1beta1.dart';
 /// MonitoringConfig is cluster monitoring configuration.
 class MonitoringConfigContainerV1beta1 {
   /// Configuration of Advanced Datapath Observability features.
-  final pulumi.Input<AdvancedDatapathObservabilityConfigContainerV1beta1>? advancedDatapathObservabilityConfig;
+  final pulumi.Input<AdvancedDatapathObservabilityConfigContainerV1beta1?>? advancedDatapathObservabilityConfig;
   /// Monitoring components configuration
-  final pulumi.Input<MonitoringComponentConfigContainerV1beta1>? componentConfig;
+  final pulumi.Input<MonitoringComponentConfigContainerV1beta1?>? componentConfig;
   /// Enable Google Cloud Managed Service for Prometheus in the cluster.
-  final pulumi.Input<ManagedPrometheusConfigContainerV1beta1>? managedPrometheusConfig;
+  final pulumi.Input<ManagedPrometheusConfigContainerV1beta1?>? managedPrometheusConfig;
 
   /// Creates a new [MonitoringConfigContainerV1beta1].
   /// [advancedDatapathObservabilityConfig] Configuration of Advanced Datapath Observability features.

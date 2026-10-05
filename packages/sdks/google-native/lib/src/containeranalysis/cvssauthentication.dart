@@ -1,10 +1,13 @@
-enum CVSSAuthentication {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum CVSSAuthentication implements pulumi.PulumiEnum<String> {
   authenticationUnspecified("AUTHENTICATION_UNSPECIFIED"),
   authenticationMultiple("AUTHENTICATION_MULTIPLE"),
   authenticationSingle("AUTHENTICATION_SINGLE"),
   authenticationNone("AUTHENTICATION_NONE");
 
   const CVSSAuthentication(this.wireValue);
+  @override
   final String wireValue;
 
   static CVSSAuthentication fromValue(String value) {

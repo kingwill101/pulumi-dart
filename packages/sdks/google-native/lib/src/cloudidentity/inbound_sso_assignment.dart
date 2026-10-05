@@ -35,8 +35,27 @@ class InboundSsoAssignment extends pulumi.CustomResource {
           'google-native:cloudidentity/v1:InboundSsoAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
+    customer = registerOutput<String>('customer');
+    this.name = registerOutput<String>('name');
+    rank = registerOutput<int>('rank');
+    samlSsoInfo = registerOutput<SamlSsoInfoResponse>('samlSsoInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SamlSsoInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    signInBehavior = registerOutput<SignInBehaviorResponse>('signInBehavior', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SignInBehaviorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ssoMode = registerOutput<String>('ssoMode');
+    targetGroup = registerOutput<String>('targetGroup');
+    targetOrgUnit = registerOutput<String>('targetOrgUnit');
+  }
+
+  /// Creates a typed reference to an existing [InboundSsoAssignment] resource.
+  InboundSsoAssignment.reference(String urn)
+    : super(
+        'google-native:cloudidentity/v1:InboundSsoAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     customer = registerOutput<String>('customer');
     this.name = registerOutput<String>('name');
     rank = registerOutput<int>('rank');

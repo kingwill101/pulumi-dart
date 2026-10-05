@@ -1,12 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'model_args.dart';
 import 'model_state_response.dart';
+import 'operation_response.dart';
 import 'tf_lite_model_response.dart';
 
 /// Creates a model in Firebase ML. The longrunning operation will eventually return a Model
 class Model extends pulumi.CustomResource {
   /// Lists operation ids associated with this model whose status is NOT done.
-  late final pulumi.Output<List<Map<String, dynamic>>> activeOperations;
+  late final pulumi.Output<List<OperationResponse>> activeOperations;
   /// Timestamp when this model was created in Firebase ML.
   late final pulumi.Output<String> createTime;
   /// The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
@@ -39,9 +40,9 @@ class Model extends pulumi.CustomResource {
           'google-native:firebaseml/v1beta2:Model',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
-    activeOperations = registerOutput<List<Map<String, dynamic>>>('activeOperations');
+    activeOperations = registerOutput<List<OperationResponse>>('activeOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OperationResponse>(guardedValue, (value) => OperationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
@@ -49,7 +50,29 @@ class Model extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     state = registerOutput<ModelStateResponse>('state', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<List<String>>('tags');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tfliteModel = registerOutput<TfLiteModelResponse>('tfliteModel', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TfLiteModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Model] resource.
+  Model.reference(String urn)
+    : super(
+        'google-native:firebaseml/v1beta2:Model',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeOperations = registerOutput<List<OperationResponse>>('activeOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OperationResponse>(guardedValue, (value) => OperationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    modelHash = registerOutput<String>('modelHash');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<ModelStateResponse>('state', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModelStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tfliteModel = registerOutput<TfLiteModelResponse>('tfliteModel', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TfLiteModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }

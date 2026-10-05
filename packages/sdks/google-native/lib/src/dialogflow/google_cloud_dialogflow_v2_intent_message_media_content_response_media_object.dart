@@ -8,11 +8,11 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
   /// Url where the media is stored.
   final pulumi.Input<String> contentUrl;
   /// Optional. Description of media card.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Icon to display above media content.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImage>? icon;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImage?>? icon;
   /// Optional. Image to display above media content.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImage>? largeImage;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImage?>? largeImage;
   /// Name of media card.
   final pulumi.Input<String> name;
 

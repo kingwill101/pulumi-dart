@@ -26,7 +26,7 @@ class SqlOutOfDiskReportResponse {
 
   factory SqlOutOfDiskReportResponse.fromMap(Map<String, dynamic> map) {
     return SqlOutOfDiskReportResponse(
-      sqlMinRecommendedIncreaseSizeGb: pulumi.Input.fromValue(map['sqlMinRecommendedIncreaseSizeGb'] as int),
+      sqlMinRecommendedIncreaseSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sqlMinRecommendedIncreaseSizeGb'])),
       sqlOutOfDiskState: pulumi.Input.fromValue(map['sqlOutOfDiskState'] as String),
     );
   }

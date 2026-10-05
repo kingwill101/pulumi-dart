@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The type of routine.
-enum RoutineRoutineType {
+enum RoutineRoutineType implements pulumi.PulumiEnum<String> {
   routineTypeUnspecified("ROUTINE_TYPE_UNSPECIFIED"),
   scalarFunction("SCALAR_FUNCTION"),
   procedure("PROCEDURE"),
@@ -7,6 +9,7 @@ enum RoutineRoutineType {
   aggregateFunction("AGGREGATE_FUNCTION");
 
   const RoutineRoutineType(this.wireValue);
+  @override
   final String wireValue;
 
   static RoutineRoutineType fromValue(String value) {

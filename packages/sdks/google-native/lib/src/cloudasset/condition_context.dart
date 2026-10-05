@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The IAM conditions context.
 class ConditionContext {
   /// The hypothetical access timestamp to evaluate IAM conditions. Note that this value must not be earlier than the current time; otherwise, an INVALID_ARGUMENT error will be returned.
-  final pulumi.Input<String>? accessTime;
+  final pulumi.Input<String?>? accessTime;
 
   /// Creates a new [ConditionContext].
   /// [accessTime] The hypothetical access timestamp to evaluate IAM conditions. Note that this value must not be earlier than the current time; otherwise, an INVALID_ARGUMENT error will be returned.

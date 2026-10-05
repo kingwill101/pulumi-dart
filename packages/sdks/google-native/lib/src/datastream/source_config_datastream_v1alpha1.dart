@@ -7,9 +7,9 @@ import 'oracle_source_config_datastream_v1alpha1.dart';
 /// The configuration of the stream source.
 class SourceConfigDatastreamV1alpha1 {
   /// MySQL data source configuration
-  final pulumi.Input<MysqlSourceConfigDatastreamV1alpha1>? mysqlSourceConfig;
+  final pulumi.Input<MysqlSourceConfigDatastreamV1alpha1?>? mysqlSourceConfig;
   /// Oracle data source configuration
-  final pulumi.Input<OracleSourceConfigDatastreamV1alpha1>? oracleSourceConfig;
+  final pulumi.Input<OracleSourceConfigDatastreamV1alpha1?>? oracleSourceConfig;
   /// Source connection profile identifier.
   final pulumi.Input<String> sourceConnectionProfileName;
 

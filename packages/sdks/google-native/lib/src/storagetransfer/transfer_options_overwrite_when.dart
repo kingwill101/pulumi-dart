@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
-enum TransferOptionsOverwriteWhen {
+enum TransferOptionsOverwriteWhen implements pulumi.PulumiEnum<String> {
   overwriteWhenUnspecified("OVERWRITE_WHEN_UNSPECIFIED"),
   different("DIFFERENT"),
   never_("NEVER"),
   always("ALWAYS");
 
   const TransferOptionsOverwriteWhen(this.wireValue);
+  @override
   final String wireValue;
 
   static TransferOptionsOverwriteWhen fromValue(String value) {

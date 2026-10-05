@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-enum SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility {
+enum SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility implements pulumi.PulumiEnum<String> {
   premium("PREMIUM"),
   standard("STANDARD");
 
   const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility fromValue(String value) {

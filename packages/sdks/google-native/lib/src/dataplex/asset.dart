@@ -54,7 +54,7 @@ class Asset extends pulumi.CustomResource {
           'google-native:dataplex/v1:Asset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['assetId', 'lakeId', 'location', 'project', 'zone']).merge(options),
         ) {
     assetId = registerOutput<String>('assetId');
     createTime = registerOutput<String>('createTime');
@@ -62,7 +62,36 @@ class Asset extends pulumi.CustomResource {
     discoverySpec = registerOutput<GoogleCloudDataplexV1AssetDiscoverySpecResponse>('discoverySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1AssetDiscoverySpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     discoveryStatus = registerOutput<GoogleCloudDataplexV1AssetDiscoveryStatusResponse>('discoveryStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1AssetDiscoveryStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lakeId = registerOutput<String>('lakeId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    resourceSpec = registerOutput<GoogleCloudDataplexV1AssetResourceSpecResponse>('resourceSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1AssetResourceSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceStatus = registerOutput<GoogleCloudDataplexV1AssetResourceStatusResponse>('resourceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1AssetResourceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityStatus = registerOutput<GoogleCloudDataplexV1AssetSecurityStatusResponse>('securityStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1AssetSecurityStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [Asset] resource.
+  Asset.reference(String urn)
+    : super(
+        'google-native:dataplex/v1:Asset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assetId = registerOutput<String>('assetId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    discoverySpec = registerOutput<GoogleCloudDataplexV1AssetDiscoverySpecResponse>('discoverySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1AssetDiscoverySpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    discoveryStatus = registerOutput<GoogleCloudDataplexV1AssetDiscoveryStatusResponse>('discoveryStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1AssetDiscoveryStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lakeId = registerOutput<String>('lakeId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

@@ -5,7 +5,7 @@ import 'allocation_aggregate_reservation_reserved_resource_info_accelerator.dart
 
 class AllocationAggregateReservationReservedResourceInfo {
   /// Properties of accelerator resources in this reservation.
-  final pulumi.Input<AllocationAggregateReservationReservedResourceInfoAccelerator>? accelerator;
+  final pulumi.Input<AllocationAggregateReservationReservedResourceInfoAccelerator?>? accelerator;
 
   /// Creates a new [AllocationAggregateReservationReservedResourceInfo].
   /// [accelerator] Properties of accelerator resources in this reservation.

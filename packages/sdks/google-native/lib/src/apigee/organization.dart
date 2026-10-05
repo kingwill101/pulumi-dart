@@ -77,14 +77,14 @@ class Organization extends pulumi.CustomResource {
           'google-native:apigee/v1:Organization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['parent']).merge(options),
         ) {
     addonsConfig = registerOutput<GoogleCloudApigeeV1AddonsConfigResponse>('addonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1AddonsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     analyticsRegion = registerOutput<String>('analyticsRegion');
     apiConsumerDataEncryptionKeyName = registerOutput<String>('apiConsumerDataEncryptionKeyName');
     apiConsumerDataLocation = registerOutput<String>('apiConsumerDataLocation');
     apigeeProjectId = registerOutput<String>('apigeeProjectId');
-    attributes = registerOutput<List<String>>('attributes');
+    attributes = registerOutput<List<String>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authorizedNetwork = registerOutput<String>('authorizedNetwork');
     billingType = registerOutput<String>('billingType');
     caCertificate = registerOutput<String>('caCertificate');
@@ -94,7 +94,47 @@ class Organization extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     disableVpcPeering = registerOutput<bool>('disableVpcPeering');
     displayName = registerOutput<String>('displayName');
-    environments = registerOutput<List<String>>('environments');
+    environments = registerOutput<List<String>>('environments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    expiresAt = registerOutput<String>('expiresAt');
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    portalDisabled = registerOutput<bool>('portalDisabled');
+    project = registerOutput<String>('project');
+    properties = registerOutput<GoogleCloudApigeeV1PropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1PropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    runtimeDatabaseEncryptionKeyName = registerOutput<String>('runtimeDatabaseEncryptionKeyName');
+    runtimeType_ = registerOutput<String>('runtimeType');
+    state = registerOutput<String>('state');
+    subscriptionPlan = registerOutput<String>('subscriptionPlan');
+    subscriptionType = registerOutput<String>('subscriptionType');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Organization] resource.
+  Organization.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Organization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addonsConfig = registerOutput<GoogleCloudApigeeV1AddonsConfigResponse>('addonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1AddonsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    analyticsRegion = registerOutput<String>('analyticsRegion');
+    apiConsumerDataEncryptionKeyName = registerOutput<String>('apiConsumerDataEncryptionKeyName');
+    apiConsumerDataLocation = registerOutput<String>('apiConsumerDataLocation');
+    apigeeProjectId = registerOutput<String>('apigeeProjectId');
+    attributes = registerOutput<List<String>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    authorizedNetwork = registerOutput<String>('authorizedNetwork');
+    billingType = registerOutput<String>('billingType');
+    caCertificate = registerOutput<String>('caCertificate');
+    controlPlaneEncryptionKeyName = registerOutput<String>('controlPlaneEncryptionKeyName');
+    createdAt = registerOutput<String>('createdAt');
+    customerName = registerOutput<String>('customerName');
+    description = registerOutput<String>('description');
+    disableVpcPeering = registerOutput<bool>('disableVpcPeering');
+    displayName = registerOutput<String>('displayName');
+    environments = registerOutput<List<String>>('environments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     expiresAt = registerOutput<String>('expiresAt');
     lastModifiedAt = registerOutput<String>('lastModifiedAt');
     this.name = registerOutput<String>('name');

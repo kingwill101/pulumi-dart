@@ -11,7 +11,7 @@ class GetServiceLevelObjectiveArgs {
   final pulumi.Input<String> serviceLevelObjectiveId;
   final pulumi.Input<String> v3Id;
   final pulumi.Input<String> v3Id1;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetServiceLevelObjectiveArgs].
   /// [serviceId] Required.

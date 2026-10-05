@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for direct-path (via ALTS) with workload identity.
 class WorkloadALTSConfig {
   /// enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
-  final pulumi.Input<bool>? enableAlts;
+  final pulumi.Input<bool?>? enableAlts;
 
   /// Creates a new [WorkloadALTSConfig].
   /// [enableAlts] enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).

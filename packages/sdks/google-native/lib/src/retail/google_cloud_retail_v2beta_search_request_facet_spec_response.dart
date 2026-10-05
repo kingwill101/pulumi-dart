@@ -40,7 +40,7 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecResponse {
       enableDynamicPosition: pulumi.Input.fromValue(map['enableDynamicPosition'] as bool),
       excludedFilterKeys: pulumi.Input.fromValue((map['excludedFilterKeys'] as List).cast<String>()),
       facetKey: pulumi.Input.fromValue(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse.fromMap((map['facetKey']! as Map).cast<String, dynamic>())),
-      limit: pulumi.Input.fromValue(map['limit'] as int),
+      limit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['limit'])),
     );
   }
 }

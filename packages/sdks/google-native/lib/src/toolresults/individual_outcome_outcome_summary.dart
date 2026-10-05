@@ -1,4 +1,6 @@
-enum IndividualOutcomeOutcomeSummary {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum IndividualOutcomeOutcomeSummary implements pulumi.PulumiEnum<String> {
   unset("unset"),
   success("success"),
   failure("failure"),
@@ -7,6 +9,7 @@ enum IndividualOutcomeOutcomeSummary {
   flaky("flaky");
 
   const IndividualOutcomeOutcomeSummary(this.wireValue);
+  @override
   final String wireValue;
 
   static IndividualOutcomeOutcomeSummary fromValue(String value) {

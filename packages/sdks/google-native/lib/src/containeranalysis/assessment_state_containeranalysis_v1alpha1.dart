@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Provides the state of this Vulnerability assessment.
-enum AssessmentStateContaineranalysisV1alpha1 {
+enum AssessmentStateContaineranalysisV1alpha1 implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   affected("AFFECTED"),
   notAffected("NOT_AFFECTED"),
@@ -7,6 +9,7 @@ enum AssessmentStateContaineranalysisV1alpha1 {
   underInvestigation("UNDER_INVESTIGATION");
 
   const AssessmentStateContaineranalysisV1alpha1(this.wireValue);
+  @override
   final String wireValue;
 
   static AssessmentStateContaineranalysisV1alpha1 fromValue(String value) {

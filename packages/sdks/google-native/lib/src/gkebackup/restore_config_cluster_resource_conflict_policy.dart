@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
-enum RestoreConfigClusterResourceConflictPolicy {
+enum RestoreConfigClusterResourceConflictPolicy implements pulumi.PulumiEnum<String> {
   clusterResourceConflictPolicyUnspecified("CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED"),
   useExistingVersion("USE_EXISTING_VERSION"),
   useBackupVersion("USE_BACKUP_VERSION");
 
   const RestoreConfigClusterResourceConflictPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static RestoreConfigClusterResourceConflictPolicy fromValue(String value) {

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'server_binding_type_compute_v1.dart';
 
 class ServerBindingComputeV1 {
-  final pulumi.Input<ServerBindingTypeComputeV1>? type;
+  final pulumi.Input<ServerBindingTypeComputeV1?>? type;
 
   /// Creates a new [ServerBindingComputeV1].
   /// [type] Optional.

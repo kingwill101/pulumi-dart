@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of provenance operation.
-enum GoogleCloudDocumentaiV1DocumentProvenanceType {
+enum GoogleCloudDocumentaiV1DocumentProvenanceType implements pulumi.PulumiEnum<String> {
   operationTypeUnspecified("OPERATION_TYPE_UNSPECIFIED"),
   add("ADD"),
   remove("REMOVE"),
@@ -10,6 +12,7 @@ enum GoogleCloudDocumentaiV1DocumentProvenanceType {
   evalSkipped("EVAL_SKIPPED");
 
   const GoogleCloudDocumentaiV1DocumentProvenanceType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDocumentaiV1DocumentProvenanceType fromValue(String value) {

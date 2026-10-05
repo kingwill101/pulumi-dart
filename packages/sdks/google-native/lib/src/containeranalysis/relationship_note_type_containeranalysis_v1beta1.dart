@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of relationship between the source and target SPDX elements
-enum RelationshipNoteTypeContaineranalysisV1beta1 {
+enum RelationshipNoteTypeContaineranalysisV1beta1 implements pulumi.PulumiEnum<String> {
   relationshipTypeUnspecified("RELATIONSHIP_TYPE_UNSPECIFIED"),
   describes("DESCRIBES"),
   describedBy("DESCRIBED_BY"),
@@ -46,6 +48,7 @@ enum RelationshipNoteTypeContaineranalysisV1beta1 {
   other("OTHER");
 
   const RelationshipNoteTypeContaineranalysisV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static RelationshipNoteTypeContaineranalysisV1beta1 fromValue(String value) {

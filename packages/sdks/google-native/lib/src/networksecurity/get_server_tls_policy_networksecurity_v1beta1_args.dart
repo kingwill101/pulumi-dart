@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networksecurity_v1beta1_get_server_tls_policy_networksecurity_v1beta1_args_doc}
 class GetServerTlsPolicyNetworksecurityV1beta1Args {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> serverTlsPolicyId;
 
   /// Creates a new [GetServerTlsPolicyNetworksecurityV1beta1Args].

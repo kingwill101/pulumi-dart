@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
-enum SslSettingsSslManagementType {
+enum SslSettingsSslManagementType implements pulumi.PulumiEnum<String> {
   sslManagementTypeUnspecified("SSL_MANAGEMENT_TYPE_UNSPECIFIED"),
   automatic("AUTOMATIC"),
   manual("MANUAL");
 
   const SslSettingsSslManagementType(this.wireValue);
+  @override
   final String wireValue;
 
   static SslSettingsSslManagementType fromValue(String value) {

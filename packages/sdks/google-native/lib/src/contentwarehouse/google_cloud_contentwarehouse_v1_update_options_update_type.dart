@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type for update.
-enum GoogleCloudContentwarehouseV1UpdateOptionsUpdateType {
+enum GoogleCloudContentwarehouseV1UpdateOptionsUpdateType implements pulumi.PulumiEnum<String> {
   updateTypeUnspecified("UPDATE_TYPE_UNSPECIFIED"),
   updateTypeReplace("UPDATE_TYPE_REPLACE"),
   updateTypeMerge("UPDATE_TYPE_MERGE"),
@@ -9,6 +11,7 @@ enum GoogleCloudContentwarehouseV1UpdateOptionsUpdateType {
   updateTypeMergeAndReplaceOrInsertPropertiesByNames("UPDATE_TYPE_MERGE_AND_REPLACE_OR_INSERT_PROPERTIES_BY_NAMES");
 
   const GoogleCloudContentwarehouseV1UpdateOptionsUpdateType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudContentwarehouseV1UpdateOptionsUpdateType fromValue(String value) {

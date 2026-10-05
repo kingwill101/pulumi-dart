@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A LUN(Logical Unit Number) range.
 class LunRange {
   /// Number of LUNs to create.
-  final pulumi.Input<int>? quantity;
+  final pulumi.Input<int?>? quantity;
   /// The requested size of each LUN, in GB.
-  final pulumi.Input<int>? sizeGb;
+  final pulumi.Input<int?>? sizeGb;
 
   /// Creates a new [LunRange].
   /// [quantity] Number of LUNs to create.
@@ -26,8 +26,8 @@ class LunRange {
 
   factory LunRange.fromMap(Map<String, dynamic> map) {
     return LunRange(
-      quantity: (() { final guardedValue = map['quantity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      quantity: (() { final guardedValue = map['quantity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

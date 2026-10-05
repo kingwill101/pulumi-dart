@@ -11,29 +11,29 @@ import 'case_priority.dart';
 /// {@macro pulumi_cloudsupport_v2_case_args_doc}
 class CaseArgs {
   /// The issue classification applicable to this case.
-  final pulumi.Input<CaseClassification>? classification;
+  final pulumi.Input<CaseClassification?>? classification;
   /// A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
-  final pulumi.Input<String>? contactEmail;
+  final pulumi.Input<String?>? contactEmail;
   /// The user who created the case. Note: The name and email will be obfuscated if the case was created by Google Support.
-  final pulumi.Input<Actor>? creator;
+  final pulumi.Input<Actor?>? creator;
   /// A broad description of the issue.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The short summary of the issue reported in this case.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Whether the case is currently escalated.
-  final pulumi.Input<bool>? escalated;
+  final pulumi.Input<bool?>? escalated;
   /// The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// The resource name for the case.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The priority of this case.
-  final pulumi.Input<CasePriority>? priority;
+  final pulumi.Input<CasePriority?>? priority;
   /// The email addresses to receive updates on this case.
-  final pulumi.Input<List<String>>? subscriberEmailAddresses;
+  final pulumi.Input<List<String>?>? subscriberEmailAddresses;
   /// Whether this case was created for internal API testing and should not be acted on by the support team.
-  final pulumi.Input<bool>? testCase;
+  final pulumi.Input<bool?>? testCase;
   /// The timezone of the user who created the support case. It should be in a format IANA recognizes: https://www.iana.org/time-zones. There is no additional validation done by the API.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   final pulumi.Input<String> v2Id;
   final pulumi.Input<String> v2Id1;
 

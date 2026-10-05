@@ -26,7 +26,7 @@ class DoubleComparisonFilterResponse {
 
   factory DoubleComparisonFilterResponse.fromMap(Map<String, dynamic> map) {
     return DoubleComparisonFilterResponse(
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
       valueComparison: pulumi.Input.fromValue(map['valueComparison'] as String),
     );
   }

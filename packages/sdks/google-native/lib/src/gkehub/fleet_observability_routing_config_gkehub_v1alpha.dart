@@ -6,7 +6,7 @@ import 'fleet_observability_routing_config_mode_gkehub_v1alpha.dart';
 /// RoutingConfig configures the behaviour of fleet logging feature.
 class FleetObservabilityRoutingConfigGkehubV1alpha {
   /// mode configures the logs routing mode.
-  final pulumi.Input<FleetObservabilityRoutingConfigModeGkehubV1alpha>? mode;
+  final pulumi.Input<FleetObservabilityRoutingConfigModeGkehubV1alpha?>? mode;
 
   /// Creates a new [FleetObservabilityRoutingConfigGkehubV1alpha].
   /// [mode] mode configures the logs routing mode.

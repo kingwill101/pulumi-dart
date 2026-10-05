@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information specifying an Anthos Cluster.
 class AnthosCluster {
   /// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
-  final pulumi.Input<String>? membership;
+  final pulumi.Input<String?>? membership;
 
   /// Creates a new [AnthosCluster].
   /// [membership] Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.

@@ -6,11 +6,11 @@ import 'placement_policy_type.dart';
 /// PlacementPolicy defines the placement policy used by the node pool.
 class PlacementPolicy {
   /// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String?>? policyName;
   /// Optional. TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
-  final pulumi.Input<String>? tpuTopology;
+  final pulumi.Input<String?>? tpuTopology;
   /// The type of placement.
-  final pulumi.Input<PlacementPolicyType>? type;
+  final pulumi.Input<PlacementPolicyType?>? type;
 
   /// Creates a new [PlacementPolicy].
   /// [policyName] If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.

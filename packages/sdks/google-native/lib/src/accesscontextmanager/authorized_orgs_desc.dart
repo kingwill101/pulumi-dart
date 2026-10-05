@@ -27,13 +27,30 @@ class AuthorizedOrgsDesc extends pulumi.CustomResource {
           'google-native:accesscontextmanager/v1:AuthorizedOrgsDesc',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['accessPolicyId']).merge(options),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     assetType = registerOutput<String>('assetType');
     authorizationDirection = registerOutput<String>('authorizationDirection');
     authorizationType = registerOutput<String>('authorizationType');
     this.name = registerOutput<String>('name');
-    orgs = registerOutput<List<String>>('orgs');
+    orgs = registerOutput<List<String>>('orgs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AuthorizedOrgsDesc] resource.
+  AuthorizedOrgsDesc.reference(String urn)
+    : super(
+        'google-native:accesscontextmanager/v1:AuthorizedOrgsDesc',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessPolicyId = registerOutput<String>('accessPolicyId');
+    assetType = registerOutput<String>('assetType');
+    authorizationDirection = registerOutput<String>('authorizationDirection');
+    authorizationType = registerOutput<String>('authorizationType');
+    this.name = registerOutput<String>('name');
+    orgs = registerOutput<List<String>>('orgs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

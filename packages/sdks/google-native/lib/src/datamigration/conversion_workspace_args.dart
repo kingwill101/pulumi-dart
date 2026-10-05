@@ -13,15 +13,15 @@ class ConversionWorkspaceArgs {
   /// The destination engine details.
   final pulumi.Input<DatabaseEngineInfo> destination;
   /// Optional. The display name for the workspace.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
-  final pulumi.Input<Map<String, String>>? globalSettings;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? globalSettings;
+  final pulumi.Input<String?>? location;
   /// Full name of the workspace resource, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// The source engine details.
   final pulumi.Input<DatabaseEngineInfo> source;
 

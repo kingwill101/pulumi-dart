@@ -6,9 +6,9 @@ import 'google_firestore_admin_v1beta1_index_field_mode.dart';
 /// A field of an index.
 class GoogleFirestoreAdminV1beta1IndexField {
   /// The path of the field. Must match the field path specification described by google.firestore.v1beta1.Document.fields. Special field path `__name__` may be used by itself or at the end of a path. `__type__` may be used only at the end of path.
-  final pulumi.Input<String>? fieldPath;
+  final pulumi.Input<String?>? fieldPath;
   /// The field's mode.
-  final pulumi.Input<GoogleFirestoreAdminV1beta1IndexFieldMode>? mode;
+  final pulumi.Input<GoogleFirestoreAdminV1beta1IndexFieldMode?>? mode;
 
   /// Creates a new [GoogleFirestoreAdminV1beta1IndexField].
   /// [fieldPath] The path of the field. Must match the field path specification described by google.firestore.v1beta1.Document.fields. Special field path `__name__` may be used by itself or at the end of a path. `__type__` may be used only at the end of path.

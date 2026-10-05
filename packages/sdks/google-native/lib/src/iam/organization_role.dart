@@ -31,12 +31,31 @@ class OrganizationRole extends pulumi.CustomResource {
           'google-native:iam/v1:OrganizationRole',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
     deleted = registerOutput<bool>('deleted');
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');
-    includedPermissions = registerOutput<List<String>>('includedPermissions');
+    includedPermissions = registerOutput<List<String>>('includedPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    stage = registerOutput<String>('stage');
+    title = registerOutput<String>('title');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationRole] resource.
+  OrganizationRole.reference(String urn)
+    : super(
+        'google-native:iam/v1:OrganizationRole',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deleted = registerOutput<bool>('deleted');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    includedPermissions = registerOutput<List<String>>('includedPermissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
     stage = registerOutput<String>('stage');

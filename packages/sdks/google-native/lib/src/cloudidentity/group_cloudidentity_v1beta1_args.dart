@@ -11,11 +11,11 @@ import 'posix_group.dart';
 /// {@macro pulumi_cloudidentity_v1beta1_group_cloudidentity_v1beta1_args_doc}
 class GroupCloudidentityV1beta1Args {
   /// An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the `Group`.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. Dynamic group metadata like queries and status.
-  final pulumi.Input<DynamicGroupMetadataCloudidentityV1beta1>? dynamicGroupMetadata;
+  final pulumi.Input<DynamicGroupMetadataCloudidentityV1beta1?>? dynamicGroupMetadata;
   /// The `EntityKey` of the `Group`.
   final pulumi.Input<EntityKeyCloudidentityV1beta1> groupKey;
   /// Required. The initial configuration option for the `Group`.
@@ -25,7 +25,7 @@ class GroupCloudidentityV1beta1Args {
   /// Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source}` for external [identity-mapped groups](https://support.google.com/a/answer/9039510) or `customers/{customer_id}` for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn'). [Find your customer ID.] (https://support.google.com/cloudidentity/answer/10070793)
   final pulumi.Input<String> parent;
   /// Optional. The POSIX groups associated with the `Group`.
-  final pulumi.Input<List<PosixGroup>>? posixGroups;
+  final pulumi.Input<List<PosixGroup>?>? posixGroups;
 
   /// Creates a new [GroupCloudidentityV1beta1Args].
   /// [description] An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.

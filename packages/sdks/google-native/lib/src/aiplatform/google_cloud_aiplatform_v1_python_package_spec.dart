@@ -6,9 +6,9 @@ import 'google_cloud_aiplatform_v1_env_var.dart';
 /// The spec of a Python packaged code.
 class GoogleCloudAiplatformV1PythonPackageSpec {
   /// Command line arguments to be passed to the Python task.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// Environment variables to be passed to the python module. Maximum limit is 100.
-  final pulumi.Input<List<GoogleCloudAiplatformV1EnvVar>>? env;
+  final pulumi.Input<List<GoogleCloudAiplatformV1EnvVar>?>? env;
   /// The URI of a container image in Artifact Registry that will run the provided Python package. Vertex AI provides a wide range of executor images with pre-installed packages to meet users' various use cases. See the list of [pre-built containers for training](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). You must use an image from this list.
   final pulumi.Input<String> executorImageUri;
   /// The Google Cloud Storage location of the Python package files which are the training program and its dependent packages. The maximum number of package URIs is 100.

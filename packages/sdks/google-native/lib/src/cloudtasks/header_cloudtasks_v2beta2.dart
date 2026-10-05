@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines a header message. A header can have a key and a value.
 class HeaderCloudtasksV2beta2 {
   /// The key of the header.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The value of the header.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [HeaderCloudtasksV2beta2].
   /// [key] The key of the header.

@@ -6,7 +6,7 @@ import 'monitoring_component_config_enable_components_item_container_v1beta1.dar
 /// MonitoringComponentConfig is cluster monitoring component configuration.
 class MonitoringComponentConfigContainerV1beta1 {
   /// Select components to collect metrics. An empty set would disable all monitoring.
-  final pulumi.Input<List<MonitoringComponentConfigEnableComponentsItemContainerV1beta1>>? enableComponents;
+  final pulumi.Input<List<MonitoringComponentConfigEnableComponentsItemContainerV1beta1>?>? enableComponents;
 
   /// Creates a new [MonitoringComponentConfigContainerV1beta1].
   /// [enableComponents] Select components to collect metrics. An empty set would disable all monitoring.

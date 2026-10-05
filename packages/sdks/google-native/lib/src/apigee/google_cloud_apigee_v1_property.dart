@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A single property entry in the Properties message.
 class GoogleCloudApigeeV1Property {
   /// The property key
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [GoogleCloudApigeeV1Property].
   /// [name] The property key

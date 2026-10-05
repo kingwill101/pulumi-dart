@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Indicates that the builder claims certain fields in this message to be complete.
 class GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness {
-  final pulumi.Input<bool>? environment;
-  final pulumi.Input<bool>? materials;
-  final pulumi.Input<bool>? parameters;
+  final pulumi.Input<bool?>? environment;
+  final pulumi.Input<bool?>? materials;
+  final pulumi.Input<bool?>? parameters;
 
   /// Creates a new [GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness].
   /// [environment] Optional.

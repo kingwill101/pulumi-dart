@@ -36,6 +36,17 @@ Future<GetBackupResult> getBackup(
   return GetBackupResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupResult> getBackupOutput(
+  GetBackupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkebackup/v1:getBackup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupResult.fromMap);
+}
+
 /// Retrieve the details of a single BackupPlan.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkebackup_v1_get_backup_plan_args_doc}
 /// [options] Invoke options controlling this call.
@@ -50,6 +61,17 @@ Future<GetBackupPlanResult> getBackupPlan(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackupPlanResult.fromMap(result);
+}
+
+pulumi.Output<GetBackupPlanResult> getBackupPlanOutput(
+  GetBackupPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkebackup/v1:getBackupPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupPlanResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -68,6 +90,17 @@ Future<GetBackupPlanBackupIamPolicyResult> getBackupPlanBackupIamPolicy(
   return GetBackupPlanBackupIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupPlanBackupIamPolicyResult> getBackupPlanBackupIamPolicyOutput(
+  GetBackupPlanBackupIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkebackup/v1:getBackupPlanBackupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupPlanBackupIamPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkebackup_v1_get_backup_plan_backup_volume_backup_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -82,6 +115,17 @@ Future<GetBackupPlanBackupVolumeBackupIamPolicyResult> getBackupPlanBackupVolume
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackupPlanBackupVolumeBackupIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetBackupPlanBackupVolumeBackupIamPolicyResult> getBackupPlanBackupVolumeBackupIamPolicyOutput(
+  GetBackupPlanBackupVolumeBackupIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkebackup/v1:getBackupPlanBackupVolumeBackupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupPlanBackupVolumeBackupIamPolicyResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -100,6 +144,17 @@ Future<GetBackupPlanIamPolicyResult> getBackupPlanIamPolicy(
   return GetBackupPlanIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupPlanIamPolicyResult> getBackupPlanIamPolicyOutput(
+  GetBackupPlanIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkebackup/v1:getBackupPlanIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupPlanIamPolicyResult.fromMap);
+}
+
 /// Retrieves the details of a single Restore.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkebackup_v1_get_restore_args_doc}
 /// [options] Invoke options controlling this call.
@@ -114,6 +169,17 @@ Future<GetRestoreResult> getRestore(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRestoreResult.fromMap(result);
+}
+
+pulumi.Output<GetRestoreResult> getRestoreOutput(
+  GetRestoreArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkebackup/v1:getRestore',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRestoreResult.fromMap);
 }
 
 /// Retrieve the details of a single RestorePlan.
@@ -132,6 +198,17 @@ Future<GetRestorePlanResult> getRestorePlan(
   return GetRestorePlanResult.fromMap(result);
 }
 
+pulumi.Output<GetRestorePlanResult> getRestorePlanOutput(
+  GetRestorePlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkebackup/v1:getRestorePlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRestorePlanResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkebackup_v1_get_restore_plan_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -146,6 +223,17 @@ Future<GetRestorePlanIamPolicyResult> getRestorePlanIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRestorePlanIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRestorePlanIamPolicyResult> getRestorePlanIamPolicyOutput(
+  GetRestorePlanIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkebackup/v1:getRestorePlanIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRestorePlanIamPolicyResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -164,6 +252,17 @@ Future<GetRestorePlanRestoreIamPolicyResult> getRestorePlanRestoreIamPolicy(
   return GetRestorePlanRestoreIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRestorePlanRestoreIamPolicyResult> getRestorePlanRestoreIamPolicyOutput(
+  GetRestorePlanRestoreIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkebackup/v1:getRestorePlanRestoreIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRestorePlanRestoreIamPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkebackup_v1_get_restore_plan_restore_volume_restore_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -178,4 +277,15 @@ Future<GetRestorePlanRestoreVolumeRestoreIamPolicyResult> getRestorePlanRestoreV
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRestorePlanRestoreVolumeRestoreIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRestorePlanRestoreVolumeRestoreIamPolicyResult> getRestorePlanRestoreVolumeRestoreIamPolicyOutput(
+  GetRestorePlanRestoreVolumeRestoreIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkebackup/v1:getRestorePlanRestoreVolumeRestoreIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRestorePlanRestoreVolumeRestoreIamPolicyResult.fromMap);
 }

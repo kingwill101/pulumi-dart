@@ -53,10 +53,10 @@ class GoogleCloudAiplatformV1StudySpecStudyStoppingConfigResponse {
   factory GoogleCloudAiplatformV1StudySpecStudyStoppingConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1StudySpecStudyStoppingConfigResponse(
       maxDurationNoProgress: pulumi.Input.fromValue(map['maxDurationNoProgress'] as String),
-      maxNumTrials: pulumi.Input.fromValue(map['maxNumTrials'] as int),
-      maxNumTrialsNoProgress: pulumi.Input.fromValue(map['maxNumTrialsNoProgress'] as int),
+      maxNumTrials: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNumTrials'])),
+      maxNumTrialsNoProgress: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNumTrialsNoProgress'])),
       maximumRuntimeConstraint: pulumi.Input.fromValue(GoogleCloudAiplatformV1StudyTimeConstraintResponse.fromMap((map['maximumRuntimeConstraint']! as Map).cast<String, dynamic>())),
-      minNumTrials: pulumi.Input.fromValue(map['minNumTrials'] as int),
+      minNumTrials: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNumTrials'])),
       minimumRuntimeConstraint: pulumi.Input.fromValue(GoogleCloudAiplatformV1StudyTimeConstraintResponse.fromMap((map['minimumRuntimeConstraint']! as Map).cast<String, dynamic>())),
       shouldStopAsap: pulumi.Input.fromValue(map['shouldStopAsap'] as bool),
     );

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
-enum RegionSslPolicyMinTlsVersion {
+enum RegionSslPolicyMinTlsVersion implements pulumi.PulumiEnum<String> {
   tls10("TLS_1_0"),
   tls11("TLS_1_1"),
   tls12("TLS_1_2");
 
   const RegionSslPolicyMinTlsVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static RegionSslPolicyMinTlsVersion fromValue(String value) {

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents output related to a built-in algorithm Job.
 class GoogleCloudMlV1BuiltInAlgorithmOutput {
   /// Framework on which the built-in algorithm was trained.
-  final pulumi.Input<String>? framework;
+  final pulumi.Input<String?>? framework;
   /// The Cloud Storage path to the `model/` directory where the training job saves the trained model. Only set for successful jobs that don't use hyperparameter tuning.
-  final pulumi.Input<String>? modelPath;
+  final pulumi.Input<String?>? modelPath;
   /// Python version on which the built-in algorithm was trained.
-  final pulumi.Input<String>? pythonVersion;
+  final pulumi.Input<String?>? pythonVersion;
   /// AI Platform runtime version on which the built-in algorithm was trained.
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
 
   /// Creates a new [GoogleCloudMlV1BuiltInAlgorithmOutput].
   /// [framework] Framework on which the built-in algorithm was trained.

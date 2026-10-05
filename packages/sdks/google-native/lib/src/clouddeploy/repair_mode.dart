@@ -7,9 +7,9 @@ import 'rollback.dart';
 /// Configuration of the repair action.
 class RepairMode {
   /// Optional. Retries a failed job.
-  final pulumi.Input<Retry>? retry;
+  final pulumi.Input<Retry?>? retry;
   /// Optional. Rolls back a `Rollout`.
-  final pulumi.Input<Rollback>? rollback;
+  final pulumi.Input<Rollback?>? rollback;
 
   /// Creates a new [RepairMode].
   /// [retry] Optional. Retries a failed job.

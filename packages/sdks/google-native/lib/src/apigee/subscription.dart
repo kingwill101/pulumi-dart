@@ -33,8 +33,27 @@ class Subscription extends pulumi.CustomResource {
           'google-native:apigee/v1:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['developerId', 'organizationId']).merge(options),
         ) {
+    apiproduct = registerOutput<String>('apiproduct');
+    createdAt = registerOutput<String>('createdAt');
+    developerId = registerOutput<String>('developerId');
+    endTime = registerOutput<String>('endTime');
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    startTime = registerOutput<String>('startTime');
+  }
+
+  /// Creates a typed reference to an existing [Subscription] resource.
+  Subscription.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Subscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiproduct = registerOutput<String>('apiproduct');
     createdAt = registerOutput<String>('createdAt');
     developerId = registerOutput<String>('developerId');

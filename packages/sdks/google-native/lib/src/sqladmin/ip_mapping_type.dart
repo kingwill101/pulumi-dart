@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of this IP address. A `PRIMARY` address is a public address that can accept incoming connections. A `PRIVATE` address is a private address that can accept incoming connections. An `OUTGOING` address is the source address of connections originating from the instance, if supported.
-enum IpMappingType {
+enum IpMappingType implements pulumi.PulumiEnum<String> {
   sqlIpAddressTypeUnspecified("SQL_IP_ADDRESS_TYPE_UNSPECIFIED"),
   primary("PRIMARY"),
   outgoing("OUTGOING"),
@@ -7,6 +9,7 @@ enum IpMappingType {
   migrated1stGen("MIGRATED_1ST_GEN");
 
   const IpMappingType(this.wireValue);
+  @override
   final String wireValue;
 
   static IpMappingType fromValue(String value) {

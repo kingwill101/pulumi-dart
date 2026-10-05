@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The database engine type and version.
-enum CloudSqlSettingsDatabaseVersion {
+enum CloudSqlSettingsDatabaseVersion implements pulumi.PulumiEnum<String> {
   sqlDatabaseVersionUnspecified("SQL_DATABASE_VERSION_UNSPECIFIED"),
   mysql56("MYSQL_5_6"),
   mysql57("MYSQL_5_7"),
@@ -22,6 +24,7 @@ enum CloudSqlSettingsDatabaseVersion {
   postgres15("POSTGRES_15");
 
   const CloudSqlSettingsDatabaseVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static CloudSqlSettingsDatabaseVersion fromValue(String value) {

@@ -39,7 +39,7 @@ class ImageOccurrenceResponse {
   factory ImageOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return ImageOccurrenceResponse(
       baseResourceUrl: pulumi.Input.fromValue(map['baseResourceUrl'] as String),
-      distance: pulumi.Input.fromValue(map['distance'] as int),
+      distance: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['distance'])),
       fingerprint: pulumi.Input.fromValue(FingerprintResponse.fromMap((map['fingerprint']! as Map).cast<String, dynamic>())),
       layerInfo: pulumi.Input.fromValue(pulumi.Input.decodeList<LayerResponse>(map['layerInfo']!, (value) => LayerResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );

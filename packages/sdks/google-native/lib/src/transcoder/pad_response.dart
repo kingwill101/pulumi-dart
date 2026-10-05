@@ -36,10 +36,10 @@ class PadResponse {
 
   factory PadResponse.fromMap(Map<String, dynamic> map) {
     return PadResponse(
-      bottomPixels: pulumi.Input.fromValue(map['bottomPixels'] as int),
-      leftPixels: pulumi.Input.fromValue(map['leftPixels'] as int),
-      rightPixels: pulumi.Input.fromValue(map['rightPixels'] as int),
-      topPixels: pulumi.Input.fromValue(map['topPixels'] as int),
+      bottomPixels: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bottomPixels'])),
+      leftPixels: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['leftPixels'])),
+      rightPixels: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rightPixels'])),
+      topPixels: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['topPixels'])),
     );
   }
 }

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The type of a queue (push or pull). `Queue.type` is an immutable property of the queue that is set at the queue creation time. When left unspecified, the default value of `PUSH` is selected.
-enum QueueType {
+enum QueueType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   pull("PULL"),
   push("PUSH");
 
   const QueueType(this.wireValue);
+  @override
   final String wireValue;
 
   static QueueType fromValue(String value) {

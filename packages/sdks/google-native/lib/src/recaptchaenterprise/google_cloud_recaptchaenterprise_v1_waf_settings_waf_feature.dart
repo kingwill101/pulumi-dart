@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The WAF feature for which this key is enabled.
-enum GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature {
+enum GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature implements pulumi.PulumiEnum<String> {
   wafFeatureUnspecified("WAF_FEATURE_UNSPECIFIED"),
   challengePage("CHALLENGE_PAGE"),
   sessionToken("SESSION_TOKEN"),
@@ -7,6 +9,7 @@ enum GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature {
   express("EXPRESS");
 
   const GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature fromValue(String value) {

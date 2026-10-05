@@ -10,33 +10,33 @@ import 'router_nat_response.dart';
 /// Result data returned by getRouter.
 class GetRouterResult {
   /// BGP information specific to this router.
-  final RouterBgpResponse bgp;
+  final RouterBgpResponse? bgp;
   /// BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer to RFC4273.
-  final List<RouterBgpPeerResponse> bgpPeers;
+  final List<RouterBgpPeerResponse>? bgpPeers;
   /// Creation timestamp in RFC3339 text format.
-  final String creationTimestamp;
+  final String? creationTimestamp;
   /// An optional description of this resource. Provide this property when you create the resource.
-  final String description;
+  final String? description;
   /// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
-  final bool encryptedInterconnectRouter;
+  final bool? encryptedInterconnectRouter;
   /// Router interfaces. To create a BGP peer that uses a router interface, the interface must have one of the following fields specified: - linkedVpnTunnel - linkedInterconnectAttachment - subnetwork You can create a router interface without any of these fields specified. However, you cannot create a BGP peer that uses that interface.
-  final List<RouterInterfaceResponse> interfaces;
+  final List<RouterInterfaceResponse>? interfaces;
   /// Type of resource. Always compute#router for routers.
-  final String kind;
+  final String? kind;
   /// Keys used for MD5 authentication.
-  final List<RouterMd5AuthenticationKeyResponse> md5AuthenticationKeys;
+  final List<RouterMd5AuthenticationKeyResponse>? md5AuthenticationKeys;
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-  final String name;
+  final String? name;
   /// A list of NAT services created in this router.
-  final List<RouterNatResponse> nats;
+  final List<RouterNatResponse>? nats;
   /// URI of the network to which this router belongs.
-  final String network;
+  final String? network;
   /// URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-  final String region;
+  final String? region;
   /// Server-defined URL for the resource.
-  final String selfLink;
+  final String? selfLink;
   /// Server-defined URL for this resource with the resource id.
-  final String selfLinkWithId;
+  final String? selfLinkWithId;
 
   /// Creates a new [GetRouterResult].
   /// [bgp] BGP information specific to this router.
@@ -54,57 +54,57 @@ class GetRouterResult {
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
   const GetRouterResult({
-    required this.bgp,
-    required this.bgpPeers,
-    required this.creationTimestamp,
-    required this.description,
-    required this.encryptedInterconnectRouter,
-    required this.interfaces,
-    required this.kind,
-    required this.md5AuthenticationKeys,
-    required this.name,
-    required this.nats,
-    required this.network,
-    required this.region,
-    required this.selfLink,
-    required this.selfLinkWithId,
+    this.bgp,
+    this.bgpPeers,
+    this.creationTimestamp,
+    this.description,
+    this.encryptedInterconnectRouter,
+    this.interfaces,
+    this.kind,
+    this.md5AuthenticationKeys,
+    this.name,
+    this.nats,
+    this.network,
+    this.region,
+    this.selfLink,
+    this.selfLinkWithId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bgp': bgp.toMap(),
-      'bgpPeers': pulumi.Input.encodeList<RouterBgpPeerResponse, Map<String, dynamic>>(bgpPeers, (value) => value.toMap()),
-      'creationTimestamp': creationTimestamp,
-      'description': description,
-      'encryptedInterconnectRouter': encryptedInterconnectRouter,
-      'interfaces': pulumi.Input.encodeList<RouterInterfaceResponse, Map<String, dynamic>>(interfaces, (value) => value.toMap()),
-      'kind': kind,
-      'md5AuthenticationKeys': pulumi.Input.encodeList<RouterMd5AuthenticationKeyResponse, Map<String, dynamic>>(md5AuthenticationKeys, (value) => value.toMap()),
-      'name': name,
-      'nats': pulumi.Input.encodeList<RouterNatResponse, Map<String, dynamic>>(nats, (value) => value.toMap()),
-      'network': network,
-      'region': region,
-      'selfLink': selfLink,
-      'selfLinkWithId': selfLinkWithId,
+      'bgp': ?bgp?.toMap(),
+      'bgpPeers': ?(() { final guardedValue = bgpPeers; if (guardedValue == null) return null; return pulumi.Input.encodeList<RouterBgpPeerResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'creationTimestamp': ?creationTimestamp,
+      'description': ?description,
+      'encryptedInterconnectRouter': ?encryptedInterconnectRouter,
+      'interfaces': ?(() { final guardedValue = interfaces; if (guardedValue == null) return null; return pulumi.Input.encodeList<RouterInterfaceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'kind': ?kind,
+      'md5AuthenticationKeys': ?(() { final guardedValue = md5AuthenticationKeys; if (guardedValue == null) return null; return pulumi.Input.encodeList<RouterMd5AuthenticationKeyResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'nats': ?(() { final guardedValue = nats; if (guardedValue == null) return null; return pulumi.Input.encodeList<RouterNatResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'network': ?network,
+      'region': ?region,
+      'selfLink': ?selfLink,
+      'selfLinkWithId': ?selfLinkWithId,
     };
   }
 
   factory GetRouterResult.fromMap(Map<String, dynamic> map) {
     return GetRouterResult(
-      bgp: RouterBgpResponse.fromMap((map['bgp']! as Map).cast<String, dynamic>()),
-      bgpPeers: pulumi.Input.decodeList<RouterBgpPeerResponse>(map['bgpPeers']!, (value) => RouterBgpPeerResponse.fromMap((value as Map).cast<String, dynamic>())),
-      creationTimestamp: map['creationTimestamp'] as String,
-      description: map['description'] as String,
-      encryptedInterconnectRouter: map['encryptedInterconnectRouter'] as bool,
-      interfaces: pulumi.Input.decodeList<RouterInterfaceResponse>(map['interfaces']!, (value) => RouterInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] as String,
-      md5AuthenticationKeys: pulumi.Input.decodeList<RouterMd5AuthenticationKeyResponse>(map['md5AuthenticationKeys']!, (value) => RouterMd5AuthenticationKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      nats: pulumi.Input.decodeList<RouterNatResponse>(map['nats']!, (value) => RouterNatResponse.fromMap((value as Map).cast<String, dynamic>())),
-      network: map['network'] as String,
-      region: map['region'] as String,
-      selfLink: map['selfLink'] as String,
-      selfLinkWithId: map['selfLinkWithId'] as String,
+      bgp: (() { final guardedValue = map['bgp']; if (guardedValue == null) return null; return RouterBgpResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      bgpPeers: (() { final guardedValue = map['bgpPeers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterBgpPeerResponse>(guardedValue, (value) => RouterBgpPeerResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      encryptedInterconnectRouter: (() { final guardedValue = map['encryptedInterconnectRouter']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      interfaces: (() { final guardedValue = map['interfaces']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterInterfaceResponse>(guardedValue, (value) => RouterInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      md5AuthenticationKeys: (() { final guardedValue = map['md5AuthenticationKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterMd5AuthenticationKeyResponse>(guardedValue, (value) => RouterMd5AuthenticationKeyResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nats: (() { final guardedValue = map['nats']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterNatResponse>(guardedValue, (value) => RouterNatResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLinkWithId: (() { final guardedValue = map['selfLinkWithId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

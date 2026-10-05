@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dataproc_v1_get_region_cluster_iam_policy_args_doc}
 class GetRegionClusterIamPolicyArgs {
   final pulumi.Input<String> clusterId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> regionId;
 
   /// Creates a new [GetRegionClusterIamPolicyArgs].

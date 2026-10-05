@@ -7,9 +7,9 @@ import 'google_privacy_dlp_v2_field_id.dart';
 /// Message defining a field of a BigQuery table.
 class GooglePrivacyDlpV2BigQueryField {
   /// Designated field in the BigQuery table.
-  final pulumi.Input<GooglePrivacyDlpV2FieldId>? field;
+  final pulumi.Input<GooglePrivacyDlpV2FieldId?>? field;
   /// Source table of the field.
-  final pulumi.Input<GooglePrivacyDlpV2BigQueryTable>? table;
+  final pulumi.Input<GooglePrivacyDlpV2BigQueryTable?>? table;
 
   /// Creates a new [GooglePrivacyDlpV2BigQueryField].
   /// [field] Designated field in the BigQuery table.

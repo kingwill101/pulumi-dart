@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ApprovalConfig describes configuration for manual approval of a build.
 class ApprovalConfig {
   /// Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
-  final pulumi.Input<bool>? approvalRequired;
+  final pulumi.Input<bool?>? approvalRequired;
 
   /// Creates a new [ApprovalConfig].
   /// [approvalRequired] Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.

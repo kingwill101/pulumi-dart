@@ -7,9 +7,9 @@ import 'resource_policy_weekly_cycle_compute_v1.dart';
 
 /// A schedule for disks where the schedueled operations are performed.
 class ResourcePolicySnapshotSchedulePolicyScheduleComputeV1 {
-  final pulumi.Input<ResourcePolicyDailyCycleComputeV1>? dailySchedule;
-  final pulumi.Input<ResourcePolicyHourlyCycleComputeV1>? hourlySchedule;
-  final pulumi.Input<ResourcePolicyWeeklyCycleComputeV1>? weeklySchedule;
+  final pulumi.Input<ResourcePolicyDailyCycleComputeV1?>? dailySchedule;
+  final pulumi.Input<ResourcePolicyHourlyCycleComputeV1?>? hourlySchedule;
+  final pulumi.Input<ResourcePolicyWeeklyCycleComputeV1?>? weeklySchedule;
 
   /// Creates a new [ResourcePolicySnapshotSchedulePolicyScheduleComputeV1].
   /// [dailySchedule] Optional.

@@ -7,11 +7,11 @@ import 'bucket_iam_configuration_uniform_bucket_level_access.dart';
 /// The bucket's IAM configuration.
 class BucketIamConfiguration {
   /// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
-  final pulumi.Input<BucketIamConfigurationBucketPolicyOnly>? bucketPolicyOnly;
+  final pulumi.Input<BucketIamConfigurationBucketPolicyOnly?>? bucketPolicyOnly;
   /// The bucket's Public Access Prevention configuration. Currently, 'inherited' and 'enforced' are supported.
-  final pulumi.Input<String>? publicAccessPrevention;
+  final pulumi.Input<String?>? publicAccessPrevention;
   /// The bucket's uniform bucket-level access configuration.
-  final pulumi.Input<BucketIamConfigurationUniformBucketLevelAccess>? uniformBucketLevelAccess;
+  final pulumi.Input<BucketIamConfigurationUniformBucketLevelAccess?>? uniformBucketLevelAccess;
 
   /// Creates a new [BucketIamConfiguration].
   /// [bucketPolicyOnly] The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.

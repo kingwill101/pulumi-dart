@@ -10,8 +10,8 @@ class GetContentitemArgs {
   final pulumi.Input<String> contentitemId;
   final pulumi.Input<String> lakeId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetContentitemArgs].
   /// [contentitemId] Required.

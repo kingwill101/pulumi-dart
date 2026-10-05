@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The simple response message containing speech or text.
 class GoogleCloudDialogflowV2IntentMessageSimpleResponse {
   /// Optional. The text to display.
-  final pulumi.Input<String>? displayText;
+  final pulumi.Input<String?>? displayText;
   /// One of text_to_speech or ssml must be provided. Structured spoken response to the user in the SSML format. Mutually exclusive with text_to_speech.
-  final pulumi.Input<String>? ssml;
+  final pulumi.Input<String?>? ssml;
   /// One of text_to_speech or ssml must be provided. The plain text of the speech output. Mutually exclusive with ssml.
-  final pulumi.Input<String>? textToSpeech;
+  final pulumi.Input<String?>? textToSpeech;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageSimpleResponse].
   /// [displayText] Optional. The text to display.

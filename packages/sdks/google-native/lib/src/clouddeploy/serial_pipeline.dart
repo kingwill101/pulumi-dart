@@ -6,7 +6,7 @@ import 'stage.dart';
 /// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 class SerialPipeline {
   /// Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
-  final pulumi.Input<List<Stage>>? stages;
+  final pulumi.Input<List<Stage>?>? stages;
 
   /// Creates a new [SerialPipeline].
   /// [stages] Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.

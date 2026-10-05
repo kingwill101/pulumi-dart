@@ -6,13 +6,13 @@ import 'http_header_option_compute_v1.dart';
 /// The request and response header transformations that take effect before the request is passed along to the selected backendService.
 class HttpHeaderActionComputeV1 {
   /// Headers to add to a matching request before forwarding the request to the backendService.
-  final pulumi.Input<List<HttpHeaderOptionComputeV1>>? requestHeadersToAdd;
+  final pulumi.Input<List<HttpHeaderOptionComputeV1>?>? requestHeadersToAdd;
   /// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
-  final pulumi.Input<List<String>>? requestHeadersToRemove;
+  final pulumi.Input<List<String>?>? requestHeadersToRemove;
   /// Headers to add the response before sending the response back to the client.
-  final pulumi.Input<List<HttpHeaderOptionComputeV1>>? responseHeadersToAdd;
+  final pulumi.Input<List<HttpHeaderOptionComputeV1>?>? responseHeadersToAdd;
   /// A list of header names for headers that need to be removed from the response before sending the response back to the client.
-  final pulumi.Input<List<String>>? responseHeadersToRemove;
+  final pulumi.Input<List<String>?>? responseHeadersToRemove;
 
   /// Creates a new [HttpHeaderActionComputeV1].
   /// [requestHeadersToAdd] Headers to add to a matching request before forwarding the request to the backendService.

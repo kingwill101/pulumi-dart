@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_apigee_v1_custom_report_metric_response.dart';
+import 'google_cloud_apigee_v1_report_property_response.dart';
 import 'report_args.dart';
 
 /// Creates a Custom Report for an Organization. A Custom Report provides Apigee Customers to create custom dashboards in addition to the standard dashboards which are provided. The Custom Report in its simplest form contains specifications about metrics, dimensions and filters. It is important to note that the custom report by itself does not provide an executable entity. The Edge UI converts the custom report definition into an analytics query and displays the result in a chart.
@@ -26,7 +28,7 @@ class Report extends pulumi.CustomResource {
   /// Legacy field: not used This field contains the limit for the result retrieved
   late final pulumi.Output<String> limit;
   /// This contains the list of metrics
-  late final pulumi.Output<List<Map<String, dynamic>>> metrics;
+  late final pulumi.Output<List<GoogleCloudApigeeV1CustomReportMetricResponse>> metrics;
   /// Unique identifier for the report T his is a legacy field used to encode custom report unique id
   late final pulumi.Output<String> name;
   /// Legacy field: not used. This field contains the offset for the data
@@ -35,7 +37,7 @@ class Report extends pulumi.CustomResource {
   late final pulumi.Output<String> organization;
   late final pulumi.Output<String> organizationId;
   /// This field contains report properties such as ui metadata etc.
-  late final pulumi.Output<List<Map<String, dynamic>>> properties;
+  late final pulumi.Output<List<GoogleCloudApigeeV1ReportPropertyResponse>> properties;
   /// Legacy field: not used much. Contains the list of sort by columns
   late final pulumi.Output<List<String>> sortByCols;
   /// Legacy field: not used much. Contains the sort order for the sort columns
@@ -61,12 +63,12 @@ class Report extends pulumi.CustomResource {
           'google-native:apigee/v1:Report',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
     chartType = registerOutput<String>('chartType');
-    comments = registerOutput<List<String>>('comments');
+    comments = registerOutput<List<String>>('comments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createdAt = registerOutput<String>('createdAt');
-    dimensions = registerOutput<List<String>>('dimensions');
+    dimensions = registerOutput<List<String>>('dimensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
     environment = registerOutput<String>('environment');
     filter = registerOutput<String>('filter');
@@ -74,15 +76,49 @@ class Report extends pulumi.CustomResource {
     lastModifiedAt = registerOutput<String>('lastModifiedAt');
     lastViewedAt = registerOutput<String>('lastViewedAt');
     limit = registerOutput<String>('limit');
-    metrics = registerOutput<List<Map<String, dynamic>>>('metrics');
+    metrics = registerOutput<List<GoogleCloudApigeeV1CustomReportMetricResponse>>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1CustomReportMetricResponse>(guardedValue, (value) => GoogleCloudApigeeV1CustomReportMetricResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     offset = registerOutput<String>('offset');
     organization = registerOutput<String>('organization');
     organizationId = registerOutput<String>('organizationId');
-    properties = registerOutput<List<Map<String, dynamic>>>('properties');
-    sortByCols = registerOutput<List<String>>('sortByCols');
+    properties = registerOutput<List<GoogleCloudApigeeV1ReportPropertyResponse>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1ReportPropertyResponse>(guardedValue, (value) => GoogleCloudApigeeV1ReportPropertyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sortByCols = registerOutput<List<String>>('sortByCols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sortOrder = registerOutput<String>('sortOrder');
-    tags = registerOutput<List<String>>('tags');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    timeUnit = registerOutput<String>('timeUnit');
+    toTime = registerOutput<String>('toTime');
+    topk = registerOutput<String>('topk');
+  }
+
+  /// Creates a typed reference to an existing [Report] resource.
+  Report.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Report',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    chartType = registerOutput<String>('chartType');
+    comments = registerOutput<List<String>>('comments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createdAt = registerOutput<String>('createdAt');
+    dimensions = registerOutput<List<String>>('dimensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String>('displayName');
+    environment = registerOutput<String>('environment');
+    filter = registerOutput<String>('filter');
+    fromTime = registerOutput<String>('fromTime');
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    lastViewedAt = registerOutput<String>('lastViewedAt');
+    limit = registerOutput<String>('limit');
+    metrics = registerOutput<List<GoogleCloudApigeeV1CustomReportMetricResponse>>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1CustomReportMetricResponse>(guardedValue, (value) => GoogleCloudApigeeV1CustomReportMetricResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    offset = registerOutput<String>('offset');
+    organization = registerOutput<String>('organization');
+    organizationId = registerOutput<String>('organizationId');
+    properties = registerOutput<List<GoogleCloudApigeeV1ReportPropertyResponse>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1ReportPropertyResponse>(guardedValue, (value) => GoogleCloudApigeeV1ReportPropertyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sortByCols = registerOutput<List<String>>('sortByCols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sortOrder = registerOutput<String>('sortOrder');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     timeUnit = registerOutput<String>('timeUnit');
     toTime = registerOutput<String>('toTime');
     topk = registerOutput<String>('topk');

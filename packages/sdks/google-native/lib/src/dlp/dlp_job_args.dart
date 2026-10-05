@@ -10,14 +10,14 @@ import 'google_privacy_dlp_v2_risk_analysis_job_config.dart';
 /// {@macro pulumi_dlp_v2_dlp_job_args_doc}
 class DlpJobArgs {
   /// An inspection job scans a storage repository for InfoTypes.
-  final pulumi.Input<GooglePrivacyDlpV2InspectJobConfig>? inspectJob;
+  final pulumi.Input<GooglePrivacyDlpV2InspectJobConfig?>? inspectJob;
   /// The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-  final pulumi.Input<String>? jobId;
+  final pulumi.Input<String?>? jobId;
   /// Deprecated. This field has no effect.
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// A risk analysis job calculates re-identification risk metrics for a BigQuery table.
-  final pulumi.Input<GooglePrivacyDlpV2RiskAnalysisJobConfig>? riskJob;
+  final pulumi.Input<GooglePrivacyDlpV2RiskAnalysisJobConfig?>? riskJob;
 
   /// Creates a new [DlpJobArgs].
   /// [inspectJob] An inspection job scans a storage repository for InfoTypes.

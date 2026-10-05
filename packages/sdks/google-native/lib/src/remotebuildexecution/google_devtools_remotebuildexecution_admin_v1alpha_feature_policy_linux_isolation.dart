@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// linux_isolation allows overriding the docker runtime used for containers started on Linux.
-enum GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation {
+enum GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation implements pulumi.PulumiEnum<String> {
   linuxIsolationUnspecified("LINUX_ISOLATION_UNSPECIFIED"),
   gvisor("GVISOR"),
   off("OFF");
 
   const GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation fromValue(String value) {

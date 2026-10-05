@@ -10,7 +10,7 @@ class GetExternalAccessRuleArgs {
   final pulumi.Input<String> externalAccessRuleId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> networkPolicyId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetExternalAccessRuleArgs].
   /// [externalAccessRuleId] Required.

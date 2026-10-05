@@ -8,19 +8,19 @@ import 'traffic_target.dart';
 /// The current state of the Service. Output only.
 class ServiceStatus {
   /// Similar to url, information on where the service is available on HTTP.
-  final pulumi.Input<Addressable>? address;
+  final pulumi.Input<Addressable?>? address;
   /// Conditions communicate information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready.
-  final pulumi.Input<List<GoogleCloudRunV1Condition>>? conditions;
+  final pulumi.Input<List<GoogleCloudRunV1Condition>?>? conditions;
   /// Name of the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
-  final pulumi.Input<String>? latestCreatedRevisionName;
+  final pulumi.Input<String?>? latestCreatedRevisionName;
   /// Name of the latest Revision from this Service's Configuration that has had its `Ready` condition become `True`.
-  final pulumi.Input<String>? latestReadyRevisionName;
+  final pulumi.Input<String?>? latestReadyRevisionName;
   /// Returns the generation last seen by the system. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
-  final pulumi.Input<int>? observedGeneration;
+  final pulumi.Input<int?>? observedGeneration;
   /// Holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
-  final pulumi.Input<List<TrafficTarget>>? traffic;
+  final pulumi.Input<List<TrafficTarget>?>? traffic;
   /// URL that will distribute traffic over the provided traffic targets. It generally has the form `https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app`
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [ServiceStatus].
   /// [address] Similar to url, information on where the service is available on HTTP.
@@ -58,7 +58,7 @@ class ServiceStatus {
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudRunV1Condition>(guardedValue, (value) => GoogleCloudRunV1Condition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       latestCreatedRevisionName: (() { final guardedValue = map['latestCreatedRevisionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       latestReadyRevisionName: (() { final guardedValue = map['latestReadyRevisionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       traffic: (() { final guardedValue = map['traffic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TrafficTarget>(guardedValue, (value) => TrafficTarget.fromMap((value as Map).cast<String, dynamic>()))); })(),
       url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

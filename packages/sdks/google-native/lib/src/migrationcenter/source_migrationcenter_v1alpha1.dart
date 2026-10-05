@@ -45,8 +45,34 @@ class SourceMigrationcenterV1alpha1 extends pulumi.CustomResource {
           'google-native:migrationcenter/v1alpha1:Source',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'sourceId']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    errorFrameCount = registerOutput<int>('errorFrameCount');
+    isManaged = registerOutput<bool>('isManaged');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    pendingFrameCount = registerOutput<int>('pendingFrameCount');
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    sourceId = registerOutput<String>('sourceId');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [SourceMigrationcenterV1alpha1] resource.
+  SourceMigrationcenterV1alpha1.reference(String urn)
+    : super(
+        'google-native:migrationcenter/v1alpha1:Source',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');

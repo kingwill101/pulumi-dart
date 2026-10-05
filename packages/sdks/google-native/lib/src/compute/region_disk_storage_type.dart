@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Deprecated] Storage type of the persistent disk.
-enum RegionDiskStorageType {
+enum RegionDiskStorageType implements pulumi.PulumiEnum<String> {
   hdd("HDD"),
   ssd("SSD");
 
   const RegionDiskStorageType(this.wireValue);
+  @override
   final String wireValue;
 
   static RegionDiskStorageType fromValue(String value) {

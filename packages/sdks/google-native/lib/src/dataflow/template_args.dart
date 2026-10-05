@@ -9,16 +9,16 @@ import 'runtime_environment.dart';
 /// {@macro pulumi_dataflow_v1b3_template_args_doc}
 class TemplateArgs {
   /// The runtime environment for the job.
-  final pulumi.Input<RuntimeEnvironment>? environment;
+  final pulumi.Input<RuntimeEnvironment?>? environment;
   /// A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
   final pulumi.Input<String> gcsPath;
   /// The job name to use for the created job.
   final pulumi.Input<String> jobName;
   /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The runtime parameters to pass to the job.
-  final pulumi.Input<Map<String, String>>? parameters;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? parameters;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [TemplateArgs].
   /// [environment] The runtime environment for the job.

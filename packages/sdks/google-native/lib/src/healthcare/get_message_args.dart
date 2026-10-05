@@ -11,8 +11,8 @@ class GetMessageArgs {
   final pulumi.Input<String> hl7V2StoreId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> messageId;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetMessageArgs].
   /// [datasetId] Required.

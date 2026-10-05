@@ -5,15 +5,15 @@ import 'diagnostic.dart';
 
 class PollingOptions {
   /// An array of diagnostics to be collected by Deployment Manager, these diagnostics will be displayed to the user.
-  final pulumi.Input<List<Diagnostic>>? diagnostics;
+  final pulumi.Input<List<Diagnostic>?>? diagnostics;
   /// JsonPath expression that determines if the request failed.
-  final pulumi.Input<String>? failCondition;
+  final pulumi.Input<String?>? failCondition;
   /// JsonPath expression that determines if the request is completed.
-  final pulumi.Input<String>? finishCondition;
+  final pulumi.Input<String?>? finishCondition;
   /// JsonPath expression that evaluates to string, it indicates where to poll.
-  final pulumi.Input<String>? pollingLink;
+  final pulumi.Input<String?>? pollingLink;
   /// JsonPath expression, after polling is completed, indicates where to fetch the resource.
-  final pulumi.Input<String>? targetLink;
+  final pulumi.Input<String?>? targetLink;
 
   /// Creates a new [PollingOptions].
   /// [diagnostics] An array of diagnostics to be collected by Deployment Manager, these diagnostics will be displayed to the user.

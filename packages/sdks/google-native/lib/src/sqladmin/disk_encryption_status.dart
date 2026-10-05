@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Disk encryption status for an instance.
 class DiskEncryptionStatus {
   /// This is always `sql#diskEncryptionStatus`.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// KMS key version used to encrypt the Cloud SQL instance resource
-  final pulumi.Input<String>? kmsKeyVersionName;
+  final pulumi.Input<String?>? kmsKeyVersionName;
 
   /// Creates a new [DiskEncryptionStatus].
   /// [kind] This is always `sql#diskEncryptionStatus`.

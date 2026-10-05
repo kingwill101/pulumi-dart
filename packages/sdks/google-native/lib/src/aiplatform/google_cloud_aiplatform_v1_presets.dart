@@ -7,9 +7,9 @@ import 'google_cloud_aiplatform_v1_presets_query.dart';
 /// Preset configuration for example-based explanations
 class GoogleCloudAiplatformV1Presets {
   /// The modality of the uploaded model, which automatically configures the distance measurement and feature normalization for the underlying example index and queries. If your model does not precisely fit one of these types, it is okay to choose the closest type.
-  final pulumi.Input<GoogleCloudAiplatformV1PresetsModality>? modality;
+  final pulumi.Input<GoogleCloudAiplatformV1PresetsModality?>? modality;
   /// Preset option controlling parameters for speed-precision trade-off when querying for examples. If omitted, defaults to `PRECISE`.
-  final pulumi.Input<GoogleCloudAiplatformV1PresetsQuery>? query;
+  final pulumi.Input<GoogleCloudAiplatformV1PresetsQuery?>? query;
 
   /// Creates a new [GoogleCloudAiplatformV1Presets].
   /// [modality] The modality of the uploaded model, which automatically configures the distance measurement and feature normalization for the underlying example index and queries. If your model does not precisely fit one of these types, it is okay to choose the closest type.

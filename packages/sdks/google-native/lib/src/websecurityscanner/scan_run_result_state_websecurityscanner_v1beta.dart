@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The result state of the ScanRun. This field is only available after the execution state reaches "FINISHED".
-enum ScanRunResultStateWebsecurityscannerV1beta {
+enum ScanRunResultStateWebsecurityscannerV1beta implements pulumi.PulumiEnum<String> {
   resultStateUnspecified("RESULT_STATE_UNSPECIFIED"),
   success("SUCCESS"),
   error("ERROR"),
   killed("KILLED");
 
   const ScanRunResultStateWebsecurityscannerV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static ScanRunResultStateWebsecurityscannerV1beta fromValue(String value) {

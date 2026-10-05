@@ -6,7 +6,7 @@ import 'object_id.dart';
 /// An X509Extension specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
 class X509Extension {
   /// Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
-  final pulumi.Input<bool>? critical;
+  final pulumi.Input<bool?>? critical;
   /// The OID for this X.509 extension.
   final pulumi.Input<ObjectId> objectId;
   /// The value of this X.509 extension.

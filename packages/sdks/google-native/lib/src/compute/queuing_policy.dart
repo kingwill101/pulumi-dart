@@ -6,9 +6,9 @@ import 'duration.dart';
 /// Queuing parameters for the requested deferred capacity.
 class QueuingPolicy {
   /// Relative deadline for waiting for capacity.
-  final pulumi.Input<Duration>? validUntilDuration;
+  final pulumi.Input<Duration?>? validUntilDuration;
   /// Absolute deadline for waiting for capacity in RFC3339 text format.
-  final pulumi.Input<String>? validUntilTime;
+  final pulumi.Input<String?>? validUntilTime;
 
   /// Creates a new [QueuingPolicy].
   /// [validUntilDuration] Relative deadline for waiting for capacity.

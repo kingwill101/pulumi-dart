@@ -40,11 +40,35 @@ class TlsInspectionPolicy extends pulumi.CustomResource {
           'google-native:networksecurity/v1:TlsInspectionPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'tlsInspectionPolicyId']).merge(options),
         ) {
     caPool = registerOutput<String>('caPool');
     createTime = registerOutput<String>('createTime');
-    customTlsFeatures = registerOutput<List<String>>('customTlsFeatures');
+    customTlsFeatures = registerOutput<List<String>>('customTlsFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String>('description');
+    excludePublicCaSet = registerOutput<bool>('excludePublicCaSet');
+    location = registerOutput<String>('location');
+    minTlsVersion = registerOutput<String>('minTlsVersion');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    tlsFeatureProfile = registerOutput<String>('tlsFeatureProfile');
+    tlsInspectionPolicyId = registerOutput<String>('tlsInspectionPolicyId');
+    trustConfig = registerOutput<String>('trustConfig');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [TlsInspectionPolicy] resource.
+  TlsInspectionPolicy.reference(String urn)
+    : super(
+        'google-native:networksecurity/v1:TlsInspectionPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    caPool = registerOutput<String>('caPool');
+    createTime = registerOutput<String>('createTime');
+    customTlsFeatures = registerOutput<List<String>>('customTlsFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String>('description');
     excludePublicCaSet = registerOutput<bool>('excludePublicCaSet');
     location = registerOutput<String>('location');

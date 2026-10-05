@@ -6,7 +6,7 @@ import 'role_predefined_role_gkehub_v1beta.dart';
 /// Role is the type for Kubernetes roles
 class RoleGkehubV1beta {
   /// predefined_role is the Kubernetes default role to use
-  final pulumi.Input<RolePredefinedRoleGkehubV1beta>? predefinedRole;
+  final pulumi.Input<RolePredefinedRoleGkehubV1beta?>? predefinedRole;
 
   /// Creates a new [RoleGkehubV1beta].
   /// [predefinedRole] predefined_role is the Kubernetes default role to use

@@ -12,43 +12,43 @@ import 'network_config_datafusion_v1beta1.dart';
 /// {@macro pulumi_datafusion_v1beta1_instance_datafusion_v1beta1_args_doc}
 class InstanceDatafusionV1beta1Args {
   /// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
-  final pulumi.Input<CryptoKeyConfigDatafusionV1beta1>? cryptoKeyConfig;
+  final pulumi.Input<CryptoKeyConfigDatafusionV1beta1?>? cryptoKeyConfig;
   /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
-  final pulumi.Input<String>? dataprocServiceAccount;
+  final pulumi.Input<String?>? dataprocServiceAccount;
   /// A description of this instance.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name for an instance.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Option to enable granular role-based access control.
-  final pulumi.Input<bool>? enableRbac;
+  final pulumi.Input<bool?>? enableRbac;
   /// Option to enable Stackdriver Logging.
-  final pulumi.Input<bool>? enableStackdriverLogging;
+  final pulumi.Input<bool?>? enableStackdriverLogging;
   /// Option to enable Stackdriver Monitoring.
-  final pulumi.Input<bool>? enableStackdriverMonitoring;
+  final pulumi.Input<bool?>? enableStackdriverMonitoring;
   /// Option to enable zone separation.
-  final pulumi.Input<bool>? enableZoneSeparation;
+  final pulumi.Input<bool?>? enableZoneSeparation;
   /// Option to enable and pass metadata for event publishing.
-  final pulumi.Input<EventPublishConfigDatafusionV1beta1>? eventPublishConfig;
+  final pulumi.Input<EventPublishConfigDatafusionV1beta1?>? eventPublishConfig;
   /// Required. The name of the instance to create.
   final pulumi.Input<String> instanceId;
   /// The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Network configuration options. These are required when a private Data Fusion instance is to be created.
-  final pulumi.Input<NetworkConfigDatafusionV1beta1>? networkConfig;
+  final pulumi.Input<NetworkConfigDatafusionV1beta1?>? networkConfig;
   /// Map of additional options used to configure the behavior of Data Fusion instance.
-  final pulumi.Input<Map<String, String>>? options;
+  final pulumi.Input<Map<String, String>?>? options;
   /// Optional. Current patch revision of the Data Fusion.
-  final pulumi.Input<String>? patchRevision;
+  final pulumi.Input<String?>? patchRevision;
   /// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
-  final pulumi.Input<bool>? privateInstance;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<bool?>? privateInstance;
+  final pulumi.Input<String?>? project;
   /// Instance type.
   final pulumi.Input<InstanceTypeDatafusionV1beta1> type;
   /// Current version of Data Fusion.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [InstanceDatafusionV1beta1Args].
   /// [cryptoKeyConfig] The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.

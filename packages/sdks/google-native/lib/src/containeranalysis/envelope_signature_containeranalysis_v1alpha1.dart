@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A DSSE signature
 class EnvelopeSignatureContaineranalysisV1alpha1 {
   /// A reference id to the key being used for signing
-  final pulumi.Input<String>? keyid;
+  final pulumi.Input<String?>? keyid;
   /// The signature itself
-  final pulumi.Input<String>? sig;
+  final pulumi.Input<String?>? sig;
 
   /// Creates a new [EnvelopeSignatureContaineranalysisV1alpha1].
   /// [keyid] A reference id to the key being used for signing

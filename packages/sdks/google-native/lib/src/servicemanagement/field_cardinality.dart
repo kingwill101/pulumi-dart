@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The field cardinality.
-enum FieldCardinality {
+enum FieldCardinality implements pulumi.PulumiEnum<String> {
   cardinalityUnknown("CARDINALITY_UNKNOWN"),
   cardinalityOptional("CARDINALITY_OPTIONAL"),
   cardinalityRequired("CARDINALITY_REQUIRED"),
   cardinalityRepeated("CARDINALITY_REPEATED");
 
   const FieldCardinality(this.wireValue);
+  @override
   final String wireValue;
 
   static FieldCardinality fromValue(String value) {

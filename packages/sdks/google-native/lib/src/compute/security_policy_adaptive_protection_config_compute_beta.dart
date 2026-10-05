@@ -6,9 +6,9 @@ import 'security_policy_adaptive_protection_config_layer7_ddos_defense_config_co
 
 /// Configuration options for Cloud Armor Adaptive Protection (CAAP).
 class SecurityPolicyAdaptiveProtectionConfigComputeBeta {
-  final pulumi.Input<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigComputeBeta>? autoDeployConfig;
+  final pulumi.Input<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigComputeBeta?>? autoDeployConfig;
   /// If set to true, enables Cloud Armor Machine Learning.
-  final pulumi.Input<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta>? layer7DdosDefenseConfig;
+  final pulumi.Input<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta?>? layer7DdosDefenseConfig;
 
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfigComputeBeta].
   /// [autoDeployConfig] Optional.

@@ -9,9 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMigratingVmVmmigrationV1alpha1Args {
   final pulumi.Input<String> location;
   final pulumi.Input<String> migratingVmId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> sourceId;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetMigratingVmVmmigrationV1alpha1Args].
   /// [location] Required.

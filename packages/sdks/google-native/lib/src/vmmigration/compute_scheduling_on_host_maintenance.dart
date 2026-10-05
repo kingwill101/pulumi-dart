@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// How the instance should behave when the host machine undergoes maintenance that may temporarily impact instance performance.
-enum ComputeSchedulingOnHostMaintenance {
+enum ComputeSchedulingOnHostMaintenance implements pulumi.PulumiEnum<String> {
   onHostMaintenanceUnspecified("ON_HOST_MAINTENANCE_UNSPECIFIED"),
   terminate("TERMINATE"),
   migrate("MIGRATE");
 
   const ComputeSchedulingOnHostMaintenance(this.wireValue);
+  @override
   final String wireValue;
 
   static ComputeSchedulingOnHostMaintenance fromValue(String value) {

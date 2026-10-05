@@ -10,11 +10,11 @@ import 'ssl_settings_appengine_v1beta.dart';
 class DomainMappingAppengineV1betaArgs {
   final pulumi.Input<String> appId;
   /// Relative name of the domain serving the application. Example: example.com.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
-  final pulumi.Input<String>? overrideStrategy;
+  final pulumi.Input<String?>? overrideStrategy;
   /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
-  final pulumi.Input<SslSettingsAppengineV1beta>? sslSettings;
+  final pulumi.Input<SslSettingsAppengineV1beta?>? sslSettings;
 
   /// Creates a new [DomainMappingAppengineV1betaArgs].
   /// [appId] Required.

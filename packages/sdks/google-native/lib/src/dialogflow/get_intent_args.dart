@@ -8,10 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dialogflow_v2_get_intent_args_doc}
 class GetIntentArgs {
   final pulumi.Input<String> intentId;
-  final pulumi.Input<String>? intentView;
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? intentView;
+  final pulumi.Input<String?>? languageCode;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetIntentArgs].
   /// [intentId] Required.

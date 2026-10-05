@@ -6,7 +6,7 @@ import 'enterprise_crm_eventbus_proto_property_entry.dart';
 /// LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus.
 class EnterpriseCrmEventbusProtoEventBusProperties {
   /// An unordered list of property entries.
-  final pulumi.Input<List<EnterpriseCrmEventbusProtoPropertyEntry>>? properties;
+  final pulumi.Input<List<EnterpriseCrmEventbusProtoPropertyEntry>?>? properties;
 
   /// Creates a new [EnterpriseCrmEventbusProtoEventBusProperties].
   /// [properties] An unordered list of property entries.

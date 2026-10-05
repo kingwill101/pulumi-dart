@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The source syntax.
-enum TypeSyntax {
+enum TypeSyntax implements pulumi.PulumiEnum<String> {
   syntaxProto2("SYNTAX_PROTO2"),
   syntaxProto3("SYNTAX_PROTO3"),
   syntaxEditions("SYNTAX_EDITIONS");
 
   const TypeSyntax(this.wireValue);
+  @override
   final String wireValue;
 
   static TypeSyntax fromValue(String value) {

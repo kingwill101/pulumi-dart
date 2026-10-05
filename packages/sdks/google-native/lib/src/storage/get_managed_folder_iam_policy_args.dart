@@ -9,8 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagedFolderIamPolicyArgs {
   final pulumi.Input<String> bucket;
   final pulumi.Input<String> managedFolder;
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? userProject;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? userProject;
 
   /// Creates a new [GetManagedFolderIamPolicyArgs].
   /// [bucket] Required.
@@ -37,7 +37,7 @@ class GetManagedFolderIamPolicyArgs {
     return GetManagedFolderIamPolicyArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       managedFolder: pulumi.Input.fromValue(map['managedFolder'] as String),
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       userProject: (() { final guardedValue = map['userProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

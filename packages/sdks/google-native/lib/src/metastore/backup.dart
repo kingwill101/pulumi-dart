@@ -38,7 +38,7 @@ class Backup extends pulumi.CustomResource {
           'google-native:metastore/v1:Backup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['backupId', 'location', 'project', 'serviceId']).merge(options),
         ) {
     backupId = registerOutput<String>('backupId');
     createTime = registerOutput<String>('createTime');
@@ -48,7 +48,30 @@ class Backup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    restoringServices = registerOutput<List<String>>('restoringServices');
+    restoringServices = registerOutput<List<String>>('restoringServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    serviceId = registerOutput<String>('serviceId');
+    serviceRevision = registerOutput<ServiceResponse>('serviceRevision', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Backup] resource.
+  Backup.reference(String urn)
+    : super(
+        'google-native:metastore/v1:Backup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backupId = registerOutput<String>('backupId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    endTime = registerOutput<String>('endTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    restoringServices = registerOutput<List<String>>('restoringServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     serviceId = registerOutput<String>('serviceId');
     serviceRevision = registerOutput<ServiceResponse>('serviceRevision', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');

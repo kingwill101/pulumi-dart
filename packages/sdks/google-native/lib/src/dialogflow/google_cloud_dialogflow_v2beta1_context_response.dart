@@ -31,7 +31,7 @@ class GoogleCloudDialogflowV2beta1ContextResponse {
 
   factory GoogleCloudDialogflowV2beta1ContextResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1ContextResponse(
-      lifespanCount: pulumi.Input.fromValue(map['lifespanCount'] as int),
+      lifespanCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lifespanCount'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       parameters: pulumi.Input.fromValue((map['parameters'] as Map).cast<String, String>()),
     );

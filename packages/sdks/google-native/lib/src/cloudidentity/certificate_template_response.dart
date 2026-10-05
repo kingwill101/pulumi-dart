@@ -26,8 +26,8 @@ class CertificateTemplateResponse {
 
   factory CertificateTemplateResponse.fromMap(Map<String, dynamic> map) {
     return CertificateTemplateResponse(
-      majorVersion: pulumi.Input.fromValue(map['majorVersion'] as int),
-      minorVersion: pulumi.Input.fromValue(map['minorVersion'] as int),
+      majorVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['majorVersion'])),
+      minorVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minorVersion'])),
     );
   }
 }

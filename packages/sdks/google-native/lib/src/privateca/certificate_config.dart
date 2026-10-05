@@ -8,7 +8,7 @@ import 'x509_parameters.dart';
 /// A CertificateConfig describes an X.509 certificate or CSR that is to be created, as an alternative to using ASN.1.
 class CertificateConfig {
   /// Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
-  final pulumi.Input<PublicKey>? publicKey;
+  final pulumi.Input<PublicKey?>? publicKey;
   /// Specifies some of the values in a certificate that are related to the subject.
   final pulumi.Input<SubjectConfig> subjectConfig;
   /// Describes how some of the technical X.509 fields in a certificate should be populated.

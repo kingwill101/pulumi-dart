@@ -10,7 +10,7 @@ class EntryArgs {
   final pulumi.Input<String> apiId;
   final pulumi.Input<String> keyvaluemapId;
   /// Resource URI that can be used to identify the scope of the key value map entries.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
   /// Data or payload that is being retrieved and associated with the unique key.
   final pulumi.Input<String> value;

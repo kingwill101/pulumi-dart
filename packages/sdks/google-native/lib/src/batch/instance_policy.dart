@@ -9,19 +9,19 @@ import 'instance_policy_provisioning_model.dart';
 /// InstancePolicy describes an instance type and resources attached to each VM created by this InstancePolicy.
 class InstancePolicy {
   /// The accelerators attached to each VM instance.
-  final pulumi.Input<List<Accelerator>>? accelerators;
+  final pulumi.Input<List<Accelerator>?>? accelerators;
   /// Boot disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted. Batch API now only supports booting from image.
-  final pulumi.Input<Disk>? bootDisk;
+  final pulumi.Input<Disk?>? bootDisk;
   /// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted. A non-boot disk is a disk that can be of a device with a file system or a raw storage drive that is not ready for data storage and accessing.
-  final pulumi.Input<List<AttachedDisk>>? disks;
+  final pulumi.Input<List<AttachedDisk>?>? disks;
   /// The Compute Engine machine type.
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.
-  final pulumi.Input<String>? minCpuPlatform;
+  final pulumi.Input<String?>? minCpuPlatform;
   /// The provisioning model.
-  final pulumi.Input<InstancePolicyProvisioningModel>? provisioningModel;
+  final pulumi.Input<InstancePolicyProvisioningModel?>? provisioningModel;
   /// Optional. If specified, VMs will consume only the specified reservation. If not specified (default), VMs will consume any applicable reservation.
-  final pulumi.Input<String>? reservation;
+  final pulumi.Input<String?>? reservation;
 
   /// Creates a new [InstancePolicy].
   /// [accelerators] The accelerators attached to each VM instance.

@@ -42,11 +42,33 @@ class Execution extends pulumi.CustomResource {
           'google-native:toolresults/v1beta3:Execution',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['historyId', 'project']).merge(options),
         ) {
     completionTime = registerOutput<TimestampResponse>('completionTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimestampResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTime = registerOutput<TimestampResponse>('creationTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimestampResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    dimensionDefinitions = registerOutput<List<Map<String, dynamic>>>('dimensionDefinitions');
+    dimensionDefinitions = registerOutput<List<Map<String, dynamic>>>('dimensionDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<Map<String, dynamic>>(); });
+    executionId = registerOutput<String>('executionId');
+    historyId = registerOutput<String>('historyId');
+    outcome = registerOutput<OutcomeResponse>('outcome', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutcomeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    specification = registerOutput<SpecificationResponse>('specification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpecificationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    testExecutionMatrixId = registerOutput<String>('testExecutionMatrixId');
+  }
+
+  /// Creates a typed reference to an existing [Execution] resource.
+  Execution.reference(String urn)
+    : super(
+        'google-native:toolresults/v1beta3:Execution',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    completionTime = registerOutput<TimestampResponse>('completionTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimestampResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTime = registerOutput<TimestampResponse>('creationTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimestampResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dimensionDefinitions = registerOutput<List<Map<String, dynamic>>>('dimensionDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<Map<String, dynamic>>(); });
     executionId = registerOutput<String>('executionId');
     historyId = registerOutput<String>('historyId');
     outcome = registerOutput<OutcomeResponse>('outcome', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OutcomeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

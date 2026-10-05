@@ -20,6 +20,17 @@ Future<GetBudgetResult> getBudget(
   return GetBudgetResult.fromMap(result);
 }
 
+pulumi.Output<GetBudgetResult> getBudgetOutput(
+  GetBudgetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:billingbudgets/v1:getBudget',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBudgetResult.fromMap);
+}
+
 /// Returns a budget. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console.
 /// [args] Arguments passed to this invoke. {@macro pulumi_billingbudgets_v1beta1_get_budget_billingbudgets_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetBudgetBillingbudgetsV1beta1Result> getBudgetBillingbudgetsV1beta1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBudgetBillingbudgetsV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetBudgetBillingbudgetsV1beta1Result> getBudgetBillingbudgetsV1beta1Output(
+  GetBudgetBillingbudgetsV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:billingbudgets/v1beta1:getBudget',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBudgetBillingbudgetsV1beta1Result.fromMap);
 }

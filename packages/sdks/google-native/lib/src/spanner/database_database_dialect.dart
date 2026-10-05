@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The dialect of the Cloud Spanner Database.
-enum DatabaseDatabaseDialect {
+enum DatabaseDatabaseDialect implements pulumi.PulumiEnum<String> {
   databaseDialectUnspecified("DATABASE_DIALECT_UNSPECIFIED"),
   googleStandardSql("GOOGLE_STANDARD_SQL"),
   postgresql("POSTGRESQL");
 
   const DatabaseDatabaseDialect(this.wireValue);
+  @override
   final String wireValue;
 
   static DatabaseDatabaseDialect fromValue(String value) {

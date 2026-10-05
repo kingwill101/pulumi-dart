@@ -26,10 +26,27 @@ class DestGroup extends pulumi.CustomResource {
           'google-native:iap/v1:DestGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'tunnelDestGroupId']).merge(options),
         ) {
-    cidrs = registerOutput<List<String>>('cidrs');
-    fqdns = registerOutput<List<String>>('fqdns');
+    cidrs = registerOutput<List<String>>('cidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    fqdns = registerOutput<List<String>>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    tunnelDestGroupId = registerOutput<String>('tunnelDestGroupId');
+  }
+
+  /// Creates a typed reference to an existing [DestGroup] resource.
+  DestGroup.reference(String urn)
+    : super(
+        'google-native:iap/v1:DestGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cidrs = registerOutput<List<String>>('cidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    fqdns = registerOutput<List<String>>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

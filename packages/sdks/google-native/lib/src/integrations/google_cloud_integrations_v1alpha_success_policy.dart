@@ -6,7 +6,7 @@ import 'google_cloud_integrations_v1alpha_success_policy_final_state.dart';
 /// Policy that dictates the behavior for the task after it completes successfully.
 class GoogleCloudIntegrationsV1alphaSuccessPolicy {
   /// State to which the execution snapshot status will be set if the task succeeds.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState>? finalState;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState?>? finalState;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaSuccessPolicy].
   /// [finalState] State to which the execution snapshot status will be set if the task succeeds.

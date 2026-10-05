@@ -43,8 +43,8 @@ class AutoscalingPolicyCustomMetricUtilizationResponse {
     return AutoscalingPolicyCustomMetricUtilizationResponse(
       filter: pulumi.Input.fromValue(map['filter'] as String),
       metric: pulumi.Input.fromValue(map['metric'] as String),
-      singleInstanceAssignment: pulumi.Input.fromValue(map['singleInstanceAssignment'] as double),
-      utilizationTarget: pulumi.Input.fromValue(map['utilizationTarget'] as double),
+      singleInstanceAssignment: pulumi.Input.fromValue((map['singleInstanceAssignment'] as num).toDouble()),
+      utilizationTarget: pulumi.Input.fromValue((map['utilizationTarget'] as num).toDouble()),
       utilizationTargetType: pulumi.Input.fromValue(map['utilizationTargetType'] as String),
     );
   }

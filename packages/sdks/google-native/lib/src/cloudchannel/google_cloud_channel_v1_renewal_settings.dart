@@ -7,13 +7,13 @@ import 'google_cloud_channel_v1_renewal_settings_payment_plan.dart';
 /// Renewal settings for renewable Offers.
 class GoogleCloudChannelV1RenewalSettings {
   /// If false, the plan will be completed at the end date.
-  final pulumi.Input<bool>? enableRenewal;
+  final pulumi.Input<bool?>? enableRenewal;
   /// Describes how frequently the reseller will be billed, such as once per month.
-  final pulumi.Input<GoogleCloudChannelV1Period>? paymentCycle;
+  final pulumi.Input<GoogleCloudChannelV1Period?>? paymentCycle;
   /// Describes how a reseller will be billed.
-  final pulumi.Input<GoogleCloudChannelV1RenewalSettingsPaymentPlan>? paymentPlan;
+  final pulumi.Input<GoogleCloudChannelV1RenewalSettingsPaymentPlan?>? paymentPlan;
   /// If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time.
-  final pulumi.Input<bool>? resizeUnitCount;
+  final pulumi.Input<bool?>? resizeUnitCount;
 
   /// Creates a new [GoogleCloudChannelV1RenewalSettings].
   /// [enableRenewal] If false, the plan will be completed at the end date.

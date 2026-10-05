@@ -26,8 +26,8 @@ class BackendServiceCdnPolicyNegativeCachingPolicyResponseComputeV1 {
 
   factory BackendServiceCdnPolicyNegativeCachingPolicyResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return BackendServiceCdnPolicyNegativeCachingPolicyResponseComputeV1(
-      code: pulumi.Input.fromValue(map['code'] as int),
-      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      code: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['code'])),
+      ttl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ttl'])),
     );
   }
 }

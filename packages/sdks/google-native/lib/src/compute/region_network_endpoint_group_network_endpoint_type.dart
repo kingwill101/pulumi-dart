@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
-enum RegionNetworkEndpointGroupNetworkEndpointType {
+enum RegionNetworkEndpointGroupNetworkEndpointType implements pulumi.PulumiEnum<String> {
   gceVmIp("GCE_VM_IP"),
   gceVmIpPort("GCE_VM_IP_PORT"),
   internetFqdnPort("INTERNET_FQDN_PORT"),
@@ -9,6 +11,7 @@ enum RegionNetworkEndpointGroupNetworkEndpointType {
   serverless("SERVERLESS");
 
   const RegionNetworkEndpointGroupNetworkEndpointType(this.wireValue);
+  @override
   final String wireValue;
 
   static RegionNetworkEndpointGroupNetworkEndpointType fromValue(String value) {

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apigee_v1_instance_attachment_args_doc}
 class InstanceAttachmentArgs {
   /// ID of the attached environment.
-  final pulumi.Input<String>? environment;
+  final pulumi.Input<String?>? environment;
   final pulumi.Input<String> instanceId;
   final pulumi.Input<String> organizationId;
 

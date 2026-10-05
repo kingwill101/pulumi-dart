@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the action responsible for data validation operations.
 class GoogleCloudContentwarehouseV1DataValidationAction {
   /// Map of (K, V) -&gt; (field, string condition to be evaluated on the field) E.g., ("age", "age &gt; 18 && age &lt; 60") entry triggers validation of field age with the given condition. Map entries will be ANDed during validation.
-  final pulumi.Input<Map<String, String>>? conditions;
+  final pulumi.Input<Map<String, String>?>? conditions;
 
   /// Creates a new [GoogleCloudContentwarehouseV1DataValidationAction].
   /// [conditions] Map of (K, V) -&gt; (field, string condition to be evaluated on the field) E.g., ("age", "age &gt; 18 && age &lt; 60") entry triggers validation of field age with the given condition. Map entries will be ANDed during validation.

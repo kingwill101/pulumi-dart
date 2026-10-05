@@ -14,33 +14,33 @@ import 'vm_image_notebooks_v2.dart';
 /// The definition of how to configure a VM instance outside of Resources and Identity.
 class GceSetup {
   /// Optional. The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list). Currently supports only one accelerator configuration.
-  final pulumi.Input<List<AcceleratorConfigNotebooksV2>>? acceleratorConfigs;
+  final pulumi.Input<List<AcceleratorConfigNotebooksV2>?>? acceleratorConfigs;
   /// Optional. The boot disk for the VM.
-  final pulumi.Input<BootDisk>? bootDisk;
+  final pulumi.Input<BootDisk?>? bootDisk;
   /// Optional. Use a container image to start the notebook instance.
-  final pulumi.Input<ContainerImageNotebooksV2>? containerImage;
+  final pulumi.Input<ContainerImageNotebooksV2?>? containerImage;
   /// Optional. Data disks attached to the VM instance. Currently supports only one data disk.
-  final pulumi.Input<List<DataDisk>>? dataDisks;
+  final pulumi.Input<List<DataDisk>?>? dataDisks;
   /// Optional. If true, no external IP will be assigned to this VM instance.
-  final pulumi.Input<bool>? disablePublicIp;
+  final pulumi.Input<bool?>? disablePublicIp;
   /// Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
-  final pulumi.Input<bool>? enableIpForwarding;
+  final pulumi.Input<bool?>? enableIpForwarding;
   /// Optional. Configuration for GPU drivers.
-  final pulumi.Input<GPUDriverConfig>? gpuDriverConfig;
+  final pulumi.Input<GPUDriverConfig?>? gpuDriverConfig;
   /// Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// Optional. Custom metadata to apply to this instance.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// Optional. The network interfaces for the VM. Supports only one interface.
-  final pulumi.Input<List<NetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterface>?>? networkInterfaces;
   /// Optional. The service account that serves as an identity for the VM instance. Currently supports only one service account.
-  final pulumi.Input<List<ServiceAccount>>? serviceAccounts;
+  final pulumi.Input<List<ServiceAccount>?>? serviceAccounts;
   /// Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
-  final pulumi.Input<ShieldedInstanceConfigNotebooksV2>? shieldedInstanceConfig;
+  final pulumi.Input<ShieldedInstanceConfigNotebooksV2?>? shieldedInstanceConfig;
   /// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// Optional. Use a Compute Engine VM image to start the notebook instance.
-  final pulumi.Input<VmImageNotebooksV2>? vmImage;
+  final pulumi.Input<VmImageNotebooksV2?>? vmImage;
 
   /// Creates a new [GceSetup].
   /// [acceleratorConfigs] Optional. The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list). Currently supports only one accelerator configuration.

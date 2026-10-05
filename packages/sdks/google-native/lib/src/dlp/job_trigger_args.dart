@@ -11,22 +11,22 @@ import 'job_trigger_status.dart';
 /// {@macro pulumi_dlp_v2_job_trigger_args_doc}
 class JobTriggerArgs {
   /// User provided description (max 256 chars)
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name (max 100 chars)
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// For inspect jobs, a snapshot of the configuration.
-  final pulumi.Input<GooglePrivacyDlpV2InspectJobConfig>? inspectJob;
+  final pulumi.Input<GooglePrivacyDlpV2InspectJobConfig?>? inspectJob;
   /// Deprecated. This field has no effect.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// A status for this trigger.
   final pulumi.Input<JobTriggerStatus> status;
   /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-  final pulumi.Input<String>? triggerId;
+  final pulumi.Input<String?>? triggerId;
   /// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
-  final pulumi.Input<List<GooglePrivacyDlpV2Trigger>>? triggers;
+  final pulumi.Input<List<GooglePrivacyDlpV2Trigger>?>? triggers;
 
   /// Creates a new [JobTriggerArgs].
   /// [description] User provided description (max 256 chars)

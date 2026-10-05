@@ -9,13 +9,13 @@ import 'ospolicy_resource_repository_resource_zypper_repository_osconfig_v1alpha
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResourceOsconfigV1alpha {
   /// An Apt Repository.
-  final pulumi.Input<OSPolicyResourceRepositoryResourceAptRepositoryOsconfigV1alpha>? apt;
+  final pulumi.Input<OSPolicyResourceRepositoryResourceAptRepositoryOsconfigV1alpha?>? apt;
   /// A Goo Repository.
-  final pulumi.Input<OSPolicyResourceRepositoryResourceGooRepositoryOsconfigV1alpha>? goo;
+  final pulumi.Input<OSPolicyResourceRepositoryResourceGooRepositoryOsconfigV1alpha?>? goo;
   /// A Yum Repository.
-  final pulumi.Input<OSPolicyResourceRepositoryResourceYumRepositoryOsconfigV1alpha>? yum;
+  final pulumi.Input<OSPolicyResourceRepositoryResourceYumRepositoryOsconfigV1alpha?>? yum;
   /// A Zypper Repository.
-  final pulumi.Input<OSPolicyResourceRepositoryResourceZypperRepositoryOsconfigV1alpha>? zypper;
+  final pulumi.Input<OSPolicyResourceRepositoryResourceZypperRepositoryOsconfigV1alpha?>? zypper;
 
   /// Creates a new [OSPolicyResourceRepositoryResourceOsconfigV1alpha].
   /// [apt] An Apt Repository.

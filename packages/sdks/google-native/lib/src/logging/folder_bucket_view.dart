@@ -32,8 +32,28 @@ class FolderBucketView extends pulumi.CustomResource {
           'google-native:logging/v2:FolderBucketView',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['bucketId', 'folderId', 'location', 'viewId']).merge(options),
         ) {
+    bucketId = registerOutput<String>('bucketId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    filter = registerOutput<String>('filter');
+    folderId = registerOutput<String>('folderId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    updateTime = registerOutput<String>('updateTime');
+    viewId = registerOutput<String>('viewId');
+  }
+
+  /// Creates a typed reference to an existing [FolderBucketView] resource.
+  FolderBucketView.reference(String urn)
+    : super(
+        'google-native:logging/v2:FolderBucketView',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucketId = registerOutput<String>('bucketId');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');

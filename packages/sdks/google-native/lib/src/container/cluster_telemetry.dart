@@ -6,7 +6,7 @@ import 'cluster_telemetry_type.dart';
 /// Telemetry integration for the cluster.
 class ClusterTelemetry {
   /// Type of the integration.
-  final pulumi.Input<ClusterTelemetryType>? type;
+  final pulumi.Input<ClusterTelemetryType?>? type;
 
   /// Creates a new [ClusterTelemetry].
   /// [type] Type of the integration.

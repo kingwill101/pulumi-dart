@@ -25,8 +25,8 @@ class SecurityPolicyRuleRateLimitOptionsThresholdResponse {
 
   factory SecurityPolicyRuleRateLimitOptionsThresholdResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleRateLimitOptionsThresholdResponse(
-      count: pulumi.Input.fromValue(map['count'] as int),
-      intervalSec: pulumi.Input.fromValue(map['intervalSec'] as int),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
+      intervalSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['intervalSec'])),
     );
   }
 }

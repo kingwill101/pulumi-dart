@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Location of the source manifest in Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 class StorageSourceManifest {
   /// Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
-  final pulumi.Input<String>? generation;
+  final pulumi.Input<String?>? generation;
   /// Cloud Storage object containing the source manifest. This object must be a JSON file.
-  final pulumi.Input<String>? object_;
+  final pulumi.Input<String?>? object_;
 
   /// Creates a new [StorageSourceManifest].
   /// [bucket] Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).

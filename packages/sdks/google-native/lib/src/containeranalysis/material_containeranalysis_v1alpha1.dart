@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Material is a material used in the generation of the provenance
 class MaterialContaineranalysisV1alpha1 {
   /// digest is a map from a hash algorithm (e.g. sha256) to the value in the material
-  final pulumi.Input<Map<String, String>>? digest;
+  final pulumi.Input<Map<String, String>?>? digest;
   /// uri is the uri of the material
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [MaterialContaineranalysisV1alpha1].
   /// [digest] digest is a map from a hash algorithm (e.g. sha256) to the value in the material

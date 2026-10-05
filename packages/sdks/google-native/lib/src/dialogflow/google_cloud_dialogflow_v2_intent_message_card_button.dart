@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contains information about a button.
 class GoogleCloudDialogflowV2IntentMessageCardButton {
   /// Optional. The text to send back to the Dialogflow API or a URI to open.
-  final pulumi.Input<String>? postback;
+  final pulumi.Input<String?>? postback;
   /// Optional. The text to show on the button.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageCardButton].
   /// [postback] Optional. The text to send back to the Dialogflow API or a URI to open.

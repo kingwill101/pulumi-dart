@@ -11,7 +11,7 @@ class GetFeatureStoreFeatureAiplatformV1beta1Args {
   final pulumi.Input<String> featureId;
   final pulumi.Input<String> featurestoreId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetFeatureStoreFeatureAiplatformV1beta1Args].
   /// [entityTypeId] Required.

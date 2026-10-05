@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRouteArgs {
   final pulumi.Input<String> location;
   final pulumi.Input<String> privateConnectionId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> routeId;
 
   /// Creates a new [GetRouteArgs].

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Header details for a given header to be added to Endpoint.
 class Header {
   /// Key of Header.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Value of Header.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [Header].
   /// [key] Key of Header.

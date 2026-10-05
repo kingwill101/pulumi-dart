@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. A standard set of metrics is collected unless metricOverrides are specified for the metric source (see Custom metrics (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics) for more information).
-enum MetricMetricSource {
+enum MetricMetricSource implements pulumi.PulumiEnum<String> {
   metricSourceUnspecified("METRIC_SOURCE_UNSPECIFIED"),
   monitoringAgentDefaults("MONITORING_AGENT_DEFAULTS"),
   hdfs("HDFS"),
@@ -11,6 +13,7 @@ enum MetricMetricSource {
   flink("FLINK");
 
   const MetricMetricSource(this.wireValue);
+  @override
   final String wireValue;
 
   static MetricMetricSource fromValue(String value) {

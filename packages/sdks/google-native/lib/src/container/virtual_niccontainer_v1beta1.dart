@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration of gVNIC feature.
 class VirtualNICContainerV1beta1 {
   /// Whether gVNIC features are enabled in the node pool.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [VirtualNICContainerV1beta1].
   /// [enabled] Whether gVNIC features are enabled in the node pool.

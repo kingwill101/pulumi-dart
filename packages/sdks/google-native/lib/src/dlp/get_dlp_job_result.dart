@@ -9,29 +9,29 @@ import 'google_privacy_dlp_v2_inspect_data_source_details_response.dart';
 /// Result data returned by getDlpJob.
 class GetDlpJobResult {
   /// Events that should occur after the job has completed.
-  final List<GooglePrivacyDlpV2ActionDetailsResponse> actionDetails;
+  final List<GooglePrivacyDlpV2ActionDetailsResponse>? actionDetails;
   /// Time when the job was created.
-  final String createTime;
+  final String? createTime;
   /// Time when the job finished.
-  final String endTime;
+  final String? endTime;
   /// A stream of errors encountered running the job.
-  final List<GooglePrivacyDlpV2ErrorResponse> errors;
+  final List<GooglePrivacyDlpV2ErrorResponse>? errors;
   /// Results from inspecting a data source.
-  final GooglePrivacyDlpV2InspectDataSourceDetailsResponse inspectDetails;
+  final GooglePrivacyDlpV2InspectDataSourceDetailsResponse? inspectDetails;
   /// If created by a job trigger, the resource name of the trigger that instantiated the job.
-  final String jobTriggerName;
+  final String? jobTriggerName;
   /// Time when the job was last modified by the system.
-  final String lastModified;
+  final String? lastModified;
   /// The server-assigned name.
-  final String name;
+  final String? name;
   /// Results from analyzing risk of a data source.
-  final GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse riskDetails;
+  final GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse? riskDetails;
   /// Time when the job started.
-  final String startTime;
+  final String? startTime;
   /// State of a job.
-  final String state;
+  final String? state;
   /// The type of job.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetDlpJobResult].
   /// [actionDetails] Events that should occur after the job has completed.
@@ -47,51 +47,51 @@ class GetDlpJobResult {
   /// [state] State of a job.
   /// [type] The type of job.
   const GetDlpJobResult({
-    required this.actionDetails,
-    required this.createTime,
-    required this.endTime,
-    required this.errors,
-    required this.inspectDetails,
-    required this.jobTriggerName,
-    required this.lastModified,
-    required this.name,
-    required this.riskDetails,
-    required this.startTime,
-    required this.state,
-    required this.type,
+    this.actionDetails,
+    this.createTime,
+    this.endTime,
+    this.errors,
+    this.inspectDetails,
+    this.jobTriggerName,
+    this.lastModified,
+    this.name,
+    this.riskDetails,
+    this.startTime,
+    this.state,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionDetails': pulumi.Input.encodeList<GooglePrivacyDlpV2ActionDetailsResponse, Map<String, dynamic>>(actionDetails, (value) => value.toMap()),
-      'createTime': createTime,
-      'endTime': endTime,
-      'errors': pulumi.Input.encodeList<GooglePrivacyDlpV2ErrorResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
-      'inspectDetails': inspectDetails.toMap(),
-      'jobTriggerName': jobTriggerName,
-      'lastModified': lastModified,
-      'name': name,
-      'riskDetails': riskDetails.toMap(),
-      'startTime': startTime,
-      'state': state,
-      'type': type,
+      'actionDetails': ?(() { final guardedValue = actionDetails; if (guardedValue == null) return null; return pulumi.Input.encodeList<GooglePrivacyDlpV2ActionDetailsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'createTime': ?createTime,
+      'endTime': ?endTime,
+      'errors': ?(() { final guardedValue = errors; if (guardedValue == null) return null; return pulumi.Input.encodeList<GooglePrivacyDlpV2ErrorResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'inspectDetails': ?inspectDetails?.toMap(),
+      'jobTriggerName': ?jobTriggerName,
+      'lastModified': ?lastModified,
+      'name': ?name,
+      'riskDetails': ?riskDetails?.toMap(),
+      'startTime': ?startTime,
+      'state': ?state,
+      'type': ?type,
     };
   }
 
   factory GetDlpJobResult.fromMap(Map<String, dynamic> map) {
     return GetDlpJobResult(
-      actionDetails: pulumi.Input.decodeList<GooglePrivacyDlpV2ActionDetailsResponse>(map['actionDetails']!, (value) => GooglePrivacyDlpV2ActionDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] as String,
-      endTime: map['endTime'] as String,
-      errors: pulumi.Input.decodeList<GooglePrivacyDlpV2ErrorResponse>(map['errors']!, (value) => GooglePrivacyDlpV2ErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      inspectDetails: GooglePrivacyDlpV2InspectDataSourceDetailsResponse.fromMap((map['inspectDetails']! as Map).cast<String, dynamic>()),
-      jobTriggerName: map['jobTriggerName'] as String,
-      lastModified: map['lastModified'] as String,
-      name: map['name'] as String,
-      riskDetails: GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse.fromMap((map['riskDetails']! as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] as String,
-      state: map['state'] as String,
-      type: map['type'] as String,
+      actionDetails: (() { final guardedValue = map['actionDetails']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GooglePrivacyDlpV2ActionDetailsResponse>(guardedValue, (value) => GooglePrivacyDlpV2ActionDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      errors: (() { final guardedValue = map['errors']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GooglePrivacyDlpV2ErrorResponse>(guardedValue, (value) => GooglePrivacyDlpV2ErrorResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      inspectDetails: (() { final guardedValue = map['inspectDetails']; if (guardedValue == null) return null; return GooglePrivacyDlpV2InspectDataSourceDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      jobTriggerName: (() { final guardedValue = map['jobTriggerName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastModified: (() { final guardedValue = map['lastModified']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      riskDetails: (() { final guardedValue = map['riskDetails']; if (guardedValue == null) return null; return GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

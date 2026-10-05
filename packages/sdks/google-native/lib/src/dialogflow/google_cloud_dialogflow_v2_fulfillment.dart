@@ -7,13 +7,13 @@ import 'google_cloud_dialogflow_v2_fulfillment_generic_web_service.dart';
 /// By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
 class GoogleCloudDialogflowV2Fulfillment {
   /// Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. Whether fulfillment is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Optional. The field defines whether the fulfillment is enabled for certain features.
-  final pulumi.Input<List<GoogleCloudDialogflowV2FulfillmentFeature>>? features;
+  final pulumi.Input<List<GoogleCloudDialogflowV2FulfillmentFeature>?>? features;
   /// Configuration for a generic web service.
-  final pulumi.Input<GoogleCloudDialogflowV2FulfillmentGenericWebService>? genericWebService;
+  final pulumi.Input<GoogleCloudDialogflowV2FulfillmentGenericWebService?>? genericWebService;
   /// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
   final pulumi.Input<String> name;
 

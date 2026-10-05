@@ -5,19 +5,19 @@ import 'rrset_routing_policy_dns_v1beta2.dart';
 
 /// A unit of data that is returned by the DNS servers.
 class ResourceRecordSetDnsV1beta2 {
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// For example, www.example.com.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a routing_policy (for dynamic resolution).
-  final pulumi.Input<RRSetRoutingPolicyDnsV1beta2>? routingPolicy;
+  final pulumi.Input<RRSetRoutingPolicyDnsV1beta2?>? routingPolicy;
   /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
-  final pulumi.Input<List<String>>? rrdatas;
+  final pulumi.Input<List<String>?>? rrdatas;
   /// As defined in RFC 4034 (section 3.2).
-  final pulumi.Input<List<String>>? signatureRrdatas;
+  final pulumi.Input<List<String>?>? signatureRrdatas;
   /// Number of seconds that this ResourceRecordSet can be cached by resolvers.
-  final pulumi.Input<int>? ttl;
+  final pulumi.Input<int?>? ttl;
   /// The identifier of a supported record type. See the list of Supported DNS record types.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ResourceRecordSetDnsV1beta2].
   /// [kind] Optional.
@@ -56,7 +56,7 @@ class ResourceRecordSetDnsV1beta2 {
       routingPolicy: (() { final guardedValue = map['routingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RRSetRoutingPolicyDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rrdatas: (() { final guardedValue = map['rrdatas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       signatureRrdatas: (() { final guardedValue = map['signatureRrdatas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

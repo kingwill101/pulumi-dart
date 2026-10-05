@@ -10,9 +10,9 @@ class EntityArgs {
   final pulumi.Input<String> connectionId;
   final pulumi.Input<String> entityTypeId;
   /// Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
-  final pulumi.Input<Map<String, String>>? fields;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? fields;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [EntityArgs].
   /// [connectionId] Required.

@@ -9,17 +9,17 @@ import 'config_management_policy_controller_gkehub_v1beta.dart';
 /// **Anthos Config Management**: Configuration for a single cluster. Intended to parallel the ConfigManagement CR.
 class ConfigManagementMembershipSpecGkehubV1beta {
   /// Binauthz conifguration for the cluster. Deprecated: This field will be ignored and should not be set.
-  final pulumi.Input<ConfigManagementBinauthzConfigGkehubV1beta>? binauthz;
+  final pulumi.Input<ConfigManagementBinauthzConfigGkehubV1beta?>? binauthz;
   /// The user-specified cluster name used by Config Sync cluster-name-selector annotation or ClusterSelector, for applying configs to only a subset of clusters. Omit this field if the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector. Set this field if a name different from the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector.
-  final pulumi.Input<String>? cluster;
+  final pulumi.Input<String?>? cluster;
   /// Config Sync configuration for the cluster.
-  final pulumi.Input<ConfigManagementConfigSyncGkehubV1beta>? configSync;
+  final pulumi.Input<ConfigManagementConfigSyncGkehubV1beta?>? configSync;
   /// Hierarchy Controller configuration for the cluster.
-  final pulumi.Input<ConfigManagementHierarchyControllerConfigGkehubV1beta>? hierarchyController;
+  final pulumi.Input<ConfigManagementHierarchyControllerConfigGkehubV1beta?>? hierarchyController;
   /// Policy Controller configuration for the cluster.
-  final pulumi.Input<ConfigManagementPolicyControllerGkehubV1beta>? policyController;
+  final pulumi.Input<ConfigManagementPolicyControllerGkehubV1beta?>? policyController;
   /// Version of ACM installed.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ConfigManagementMembershipSpecGkehubV1beta].
   /// [binauthz] Binauthz conifguration for the cluster. Deprecated: This field will be ignored and should not be set.

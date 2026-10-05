@@ -12,56 +12,56 @@ import 'user_metadata_response.dart';
 /// Result data returned by getInstance.
 class GetInstanceResult {
   /// Looker Instance Admin settings.
-  final AdminSettingsResponse adminSettings;
+  final AdminSettingsResponse? adminSettings;
   /// Network name in the consumer project. Format: `projects/{project}/global/networks/{network}`. Note that the consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
-  final String consumerNetwork;
+  final String? consumerNetwork;
   /// The time when the Looker instance provisioning was first requested.
-  final String createTime;
-  final CustomDomainResponse customDomain;
+  final String? createTime;
+  final CustomDomainResponse? customDomain;
   /// Maintenance denial period for this instance.
-  final DenyMaintenancePeriodResponse denyMaintenancePeriod;
+  final DenyMaintenancePeriodResponse? denyMaintenancePeriod;
   /// Public Egress IP (IPv4).
-  final String egressPublicIp;
+  final String? egressPublicIp;
   /// Encryption configuration (CMEK). Only set if CMEK has been enabled on the instance.
-  final EncryptionConfigResponse encryptionConfig;
+  final EncryptionConfigResponse? encryptionConfig;
   /// Private Ingress IP (IPv4).
-  final String ingressPrivateIp;
+  final String? ingressPrivateIp;
   /// Public Ingress IP (IPv4).
-  final String ingressPublicIp;
+  final String? ingressPublicIp;
   /// Last computed maintenance denial period for this instance.
-  final DenyMaintenancePeriodResponse lastDenyMaintenancePeriod;
+  final DenyMaintenancePeriodResponse? lastDenyMaintenancePeriod;
   /// Looker instance URI which can be used to access the Looker Instance UI.
-  final String lookerUri;
+  final String? lookerUri;
   /// The Looker version that the instance is using.
-  final String lookerVersion;
+  final String? lookerVersion;
   /// Maintenance schedule for this instance.
-  final MaintenanceScheduleResponse maintenanceSchedule;
+  final MaintenanceScheduleResponse? maintenanceSchedule;
   /// Maintenance window for this instance.
-  final MaintenanceWindowResponse maintenanceWindow;
+  final MaintenanceWindowResponse? maintenanceWindow;
   /// Format: `projects/{project}/locations/{location}/instances/{instance}`.
-  final String name;
+  final String? name;
   /// Looker instance OAuth login settings.
-  final OAuthConfigResponse oauthConfig;
+  final OAuthConfigResponse? oauthConfig;
   /// Platform edition.
-  final String platformEdition;
+  final String? platformEdition;
   /// Whether private IP is enabled on the Looker instance.
-  final bool privateIpEnabled;
+  final bool? privateIpEnabled;
   /// Whether public IP is enabled on the Looker instance.
-  final bool publicIpEnabled;
+  final bool? publicIpEnabled;
   /// Name of a reserved IP address range within the Instance.consumer_network, to be used for private services access connection. May or may not be specified in a create request.
-  final String reservedRange;
+  final String? reservedRange;
   /// The state of the instance.
-  final String state;
+  final String? state;
   /// The time when the Looker instance was last updated.
-  final String updateTime;
+  final String? updateTime;
   /// User metadata.
-  final UserMetadataResponse userMetadata;
+  final UserMetadataResponse? userMetadata;
 
   /// Creates a new [GetInstanceResult].
   /// [adminSettings] Looker Instance Admin settings.
   /// [consumerNetwork] Network name in the consumer project. Format: `projects/{project}/global/networks/{network}`. Note that the consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
   /// [createTime] The time when the Looker instance provisioning was first requested.
-  /// [customDomain] Required.
+  /// [customDomain] Optional.
   /// [denyMaintenancePeriod] Maintenance denial period for this instance.
   /// [egressPublicIp] Public Egress IP (IPv4).
   /// [encryptionConfig] Encryption configuration (CMEK). Only set if CMEK has been enabled on the instance.
@@ -82,84 +82,84 @@ class GetInstanceResult {
   /// [updateTime] The time when the Looker instance was last updated.
   /// [userMetadata] User metadata.
   const GetInstanceResult({
-    required this.adminSettings,
-    required this.consumerNetwork,
-    required this.createTime,
-    required this.customDomain,
-    required this.denyMaintenancePeriod,
-    required this.egressPublicIp,
-    required this.encryptionConfig,
-    required this.ingressPrivateIp,
-    required this.ingressPublicIp,
-    required this.lastDenyMaintenancePeriod,
-    required this.lookerUri,
-    required this.lookerVersion,
-    required this.maintenanceSchedule,
-    required this.maintenanceWindow,
-    required this.name,
-    required this.oauthConfig,
-    required this.platformEdition,
-    required this.privateIpEnabled,
-    required this.publicIpEnabled,
-    required this.reservedRange,
-    required this.state,
-    required this.updateTime,
-    required this.userMetadata,
+    this.adminSettings,
+    this.consumerNetwork,
+    this.createTime,
+    this.customDomain,
+    this.denyMaintenancePeriod,
+    this.egressPublicIp,
+    this.encryptionConfig,
+    this.ingressPrivateIp,
+    this.ingressPublicIp,
+    this.lastDenyMaintenancePeriod,
+    this.lookerUri,
+    this.lookerVersion,
+    this.maintenanceSchedule,
+    this.maintenanceWindow,
+    this.name,
+    this.oauthConfig,
+    this.platformEdition,
+    this.privateIpEnabled,
+    this.publicIpEnabled,
+    this.reservedRange,
+    this.state,
+    this.updateTime,
+    this.userMetadata,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adminSettings': adminSettings.toMap(),
-      'consumerNetwork': consumerNetwork,
-      'createTime': createTime,
-      'customDomain': customDomain.toMap(),
-      'denyMaintenancePeriod': denyMaintenancePeriod.toMap(),
-      'egressPublicIp': egressPublicIp,
-      'encryptionConfig': encryptionConfig.toMap(),
-      'ingressPrivateIp': ingressPrivateIp,
-      'ingressPublicIp': ingressPublicIp,
-      'lastDenyMaintenancePeriod': lastDenyMaintenancePeriod.toMap(),
-      'lookerUri': lookerUri,
-      'lookerVersion': lookerVersion,
-      'maintenanceSchedule': maintenanceSchedule.toMap(),
-      'maintenanceWindow': maintenanceWindow.toMap(),
-      'name': name,
-      'oauthConfig': oauthConfig.toMap(),
-      'platformEdition': platformEdition,
-      'privateIpEnabled': privateIpEnabled,
-      'publicIpEnabled': publicIpEnabled,
-      'reservedRange': reservedRange,
-      'state': state,
-      'updateTime': updateTime,
-      'userMetadata': userMetadata.toMap(),
+      'adminSettings': ?adminSettings?.toMap(),
+      'consumerNetwork': ?consumerNetwork,
+      'createTime': ?createTime,
+      'customDomain': ?customDomain?.toMap(),
+      'denyMaintenancePeriod': ?denyMaintenancePeriod?.toMap(),
+      'egressPublicIp': ?egressPublicIp,
+      'encryptionConfig': ?encryptionConfig?.toMap(),
+      'ingressPrivateIp': ?ingressPrivateIp,
+      'ingressPublicIp': ?ingressPublicIp,
+      'lastDenyMaintenancePeriod': ?lastDenyMaintenancePeriod?.toMap(),
+      'lookerUri': ?lookerUri,
+      'lookerVersion': ?lookerVersion,
+      'maintenanceSchedule': ?maintenanceSchedule?.toMap(),
+      'maintenanceWindow': ?maintenanceWindow?.toMap(),
+      'name': ?name,
+      'oauthConfig': ?oauthConfig?.toMap(),
+      'platformEdition': ?platformEdition,
+      'privateIpEnabled': ?privateIpEnabled,
+      'publicIpEnabled': ?publicIpEnabled,
+      'reservedRange': ?reservedRange,
+      'state': ?state,
+      'updateTime': ?updateTime,
+      'userMetadata': ?userMetadata?.toMap(),
     };
   }
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceResult(
-      adminSettings: AdminSettingsResponse.fromMap((map['adminSettings']! as Map).cast<String, dynamic>()),
-      consumerNetwork: map['consumerNetwork'] as String,
-      createTime: map['createTime'] as String,
-      customDomain: CustomDomainResponse.fromMap((map['customDomain']! as Map).cast<String, dynamic>()),
-      denyMaintenancePeriod: DenyMaintenancePeriodResponse.fromMap((map['denyMaintenancePeriod']! as Map).cast<String, dynamic>()),
-      egressPublicIp: map['egressPublicIp'] as String,
-      encryptionConfig: EncryptionConfigResponse.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>()),
-      ingressPrivateIp: map['ingressPrivateIp'] as String,
-      ingressPublicIp: map['ingressPublicIp'] as String,
-      lastDenyMaintenancePeriod: DenyMaintenancePeriodResponse.fromMap((map['lastDenyMaintenancePeriod']! as Map).cast<String, dynamic>()),
-      lookerUri: map['lookerUri'] as String,
-      lookerVersion: map['lookerVersion'] as String,
-      maintenanceSchedule: MaintenanceScheduleResponse.fromMap((map['maintenanceSchedule']! as Map).cast<String, dynamic>()),
-      maintenanceWindow: MaintenanceWindowResponse.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      oauthConfig: OAuthConfigResponse.fromMap((map['oauthConfig']! as Map).cast<String, dynamic>()),
-      platformEdition: map['platformEdition'] as String,
-      privateIpEnabled: map['privateIpEnabled'] as bool,
-      publicIpEnabled: map['publicIpEnabled'] as bool,
-      reservedRange: map['reservedRange'] as String,
-      state: map['state'] as String,
-      updateTime: map['updateTime'] as String,
-      userMetadata: UserMetadataResponse.fromMap((map['userMetadata']! as Map).cast<String, dynamic>()),
+      adminSettings: (() { final guardedValue = map['adminSettings']; if (guardedValue == null) return null; return AdminSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      consumerNetwork: (() { final guardedValue = map['consumerNetwork']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customDomain: (() { final guardedValue = map['customDomain']; if (guardedValue == null) return null; return CustomDomainResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      denyMaintenancePeriod: (() { final guardedValue = map['denyMaintenancePeriod']; if (guardedValue == null) return null; return DenyMaintenancePeriodResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      egressPublicIp: (() { final guardedValue = map['egressPublicIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      encryptionConfig: (() { final guardedValue = map['encryptionConfig']; if (guardedValue == null) return null; return EncryptionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      ingressPrivateIp: (() { final guardedValue = map['ingressPrivateIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ingressPublicIp: (() { final guardedValue = map['ingressPublicIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastDenyMaintenancePeriod: (() { final guardedValue = map['lastDenyMaintenancePeriod']; if (guardedValue == null) return null; return DenyMaintenancePeriodResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      lookerUri: (() { final guardedValue = map['lookerUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lookerVersion: (() { final guardedValue = map['lookerVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maintenanceSchedule: (() { final guardedValue = map['maintenanceSchedule']; if (guardedValue == null) return null; return MaintenanceScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return MaintenanceWindowResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      oauthConfig: (() { final guardedValue = map['oauthConfig']; if (guardedValue == null) return null; return OAuthConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      platformEdition: (() { final guardedValue = map['platformEdition']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateIpEnabled: (() { final guardedValue = map['privateIpEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      publicIpEnabled: (() { final guardedValue = map['publicIpEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      reservedRange: (() { final guardedValue = map['reservedRange']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userMetadata: (() { final guardedValue = map['userMetadata']; if (guardedValue == null) return null; return UserMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

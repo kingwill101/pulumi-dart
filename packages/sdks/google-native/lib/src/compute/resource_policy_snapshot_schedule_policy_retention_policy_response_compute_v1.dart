@@ -26,7 +26,7 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponseComputeV1 {
 
   factory ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponseComputeV1(
-      maxRetentionDays: pulumi.Input.fromValue(map['maxRetentionDays'] as int),
+      maxRetentionDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRetentionDays'])),
       onSourceDiskDelete: pulumi.Input.fromValue(map['onSourceDiskDelete'] as String),
     );
   }

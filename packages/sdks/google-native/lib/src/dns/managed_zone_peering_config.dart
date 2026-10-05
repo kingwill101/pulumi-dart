@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_zone_peering_config_target_network.dart';
 
 class ManagedZonePeeringConfig {
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The network with which to peer.
-  final pulumi.Input<ManagedZonePeeringConfigTargetNetwork>? targetNetwork;
+  final pulumi.Input<ManagedZonePeeringConfigTargetNetwork?>? targetNetwork;
 
   /// Creates a new [ManagedZonePeeringConfig].
   /// [kind] Optional.

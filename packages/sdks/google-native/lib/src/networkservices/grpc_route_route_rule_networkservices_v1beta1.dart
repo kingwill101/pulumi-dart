@@ -9,7 +9,7 @@ class GrpcRouteRouteRuleNetworkservicesV1beta1 {
   /// A detailed rule defining how to route traffic. This field is required.
   final pulumi.Input<GrpcRouteRouteActionNetworkservicesV1beta1> action;
   /// Optional. Matches define conditions used for matching the rule against incoming gRPC requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied. If no matches field is specified, this rule will unconditionally match traffic.
-  final pulumi.Input<List<GrpcRouteRouteMatchNetworkservicesV1beta1>>? matches;
+  final pulumi.Input<List<GrpcRouteRouteMatchNetworkservicesV1beta1>?>? matches;
 
   /// Creates a new [GrpcRouteRouteRuleNetworkservicesV1beta1].
   /// [action] A detailed rule defining how to route traffic. This field is required.

@@ -6,19 +6,19 @@ import 'invocation_config_response.dart';
 /// Result data returned by getWorkflowInvocation.
 class GetWorkflowInvocationResult {
   /// Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
-  final String compilationResult;
+  final String? compilationResult;
   /// Immutable. If left unset, a default InvocationConfig will be used.
-  final InvocationConfigResponse invocationConfig;
+  final InvocationConfigResponse? invocationConfig;
   /// This workflow invocation's timing details.
-  final IntervalResponse invocationTiming;
+  final IntervalResponse? invocationTiming;
   /// The workflow invocation's name.
-  final String name;
+  final String? name;
   /// The resolved compilation result that was used to create this invocation. Will be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
-  final String resolvedCompilationResult;
+  final String? resolvedCompilationResult;
   /// This workflow invocation's current state.
-  final String state;
+  final String? state;
   /// Immutable. The name of the workflow config to invoke. Must be in the format `projects/*/locations/*/repositories/*/workflowConfigs/*`.
-  final String workflowConfig;
+  final String? workflowConfig;
 
   /// Creates a new [GetWorkflowInvocationResult].
   /// [compilationResult] Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
@@ -29,36 +29,36 @@ class GetWorkflowInvocationResult {
   /// [state] This workflow invocation's current state.
   /// [workflowConfig] Immutable. The name of the workflow config to invoke. Must be in the format `projects/*/locations/*/repositories/*/workflowConfigs/*`.
   const GetWorkflowInvocationResult({
-    required this.compilationResult,
-    required this.invocationConfig,
-    required this.invocationTiming,
-    required this.name,
-    required this.resolvedCompilationResult,
-    required this.state,
-    required this.workflowConfig,
+    this.compilationResult,
+    this.invocationConfig,
+    this.invocationTiming,
+    this.name,
+    this.resolvedCompilationResult,
+    this.state,
+    this.workflowConfig,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compilationResult': compilationResult,
-      'invocationConfig': invocationConfig.toMap(),
-      'invocationTiming': invocationTiming.toMap(),
-      'name': name,
-      'resolvedCompilationResult': resolvedCompilationResult,
-      'state': state,
-      'workflowConfig': workflowConfig,
+      'compilationResult': ?compilationResult,
+      'invocationConfig': ?invocationConfig?.toMap(),
+      'invocationTiming': ?invocationTiming?.toMap(),
+      'name': ?name,
+      'resolvedCompilationResult': ?resolvedCompilationResult,
+      'state': ?state,
+      'workflowConfig': ?workflowConfig,
     };
   }
 
   factory GetWorkflowInvocationResult.fromMap(Map<String, dynamic> map) {
     return GetWorkflowInvocationResult(
-      compilationResult: map['compilationResult'] as String,
-      invocationConfig: InvocationConfigResponse.fromMap((map['invocationConfig']! as Map).cast<String, dynamic>()),
-      invocationTiming: IntervalResponse.fromMap((map['invocationTiming']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      resolvedCompilationResult: map['resolvedCompilationResult'] as String,
-      state: map['state'] as String,
-      workflowConfig: map['workflowConfig'] as String,
+      compilationResult: (() { final guardedValue = map['compilationResult']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      invocationConfig: (() { final guardedValue = map['invocationConfig']; if (guardedValue == null) return null; return InvocationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      invocationTiming: (() { final guardedValue = map['invocationTiming']; if (guardedValue == null) return null; return IntervalResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resolvedCompilationResult: (() { final guardedValue = map['resolvedCompilationResult']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      workflowConfig: (() { final guardedValue = map['workflowConfig']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

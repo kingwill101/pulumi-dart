@@ -7,17 +7,17 @@ import 'query_list_dataproc_v1beta2.dart';
 /// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
 class SparkSqlJobDataprocV1beta2 {
   /// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
-  final pulumi.Input<List<String>>? jarFileUris;
+  final pulumi.Input<List<String>?>? jarFileUris;
   /// Optional. The runtime log config for job execution.
-  final pulumi.Input<LoggingConfigDataprocV1beta2>? loggingConfig;
+  final pulumi.Input<LoggingConfigDataprocV1beta2?>? loggingConfig;
   /// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// The HCFS URI of the script that contains SQL queries.
-  final pulumi.Input<String>? queryFileUri;
+  final pulumi.Input<String?>? queryFileUri;
   /// A list of queries.
-  final pulumi.Input<QueryListDataprocV1beta2>? queryList;
+  final pulumi.Input<QueryListDataprocV1beta2?>? queryList;
   /// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
-  final pulumi.Input<Map<String, String>>? scriptVariables;
+  final pulumi.Input<Map<String, String>?>? scriptVariables;
 
   /// Creates a new [SparkSqlJobDataprocV1beta2].
   /// [jarFileUris] Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.

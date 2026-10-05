@@ -5,25 +5,25 @@ import 'google_cloud_aiplatform_v1_tensorboard_time_series_metadata_response.dar
 /// Result data returned by getTimeSeries.
 class GetTimeSeriesResult {
   /// Timestamp when this TensorboardTimeSeries was created.
-  final String createTime;
+  final String? createTime;
   /// Description of this TensorboardTimeSeries.
-  final String description;
+  final String? description;
   /// User provided name of this TensorboardTimeSeries. This value should be unique among all TensorboardTimeSeries resources belonging to the same TensorboardRun resource (parent resource).
-  final String displayName;
+  final String? displayName;
   /// Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final String etag;
+  final String? etag;
   /// Scalar, Tensor, or Blob metadata for this TensorboardTimeSeries.
-  final GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse metadata;
+  final GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse? metadata;
   /// Name of the TensorboardTimeSeries.
-  final String name;
+  final String? name;
   /// Data of the current plugin, with the size limited to 65KB.
-  final String pluginData;
+  final String? pluginData;
   /// Immutable. Name of the plugin this time series pertain to. Such as Scalar, Tensor, Blob
-  final String pluginName;
+  final String? pluginName;
   /// Timestamp when this TensorboardTimeSeries was last updated.
-  final String updateTime;
+  final String? updateTime;
   /// Immutable. Type of TensorboardTimeSeries value.
-  final String valueType;
+  final String? valueType;
 
   /// Creates a new [GetTimeSeriesResult].
   /// [createTime] Timestamp when this TensorboardTimeSeries was created.
@@ -37,45 +37,45 @@ class GetTimeSeriesResult {
   /// [updateTime] Timestamp when this TensorboardTimeSeries was last updated.
   /// [valueType] Immutable. Type of TensorboardTimeSeries value.
   const GetTimeSeriesResult({
-    required this.createTime,
-    required this.description,
-    required this.displayName,
-    required this.etag,
-    required this.metadata,
-    required this.name,
-    required this.pluginData,
-    required this.pluginName,
-    required this.updateTime,
-    required this.valueType,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.etag,
+    this.metadata,
+    this.name,
+    this.pluginData,
+    this.pluginName,
+    this.updateTime,
+    this.valueType,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
-      'etag': etag,
-      'metadata': metadata.toMap(),
-      'name': name,
-      'pluginData': pluginData,
-      'pluginName': pluginName,
-      'updateTime': updateTime,
-      'valueType': valueType,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'metadata': ?metadata?.toMap(),
+      'name': ?name,
+      'pluginData': ?pluginData,
+      'pluginName': ?pluginName,
+      'updateTime': ?updateTime,
+      'valueType': ?valueType,
     };
   }
 
   factory GetTimeSeriesResult.fromMap(Map<String, dynamic> map) {
     return GetTimeSeriesResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      etag: map['etag'] as String,
-      metadata: GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      pluginData: map['pluginData'] as String,
-      pluginName: map['pluginName'] as String,
-      updateTime: map['updateTime'] as String,
-      valueType: map['valueType'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pluginData: (() { final guardedValue = map['pluginData']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pluginName: (() { final guardedValue = map['pluginName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      valueType: (() { final guardedValue = map['valueType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

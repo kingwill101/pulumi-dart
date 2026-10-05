@@ -52,6 +52,17 @@ Future<GetBackupResult> getBackup(
   return GetBackupResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupResult> getBackupOutput(
+  GetBackupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1:getBackup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupResult.fromMap);
+}
+
 /// Gets information about a domain.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1_get_domain_args_doc}
 /// [options] Invoke options controlling this call.
@@ -66,6 +77,17 @@ Future<GetDomainResult> getDomain(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainResult.fromMap(result);
+}
+
+pulumi.Output<GetDomainResult> getDomainOutput(
+  GetDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1:getDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -84,6 +106,17 @@ Future<GetDomainBackupIamPolicyResult> getDomainBackupIamPolicy(
   return GetDomainBackupIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetDomainBackupIamPolicyResult> getDomainBackupIamPolicyOutput(
+  GetDomainBackupIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1:getDomainBackupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainBackupIamPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1_get_domain_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -98,6 +131,17 @@ Future<GetDomainIamPolicyResult> getDomainIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetDomainIamPolicyResult> getDomainIamPolicyOutput(
+  GetDomainIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1:getDomainIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainIamPolicyResult.fromMap);
 }
 
 /// Gets details of a single Peering.
@@ -116,6 +160,17 @@ Future<GetPeeringResult> getPeering(
   return GetPeeringResult.fromMap(result);
 }
 
+pulumi.Output<GetPeeringResult> getPeeringOutput(
+  GetPeeringArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1:getPeering',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPeeringResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1_get_peering_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -130,6 +185,17 @@ Future<GetPeeringIamPolicyResult> getPeeringIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPeeringIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetPeeringIamPolicyResult> getPeeringIamPolicyOutput(
+  GetPeeringIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1:getPeeringIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPeeringIamPolicyResult.fromMap);
 }
 
 /// Gets details of a single Backup.
@@ -148,6 +214,17 @@ Future<GetBackupManagedidentitiesV1alpha1Result> getBackupManagedidentitiesV1alp
   return GetBackupManagedidentitiesV1alpha1Result.fromMap(result);
 }
 
+pulumi.Output<GetBackupManagedidentitiesV1alpha1Result> getBackupManagedidentitiesV1alpha1Output(
+  GetBackupManagedidentitiesV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1alpha1:getBackup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupManagedidentitiesV1alpha1Result.fromMap);
+}
+
 /// Gets details of a single Domain.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1alpha1_get_domain_managedidentities_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -162,6 +239,17 @@ Future<GetDomainManagedidentitiesV1alpha1Result> getDomainManagedidentitiesV1alp
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainManagedidentitiesV1alpha1Result.fromMap(result);
+}
+
+pulumi.Output<GetDomainManagedidentitiesV1alpha1Result> getDomainManagedidentitiesV1alpha1Output(
+  GetDomainManagedidentitiesV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1alpha1:getDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainManagedidentitiesV1alpha1Result.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -180,6 +268,17 @@ Future<GetDomainBackupIamPolicyManagedidentitiesV1alpha1Result> getDomainBackupI
   return GetDomainBackupIamPolicyManagedidentitiesV1alpha1Result.fromMap(result);
 }
 
+pulumi.Output<GetDomainBackupIamPolicyManagedidentitiesV1alpha1Result> getDomainBackupIamPolicyManagedidentitiesV1alpha1Output(
+  GetDomainBackupIamPolicyManagedidentitiesV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1alpha1:getDomainBackupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainBackupIamPolicyManagedidentitiesV1alpha1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1alpha1_get_domain_iam_policy_managedidentities_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -194,6 +293,17 @@ Future<GetDomainIamPolicyManagedidentitiesV1alpha1Result> getDomainIamPolicyMana
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainIamPolicyManagedidentitiesV1alpha1Result.fromMap(result);
+}
+
+pulumi.Output<GetDomainIamPolicyManagedidentitiesV1alpha1Result> getDomainIamPolicyManagedidentitiesV1alpha1Output(
+  GetDomainIamPolicyManagedidentitiesV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1alpha1:getDomainIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainIamPolicyManagedidentitiesV1alpha1Result.fromMap);
 }
 
 /// Gets details of a single Peering.
@@ -212,6 +322,17 @@ Future<GetPeeringManagedidentitiesV1alpha1Result> getPeeringManagedidentitiesV1a
   return GetPeeringManagedidentitiesV1alpha1Result.fromMap(result);
 }
 
+pulumi.Output<GetPeeringManagedidentitiesV1alpha1Result> getPeeringManagedidentitiesV1alpha1Output(
+  GetPeeringManagedidentitiesV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1alpha1:getPeering',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPeeringManagedidentitiesV1alpha1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1alpha1_get_peering_iam_policy_managedidentities_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -226,6 +347,17 @@ Future<GetPeeringIamPolicyManagedidentitiesV1alpha1Result> getPeeringIamPolicyMa
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPeeringIamPolicyManagedidentitiesV1alpha1Result.fromMap(result);
+}
+
+pulumi.Output<GetPeeringIamPolicyManagedidentitiesV1alpha1Result> getPeeringIamPolicyManagedidentitiesV1alpha1Output(
+  GetPeeringIamPolicyManagedidentitiesV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1alpha1:getPeeringIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPeeringIamPolicyManagedidentitiesV1alpha1Result.fromMap);
 }
 
 /// Gets details of a single Backup.
@@ -244,6 +376,17 @@ Future<GetBackupManagedidentitiesV1beta1Result> getBackupManagedidentitiesV1beta
   return GetBackupManagedidentitiesV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetBackupManagedidentitiesV1beta1Result> getBackupManagedidentitiesV1beta1Output(
+  GetBackupManagedidentitiesV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1beta1:getBackup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupManagedidentitiesV1beta1Result.fromMap);
+}
+
 /// Gets information about a domain.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1beta1_get_domain_managedidentities_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -258,6 +401,17 @@ Future<GetDomainManagedidentitiesV1beta1Result> getDomainManagedidentitiesV1beta
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainManagedidentitiesV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetDomainManagedidentitiesV1beta1Result> getDomainManagedidentitiesV1beta1Output(
+  GetDomainManagedidentitiesV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1beta1:getDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainManagedidentitiesV1beta1Result.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -276,6 +430,17 @@ Future<GetDomainBackupIamPolicyManagedidentitiesV1beta1Result> getDomainBackupIa
   return GetDomainBackupIamPolicyManagedidentitiesV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetDomainBackupIamPolicyManagedidentitiesV1beta1Result> getDomainBackupIamPolicyManagedidentitiesV1beta1Output(
+  GetDomainBackupIamPolicyManagedidentitiesV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1beta1:getDomainBackupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainBackupIamPolicyManagedidentitiesV1beta1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1beta1_get_domain_iam_policy_managedidentities_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -290,6 +455,17 @@ Future<GetDomainIamPolicyManagedidentitiesV1beta1Result> getDomainIamPolicyManag
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainIamPolicyManagedidentitiesV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetDomainIamPolicyManagedidentitiesV1beta1Result> getDomainIamPolicyManagedidentitiesV1beta1Output(
+  GetDomainIamPolicyManagedidentitiesV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1beta1:getDomainIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainIamPolicyManagedidentitiesV1beta1Result.fromMap);
 }
 
 /// Gets details of a single Peering.
@@ -308,6 +484,17 @@ Future<GetPeeringManagedidentitiesV1beta1Result> getPeeringManagedidentitiesV1be
   return GetPeeringManagedidentitiesV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetPeeringManagedidentitiesV1beta1Result> getPeeringManagedidentitiesV1beta1Output(
+  GetPeeringManagedidentitiesV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1beta1:getPeering',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPeeringManagedidentitiesV1beta1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1beta1_get_peering_iam_policy_managedidentities_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -322,4 +509,15 @@ Future<GetPeeringIamPolicyManagedidentitiesV1beta1Result> getPeeringIamPolicyMan
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPeeringIamPolicyManagedidentitiesV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetPeeringIamPolicyManagedidentitiesV1beta1Result> getPeeringIamPolicyManagedidentitiesV1beta1Output(
+  GetPeeringIamPolicyManagedidentitiesV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:managedidentities/v1beta1:getPeeringIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPeeringIamPolicyManagedidentitiesV1beta1Result.fromMap);
 }

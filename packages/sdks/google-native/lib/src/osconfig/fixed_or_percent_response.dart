@@ -26,8 +26,8 @@ class FixedOrPercentResponse {
 
   factory FixedOrPercentResponse.fromMap(Map<String, dynamic> map) {
     return FixedOrPercentResponse(
-      fixed: pulumi.Input.fromValue(map['fixed'] as int),
-      percent: pulumi.Input.fromValue(map['percent'] as int),
+      fixed: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['fixed'])),
+      percent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['percent'])),
     );
   }
 }

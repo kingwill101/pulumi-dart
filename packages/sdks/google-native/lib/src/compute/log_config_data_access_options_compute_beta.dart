@@ -6,7 +6,7 @@ import 'log_config_data_access_options_log_mode_compute_beta.dart';
 /// This is deprecated and has no effect. Do not use.
 class LogConfigDataAccessOptionsComputeBeta {
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<LogConfigDataAccessOptionsLogModeComputeBeta>? logMode;
+  final pulumi.Input<LogConfigDataAccessOptionsLogModeComputeBeta?>? logMode;
 
   /// Creates a new [LogConfigDataAccessOptionsComputeBeta].
   /// [logMode] This is deprecated and has no effect. Do not use.

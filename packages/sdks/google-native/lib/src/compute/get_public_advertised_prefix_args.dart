@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_alpha_get_public_advertised_prefix_args_doc}
 class GetPublicAdvertisedPrefixArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> publicAdvertisedPrefix;
 
   /// Creates a new [GetPublicAdvertisedPrefixArgs].

@@ -42,12 +42,36 @@ class PrivateConnection extends pulumi.CustomResource {
           'google-native:datamigration/v1:PrivateConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'privateConnectionId', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     error = registerOutput<StatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateConnectionId = registerOutput<String>('privateConnectionId');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    skipValidation = registerOutput<bool?>('skipValidation');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    vpcPeeringConfig = registerOutput<VpcPeeringConfigResponse>('vpcPeeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VpcPeeringConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [PrivateConnection] resource.
+  PrivateConnection.reference(String urn)
+    : super(
+        'google-native:datamigration/v1:PrivateConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    error = registerOutput<StatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateConnectionId = registerOutput<String>('privateConnectionId');

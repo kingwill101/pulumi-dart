@@ -32,7 +32,7 @@ class GoogleCloudIntegrationsV1alphaFailurePolicyResponse {
   factory GoogleCloudIntegrationsV1alphaFailurePolicyResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaFailurePolicyResponse(
       intervalTime: pulumi.Input.fromValue(map['intervalTime'] as String),
-      maxRetries: pulumi.Input.fromValue(map['maxRetries'] as int),
+      maxRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRetries'])),
       retryStrategy: pulumi.Input.fromValue(map['retryStrategy'] as String),
     );
   }

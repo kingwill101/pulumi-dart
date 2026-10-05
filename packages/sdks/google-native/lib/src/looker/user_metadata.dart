@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata about users for a Looker instance.
 class UserMetadata {
   /// Optional. The number of additional developer users the instance owner has purchased.
-  final pulumi.Input<int>? additionalDeveloperUserCount;
+  final pulumi.Input<int?>? additionalDeveloperUserCount;
   /// Optional. The number of additional standard users the instance owner has purchased.
-  final pulumi.Input<int>? additionalStandardUserCount;
+  final pulumi.Input<int?>? additionalStandardUserCount;
   /// Optional. The number of additional viewer users the instance owner has purchased.
-  final pulumi.Input<int>? additionalViewerUserCount;
+  final pulumi.Input<int?>? additionalViewerUserCount;
 
   /// Creates a new [UserMetadata].
   /// [additionalDeveloperUserCount] Optional. The number of additional developer users the instance owner has purchased.
@@ -31,9 +31,9 @@ class UserMetadata {
 
   factory UserMetadata.fromMap(Map<String, dynamic> map) {
     return UserMetadata(
-      additionalDeveloperUserCount: (() { final guardedValue = map['additionalDeveloperUserCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      additionalStandardUserCount: (() { final guardedValue = map['additionalStandardUserCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      additionalViewerUserCount: (() { final guardedValue = map['additionalViewerUserCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      additionalDeveloperUserCount: (() { final guardedValue = map['additionalDeveloperUserCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      additionalStandardUserCount: (() { final guardedValue = map['additionalStandardUserCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      additionalViewerUserCount: (() { final guardedValue = map['additionalViewerUserCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

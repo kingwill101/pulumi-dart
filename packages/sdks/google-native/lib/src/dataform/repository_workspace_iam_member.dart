@@ -29,8 +29,25 @@ class RepositoryWorkspaceIamMember extends pulumi.CustomResource {
           'google-native:dataform/v1beta1:RepositoryWorkspaceIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
+    condition = registerOutput<Condition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Condition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [RepositoryWorkspaceIamMember] resource.
+  RepositoryWorkspaceIamMember.reference(String urn)
+    : super(
+        'google-native:dataform/v1beta1:RepositoryWorkspaceIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<Condition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Condition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');

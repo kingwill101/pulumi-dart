@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
 class HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1 {
   /// The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
-  final pulumi.Input<int>? httpStatus;
+  final pulumi.Input<int?>? httpStatus;
   /// The percentage of traffic which will be aborted. The value must be between [0, 100]
-  final pulumi.Input<int>? percentage;
+  final pulumi.Input<int?>? percentage;
 
   /// Creates a new [HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1].
   /// [httpStatus] The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
@@ -26,8 +26,8 @@ class HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1 {
 
   factory HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1(
-      httpStatus: (() { final guardedValue = map['httpStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      percentage: (() { final guardedValue = map['percentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      httpStatus: (() { final guardedValue = map['httpStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      percentage: (() { final guardedValue = map['percentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

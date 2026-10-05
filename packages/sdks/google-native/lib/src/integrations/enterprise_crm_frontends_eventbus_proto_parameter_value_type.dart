@@ -10,18 +10,18 @@ import 'enterprise_crm_frontends_eventbus_proto_string_parameter_array.dart';
 
 /// To support various types of parameter values. Next available id: 14
 class EnterpriseCrmFrontendsEventbusProtoParameterValueType {
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray>? booleanArray;
-  final pulumi.Input<bool>? booleanValue;
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray>? doubleArray;
-  final pulumi.Input<double>? doubleValue;
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoIntParameterArray>? intArray;
-  final pulumi.Input<String>? intValue;
-  final pulumi.Input<String>? jsonValue;
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoProtoParameterArray>? protoArray;
-  final pulumi.Input<Map<String, String>>? protoValue;
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter>? serializedObjectValue;
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoStringParameterArray>? stringArray;
-  final pulumi.Input<String>? stringValue;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray?>? booleanArray;
+  final pulumi.Input<bool?>? booleanValue;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray?>? doubleArray;
+  final pulumi.Input<double?>? doubleValue;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoIntParameterArray?>? intArray;
+  final pulumi.Input<String?>? intValue;
+  final pulumi.Input<String?>? jsonValue;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoProtoParameterArray?>? protoArray;
+  final pulumi.Input<Map<String, String>?>? protoValue;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter?>? serializedObjectValue;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoStringParameterArray?>? stringArray;
+  final pulumi.Input<String?>? stringValue;
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoParameterValueType].
   /// [booleanArray] Optional.
@@ -73,7 +73,7 @@ class EnterpriseCrmFrontendsEventbusProtoParameterValueType {
       booleanArray: (() { final guardedValue = map['booleanArray']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       booleanValue: (() { final guardedValue = map['booleanValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       doubleArray: (() { final guardedValue = map['doubleArray']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      doubleValue: (() { final guardedValue = map['doubleValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      doubleValue: (() { final guardedValue = map['doubleValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       intArray: (() { final guardedValue = map['intArray']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterpriseCrmFrontendsEventbusProtoIntParameterArray.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       intValue: (() { final guardedValue = map['intValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jsonValue: (() { final guardedValue = map['jsonValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

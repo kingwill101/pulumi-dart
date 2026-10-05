@@ -6,23 +6,23 @@ import 'instance_reference_sqladmin_v1beta4.dart';
 /// On-premises instance configuration.
 class OnPremisesConfigurationSqladminV1beta4 {
   /// PEM representation of the trusted CA's x509 certificate.
-  final pulumi.Input<String>? caCertificate;
+  final pulumi.Input<String?>? caCertificate;
   /// PEM representation of the replica's x509 certificate.
-  final pulumi.Input<String>? clientCertificate;
+  final pulumi.Input<String?>? clientCertificate;
   /// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
-  final pulumi.Input<String>? clientKey;
+  final pulumi.Input<String?>? clientKey;
   /// The dump file to create the Cloud SQL replica.
-  final pulumi.Input<String>? dumpFilePath;
+  final pulumi.Input<String?>? dumpFilePath;
   /// The host and port of the on-premises instance in host:port format
-  final pulumi.Input<String>? hostPort;
+  final pulumi.Input<String?>? hostPort;
   /// This is always `sql#onPremisesConfiguration`.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The password for connecting to on-premises instance.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The reference to Cloud SQL instance if the source is Cloud SQL.
-  final pulumi.Input<InstanceReferenceSqladminV1beta4>? sourceInstance;
+  final pulumi.Input<InstanceReferenceSqladminV1beta4?>? sourceInstance;
   /// The username for connecting to on-premises instance.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [OnPremisesConfigurationSqladminV1beta4].
   /// [caCertificate] PEM representation of the trusted CA's x509 certificate.

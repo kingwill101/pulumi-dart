@@ -34,8 +34,27 @@ class DomainMapping extends pulumi.CustomResource {
           'google-native:run/v1:DomainMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    apiVersion = registerOutput<String>('apiVersion');
+    dryRun = registerOutput<String?>('dryRun');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    metadata = registerOutput<ObjectMetaResponse>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectMetaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    spec = registerOutput<DomainMappingSpecResponse>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMappingSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<DomainMappingStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMappingStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DomainMapping] resource.
+  DomainMapping.reference(String urn)
+    : super(
+        'google-native:run/v1:DomainMapping',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiVersion = registerOutput<String>('apiVersion');
     dryRun = registerOutput<String?>('dryRun');
     kind = registerOutput<String>('kind');

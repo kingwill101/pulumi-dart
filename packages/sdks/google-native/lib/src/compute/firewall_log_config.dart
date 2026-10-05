@@ -6,9 +6,9 @@ import 'firewall_log_config_metadata.dart';
 /// The available logging options for a firewall rule.
 class FirewallLogConfig {
   /// This field denotes whether to enable logging for a particular firewall rule.
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
   /// This field can only be specified for a particular firewall rule if logging is enabled for that rule. This field denotes whether to include or exclude metadata for firewall logs.
-  final pulumi.Input<FirewallLogConfigMetadata>? metadata;
+  final pulumi.Input<FirewallLogConfigMetadata?>? metadata;
 
   /// Creates a new [FirewallLogConfig].
   /// [enable] This field denotes whether to enable logging for a particular firewall rule.

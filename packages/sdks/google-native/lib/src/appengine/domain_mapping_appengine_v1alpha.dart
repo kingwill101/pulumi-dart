@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_mapping_appengine_v1alpha_args.dart';
+import 'resource_record_response_appengine_v1alpha.dart';
 import 'ssl_settings_response_appengine_v1alpha.dart';
 
 /// Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
@@ -13,7 +14,7 @@ class DomainMappingAppengineV1alpha extends pulumi.CustomResource {
   /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
   late final pulumi.Output<String?> overrideStrategy;
   /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
-  late final pulumi.Output<List<Map<String, dynamic>>> resourceRecords;
+  late final pulumi.Output<List<ResourceRecordResponseAppengineV1alpha>> resourceRecords;
   /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
   late final pulumi.Output<SslSettingsResponseAppengineV1alpha> sslSettings;
 
@@ -29,13 +30,30 @@ class DomainMappingAppengineV1alpha extends pulumi.CustomResource {
           'google-native:appengine/v1alpha:DomainMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['appId']).merge(options),
         ) {
     appId = registerOutput<String>('appId');
     this.name = registerOutput<String>('name');
     noManagedCertificate = registerOutput<bool?>('noManagedCertificate');
     overrideStrategy = registerOutput<String?>('overrideStrategy');
-    resourceRecords = registerOutput<List<Map<String, dynamic>>>('resourceRecords');
+    resourceRecords = registerOutput<List<ResourceRecordResponseAppengineV1alpha>>('resourceRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceRecordResponseAppengineV1alpha>(guardedValue, (value) => ResourceRecordResponseAppengineV1alpha.fromMap((value as Map).cast<String, dynamic>())); });
+    sslSettings = registerOutput<SslSettingsResponseAppengineV1alpha>('sslSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SslSettingsResponseAppengineV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DomainMappingAppengineV1alpha] resource.
+  DomainMappingAppengineV1alpha.reference(String urn)
+    : super(
+        'google-native:appengine/v1alpha:DomainMapping',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appId = registerOutput<String>('appId');
+    this.name = registerOutput<String>('name');
+    noManagedCertificate = registerOutput<bool?>('noManagedCertificate');
+    overrideStrategy = registerOutput<String?>('overrideStrategy');
+    resourceRecords = registerOutput<List<ResourceRecordResponseAppengineV1alpha>>('resourceRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceRecordResponseAppengineV1alpha>(guardedValue, (value) => ResourceRecordResponseAppengineV1alpha.fromMap((value as Map).cast<String, dynamic>())); });
     sslSettings = registerOutput<SslSettingsResponseAppengineV1alpha>('sslSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SslSettingsResponseAppengineV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

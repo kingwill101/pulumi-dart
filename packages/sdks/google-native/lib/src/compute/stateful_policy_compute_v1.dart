@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stateful_policy_preserved_state_compute_v1.dart';
 
 class StatefulPolicyComputeV1 {
-  final pulumi.Input<StatefulPolicyPreservedStateComputeV1>? preservedState;
+  final pulumi.Input<StatefulPolicyPreservedStateComputeV1?>? preservedState;
 
   /// Creates a new [StatefulPolicyComputeV1].
   /// [preservedState] Optional.

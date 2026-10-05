@@ -42,12 +42,36 @@ class Content extends pulumi.CustomResource {
           'google-native:dataplex/v1:Content',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['lakeId', 'location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     dataText = registerOutput<String>('dataText');
     description = registerOutput<String>('description');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lakeId = registerOutput<String>('lakeId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    notebook = registerOutput<GoogleCloudDataplexV1ContentNotebookResponse>('notebook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1ContentNotebookResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    path = registerOutput<String>('path');
+    project = registerOutput<String>('project');
+    sqlScript = registerOutput<GoogleCloudDataplexV1ContentSqlScriptResponse>('sqlScript', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1ContentSqlScriptResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Content] resource.
+  Content.reference(String urn)
+    : super(
+        'google-native:dataplex/v1:Content',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    dataText = registerOutput<String>('dataText');
+    description = registerOutput<String>('description');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lakeId = registerOutput<String>('lakeId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

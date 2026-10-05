@@ -6,7 +6,7 @@ import 'google_privacy_dlp_v2_hotword_rule.dart';
 /// Deprecated; use `InspectionRuleSet` instead. Rule for modifying a `CustomInfoType` to alter behavior under certain circumstances, depending on the specific details of the rule. Not supported for the `surrogate_type` custom infoType.
 class GooglePrivacyDlpV2DetectionRule {
   /// Hotword-based detection rule.
-  final pulumi.Input<GooglePrivacyDlpV2HotwordRule>? hotwordRule;
+  final pulumi.Input<GooglePrivacyDlpV2HotwordRule?>? hotwordRule;
 
   /// Creates a new [GooglePrivacyDlpV2DetectionRule].
   /// [hotwordRule] Hotword-based detection rule.

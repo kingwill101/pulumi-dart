@@ -4,13 +4,13 @@
 /// Result data returned by getRelease.
 class GetReleaseResult {
   /// Time the release was created.
-  final String createTime;
+  final String? createTime;
   /// Format: `projects/{project_id}/releases/{release_id}`
-  final String name;
+  final String? name;
   /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
-  final String rulesetName;
+  final String? rulesetName;
   /// Time the release was updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetReleaseResult].
   /// [createTime] Time the release was created.
@@ -18,27 +18,27 @@ class GetReleaseResult {
   /// [rulesetName] Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
   /// [updateTime] Time the release was updated.
   const GetReleaseResult({
-    required this.createTime,
-    required this.name,
-    required this.rulesetName,
-    required this.updateTime,
+    this.createTime,
+    this.name,
+    this.rulesetName,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'name': name,
-      'rulesetName': rulesetName,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'name': ?name,
+      'rulesetName': ?rulesetName,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetReleaseResult.fromMap(Map<String, dynamic> map) {
     return GetReleaseResult(
-      createTime: map['createTime'] as String,
-      name: map['name'] as String,
-      rulesetName: map['rulesetName'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rulesetName: (() { final guardedValue = map['rulesetName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

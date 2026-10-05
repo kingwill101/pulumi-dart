@@ -1,4 +1,6 @@
-enum CVSSAvailabilityImpact {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum CVSSAvailabilityImpact implements pulumi.PulumiEnum<String> {
   impactUnspecified("IMPACT_UNSPECIFIED"),
   impactHigh("IMPACT_HIGH"),
   impactLow("IMPACT_LOW"),
@@ -7,6 +9,7 @@ enum CVSSAvailabilityImpact {
   impactComplete("IMPACT_COMPLETE");
 
   const CVSSAvailabilityImpact(this.wireValue);
+  @override
   final String wireValue;
 
   static CVSSAvailabilityImpact fromValue(String value) {

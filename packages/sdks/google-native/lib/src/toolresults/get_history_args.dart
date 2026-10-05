@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_toolresults_v1beta3_get_history_args_doc}
 class GetHistoryArgs {
   final pulumi.Input<String> historyId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetHistoryArgs].
   /// [historyId] Required.

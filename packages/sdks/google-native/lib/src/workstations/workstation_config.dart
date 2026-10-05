@@ -2,6 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_response.dart';
 import 'customer_encryption_key_response.dart';
 import 'host_response.dart';
+import 'persistent_directory_response.dart';
+import 'readiness_check_response.dart';
+import 'status_response.dart';
 import 'workstation_config_args.dart';
 
 /// Creates a new workstation configuration.
@@ -9,7 +12,7 @@ class WorkstationConfig extends pulumi.CustomResource {
   /// Optional. Client-specified annotations.
   late final pulumi.Output<Map<String, String>> annotations;
   /// Status conditions describing the current resource state.
-  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+  late final pulumi.Output<List<StatusResponse>> conditions;
   /// Optional. Container that runs upon startup for each workstation using this workstation configuration.
   late final pulumi.Output<ContainerResponse> container;
   /// Time when this workstation configuration was created.
@@ -34,10 +37,10 @@ class WorkstationConfig extends pulumi.CustomResource {
   /// Identifier. Full name of this workstation configuration.
   late final pulumi.Output<String> name;
   /// Optional. Directories to persist across workstation sessions.
-  late final pulumi.Output<List<Map<String, dynamic>>> persistentDirectories;
+  late final pulumi.Output<List<PersistentDirectoryResponse>> persistentDirectories;
   late final pulumi.Output<String> project;
   /// Optional. Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
-  late final pulumi.Output<List<Map<String, dynamic>>> readinessChecks;
+  late final pulumi.Output<List<ReadinessCheckResponse>> readinessChecks;
   /// Indicates whether this workstation configuration is currently being updated to match its intended state.
   late final pulumi.Output<bool> reconciling;
   /// Optional. Immutable. Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`. If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
@@ -64,10 +67,10 @@ class WorkstationConfig extends pulumi.CustomResource {
           'google-native:workstations/v1:WorkstationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'workstationClusterId', 'workstationConfigId']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    conditions = registerOutput<List<StatusResponse>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatusResponse>(guardedValue, (value) => StatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
     container = registerOutput<ContainerResponse>('container', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     degraded = registerOutput<bool>('degraded');
@@ -77,14 +80,49 @@ class WorkstationConfig extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     host = registerOutput<HostResponse>('host', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     idleTimeout = registerOutput<String>('idleTimeout');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    persistentDirectories = registerOutput<List<Map<String, dynamic>>>('persistentDirectories');
+    persistentDirectories = registerOutput<List<PersistentDirectoryResponse>>('persistentDirectories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PersistentDirectoryResponse>(guardedValue, (value) => PersistentDirectoryResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    readinessChecks = registerOutput<List<Map<String, dynamic>>>('readinessChecks');
+    readinessChecks = registerOutput<List<ReadinessCheckResponse>>('readinessChecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReadinessCheckResponse>(guardedValue, (value) => ReadinessCheckResponse.fromMap((value as Map).cast<String, dynamic>())); });
     reconciling = registerOutput<bool>('reconciling');
-    replicaZones = registerOutput<List<String>>('replicaZones');
+    replicaZones = registerOutput<List<String>>('replicaZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    runningTimeout = registerOutput<String>('runningTimeout');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    workstationClusterId = registerOutput<String>('workstationClusterId');
+    workstationConfigId = registerOutput<String>('workstationConfigId');
+  }
+
+  /// Creates a typed reference to an existing [WorkstationConfig] resource.
+  WorkstationConfig.reference(String urn)
+    : super(
+        'google-native:workstations/v1:WorkstationConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    conditions = registerOutput<List<StatusResponse>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatusResponse>(guardedValue, (value) => StatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    container = registerOutput<ContainerResponse>('container', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    degraded = registerOutput<bool>('degraded');
+    deleteTime = registerOutput<String>('deleteTime');
+    displayName = registerOutput<String>('displayName');
+    encryptionKey = registerOutput<CustomerEncryptionKeyResponse>('encryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomerEncryptionKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    host = registerOutput<HostResponse>('host', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    idleTimeout = registerOutput<String>('idleTimeout');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    persistentDirectories = registerOutput<List<PersistentDirectoryResponse>>('persistentDirectories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PersistentDirectoryResponse>(guardedValue, (value) => PersistentDirectoryResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    readinessChecks = registerOutput<List<ReadinessCheckResponse>>('readinessChecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReadinessCheckResponse>(guardedValue, (value) => ReadinessCheckResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    reconciling = registerOutput<bool>('reconciling');
+    replicaZones = registerOutput<List<String>>('replicaZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     runningTimeout = registerOutput<String>('runningTimeout');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

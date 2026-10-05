@@ -6,7 +6,7 @@ import 'google_cloud_channel_v1_percentage_adjustment.dart';
 /// A type that represents the various adjustments you can apply to a bill.
 class GoogleCloudChannelV1RepricingAdjustment {
   /// Flat markup or markdown on an entire bill.
-  final pulumi.Input<GoogleCloudChannelV1PercentageAdjustment>? percentageAdjustment;
+  final pulumi.Input<GoogleCloudChannelV1PercentageAdjustment?>? percentageAdjustment;
 
   /// Creates a new [GoogleCloudChannelV1RepricingAdjustment].
   /// [percentageAdjustment] Flat markup or markdown on an entire bill.

@@ -45,8 +45,8 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse {
       bucketSize: pulumi.Input.fromValue(map['bucketSize'] as String),
       bucketValueCount: pulumi.Input.fromValue(map['bucketValueCount'] as String),
       bucketValues: pulumi.Input.fromValue(pulumi.Input.decodeList<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse>(map['bucketValues']!, (value) => GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      maxProbability: pulumi.Input.fromValue(map['maxProbability'] as double),
-      minProbability: pulumi.Input.fromValue(map['minProbability'] as double),
+      maxProbability: pulumi.Input.fromValue((map['maxProbability'] as num).toDouble()),
+      minProbability: pulumi.Input.fromValue((map['minProbability'] as num).toDouble()),
     );
   }
 }

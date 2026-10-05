@@ -30,8 +30,29 @@ class FeedbackMessage extends pulumi.CustomResource {
           'google-native:datalabeling/v1beta1:FeedbackMessage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['annotatedDatasetId', 'datasetId', 'feedbackThreadId', 'project']).merge(options),
         ) {
+    annotatedDatasetId = registerOutput<String>('annotatedDatasetId');
+    body = registerOutput<String>('body');
+    createTime = registerOutput<String>('createTime');
+    datasetId = registerOutput<String>('datasetId');
+    feedbackThreadId = registerOutput<String>('feedbackThreadId');
+    image = registerOutput<String>('image');
+    this.name = registerOutput<String>('name');
+    operatorFeedbackMetadata = registerOutput<Map<String, dynamic>>('operatorFeedbackMetadata');
+    project = registerOutput<String>('project');
+    requesterFeedbackMetadata = registerOutput<Map<String, dynamic>>('requesterFeedbackMetadata');
+  }
+
+  /// Creates a typed reference to an existing [FeedbackMessage] resource.
+  FeedbackMessage.reference(String urn)
+    : super(
+        'google-native:datalabeling/v1beta1:FeedbackMessage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     annotatedDatasetId = registerOutput<String>('annotatedDatasetId');
     body = registerOutput<String>('body');
     createTime = registerOutput<String>('createTime');

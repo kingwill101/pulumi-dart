@@ -58,7 +58,7 @@ class ServiceStatusResponse {
       conditions: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudRunV1ConditionResponse>(map['conditions']!, (value) => GoogleCloudRunV1ConditionResponse.fromMap((value as Map).cast<String, dynamic>()))),
       latestCreatedRevisionName: pulumi.Input.fromValue(map['latestCreatedRevisionName'] as String),
       latestReadyRevisionName: pulumi.Input.fromValue(map['latestReadyRevisionName'] as String),
-      observedGeneration: pulumi.Input.fromValue(map['observedGeneration'] as int),
+      observedGeneration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['observedGeneration'])),
       traffic: pulumi.Input.fromValue(pulumi.Input.decodeList<TrafficTargetResponse>(map['traffic']!, (value) => TrafficTargetResponse.fromMap((value as Map).cast<String, dynamic>()))),
       url: pulumi.Input.fromValue(map['url'] as String),
     );

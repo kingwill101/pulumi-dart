@@ -5,9 +5,9 @@ import 'security_policy_rule_preconfigured_waf_config_exclusion_field_params_op_
 
 class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeV1 {
   /// The match operator for the field.
-  final pulumi.Input<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeV1>? op;
+  final pulumi.Input<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeV1?>? op;
   /// The value of the field.
-  final pulumi.Input<String>? val;
+  final pulumi.Input<String?>? val;
 
   /// Creates a new [SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeV1].
   /// [op] The match operator for the field.

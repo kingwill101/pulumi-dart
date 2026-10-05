@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_certificatemanager_v1_get_trust_config_args_doc}
 class GetTrustConfigArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> trustConfigId;
 
   /// Creates a new [GetTrustConfigArgs].

@@ -1,9 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auth_config_response.dart';
+import 'config_variable_response.dart';
 import 'connection_args.dart';
 import 'connection_status_response.dart';
 import 'connector_version_infra_config_response.dart';
 import 'connectors_log_config_response.dart';
+import 'destination_config_response.dart';
 import 'eventing_config_response.dart';
 import 'eventing_runtime_data_response.dart';
 import 'lock_config_response.dart';
@@ -16,7 +18,7 @@ class Connection extends pulumi.CustomResource {
   /// Optional. Configuration for establishing the connection's authentication with an external system.
   late final pulumi.Output<AuthConfigResponse> authConfig;
   /// Optional. Configuration for configuring the connection with an external system.
-  late final pulumi.Output<List<Map<String, dynamic>>> configVariables;
+  late final pulumi.Output<List<ConfigVariableResponse>> configVariables;
   /// Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
   late final pulumi.Output<String> connectionId;
   /// Connection revision. This field is only updated when the connection is created or updated by User.
@@ -32,7 +34,7 @@ class Connection extends pulumi.CustomResource {
   /// Optional. Description of the resource.
   late final pulumi.Output<String> description;
   /// Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
-  late final pulumi.Output<List<Map<String, dynamic>>> destinationConfigs;
+  late final pulumi.Output<List<DestinationConfigResponse>> destinationConfigs;
   /// GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
   late final pulumi.Output<String> envoyImageLocation;
   /// Optional. Eventing config of a connection
@@ -84,10 +86,10 @@ class Connection extends pulumi.CustomResource {
           'google-native:connectors/v1:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['connectionId', 'location', 'project']).merge(options),
         ) {
     authConfig = registerOutput<AuthConfigResponse>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    configVariables = registerOutput<List<Map<String, dynamic>>>('configVariables');
+    configVariables = registerOutput<List<ConfigVariableResponse>>('configVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigVariableResponse>(guardedValue, (value) => ConfigVariableResponse.fromMap((value as Map).cast<String, dynamic>())); });
     connectionId = registerOutput<String>('connectionId');
     connectionRevision = registerOutput<String>('connectionRevision');
     connectorVersion = registerOutput<String>('connectorVersion');
@@ -95,14 +97,55 @@ class Connection extends pulumi.CustomResource {
     connectorVersionLaunchStage = registerOutput<String>('connectorVersionLaunchStage');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
-    destinationConfigs = registerOutput<List<Map<String, dynamic>>>('destinationConfigs');
+    destinationConfigs = registerOutput<List<DestinationConfigResponse>>('destinationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DestinationConfigResponse>(guardedValue, (value) => DestinationConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     envoyImageLocation = registerOutput<String>('envoyImageLocation');
     eventingConfig = registerOutput<EventingConfigResponse>('eventingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     eventingEnablementType = registerOutput<String>('eventingEnablementType');
     eventingRuntimeData = registerOutput<EventingRuntimeDataResponse>('eventingRuntimeData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventingRuntimeDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     imageLocation = registerOutput<String>('imageLocation');
     isTrustedTester = registerOutput<bool>('isTrustedTester');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    lockConfig = registerOutput<LockConfigResponse>('lockConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LockConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logConfig = registerOutput<ConnectorsLogConfigResponse>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorsLogConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    nodeConfig = registerOutput<NodeConfigResponse>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    serviceDirectory = registerOutput<String>('serviceDirectory');
+    sslConfig = registerOutput<SslConfigResponse>('sslConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SslConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<ConnectionStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subscriptionType = registerOutput<String>('subscriptionType');
+    suspended = registerOutput<bool>('suspended');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Connection] resource.
+  Connection.reference(String urn)
+    : super(
+        'google-native:connectors/v1:Connection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authConfig = registerOutput<AuthConfigResponse>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configVariables = registerOutput<List<ConfigVariableResponse>>('configVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigVariableResponse>(guardedValue, (value) => ConfigVariableResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    connectionId = registerOutput<String>('connectionId');
+    connectionRevision = registerOutput<String>('connectionRevision');
+    connectorVersion = registerOutput<String>('connectorVersion');
+    connectorVersionInfraConfig = registerOutput<ConnectorVersionInfraConfigResponse>('connectorVersionInfraConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorVersionInfraConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectorVersionLaunchStage = registerOutput<String>('connectorVersionLaunchStage');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    destinationConfigs = registerOutput<List<DestinationConfigResponse>>('destinationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DestinationConfigResponse>(guardedValue, (value) => DestinationConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    envoyImageLocation = registerOutput<String>('envoyImageLocation');
+    eventingConfig = registerOutput<EventingConfigResponse>('eventingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eventingEnablementType = registerOutput<String>('eventingEnablementType');
+    eventingRuntimeData = registerOutput<EventingRuntimeDataResponse>('eventingRuntimeData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventingRuntimeDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    imageLocation = registerOutput<String>('imageLocation');
+    isTrustedTester = registerOutput<bool>('isTrustedTester');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     lockConfig = registerOutput<LockConfigResponse>('lockConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LockConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logConfig = registerOutput<ConnectorsLogConfigResponse>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorsLogConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

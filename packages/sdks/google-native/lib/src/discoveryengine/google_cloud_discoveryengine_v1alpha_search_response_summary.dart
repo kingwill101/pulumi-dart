@@ -7,11 +7,11 @@ import 'google_cloud_discoveryengine_v1alpha_search_response_summary_summary_ski
 /// Summary of the top N search result specified by the summary spec.
 class GoogleCloudDiscoveryengineV1alphaSearchResponseSummary {
   /// A collection of Safety Attribute categories and their associated confidence scores.
-  final pulumi.Input<GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes>? safetyAttributes;
+  final pulumi.Input<GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes?>? safetyAttributes;
   /// Additional summary-skipped reasons. This provides the reason for ignored cases. If nothing is skipped, this field is not set.
-  final pulumi.Input<List<GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem>>? summarySkippedReasons;
+  final pulumi.Input<List<GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem>?>? summarySkippedReasons;
   /// The summary content.
-  final pulumi.Input<String>? summaryText;
+  final pulumi.Input<String?>? summaryText;
 
   /// Creates a new [GoogleCloudDiscoveryengineV1alphaSearchResponseSummary].
   /// [safetyAttributes] A collection of Safety Attribute categories and their associated confidence scores.

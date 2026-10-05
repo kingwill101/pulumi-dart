@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_runtimeconfig_v1beta1_get_config_iam_policy_args_doc}
 class GetConfigIamPolicyArgs {
   final pulumi.Input<String> configId;
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetConfigIamPolicyArgs].
   /// [configId] Required.
@@ -32,7 +32,7 @@ class GetConfigIamPolicyArgs {
   factory GetConfigIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigIamPolicyArgs(
       configId: pulumi.Input.fromValue(map['configId'] as String),
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -37,11 +37,32 @@ class WebApp extends pulumi.CustomResource {
           'google-native:firebase/v1beta1:WebApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     apiKeyId = registerOutput<String>('apiKeyId');
     appId = registerOutput<String>('appId');
-    appUrls = registerOutput<List<String>>('appUrls');
+    appUrls = registerOutput<List<String>>('appUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    expireTime = registerOutput<String>('expireTime');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    webId = registerOutput<String>('webId');
+  }
+
+  /// Creates a typed reference to an existing [WebApp] resource.
+  WebApp.reference(String urn)
+    : super(
+        'google-native:firebase/v1beta1:WebApp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiKeyId = registerOutput<String>('apiKeyId');
+    appId = registerOutput<String>('appId');
+    appUrls = registerOutput<List<String>>('appUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');

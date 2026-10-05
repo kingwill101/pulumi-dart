@@ -1,12 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_args.dart';
+import 'route_as_path_response.dart';
+import 'route_warnings_item_response.dart';
 
 /// Creates a Route resource in the specified project using the data included in the request.
 class Route extends pulumi.CustomResource {
   /// Whether this route can conflict with existing subnetworks. Setting this to true allows this route to conflict with subnetworks that have already been configured on the corresponding network.
   late final pulumi.Output<bool> allowConflictingSubnetworks;
   /// AS path.
-  late final pulumi.Output<List<Map<String, dynamic>>> asPaths;
+  late final pulumi.Output<List<RouteAsPathResponse>> asPaths;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
   /// An optional description of this resource. Provide this field when you create the resource.
@@ -61,7 +63,7 @@ class Route extends pulumi.CustomResource {
   /// A list of instance tags to which this route applies.
   late final pulumi.Output<List<String>> tags;
   /// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
-  late final pulumi.Output<List<Map<String, dynamic>>> warnings;
+  late final pulumi.Output<List<RouteWarningsItemResponse>> warnings;
 
   /// Creates a new [Route].
   /// [name] The Pulumi resource name.
@@ -75,10 +77,10 @@ class Route extends pulumi.CustomResource {
           'google-native:compute/alpha:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     allowConflictingSubnetworks = registerOutput<bool>('allowConflictingSubnetworks');
-    asPaths = registerOutput<List<Map<String, dynamic>>>('asPaths');
+    asPaths = registerOutput<List<RouteAsPathResponse>>('asPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteAsPathResponse>(guardedValue, (value) => RouteAsPathResponse.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     destRange = registerOutput<String>('destRange');
@@ -105,7 +107,48 @@ class Route extends pulumi.CustomResource {
     routeType = registerOutput<String>('routeType');
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
-    tags = registerOutput<List<String>>('tags');
-    warnings = registerOutput<List<Map<String, dynamic>>>('warnings');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    warnings = registerOutput<List<RouteWarningsItemResponse>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteWarningsItemResponse>(guardedValue, (value) => RouteWarningsItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Route] resource.
+  Route.reference(String urn)
+    : super(
+        'google-native:compute/alpha:Route',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowConflictingSubnetworks = registerOutput<bool>('allowConflictingSubnetworks');
+    asPaths = registerOutput<List<RouteAsPathResponse>>('asPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteAsPathResponse>(guardedValue, (value) => RouteAsPathResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    destRange = registerOutput<String>('destRange');
+    ilbRouteBehaviorOnUnhealthy = registerOutput<String>('ilbRouteBehaviorOnUnhealthy');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    nextHopGateway = registerOutput<String>('nextHopGateway');
+    nextHopHub = registerOutput<String>('nextHopHub');
+    nextHopIlb = registerOutput<String>('nextHopIlb');
+    nextHopInstance = registerOutput<String>('nextHopInstance');
+    nextHopInterRegionCost = registerOutput<int>('nextHopInterRegionCost');
+    nextHopInterconnectAttachment = registerOutput<String>('nextHopInterconnectAttachment');
+    nextHopIp = registerOutput<String>('nextHopIp');
+    nextHopMed = registerOutput<int>('nextHopMed');
+    nextHopNetwork = registerOutput<String>('nextHopNetwork');
+    nextHopOrigin = registerOutput<String>('nextHopOrigin');
+    nextHopPeering = registerOutput<String>('nextHopPeering');
+    nextHopVpnTunnel = registerOutput<String>('nextHopVpnTunnel');
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    routeStatus = registerOutput<String>('routeStatus');
+    routeType = registerOutput<String>('routeType');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    warnings = registerOutput<List<RouteWarningsItemResponse>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteWarningsItemResponse>(guardedValue, (value) => RouteWarningsItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

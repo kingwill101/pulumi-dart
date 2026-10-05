@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_beta_get_external_vpn_gateway_compute_beta_args_doc}
 class GetExternalVpnGatewayComputeBetaArgs {
   final pulumi.Input<String> externalVpnGateway;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetExternalVpnGatewayComputeBetaArgs].
   /// [externalVpnGateway] Required.

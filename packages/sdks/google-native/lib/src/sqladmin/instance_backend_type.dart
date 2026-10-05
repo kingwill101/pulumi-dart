@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
-enum InstanceBackendType {
+enum InstanceBackendType implements pulumi.PulumiEnum<String> {
   sqlBackendTypeUnspecified("SQL_BACKEND_TYPE_UNSPECIFIED"),
   firstGen("FIRST_GEN"),
   secondGen("SECOND_GEN"),
   external("EXTERNAL");
 
   const InstanceBackendType(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceBackendType fromValue(String value) {

@@ -64,7 +64,7 @@ class VpnTunnel extends pulumi.CustomResource {
           'google-native:compute/alpha:VpnTunnel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
@@ -72,8 +72,8 @@ class VpnTunnel extends pulumi.CustomResource {
     ikeVersion = registerOutput<int>('ikeVersion');
     kind = registerOutput<String>('kind');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>>('labels');
-    localTrafficSelector = registerOutput<List<String>>('localTrafficSelector');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    localTrafficSelector = registerOutput<List<String>>('localTrafficSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     peerExternalGateway = registerOutput<String>('peerExternalGateway');
     peerExternalGatewayInterface = registerOutput<int>('peerExternalGatewayInterface');
@@ -81,7 +81,43 @@ class VpnTunnel extends pulumi.CustomResource {
     peerIp = registerOutput<String>('peerIp');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
-    remoteTrafficSelector = registerOutput<List<String>>('remoteTrafficSelector');
+    remoteTrafficSelector = registerOutput<List<String>>('remoteTrafficSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    requestId = registerOutput<String?>('requestId');
+    router = registerOutput<String>('router');
+    selfLink = registerOutput<String>('selfLink');
+    sharedSecret = registerOutput<String>('sharedSecret');
+    sharedSecretHash = registerOutput<String>('sharedSecretHash');
+    status = registerOutput<String>('status');
+    targetVpnGateway = registerOutput<String>('targetVpnGateway');
+    vpnGateway = registerOutput<String>('vpnGateway');
+    vpnGatewayInterface = registerOutput<int>('vpnGatewayInterface');
+  }
+
+  /// Creates a typed reference to an existing [VpnTunnel] resource.
+  VpnTunnel.reference(String urn)
+    : super(
+        'google-native:compute/alpha:VpnTunnel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    detailedStatus = registerOutput<String>('detailedStatus');
+    ikeVersion = registerOutput<int>('ikeVersion');
+    kind = registerOutput<String>('kind');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    localTrafficSelector = registerOutput<List<String>>('localTrafficSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    peerExternalGateway = registerOutput<String>('peerExternalGateway');
+    peerExternalGatewayInterface = registerOutput<int>('peerExternalGatewayInterface');
+    peerGcpGateway = registerOutput<String>('peerGcpGateway');
+    peerIp = registerOutput<String>('peerIp');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    remoteTrafficSelector = registerOutput<List<String>>('remoteTrafficSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     requestId = registerOutput<String?>('requestId');
     router = registerOutput<String>('router');
     selfLink = registerOutput<String>('selfLink');

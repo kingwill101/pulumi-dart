@@ -21,7 +21,7 @@ class ConnectionDrainingResponseComputeV1 {
 
   factory ConnectionDrainingResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ConnectionDrainingResponseComputeV1(
-      drainingTimeoutSec: pulumi.Input.fromValue(map['drainingTimeoutSec'] as int),
+      drainingTimeoutSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['drainingTimeoutSec'])),
     );
   }
 }

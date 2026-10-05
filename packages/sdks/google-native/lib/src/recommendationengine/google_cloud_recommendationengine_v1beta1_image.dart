@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Catalog item thumbnail/detail image.
 class GoogleCloudRecommendationengineV1beta1Image {
   /// Optional. Height of the image in number of pixels.
-  final pulumi.Input<int>? height;
+  final pulumi.Input<int?>? height;
   /// URL of the image with a length limit of 5 KiB.
   final pulumi.Input<String> uri;
   /// Optional. Width of the image in number of pixels.
-  final pulumi.Input<int>? width;
+  final pulumi.Input<int?>? width;
 
   /// Creates a new [GoogleCloudRecommendationengineV1beta1Image].
   /// [height] Optional. Height of the image in number of pixels.
@@ -31,9 +31,9 @@ class GoogleCloudRecommendationengineV1beta1Image {
 
   factory GoogleCloudRecommendationengineV1beta1Image.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecommendationengineV1beta1Image(
-      height: (() { final guardedValue = map['height']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      height: (() { final guardedValue = map['height']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       uri: pulumi.Input.fromValue(map['uri'] as String),
-      width: (() { final guardedValue = map['width']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      width: (() { final guardedValue = map['width']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

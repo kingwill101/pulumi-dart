@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
-enum ProcessingOptionsHtmlSanitization {
+enum ProcessingOptionsHtmlSanitization implements pulumi.PulumiEnum<String> {
   htmlSanitizationUnspecified("HTML_SANITIZATION_UNSPECIFIED"),
   htmlSanitizationDisabled("HTML_SANITIZATION_DISABLED"),
   simpleFormattingOnly("SIMPLE_FORMATTING_ONLY");
 
   const ProcessingOptionsHtmlSanitization(this.wireValue);
+  @override
   final String wireValue;
 
   static ProcessingOptionsHtmlSanitization fromValue(String value) {

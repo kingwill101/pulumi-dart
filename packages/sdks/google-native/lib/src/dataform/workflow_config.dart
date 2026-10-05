@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'invocation_config_response.dart';
+import 'scheduled_execution_record_response.dart';
 import 'workflow_config_args.dart';
 
 /// Creates a new WorkflowConfig in a given Repository.
@@ -14,7 +15,7 @@ class WorkflowConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   /// Records of the 10 most recent scheduled execution attempts, ordered in in descending order of `execution_time`. Updated whenever automatic creation of a workflow invocation is triggered by cron_schedule.
-  late final pulumi.Output<List<Map<String, dynamic>>> recentScheduledExecutionRecords;
+  late final pulumi.Output<List<ScheduledExecutionRecordResponse>> recentScheduledExecutionRecords;
   /// The name of the release config whose release_compilation_result should be executed. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
   late final pulumi.Output<String> releaseConfig;
   late final pulumi.Output<String> repositoryId;
@@ -35,14 +36,35 @@ class WorkflowConfig extends pulumi.CustomResource {
           'google-native:dataform/v1beta1:WorkflowConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'repositoryId', 'workflowConfigId']).merge(options),
         ) {
     cronSchedule = registerOutput<String>('cronSchedule');
     invocationConfig = registerOutput<InvocationConfigResponse>('invocationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvocationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    recentScheduledExecutionRecords = registerOutput<List<Map<String, dynamic>>>('recentScheduledExecutionRecords');
+    recentScheduledExecutionRecords = registerOutput<List<ScheduledExecutionRecordResponse>>('recentScheduledExecutionRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduledExecutionRecordResponse>(guardedValue, (value) => ScheduledExecutionRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    releaseConfig = registerOutput<String>('releaseConfig');
+    repositoryId = registerOutput<String>('repositoryId');
+    timeZone = registerOutput<String>('timeZone');
+    workflowConfigId = registerOutput<String>('workflowConfigId');
+  }
+
+  /// Creates a typed reference to an existing [WorkflowConfig] resource.
+  WorkflowConfig.reference(String urn)
+    : super(
+        'google-native:dataform/v1beta1:WorkflowConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cronSchedule = registerOutput<String>('cronSchedule');
+    invocationConfig = registerOutput<InvocationConfigResponse>('invocationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvocationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    recentScheduledExecutionRecords = registerOutput<List<ScheduledExecutionRecordResponse>>('recentScheduledExecutionRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduledExecutionRecordResponse>(guardedValue, (value) => ScheduledExecutionRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
     releaseConfig = registerOutput<String>('releaseConfig');
     repositoryId = registerOutput<String>('repositoryId');
     timeZone = registerOutput<String>('timeZone');

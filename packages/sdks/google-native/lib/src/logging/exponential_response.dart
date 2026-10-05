@@ -31,9 +31,9 @@ class ExponentialResponse {
 
   factory ExponentialResponse.fromMap(Map<String, dynamic> map) {
     return ExponentialResponse(
-      growthFactor: pulumi.Input.fromValue(map['growthFactor'] as double),
-      numFiniteBuckets: pulumi.Input.fromValue(map['numFiniteBuckets'] as int),
-      scale: pulumi.Input.fromValue(map['scale'] as double),
+      growthFactor: pulumi.Input.fromValue((map['growthFactor'] as num).toDouble()),
+      numFiniteBuckets: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numFiniteBuckets'])),
+      scale: pulumi.Input.fromValue((map['scale'] as num).toDouble()),
     );
   }
 }

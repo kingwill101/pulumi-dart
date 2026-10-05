@@ -26,7 +26,7 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse {
 
   factory GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse(
-      confidence: pulumi.Input.fromValue(map['confidence'] as double),
+      confidence: pulumi.Input.fromValue((map['confidence'] as num).toDouble()),
       languageCode: pulumi.Input.fromValue(map['languageCode'] as String),
     );
   }

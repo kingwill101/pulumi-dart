@@ -6,7 +6,7 @@ import 'standard_sql_field.dart';
 /// A table type
 class StandardSqlTableType {
   /// The columns in this table type
-  final pulumi.Input<List<StandardSqlField>>? columns;
+  final pulumi.Input<List<StandardSqlField>?>? columns;
 
   /// Creates a new [StandardSqlTableType].
   /// [columns] The columns in this table type

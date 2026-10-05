@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_beta_get_target_grpc_proxy_compute_beta_args_doc}
 class GetTargetGrpcProxyComputeBetaArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> targetGrpcProxy;
 
   /// Creates a new [GetTargetGrpcProxyComputeBetaArgs].

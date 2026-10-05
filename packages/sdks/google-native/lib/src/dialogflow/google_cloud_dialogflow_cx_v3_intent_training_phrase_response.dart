@@ -28,7 +28,7 @@ class GoogleCloudDialogflowCxV3IntentTrainingPhraseResponse {
   factory GoogleCloudDialogflowCxV3IntentTrainingPhraseResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3IntentTrainingPhraseResponse(
       parts: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3IntentTrainingPhrasePartResponse>(map['parts']!, (value) => GoogleCloudDialogflowCxV3IntentTrainingPhrasePartResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      repeatCount: pulumi.Input.fromValue(map['repeatCount'] as int),
+      repeatCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['repeatCount'])),
     );
   }
 }

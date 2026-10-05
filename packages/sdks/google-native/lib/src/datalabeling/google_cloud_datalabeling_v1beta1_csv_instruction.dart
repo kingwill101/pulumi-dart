@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Deprecated: this instruction format is not supported any more. Instruction from a CSV file.
 class GoogleCloudDatalabelingV1beta1CsvInstruction {
   /// CSV file for the instruction. Only gcs path is allowed.
-  final pulumi.Input<String>? gcsFileUri;
+  final pulumi.Input<String?>? gcsFileUri;
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1CsvInstruction].
   /// [gcsFileUri] CSV file for the instruction. Only gcs path is allowed.

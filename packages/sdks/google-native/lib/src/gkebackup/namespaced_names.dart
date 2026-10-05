@@ -6,7 +6,7 @@ import 'namespaced_name.dart';
 /// A list of namespaced Kubernetes resources.
 class NamespacedNames {
   /// Optional. A list of namespaced Kubernetes resources.
-  final pulumi.Input<List<NamespacedName>>? namespacedNames;
+  final pulumi.Input<List<NamespacedName>?>? namespacedNames;
 
   /// Creates a new [NamespacedNames].
   /// [namespacedNames] Optional. A list of namespaced Kubernetes resources.

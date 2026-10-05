@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
 class ManagedPrometheusConfigContainerV1beta1 {
   /// Enable Managed Collection.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ManagedPrometheusConfigContainerV1beta1].
   /// [enabled] Enable Managed Collection.

@@ -11,19 +11,19 @@ import 'google_cloud_dialogflow_v2_smart_reply_model_metadata.dart';
 /// {@macro pulumi_dialogflow_v2_conversation_model_args_doc}
 class ConversationModelArgs {
   /// Metadata for article suggestion models.
-  final pulumi.Input<GoogleCloudDialogflowV2ArticleSuggestionModelMetadata>? articleSuggestionModelMetadata;
+  final pulumi.Input<GoogleCloudDialogflowV2ArticleSuggestionModelMetadata?>? articleSuggestionModelMetadata;
   /// Datasets used to create model.
   final pulumi.Input<List<GoogleCloudDialogflowV2InputDataset>> datasets;
   /// The display name of the model. At most 64 bytes long.
   final pulumi.Input<String> displayName;
   /// Language code for the conversation model. If not specified, the language is en-US. Language at ConversationModel should be set for all non en-us languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
-  final pulumi.Input<String>? languageCode;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? languageCode;
+  final pulumi.Input<String?>? location;
   /// ConversationModel resource name. Format: `projects//conversationModels/`
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Metadata for smart reply models.
-  final pulumi.Input<GoogleCloudDialogflowV2SmartReplyModelMetadata>? smartReplyModelMetadata;
+  final pulumi.Input<GoogleCloudDialogflowV2SmartReplyModelMetadata?>? smartReplyModelMetadata;
 
   /// Creates a new [ConversationModelArgs].
   /// [articleSuggestionModelMetadata] Metadata for article suggestion models.

@@ -31,8 +31,8 @@ class StandardRolloutPolicyResponseContainerV1beta1 {
 
   factory StandardRolloutPolicyResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return StandardRolloutPolicyResponseContainerV1beta1(
-      batchNodeCount: pulumi.Input.fromValue(map['batchNodeCount'] as int),
-      batchPercentage: pulumi.Input.fromValue(map['batchPercentage'] as double),
+      batchNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['batchNodeCount'])),
+      batchPercentage: pulumi.Input.fromValue((map['batchPercentage'] as num).toDouble()),
       batchSoakDuration: pulumi.Input.fromValue(map['batchSoakDuration'] as String),
     );
   }

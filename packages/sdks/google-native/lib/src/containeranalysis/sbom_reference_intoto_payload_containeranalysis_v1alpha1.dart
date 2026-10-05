@@ -7,13 +7,13 @@ import 'subject_containeranalysis_v1alpha1.dart';
 /// The actual payload that contains the SBOM Reference data. The payload follows the intoto statement specification. See https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for more details.
 class SbomReferenceIntotoPayloadContaineranalysisV1alpha1 {
   /// Additional parameters of the Predicate. Includes the actual data about the SBOM.
-  final pulumi.Input<SbomReferenceIntotoPredicateContaineranalysisV1alpha1>? predicate;
+  final pulumi.Input<SbomReferenceIntotoPredicateContaineranalysisV1alpha1?>? predicate;
   /// URI identifying the type of the Predicate.
-  final pulumi.Input<String>? predicateType;
+  final pulumi.Input<String?>? predicateType;
   /// Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
-  final pulumi.Input<List<SubjectContaineranalysisV1alpha1>>? subject;
+  final pulumi.Input<List<SubjectContaineranalysisV1alpha1>?>? subject;
   /// Identifier for the schema of the Statement.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [SbomReferenceIntotoPayloadContaineranalysisV1alpha1].
   /// [predicate] Additional parameters of the Predicate. Includes the actual data about the SBOM.

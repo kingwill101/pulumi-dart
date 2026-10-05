@@ -26,6 +26,17 @@ Future<GetDatasetResult> getDataset(
   return GetDatasetResult.fromMap(result);
 }
 
+pulumi.Output<GetDatasetResult> getDatasetOutput(
+  GetDatasetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:translate/v3:getDataset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatasetResult.fromMap);
+}
+
 /// Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist.
 /// [args] Arguments passed to this invoke. {@macro pulumi_translate_v3_get_glossary_args_doc}
 /// [options] Invoke options controlling this call.
@@ -40,6 +51,17 @@ Future<GetGlossaryResult> getGlossary(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGlossaryResult.fromMap(result);
+}
+
+pulumi.Output<GetGlossaryResult> getGlossaryOutput(
+  GetGlossaryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:translate/v3:getGlossary',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlossaryResult.fromMap);
 }
 
 /// Gets a single glossary entry by the given id.
@@ -58,6 +80,17 @@ Future<GetGlossaryEntryResult> getGlossaryEntry(
   return GetGlossaryEntryResult.fromMap(result);
 }
 
+pulumi.Output<GetGlossaryEntryResult> getGlossaryEntryOutput(
+  GetGlossaryEntryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:translate/v3:getGlossaryEntry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlossaryEntryResult.fromMap);
+}
+
 /// Gets a model.
 /// [args] Arguments passed to this invoke. {@macro pulumi_translate_v3_get_model_args_doc}
 /// [options] Invoke options controlling this call.
@@ -74,6 +107,17 @@ Future<GetModelResult> getModel(
   return GetModelResult.fromMap(result);
 }
 
+pulumi.Output<GetModelResult> getModelOutput(
+  GetModelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:translate/v3:getModel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetModelResult.fromMap);
+}
+
 /// Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist.
 /// [args] Arguments passed to this invoke. {@macro pulumi_translate_v3beta1_get_glossary_translate_v3beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -88,4 +132,15 @@ Future<GetGlossaryTranslateV3beta1Result> getGlossaryTranslateV3beta1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGlossaryTranslateV3beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetGlossaryTranslateV3beta1Result> getGlossaryTranslateV3beta1Output(
+  GetGlossaryTranslateV3beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:translate/v3beta1:getGlossary',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlossaryTranslateV3beta1Result.fromMap);
 }

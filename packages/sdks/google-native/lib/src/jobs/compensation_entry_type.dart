@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
-enum CompensationEntryType {
+enum CompensationEntryType implements pulumi.PulumiEnum<String> {
   compensationTypeUnspecified("COMPENSATION_TYPE_UNSPECIFIED"),
   base("BASE"),
   bonus("BONUS"),
@@ -11,6 +13,7 @@ enum CompensationEntryType {
   otherCompensationType("OTHER_COMPENSATION_TYPE");
 
   const CompensationEntryType(this.wireValue);
+  @override
   final String wireValue;
 
   static CompensationEntryType fromValue(String value) {

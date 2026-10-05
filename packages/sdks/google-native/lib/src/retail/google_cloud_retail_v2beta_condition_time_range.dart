@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Used for time-dependent conditions. Example: Want to have rule applied for week long sale.
 class GoogleCloudRetailV2betaConditionTimeRange {
   /// End of time range. Range is inclusive.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Start of time range. Range is inclusive.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [GoogleCloudRetailV2betaConditionTimeRange].
   /// [endTime] End of time range. Range is inclusive.

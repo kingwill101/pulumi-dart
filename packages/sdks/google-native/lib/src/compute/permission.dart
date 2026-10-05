@@ -6,23 +6,23 @@ import 'permission_constraint.dart';
 /// [Deprecated] All fields defined in a permission are ANDed.
 class Permission {
   /// Extra custom constraints. The constraints are ANDed together.
-  final pulumi.Input<List<PermissionConstraint>>? constraints;
+  final pulumi.Input<List<PermissionConstraint>?>? constraints;
   /// Used in Ingress or Egress Gateway cases to specify hosts that the policy applies to. Exact match, prefix match, and suffix match are supported.
-  final pulumi.Input<List<String>>? hosts;
+  final pulumi.Input<List<String>?>? hosts;
   /// HTTP method.
-  final pulumi.Input<List<String>>? methods;
+  final pulumi.Input<List<String>?>? methods;
   /// Negate of hosts. Specifies exclusions.
-  final pulumi.Input<List<String>>? notHosts;
+  final pulumi.Input<List<String>?>? notHosts;
   /// Negate of methods. Specifies exclusions.
-  final pulumi.Input<List<String>>? notMethods;
+  final pulumi.Input<List<String>?>? notMethods;
   /// Negate of paths. Specifies exclusions.
-  final pulumi.Input<List<String>>? notPaths;
+  final pulumi.Input<List<String>?>? notPaths;
   /// Negate of ports. Specifies exclusions.
-  final pulumi.Input<List<String>>? notPorts;
+  final pulumi.Input<List<String>?>? notPorts;
   /// HTTP request paths or gRPC methods. Exact match, prefix match, and suffix match are supported.
-  final pulumi.Input<List<String>>? paths;
+  final pulumi.Input<List<String>?>? paths;
   /// Port names or numbers.
-  final pulumi.Input<List<String>>? ports;
+  final pulumi.Input<List<String>?>? ports;
 
   /// Creates a new [Permission].
   /// [constraints] Extra custom constraints. The constraints are ANDed together.

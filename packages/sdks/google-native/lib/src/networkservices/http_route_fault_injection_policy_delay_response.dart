@@ -27,7 +27,7 @@ class HttpRouteFaultInjectionPolicyDelayResponse {
   factory HttpRouteFaultInjectionPolicyDelayResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteFaultInjectionPolicyDelayResponse(
       fixedDelay: pulumi.Input.fromValue(map['fixedDelay'] as String),
-      percentage: pulumi.Input.fromValue(map['percentage'] as int),
+      percentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['percentage'])),
     );
   }
 }

@@ -6,11 +6,11 @@ import 'workload_policy_config_container_v1beta1.dart';
 /// Autopilot is the configuration for Autopilot settings on the cluster.
 class AutopilotContainerV1beta1 {
   /// ConversionStatus shows conversion status.
-  final pulumi.Input<Map<String, dynamic>>? conversionStatus;
+  final pulumi.Input<Map<String, dynamic>?>? conversionStatus;
   /// Enable Autopilot
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Workload policy configuration for Autopilot.
-  final pulumi.Input<WorkloadPolicyConfigContainerV1beta1>? workloadPolicyConfig;
+  final pulumi.Input<WorkloadPolicyConfigContainerV1beta1?>? workloadPolicyConfig;
 
   /// Creates a new [AutopilotContainerV1beta1].
   /// [conversionStatus] ConversionStatus shows conversion status.

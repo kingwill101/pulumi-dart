@@ -8,11 +8,11 @@ import 'value_transformation.dart';
 /// Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of: Column.
 class ConditionalColumnSetValue {
   /// Optional. Custom engine specific features.
-  final pulumi.Input<Map<String, String>>? customFeatures;
+  final pulumi.Input<Map<String, String>?>? customFeatures;
   /// Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
-  final pulumi.Input<SourceNumericFilter>? sourceNumericFilter;
+  final pulumi.Input<SourceNumericFilter?>? sourceNumericFilter;
   /// Optional. Optional filter on source column length. Used for text based data types like varchar.
-  final pulumi.Input<SourceTextFilter>? sourceTextFilter;
+  final pulumi.Input<SourceTextFilter?>? sourceTextFilter;
   /// Description of data transformation during migration.
   final pulumi.Input<ValueTransformation> valueTransformation;
 

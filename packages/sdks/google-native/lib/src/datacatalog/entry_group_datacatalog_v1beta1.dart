@@ -29,8 +29,26 @@ class EntryGroupDatacatalogV1beta1 extends pulumi.CustomResource {
           'google-native:datacatalog/v1beta1:EntryGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['entryGroupId', 'location', 'project']).merge(options),
         ) {
+    dataCatalogTimestamps = registerOutput<GoogleCloudDatacatalogV1beta1SystemTimestampsResponse>('dataCatalogTimestamps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDatacatalogV1beta1SystemTimestampsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    entryGroupId = registerOutput<String>('entryGroupId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [EntryGroupDatacatalogV1beta1] resource.
+  EntryGroupDatacatalogV1beta1.reference(String urn)
+    : super(
+        'google-native:datacatalog/v1beta1:EntryGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dataCatalogTimestamps = registerOutput<GoogleCloudDatacatalogV1beta1SystemTimestampsResponse>('dataCatalogTimestamps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDatacatalogV1beta1SystemTimestampsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'psc_config_response.dart';
+import 'psc_connection_response.dart';
 import 'service_connection_policy_args.dart';
 
 /// Creates a new ServiceConnectionPolicy in a given project and location.
@@ -23,7 +24,7 @@ class ServiceConnectionPolicy extends pulumi.CustomResource {
   /// Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
   late final pulumi.Output<PscConfigResponse> pscConfig;
   /// [Output only] Information about each Private Service Connect connection.
-  late final pulumi.Output<List<Map<String, dynamic>>> pscConnections;
+  late final pulumi.Output<List<PscConnectionResponse>> pscConnections;
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
   /// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass. It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
@@ -45,19 +46,45 @@ class ServiceConnectionPolicy extends pulumi.CustomResource {
           'google-native:networkconnectivity/v1:ServiceConnectionPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');
     infrastructure = registerOutput<String>('infrastructure');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
     pscConfig = registerOutput<PscConfigResponse>('pscConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PscConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pscConnections = registerOutput<List<Map<String, dynamic>>>('pscConnections');
+    pscConnections = registerOutput<List<PscConnectionResponse>>('pscConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PscConnectionResponse>(guardedValue, (value) => PscConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    requestId = registerOutput<String?>('requestId');
+    serviceClass = registerOutput<String>('serviceClass');
+    serviceConnectionPolicyId = registerOutput<String?>('serviceConnectionPolicyId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ServiceConnectionPolicy] resource.
+  ServiceConnectionPolicy.reference(String urn)
+    : super(
+        'google-native:networkconnectivity/v1:ServiceConnectionPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    infrastructure = registerOutput<String>('infrastructure');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    pscConfig = registerOutput<PscConfigResponse>('pscConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PscConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pscConnections = registerOutput<List<PscConnectionResponse>>('pscConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PscConnectionResponse>(guardedValue, (value) => PscConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     requestId = registerOutput<String?>('requestId');
     serviceClass = registerOutput<String>('serviceClass');
     serviceConnectionPolicyId = registerOutput<String?>('serviceConnectionPolicyId');

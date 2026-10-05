@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The industry vertical that the data store registers.
-enum DataStoreIndustryVertical {
+enum DataStoreIndustryVertical implements pulumi.PulumiEnum<String> {
   industryVerticalUnspecified("INDUSTRY_VERTICAL_UNSPECIFIED"),
   generic("GENERIC"),
   media("MEDIA");
 
   const DataStoreIndustryVertical(this.wireValue);
+  @override
   final String wireValue;
 
   static DataStoreIndustryVertical fromValue(String value) {

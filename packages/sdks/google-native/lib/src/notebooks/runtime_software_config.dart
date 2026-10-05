@@ -7,27 +7,27 @@ import 'runtime_software_config_post_startup_script_behavior.dart';
 /// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
 class RuntimeSoftwareConfig {
   /// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
-  final pulumi.Input<String>? customGpuDriverPath;
+  final pulumi.Input<String?>? customGpuDriverPath;
   /// Bool indicating whether JupyterLab terminal will be available or not. Default: False
-  final pulumi.Input<bool>? disableTerminal;
+  final pulumi.Input<bool?>? disableTerminal;
   /// Verifies core internal services are running. Default: True
-  final pulumi.Input<bool>? enableHealthMonitoring;
+  final pulumi.Input<bool?>? enableHealthMonitoring;
   /// Runtime will automatically shutdown after idle_shutdown_time. Default: True
-  final pulumi.Input<bool>? idleShutdown;
+  final pulumi.Input<bool?>? idleShutdown;
   /// Time in minutes to wait before shutting down runtime. Default: 180 minutes
-  final pulumi.Input<int>? idleShutdownTimeout;
+  final pulumi.Input<int?>? idleShutdownTimeout;
   /// Install Nvidia Driver automatically. Default: True
-  final pulumi.Input<bool>? installGpuDriver;
+  final pulumi.Input<bool?>? installGpuDriver;
   /// Optional. Use a list of container images to use as Kernels in the notebook instance.
-  final pulumi.Input<List<ContainerImage>>? kernels;
+  final pulumi.Input<List<ContainerImage>?>? kernels;
   /// Bool indicating whether mixer client should be disabled. Default: False
-  final pulumi.Input<bool>? mixerDisabled;
+  final pulumi.Input<bool?>? mixerDisabled;
   /// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
-  final pulumi.Input<String>? notebookUpgradeSchedule;
+  final pulumi.Input<String?>? notebookUpgradeSchedule;
   /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
-  final pulumi.Input<String>? postStartupScript;
+  final pulumi.Input<String?>? postStartupScript;
   /// Behavior for the post startup script.
-  final pulumi.Input<RuntimeSoftwareConfigPostStartupScriptBehavior>? postStartupScriptBehavior;
+  final pulumi.Input<RuntimeSoftwareConfigPostStartupScriptBehavior?>? postStartupScriptBehavior;
 
   /// Creates a new [RuntimeSoftwareConfig].
   /// [customGpuDriverPath] Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
@@ -77,7 +77,7 @@ class RuntimeSoftwareConfig {
       disableTerminal: (() { final guardedValue = map['disableTerminal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableHealthMonitoring: (() { final guardedValue = map['enableHealthMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       idleShutdown: (() { final guardedValue = map['idleShutdown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      idleShutdownTimeout: (() { final guardedValue = map['idleShutdownTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      idleShutdownTimeout: (() { final guardedValue = map['idleShutdownTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       installGpuDriver: (() { final guardedValue = map['installGpuDriver']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kernels: (() { final guardedValue = map['kernels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerImage>(guardedValue, (value) => ContainerImage.fromMap((value as Map).cast<String, dynamic>()))); })(),
       mixerDisabled: (() { final guardedValue = map['mixerDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

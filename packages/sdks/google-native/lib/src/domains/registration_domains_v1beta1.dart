@@ -50,15 +50,15 @@ class RegistrationDomainsV1beta1 extends pulumi.CustomResource {
           'google-native:domains/v1beta1:Registration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     contactSettings = registerOutput<ContactSettingsResponseDomainsV1beta1>('contactSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactSettingsResponseDomainsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dnsSettings = registerOutput<DnsSettingsResponseDomainsV1beta1>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsSettingsResponseDomainsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domainName = registerOutput<String>('domainName');
     expireTime = registerOutput<String>('expireTime');
-    issues = registerOutput<List<String>>('issues');
-    labels = registerOutput<Map<String, String>>('labels');
+    issues = registerOutput<List<String>>('issues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     managementSettings = registerOutput<ManagementSettingsResponseDomainsV1beta1>('managementSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementSettingsResponseDomainsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -66,7 +66,34 @@ class RegistrationDomainsV1beta1 extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     registerFailureReason = registerOutput<String>('registerFailureReason');
     state = registerOutput<String>('state');
-    supportedPrivacy = registerOutput<List<String>>('supportedPrivacy');
+    supportedPrivacy = registerOutput<List<String>>('supportedPrivacy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    transferFailureReason = registerOutput<String>('transferFailureReason');
+  }
+
+  /// Creates a typed reference to an existing [RegistrationDomainsV1beta1] resource.
+  RegistrationDomainsV1beta1.reference(String urn)
+    : super(
+        'google-native:domains/v1beta1:Registration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    contactSettings = registerOutput<ContactSettingsResponseDomainsV1beta1>('contactSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactSettingsResponseDomainsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    dnsSettings = registerOutput<DnsSettingsResponseDomainsV1beta1>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsSettingsResponseDomainsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    domainName = registerOutput<String>('domainName');
+    expireTime = registerOutput<String>('expireTime');
+    issues = registerOutput<List<String>>('issues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    managementSettings = registerOutput<ManagementSettingsResponseDomainsV1beta1>('managementSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementSettingsResponseDomainsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    pendingContactSettings = registerOutput<ContactSettingsResponseDomainsV1beta1>('pendingContactSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContactSettingsResponseDomainsV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    registerFailureReason = registerOutput<String>('registerFailureReason');
+    state = registerOutput<String>('state');
+    supportedPrivacy = registerOutput<List<String>>('supportedPrivacy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     transferFailureReason = registerOutput<String>('transferFailureReason');
   }
 }

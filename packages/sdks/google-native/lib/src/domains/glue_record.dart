@@ -7,9 +7,9 @@ class GlueRecord {
   /// Domain name of the host in Punycode format.
   final pulumi.Input<String> hostName;
   /// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
-  final pulumi.Input<List<String>>? ipv4Addresses;
+  final pulumi.Input<List<String>?>? ipv4Addresses;
   /// List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set.
-  final pulumi.Input<List<String>>? ipv6Addresses;
+  final pulumi.Input<List<String>?>? ipv6Addresses;
 
   /// Creates a new [GlueRecord].
   /// [hostName] Domain name of the host in Punycode format.

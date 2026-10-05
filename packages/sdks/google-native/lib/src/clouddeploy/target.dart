@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'anthos_cluster_response.dart';
 import 'cloud_run_location_response.dart';
+import 'execution_config_response.dart';
 import 'gke_cluster_response.dart';
 import 'multi_target_response.dart';
 import 'target_args.dart';
@@ -20,7 +21,7 @@ class Target extends pulumi.CustomResource {
   /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
   /// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
-  late final pulumi.Output<List<Map<String, dynamic>>> executionConfigs;
+  late final pulumi.Output<List<ExecutionConfigResponse>> executionConfigs;
   /// Optional. Information specifying a GKE Cluster.
   late final pulumi.Output<GkeClusterResponse> gke;
   /// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
@@ -56,17 +57,47 @@ class Target extends pulumi.CustomResource {
           'google-native:clouddeploy/v1:Target',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'targetId']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     anthosCluster = registerOutput<AnthosClusterResponse>('anthosCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnthosClusterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
-    deployParameters = registerOutput<Map<String, String>>('deployParameters');
+    deployParameters = registerOutput<Map<String, String>>('deployParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');
-    executionConfigs = registerOutput<List<Map<String, dynamic>>>('executionConfigs');
+    executionConfigs = registerOutput<List<ExecutionConfigResponse>>('executionConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExecutionConfigResponse>(guardedValue, (value) => ExecutionConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     gke = registerOutput<GkeClusterResponse>('gke', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GkeClusterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    multiTarget = registerOutput<MultiTargetResponse>('multiTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    requireApproval = registerOutput<bool>('requireApproval');
+    run = registerOutput<CloudRunLocationResponse>('run', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudRunLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetId = registerOutput<String>('targetId');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Target] resource.
+  Target.reference(String urn)
+    : super(
+        'google-native:clouddeploy/v1:Target',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    anthosCluster = registerOutput<AnthosClusterResponse>('anthosCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnthosClusterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deployParameters = registerOutput<Map<String, String>>('deployParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    executionConfigs = registerOutput<List<ExecutionConfigResponse>>('executionConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExecutionConfigResponse>(guardedValue, (value) => ExecutionConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    gke = registerOutput<GkeClusterResponse>('gke', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GkeClusterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     multiTarget = registerOutput<MultiTargetResponse>('multiTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

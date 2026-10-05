@@ -10,7 +10,7 @@ class GetManagementDnsZoneBindingArgs {
   final pulumi.Input<String> location;
   final pulumi.Input<String> managementDnsZoneBindingId;
   final pulumi.Input<String> privateCloudId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetManagementDnsZoneBindingArgs].
   /// [location] Required.

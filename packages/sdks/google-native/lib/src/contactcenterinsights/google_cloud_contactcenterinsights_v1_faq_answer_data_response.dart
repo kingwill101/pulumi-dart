@@ -47,7 +47,7 @@ class GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse {
   factory GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse(
       answer: pulumi.Input.fromValue(map['answer'] as String),
-      confidenceScore: pulumi.Input.fromValue(map['confidenceScore'] as double),
+      confidenceScore: pulumi.Input.fromValue((map['confidenceScore'] as num).toDouble()),
       metadata: pulumi.Input.fromValue((map['metadata'] as Map).cast<String, String>()),
       queryRecord: pulumi.Input.fromValue(map['queryRecord'] as String),
       question: pulumi.Input.fromValue(map['question'] as String),

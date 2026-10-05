@@ -6,7 +6,7 @@ import 'cluster_autoscaling_config.dart';
 /// Configuration for a cluster.
 class ClusterConfig {
   /// Autoscaling configuration for this cluster.
-  final pulumi.Input<ClusterAutoscalingConfig>? clusterAutoscalingConfig;
+  final pulumi.Input<ClusterAutoscalingConfig?>? clusterAutoscalingConfig;
 
   /// Creates a new [ClusterConfig].
   /// [clusterAutoscalingConfig] Autoscaling configuration for this cluster.

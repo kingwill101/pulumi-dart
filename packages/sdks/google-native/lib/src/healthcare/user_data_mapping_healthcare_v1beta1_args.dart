@@ -12,12 +12,12 @@ class UserDataMappingHealthcareV1beta1Args {
   /// A unique identifier for the mapped resource.
   final pulumi.Input<String> dataId;
   final pulumi.Input<String> datasetId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
-  final pulumi.Input<List<AttributeHealthcareV1beta1>>? resourceAttributes;
+  final pulumi.Input<List<AttributeHealthcareV1beta1>?>? resourceAttributes;
   /// User's UUID provided by the client.
   final pulumi.Input<String> userId;
 

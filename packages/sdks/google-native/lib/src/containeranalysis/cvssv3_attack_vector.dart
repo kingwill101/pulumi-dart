@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
-enum CVSSv3AttackVector {
+enum CVSSv3AttackVector implements pulumi.PulumiEnum<String> {
   attackVectorUnspecified("ATTACK_VECTOR_UNSPECIFIED"),
   attackVectorNetwork("ATTACK_VECTOR_NETWORK"),
   attackVectorAdjacent("ATTACK_VECTOR_ADJACENT"),
@@ -7,6 +9,7 @@ enum CVSSv3AttackVector {
   attackVectorPhysical("ATTACK_VECTOR_PHYSICAL");
 
   const CVSSv3AttackVector(this.wireValue);
+  @override
   final String wireValue;
 
   static CVSSv3AttackVector fromValue(String value) {

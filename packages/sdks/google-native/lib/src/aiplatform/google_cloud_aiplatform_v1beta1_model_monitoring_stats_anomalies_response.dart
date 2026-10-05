@@ -37,7 +37,7 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponse {
 
   factory GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesResponse(
-      anomalyCount: pulumi.Input.fromValue(map['anomalyCount'] as int),
+      anomalyCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['anomalyCount'])),
       deployedModelId: pulumi.Input.fromValue(map['deployedModelId'] as String),
       featureStats: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse>(map['featureStats']!, (value) => GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesResponse.fromMap((value as Map).cast<String, dynamic>()))),
       objective: pulumi.Input.fromValue(map['objective'] as String),

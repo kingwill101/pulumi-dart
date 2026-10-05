@@ -9,12 +9,12 @@ import 'google_cloud_apigee_v1_datastore_config.dart';
 /// {@macro pulumi_apigee_v1_datastore_args_doc}
 class DatastoreArgs {
   /// Datastore Configurations.
-  final pulumi.Input<GoogleCloudApigeeV1DatastoreConfig>? datastoreConfig;
+  final pulumi.Input<GoogleCloudApigeeV1DatastoreConfig?>? datastoreConfig;
   /// Display name in UI
   final pulumi.Input<String> displayName;
   final pulumi.Input<String> organizationId;
   /// Destination storage type. Supported types `gcs` or `bigquery`.
-  final pulumi.Input<String>? targetType;
+  final pulumi.Input<String?>? targetType;
 
   /// Creates a new [DatastoreArgs].
   /// [datastoreConfig] Datastore Configurations.

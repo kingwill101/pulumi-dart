@@ -8,13 +8,13 @@ import 'git_source_context.dart';
 /// A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique revision of a single file or directory.
 class SourceContext {
   /// A SourceContext referring to a revision in a Google Cloud Source Repo.
-  final pulumi.Input<CloudRepoSourceContext>? cloudRepo;
+  final pulumi.Input<CloudRepoSourceContext?>? cloudRepo;
   /// A SourceContext referring to a Gerrit project.
-  final pulumi.Input<GerritSourceContext>? gerrit;
+  final pulumi.Input<GerritSourceContext?>? gerrit;
   /// A SourceContext referring to any third party Git repo (e.g., GitHub).
-  final pulumi.Input<GitSourceContext>? git;
+  final pulumi.Input<GitSourceContext?>? git;
   /// Labels with user defined metadata.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
 
   /// Creates a new [SourceContext].
   /// [cloudRepo] A SourceContext referring to a revision in a Google Cloud Source Repo.

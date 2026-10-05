@@ -43,7 +43,7 @@ class ForwardSshTunnelConnectivityResponse {
     return ForwardSshTunnelConnectivityResponse(
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
       username: pulumi.Input.fromValue(map['username'] as String),
     );

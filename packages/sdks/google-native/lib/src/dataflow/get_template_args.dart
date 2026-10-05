@@ -9,8 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTemplateArgs {
   final pulumi.Input<String> gcsPath;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetTemplateArgs].
   /// [gcsPath] Required.

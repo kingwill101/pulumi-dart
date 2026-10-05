@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_cloudbuild_v1alpha1_get_worker_pool_cloudbuild_v1alpha1_args_doc}
 class GetWorkerPoolCloudbuildV1alpha1Args {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> workerPoolId;
 
   /// Creates a new [GetWorkerPoolCloudbuildV1alpha1Args].

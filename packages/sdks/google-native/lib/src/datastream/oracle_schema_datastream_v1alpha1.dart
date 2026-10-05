@@ -6,9 +6,9 @@ import 'oracle_table_datastream_v1alpha1.dart';
 /// Oracle schema.
 class OracleSchemaDatastreamV1alpha1 {
   /// Tables in the schema.
-  final pulumi.Input<List<OracleTableDatastreamV1alpha1>>? oracleTables;
+  final pulumi.Input<List<OracleTableDatastreamV1alpha1>?>? oracleTables;
   /// Schema name.
-  final pulumi.Input<String>? schemaName;
+  final pulumi.Input<String?>? schemaName;
 
   /// Creates a new [OracleSchemaDatastreamV1alpha1].
   /// [oracleTables] Tables in the schema.

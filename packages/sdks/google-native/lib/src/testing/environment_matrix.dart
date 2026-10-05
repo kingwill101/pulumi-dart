@@ -8,11 +8,11 @@ import 'ios_device_list.dart';
 /// The matrix of environments in which the test is to be executed.
 class EnvironmentMatrix {
   /// A list of Android devices; the test will be run only on the specified devices.
-  final pulumi.Input<AndroidDeviceList>? androidDeviceList;
+  final pulumi.Input<AndroidDeviceList?>? androidDeviceList;
   /// A matrix of Android devices.
-  final pulumi.Input<AndroidMatrix>? androidMatrix;
+  final pulumi.Input<AndroidMatrix?>? androidMatrix;
   /// A list of iOS devices.
-  final pulumi.Input<IosDeviceList>? iosDeviceList;
+  final pulumi.Input<IosDeviceList?>? iosDeviceList;
 
   /// Creates a new [EnvironmentMatrix].
   /// [androidDeviceList] A list of Android devices; the test will be run only on the specified devices.

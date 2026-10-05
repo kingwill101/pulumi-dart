@@ -31,7 +31,7 @@ class ResourcePolicyDailyCycleResponseComputeV1 {
 
   factory ResourcePolicyDailyCycleResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyDailyCycleResponseComputeV1(
-      daysInCycle: pulumi.Input.fromValue(map['daysInCycle'] as int),
+      daysInCycle: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['daysInCycle'])),
       duration: pulumi.Input.fromValue(map['duration'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );

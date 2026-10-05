@@ -6,13 +6,13 @@ import 'client_secret_credentials_vmmigration_v1alpha1.dart';
 /// AzureSourceDetails message describes a specific source details for the Azure source type.
 class AzureSourceDetailsVmmigrationV1alpha1 {
   /// Immutable. The Azure location (region) that the source VMs will be migrated from.
-  final pulumi.Input<String>? azureLocation;
+  final pulumi.Input<String?>? azureLocation;
   /// Azure Credentials using tenant ID, client ID and secret.
-  final pulumi.Input<ClientSecretCredentialsVmmigrationV1alpha1>? clientSecretCreds;
+  final pulumi.Input<ClientSecretCredentialsVmmigrationV1alpha1?>? clientSecretCreds;
   /// User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m4ce` or `m2vm`.
-  final pulumi.Input<Map<String, String>>? migrationResourcesUserTags;
+  final pulumi.Input<Map<String, String>?>? migrationResourcesUserTags;
   /// Immutable. Azure subscription ID.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [AzureSourceDetailsVmmigrationV1alpha1].
   /// [azureLocation] Immutable. The Azure location (region) that the source VMs will be migrated from.

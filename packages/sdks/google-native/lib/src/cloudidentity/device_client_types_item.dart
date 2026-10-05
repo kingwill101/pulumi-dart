@@ -1,4 +1,6 @@
-enum DeviceClientTypesItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum DeviceClientTypesItem implements pulumi.PulumiEnum<String> {
   clientTypeUnspecified("CLIENT_TYPE_UNSPECIFIED"),
   driveFs("DRIVE_FS"),
   fundamental("FUNDAMENTAL"),
@@ -7,6 +9,7 @@ enum DeviceClientTypesItem {
   googleCredentialsProviderForWindows("GOOGLE_CREDENTIALS_PROVIDER_FOR_WINDOWS");
 
   const DeviceClientTypesItem(this.wireValue);
+  @override
   final String wireValue;
 
   static DeviceClientTypesItem fromValue(String value) {

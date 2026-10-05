@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_vmmigration_v1_get_target_project_args_doc}
 class GetTargetProjectArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> targetProjectId;
 
   /// Creates a new [GetTargetProjectArgs].

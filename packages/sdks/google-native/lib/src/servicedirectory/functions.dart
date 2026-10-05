@@ -38,6 +38,17 @@ Future<GetEndpointResult> getEndpoint(
   return GetEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetEndpointResult> getEndpointOutput(
+  GetEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:servicedirectory/v1:getEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEndpointResult.fromMap);
+}
+
 /// Gets a namespace.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicedirectory_v1_get_namespace_args_doc}
 /// [options] Invoke options controlling this call.
@@ -52,6 +63,17 @@ Future<GetNamespaceResult> getNamespace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceResult.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceResult> getNamespaceOutput(
+  GetNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:servicedirectory/v1:getNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceResult.fromMap);
 }
 
 /// Gets the IAM Policy for a resource (namespace or service only).
@@ -70,6 +92,17 @@ Future<GetNamespaceIamPolicyResult> getNamespaceIamPolicy(
   return GetNamespaceIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceIamPolicyResult> getNamespaceIamPolicyOutput(
+  GetNamespaceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:servicedirectory/v1:getNamespaceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceIamPolicyResult.fromMap);
+}
+
 /// Gets the IAM Policy for a resource (namespace or service only).
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicedirectory_v1_get_namespace_service_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -84,6 +117,17 @@ Future<GetNamespaceServiceIamPolicyResult> getNamespaceServiceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceServiceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceServiceIamPolicyResult> getNamespaceServiceIamPolicyOutput(
+  GetNamespaceServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:servicedirectory/v1:getNamespaceServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceServiceIamPolicyResult.fromMap);
 }
 
 /// Gets a service.
@@ -102,6 +146,17 @@ Future<GetServiceResult> getService(
   return GetServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:servicedirectory/v1:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
+}
+
 /// Gets an endpoint.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicedirectory_v1beta1_get_endpoint_servicedirectory_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -116,6 +171,17 @@ Future<GetEndpointServicedirectoryV1beta1Result> getEndpointServicedirectoryV1be
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEndpointServicedirectoryV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetEndpointServicedirectoryV1beta1Result> getEndpointServicedirectoryV1beta1Output(
+  GetEndpointServicedirectoryV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:servicedirectory/v1beta1:getEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEndpointServicedirectoryV1beta1Result.fromMap);
 }
 
 /// Gets a namespace.
@@ -134,6 +200,17 @@ Future<GetNamespaceServicedirectoryV1beta1Result> getNamespaceServicedirectoryV1
   return GetNamespaceServicedirectoryV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceServicedirectoryV1beta1Result> getNamespaceServicedirectoryV1beta1Output(
+  GetNamespaceServicedirectoryV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:servicedirectory/v1beta1:getNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceServicedirectoryV1beta1Result.fromMap);
+}
+
 /// Gets the IAM Policy for a resource
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicedirectory_v1beta1_get_namespace_iam_policy_servicedirectory_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -148,6 +225,17 @@ Future<GetNamespaceIamPolicyServicedirectoryV1beta1Result> getNamespaceIamPolicy
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceIamPolicyServicedirectoryV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceIamPolicyServicedirectoryV1beta1Result> getNamespaceIamPolicyServicedirectoryV1beta1Output(
+  GetNamespaceIamPolicyServicedirectoryV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:servicedirectory/v1beta1:getNamespaceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceIamPolicyServicedirectoryV1beta1Result.fromMap);
 }
 
 /// Gets the IAM Policy for a resource
@@ -166,6 +254,17 @@ Future<GetNamespaceServiceIamPolicyServicedirectoryV1beta1Result> getNamespaceSe
   return GetNamespaceServiceIamPolicyServicedirectoryV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceServiceIamPolicyServicedirectoryV1beta1Result> getNamespaceServiceIamPolicyServicedirectoryV1beta1Output(
+  GetNamespaceServiceIamPolicyServicedirectoryV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:servicedirectory/v1beta1:getNamespaceServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceServiceIamPolicyServicedirectoryV1beta1Result.fromMap);
+}
+
 /// Gets the IAM Policy for a resource
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicedirectory_v1beta1_get_namespace_workload_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -182,6 +281,17 @@ Future<GetNamespaceWorkloadIamPolicyResult> getNamespaceWorkloadIamPolicy(
   return GetNamespaceWorkloadIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceWorkloadIamPolicyResult> getNamespaceWorkloadIamPolicyOutput(
+  GetNamespaceWorkloadIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:servicedirectory/v1beta1:getNamespaceWorkloadIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceWorkloadIamPolicyResult.fromMap);
+}
+
 /// Gets a service.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicedirectory_v1beta1_get_service_servicedirectory_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -196,4 +306,15 @@ Future<GetServiceServicedirectoryV1beta1Result> getServiceServicedirectoryV1beta
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceServicedirectoryV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetServiceServicedirectoryV1beta1Result> getServiceServicedirectoryV1beta1Output(
+  GetServiceServicedirectoryV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:servicedirectory/v1beta1:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceServicedirectoryV1beta1Result.fromMap);
 }

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Type of this user.
-enum UserUserTypeAlloydbV1beta {
+enum UserUserTypeAlloydbV1beta implements pulumi.PulumiEnum<String> {
   userTypeUnspecified("USER_TYPE_UNSPECIFIED"),
   alloydbBuiltIn("ALLOYDB_BUILT_IN"),
   alloydbIamUser("ALLOYDB_IAM_USER");
 
   const UserUserTypeAlloydbV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static UserUserTypeAlloydbV1beta fromValue(String value) {

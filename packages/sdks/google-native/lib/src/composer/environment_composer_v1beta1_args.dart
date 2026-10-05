@@ -11,17 +11,17 @@ import 'storage_config_composer_v1beta1.dart';
 /// {@macro pulumi_composer_v1beta1_environment_composer_v1beta1_args_doc}
 class EnvironmentComposerV1beta1Args {
   /// Configuration parameters for this environment.
-  final pulumi.Input<EnvironmentConfigComposerV1beta1>? config;
+  final pulumi.Input<EnvironmentConfigComposerV1beta1?>? config;
   /// Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be &lt;= 128 bytes in size.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// The current state of the environment.
-  final pulumi.Input<EnvironmentStateComposerV1beta1>? state;
+  final pulumi.Input<EnvironmentStateComposerV1beta1?>? state;
   /// Optional. Storage configuration for this environment.
-  final pulumi.Input<StorageConfigComposerV1beta1>? storageConfig;
+  final pulumi.Input<StorageConfigComposerV1beta1?>? storageConfig;
 
   /// Creates a new [EnvironmentComposerV1beta1Args].
   /// [config] Configuration parameters for this environment.

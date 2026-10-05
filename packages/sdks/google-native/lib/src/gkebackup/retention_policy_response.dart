@@ -31,8 +31,8 @@ class RetentionPolicyResponse {
 
   factory RetentionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RetentionPolicyResponse(
-      backupDeleteLockDays: pulumi.Input.fromValue(map['backupDeleteLockDays'] as int),
-      backupRetainDays: pulumi.Input.fromValue(map['backupRetainDays'] as int),
+      backupDeleteLockDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['backupDeleteLockDays'])),
+      backupRetainDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['backupRetainDays'])),
       locked: pulumi.Input.fromValue(map['locked'] as bool),
     );
   }

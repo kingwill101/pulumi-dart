@@ -20,6 +20,17 @@ Future<GetWorkflowResult> getWorkflow(
   return GetWorkflowResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkflowResult> getWorkflowOutput(
+  GetWorkflowArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:workflows/v1:getWorkflow',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkflowResult.fromMap);
+}
+
 /// Gets details of a single Workflow.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workflows_v1beta_get_workflow_workflows_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetWorkflowWorkflowsV1betaResult> getWorkflowWorkflowsV1beta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkflowWorkflowsV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkflowWorkflowsV1betaResult> getWorkflowWorkflowsV1betaOutput(
+  GetWorkflowWorkflowsV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:workflows/v1beta:getWorkflow',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkflowWorkflowsV1betaResult.fromMap);
 }

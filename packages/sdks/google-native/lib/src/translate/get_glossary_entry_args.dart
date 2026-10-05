@@ -10,7 +10,7 @@ class GetGlossaryEntryArgs {
   final pulumi.Input<String> glossaryEntryId;
   final pulumi.Input<String> glossaryId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetGlossaryEntryArgs].
   /// [glossaryEntryId] Required.

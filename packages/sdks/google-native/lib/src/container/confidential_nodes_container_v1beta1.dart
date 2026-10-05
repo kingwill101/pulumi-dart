@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 class ConfidentialNodesContainerV1beta1 {
   /// Whether Confidential Nodes feature is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ConfidentialNodesContainerV1beta1].
   /// [enabled] Whether Confidential Nodes feature is enabled.

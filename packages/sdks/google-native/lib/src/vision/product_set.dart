@@ -29,8 +29,26 @@ class ProductSet extends pulumi.CustomResource {
           'google-native:vision/v1:ProductSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    displayName = registerOutput<String>('displayName');
+    indexError = registerOutput<StatusResponse>('indexError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    indexTime = registerOutput<String>('indexTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    productSetId = registerOutput<String?>('productSetId');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [ProductSet] resource.
+  ProductSet.reference(String urn)
+    : super(
+        'google-native:vision/v1:ProductSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     displayName = registerOutput<String>('displayName');
     indexError = registerOutput<StatusResponse>('indexError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     indexTime = registerOutput<String>('indexTime');

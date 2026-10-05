@@ -10,17 +10,17 @@ import 'google_cloud_aiplatform_v1_python_package_spec.dart';
 /// Represents the spec of a worker pool in a job.
 class GoogleCloudAiplatformV1WorkerPoolSpec {
   /// The custom container task.
-  final pulumi.Input<GoogleCloudAiplatformV1ContainerSpec>? containerSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1ContainerSpec?>? containerSpec;
   /// Disk spec.
-  final pulumi.Input<GoogleCloudAiplatformV1DiskSpec>? diskSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1DiskSpec?>? diskSpec;
   /// Optional. Immutable. The specification of a single machine.
-  final pulumi.Input<GoogleCloudAiplatformV1MachineSpec>? machineSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1MachineSpec?>? machineSpec;
   /// Optional. List of NFS mount spec.
-  final pulumi.Input<List<GoogleCloudAiplatformV1NfsMount>>? nfsMounts;
+  final pulumi.Input<List<GoogleCloudAiplatformV1NfsMount>?>? nfsMounts;
   /// The Python packaged task.
-  final pulumi.Input<GoogleCloudAiplatformV1PythonPackageSpec>? pythonPackageSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1PythonPackageSpec?>? pythonPackageSpec;
   /// Optional. The number of worker replicas to use for this worker pool.
-  final pulumi.Input<String>? replicaCount;
+  final pulumi.Input<String?>? replicaCount;
 
   /// Creates a new [GoogleCloudAiplatformV1WorkerPoolSpec].
   /// [containerSpec] The custom container task.

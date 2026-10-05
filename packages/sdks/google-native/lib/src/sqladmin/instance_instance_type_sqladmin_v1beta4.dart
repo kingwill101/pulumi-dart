@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The instance type.
-enum InstanceInstanceTypeSqladminV1beta4 {
+enum InstanceInstanceTypeSqladminV1beta4 implements pulumi.PulumiEnum<String> {
   sqlInstanceTypeUnspecified("SQL_INSTANCE_TYPE_UNSPECIFIED"),
   cloudSqlInstance("CLOUD_SQL_INSTANCE"),
   onPremisesInstance("ON_PREMISES_INSTANCE"),
   readReplicaInstance("READ_REPLICA_INSTANCE");
 
   const InstanceInstanceTypeSqladminV1beta4(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceInstanceTypeSqladminV1beta4 fromValue(String value) {

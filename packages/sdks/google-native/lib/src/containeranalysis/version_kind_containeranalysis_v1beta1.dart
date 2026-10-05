@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
-enum VersionKindContaineranalysisV1beta1 {
+enum VersionKindContaineranalysisV1beta1 implements pulumi.PulumiEnum<String> {
   versionKindUnspecified("VERSION_KIND_UNSPECIFIED"),
   normal("NORMAL"),
   minimum("MINIMUM"),
   maximum("MAXIMUM");
 
   const VersionKindContaineranalysisV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static VersionKindContaineranalysisV1beta1 fromValue(String value) {

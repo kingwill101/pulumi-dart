@@ -6,8 +6,8 @@ import 'link.dart';
 
 /// This corresponds to a signed in-toto link - it is made up of one or more signatures and the in-toto link itself. This is used for occurrences of a Grafeas in-toto note.
 class GrafeasV1beta1IntotoDetails {
-  final pulumi.Input<List<GrafeasV1beta1IntotoSignature>>? signatures;
-  final pulumi.Input<Link>? signed;
+  final pulumi.Input<List<GrafeasV1beta1IntotoSignature>?>? signatures;
+  final pulumi.Input<Link?>? signed;
 
   /// Creates a new [GrafeasV1beta1IntotoDetails].
   /// [signatures] Optional.

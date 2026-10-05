@@ -30,12 +30,31 @@ class ArchiveDeployment extends pulumi.CustomResource {
           'google-native:apigee/v1:ArchiveDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['environmentId', 'organizationId']).merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     environmentId = registerOutput<String>('environmentId');
     gcsUri = registerOutput<String>('gcsUri');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    operation = registerOutput<String>('operation');
+    organizationId = registerOutput<String>('organizationId');
+    updatedAt = registerOutput<String>('updatedAt');
+  }
+
+  /// Creates a typed reference to an existing [ArchiveDeployment] resource.
+  ArchiveDeployment.reference(String urn)
+    : super(
+        'google-native:apigee/v1:ArchiveDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    environmentId = registerOutput<String>('environmentId');
+    gcsUri = registerOutput<String>('gcsUri');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     operation = registerOutput<String>('operation');
     organizationId = registerOutput<String>('organizationId');

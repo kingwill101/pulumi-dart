@@ -38,10 +38,10 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse {
 
   factory GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse(
-      colSpan: pulumi.Input.fromValue(map['colSpan'] as int),
+      colSpan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['colSpan'])),
       detectedLanguages: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>(map['detectedLanguages']!, (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse.fromMap((value as Map).cast<String, dynamic>()))),
       layout: pulumi.Input.fromValue(GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap((map['layout']! as Map).cast<String, dynamic>())),
-      rowSpan: pulumi.Input.fromValue(map['rowSpan'] as int),
+      rowSpan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rowSpan'])),
     );
   }
 }

@@ -27,12 +27,28 @@ class AccessPolicy extends pulumi.CustomResource {
           'google-native:accesscontextmanager/v1:AccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    scopes = registerOutput<List<String>>('scopes');
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    title = registerOutput<String>('title');
+  }
+
+  /// Creates a typed reference to an existing [AccessPolicy] resource.
+  AccessPolicy.reference(String urn)
+    : super(
+        'google-native:accesscontextmanager/v1:AccessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     title = registerOutput<String>('title');
   }
 }

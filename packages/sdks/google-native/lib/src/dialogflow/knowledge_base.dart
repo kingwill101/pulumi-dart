@@ -24,8 +24,24 @@ class KnowledgeBase extends pulumi.CustomResource {
           'google-native:dialogflow/v2:KnowledgeBase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    displayName = registerOutput<String>('displayName');
+    languageCode = registerOutput<String>('languageCode');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [KnowledgeBase] resource.
+  KnowledgeBase.reference(String urn)
+    : super(
+        'google-native:dialogflow/v2:KnowledgeBase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     displayName = registerOutput<String>('displayName');
     languageCode = registerOutput<String>('languageCode');
     location = registerOutput<String>('location');

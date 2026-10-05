@@ -7,9 +7,9 @@ import 'basic_perf_sample_series_sample_series_label.dart';
 
 /// Encapsulates the metadata for basic sample series represented by a line chart
 class BasicPerfSampleSeries {
-  final pulumi.Input<BasicPerfSampleSeriesPerfMetricType>? perfMetricType;
-  final pulumi.Input<BasicPerfSampleSeriesPerfUnit>? perfUnit;
-  final pulumi.Input<BasicPerfSampleSeriesSampleSeriesLabel>? sampleSeriesLabel;
+  final pulumi.Input<BasicPerfSampleSeriesPerfMetricType?>? perfMetricType;
+  final pulumi.Input<BasicPerfSampleSeriesPerfUnit?>? perfUnit;
+  final pulumi.Input<BasicPerfSampleSeriesSampleSeriesLabel?>? sampleSeriesLabel;
 
   /// Creates a new [BasicPerfSampleSeries].
   /// [perfMetricType] Optional.

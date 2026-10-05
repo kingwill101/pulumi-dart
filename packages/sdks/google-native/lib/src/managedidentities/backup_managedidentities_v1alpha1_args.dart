@@ -10,11 +10,11 @@ class BackupManagedidentitiesV1alpha1Args {
   /// Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.
   final pulumi.Input<String> backupId;
   /// Optional. A short description of the backup.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   final pulumi.Input<String> domainId;
   /// Optional. Resource labels to represent user provided metadata.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [BackupManagedidentitiesV1alpha1Args].
   /// [backupId] Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.

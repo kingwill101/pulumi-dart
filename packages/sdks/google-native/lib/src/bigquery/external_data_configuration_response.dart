@@ -135,7 +135,7 @@ class ExternalDataConfigurationResponse {
       hivePartitioningOptions: pulumi.Input.fromValue(HivePartitioningOptionsResponse.fromMap((map['hivePartitioningOptions']! as Map).cast<String, dynamic>())),
       ignoreUnknownValues: pulumi.Input.fromValue(map['ignoreUnknownValues'] as bool),
       jsonOptions: pulumi.Input.fromValue(JsonOptionsResponse.fromMap((map['jsonOptions']! as Map).cast<String, dynamic>())),
-      maxBadRecords: pulumi.Input.fromValue(map['maxBadRecords'] as int),
+      maxBadRecords: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxBadRecords'])),
       metadataCacheMode: pulumi.Input.fromValue(map['metadataCacheMode'] as String),
       objectMetadata: pulumi.Input.fromValue(map['objectMetadata'] as String),
       parquetOptions: pulumi.Input.fromValue(ParquetOptionsResponse.fromMap((map['parquetOptions']! as Map).cast<String, dynamic>())),

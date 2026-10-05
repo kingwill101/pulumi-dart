@@ -6,9 +6,9 @@ import 'hash_containeranalysis_v1beta1.dart';
 /// An entity that can have metadata. For example, a Docker image.
 class ResourceContaineranalysisV1beta1 {
   /// Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
-  final pulumi.Input<HashContaineranalysisV1beta1>? contentHash;
+  final pulumi.Input<HashContaineranalysisV1beta1?>? contentHash;
   /// Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
   final pulumi.Input<String> uri;
 

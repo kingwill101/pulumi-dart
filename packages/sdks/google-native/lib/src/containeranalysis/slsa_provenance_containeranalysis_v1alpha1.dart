@@ -9,13 +9,13 @@ import 'slsa_recipe_containeranalysis_v1alpha1.dart';
 /// SlsaProvenance is the slsa provenance as defined by the slsa spec.
 class SlsaProvenanceContaineranalysisV1alpha1 {
   /// builder is the builder of this provenance
-  final pulumi.Input<SlsaBuilderContaineranalysisV1alpha1>? builder;
+  final pulumi.Input<SlsaBuilderContaineranalysisV1alpha1?>? builder;
   /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty.
-  final pulumi.Input<List<MaterialContaineranalysisV1alpha1>>? materials;
+  final pulumi.Input<List<MaterialContaineranalysisV1alpha1>?>? materials;
   /// metadata is the metadata of the provenance
-  final pulumi.Input<SlsaMetadataContaineranalysisV1alpha1>? metadata;
+  final pulumi.Input<SlsaMetadataContaineranalysisV1alpha1?>? metadata;
   /// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible).
-  final pulumi.Input<SlsaRecipeContaineranalysisV1alpha1>? recipe;
+  final pulumi.Input<SlsaRecipeContaineranalysisV1alpha1?>? recipe;
 
   /// Creates a new [SlsaProvenanceContaineranalysisV1alpha1].
   /// [builder] builder is the builder of this provenance

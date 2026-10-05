@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
 class GitSourceContextContaineranalysisV1beta1 {
   /// Git commit hash.
-  final pulumi.Input<String>? revisionId;
+  final pulumi.Input<String?>? revisionId;
   /// Git repository URL.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [GitSourceContextContaineranalysisV1beta1].
   /// [revisionId] Git commit hash.

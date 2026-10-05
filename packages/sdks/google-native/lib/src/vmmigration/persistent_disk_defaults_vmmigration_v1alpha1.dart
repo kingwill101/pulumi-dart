@@ -8,17 +8,17 @@ import 'vm_attachment_details_vmmigration_v1alpha1.dart';
 /// Details for creation of a Persistent Disk.
 class PersistentDiskDefaultsVmmigrationV1alpha1 {
   /// A map of labels to associate with the Persistent Disk.
-  final pulumi.Input<Map<String, String>>? additionalLabels;
+  final pulumi.Input<Map<String, String>?>? additionalLabels;
   /// Optional. The name of the Persistent Disk to create.
-  final pulumi.Input<String>? diskName;
+  final pulumi.Input<String?>? diskName;
   /// The disk type to use.
-  final pulumi.Input<PersistentDiskDefaultsDiskTypeVmmigrationV1alpha1>? diskType;
+  final pulumi.Input<PersistentDiskDefaultsDiskTypeVmmigrationV1alpha1?>? diskType;
   /// Optional. The encryption to apply to the disk.
-  final pulumi.Input<EncryptionVmmigrationV1alpha1>? encryption;
+  final pulumi.Input<EncryptionVmmigrationV1alpha1?>? encryption;
   /// The ordinal number of the source VM disk.
   final pulumi.Input<int> sourceDiskNumber;
   /// Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target VM.
-  final pulumi.Input<VmAttachmentDetailsVmmigrationV1alpha1>? vmAttachmentDetails;
+  final pulumi.Input<VmAttachmentDetailsVmmigrationV1alpha1?>? vmAttachmentDetails;
 
   /// Creates a new [PersistentDiskDefaultsVmmigrationV1alpha1].
   /// [additionalLabels] A map of labels to associate with the Persistent Disk.
@@ -53,7 +53,7 @@ class PersistentDiskDefaultsVmmigrationV1alpha1 {
       diskName: (() { final guardedValue = map['diskName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PersistentDiskDefaultsDiskTypeVmmigrationV1alpha1.fromValue(guardedValue as String)); })(),
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EncryptionVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      sourceDiskNumber: pulumi.Input.fromValue(map['sourceDiskNumber'] as int),
+      sourceDiskNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sourceDiskNumber'])),
       vmAttachmentDetails: (() { final guardedValue = map['vmAttachmentDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VmAttachmentDetailsVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

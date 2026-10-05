@@ -7,7 +7,7 @@ class GoogleCloudRunV2HTTPHeader {
   /// The header field name
   final pulumi.Input<String> name;
   /// The header field value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [GoogleCloudRunV2HTTPHeader].
   /// [name] The header field name

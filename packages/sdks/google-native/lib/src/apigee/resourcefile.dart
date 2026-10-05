@@ -10,7 +10,7 @@ class Resourcefile extends pulumi.CustomResource {
   late final pulumi.Output<String> data;
   late final pulumi.Output<String> environmentId;
   /// Application specific response metadata. Must be set in the first response for streaming APIs.
-  late final pulumi.Output<List<Map<String, dynamic>>> extensions;
+  late final pulumi.Output<List<Map<String, String>>> extensions;
   /// Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
@@ -29,12 +29,30 @@ class Resourcefile extends pulumi.CustomResource {
           'google-native:apigee/v1:Resourcefile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['environmentId', 'name', 'organizationId', 'type']).merge(options),
         ) {
     contentType = registerOutput<String>('contentType');
     data = registerOutput<String>('data');
     environmentId = registerOutput<String>('environmentId');
-    extensions = registerOutput<List<Map<String, dynamic>>>('extensions');
+    extensions = registerOutput<List<Map<String, String>>>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>()); });
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Resourcefile] resource.
+  Resourcefile.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Resourcefile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    contentType = registerOutput<String>('contentType');
+    data = registerOutput<String>('data');
+    environmentId = registerOutput<String>('environmentId');
+    extensions = registerOutput<List<Map<String, String>>>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>()); });
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
     type = registerOutput<String>('type');

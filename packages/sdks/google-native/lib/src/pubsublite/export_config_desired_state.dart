@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.
-enum ExportConfigDesiredState {
+enum ExportConfigDesiredState implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   active("ACTIVE"),
   paused("PAUSED"),
@@ -7,6 +9,7 @@ enum ExportConfigDesiredState {
   notFound("NOT_FOUND");
 
   const ExportConfigDesiredState(this.wireValue);
+  @override
   final String wireValue;
 
   static ExportConfigDesiredState fromValue(String value) {

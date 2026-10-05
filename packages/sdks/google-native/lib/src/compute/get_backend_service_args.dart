@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_alpha_get_backend_service_args_doc}
 class GetBackendServiceArgs {
   final pulumi.Input<String> backendService;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetBackendServiceArgs].
   /// [backendService] Required.

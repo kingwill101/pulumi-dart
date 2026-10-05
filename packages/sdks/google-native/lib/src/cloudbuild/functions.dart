@@ -40,6 +40,17 @@ Future<GetBitbucketServerConfigResult> getBitbucketServerConfig(
   return GetBitbucketServerConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetBitbucketServerConfigResult> getBitbucketServerConfigOutput(
+  GetBitbucketServerConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudbuild/v1:getBitbucketServerConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBitbucketServerConfigResult.fromMap);
+}
+
 /// Returns information about a previously requested build. The `Build` that is returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudbuild_v1_get_build_args_doc}
 /// [options] Invoke options controlling this call.
@@ -54,6 +65,17 @@ Future<GetBuildResult> getBuild(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBuildResult.fromMap(result);
+}
+
+pulumi.Output<GetBuildResult> getBuildOutput(
+  GetBuildArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudbuild/v1:getBuild',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBuildResult.fromMap);
 }
 
 /// Retrieves a `GitLabConfig`. This API is experimental
@@ -72,6 +94,17 @@ Future<GetGitLabConfigResult> getGitLabConfig(
   return GetGitLabConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetGitLabConfigResult> getGitLabConfigOutput(
+  GetGitLabConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudbuild/v1:getGitLabConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGitLabConfigResult.fromMap);
+}
+
 /// Retrieve a GitHubEnterpriseConfig.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudbuild_v1_get_github_enterprise_config_args_doc}
 /// [options] Invoke options controlling this call.
@@ -86,6 +119,17 @@ Future<GetGithubEnterpriseConfigResult> getGithubEnterpriseConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGithubEnterpriseConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetGithubEnterpriseConfigResult> getGithubEnterpriseConfigOutput(
+  GetGithubEnterpriseConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudbuild/v1:getGithubEnterpriseConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGithubEnterpriseConfigResult.fromMap);
 }
 
 /// Returns information about a `BuildTrigger`.
@@ -104,6 +148,17 @@ Future<GetTriggerResult> getTrigger(
   return GetTriggerResult.fromMap(result);
 }
 
+pulumi.Output<GetTriggerResult> getTriggerOutput(
+  GetTriggerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudbuild/v1:getTrigger',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTriggerResult.fromMap);
+}
+
 /// Returns details of a `WorkerPool`.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudbuild_v1_get_worker_pool_args_doc}
 /// [options] Invoke options controlling this call.
@@ -118,6 +173,17 @@ Future<GetWorkerPoolResult> getWorkerPool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkerPoolResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkerPoolResult> getWorkerPoolOutput(
+  GetWorkerPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudbuild/v1:getWorkerPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkerPoolResult.fromMap);
 }
 
 /// Returns information about a `WorkerPool`.
@@ -136,6 +202,17 @@ Future<GetWorkerPoolCloudbuildV1alpha1Result> getWorkerPoolCloudbuildV1alpha1(
   return GetWorkerPoolCloudbuildV1alpha1Result.fromMap(result);
 }
 
+pulumi.Output<GetWorkerPoolCloudbuildV1alpha1Result> getWorkerPoolCloudbuildV1alpha1Output(
+  GetWorkerPoolCloudbuildV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudbuild/v1alpha1:getWorkerPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkerPoolCloudbuildV1alpha1Result.fromMap);
+}
+
 /// Returns details of a `WorkerPool`.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudbuild_v1alpha2_get_worker_pool_cloudbuild_v1alpha2_args_doc}
 /// [options] Invoke options controlling this call.
@@ -150,6 +227,17 @@ Future<GetWorkerPoolCloudbuildV1alpha2Result> getWorkerPoolCloudbuildV1alpha2(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkerPoolCloudbuildV1alpha2Result.fromMap(result);
+}
+
+pulumi.Output<GetWorkerPoolCloudbuildV1alpha2Result> getWorkerPoolCloudbuildV1alpha2Output(
+  GetWorkerPoolCloudbuildV1alpha2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudbuild/v1alpha2:getWorkerPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkerPoolCloudbuildV1alpha2Result.fromMap);
 }
 
 /// Returns details of a `WorkerPool`.
@@ -168,6 +256,17 @@ Future<GetWorkerPoolCloudbuildV1beta1Result> getWorkerPoolCloudbuildV1beta1(
   return GetWorkerPoolCloudbuildV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetWorkerPoolCloudbuildV1beta1Result> getWorkerPoolCloudbuildV1beta1Output(
+  GetWorkerPoolCloudbuildV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudbuild/v1beta1:getWorkerPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkerPoolCloudbuildV1beta1Result.fromMap);
+}
+
 /// Gets details of a single connection.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudbuild_v2_get_connection_args_doc}
 /// [options] Invoke options controlling this call.
@@ -182,6 +281,17 @@ Future<GetConnectionResult> getConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetConnectionResult> getConnectionOutput(
+  GetConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudbuild/v2:getConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -200,6 +310,17 @@ Future<GetConnectionIamPolicyResult> getConnectionIamPolicy(
   return GetConnectionIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionIamPolicyResult> getConnectionIamPolicyOutput(
+  GetConnectionIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudbuild/v2:getConnectionIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionIamPolicyResult.fromMap);
+}
+
 /// Gets details of a single repository.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudbuild_v2_get_repository_args_doc}
 /// [options] Invoke options controlling this call.
@@ -214,4 +335,15 @@ Future<GetRepositoryResult> getRepository(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRepositoryResult.fromMap(result);
+}
+
+pulumi.Output<GetRepositoryResult> getRepositoryOutput(
+  GetRepositoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudbuild/v2:getRepository',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepositoryResult.fromMap);
 }

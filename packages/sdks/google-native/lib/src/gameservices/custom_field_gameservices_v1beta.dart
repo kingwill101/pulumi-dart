@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Custom fields. These can be used to create a counter with arbitrary field/value pairs. See: go/rpcsp-custom-fields.
 class CustomFieldGameservicesV1beta {
   /// Name is the field name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Value is the field value. It is important that in contrast to the CounterOptions.field, the value here is a constant that is not derived from the IAMContext.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CustomFieldGameservicesV1beta].
   /// [name] Name is the field name.

@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of Performance Monitoring Unit requested on instance.
-enum AdvancedMachineFeaturesPerformanceMonitoringUnit {
+enum AdvancedMachineFeaturesPerformanceMonitoringUnit implements pulumi.PulumiEnum<String> {
   architectural("ARCHITECTURAL"),
   enhanced("ENHANCED"),
   performanceMonitoringUnitUnspecified("PERFORMANCE_MONITORING_UNIT_UNSPECIFIED"),
   standard("STANDARD");
 
   const AdvancedMachineFeaturesPerformanceMonitoringUnit(this.wireValue);
+  @override
   final String wireValue;
 
   static AdvancedMachineFeaturesPerformanceMonitoringUnit fromValue(String value) {

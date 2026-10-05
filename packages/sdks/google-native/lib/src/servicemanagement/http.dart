@@ -6,9 +6,9 @@ import 'http_rule.dart';
 /// Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the mapping of an RPC method to one or more HTTP REST API methods.
 class Http {
   /// When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.
-  final pulumi.Input<bool>? fullyDecodeReservedExpansion;
+  final pulumi.Input<bool?>? fullyDecodeReservedExpansion;
   /// A list of HTTP configuration rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-  final pulumi.Input<List<HttpRule>>? rules;
+  final pulumi.Input<List<HttpRule>?>? rules;
 
   /// Creates a new [Http].
   /// [fullyDecodeReservedExpansion] When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.

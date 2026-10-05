@@ -13,21 +13,21 @@ import 'ospolicy_resource_package_resource_zypper_osconfig_v1alpha.dart';
 /// A resource that manages a system package.
 class OSPolicyResourcePackageResourceOsconfigV1alpha {
   /// A package managed by Apt.
-  final pulumi.Input<OSPolicyResourcePackageResourceAPTOsconfigV1alpha>? apt;
+  final pulumi.Input<OSPolicyResourcePackageResourceAPTOsconfigV1alpha?>? apt;
   /// A deb package file.
-  final pulumi.Input<OSPolicyResourcePackageResourceDebOsconfigV1alpha>? deb;
+  final pulumi.Input<OSPolicyResourcePackageResourceDebOsconfigV1alpha?>? deb;
   /// The desired state the agent should maintain for this package.
   final pulumi.Input<OSPolicyResourcePackageResourceDesiredStateOsconfigV1alpha> desiredState;
   /// A package managed by GooGet.
-  final pulumi.Input<OSPolicyResourcePackageResourceGooGetOsconfigV1alpha>? googet;
+  final pulumi.Input<OSPolicyResourcePackageResourceGooGetOsconfigV1alpha?>? googet;
   /// An MSI package.
-  final pulumi.Input<OSPolicyResourcePackageResourceMSIOsconfigV1alpha>? msi;
+  final pulumi.Input<OSPolicyResourcePackageResourceMSIOsconfigV1alpha?>? msi;
   /// An rpm package file.
-  final pulumi.Input<OSPolicyResourcePackageResourceRPMOsconfigV1alpha>? rpm;
+  final pulumi.Input<OSPolicyResourcePackageResourceRPMOsconfigV1alpha?>? rpm;
   /// A package managed by YUM.
-  final pulumi.Input<OSPolicyResourcePackageResourceYUMOsconfigV1alpha>? yum;
+  final pulumi.Input<OSPolicyResourcePackageResourceYUMOsconfigV1alpha?>? yum;
   /// A package managed by Zypper.
-  final pulumi.Input<OSPolicyResourcePackageResourceZypperOsconfigV1alpha>? zypper;
+  final pulumi.Input<OSPolicyResourcePackageResourceZypperOsconfigV1alpha?>? zypper;
 
   /// Creates a new [OSPolicyResourcePackageResourceOsconfigV1alpha].
   /// [apt] A package managed by Apt.

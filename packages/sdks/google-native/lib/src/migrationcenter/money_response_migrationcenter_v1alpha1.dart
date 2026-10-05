@@ -32,7 +32,7 @@ class MoneyResponseMigrationcenterV1alpha1 {
   factory MoneyResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return MoneyResponseMigrationcenterV1alpha1(
       currencyCode: pulumi.Input.fromValue(map['currencyCode'] as String),
-      nanos: pulumi.Input.fromValue(map['nanos'] as int),
+      nanos: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nanos'])),
       units: pulumi.Input.fromValue(map['units'] as String),
     );
   }

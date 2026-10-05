@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration options for the Config Connector add-on.
 class ConfigConnectorConfig {
   /// Whether Cloud Connector is enabled for this cluster.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ConfigConnectorConfig].
   /// [enabled] Whether Cloud Connector is enabled for this cluster.

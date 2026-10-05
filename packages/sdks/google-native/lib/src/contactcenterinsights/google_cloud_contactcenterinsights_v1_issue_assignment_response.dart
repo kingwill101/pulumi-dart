@@ -33,7 +33,7 @@ class GoogleCloudContactcenterinsightsV1IssueAssignmentResponse {
     return GoogleCloudContactcenterinsightsV1IssueAssignmentResponse(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       issue: pulumi.Input.fromValue(map['issue'] as String),
-      score: pulumi.Input.fromValue(map['score'] as double),
+      score: pulumi.Input.fromValue((map['score'] as num).toDouble()),
     );
   }
 }

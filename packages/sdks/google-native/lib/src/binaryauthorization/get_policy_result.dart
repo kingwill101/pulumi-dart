@@ -5,13 +5,13 @@ import 'gke_policy_response.dart';
 /// Result data returned by getPolicy.
 class GetPolicyResult {
   /// Optional. A description comment about the policy.
-  final String description;
+  final String? description;
   /// Optional. GKE platform-specific policy.
-  final GkePolicyResponse gkePolicy;
+  final GkePolicyResponse? gkePolicy;
   /// The relative resource name of the Binary Authorization platform policy, in the form of `projects/*/platforms/*/policies/*`.
-  final String name;
+  final String? name;
   /// Time when the policy was last updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetPolicyResult].
   /// [description] Optional. A description comment about the policy.
@@ -19,27 +19,27 @@ class GetPolicyResult {
   /// [name] The relative resource name of the Binary Authorization platform policy, in the form of `projects/*/platforms/*/policies/*`.
   /// [updateTime] Time when the policy was last updated.
   const GetPolicyResult({
-    required this.description,
-    required this.gkePolicy,
-    required this.name,
-    required this.updateTime,
+    this.description,
+    this.gkePolicy,
+    this.name,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'description': description,
-      'gkePolicy': gkePolicy.toMap(),
-      'name': name,
-      'updateTime': updateTime,
+      'description': ?description,
+      'gkePolicy': ?gkePolicy?.toMap(),
+      'name': ?name,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyResult(
-      description: map['description'] as String,
-      gkePolicy: GkePolicyResponse.fromMap((map['gkePolicy']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      updateTime: map['updateTime'] as String,
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      gkePolicy: (() { final guardedValue = map['gkePolicy']; if (guardedValue == null) return null; return GkePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

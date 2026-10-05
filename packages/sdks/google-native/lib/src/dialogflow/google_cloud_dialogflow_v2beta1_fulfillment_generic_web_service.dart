@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
 class GoogleCloudDialogflowV2beta1FulfillmentGenericWebService {
   /// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
-  final pulumi.Input<bool>? isCloudFunction;
+  final pulumi.Input<bool?>? isCloudFunction;
   /// The password for HTTP Basic authentication.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The HTTP request headers to send together with fulfillment requests.
-  final pulumi.Input<Map<String, String>>? requestHeaders;
+  final pulumi.Input<Map<String, String>?>? requestHeaders;
   /// The fulfillment URI for receiving POST requests. It must use https protocol.
   final pulumi.Input<String> uri;
   /// The user name for HTTP Basic authentication.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1FulfillmentGenericWebService].
   /// [isCloudFunction] Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.

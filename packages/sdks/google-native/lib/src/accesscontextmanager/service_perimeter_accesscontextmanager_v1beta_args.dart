@@ -10,13 +10,13 @@ import 'service_perimeter_perimeter_type_accesscontextmanager_v1beta.dart';
 class ServicePerimeterAccesscontextmanagerV1betaArgs {
   final pulumi.Input<String> accessPolicyId;
   /// Description of the `ServicePerimeter` and its use. Does not affect behavior.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Resource name for the `ServicePerimeter`. Format: `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`. The `service_perimeter` component must begin with a letter, followed by alphanumeric characters or `_`. After you create a `ServicePerimeter`, you cannot change its `name`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
-  final pulumi.Input<ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta>? perimeterType;
+  final pulumi.Input<ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta?>? perimeterType;
   /// Human readable title. Must be unique within the Policy.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [ServicePerimeterAccesscontextmanagerV1betaArgs].
   /// [accessPolicyId] Required.

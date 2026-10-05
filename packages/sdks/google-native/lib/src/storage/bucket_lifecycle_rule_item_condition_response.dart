@@ -76,18 +76,18 @@ class BucketLifecycleRuleItemConditionResponse {
 
   factory BucketLifecycleRuleItemConditionResponse.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleItemConditionResponse(
-      age: pulumi.Input.fromValue(map['age'] as int),
+      age: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['age'])),
       createdBefore: pulumi.Input.fromValue(map['createdBefore'] as String),
       customTimeBefore: pulumi.Input.fromValue(map['customTimeBefore'] as String),
-      daysSinceCustomTime: pulumi.Input.fromValue(map['daysSinceCustomTime'] as int),
-      daysSinceNoncurrentTime: pulumi.Input.fromValue(map['daysSinceNoncurrentTime'] as int),
+      daysSinceCustomTime: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['daysSinceCustomTime'])),
+      daysSinceNoncurrentTime: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['daysSinceNoncurrentTime'])),
       isLive: pulumi.Input.fromValue(map['isLive'] as bool),
       matchesPattern: pulumi.Input.fromValue(map['matchesPattern'] as String),
       matchesPrefix: pulumi.Input.fromValue((map['matchesPrefix'] as List).cast<String>()),
       matchesStorageClass: pulumi.Input.fromValue((map['matchesStorageClass'] as List).cast<String>()),
       matchesSuffix: pulumi.Input.fromValue((map['matchesSuffix'] as List).cast<String>()),
       noncurrentTimeBefore: pulumi.Input.fromValue(map['noncurrentTimeBefore'] as String),
-      numNewerVersions: pulumi.Input.fromValue(map['numNewerVersions'] as int),
+      numNewerVersions: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numNewerVersions'])),
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'forwarding_rule_compute_v1_args.dart';
+import 'forwarding_rule_service_directory_registration_response_compute_v1.dart';
+import 'metadata_filter_response_compute_v1.dart';
 
 /// Creates a ForwardingRule resource in the specified project and region using the data included in the request.
 class ForwardingRuleComputeV1 extends pulumi.CustomResource {
@@ -36,7 +38,7 @@ class ForwardingRuleComputeV1 extends pulumi.CustomResource {
   /// Specifies the forwarding rule type. For more information about forwarding rules, refer to Forwarding rule concepts.
   late final pulumi.Output<String> loadBalancingScheme;
   /// Opaque filter criteria used by load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to load balancer, xDS clients present node metadata. When there is a match, the relevant configuration is made available to those proxies. Otherwise, all the resources (e.g. TargetHttpProxy, UrlMap) referenced by the ForwardingRule are not visible to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadataFilters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here will be applifed before those specified in the UrlMap that this ForwardingRule references. metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-  late final pulumi.Output<List<Map<String, dynamic>>> metadataFilters;
+  late final pulumi.Output<List<MetadataFilterResponseComputeV1>> metadataFilters;
   /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. For Private Service Connect forwarding rules that forward traffic to Google APIs, the forwarding rule name must be a 1-20 characters string with lowercase letters and numbers and must start with a letter.
   late final pulumi.Output<String> name;
   /// This field is not used for global external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If the subnetwork is specified, the network of the subnetwork will be used. If neither subnetwork nor this field is specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
@@ -59,7 +61,7 @@ class ForwardingRuleComputeV1 extends pulumi.CustomResource {
   /// Server-defined URL for the resource.
   late final pulumi.Output<String> selfLink;
   /// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
-  late final pulumi.Output<List<Map<String, dynamic>>> serviceDirectoryRegistrations;
+  late final pulumi.Output<List<ForwardingRuleServiceDirectoryRegistrationResponseComputeV1>> serviceDirectoryRegistrations;
   /// An optional prefix to the service name for this Forwarding Rule. If specified, the prefix is the first label of the fully qualified service name. The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. This field is only used for internal load balancing.
   late final pulumi.Output<String> serviceLabel;
   /// The internal fully qualified service name for this Forwarding Rule. This field is only used for internal load balancing.
@@ -83,7 +85,7 @@ class ForwardingRuleComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:ForwardingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     allPorts = registerOutput<bool>('allPorts');
     allowGlobalAccess = registerOutput<bool>('allowGlobalAccess');
@@ -99,25 +101,71 @@ class ForwardingRuleComputeV1 extends pulumi.CustomResource {
     isMirroringCollector = registerOutput<bool>('isMirroringCollector');
     kind = registerOutput<String>('kind');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     loadBalancingScheme = registerOutput<String>('loadBalancingScheme');
-    metadataFilters = registerOutput<List<Map<String, dynamic>>>('metadataFilters');
+    metadataFilters = registerOutput<List<MetadataFilterResponseComputeV1>>('metadataFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetadataFilterResponseComputeV1>(guardedValue, (value) => MetadataFilterResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     networkTier = registerOutput<String>('networkTier');
     noAutomateDnsZone = registerOutput<bool>('noAutomateDnsZone');
     portRange = registerOutput<String>('portRange');
-    ports = registerOutput<List<String>>('ports');
+    ports = registerOutput<List<String>>('ports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     pscConnectionId = registerOutput<String>('pscConnectionId');
     pscConnectionStatus = registerOutput<String>('pscConnectionStatus');
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
     selfLink = registerOutput<String>('selfLink');
-    serviceDirectoryRegistrations = registerOutput<List<Map<String, dynamic>>>('serviceDirectoryRegistrations');
+    serviceDirectoryRegistrations = registerOutput<List<ForwardingRuleServiceDirectoryRegistrationResponseComputeV1>>('serviceDirectoryRegistrations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ForwardingRuleServiceDirectoryRegistrationResponseComputeV1>(guardedValue, (value) => ForwardingRuleServiceDirectoryRegistrationResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
     serviceLabel = registerOutput<String>('serviceLabel');
     serviceName = registerOutput<String>('serviceName');
-    sourceIpRanges = registerOutput<List<String>>('sourceIpRanges');
+    sourceIpRanges = registerOutput<List<String>>('sourceIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetwork = registerOutput<String>('subnetwork');
+    target = registerOutput<String>('target');
+  }
+
+  /// Creates a typed reference to an existing [ForwardingRuleComputeV1] resource.
+  ForwardingRuleComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:ForwardingRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allPorts = registerOutput<bool>('allPorts');
+    allowGlobalAccess = registerOutput<bool>('allowGlobalAccess');
+    allowPscGlobalAccess = registerOutput<bool>('allowPscGlobalAccess');
+    backendService = registerOutput<String>('backendService');
+    baseForwardingRule = registerOutput<String>('baseForwardingRule');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    ipAddress = registerOutput<String>('ipAddress');
+    ipProtocol = registerOutput<String>('ipProtocol');
+    ipVersion = registerOutput<String>('ipVersion');
+    isMirroringCollector = registerOutput<bool>('isMirroringCollector');
+    kind = registerOutput<String>('kind');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    loadBalancingScheme = registerOutput<String>('loadBalancingScheme');
+    metadataFilters = registerOutput<List<MetadataFilterResponseComputeV1>>('metadataFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetadataFilterResponseComputeV1>(guardedValue, (value) => MetadataFilterResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    networkTier = registerOutput<String>('networkTier');
+    noAutomateDnsZone = registerOutput<bool>('noAutomateDnsZone');
+    portRange = registerOutput<String>('portRange');
+    ports = registerOutput<List<String>>('ports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    pscConnectionId = registerOutput<String>('pscConnectionId');
+    pscConnectionStatus = registerOutput<String>('pscConnectionStatus');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    serviceDirectoryRegistrations = registerOutput<List<ForwardingRuleServiceDirectoryRegistrationResponseComputeV1>>('serviceDirectoryRegistrations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ForwardingRuleServiceDirectoryRegistrationResponseComputeV1>(guardedValue, (value) => ForwardingRuleServiceDirectoryRegistrationResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+    serviceLabel = registerOutput<String>('serviceLabel');
+    serviceName = registerOutput<String>('serviceName');
+    sourceIpRanges = registerOutput<List<String>>('sourceIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subnetwork = registerOutput<String>('subnetwork');
     target = registerOutput<String>('target');
   }

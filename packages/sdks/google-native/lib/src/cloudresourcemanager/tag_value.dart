@@ -32,8 +32,27 @@ class TagValue extends pulumi.CustomResource {
           'google-native:cloudresourcemanager/v3:TagValue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    namespacedName = registerOutput<String>('namespacedName');
+    parent = registerOutput<String>('parent');
+    shortName = registerOutput<String>('shortName');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [TagValue] resource.
+  TagValue.reference(String urn)
+    : super(
+        'google-native:cloudresourcemanager/v3:TagValue',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');

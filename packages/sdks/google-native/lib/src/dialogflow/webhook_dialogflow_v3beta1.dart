@@ -33,8 +33,28 @@ class WebhookDialogflowV3beta1 extends pulumi.CustomResource {
           'google-native:dialogflow/v3beta1:Webhook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['agentId', 'location', 'project']).merge(options),
         ) {
+    agentId = registerOutput<String>('agentId');
+    disabled = registerOutput<bool>('disabled');
+    displayName = registerOutput<String>('displayName');
+    genericWebService = registerOutput<GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse>('genericWebService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    serviceDirectory = registerOutput<GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse>('serviceDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeout = registerOutput<String>('timeout');
+  }
+
+  /// Creates a typed reference to an existing [WebhookDialogflowV3beta1] resource.
+  WebhookDialogflowV3beta1.reference(String urn)
+    : super(
+        'google-native:dialogflow/v3beta1:Webhook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     agentId = registerOutput<String>('agentId');
     disabled = registerOutput<bool>('disabled');
     displayName = registerOutput<String>('displayName');

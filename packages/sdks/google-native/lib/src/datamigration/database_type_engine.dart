@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The database engine.
-enum DatabaseTypeEngine {
+enum DatabaseTypeEngine implements pulumi.PulumiEnum<String> {
   databaseEngineUnspecified("DATABASE_ENGINE_UNSPECIFIED"),
   mysql("MYSQL"),
   postgresql("POSTGRESQL"),
   oracle("ORACLE");
 
   const DatabaseTypeEngine(this.wireValue);
+  @override
   final String wireValue;
 
   static DatabaseTypeEngine fromValue(String value) {

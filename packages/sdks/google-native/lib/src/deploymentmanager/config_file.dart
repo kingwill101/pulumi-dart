@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigFile {
   /// The contents of the file.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
 
   /// Creates a new [ConfigFile].
   /// [content] The contents of the file.

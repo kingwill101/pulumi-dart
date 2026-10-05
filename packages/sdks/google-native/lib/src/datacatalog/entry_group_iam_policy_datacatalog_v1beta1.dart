@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'binding_response_datacatalog_v1beta1.dart';
 import 'entry_group_iam_policy_datacatalog_v1beta1_args.dart';
 
 /// Sets the access control policy for a resource. Replaces any existing policy. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag templates. - `datacatalog.entries.setIamPolicy` to set policies on entries. - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.
@@ -6,7 +7,7 @@ import 'entry_group_iam_policy_datacatalog_v1beta1_args.dart';
 /// on Google Cloud even though it will be deleted from Pulumi state.
 class EntryGroupIamPolicyDatacatalogV1beta1 extends pulumi.CustomResource {
   /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
-  late final pulumi.Output<List<Map<String, dynamic>>> bindings;
+  late final pulumi.Output<List<BindingResponseDatacatalogV1beta1>> bindings;
   late final pulumi.Output<String> entryGroupId;
   /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
   late final pulumi.Output<String> etag;
@@ -27,9 +28,26 @@ class EntryGroupIamPolicyDatacatalogV1beta1 extends pulumi.CustomResource {
           'google-native:datacatalog/v1beta1:EntryGroupIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['entryGroupId', 'location', 'project']).merge(options),
         ) {
-    bindings = registerOutput<List<Map<String, dynamic>>>('bindings');
+    bindings = registerOutput<List<BindingResponseDatacatalogV1beta1>>('bindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BindingResponseDatacatalogV1beta1>(guardedValue, (value) => BindingResponseDatacatalogV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    entryGroupId = registerOutput<String>('entryGroupId');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    project = registerOutput<String>('project');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [EntryGroupIamPolicyDatacatalogV1beta1] resource.
+  EntryGroupIamPolicyDatacatalogV1beta1.reference(String urn)
+    : super(
+        'google-native:datacatalog/v1beta1:EntryGroupIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bindings = registerOutput<List<BindingResponseDatacatalogV1beta1>>('bindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BindingResponseDatacatalogV1beta1>(guardedValue, (value) => BindingResponseDatacatalogV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     entryGroupId = registerOutput<String>('entryGroupId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

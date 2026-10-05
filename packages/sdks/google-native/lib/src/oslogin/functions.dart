@@ -22,6 +22,17 @@ Future<GetSshPublicKeyResult> getSshPublicKey(
   return GetSshPublicKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetSshPublicKeyResult> getSshPublicKeyOutput(
+  GetSshPublicKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:oslogin/v1:getSshPublicKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSshPublicKeyResult.fromMap);
+}
+
 /// Retrieves an SSH public key.
 /// [args] Arguments passed to this invoke. {@macro pulumi_oslogin_v1alpha_get_ssh_public_key_oslogin_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
@@ -38,6 +49,17 @@ Future<GetSshPublicKeyOsloginV1alphaResult> getSshPublicKeyOsloginV1alpha(
   return GetSshPublicKeyOsloginV1alphaResult.fromMap(result);
 }
 
+pulumi.Output<GetSshPublicKeyOsloginV1alphaResult> getSshPublicKeyOsloginV1alphaOutput(
+  GetSshPublicKeyOsloginV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:oslogin/v1alpha:getSshPublicKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSshPublicKeyOsloginV1alphaResult.fromMap);
+}
+
 /// Retrieves an SSH public key.
 /// [args] Arguments passed to this invoke. {@macro pulumi_oslogin_v1beta_get_ssh_public_key_oslogin_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -52,4 +74,15 @@ Future<GetSshPublicKeyOsloginV1betaResult> getSshPublicKeyOsloginV1beta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSshPublicKeyOsloginV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetSshPublicKeyOsloginV1betaResult> getSshPublicKeyOsloginV1betaOutput(
+  GetSshPublicKeyOsloginV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:oslogin/v1beta:getSshPublicKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSshPublicKeyOsloginV1betaResult.fromMap);
 }

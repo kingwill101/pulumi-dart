@@ -12,35 +12,35 @@ import 'enterprise_crm_frontends_eventbus_proto_trigger_config_trigger_type.dart
 /// Configuration detail of a trigger. Next available id: 20
 class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
   /// An alert threshold configuration for the [trigger + client + workflow] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + workflow] when published.
-  final pulumi.Input<List<EnterpriseCrmEventbusProtoWorkflowAlertConfig>>? alertConfig;
-  final pulumi.Input<EnterpriseCrmEventbusProtoCloudSchedulerConfig>? cloudSchedulerConfig;
+  final pulumi.Input<List<EnterpriseCrmEventbusProtoWorkflowAlertConfig>?>? alertConfig;
+  final pulumi.Input<EnterpriseCrmEventbusProtoCloudSchedulerConfig?>? cloudSchedulerConfig;
   /// User-provided description intended to give more business context about the task.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The list of client ids which are enabled to execute the workflow using this trigger. In other words, these clients have the workflow execution privledges for this trigger. For API trigger, the client id in the incoming request is validated against the list of enabled clients. For non-API triggers, one workflow execution is triggered on behalf of each enabled client.
   final pulumi.Input<List<String>> enabledClients;
   /// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
-  final pulumi.Input<String>? errorCatcherId;
+  final pulumi.Input<String?>? errorCatcherId;
   /// The user created label for a particular trigger.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Dictates how next tasks will be executed.
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy>? nextTasksExecutionPolicy;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy?>? nextTasksExecutionPolicy;
   /// Optional. If set to true, any upcoming requests for this trigger config will be paused and the executions will be resumed later when the flag is reset. The workflow to which this trigger config belongs has to be in ACTIVE status for the executions to be paused or resumed.
-  final pulumi.Input<bool>? pauseWorkflowExecutions;
+  final pulumi.Input<bool?>? pauseWorkflowExecutions;
   /// Optional. Informs the front-end application where to draw this trigger config on the UI.
-  final pulumi.Input<EnterpriseCrmEventbusProtoCoordinate>? position;
+  final pulumi.Input<EnterpriseCrmEventbusProtoCoordinate?>? position;
   /// Configurable properties of the trigger, not to be confused with workflow parameters. E.g. "name" is a property for API triggers and "subscription" is a property for Cloud Pubsub triggers.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Set of tasks numbers from where the workflow execution is started by this trigger. If this is empty, then workflow is executed with default start tasks. In the list of start tasks, none of two tasks can have direct ancestor-descendant relationships (i.e. in a same workflow execution graph).
-  final pulumi.Input<List<EnterpriseCrmEventbusProtoNextTask>>? startTasks;
+  final pulumi.Input<List<EnterpriseCrmEventbusProtoNextTask>?>? startTasks;
   /// Optional. When set, Eventbus will run the task specified in the trigger_criteria and validate the result using the trigger_criteria.condition, and only execute the workflow when result is true.
-  final pulumi.Input<EnterpriseCrmEventbusProtoTriggerCriteria>? triggerCriteria;
+  final pulumi.Input<EnterpriseCrmEventbusProtoTriggerCriteria?>? triggerCriteria;
   /// The backend trigger ID.
-  final pulumi.Input<String>? triggerId;
+  final pulumi.Input<String?>? triggerId;
   /// Optional. Name of the trigger This is added to identify the type of trigger. This is avoid the logic on triggerId to identify the trigger_type and push the same to monitoring.
-  final pulumi.Input<String>? triggerName;
+  final pulumi.Input<String?>? triggerName;
   /// A number to uniquely identify each trigger config within the workflow on UI.
   final pulumi.Input<String> triggerNumber;
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType>? triggerType;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType?>? triggerType;
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoTriggerConfig].
   /// [alertConfig] An alert threshold configuration for the [trigger + client + workflow] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + workflow] when published.

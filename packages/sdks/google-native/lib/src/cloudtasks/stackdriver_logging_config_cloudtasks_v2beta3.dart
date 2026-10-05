@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/).
 class StackdriverLoggingConfigCloudtasksV2beta3 {
   /// Specifies the fraction of operations to write to [Stackdriver Logging](https://cloud.google.com/logging/docs/). This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the default and means that no operations are logged.
-  final pulumi.Input<double>? samplingRatio;
+  final pulumi.Input<double?>? samplingRatio;
 
   /// Creates a new [StackdriverLoggingConfigCloudtasksV2beta3].
   /// [samplingRatio] Specifies the fraction of operations to write to [Stackdriver Logging](https://cloud.google.com/logging/docs/). This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the default and means that no operations are logged.
@@ -21,7 +21,7 @@ class StackdriverLoggingConfigCloudtasksV2beta3 {
 
   factory StackdriverLoggingConfigCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
     return StackdriverLoggingConfigCloudtasksV2beta3(
-      samplingRatio: (() { final guardedValue = map['samplingRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      samplingRatio: (() { final guardedValue = map['samplingRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

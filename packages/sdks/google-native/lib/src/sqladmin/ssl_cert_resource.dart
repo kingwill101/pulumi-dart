@@ -35,8 +35,29 @@ class SslCertResource extends pulumi.CustomResource {
           'google-native:sqladmin/v1beta4:SslCert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instance', 'project']).merge(options),
         ) {
+    cert = registerOutput<String>('cert');
+    certSerialNumber = registerOutput<String>('certSerialNumber');
+    commonName = registerOutput<String>('commonName');
+    createTime = registerOutput<String>('createTime');
+    expirationTime = registerOutput<String>('expirationTime');
+    instance = registerOutput<String>('instance');
+    kind = registerOutput<String>('kind');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    sha1Fingerprint = registerOutput<String>('sha1Fingerprint');
+  }
+
+  /// Creates a typed reference to an existing [SslCertResource] resource.
+  SslCertResource.reference(String urn)
+    : super(
+        'google-native:sqladmin/v1beta4:SslCert',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cert = registerOutput<String>('cert');
     certSerialNumber = registerOutput<String>('certSerialNumber');
     commonName = registerOutput<String>('commonName');

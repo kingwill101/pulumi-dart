@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A filter defining the entities that a mapping rule should be applied to. When more than one field is specified, the rule is applied only to entities which match all the fields.
 class MappingRuleFilter {
   /// Optional. The rule should be applied to specific entities defined by their fully qualified names.
-  final pulumi.Input<List<String>>? entities;
+  final pulumi.Input<List<String>?>? entities;
   /// Optional. The rule should be applied to entities whose non-qualified name contains the given string.
-  final pulumi.Input<String>? entityNameContains;
+  final pulumi.Input<String?>? entityNameContains;
   /// Optional. The rule should be applied to entities whose non-qualified name starts with the given prefix.
-  final pulumi.Input<String>? entityNamePrefix;
+  final pulumi.Input<String?>? entityNamePrefix;
   /// Optional. The rule should be applied to entities whose non-qualified name ends with the given suffix.
-  final pulumi.Input<String>? entityNameSuffix;
+  final pulumi.Input<String?>? entityNameSuffix;
   /// Optional. The rule should be applied to entities whose parent entity (fully qualified name) matches the given value. For example, if the rule applies to a table entity, the expected value should be a schema (schema). If the rule applies to a column or index entity, the expected value can be either a schema (schema) or a table (schema.table)
-  final pulumi.Input<String>? parentEntity;
+  final pulumi.Input<String?>? parentEntity;
 
   /// Creates a new [MappingRuleFilter].
   /// [entities] Optional. The rule should be applied to specific entities defined by their fully qualified names.

@@ -4,19 +4,19 @@
 /// Result data returned by getRoute.
 class GetRouteDatastreamV1alpha1Result {
   /// The create time of the resource.
-  final String createTime;
+  final String? createTime;
   /// Destination address for connection
-  final String destinationAddress;
+  final String? destinationAddress;
   /// Destination port for connection
-  final int destinationPort;
+  final int? destinationPort;
   /// Display name.
-  final String displayName;
+  final String? displayName;
   /// Labels.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The resource's name.
-  final String name;
+  final String? name;
   /// The update time of the resource.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetRouteDatastreamV1alpha1Result].
   /// [createTime] The create time of the resource.
@@ -27,36 +27,36 @@ class GetRouteDatastreamV1alpha1Result {
   /// [name] The resource's name.
   /// [updateTime] The update time of the resource.
   const GetRouteDatastreamV1alpha1Result({
-    required this.createTime,
-    required this.destinationAddress,
-    required this.destinationPort,
-    required this.displayName,
-    required this.labels,
-    required this.name,
-    required this.updateTime,
+    this.createTime,
+    this.destinationAddress,
+    this.destinationPort,
+    this.displayName,
+    this.labels,
+    this.name,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'destinationAddress': destinationAddress,
-      'destinationPort': destinationPort,
-      'displayName': displayName,
-      'labels': labels,
-      'name': name,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'destinationAddress': ?destinationAddress,
+      'destinationPort': ?destinationPort,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'name': ?name,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetRouteDatastreamV1alpha1Result.fromMap(Map<String, dynamic> map) {
     return GetRouteDatastreamV1alpha1Result(
-      createTime: map['createTime'] as String,
-      destinationAddress: map['destinationAddress'] as String,
-      destinationPort: map['destinationPort'] as int,
-      displayName: map['displayName'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      destinationAddress: (() { final guardedValue = map['destinationAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

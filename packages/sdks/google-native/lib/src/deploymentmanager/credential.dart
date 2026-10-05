@@ -7,11 +7,11 @@ import 'service_account.dart';
 /// The credential used by Deployment Manager and TypeProvider. Only one of the options is permitted.
 class Credential {
   /// Basic Auth Credential, only used by TypeProvider.
-  final pulumi.Input<BasicAuth>? basicAuth;
+  final pulumi.Input<BasicAuth?>? basicAuth;
   /// Service Account Credential, only used by Deployment.
-  final pulumi.Input<ServiceAccount>? serviceAccount;
+  final pulumi.Input<ServiceAccount?>? serviceAccount;
   /// Specify to use the project default credential, only supported by Deployment.
-  final pulumi.Input<bool>? useProjectDefault;
+  final pulumi.Input<bool?>? useProjectDefault;
 
   /// Creates a new [Credential].
   /// [basicAuth] Basic Auth Credential, only used by TypeProvider.

@@ -40,8 +40,31 @@ class RegionInstanceTemplate extends pulumi.CustomResource {
           'google-native:compute/alpha:RegionInstanceTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    properties = registerOutput<InstancePropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    sourceInstance = registerOutput<String>('sourceInstance');
+    sourceInstanceParams = registerOutput<SourceInstanceParamsResponse>('sourceInstanceParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceInstanceParamsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [RegionInstanceTemplate] resource.
+  RegionInstanceTemplate.reference(String urn)
+    : super(
+        'google-native:compute/alpha:RegionInstanceTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     kind = registerOutput<String>('kind');

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The type of field.
-enum GoogleCloudDataplexV1SchemaSchemaFieldType {
+enum GoogleCloudDataplexV1SchemaSchemaFieldType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   boolean("BOOLEAN"),
   byte("BYTE"),
@@ -18,6 +20,7 @@ enum GoogleCloudDataplexV1SchemaSchemaFieldType {
   null_("NULL");
 
   const GoogleCloudDataplexV1SchemaSchemaFieldType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDataplexV1SchemaSchemaFieldType fromValue(String value) {

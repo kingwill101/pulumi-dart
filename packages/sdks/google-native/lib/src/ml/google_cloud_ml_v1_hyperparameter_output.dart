@@ -7,19 +7,19 @@ import 'google_cloud_ml_v1_hyperparameter_output_hyperparameter_metric.dart';
 /// Represents the result of a single hyperparameter tuning trial from a training job. The TrainingOutput object that is returned on successful completion of a training job with hyperparameter tuning includes a list of HyperparameterOutput objects, one for each successful trial.
 class GoogleCloudMlV1HyperparameterOutput {
   /// All recorded object metrics for this trial. This field is not currently populated.
-  final pulumi.Input<List<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>>? allMetrics;
+  final pulumi.Input<List<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>?>? allMetrics;
   /// Details related to built-in algorithms jobs. Only set for trials of built-in algorithms jobs that have succeeded.
-  final pulumi.Input<GoogleCloudMlV1BuiltInAlgorithmOutput>? builtInAlgorithmOutput;
+  final pulumi.Input<GoogleCloudMlV1BuiltInAlgorithmOutput?>? builtInAlgorithmOutput;
   /// The final objective metric seen for this trial.
-  final pulumi.Input<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>? finalMetric;
+  final pulumi.Input<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric?>? finalMetric;
   /// The hyperparameters given to this trial.
-  final pulumi.Input<Map<String, String>>? hyperparameters;
+  final pulumi.Input<Map<String, String>?>? hyperparameters;
   /// True if the trial is stopped early.
-  final pulumi.Input<bool>? isTrialStoppedEarly;
+  final pulumi.Input<bool?>? isTrialStoppedEarly;
   /// The trial id for these results.
-  final pulumi.Input<String>? trialId;
+  final pulumi.Input<String?>? trialId;
   /// URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if this trial is part of a hyperparameter tuning job and the job's training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
-  final pulumi.Input<Map<String, String>>? webAccessUris;
+  final pulumi.Input<Map<String, String>?>? webAccessUris;
 
   /// Creates a new [GoogleCloudMlV1HyperparameterOutput].
   /// [allMetrics] All recorded object metrics for this trial. This field is not currently populated.

@@ -7,13 +7,13 @@ import 'software_recipe_artifact_remote.dart';
 /// Specifies a resource to be used in the recipe.
 class SoftwareRecipeArtifact {
   /// Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
-  final pulumi.Input<bool>? allowInsecure;
+  final pulumi.Input<bool?>? allowInsecure;
   /// A Google Cloud Storage artifact.
-  final pulumi.Input<SoftwareRecipeArtifactGcs>? gcs;
+  final pulumi.Input<SoftwareRecipeArtifactGcs?>? gcs;
   /// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
   final pulumi.Input<String> id;
   /// A generic remote artifact.
-  final pulumi.Input<SoftwareRecipeArtifactRemote>? remote;
+  final pulumi.Input<SoftwareRecipeArtifactRemote?>? remote;
 
   /// Creates a new [SoftwareRecipeArtifact].
   /// [allowInsecure] Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.

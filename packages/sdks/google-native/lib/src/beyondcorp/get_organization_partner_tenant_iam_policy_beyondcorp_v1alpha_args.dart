@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_beyondcorp_v1alpha_get_organization_partner_tenant_iam_policy_beyondcorp_v1alpha_args_doc}
 class GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs {
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
   final pulumi.Input<String> organizationId;
   final pulumi.Input<String> partnerTenantId;
 
@@ -31,7 +31,7 @@ class GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs {
 
   factory GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs(
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       organizationId: pulumi.Input.fromValue(map['organizationId'] as String),
       partnerTenantId: pulumi.Input.fromValue(map['partnerTenantId'] as String),
     );

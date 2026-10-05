@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_identitytoolkit_v2_get_inbound_saml_config_args_doc}
 class GetInboundSamlConfigArgs {
   final pulumi.Input<String> inboundSamlConfigId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> tenantId;
 
   /// Creates a new [GetInboundSamlConfigArgs].

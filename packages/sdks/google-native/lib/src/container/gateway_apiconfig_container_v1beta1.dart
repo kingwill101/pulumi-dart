@@ -6,7 +6,7 @@ import 'gateway_apiconfig_channel_container_v1beta1.dart';
 /// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
 class GatewayAPIConfigContainerV1beta1 {
   /// The Gateway API release channel to use for Gateway API.
-  final pulumi.Input<GatewayAPIConfigChannelContainerV1beta1>? channel;
+  final pulumi.Input<GatewayAPIConfigChannelContainerV1beta1?>? channel;
 
   /// Creates a new [GatewayAPIConfigContainerV1beta1].
   /// [channel] The Gateway API release channel to use for Gateway API.

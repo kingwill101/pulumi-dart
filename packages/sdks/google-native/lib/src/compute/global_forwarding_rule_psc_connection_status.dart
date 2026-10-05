@@ -1,4 +1,6 @@
-enum GlobalForwardingRulePscConnectionStatus {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum GlobalForwardingRulePscConnectionStatus implements pulumi.PulumiEnum<String> {
   accepted("ACCEPTED"),
   closed("CLOSED"),
   needsAttention("NEEDS_ATTENTION"),
@@ -7,6 +9,7 @@ enum GlobalForwardingRulePscConnectionStatus {
   statusUnspecified("STATUS_UNSPECIFIED");
 
   const GlobalForwardingRulePscConnectionStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static GlobalForwardingRulePscConnectionStatus fromValue(String value) {

@@ -1,10 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewallpolicy_args.dart';
+import 'google_cloud_recaptchaenterprise_v1_firewall_action_response.dart';
 
 /// Creates a new FirewallPolicy, specifying conditions at which reCAPTCHA Enterprise actions can be executed. A project may have a maximum of 1000 policies.
 class Firewallpolicy extends pulumi.CustomResource {
   /// Optional. The actions that the caller should take regarding user access. There should be at most one terminal action. A terminal action is any action that forces a response, such as `AllowAction`, `BlockAction` or `SubstituteAction`. Zero or more non-terminal actions such as `SetHeader` might be specified. A single policy can contain up to 16 actions.
-  late final pulumi.Output<List<Map<String, dynamic>>> actions;
+  late final pulumi.Output<List<GoogleCloudRecaptchaenterpriseV1FirewallActionResponse>> actions;
   /// Optional. A CEL (Common Expression Language) conditional expression that specifies if this policy applies to an incoming user request. If this condition evaluates to true and the requested path matched the path pattern, the associated actions should be executed by the caller. The condition string is checked for CEL syntax correctness on creation. For more information, see the [CEL spec](https://github.com/google/cel-spec) and its [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md). A condition has a max length of 500 characters.
   late final pulumi.Output<String> condition;
   /// Optional. A description of what this policy aims to achieve, for convenience purposes. The description can at most include 256 UTF-8 characters.
@@ -27,9 +28,26 @@ class Firewallpolicy extends pulumi.CustomResource {
           'google-native:recaptchaenterprise/v1:Firewallpolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>>('actions');
+    actions = registerOutput<List<GoogleCloudRecaptchaenterpriseV1FirewallActionResponse>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRecaptchaenterpriseV1FirewallActionResponse>(guardedValue, (value) => GoogleCloudRecaptchaenterpriseV1FirewallActionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    condition = registerOutput<String>('condition');
+    description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    path = registerOutput<String>('path');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [Firewallpolicy] resource.
+  Firewallpolicy.reference(String urn)
+    : super(
+        'google-native:recaptchaenterprise/v1:Firewallpolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<GoogleCloudRecaptchaenterpriseV1FirewallActionResponse>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRecaptchaenterpriseV1FirewallActionResponse>(guardedValue, (value) => GoogleCloudRecaptchaenterpriseV1FirewallActionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     condition = registerOutput<String>('condition');
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');

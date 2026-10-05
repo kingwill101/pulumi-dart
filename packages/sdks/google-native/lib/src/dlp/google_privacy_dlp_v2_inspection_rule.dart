@@ -7,9 +7,9 @@ import 'google_privacy_dlp_v2_hotword_rule.dart';
 /// A single inspection rule to be applied to infoTypes, specified in `InspectionRuleSet`.
 class GooglePrivacyDlpV2InspectionRule {
   /// Exclusion rule.
-  final pulumi.Input<GooglePrivacyDlpV2ExclusionRule>? exclusionRule;
+  final pulumi.Input<GooglePrivacyDlpV2ExclusionRule?>? exclusionRule;
   /// Hotword-based detection rule.
-  final pulumi.Input<GooglePrivacyDlpV2HotwordRule>? hotwordRule;
+  final pulumi.Input<GooglePrivacyDlpV2HotwordRule?>? hotwordRule;
 
   /// Creates a new [GooglePrivacyDlpV2InspectionRule].
   /// [exclusionRule] Exclusion rule.

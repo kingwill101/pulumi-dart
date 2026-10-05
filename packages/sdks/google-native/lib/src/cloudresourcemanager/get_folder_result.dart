@@ -4,15 +4,15 @@
 /// Result data returned by getFolder.
 class GetFolderResult {
   /// Timestamp when the Folder was created. Assigned by the server.
-  final String createTime;
+  final String? createTime;
   /// The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
-  final String displayName;
+  final String? displayName;
   /// The lifecycle state of the folder. Updates to the lifecycle_state must be performed via DeleteFolder and UndeleteFolder.
-  final String lifecycleState;
+  final String? lifecycleState;
   /// The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
-  final String name;
+  final String? name;
   /// The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
-  final String parent;
+  final String? parent;
 
   /// Creates a new [GetFolderResult].
   /// [createTime] Timestamp when the Folder was created. Assigned by the server.
@@ -21,30 +21,30 @@ class GetFolderResult {
   /// [name] The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
   /// [parent] The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
   const GetFolderResult({
-    required this.createTime,
-    required this.displayName,
-    required this.lifecycleState,
-    required this.name,
-    required this.parent,
+    this.createTime,
+    this.displayName,
+    this.lifecycleState,
+    this.name,
+    this.parent,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'displayName': displayName,
-      'lifecycleState': lifecycleState,
-      'name': name,
-      'parent': parent,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'lifecycleState': ?lifecycleState,
+      'name': ?name,
+      'parent': ?parent,
     };
   }
 
   factory GetFolderResult.fromMap(Map<String, dynamic> map) {
     return GetFolderResult(
-      createTime: map['createTime'] as String,
-      displayName: map['displayName'] as String,
-      lifecycleState: map['lifecycleState'] as String,
-      name: map['name'] as String,
-      parent: map['parent'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lifecycleState: (() { final guardedValue = map['lifecycleState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

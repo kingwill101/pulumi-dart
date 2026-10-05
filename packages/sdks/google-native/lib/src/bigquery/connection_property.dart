@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProperty {
   /// [Required] Name of the connection property to set.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// [Required] Value of the connection property.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ConnectionProperty].
   /// [key] [Required] Name of the connection property to set.

@@ -6,13 +6,13 @@ import 'google_cloud_aiplatform_v1beta1_machine_spec_accelerator_type.dart';
 /// Specification of a single machine.
 class GoogleCloudAiplatformV1beta1MachineSpec {
   /// The number of accelerators to attach to the machine.
-  final pulumi.Input<int>? acceleratorCount;
+  final pulumi.Input<int?>? acceleratorCount;
   /// Immutable. The type of accelerator(s) that may be attached to the machine as per accelerator_count.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType>? acceleratorType;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType?>? acceleratorType;
   /// Immutable. The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// Immutable. The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example: tpu_topology: "2x2x1").
-  final pulumi.Input<String>? tpuTopology;
+  final pulumi.Input<String?>? tpuTopology;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1MachineSpec].
   /// [acceleratorCount] The number of accelerators to attach to the machine.
@@ -37,7 +37,7 @@ class GoogleCloudAiplatformV1beta1MachineSpec {
 
   factory GoogleCloudAiplatformV1beta1MachineSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1MachineSpec(
-      acceleratorCount: (() { final guardedValue = map['acceleratorCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      acceleratorCount: (() { final guardedValue = map['acceleratorCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       acceleratorType: (() { final guardedValue = map['acceleratorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1MachineSpecAcceleratorType.fromValue(guardedValue as String)); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tpuTopology: (() { final guardedValue = map['tpuTopology']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

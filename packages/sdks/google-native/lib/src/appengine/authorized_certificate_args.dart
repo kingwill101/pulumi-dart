@@ -10,9 +10,9 @@ import 'certificate_raw_data.dart';
 class AuthorizedCertificateArgs {
   final pulumi.Input<String> appId;
   /// The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
-  final pulumi.Input<CertificateRawData>? certificateRawData;
+  final pulumi.Input<CertificateRawData?>? certificateRawData;
   /// The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
 
   /// Creates a new [AuthorizedCertificateArgs].
   /// [appId] Required.

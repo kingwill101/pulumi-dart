@@ -47,7 +47,7 @@ class GoogleCloudDataplexV1DataProfileSpecResponse {
       includeFields: pulumi.Input.fromValue(GoogleCloudDataplexV1DataProfileSpecSelectedFieldsResponse.fromMap((map['includeFields']! as Map).cast<String, dynamic>())),
       postScanActions: pulumi.Input.fromValue(GoogleCloudDataplexV1DataProfileSpecPostScanActionsResponse.fromMap((map['postScanActions']! as Map).cast<String, dynamic>())),
       rowFilter: pulumi.Input.fromValue(map['rowFilter'] as String),
-      samplingPercent: pulumi.Input.fromValue(map['samplingPercent'] as double),
+      samplingPercent: pulumi.Input.fromValue((map['samplingPercent'] as num).toDouble()),
     );
   }
 }

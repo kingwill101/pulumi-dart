@@ -56,7 +56,7 @@ class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse {
       crowdingColumn: pulumi.Input.fromValue(map['crowdingColumn'] as String),
       distanceMeasureType: pulumi.Input.fromValue(map['distanceMeasureType'] as String),
       embeddingColumn: pulumi.Input.fromValue(map['embeddingColumn'] as String),
-      embeddingDimension: pulumi.Input.fromValue(map['embeddingDimension'] as int),
+      embeddingDimension: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['embeddingDimension'])),
       filterColumns: pulumi.Input.fromValue((map['filterColumns'] as List).cast<String>()),
       treeAhConfig: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigResponse.fromMap((map['treeAhConfig']! as Map).cast<String, dynamic>())),
     );

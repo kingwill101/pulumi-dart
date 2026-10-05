@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_firebasehosting_v1beta1_get_release_args_doc}
 class GetReleaseArgs {
   final pulumi.Input<String> channelId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> releaseId;
   final pulumi.Input<String> siteId;
 

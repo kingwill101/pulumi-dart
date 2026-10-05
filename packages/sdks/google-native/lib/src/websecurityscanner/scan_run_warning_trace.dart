@@ -6,7 +6,7 @@ import 'scan_run_warning_trace_code.dart';
 /// Output only. Defines a warning trace message for ScanRun. Warning traces provide customers with useful information that helps make the scanning process more effective.
 class ScanRunWarningTrace {
   /// Indicates the warning code.
-  final pulumi.Input<ScanRunWarningTraceCode>? code;
+  final pulumi.Input<ScanRunWarningTraceCode?>? code;
 
   /// Creates a new [ScanRunWarningTrace].
   /// [code] Indicates the warning code.
