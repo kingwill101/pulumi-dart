@@ -29,8 +29,26 @@ class Group extends pulumi.CustomResource {
           'google-native:firebaseappdistribution/v1:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    displayName = registerOutput<String>('displayName');
+    groupId = registerOutput<String?>('groupId');
+    inviteLinkCount = registerOutput<int>('inviteLinkCount');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    releaseCount = registerOutput<int>('releaseCount');
+    testerCount = registerOutput<int>('testerCount');
+  }
+
+  /// Creates a typed reference to an existing [Group] resource.
+  Group.reference(String urn)
+    : super(
+        'google-native:firebaseappdistribution/v1:Group',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     displayName = registerOutput<String>('displayName');
     groupId = registerOutput<String?>('groupId');
     inviteLinkCount = registerOutput<int>('inviteLinkCount');

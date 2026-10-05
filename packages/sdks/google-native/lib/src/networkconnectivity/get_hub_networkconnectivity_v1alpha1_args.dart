@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkconnectivity_v1alpha1_get_hub_networkconnectivity_v1alpha1_args_doc}
 class GetHubNetworkconnectivityV1alpha1Args {
   final pulumi.Input<String> hubId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetHubNetworkconnectivityV1alpha1Args].
   /// [hubId] Required.

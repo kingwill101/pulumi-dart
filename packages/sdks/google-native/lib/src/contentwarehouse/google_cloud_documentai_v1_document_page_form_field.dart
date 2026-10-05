@@ -8,21 +8,21 @@ import 'google_cloud_documentai_v1_document_provenance.dart';
 /// A form field detected on the page.
 class GoogleCloudDocumentaiV1DocumentPageFormField {
   /// Created for Labeling UI to export key text. If corrections were made to the text identified by the `field_name.text_anchor`, this field will contain the correction.
-  final pulumi.Input<String>? correctedKeyText;
+  final pulumi.Input<String?>? correctedKeyText;
   /// Created for Labeling UI to export value text. If corrections were made to the text identified by the `field_value.text_anchor`, this field will contain the correction.
-  final pulumi.Input<String>? correctedValueText;
+  final pulumi.Input<String?>? correctedValueText;
   /// Layout for the FormField name. e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout>? fieldName;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout?>? fieldName;
   /// Layout for the FormField value.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout>? fieldValue;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout?>? fieldValue;
   /// A list of detected languages for name together with confidence.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>>? nameDetectedLanguages;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>?>? nameDetectedLanguages;
   /// The history of this annotation.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentProvenance>? provenance;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentProvenance?>? provenance;
   /// A list of detected languages for value together with confidence.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>>? valueDetectedLanguages;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>?>? valueDetectedLanguages;
   /// If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the `field_value` is normal text) - `unfilled_checkbox` - `filled_checkbox`
-  final pulumi.Input<String>? valueType;
+  final pulumi.Input<String?>? valueType;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageFormField].
   /// [correctedKeyText] Created for Labeling UI to export key text. If corrections were made to the text identified by the `field_name.text_anchor`, this field will contain the correction.

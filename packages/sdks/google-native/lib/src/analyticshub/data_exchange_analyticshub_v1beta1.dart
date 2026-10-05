@@ -35,8 +35,29 @@ class DataExchangeAnalyticshubV1beta1 extends pulumi.CustomResource {
           'google-native:analyticshub/v1beta1:DataExchange',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['dataExchangeId', 'location', 'project']).merge(options),
         ) {
+    dataExchangeId = registerOutput<String>('dataExchangeId');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    documentation = registerOutput<String>('documentation');
+    icon = registerOutput<String>('icon');
+    listingCount = registerOutput<int>('listingCount');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    primaryContact = registerOutput<String>('primaryContact');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [DataExchangeAnalyticshubV1beta1] resource.
+  DataExchangeAnalyticshubV1beta1.reference(String urn)
+    : super(
+        'google-native:analyticshub/v1beta1:DataExchange',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dataExchangeId = registerOutput<String>('dataExchangeId');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');

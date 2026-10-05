@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// How much data to include in the Pub/Sub message. If the user wishes to limit the size of the message, they can use resource_name and fetch the profile fields they wish to. Per table profile (not per column).
-enum GooglePrivacyDlpV2PubSubNotificationDetailOfMessage {
+enum GooglePrivacyDlpV2PubSubNotificationDetailOfMessage implements pulumi.PulumiEnum<String> {
   detailLevelUnspecified("DETAIL_LEVEL_UNSPECIFIED"),
   tableProfile("TABLE_PROFILE"),
   resourceName("RESOURCE_NAME");
 
   const GooglePrivacyDlpV2PubSubNotificationDetailOfMessage(this.wireValue);
+  @override
   final String wireValue;
 
   static GooglePrivacyDlpV2PubSubNotificationDetailOfMessage fromValue(String value) {

@@ -24,8 +24,24 @@ class NatAddress extends pulumi.CustomResource {
           'google-native:apigee/v1:NatAddress',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceId', 'organizationId']).merge(options),
         ) {
+    instanceId = registerOutput<String>('instanceId');
+    ipAddress = registerOutput<String>('ipAddress');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [NatAddress] resource.
+  NatAddress.reference(String urn)
+    : super(
+        'google-native:apigee/v1:NatAddress',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     instanceId = registerOutput<String>('instanceId');
     ipAddress = registerOutput<String>('ipAddress');
     this.name = registerOutput<String>('name');

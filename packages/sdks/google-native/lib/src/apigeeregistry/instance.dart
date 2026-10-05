@@ -37,8 +37,29 @@ class Instance extends pulumi.CustomResource {
           'google-native:apigeeregistry/v1:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceId', 'location', 'project']).merge(options),
         ) {
+    build = registerOutput<BuildResponse>('build', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    config = registerOutput<ConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    instanceId = registerOutput<String>('instanceId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    stateMessage = registerOutput<String>('stateMessage');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'google-native:apigeeregistry/v1:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     build = registerOutput<BuildResponse>('build', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     config = registerOutput<ConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

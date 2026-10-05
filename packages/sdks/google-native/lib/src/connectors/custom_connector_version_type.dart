@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Type of the customConnector.
-enum CustomConnectorVersionType {
+enum CustomConnectorVersionType implements pulumi.PulumiEnum<String> {
   customConnectorTypeUnspecified("CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"),
   openApi("OPEN_API"),
   proto("PROTO");
 
   const CustomConnectorVersionType(this.wireValue);
+  @override
   final String wireValue;
 
   static CustomConnectorVersionType fromValue(String value) {

@@ -6,13 +6,13 @@ import 'google_cloud_contentwarehouse_v1_rule_response.dart';
 /// Result data returned by getRuleSet.
 class GetRuleSetResult {
   /// Short description of the rule-set.
-  final String description;
+  final String? description;
   /// The resource name of the rule set. Managed internally. Format: projects/{project_number}/locations/{location}/ruleSet/{rule_set_id}. The name is ignored when creating a rule set.
-  final String name;
+  final String? name;
   /// List of rules given by the customer.
-  final List<GoogleCloudContentwarehouseV1RuleResponse> rules;
+  final List<GoogleCloudContentwarehouseV1RuleResponse>? rules;
   /// Source of the rules i.e., customer name.
-  final String source;
+  final String? source;
 
   /// Creates a new [GetRuleSetResult].
   /// [description] Short description of the rule-set.
@@ -20,27 +20,27 @@ class GetRuleSetResult {
   /// [rules] List of rules given by the customer.
   /// [source] Source of the rules i.e., customer name.
   const GetRuleSetResult({
-    required this.description,
-    required this.name,
-    required this.rules,
-    required this.source,
+    this.description,
+    this.name,
+    this.rules,
+    this.source,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'description': description,
-      'name': name,
-      'rules': pulumi.Input.encodeList<GoogleCloudContentwarehouseV1RuleResponse, Map<String, dynamic>>(rules, (value) => value.toMap()),
-      'source': source,
+      'description': ?description,
+      'name': ?name,
+      'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<GoogleCloudContentwarehouseV1RuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'source': ?source,
     };
   }
 
   factory GetRuleSetResult.fromMap(Map<String, dynamic> map) {
     return GetRuleSetResult(
-      description: map['description'] as String,
-      name: map['name'] as String,
-      rules: pulumi.Input.decodeList<GoogleCloudContentwarehouseV1RuleResponse>(map['rules']!, (value) => GoogleCloudContentwarehouseV1RuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      source: map['source'] as String,
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudContentwarehouseV1RuleResponse>(guardedValue, (value) => GoogleCloudContentwarehouseV1RuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -9,9 +9,9 @@ class VolumeMount {
   /// The name of the volume. There must be a corresponding Volume with the same name.
   final pulumi.Input<String> name;
   /// Sets the mount to be read-only or read-write. Not used by Cloud Run.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
-  final pulumi.Input<String>? subPath;
+  final pulumi.Input<String?>? subPath;
 
   /// Creates a new [VolumeMount].
   /// [mountPath] Path within the container at which the volume should be mounted. Must not contain ':'.

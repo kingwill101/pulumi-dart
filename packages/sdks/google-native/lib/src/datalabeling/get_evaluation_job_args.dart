@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datalabeling_v1beta1_get_evaluation_job_args_doc}
 class GetEvaluationJobArgs {
   final pulumi.Input<String> evaluationJobId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetEvaluationJobArgs].
   /// [evaluationJobId] Required.

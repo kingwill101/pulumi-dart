@@ -14,41 +14,41 @@ import 'google_cloud_dialogflow_cx_v3beta1_text_to_speech_settings.dart';
 /// {@macro pulumi_dialogflow_v3beta1_agent_dialogflow_v3beta1_args_doc}
 class AgentDialogflowV3beta1Args {
   /// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AdvancedSettings>? advancedSettings;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AdvancedSettings?>? advancedSettings;
   /// Optional. Answer feedback collection settings.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings>? answerFeedbackSettings;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings?>? answerFeedbackSettings;
   /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
-  final pulumi.Input<String>? avatarUri;
+  final pulumi.Input<String?>? avatarUri;
   /// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
   final pulumi.Input<String> defaultLanguageCode;
   /// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The human-readable name of the agent, unique within the location.
   final pulumi.Input<String> displayName;
   /// Indicates if automatic spell correction is enabled in detect intent requests.
-  final pulumi.Input<bool>? enableSpellCorrection;
+  final pulumi.Input<bool?>? enableSpellCorrection;
   /// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
-  final pulumi.Input<bool>? enableStackdriverLogging;
+  final pulumi.Input<bool?>? enableStackdriverLogging;
   /// Gen App Builder-related agent-level settings.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings>? genAppBuilderSettings;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings?>? genAppBuilderSettings;
   /// Git integration settings for this agent.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings>? gitIntegrationSettings;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings?>? gitIntegrationSettings;
+  final pulumi.Input<String?>? location;
   /// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
-  final pulumi.Input<bool>? locked;
+  final pulumi.Input<bool?>? locked;
   /// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
-  final pulumi.Input<String>? securitySettings;
+  final pulumi.Input<String?>? securitySettings;
   /// Speech recognition related settings.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1SpeechToTextSettings>? speechToTextSettings;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1SpeechToTextSettings?>? speechToTextSettings;
   /// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
-  final pulumi.Input<String>? startFlow;
+  final pulumi.Input<String?>? startFlow;
   /// The list of all languages supported by the agent (except for the `default_language_code`).
-  final pulumi.Input<List<String>>? supportedLanguageCodes;
+  final pulumi.Input<List<String>?>? supportedLanguageCodes;
   /// Settings on instructing the speech synthesizer on how to generate the output audio content.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1TextToSpeechSettings>? textToSpeechSettings;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1TextToSpeechSettings?>? textToSpeechSettings;
   /// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
   final pulumi.Input<String> timeZone;
 

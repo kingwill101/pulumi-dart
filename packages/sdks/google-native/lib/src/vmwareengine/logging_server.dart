@@ -40,8 +40,32 @@ class LoggingServer extends pulumi.CustomResource {
           'google-native:vmwareengine/v1:LoggingServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'loggingServerId', 'privateCloudId', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    hostname = registerOutput<String>('hostname');
+    location = registerOutput<String>('location');
+    loggingServerId = registerOutput<String>('loggingServerId');
+    this.name = registerOutput<String>('name');
+    port = registerOutput<int>('port');
+    privateCloudId = registerOutput<String>('privateCloudId');
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String>('protocol');
+    requestId = registerOutput<String?>('requestId');
+    sourceType = registerOutput<String>('sourceType');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [LoggingServer] resource.
+  LoggingServer.reference(String urn)
+    : super(
+        'google-native:vmwareengine/v1:LoggingServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     hostname = registerOutput<String>('hostname');
     location = registerOutput<String>('location');

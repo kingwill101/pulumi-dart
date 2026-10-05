@@ -30,6 +30,17 @@ Future<GetAuthConfigResult> getAuthConfig(
   return GetAuthConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetAuthConfigResult> getAuthConfigOutput(
+  GetAuthConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:integrations/v1alpha:getAuthConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthConfigResult.fromMap);
+}
+
 /// Get a certificates in the specified project.
 /// [args] Arguments passed to this invoke. {@macro pulumi_integrations_v1alpha_get_certificate_args_doc}
 /// [options] Invoke options controlling this call.
@@ -44,6 +55,17 @@ Future<GetCertificateResult> getCertificate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCertificateResult.fromMap(result);
+}
+
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:integrations/v1alpha:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
 }
 
 /// Gets an sfdc channel. If the channel doesn't exist, Code.NOT_FOUND exception will be thrown.
@@ -62,6 +84,17 @@ Future<GetSfdcChannelResult> getSfdcChannel(
   return GetSfdcChannelResult.fromMap(result);
 }
 
+pulumi.Output<GetSfdcChannelResult> getSfdcChannelOutput(
+  GetSfdcChannelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:integrations/v1alpha:getSfdcChannel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSfdcChannelResult.fromMap);
+}
+
 /// Gets an sfdc instance. If the instance doesn't exist, Code.NOT_FOUND exception will be thrown.
 /// [args] Arguments passed to this invoke. {@macro pulumi_integrations_v1alpha_get_sfdc_instance_args_doc}
 /// [options] Invoke options controlling this call.
@@ -76,6 +109,17 @@ Future<GetSfdcInstanceResult> getSfdcInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSfdcInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetSfdcInstanceResult> getSfdcInstanceOutput(
+  GetSfdcInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:integrations/v1alpha:getSfdcInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSfdcInstanceResult.fromMap);
 }
 
 /// Returns an IntegrationTemplateVersion in the specified project.
@@ -94,6 +138,17 @@ Future<GetTemplatesVersionResult> getTemplatesVersion(
   return GetTemplatesVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetTemplatesVersionResult> getTemplatesVersionOutput(
+  GetTemplatesVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:integrations/v1alpha:getTemplatesVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTemplatesVersionResult.fromMap);
+}
+
 /// Get a test case
 /// [args] Arguments passed to this invoke. {@macro pulumi_integrations_v1alpha_get_test_case_args_doc}
 /// [options] Invoke options controlling this call.
@@ -110,6 +165,17 @@ Future<GetTestCaseResult> getTestCase(
   return GetTestCaseResult.fromMap(result);
 }
 
+pulumi.Output<GetTestCaseResult> getTestCaseOutput(
+  GetTestCaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:integrations/v1alpha:getTestCase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTestCaseResult.fromMap);
+}
+
 /// Get a integration in the specified project.
 /// [args] Arguments passed to this invoke. {@macro pulumi_integrations_v1alpha_get_version_args_doc}
 /// [options] Invoke options controlling this call.
@@ -124,4 +190,15 @@ Future<GetVersionResult> getVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetVersionResult> getVersionOutput(
+  GetVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:integrations/v1alpha:getVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVersionResult.fromMap);
 }

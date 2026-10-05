@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
-enum GoogleCloudRunV2VpcAccessEgress {
+enum GoogleCloudRunV2VpcAccessEgress implements pulumi.PulumiEnum<String> {
   vpcEgressUnspecified("VPC_EGRESS_UNSPECIFIED"),
   allTraffic("ALL_TRAFFIC"),
   privateRangesOnly("PRIVATE_RANGES_ONLY");
 
   const GoogleCloudRunV2VpcAccessEgress(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudRunV2VpcAccessEgress fromValue(String value) {

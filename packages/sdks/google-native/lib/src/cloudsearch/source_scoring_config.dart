@@ -6,7 +6,7 @@ import 'source_scoring_config_source_importance.dart';
 /// Set the scoring configuration. This allows modifying the ranking of results for a source.
 class SourceScoringConfig {
   /// Importance of the source.
-  final pulumi.Input<SourceScoringConfigSourceImportance>? sourceImportance;
+  final pulumi.Input<SourceScoringConfigSourceImportance?>? sourceImportance;
 
   /// Creates a new [SourceScoringConfig].
   /// [sourceImportance] Importance of the source.

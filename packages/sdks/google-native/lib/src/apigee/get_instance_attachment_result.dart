@@ -4,35 +4,35 @@
 /// Result data returned by getInstanceAttachment.
 class GetInstanceAttachmentResult {
   /// Time the attachment was created in milliseconds since epoch.
-  final String createdAt;
+  final String? createdAt;
   /// ID of the attached environment.
-  final String environment;
+  final String? environment;
   /// ID of the attachment.
-  final String name;
+  final String? name;
 
   /// Creates a new [GetInstanceAttachmentResult].
   /// [createdAt] Time the attachment was created in milliseconds since epoch.
   /// [environment] ID of the attached environment.
   /// [name] ID of the attachment.
   const GetInstanceAttachmentResult({
-    required this.createdAt,
-    required this.environment,
-    required this.name,
+    this.createdAt,
+    this.environment,
+    this.name,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createdAt': createdAt,
-      'environment': environment,
-      'name': name,
+      'createdAt': ?createdAt,
+      'environment': ?environment,
+      'name': ?name,
     };
   }
 
   factory GetInstanceAttachmentResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceAttachmentResult(
-      createdAt: map['createdAt'] as String,
-      environment: map['environment'] as String,
-      name: map['name'] as String,
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

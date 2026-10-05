@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_deploymentmanager_alpha_get_type_provider_args_doc}
 class GetTypeProviderArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> typeProvider;
 
   /// Creates a new [GetTypeProviderArgs].

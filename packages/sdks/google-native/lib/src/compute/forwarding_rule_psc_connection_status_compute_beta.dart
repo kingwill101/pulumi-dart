@@ -1,4 +1,6 @@
-enum ForwardingRulePscConnectionStatusComputeBeta {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ForwardingRulePscConnectionStatusComputeBeta implements pulumi.PulumiEnum<String> {
   accepted("ACCEPTED"),
   closed("CLOSED"),
   needsAttention("NEEDS_ATTENTION"),
@@ -7,6 +9,7 @@ enum ForwardingRulePscConnectionStatusComputeBeta {
   statusUnspecified("STATUS_UNSPECIFIED");
 
   const ForwardingRulePscConnectionStatusComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static ForwardingRulePscConnectionStatusComputeBeta fromValue(String value) {

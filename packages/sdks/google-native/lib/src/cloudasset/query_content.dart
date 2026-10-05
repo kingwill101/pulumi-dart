@@ -6,7 +6,7 @@ import 'iam_policy_analysis_query.dart';
 /// The query content.
 class QueryContent {
   /// An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy RPC or the AssetService.AnalyzeIamPolicyLongrunning RPC.
-  final pulumi.Input<IamPolicyAnalysisQuery>? iamPolicyAnalysisQuery;
+  final pulumi.Input<IamPolicyAnalysisQuery?>? iamPolicyAnalysisQuery;
 
   /// Creates a new [QueryContent].
   /// [iamPolicyAnalysisQuery] An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy RPC or the AssetService.AnalyzeIamPolicyLongrunning RPC.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The role of subnetwork. Currently, this field is only used when purpose = REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
-enum SubnetworkRoleComputeBeta {
+enum SubnetworkRoleComputeBeta implements pulumi.PulumiEnum<String> {
   active("ACTIVE"),
   backup("BACKUP");
 
   const SubnetworkRoleComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static SubnetworkRoleComputeBeta fromValue(String value) {

@@ -6,9 +6,9 @@ import 'ssl_config.dart';
 /// Client connection configuration
 class ClientConnectionConfig {
   /// Optional. Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
-  final pulumi.Input<bool>? requireConnectors;
+  final pulumi.Input<bool?>? requireConnectors;
   /// Optional. SSL config option for this instance.
-  final pulumi.Input<SslConfig>? sslConfig;
+  final pulumi.Input<SslConfig?>? sslConfig;
 
   /// Creates a new [ClientConnectionConfig].
   /// [requireConnectors] Optional. Configuration to enforce connectors only (ex: AuthProxy) connections to the database.

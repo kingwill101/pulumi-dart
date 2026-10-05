@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'label_descriptor_response.dart';
 import 'metric_descriptor_args.dart';
 import 'metric_descriptor_metadata_response.dart';
 
@@ -9,7 +10,7 @@ class MetricDescriptor extends pulumi.CustomResource {
   /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota.
   late final pulumi.Output<String> displayName;
   /// The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed.
-  late final pulumi.Output<List<Map<String, dynamic>>> labels;
+  late final pulumi.Output<List<LabelDescriptorResponse>> labels;
   /// Optional. The launch stage of the metric definition.
   late final pulumi.Output<String> launchStage;
   /// Optional. Metadata which can be used to guide usage of the metric.
@@ -40,15 +41,38 @@ class MetricDescriptor extends pulumi.CustomResource {
           'google-native:monitoring/v3:MetricDescriptor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    labels = registerOutput<List<Map<String, dynamic>>>('labels');
+    labels = registerOutput<List<LabelDescriptorResponse>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LabelDescriptorResponse>(guardedValue, (value) => LabelDescriptorResponse.fromMap((value as Map).cast<String, dynamic>())); });
     launchStage = registerOutput<String>('launchStage');
     metadata = registerOutput<MetricDescriptorMetadataResponse>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricDescriptorMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metricKind = registerOutput<String>('metricKind');
-    monitoredResourceTypes = registerOutput<List<String>>('monitoredResourceTypes');
+    monitoredResourceTypes = registerOutput<List<String>>('monitoredResourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    type = registerOutput<String>('type');
+    unit = registerOutput<String>('unit');
+    valueType = registerOutput<String>('valueType');
+  }
+
+  /// Creates a typed reference to an existing [MetricDescriptor] resource.
+  MetricDescriptor.reference(String urn)
+    : super(
+        'google-native:monitoring/v3:MetricDescriptor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    labels = registerOutput<List<LabelDescriptorResponse>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LabelDescriptorResponse>(guardedValue, (value) => LabelDescriptorResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    launchStage = registerOutput<String>('launchStage');
+    metadata = registerOutput<MetricDescriptorMetadataResponse>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricDescriptorMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metricKind = registerOutput<String>('metricKind');
+    monitoredResourceTypes = registerOutput<List<String>>('monitoredResourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     type = registerOutput<String>('type');

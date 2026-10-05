@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_beta_get_ssl_certificate_compute_beta_args_doc}
 class GetSslCertificateComputeBetaArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> sslCertificate;
 
   /// Creates a new [GetSslCertificateComputeBetaArgs].

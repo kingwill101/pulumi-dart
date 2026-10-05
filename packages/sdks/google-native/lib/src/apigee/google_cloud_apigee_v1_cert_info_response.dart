@@ -81,7 +81,7 @@ class GoogleCloudApigeeV1CertInfoResponse {
       subject: pulumi.Input.fromValue(map['subject'] as String),
       subjectAlternativeNames: pulumi.Input.fromValue((map['subjectAlternativeNames'] as List).cast<String>()),
       validFrom: pulumi.Input.fromValue(map['validFrom'] as String),
-      version: pulumi.Input.fromValue(map['version'] as int),
+      version: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['version'])),
     );
   }
 }

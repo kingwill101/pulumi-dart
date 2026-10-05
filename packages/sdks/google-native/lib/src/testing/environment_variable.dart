@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A key-value pair passed as an environment variable to the test.
 class EnvironmentVariable {
   /// Key for the environment variable.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Value for the environment variable.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EnvironmentVariable].
   /// [key] Key for the environment variable.

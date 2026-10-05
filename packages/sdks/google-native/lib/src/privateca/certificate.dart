@@ -59,7 +59,7 @@ class Certificate extends pulumi.CustomResource {
           'google-native:privateca/v1:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['caPoolId', 'location', 'project']).merge(options),
         ) {
     caPoolId = registerOutput<String>('caPoolId');
     certificateDescription = registerOutput<CertificateDescriptionResponse>('certificateDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -69,12 +69,43 @@ class Certificate extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     issuerCertificateAuthority = registerOutput<String>('issuerCertificateAuthority');
     issuingCertificateAuthorityId = registerOutput<String?>('issuingCertificateAuthorityId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lifetime = registerOutput<String>('lifetime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     pemCertificate = registerOutput<String>('pemCertificate');
-    pemCertificateChain = registerOutput<List<String>>('pemCertificateChain');
+    pemCertificateChain = registerOutput<List<String>>('pemCertificateChain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    pemCsr = registerOutput<String>('pemCsr');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    revocationDetails = registerOutput<RevocationDetailsResponse>('revocationDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RevocationDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subjectMode = registerOutput<String>('subjectMode');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'google-native:privateca/v1:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    caPoolId = registerOutput<String>('caPoolId');
+    certificateDescription = registerOutput<CertificateDescriptionResponse>('certificateDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certificateId = registerOutput<String?>('certificateId');
+    certificateTemplate = registerOutput<String>('certificateTemplate');
+    config = registerOutput<CertificateConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    issuerCertificateAuthority = registerOutput<String>('issuerCertificateAuthority');
+    issuingCertificateAuthorityId = registerOutput<String?>('issuingCertificateAuthorityId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lifetime = registerOutput<String>('lifetime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    pemCertificate = registerOutput<String>('pemCertificate');
+    pemCertificateChain = registerOutput<List<String>>('pemCertificateChain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     pemCsr = registerOutput<String>('pemCsr');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');

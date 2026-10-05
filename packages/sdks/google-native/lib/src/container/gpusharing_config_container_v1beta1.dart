@@ -6,9 +6,9 @@ import 'gpusharing_config_gpu_sharing_strategy_container_v1beta1.dart';
 /// GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators.
 class GPUSharingConfigContainerV1beta1 {
   /// The type of GPU sharing strategy to enable on the GPU node.
-  final pulumi.Input<GPUSharingConfigGpuSharingStrategyContainerV1beta1>? gpuSharingStrategy;
+  final pulumi.Input<GPUSharingConfigGpuSharingStrategyContainerV1beta1?>? gpuSharingStrategy;
   /// The max number of containers that can share a physical GPU.
-  final pulumi.Input<String>? maxSharedClientsPerGpu;
+  final pulumi.Input<String?>? maxSharedClientsPerGpu;
 
   /// Creates a new [GPUSharingConfigContainerV1beta1].
   /// [gpuSharingStrategy] The type of GPU sharing strategy to enable on the GPU node.

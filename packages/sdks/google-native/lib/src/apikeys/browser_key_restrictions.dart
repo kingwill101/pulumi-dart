@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The HTTP referrers (websites) that are allowed to use the key.
 class BrowserKeyRestrictions {
   /// A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
-  final pulumi.Input<List<String>>? allowedReferrers;
+  final pulumi.Input<List<String>?>? allowedReferrers;
 
   /// Creates a new [BrowserKeyRestrictions].
   /// [allowedReferrers] A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.

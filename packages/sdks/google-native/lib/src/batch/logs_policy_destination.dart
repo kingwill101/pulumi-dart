@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Where logs should be saved.
-enum LogsPolicyDestination {
+enum LogsPolicyDestination implements pulumi.PulumiEnum<String> {
   destinationUnspecified("DESTINATION_UNSPECIFIED"),
   cloudLogging("CLOUD_LOGGING"),
   path("PATH");
 
   const LogsPolicyDestination(this.wireValue);
+  @override
   final String wireValue;
 
   static LogsPolicyDestination fromValue(String value) {

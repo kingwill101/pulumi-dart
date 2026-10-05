@@ -33,8 +33,8 @@ class GoogleCloudAiplatformV1BatchDedicatedResourcesResponse {
   factory GoogleCloudAiplatformV1BatchDedicatedResourcesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1BatchDedicatedResourcesResponse(
       machineSpec: pulumi.Input.fromValue(GoogleCloudAiplatformV1MachineSpecResponse.fromMap((map['machineSpec']! as Map).cast<String, dynamic>())),
-      maxReplicaCount: pulumi.Input.fromValue(map['maxReplicaCount'] as int),
-      startingReplicaCount: pulumi.Input.fromValue(map['startingReplicaCount'] as int),
+      maxReplicaCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxReplicaCount'])),
+      startingReplicaCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startingReplicaCount'])),
     );
   }
 }

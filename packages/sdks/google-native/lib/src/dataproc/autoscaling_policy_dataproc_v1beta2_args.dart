@@ -9,13 +9,13 @@ import 'instance_group_autoscaling_policy_config_dataproc_v1beta2.dart';
 /// {@endtemplate}
 /// {@macro pulumi_dataproc_v1beta2_autoscaling_policy_dataproc_v1beta2_args_doc}
 class AutoscalingPolicyDataprocV1beta2Args {
-  final pulumi.Input<BasicAutoscalingAlgorithmDataprocV1beta2>? basicAlgorithm;
+  final pulumi.Input<BasicAutoscalingAlgorithmDataprocV1beta2?>? basicAlgorithm;
   /// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
   final pulumi.Input<String> id;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Optional. Describes how the autoscaler will operate for secondary workers.
-  final pulumi.Input<InstanceGroupAutoscalingPolicyConfigDataprocV1beta2>? secondaryWorkerConfig;
+  final pulumi.Input<InstanceGroupAutoscalingPolicyConfigDataprocV1beta2?>? secondaryWorkerConfig;
   /// Describes how the autoscaler will operate for primary workers.
   final pulumi.Input<InstanceGroupAutoscalingPolicyConfigDataprocV1beta2> workerConfig;
 

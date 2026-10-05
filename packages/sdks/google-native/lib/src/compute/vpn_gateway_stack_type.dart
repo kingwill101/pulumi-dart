@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The stack type for this VPN gateway to identify the IP protocols that are enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified, IPV4_ONLY will be used.
-enum VpnGatewayStackType {
+enum VpnGatewayStackType implements pulumi.PulumiEnum<String> {
   ipv4Ipv6("IPV4_IPV6"),
   ipv4Only("IPV4_ONLY"),
   ipv6Only("IPV6_ONLY");
 
   const VpnGatewayStackType(this.wireValue);
+  @override
   final String wireValue;
 
   static VpnGatewayStackType fromValue(String value) {

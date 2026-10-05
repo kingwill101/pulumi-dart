@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
-enum SubnetworkLogConfigAggregationIntervalComputeV1 {
+enum SubnetworkLogConfigAggregationIntervalComputeV1 implements pulumi.PulumiEnum<String> {
   interval10Min("INTERVAL_10_MIN"),
   interval15Min("INTERVAL_15_MIN"),
   interval1Min("INTERVAL_1_MIN"),
@@ -8,6 +10,7 @@ enum SubnetworkLogConfigAggregationIntervalComputeV1 {
   interval5Sec("INTERVAL_5_SEC");
 
   const SubnetworkLogConfigAggregationIntervalComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static SubnetworkLogConfigAggregationIntervalComputeV1 fromValue(String value) {

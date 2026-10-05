@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPhraseMatcherArgs {
   final pulumi.Input<String> location;
   final pulumi.Input<String> phraseMatcherId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetPhraseMatcherArgs].
   /// [location] Required.

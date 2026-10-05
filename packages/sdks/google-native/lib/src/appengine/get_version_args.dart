@@ -10,7 +10,7 @@ class GetVersionArgs {
   final pulumi.Input<String> appId;
   final pulumi.Input<String> serviceId;
   final pulumi.Input<String> versionId;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetVersionArgs].
   /// [appId] Required.

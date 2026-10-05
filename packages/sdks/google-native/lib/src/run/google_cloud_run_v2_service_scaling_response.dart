@@ -21,7 +21,7 @@ class GoogleCloudRunV2ServiceScalingResponse {
 
   factory GoogleCloudRunV2ServiceScalingResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2ServiceScalingResponse(
-      minInstanceCount: pulumi.Input.fromValue(map['minInstanceCount'] as int),
+      minInstanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minInstanceCount'])),
     );
   }
 }

@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_contactcenterinsights_v1_view_args_doc}
 class ViewArgs {
   /// The human-readable display name of the view.
-  final pulumi.Input<String>? displayName;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? displayName;
+  final pulumi.Input<String?>? location;
   /// Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// String with specific view properties, must be non-empty.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ViewArgs].
   /// [displayName] The human-readable display name of the view.

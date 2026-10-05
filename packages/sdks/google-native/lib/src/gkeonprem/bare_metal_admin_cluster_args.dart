@@ -20,43 +20,43 @@ import 'binary_authorization.dart';
 /// {@macro pulumi_gkeonprem_v1_bare_metal_admin_cluster_args_doc}
 class BareMetalAdminClusterArgs {
   /// Annotations on the bare metal admin cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/
   final pulumi.Input<String> bareMetalAdminClusterId;
   /// The Anthos clusters on bare metal version for the bare metal admin cluster.
-  final pulumi.Input<String>? bareMetalVersion;
+  final pulumi.Input<String?>? bareMetalVersion;
   /// Binary Authorization related configurations.
-  final pulumi.Input<BinaryAuthorization>? binaryAuthorization;
+  final pulumi.Input<BinaryAuthorization?>? binaryAuthorization;
   /// Cluster operations configuration.
-  final pulumi.Input<BareMetalAdminClusterOperationsConfig>? clusterOperations;
+  final pulumi.Input<BareMetalAdminClusterOperationsConfig?>? clusterOperations;
   /// Control plane configuration.
-  final pulumi.Input<BareMetalAdminControlPlaneConfig>? controlPlane;
+  final pulumi.Input<BareMetalAdminControlPlaneConfig?>? controlPlane;
   /// A human readable description of this bare metal admin cluster.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. Allows clients to perform consistent read-modify-writes through optimistic concurrency control.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Load balancer configuration.
-  final pulumi.Input<BareMetalAdminLoadBalancerConfig>? loadBalancer;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<BareMetalAdminLoadBalancerConfig?>? loadBalancer;
+  final pulumi.Input<String?>? location;
   /// Maintenance configuration.
-  final pulumi.Input<BareMetalAdminMaintenanceConfig>? maintenanceConfig;
+  final pulumi.Input<BareMetalAdminMaintenanceConfig?>? maintenanceConfig;
   /// Immutable. The bare metal admin cluster resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network configuration.
-  final pulumi.Input<BareMetalAdminNetworkConfig>? networkConfig;
+  final pulumi.Input<BareMetalAdminNetworkConfig?>? networkConfig;
   /// Node access related configurations.
-  final pulumi.Input<BareMetalAdminNodeAccessConfig>? nodeAccessConfig;
+  final pulumi.Input<BareMetalAdminNodeAccessConfig?>? nodeAccessConfig;
   /// Workload node configuration.
-  final pulumi.Input<BareMetalAdminWorkloadNodeConfig>? nodeConfig;
+  final pulumi.Input<BareMetalAdminWorkloadNodeConfig?>? nodeConfig;
   /// OS environment related configurations.
-  final pulumi.Input<BareMetalAdminOsEnvironmentConfig>? osEnvironmentConfig;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<BareMetalAdminOsEnvironmentConfig?>? osEnvironmentConfig;
+  final pulumi.Input<String?>? project;
   /// Proxy configuration.
-  final pulumi.Input<BareMetalAdminProxyConfig>? proxy;
+  final pulumi.Input<BareMetalAdminProxyConfig?>? proxy;
   /// Security related configuration.
-  final pulumi.Input<BareMetalAdminSecurityConfig>? securityConfig;
+  final pulumi.Input<BareMetalAdminSecurityConfig?>? securityConfig;
   /// Storage configuration.
-  final pulumi.Input<BareMetalAdminStorageConfig>? storage;
+  final pulumi.Input<BareMetalAdminStorageConfig?>? storage;
 
   /// Creates a new [BareMetalAdminClusterArgs].
   /// [annotations] Annotations on the bare metal admin cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.

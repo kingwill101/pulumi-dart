@@ -26,7 +26,7 @@ class ZipInfoResponseAppengineV1beta {
 
   factory ZipInfoResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ZipInfoResponseAppengineV1beta(
-      filesCount: pulumi.Input.fromValue(map['filesCount'] as int),
+      filesCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['filesCount'])),
       sourceUrl: pulumi.Input.fromValue(map['sourceUrl'] as String),
     );
   }

@@ -6,11 +6,11 @@ import 'in_toto_slsa_provenance_v1_containeranalysis_v1beta1.dart';
 
 /// Details of a build occurrence.
 class GrafeasV1beta1BuildDetails {
-  final pulumi.Input<InTotoSlsaProvenanceV1ContaineranalysisV1beta1>? inTotoSlsaProvenanceV1;
+  final pulumi.Input<InTotoSlsaProvenanceV1ContaineranalysisV1beta1?>? inTotoSlsaProvenanceV1;
   /// The actual provenance for the build.
   final pulumi.Input<BuildProvenanceContaineranalysisV1beta1> provenance;
   /// Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
-  final pulumi.Input<String>? provenanceBytes;
+  final pulumi.Input<String?>? provenanceBytes;
 
   /// Creates a new [GrafeasV1beta1BuildDetails].
   /// [inTotoSlsaProvenanceV1] Optional.

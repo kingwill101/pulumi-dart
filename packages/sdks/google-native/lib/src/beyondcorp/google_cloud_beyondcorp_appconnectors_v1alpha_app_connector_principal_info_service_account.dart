@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ServiceAccount represents a GCP service account.
 class GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount {
   /// Email address of the service account.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
 
   /// Creates a new [GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount].
   /// [email] Email address of the service account.

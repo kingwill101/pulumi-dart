@@ -36,10 +36,10 @@ class DiskUtilizationResponseAppengineV1beta {
 
   factory DiskUtilizationResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return DiskUtilizationResponseAppengineV1beta(
-      targetReadBytesPerSecond: pulumi.Input.fromValue(map['targetReadBytesPerSecond'] as int),
-      targetReadOpsPerSecond: pulumi.Input.fromValue(map['targetReadOpsPerSecond'] as int),
-      targetWriteBytesPerSecond: pulumi.Input.fromValue(map['targetWriteBytesPerSecond'] as int),
-      targetWriteOpsPerSecond: pulumi.Input.fromValue(map['targetWriteOpsPerSecond'] as int),
+      targetReadBytesPerSecond: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetReadBytesPerSecond'])),
+      targetReadOpsPerSecond: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetReadOpsPerSecond'])),
+      targetWriteBytesPerSecond: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetWriteBytesPerSecond'])),
+      targetWriteOpsPerSecond: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetWriteOpsPerSecond'])),
     );
   }
 }

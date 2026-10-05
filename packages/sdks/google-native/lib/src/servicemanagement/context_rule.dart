@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A context rule provides information about the context for an individual API element.
 class ContextRule {
   /// A list of full type names or extension IDs of extensions allowed in grpc side channel from client to backend.
-  final pulumi.Input<List<String>>? allowedRequestExtensions;
+  final pulumi.Input<List<String>?>? allowedRequestExtensions;
   /// A list of full type names or extension IDs of extensions allowed in grpc side channel from backend to client.
-  final pulumi.Input<List<String>>? allowedResponseExtensions;
+  final pulumi.Input<List<String>?>? allowedResponseExtensions;
   /// A list of full type names of provided contexts.
-  final pulumi.Input<List<String>>? provided;
+  final pulumi.Input<List<String>?>? provided;
   /// A list of full type names of requested contexts.
-  final pulumi.Input<List<String>>? requested;
+  final pulumi.Input<List<String>?>? requested;
   /// Selects the methods to which this rule applies. Refer to selector for syntax details.
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
 
   /// Creates a new [ContextRule].
   /// [allowedRequestExtensions] A list of full type names or extension IDs of extensions allowed in grpc side channel from client to backend.

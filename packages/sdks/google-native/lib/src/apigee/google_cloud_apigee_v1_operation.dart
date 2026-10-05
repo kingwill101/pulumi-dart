@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
 class GoogleCloudApigeeV1Operation {
   /// methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
-  final pulumi.Input<List<String>>? methods;
+  final pulumi.Input<List<String>?>? methods;
   /// REST resource path associated with the API proxy or remote service.
   final pulumi.Input<String> resource;
 

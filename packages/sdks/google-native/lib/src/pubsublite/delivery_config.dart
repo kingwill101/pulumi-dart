@@ -6,7 +6,7 @@ import 'delivery_config_delivery_requirement.dart';
 /// The settings for a subscription's message delivery.
 class DeliveryConfig {
   /// The DeliveryRequirement for this subscription.
-  final pulumi.Input<DeliveryConfigDeliveryRequirement>? deliveryRequirement;
+  final pulumi.Input<DeliveryConfigDeliveryRequirement?>? deliveryRequirement;
 
   /// Creates a new [DeliveryConfig].
   /// [deliveryRequirement] The DeliveryRequirement for this subscription.

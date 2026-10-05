@@ -29,8 +29,24 @@ class BillingAccount extends pulumi.CustomResource {
           'google-native:cloudbilling/v1:BillingAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
+    displayName = registerOutput<String>('displayName');
+    masterBillingAccount = registerOutput<String>('masterBillingAccount');
+    this.name = registerOutput<String>('name');
+    open = registerOutput<bool>('open');
+    parent = registerOutput<String>('parent');
+  }
+
+  /// Creates a typed reference to an existing [BillingAccount] resource.
+  BillingAccount.reference(String urn)
+    : super(
+        'google-native:cloudbilling/v1:BillingAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     displayName = registerOutput<String>('displayName');
     masterBillingAccount = registerOutput<String>('masterBillingAccount');
     this.name = registerOutput<String>('name');

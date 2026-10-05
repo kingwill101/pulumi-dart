@@ -10,7 +10,7 @@ class GetMetadataSchemaArgs {
   final pulumi.Input<String> location;
   final pulumi.Input<String> metadataSchemaId;
   final pulumi.Input<String> metadataStoreId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetMetadataSchemaArgs].
   /// [location] Required.

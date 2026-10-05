@@ -9,13 +9,13 @@ import 'default_cluster_config_gkehub_v1alpha.dart';
 /// {@macro pulumi_gkehub_v1alpha_fleet_gkehub_v1alpha_args_doc}
 class FleetGkehubV1alphaArgs {
   /// Optional. The default cluster configurations to apply across the fleet.
-  final pulumi.Input<DefaultClusterConfigGkehubV1alpha>? defaultClusterConfig;
+  final pulumi.Input<DefaultClusterConfigGkehubV1alpha?>? defaultClusterConfig;
   /// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. Labels for this Fleet.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [FleetGkehubV1alphaArgs].
   /// [defaultClusterConfig] Optional. The default cluster configurations to apply across the fleet.

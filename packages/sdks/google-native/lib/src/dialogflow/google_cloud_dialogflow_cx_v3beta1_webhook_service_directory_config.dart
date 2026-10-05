@@ -6,7 +6,7 @@ import 'google_cloud_dialogflow_cx_v3beta1_webhook_generic_web_service.dart';
 /// Represents configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
 class GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig {
   /// Generic Service configuration of this webhook.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1WebhookGenericWebService>? genericWebService;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1WebhookGenericWebService?>? genericWebService;
   /// The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the location of the agent.
   final pulumi.Input<String> service;
 

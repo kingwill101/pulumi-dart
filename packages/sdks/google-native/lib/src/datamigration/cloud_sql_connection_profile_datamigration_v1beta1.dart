@@ -6,7 +6,7 @@ import 'cloud_sql_settings_datamigration_v1beta1.dart';
 /// Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
 class CloudSqlConnectionProfileDatamigrationV1beta1 {
   /// Immutable. Metadata used to create the destination Cloud SQL database.
-  final pulumi.Input<CloudSqlSettingsDatamigrationV1beta1>? settings;
+  final pulumi.Input<CloudSqlSettingsDatamigrationV1beta1?>? settings;
 
   /// Creates a new [CloudSqlConnectionProfileDatamigrationV1beta1].
   /// [settings] Immutable. Metadata used to create the destination Cloud SQL database.

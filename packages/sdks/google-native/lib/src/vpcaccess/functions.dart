@@ -20,6 +20,17 @@ Future<GetConnectorResult> getConnector(
   return GetConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectorResult> getConnectorOutput(
+  GetConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vpcaccess/v1:getConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectorResult.fromMap);
+}
+
 /// Gets a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vpcaccess_v1beta1_get_connector_vpcaccess_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetConnectorVpcaccessV1beta1Result> getConnectorVpcaccessV1beta1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectorVpcaccessV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetConnectorVpcaccessV1beta1Result> getConnectorVpcaccessV1beta1Output(
+  GetConnectorVpcaccessV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vpcaccess/v1beta1:getConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectorVpcaccessV1beta1Result.fromMap);
 }

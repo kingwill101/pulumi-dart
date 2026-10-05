@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The state of the Conversation.
-enum ConversationStateDiscoveryengineV1beta {
+enum ConversationStateDiscoveryengineV1beta implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   inProgress("IN_PROGRESS"),
   completed("COMPLETED");
 
   const ConversationStateDiscoveryengineV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static ConversationStateDiscoveryengineV1beta fromValue(String value) {

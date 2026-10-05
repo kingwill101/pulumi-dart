@@ -56,7 +56,7 @@ class NotebookRuntimeTemplateAiplatformV1beta1 extends pulumi.CustomResource {
           'google-native:aiplatform/v1beta1:NotebookRuntimeTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     dataPersistentDiskSpec = registerOutput<GoogleCloudAiplatformV1beta1PersistentDiskSpecResponse>('dataPersistentDiskSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1PersistentDiskSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -66,7 +66,36 @@ class NotebookRuntimeTemplateAiplatformV1beta1 extends pulumi.CustomResource {
     eucConfig = registerOutput<GoogleCloudAiplatformV1beta1NotebookEucConfigResponse>('eucConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1NotebookEucConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     idleShutdownConfig = registerOutput<GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponse>('idleShutdownConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isDefault = registerOutput<bool>('isDefault');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    machineSpec = registerOutput<GoogleCloudAiplatformV1beta1MachineSpecResponse>('machineSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1MachineSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkSpec = registerOutput<GoogleCloudAiplatformV1beta1NetworkSpecResponse>('networkSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1NetworkSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    notebookRuntimeTemplateId = registerOutput<String?>('notebookRuntimeTemplateId');
+    notebookRuntimeType = registerOutput<String>('notebookRuntimeType');
+    project = registerOutput<String>('project');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [NotebookRuntimeTemplateAiplatformV1beta1] resource.
+  NotebookRuntimeTemplateAiplatformV1beta1.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1beta1:NotebookRuntimeTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    dataPersistentDiskSpec = registerOutput<GoogleCloudAiplatformV1beta1PersistentDiskSpecResponse>('dataPersistentDiskSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1PersistentDiskSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    eucConfig = registerOutput<GoogleCloudAiplatformV1beta1NotebookEucConfigResponse>('eucConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1NotebookEucConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    idleShutdownConfig = registerOutput<GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponse>('idleShutdownConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isDefault = registerOutput<bool>('isDefault');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     machineSpec = registerOutput<GoogleCloudAiplatformV1beta1MachineSpecResponse>('machineSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1MachineSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

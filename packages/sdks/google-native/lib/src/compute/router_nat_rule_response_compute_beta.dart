@@ -39,7 +39,7 @@ class RouterNatRuleResponseComputeBeta {
       action: pulumi.Input.fromValue(RouterNatRuleActionResponseComputeBeta.fromMap((map['action']! as Map).cast<String, dynamic>())),
       description: pulumi.Input.fromValue(map['description'] as String),
       match: pulumi.Input.fromValue(map['match'] as String),
-      ruleNumber: pulumi.Input.fromValue(map['ruleNumber'] as int),
+      ruleNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ruleNumber'])),
     );
   }
 }

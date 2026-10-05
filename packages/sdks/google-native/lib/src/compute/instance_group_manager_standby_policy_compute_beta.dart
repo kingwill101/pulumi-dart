@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_group_manager_standby_policy_mode_compute_beta.dart';
 
 class InstanceGroupManagerStandbyPolicyComputeBeta {
-  final pulumi.Input<int>? initialDelaySec;
+  final pulumi.Input<int?>? initialDelaySec;
   /// Defines behaviour of using instances from standby pool to resize MIG.
-  final pulumi.Input<InstanceGroupManagerStandbyPolicyModeComputeBeta>? mode;
+  final pulumi.Input<InstanceGroupManagerStandbyPolicyModeComputeBeta?>? mode;
 
   /// Creates a new [InstanceGroupManagerStandbyPolicyComputeBeta].
   /// [initialDelaySec] Optional.
@@ -25,7 +25,7 @@ class InstanceGroupManagerStandbyPolicyComputeBeta {
 
   factory InstanceGroupManagerStandbyPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStandbyPolicyComputeBeta(
-      initialDelaySec: (() { final guardedValue = map['initialDelaySec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      initialDelaySec: (() { final guardedValue = map['initialDelaySec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGroupManagerStandbyPolicyModeComputeBeta.fromValue(guardedValue as String)); })(),
     );
   }

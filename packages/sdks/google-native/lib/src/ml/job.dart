@@ -50,7 +50,7 @@ class Job extends pulumi.CustomResource {
           'google-native:ml/v1:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     endTime = registerOutput<String>('endTime');
@@ -58,7 +58,32 @@ class Job extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     jobId = registerOutput<String>('jobId');
     jobPosition = registerOutput<String>('jobPosition');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    predictionInput = registerOutput<GoogleCloudMlV1PredictionInputResponse>('predictionInput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1PredictionInputResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    predictionOutput = registerOutput<GoogleCloudMlV1PredictionOutputResponse>('predictionOutput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1PredictionOutputResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+    trainingInput = registerOutput<GoogleCloudMlV1TrainingInputResponse>('trainingInput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1TrainingInputResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trainingOutput = registerOutput<GoogleCloudMlV1TrainingOutputResponse>('trainingOutput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1TrainingOutputResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'google-native:ml/v1:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    endTime = registerOutput<String>('endTime');
+    errorMessage = registerOutput<String>('errorMessage');
+    etag = registerOutput<String>('etag');
+    jobId = registerOutput<String>('jobId');
+    jobPosition = registerOutput<String>('jobPosition');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     predictionInput = registerOutput<GoogleCloudMlV1PredictionInputResponse>('predictionInput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1PredictionInputResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     predictionOutput = registerOutput<GoogleCloudMlV1PredictionOutputResponse>('predictionOutput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1PredictionOutputResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');

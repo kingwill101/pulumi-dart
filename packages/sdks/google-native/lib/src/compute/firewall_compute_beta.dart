@@ -1,15 +1,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'firewall_allowed_item_response_compute_beta.dart';
 import 'firewall_compute_beta_args.dart';
+import 'firewall_denied_item_response_compute_beta.dart';
 import 'firewall_log_config_response_compute_beta.dart';
 
 /// Creates a firewall rule in the specified project using the data included in the request.
 class FirewallComputeBeta extends pulumi.CustomResource {
   /// The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
-  late final pulumi.Output<List<Map<String, dynamic>>> allowed;
+  late final pulumi.Output<List<FirewallAllowedItemResponseComputeBeta>> allowed;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
   /// The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
-  late final pulumi.Output<List<Map<String, dynamic>>> denied;
+  late final pulumi.Output<List<FirewallDeniedItemResponseComputeBeta>> denied;
   /// An optional description of this resource. Provide this field when you create the resource.
   late final pulumi.Output<String> description;
   /// If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Both IPv4 and IPv6 are supported.
@@ -58,13 +60,13 @@ class FirewallComputeBeta extends pulumi.CustomResource {
           'google-native:compute/beta:Firewall',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
-    allowed = registerOutput<List<Map<String, dynamic>>>('allowed');
+    allowed = registerOutput<List<FirewallAllowedItemResponseComputeBeta>>('allowed', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallAllowedItemResponseComputeBeta>(guardedValue, (value) => FirewallAllowedItemResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
-    denied = registerOutput<List<Map<String, dynamic>>>('denied');
+    denied = registerOutput<List<FirewallDeniedItemResponseComputeBeta>>('denied', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallDeniedItemResponseComputeBeta>(guardedValue, (value) => FirewallDeniedItemResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String>('description');
-    destinationRanges = registerOutput<List<String>>('destinationRanges');
+    destinationRanges = registerOutput<List<String>>('destinationRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     direction = registerOutput<String>('direction');
     disabled = registerOutput<bool>('disabled');
     enableLogging = registerOutput<bool>('enableLogging');
@@ -76,10 +78,42 @@ class FirewallComputeBeta extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
     selfLink = registerOutput<String>('selfLink');
-    sourceRanges = registerOutput<List<String>>('sourceRanges');
-    sourceServiceAccounts = registerOutput<List<String>>('sourceServiceAccounts');
-    sourceTags = registerOutput<List<String>>('sourceTags');
-    targetServiceAccounts = registerOutput<List<String>>('targetServiceAccounts');
-    targetTags = registerOutput<List<String>>('targetTags');
+    sourceRanges = registerOutput<List<String>>('sourceRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceServiceAccounts = registerOutput<List<String>>('sourceServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceTags = registerOutput<List<String>>('sourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetServiceAccounts = registerOutput<List<String>>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetTags = registerOutput<List<String>>('targetTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [FirewallComputeBeta] resource.
+  FirewallComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:Firewall',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowed = registerOutput<List<FirewallAllowedItemResponseComputeBeta>>('allowed', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallAllowedItemResponseComputeBeta>(guardedValue, (value) => FirewallAllowedItemResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    denied = registerOutput<List<FirewallDeniedItemResponseComputeBeta>>('denied', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallDeniedItemResponseComputeBeta>(guardedValue, (value) => FirewallDeniedItemResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String>('description');
+    destinationRanges = registerOutput<List<String>>('destinationRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    direction = registerOutput<String>('direction');
+    disabled = registerOutput<bool>('disabled');
+    enableLogging = registerOutput<bool>('enableLogging');
+    kind = registerOutput<String>('kind');
+    logConfig = registerOutput<FirewallLogConfigResponseComputeBeta>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallLogConfigResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    sourceRanges = registerOutput<List<String>>('sourceRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceServiceAccounts = registerOutput<List<String>>('sourceServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceTags = registerOutput<List<String>>('sourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetServiceAccounts = registerOutput<List<String>>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetTags = registerOutput<List<String>>('targetTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

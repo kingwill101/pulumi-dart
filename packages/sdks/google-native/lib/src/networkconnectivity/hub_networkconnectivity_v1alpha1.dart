@@ -37,16 +37,38 @@ class HubNetworkconnectivityV1alpha1 extends pulumi.CustomResource {
           'google-native:networkconnectivity/v1alpha1:Hub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     hubId = registerOutput<String?>('hubId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    spokes = registerOutput<List<String>>('spokes');
+    spokes = registerOutput<List<String>>('spokes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    state = registerOutput<String>('state');
+    uniqueId = registerOutput<String>('uniqueId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [HubNetworkconnectivityV1alpha1] resource.
+  HubNetworkconnectivityV1alpha1.reference(String urn)
+    : super(
+        'google-native:networkconnectivity/v1alpha1:Hub',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    hubId = registerOutput<String?>('hubId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    spokes = registerOutput<List<String>>('spokes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     state = registerOutput<String>('state');
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
-enum BuildOptionsSubstitutionOption {
+enum BuildOptionsSubstitutionOption implements pulumi.PulumiEnum<String> {
   mustMatch("MUST_MATCH"),
   allowLoose("ALLOW_LOOSE");
 
   const BuildOptionsSubstitutionOption(this.wireValue);
+  @override
   final String wireValue;
 
   static BuildOptionsSubstitutionOption fromValue(String value) {

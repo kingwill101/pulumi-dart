@@ -7,9 +7,9 @@ import 'location.dart';
 /// Details on how a particular software package was installed on a system.
 class PackageOccurrence {
   /// Licenses that have been declared by the authors of the package.
-  final pulumi.Input<License>? license;
+  final pulumi.Input<License?>? license;
   /// All of the places within the filesystem versions of this package have been found.
-  final pulumi.Input<List<Location>>? location;
+  final pulumi.Input<List<Location>?>? location;
 
   /// Creates a new [PackageOccurrence].
   /// [license] Licenses that have been declared by the authors of the package.

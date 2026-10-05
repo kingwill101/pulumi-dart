@@ -6,15 +6,15 @@ import 'google_cloud_datacatalog_v1_vertex_model_source_info.dart';
 /// Specification for vertex model resources.
 class GoogleCloudDatacatalogV1VertexModelSpec {
   /// URI of the Docker image to be used as the custom container for serving predictions.
-  final pulumi.Input<String>? containerImageUri;
+  final pulumi.Input<String?>? containerImageUri;
   /// User provided version aliases so that a model version can be referenced via alias
-  final pulumi.Input<List<String>>? versionAliases;
+  final pulumi.Input<List<String>?>? versionAliases;
   /// The description of this version.
-  final pulumi.Input<String>? versionDescription;
+  final pulumi.Input<String?>? versionDescription;
   /// The version ID of the model.
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<String?>? versionId;
   /// Source of a Vertex model.
-  final pulumi.Input<GoogleCloudDatacatalogV1VertexModelSourceInfo>? vertexModelSourceInfo;
+  final pulumi.Input<GoogleCloudDatacatalogV1VertexModelSourceInfo?>? vertexModelSourceInfo;
 
   /// Creates a new [GoogleCloudDatacatalogV1VertexModelSpec].
   /// [containerImageUri] URI of the Docker image to be used as the custom container for serving predictions.

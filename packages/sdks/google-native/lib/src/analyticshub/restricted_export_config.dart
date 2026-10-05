@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Restricted export config, used to configure restricted export on linked dataset.
 class RestrictedExportConfig {
   /// Optional. If true, enable restricted export.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Optional. If true, restrict export of query result derived from restricted linked dataset table.
-  final pulumi.Input<bool>? restrictQueryResult;
+  final pulumi.Input<bool?>? restrictQueryResult;
 
   /// Creates a new [RestrictedExportConfig].
   /// [enabled] Optional. If true, enable restricted export.

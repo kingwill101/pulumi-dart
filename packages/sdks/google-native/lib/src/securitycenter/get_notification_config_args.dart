@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securitycenter_v1_get_notification_config_args_doc}
 class GetNotificationConfigArgs {
   final pulumi.Input<String> notificationConfigId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetNotificationConfigArgs].
   /// [notificationConfigId] Required.

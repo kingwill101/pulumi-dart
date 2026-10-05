@@ -39,12 +39,35 @@ class Channel extends pulumi.CustomResource {
           'google-native:firebasehosting/v1beta1:Channel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['channelId', 'project', 'siteId']).merge(options),
         ) {
     channelId = registerOutput<String>('channelId');
     createTime = registerOutput<String>('createTime');
     expireTime = registerOutput<String>('expireTime');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    release = registerOutput<ReleaseResponse>('release', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReleaseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retainedReleaseCount = registerOutput<int>('retainedReleaseCount');
+    siteId = registerOutput<String>('siteId');
+    ttl = registerOutput<String>('ttl');
+    updateTime = registerOutput<String>('updateTime');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [Channel] resource.
+  Channel.reference(String urn)
+    : super(
+        'google-native:firebasehosting/v1beta1:Channel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    channelId = registerOutput<String>('channelId');
+    createTime = registerOutput<String>('createTime');
+    expireTime = registerOutput<String>('expireTime');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     release = registerOutput<ReleaseResponse>('release', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReleaseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

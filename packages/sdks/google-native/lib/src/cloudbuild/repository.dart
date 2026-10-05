@@ -35,9 +35,31 @@ class Repository extends pulumi.CustomResource {
           'google-native:cloudbuild/v2:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['connectionId', 'location', 'project', 'repositoryId']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    connectionId = registerOutput<String>('connectionId');
+    createTime = registerOutput<String>('createTime');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    remoteUri = registerOutput<String>('remoteUri');
+    repositoryId = registerOutput<String>('repositoryId');
+    updateTime = registerOutput<String>('updateTime');
+    webhookId = registerOutput<String>('webhookId');
+  }
+
+  /// Creates a typed reference to an existing [Repository] resource.
+  Repository.reference(String urn)
+    : super(
+        'google-native:cloudbuild/v2:Repository',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     connectionId = registerOutput<String>('connectionId');
     createTime = registerOutput<String>('createTime');
     etag = registerOutput<String>('etag');

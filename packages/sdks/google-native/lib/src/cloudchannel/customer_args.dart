@@ -11,22 +11,22 @@ import 'google_type_postal_address.dart';
 class CustomerArgs {
   final pulumi.Input<String> accountId;
   /// Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
-  final pulumi.Input<String>? alternateEmail;
+  final pulumi.Input<String?>? alternateEmail;
   /// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
-  final pulumi.Input<String>? channelPartnerId;
+  final pulumi.Input<String?>? channelPartnerId;
   final pulumi.Input<String> channelPartnerLinkId;
   /// Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
-  final pulumi.Input<String>? correlationId;
+  final pulumi.Input<String?>? correlationId;
   /// The customer's primary domain. Must match the primary contact email's domain.
   final pulumi.Input<String> domain;
   /// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// Name of the organization that the customer entity represents.
   final pulumi.Input<String> orgDisplayName;
   /// The organization address for the customer. To enforce US laws and embargoes, we require a region, postal code, and address lines. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
   final pulumi.Input<GoogleTypePostalAddress> orgPostalAddress;
   /// Primary contact info.
-  final pulumi.Input<GoogleCloudChannelV1ContactInfo>? primaryContactInfo;
+  final pulumi.Input<GoogleCloudChannelV1ContactInfo?>? primaryContactInfo;
 
   /// Creates a new [CustomerArgs].
   /// [accountId] Required.

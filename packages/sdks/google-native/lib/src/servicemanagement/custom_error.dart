@@ -6,9 +6,9 @@ import 'custom_error_rule.dart';
 /// Customize service error responses. For example, list any service specific protobuf types that can appear in error detail lists of error responses. Example: custom_error: types: - google.foo.v1.CustomError - google.foo.v1.AnotherError
 class CustomError {
   /// The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order.
-  final pulumi.Input<List<CustomErrorRule>>? rules;
+  final pulumi.Input<List<CustomErrorRule>?>? rules;
   /// The list of custom error detail types, e.g. 'google.foo.v1.CustomError'.
-  final pulumi.Input<List<String>>? types;
+  final pulumi.Input<List<String>?>? types;
 
   /// Creates a new [CustomError].
   /// [rules] The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order.

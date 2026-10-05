@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_alpha_get_security_policy_args_doc}
 class GetSecurityPolicyArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> securityPolicy;
 
   /// Creates a new [GetSecurityPolicyArgs].

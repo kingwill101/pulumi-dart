@@ -21,7 +21,7 @@ class StartupConfigResponse {
 
   factory StartupConfigResponse.fromMap(Map<String, dynamic> map) {
     return StartupConfigResponse(
-      requiredRegistrationFraction: pulumi.Input.fromValue(map['requiredRegistrationFraction'] as double),
+      requiredRegistrationFraction: pulumi.Input.fromValue((map['requiredRegistrationFraction'] as num).toDouble()),
     );
   }
 }

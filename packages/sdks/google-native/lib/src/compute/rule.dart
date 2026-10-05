@@ -8,19 +8,19 @@ import 'rule_action.dart';
 /// This is deprecated and has no effect. Do not use.
 class Rule {
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<RuleAction>? action;
+  final pulumi.Input<RuleAction?>? action;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<Condition>>? conditions;
+  final pulumi.Input<List<Condition>?>? conditions;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<String>>? ins;
+  final pulumi.Input<List<String>?>? ins;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<LogConfig>>? logConfigs;
+  final pulumi.Input<List<LogConfig>?>? logConfigs;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<String>>? notIns;
+  final pulumi.Input<List<String>?>? notIns;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<String>>? permissions;
+  final pulumi.Input<List<String>?>? permissions;
 
   /// Creates a new [Rule].
   /// [action] This is deprecated and has no effect. Do not use.

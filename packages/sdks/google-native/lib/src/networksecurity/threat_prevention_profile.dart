@@ -7,9 +7,9 @@ import 'threat_override.dart';
 /// ThreatPreventionProfile defines an action for specific threat signatures or severity levels.
 class ThreatPreventionProfile {
   /// Optional. Configuration for overriding threats actions by severity match.
-  final pulumi.Input<List<SeverityOverride>>? severityOverrides;
+  final pulumi.Input<List<SeverityOverride>?>? severityOverrides;
   /// Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
-  final pulumi.Input<List<ThreatOverride>>? threatOverrides;
+  final pulumi.Input<List<ThreatOverride>?>? threatOverrides;
 
   /// Creates a new [ThreatPreventionProfile].
   /// [severityOverrides] Optional. Configuration for overriding threats actions by severity match.

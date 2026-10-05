@@ -6,13 +6,13 @@ import 'google_cloud_dialogflow_cx_v3beta1_security_settings_audio_export_settin
 /// Settings for exporting audio.
 class GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings {
   /// Filename pattern for exported audio.
-  final pulumi.Input<String>? audioExportPattern;
+  final pulumi.Input<String?>? audioExportPattern;
   /// File format for exported audio file. Currently only in telephony recordings.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat>? audioFormat;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat?>? audioFormat;
   /// Enable audio redaction if it is true.
-  final pulumi.Input<bool>? enableAudioRedaction;
+  final pulumi.Input<bool?>? enableAudioRedaction;
   /// Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
-  final pulumi.Input<String>? gcsBucket;
+  final pulumi.Input<String?>? gcsBucket;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings].
   /// [audioExportPattern] Filename pattern for exported audio.

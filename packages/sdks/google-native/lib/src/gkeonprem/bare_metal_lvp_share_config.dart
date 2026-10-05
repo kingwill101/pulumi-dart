@@ -8,7 +8,7 @@ class BareMetalLvpShareConfig {
   /// Defines the machine path and storage class for the LVP Share.
   final pulumi.Input<BareMetalLvpConfig> lvpConfig;
   /// The number of subdirectories to create under path.
-  final pulumi.Input<int>? sharedPathPvCount;
+  final pulumi.Input<int?>? sharedPathPvCount;
 
   /// Creates a new [BareMetalLvpShareConfig].
   /// [lvpConfig] Defines the machine path and storage class for the LVP Share.
@@ -28,7 +28,7 @@ class BareMetalLvpShareConfig {
   factory BareMetalLvpShareConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalLvpShareConfig(
       lvpConfig: pulumi.Input.fromValue(BareMetalLvpConfig.fromMap((map['lvpConfig']! as Map).cast<String, dynamic>())),
-      sharedPathPvCount: (() { final guardedValue = map['sharedPathPvCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sharedPathPvCount: (() { final guardedValue = map['sharedPathPvCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

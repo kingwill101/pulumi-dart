@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Container of information related to one possible annotation that can be used in a labeling task. For example, an image classification task where images are labeled as `dog` or `cat` must reference an AnnotationSpec for `dog` and an AnnotationSpec for `cat`.
 class GoogleCloudDatalabelingV1beta1AnnotationSpec {
   /// Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the AnnotationSpec. Maximum of 64 characters.
   final pulumi.Input<String> displayName;
 

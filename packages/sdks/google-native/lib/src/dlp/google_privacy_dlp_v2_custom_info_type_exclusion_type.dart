@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-enum GooglePrivacyDlpV2CustomInfoTypeExclusionType {
+enum GooglePrivacyDlpV2CustomInfoTypeExclusionType implements pulumi.PulumiEnum<String> {
   exclusionTypeUnspecified("EXCLUSION_TYPE_UNSPECIFIED"),
   exclusionTypeExclude("EXCLUSION_TYPE_EXCLUDE");
 
   const GooglePrivacyDlpV2CustomInfoTypeExclusionType(this.wireValue);
+  @override
   final String wireValue;
 
   static GooglePrivacyDlpV2CustomInfoTypeExclusionType fromValue(String value) {

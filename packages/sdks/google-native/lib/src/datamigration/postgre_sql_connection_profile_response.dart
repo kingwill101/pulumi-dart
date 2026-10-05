@@ -79,7 +79,7 @@ class PostgreSqlConnectionProfileResponse {
       networkArchitecture: pulumi.Input.fromValue(map['networkArchitecture'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
       passwordSet: pulumi.Input.fromValue(map['passwordSet'] as bool),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       privateServiceConnectConnectivity: pulumi.Input.fromValue(PrivateServiceConnectConnectivityResponse.fromMap((map['privateServiceConnectConnectivity']! as Map).cast<String, dynamic>())),
       ssl: pulumi.Input.fromValue(SslConfigResponse.fromMap((map['ssl']! as Map).cast<String, dynamic>())),
       staticIpConnectivity: pulumi.Input.fromValue((map['staticIpConnectivity']! as Map).cast<String, dynamic>()),

@@ -49,7 +49,7 @@ class GcsDestinationConfigResponseDatastreamV1alpha1 {
     return GcsDestinationConfigResponseDatastreamV1alpha1(
       avroFileFormat: pulumi.Input.fromValue((map['avroFileFormat']! as Map).cast<String, dynamic>()),
       fileRotationInterval: pulumi.Input.fromValue(map['fileRotationInterval'] as String),
-      fileRotationMb: pulumi.Input.fromValue(map['fileRotationMb'] as int),
+      fileRotationMb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['fileRotationMb'])),
       gcsFileFormat: pulumi.Input.fromValue(map['gcsFileFormat'] as String),
       jsonFileFormat: pulumi.Input.fromValue(JsonFileFormatResponseDatastreamV1alpha1.fromMap((map['jsonFileFormat']! as Map).cast<String, dynamic>())),
       path: pulumi.Input.fromValue(map['path'] as String),

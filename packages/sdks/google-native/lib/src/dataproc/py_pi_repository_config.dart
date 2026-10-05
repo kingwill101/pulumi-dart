@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for PyPi repository
 class PyPiRepositoryConfig {
   /// Optional. PyPi repository address
-  final pulumi.Input<String>? pypiRepository;
+  final pulumi.Input<String?>? pypiRepository;
 
   /// Creates a new [PyPiRepositoryConfig].
   /// [pypiRepository] Optional. PyPi repository address

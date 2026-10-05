@@ -8,11 +8,11 @@ import 'vp9_codec_settings.dart';
 /// Video stream resource.
 class VideoStream {
   /// H264 codec settings.
-  final pulumi.Input<H264CodecSettings>? h264;
+  final pulumi.Input<H264CodecSettings?>? h264;
   /// H265 codec settings.
-  final pulumi.Input<H265CodecSettings>? h265;
+  final pulumi.Input<H265CodecSettings?>? h265;
   /// VP9 codec settings.
-  final pulumi.Input<Vp9CodecSettings>? vp9;
+  final pulumi.Input<Vp9CodecSettings?>? vp9;
 
   /// Creates a new [VideoStream].
   /// [h264] H264 codec settings.

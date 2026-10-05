@@ -38,8 +38,29 @@ class Release extends pulumi.CustomResource {
           'google-native:firebasehosting/v1beta1:Release',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['channelId', 'project', 'siteId']).merge(options),
         ) {
+    channelId = registerOutput<String>('channelId');
+    message = registerOutput<String>('message');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    releaseTime = registerOutput<String>('releaseTime');
+    releaseUser = registerOutput<ActingUserResponse>('releaseUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActingUserResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    siteId = registerOutput<String>('siteId');
+    type = registerOutput<String>('type');
+    version = registerOutput<VersionResponse>('version', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VersionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    versionName = registerOutput<String?>('versionName');
+  }
+
+  /// Creates a typed reference to an existing [Release] resource.
+  Release.reference(String urn)
+    : super(
+        'google-native:firebasehosting/v1beta1:Release',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     channelId = registerOutput<String>('channelId');
     message = registerOutput<String>('message');
     this.name = registerOutput<String>('name');

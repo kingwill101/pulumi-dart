@@ -41,8 +41,32 @@ class GithubEnterpriseConfig extends pulumi.CustomResource {
           'google-native:cloudbuild/v1:GithubEnterpriseConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    appId = registerOutput<String>('appId');
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    gheConfigId = registerOutput<String?>('gheConfigId');
+    hostUrl = registerOutput<String>('hostUrl');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    peeredNetwork = registerOutput<String>('peeredNetwork');
+    project = registerOutput<String>('project');
+    projectId = registerOutput<String?>('projectId');
+    secrets = registerOutput<GitHubEnterpriseSecretsResponse>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitHubEnterpriseSecretsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sslCa = registerOutput<String>('sslCa');
+    webhookKey = registerOutput<String>('webhookKey');
+  }
+
+  /// Creates a typed reference to an existing [GithubEnterpriseConfig] resource.
+  GithubEnterpriseConfig.reference(String urn)
+    : super(
+        'google-native:cloudbuild/v1:GithubEnterpriseConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appId = registerOutput<String>('appId');
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');

@@ -6,9 +6,9 @@ import 'google_cloud_discoveryengine_v1beta_conversation_context.dart';
 /// Defines text input.
 class GoogleCloudDiscoveryengineV1betaTextInput {
   /// Conversation context of the input.
-  final pulumi.Input<GoogleCloudDiscoveryengineV1betaConversationContext>? context;
+  final pulumi.Input<GoogleCloudDiscoveryengineV1betaConversationContext?>? context;
   /// Text input.
-  final pulumi.Input<String>? input;
+  final pulumi.Input<String?>? input;
 
   /// Creates a new [GoogleCloudDiscoveryengineV1betaTextInput].
   /// [context] Conversation context of the input.

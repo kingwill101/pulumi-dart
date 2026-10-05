@@ -6,7 +6,7 @@ import 'consent_header_handling_profile.dart';
 /// How the server handles the consent header.
 class ConsentHeaderHandling {
   /// Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
-  final pulumi.Input<ConsentHeaderHandlingProfile>? profile;
+  final pulumi.Input<ConsentHeaderHandlingProfile?>? profile;
 
   /// Creates a new [ConsentHeaderHandling].
   /// [profile] Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.

@@ -7,11 +7,11 @@ import 'namespaced_gke_deployment_target.dart';
 /// The cluster's GKE config.
 class GkeClusterConfig {
   /// Optional. A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster (the GKE cluster can be zonal or regional). Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-  final pulumi.Input<String>? gkeClusterTarget;
+  final pulumi.Input<String?>? gkeClusterTarget;
   /// Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
-  final pulumi.Input<NamespacedGkeDeploymentTarget>? namespacedGkeDeploymentTarget;
+  final pulumi.Input<NamespacedGkeDeploymentTarget?>? namespacedGkeDeploymentTarget;
   /// Optional. GKE node pools where workloads will be scheduled. At least one node pool must be assigned the DEFAULT GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a DEFAULT GkeNodePoolTarget. Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
-  final pulumi.Input<List<GkeNodePoolTarget>>? nodePoolTarget;
+  final pulumi.Input<List<GkeNodePoolTarget>?>? nodePoolTarget;
 
   /// Creates a new [GkeClusterConfig].
   /// [gkeClusterTarget] Optional. A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster (the GKE cluster can be zonal or regional). Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'

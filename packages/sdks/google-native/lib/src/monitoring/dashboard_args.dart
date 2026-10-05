@@ -13,24 +13,24 @@ import 'row_layout.dart';
 /// {@macro pulumi_monitoring_v1_dashboard_args_doc}
 class DashboardArgs {
   /// The content is divided into equally spaced columns and the widgets are arranged vertically.
-  final pulumi.Input<ColumnLayout>? columnLayout;
+  final pulumi.Input<ColumnLayout?>? columnLayout;
   /// Filters to reduce the amount of data charted based on the filter criteria.
-  final pulumi.Input<List<DashboardFilter>>? dashboardFilters;
+  final pulumi.Input<List<DashboardFilter>?>? dashboardFilters;
   /// The mutable, human-readable name.
   final pulumi.Input<String> displayName;
   /// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
-  final pulumi.Input<GridLayout>? gridLayout;
+  final pulumi.Input<GridLayout?>? gridLayout;
   /// Labels applied to the dashboard
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
-  final pulumi.Input<MosaicLayout>? mosaicLayout;
+  final pulumi.Input<MosaicLayout?>? mosaicLayout;
   /// Immutable. The resource name of the dashboard.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// The content is divided into equally spaced rows and the widgets are arranged horizontally.
-  final pulumi.Input<RowLayout>? rowLayout;
+  final pulumi.Input<RowLayout?>? rowLayout;
 
   /// Creates a new [DashboardArgs].
   /// [columnLayout] The content is divided into equally spaced columns and the widgets are arranged vertically.

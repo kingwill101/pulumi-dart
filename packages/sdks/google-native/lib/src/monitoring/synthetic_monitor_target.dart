@@ -6,7 +6,7 @@ import 'cloud_function_v2_target.dart';
 /// Describes a Synthetic Monitor to be invoked by Uptime.
 class SyntheticMonitorTarget {
   /// Target a Synthetic Monitor GCFv2 instance.
-  final pulumi.Input<CloudFunctionV2Target>? cloudFunctionV2;
+  final pulumi.Input<CloudFunctionV2Target?>? cloudFunctionV2;
 
   /// Creates a new [SyntheticMonitorTarget].
   /// [cloudFunctionV2] Target a Synthetic Monitor GCFv2 instance.

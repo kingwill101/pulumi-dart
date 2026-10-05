@@ -7,11 +7,11 @@ import 'version_containeranalysis_v1alpha1.dart';
 /// An Upgrade Note represents a potential upgrade of a package to a given version. For each package version combination (i.e. bash 4.0, bash 4.1, bash 4.1.2), there will be a Upgrade Note.
 class UpgradeNoteContaineranalysisV1alpha1 {
   /// Metadata about the upgrade for each specific operating system.
-  final pulumi.Input<List<UpgradeDistributionContaineranalysisV1alpha1>>? distributions;
+  final pulumi.Input<List<UpgradeDistributionContaineranalysisV1alpha1>?>? distributions;
   /// Required - The package this Upgrade is for.
-  final pulumi.Input<String>? package;
+  final pulumi.Input<String?>? package;
   /// Required - The version of the package in machine + human readable form.
-  final pulumi.Input<VersionContaineranalysisV1alpha1>? version;
+  final pulumi.Input<VersionContaineranalysisV1alpha1?>? version;
 
   /// Creates a new [UpgradeNoteContaineranalysisV1alpha1].
   /// [distributions] Metadata about the upgrade for each specific operating system.

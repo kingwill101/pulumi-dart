@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-enum ClusterAuthorizationModeRedisV1beta1 {
+enum ClusterAuthorizationModeRedisV1beta1 implements pulumi.PulumiEnum<String> {
   authModeUnspecified("AUTH_MODE_UNSPECIFIED"),
   authModeIamAuth("AUTH_MODE_IAM_AUTH"),
   authModeDisabled("AUTH_MODE_DISABLED");
 
   const ClusterAuthorizationModeRedisV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static ClusterAuthorizationModeRedisV1beta1 fromValue(String value) {

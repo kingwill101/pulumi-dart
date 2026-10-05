@@ -23,40 +23,40 @@ import 'sbomreference_occurrence_containeranalysis_v1beta1.dart';
 /// {@macro pulumi_containeranalysis_v1beta1_occurrence_containeranalysis_v1beta1_args_doc}
 class OccurrenceContaineranalysisV1beta1Args {
   /// Describes an attestation of an artifact.
-  final pulumi.Input<Details>? attestation;
+  final pulumi.Input<Details?>? attestation;
   /// Describes a verifiable build.
-  final pulumi.Input<GrafeasV1beta1BuildDetails>? build;
+  final pulumi.Input<GrafeasV1beta1BuildDetails?>? build;
   /// Describes the deployment of an artifact on a runtime.
-  final pulumi.Input<GrafeasV1beta1DeploymentDetails>? deployment;
+  final pulumi.Input<GrafeasV1beta1DeploymentDetails?>? deployment;
   /// Describes how this resource derives from the basis in the associated note.
-  final pulumi.Input<GrafeasV1beta1ImageDetails>? derivedImage;
+  final pulumi.Input<GrafeasV1beta1ImageDetails?>? derivedImage;
   /// Describes when a resource was discovered.
-  final pulumi.Input<GrafeasV1beta1DiscoveryDetails>? discovered;
+  final pulumi.Input<GrafeasV1beta1DiscoveryDetails?>? discovered;
   /// https://github.com/secure-systems-lab/dsse
-  final pulumi.Input<EnvelopeContaineranalysisV1beta1>? envelope;
+  final pulumi.Input<EnvelopeContaineranalysisV1beta1?>? envelope;
   /// Describes the installation of a package on the linked resource.
-  final pulumi.Input<GrafeasV1beta1PackageDetails>? installation;
+  final pulumi.Input<GrafeasV1beta1PackageDetails?>? installation;
   /// Describes a specific in-toto link.
-  final pulumi.Input<GrafeasV1beta1IntotoDetails>? intoto;
+  final pulumi.Input<GrafeasV1beta1IntotoDetails?>? intoto;
   /// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
   final pulumi.Input<String> noteName;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A description of actions that can be taken to remedy the note.
-  final pulumi.Input<String>? remediation;
+  final pulumi.Input<String?>? remediation;
   /// Immutable. The resource for which the occurrence applies.
   final pulumi.Input<ResourceContaineranalysisV1beta1> resource;
   /// Describes a specific software bill of materials document.
-  final pulumi.Input<DocumentOccurrenceContaineranalysisV1beta1>? sbom;
+  final pulumi.Input<DocumentOccurrenceContaineranalysisV1beta1?>? sbom;
   /// Describes a specific SBOM reference occurrences.
-  final pulumi.Input<SBOMReferenceOccurrenceContaineranalysisV1beta1>? sbomReference;
+  final pulumi.Input<SBOMReferenceOccurrenceContaineranalysisV1beta1?>? sbomReference;
   /// Describes a specific SPDX File.
-  final pulumi.Input<FileOccurrenceContaineranalysisV1beta1>? spdxFile;
+  final pulumi.Input<FileOccurrenceContaineranalysisV1beta1?>? spdxFile;
   /// Describes a specific SPDX Package.
-  final pulumi.Input<PackageInfoOccurrenceContaineranalysisV1beta1>? spdxPackage;
+  final pulumi.Input<PackageInfoOccurrenceContaineranalysisV1beta1?>? spdxPackage;
   /// Describes a specific SPDX Relationship.
-  final pulumi.Input<RelationshipOccurrenceContaineranalysisV1beta1>? spdxRelationship;
+  final pulumi.Input<RelationshipOccurrenceContaineranalysisV1beta1?>? spdxRelationship;
   /// Describes a security vulnerability.
-  final pulumi.Input<GrafeasV1beta1VulnerabilityDetails>? vulnerability;
+  final pulumi.Input<GrafeasV1beta1VulnerabilityDetails?>? vulnerability;
 
   /// Creates a new [OccurrenceContaineranalysisV1beta1Args].
   /// [attestation] Describes an attestation of an artifact.

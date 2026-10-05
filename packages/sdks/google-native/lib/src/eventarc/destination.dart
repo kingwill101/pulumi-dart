@@ -9,17 +9,17 @@ import 'network_config.dart';
 /// Represents a target of an invocation over HTTP.
 class Destination {
   /// The Cloud Function resource name. Cloud Functions V1 and V2 are supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V1/V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
-  final pulumi.Input<String>? cloudFunction;
+  final pulumi.Input<String?>? cloudFunction;
   /// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
-  final pulumi.Input<CloudRun>? cloudRun;
+  final pulumi.Input<CloudRun?>? cloudRun;
   /// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
-  final pulumi.Input<GKE>? gke;
+  final pulumi.Input<GKE?>? gke;
   /// An HTTP endpoint destination described by an URI.
-  final pulumi.Input<HttpEndpoint>? httpEndpoint;
+  final pulumi.Input<HttpEndpoint?>? httpEndpoint;
   /// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
-  final pulumi.Input<NetworkConfig>? networkConfig;
+  final pulumi.Input<NetworkConfig?>? networkConfig;
   /// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
-  final pulumi.Input<String>? workflow;
+  final pulumi.Input<String?>? workflow;
 
   /// Creates a new [Destination].
   /// [cloudFunction] The Cloud Function resource name. Cloud Functions V1 and V2 are supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V1/V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'destination_response_eventarc_v1beta1.dart';
+import 'matching_criteria_response.dart';
 import 'transport_response_eventarc_v1beta1.dart';
 import 'trigger_eventarc_v1beta1_args.dart';
 
@@ -15,7 +16,7 @@ class TriggerEventarcV1beta1 extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
   /// Unordered list. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
-  late final pulumi.Output<List<Map<String, dynamic>>> matchingCriteria;
+  late final pulumi.Output<List<MatchingCriteriaResponse>> matchingCriteria;
   /// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
@@ -40,14 +41,37 @@ class TriggerEventarcV1beta1 extends pulumi.CustomResource {
           'google-native:eventarc/v1beta1:Trigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'triggerId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     destination = registerOutput<DestinationResponseEventarcV1beta1>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DestinationResponseEventarcV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    matchingCriteria = registerOutput<List<Map<String, dynamic>>>('matchingCriteria');
+    matchingCriteria = registerOutput<List<MatchingCriteriaResponse>>('matchingCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MatchingCriteriaResponse>(guardedValue, (value) => MatchingCriteriaResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    transport = registerOutput<TransportResponseEventarcV1beta1>('transport', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransportResponseEventarcV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    triggerId = registerOutput<String>('triggerId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [TriggerEventarcV1beta1] resource.
+  TriggerEventarcV1beta1.reference(String urn)
+    : super(
+        'google-native:eventarc/v1beta1:Trigger',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    destination = registerOutput<DestinationResponseEventarcV1beta1>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DestinationResponseEventarcV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    matchingCriteria = registerOutput<List<MatchingCriteriaResponse>>('matchingCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MatchingCriteriaResponse>(guardedValue, (value) => MatchingCriteriaResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     serviceAccount = registerOutput<String>('serviceAccount');

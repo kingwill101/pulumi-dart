@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// State common to all model types. Includes publishing and validation information.
 class ModelState {
   /// Indicates if this model has been published.
-  final pulumi.Input<bool>? published;
+  final pulumi.Input<bool?>? published;
 
   /// Creates a new [ModelState].
   /// [published] Indicates if this model has been published.

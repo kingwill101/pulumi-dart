@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cloud VPC Network used to run the infrastructure.
 class GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork {
   /// Optional. The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Optional. List of network tags to apply to the job.
-  final pulumi.Input<List<String>>? networkTags;
+  final pulumi.Input<List<String>?>? networkTags;
   /// Optional. The Cloud VPC sub-network in which the job is run.
-  final pulumi.Input<String>? subNetwork;
+  final pulumi.Input<String?>? subNetwork;
 
   /// Creates a new [GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork].
   /// [network] Optional. The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.

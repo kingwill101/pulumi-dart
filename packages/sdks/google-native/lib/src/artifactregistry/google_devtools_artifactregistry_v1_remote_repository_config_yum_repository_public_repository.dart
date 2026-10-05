@@ -6,9 +6,9 @@ import 'google_devtools_artifactregistry_v1_remote_repository_config_yum_reposit
 /// Publicly available Yum repositories constructed from a common repository base and a custom repository path.
 class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository {
   /// A common public repository base for Yum.
-  final pulumi.Input<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase>? repositoryBase;
+  final pulumi.Input<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase?>? repositoryBase;
   /// A custom field to define a path to a specific repository from the base.
-  final pulumi.Input<String>? repositoryPath;
+  final pulumi.Input<String?>? repositoryPath;
 
   /// Creates a new [GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository].
   /// [repositoryBase] A common public repository base for Yum.

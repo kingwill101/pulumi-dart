@@ -20,6 +20,17 @@ Future<GetReleaseResult> getRelease(
   return GetReleaseResult.fromMap(result);
 }
 
+pulumi.Output<GetReleaseResult> getReleaseOutput(
+  GetReleaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:firebaserules/v1:getRelease',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReleaseResult.fromMap);
+}
+
 /// Get a `Ruleset` by name including the full `Source` contents.
 /// [args] Arguments passed to this invoke. {@macro pulumi_firebaserules_v1_get_ruleset_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetRulesetResult> getRuleset(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRulesetResult.fromMap(result);
+}
+
+pulumi.Output<GetRulesetResult> getRulesetOutput(
+  GetRulesetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:firebaserules/v1:getRuleset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRulesetResult.fromMap);
 }

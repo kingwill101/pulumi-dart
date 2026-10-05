@@ -28,13 +28,30 @@ class LienCloudresourcemanagerV3 extends pulumi.CustomResource {
           'google-native:cloudresourcemanager/v3:Lien',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     this.name = registerOutput<String>('name');
     origin = registerOutput<String>('origin');
     parent = registerOutput<String>('parent');
     reason = registerOutput<String>('reason');
-    restrictions = registerOutput<List<String>>('restrictions');
+    restrictions = registerOutput<List<String>>('restrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LienCloudresourcemanagerV3] resource.
+  LienCloudresourcemanagerV3.reference(String urn)
+    : super(
+        'google-native:cloudresourcemanager/v3:Lien',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    this.name = registerOutput<String>('name');
+    origin = registerOutput<String>('origin');
+    parent = registerOutput<String>('parent');
+    reason = registerOutput<String>('reason');
+    restrictions = registerOutput<List<String>>('restrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

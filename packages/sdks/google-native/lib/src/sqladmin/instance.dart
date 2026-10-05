@@ -3,6 +3,7 @@ import 'disk_encryption_configuration_response.dart';
 import 'disk_encryption_status_response.dart';
 import 'instance_args.dart';
 import 'instance_failover_replica_response.dart';
+import 'ip_mapping_response.dart';
 import 'on_premises_configuration_response.dart';
 import 'replica_configuration_response.dart';
 import 'settings_response.dart';
@@ -41,7 +42,7 @@ class Instance extends pulumi.CustomResource {
   /// The instance type.
   late final pulumi.Output<String> instanceType;
   /// The assigned IP addresses for the instance.
-  late final pulumi.Output<List<Map<String, dynamic>>> ipAddresses;
+  late final pulumi.Output<List<IpMappingResponse>> ipAddresses;
   /// The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
   late final pulumi.Output<String> ipv6Address;
   /// This is always `sql#instance`.
@@ -105,9 +106,9 @@ class Instance extends pulumi.CustomResource {
           'google-native:sqladmin/v1:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
-    availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions');
+    availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backendType = registerOutput<String>('backendType');
     connectionName = registerOutput<String>('connectionName');
     createTime = registerOutput<String>('createTime');
@@ -121,7 +122,7 @@ class Instance extends pulumi.CustomResource {
     failoverReplica = registerOutput<InstanceFailoverReplicaResponse>('failoverReplica', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFailoverReplicaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gceZone = registerOutput<String>('gceZone');
     instanceType = registerOutput<String>('instanceType');
-    ipAddresses = registerOutput<List<Map<String, dynamic>>>('ipAddresses');
+    ipAddresses = registerOutput<List<IpMappingResponse>>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpMappingResponse>(guardedValue, (value) => IpMappingResponse.fromMap((value as Map).cast<String, dynamic>())); });
     ipv6Address = registerOutput<String>('ipv6Address');
     kind = registerOutput<String>('kind');
     maintenanceVersion = registerOutput<String>('maintenanceVersion');
@@ -135,7 +136,7 @@ class Instance extends pulumi.CustomResource {
     pscServiceAttachmentLink = registerOutput<String>('pscServiceAttachmentLink');
     region = registerOutput<String>('region');
     replicaConfiguration = registerOutput<ReplicaConfigurationResponse>('replicaConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicaConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    replicaNames = registerOutput<List<String>>('replicaNames');
+    replicaNames = registerOutput<List<String>>('replicaNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     rootPassword = registerOutput<String>('rootPassword');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     scheduledMaintenance = registerOutput<SqlScheduledMaintenanceResponse>('scheduledMaintenance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlScheduledMaintenanceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -146,7 +147,59 @@ class Instance extends pulumi.CustomResource {
     settings = registerOutput<SettingsResponse>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sqlNetworkArchitecture = registerOutput<String>('sqlNetworkArchitecture');
     state = registerOutput<String>('state');
-    suspensionReason = registerOutput<List<String>>('suspensionReason');
+    suspensionReason = registerOutput<List<String>>('suspensionReason', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    writeEndpoint = registerOutput<String>('writeEndpoint');
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'google-native:sqladmin/v1:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    backendType = registerOutput<String>('backendType');
+    connectionName = registerOutput<String>('connectionName');
+    createTime = registerOutput<String>('createTime');
+    currentDiskSize = registerOutput<String>('currentDiskSize');
+    databaseInstalledVersion = registerOutput<String>('databaseInstalledVersion');
+    databaseVersion = registerOutput<String>('databaseVersion');
+    diskEncryptionConfiguration = registerOutput<DiskEncryptionConfigurationResponse>('diskEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskEncryptionConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    diskEncryptionStatus = registerOutput<DiskEncryptionStatusResponse>('diskEncryptionStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskEncryptionStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dnsName = registerOutput<String>('dnsName');
+    etag = registerOutput<String>('etag');
+    failoverReplica = registerOutput<InstanceFailoverReplicaResponse>('failoverReplica', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFailoverReplicaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gceZone = registerOutput<String>('gceZone');
+    instanceType = registerOutput<String>('instanceType');
+    ipAddresses = registerOutput<List<IpMappingResponse>>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpMappingResponse>(guardedValue, (value) => IpMappingResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    ipv6Address = registerOutput<String>('ipv6Address');
+    kind = registerOutput<String>('kind');
+    maintenanceVersion = registerOutput<String>('maintenanceVersion');
+    masterInstanceName = registerOutput<String>('masterInstanceName');
+    maxDiskSize = registerOutput<String>('maxDiskSize');
+    this.name = registerOutput<String>('name');
+    onPremisesConfiguration = registerOutput<OnPremisesConfigurationResponse>('onPremisesConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OnPremisesConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outOfDiskReport = registerOutput<SqlOutOfDiskReportResponse>('outOfDiskReport', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlOutOfDiskReportResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    primaryDnsName = registerOutput<String>('primaryDnsName');
+    project = registerOutput<String>('project');
+    pscServiceAttachmentLink = registerOutput<String>('pscServiceAttachmentLink');
+    region = registerOutput<String>('region');
+    replicaConfiguration = registerOutput<ReplicaConfigurationResponse>('replicaConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicaConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    replicaNames = registerOutput<List<String>>('replicaNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    rootPassword = registerOutput<String>('rootPassword');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    scheduledMaintenance = registerOutput<SqlScheduledMaintenanceResponse>('scheduledMaintenance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlScheduledMaintenanceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secondaryGceZone = registerOutput<String>('secondaryGceZone');
+    selfLink = registerOutput<String>('selfLink');
+    serverCaCert = registerOutput<SslCertResponse>('serverCaCert', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SslCertResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceAccountEmailAddress = registerOutput<String>('serviceAccountEmailAddress');
+    settings = registerOutput<SettingsResponse>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sqlNetworkArchitecture = registerOutput<String>('sqlNetworkArchitecture');
+    state = registerOutput<String>('state');
+    suspensionReason = registerOutput<List<String>>('suspensionReason', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     writeEndpoint = registerOutput<String>('writeEndpoint');
   }
 }

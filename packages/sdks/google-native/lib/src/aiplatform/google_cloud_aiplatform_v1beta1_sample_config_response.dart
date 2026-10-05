@@ -31,8 +31,8 @@ class GoogleCloudAiplatformV1beta1SampleConfigResponse {
 
   factory GoogleCloudAiplatformV1beta1SampleConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1SampleConfigResponse(
-      followingBatchSamplePercentage: pulumi.Input.fromValue(map['followingBatchSamplePercentage'] as int),
-      initialBatchSamplePercentage: pulumi.Input.fromValue(map['initialBatchSamplePercentage'] as int),
+      followingBatchSamplePercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['followingBatchSamplePercentage'])),
+      initialBatchSamplePercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['initialBatchSamplePercentage'])),
       sampleStrategy: pulumi.Input.fromValue(map['sampleStrategy'] as String),
     );
   }

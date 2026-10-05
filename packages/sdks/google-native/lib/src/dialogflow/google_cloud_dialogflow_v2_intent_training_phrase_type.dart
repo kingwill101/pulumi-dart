@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The type of the training phrase.
-enum GoogleCloudDialogflowV2IntentTrainingPhraseType {
+enum GoogleCloudDialogflowV2IntentTrainingPhraseType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   example("EXAMPLE"),
   template("TEMPLATE");
 
   const GoogleCloudDialogflowV2IntentTrainingPhraseType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowV2IntentTrainingPhraseType fromValue(String value) {

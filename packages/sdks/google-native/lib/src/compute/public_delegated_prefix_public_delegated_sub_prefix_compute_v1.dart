@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a sub PublicDelegatedPrefix.
 class PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1 {
   /// Name of the project scoping this PublicDelegatedSubPrefix.
-  final pulumi.Input<String>? delegateeProject;
+  final pulumi.Input<String?>? delegateeProject;
   /// An optional description of this resource. Provide this property when you create the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The IP address range, in CIDR format, represented by this sub public delegated prefix.
-  final pulumi.Input<String>? ipCidrRange;
+  final pulumi.Input<String?>? ipCidrRange;
   /// Whether the sub prefix is delegated to create Address resources in the delegatee project.
-  final pulumi.Input<bool>? isAddress;
+  final pulumi.Input<bool?>? isAddress;
   /// The name of the sub public delegated prefix.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1].
   /// [delegateeProject] Name of the project scoping this PublicDelegatedSubPrefix.

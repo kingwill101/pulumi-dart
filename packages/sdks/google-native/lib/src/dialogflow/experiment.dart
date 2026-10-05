@@ -4,6 +4,7 @@ import 'google_cloud_dialogflow_cx_v3_experiment_definition_response.dart';
 import 'google_cloud_dialogflow_cx_v3_experiment_result_response.dart';
 import 'google_cloud_dialogflow_cx_v3_rollout_config_response.dart';
 import 'google_cloud_dialogflow_cx_v3_rollout_state_response.dart';
+import 'google_cloud_dialogflow_cx_v3_variants_history_response.dart';
 
 /// Creates an Experiment in the specified Environment.
 class Experiment extends pulumi.CustomResource {
@@ -40,7 +41,7 @@ class Experiment extends pulumi.CustomResource {
   /// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT-&gt;RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT-&gt;DONE or RUNNING-&gt;DONE.
   late final pulumi.Output<String> state;
   /// The history of updates to the experiment variants.
-  late final pulumi.Output<List<Map<String, dynamic>>> variantsHistory;
+  late final pulumi.Output<List<GoogleCloudDialogflowCxV3VariantsHistoryResponse>> variantsHistory;
 
   /// Creates a new [Experiment].
   /// [name] The Pulumi resource name.
@@ -54,7 +55,7 @@ class Experiment extends pulumi.CustomResource {
           'google-native:dialogflow/v3:Experiment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['agentId', 'environmentId', 'location', 'project']).merge(options),
         ) {
     agentId = registerOutput<String>('agentId');
     createTime = registerOutput<String>('createTime');
@@ -74,6 +75,36 @@ class Experiment extends pulumi.CustomResource {
     rolloutState = registerOutput<GoogleCloudDialogflowCxV3RolloutStateResponse>('rolloutState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3RolloutStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startTime = registerOutput<String>('startTime');
     state = registerOutput<String>('state');
-    variantsHistory = registerOutput<List<Map<String, dynamic>>>('variantsHistory');
+    variantsHistory = registerOutput<List<GoogleCloudDialogflowCxV3VariantsHistoryResponse>>('variantsHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3VariantsHistoryResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3VariantsHistoryResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Experiment] resource.
+  Experiment.reference(String urn)
+    : super(
+        'google-native:dialogflow/v3:Experiment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentId = registerOutput<String>('agentId');
+    createTime = registerOutput<String>('createTime');
+    definition = registerOutput<GoogleCloudDialogflowCxV3ExperimentDefinitionResponse>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3ExperimentDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    endTime = registerOutput<String>('endTime');
+    environmentId = registerOutput<String>('environmentId');
+    experimentLength = registerOutput<String>('experimentLength');
+    lastUpdateTime = registerOutput<String>('lastUpdateTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    result = registerOutput<GoogleCloudDialogflowCxV3ExperimentResultResponse>('result', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3ExperimentResultResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rolloutConfig = registerOutput<GoogleCloudDialogflowCxV3RolloutConfigResponse>('rolloutConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3RolloutConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rolloutFailureReason = registerOutput<String>('rolloutFailureReason');
+    rolloutState = registerOutput<GoogleCloudDialogflowCxV3RolloutStateResponse>('rolloutState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3RolloutStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+    variantsHistory = registerOutput<List<GoogleCloudDialogflowCxV3VariantsHistoryResponse>>('variantsHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3VariantsHistoryResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3VariantsHistoryResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

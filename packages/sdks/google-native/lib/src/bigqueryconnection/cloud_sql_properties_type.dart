@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the Cloud SQL database.
-enum CloudSqlPropertiesType {
+enum CloudSqlPropertiesType implements pulumi.PulumiEnum<String> {
   databaseTypeUnspecified("DATABASE_TYPE_UNSPECIFIED"),
   postgres("POSTGRES"),
   mysql("MYSQL");
 
   const CloudSqlPropertiesType(this.wireValue);
+  @override
   final String wireValue;
 
   static CloudSqlPropertiesType fromValue(String value) {

@@ -7,9 +7,9 @@ import 'google_cloud_datacatalog_v1_database_table_spec_type.dart';
 /// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
 class GoogleCloudDatacatalogV1DatabaseTableSpec {
   /// Spec what aplies to tables that are actually views. Not set for "real" tables.
-  final pulumi.Input<GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec>? databaseViewSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec?>? databaseViewSpec;
   /// Type of this table.
-  final pulumi.Input<GoogleCloudDatacatalogV1DatabaseTableSpecType>? type;
+  final pulumi.Input<GoogleCloudDatacatalogV1DatabaseTableSpecType?>? type;
 
   /// Creates a new [GoogleCloudDatacatalogV1DatabaseTableSpec].
   /// [databaseViewSpec] Spec what aplies to tables that are actually views. Not set for "real" tables.

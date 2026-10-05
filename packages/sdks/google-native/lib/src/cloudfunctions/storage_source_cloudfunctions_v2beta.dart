@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Location of the source in an archive file in Google Cloud Storage.
 class StorageSourceCloudfunctionsV2beta {
   /// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
-  final pulumi.Input<String>? generation;
+  final pulumi.Input<String?>? generation;
   /// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
-  final pulumi.Input<String>? object_;
+  final pulumi.Input<String?>? object_;
 
   /// Creates a new [StorageSourceCloudfunctionsV2beta].
   /// [bucket] Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).

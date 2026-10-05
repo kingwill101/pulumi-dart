@@ -7,13 +7,13 @@ import 'google_cloud_integrations_v1alpha_event_parameter.dart';
 /// An assertion which will check for a condition over task execution status or an expression for task output variables Next available id: 5
 class GoogleCloudIntegrationsV1alphaAssertion {
   /// The type of assertion to perform.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy>? assertionStrategy;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy?>? assertionStrategy;
   /// Optional. Standard filter expression for ASSERT_CONDITION to succeed
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
   /// Optional. Key-value pair for ASSERT_EQUALS, ASSERT_NOT_EQUALS, ASSERT_CONTAINS to succeed
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaEventParameter>? parameter;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaEventParameter?>? parameter;
   /// Number of times given task should be retried in case of ASSERT_FAILED_EXECUTION
-  final pulumi.Input<int>? retryCount;
+  final pulumi.Input<int?>? retryCount;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaAssertion].
   /// [assertionStrategy] The type of assertion to perform.
@@ -41,7 +41,7 @@ class GoogleCloudIntegrationsV1alphaAssertion {
       assertionStrategy: (() { final guardedValue = map['assertionStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy.fromValue(guardedValue as String)); })(),
       condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameter: (() { final guardedValue = map['parameter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudIntegrationsV1alphaEventParameter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      retryCount: (() { final guardedValue = map['retryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retryCount: (() { final guardedValue = map['retryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

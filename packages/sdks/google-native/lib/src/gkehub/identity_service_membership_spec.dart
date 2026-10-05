@@ -6,7 +6,7 @@ import 'identity_service_auth_method.dart';
 /// **Anthos Identity Service**: Configuration for a single Membership.
 class IdentityServiceMembershipSpec {
   /// A member may support multiple auth methods.
-  final pulumi.Input<List<IdentityServiceAuthMethod>>? authMethods;
+  final pulumi.Input<List<IdentityServiceAuthMethod>?>? authMethods;
 
   /// Creates a new [IdentityServiceMembershipSpec].
   /// [authMethods] A member may support multiple auth methods.

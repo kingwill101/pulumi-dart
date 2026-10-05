@@ -6,7 +6,7 @@ import 'duration.dart';
 /// Testing timing break down to know phases.
 class TestTiming {
   /// How long it took to run the test process. - In response: present if previously set. - In create/update request: optional
-  final pulumi.Input<Duration>? testProcessDuration;
+  final pulumi.Input<Duration?>? testProcessDuration;
 
   /// Creates a new [TestTiming].
   /// [testProcessDuration] How long it took to run the test process. - In response: present if previously set. - In create/update request: optional

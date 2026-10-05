@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The hash function used to generate the digest of the referenced DNSKEY.
-enum DsRecordDigestType {
+enum DsRecordDigestType implements pulumi.PulumiEnum<String> {
   digestTypeUnspecified("DIGEST_TYPE_UNSPECIFIED"),
   sha1("SHA1"),
   sha256("SHA256"),
@@ -7,6 +9,7 @@ enum DsRecordDigestType {
   sha384("SHA384");
 
   const DsRecordDigestType(this.wireValue);
+  @override
   final String wireValue;
 
   static DsRecordDigestType fromValue(String value) {

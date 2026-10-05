@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataTaxonomyArgs {
   final pulumi.Input<String> dataTaxonomyId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDataTaxonomyArgs].
   /// [dataTaxonomyId] Required.

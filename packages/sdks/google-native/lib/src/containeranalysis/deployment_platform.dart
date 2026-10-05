@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Platform hosting this deployment.
-enum DeploymentPlatform {
+enum DeploymentPlatform implements pulumi.PulumiEnum<String> {
   platformUnspecified("PLATFORM_UNSPECIFIED"),
   gke("GKE"),
   flex("FLEX"),
   custom("CUSTOM");
 
   const DeploymentPlatform(this.wireValue);
+  @override
   final String wireValue;
 
   static DeploymentPlatform fromValue(String value) {

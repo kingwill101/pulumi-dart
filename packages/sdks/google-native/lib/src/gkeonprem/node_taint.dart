@@ -6,11 +6,11 @@ import 'node_taint_effect.dart';
 /// NodeTaint applied to every Kubernetes node in a node pool. Kubernetes taints can be used together with tolerations to control how workloads are scheduled to your nodes. Node taints are permanent.
 class NodeTaint {
   /// The taint effect.
-  final pulumi.Input<NodeTaintEffect>? effect;
+  final pulumi.Input<NodeTaintEffect?>? effect;
   /// Key associated with the effect.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Value associated with the effect.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [NodeTaint].
   /// [effect] The taint effect.

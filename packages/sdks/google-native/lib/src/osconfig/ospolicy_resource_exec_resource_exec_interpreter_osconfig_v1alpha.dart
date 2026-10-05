@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The script interpreter to use.
-enum OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha {
+enum OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha implements pulumi.PulumiEnum<String> {
   interpreterUnspecified("INTERPRETER_UNSPECIFIED"),
   none("NONE"),
   shell("SHELL"),
   powershell("POWERSHELL");
 
   const OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha(this.wireValue);
+  @override
   final String wireValue;
 
   static OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha fromValue(String value) {

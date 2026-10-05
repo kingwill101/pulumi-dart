@@ -35,14 +35,35 @@ class DnsAuthorization extends pulumi.CustomResource {
           'google-native:certificatemanager/v1:DnsAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['dnsAuthorizationId', 'location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     dnsAuthorizationId = registerOutput<String>('dnsAuthorizationId');
     dnsResourceRecord = registerOutput<DnsResourceRecordResponse>('dnsResourceRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsResourceRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     domain = registerOutput<String>('domain');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DnsAuthorization] resource.
+  DnsAuthorization.reference(String urn)
+    : super(
+        'google-native:certificatemanager/v1:DnsAuthorization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    dnsAuthorizationId = registerOutput<String>('dnsAuthorizationId');
+    dnsResourceRecord = registerOutput<DnsResourceRecordResponse>('dnsResourceRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsResourceRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    domain = registerOutput<String>('domain');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

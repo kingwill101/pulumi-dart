@@ -8,15 +8,15 @@ import 'condition_sys_gameservices_v1beta.dart';
 /// A condition to be met.
 class ConditionGameservicesV1beta {
   /// Trusted attributes supplied by the IAM system.
-  final pulumi.Input<ConditionIamGameservicesV1beta>? iam;
+  final pulumi.Input<ConditionIamGameservicesV1beta?>? iam;
   /// An operator to apply the subject with.
-  final pulumi.Input<ConditionOpGameservicesV1beta>? op;
+  final pulumi.Input<ConditionOpGameservicesV1beta?>? op;
   /// Trusted attributes discharged by the service.
-  final pulumi.Input<String>? svc;
+  final pulumi.Input<String?>? svc;
   /// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
-  final pulumi.Input<ConditionSysGameservicesV1beta>? sys;
+  final pulumi.Input<ConditionSysGameservicesV1beta?>? sys;
   /// The objects of the condition.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ConditionGameservicesV1beta].
   /// [iam] Trusted attributes supplied by the IAM system.

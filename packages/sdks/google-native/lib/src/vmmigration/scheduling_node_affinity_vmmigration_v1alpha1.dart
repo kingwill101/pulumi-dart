@@ -6,11 +6,11 @@ import 'scheduling_node_affinity_operator_vmmigration_v1alpha1.dart';
 /// Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled. Based on https://cloud.google.com/compute/docs/reference/rest/v1/instances/setScheduling
 class SchedulingNodeAffinityVmmigrationV1alpha1 {
   /// The label key of Node resource to reference.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The operator to use for the node resources specified in the `values` parameter.
-  final pulumi.Input<SchedulingNodeAffinityOperatorVmmigrationV1alpha1>? operator;
+  final pulumi.Input<SchedulingNodeAffinityOperatorVmmigrationV1alpha1?>? operator;
   /// Corresponds to the label values of Node resource.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [SchedulingNodeAffinityVmmigrationV1alpha1].
   /// [key] The label key of Node resource to reference.

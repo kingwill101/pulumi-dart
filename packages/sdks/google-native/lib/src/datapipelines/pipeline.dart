@@ -42,7 +42,7 @@ class Pipeline extends pulumi.CustomResource {
           'google-native:datapipelines/v1:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
@@ -50,7 +50,31 @@ class Pipeline extends pulumi.CustomResource {
     lastUpdateTime = registerOutput<String>('lastUpdateTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    pipelineSources = registerOutput<Map<String, String>>('pipelineSources');
+    pipelineSources = registerOutput<Map<String, String>>('pipelineSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    project = registerOutput<String>('project');
+    scheduleInfo = registerOutput<GoogleCloudDatapipelinesV1ScheduleSpecResponse>('scheduleInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDatapipelinesV1ScheduleSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schedulerServiceAccountEmail = registerOutput<String>('schedulerServiceAccountEmail');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    workload = registerOutput<GoogleCloudDatapipelinesV1WorkloadResponse>('workload', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDatapipelinesV1WorkloadResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Pipeline] resource.
+  Pipeline.reference(String urn)
+    : super(
+        'google-native:datapipelines/v1:Pipeline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    jobCount = registerOutput<int>('jobCount');
+    lastUpdateTime = registerOutput<String>('lastUpdateTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    pipelineSources = registerOutput<Map<String, String>>('pipelineSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
     scheduleInfo = registerOutput<GoogleCloudDatapipelinesV1ScheduleSpecResponse>('scheduleInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDatapipelinesV1ScheduleSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     schedulerServiceAccountEmail = registerOutput<String>('schedulerServiceAccountEmail');

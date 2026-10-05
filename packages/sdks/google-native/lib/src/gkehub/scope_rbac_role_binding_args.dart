@@ -9,20 +9,20 @@ import 'role_gkehub_v1alpha.dart';
 /// {@macro pulumi_gkehub_v1alpha_scope_rbac_role_binding_args_doc}
 class ScopeRbacRoleBindingArgs {
   /// group is the group, as seen by the kubernetes cluster.
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// Optional. Labels for this RBACRolebinding.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// The resource name for the rbacrolebinding `projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}` or `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Required. Client chosen ID for the RBACRoleBinding. `rbacrolebinding_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
   final pulumi.Input<String> rbacrolebindingId;
   /// Role to bind to the principal
   final pulumi.Input<RoleGkehubV1alpha> role;
   final pulumi.Input<String> scopeId;
   /// user is the name of the user as seen by the kubernetes cluster, example "alice" or "alice@domain.tld"
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [ScopeRbacRoleBindingArgs].
   /// [group] group is the group, as seen by the kubernetes cluster.

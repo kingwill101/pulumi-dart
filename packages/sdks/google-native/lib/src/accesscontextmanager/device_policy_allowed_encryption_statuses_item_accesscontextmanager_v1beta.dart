@@ -1,10 +1,13 @@
-enum DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta implements pulumi.PulumiEnum<String> {
   encryptionUnspecified("ENCRYPTION_UNSPECIFIED"),
   encryptionUnsupported("ENCRYPTION_UNSUPPORTED"),
   unencrypted("UNENCRYPTED"),
   encrypted("ENCRYPTED");
 
   const DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta fromValue(String value) {

@@ -65,7 +65,7 @@ class TaskSpecResponse {
       environment: pulumi.Input.fromValue(EnvironmentResponse.fromMap((map['environment']! as Map).cast<String, dynamic>())),
       environments: pulumi.Input.fromValue((map['environments'] as Map).cast<String, String>()),
       lifecyclePolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<LifecyclePolicyResponse>(map['lifecyclePolicies']!, (value) => LifecyclePolicyResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      maxRetryCount: pulumi.Input.fromValue(map['maxRetryCount'] as int),
+      maxRetryCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRetryCount'])),
       maxRunDuration: pulumi.Input.fromValue(map['maxRunDuration'] as String),
       runnables: pulumi.Input.fromValue(pulumi.Input.decodeList<RunnableResponse>(map['runnables']!, (value) => RunnableResponse.fromMap((value as Map).cast<String, dynamic>()))),
       volumes: pulumi.Input.fromValue(pulumi.Input.decodeList<VolumeResponse>(map['volumes']!, (value) => VolumeResponse.fromMap((value as Map).cast<String, dynamic>()))),

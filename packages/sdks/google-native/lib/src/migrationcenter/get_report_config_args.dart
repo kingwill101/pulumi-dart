@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_migrationcenter_v1_get_report_config_args_doc}
 class GetReportConfigArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> reportConfigId;
 
   /// Creates a new [GetReportConfigArgs].

@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_pubsub_v1_get_snapshot_args_doc}
 class GetSnapshotArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> snapshotId;
 
   /// Creates a new [GetSnapshotArgs].

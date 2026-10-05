@@ -8,13 +8,13 @@ class SourceNumericFilter {
   /// Enum to set the option defining the datatypes numeric filter has to be applied to
   final pulumi.Input<SourceNumericFilterNumericFilterOption> numericFilterOption;
   /// Optional. The filter will match columns with precision smaller than or equal to this number.
-  final pulumi.Input<int>? sourceMaxPrecisionFilter;
+  final pulumi.Input<int?>? sourceMaxPrecisionFilter;
   /// Optional. The filter will match columns with scale smaller than or equal to this number.
-  final pulumi.Input<int>? sourceMaxScaleFilter;
+  final pulumi.Input<int?>? sourceMaxScaleFilter;
   /// Optional. The filter will match columns with precision greater than or equal to this number.
-  final pulumi.Input<int>? sourceMinPrecisionFilter;
+  final pulumi.Input<int?>? sourceMinPrecisionFilter;
   /// Optional. The filter will match columns with scale greater than or equal to this number.
-  final pulumi.Input<int>? sourceMinScaleFilter;
+  final pulumi.Input<int?>? sourceMinScaleFilter;
 
   /// Creates a new [SourceNumericFilter].
   /// [numericFilterOption] Enum to set the option defining the datatypes numeric filter has to be applied to
@@ -43,10 +43,10 @@ class SourceNumericFilter {
   factory SourceNumericFilter.fromMap(Map<String, dynamic> map) {
     return SourceNumericFilter(
       numericFilterOption: pulumi.Input.fromValue(SourceNumericFilterNumericFilterOption.fromValue(map['numericFilterOption']! as String)),
-      sourceMaxPrecisionFilter: (() { final guardedValue = map['sourceMaxPrecisionFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      sourceMaxScaleFilter: (() { final guardedValue = map['sourceMaxScaleFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      sourceMinPrecisionFilter: (() { final guardedValue = map['sourceMinPrecisionFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      sourceMinScaleFilter: (() { final guardedValue = map['sourceMinScaleFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sourceMaxPrecisionFilter: (() { final guardedValue = map['sourceMaxPrecisionFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      sourceMaxScaleFilter: (() { final guardedValue = map['sourceMaxScaleFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      sourceMinPrecisionFilter: (() { final guardedValue = map['sourceMinPrecisionFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      sourceMinScaleFilter: (() { final guardedValue = map['sourceMinScaleFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

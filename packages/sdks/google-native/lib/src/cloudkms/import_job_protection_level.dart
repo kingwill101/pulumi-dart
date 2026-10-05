@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
-enum ImportJobProtectionLevel {
+enum ImportJobProtectionLevel implements pulumi.PulumiEnum<String> {
   protectionLevelUnspecified("PROTECTION_LEVEL_UNSPECIFIED"),
   software("SOFTWARE"),
   hsm("HSM"),
@@ -7,6 +9,7 @@ enum ImportJobProtectionLevel {
   externalVpc("EXTERNAL_VPC");
 
   const ImportJobProtectionLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static ImportJobProtectionLevel fromValue(String value) {

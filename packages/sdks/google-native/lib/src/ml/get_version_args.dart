@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ml_v1_get_version_args_doc}
 class GetVersionArgs {
   final pulumi.Input<String> modelId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> versionId;
 
   /// Creates a new [GetVersionArgs].

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// ID of the config module.
-enum EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId {
+enum EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId implements pulumi.PulumiEnum<String> {
   unspecifiedTaskModule("UNSPECIFIED_TASK_MODULE"),
   label("LABEL"),
   errorHandling("ERROR_HANDLING"),
@@ -22,6 +24,7 @@ enum EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId {
   genericConnectorTask("GENERIC_CONNECTOR_TASK");
 
   const EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId fromValue(String value) {

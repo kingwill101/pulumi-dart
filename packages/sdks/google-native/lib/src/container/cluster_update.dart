@@ -44,107 +44,107 @@ import 'workload_policy_config.dart';
 /// ClusterUpdate describes an update to the cluster. Exactly one update can be applied to a cluster with each request, so at most one field can be provided.
 class ClusterUpdate {
   /// The additional pod ranges to be added to the cluster. These pod ranges can be used by node pools to allocate pod IPs.
-  final pulumi.Input<AdditionalPodRangesConfig>? additionalPodRangesConfig;
+  final pulumi.Input<AdditionalPodRangesConfig?>? additionalPodRangesConfig;
   /// Configurations for the various addons available to run in the cluster.
-  final pulumi.Input<AddonsConfig>? desiredAddonsConfig;
+  final pulumi.Input<AddonsConfig?>? desiredAddonsConfig;
   /// The desired authenticator groups config for the cluster.
-  final pulumi.Input<AuthenticatorGroupsConfig>? desiredAuthenticatorGroupsConfig;
+  final pulumi.Input<AuthenticatorGroupsConfig?>? desiredAuthenticatorGroupsConfig;
   /// The desired workload policy configuration for the autopilot cluster.
-  final pulumi.Input<WorkloadPolicyConfig>? desiredAutopilotWorkloadPolicyConfig;
+  final pulumi.Input<WorkloadPolicyConfig?>? desiredAutopilotWorkloadPolicyConfig;
   /// The desired configuration options for the Binary Authorization feature.
-  final pulumi.Input<BinaryAuthorization>? desiredBinaryAuthorization;
+  final pulumi.Input<BinaryAuthorization?>? desiredBinaryAuthorization;
   /// Cluster-level autoscaling configuration.
-  final pulumi.Input<ClusterAutoscaling>? desiredClusterAutoscaling;
+  final pulumi.Input<ClusterAutoscaling?>? desiredClusterAutoscaling;
   /// The desired configuration for the fine-grained cost management feature.
-  final pulumi.Input<CostManagementConfig>? desiredCostManagementConfig;
+  final pulumi.Input<CostManagementConfig?>? desiredCostManagementConfig;
   /// Configuration of etcd encryption.
-  final pulumi.Input<DatabaseEncryption>? desiredDatabaseEncryption;
+  final pulumi.Input<DatabaseEncryption?>? desiredDatabaseEncryption;
   /// The desired datapath provider for the cluster.
-  final pulumi.Input<ClusterUpdateDesiredDatapathProvider>? desiredDatapathProvider;
+  final pulumi.Input<ClusterUpdateDesiredDatapathProvider?>? desiredDatapathProvider;
   /// The desired status of whether to disable default sNAT for this cluster.
-  final pulumi.Input<DefaultSnatStatus>? desiredDefaultSnatStatus;
+  final pulumi.Input<DefaultSnatStatus?>? desiredDefaultSnatStatus;
   /// DNSConfig contains clusterDNS config for this cluster.
-  final pulumi.Input<DNSConfig>? desiredDnsConfig;
+  final pulumi.Input<DNSConfig?>? desiredDnsConfig;
   /// Enable/Disable FQDN Network Policy for the cluster.
-  final pulumi.Input<bool>? desiredEnableFqdnNetworkPolicy;
+  final pulumi.Input<bool?>? desiredEnableFqdnNetworkPolicy;
   /// Enable/Disable private endpoint for the cluster's master.
-  final pulumi.Input<bool>? desiredEnablePrivateEndpoint;
+  final pulumi.Input<bool?>? desiredEnablePrivateEndpoint;
   /// The desired fleet configuration for the cluster.
-  final pulumi.Input<Fleet>? desiredFleet;
+  final pulumi.Input<Fleet?>? desiredFleet;
   /// The desired config of Gateway API on this cluster.
-  final pulumi.Input<GatewayAPIConfig>? desiredGatewayApiConfig;
+  final pulumi.Input<GatewayAPIConfig?>? desiredGatewayApiConfig;
   /// The desired GCFS config for the cluster
-  final pulumi.Input<GcfsConfig>? desiredGcfsConfig;
+  final pulumi.Input<GcfsConfig?>? desiredGcfsConfig;
   /// The desired Identity Service component configuration.
-  final pulumi.Input<IdentityServiceConfig>? desiredIdentityServiceConfig;
+  final pulumi.Input<IdentityServiceConfig?>? desiredIdentityServiceConfig;
   /// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
-  final pulumi.Input<String>? desiredImageType;
+  final pulumi.Input<String?>? desiredImageType;
   /// The desired config of Intra-node visibility.
-  final pulumi.Input<IntraNodeVisibilityConfig>? desiredIntraNodeVisibilityConfig;
+  final pulumi.Input<IntraNodeVisibilityConfig?>? desiredIntraNodeVisibilityConfig;
   /// Desired Beta APIs to be enabled for cluster.
-  final pulumi.Input<K8sBetaAPIConfig>? desiredK8sBetaApis;
+  final pulumi.Input<K8sBetaAPIConfig?>? desiredK8sBetaApis;
   /// The desired L4 Internal Load Balancer Subsetting configuration.
-  final pulumi.Input<ILBSubsettingConfig>? desiredL4ilbSubsettingConfig;
+  final pulumi.Input<ILBSubsettingConfig?>? desiredL4ilbSubsettingConfig;
   /// The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This list must always include the cluster's primary zone. Warning: changing cluster locations will update the locations of all node pools and will result in nodes being added and/or removed.
-  final pulumi.Input<List<String>>? desiredLocations;
+  final pulumi.Input<List<String>?>? desiredLocations;
   /// The desired logging configuration.
-  final pulumi.Input<LoggingConfig>? desiredLoggingConfig;
+  final pulumi.Input<LoggingConfig?>? desiredLoggingConfig;
   /// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
-  final pulumi.Input<String>? desiredLoggingService;
+  final pulumi.Input<String?>? desiredLoggingService;
   /// The desired configuration options for master authorized networks feature.
-  final pulumi.Input<MasterAuthorizedNetworksConfig>? desiredMasterAuthorizedNetworksConfig;
+  final pulumi.Input<MasterAuthorizedNetworksConfig?>? desiredMasterAuthorizedNetworksConfig;
   /// The Kubernetes version to change the master to. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the default Kubernetes version
-  final pulumi.Input<String>? desiredMasterVersion;
+  final pulumi.Input<String?>? desiredMasterVersion;
   /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
-  final pulumi.Input<MeshCertificates>? desiredMeshCertificates;
+  final pulumi.Input<MeshCertificates?>? desiredMeshCertificates;
   /// The desired monitoring configuration.
-  final pulumi.Input<MonitoringConfig>? desiredMonitoringConfig;
+  final pulumi.Input<MonitoringConfig?>? desiredMonitoringConfig;
   /// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
-  final pulumi.Input<String>? desiredMonitoringService;
+  final pulumi.Input<String?>? desiredMonitoringService;
   /// The desired network performance config.
-  final pulumi.Input<ClusterNetworkPerformanceConfig>? desiredNetworkPerformanceConfig;
+  final pulumi.Input<ClusterNetworkPerformanceConfig?>? desiredNetworkPerformanceConfig;
   /// The desired network tags that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
-  final pulumi.Input<NetworkTags>? desiredNodePoolAutoConfigNetworkTags;
+  final pulumi.Input<NetworkTags?>? desiredNodePoolAutoConfigNetworkTags;
   /// The desired resource manager tags that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
-  final pulumi.Input<ResourceManagerTags>? desiredNodePoolAutoConfigResourceManagerTags;
+  final pulumi.Input<ResourceManagerTags?>? desiredNodePoolAutoConfigResourceManagerTags;
   /// Autoscaler configuration for the node pool specified in desired_node_pool_id. If there is only one pool in the cluster and desired_node_pool_id is not provided then the change applies to that single node pool.
-  final pulumi.Input<NodePoolAutoscaling>? desiredNodePoolAutoscaling;
+  final pulumi.Input<NodePoolAutoscaling?>? desiredNodePoolAutoscaling;
   /// The node pool to be upgraded. This field is mandatory if "desired_node_version", "desired_image_family" or "desired_node_pool_autoscaling" is specified and there is more than one node pool on the cluster.
-  final pulumi.Input<String>? desiredNodePoolId;
+  final pulumi.Input<String?>? desiredNodePoolId;
   /// The desired node pool logging configuration defaults for the cluster.
-  final pulumi.Input<NodePoolLoggingConfig>? desiredNodePoolLoggingConfig;
+  final pulumi.Input<NodePoolLoggingConfig?>? desiredNodePoolLoggingConfig;
   /// The Kubernetes version to change the nodes to (typically an upgrade). Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the Kubernetes master version
-  final pulumi.Input<String>? desiredNodeVersion;
+  final pulumi.Input<String?>? desiredNodeVersion;
   /// The desired notification configuration.
-  final pulumi.Input<NotificationConfig>? desiredNotificationConfig;
+  final pulumi.Input<NotificationConfig?>? desiredNotificationConfig;
   /// The desired parent product config for the cluster.
-  final pulumi.Input<ParentProductConfig>? desiredParentProductConfig;
+  final pulumi.Input<ParentProductConfig?>? desiredParentProductConfig;
   /// The desired private cluster configuration.
-  final pulumi.Input<PrivateClusterConfig>? desiredPrivateClusterConfig;
+  final pulumi.Input<PrivateClusterConfig?>? desiredPrivateClusterConfig;
   /// The desired state of IPv6 connectivity to Google Services.
-  final pulumi.Input<ClusterUpdateDesiredPrivateIpv6GoogleAccess>? desiredPrivateIpv6GoogleAccess;
+  final pulumi.Input<ClusterUpdateDesiredPrivateIpv6GoogleAccess?>? desiredPrivateIpv6GoogleAccess;
   /// The desired release channel configuration.
-  final pulumi.Input<ReleaseChannel>? desiredReleaseChannel;
+  final pulumi.Input<ReleaseChannel?>? desiredReleaseChannel;
   /// The desired configuration for exporting resource usage.
-  final pulumi.Input<ResourceUsageExportConfig>? desiredResourceUsageExportConfig;
+  final pulumi.Input<ResourceUsageExportConfig?>? desiredResourceUsageExportConfig;
   /// Enable/Disable Security Posture API features for the cluster.
-  final pulumi.Input<SecurityPostureConfig>? desiredSecurityPostureConfig;
+  final pulumi.Input<SecurityPostureConfig?>? desiredSecurityPostureConfig;
   /// ServiceExternalIPsConfig specifies the config for the use of Services with ExternalIPs field.
-  final pulumi.Input<ServiceExternalIPsConfig>? desiredServiceExternalIpsConfig;
+  final pulumi.Input<ServiceExternalIPsConfig?>? desiredServiceExternalIpsConfig;
   /// Configuration for Shielded Nodes.
-  final pulumi.Input<ShieldedNodes>? desiredShieldedNodes;
+  final pulumi.Input<ShieldedNodes?>? desiredShieldedNodes;
   /// The desired stack type of the cluster. If a stack type is provided and does not match the current stack type of the cluster, update will attempt to change the stack type to the new type.
-  final pulumi.Input<ClusterUpdateDesiredStackType>? desiredStackType;
+  final pulumi.Input<ClusterUpdateDesiredStackType?>? desiredStackType;
   /// Cluster-level Vertical Pod Autoscaling configuration.
-  final pulumi.Input<VerticalPodAutoscaling>? desiredVerticalPodAutoscaling;
+  final pulumi.Input<VerticalPodAutoscaling?>? desiredVerticalPodAutoscaling;
   /// Configuration for Workload Identity.
-  final pulumi.Input<WorkloadIdentityConfig>? desiredWorkloadIdentityConfig;
+  final pulumi.Input<WorkloadIdentityConfig?>? desiredWorkloadIdentityConfig;
   /// Kubernetes open source beta apis enabled on the cluster. Only beta apis
-  final pulumi.Input<K8sBetaAPIConfig>? enableK8sBetaApis;
+  final pulumi.Input<K8sBetaAPIConfig?>? enableK8sBetaApis;
   /// The current etag of the cluster. If an etag is provided and does not match the current etag of the cluster, update will be blocked and an ABORTED error will be returned.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The additional pod ranges that are to be removed from the cluster. The pod ranges specified here must have been specified earlier in the 'additional_pod_ranges_config' argument.
-  final pulumi.Input<AdditionalPodRangesConfig>? removedAdditionalPodRangesConfig;
+  final pulumi.Input<AdditionalPodRangesConfig?>? removedAdditionalPodRangesConfig;
 
   /// Creates a new [ClusterUpdate].
   /// [additionalPodRangesConfig] The additional pod ranges to be added to the cluster. These pod ranges can be used by node pools to allocate pod IPs.

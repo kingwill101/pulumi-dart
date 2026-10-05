@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The type of endpoint policy. This is primarily used to validate the configuration.
-enum EndpointPolicyType {
+enum EndpointPolicyType implements pulumi.PulumiEnum<String> {
   endpointPolicyTypeUnspecified("ENDPOINT_POLICY_TYPE_UNSPECIFIED"),
   sidecarProxy("SIDECAR_PROXY"),
   grpcServer("GRPC_SERVER");
 
   const EndpointPolicyType(this.wireValue);
+  @override
   final String wireValue;
 
   static EndpointPolicyType fromValue(String value) {

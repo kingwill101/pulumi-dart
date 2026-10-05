@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_remotebuildexecution_v1alpha_get_worker_pool_args_doc}
 class GetWorkerPoolArgs {
   final pulumi.Input<String> instanceId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> workerpoolId;
 
   /// Creates a new [GetWorkerPoolArgs].

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datalabeling_v1beta1_get_instruction_args_doc}
 class GetInstructionArgs {
   final pulumi.Input<String> instructionId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetInstructionArgs].
   /// [instructionId] Required.

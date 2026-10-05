@@ -10,12 +10,12 @@ import 'import_job_protection_level.dart';
 /// {@macro pulumi_cloudkms_v1_import_job_args_doc}
 class ImportJobArgs {
   /// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-  final pulumi.Input<String>? importJobId;
+  final pulumi.Input<String?>? importJobId;
   /// Immutable. The wrapping method to be used for incoming key material.
   final pulumi.Input<ImportJobImportMethod> importMethod;
   final pulumi.Input<String> keyRingId;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
   final pulumi.Input<ImportJobProtectionLevel> protectionLevel;
 

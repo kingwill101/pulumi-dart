@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The egress setting for the connector, controlling what traffic is diverted through it.
-enum VpcAccessConnectorEgressSettingAppengineV1beta {
+enum VpcAccessConnectorEgressSettingAppengineV1beta implements pulumi.PulumiEnum<String> {
   egressSettingUnspecified("EGRESS_SETTING_UNSPECIFIED"),
   allTraffic("ALL_TRAFFIC"),
   privateIpRanges("PRIVATE_IP_RANGES");
 
   const VpcAccessConnectorEgressSettingAppengineV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static VpcAccessConnectorEgressSettingAppengineV1beta fromValue(String value) {

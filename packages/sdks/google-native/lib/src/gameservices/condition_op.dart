@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// An operator to apply the subject with.
-enum ConditionOp {
+enum ConditionOp implements pulumi.PulumiEnum<String> {
   noOp("NO_OP"),
   equals("EQUALS"),
   notEquals("NOT_EQUALS"),
@@ -8,6 +10,7 @@ enum ConditionOp {
   discharged("DISCHARGED");
 
   const ConditionOp(this.wireValue);
+  @override
   final String wireValue;
 
   static ConditionOp fromValue(String value) {

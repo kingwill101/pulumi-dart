@@ -12,27 +12,27 @@ import 'stream_state_datastream_v1alpha1.dart';
 /// {@macro pulumi_datastream_v1alpha1_stream_datastream_v1alpha1_args_doc}
 class StreamDatastreamV1alpha1Args {
   /// Automatically backfill objects included in the stream source configuration. Specific objects can be excluded.
-  final pulumi.Input<BackfillAllStrategyDatastreamV1alpha1>? backfillAll;
+  final pulumi.Input<BackfillAllStrategyDatastreamV1alpha1?>? backfillAll;
   /// Do not automatically backfill any objects.
-  final pulumi.Input<Map<String, dynamic>>? backfillNone;
+  final pulumi.Input<Map<String, dynamic>?>? backfillNone;
   /// Immutable. A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
-  final pulumi.Input<String>? customerManagedEncryptionKey;
+  final pulumi.Input<String?>? customerManagedEncryptionKey;
   /// Destination connection profile configuration.
   final pulumi.Input<DestinationConfigDatastreamV1alpha1> destinationConfig;
   /// Display name.
   final pulumi.Input<String> displayName;
   /// Optional. Create the stream without validating it.
-  final pulumi.Input<bool>? force;
+  final pulumi.Input<bool?>? force;
   /// Labels.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Source connection profile configuration.
   final pulumi.Input<SourceConfigDatastreamV1alpha1> sourceConfig;
   /// The state of the stream.
-  final pulumi.Input<StreamStateDatastreamV1alpha1>? state;
+  final pulumi.Input<StreamStateDatastreamV1alpha1?>? state;
   /// Required. The stream identifier.
   final pulumi.Input<String> streamId;
 

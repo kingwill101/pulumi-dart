@@ -7,9 +7,9 @@ import 'spark_history_server_config.dart';
 /// Auxiliary services configuration for a Cluster.
 class AuxiliaryServicesConfig {
   /// Optional. The Hive Metastore configuration for this workload.
-  final pulumi.Input<MetastoreConfig>? metastoreConfig;
+  final pulumi.Input<MetastoreConfig?>? metastoreConfig;
   /// Optional. The Spark History Server configuration for the workload.
-  final pulumi.Input<SparkHistoryServerConfig>? sparkHistoryServerConfig;
+  final pulumi.Input<SparkHistoryServerConfig?>? sparkHistoryServerConfig;
 
   /// Creates a new [AuxiliaryServicesConfig].
   /// [metastoreConfig] Optional. The Hive Metastore configuration for this workload.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_connectors_v1_get_custom_connector_args_doc}
 class GetCustomConnectorArgs {
   final pulumi.Input<String> customConnectorId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetCustomConnectorArgs].
   /// [customConnectorId] Required.

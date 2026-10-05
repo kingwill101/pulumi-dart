@@ -26,7 +26,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectRespons
 
   factory GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse(
-      confidence: pulumi.Input.fromValue(map['confidence'] as double),
+      confidence: pulumi.Input.fromValue((map['confidence'] as num).toDouble()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

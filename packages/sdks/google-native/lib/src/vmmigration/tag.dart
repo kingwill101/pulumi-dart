@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Tag is an AWS tag representation.
 class Tag {
   /// Key of tag.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Value of tag.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [Tag].
   /// [key] Key of tag.

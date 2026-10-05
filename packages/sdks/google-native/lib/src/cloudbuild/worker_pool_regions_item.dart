@@ -1,4 +1,6 @@
-enum WorkerPoolRegionsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum WorkerPoolRegionsItem implements pulumi.PulumiEnum<String> {
   regionUnspecified("REGION_UNSPECIFIED"),
   usCentral1("us-central1"),
   usWest1("us-west1"),
@@ -6,6 +8,7 @@ enum WorkerPoolRegionsItem {
   usEast4("us-east4");
 
   const WorkerPoolRegionsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static WorkerPoolRegionsItem fromValue(String value) {

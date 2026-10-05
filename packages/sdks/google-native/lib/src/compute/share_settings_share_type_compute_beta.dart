@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of sharing for this shared-reservation
-enum ShareSettingsShareTypeComputeBeta {
+enum ShareSettingsShareTypeComputeBeta implements pulumi.PulumiEnum<String> {
   local("LOCAL"),
   organization("ORGANIZATION"),
   shareTypeUnspecified("SHARE_TYPE_UNSPECIFIED"),
   specificProjects("SPECIFIC_PROJECTS");
 
   const ShareSettingsShareTypeComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static ShareSettingsShareTypeComputeBeta fromValue(String value) {

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The priority of this case.
-enum CasePriorityCloudsupportV2beta {
+enum CasePriorityCloudsupportV2beta implements pulumi.PulumiEnum<String> {
   priorityUnspecified("PRIORITY_UNSPECIFIED"),
   p0("P0"),
   p1("P1"),
@@ -8,6 +10,7 @@ enum CasePriorityCloudsupportV2beta {
   p4("P4");
 
   const CasePriorityCloudsupportV2beta(this.wireValue);
+  @override
   final String wireValue;
 
   static CasePriorityCloudsupportV2beta fromValue(String value) {

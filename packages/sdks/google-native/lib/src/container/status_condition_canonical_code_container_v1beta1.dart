@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Canonical code of the condition.
-enum StatusConditionCanonicalCodeContainerV1beta1 {
+enum StatusConditionCanonicalCodeContainerV1beta1 implements pulumi.PulumiEnum<String> {
   ok("OK"),
   cancelled("CANCELLED"),
   unknown("UNKNOWN"),
@@ -19,6 +21,7 @@ enum StatusConditionCanonicalCodeContainerV1beta1 {
   dataLoss("DATA_LOSS");
 
   const StatusConditionCanonicalCodeContainerV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static StatusConditionCanonicalCodeContainerV1beta1 fromValue(String value) {

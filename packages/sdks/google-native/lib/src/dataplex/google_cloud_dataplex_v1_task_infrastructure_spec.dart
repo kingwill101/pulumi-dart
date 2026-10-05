@@ -8,11 +8,11 @@ import 'google_cloud_dataplex_v1_task_infrastructure_spec_vpc_network.dart';
 /// Configuration for the underlying infrastructure used to run workloads.
 class GoogleCloudDataplexV1TaskInfrastructureSpec {
   /// Compute resources needed for a Task when using Dataproc Serverless.
-  final pulumi.Input<GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources>? batch;
+  final pulumi.Input<GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources?>? batch;
   /// Container Image Runtime Configuration.
-  final pulumi.Input<GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime>? containerImage;
+  final pulumi.Input<GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime?>? containerImage;
   /// Vpc network.
-  final pulumi.Input<GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork>? vpcNetwork;
+  final pulumi.Input<GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork?>? vpcNetwork;
 
   /// Creates a new [GoogleCloudDataplexV1TaskInfrastructureSpec].
   /// [batch] Compute resources needed for a Task when using Dataproc Serverless.

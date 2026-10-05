@@ -30,12 +30,30 @@ class OrganizationContact extends pulumi.CustomResource {
           'google-native:essentialcontacts/v1:OrganizationContact',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
     email = registerOutput<String>('email');
     languageTag = registerOutput<String>('languageTag');
     this.name = registerOutput<String>('name');
-    notificationCategorySubscriptions = registerOutput<List<String>>('notificationCategorySubscriptions');
+    notificationCategorySubscriptions = registerOutput<List<String>>('notificationCategorySubscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    organizationId = registerOutput<String>('organizationId');
+    validateTime = registerOutput<String>('validateTime');
+    validationState = registerOutput<String>('validationState');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationContact] resource.
+  OrganizationContact.reference(String urn)
+    : super(
+        'google-native:essentialcontacts/v1:OrganizationContact',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    email = registerOutput<String>('email');
+    languageTag = registerOutput<String>('languageTag');
+    this.name = registerOutput<String>('name');
+    notificationCategorySubscriptions = registerOutput<List<String>>('notificationCategorySubscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     organizationId = registerOutput<String>('organizationId');
     validateTime = registerOutput<String>('validateTime');
     validationState = registerOutput<String>('validationState');

@@ -6,11 +6,11 @@ import 'maintenance_exclusion_options_container_v1beta1.dart';
 /// Represents an arbitrary window of time.
 class TimeWindowContainerV1beta1 {
   /// The time that the window ends. The end time should take place after the start time.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// MaintenanceExclusionOptions provides maintenance exclusion related options.
-  final pulumi.Input<MaintenanceExclusionOptionsContainerV1beta1>? maintenanceExclusionOptions;
+  final pulumi.Input<MaintenanceExclusionOptionsContainerV1beta1?>? maintenanceExclusionOptions;
   /// The time that the window first starts.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [TimeWindowContainerV1beta1].
   /// [endTime] The time that the window ends. The end time should take place after the start time.

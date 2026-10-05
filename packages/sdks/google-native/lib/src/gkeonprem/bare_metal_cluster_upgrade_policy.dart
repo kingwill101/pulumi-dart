@@ -6,7 +6,7 @@ import 'bare_metal_cluster_upgrade_policy_policy.dart';
 /// BareMetalClusterUpgradePolicy defines the cluster upgrade policy.
 class BareMetalClusterUpgradePolicy {
   /// Specifies which upgrade policy to use.
-  final pulumi.Input<BareMetalClusterUpgradePolicyPolicy>? policy;
+  final pulumi.Input<BareMetalClusterUpgradePolicyPolicy?>? policy;
 
   /// Creates a new [BareMetalClusterUpgradePolicy].
   /// [policy] Specifies which upgrade policy to use.

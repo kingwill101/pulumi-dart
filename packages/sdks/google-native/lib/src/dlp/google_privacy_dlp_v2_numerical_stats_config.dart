@@ -6,7 +6,7 @@ import 'google_privacy_dlp_v2_field_id.dart';
 /// Compute numerical stats over an individual column, including min, max, and quantiles.
 class GooglePrivacyDlpV2NumericalStatsConfig {
   /// Field to compute numerical stats on. Supported types are integer, float, date, datetime, timestamp, time.
-  final pulumi.Input<GooglePrivacyDlpV2FieldId>? field;
+  final pulumi.Input<GooglePrivacyDlpV2FieldId?>? field;
 
   /// Creates a new [GooglePrivacyDlpV2NumericalStatsConfig].
   /// [field] Field to compute numerical stats on. Supported types are integer, float, date, datetime, timestamp, time.

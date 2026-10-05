@@ -12,26 +12,26 @@ import 'user_type_sqladmin_v1beta4.dart';
 /// {@macro pulumi_sqladmin_v1beta4_user_sqladmin_v1beta4_args_doc}
 class UserSqladminV1beta4Args {
   /// Dual password status for the user.
-  final pulumi.Input<UserDualPasswordTypeSqladminV1beta4>? dualPasswordType;
+  final pulumi.Input<UserDualPasswordTypeSqladminV1beta4?>? dualPasswordType;
   /// This field is deprecated and will be removed from a future version of the API.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Optional. The host from which the user can connect. For `insert` operations, host defaults to an empty string. For `update` operations, host is specified as part of the request URL. The host name cannot be updated after insertion. For a MySQL instance, it's required; for a PostgreSQL or SQL Server instance, it's optional.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// The name of the Cloud SQL instance. This does not include the project ID. Can be omitted for *update* because it is already specified on the URL.
   final pulumi.Input<String> instance;
   /// This is always `sql#user`.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The name of the user in the Cloud SQL instance. Can be omitted for `update` because it is already specified in the URL.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The password for the user.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// User level password validation policy.
-  final pulumi.Input<UserPasswordValidationPolicySqladminV1beta4>? passwordPolicy;
+  final pulumi.Input<UserPasswordValidationPolicySqladminV1beta4?>? passwordPolicy;
   /// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable. Can be omitted for *update* because it is already specified on the URL.
-  final pulumi.Input<String>? project;
-  final pulumi.Input<SqlServerUserDetailsSqladminV1beta4>? sqlserverUserDetails;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<SqlServerUserDetailsSqladminV1beta4?>? sqlserverUserDetails;
   /// The user type. It determines the method to authenticate the user during login. The default is the database's built-in user type.
-  final pulumi.Input<UserTypeSqladminV1beta4>? type;
+  final pulumi.Input<UserTypeSqladminV1beta4?>? type;
 
   /// Creates a new [UserSqladminV1beta4Args].
   /// [dualPasswordType] Dual password status for the user.

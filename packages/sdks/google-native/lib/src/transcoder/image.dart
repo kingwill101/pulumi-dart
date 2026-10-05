@@ -6,9 +6,9 @@ import 'normalized_coordinate.dart';
 /// Overlaid image.
 class Image {
   /// Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
-  final pulumi.Input<double>? alpha;
+  final pulumi.Input<double?>? alpha;
   /// Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
-  final pulumi.Input<NormalizedCoordinate>? resolution;
+  final pulumi.Input<NormalizedCoordinate?>? resolution;
   /// URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported.
   final pulumi.Input<String> uri;
 
@@ -32,7 +32,7 @@ class Image {
 
   factory Image.fromMap(Map<String, dynamic> map) {
     return Image(
-      alpha: (() { final guardedValue = map['alpha']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      alpha: (() { final guardedValue = map['alpha']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       resolution: (() { final guardedValue = map['resolution']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NormalizedCoordinate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );

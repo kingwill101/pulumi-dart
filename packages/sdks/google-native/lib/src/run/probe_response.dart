@@ -66,14 +66,14 @@ class ProbeResponse {
   factory ProbeResponse.fromMap(Map<String, dynamic> map) {
     return ProbeResponse(
       exec: pulumi.Input.fromValue(ExecActionResponse.fromMap((map['exec']! as Map).cast<String, dynamic>())),
-      failureThreshold: pulumi.Input.fromValue(map['failureThreshold'] as int),
+      failureThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['failureThreshold'])),
       grpc: pulumi.Input.fromValue(GRPCActionResponse.fromMap((map['grpc']! as Map).cast<String, dynamic>())),
       httpGet: pulumi.Input.fromValue(HTTPGetActionResponse.fromMap((map['httpGet']! as Map).cast<String, dynamic>())),
-      initialDelaySeconds: pulumi.Input.fromValue(map['initialDelaySeconds'] as int),
-      periodSeconds: pulumi.Input.fromValue(map['periodSeconds'] as int),
-      successThreshold: pulumi.Input.fromValue(map['successThreshold'] as int),
+      initialDelaySeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['initialDelaySeconds'])),
+      periodSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['periodSeconds'])),
+      successThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['successThreshold'])),
       tcpSocket: pulumi.Input.fromValue(TCPSocketActionResponse.fromMap((map['tcpSocket']! as Map).cast<String, dynamic>())),
-      timeoutSeconds: pulumi.Input.fromValue(map['timeoutSeconds'] as int),
+      timeoutSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeoutSeconds'])),
     );
   }
 }

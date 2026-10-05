@@ -9,22 +9,22 @@ import 'organization_role_stage.dart';
 /// {@macro pulumi_iam_v1_organization_role_args_doc}
 class OrganizationRoleArgs {
   /// The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.
-  final pulumi.Input<bool>? deleted;
+  final pulumi.Input<bool?>? deleted;
   /// Optional. A human-readable description for the role.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Used to perform a consistent read-modify-write.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The names of the permissions this role grants when bound in an IAM policy.
-  final pulumi.Input<List<String>>? includedPermissions;
+  final pulumi.Input<List<String>?>? includedPermissions;
   /// The name of the role. When `Role` is used in `CreateRole`, the role name must not be set. When `Role` is used in output and other input such as `UpdateRole`, the role name is the complete path. For example, `roles/logging.viewer` for predefined roles, `organizations/{ORGANIZATION_ID}/roles/my-role` for organization-level custom roles, and `projects/{PROJECT_ID}/roles/my-role` for project-level custom roles.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
   /// The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
-  final pulumi.Input<String>? roleId;
+  final pulumi.Input<String?>? roleId;
   /// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
-  final pulumi.Input<OrganizationRoleStage>? stage;
+  final pulumi.Input<OrganizationRoleStage?>? stage;
   /// Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [OrganizationRoleArgs].
   /// [deleted] The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.

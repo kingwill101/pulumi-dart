@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents an action identifier. If the action writes output, the output will be written to the referenced database object.
 class Target {
   /// The action's database (Google Cloud project ID) .
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The action's name, within `database` and `schema`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The action's schema (BigQuery dataset ID), within `database`.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
 
   /// Creates a new [Target].
   /// [database] The action's database (Google Cloud project ID) .

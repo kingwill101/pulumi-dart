@@ -26,7 +26,7 @@ class GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecRespons
 
   factory GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpecResponse(
-      defaultValue: pulumi.Input.fromValue(map['defaultValue'] as double),
+      defaultValue: pulumi.Input.fromValue((map['defaultValue'] as num).toDouble()),
       values: pulumi.Input.fromValue((map['values'] as List).cast<double>()),
     );
   }

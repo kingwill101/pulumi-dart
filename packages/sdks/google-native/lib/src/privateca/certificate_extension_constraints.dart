@@ -7,9 +7,9 @@ import 'object_id.dart';
 /// Describes a set of X.509 extensions that may be part of some certificate issuance controls.
 class CertificateExtensionConstraints {
   /// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
-  final pulumi.Input<List<ObjectId>>? additionalExtensions;
+  final pulumi.Input<List<ObjectId>?>? additionalExtensions;
   /// Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
-  final pulumi.Input<List<CertificateExtensionConstraintsKnownExtensionsItem>>? knownExtensions;
+  final pulumi.Input<List<CertificateExtensionConstraintsKnownExtensionsItem>?>? knownExtensions;
 
   /// Creates a new [CertificateExtensionConstraints].
   /// [additionalExtensions] Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.

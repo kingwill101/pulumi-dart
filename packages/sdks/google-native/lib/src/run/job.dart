@@ -16,7 +16,7 @@ class Job extends pulumi.CustomResource {
   /// Arbitrary version identifier for the API client.
   late final pulumi.Output<String> clientVersion;
   /// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
-  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+  late final pulumi.Output<List<GoogleCloudRunV2ConditionResponse>> conditions;
   /// The creation time.
   late final pulumi.Output<String> createTime;
   /// Email address of the authenticated creator.
@@ -72,13 +72,13 @@ class Job extends pulumi.CustomResource {
           'google-native:run/v2:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['jobId', 'location', 'project']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     binaryAuthorization = registerOutput<GoogleCloudRunV2BinaryAuthorizationResponse>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRunV2BinaryAuthorizationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     client = registerOutput<String>('client');
     clientVersion = registerOutput<String>('clientVersion');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    conditions = registerOutput<List<GoogleCloudRunV2ConditionResponse>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRunV2ConditionResponse>(guardedValue, (value) => GoogleCloudRunV2ConditionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
     deleteTime = registerOutput<String>('deleteTime');
@@ -87,7 +87,45 @@ class Job extends pulumi.CustomResource {
     expireTime = registerOutput<String>('expireTime');
     generation = registerOutput<String>('generation');
     jobId = registerOutput<String>('jobId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lastModifier = registerOutput<String>('lastModifier');
+    latestCreatedExecution = registerOutput<GoogleCloudRunV2ExecutionReferenceResponse>('latestCreatedExecution', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRunV2ExecutionReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    launchStage = registerOutput<String>('launchStage');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    observedGeneration = registerOutput<String>('observedGeneration');
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    template = registerOutput<GoogleCloudRunV2ExecutionTemplateResponse>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRunV2ExecutionTemplateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    terminalCondition = registerOutput<GoogleCloudRunV2ConditionResponse>('terminalCondition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRunV2ConditionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'google-native:run/v2:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    binaryAuthorization = registerOutput<GoogleCloudRunV2BinaryAuthorizationResponse>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRunV2BinaryAuthorizationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    client = registerOutput<String>('client');
+    clientVersion = registerOutput<String>('clientVersion');
+    conditions = registerOutput<List<GoogleCloudRunV2ConditionResponse>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRunV2ConditionResponse>(guardedValue, (value) => GoogleCloudRunV2ConditionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<String>('creator');
+    deleteTime = registerOutput<String>('deleteTime');
+    etag = registerOutput<String>('etag');
+    executionCount = registerOutput<int>('executionCount');
+    expireTime = registerOutput<String>('expireTime');
+    generation = registerOutput<String>('generation');
+    jobId = registerOutput<String>('jobId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastModifier = registerOutput<String>('lastModifier');
     latestCreatedExecution = registerOutput<GoogleCloudRunV2ExecutionReferenceResponse>('latestCreatedExecution', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRunV2ExecutionReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     launchStage = registerOutput<String>('launchStage');

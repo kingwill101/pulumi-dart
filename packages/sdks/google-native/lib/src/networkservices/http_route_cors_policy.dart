@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Specification for allowing client side cross-origin requests.
 class HttpRouteCorsPolicy {
   /// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default value is false.
-  final pulumi.Input<bool>? allowCredentials;
+  final pulumi.Input<bool?>? allowCredentials;
   /// Specifies the content for Access-Control-Allow-Headers header.
-  final pulumi.Input<List<String>>? allowHeaders;
+  final pulumi.Input<List<String>?>? allowHeaders;
   /// Specifies the content for Access-Control-Allow-Methods header.
-  final pulumi.Input<List<String>>? allowMethods;
+  final pulumi.Input<List<String>?>? allowMethods;
   /// Specifies the regular expression patterns that match allowed origins. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax.
-  final pulumi.Input<List<String>>? allowOriginRegexes;
+  final pulumi.Input<List<String>?>? allowOriginRegexes;
   /// Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allow_origins or an item in allow_origin_regexes.
-  final pulumi.Input<List<String>>? allowOrigins;
+  final pulumi.Input<List<String>?>? allowOrigins;
   /// If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Specifies the content for Access-Control-Expose-Headers header.
-  final pulumi.Input<List<String>>? exposeHeaders;
+  final pulumi.Input<List<String>?>? exposeHeaders;
   /// Specifies how long result of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
-  final pulumi.Input<String>? maxAge;
+  final pulumi.Input<String?>? maxAge;
 
   /// Creates a new [HttpRouteCorsPolicy].
   /// [allowCredentials] In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default value is false.

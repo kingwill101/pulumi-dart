@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Indicates that the builder claims certain fields in this message to be complete.
 class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness {
   /// If true, the builder claims that invocation.environment is complete.
-  final pulumi.Input<bool>? environment;
+  final pulumi.Input<bool?>? environment;
   /// If true, the builder claims that materials is complete.
-  final pulumi.Input<bool>? materials;
+  final pulumi.Input<bool?>? materials;
   /// If true, the builder claims that invocation.parameters is complete.
-  final pulumi.Input<bool>? parameters;
+  final pulumi.Input<bool?>? parameters;
 
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness].
   /// [environment] If true, the builder claims that invocation.environment is complete.

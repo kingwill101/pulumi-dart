@@ -43,10 +43,34 @@ class WorkforcePoolProvider extends pulumi.CustomResource {
           'google-native:iam/v1:WorkforcePoolProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'workforcePoolId', 'workforcePoolProviderId']).merge(options),
         ) {
     attributeCondition = registerOutput<String>('attributeCondition');
-    attributeMapping = registerOutput<Map<String, String>>('attributeMapping');
+    attributeMapping = registerOutput<Map<String, String>>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    description = registerOutput<String>('description');
+    disabled = registerOutput<bool>('disabled');
+    displayName = registerOutput<String>('displayName');
+    expireTime = registerOutput<String>('expireTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    oidc = registerOutput<GoogleIamAdminV1WorkforcePoolProviderOidcResponse>('oidc', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleIamAdminV1WorkforcePoolProviderOidcResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    saml = registerOutput<GoogleIamAdminV1WorkforcePoolProviderSamlResponse>('saml', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleIamAdminV1WorkforcePoolProviderSamlResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    workforcePoolId = registerOutput<String>('workforcePoolId');
+    workforcePoolProviderId = registerOutput<String>('workforcePoolProviderId');
+  }
+
+  /// Creates a typed reference to an existing [WorkforcePoolProvider] resource.
+  WorkforcePoolProvider.reference(String urn)
+    : super(
+        'google-native:iam/v1:WorkforcePoolProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributeCondition = registerOutput<String>('attributeCondition');
+    attributeMapping = registerOutput<Map<String, String>>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     description = registerOutput<String>('description');
     disabled = registerOutput<bool>('disabled');
     displayName = registerOutput<String>('displayName');

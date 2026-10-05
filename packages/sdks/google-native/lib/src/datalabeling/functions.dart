@@ -26,6 +26,17 @@ Future<GetAnnotationSpecSetResult> getAnnotationSpecSet(
   return GetAnnotationSpecSetResult.fromMap(result);
 }
 
+pulumi.Output<GetAnnotationSpecSetResult> getAnnotationSpecSetOutput(
+  GetAnnotationSpecSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datalabeling/v1beta1:getAnnotationSpecSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAnnotationSpecSetResult.fromMap);
+}
+
 /// Gets dataset by resource name.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datalabeling_v1beta1_get_dataset_args_doc}
 /// [options] Invoke options controlling this call.
@@ -40,6 +51,17 @@ Future<GetDatasetResult> getDataset(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatasetResult.fromMap(result);
+}
+
+pulumi.Output<GetDatasetResult> getDatasetOutput(
+  GetDatasetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datalabeling/v1beta1:getDataset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatasetResult.fromMap);
 }
 
 /// Gets an evaluation job by resource name.
@@ -58,6 +80,17 @@ Future<GetEvaluationJobResult> getEvaluationJob(
   return GetEvaluationJobResult.fromMap(result);
 }
 
+pulumi.Output<GetEvaluationJobResult> getEvaluationJobOutput(
+  GetEvaluationJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datalabeling/v1beta1:getEvaluationJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEvaluationJobResult.fromMap);
+}
+
 /// Get a FeedbackMessage object.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datalabeling_v1beta1_get_feedback_message_args_doc}
 /// [options] Invoke options controlling this call.
@@ -74,6 +107,17 @@ Future<GetFeedbackMessageResult> getFeedbackMessage(
   return GetFeedbackMessageResult.fromMap(result);
 }
 
+pulumi.Output<GetFeedbackMessageResult> getFeedbackMessageOutput(
+  GetFeedbackMessageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datalabeling/v1beta1:getFeedbackMessage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFeedbackMessageResult.fromMap);
+}
+
 /// Gets an instruction by resource name.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datalabeling_v1beta1_get_instruction_args_doc}
 /// [options] Invoke options controlling this call.
@@ -88,4 +132,15 @@ Future<GetInstructionResult> getInstruction(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstructionResult.fromMap(result);
+}
+
+pulumi.Output<GetInstructionResult> getInstructionOutput(
+  GetInstructionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datalabeling/v1beta1:getInstruction',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstructionResult.fromMap);
 }

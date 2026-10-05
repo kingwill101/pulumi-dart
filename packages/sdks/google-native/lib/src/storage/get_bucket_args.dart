@@ -8,10 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_v1_get_bucket_args_doc}
 class GetBucketArgs {
   final pulumi.Input<String> bucket;
-  final pulumi.Input<String>? ifMetagenerationMatch;
-  final pulumi.Input<String>? ifMetagenerationNotMatch;
-  final pulumi.Input<String>? projection;
-  final pulumi.Input<String>? userProject;
+  final pulumi.Input<String?>? ifMetagenerationMatch;
+  final pulumi.Input<String?>? ifMetagenerationNotMatch;
+  final pulumi.Input<String?>? projection;
+  final pulumi.Input<String?>? userProject;
 
   /// Creates a new [GetBucketArgs].
   /// [bucket] Required.

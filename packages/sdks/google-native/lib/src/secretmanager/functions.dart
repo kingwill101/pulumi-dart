@@ -24,6 +24,17 @@ Future<GetSecretResult> getSecret(
   return GetSecretResult.fromMap(result);
 }
 
+pulumi.Output<GetSecretResult> getSecretOutput(
+  GetSecretArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:secretmanager/v1:getSecret',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretResult.fromMap);
+}
+
 /// Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_secretmanager_v1_get_secret_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -38,6 +49,17 @@ Future<GetSecretIamPolicyResult> getSecretIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecretIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSecretIamPolicyResult> getSecretIamPolicyOutput(
+  GetSecretIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:secretmanager/v1:getSecretIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretIamPolicyResult.fromMap);
 }
 
 /// Gets metadata for a given Secret.
@@ -56,6 +78,17 @@ Future<GetSecretSecretmanagerV1beta1Result> getSecretSecretmanagerV1beta1(
   return GetSecretSecretmanagerV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetSecretSecretmanagerV1beta1Result> getSecretSecretmanagerV1beta1Output(
+  GetSecretSecretmanagerV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:secretmanager/v1beta1:getSecret',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretSecretmanagerV1beta1Result.fromMap);
+}
+
 /// Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_secretmanager_v1beta1_get_secret_iam_policy_secretmanager_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -70,4 +103,15 @@ Future<GetSecretIamPolicySecretmanagerV1beta1Result> getSecretIamPolicySecretman
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecretIamPolicySecretmanagerV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetSecretIamPolicySecretmanagerV1beta1Result> getSecretIamPolicySecretmanagerV1beta1Output(
+  GetSecretIamPolicySecretmanagerV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:secretmanager/v1beta1:getSecretIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretIamPolicySecretmanagerV1beta1Result.fromMap);
 }

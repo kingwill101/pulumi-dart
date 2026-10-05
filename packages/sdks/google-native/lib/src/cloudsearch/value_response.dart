@@ -43,7 +43,7 @@ class ValueResponse {
     return ValueResponse(
       booleanValue: pulumi.Input.fromValue(map['booleanValue'] as bool),
       dateValue: pulumi.Input.fromValue(DateResponse.fromMap((map['dateValue']! as Map).cast<String, dynamic>())),
-      doubleValue: pulumi.Input.fromValue(map['doubleValue'] as double),
+      doubleValue: pulumi.Input.fromValue((map['doubleValue'] as num).toDouble()),
       integerValue: pulumi.Input.fromValue(map['integerValue'] as String),
       stringValue: pulumi.Input.fromValue(map['stringValue'] as String),
       timestampValue: pulumi.Input.fromValue(map['timestampValue'] as String),

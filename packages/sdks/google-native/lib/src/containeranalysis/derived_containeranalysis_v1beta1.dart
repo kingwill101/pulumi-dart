@@ -9,7 +9,7 @@ class DerivedContaineranalysisV1beta1 {
   /// The fingerprint of the derived image.
   final pulumi.Input<FingerprintContaineranalysisV1beta1> fingerprint;
   /// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
-  final pulumi.Input<List<LayerContaineranalysisV1beta1>>? layerInfo;
+  final pulumi.Input<List<LayerContaineranalysisV1beta1>?>? layerInfo;
 
   /// Creates a new [DerivedContaineranalysisV1beta1].
   /// [fingerprint] The fingerprint of the derived image.

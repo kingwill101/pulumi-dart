@@ -6,11 +6,11 @@ import 'google_cloud_dataplex_v1_task_infrastructure_spec.dart';
 /// Config for running scheduled notebooks.
 class GoogleCloudDataplexV1TaskNotebookTaskConfig {
   /// Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
-  final pulumi.Input<List<String>>? archiveUris;
+  final pulumi.Input<List<String>?>? archiveUris;
   /// Optional. Cloud Storage URIs of files to be placed in the working directory of each executor.
-  final pulumi.Input<List<String>>? fileUris;
+  final pulumi.Input<List<String>?>? fileUris;
   /// Optional. Infrastructure specification for the execution.
-  final pulumi.Input<GoogleCloudDataplexV1TaskInfrastructureSpec>? infrastructureSpec;
+  final pulumi.Input<GoogleCloudDataplexV1TaskInfrastructureSpec?>? infrastructureSpec;
   /// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
   final pulumi.Input<String> notebook;
 

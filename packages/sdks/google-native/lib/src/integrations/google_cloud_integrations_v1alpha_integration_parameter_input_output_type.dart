@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the input/output type for the parameter.
-enum GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType {
+enum GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType implements pulumi.PulumiEnum<String> {
   inOutTypeUnspecified("IN_OUT_TYPE_UNSPECIFIED"),
   in_("IN"),
   out("OUT"),
   inOut("IN_OUT");
 
   const GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType fromValue(String value) {

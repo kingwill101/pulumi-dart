@@ -33,7 +33,7 @@ class EnumValueResponse {
   factory EnumValueResponse.fromMap(Map<String, dynamic> map) {
     return EnumValueResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      number: pulumi.Input.fromValue(map['number'] as int),
+      number: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['number'])),
       options: pulumi.Input.fromValue(pulumi.Input.decodeList<OptionResponse>(map['options']!, (value) => OptionResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

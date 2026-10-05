@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_appengine_v1beta_args.dart';
 import 'feature_settings_response_appengine_v1beta.dart';
 import 'identity_aware_proxy_response_appengine_v1beta.dart';
+import 'url_dispatch_rule_response_appengine_v1beta.dart';
 
 /// Creates an App Engine application for a Google Cloud Platform project. Required fields: id - The ID of the target Cloud Platform project. location - The region (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application located.For more information about App Engine applications, see Managing Projects, Applications, and Billing (https://cloud.google.com/appengine/docs/standard/python/console/).
 /// Auto-naming is currently not supported for this resource.
@@ -21,7 +22,7 @@ class AppAppengineV1beta extends pulumi.CustomResource {
   /// Hostname used to reach this application, as resolved by App Engine.
   late final pulumi.Output<String> defaultHostname;
   /// HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
-  late final pulumi.Output<List<Map<String, dynamic>>> dispatchRules;
+  late final pulumi.Output<List<UrlDispatchRuleResponseAppengineV1beta>> dispatchRules;
   /// The feature specific settings to be used in the application.
   late final pulumi.Output<FeatureSettingsResponseAppengineV1beta> featureSettings;
   /// The Google Container Registry domain used for storing managed build docker images for this application.
@@ -50,7 +51,7 @@ class AppAppengineV1beta extends pulumi.CustomResource {
           'google-native:appengine/v1beta:App',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
     authDomain = registerOutput<String>('authDomain');
     codeBucket = registerOutput<String>('codeBucket');
@@ -58,10 +59,36 @@ class AppAppengineV1beta extends pulumi.CustomResource {
     defaultBucket = registerOutput<String>('defaultBucket');
     defaultCookieExpiration = registerOutput<String>('defaultCookieExpiration');
     defaultHostname = registerOutput<String>('defaultHostname');
-    dispatchRules = registerOutput<List<Map<String, dynamic>>>('dispatchRules');
+    dispatchRules = registerOutput<List<UrlDispatchRuleResponseAppengineV1beta>>('dispatchRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UrlDispatchRuleResponseAppengineV1beta>(guardedValue, (value) => UrlDispatchRuleResponseAppengineV1beta.fromMap((value as Map).cast<String, dynamic>())); });
     featureSettings = registerOutput<FeatureSettingsResponseAppengineV1beta>('featureSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureSettingsResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gcrDomain = registerOutput<String>('gcrDomain');
-    generatedCustomerMetadata = registerOutput<Map<String, String>>('generatedCustomerMetadata');
+    generatedCustomerMetadata = registerOutput<Map<String, String>>('generatedCustomerMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    iap = registerOutput<IdentityAwareProxyResponseAppengineV1beta>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityAwareProxyResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    servingStatus = registerOutput<String>('servingStatus');
+  }
+
+  /// Creates a typed reference to an existing [AppAppengineV1beta] resource.
+  AppAppengineV1beta.reference(String urn)
+    : super(
+        'google-native:appengine/v1beta:App',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authDomain = registerOutput<String>('authDomain');
+    codeBucket = registerOutput<String>('codeBucket');
+    databaseType = registerOutput<String>('databaseType');
+    defaultBucket = registerOutput<String>('defaultBucket');
+    defaultCookieExpiration = registerOutput<String>('defaultCookieExpiration');
+    defaultHostname = registerOutput<String>('defaultHostname');
+    dispatchRules = registerOutput<List<UrlDispatchRuleResponseAppengineV1beta>>('dispatchRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UrlDispatchRuleResponseAppengineV1beta>(guardedValue, (value) => UrlDispatchRuleResponseAppengineV1beta.fromMap((value as Map).cast<String, dynamic>())); });
+    featureSettings = registerOutput<FeatureSettingsResponseAppengineV1beta>('featureSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureSettingsResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gcrDomain = registerOutput<String>('gcrDomain');
+    generatedCustomerMetadata = registerOutput<Map<String, String>>('generatedCustomerMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     iap = registerOutput<IdentityAwareProxyResponseAppengineV1beta>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityAwareProxyResponseAppengineV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

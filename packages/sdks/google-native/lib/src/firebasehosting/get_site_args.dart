@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_firebasehosting_v1beta1_get_site_args_doc}
 class GetSiteArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> siteId;
 
   /// Creates a new [GetSiteArgs].

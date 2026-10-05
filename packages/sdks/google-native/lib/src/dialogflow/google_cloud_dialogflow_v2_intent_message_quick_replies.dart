@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The quick replies response message.
 class GoogleCloudDialogflowV2IntentMessageQuickReplies {
   /// Optional. The collection of quick replies.
-  final pulumi.Input<List<String>>? quickReplies;
+  final pulumi.Input<List<String>?>? quickReplies;
   /// Optional. The title of the collection of quick replies.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageQuickReplies].
   /// [quickReplies] Optional. The collection of quick replies.

@@ -6,8 +6,8 @@ import 'google_cloud_identitytoolkit_admin_v2_code_flow_config.dart';
 /// Additional config for SignInWithApple.
 class GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig {
   /// A list of Bundle ID's usable by this project
-  final pulumi.Input<List<String>>? bundleIds;
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig>? codeFlowConfig;
+  final pulumi.Input<List<String>?>? bundleIds;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig?>? codeFlowConfig;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig].
   /// [bundleIds] A list of Bundle ID's usable by this project

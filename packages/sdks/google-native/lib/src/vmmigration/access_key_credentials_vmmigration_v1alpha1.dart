@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Message describing AWS Credentials using access key id and secret.
 class AccessKeyCredentialsVmmigrationV1alpha1 {
   /// AWS access key ID.
-  final pulumi.Input<String>? accessKeyId;
+  final pulumi.Input<String?>? accessKeyId;
   /// Input only. AWS secret access key.
-  final pulumi.Input<String>? secretAccessKey;
+  final pulumi.Input<String?>? secretAccessKey;
   /// Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
-  final pulumi.Input<String>? sessionToken;
+  final pulumi.Input<String?>? sessionToken;
 
   /// Creates a new [AccessKeyCredentialsVmmigrationV1alpha1].
   /// [accessKeyId] AWS access key ID.

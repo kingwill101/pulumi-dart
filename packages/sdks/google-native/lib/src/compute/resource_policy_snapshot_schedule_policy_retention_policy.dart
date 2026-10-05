@@ -7,10 +7,10 @@ import 'resource_policy_snapshot_schedule_policy_retention_policy_on_source_disk
 /// Policy for retention of scheduled snapshots.
 class ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
   /// Maximum age of the snapshot that is allowed to be kept.
-  final pulumi.Input<int>? maxRetentionDays;
-  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch>? onPolicySwitch;
+  final pulumi.Input<int?>? maxRetentionDays;
+  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch?>? onPolicySwitch;
   /// Specifies the behavior to apply to scheduled snapshots when the source disk is deleted.
-  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete>? onSourceDiskDelete;
+  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete?>? onSourceDiskDelete;
 
   /// Creates a new [ResourcePolicySnapshotSchedulePolicyRetentionPolicy].
   /// [maxRetentionDays] Maximum age of the snapshot that is allowed to be kept.
@@ -32,7 +32,7 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
 
   factory ResourcePolicySnapshotSchedulePolicyRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicyRetentionPolicy(
-      maxRetentionDays: (() { final guardedValue = map['maxRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxRetentionDays: (() { final guardedValue = map['maxRetentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       onPolicySwitch: (() { final guardedValue = map['onPolicySwitch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch.fromValue(guardedValue as String)); })(),
       onSourceDiskDelete: (() { final guardedValue = map['onSourceDiskDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete.fromValue(guardedValue as String)); })(),
     );

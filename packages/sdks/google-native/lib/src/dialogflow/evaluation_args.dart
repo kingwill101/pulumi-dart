@@ -10,13 +10,13 @@ import 'google_cloud_dialogflow_v2_evaluation_config.dart';
 class EvaluationArgs {
   final pulumi.Input<String> conversationModelId;
   /// Optional. The display name of the model evaluation. At most 64 bytes long.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. The configuration of the evaluation task.
-  final pulumi.Input<GoogleCloudDialogflowV2EvaluationConfig>? evaluationConfig;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<GoogleCloudDialogflowV2EvaluationConfig?>? evaluationConfig;
+  final pulumi.Input<String?>? location;
   /// The resource name of the evaluation. Format: `projects//conversationModels//evaluations/`
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [EvaluationArgs].
   /// [conversationModelId] Required.

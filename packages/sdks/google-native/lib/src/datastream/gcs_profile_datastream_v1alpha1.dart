@@ -7,7 +7,7 @@ class GcsProfileDatastreamV1alpha1 {
   /// The full project and resource path for Cloud Storage bucket including the name.
   final pulumi.Input<String> bucketName;
   /// The root path inside the Cloud Storage bucket.
-  final pulumi.Input<String>? rootPath;
+  final pulumi.Input<String?>? rootPath;
 
   /// Creates a new [GcsProfileDatastreamV1alpha1].
   /// [bucketName] The full project and resource path for Cloud Storage bucket including the name.

@@ -28,8 +28,25 @@ class Group extends pulumi.CustomResource {
           'google-native:monitoring/v3:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    displayName = registerOutput<String>('displayName');
+    filter = registerOutput<String>('filter');
+    isCluster = registerOutput<bool>('isCluster');
+    this.name = registerOutput<String>('name');
+    parentName = registerOutput<String>('parentName');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [Group] resource.
+  Group.reference(String urn)
+    : super(
+        'google-native:monitoring/v3:Group',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     displayName = registerOutput<String>('displayName');
     filter = registerOutput<String>('filter');
     isCluster = registerOutput<bool>('isCluster');

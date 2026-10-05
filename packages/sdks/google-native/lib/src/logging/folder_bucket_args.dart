@@ -10,23 +10,23 @@ import 'index_config.dart';
 /// {@macro pulumi_logging_v2_folder_bucket_args_doc}
 class FolderBucketArgs {
   /// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
-  final pulumi.Input<bool>? analyticsEnabled;
+  final pulumi.Input<bool?>? analyticsEnabled;
   /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
   final pulumi.Input<String> bucketId;
   /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
-  final pulumi.Input<CmekSettings>? cmekSettings;
+  final pulumi.Input<CmekSettings?>? cmekSettings;
   /// Describes this bucket.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   final pulumi.Input<String> folderId;
   /// A list of indexed fields and related configuration data.
-  final pulumi.Input<List<IndexConfig>>? indexConfigs;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<List<IndexConfig>?>? indexConfigs;
+  final pulumi.Input<String?>? location;
   /// Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
-  final pulumi.Input<bool>? locked;
+  final pulumi.Input<bool?>? locked;
   /// Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
-  final pulumi.Input<List<String>>? restrictedFields;
+  final pulumi.Input<List<String>?>? restrictedFields;
   /// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
-  final pulumi.Input<int>? retentionDays;
+  final pulumi.Input<int?>? retentionDays;
 
   /// Creates a new [FolderBucketArgs].
   /// [analyticsEnabled] Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
@@ -78,7 +78,7 @@ class FolderBucketArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       locked: (() { final guardedValue = map['locked']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       restrictedFields: (() { final guardedValue = map['restrictedFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -14,27 +14,27 @@ import 'cvssuser_interaction_containeranalysis_v1alpha1.dart';
 /// Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
 class CVSSContaineranalysisV1alpha1 {
   /// Defined in CVSS v3, CVSS v2
-  final pulumi.Input<CVSSAttackComplexityContaineranalysisV1alpha1>? attackComplexity;
+  final pulumi.Input<CVSSAttackComplexityContaineranalysisV1alpha1?>? attackComplexity;
   /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
-  final pulumi.Input<CVSSAttackVectorContaineranalysisV1alpha1>? attackVector;
+  final pulumi.Input<CVSSAttackVectorContaineranalysisV1alpha1?>? attackVector;
   /// Defined in CVSS v2
-  final pulumi.Input<CVSSAuthenticationContaineranalysisV1alpha1>? authentication;
+  final pulumi.Input<CVSSAuthenticationContaineranalysisV1alpha1?>? authentication;
   /// Defined in CVSS v3, CVSS v2
-  final pulumi.Input<CVSSAvailabilityImpactContaineranalysisV1alpha1>? availabilityImpact;
+  final pulumi.Input<CVSSAvailabilityImpactContaineranalysisV1alpha1?>? availabilityImpact;
   /// The base score is a function of the base metric scores.
-  final pulumi.Input<double>? baseScore;
+  final pulumi.Input<double?>? baseScore;
   /// Defined in CVSS v3, CVSS v2
-  final pulumi.Input<CVSSConfidentialityImpactContaineranalysisV1alpha1>? confidentialityImpact;
-  final pulumi.Input<double>? exploitabilityScore;
-  final pulumi.Input<double>? impactScore;
+  final pulumi.Input<CVSSConfidentialityImpactContaineranalysisV1alpha1?>? confidentialityImpact;
+  final pulumi.Input<double?>? exploitabilityScore;
+  final pulumi.Input<double?>? impactScore;
   /// Defined in CVSS v3, CVSS v2
-  final pulumi.Input<CVSSIntegrityImpactContaineranalysisV1alpha1>? integrityImpact;
+  final pulumi.Input<CVSSIntegrityImpactContaineranalysisV1alpha1?>? integrityImpact;
   /// Defined in CVSS v3
-  final pulumi.Input<CVSSPrivilegesRequiredContaineranalysisV1alpha1>? privilegesRequired;
+  final pulumi.Input<CVSSPrivilegesRequiredContaineranalysisV1alpha1?>? privilegesRequired;
   /// Defined in CVSS v3
-  final pulumi.Input<CVSSScopeContaineranalysisV1alpha1>? scope;
+  final pulumi.Input<CVSSScopeContaineranalysisV1alpha1?>? scope;
   /// Defined in CVSS v3
-  final pulumi.Input<CVSSUserInteractionContaineranalysisV1alpha1>? userInteraction;
+  final pulumi.Input<CVSSUserInteractionContaineranalysisV1alpha1?>? userInteraction;
 
   /// Creates a new [CVSSContaineranalysisV1alpha1].
   /// [attackComplexity] Defined in CVSS v3, CVSS v2
@@ -87,10 +87,10 @@ class CVSSContaineranalysisV1alpha1 {
       attackVector: (() { final guardedValue = map['attackVector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSAttackVectorContaineranalysisV1alpha1.fromValue(guardedValue as String)); })(),
       authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSAuthenticationContaineranalysisV1alpha1.fromValue(guardedValue as String)); })(),
       availabilityImpact: (() { final guardedValue = map['availabilityImpact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSAvailabilityImpactContaineranalysisV1alpha1.fromValue(guardedValue as String)); })(),
-      baseScore: (() { final guardedValue = map['baseScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      baseScore: (() { final guardedValue = map['baseScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       confidentialityImpact: (() { final guardedValue = map['confidentialityImpact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSConfidentialityImpactContaineranalysisV1alpha1.fromValue(guardedValue as String)); })(),
-      exploitabilityScore: (() { final guardedValue = map['exploitabilityScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      impactScore: (() { final guardedValue = map['impactScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      exploitabilityScore: (() { final guardedValue = map['exploitabilityScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      impactScore: (() { final guardedValue = map['impactScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       integrityImpact: (() { final guardedValue = map['integrityImpact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSIntegrityImpactContaineranalysisV1alpha1.fromValue(guardedValue as String)); })(),
       privilegesRequired: (() { final guardedValue = map['privilegesRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSPrivilegesRequiredContaineranalysisV1alpha1.fromValue(guardedValue as String)); })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CVSSScopeContaineranalysisV1alpha1.fromValue(guardedValue as String)); })(),

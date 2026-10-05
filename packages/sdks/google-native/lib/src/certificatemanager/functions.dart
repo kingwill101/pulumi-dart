@@ -28,6 +28,17 @@ Future<GetCertificateResult> getCertificate(
   return GetCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:certificatemanager/v1:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
+}
+
 /// Gets details of a single CertificateIssuanceConfig.
 /// [args] Arguments passed to this invoke. {@macro pulumi_certificatemanager_v1_get_certificate_issuance_config_args_doc}
 /// [options] Invoke options controlling this call.
@@ -42,6 +53,17 @@ Future<GetCertificateIssuanceConfigResult> getCertificateIssuanceConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCertificateIssuanceConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetCertificateIssuanceConfigResult> getCertificateIssuanceConfigOutput(
+  GetCertificateIssuanceConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:certificatemanager/v1:getCertificateIssuanceConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateIssuanceConfigResult.fromMap);
 }
 
 /// Gets details of a single CertificateMap.
@@ -60,6 +82,17 @@ Future<GetCertificateMapResult> getCertificateMap(
   return GetCertificateMapResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateMapResult> getCertificateMapOutput(
+  GetCertificateMapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:certificatemanager/v1:getCertificateMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateMapResult.fromMap);
+}
+
 /// Gets details of a single CertificateMapEntry.
 /// [args] Arguments passed to this invoke. {@macro pulumi_certificatemanager_v1_get_certificate_map_entry_args_doc}
 /// [options] Invoke options controlling this call.
@@ -74,6 +107,17 @@ Future<GetCertificateMapEntryResult> getCertificateMapEntry(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCertificateMapEntryResult.fromMap(result);
+}
+
+pulumi.Output<GetCertificateMapEntryResult> getCertificateMapEntryOutput(
+  GetCertificateMapEntryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:certificatemanager/v1:getCertificateMapEntry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateMapEntryResult.fromMap);
 }
 
 /// Gets details of a single DnsAuthorization.
@@ -92,6 +136,17 @@ Future<GetDnsAuthorizationResult> getDnsAuthorization(
   return GetDnsAuthorizationResult.fromMap(result);
 }
 
+pulumi.Output<GetDnsAuthorizationResult> getDnsAuthorizationOutput(
+  GetDnsAuthorizationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:certificatemanager/v1:getDnsAuthorization',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDnsAuthorizationResult.fromMap);
+}
+
 /// Gets details of a single TrustConfig.
 /// [args] Arguments passed to this invoke. {@macro pulumi_certificatemanager_v1_get_trust_config_args_doc}
 /// [options] Invoke options controlling this call.
@@ -106,4 +161,15 @@ Future<GetTrustConfigResult> getTrustConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTrustConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetTrustConfigResult> getTrustConfigOutput(
+  GetTrustConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:certificatemanager/v1:getTrustConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTrustConfigResult.fromMap);
 }

@@ -33,8 +33,8 @@ class ExecutionReportResponse {
   factory ExecutionReportResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionReportResponse(
       executionErrors: pulumi.Input.fromValue(ValidationReportResponse.fromMap((map['executionErrors']! as Map).cast<String, dynamic>())),
-      framesReported: pulumi.Input.fromValue(map['framesReported'] as int),
-      totalRowsCount: pulumi.Input.fromValue(map['totalRowsCount'] as int),
+      framesReported: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['framesReported'])),
+      totalRowsCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalRowsCount'])),
     );
   }
 }

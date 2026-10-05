@@ -65,10 +65,10 @@ class MultiColumnDatatypeChangeResponse {
     return MultiColumnDatatypeChangeResponse(
       customFeatures: pulumi.Input.fromValue((map['customFeatures'] as Map).cast<String, String>()),
       newDataType: pulumi.Input.fromValue(map['newDataType'] as String),
-      overrideFractionalSecondsPrecision: pulumi.Input.fromValue(map['overrideFractionalSecondsPrecision'] as int),
+      overrideFractionalSecondsPrecision: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['overrideFractionalSecondsPrecision'])),
       overrideLength: pulumi.Input.fromValue(map['overrideLength'] as String),
-      overridePrecision: pulumi.Input.fromValue(map['overridePrecision'] as int),
-      overrideScale: pulumi.Input.fromValue(map['overrideScale'] as int),
+      overridePrecision: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['overridePrecision'])),
+      overrideScale: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['overrideScale'])),
       sourceDataTypeFilter: pulumi.Input.fromValue(map['sourceDataTypeFilter'] as String),
       sourceNumericFilter: pulumi.Input.fromValue(SourceNumericFilterResponse.fromMap((map['sourceNumericFilter']! as Map).cast<String, dynamic>())),
       sourceTextFilter: pulumi.Input.fromValue(SourceTextFilterResponse.fromMap((map['sourceTextFilter']! as Map).cast<String, dynamic>())),

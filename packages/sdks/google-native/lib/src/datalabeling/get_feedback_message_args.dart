@@ -11,7 +11,7 @@ class GetFeedbackMessageArgs {
   final pulumi.Input<String> datasetId;
   final pulumi.Input<String> feedbackMessageId;
   final pulumi.Input<String> feedbackThreadId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetFeedbackMessageArgs].
   /// [annotatedDatasetId] Required.

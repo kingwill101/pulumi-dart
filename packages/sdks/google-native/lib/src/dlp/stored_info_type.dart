@@ -11,7 +11,7 @@ class StoredInfoType extends pulumi.CustomResource {
   /// Resource name.
   late final pulumi.Output<String> name;
   /// Pending versions of the stored info type. Empty if no versions are pending.
-  late final pulumi.Output<List<Map<String, dynamic>>> pendingVersions;
+  late final pulumi.Output<List<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>> pendingVersions;
   late final pulumi.Output<String> project;
 
   /// Creates a new [StoredInfoType].
@@ -26,12 +26,28 @@ class StoredInfoType extends pulumi.CustomResource {
           'google-native:dlp/v2:StoredInfoType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     currentVersion = registerOutput<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>('currentVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GooglePrivacyDlpV2StoredInfoTypeVersionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    pendingVersions = registerOutput<List<Map<String, dynamic>>>('pendingVersions');
+    pendingVersions = registerOutput<List<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>>('pendingVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>(guardedValue, (value) => GooglePrivacyDlpV2StoredInfoTypeVersionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [StoredInfoType] resource.
+  StoredInfoType.reference(String urn)
+    : super(
+        'google-native:dlp/v2:StoredInfoType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    currentVersion = registerOutput<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>('currentVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GooglePrivacyDlpV2StoredInfoTypeVersionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    pendingVersions = registerOutput<List<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>>('pendingVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>(guardedValue, (value) => GooglePrivacyDlpV2StoredInfoTypeVersionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
   }
 }

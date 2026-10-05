@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The type of Ethereum node.
-enum EthereumDetailsNodeType {
+enum EthereumDetailsNodeType implements pulumi.PulumiEnum<String> {
   nodeTypeUnspecified("NODE_TYPE_UNSPECIFIED"),
   light("LIGHT"),
   full("FULL"),
   archive("ARCHIVE");
 
   const EthereumDetailsNodeType(this.wireValue);
+  @override
   final String wireValue;
 
   static EthereumDetailsNodeType fromValue(String value) {

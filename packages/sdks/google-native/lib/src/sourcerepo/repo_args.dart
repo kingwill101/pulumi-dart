@@ -9,16 +9,16 @@ import 'mirror_config.dart';
 /// {@macro pulumi_sourcerepo_v1_repo_args_doc}
 class RepoArgs {
   /// How this repository mirrors a repository managed by another service. Read-only field.
-  final pulumi.Input<MirrorConfig>? mirrorConfig;
+  final pulumi.Input<MirrorConfig?>? mirrorConfig;
   /// Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
-  final pulumi.Input<Map<String, String>>? pubsubConfigs;
+  final pulumi.Input<Map<String, String>?>? pubsubConfigs;
   /// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// URL to clone the repository from Google Cloud Source Repositories. Read-only field.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [RepoArgs].
   /// [mirrorConfig] How this repository mirrors a repository managed by another service. Read-only field.

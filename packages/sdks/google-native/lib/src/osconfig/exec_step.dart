@@ -6,9 +6,9 @@ import 'exec_step_config.dart';
 /// A step that runs an executable for a PatchJob.
 class ExecStep {
   /// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-  final pulumi.Input<ExecStepConfig>? linuxExecStepConfig;
+  final pulumi.Input<ExecStepConfig?>? linuxExecStepConfig;
   /// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-  final pulumi.Input<ExecStepConfig>? windowsExecStepConfig;
+  final pulumi.Input<ExecStepConfig?>? windowsExecStepConfig;
 
   /// Creates a new [ExecStep].
   /// [linuxExecStepConfig] The ExecStepConfig for all Linux VMs targeted by the PatchJob.

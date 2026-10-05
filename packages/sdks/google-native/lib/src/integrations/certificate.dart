@@ -39,8 +39,31 @@ class Certificate extends pulumi.CustomResource {
           'google-native:integrations/v1alpha:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'productId', 'project']).merge(options),
         ) {
+    certificateStatus = registerOutput<String>('certificateStatus');
+    credentialId = registerOutput<String>('credentialId');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    productId = registerOutput<String>('productId');
+    project = registerOutput<String>('project');
+    rawCertificate = registerOutput<GoogleCloudIntegrationsV1alphaClientCertificateResponse>('rawCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIntegrationsV1alphaClientCertificateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    requestorId = registerOutput<String>('requestorId');
+    validEndTime = registerOutput<String>('validEndTime');
+    validStartTime = registerOutput<String>('validStartTime');
+  }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'google-native:integrations/v1alpha:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     certificateStatus = registerOutput<String>('certificateStatus');
     credentialId = registerOutput<String>('credentialId');
     description = registerOutput<String>('description');

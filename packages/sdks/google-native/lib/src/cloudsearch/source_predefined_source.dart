@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Predefined content source for Google Apps.
-enum SourcePredefinedSource {
+enum SourcePredefinedSource implements pulumi.PulumiEnum<String> {
   none("NONE"),
   queryHistory("QUERY_HISTORY"),
   person("PERSON"),
@@ -11,6 +13,7 @@ enum SourcePredefinedSource {
   googleKeep("GOOGLE_KEEP");
 
   const SourcePredefinedSource(this.wireValue);
+  @override
   final String wireValue;
 
   static SourcePredefinedSource fromValue(String value) {

@@ -9,21 +9,21 @@ import 'status_containeranalysis_v1beta1.dart';
 
 /// Provides information about the analysis status of a discovered resource.
 class DiscoveredContaineranalysisV1beta1 {
-  final pulumi.Input<AnalysisCompletedContaineranalysisV1beta1>? analysisCompleted;
+  final pulumi.Input<AnalysisCompletedContaineranalysisV1beta1?>? analysisCompleted;
   /// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
-  final pulumi.Input<List<StatusContaineranalysisV1beta1>>? analysisError;
+  final pulumi.Input<List<StatusContaineranalysisV1beta1>?>? analysisError;
   /// The status of discovery for the resource.
-  final pulumi.Input<DiscoveredAnalysisStatusContaineranalysisV1beta1>? analysisStatus;
+  final pulumi.Input<DiscoveredAnalysisStatusContaineranalysisV1beta1?>? analysisStatus;
   /// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
-  final pulumi.Input<StatusContaineranalysisV1beta1>? analysisStatusError;
+  final pulumi.Input<StatusContaineranalysisV1beta1?>? analysisStatusError;
   /// Whether the resource is continuously analyzed.
-  final pulumi.Input<DiscoveredContinuousAnalysisContaineranalysisV1beta1>? continuousAnalysis;
+  final pulumi.Input<DiscoveredContinuousAnalysisContaineranalysisV1beta1?>? continuousAnalysis;
   /// The last time continuous analysis was done for this resource. Deprecated, do not use.
-  final pulumi.Input<String>? lastAnalysisTime;
+  final pulumi.Input<String?>? lastAnalysisTime;
   /// The last time this resource was scanned.
-  final pulumi.Input<String>? lastScanTime;
+  final pulumi.Input<String?>? lastScanTime;
   /// The status of an SBOM generation.
-  final pulumi.Input<SBOMStatusContaineranalysisV1beta1>? sbomStatus;
+  final pulumi.Input<SBOMStatusContaineranalysisV1beta1?>? sbomStatus;
 
   /// Creates a new [DiscoveredContaineranalysisV1beta1].
   /// [analysisCompleted] Optional.

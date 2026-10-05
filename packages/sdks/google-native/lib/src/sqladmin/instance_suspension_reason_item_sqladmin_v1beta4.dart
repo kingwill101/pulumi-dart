@@ -1,4 +1,6 @@
-enum InstanceSuspensionReasonItemSqladminV1beta4 {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum InstanceSuspensionReasonItemSqladminV1beta4 implements pulumi.PulumiEnum<String> {
   sqlSuspensionReasonUnspecified("SQL_SUSPENSION_REASON_UNSPECIFIED"),
   billingIssue("BILLING_ISSUE"),
   legalIssue("LEGAL_ISSUE"),
@@ -6,6 +8,7 @@ enum InstanceSuspensionReasonItemSqladminV1beta4 {
   kmsKeyIssue("KMS_KEY_ISSUE");
 
   const InstanceSuspensionReasonItemSqladminV1beta4(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceSuspensionReasonItemSqladminV1beta4 fromValue(String value) {

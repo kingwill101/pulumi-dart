@@ -25,47 +25,47 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_text.dart';
 /// Corresponds to the `Response` field in the Dialogflow console.
 class GoogleCloudDialogflowV2beta1IntentMessage {
   /// Displays a basic card for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageBasicCard>? basicCard;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageBasicCard?>? basicCard;
   /// Browse carousel card for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard>? browseCarouselCard;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard?>? browseCarouselCard;
   /// Displays a card.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageCard>? card;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageCard?>? card;
   /// Displays a carousel card for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect>? carouselSelect;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect?>? carouselSelect;
   /// Displays an image.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageImage>? image;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageImage?>? image;
   /// Displays a link out suggestion chip for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion>? linkOutSuggestion;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion?>? linkOutSuggestion;
   /// Displays a list card for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageListSelect>? listSelect;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageListSelect?>? listSelect;
   /// The media content card for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageMediaContent>? mediaContent;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageMediaContent?>? mediaContent;
   /// A custom platform-specific response.
-  final pulumi.Input<Map<String, String>>? payload;
+  final pulumi.Input<Map<String, String>?>? payload;
   /// Optional. The platform that this message is intended for.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessagePlatform>? platform;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessagePlatform?>? platform;
   /// Displays quick replies.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageQuickReplies>? quickReplies;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageQuickReplies?>? quickReplies;
   /// Rich Business Messaging (RBM) carousel rich card response.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard>? rbmCarouselRichCard;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard?>? rbmCarouselRichCard;
   /// Standalone Rich Business Messaging (RBM) rich card response.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard>? rbmStandaloneRichCard;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard?>? rbmStandaloneRichCard;
   /// Rich Business Messaging (RBM) text response. RBM allows businesses to send enriched and branded versions of SMS. See https://jibe.google.com/business-messaging.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmText>? rbmText;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmText?>? rbmText;
   /// Returns a voice or text-only response for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses>? simpleResponses;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses?>? simpleResponses;
   /// Displays suggestion chips for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageSuggestions>? suggestions;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageSuggestions?>? suggestions;
   /// Table card for Actions on Google.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageTableCard>? tableCard;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageTableCard?>? tableCard;
   /// Plays audio from a file in Telephony Gateway.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio>? telephonyPlayAudio;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio?>? telephonyPlayAudio;
   /// Synthesizes speech in Telephony Gateway.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech>? telephonySynthesizeSpeech;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech?>? telephonySynthesizeSpeech;
   /// Transfers the call in Telephony Gateway.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall>? telephonyTransferCall;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall?>? telephonyTransferCall;
   /// Returns a text response.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageText>? text;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageText?>? text;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessage].
   /// [basicCard] Displays a basic card for Actions on Google.

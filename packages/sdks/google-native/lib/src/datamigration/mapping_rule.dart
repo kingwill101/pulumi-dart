@@ -73,8 +73,43 @@ class MappingRule extends pulumi.CustomResource {
           'google-native:datamigration/v1:MappingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['conversionWorkspaceId', 'location', 'mappingRuleId', 'project']).merge(options),
         ) {
+    conditionalColumnSetValue = registerOutput<ConditionalColumnSetValueResponse>('conditionalColumnSetValue', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConditionalColumnSetValueResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    conversionWorkspaceId = registerOutput<String>('conversionWorkspaceId');
+    convertRowidColumn = registerOutput<ConvertRowIdToColumnResponse>('convertRowidColumn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConvertRowIdToColumnResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    entityMove = registerOutput<EntityMoveResponse>('entityMove', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntityMoveResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    filter = registerOutput<MappingRuleFilterResponse>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MappingRuleFilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    filterTableColumns = registerOutput<FilterTableColumnsResponse>('filterTableColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FilterTableColumnsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    mappingRuleId = registerOutput<String>('mappingRuleId');
+    multiColumnDataTypeChange = registerOutput<MultiColumnDatatypeChangeResponse>('multiColumnDataTypeChange', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiColumnDatatypeChangeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    multiEntityRename = registerOutput<MultiEntityRenameResponse>('multiEntityRename', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiEntityRenameResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    revisionId = registerOutput<String>('revisionId');
+    ruleOrder = registerOutput<String>('ruleOrder');
+    ruleScope = registerOutput<String>('ruleScope');
+    setTablePrimaryKey = registerOutput<SetTablePrimaryKeyResponse>('setTablePrimaryKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SetTablePrimaryKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    singleColumnChange = registerOutput<SingleColumnChangeResponse>('singleColumnChange', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SingleColumnChangeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    singleEntityRename = registerOutput<SingleEntityRenameResponse>('singleEntityRename', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SingleEntityRenameResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    singlePackageChange = registerOutput<SinglePackageChangeResponse>('singlePackageChange', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SinglePackageChangeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceSqlChange = registerOutput<SourceSqlChangeResponse>('sourceSqlChange', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceSqlChangeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [MappingRule] resource.
+  MappingRule.reference(String urn)
+    : super(
+        'google-native:datamigration/v1:MappingRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     conditionalColumnSetValue = registerOutput<ConditionalColumnSetValueResponse>('conditionalColumnSetValue', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConditionalColumnSetValueResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     conversionWorkspaceId = registerOutput<String>('conversionWorkspaceId');
     convertRowidColumn = registerOutput<ConvertRowIdToColumnResponse>('convertRowidColumn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConvertRowIdToColumnResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The architecture of the image. Valid values are ARM64 or X86_64.
-enum ImageArchitectureComputeV1 {
+enum ImageArchitectureComputeV1 implements pulumi.PulumiEnum<String> {
   architectureUnspecified("ARCHITECTURE_UNSPECIFIED"),
   arm64("ARM64"),
   x8664("X86_64");
 
   const ImageArchitectureComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static ImageArchitectureComputeV1 fromValue(String value) {

@@ -7,23 +7,23 @@ import 'google_devtools_remotebuildexecution_admin_v1alpha_feature_policy_linux_
 /// FeaturePolicy defines features allowed to be used on RBE instances, as well as instance-wide behavior changes that take effect without opt-in or opt-out at usage time.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
   /// Which container image sources are allowed. Currently only RBE-supported registry (gcr.io) is allowed. One can allow all repositories under a project or one specific repository only. E.g. container_image_sources { policy: RESTRICTED allowed_values: [ "gcr.io/project-foo", "gcr.io/project-bar/repo-baz", ] } will allow any repositories under "gcr.io/project-foo" plus the repository "gcr.io/project-bar/repo-baz". Default (UNSPECIFIED) is equivalent to any source is allowed.
-  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature>? containerImageSources;
+  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature?>? containerImageSources;
   /// Whether dockerAddCapabilities can be used or what capabilities are allowed.
-  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature>? dockerAddCapabilities;
+  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature?>? dockerAddCapabilities;
   /// Whether dockerChrootPath can be used.
-  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature>? dockerChrootPath;
+  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature?>? dockerChrootPath;
   /// Whether dockerNetwork can be used or what network modes are allowed. E.g. one may allow `off` value only via `allowed_values`.
-  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature>? dockerNetwork;
+  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature?>? dockerNetwork;
   /// Whether dockerPrivileged can be used.
-  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature>? dockerPrivileged;
+  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature?>? dockerPrivileged;
   /// Whether dockerRunAsRoot can be used.
-  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature>? dockerRunAsRoot;
+  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature?>? dockerRunAsRoot;
   /// Whether dockerRuntime is allowed to be set or what runtimes are allowed. Note linux_isolation takes precedence, and if set, docker_runtime values may be rejected if they are incompatible with the selected isolation.
-  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature>? dockerRuntime;
+  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature?>? dockerRuntime;
   /// Whether dockerSiblingContainers can be used.
-  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature>? dockerSiblingContainers;
+  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature?>? dockerSiblingContainers;
   /// linux_isolation allows overriding the docker runtime used for containers started on Linux.
-  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation>? linuxIsolation;
+  final pulumi.Input<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation?>? linuxIsolation;
 
   /// Creates a new [GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy].
   /// [containerImageSources] Which container image sources are allowed. Currently only RBE-supported registry (gcr.io) is allowed. One can allow all repositories under a project or one specific repository only. E.g. container_image_sources { policy: RESTRICTED allowed_values: [ "gcr.io/project-foo", "gcr.io/project-bar/repo-baz", ] } will allow any repositories under "gcr.io/project-foo" plus the repository "gcr.io/project-bar/repo-baz". Default (UNSPECIFIED) is equivalent to any source is allowed.

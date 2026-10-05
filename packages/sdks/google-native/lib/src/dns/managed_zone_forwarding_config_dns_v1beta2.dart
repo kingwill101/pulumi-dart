@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_zone_forwarding_config_name_server_target_dns_v1beta2.dart';
 
 class ManagedZoneForwardingConfigDnsV1beta2 {
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
-  final pulumi.Input<List<ManagedZoneForwardingConfigNameServerTargetDnsV1beta2>>? targetNameServers;
+  final pulumi.Input<List<ManagedZoneForwardingConfigNameServerTargetDnsV1beta2>?>? targetNameServers;
 
   /// Creates a new [ManagedZoneForwardingConfigDnsV1beta2].
   /// [kind] Optional.

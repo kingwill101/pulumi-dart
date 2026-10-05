@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'bucket_access_control_response.dart';
 import 'bucket_args.dart';
 import 'bucket_autoclass_response.dart';
 import 'bucket_billing_response.dart';
+import 'bucket_cors_item_response.dart';
 import 'bucket_custom_placement_config_response.dart';
 import 'bucket_encryption_response.dart';
 import 'bucket_iam_configuration_response.dart';
@@ -13,23 +15,24 @@ import 'bucket_retention_policy_response.dart';
 import 'bucket_soft_delete_policy_response.dart';
 import 'bucket_versioning_response.dart';
 import 'bucket_website_response.dart';
+import 'object_access_control_response.dart';
 
 /// Creates a new bucket.
 class Bucket extends pulumi.CustomResource {
   /// Access controls on the bucket.
-  late final pulumi.Output<List<Map<String, dynamic>>> acl;
+  late final pulumi.Output<List<BucketAccessControlResponse>> acl;
   /// The bucket's Autoclass configuration.
   late final pulumi.Output<BucketAutoclassResponse> autoclass;
   /// The bucket's billing configuration.
   late final pulumi.Output<BucketBillingResponse> billing;
   /// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
-  late final pulumi.Output<List<Map<String, dynamic>>> cors;
+  late final pulumi.Output<List<BucketCorsItemResponse>> cors;
   /// The bucket's custom placement configuration for Custom Dual Regions.
   late final pulumi.Output<BucketCustomPlacementConfigResponse> customPlacementConfig;
   /// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
   late final pulumi.Output<bool> defaultEventBasedHold;
   /// Default access controls to apply to new objects when no ACL is provided.
-  late final pulumi.Output<List<Map<String, dynamic>>> defaultObjectAcl;
+  late final pulumi.Output<List<ObjectAccessControlResponse>> defaultObjectAcl;
   /// When set to true, object retention is enabled for this bucket.
   late final pulumi.Output<bool?> enableObjectRetention;
   /// Encryption configuration for a bucket.
@@ -103,21 +106,69 @@ class Bucket extends pulumi.CustomResource {
           'google-native:storage/v1:Bucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
-    acl = registerOutput<List<Map<String, dynamic>>>('acl');
+    acl = registerOutput<List<BucketAccessControlResponse>>('acl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketAccessControlResponse>(guardedValue, (value) => BucketAccessControlResponse.fromMap((value as Map).cast<String, dynamic>())); });
     autoclass = registerOutput<BucketAutoclassResponse>('autoclass', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAutoclassResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     billing = registerOutput<BucketBillingResponse>('billing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketBillingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    cors = registerOutput<List<Map<String, dynamic>>>('cors');
+    cors = registerOutput<List<BucketCorsItemResponse>>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketCorsItemResponse>(guardedValue, (value) => BucketCorsItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     customPlacementConfig = registerOutput<BucketCustomPlacementConfigResponse>('customPlacementConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketCustomPlacementConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultEventBasedHold = registerOutput<bool>('defaultEventBasedHold');
-    defaultObjectAcl = registerOutput<List<Map<String, dynamic>>>('defaultObjectAcl');
+    defaultObjectAcl = registerOutput<List<ObjectAccessControlResponse>>('defaultObjectAcl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ObjectAccessControlResponse>(guardedValue, (value) => ObjectAccessControlResponse.fromMap((value as Map).cast<String, dynamic>())); });
     enableObjectRetention = registerOutput<bool?>('enableObjectRetention');
     encryption = registerOutput<BucketEncryptionResponse>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     iamConfiguration = registerOutput<BucketIamConfigurationResponse>('iamConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketIamConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lifecycle = registerOutput<BucketLifecycleResponse>('lifecycle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLifecycleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    locationType = registerOutput<String>('locationType');
+    logging = registerOutput<BucketLoggingResponse>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLoggingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metageneration = registerOutput<String>('metageneration');
+    this.name = registerOutput<String>('name');
+    objectRetention = registerOutput<BucketObjectRetentionResponse>('objectRetention', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectRetentionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    owner = registerOutput<BucketOwnerResponse>('owner', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketOwnerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    predefinedAcl = registerOutput<String?>('predefinedAcl');
+    predefinedDefaultObjectAcl = registerOutput<String?>('predefinedDefaultObjectAcl');
+    project = registerOutput<String>('project');
+    projectNumber = registerOutput<String>('projectNumber');
+    projection = registerOutput<String?>('projection');
+    retentionPolicy = registerOutput<BucketRetentionPolicyResponse>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketRetentionPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rpo = registerOutput<String>('rpo');
+    satisfiesPZS = registerOutput<bool>('satisfiesPZS');
+    selfLink = registerOutput<String>('selfLink');
+    softDeletePolicy = registerOutput<BucketSoftDeletePolicyResponse>('softDeletePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketSoftDeletePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageClass = registerOutput<String>('storageClass');
+    timeCreated = registerOutput<String>('timeCreated');
+    updated = registerOutput<String>('updated');
+    userProject = registerOutput<String?>('userProject');
+    versioning = registerOutput<BucketVersioningResponse>('versioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketVersioningResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    website = registerOutput<BucketWebsiteResponse>('website', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketWebsiteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Bucket] resource.
+  Bucket.reference(String urn)
+    : super(
+        'google-native:storage/v1:Bucket',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acl = registerOutput<List<BucketAccessControlResponse>>('acl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketAccessControlResponse>(guardedValue, (value) => BucketAccessControlResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    autoclass = registerOutput<BucketAutoclassResponse>('autoclass', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAutoclassResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    billing = registerOutput<BucketBillingResponse>('billing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketBillingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cors = registerOutput<List<BucketCorsItemResponse>>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketCorsItemResponse>(guardedValue, (value) => BucketCorsItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    customPlacementConfig = registerOutput<BucketCustomPlacementConfigResponse>('customPlacementConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketCustomPlacementConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultEventBasedHold = registerOutput<bool>('defaultEventBasedHold');
+    defaultObjectAcl = registerOutput<List<ObjectAccessControlResponse>>('defaultObjectAcl', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ObjectAccessControlResponse>(guardedValue, (value) => ObjectAccessControlResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    enableObjectRetention = registerOutput<bool?>('enableObjectRetention');
+    encryption = registerOutput<BucketEncryptionResponse>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    iamConfiguration = registerOutput<BucketIamConfigurationResponse>('iamConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketIamConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lifecycle = registerOutput<BucketLifecycleResponse>('lifecycle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketLifecycleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     locationType = registerOutput<String>('locationType');

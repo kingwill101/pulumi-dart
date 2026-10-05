@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Encryption settings for the cluster.
 class EncryptionConfigDataprocV1beta2 {
   /// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
-  final pulumi.Input<String>? gcePdKmsKeyName;
+  final pulumi.Input<String?>? gcePdKmsKeyName;
 
   /// Creates a new [EncryptionConfigDataprocV1beta2].
   /// [gcePdKmsKeyName] Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.

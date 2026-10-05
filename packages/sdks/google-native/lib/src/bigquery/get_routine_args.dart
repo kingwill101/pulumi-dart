@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_bigquery_v2_get_routine_args_doc}
 class GetRoutineArgs {
   final pulumi.Input<String> datasetId;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? readMask;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? readMask;
   final pulumi.Input<String> routineId;
 
   /// Creates a new [GetRoutineArgs].

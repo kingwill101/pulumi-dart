@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCapacityCommitmentArgs {
   final pulumi.Input<String> capacityCommitmentId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetCapacityCommitmentArgs].
   /// [capacityCommitmentId] Required.

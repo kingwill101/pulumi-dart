@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Audio encoding of the audio content to process.
-enum GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding {
+enum GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding implements pulumi.PulumiEnum<String> {
   audioEncodingUnspecified("AUDIO_ENCODING_UNSPECIFIED"),
   audioEncodingLinear16("AUDIO_ENCODING_LINEAR_16"),
   audioEncodingFlac("AUDIO_ENCODING_FLAC"),
@@ -10,6 +12,7 @@ enum GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding {
   audioEncodingSpeexWithHeaderByte("AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE");
 
   const GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding fromValue(String value) {

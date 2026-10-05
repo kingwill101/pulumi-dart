@@ -50,13 +50,13 @@ class RouterBgpPeerBfdResponse {
 
   factory RouterBgpPeerBfdResponse.fromMap(Map<String, dynamic> map) {
     return RouterBgpPeerBfdResponse(
-      minReceiveInterval: pulumi.Input.fromValue(map['minReceiveInterval'] as int),
-      minTransmitInterval: pulumi.Input.fromValue(map['minTransmitInterval'] as int),
+      minReceiveInterval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minReceiveInterval'])),
+      minTransmitInterval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minTransmitInterval'])),
       mode: pulumi.Input.fromValue(map['mode'] as String),
-      multiplier: pulumi.Input.fromValue(map['multiplier'] as int),
+      multiplier: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['multiplier'])),
       packetMode: pulumi.Input.fromValue(map['packetMode'] as String),
       sessionInitializationMode: pulumi.Input.fromValue(map['sessionInitializationMode'] as String),
-      slowTimerInterval: pulumi.Input.fromValue(map['slowTimerInterval'] as int),
+      slowTimerInterval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['slowTimerInterval'])),
     );
   }
 }

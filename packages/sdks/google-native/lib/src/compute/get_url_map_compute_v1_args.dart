@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_v1_get_url_map_compute_v1_args_doc}
 class GetUrlMapComputeV1Args {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> urlMap;
 
   /// Creates a new [GetUrlMapComputeV1Args].

@@ -4,19 +4,19 @@
 /// Result data returned by getEndpointAttachment.
 class GetEndpointAttachmentResult {
   /// Created time.
-  final String createTime;
+  final String? createTime;
   /// Optional. Description of the resource.
-  final String description;
+  final String? description;
   /// The Private Service Connect connection endpoint ip
-  final String endpointIp;
+  final String? endpointIp;
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Resource name of the Endpoint Attachment. Format: projects/{project}/locations/{location}/endpointAttachments/{endpoint_attachment}
-  final String name;
+  final String? name;
   /// The path of the service attachment
-  final String serviceAttachment;
+  final String? serviceAttachment;
   /// Updated time.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetEndpointAttachmentResult].
   /// [createTime] Created time.
@@ -27,36 +27,36 @@ class GetEndpointAttachmentResult {
   /// [serviceAttachment] The path of the service attachment
   /// [updateTime] Updated time.
   const GetEndpointAttachmentResult({
-    required this.createTime,
-    required this.description,
-    required this.endpointIp,
-    required this.labels,
-    required this.name,
-    required this.serviceAttachment,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.endpointIp,
+    this.labels,
+    this.name,
+    this.serviceAttachment,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'endpointIp': endpointIp,
-      'labels': labels,
-      'name': name,
-      'serviceAttachment': serviceAttachment,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'endpointIp': ?endpointIp,
+      'labels': ?labels,
+      'name': ?name,
+      'serviceAttachment': ?serviceAttachment,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetEndpointAttachmentResult.fromMap(Map<String, dynamic> map) {
     return GetEndpointAttachmentResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      endpointIp: map['endpointIp'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      serviceAttachment: map['serviceAttachment'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpointIp: (() { final guardedValue = map['endpointIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceAttachment: (() { final guardedValue = map['serviceAttachment']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

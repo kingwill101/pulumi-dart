@@ -54,7 +54,7 @@ class GkeNodeConfigResponse {
     return GkeNodeConfigResponse(
       accelerators: pulumi.Input.fromValue(pulumi.Input.decodeList<GkeNodePoolAcceleratorConfigResponse>(map['accelerators']!, (value) => GkeNodePoolAcceleratorConfigResponse.fromMap((value as Map).cast<String, dynamic>()))),
       bootDiskKmsKey: pulumi.Input.fromValue(map['bootDiskKmsKey'] as String),
-      localSsdCount: pulumi.Input.fromValue(map['localSsdCount'] as int),
+      localSsdCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['localSsdCount'])),
       machineType: pulumi.Input.fromValue(map['machineType'] as String),
       minCpuPlatform: pulumi.Input.fromValue(map['minCpuPlatform'] as String),
       preemptible: pulumi.Input.fromValue(map['preemptible'] as bool),

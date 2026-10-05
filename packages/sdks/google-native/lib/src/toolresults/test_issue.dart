@@ -10,17 +10,17 @@ import 'test_issue_type.dart';
 /// An issue detected occurring during a test execution.
 class TestIssue {
   /// Category of issue. Required.
-  final pulumi.Input<TestIssueCategory>? category;
+  final pulumi.Input<TestIssueCategory?>? category;
   /// A brief human-readable message describing the issue. Required.
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// Severity of issue. Required.
-  final pulumi.Input<TestIssueSeverity>? severity;
+  final pulumi.Input<TestIssueSeverity?>? severity;
   /// Deprecated in favor of stack trace fields inside specific warnings.
-  final pulumi.Input<StackTrace>? stackTrace;
+  final pulumi.Input<StackTrace?>? stackTrace;
   /// Type of issue. Required.
-  final pulumi.Input<TestIssueType>? type;
+  final pulumi.Input<TestIssueType?>? type;
   /// Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
-  final pulumi.Input<Any>? warning;
+  final pulumi.Input<Any?>? warning;
 
   /// Creates a new [TestIssue].
   /// [category] Category of issue. Required.

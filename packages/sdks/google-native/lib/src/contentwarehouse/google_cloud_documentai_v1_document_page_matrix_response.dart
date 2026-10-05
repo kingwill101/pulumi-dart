@@ -36,10 +36,10 @@ class GoogleCloudDocumentaiV1DocumentPageMatrixResponse {
 
   factory GoogleCloudDocumentaiV1DocumentPageMatrixResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageMatrixResponse(
-      cols: pulumi.Input.fromValue(map['cols'] as int),
+      cols: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cols'])),
       data: pulumi.Input.fromValue(map['data'] as String),
-      rows: pulumi.Input.fromValue(map['rows'] as int),
-      type: pulumi.Input.fromValue(map['type'] as int),
+      rows: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rows'])),
+      type: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['type'])),
     );
   }
 }

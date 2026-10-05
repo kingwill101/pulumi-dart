@@ -16,43 +16,43 @@ import 'source_sql_change_response.dart';
 /// Result data returned by getMappingRule.
 class GetMappingRuleResult {
   /// Optional. Rule to specify how the data contained in a column should be transformed (such as trimmed, rounded, etc) provided that the data meets certain criteria.
-  final ConditionalColumnSetValueResponse conditionalColumnSetValue;
+  final ConditionalColumnSetValueResponse? conditionalColumnSetValue;
   /// Optional. Rule to specify how multiple tables should be converted with an additional rowid column.
-  final ConvertRowIdToColumnResponse convertRowidColumn;
+  final ConvertRowIdToColumnResponse? convertRowidColumn;
   /// Optional. A human readable name
-  final String displayName;
+  final String? displayName;
   /// Optional. Rule to specify how multiple entities should be relocated into a different schema.
-  final EntityMoveResponse entityMove;
+  final EntityMoveResponse? entityMove;
   /// The rule filter
-  final MappingRuleFilterResponse filter;
+  final MappingRuleFilterResponse? filter;
   /// Optional. Rule to specify the list of columns to include or exclude from a table.
-  final FilterTableColumnsResponse filterTableColumns;
+  final FilterTableColumnsResponse? filterTableColumns;
   /// Optional. Rule to specify how multiple columns should be converted to a different data type.
-  final MultiColumnDatatypeChangeResponse multiColumnDataTypeChange;
+  final MultiColumnDatatypeChangeResponse? multiColumnDataTypeChange;
   /// Optional. Rule to specify how multiple entities should be renamed.
-  final MultiEntityRenameResponse multiEntityRename;
+  final MultiEntityRenameResponse? multiEntityRename;
   /// Full name of the mapping rule resource, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{set}/mappingRule/{rule}.
-  final String name;
+  final String? name;
   /// The timestamp that the revision was created.
-  final String revisionCreateTime;
+  final String? revisionCreateTime;
   /// The revision ID of the mapping rule. A new revision is committed whenever the mapping rule is changed in any way. The format is an 8-character hexadecimal string.
-  final String revisionId;
+  final String? revisionId;
   /// The order in which the rule is applied. Lower order rules are applied before higher value rules so they may end up being overridden.
-  final String ruleOrder;
+  final String? ruleOrder;
   /// The rule scope
-  final String ruleScope;
+  final String? ruleScope;
   /// Optional. Rule to specify the primary key for a table
-  final SetTablePrimaryKeyResponse setTablePrimaryKey;
+  final SetTablePrimaryKeyResponse? setTablePrimaryKey;
   /// Optional. Rule to specify how a single column is converted.
-  final SingleColumnChangeResponse singleColumnChange;
+  final SingleColumnChangeResponse? singleColumnChange;
   /// Optional. Rule to specify how a single entity should be renamed.
-  final SingleEntityRenameResponse singleEntityRename;
+  final SingleEntityRenameResponse? singleEntityRename;
   /// Optional. Rule to specify how a single package is converted.
-  final SinglePackageChangeResponse singlePackageChange;
+  final SinglePackageChangeResponse? singlePackageChange;
   /// Optional. Rule to change the sql code for an entity, for example, function, procedure.
-  final SourceSqlChangeResponse sourceSqlChange;
+  final SourceSqlChangeResponse? sourceSqlChange;
   /// Optional. The mapping rule state
-  final String state;
+  final String? state;
 
   /// Creates a new [GetMappingRuleResult].
   /// [conditionalColumnSetValue] Optional. Rule to specify how the data contained in a column should be transformed (such as trimmed, rounded, etc) provided that the data meets certain criteria.
@@ -75,72 +75,72 @@ class GetMappingRuleResult {
   /// [sourceSqlChange] Optional. Rule to change the sql code for an entity, for example, function, procedure.
   /// [state] Optional. The mapping rule state
   const GetMappingRuleResult({
-    required this.conditionalColumnSetValue,
-    required this.convertRowidColumn,
-    required this.displayName,
-    required this.entityMove,
-    required this.filter,
-    required this.filterTableColumns,
-    required this.multiColumnDataTypeChange,
-    required this.multiEntityRename,
-    required this.name,
-    required this.revisionCreateTime,
-    required this.revisionId,
-    required this.ruleOrder,
-    required this.ruleScope,
-    required this.setTablePrimaryKey,
-    required this.singleColumnChange,
-    required this.singleEntityRename,
-    required this.singlePackageChange,
-    required this.sourceSqlChange,
-    required this.state,
+    this.conditionalColumnSetValue,
+    this.convertRowidColumn,
+    this.displayName,
+    this.entityMove,
+    this.filter,
+    this.filterTableColumns,
+    this.multiColumnDataTypeChange,
+    this.multiEntityRename,
+    this.name,
+    this.revisionCreateTime,
+    this.revisionId,
+    this.ruleOrder,
+    this.ruleScope,
+    this.setTablePrimaryKey,
+    this.singleColumnChange,
+    this.singleEntityRename,
+    this.singlePackageChange,
+    this.sourceSqlChange,
+    this.state,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditionalColumnSetValue': conditionalColumnSetValue.toMap(),
-      'convertRowidColumn': convertRowidColumn.toMap(),
-      'displayName': displayName,
-      'entityMove': entityMove.toMap(),
-      'filter': filter.toMap(),
-      'filterTableColumns': filterTableColumns.toMap(),
-      'multiColumnDataTypeChange': multiColumnDataTypeChange.toMap(),
-      'multiEntityRename': multiEntityRename.toMap(),
-      'name': name,
-      'revisionCreateTime': revisionCreateTime,
-      'revisionId': revisionId,
-      'ruleOrder': ruleOrder,
-      'ruleScope': ruleScope,
-      'setTablePrimaryKey': setTablePrimaryKey.toMap(),
-      'singleColumnChange': singleColumnChange.toMap(),
-      'singleEntityRename': singleEntityRename.toMap(),
-      'singlePackageChange': singlePackageChange.toMap(),
-      'sourceSqlChange': sourceSqlChange.toMap(),
-      'state': state,
+      'conditionalColumnSetValue': ?conditionalColumnSetValue?.toMap(),
+      'convertRowidColumn': ?convertRowidColumn?.toMap(),
+      'displayName': ?displayName,
+      'entityMove': ?entityMove?.toMap(),
+      'filter': ?filter?.toMap(),
+      'filterTableColumns': ?filterTableColumns?.toMap(),
+      'multiColumnDataTypeChange': ?multiColumnDataTypeChange?.toMap(),
+      'multiEntityRename': ?multiEntityRename?.toMap(),
+      'name': ?name,
+      'revisionCreateTime': ?revisionCreateTime,
+      'revisionId': ?revisionId,
+      'ruleOrder': ?ruleOrder,
+      'ruleScope': ?ruleScope,
+      'setTablePrimaryKey': ?setTablePrimaryKey?.toMap(),
+      'singleColumnChange': ?singleColumnChange?.toMap(),
+      'singleEntityRename': ?singleEntityRename?.toMap(),
+      'singlePackageChange': ?singlePackageChange?.toMap(),
+      'sourceSqlChange': ?sourceSqlChange?.toMap(),
+      'state': ?state,
     };
   }
 
   factory GetMappingRuleResult.fromMap(Map<String, dynamic> map) {
     return GetMappingRuleResult(
-      conditionalColumnSetValue: ConditionalColumnSetValueResponse.fromMap((map['conditionalColumnSetValue']! as Map).cast<String, dynamic>()),
-      convertRowidColumn: ConvertRowIdToColumnResponse.fromMap((map['convertRowidColumn']! as Map).cast<String, dynamic>()),
-      displayName: map['displayName'] as String,
-      entityMove: EntityMoveResponse.fromMap((map['entityMove']! as Map).cast<String, dynamic>()),
-      filter: MappingRuleFilterResponse.fromMap((map['filter']! as Map).cast<String, dynamic>()),
-      filterTableColumns: FilterTableColumnsResponse.fromMap((map['filterTableColumns']! as Map).cast<String, dynamic>()),
-      multiColumnDataTypeChange: MultiColumnDatatypeChangeResponse.fromMap((map['multiColumnDataTypeChange']! as Map).cast<String, dynamic>()),
-      multiEntityRename: MultiEntityRenameResponse.fromMap((map['multiEntityRename']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      revisionCreateTime: map['revisionCreateTime'] as String,
-      revisionId: map['revisionId'] as String,
-      ruleOrder: map['ruleOrder'] as String,
-      ruleScope: map['ruleScope'] as String,
-      setTablePrimaryKey: SetTablePrimaryKeyResponse.fromMap((map['setTablePrimaryKey']! as Map).cast<String, dynamic>()),
-      singleColumnChange: SingleColumnChangeResponse.fromMap((map['singleColumnChange']! as Map).cast<String, dynamic>()),
-      singleEntityRename: SingleEntityRenameResponse.fromMap((map['singleEntityRename']! as Map).cast<String, dynamic>()),
-      singlePackageChange: SinglePackageChangeResponse.fromMap((map['singlePackageChange']! as Map).cast<String, dynamic>()),
-      sourceSqlChange: SourceSqlChangeResponse.fromMap((map['sourceSqlChange']! as Map).cast<String, dynamic>()),
-      state: map['state'] as String,
+      conditionalColumnSetValue: (() { final guardedValue = map['conditionalColumnSetValue']; if (guardedValue == null) return null; return ConditionalColumnSetValueResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      convertRowidColumn: (() { final guardedValue = map['convertRowidColumn']; if (guardedValue == null) return null; return ConvertRowIdToColumnResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      entityMove: (() { final guardedValue = map['entityMove']; if (guardedValue == null) return null; return EntityMoveResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return MappingRuleFilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      filterTableColumns: (() { final guardedValue = map['filterTableColumns']; if (guardedValue == null) return null; return FilterTableColumnsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      multiColumnDataTypeChange: (() { final guardedValue = map['multiColumnDataTypeChange']; if (guardedValue == null) return null; return MultiColumnDatatypeChangeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      multiEntityRename: (() { final guardedValue = map['multiEntityRename']; if (guardedValue == null) return null; return MultiEntityRenameResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      revisionCreateTime: (() { final guardedValue = map['revisionCreateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      revisionId: (() { final guardedValue = map['revisionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ruleOrder: (() { final guardedValue = map['ruleOrder']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ruleScope: (() { final guardedValue = map['ruleScope']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      setTablePrimaryKey: (() { final guardedValue = map['setTablePrimaryKey']; if (guardedValue == null) return null; return SetTablePrimaryKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      singleColumnChange: (() { final guardedValue = map['singleColumnChange']; if (guardedValue == null) return null; return SingleColumnChangeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      singleEntityRename: (() { final guardedValue = map['singleEntityRename']; if (guardedValue == null) return null; return SingleEntityRenameResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      singlePackageChange: (() { final guardedValue = map['singlePackageChange']; if (guardedValue == null) return null; return SinglePackageChangeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      sourceSqlChange: (() { final guardedValue = map['sourceSqlChange']; if (guardedValue == null) return null; return SourceSqlChangeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

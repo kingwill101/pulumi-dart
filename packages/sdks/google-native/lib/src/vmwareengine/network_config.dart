@@ -7,7 +7,7 @@ class NetworkConfig {
   /// Management CIDR used by VMware management appliances.
   final pulumi.Input<String> managementCidr;
   /// Optional. The relative resource name of the VMware Engine network attached to the private cloud. Specify the name in the following form: `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` where `{project}` can either be a project number or a project ID.
-  final pulumi.Input<String>? vmwareEngineNetwork;
+  final pulumi.Input<String?>? vmwareEngineNetwork;
 
   /// Creates a new [NetworkConfig].
   /// [managementCidr] Management CIDR used by VMware management appliances.

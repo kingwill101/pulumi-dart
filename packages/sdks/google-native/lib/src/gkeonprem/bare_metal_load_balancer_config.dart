@@ -10,15 +10,15 @@ import 'bare_metal_vip_config.dart';
 /// Specifies the load balancer configuration.
 class BareMetalLoadBalancerConfig {
   /// Configuration for BGP typed load balancers. When set network_config.advanced_networking is automatically set to true.
-  final pulumi.Input<BareMetalBgpLbConfig>? bgpLbConfig;
+  final pulumi.Input<BareMetalBgpLbConfig?>? bgpLbConfig;
   /// Manually configured load balancers.
-  final pulumi.Input<BareMetalManualLbConfig>? manualLbConfig;
+  final pulumi.Input<BareMetalManualLbConfig?>? manualLbConfig;
   /// Configuration for MetalLB load balancers.
-  final pulumi.Input<BareMetalMetalLbConfig>? metalLbConfig;
+  final pulumi.Input<BareMetalMetalLbConfig?>? metalLbConfig;
   /// Configures the ports that the load balancer will listen on.
-  final pulumi.Input<BareMetalPortConfig>? portConfig;
+  final pulumi.Input<BareMetalPortConfig?>? portConfig;
   /// The VIPs used by the load balancer.
-  final pulumi.Input<BareMetalVipConfig>? vipConfig;
+  final pulumi.Input<BareMetalVipConfig?>? vipConfig;
 
   /// Creates a new [BareMetalLoadBalancerConfig].
   /// [bgpLbConfig] Configuration for BGP typed load balancers. When set network_config.advanced_networking is automatically set to true.

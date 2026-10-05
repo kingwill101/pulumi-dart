@@ -6,21 +6,21 @@ import 'security_policy_rule_network_matcher_user_defined_field_match_compute_v1
 /// Represents a match condition that incoming network traffic is evaluated against.
 class SecurityPolicyRuleNetworkMatcherComputeV1 {
   /// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
-  final pulumi.Input<List<String>>? destIpRanges;
+  final pulumi.Input<List<String>?>? destIpRanges;
   /// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
-  final pulumi.Input<List<String>>? destPorts;
+  final pulumi.Input<List<String>?>? destPorts;
   /// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
-  final pulumi.Input<List<String>>? ipProtocols;
+  final pulumi.Input<List<String>?>? ipProtocols;
   /// BGP Autonomous System Number associated with the source IP address.
-  final pulumi.Input<List<int>>? srcAsns;
+  final pulumi.Input<List<int>?>? srcAsns;
   /// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
-  final pulumi.Input<List<String>>? srcIpRanges;
+  final pulumi.Input<List<String>?>? srcIpRanges;
   /// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
-  final pulumi.Input<List<String>>? srcPorts;
+  final pulumi.Input<List<String>?>? srcPorts;
   /// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
-  final pulumi.Input<List<String>>? srcRegionCodes;
+  final pulumi.Input<List<String>?>? srcRegionCodes;
   /// User-defined fields. Each element names a defined field and lists the matching values for that field.
-  final pulumi.Input<List<SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchComputeV1>>? userDefinedFields;
+  final pulumi.Input<List<SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchComputeV1>?>? userDefinedFields;
 
   /// Creates a new [SecurityPolicyRuleNetworkMatcherComputeV1].
   /// [destIpRanges] Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.

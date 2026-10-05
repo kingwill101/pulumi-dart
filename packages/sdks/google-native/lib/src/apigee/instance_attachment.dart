@@ -25,8 +25,24 @@ class InstanceAttachment extends pulumi.CustomResource {
           'google-native:apigee/v1:InstanceAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceId', 'organizationId']).merge(options),
         ) {
+    createdAt = registerOutput<String>('createdAt');
+    environment = registerOutput<String>('environment');
+    instanceId = registerOutput<String>('instanceId');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+  }
+
+  /// Creates a typed reference to an existing [InstanceAttachment] resource.
+  InstanceAttachment.reference(String urn)
+    : super(
+        'google-native:apigee/v1:InstanceAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createdAt = registerOutput<String>('createdAt');
     environment = registerOutput<String>('environment');
     instanceId = registerOutput<String>('instanceId');

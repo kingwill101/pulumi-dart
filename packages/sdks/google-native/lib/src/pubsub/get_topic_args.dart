@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_pubsub_v1_get_topic_args_doc}
 class GetTopicArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> topicId;
 
   /// Creates a new [GetTopicArgs].

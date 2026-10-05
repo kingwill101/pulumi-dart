@@ -6,7 +6,7 @@ import 'common_language_settings.dart';
 /// Settings for Php client libraries.
 class PhpSettings {
   /// Some settings.
-  final pulumi.Input<CommonLanguageSettings>? common;
+  final pulumi.Input<CommonLanguageSettings?>? common;
 
   /// Creates a new [PhpSettings].
   /// [common] Some settings.

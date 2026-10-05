@@ -56,12 +56,12 @@ class VmUtilizationMetricsResponse {
 
   factory VmUtilizationMetricsResponse.fromMap(Map<String, dynamic> map) {
     return VmUtilizationMetricsResponse(
-      cpuAveragePercent: pulumi.Input.fromValue(map['cpuAveragePercent'] as int),
-      cpuMaxPercent: pulumi.Input.fromValue(map['cpuMaxPercent'] as int),
+      cpuAveragePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpuAveragePercent'])),
+      cpuMaxPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpuMaxPercent'])),
       diskIoRateAverageKbps: pulumi.Input.fromValue(map['diskIoRateAverageKbps'] as String),
       diskIoRateMaxKbps: pulumi.Input.fromValue(map['diskIoRateMaxKbps'] as String),
-      memoryAveragePercent: pulumi.Input.fromValue(map['memoryAveragePercent'] as int),
-      memoryMaxPercent: pulumi.Input.fromValue(map['memoryMaxPercent'] as int),
+      memoryAveragePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memoryAveragePercent'])),
+      memoryMaxPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memoryMaxPercent'])),
       networkThroughputAverageKbps: pulumi.Input.fromValue(map['networkThroughputAverageKbps'] as String),
       networkThroughputMaxKbps: pulumi.Input.fromValue(map['networkThroughputMaxKbps'] as String),
     );

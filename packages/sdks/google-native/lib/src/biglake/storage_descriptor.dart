@@ -6,13 +6,13 @@ import 'ser_de_info.dart';
 /// Stores physical storage information of the data.
 class StorageDescriptor {
   /// The fully qualified Java class name of the input format.
-  final pulumi.Input<String>? inputFormat;
+  final pulumi.Input<String?>? inputFormat;
   /// Cloud Storage folder URI where the table data is stored, starting with "gs://".
-  final pulumi.Input<String>? locationUri;
+  final pulumi.Input<String?>? locationUri;
   /// The fully qualified Java class name of the output format.
-  final pulumi.Input<String>? outputFormat;
+  final pulumi.Input<String?>? outputFormat;
   /// Serializer and deserializer information.
-  final pulumi.Input<SerDeInfo>? serdeInfo;
+  final pulumi.Input<SerDeInfo?>? serdeInfo;
 
   /// Creates a new [StorageDescriptor].
   /// [inputFormat] The fully qualified Java class name of the input format.

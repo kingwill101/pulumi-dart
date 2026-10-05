@@ -8,17 +8,17 @@ import 'date_shift_config_healthcare_v1beta1.dart';
 /// A transformation to apply to text that is identified as a specific info_type.
 class InfoTypeTransformationHealthcareV1beta1 {
   /// Config for character mask.
-  final pulumi.Input<CharacterMaskConfigHealthcareV1beta1>? characterMaskConfig;
+  final pulumi.Input<CharacterMaskConfigHealthcareV1beta1?>? characterMaskConfig;
   /// Config for crypto hash.
-  final pulumi.Input<CryptoHashConfigHealthcareV1beta1>? cryptoHashConfig;
+  final pulumi.Input<CryptoHashConfigHealthcareV1beta1?>? cryptoHashConfig;
   /// Config for date shift.
-  final pulumi.Input<DateShiftConfigHealthcareV1beta1>? dateShiftConfig;
+  final pulumi.Input<DateShiftConfigHealthcareV1beta1?>? dateShiftConfig;
   /// `InfoTypes` to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any `info_type` that is not specified in another transformation.
-  final pulumi.Input<List<String>>? infoTypes;
+  final pulumi.Input<List<String>?>? infoTypes;
   /// Config for text redaction.
-  final pulumi.Input<Map<String, dynamic>>? redactConfig;
+  final pulumi.Input<Map<String, dynamic>?>? redactConfig;
   /// Config for replace with InfoType.
-  final pulumi.Input<Map<String, dynamic>>? replaceWithInfoTypeConfig;
+  final pulumi.Input<Map<String, dynamic>?>? replaceWithInfoTypeConfig;
 
   /// Creates a new [InfoTypeTransformationHealthcareV1beta1].
   /// [characterMaskConfig] Config for character mask.

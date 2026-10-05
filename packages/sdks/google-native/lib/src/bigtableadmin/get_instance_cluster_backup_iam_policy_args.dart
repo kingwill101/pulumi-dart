@@ -10,7 +10,7 @@ class GetInstanceClusterBackupIamPolicyArgs {
   final pulumi.Input<String> backupId;
   final pulumi.Input<String> clusterId;
   final pulumi.Input<String> instanceId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetInstanceClusterBackupIamPolicyArgs].
   /// [backupId] Required.

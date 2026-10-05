@@ -6,7 +6,7 @@ import 'execution_template_spec.dart';
 /// JobSpec describes how the job will look.
 class JobSpec {
   /// Optional. Describes the execution that will be created when running a job.
-  final pulumi.Input<ExecutionTemplateSpec>? template;
+  final pulumi.Input<ExecutionTemplateSpec?>? template;
 
   /// Creates a new [JobSpec].
   /// [template] Optional. Describes the execution that will be created when running a job.

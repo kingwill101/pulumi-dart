@@ -12,21 +12,21 @@ import 'sensitive_text_annotation.dart';
 /// {@macro pulumi_healthcare_v1beta1_annotation_args_doc}
 class AnnotationArgs {
   /// Details of the source.
-  final pulumi.Input<AnnotationSource>? annotationSource;
+  final pulumi.Input<AnnotationSource?>? annotationSource;
   final pulumi.Input<String> annotationStoreId;
   /// Additional information for this annotation record, such as annotator and verifier information or study campaign.
-  final pulumi.Input<Map<String, String>>? customData;
+  final pulumi.Input<Map<String, String>?>? customData;
   final pulumi.Input<String> datasetId;
   /// Annotations for images. For example, bounding polygons.
-  final pulumi.Input<ImageAnnotation>? imageAnnotation;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<ImageAnnotation?>? imageAnnotation;
+  final pulumi.Input<String?>? location;
   /// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Annotations for resource. For example, classification tags.
-  final pulumi.Input<ResourceAnnotation>? resourceAnnotation;
+  final pulumi.Input<ResourceAnnotation?>? resourceAnnotation;
   /// Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
-  final pulumi.Input<SensitiveTextAnnotation>? textAnnotation;
+  final pulumi.Input<SensitiveTextAnnotation?>? textAnnotation;
 
   /// Creates a new [AnnotationArgs].
   /// [annotationSource] Details of the source.

@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1beta1BlurBaselineConfigResponse {
 
   factory GoogleCloudAiplatformV1beta1BlurBaselineConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1BlurBaselineConfigResponse(
-      maxBlurSigma: pulumi.Input.fromValue(map['maxBlurSigma'] as double),
+      maxBlurSigma: pulumi.Input.fromValue((map['maxBlurSigma'] as num).toDouble()),
     );
   }
 }

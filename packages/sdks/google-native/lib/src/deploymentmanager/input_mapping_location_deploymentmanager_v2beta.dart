@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The location where this mapping applies.
-enum InputMappingLocationDeploymentmanagerV2beta {
+enum InputMappingLocationDeploymentmanagerV2beta implements pulumi.PulumiEnum<String> {
   unknown("UNKNOWN"),
   path("PATH"),
   query("QUERY"),
@@ -7,6 +9,7 @@ enum InputMappingLocationDeploymentmanagerV2beta {
   header("HEADER");
 
   const InputMappingLocationDeploymentmanagerV2beta(this.wireValue);
+  @override
   final String wireValue;
 
   static InputMappingLocationDeploymentmanagerV2beta fromValue(String value) {

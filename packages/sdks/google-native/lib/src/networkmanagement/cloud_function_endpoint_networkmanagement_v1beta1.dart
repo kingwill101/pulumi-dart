@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Wrapper for Cloud Function attributes.
 class CloudFunctionEndpointNetworkmanagementV1beta1 {
   /// A [Cloud Function](https://cloud.google.com/functions) name.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [CloudFunctionEndpointNetworkmanagementV1beta1].
   /// [uri] A [Cloud Function](https://cloud.google.com/functions) name.

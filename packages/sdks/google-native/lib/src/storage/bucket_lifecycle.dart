@@ -6,7 +6,7 @@ import 'bucket_lifecycle_rule_item.dart';
 /// The bucket's lifecycle configuration. See lifecycle management for more information.
 class BucketLifecycle {
   /// A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
-  final pulumi.Input<List<BucketLifecycleRuleItem>>? rule;
+  final pulumi.Input<List<BucketLifecycleRuleItem>?>? rule;
 
   /// Creates a new [BucketLifecycle].
   /// [rule] A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.

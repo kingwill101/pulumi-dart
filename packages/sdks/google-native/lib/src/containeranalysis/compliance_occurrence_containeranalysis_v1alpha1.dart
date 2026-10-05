@@ -6,9 +6,9 @@ import 'non_compliant_file_containeranalysis_v1alpha1.dart';
 /// An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
 class ComplianceOccurrenceContaineranalysisV1alpha1 {
   /// The reason for non compliance of these files.
-  final pulumi.Input<String>? nonComplianceReason;
+  final pulumi.Input<String?>? nonComplianceReason;
   /// A list of files which are violating compliance checks.
-  final pulumi.Input<List<NonCompliantFileContaineranalysisV1alpha1>>? nonCompliantFiles;
+  final pulumi.Input<List<NonCompliantFileContaineranalysisV1alpha1>?>? nonCompliantFiles;
 
   /// Creates a new [ComplianceOccurrenceContaineranalysisV1alpha1].
   /// [nonComplianceReason] The reason for non compliance of these files.

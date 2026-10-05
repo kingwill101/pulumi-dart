@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
-enum RegistryLogLevel {
+enum RegistryLogLevel implements pulumi.PulumiEnum<String> {
   logLevelUnspecified("LOG_LEVEL_UNSPECIFIED"),
   none("NONE"),
   error("ERROR"),
@@ -7,6 +9,7 @@ enum RegistryLogLevel {
   debug("DEBUG");
 
   const RegistryLogLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static RegistryLogLevel fromValue(String value) {

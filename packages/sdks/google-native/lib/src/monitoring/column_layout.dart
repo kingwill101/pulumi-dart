@@ -6,7 +6,7 @@ import 'column.dart';
 /// A simplified layout that divides the available space into vertical columns and arranges a set of widgets vertically in each column.
 class ColumnLayout {
   /// The columns of content to display.
-  final pulumi.Input<List<Column>>? columns;
+  final pulumi.Input<List<Column>?>? columns;
 
   /// Creates a new [ColumnLayout].
   /// [columns] The columns of content to display.

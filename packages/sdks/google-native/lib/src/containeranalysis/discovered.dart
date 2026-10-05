@@ -9,21 +9,21 @@ import 'status_containeranalysis_v1alpha1.dart';
 /// Provides information about the scan status of a discovered resource.
 class Discovered {
   /// The list of analysis that were completed for a resource.
-  final pulumi.Input<AnalysisCompletedContaineranalysisV1alpha1>? analysisCompleted;
+  final pulumi.Input<AnalysisCompletedContaineranalysisV1alpha1?>? analysisCompleted;
   /// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
-  final pulumi.Input<List<StatusContaineranalysisV1alpha1>>? analysisError;
+  final pulumi.Input<List<StatusContaineranalysisV1alpha1>?>? analysisError;
   /// The status of discovery for the resource.
-  final pulumi.Input<DiscoveredAnalysisStatus>? analysisStatus;
+  final pulumi.Input<DiscoveredAnalysisStatus?>? analysisStatus;
   /// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
-  final pulumi.Input<StatusContaineranalysisV1alpha1>? analysisStatusError;
+  final pulumi.Input<StatusContaineranalysisV1alpha1?>? analysisStatusError;
   /// The time occurrences related to this discovery occurrence were archived.
-  final pulumi.Input<String>? archiveTime;
+  final pulumi.Input<String?>? archiveTime;
   /// Whether the resource is continuously analyzed.
-  final pulumi.Input<DiscoveredContinuousAnalysis>? continuousAnalysis;
+  final pulumi.Input<DiscoveredContinuousAnalysis?>? continuousAnalysis;
   /// The CPE of the resource being scanned.
-  final pulumi.Input<String>? cpe;
+  final pulumi.Input<String?>? cpe;
   /// The last time this resource was scanned.
-  final pulumi.Input<String>? lastScanTime;
+  final pulumi.Input<String?>? lastScanTime;
 
   /// Creates a new [Discovered].
   /// [analysisCompleted] The list of analysis that were completed for a resource.

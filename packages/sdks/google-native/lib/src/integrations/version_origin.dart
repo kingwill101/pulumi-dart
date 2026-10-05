@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The origin that indicates where this integration is coming from.
-enum VersionOrigin {
+enum VersionOrigin implements pulumi.PulumiEnum<String> {
   unspecified("UNSPECIFIED"),
   ui("UI"),
   piperV2("PIPER_V2"),
@@ -8,6 +10,7 @@ enum VersionOrigin {
   testCase("TEST_CASE");
 
   const VersionOrigin(this.wireValue);
+  @override
   final String wireValue;
 
   static VersionOrigin fromValue(String value) {

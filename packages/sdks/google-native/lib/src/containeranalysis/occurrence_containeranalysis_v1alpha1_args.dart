@@ -25,48 +25,48 @@ import 'vulnerability_details.dart';
 /// {@macro pulumi_containeranalysis_v1alpha1_occurrence_containeranalysis_v1alpha1_args_doc}
 class OccurrenceContaineranalysisV1alpha1Args {
   /// Describes an attestation of an artifact.
-  final pulumi.Input<Attestation>? attestation;
+  final pulumi.Input<Attestation?>? attestation;
   /// Build details for a verifiable build.
-  final pulumi.Input<BuildDetails>? buildDetails;
+  final pulumi.Input<BuildDetails?>? buildDetails;
   /// Describes whether or not a resource passes compliance checks.
-  final pulumi.Input<ComplianceOccurrenceContaineranalysisV1alpha1>? compliance;
+  final pulumi.Input<ComplianceOccurrenceContaineranalysisV1alpha1?>? compliance;
   /// Describes the deployment of an artifact on a runtime.
-  final pulumi.Input<DeploymentType>? deployment;
+  final pulumi.Input<DeploymentType?>? deployment;
   /// Describes how this resource derives from the basis in the associated note.
-  final pulumi.Input<Derived>? derivedImage;
+  final pulumi.Input<Derived?>? derivedImage;
   /// Describes the initial scan status for this resource.
-  final pulumi.Input<Discovered>? discovered;
+  final pulumi.Input<Discovered?>? discovered;
   /// This represents a DSSE attestation occurrence
-  final pulumi.Input<DSSEAttestationOccurrenceContaineranalysisV1alpha1>? dsseAttestation;
+  final pulumi.Input<DSSEAttestationOccurrenceContaineranalysisV1alpha1?>? dsseAttestation;
   /// https://github.com/secure-systems-lab/dsse
-  final pulumi.Input<EnvelopeContaineranalysisV1alpha1>? envelope;
+  final pulumi.Input<EnvelopeContaineranalysisV1alpha1?>? envelope;
   /// Describes the installation of a package on the linked resource.
-  final pulumi.Input<Installation>? installation;
+  final pulumi.Input<Installation?>? installation;
   /// The name of the project. Should be of the form "projects/{project_id}". @Deprecated
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
-  final pulumi.Input<String>? noteName;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? noteName;
+  final pulumi.Input<String?>? project;
   /// A description of actions that can be taken to remedy the `Note`
-  final pulumi.Input<String>? remediation;
+  final pulumi.Input<String?>? remediation;
   /// The resource for which the `Occurrence` applies.
-  final pulumi.Input<ResourceType>? resource;
+  final pulumi.Input<ResourceType?>? resource;
   /// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
-  final pulumi.Input<String>? resourceUrl;
+  final pulumi.Input<String?>? resourceUrl;
   /// Describes a specific software bill of materials document.
-  final pulumi.Input<DocumentOccurrence>? sbom;
+  final pulumi.Input<DocumentOccurrence?>? sbom;
   /// This represents an SBOM reference occurrence
-  final pulumi.Input<SBOMReferenceOccurrenceContaineranalysisV1alpha1>? sbomReference;
+  final pulumi.Input<SBOMReferenceOccurrenceContaineranalysisV1alpha1?>? sbomReference;
   /// Describes a specific SPDX File.
-  final pulumi.Input<FileOccurrence>? spdxFile;
+  final pulumi.Input<FileOccurrence?>? spdxFile;
   /// Describes a specific SPDX Package.
-  final pulumi.Input<PackageInfoOccurrence>? spdxPackage;
+  final pulumi.Input<PackageInfoOccurrence?>? spdxPackage;
   /// Describes a specific relationship between SPDX elements.
-  final pulumi.Input<RelationshipOccurrence>? spdxRelationship;
+  final pulumi.Input<RelationshipOccurrence?>? spdxRelationship;
   /// Describes an upgrade.
-  final pulumi.Input<UpgradeOccurrenceContaineranalysisV1alpha1>? upgrade;
+  final pulumi.Input<UpgradeOccurrenceContaineranalysisV1alpha1?>? upgrade;
   /// Details of a security vulnerability note.
-  final pulumi.Input<VulnerabilityDetails>? vulnerabilityDetails;
+  final pulumi.Input<VulnerabilityDetails?>? vulnerabilityDetails;
 
   /// Creates a new [OccurrenceContaineranalysisV1alpha1Args].
   /// [attestation] Describes an attestation of an artifact.

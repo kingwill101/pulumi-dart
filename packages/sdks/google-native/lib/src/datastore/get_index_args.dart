@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datastore_v1_get_index_args_doc}
 class GetIndexArgs {
   final pulumi.Input<String> indexId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetIndexArgs].
   /// [indexId] Required.

@@ -10,20 +10,20 @@ import 'google_cloud_integrations_v1alpha_client_certificate.dart';
 /// {@macro pulumi_integrations_v1alpha_certificate_args_doc}
 class CertificateArgs {
   /// Status of the certificate
-  final pulumi.Input<CertificateCertificateStatus>? certificateStatus;
+  final pulumi.Input<CertificateCertificateStatus?>? certificateStatus;
   /// Immutable. Credential id that will be used to register with trawler INTERNAL_ONLY
-  final pulumi.Input<String>? credentialId;
+  final pulumi.Input<String?>? credentialId;
   /// Description of the certificate
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the certificate
   final pulumi.Input<String> displayName;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   final pulumi.Input<String> productId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Input only. Raw client certificate which would be registered with trawler
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaClientCertificate>? rawCertificate;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaClientCertificate?>? rawCertificate;
   /// Immutable. Requestor ID to be used to register certificate with trawler
-  final pulumi.Input<String>? requestorId;
+  final pulumi.Input<String?>? requestorId;
 
   /// Creates a new [CertificateArgs].
   /// [certificateStatus] Status of the certificate

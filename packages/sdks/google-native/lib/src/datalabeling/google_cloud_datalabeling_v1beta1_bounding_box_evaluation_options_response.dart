@@ -21,7 +21,7 @@ class GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse {
 
   factory GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse(
-      iouThreshold: pulumi.Input.fromValue(map['iouThreshold'] as double),
+      iouThreshold: pulumi.Input.fromValue((map['iouThreshold'] as num).toDouble()),
     );
   }
 }

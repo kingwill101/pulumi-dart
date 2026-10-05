@@ -8,11 +8,11 @@ import 'runtime_config.dart';
 /// Canary represents the canary deployment strategy.
 class Canary {
   /// Configures the progressive based deployment for a Target.
-  final pulumi.Input<CanaryDeployment>? canaryDeployment;
+  final pulumi.Input<CanaryDeployment?>? canaryDeployment;
   /// Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
-  final pulumi.Input<CustomCanaryDeployment>? customCanaryDeployment;
+  final pulumi.Input<CustomCanaryDeployment?>? customCanaryDeployment;
   /// Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
-  final pulumi.Input<RuntimeConfig>? runtimeConfig;
+  final pulumi.Input<RuntimeConfig?>? runtimeConfig;
 
   /// Creates a new [Canary].
   /// [canaryDeployment] Configures the progressive based deployment for a Target.

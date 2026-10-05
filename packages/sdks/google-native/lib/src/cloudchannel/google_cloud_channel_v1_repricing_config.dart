@@ -12,13 +12,13 @@ class GoogleCloudChannelV1RepricingConfig {
   /// Information about the adjustment.
   final pulumi.Input<GoogleCloudChannelV1RepricingAdjustment> adjustment;
   /// Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead.
-  final pulumi.Input<Map<String, dynamic>>? channelPartnerGranularity;
+  final pulumi.Input<Map<String, dynamic>?>? channelPartnerGranularity;
   /// The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis.
-  final pulumi.Input<List<GoogleCloudChannelV1ConditionalOverride>>? conditionalOverrides;
+  final pulumi.Input<List<GoogleCloudChannelV1ConditionalOverride>?>? conditionalOverrides;
   /// The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
   final pulumi.Input<GoogleTypeDate> effectiveInvoiceMonth;
   /// Applies the repricing configuration at the entitlement level. Note: If a ChannelPartnerRepricingConfig using RepricingConfig.EntitlementGranularity becomes effective, then no existing or future RepricingConfig.ChannelPartnerGranularity will apply to the RepricingConfig.EntitlementGranularity.entitlement. This is the recommended value for both CustomerRepricingConfig and ChannelPartnerRepricingConfig.
-  final pulumi.Input<GoogleCloudChannelV1RepricingConfigEntitlementGranularity>? entitlementGranularity;
+  final pulumi.Input<GoogleCloudChannelV1RepricingConfigEntitlementGranularity?>? entitlementGranularity;
   /// The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
   final pulumi.Input<GoogleCloudChannelV1RepricingConfigRebillingBasis> rebillingBasis;
 

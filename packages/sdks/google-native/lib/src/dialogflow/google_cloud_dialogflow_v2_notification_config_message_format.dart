@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Format of message.
-enum GoogleCloudDialogflowV2NotificationConfigMessageFormat {
+enum GoogleCloudDialogflowV2NotificationConfigMessageFormat implements pulumi.PulumiEnum<String> {
   messageFormatUnspecified("MESSAGE_FORMAT_UNSPECIFIED"),
   proto("PROTO"),
   json("JSON");
 
   const GoogleCloudDialogflowV2NotificationConfigMessageFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowV2NotificationConfigMessageFormat fromValue(String value) {

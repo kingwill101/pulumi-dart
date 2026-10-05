@@ -11,53 +11,53 @@ import 'update_policy_response.dart';
 /// Result data returned by getInstance.
 class GetInstanceAlloydbV1alphaResult {
   /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
-  final Map<String, String> annotations;
+  final Map<String, String>? annotations;
   /// Availability type of an Instance. If empty, defaults to REGIONAL for primary instances. For read pools, availability_type is always UNSPECIFIED. Instances in the read pools are evenly distributed across available zones within the region (i.e. read pools with more than one node will have a node in at least two zones).
-  final String availabilityType;
+  final String? availabilityType;
   /// Optional. Client connection specific configurations
-  final ClientConnectionConfigResponseAlloydbV1alpha clientConnectionConfig;
+  final ClientConnectionConfigResponseAlloydbV1alpha? clientConnectionConfig;
   /// Create time stamp
-  final String createTime;
+  final String? createTime;
   /// Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary. This is a list of "key": "value" pairs. "key": The name of the flag. These flags are passed at instance setup time, so include both server options and system variables for Postgres. Flags are specified with underscores, not hyphens. "value": The value of the flag. Booleans are set to **on** for true and **off** for false. This field must be omitted if the flag doesn't take a value.
-  final Map<String, String> databaseFlags;
+  final Map<String, String>? databaseFlags;
   /// Delete time stamp
-  final String deleteTime;
+  final String? deleteTime;
   /// User-settable and human-readable display name for the Instance.
-  final String displayName;
+  final String? displayName;
   /// For Resource freshness validation (https://google.aip.dev/154)
-  final String etag;
+  final String? etag;
   /// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
-  final String gceZone;
+  final String? gceZone;
   /// The type of the instance. Specified at creation time.
-  final String instanceType;
+  final String? instanceType;
   /// The IP address for the Instance. This is the connection endpoint for an end-user application.
-  final String ipAddress;
+  final String? ipAddress;
   /// Labels as key value pairs
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Configurations for the machines that host the underlying database engine.
-  final MachineConfigResponseAlloydbV1alpha machineConfig;
+  final MachineConfigResponseAlloydbV1alpha? machineConfig;
   /// The name of the instance resource with the format: * projects/{project}/locations/{region}/clusters/{cluster_id}/instances/{instance_id} where the cluster and instance ID segments should satisfy the regex expression `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`, e.g. 1-63 characters of lowercase letters, numbers, and dashes, starting with a letter, and ending with a letter or number. For more details see https://google.aip.dev/122. The prefix of the instance resource name is the name of the parent resource: * projects/{project}/locations/{region}/clusters/{cluster_id}
-  final String name;
+  final String? name;
   /// List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
-  final List<NodeResponseAlloydbV1alpha> nodes;
+  final List<NodeResponseAlloydbV1alpha>? nodes;
   /// Configuration for query insights.
-  final QueryInsightsInstanceConfigResponseAlloydbV1alpha queryInsightsConfig;
+  final QueryInsightsInstanceConfigResponseAlloydbV1alpha? queryInsightsConfig;
   /// Read pool instance configuration. This is required if the value of instanceType is READ_POOL.
-  final ReadPoolConfigResponseAlloydbV1alpha readPoolConfig;
+  final ReadPoolConfigResponseAlloydbV1alpha? readPoolConfig;
   /// Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
-  final bool reconciling;
+  final bool? reconciling;
   /// Reserved for future use.
-  final bool satisfiesPzs;
+  final bool? satisfiesPzs;
   /// The current serving state of the instance.
-  final String state;
+  final String? state;
   /// The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
-  final String uid;
+  final String? uid;
   /// Update policy that will be applied during instance update. This field is not persisted when you update the instance. To use a non-default update policy, you must specify explicitly specify the value in each update request.
-  final UpdatePolicyResponse updatePolicy;
+  final UpdatePolicyResponse? updatePolicy;
   /// Update time stamp
-  final String updateTime;
+  final String? updateTime;
   /// This is set for the read-write VM of the PRIMARY instance only.
-  final NodeResponseAlloydbV1alpha writableNode;
+  final NodeResponseAlloydbV1alpha? writableNode;
 
   /// Creates a new [GetInstanceAlloydbV1alphaResult].
   /// [annotations] Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
@@ -85,87 +85,87 @@ class GetInstanceAlloydbV1alphaResult {
   /// [updateTime] Update time stamp
   /// [writableNode] This is set for the read-write VM of the PRIMARY instance only.
   const GetInstanceAlloydbV1alphaResult({
-    required this.annotations,
-    required this.availabilityType,
-    required this.clientConnectionConfig,
-    required this.createTime,
-    required this.databaseFlags,
-    required this.deleteTime,
-    required this.displayName,
-    required this.etag,
-    required this.gceZone,
-    required this.instanceType,
-    required this.ipAddress,
-    required this.labels,
-    required this.machineConfig,
-    required this.name,
-    required this.nodes,
-    required this.queryInsightsConfig,
-    required this.readPoolConfig,
-    required this.reconciling,
-    required this.satisfiesPzs,
-    required this.state,
-    required this.uid,
-    required this.updatePolicy,
-    required this.updateTime,
-    required this.writableNode,
+    this.annotations,
+    this.availabilityType,
+    this.clientConnectionConfig,
+    this.createTime,
+    this.databaseFlags,
+    this.deleteTime,
+    this.displayName,
+    this.etag,
+    this.gceZone,
+    this.instanceType,
+    this.ipAddress,
+    this.labels,
+    this.machineConfig,
+    this.name,
+    this.nodes,
+    this.queryInsightsConfig,
+    this.readPoolConfig,
+    this.reconciling,
+    this.satisfiesPzs,
+    this.state,
+    this.uid,
+    this.updatePolicy,
+    this.updateTime,
+    this.writableNode,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'annotations': annotations,
-      'availabilityType': availabilityType,
-      'clientConnectionConfig': clientConnectionConfig.toMap(),
-      'createTime': createTime,
-      'databaseFlags': databaseFlags,
-      'deleteTime': deleteTime,
-      'displayName': displayName,
-      'etag': etag,
-      'gceZone': gceZone,
-      'instanceType': instanceType,
-      'ipAddress': ipAddress,
-      'labels': labels,
-      'machineConfig': machineConfig.toMap(),
-      'name': name,
-      'nodes': pulumi.Input.encodeList<NodeResponseAlloydbV1alpha, Map<String, dynamic>>(nodes, (value) => value.toMap()),
-      'queryInsightsConfig': queryInsightsConfig.toMap(),
-      'readPoolConfig': readPoolConfig.toMap(),
-      'reconciling': reconciling,
-      'satisfiesPzs': satisfiesPzs,
-      'state': state,
-      'uid': uid,
-      'updatePolicy': updatePolicy.toMap(),
-      'updateTime': updateTime,
-      'writableNode': writableNode.toMap(),
+      'annotations': ?annotations,
+      'availabilityType': ?availabilityType,
+      'clientConnectionConfig': ?clientConnectionConfig?.toMap(),
+      'createTime': ?createTime,
+      'databaseFlags': ?databaseFlags,
+      'deleteTime': ?deleteTime,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'gceZone': ?gceZone,
+      'instanceType': ?instanceType,
+      'ipAddress': ?ipAddress,
+      'labels': ?labels,
+      'machineConfig': ?machineConfig?.toMap(),
+      'name': ?name,
+      'nodes': ?(() { final guardedValue = nodes; if (guardedValue == null) return null; return pulumi.Input.encodeList<NodeResponseAlloydbV1alpha, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'queryInsightsConfig': ?queryInsightsConfig?.toMap(),
+      'readPoolConfig': ?readPoolConfig?.toMap(),
+      'reconciling': ?reconciling,
+      'satisfiesPzs': ?satisfiesPzs,
+      'state': ?state,
+      'uid': ?uid,
+      'updatePolicy': ?updatePolicy?.toMap(),
+      'updateTime': ?updateTime,
+      'writableNode': ?writableNode?.toMap(),
     };
   }
 
   factory GetInstanceAlloydbV1alphaResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceAlloydbV1alphaResult(
-      annotations: (map['annotations'] as Map).cast<String, String>(),
-      availabilityType: map['availabilityType'] as String,
-      clientConnectionConfig: ClientConnectionConfigResponseAlloydbV1alpha.fromMap((map['clientConnectionConfig']! as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      databaseFlags: (map['databaseFlags'] as Map).cast<String, String>(),
-      deleteTime: map['deleteTime'] as String,
-      displayName: map['displayName'] as String,
-      etag: map['etag'] as String,
-      gceZone: map['gceZone'] as String,
-      instanceType: map['instanceType'] as String,
-      ipAddress: map['ipAddress'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      machineConfig: MachineConfigResponseAlloydbV1alpha.fromMap((map['machineConfig']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      nodes: pulumi.Input.decodeList<NodeResponseAlloydbV1alpha>(map['nodes']!, (value) => NodeResponseAlloydbV1alpha.fromMap((value as Map).cast<String, dynamic>())),
-      queryInsightsConfig: QueryInsightsInstanceConfigResponseAlloydbV1alpha.fromMap((map['queryInsightsConfig']! as Map).cast<String, dynamic>()),
-      readPoolConfig: ReadPoolConfigResponseAlloydbV1alpha.fromMap((map['readPoolConfig']! as Map).cast<String, dynamic>()),
-      reconciling: map['reconciling'] as bool,
-      satisfiesPzs: map['satisfiesPzs'] as bool,
-      state: map['state'] as String,
-      uid: map['uid'] as String,
-      updatePolicy: UpdatePolicyResponse.fromMap((map['updatePolicy']! as Map).cast<String, dynamic>()),
-      updateTime: map['updateTime'] as String,
-      writableNode: NodeResponseAlloydbV1alpha.fromMap((map['writableNode']! as Map).cast<String, dynamic>()),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      availabilityType: (() { final guardedValue = map['availabilityType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clientConnectionConfig: (() { final guardedValue = map['clientConnectionConfig']; if (guardedValue == null) return null; return ClientConnectionConfigResponseAlloydbV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      databaseFlags: (() { final guardedValue = map['databaseFlags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      gceZone: (() { final guardedValue = map['gceZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      machineConfig: (() { final guardedValue = map['machineConfig']; if (guardedValue == null) return null; return MachineConfigResponseAlloydbV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nodes: (() { final guardedValue = map['nodes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeResponseAlloydbV1alpha>(guardedValue, (value) => NodeResponseAlloydbV1alpha.fromMap((value as Map).cast<String, dynamic>())); })(),
+      queryInsightsConfig: (() { final guardedValue = map['queryInsightsConfig']; if (guardedValue == null) return null; return QueryInsightsInstanceConfigResponseAlloydbV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      readPoolConfig: (() { final guardedValue = map['readPoolConfig']; if (guardedValue == null) return null; return ReadPoolConfigResponseAlloydbV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      satisfiesPzs: (() { final guardedValue = map['satisfiesPzs']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updatePolicy: (() { final guardedValue = map['updatePolicy']; if (guardedValue == null) return null; return UpdatePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      writableNode: (() { final guardedValue = map['writableNode']; if (guardedValue == null) return null; return NodeResponseAlloydbV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

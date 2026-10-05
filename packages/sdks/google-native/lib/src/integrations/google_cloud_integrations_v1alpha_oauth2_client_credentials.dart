@@ -8,19 +8,19 @@ import 'google_cloud_integrations_v1alpha_parameter_map.dart';
 /// For client credentials grant, the client sends a POST request with grant_type as 'client_credentials' to the authorization server. The authorization server will respond with a JSON object containing the access token.
 class GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials {
   /// Access token fetched from the authorization server.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaAccessToken>? accessToken;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaAccessToken?>? accessToken;
   /// The client's ID.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The client's secret.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Represent how to pass parameters to fetch access token
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType>? requestType;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType?>? requestType;
   /// A space-delimited list of requested scope permissions.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
   /// Token parameters for the auth request.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMap>? tokenParams;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMap?>? tokenParams;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials].
   /// [accessToken] Access token fetched from the authorization server.

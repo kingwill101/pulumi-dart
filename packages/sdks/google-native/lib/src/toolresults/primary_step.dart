@@ -7,9 +7,9 @@ import 'primary_step_roll_up.dart';
 /// Stores rollup test status of multiple steps that were run as a group and outcome of each individual step.
 class PrimaryStep {
   /// Step Id and outcome of each individual step.
-  final pulumi.Input<List<IndividualOutcome>>? individualOutcome;
+  final pulumi.Input<List<IndividualOutcome>?>? individualOutcome;
   /// Rollup test status of multiple steps that were run with the same configuration as a group.
-  final pulumi.Input<PrimaryStepRollUp>? rollUp;
+  final pulumi.Input<PrimaryStepRollUp?>? rollUp;
 
   /// Creates a new [PrimaryStep].
   /// [individualOutcome] Step Id and outcome of each individual step.

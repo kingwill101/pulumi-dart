@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_jobs_v3_get_job_args_doc}
 class GetJobArgs {
   final pulumi.Input<String> jobId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetJobArgs].
   /// [jobId] Required.

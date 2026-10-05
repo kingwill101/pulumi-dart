@@ -20,6 +20,17 @@ Future<GetBillingAccountResult> getBillingAccount(
   return GetBillingAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetBillingAccountResult> getBillingAccountOutput(
+  GetBillingAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudbilling/v1:getBillingAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingAccountResult.fromMap);
+}
+
 /// Gets the access control policy for a billing account. The caller must have the `billing.accounts.getIamPolicy` permission on the account, which is often given to billing account [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudbilling_v1_get_billing_account_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetBillingAccountIamPolicyResult> getBillingAccountIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBillingAccountIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetBillingAccountIamPolicyResult> getBillingAccountIamPolicyOutput(
+  GetBillingAccountIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudbilling/v1:getBillingAccountIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingAccountIamPolicyResult.fromMap);
 }

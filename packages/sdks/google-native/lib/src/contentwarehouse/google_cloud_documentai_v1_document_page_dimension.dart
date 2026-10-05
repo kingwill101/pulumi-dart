@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dimension for the page.
 class GoogleCloudDocumentaiV1DocumentPageDimension {
   /// Page height.
-  final pulumi.Input<double>? height;
+  final pulumi.Input<double?>? height;
   /// Dimension unit.
-  final pulumi.Input<String>? unit;
+  final pulumi.Input<String?>? unit;
   /// Page width.
-  final pulumi.Input<double>? width;
+  final pulumi.Input<double?>? width;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageDimension].
   /// [height] Page height.
@@ -31,9 +31,9 @@ class GoogleCloudDocumentaiV1DocumentPageDimension {
 
   factory GoogleCloudDocumentaiV1DocumentPageDimension.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageDimension(
-      height: (() { final guardedValue = map['height']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      height: (() { final guardedValue = map['height']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      width: (() { final guardedValue = map['width']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      width: (() { final guardedValue = map['width']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

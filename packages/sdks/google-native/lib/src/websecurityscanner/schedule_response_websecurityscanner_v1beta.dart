@@ -26,7 +26,7 @@ class ScheduleResponseWebsecurityscannerV1beta {
 
   factory ScheduleResponseWebsecurityscannerV1beta.fromMap(Map<String, dynamic> map) {
     return ScheduleResponseWebsecurityscannerV1beta(
-      intervalDurationDays: pulumi.Input.fromValue(map['intervalDurationDays'] as int),
+      intervalDurationDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['intervalDurationDays'])),
       scheduleTime: pulumi.Input.fromValue(map['scheduleTime'] as String),
     );
   }

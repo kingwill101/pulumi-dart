@@ -10,7 +10,7 @@ class GetLineageEventArgs {
   final pulumi.Input<String> lineageEventId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> processId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> runId;
 
   /// Creates a new [GetLineageEventArgs].

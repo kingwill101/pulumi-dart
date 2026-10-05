@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to EXTERNAL.
-enum AddressAddressTypeComputeV1 {
+enum AddressAddressTypeComputeV1 implements pulumi.PulumiEnum<String> {
   external("EXTERNAL"),
   internal("INTERNAL"),
   unspecifiedType("UNSPECIFIED_TYPE");
 
   const AddressAddressTypeComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static AddressAddressTypeComputeV1 fromValue(String value) {

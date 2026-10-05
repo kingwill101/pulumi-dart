@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal {
   /// The number of seconds to wait for a readiness signal during initialization before timing out.
-  final pulumi.Input<int>? timeoutSec;
+  final pulumi.Input<int?>? timeoutSec;
 
   /// Creates a new [InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal].
   /// [timeoutSec] The number of seconds to wait for a readiness signal during initialization before timing out.
@@ -20,7 +20,7 @@ class InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal {
 
   factory InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal(
-      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

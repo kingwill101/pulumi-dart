@@ -62,7 +62,7 @@ class HealthCheck extends pulumi.CustomResource {
           'google-native:compute/alpha:HealthCheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     checkIntervalSec = registerOutput<int>('checkIntervalSec');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -80,7 +80,41 @@ class HealthCheck extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
-    sourceRegions = registerOutput<List<String>>('sourceRegions');
+    sourceRegions = registerOutput<List<String>>('sourceRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sslHealthCheck = registerOutput<SSLHealthCheckResponse>('sslHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SSLHealthCheckResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tcpHealthCheck = registerOutput<TCPHealthCheckResponse>('tcpHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TCPHealthCheckResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeoutSec = registerOutput<int>('timeoutSec');
+    type = registerOutput<String>('type');
+    udpHealthCheck = registerOutput<UDPHealthCheckResponse>('udpHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UDPHealthCheckResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    unhealthyThreshold = registerOutput<int>('unhealthyThreshold');
+  }
+
+  /// Creates a typed reference to an existing [HealthCheck] resource.
+  HealthCheck.reference(String urn)
+    : super(
+        'google-native:compute/alpha:HealthCheck',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    checkIntervalSec = registerOutput<int>('checkIntervalSec');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    grpcHealthCheck = registerOutput<GRPCHealthCheckResponse>('grpcHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GRPCHealthCheckResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    healthyThreshold = registerOutput<int>('healthyThreshold');
+    http2HealthCheck = registerOutput<HTTP2HealthCheckResponse>('http2HealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HTTP2HealthCheckResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpHealthCheck = registerOutput<HTTPHealthCheckResponse>('httpHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HTTPHealthCheckResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpsHealthCheck = registerOutput<HTTPSHealthCheckResponse>('httpsHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HTTPSHealthCheckResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    logConfig = registerOutput<HealthCheckLogConfigResponse>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HealthCheckLogConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    sourceRegions = registerOutput<List<String>>('sourceRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sslHealthCheck = registerOutput<SSLHealthCheckResponse>('sslHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SSLHealthCheckResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tcpHealthCheck = registerOutput<TCPHealthCheckResponse>('tcpHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TCPHealthCheckResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeoutSec = registerOutput<int>('timeoutSec');

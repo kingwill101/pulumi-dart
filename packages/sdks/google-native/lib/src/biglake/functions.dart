@@ -22,6 +22,17 @@ Future<GetCatalogResult> getCatalog(
   return GetCatalogResult.fromMap(result);
 }
 
+pulumi.Output<GetCatalogResult> getCatalogOutput(
+  GetCatalogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:biglake/v1:getCatalog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCatalogResult.fromMap);
+}
+
 /// Gets the database specified by the resource name.
 /// [args] Arguments passed to this invoke. {@macro pulumi_biglake_v1_get_database_args_doc}
 /// [options] Invoke options controlling this call.
@@ -38,6 +49,17 @@ Future<GetDatabaseResult> getDatabase(
   return GetDatabaseResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseResult> getDatabaseOutput(
+  GetDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:biglake/v1:getDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseResult.fromMap);
+}
+
 /// Gets the table specified by the resource name.
 /// [args] Arguments passed to this invoke. {@macro pulumi_biglake_v1_get_table_args_doc}
 /// [options] Invoke options controlling this call.
@@ -52,4 +74,15 @@ Future<GetTableResult> getTable(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTableResult.fromMap(result);
+}
+
+pulumi.Output<GetTableResult> getTableOutput(
+  GetTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:biglake/v1:getTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableResult.fromMap);
 }

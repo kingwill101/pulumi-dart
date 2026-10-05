@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for controlling master global access settings.
 class PrivateClusterMasterGlobalAccessConfigContainerV1beta1 {
   /// Whenever master is accessible globally or not.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [PrivateClusterMasterGlobalAccessConfigContainerV1beta1].
   /// [enabled] Whenever master is accessible globally or not.

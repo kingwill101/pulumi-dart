@@ -38,8 +38,31 @@ class Dataset extends pulumi.CustomResource {
           'google-native:translate/v3:Dataset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    exampleCount = registerOutput<int>('exampleCount');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    sourceLanguageCode = registerOutput<String>('sourceLanguageCode');
+    targetLanguageCode = registerOutput<String>('targetLanguageCode');
+    testExampleCount = registerOutput<int>('testExampleCount');
+    trainExampleCount = registerOutput<int>('trainExampleCount');
+    updateTime = registerOutput<String>('updateTime');
+    validateExampleCount = registerOutput<int>('validateExampleCount');
+  }
+
+  /// Creates a typed reference to an existing [Dataset] resource.
+  Dataset.reference(String urn)
+    : super(
+        'google-native:translate/v3:Dataset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     exampleCount = registerOutput<int>('exampleCount');

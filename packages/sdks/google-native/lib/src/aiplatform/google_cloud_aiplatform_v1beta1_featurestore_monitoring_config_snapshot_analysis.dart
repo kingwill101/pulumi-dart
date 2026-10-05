@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration of the Featurestore's Snapshot Analysis Based Monitoring. This type of analysis generates statistics for each Feature based on a snapshot of the latest feature value of each entities every monitoring_interval.
 class GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis {
   /// The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoring_interval for Features under it. Feature-level config: disabled = true indicates disabled regardless of the EntityType-level config; unset monitoring_interval indicates going with EntityType-level config; otherwise run snapshot analysis monitoring with monitoring_interval regardless of the EntityType-level config. Explicitly Disable the snapshot analysis based monitoring.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day. If both monitoring_interval_days and the deprecated `monitoring_interval` field are set when creating/updating EntityTypes/Features, monitoring_interval_days will be used.
-  final pulumi.Input<String>? monitoringInterval;
+  final pulumi.Input<String?>? monitoringInterval;
   /// Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days.
-  final pulumi.Input<int>? monitoringIntervalDays;
+  final pulumi.Input<int?>? monitoringIntervalDays;
   /// Customized export features time window for snapshot analysis. Unit is one day. Default value is 3 weeks. Minimum value is 1 day. Maximum value is 4000 days.
-  final pulumi.Input<int>? stalenessDays;
+  final pulumi.Input<int?>? stalenessDays;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis].
   /// [disabled] The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoring_interval for Features under it. Feature-level config: disabled = true indicates disabled regardless of the EntityType-level config; unset monitoring_interval indicates going with EntityType-level config; otherwise run snapshot analysis monitoring with monitoring_interval regardless of the EntityType-level config. Explicitly Disable the snapshot analysis based monitoring.
@@ -38,8 +38,8 @@ class GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis {
     return GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis(
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       monitoringInterval: (() { final guardedValue = map['monitoringInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      monitoringIntervalDays: (() { final guardedValue = map['monitoringIntervalDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      stalenessDays: (() { final guardedValue = map['stalenessDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      monitoringIntervalDays: (() { final guardedValue = map['monitoringIntervalDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      stalenessDays: (() { final guardedValue = map['stalenessDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

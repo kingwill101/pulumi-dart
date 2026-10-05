@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The optimization strategy of the job. The default is `AUTODETECT`.
-enum JobOptimization {
+enum JobOptimization implements pulumi.PulumiEnum<String> {
   optimizationStrategyUnspecified("OPTIMIZATION_STRATEGY_UNSPECIFIED"),
   autodetect("AUTODETECT"),
   disabled("DISABLED");
 
   const JobOptimization(this.wireValue);
+  @override
   final String wireValue;
 
   static JobOptimization fromValue(String value) {

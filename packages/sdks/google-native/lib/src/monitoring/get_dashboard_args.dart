@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_monitoring_v1_get_dashboard_args_doc}
 class GetDashboardArgs {
   final pulumi.Input<String> dashboardId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDashboardArgs].
   /// [dashboardId] Required.

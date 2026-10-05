@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
-enum GoogleCloudRunV2EmptyDirVolumeSourceMedium {
+enum GoogleCloudRunV2EmptyDirVolumeSourceMedium implements pulumi.PulumiEnum<String> {
   mediumUnspecified("MEDIUM_UNSPECIFIED"),
   memory("MEMORY");
 
   const GoogleCloudRunV2EmptyDirVolumeSourceMedium(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudRunV2EmptyDirVolumeSourceMedium fromValue(String value) {

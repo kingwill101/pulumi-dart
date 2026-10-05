@@ -6,7 +6,7 @@ import 'cloud_run_service.dart';
 /// Represents a target of an invocation over HTTP.
 class DestinationEventarcV1beta1 {
   /// Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
-  final pulumi.Input<CloudRunService>? cloudRunService;
+  final pulumi.Input<CloudRunService?>? cloudRunService;
 
   /// Creates a new [DestinationEventarcV1beta1].
   /// [cloudRunService] Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.

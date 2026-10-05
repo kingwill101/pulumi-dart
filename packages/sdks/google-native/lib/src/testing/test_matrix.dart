@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'client_info_response.dart';
 import 'environment_matrix_response.dart';
 import 'result_storage_response.dart';
+import 'test_execution_response.dart';
 import 'test_matrix_args.dart';
 import 'test_specification_response.dart';
 
@@ -30,7 +31,7 @@ class TestMatrix extends pulumi.CustomResource {
   /// Indicates the current progress of the test matrix.
   late final pulumi.Output<String> state;
   /// The list of test executions that the service creates for this matrix.
-  late final pulumi.Output<List<Map<String, dynamic>>> testExecutions;
+  late final pulumi.Output<List<TestExecutionResponse>> testExecutions;
   /// Unique id set by the service.
   late final pulumi.Output<String> testMatrixId;
   /// How to run the test.
@@ -50,7 +51,7 @@ class TestMatrix extends pulumi.CustomResource {
           'google-native:testing/v1:TestMatrix',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     clientInfo = registerOutput<ClientInfoResponse>('clientInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     environmentMatrix = registerOutput<EnvironmentMatrixResponse>('environmentMatrix', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentMatrixResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -62,7 +63,32 @@ class TestMatrix extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     resultStorage = registerOutput<ResultStorageResponse>('resultStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResultStorageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
-    testExecutions = registerOutput<List<Map<String, dynamic>>>('testExecutions');
+    testExecutions = registerOutput<List<TestExecutionResponse>>('testExecutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TestExecutionResponse>(guardedValue, (value) => TestExecutionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    testMatrixId = registerOutput<String>('testMatrixId');
+    testSpecification = registerOutput<TestSpecificationResponse>('testSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TestSpecificationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timestamp = registerOutput<String>('timestamp');
+  }
+
+  /// Creates a typed reference to an existing [TestMatrix] resource.
+  TestMatrix.reference(String urn)
+    : super(
+        'google-native:testing/v1:TestMatrix',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clientInfo = registerOutput<ClientInfoResponse>('clientInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environmentMatrix = registerOutput<EnvironmentMatrixResponse>('environmentMatrix', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentMatrixResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    failFast = registerOutput<bool>('failFast');
+    flakyTestAttempts = registerOutput<int>('flakyTestAttempts');
+    invalidMatrixDetails = registerOutput<String>('invalidMatrixDetails');
+    outcomeSummary = registerOutput<String>('outcomeSummary');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    resultStorage = registerOutput<ResultStorageResponse>('resultStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResultStorageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    testExecutions = registerOutput<List<TestExecutionResponse>>('testExecutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TestExecutionResponse>(guardedValue, (value) => TestExecutionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     testMatrixId = registerOutput<String>('testMatrixId');
     testSpecification = registerOutput<TestSpecificationResponse>('testSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TestSpecificationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timestamp = registerOutput<String>('timestamp');

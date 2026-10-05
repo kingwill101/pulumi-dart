@@ -52,10 +52,38 @@ class Listing extends pulumi.CustomResource {
           'google-native:analyticshub/v1:Listing',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['dataExchangeId', 'listingId', 'location', 'project']).merge(options),
         ) {
     bigqueryDataset = registerOutput<BigQueryDatasetSourceResponse>('bigqueryDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryDatasetSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    categories = registerOutput<List<String>>('categories');
+    categories = registerOutput<List<String>>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataExchangeId = registerOutput<String>('dataExchangeId');
+    dataProvider = registerOutput<DataProviderResponse>('dataProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataProviderResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    documentation = registerOutput<String>('documentation');
+    icon = registerOutput<String>('icon');
+    listingId = registerOutput<String>('listingId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    primaryContact = registerOutput<String>('primaryContact');
+    project = registerOutput<String>('project');
+    publisher = registerOutput<PublisherResponse>('publisher', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PublisherResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    requestAccess = registerOutput<String>('requestAccess');
+    restrictedExportConfig = registerOutput<RestrictedExportConfigResponse>('restrictedExportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestrictedExportConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Listing] resource.
+  Listing.reference(String urn)
+    : super(
+        'google-native:analyticshub/v1:Listing',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bigqueryDataset = registerOutput<BigQueryDatasetSourceResponse>('bigqueryDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryDatasetSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    categories = registerOutput<List<String>>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataExchangeId = registerOutput<String>('dataExchangeId');
     dataProvider = registerOutput<DataProviderResponse>('dataProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataProviderResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');

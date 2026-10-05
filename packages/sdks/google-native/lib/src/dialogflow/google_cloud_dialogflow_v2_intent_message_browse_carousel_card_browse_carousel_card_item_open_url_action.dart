@@ -8,7 +8,7 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
   /// URL
   final pulumi.Input<String> url;
   /// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint>? urlTypeHint;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint?>? urlTypeHint;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction].
   /// [url] URL

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change the version.
-enum ConsentConfigVersion {
+enum ConsentConfigVersion implements pulumi.PulumiEnum<String> {
   consentEnforcementVersionUnspecified("CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED"),
   v1("V1");
 
   const ConsentConfigVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static ConsentConfigVersion fromValue(String value) {

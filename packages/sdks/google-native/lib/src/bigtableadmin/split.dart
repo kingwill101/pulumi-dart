@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An initial split point for a newly created table.
 class Split {
   /// Row key to use as an initial tablet boundary.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
 
   /// Creates a new [Split].
   /// [key] Row key to use as an initial tablet boundary.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Filter for text-based data types like varchar.
 class SourceTextFilter {
   /// Optional. The filter will match columns with length smaller than or equal to this number.
-  final pulumi.Input<String>? sourceMaxLengthFilter;
+  final pulumi.Input<String?>? sourceMaxLengthFilter;
   /// Optional. The filter will match columns with length greater than or equal to this number.
-  final pulumi.Input<String>? sourceMinLengthFilter;
+  final pulumi.Input<String?>? sourceMinLengthFilter;
 
   /// Creates a new [SourceTextFilter].
   /// [sourceMaxLengthFilter] Optional. The filter will match columns with length smaller than or equal to this number.

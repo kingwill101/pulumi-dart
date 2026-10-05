@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Ratio-based metric type. Only one of type or count_type is specified in each Metric.
-enum GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType {
+enum GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType implements pulumi.PulumiEnum<String> {
   metricUnspecified("METRIC_UNSPECIFIED"),
   containedSessionNoCallbackRate("CONTAINED_SESSION_NO_CALLBACK_RATE"),
   liveAgentHandoffRate("LIVE_AGENT_HANDOFF_RATE"),
@@ -8,6 +10,7 @@ enum GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType {
   sessionEndRate("SESSION_END_RATE");
 
   const GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType fromValue(String value) {

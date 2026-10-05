@@ -38,7 +38,7 @@ class GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse {
     return GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse(
       enableTextToSpeech: pulumi.Input.fromValue(map['enableTextToSpeech'] as bool),
       outputAudioEncoding: pulumi.Input.fromValue(map['outputAudioEncoding'] as String),
-      sampleRateHertz: pulumi.Input.fromValue(map['sampleRateHertz'] as int),
+      sampleRateHertz: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sampleRateHertz'])),
       synthesizeSpeechConfigs: pulumi.Input.fromValue((map['synthesizeSpeechConfigs'] as Map).cast<String, String>()),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_discoveryengine_v1alpha_field_config_response.dart';
 import 'schema_args.dart';
 
 /// Creates a Schema.
@@ -6,7 +7,7 @@ class Schema extends pulumi.CustomResource {
   late final pulumi.Output<String> collectionId;
   late final pulumi.Output<String> dataStoreId;
   /// Configurations for fields of the schema.
-  late final pulumi.Output<List<Map<String, dynamic>>> fieldConfigs;
+  late final pulumi.Output<List<GoogleCloudDiscoveryengineV1alphaFieldConfigResponse>> fieldConfigs;
   /// The JSON representation of the schema.
   late final pulumi.Output<String> jsonSchema;
   late final pulumi.Output<String> location;
@@ -30,16 +31,36 @@ class Schema extends pulumi.CustomResource {
           'google-native:discoveryengine/v1alpha:Schema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['collectionId', 'dataStoreId', 'location', 'project', 'schemaId']).merge(options),
         ) {
     collectionId = registerOutput<String>('collectionId');
     dataStoreId = registerOutput<String>('dataStoreId');
-    fieldConfigs = registerOutput<List<Map<String, dynamic>>>('fieldConfigs');
+    fieldConfigs = registerOutput<List<GoogleCloudDiscoveryengineV1alphaFieldConfigResponse>>('fieldConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDiscoveryengineV1alphaFieldConfigResponse>(guardedValue, (value) => GoogleCloudDiscoveryengineV1alphaFieldConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     jsonSchema = registerOutput<String>('jsonSchema');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     schemaId = registerOutput<String>('schemaId');
-    structSchema = registerOutput<Map<String, String>>('structSchema');
+    structSchema = registerOutput<Map<String, String>>('structSchema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Schema] resource.
+  Schema.reference(String urn)
+    : super(
+        'google-native:discoveryengine/v1alpha:Schema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    collectionId = registerOutput<String>('collectionId');
+    dataStoreId = registerOutput<String>('dataStoreId');
+    fieldConfigs = registerOutput<List<GoogleCloudDiscoveryengineV1alphaFieldConfigResponse>>('fieldConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDiscoveryengineV1alphaFieldConfigResponse>(guardedValue, (value) => GoogleCloudDiscoveryengineV1alphaFieldConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    jsonSchema = registerOutput<String>('jsonSchema');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    schemaId = registerOutput<String>('schemaId');
+    structSchema = registerOutput<Map<String, String>>('structSchema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

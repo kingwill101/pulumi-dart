@@ -42,11 +42,11 @@ class TileResponse {
 
   factory TileResponse.fromMap(Map<String, dynamic> map) {
     return TileResponse(
-      height: pulumi.Input.fromValue(map['height'] as int),
+      height: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['height'])),
       widget: pulumi.Input.fromValue(WidgetResponse.fromMap((map['widget']! as Map).cast<String, dynamic>())),
-      width: pulumi.Input.fromValue(map['width'] as int),
-      xPos: pulumi.Input.fromValue(map['xPos'] as int),
-      yPos: pulumi.Input.fromValue(map['yPos'] as int),
+      width: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['width'])),
+      xPos: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['xPos'])),
+      yPos: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['yPos'])),
     );
   }
 }

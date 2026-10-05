@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Base profile type for handling DICOM tags.
-enum DicomTagConfigProfileType {
+enum DicomTagConfigProfileType implements pulumi.PulumiEnum<String> {
   profileTypeUnspecified("PROFILE_TYPE_UNSPECIFIED"),
   minimalKeepListProfile("MINIMAL_KEEP_LIST_PROFILE"),
   attributeConfidentialityBasicProfile("ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE"),
@@ -7,6 +9,7 @@ enum DicomTagConfigProfileType {
   deidentifyTagContents("DEIDENTIFY_TAG_CONTENTS");
 
   const DicomTagConfigProfileType(this.wireValue);
+  @override
   final String wireValue;
 
   static DicomTagConfigProfileType fromValue(String value) {

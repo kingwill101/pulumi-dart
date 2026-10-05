@@ -6,7 +6,7 @@ import 'upstream_policy.dart';
 /// Virtual repository configuration.
 class VirtualRepositoryConfig {
   /// Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.
-  final pulumi.Input<List<UpstreamPolicy>>? upstreamPolicies;
+  final pulumi.Input<List<UpstreamPolicy>?>? upstreamPolicies;
 
   /// Creates a new [VirtualRepositoryConfig].
   /// [upstreamPolicies] Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.

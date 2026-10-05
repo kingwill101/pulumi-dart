@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration options for a custom domain.
 class DomainConfig {
   /// Immutable. Domain used by Workstations for HTTP ingress.
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
 
   /// Creates a new [DomainConfig].
   /// [domain] Immutable. Domain used by Workstations for HTTP ingress.

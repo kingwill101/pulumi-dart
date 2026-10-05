@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A set of properties that uniquely identify a given Docker image.
 class FingerprintContaineranalysisV1alpha1 {
   /// The layer-id of the final layer in the Docker image's v1 representation. This field can be used as a filter in list requests.
-  final pulumi.Input<String>? v1Name;
+  final pulumi.Input<String?>? v1Name;
   /// The ordered list of v2 blobs that represent a given image.
-  final pulumi.Input<List<String>>? v2Blob;
+  final pulumi.Input<List<String>?>? v2Blob;
 
   /// Creates a new [FingerprintContaineranalysisV1alpha1].
   /// [v1Name] The layer-id of the final layer in the Docker image's v1 representation. This field can be used as a filter in list requests.

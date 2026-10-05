@@ -12,19 +12,19 @@ class CertificateMapEntryArgs {
   final pulumi.Input<String> certificateMapEntryId;
   final pulumi.Input<String> certificateMapId;
   /// A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
-  final pulumi.Input<List<String>>? certificates;
+  final pulumi.Input<List<String>?>? certificates;
   /// One or more paragraphs of text description of a certificate map entry.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Set of labels associated with a Certificate Map Entry.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// A predefined matcher for particular cases, other than SNI selection.
-  final pulumi.Input<CertificateMapEntryMatcher>? matcher;
+  final pulumi.Input<CertificateMapEntryMatcher?>? matcher;
   /// A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [CertificateMapEntryArgs].
   /// [certificateMapEntryId] Required. A user-provided name of the certificate map entry.

@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTestCaseArgs {
   final pulumi.Input<String> integrationId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> testCaseId;
   final pulumi.Input<String> versionId;
 

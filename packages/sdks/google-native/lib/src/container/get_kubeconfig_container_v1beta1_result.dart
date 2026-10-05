@@ -3,23 +3,23 @@
 
 /// Result data returned by getKubeconfig.
 class GetKubeconfigContainerV1beta1Result {
-  final String kubeconfig;
+  final String? kubeconfig;
 
   /// Creates a new [GetKubeconfigContainerV1beta1Result].
-  /// [kubeconfig] Required.
+  /// [kubeconfig] Optional.
   const GetKubeconfigContainerV1beta1Result({
-    required this.kubeconfig,
+    this.kubeconfig,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kubeconfig': kubeconfig,
+      'kubeconfig': ?kubeconfig,
     };
   }
 
   factory GetKubeconfigContainerV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetKubeconfigContainerV1beta1Result(
-      kubeconfig: map['kubeconfig'] as String,
+      kubeconfig: (() { final guardedValue = map['kubeconfig']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

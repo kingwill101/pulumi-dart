@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Model Monitoring Objective those stats and anomalies belonging to.
-enum GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective {
+enum GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective implements pulumi.PulumiEnum<String> {
   modelDeploymentMonitoringObjectiveTypeUnspecified("MODEL_DEPLOYMENT_MONITORING_OBJECTIVE_TYPE_UNSPECIFIED"),
   rawFeatureSkew("RAW_FEATURE_SKEW"),
   rawFeatureDrift("RAW_FEATURE_DRIFT"),
@@ -7,6 +9,7 @@ enum GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective {
   featureAttributionDrift("FEATURE_ATTRIBUTION_DRIFT");
 
   const GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective fromValue(String value) {

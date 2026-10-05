@@ -15,10 +15,10 @@ class SessionEntityTypeDialogflowV3beta1Args {
   /// Indicates whether the additional data should override or supplement the custom entity type definition.
   final pulumi.Input<SessionEntityTypeEntityOverrideModeDialogflowV3beta1> entityOverrideMode;
   final pulumi.Input<String> environmentId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> sessionId;
 
   /// Creates a new [SessionEntityTypeDialogflowV3beta1Args].

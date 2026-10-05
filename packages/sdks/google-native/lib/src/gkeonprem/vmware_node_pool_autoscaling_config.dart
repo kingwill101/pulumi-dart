@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NodePoolAutoscaling config for the NodePool to allow for the kubernetes to scale NodePool.
 class VmwareNodePoolAutoscalingConfig {
   /// Maximum number of replicas in the NodePool.
-  final pulumi.Input<int>? maxReplicas;
+  final pulumi.Input<int?>? maxReplicas;
   /// Minimum number of replicas in the NodePool.
-  final pulumi.Input<int>? minReplicas;
+  final pulumi.Input<int?>? minReplicas;
 
   /// Creates a new [VmwareNodePoolAutoscalingConfig].
   /// [maxReplicas] Maximum number of replicas in the NodePool.
@@ -26,8 +26,8 @@ class VmwareNodePoolAutoscalingConfig {
 
   factory VmwareNodePoolAutoscalingConfig.fromMap(Map<String, dynamic> map) {
     return VmwareNodePoolAutoscalingConfig(
-      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

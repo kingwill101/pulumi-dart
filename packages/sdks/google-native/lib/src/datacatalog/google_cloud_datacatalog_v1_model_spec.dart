@@ -6,7 +6,7 @@ import 'google_cloud_datacatalog_v1_vertex_model_spec.dart';
 /// Specification that applies to a model. Valid only for entries with the `MODEL` type.
 class GoogleCloudDatacatalogV1ModelSpec {
   /// Specification for vertex model resources.
-  final pulumi.Input<GoogleCloudDatacatalogV1VertexModelSpec>? vertexModelSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1VertexModelSpec?>? vertexModelSpec;
 
   /// Creates a new [GoogleCloudDatacatalogV1ModelSpec].
   /// [vertexModelSpec] Specification for vertex model resources.

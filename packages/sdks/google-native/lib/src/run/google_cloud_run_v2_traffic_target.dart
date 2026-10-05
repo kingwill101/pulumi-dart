@@ -6,13 +6,13 @@ import 'google_cloud_run_v2_traffic_target_type.dart';
 /// Holds a single traffic routing entry for the Service. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision.
 class GoogleCloudRunV2TrafficTarget {
   /// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
-  final pulumi.Input<int>? percent;
+  final pulumi.Input<int?>? percent;
   /// Revision to which to send this portion of traffic, if traffic allocation is by revision.
-  final pulumi.Input<String>? revision;
+  final pulumi.Input<String?>? revision;
   /// Indicates a string to be part of the URI to exclusively reference this target.
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
   /// The allocation type for this traffic target.
-  final pulumi.Input<GoogleCloudRunV2TrafficTargetType>? type;
+  final pulumi.Input<GoogleCloudRunV2TrafficTargetType?>? type;
 
   /// Creates a new [GoogleCloudRunV2TrafficTarget].
   /// [percent] Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
@@ -37,7 +37,7 @@ class GoogleCloudRunV2TrafficTarget {
 
   factory GoogleCloudRunV2TrafficTarget.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2TrafficTarget(
-      percent: (() { final guardedValue = map['percent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      percent: (() { final guardedValue = map['percent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tag: (() { final guardedValue = map['tag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudRunV2TrafficTargetType.fromValue(guardedValue as String)); })(),

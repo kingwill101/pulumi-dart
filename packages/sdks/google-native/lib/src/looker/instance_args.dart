@@ -17,34 +17,34 @@ import 'user_metadata.dart';
 /// {@macro pulumi_looker_v1_instance_args_doc}
 class InstanceArgs {
   /// Looker Instance Admin settings.
-  final pulumi.Input<AdminSettings>? adminSettings;
+  final pulumi.Input<AdminSettings?>? adminSettings;
   /// Network name in the consumer project. Format: `projects/{project}/global/networks/{network}`. Note that the consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
-  final pulumi.Input<String>? consumerNetwork;
-  final pulumi.Input<CustomDomain>? customDomain;
+  final pulumi.Input<String?>? consumerNetwork;
+  final pulumi.Input<CustomDomain?>? customDomain;
   /// Maintenance denial period for this instance.
-  final pulumi.Input<DenyMaintenancePeriod>? denyMaintenancePeriod;
+  final pulumi.Input<DenyMaintenancePeriod?>? denyMaintenancePeriod;
   /// Encryption configuration (CMEK). Only set if CMEK has been enabled on the instance.
-  final pulumi.Input<EncryptionConfig>? encryptionConfig;
+  final pulumi.Input<EncryptionConfig?>? encryptionConfig;
   /// Required. The unique instance identifier. Must contain only lowercase letters, numbers, or hyphens, with the first character a letter and the last a letter or a number. 63 characters maximum.
   final pulumi.Input<String> instanceId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Maintenance schedule for this instance.
-  final pulumi.Input<MaintenanceSchedule>? maintenanceSchedule;
+  final pulumi.Input<MaintenanceSchedule?>? maintenanceSchedule;
   /// Maintenance window for this instance.
-  final pulumi.Input<MaintenanceWindow>? maintenanceWindow;
+  final pulumi.Input<MaintenanceWindow?>? maintenanceWindow;
   /// Looker instance OAuth login settings.
-  final pulumi.Input<OAuthConfig>? oauthConfig;
+  final pulumi.Input<OAuthConfig?>? oauthConfig;
   /// Platform edition.
-  final pulumi.Input<InstancePlatformEdition>? platformEdition;
+  final pulumi.Input<InstancePlatformEdition?>? platformEdition;
   /// Whether private IP is enabled on the Looker instance.
-  final pulumi.Input<bool>? privateIpEnabled;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<bool?>? privateIpEnabled;
+  final pulumi.Input<String?>? project;
   /// Whether public IP is enabled on the Looker instance.
-  final pulumi.Input<bool>? publicIpEnabled;
+  final pulumi.Input<bool?>? publicIpEnabled;
   /// Name of a reserved IP address range within the Instance.consumer_network, to be used for private services access connection. May or may not be specified in a create request.
-  final pulumi.Input<String>? reservedRange;
+  final pulumi.Input<String?>? reservedRange;
   /// User metadata.
-  final pulumi.Input<UserMetadata>? userMetadata;
+  final pulumi.Input<UserMetadata?>? userMetadata;
 
   /// Creates a new [InstanceArgs].
   /// [adminSettings] Looker Instance Admin settings.

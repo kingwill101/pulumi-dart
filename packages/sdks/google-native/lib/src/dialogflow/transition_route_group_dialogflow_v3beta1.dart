@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_dialogflow_cx_v3beta1_transition_route_response.dart';
 import 'transition_route_group_dialogflow_v3beta1_args.dart';
 
 /// Creates an TransitionRouteGroup in the specified flow. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
@@ -14,7 +15,7 @@ class TransitionRouteGroupDialogflowV3beta1 extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   /// Transition routes associated with the TransitionRouteGroup.
-  late final pulumi.Output<List<Map<String, dynamic>>> transitionRoutes;
+  late final pulumi.Output<List<GoogleCloudDialogflowCxV3beta1TransitionRouteResponse>> transitionRoutes;
 
   /// Creates a new [TransitionRouteGroupDialogflowV3beta1].
   /// [name] The Pulumi resource name.
@@ -28,7 +29,7 @@ class TransitionRouteGroupDialogflowV3beta1 extends pulumi.CustomResource {
           'google-native:dialogflow/v3beta1:TransitionRouteGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['agentId', 'flowId', 'location', 'project']).merge(options),
         ) {
     agentId = registerOutput<String>('agentId');
     displayName = registerOutput<String>('displayName');
@@ -37,6 +38,25 @@ class TransitionRouteGroupDialogflowV3beta1 extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    transitionRoutes = registerOutput<List<Map<String, dynamic>>>('transitionRoutes');
+    transitionRoutes = registerOutput<List<GoogleCloudDialogflowCxV3beta1TransitionRouteResponse>>('transitionRoutes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1TransitionRouteResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3beta1TransitionRouteResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [TransitionRouteGroupDialogflowV3beta1] resource.
+  TransitionRouteGroupDialogflowV3beta1.reference(String urn)
+    : super(
+        'google-native:dialogflow/v3beta1:TransitionRouteGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentId = registerOutput<String>('agentId');
+    displayName = registerOutput<String>('displayName');
+    flowId = registerOutput<String>('flowId');
+    languageCode = registerOutput<String?>('languageCode');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    transitionRoutes = registerOutput<List<GoogleCloudDialogflowCxV3beta1TransitionRouteResponse>>('transitionRoutes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1TransitionRouteResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3beta1TransitionRouteResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -28,7 +28,7 @@ class Partition extends pulumi.CustomResource {
           'google-native:dataplex/v1:Partition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['entityId', 'lakeId', 'location', 'project', 'zone']).merge(options),
         ) {
     entityId = registerOutput<String>('entityId');
     etag = registerOutput<String>('etag');
@@ -36,7 +36,26 @@ class Partition extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    values = registerOutput<List<String>>('values');
+    values = registerOutput<List<String>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [Partition] resource.
+  Partition.reference(String urn)
+    : super(
+        'google-native:dataplex/v1:Partition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    entityId = registerOutput<String>('entityId');
+    etag = registerOutput<String>('etag');
+    lakeId = registerOutput<String>('lakeId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    values = registerOutput<List<String>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     zone = registerOutput<String>('zone');
   }
 }

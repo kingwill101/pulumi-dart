@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the action responsible for adding document under a folder.
 class GoogleCloudContentwarehouseV1AddToFolderAction {
   /// Names of the folder under which new document is to be added. Format: projects/{project_number}/locations/{location}/documents/{document_id}.
-  final pulumi.Input<List<String>>? folders;
+  final pulumi.Input<List<String>?>? folders;
 
   /// Creates a new [GoogleCloudContentwarehouseV1AddToFolderAction].
   /// [folders] Names of the folder under which new document is to be added. Format: projects/{project_number}/locations/{location}/documents/{document_id}.

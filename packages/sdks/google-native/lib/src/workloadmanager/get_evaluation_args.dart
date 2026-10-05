@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEvaluationArgs {
   final pulumi.Input<String> evaluationId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetEvaluationArgs].
   /// [evaluationId] Required.

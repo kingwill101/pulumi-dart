@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The new task state.
-enum MessageNewTaskState {
+enum MessageNewTaskState implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   pending("PENDING"),
   assigned("ASSIGNED"),
@@ -9,6 +11,7 @@ enum MessageNewTaskState {
   unexecuted("UNEXECUTED");
 
   const MessageNewTaskState(this.wireValue);
+  @override
   final String wireValue;
 
   static MessageNewTaskState fromValue(String value) {

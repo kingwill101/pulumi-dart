@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The config for email alert.
 class GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig {
   /// The email addresses to send the alert.
-  final pulumi.Input<List<String>>? userEmails;
+  final pulumi.Input<List<String>?>? userEmails;
 
   /// Creates a new [GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig].
   /// [userEmails] The email addresses to send the alert.

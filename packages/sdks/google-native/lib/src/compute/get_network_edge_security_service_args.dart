@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_alpha_get_network_edge_security_service_args_doc}
 class GetNetworkEdgeSecurityServiceArgs {
   final pulumi.Input<String> networkEdgeSecurityService;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
 
   /// Creates a new [GetNetworkEdgeSecurityServiceArgs].

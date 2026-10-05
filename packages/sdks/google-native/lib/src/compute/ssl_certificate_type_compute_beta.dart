@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
-enum SslCertificateTypeComputeBeta {
+enum SslCertificateTypeComputeBeta implements pulumi.PulumiEnum<String> {
   managed("MANAGED"),
   selfManaged("SELF_MANAGED"),
   typeUnspecified("TYPE_UNSPECIFIED");
 
   const SslCertificateTypeComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static SslCertificateTypeComputeBeta fromValue(String value) {

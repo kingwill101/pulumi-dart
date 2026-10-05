@@ -11,17 +11,17 @@ import 'notification_config.dart';
 class DicomStoreArgs {
   final pulumi.Input<String> datasetId;
   /// The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
-  final pulumi.Input<String>? dicomStoreId;
+  final pulumi.Input<String?>? dicomStoreId;
   /// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Notification destination for new DICOM instances. Supplied by the client.
-  final pulumi.Input<NotificationConfig>? notificationConfig;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<NotificationConfig?>? notificationConfig;
+  final pulumi.Input<String?>? project;
   /// Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
-  final pulumi.Input<List<GoogleCloudHealthcareV1DicomStreamConfig>>? streamConfigs;
+  final pulumi.Input<List<GoogleCloudHealthcareV1DicomStreamConfig>?>? streamConfigs;
 
   /// Creates a new [DicomStoreArgs].
   /// [datasetId] Required.

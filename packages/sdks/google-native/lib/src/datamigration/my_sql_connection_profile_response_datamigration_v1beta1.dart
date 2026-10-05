@@ -56,7 +56,7 @@ class MySqlConnectionProfileResponseDatamigrationV1beta1 {
       host: pulumi.Input.fromValue(map['host'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
       passwordSet: pulumi.Input.fromValue(map['passwordSet'] as bool),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       ssl: pulumi.Input.fromValue(SslConfigResponseDatamigrationV1beta1.fromMap((map['ssl']! as Map).cast<String, dynamic>())),
       username: pulumi.Input.fromValue(map['username'] as String),
     );

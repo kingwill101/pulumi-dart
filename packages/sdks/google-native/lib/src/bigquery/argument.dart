@@ -8,15 +8,15 @@ import 'standard_sql_data_type.dart';
 /// Input/output argument of a function or a stored procedure.
 class Argument {
   /// Optional. Defaults to FIXED_TYPE.
-  final pulumi.Input<ArgumentArgumentKind>? argumentKind;
+  final pulumi.Input<ArgumentArgumentKind?>? argumentKind;
   /// Required unless argument_kind = ANY_TYPE.
-  final pulumi.Input<StandardSqlDataType>? dataType;
+  final pulumi.Input<StandardSqlDataType?>? dataType;
   /// Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL.
-  final pulumi.Input<bool>? isAggregate;
+  final pulumi.Input<bool?>? isAggregate;
   /// Optional. Specifies whether the argument is input or output. Can be set for procedures only.
-  final pulumi.Input<ArgumentMode>? mode;
+  final pulumi.Input<ArgumentMode?>? mode;
   /// Optional. The name of this argument. Can be absent for function return argument.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [Argument].
   /// [argumentKind] Optional. Defaults to FIXED_TYPE.

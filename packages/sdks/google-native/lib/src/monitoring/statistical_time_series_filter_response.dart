@@ -26,7 +26,7 @@ class StatisticalTimeSeriesFilterResponse {
 
   factory StatisticalTimeSeriesFilterResponse.fromMap(Map<String, dynamic> map) {
     return StatisticalTimeSeriesFilterResponse(
-      numTimeSeries: pulumi.Input.fromValue(map['numTimeSeries'] as int),
+      numTimeSeries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numTimeSeries'])),
       rankingMethod: pulumi.Input.fromValue(map['rankingMethod'] as String),
     );
   }

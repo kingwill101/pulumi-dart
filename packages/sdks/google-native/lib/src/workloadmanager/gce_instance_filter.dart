@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Message describing compute engine instance filter
 class GceInstanceFilter {
   /// Service account of compute engine
-  final pulumi.Input<List<String>>? serviceAccounts;
+  final pulumi.Input<List<String>?>? serviceAccounts;
 
   /// Creates a new [GceInstanceFilter].
   /// [serviceAccounts] Service account of compute engine

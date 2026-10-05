@@ -48,7 +48,7 @@ class PhaseConfigResponse {
 
   factory PhaseConfigResponse.fromMap(Map<String, dynamic> map) {
     return PhaseConfigResponse(
-      percentage: pulumi.Input.fromValue(map['percentage'] as int),
+      percentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['percentage'])),
       phaseId: pulumi.Input.fromValue(map['phaseId'] as String),
       postdeploy: pulumi.Input.fromValue(PostdeployResponse.fromMap((map['postdeploy']! as Map).cast<String, dynamic>())),
       predeploy: pulumi.Input.fromValue(PredeployResponse.fromMap((map['predeploy']! as Map).cast<String, dynamic>())),

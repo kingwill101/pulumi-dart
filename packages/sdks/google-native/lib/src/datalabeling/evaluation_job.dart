@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'evaluation_job_args.dart';
+import 'google_cloud_datalabeling_v1beta1_attempt_response.dart';
 import 'google_cloud_datalabeling_v1beta1_evaluation_job_config_response.dart';
 
 /// Creates an evaluation job.
@@ -8,7 +9,7 @@ class EvaluationJob extends pulumi.CustomResource {
   /// Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
   late final pulumi.Output<String> annotationSpecSet;
   /// Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
-  late final pulumi.Output<List<Map<String, dynamic>>> attempts;
+  late final pulumi.Output<List<GoogleCloudDatalabelingV1beta1AttemptResponse>> attempts;
   /// Timestamp of when this evaluation job was created.
   late final pulumi.Output<String> createTime;
   /// Description of the job. The description can be up to 25,000 characters long.
@@ -39,10 +40,32 @@ class EvaluationJob extends pulumi.CustomResource {
           'google-native:datalabeling/v1beta1:EvaluationJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     annotationSpecSet = registerOutput<String>('annotationSpecSet');
-    attempts = registerOutput<List<Map<String, dynamic>>>('attempts');
+    attempts = registerOutput<List<GoogleCloudDatalabelingV1beta1AttemptResponse>>('attempts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDatalabelingV1beta1AttemptResponse>(guardedValue, (value) => GoogleCloudDatalabelingV1beta1AttemptResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    evaluationJobConfig = registerOutput<GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse>('evaluationJobConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labelMissingGroundTruth = registerOutput<bool>('labelMissingGroundTruth');
+    modelVersion = registerOutput<String>('modelVersion');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    schedule = registerOutput<String>('schedule');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [EvaluationJob] resource.
+  EvaluationJob.reference(String urn)
+    : super(
+        'google-native:datalabeling/v1beta1:EvaluationJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotationSpecSet = registerOutput<String>('annotationSpecSet');
+    attempts = registerOutput<List<GoogleCloudDatalabelingV1beta1AttemptResponse>>('attempts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDatalabelingV1beta1AttemptResponse>(guardedValue, (value) => GoogleCloudDatalabelingV1beta1AttemptResponse.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     evaluationJobConfig = registerOutput<GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse>('evaluationJobConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

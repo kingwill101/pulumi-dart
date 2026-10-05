@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_alpha_get_firewall_args_doc}
 class GetFirewallArgs {
   final pulumi.Input<String> firewall;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetFirewallArgs].
   /// [firewall] Required.

@@ -5,7 +5,7 @@ import 'jwt.dart';
 
 /// [Deprecated] Configuration for the origin authentication method. Configuration for the origin authentication method.
 class OriginAuthenticationMethod {
-  final pulumi.Input<Jwt>? jwt;
+  final pulumi.Input<Jwt?>? jwt;
 
   /// Creates a new [OriginAuthenticationMethod].
   /// [jwt] Optional.

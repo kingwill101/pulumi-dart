@@ -63,7 +63,7 @@ class CorsPolicyResponse {
       allowOrigins: pulumi.Input.fromValue((map['allowOrigins'] as List).cast<String>()),
       disabled: pulumi.Input.fromValue(map['disabled'] as bool),
       exposeHeaders: pulumi.Input.fromValue((map['exposeHeaders'] as List).cast<String>()),
-      maxAge: pulumi.Input.fromValue(map['maxAge'] as int),
+      maxAge: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxAge'])),
     );
   }
 }

@@ -7,15 +7,15 @@ import 'performance_threshold.dart';
 /// A WindowsBasedSli defines good_service as the count of time windows for which the provided service was of good quality. Criteria for determining if service was good are embedded in the window_criterion.
 class WindowsBasedSli {
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window.
-  final pulumi.Input<String>? goodBadMetricFilter;
+  final pulumi.Input<String?>? goodBadMetricFilter;
   /// A window is good if its performance is high enough.
-  final pulumi.Input<PerformanceThreshold>? goodTotalRatioThreshold;
+  final pulumi.Input<PerformanceThreshold?>? goodTotalRatioThreshold;
   /// A window is good if the metric's value is in a good range, averaged across returned streams.
-  final pulumi.Input<MetricRange>? metricMeanInRange;
+  final pulumi.Input<MetricRange?>? metricMeanInRange;
   /// A window is good if the metric's value is in a good range, summed across returned streams.
-  final pulumi.Input<MetricRange>? metricSumInRange;
+  final pulumi.Input<MetricRange?>? metricSumInRange;
   /// Duration over which window quality is evaluated. Must be an integer fraction of a day and at least 60s.
-  final pulumi.Input<String>? windowPeriod;
+  final pulumi.Input<String?>? windowPeriod;
 
   /// Creates a new [WindowsBasedSli].
   /// [goodBadMetricFilter] A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window.

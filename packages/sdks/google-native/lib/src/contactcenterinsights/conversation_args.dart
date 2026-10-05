@@ -11,31 +11,31 @@ import 'google_cloud_contactcenterinsights_v1_conversation_data_source.dart';
 /// {@macro pulumi_contactcenterinsights_v1_conversation_args_doc}
 class ConversationArgs {
   /// An opaque, user-specified string representing the human agent who handled the conversation.
-  final pulumi.Input<String>? agentId;
+  final pulumi.Input<String?>? agentId;
   /// Call-specific metadata.
-  final pulumi.Input<GoogleCloudContactcenterinsightsV1ConversationCallMetadata>? callMetadata;
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1ConversationCallMetadata?>? callMetadata;
   /// A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
-  final pulumi.Input<String>? conversationId;
+  final pulumi.Input<String?>? conversationId;
   /// The source of the audio and transcription for the conversation.
-  final pulumi.Input<GoogleCloudContactcenterinsightsV1ConversationDataSource>? dataSource;
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1ConversationDataSource?>? dataSource;
   /// The time at which this conversation should expire. After this time, the conversation data and any associated analyses will be deleted.
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
   /// A map for the user to specify any custom fields. A maximum of 20 labels per conversation is allowed, with a maximum of 256 characters per entry.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// A user-specified language code for the conversation.
-  final pulumi.Input<String>? languageCode;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? languageCode;
+  final pulumi.Input<String?>? location;
   /// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
-  final pulumi.Input<ConversationMedium>? medium;
+  final pulumi.Input<ConversationMedium?>? medium;
   /// Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Obfuscated user ID which the customer sent to us.
-  final pulumi.Input<String>? obfuscatedUserId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? obfuscatedUserId;
+  final pulumi.Input<String?>? project;
   /// The time at which the conversation started.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time.
-  final pulumi.Input<String>? ttl;
+  final pulumi.Input<String?>? ttl;
 
   /// Creates a new [ConversationArgs].
   /// [agentId] An opaque, user-specified string representing the human agent who handled the conversation.

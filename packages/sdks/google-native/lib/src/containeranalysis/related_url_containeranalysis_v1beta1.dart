@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata for any related URL information.
 class RelatedUrlContaineranalysisV1beta1 {
   /// Label to describe usage of the URL.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Specific URL associated with the resource.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [RelatedUrlContaineranalysisV1beta1].
   /// [label] Label to describe usage of the URL.

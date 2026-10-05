@@ -32,6 +32,17 @@ Future<GetAppProfileResult> getAppProfile(
   return GetAppProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetAppProfileResult> getAppProfileOutput(
+  GetAppProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:bigtableadmin/v2:getAppProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppProfileResult.fromMap);
+}
+
 /// Gets metadata on a pending or completed Cloud Bigtable Backup.
 /// [args] Arguments passed to this invoke. {@macro pulumi_bigtableadmin_v2_get_backup_args_doc}
 /// [options] Invoke options controlling this call.
@@ -46,6 +57,17 @@ Future<GetBackupResult> getBackup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackupResult.fromMap(result);
+}
+
+pulumi.Output<GetBackupResult> getBackupOutput(
+  GetBackupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:bigtableadmin/v2:getBackup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupResult.fromMap);
 }
 
 /// Gets information about a cluster.
@@ -64,6 +86,17 @@ Future<GetClusterResult> getCluster(
   return GetClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:bigtableadmin/v2:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
+}
+
 /// Gets information about an instance.
 /// [args] Arguments passed to this invoke. {@macro pulumi_bigtableadmin_v2_get_instance_args_doc}
 /// [options] Invoke options controlling this call.
@@ -78,6 +111,17 @@ Future<GetInstanceResult> getInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:bigtableadmin/v2:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
 }
 
 /// Gets the access control policy for a Table or Backup resource. Returns an empty policy if the resource exists but does not have a policy set.
@@ -96,6 +140,17 @@ Future<GetInstanceClusterBackupIamPolicyResult> getInstanceClusterBackupIamPolic
   return GetInstanceClusterBackupIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceClusterBackupIamPolicyResult> getInstanceClusterBackupIamPolicyOutput(
+  GetInstanceClusterBackupIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:bigtableadmin/v2:getInstanceClusterBackupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceClusterBackupIamPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_bigtableadmin_v2_get_instance_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -110,6 +165,17 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
+  GetInstanceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:bigtableadmin/v2:getInstanceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceIamPolicyResult.fromMap);
 }
 
 /// Gets the access control policy for a Table or Backup resource. Returns an empty policy if the resource exists but does not have a policy set.
@@ -128,6 +194,17 @@ Future<GetInstanceTableIamPolicyResult> getInstanceTableIamPolicy(
   return GetInstanceTableIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceTableIamPolicyResult> getInstanceTableIamPolicyOutput(
+  GetInstanceTableIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:bigtableadmin/v2:getInstanceTableIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceTableIamPolicyResult.fromMap);
+}
+
 /// Gets metadata information about the specified table.
 /// [args] Arguments passed to this invoke. {@macro pulumi_bigtableadmin_v2_get_table_args_doc}
 /// [options] Invoke options controlling this call.
@@ -142,4 +219,15 @@ Future<GetTableResult> getTable(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTableResult.fromMap(result);
+}
+
+pulumi.Output<GetTableResult> getTableOutput(
+  GetTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:bigtableadmin/v2:getTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTableResult.fromMap);
 }

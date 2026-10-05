@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The specification for modifying the URL of the request, prior to forwarding the request to the destination.
 class HttpRouteURLRewrite {
   /// Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
-  final pulumi.Input<String>? hostRewrite;
+  final pulumi.Input<String?>? hostRewrite;
   /// Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
-  final pulumi.Input<String>? pathPrefixRewrite;
+  final pulumi.Input<String?>? pathPrefixRewrite;
 
   /// Creates a new [HttpRouteURLRewrite].
   /// [hostRewrite] Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.

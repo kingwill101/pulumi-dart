@@ -6,19 +6,19 @@ import 'deployment_platform.dart';
 /// The period during which some deployable was active in a runtime.
 class DeploymentType {
   /// Address of the runtime element hosting this deployment.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Configuration used to create this deployment.
-  final pulumi.Input<String>? config;
+  final pulumi.Input<String?>? config;
   /// Beginning of the lifetime of this deployment.
-  final pulumi.Input<String>? deployTime;
+  final pulumi.Input<String?>? deployTime;
   /// Platform hosting this deployment.
-  final pulumi.Input<DeploymentPlatform>? platform;
+  final pulumi.Input<DeploymentPlatform?>? platform;
   /// Resource URI for the artifact being deployed taken from the deployable field with the same name.
-  final pulumi.Input<List<String>>? resourceUri;
+  final pulumi.Input<List<String>?>? resourceUri;
   /// End of the lifetime of this deployment.
-  final pulumi.Input<String>? undeployTime;
+  final pulumi.Input<String?>? undeployTime;
   /// Identity of the user that triggered this deployment.
-  final pulumi.Input<String>? userEmail;
+  final pulumi.Input<String?>? userEmail;
 
   /// Creates a new [DeploymentType].
   /// [address] Address of the runtime element hosting this deployment.

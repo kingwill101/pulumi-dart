@@ -1,12 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'git_lab_config_args.dart';
 import 'git_lab_enterprise_config_response.dart';
+import 'git_lab_repository_id_response.dart';
 import 'git_lab_secrets_response.dart';
 
 /// Creates a new `GitLabConfig`. This API is experimental
 class GitLabConfig extends pulumi.CustomResource {
   /// Connected GitLab.com or GitLabEnterprise repositories for this config.
-  late final pulumi.Output<List<Map<String, dynamic>>> connectedRepositories;
+  late final pulumi.Output<List<GitLabRepositoryIdResponse>> connectedRepositories;
   /// Time when the config was created.
   late final pulumi.Output<String> createTime;
   /// Optional. GitLabEnterprise config.
@@ -36,9 +37,30 @@ class GitLabConfig extends pulumi.CustomResource {
           'google-native:cloudbuild/v1:GitLabConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
-    connectedRepositories = registerOutput<List<Map<String, dynamic>>>('connectedRepositories');
+    connectedRepositories = registerOutput<List<GitLabRepositoryIdResponse>>('connectedRepositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GitLabRepositoryIdResponse>(guardedValue, (value) => GitLabRepositoryIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    enterpriseConfig = registerOutput<GitLabEnterpriseConfigResponse>('enterpriseConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitLabEnterpriseConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gitlabConfigId = registerOutput<String?>('gitlabConfigId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    secrets = registerOutput<GitLabSecretsResponse>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitLabSecretsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    username = registerOutput<String>('username');
+    webhookKey = registerOutput<String>('webhookKey');
+  }
+
+  /// Creates a typed reference to an existing [GitLabConfig] resource.
+  GitLabConfig.reference(String urn)
+    : super(
+        'google-native:cloudbuild/v1:GitLabConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    connectedRepositories = registerOutput<List<GitLabRepositoryIdResponse>>('connectedRepositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GitLabRepositoryIdResponse>(guardedValue, (value) => GitLabRepositoryIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     enterpriseConfig = registerOutput<GitLabEnterpriseConfigResponse>('enterpriseConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitLabEnterpriseConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gitlabConfigId = registerOutput<String?>('gitlabConfigId');

@@ -10,17 +10,17 @@ import 'google_cloud_dialogflow_cx_v3beta1_text_input.dart';
 /// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
 class GoogleCloudDialogflowCxV3beta1QueryInput {
   /// The natural language speech audio to be processed.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AudioInput>? audio;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AudioInput?>? audio;
   /// The DTMF event to be handled.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1DtmfInput>? dtmf;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1DtmfInput?>? dtmf;
   /// The event to be triggered.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1EventInput>? event;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1EventInput?>? event;
   /// The intent to be triggered.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1IntentInput>? intent;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1IntentInput?>? intent;
   /// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
   final pulumi.Input<String> languageCode;
   /// The natural language text to be processed.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1TextInput>? text;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1TextInput?>? text;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1QueryInput].
   /// [audio] The natural language speech audio to be processed.

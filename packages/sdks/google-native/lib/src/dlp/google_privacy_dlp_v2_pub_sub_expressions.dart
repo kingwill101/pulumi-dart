@@ -7,9 +7,9 @@ import 'google_privacy_dlp_v2_pub_sub_expressions_logical_operator.dart';
 /// An expression, consisting of an operator and conditions.
 class GooglePrivacyDlpV2PubSubExpressions {
   /// Conditions to apply to the expression.
-  final pulumi.Input<List<GooglePrivacyDlpV2PubSubCondition>>? conditions;
+  final pulumi.Input<List<GooglePrivacyDlpV2PubSubCondition>?>? conditions;
   /// The operator to apply to the collection of conditions.
-  final pulumi.Input<GooglePrivacyDlpV2PubSubExpressionsLogicalOperator>? logicalOperator;
+  final pulumi.Input<GooglePrivacyDlpV2PubSubExpressionsLogicalOperator?>? logicalOperator;
 
   /// Creates a new [GooglePrivacyDlpV2PubSubExpressions].
   /// [conditions] Conditions to apply to the expression.

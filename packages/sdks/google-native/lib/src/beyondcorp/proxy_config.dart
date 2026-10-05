@@ -40,8 +40,30 @@ class ProxyConfig extends pulumi.CustomResource {
           'google-native:beyondcorp/v1alpha:ProxyConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId', 'partnerTenantId']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    encryptionInfo = registerOutput<GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse>('encryptionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    partnerTenantId = registerOutput<String>('partnerTenantId');
+    proxyUri = registerOutput<String>('proxyUri');
+    requestId = registerOutput<String?>('requestId');
+    routingInfo = registerOutput<GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse>('routingInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    transportInfo = registerOutput<GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse>('transportInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ProxyConfig] resource.
+  ProxyConfig.reference(String urn)
+    : super(
+        'google-native:beyondcorp/v1alpha:ProxyConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     encryptionInfo = registerOutput<GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse>('encryptionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

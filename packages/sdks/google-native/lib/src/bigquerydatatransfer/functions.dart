@@ -17,3 +17,14 @@ Future<GetTransferConfigResult> getTransferConfig(
   );
   return GetTransferConfigResult.fromMap(result);
 }
+
+pulumi.Output<GetTransferConfigResult> getTransferConfigOutput(
+  GetTransferConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:bigquerydatatransfer/v1:getTransferConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTransferConfigResult.fromMap);
+}

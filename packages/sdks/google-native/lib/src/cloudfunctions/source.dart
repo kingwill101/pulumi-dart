@@ -7,11 +7,11 @@ import 'storage_source.dart';
 /// The location of the function source code.
 class Source {
   /// If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//
-  final pulumi.Input<String>? gitUri;
+  final pulumi.Input<String?>? gitUri;
   /// If provided, get the source from this location in a Cloud Source Repository.
-  final pulumi.Input<RepoSource>? repoSource;
+  final pulumi.Input<RepoSource?>? repoSource;
   /// If provided, get the source from this location in Google Cloud Storage.
-  final pulumi.Input<StorageSource>? storageSource;
+  final pulumi.Input<StorageSource?>? storageSource;
 
   /// Creates a new [Source].
   /// [gitUri] If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//

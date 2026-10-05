@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// This encapsulates a metric property of the form sum(message_count) where name is message_count and function is sum
 class GoogleCloudApigeeV1CustomReportMetric {
   /// aggregate function
-  final pulumi.Input<String>? function;
+  final pulumi.Input<String?>? function;
   /// name of the metric
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GoogleCloudApigeeV1CustomReportMetric].
   /// [function] aggregate function

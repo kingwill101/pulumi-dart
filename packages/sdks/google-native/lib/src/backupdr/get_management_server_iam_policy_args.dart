@@ -9,8 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetManagementServerIamPolicyArgs {
   final pulumi.Input<String> location;
   final pulumi.Input<String> managementServerId;
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetManagementServerIamPolicyArgs].
   /// [location] Required.
@@ -37,7 +37,7 @@ class GetManagementServerIamPolicyArgs {
     return GetManagementServerIamPolicyArgs(
       location: pulumi.Input.fromValue(map['location'] as String),
       managementServerId: pulumi.Input.fromValue(map['managementServerId'] as String),
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

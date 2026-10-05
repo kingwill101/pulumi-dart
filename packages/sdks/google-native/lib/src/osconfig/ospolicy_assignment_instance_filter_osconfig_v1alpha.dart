@@ -7,15 +7,15 @@ import 'ospolicy_assignment_label_set_osconfig_v1alpha.dart';
 /// Filters to select target VMs for an assignment. If more than one filter criteria is specified below, a VM will be selected if and only if it satisfies all of them.
 class OSPolicyAssignmentInstanceFilterOsconfigV1alpha {
   /// Target all VMs in the project. If true, no other criteria is permitted.
-  final pulumi.Input<bool>? all;
+  final pulumi.Input<bool?>? all;
   /// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
-  final pulumi.Input<List<OSPolicyAssignmentLabelSetOsconfigV1alpha>>? exclusionLabels;
+  final pulumi.Input<List<OSPolicyAssignmentLabelSetOsconfigV1alpha>?>? exclusionLabels;
   /// List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
-  final pulumi.Input<List<OSPolicyAssignmentLabelSetOsconfigV1alpha>>? inclusionLabels;
+  final pulumi.Input<List<OSPolicyAssignmentLabelSetOsconfigV1alpha>?>? inclusionLabels;
   /// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
-  final pulumi.Input<List<OSPolicyAssignmentInstanceFilterInventoryOsconfigV1alpha>>? inventories;
+  final pulumi.Input<List<OSPolicyAssignmentInstanceFilterInventoryOsconfigV1alpha>?>? inventories;
   /// Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
-  final pulumi.Input<List<String>>? osShortNames;
+  final pulumi.Input<List<String>?>? osShortNames;
 
   /// Creates a new [OSPolicyAssignmentInstanceFilterOsconfigV1alpha].
   /// [all] Target all VMs in the project. If true, no other criteria is permitted.

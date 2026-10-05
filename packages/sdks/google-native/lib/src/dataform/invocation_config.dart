@@ -6,17 +6,17 @@ import 'target.dart';
 /// Includes various configuration options for a workflow invocation. If both `included_targets` and `included_tags` are unset, all actions will be included.
 class InvocationConfig {
   /// Optional. When set to true, any incremental tables will be fully refreshed.
-  final pulumi.Input<bool>? fullyRefreshIncrementalTablesEnabled;
+  final pulumi.Input<bool?>? fullyRefreshIncrementalTablesEnabled;
   /// Optional. The set of tags to include.
-  final pulumi.Input<List<String>>? includedTags;
+  final pulumi.Input<List<String>?>? includedTags;
   /// Optional. The set of action identifiers to include.
-  final pulumi.Input<List<Target>>? includedTargets;
+  final pulumi.Input<List<Target>?>? includedTargets;
   /// Optional. The service account to run workflow invocations under.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Optional. When set to true, transitive dependencies of included actions will be executed.
-  final pulumi.Input<bool>? transitiveDependenciesIncluded;
+  final pulumi.Input<bool?>? transitiveDependenciesIncluded;
   /// Optional. When set to true, transitive dependents of included actions will be executed.
-  final pulumi.Input<bool>? transitiveDependentsIncluded;
+  final pulumi.Input<bool?>? transitiveDependentsIncluded;
 
   /// Creates a new [InvocationConfig].
   /// [fullyRefreshIncrementalTablesEnabled] Optional. When set to true, any incremental tables will be fully refreshed.

@@ -6,7 +6,7 @@ import 'fhir_output.dart';
 /// Details about the work the de-identify operation performed.
 class DeidentifyOperationMetadata {
   /// Details about the FHIR store to write the output to.
-  final pulumi.Input<FhirOutput>? fhirOutput;
+  final pulumi.Input<FhirOutput?>? fhirOutput;
 
   /// Creates a new [DeidentifyOperationMetadata].
   /// [fhirOutput] Details about the FHIR store to write the output to.

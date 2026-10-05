@@ -11,17 +11,17 @@ import 'on_prem_cluster_gkehub_v1alpha.dart';
 /// MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
 class MembershipEndpointGkehubV1alpha {
   /// Optional. Specific information for a GDC Edge Appliance cluster.
-  final pulumi.Input<ApplianceClusterGkehubV1alpha>? applianceCluster;
+  final pulumi.Input<ApplianceClusterGkehubV1alpha?>? applianceCluster;
   /// Optional. Specific information for a Google Edge cluster.
-  final pulumi.Input<EdgeClusterGkehubV1alpha>? edgeCluster;
+  final pulumi.Input<EdgeClusterGkehubV1alpha?>? edgeCluster;
   /// Optional. Specific information for a GKE-on-GCP cluster.
-  final pulumi.Input<GkeClusterGkehubV1alpha>? gkeCluster;
+  final pulumi.Input<GkeClusterGkehubV1alpha?>? gkeCluster;
   /// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
-  final pulumi.Input<KubernetesResourceGkehubV1alpha>? kubernetesResource;
+  final pulumi.Input<KubernetesResourceGkehubV1alpha?>? kubernetesResource;
   /// Optional. Specific information for a GKE Multi-Cloud cluster.
-  final pulumi.Input<MultiCloudClusterGkehubV1alpha>? multiCloudCluster;
+  final pulumi.Input<MultiCloudClusterGkehubV1alpha?>? multiCloudCluster;
   /// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
-  final pulumi.Input<OnPremClusterGkehubV1alpha>? onPremCluster;
+  final pulumi.Input<OnPremClusterGkehubV1alpha?>? onPremCluster;
 
   /// Creates a new [MembershipEndpointGkehubV1alpha].
   /// [applianceCluster] Optional. Specific information for a GDC Edge Appliance cluster.

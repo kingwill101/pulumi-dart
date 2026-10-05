@@ -9,22 +9,22 @@ import 'time_series_value_type_aiplatform_v1beta1.dart';
 /// {@macro pulumi_aiplatform_v1beta1_time_series_aiplatform_v1beta1_args_doc}
 class TimeSeriesAiplatformV1beta1Args {
   /// Description of this TensorboardTimeSeries.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User provided name of this TensorboardTimeSeries. This value should be unique among all TensorboardTimeSeries resources belonging to the same TensorboardRun resource (parent resource).
   final pulumi.Input<String> displayName;
   /// Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   final pulumi.Input<String> experimentId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Data of the current plugin, with the size limited to 65KB.
-  final pulumi.Input<String>? pluginData;
+  final pulumi.Input<String?>? pluginData;
   /// Immutable. Name of the plugin this time series pertain to. Such as Scalar, Tensor, Blob
-  final pulumi.Input<String>? pluginName;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? pluginName;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> runId;
   final pulumi.Input<String> tensorboardId;
   /// Optional. The user specified unique ID to use for the TensorboardTimeSeries, which becomes the final component of the TensorboardTimeSeries's resource name. This value should match "a-z0-9{0, 127}"
-  final pulumi.Input<String>? tensorboardTimeSeriesId;
+  final pulumi.Input<String?>? tensorboardTimeSeriesId;
   /// Immutable. Type of TensorboardTimeSeries value.
   final pulumi.Input<TimeSeriesValueTypeAiplatformV1beta1> valueType;
 

@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_monitoring_v3_get_snooze_args_doc}
 class GetSnoozeArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> snoozeId;
 
   /// Creates a new [GetSnoozeArgs].

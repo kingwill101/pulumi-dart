@@ -9,25 +9,25 @@ import 'google_cloud_apigee_v1_attribute.dart';
 /// {@macro pulumi_apigee_v1_app_group_app_args_doc}
 class AppGroupAppArgs {
   /// List of API products associated with the AppGroup app.
-  final pulumi.Input<List<String>>? apiProducts;
+  final pulumi.Input<List<String>?>? apiProducts;
   /// Immutable. Name of the parent AppGroup whose resource name format is of syntax (organizations/*/appgroups/*).
-  final pulumi.Input<String>? appGroup;
+  final pulumi.Input<String?>? appGroup;
   /// Immutable. ID of the AppGroup app.
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   final pulumi.Input<String> appgroupId;
   /// List of attributes for the AppGroup app.
-  final pulumi.Input<List<GoogleCloudApigeeV1Attribute>>? attributes;
+  final pulumi.Input<List<GoogleCloudApigeeV1Attribute>?>? attributes;
   /// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to AppGroup apps.
-  final pulumi.Input<String>? callbackUrl;
+  final pulumi.Input<String?>? callbackUrl;
   /// Immutable. Expiration time, in seconds, for the consumer key that is generated for the AppGroup app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
-  final pulumi.Input<String>? keyExpiresIn;
+  final pulumi.Input<String?>? keyExpiresIn;
   /// Immutable. Name of the AppGroup app whose resource name format is of syntax (organizations/*/appgroups/*/apps/*).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
   /// Scopes to apply to the AppGroup app. The specified scopes must already exist for the API product that you associate with the AppGroup app.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
   /// Status of the App. Valid values include `approved` or `revoked`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [AppGroupAppArgs].
   /// [apiProducts] List of API products associated with the AppGroup app.

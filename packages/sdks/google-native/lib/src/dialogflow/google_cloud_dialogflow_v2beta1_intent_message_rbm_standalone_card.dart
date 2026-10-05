@@ -12,7 +12,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard {
   /// Orientation of the card.
   final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation> cardOrientation;
   /// Required if orientation is horizontal. Image preview alignment for standalone cards with horizontal layout.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment>? thumbnailImageAlignment;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment?>? thumbnailImageAlignment;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard].
   /// [cardContent] Card content.

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the model.
-enum ModelFilteringOption {
+enum ModelFilteringOption implements pulumi.PulumiEnum<String> {
   recommendationsFilteringOptionUnspecified("RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED"),
   recommendationsFilteringDisabled("RECOMMENDATIONS_FILTERING_DISABLED"),
   recommendationsFilteringEnabled("RECOMMENDATIONS_FILTERING_ENABLED");
 
   const ModelFilteringOption(this.wireValue);
+  @override
   final String wireValue;
 
   static ModelFilteringOption fromValue(String value) {

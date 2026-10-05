@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_performance_config_total_egress_bandwidth_tier_compute_beta.dart';
 
 class NetworkPerformanceConfigComputeBeta {
-  final pulumi.Input<NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta>? totalEgressBandwidthTier;
+  final pulumi.Input<NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta?>? totalEgressBandwidthTier;
 
   /// Creates a new [NetworkPerformanceConfigComputeBeta].
   /// [totalEgressBandwidthTier] Optional.

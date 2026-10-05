@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1beta1SampledShapleyAttributionResponse {
 
   factory GoogleCloudAiplatformV1beta1SampledShapleyAttributionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1SampledShapleyAttributionResponse(
-      pathCount: pulumi.Input.fromValue(map['pathCount'] as int),
+      pathCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['pathCount'])),
     );
   }
 }

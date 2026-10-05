@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed.
-enum PublicAdvertisedPrefixStatusComputeV1 {
+enum PublicAdvertisedPrefixStatusComputeV1 implements pulumi.PulumiEnum<String> {
   announcedToInternet("ANNOUNCED_TO_INTERNET"),
   initial("INITIAL"),
   prefixConfigurationComplete("PREFIX_CONFIGURATION_COMPLETE"),
@@ -11,6 +13,7 @@ enum PublicAdvertisedPrefixStatusComputeV1 {
   validated("VALIDATED");
 
   const PublicAdvertisedPrefixStatusComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static PublicAdvertisedPrefixStatusComputeV1 fromValue(String value) {

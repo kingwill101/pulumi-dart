@@ -6,9 +6,9 @@ import 'database_encryption_state.dart';
 /// Configuration of etcd encryption.
 class DatabaseEncryption {
   /// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// The desired state of etcd encryption.
-  final pulumi.Input<DatabaseEncryptionState>? state;
+  final pulumi.Input<DatabaseEncryptionState?>? state;
 
   /// Creates a new [DatabaseEncryption].
   /// [keyName] Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key

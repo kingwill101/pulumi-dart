@@ -74,8 +74,45 @@ class Instance extends pulumi.CustomResource {
           'google-native:looker/v1:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceId', 'location', 'project']).merge(options),
         ) {
+    adminSettings = registerOutput<AdminSettingsResponse>('adminSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdminSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    consumerNetwork = registerOutput<String>('consumerNetwork');
+    createTime = registerOutput<String>('createTime');
+    customDomain = registerOutput<CustomDomainResponse>('customDomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomDomainResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    denyMaintenancePeriod = registerOutput<DenyMaintenancePeriodResponse>('denyMaintenancePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DenyMaintenancePeriodResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    egressPublicIp = registerOutput<String>('egressPublicIp');
+    encryptionConfig = registerOutput<EncryptionConfigResponse>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ingressPrivateIp = registerOutput<String>('ingressPrivateIp');
+    ingressPublicIp = registerOutput<String>('ingressPublicIp');
+    instanceId = registerOutput<String>('instanceId');
+    lastDenyMaintenancePeriod = registerOutput<DenyMaintenancePeriodResponse>('lastDenyMaintenancePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DenyMaintenancePeriodResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    lookerUri = registerOutput<String>('lookerUri');
+    lookerVersion = registerOutput<String>('lookerVersion');
+    maintenanceSchedule = registerOutput<MaintenanceScheduleResponse>('maintenanceSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceWindow = registerOutput<MaintenanceWindowResponse>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceWindowResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    oauthConfig = registerOutput<OAuthConfigResponse>('oauthConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OAuthConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    platformEdition = registerOutput<String>('platformEdition');
+    privateIpEnabled = registerOutput<bool>('privateIpEnabled');
+    project = registerOutput<String>('project');
+    publicIpEnabled = registerOutput<bool>('publicIpEnabled');
+    reservedRange = registerOutput<String>('reservedRange');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    userMetadata = registerOutput<UserMetadataResponse>('userMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'google-native:looker/v1:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     adminSettings = registerOutput<AdminSettingsResponse>('adminSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdminSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consumerNetwork = registerOutput<String>('consumerNetwork');
     createTime = registerOutput<String>('createTime');

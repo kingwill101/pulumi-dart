@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_pubsublite_v1_get_reservation_args_doc}
 class GetReservationArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> reservationId;
 
   /// Creates a new [GetReservationArgs].

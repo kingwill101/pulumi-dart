@@ -125,7 +125,7 @@ class JobStatisticsResponse {
 
   factory JobStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return JobStatisticsResponse(
-      completionRatio: pulumi.Input.fromValue(map['completionRatio'] as double),
+      completionRatio: pulumi.Input.fromValue((map['completionRatio'] as num).toDouble()),
       copy: pulumi.Input.fromValue(JobStatistics5Response.fromMap((map['copy']! as Map).cast<String, dynamic>())),
       creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
       dataMaskingStatistics: pulumi.Input.fromValue(DataMaskingStatisticsResponse.fromMap((map['dataMaskingStatistics']! as Map).cast<String, dynamic>())),

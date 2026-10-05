@@ -26,7 +26,7 @@ class AcceleratorConfigResponseComputeV1 {
 
   factory AcceleratorConfigResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return AcceleratorConfigResponseComputeV1(
-      acceleratorCount: pulumi.Input.fromValue(map['acceleratorCount'] as int),
+      acceleratorCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['acceleratorCount'])),
       acceleratorType: pulumi.Input.fromValue(map['acceleratorType'] as String),
     );
   }

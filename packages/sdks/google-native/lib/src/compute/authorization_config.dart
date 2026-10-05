@@ -6,7 +6,7 @@ import 'rbac_policy.dart';
 /// [Deprecated] Authorization configuration provides service-level and method-level access control for a service. control for a service.
 class AuthorizationConfig {
   /// List of RbacPolicies.
-  final pulumi.Input<List<RbacPolicy>>? policies;
+  final pulumi.Input<List<RbacPolicy>?>? policies;
 
   /// Creates a new [AuthorizationConfig].
   /// [policies] List of RbacPolicies.

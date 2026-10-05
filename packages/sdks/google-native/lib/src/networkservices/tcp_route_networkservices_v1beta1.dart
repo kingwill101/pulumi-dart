@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tcp_route_networkservices_v1beta1_args.dart';
+import 'tcp_route_route_rule_response_networkservices_v1beta1.dart';
 
 /// Creates a new TcpRoute in a given project and location.
 class TcpRouteNetworkservicesV1beta1 extends pulumi.CustomResource {
@@ -18,7 +19,7 @@ class TcpRouteNetworkservicesV1beta1 extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   /// Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<TcpRouteRouteRuleResponseNetworkservicesV1beta1>> rules;
   /// Server-defined URL of this resource
   late final pulumi.Output<String> selfLink;
   /// Required. Short name of the TcpRoute resource to be created.
@@ -38,17 +39,40 @@ class TcpRouteNetworkservicesV1beta1 extends pulumi.CustomResource {
           'google-native:networkservices/v1beta1:TcpRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'tcpRouteId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
-    gateways = registerOutput<List<String>>('gateways');
-    labels = registerOutput<Map<String, String>>('labels');
+    gateways = registerOutput<List<String>>('gateways', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    meshes = registerOutput<List<String>>('meshes');
+    meshes = registerOutput<List<String>>('meshes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<TcpRouteRouteRuleResponseNetworkservicesV1beta1>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TcpRouteRouteRuleResponseNetworkservicesV1beta1>(guardedValue, (value) => TcpRouteRouteRuleResponseNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    selfLink = registerOutput<String>('selfLink');
+    tcpRouteId = registerOutput<String>('tcpRouteId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [TcpRouteNetworkservicesV1beta1] resource.
+  TcpRouteNetworkservicesV1beta1.reference(String urn)
+    : super(
+        'google-native:networkservices/v1beta1:TcpRoute',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    gateways = registerOutput<List<String>>('gateways', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    meshes = registerOutput<List<String>>('meshes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rules = registerOutput<List<TcpRouteRouteRuleResponseNetworkservicesV1beta1>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TcpRouteRouteRuleResponseNetworkservicesV1beta1>(guardedValue, (value) => TcpRouteRouteRuleResponseNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     tcpRouteId = registerOutput<String>('tcpRouteId');
     updateTime = registerOutput<String>('updateTime');

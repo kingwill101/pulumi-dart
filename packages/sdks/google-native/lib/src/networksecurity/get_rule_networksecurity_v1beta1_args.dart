@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRuleNetworksecurityV1beta1Args {
   final pulumi.Input<String> gatewaySecurityPolicyId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> ruleId;
 
   /// Creates a new [GetRuleNetworksecurityV1beta1Args].

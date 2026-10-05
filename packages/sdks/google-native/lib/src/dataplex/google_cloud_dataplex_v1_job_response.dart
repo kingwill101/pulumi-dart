@@ -82,7 +82,7 @@ class GoogleCloudDataplexV1JobResponse {
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       message: pulumi.Input.fromValue(map['message'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      retryCount: pulumi.Input.fromValue(map['retryCount'] as int),
+      retryCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retryCount'])),
       service: pulumi.Input.fromValue(map['service'] as String),
       serviceJob: pulumi.Input.fromValue(map['serviceJob'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),

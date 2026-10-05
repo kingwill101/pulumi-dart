@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources (https://cloud.google.com/monitoring/api/resources#tag_k8s_service).
 class GkeService {
   /// The name of the parent cluster.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// The location of the parent cluster. This may be a zone or region.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the parent namespace.
-  final pulumi.Input<String>? namespaceName;
+  final pulumi.Input<String?>? namespaceName;
   /// The name of this service.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
 
   /// Creates a new [GkeService].
   /// [clusterName] The name of the parent cluster.

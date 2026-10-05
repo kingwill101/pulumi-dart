@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VerticalPodAutoscaling contains global, per-cluster information required by Vertical Pod Autoscaler to automatically adjust the resources of pods controlled by it.
 class VerticalPodAutoscalingContainerV1beta1 {
   /// Enables vertical pod autoscaling.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [VerticalPodAutoscalingContainerV1beta1].
   /// [enabled] Enables vertical pod autoscaling.

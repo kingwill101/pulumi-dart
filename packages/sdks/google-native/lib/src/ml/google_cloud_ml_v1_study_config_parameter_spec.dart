@@ -14,22 +14,22 @@ import 'google_cloud_ml_v1_study_config_parameter_spec_type.dart';
 /// Represents a single parameter to optimize.
 class GoogleCloudMlV1StudyConfigParameterSpec {
   /// The value spec for a 'CATEGORICAL' parameter.
-  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec>? categoricalValueSpec;
+  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec?>? categoricalValueSpec;
   /// A child node is active if the parameter's value matches the child node's matching_parent_values. If two items in child_parameter_specs have the same name, they must have disjoint matching_parent_values.
-  final pulumi.Input<List<GoogleCloudMlV1StudyConfigParameterSpec>>? childParameterSpecs;
+  final pulumi.Input<List<GoogleCloudMlV1StudyConfigParameterSpec>?>? childParameterSpecs;
   /// The value spec for a 'DISCRETE' parameter.
-  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec>? discreteValueSpec;
+  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec?>? discreteValueSpec;
   /// The value spec for a 'DOUBLE' parameter.
-  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec>? doubleValueSpec;
+  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec?>? doubleValueSpec;
   /// The value spec for an 'INTEGER' parameter.
-  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec>? integerValueSpec;
+  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec?>? integerValueSpec;
   /// The parameter name must be unique amongst all ParameterSpecs.
   final pulumi.Input<String> parameter;
-  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec>? parentCategoricalValues;
-  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec>? parentDiscreteValues;
-  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec>? parentIntValues;
+  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec?>? parentCategoricalValues;
+  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec?>? parentDiscreteValues;
+  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec?>? parentIntValues;
   /// How the parameter should be scaled. Leave unset for categorical parameters.
-  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecScaleType>? scaleType;
+  final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecScaleType?>? scaleType;
   /// The type of the parameter.
   final pulumi.Input<GoogleCloudMlV1StudyConfigParameterSpecType> type;
 

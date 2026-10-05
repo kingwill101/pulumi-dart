@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Labels that can be used to filter Apigee metrics.
 class GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
   /// The environment ID associated with the metrics.
-  final pulumi.Input<String>? env;
+  final pulumi.Input<String?>? env;
   /// The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
   final pulumi.Input<String> instanceId;
   /// The location associated with the metrics.

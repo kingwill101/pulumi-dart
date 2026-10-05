@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudsearch_v1_get_data_source_args_doc}
 class GetDataSourceArgs {
   final pulumi.Input<String> datasourceId;
-  final pulumi.Input<bool>? debugOptionsEnableDebugging;
+  final pulumi.Input<bool?>? debugOptionsEnableDebugging;
 
   /// Creates a new [GetDataSourceArgs].
   /// [datasourceId] Required.

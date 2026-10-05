@@ -35,8 +35,29 @@ class OauthIdpConfig extends pulumi.CustomResource {
           'google-native:identitytoolkit/v2:OauthIdpConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'tenantId']).merge(options),
         ) {
+    clientId = registerOutput<String>('clientId');
+    clientSecret = registerOutput<String>('clientSecret');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool>('enabled');
+    issuer = registerOutput<String>('issuer');
+    this.name = registerOutput<String>('name');
+    oauthIdpConfigId = registerOutput<String?>('oauthIdpConfigId');
+    project = registerOutput<String>('project');
+    responseType = registerOutput<GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse>('responseType', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [OauthIdpConfig] resource.
+  OauthIdpConfig.reference(String urn)
+    : super(
+        'google-native:identitytoolkit/v2:OauthIdpConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String>('clientSecret');
     displayName = registerOutput<String>('displayName');

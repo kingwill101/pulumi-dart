@@ -6,7 +6,7 @@ import 'node_config_defaults_container_v1beta1.dart';
 /// Subset of Nodepool message that has defaults.
 class NodePoolDefaultsContainerV1beta1 {
   /// Subset of NodeConfig message that has defaults.
-  final pulumi.Input<NodeConfigDefaultsContainerV1beta1>? nodeConfigDefaults;
+  final pulumi.Input<NodeConfigDefaultsContainerV1beta1?>? nodeConfigDefaults;
 
   /// Creates a new [NodePoolDefaultsContainerV1beta1].
   /// [nodeConfigDefaults] Subset of NodeConfig message that has defaults.

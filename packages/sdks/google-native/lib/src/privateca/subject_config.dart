@@ -7,9 +7,9 @@ import 'subject_alt_names.dart';
 /// These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
 class SubjectConfig {
   /// Optional. Contains distinguished name fields such as the common name, location and organization.
-  final pulumi.Input<Subject>? subject;
+  final pulumi.Input<Subject?>? subject;
   /// Optional. The subject alternative name fields.
-  final pulumi.Input<SubjectAltNames>? subjectAltName;
+  final pulumi.Input<SubjectAltNames?>? subjectAltName;
 
   /// Creates a new [SubjectConfig].
   /// [subject] Optional. Contains distinguished name fields such as the common name, location and organization.

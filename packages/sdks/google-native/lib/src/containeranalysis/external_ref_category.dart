@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package
-enum ExternalRefCategory {
+enum ExternalRefCategory implements pulumi.PulumiEnum<String> {
   categoryUnspecified("CATEGORY_UNSPECIFIED"),
   security("SECURITY"),
   packageManager("PACKAGE_MANAGER"),
@@ -7,6 +9,7 @@ enum ExternalRefCategory {
   other("OTHER");
 
   const ExternalRefCategory(this.wireValue);
+  @override
   final String wireValue;
 
   static ExternalRefCategory fromValue(String value) {

@@ -6,7 +6,7 @@ import 'gce_instance.dart';
 /// Runtime host for a workstation.
 class Host {
   /// Specifies a Compute Engine instance as the host.
-  final pulumi.Input<GceInstance>? gceInstance;
+  final pulumi.Input<GceInstance?>? gceInstance;
 
   /// Creates a new [Host].
   /// [gceInstance] Specifies a Compute Engine instance as the host.

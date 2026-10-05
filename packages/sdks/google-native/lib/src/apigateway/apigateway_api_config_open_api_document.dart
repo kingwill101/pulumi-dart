@@ -6,7 +6,7 @@ import 'apigateway_api_config_file.dart';
 /// An OpenAPI Specification Document describing an API.
 class ApigatewayApiConfigOpenApiDocument {
   /// The OpenAPI Specification document file.
-  final pulumi.Input<ApigatewayApiConfigFile>? document;
+  final pulumi.Input<ApigatewayApiConfigFile?>? document;
 
   /// Creates a new [ApigatewayApiConfigOpenApiDocument].
   /// [document] The OpenAPI Specification document file.

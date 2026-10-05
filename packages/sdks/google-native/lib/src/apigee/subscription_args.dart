@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apigee_v1_subscription_args_doc}
 class SubscriptionArgs {
   /// Name of the API product for which the developer is purchasing a subscription.
-  final pulumi.Input<String>? apiproduct;
+  final pulumi.Input<String?>? apiproduct;
   final pulumi.Input<String> developerId;
   /// Time when the API product subscription ends in milliseconds since epoch.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   final pulumi.Input<String> organizationId;
   /// Time when the API product subscription starts in milliseconds since epoch.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [SubscriptionArgs].
   /// [apiproduct] Name of the API product for which the developer is purchasing a subscription.

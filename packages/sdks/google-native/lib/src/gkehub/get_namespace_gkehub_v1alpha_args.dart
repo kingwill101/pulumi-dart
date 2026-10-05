@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNamespaceGkehubV1alphaArgs {
   final pulumi.Input<String> location;
   final pulumi.Input<String> namespaceId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> scopeId;
 
   /// Creates a new [GetNamespaceGkehubV1alphaArgs].

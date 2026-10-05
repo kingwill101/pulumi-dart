@@ -6,9 +6,9 @@ import 'google_cloud_dialogflow_cx_v3beta1_fulfillment_conditional_cases_case_ca
 /// Each case has a Boolean condition. When it is evaluated to be True, the corresponding messages will be selected and evaluated recursively.
 class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase {
   /// A list of case content.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent>>? caseContent;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent>?>? caseContent;
   /// The condition to activate and select this case. Empty means the condition is always true. The condition is evaluated against form parameters or session parameters. See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase].
   /// [caseContent] A list of case content.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata for a Cloud Bigtable connector used by the job.
 class BigTableIODetails {
   /// InstanceId accessed in the connection.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// ProjectId accessed in the connection.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// TableId accessed in the connection.
-  final pulumi.Input<String>? tableId;
+  final pulumi.Input<String?>? tableId;
 
   /// Creates a new [BigTableIODetails].
   /// [instanceId] InstanceId accessed in the connection.

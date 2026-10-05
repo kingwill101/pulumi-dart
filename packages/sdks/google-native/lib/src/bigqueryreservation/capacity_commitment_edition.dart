@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Edition of the capacity commitment.
-enum CapacityCommitmentEdition {
+enum CapacityCommitmentEdition implements pulumi.PulumiEnum<String> {
   editionUnspecified("EDITION_UNSPECIFIED"),
   standard("STANDARD"),
   enterprise("ENTERPRISE"),
   enterprisePlus("ENTERPRISE_PLUS");
 
   const CapacityCommitmentEdition(this.wireValue);
+  @override
   final String wireValue;
 
   static CapacityCommitmentEdition fromValue(String value) {

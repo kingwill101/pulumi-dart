@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. op specifies the operation to perform.
-enum TransformationRuleActionOp {
+enum TransformationRuleActionOp implements pulumi.PulumiEnum<String> {
   opUnspecified("OP_UNSPECIFIED"),
   remove("REMOVE"),
   move("MOVE"),
@@ -9,6 +11,7 @@ enum TransformationRuleActionOp {
   replace("REPLACE");
 
   const TransformationRuleActionOp(this.wireValue);
+  @override
   final String wireValue;
 
   static TransformationRuleActionOp fromValue(String value) {

@@ -31,8 +31,8 @@ class BareMetalKubeletConfigResponse {
 
   factory BareMetalKubeletConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalKubeletConfigResponse(
-      registryBurst: pulumi.Input.fromValue(map['registryBurst'] as int),
-      registryPullQps: pulumi.Input.fromValue(map['registryPullQps'] as int),
+      registryBurst: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['registryBurst'])),
+      registryPullQps: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['registryPullQps'])),
       serializeImagePullsDisabled: pulumi.Input.fromValue(map['serializeImagePullsDisabled'] as bool),
     );
   }

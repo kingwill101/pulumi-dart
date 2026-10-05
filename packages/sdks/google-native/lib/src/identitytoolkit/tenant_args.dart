@@ -16,36 +16,36 @@ import 'google_cloud_identitytoolkit_admin_v2_sms_region_config.dart';
 /// {@macro pulumi_identitytoolkit_v2_tenant_args_doc}
 class TenantArgs {
   /// Whether to allow email/password user authentication.
-  final pulumi.Input<bool>? allowPasswordSignup;
+  final pulumi.Input<bool?>? allowPasswordSignup;
   /// Whether anonymous users will be auto-deleted after a period of 30 days.
-  final pulumi.Input<bool>? autodeleteAnonymousUsers;
+  final pulumi.Input<bool?>? autodeleteAnonymousUsers;
   /// Options related to how clients making requests on behalf of a project should be configured.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig>? client;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig?>? client;
   /// Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to sign-in. Admins of the disabled tenant are not able to manage its users.
-  final pulumi.Input<bool>? disableAuth;
+  final pulumi.Input<bool?>? disableAuth;
   /// Display name of the tenant.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Configuration for settings related to email privacy and public visibility.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig>? emailPrivacyConfig;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig?>? emailPrivacyConfig;
   /// Whether to enable anonymous user authentication.
-  final pulumi.Input<bool>? enableAnonymousUser;
+  final pulumi.Input<bool?>? enableAnonymousUser;
   /// Whether to enable email link user authentication.
-  final pulumi.Input<bool>? enableEmailLinkSignin;
+  final pulumi.Input<bool?>? enableEmailLinkSignin;
   /// Specify the settings that the tenant could inherit.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2Inheritance>? inheritance;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2Inheritance?>? inheritance;
   /// The tenant-level configuration of MFA options.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig>? mfaConfig;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig?>? mfaConfig;
   /// Configuration related to monitoring project activity.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2MonitoringConfig>? monitoring;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2MonitoringConfig?>? monitoring;
   /// The tenant-level password policy config
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig>? passwordPolicyConfig;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig?>? passwordPolicyConfig;
+  final pulumi.Input<String?>? project;
   /// The tenant-level reCAPTCHA config.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig>? recaptchaConfig;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig?>? recaptchaConfig;
   /// Configures which regions are enabled for SMS verification code sending.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig>? smsRegionConfig;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig?>? smsRegionConfig;
   /// A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
-  final pulumi.Input<Map<String, String>>? testPhoneNumbers;
+  final pulumi.Input<Map<String, String>?>? testPhoneNumbers;
 
   /// Creates a new [TenantArgs].
   /// [allowPasswordSignup] Whether to allow email/password user authentication.

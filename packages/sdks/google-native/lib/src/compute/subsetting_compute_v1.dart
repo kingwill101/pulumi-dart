@@ -5,7 +5,7 @@ import 'subsetting_policy_compute_v1.dart';
 
 /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
 class SubsettingComputeV1 {
-  final pulumi.Input<SubsettingPolicyComputeV1>? policy;
+  final pulumi.Input<SubsettingPolicyComputeV1?>? policy;
 
   /// Creates a new [SubsettingComputeV1].
   /// [policy] Optional.

@@ -7,9 +7,9 @@ import 'tls_validation_context.dart';
 /// [Deprecated] The TLS settings for the client or server. The TLS settings for the client or server.
 class TlsContext {
   /// Defines the mechanism to obtain the client or server certificate.
-  final pulumi.Input<TlsCertificateContext>? certificateContext;
+  final pulumi.Input<TlsCertificateContext?>? certificateContext;
   /// Defines the mechanism to obtain the Certificate Authority certificate to validate the client/server certificate. If omitted, the proxy will not validate the server or client certificate.
-  final pulumi.Input<TlsValidationContext>? validationContext;
+  final pulumi.Input<TlsValidationContext?>? validationContext;
 
   /// Creates a new [TlsContext].
   /// [certificateContext] Defines the mechanism to obtain the client or server certificate.

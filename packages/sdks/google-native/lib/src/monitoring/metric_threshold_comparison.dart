@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently.
-enum MetricThresholdComparison {
+enum MetricThresholdComparison implements pulumi.PulumiEnum<String> {
   comparisonUnspecified("COMPARISON_UNSPECIFIED"),
   comparisonGt("COMPARISON_GT"),
   comparisonGe("COMPARISON_GE"),
@@ -9,6 +11,7 @@ enum MetricThresholdComparison {
   comparisonNe("COMPARISON_NE");
 
   const MetricThresholdComparison(this.wireValue);
+  @override
   final String wireValue;
 
   static MetricThresholdComparison fromValue(String value) {

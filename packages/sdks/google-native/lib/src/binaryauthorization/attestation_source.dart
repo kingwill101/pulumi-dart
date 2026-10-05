@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the locations for fetching the provenance attestations.
 class AttestationSource {
   /// The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
-  final pulumi.Input<List<String>>? containerAnalysisAttestationProjects;
+  final pulumi.Input<List<String>?>? containerAnalysisAttestationProjects;
 
   /// Creates a new [AttestationSource].
   /// [containerAnalysisAttestationProjects] The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.

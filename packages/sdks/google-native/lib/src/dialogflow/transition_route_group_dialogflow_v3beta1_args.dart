@@ -13,13 +13,13 @@ class TransitionRouteGroupDialogflowV3beta1Args {
   final pulumi.Input<String> displayName;
   final pulumi.Input<String> flowId;
   /// The language of the following fields in `TransitionRouteGroup`: * `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` * `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
-  final pulumi.Input<String>? languageCode;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? languageCode;
+  final pulumi.Input<String?>? location;
   /// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Transition routes associated with the TransitionRouteGroup.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1TransitionRoute>>? transitionRoutes;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1TransitionRoute>?>? transitionRoutes;
 
   /// Creates a new [TransitionRouteGroupDialogflowV3beta1Args].
   /// [agentId] Required.

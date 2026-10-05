@@ -38,13 +38,36 @@ class RepositoryArtifactregistryV1beta1 extends pulumi.CustomResource {
           'google-native:artifactregistry/v1beta1:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'repositoryId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     format = registerOutput<String>('format');
     kmsKeyName = registerOutput<String>('kmsKeyName');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    repositoryId = registerOutput<String>('repositoryId');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    sizeBytes = registerOutput<String>('sizeBytes');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [RepositoryArtifactregistryV1beta1] resource.
+  RepositoryArtifactregistryV1beta1.reference(String urn)
+    : super(
+        'google-native:artifactregistry/v1beta1:Repository',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    format = registerOutput<String>('format');
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

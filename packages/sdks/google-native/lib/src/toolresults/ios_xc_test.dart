@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A test of an iOS application that uses the XCTest framework.
 class IosXcTest {
   /// Bundle ID of the app.
-  final pulumi.Input<String>? bundleId;
+  final pulumi.Input<String?>? bundleId;
   /// Xcode version that the test was run with.
-  final pulumi.Input<String>? xcodeVersion;
+  final pulumi.Input<String?>? xcodeVersion;
 
   /// Creates a new [IosXcTest].
   /// [bundleId] Bundle ID of the app.

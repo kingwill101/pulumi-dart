@@ -47,12 +47,12 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse {
 
   factory GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse(
-      differenceCount: pulumi.Input.fromValue(map['differenceCount'] as int),
-      errorCount: pulumi.Input.fromValue(map['errorCount'] as int),
-      logCount: pulumi.Input.fromValue(map['logCount'] as int),
+      differenceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['differenceCount'])),
+      errorCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['errorCount'])),
+      logCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['logCount'])),
       newestDate: pulumi.Input.fromValue(GoogleTypeDateResponsePolicysimulatorV1beta1.fromMap((map['newestDate']! as Map).cast<String, dynamic>())),
       oldestDate: pulumi.Input.fromValue(GoogleTypeDateResponsePolicysimulatorV1beta1.fromMap((map['oldestDate']! as Map).cast<String, dynamic>())),
-      unchangedCount: pulumi.Input.fromValue(map['unchangedCount'] as int),
+      unchangedCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['unchangedCount'])),
     );
   }
 }

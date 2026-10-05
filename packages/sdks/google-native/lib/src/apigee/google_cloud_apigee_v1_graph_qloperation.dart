@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the pairing of GraphQL operation types and the GraphQL operation name.
 class GoogleCloudApigeeV1GraphQLOperation {
   /// GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
-  final pulumi.Input<String>? operation;
+  final pulumi.Input<String?>? operation;
   /// GraphQL operation types. Valid values include `query` or `mutation`. **Note**: Apigee does not currently support `subscription` types.
   final pulumi.Input<List<String>> operationTypes;
 

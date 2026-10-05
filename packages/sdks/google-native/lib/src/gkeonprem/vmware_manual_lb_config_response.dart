@@ -36,10 +36,10 @@ class VmwareManualLbConfigResponse {
 
   factory VmwareManualLbConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareManualLbConfigResponse(
-      controlPlaneNodePort: pulumi.Input.fromValue(map['controlPlaneNodePort'] as int),
-      ingressHttpNodePort: pulumi.Input.fromValue(map['ingressHttpNodePort'] as int),
-      ingressHttpsNodePort: pulumi.Input.fromValue(map['ingressHttpsNodePort'] as int),
-      konnectivityServerNodePort: pulumi.Input.fromValue(map['konnectivityServerNodePort'] as int),
+      controlPlaneNodePort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['controlPlaneNodePort'])),
+      ingressHttpNodePort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ingressHttpNodePort'])),
+      ingressHttpsNodePort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ingressHttpsNodePort'])),
+      konnectivityServerNodePort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['konnectivityServerNodePort'])),
     );
   }
 }

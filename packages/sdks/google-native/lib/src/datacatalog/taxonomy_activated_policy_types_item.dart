@@ -1,8 +1,11 @@
-enum TaxonomyActivatedPolicyTypesItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum TaxonomyActivatedPolicyTypesItem implements pulumi.PulumiEnum<String> {
   policyTypeUnspecified("POLICY_TYPE_UNSPECIFIED"),
   fineGrainedAccessControl("FINE_GRAINED_ACCESS_CONTROL");
 
   const TaxonomyActivatedPolicyTypesItem(this.wireValue);
+  @override
   final String wireValue;
 
   static TaxonomyActivatedPolicyTypesItem fromValue(String value) {

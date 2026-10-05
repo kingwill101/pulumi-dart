@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_aiplatform_v1_get_specialist_pool_args_doc}
 class GetSpecialistPoolArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> specialistPoolId;
 
   /// Creates a new [GetSpecialistPoolArgs].

@@ -50,10 +50,10 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse {
 
   factory GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse(
-      distinctRatio: pulumi.Input.fromValue(map['distinctRatio'] as double),
+      distinctRatio: pulumi.Input.fromValue((map['distinctRatio'] as num).toDouble()),
       doubleProfile: pulumi.Input.fromValue(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse.fromMap((map['doubleProfile']! as Map).cast<String, dynamic>())),
       integerProfile: pulumi.Input.fromValue(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse.fromMap((map['integerProfile']! as Map).cast<String, dynamic>())),
-      nullRatio: pulumi.Input.fromValue(map['nullRatio'] as double),
+      nullRatio: pulumi.Input.fromValue((map['nullRatio'] as num).toDouble()),
       stringProfile: pulumi.Input.fromValue(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse.fromMap((map['stringProfile']! as Map).cast<String, dynamic>())),
       topNValues: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse>(map['topNValues']!, (value) => GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );

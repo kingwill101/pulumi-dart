@@ -31,10 +31,29 @@ class Participant extends pulumi.CustomResource {
           'google-native:dialogflow/v2:Participant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['conversationId', 'location', 'project']).merge(options),
         ) {
     conversationId = registerOutput<String>('conversationId');
-    documentsMetadataFilters = registerOutput<Map<String, String>>('documentsMetadataFilters');
+    documentsMetadataFilters = registerOutput<Map<String, String>>('documentsMetadataFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    obfuscatedExternalUserId = registerOutput<String>('obfuscatedExternalUserId');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    sipRecordingMediaLabel = registerOutput<String>('sipRecordingMediaLabel');
+  }
+
+  /// Creates a typed reference to an existing [Participant] resource.
+  Participant.reference(String urn)
+    : super(
+        'google-native:dialogflow/v2:Participant',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    conversationId = registerOutput<String>('conversationId');
+    documentsMetadataFilters = registerOutput<Map<String, String>>('documentsMetadataFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     obfuscatedExternalUserId = registerOutput<String>('obfuscatedExternalUserId');

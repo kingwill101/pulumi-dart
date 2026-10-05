@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConversationProfileDialogflowV2beta1Args {
   final pulumi.Input<String> conversationProfileId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetConversationProfileDialogflowV2beta1Args].
   /// [conversationProfileId] Required.

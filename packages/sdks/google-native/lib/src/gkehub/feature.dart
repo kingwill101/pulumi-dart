@@ -53,22 +53,50 @@ class Feature extends pulumi.CustomResource {
           'google-native:gkehub/v1:Feature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     featureId = registerOutput<String?>('featureId');
     fleetDefaultMemberConfig = registerOutput<CommonFleetDefaultMemberConfigSpecResponse>('fleetDefaultMemberConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CommonFleetDefaultMemberConfigSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    membershipSpecs = registerOutput<Map<String, String>>('membershipSpecs');
-    membershipStates = registerOutput<Map<String, String>>('membershipStates');
+    membershipSpecs = registerOutput<Map<String, String>>('membershipSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    membershipStates = registerOutput<Map<String, String>>('membershipStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
     resourceState = registerOutput<FeatureResourceStateResponse>('resourceState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureResourceStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    scopeSpecs = registerOutput<Map<String, String>>('scopeSpecs');
-    scopeStates = registerOutput<Map<String, String>>('scopeStates');
+    scopeSpecs = registerOutput<Map<String, String>>('scopeSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    scopeStates = registerOutput<Map<String, String>>('scopeStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    spec = registerOutput<CommonFeatureSpecResponse>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CommonFeatureSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<CommonFeatureStateResponse>('state', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CommonFeatureStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Feature] resource.
+  Feature.reference(String urn)
+    : super(
+        'google-native:gkehub/v1:Feature',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    featureId = registerOutput<String?>('featureId');
+    fleetDefaultMemberConfig = registerOutput<CommonFleetDefaultMemberConfigSpecResponse>('fleetDefaultMemberConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CommonFleetDefaultMemberConfigSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    membershipSpecs = registerOutput<Map<String, String>>('membershipSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    membershipStates = registerOutput<Map<String, String>>('membershipStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    resourceState = registerOutput<FeatureResourceStateResponse>('resourceState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureResourceStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scopeSpecs = registerOutput<Map<String, String>>('scopeSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    scopeStates = registerOutput<Map<String, String>>('scopeStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     spec = registerOutput<CommonFeatureSpecResponse>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CommonFeatureSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<CommonFeatureStateResponse>('state', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CommonFeatureStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');

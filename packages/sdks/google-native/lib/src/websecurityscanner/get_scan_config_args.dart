@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_websecurityscanner_v1_get_scan_config_args_doc}
 class GetScanConfigArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> scanConfigId;
 
   /// Creates a new [GetScanConfigArgs].

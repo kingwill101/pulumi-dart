@@ -1,4 +1,6 @@
-enum SoftwareConfigOptionalComponentsItemDataprocV1beta2 {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum SoftwareConfigOptionalComponentsItemDataprocV1beta2 implements pulumi.PulumiEnum<String> {
   componentUnspecified("COMPONENT_UNSPECIFIED"),
   anaconda("ANACONDA"),
   docker("DOCKER"),
@@ -15,6 +17,7 @@ enum SoftwareConfigOptionalComponentsItemDataprocV1beta2 {
   zookeeper("ZOOKEEPER");
 
   const SoftwareConfigOptionalComponentsItemDataprocV1beta2(this.wireValue);
+  @override
   final String wireValue;
 
   static SoftwareConfigOptionalComponentsItemDataprocV1beta2 fromValue(String value) {

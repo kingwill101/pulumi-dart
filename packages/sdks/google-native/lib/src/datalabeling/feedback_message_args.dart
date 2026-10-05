@@ -9,18 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeedbackMessageArgs {
   final pulumi.Input<String> annotatedDatasetId;
   /// String content of the feedback. Maximum of 10000 characters.
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// Create time.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   final pulumi.Input<String> datasetId;
   final pulumi.Input<String> feedbackThreadId;
   /// The image storing this feedback if the feedback is an image representing operator's comments.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
-  final pulumi.Input<String>? name;
-  final pulumi.Input<Map<String, dynamic>>? operatorFeedbackMetadata;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<Map<String, dynamic>>? requesterFeedbackMetadata;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<Map<String, dynamic>?>? operatorFeedbackMetadata;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<Map<String, dynamic>?>? requesterFeedbackMetadata;
 
   /// Creates a new [FeedbackMessageArgs].
   /// [annotatedDatasetId] Required.

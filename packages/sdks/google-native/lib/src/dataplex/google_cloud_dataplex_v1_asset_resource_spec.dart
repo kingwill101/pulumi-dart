@@ -7,9 +7,9 @@ import 'google_cloud_dataplex_v1_asset_resource_spec_type.dart';
 /// Identifies the cloud resource that is referenced by this asset.
 class GoogleCloudDataplexV1AssetResourceSpec {
   /// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: projects/{project_number}/buckets/{bucket_id} projects/{project_number}/datasets/{dataset_id}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
-  final pulumi.Input<GoogleCloudDataplexV1AssetResourceSpecReadAccessMode>? readAccessMode;
+  final pulumi.Input<GoogleCloudDataplexV1AssetResourceSpecReadAccessMode?>? readAccessMode;
   /// Immutable. Type of resource.
   final pulumi.Input<GoogleCloudDataplexV1AssetResourceSpecType> type;
 

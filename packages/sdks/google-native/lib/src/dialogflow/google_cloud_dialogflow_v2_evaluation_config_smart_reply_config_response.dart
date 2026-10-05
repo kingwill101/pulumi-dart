@@ -27,7 +27,7 @@ class GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse {
   factory GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse(
       allowlistDocument: pulumi.Input.fromValue(map['allowlistDocument'] as String),
-      maxResultCount: pulumi.Input.fromValue(map['maxResultCount'] as int),
+      maxResultCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxResultCount'])),
     );
   }
 }

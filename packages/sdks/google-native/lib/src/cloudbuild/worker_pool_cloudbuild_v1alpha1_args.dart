@@ -10,15 +10,15 @@ import 'worker_pool_regions_item.dart';
 /// {@macro pulumi_cloudbuild_v1alpha1_worker_pool_cloudbuild_v1alpha1_args_doc}
 class WorkerPoolCloudbuildV1alpha1Args {
   /// User-defined name of the `WorkerPool`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The project ID of the GCP project for which the `WorkerPool` is created.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
-  final pulumi.Input<List<WorkerPoolRegionsItem>>? regions;
+  final pulumi.Input<List<WorkerPoolRegionsItem>?>? regions;
   /// Configuration to be used for a creating workers in the `WorkerPool`.
-  final pulumi.Input<WorkerConfigCloudbuildV1alpha1>? workerConfig;
+  final pulumi.Input<WorkerConfigCloudbuildV1alpha1?>? workerConfig;
   /// Total number of workers to be created across all requested regions.
-  final pulumi.Input<String>? workerCount;
+  final pulumi.Input<String?>? workerCount;
 
   /// Creates a new [WorkerPoolCloudbuildV1alpha1Args].
   /// [name] User-defined name of the `WorkerPool`.

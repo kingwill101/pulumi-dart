@@ -32,8 +32,28 @@ class DatabaseSqladminV1beta4 extends pulumi.CustomResource {
           'google-native:sqladmin/v1beta4:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instance', 'project']).merge(options),
         ) {
+    charset = registerOutput<String>('charset');
+    collation = registerOutput<String>('collation');
+    etag = registerOutput<String>('etag');
+    instance = registerOutput<String>('instance');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    sqlserverDatabaseDetails = registerOutput<SqlServerDatabaseDetailsResponseSqladminV1beta4>('sqlserverDatabaseDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlServerDatabaseDetailsResponseSqladminV1beta4.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DatabaseSqladminV1beta4] resource.
+  DatabaseSqladminV1beta4.reference(String urn)
+    : super(
+        'google-native:sqladmin/v1beta4:Database',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     charset = registerOutput<String>('charset');
     collation = registerOutput<String>('collation');
     etag = registerOutput<String>('etag');

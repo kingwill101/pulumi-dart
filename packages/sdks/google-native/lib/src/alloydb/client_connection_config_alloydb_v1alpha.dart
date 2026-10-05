@@ -6,9 +6,9 @@ import 'ssl_config_alloydb_v1alpha.dart';
 /// Client connection configuration
 class ClientConnectionConfigAlloydbV1alpha {
   /// Optional. Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
-  final pulumi.Input<bool>? requireConnectors;
+  final pulumi.Input<bool?>? requireConnectors;
   /// Optional. SSL config option for this instance.
-  final pulumi.Input<SslConfigAlloydbV1alpha>? sslConfig;
+  final pulumi.Input<SslConfigAlloydbV1alpha?>? sslConfig;
 
   /// Creates a new [ClientConnectionConfigAlloydbV1alpha].
   /// [requireConnectors] Optional. Configuration to enforce connectors only (ex: AuthProxy) connections to the database.

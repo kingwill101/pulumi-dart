@@ -26,7 +26,7 @@ class GrpcRouteRetryPolicyResponseNetworkservicesV1beta1 {
 
   factory GrpcRouteRetryPolicyResponseNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRetryPolicyResponseNetworkservicesV1beta1(
-      numRetries: pulumi.Input.fromValue(map['numRetries'] as int),
+      numRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numRetries'])),
       retryConditions: pulumi.Input.fromValue((map['retryConditions'] as List).cast<String>()),
     );
   }

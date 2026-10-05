@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_custom_job_spec_response.dart';
 import 'google_cloud_aiplatform_v1beta1_encryption_spec_response.dart';
 import 'google_cloud_aiplatform_v1beta1_study_spec_response.dart';
+import 'google_cloud_aiplatform_v1beta1_trial_response.dart';
 import 'google_rpc_status_response_aiplatform_v1beta1.dart';
 import 'hyperparameter_tuning_job_aiplatform_v1beta1_args.dart';
 
@@ -39,7 +40,7 @@ class HyperparameterTuningJobAiplatformV1beta1 extends pulumi.CustomResource {
   /// The spec of a trial job. The same spec applies to the CustomJobs created in all the trials.
   late final pulumi.Output<GoogleCloudAiplatformV1beta1CustomJobSpecResponse> trialJobSpec;
   /// Trials of the HyperparameterTuningJob.
-  late final pulumi.Output<List<Map<String, dynamic>>> trials;
+  late final pulumi.Output<List<GoogleCloudAiplatformV1beta1TrialResponse>> trials;
   /// Time when the HyperparameterTuningJob was most recently updated.
   late final pulumi.Output<String> updateTime;
 
@@ -55,14 +56,14 @@ class HyperparameterTuningJobAiplatformV1beta1 extends pulumi.CustomResource {
           'google-native:aiplatform/v1beta1:HyperparameterTuningJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     encryptionSpec = registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endTime = registerOutput<String>('endTime');
     error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleRpcStatusResponseAiplatformV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maxFailedTrialCount = registerOutput<int>('maxFailedTrialCount');
     maxTrialCount = registerOutput<int>('maxTrialCount');
@@ -73,7 +74,36 @@ class HyperparameterTuningJobAiplatformV1beta1 extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     studySpec = registerOutput<GoogleCloudAiplatformV1beta1StudySpecResponse>('studySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1StudySpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     trialJobSpec = registerOutput<GoogleCloudAiplatformV1beta1CustomJobSpecResponse>('trialJobSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1CustomJobSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    trials = registerOutput<List<Map<String, dynamic>>>('trials');
+    trials = registerOutput<List<GoogleCloudAiplatformV1beta1TrialResponse>>('trials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1TrialResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1TrialResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [HyperparameterTuningJobAiplatformV1beta1] resource.
+  HyperparameterTuningJobAiplatformV1beta1.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1beta1:HyperparameterTuningJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    encryptionSpec = registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endTime = registerOutput<String>('endTime');
+    error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleRpcStatusResponseAiplatformV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    maxFailedTrialCount = registerOutput<int>('maxFailedTrialCount');
+    maxTrialCount = registerOutput<int>('maxTrialCount');
+    this.name = registerOutput<String>('name');
+    parallelTrialCount = registerOutput<int>('parallelTrialCount');
+    project = registerOutput<String>('project');
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+    studySpec = registerOutput<GoogleCloudAiplatformV1beta1StudySpecResponse>('studySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1StudySpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trialJobSpec = registerOutput<GoogleCloudAiplatformV1beta1CustomJobSpecResponse>('trialJobSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1CustomJobSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trials = registerOutput<List<GoogleCloudAiplatformV1beta1TrialResponse>>('trials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1TrialResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1TrialResponse.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

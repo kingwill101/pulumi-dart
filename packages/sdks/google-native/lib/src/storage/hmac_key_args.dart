@@ -7,11 +7,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_storage_v1_hmac_key_args_doc}
 class HmacKeyArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Email address of the service account.
   final pulumi.Input<String> serviceAccountEmail;
   /// The project to be billed for this request.
-  final pulumi.Input<String>? userProject;
+  final pulumi.Input<String?>? userProject;
 
   /// Creates a new [HmacKeyArgs].
   /// [project] Optional.

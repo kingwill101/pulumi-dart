@@ -7,9 +7,9 @@ import 'trust_anchor.dart';
 /// Defines a trust store.
 class TrustStore {
   /// Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature.
-  final pulumi.Input<List<IntermediateCA>>? intermediateCas;
+  final pulumi.Input<List<IntermediateCA>?>? intermediateCas;
   /// List of Trust Anchors to be used while performing validation against a given TrustStore.
-  final pulumi.Input<List<TrustAnchor>>? trustAnchors;
+  final pulumi.Input<List<TrustAnchor>?>? trustAnchors;
 
   /// Creates a new [TrustStore].
   /// [intermediateCas] Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature.

@@ -21,7 +21,7 @@ class VirtualMachinePreferencesNetworkCostParametersResponse {
 
   factory VirtualMachinePreferencesNetworkCostParametersResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePreferencesNetworkCostParametersResponse(
-      estimatedEgressTrafficPercentage: pulumi.Input.fromValue(map['estimatedEgressTrafficPercentage'] as int),
+      estimatedEgressTrafficPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['estimatedEgressTrafficPercentage'])),
     );
   }
 }

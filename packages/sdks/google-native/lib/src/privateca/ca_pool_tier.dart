@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Immutable. The Tier of this CaPool.
-enum CaPoolTier {
+enum CaPoolTier implements pulumi.PulumiEnum<String> {
   tierUnspecified("TIER_UNSPECIFIED"),
   enterprise("ENTERPRISE"),
   devops("DEVOPS");
 
   const CaPoolTier(this.wireValue);
+  @override
   final String wireValue;
 
   static CaPoolTier fromValue(String value) {

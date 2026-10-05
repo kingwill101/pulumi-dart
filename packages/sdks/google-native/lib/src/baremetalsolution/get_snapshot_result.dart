@@ -4,15 +4,15 @@
 /// Result data returned by getSnapshot.
 class GetSnapshotResult {
   /// The creation time of the snapshot.
-  final String createTime;
+  final String? createTime;
   /// The description of the snapshot.
-  final String description;
+  final String? description;
   /// The name of the snapshot.
-  final String name;
+  final String? name;
   /// The name of the volume which this snapshot belongs to.
-  final String storageVolume;
+  final String? storageVolume;
   /// The type of the snapshot which indicates whether it was scheduled or manual/ad-hoc.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetSnapshotResult].
   /// [createTime] The creation time of the snapshot.
@@ -21,30 +21,30 @@ class GetSnapshotResult {
   /// [storageVolume] The name of the volume which this snapshot belongs to.
   /// [type] The type of the snapshot which indicates whether it was scheduled or manual/ad-hoc.
   const GetSnapshotResult({
-    required this.createTime,
-    required this.description,
-    required this.name,
-    required this.storageVolume,
-    required this.type,
+    this.createTime,
+    this.description,
+    this.name,
+    this.storageVolume,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'name': name,
-      'storageVolume': storageVolume,
-      'type': type,
+      'createTime': ?createTime,
+      'description': ?description,
+      'name': ?name,
+      'storageVolume': ?storageVolume,
+      'type': ?type,
     };
   }
 
   factory GetSnapshotResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      name: map['name'] as String,
-      storageVolume: map['storageVolume'] as String,
-      type: map['type'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageVolume: (() { final guardedValue = map['storageVolume']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -10,17 +10,17 @@ import 'issue_model_model_type.dart';
 /// {@macro pulumi_contactcenterinsights_v1_issue_model_args_doc}
 class IssueModelArgs {
   /// The representative name for the issue model.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Configs for the input data that used to create the issue model.
-  final pulumi.Input<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig>? inputDataConfig;
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig?>? inputDataConfig;
   /// Language of the model.
-  final pulumi.Input<String>? languageCode;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? languageCode;
+  final pulumi.Input<String?>? location;
   /// Type of the model.
-  final pulumi.Input<IssueModelModelType>? modelType;
+  final pulumi.Input<IssueModelModelType?>? modelType;
   /// Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [IssueModelArgs].
   /// [displayName] The representative name for the issue model.

@@ -1,12 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'appgroup_args.dart';
+import 'google_cloud_apigee_v1_attribute_response.dart';
 
 /// Creates an AppGroup. Once created, user can register apps under the AppGroup to obtain secret key and password. At creation time, the AppGroup's state is set as `active`.
 class Appgroup extends pulumi.CustomResource {
   /// Internal identifier that cannot be edited
   late final pulumi.Output<String> appGroupId;
   /// A list of attributes
-  late final pulumi.Output<List<Map<String, dynamic>>> attributes;
+  late final pulumi.Output<List<GoogleCloudApigeeV1AttributeResponse>> attributes;
   /// channel identifier identifies the owner maintaing this grouping.
   late final pulumi.Output<String> channelId;
   /// A reference to the associated storefront/marketplace.
@@ -37,10 +38,32 @@ class Appgroup extends pulumi.CustomResource {
           'google-native:apigee/v1:Appgroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
     appGroupId = registerOutput<String>('appGroupId');
-    attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
+    attributes = registerOutput<List<GoogleCloudApigeeV1AttributeResponse>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(guardedValue, (value) => GoogleCloudApigeeV1AttributeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    channelId = registerOutput<String>('channelId');
+    channelUri = registerOutput<String>('channelUri');
+    createdAt = registerOutput<String>('createdAt');
+    displayName = registerOutput<String>('displayName');
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    organizationId = registerOutput<String>('organizationId');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [Appgroup] resource.
+  Appgroup.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Appgroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appGroupId = registerOutput<String>('appGroupId');
+    attributes = registerOutput<List<GoogleCloudApigeeV1AttributeResponse>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(guardedValue, (value) => GoogleCloudApigeeV1AttributeResponse.fromMap((value as Map).cast<String, dynamic>())); });
     channelId = registerOutput<String>('channelId');
     channelUri = registerOutput<String>('channelUri');
     createdAt = registerOutput<String>('createdAt');

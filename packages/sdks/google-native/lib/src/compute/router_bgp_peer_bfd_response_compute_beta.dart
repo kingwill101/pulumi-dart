@@ -35,9 +35,9 @@ class RouterBgpPeerBfdResponseComputeBeta {
 
   factory RouterBgpPeerBfdResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return RouterBgpPeerBfdResponseComputeBeta(
-      minReceiveInterval: pulumi.Input.fromValue(map['minReceiveInterval'] as int),
-      minTransmitInterval: pulumi.Input.fromValue(map['minTransmitInterval'] as int),
-      multiplier: pulumi.Input.fromValue(map['multiplier'] as int),
+      minReceiveInterval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minReceiveInterval'])),
+      minTransmitInterval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minTransmitInterval'])),
+      multiplier: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['multiplier'])),
       sessionInitializationMode: pulumi.Input.fromValue(map['sessionInitializationMode'] as String),
     );
   }

@@ -6,7 +6,7 @@ import 'authorization_logging_options_permission_type_gameservices_v1beta.dart';
 /// Authorization-related information used by Cloud Audit Logging.
 class AuthorizationLoggingOptionsGameservicesV1beta {
   /// The type of the permission that was checked.
-  final pulumi.Input<AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta>? permissionType;
+  final pulumi.Input<AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta?>? permissionType;
 
   /// Creates a new [AuthorizationLoggingOptionsGameservicesV1beta].
   /// [permissionType] The type of the permission that was checked.

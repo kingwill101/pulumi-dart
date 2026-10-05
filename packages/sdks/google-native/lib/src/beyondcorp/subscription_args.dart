@@ -9,12 +9,12 @@ import 'subscription_type.dart';
 /// {@endtemplate}
 /// {@macro pulumi_beyondcorp_v1alpha_subscription_args_doc}
 class SubscriptionArgs {
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Unique resource name of the Subscription. The name is ignored when creating a subscription.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
   /// Optional. Number of seats in the subscription.
-  final pulumi.Input<String>? seatCount;
+  final pulumi.Input<String?>? seatCount;
   /// SKU of subscription.
   final pulumi.Input<SubscriptionSku> sku;
   /// Type of subscription.

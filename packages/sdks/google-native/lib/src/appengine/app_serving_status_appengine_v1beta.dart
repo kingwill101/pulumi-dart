@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Serving status of this application.
-enum AppServingStatusAppengineV1beta {
+enum AppServingStatusAppengineV1beta implements pulumi.PulumiEnum<String> {
   unspecified("UNSPECIFIED"),
   serving("SERVING"),
   userDisabled("USER_DISABLED"),
   systemDisabled("SYSTEM_DISABLED");
 
   const AppServingStatusAppengineV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static AppServingStatusAppengineV1beta fromValue(String value) {

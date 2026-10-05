@@ -6,25 +6,25 @@ import 'validation_report_response.dart';
 /// Result data returned by getImportJob.
 class GetImportJobResult {
   /// Reference to a source.
-  final String assetSource;
+  final String? assetSource;
   /// The timestamp when the import job was completed.
-  final String completeTime;
+  final String? completeTime;
   /// The timestamp when the import job was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. User-friendly display name. Maximum length is 256 characters.
-  final String displayName;
+  final String? displayName;
   /// The report with the results of running the import job.
-  final ExecutionReportResponse executionReport;
+  final ExecutionReportResponse? executionReport;
   /// Labels as key value pairs.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The full name of the import job.
-  final String name;
+  final String? name;
   /// The state of the import job.
-  final String state;
+  final String? state;
   /// The timestamp when the import job was last updated.
-  final String updateTime;
+  final String? updateTime;
   /// The report with the validation results of the import job.
-  final ValidationReportResponse validationReport;
+  final ValidationReportResponse? validationReport;
 
   /// Creates a new [GetImportJobResult].
   /// [assetSource] Reference to a source.
@@ -38,45 +38,45 @@ class GetImportJobResult {
   /// [updateTime] The timestamp when the import job was last updated.
   /// [validationReport] The report with the validation results of the import job.
   const GetImportJobResult({
-    required this.assetSource,
-    required this.completeTime,
-    required this.createTime,
-    required this.displayName,
-    required this.executionReport,
-    required this.labels,
-    required this.name,
-    required this.state,
-    required this.updateTime,
-    required this.validationReport,
+    this.assetSource,
+    this.completeTime,
+    this.createTime,
+    this.displayName,
+    this.executionReport,
+    this.labels,
+    this.name,
+    this.state,
+    this.updateTime,
+    this.validationReport,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assetSource': assetSource,
-      'completeTime': completeTime,
-      'createTime': createTime,
-      'displayName': displayName,
-      'executionReport': executionReport.toMap(),
-      'labels': labels,
-      'name': name,
-      'state': state,
-      'updateTime': updateTime,
-      'validationReport': validationReport.toMap(),
+      'assetSource': ?assetSource,
+      'completeTime': ?completeTime,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'executionReport': ?executionReport?.toMap(),
+      'labels': ?labels,
+      'name': ?name,
+      'state': ?state,
+      'updateTime': ?updateTime,
+      'validationReport': ?validationReport?.toMap(),
     };
   }
 
   factory GetImportJobResult.fromMap(Map<String, dynamic> map) {
     return GetImportJobResult(
-      assetSource: map['assetSource'] as String,
-      completeTime: map['completeTime'] as String,
-      createTime: map['createTime'] as String,
-      displayName: map['displayName'] as String,
-      executionReport: ExecutionReportResponse.fromMap((map['executionReport']! as Map).cast<String, dynamic>()),
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      state: map['state'] as String,
-      updateTime: map['updateTime'] as String,
-      validationReport: ValidationReportResponse.fromMap((map['validationReport']! as Map).cast<String, dynamic>()),
+      assetSource: (() { final guardedValue = map['assetSource']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      completeTime: (() { final guardedValue = map['completeTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      executionReport: (() { final guardedValue = map['executionReport']; if (guardedValue == null) return null; return ExecutionReportResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      validationReport: (() { final guardedValue = map['validationReport']; if (guardedValue == null) return null; return ValidationReportResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

@@ -13,7 +13,7 @@ class MembershipArgs {
   /// Immutable. The `EntityKey` of the member.
   final pulumi.Input<EntityKey> preferredMemberKey;
   /// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
-  final pulumi.Input<List<MembershipRole>>? roles;
+  final pulumi.Input<List<MembershipRole>?>? roles;
 
   /// Creates a new [MembershipArgs].
   /// [groupId] Required.

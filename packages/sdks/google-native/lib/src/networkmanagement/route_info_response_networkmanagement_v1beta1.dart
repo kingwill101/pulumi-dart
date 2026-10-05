@@ -105,7 +105,7 @@ class RouteInfoResponseNetworkmanagementV1beta1 {
       networkUri: pulumi.Input.fromValue(map['networkUri'] as String),
       nextHop: pulumi.Input.fromValue(map['nextHop'] as String),
       nextHopType: pulumi.Input.fromValue(map['nextHopType'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       protocols: pulumi.Input.fromValue((map['protocols'] as List).cast<String>()),
       routeScope: pulumi.Input.fromValue(map['routeScope'] as String),
       routeType: pulumi.Input.fromValue(map['routeType'] as String),

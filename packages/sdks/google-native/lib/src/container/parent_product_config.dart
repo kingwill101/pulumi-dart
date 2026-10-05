@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ParentProductConfig is the configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of a GKE cluster and take the ownership of the cluster.
 class ParentProductConfig {
   /// Labels contain the configuration of the parent product.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the parent product associated with the cluster.
-  final pulumi.Input<String>? productName;
+  final pulumi.Input<String?>? productName;
 
   /// Creates a new [ParentProductConfig].
   /// [labels] Labels contain the configuration of the parent product.

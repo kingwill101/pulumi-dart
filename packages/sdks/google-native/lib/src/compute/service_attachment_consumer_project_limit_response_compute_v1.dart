@@ -30,7 +30,7 @@ class ServiceAttachmentConsumerProjectLimitResponseComputeV1 {
 
   factory ServiceAttachmentConsumerProjectLimitResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentConsumerProjectLimitResponseComputeV1(
-      connectionLimit: pulumi.Input.fromValue(map['connectionLimit'] as int),
+      connectionLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['connectionLimit'])),
       networkUrl: pulumi.Input.fromValue(map['networkUrl'] as String),
       projectIdOrNum: pulumi.Input.fromValue(map['projectIdOrNum'] as String),
     );

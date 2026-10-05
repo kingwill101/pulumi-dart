@@ -11,7 +11,7 @@ class GetAnnotationArgs {
   final pulumi.Input<String> annotationStoreId;
   final pulumi.Input<String> datasetId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAnnotationArgs].
   /// [annotationId] Required.

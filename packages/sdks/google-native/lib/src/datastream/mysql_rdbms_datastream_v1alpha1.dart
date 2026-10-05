@@ -6,7 +6,7 @@ import 'mysql_database_datastream_v1alpha1.dart';
 /// MySQL database structure
 class MysqlRdbmsDatastreamV1alpha1 {
   /// Mysql databases on the server
-  final pulumi.Input<List<MysqlDatabaseDatastreamV1alpha1>>? mysqlDatabases;
+  final pulumi.Input<List<MysqlDatabaseDatastreamV1alpha1>?>? mysqlDatabases;
 
   /// Creates a new [MysqlRdbmsDatastreamV1alpha1].
   /// [mysqlDatabases] Mysql databases on the server

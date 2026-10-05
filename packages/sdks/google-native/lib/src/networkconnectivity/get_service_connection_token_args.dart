@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkconnectivity_v1_get_service_connection_token_args_doc}
 class GetServiceConnectionTokenArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> serviceConnectionTokenId;
 
   /// Creates a new [GetServiceConnectionTokenArgs].

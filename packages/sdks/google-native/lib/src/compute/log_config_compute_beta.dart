@@ -8,11 +8,11 @@ import 'log_config_data_access_options_compute_beta.dart';
 /// This is deprecated and has no effect. Do not use.
 class LogConfigComputeBeta {
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<LogConfigCloudAuditOptionsComputeBeta>? cloudAudit;
+  final pulumi.Input<LogConfigCloudAuditOptionsComputeBeta?>? cloudAudit;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<LogConfigCounterOptionsComputeBeta>? counter;
+  final pulumi.Input<LogConfigCounterOptionsComputeBeta?>? counter;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<LogConfigDataAccessOptionsComputeBeta>? dataAccess;
+  final pulumi.Input<LogConfigDataAccessOptionsComputeBeta?>? dataAccess;
 
   /// Creates a new [LogConfigComputeBeta].
   /// [cloudAudit] This is deprecated and has no effect. Do not use.

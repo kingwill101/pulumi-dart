@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfigComputeV1 {
   /// Defines whether the instance should have confidential compute enabled.
-  final pulumi.Input<bool>? enableConfidentialCompute;
+  final pulumi.Input<bool?>? enableConfidentialCompute;
 
   /// Creates a new [ConfidentialInstanceConfigComputeV1].
   /// [enableConfidentialCompute] Defines whether the instance should have confidential compute enabled.

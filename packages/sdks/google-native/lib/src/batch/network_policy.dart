@@ -6,7 +6,7 @@ import 'network_interface.dart';
 /// NetworkPolicy describes VM instance network configurations.
 class NetworkPolicy {
   /// Network configurations.
-  final pulumi.Input<List<NetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterface>?>? networkInterfaces;
 
   /// Creates a new [NetworkPolicy].
   /// [networkInterfaces] Network configurations.

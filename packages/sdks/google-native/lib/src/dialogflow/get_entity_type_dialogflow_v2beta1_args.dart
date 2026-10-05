@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dialogflow_v2beta1_get_entity_type_dialogflow_v2beta1_args_doc}
 class GetEntityTypeDialogflowV2beta1Args {
   final pulumi.Input<String> entityTypeId;
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetEntityTypeDialogflowV2beta1Args].
   /// [entityTypeId] Required.

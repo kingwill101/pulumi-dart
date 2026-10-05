@@ -20,6 +20,17 @@ Future<GetCustomClassResult> getCustomClass(
   return GetCustomClassResult.fromMap(result);
 }
 
+pulumi.Output<GetCustomClassResult> getCustomClassOutput(
+  GetCustomClassArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:speech/v1:getCustomClass',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomClassResult.fromMap);
+}
+
 /// Get a phrase set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_speech_v1_get_phrase_set_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetPhraseSetResult> getPhraseSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPhraseSetResult.fromMap(result);
+}
+
+pulumi.Output<GetPhraseSetResult> getPhraseSetOutput(
+  GetPhraseSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:speech/v1:getPhraseSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPhraseSetResult.fromMap);
 }

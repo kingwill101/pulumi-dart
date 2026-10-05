@@ -4,25 +4,25 @@
 /// Result data returned by getDataTaxonomy.
 class GetDataTaxonomyResult {
   /// The number of attributes in the DataTaxonomy.
-  final int attributeCount;
+  final int? attributeCount;
   /// The number of classes in the DataTaxonomy.
-  final int classCount;
+  final int? classCount;
   /// The time when the DataTaxonomy was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. Description of the DataTaxonomy.
-  final String description;
+  final String? description;
   /// Optional. User friendly display name.
-  final String displayName;
+  final String? displayName;
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  final String etag;
+  final String? etag;
   /// Optional. User-defined labels for the DataTaxonomy.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The relative resource name of the DataTaxonomy, of the form: projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id}.
-  final String name;
+  final String? name;
   /// System generated globally unique ID for the dataTaxonomy. This ID will be different if the DataTaxonomy is deleted and re-created with the same name.
-  final String uid;
+  final String? uid;
   /// The time when the DataTaxonomy was last updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetDataTaxonomyResult].
   /// [attributeCount] The number of attributes in the DataTaxonomy.
@@ -36,45 +36,45 @@ class GetDataTaxonomyResult {
   /// [uid] System generated globally unique ID for the dataTaxonomy. This ID will be different if the DataTaxonomy is deleted and re-created with the same name.
   /// [updateTime] The time when the DataTaxonomy was last updated.
   const GetDataTaxonomyResult({
-    required this.attributeCount,
-    required this.classCount,
-    required this.createTime,
-    required this.description,
-    required this.displayName,
-    required this.etag,
-    required this.labels,
-    required this.name,
-    required this.uid,
-    required this.updateTime,
+    this.attributeCount,
+    this.classCount,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.name,
+    this.uid,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributeCount': attributeCount,
-      'classCount': classCount,
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
-      'etag': etag,
-      'labels': labels,
-      'name': name,
-      'uid': uid,
-      'updateTime': updateTime,
+      'attributeCount': ?attributeCount,
+      'classCount': ?classCount,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'labels': ?labels,
+      'name': ?name,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetDataTaxonomyResult.fromMap(Map<String, dynamic> map) {
     return GetDataTaxonomyResult(
-      attributeCount: map['attributeCount'] as int,
-      classCount: map['classCount'] as int,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      etag: map['etag'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
+      attributeCount: (() { final guardedValue = map['attributeCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      classCount: (() { final guardedValue = map['classCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

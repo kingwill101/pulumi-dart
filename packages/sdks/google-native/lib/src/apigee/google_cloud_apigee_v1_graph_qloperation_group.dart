@@ -6,7 +6,7 @@ import 'google_cloud_apigee_v1_graph_qloperation_config.dart';
 /// List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
 class GoogleCloudApigeeV1GraphQLOperationGroup {
   /// Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
-  final pulumi.Input<String>? operationConfigType;
+  final pulumi.Input<String?>? operationConfigType;
   /// List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
   final pulumi.Input<List<GoogleCloudApigeeV1GraphQLOperationConfig>> operationConfigs;
 

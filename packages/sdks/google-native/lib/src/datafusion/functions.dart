@@ -26,6 +26,17 @@ Future<GetInstanceResult> getInstance(
   return GetInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datafusion/v1:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datafusion_v1_get_instance_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -40,6 +51,17 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
+  GetInstanceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datafusion/v1:getInstanceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceIamPolicyResult.fromMap);
 }
 
 /// Gets details of a single Data Fusion instance.
@@ -58,6 +80,17 @@ Future<GetInstanceDatafusionV1beta1Result> getInstanceDatafusionV1beta1(
   return GetInstanceDatafusionV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetInstanceDatafusionV1beta1Result> getInstanceDatafusionV1beta1Output(
+  GetInstanceDatafusionV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datafusion/v1beta1:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceDatafusionV1beta1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datafusion_v1beta1_get_instance_iam_policy_datafusion_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -74,6 +107,17 @@ Future<GetInstanceIamPolicyDatafusionV1beta1Result> getInstanceIamPolicyDatafusi
   return GetInstanceIamPolicyDatafusionV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetInstanceIamPolicyDatafusionV1beta1Result> getInstanceIamPolicyDatafusionV1beta1Output(
+  GetInstanceIamPolicyDatafusionV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datafusion/v1beta1:getInstanceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceIamPolicyDatafusionV1beta1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datafusion_v1beta1_get_instance_namespace_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -88,4 +132,15 @@ Future<GetInstanceNamespaceIamPolicyResult> getInstanceNamespaceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceNamespaceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceNamespaceIamPolicyResult> getInstanceNamespaceIamPolicyOutput(
+  GetInstanceNamespaceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datafusion/v1beta1:getInstanceNamespaceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceNamespaceIamPolicyResult.fromMap);
 }

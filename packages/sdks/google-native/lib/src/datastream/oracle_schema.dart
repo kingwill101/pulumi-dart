@@ -6,9 +6,9 @@ import 'oracle_table.dart';
 /// Oracle schema.
 class OracleSchema {
   /// Tables in the schema.
-  final pulumi.Input<List<OracleTable>>? oracleTables;
+  final pulumi.Input<List<OracleTable>?>? oracleTables;
   /// Schema name.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
 
   /// Creates a new [OracleSchema].
   /// [oracleTables] Tables in the schema.

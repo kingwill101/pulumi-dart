@@ -34,7 +34,7 @@ class GoogleCloudAiplatformV1PredictRequestResponseLoggingConfigResponse {
     return GoogleCloudAiplatformV1PredictRequestResponseLoggingConfigResponse(
       bigqueryDestination: pulumi.Input.fromValue(GoogleCloudAiplatformV1BigQueryDestinationResponse.fromMap((map['bigqueryDestination']! as Map).cast<String, dynamic>())),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      samplingRate: pulumi.Input.fromValue(map['samplingRate'] as double),
+      samplingRate: pulumi.Input.fromValue((map['samplingRate'] as num).toDouble()),
     );
   }
 }

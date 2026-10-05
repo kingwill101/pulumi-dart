@@ -82,17 +82,17 @@ class BackendResponse {
   factory BackendResponse.fromMap(Map<String, dynamic> map) {
     return BackendResponse(
       balancingMode: pulumi.Input.fromValue(map['balancingMode'] as String),
-      capacityScaler: pulumi.Input.fromValue(map['capacityScaler'] as double),
+      capacityScaler: pulumi.Input.fromValue((map['capacityScaler'] as num).toDouble()),
       description: pulumi.Input.fromValue(map['description'] as String),
       failover: pulumi.Input.fromValue(map['failover'] as bool),
       group: pulumi.Input.fromValue(map['group'] as String),
-      maxConnections: pulumi.Input.fromValue(map['maxConnections'] as int),
-      maxConnectionsPerEndpoint: pulumi.Input.fromValue(map['maxConnectionsPerEndpoint'] as int),
-      maxConnectionsPerInstance: pulumi.Input.fromValue(map['maxConnectionsPerInstance'] as int),
-      maxRate: pulumi.Input.fromValue(map['maxRate'] as int),
-      maxRatePerEndpoint: pulumi.Input.fromValue(map['maxRatePerEndpoint'] as double),
-      maxRatePerInstance: pulumi.Input.fromValue(map['maxRatePerInstance'] as double),
-      maxUtilization: pulumi.Input.fromValue(map['maxUtilization'] as double),
+      maxConnections: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConnections'])),
+      maxConnectionsPerEndpoint: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConnectionsPerEndpoint'])),
+      maxConnectionsPerInstance: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConnectionsPerInstance'])),
+      maxRate: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRate'])),
+      maxRatePerEndpoint: pulumi.Input.fromValue((map['maxRatePerEndpoint'] as num).toDouble()),
+      maxRatePerInstance: pulumi.Input.fromValue((map['maxRatePerInstance'] as num).toDouble()),
+      maxUtilization: pulumi.Input.fromValue((map['maxUtilization'] as num).toDouble()),
       preference: pulumi.Input.fromValue(map['preference'] as String),
     );
   }

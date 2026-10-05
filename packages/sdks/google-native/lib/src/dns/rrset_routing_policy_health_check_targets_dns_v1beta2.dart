@@ -5,7 +5,7 @@ import 'rrset_routing_policy_load_balancer_target_dns_v1beta2.dart';
 
 /// HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the healthy endpoints will be included in the response.
 class RRSetRoutingPolicyHealthCheckTargetsDnsV1beta2 {
-  final pulumi.Input<List<RRSetRoutingPolicyLoadBalancerTargetDnsV1beta2>>? internalLoadBalancers;
+  final pulumi.Input<List<RRSetRoutingPolicyLoadBalancerTargetDnsV1beta2>?>? internalLoadBalancers;
 
   /// Creates a new [RRSetRoutingPolicyHealthCheckTargetsDnsV1beta2].
   /// [internalLoadBalancers] Optional.

@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
-enum IngressFromIdentityType {
+enum IngressFromIdentityType implements pulumi.PulumiEnum<String> {
   identityTypeUnspecified("IDENTITY_TYPE_UNSPECIFIED"),
   anyIdentity("ANY_IDENTITY"),
   anyUserAccount("ANY_USER_ACCOUNT"),
   anyServiceAccount("ANY_SERVICE_ACCOUNT");
 
   const IngressFromIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static IngressFromIdentityType fromValue(String value) {

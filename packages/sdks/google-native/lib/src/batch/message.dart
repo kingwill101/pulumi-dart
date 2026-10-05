@@ -8,11 +8,11 @@ import 'message_type.dart';
 /// Message details. Describe the conditions under which messages will be sent. If no attribute is defined, no message will be sent by default. One message should specify either the job or the task level attributes, but not both. For example, job level: JOB_STATE_CHANGED and/or a specified new_job_state; task level: TASK_STATE_CHANGED and/or a specified new_task_state.
 class Message {
   /// The new job state.
-  final pulumi.Input<MessageNewJobState>? newJobState;
+  final pulumi.Input<MessageNewJobState?>? newJobState;
   /// The new task state.
-  final pulumi.Input<MessageNewTaskState>? newTaskState;
+  final pulumi.Input<MessageNewTaskState?>? newTaskState;
   /// The message type.
-  final pulumi.Input<MessageType>? type;
+  final pulumi.Input<MessageType?>? type;
 
   /// Creates a new [Message].
   /// [newJobState] The new job state.

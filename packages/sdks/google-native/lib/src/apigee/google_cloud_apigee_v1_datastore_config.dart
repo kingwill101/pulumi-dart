@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration detail for datastore
 class GoogleCloudApigeeV1DatastoreConfig {
   /// Name of the Cloud Storage bucket. Required for `gcs` target_type.
-  final pulumi.Input<String>? bucketName;
+  final pulumi.Input<String?>? bucketName;
   /// BigQuery dataset name Required for `bigquery` target_type.
-  final pulumi.Input<String>? datasetName;
+  final pulumi.Input<String?>? datasetName;
   /// Path of Cloud Storage bucket Required for `gcs` target_type.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// GCP project in which the datastore exists
   final pulumi.Input<String> project;
   /// Prefix of BigQuery table Required for `bigquery` target_type.
-  final pulumi.Input<String>? tablePrefix;
+  final pulumi.Input<String?>? tablePrefix;
 
   /// Creates a new [GoogleCloudApigeeV1DatastoreConfig].
   /// [bucketName] Name of the Cloud Storage bucket. Required for `gcs` target_type.

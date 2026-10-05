@@ -123,7 +123,7 @@ class IPAllocationPolicyResponse {
       clusterIpv4CidrBlock: pulumi.Input.fromValue(map['clusterIpv4CidrBlock'] as String),
       clusterSecondaryRangeName: pulumi.Input.fromValue(map['clusterSecondaryRangeName'] as String),
       createSubnetwork: pulumi.Input.fromValue(map['createSubnetwork'] as bool),
-      defaultPodIpv4RangeUtilization: pulumi.Input.fromValue(map['defaultPodIpv4RangeUtilization'] as double),
+      defaultPodIpv4RangeUtilization: pulumi.Input.fromValue((map['defaultPodIpv4RangeUtilization'] as num).toDouble()),
       ipv6AccessType: pulumi.Input.fromValue(map['ipv6AccessType'] as String),
       nodeIpv4Cidr: pulumi.Input.fromValue(map['nodeIpv4Cidr'] as String),
       nodeIpv4CidrBlock: pulumi.Input.fromValue(map['nodeIpv4CidrBlock'] as String),

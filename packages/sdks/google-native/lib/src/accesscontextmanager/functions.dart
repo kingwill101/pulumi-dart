@@ -34,6 +34,17 @@ Future<GetAccessLevelResult> getAccessLevel(
   return GetAccessLevelResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessLevelResult> getAccessLevelOutput(
+  GetAccessLevelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:accesscontextmanager/v1:getAccessLevel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessLevelResult.fromMap);
+}
+
 /// Returns an access policy based on the name.
 /// [args] Arguments passed to this invoke. {@macro pulumi_accesscontextmanager_v1_get_access_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -48,6 +59,17 @@ Future<GetAccessPolicyResult> getAccessPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccessPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetAccessPolicyResult> getAccessPolicyOutput(
+  GetAccessPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:accesscontextmanager/v1:getAccessPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPolicyResult.fromMap);
 }
 
 /// Gets the IAM policy for the specified Access Context Manager access policy.
@@ -66,6 +88,17 @@ Future<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicy(
   return GetAccessPolicyIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicyOutput(
+  GetAccessPolicyIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:accesscontextmanager/v1:getAccessPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPolicyIamPolicyResult.fromMap);
+}
+
 /// Gets an authorized orgs desc based on the resource name.
 /// [args] Arguments passed to this invoke. {@macro pulumi_accesscontextmanager_v1_get_authorized_orgs_desc_args_doc}
 /// [options] Invoke options controlling this call.
@@ -80,6 +113,17 @@ Future<GetAuthorizedOrgsDescResult> getAuthorizedOrgsDesc(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAuthorizedOrgsDescResult.fromMap(result);
+}
+
+pulumi.Output<GetAuthorizedOrgsDescResult> getAuthorizedOrgsDescOutput(
+  GetAuthorizedOrgsDescArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:accesscontextmanager/v1:getAuthorizedOrgsDesc',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthorizedOrgsDescResult.fromMap);
 }
 
 /// Gets the GcpUserAccessBinding with the given name.
@@ -98,6 +142,17 @@ Future<GetGcpUserAccessBindingResult> getGcpUserAccessBinding(
   return GetGcpUserAccessBindingResult.fromMap(result);
 }
 
+pulumi.Output<GetGcpUserAccessBindingResult> getGcpUserAccessBindingOutput(
+  GetGcpUserAccessBindingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:accesscontextmanager/v1:getGcpUserAccessBinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGcpUserAccessBindingResult.fromMap);
+}
+
 /// Gets a service perimeter based on the resource name.
 /// [args] Arguments passed to this invoke. {@macro pulumi_accesscontextmanager_v1_get_service_perimeter_args_doc}
 /// [options] Invoke options controlling this call.
@@ -112,6 +167,17 @@ Future<GetServicePerimeterResult> getServicePerimeter(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServicePerimeterResult.fromMap(result);
+}
+
+pulumi.Output<GetServicePerimeterResult> getServicePerimeterOutput(
+  GetServicePerimeterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:accesscontextmanager/v1:getServicePerimeter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServicePerimeterResult.fromMap);
 }
 
 /// Get an Access Level by resource name.
@@ -130,6 +196,17 @@ Future<GetAccessLevelAccesscontextmanagerV1betaResult> getAccessLevelAccessconte
   return GetAccessLevelAccesscontextmanagerV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessLevelAccesscontextmanagerV1betaResult> getAccessLevelAccesscontextmanagerV1betaOutput(
+  GetAccessLevelAccesscontextmanagerV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:accesscontextmanager/v1beta:getAccessLevel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessLevelAccesscontextmanagerV1betaResult.fromMap);
+}
+
 /// Get an AccessPolicy by name.
 /// [args] Arguments passed to this invoke. {@macro pulumi_accesscontextmanager_v1beta_get_access_policy_accesscontextmanager_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -146,6 +223,17 @@ Future<GetAccessPolicyAccesscontextmanagerV1betaResult> getAccessPolicyAccesscon
   return GetAccessPolicyAccesscontextmanagerV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessPolicyAccesscontextmanagerV1betaResult> getAccessPolicyAccesscontextmanagerV1betaOutput(
+  GetAccessPolicyAccesscontextmanagerV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:accesscontextmanager/v1beta:getAccessPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPolicyAccesscontextmanagerV1betaResult.fromMap);
+}
+
 /// Get a Service Perimeter by resource name.
 /// [args] Arguments passed to this invoke. {@macro pulumi_accesscontextmanager_v1beta_get_service_perimeter_accesscontextmanager_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -160,4 +248,15 @@ Future<GetServicePerimeterAccesscontextmanagerV1betaResult> getServicePerimeterA
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServicePerimeterAccesscontextmanagerV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetServicePerimeterAccesscontextmanagerV1betaResult> getServicePerimeterAccesscontextmanagerV1betaOutput(
+  GetServicePerimeterAccesscontextmanagerV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:accesscontextmanager/v1beta:getServicePerimeter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServicePerimeterAccesscontextmanagerV1betaResult.fromMap);
 }

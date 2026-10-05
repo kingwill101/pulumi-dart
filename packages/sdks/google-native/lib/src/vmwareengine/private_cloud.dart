@@ -56,8 +56,37 @@ class PrivateCloud extends pulumi.CustomResource {
           'google-native:vmwareengine/v1:PrivateCloud',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'privateCloudId', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    description = registerOutput<String>('description');
+    expireTime = registerOutput<String>('expireTime');
+    hcx = registerOutput<HcxResponse>('hcx', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HcxResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    managementCluster = registerOutput<ManagementClusterResponse>('managementCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementClusterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkConfig = registerOutput<NetworkConfigResponse>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nsx = registerOutput<NsxResponse>('nsx', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NsxResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateCloudId = registerOutput<String>('privateCloudId');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    vcenter = registerOutput<VcenterResponse>('vcenter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VcenterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [PrivateCloud] resource.
+  PrivateCloud.reference(String urn)
+    : super(
+        'google-native:vmwareengine/v1:PrivateCloud',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     description = registerOutput<String>('description');

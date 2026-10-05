@@ -1,8 +1,11 @@
-enum SecurityPolicyDdosProtectionConfigDdosProtectionComputeV1 {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum SecurityPolicyDdosProtectionConfigDdosProtectionComputeV1 implements pulumi.PulumiEnum<String> {
   advanced("ADVANCED"),
   standard("STANDARD");
 
   const SecurityPolicyDdosProtectionConfigDdosProtectionComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityPolicyDdosProtectionConfigDdosProtectionComputeV1 fromValue(String value) {

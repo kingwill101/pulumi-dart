@@ -6,7 +6,7 @@ import 'client_info_detail.dart';
 /// Information about the client which invoked the test.
 class ClientInfo {
   /// The list of detailed information about client.
-  final pulumi.Input<List<ClientInfoDetail>>? clientInfoDetails;
+  final pulumi.Input<List<ClientInfoDetail>?>? clientInfoDetails;
   /// Client name, such as gcloud.
   final pulumi.Input<String> name;
 

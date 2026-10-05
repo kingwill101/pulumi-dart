@@ -7,17 +7,17 @@ import 'secret.dart';
 /// ConfigVariable represents a configuration variable present in a Connection. or AuthConfig.
 class ConfigVariable {
   /// Value is a bool.
-  final pulumi.Input<bool>? boolValue;
+  final pulumi.Input<bool?>? boolValue;
   /// Value is a Encryption Key.
-  final pulumi.Input<EncryptionKey>? encryptionKeyValue;
+  final pulumi.Input<EncryptionKey?>? encryptionKeyValue;
   /// Value is an integer
-  final pulumi.Input<String>? intValue;
+  final pulumi.Input<String?>? intValue;
   /// Key of the config variable.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Value is a secret.
-  final pulumi.Input<Secret>? secretValue;
+  final pulumi.Input<Secret?>? secretValue;
   /// Value is a string.
-  final pulumi.Input<String>? stringValue;
+  final pulumi.Input<String?>? stringValue;
 
   /// Creates a new [ConfigVariable].
   /// [boolValue] Value is a bool.

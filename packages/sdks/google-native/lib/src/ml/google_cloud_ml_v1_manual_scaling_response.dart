@@ -21,7 +21,7 @@ class GoogleCloudMlV1ManualScalingResponse {
 
   factory GoogleCloudMlV1ManualScalingResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1ManualScalingResponse(
-      nodes: pulumi.Input.fromValue(map['nodes'] as int),
+      nodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodes'])),
     );
   }
 }

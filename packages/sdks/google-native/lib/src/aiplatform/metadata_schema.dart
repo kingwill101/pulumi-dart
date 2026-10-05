@@ -36,8 +36,29 @@ class MetadataSchema extends pulumi.CustomResource {
           'google-native:aiplatform/v1:MetadataSchema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'metadataStoreId', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    location = registerOutput<String>('location');
+    metadataSchemaId = registerOutput<String?>('metadataSchemaId');
+    metadataStoreId = registerOutput<String>('metadataStoreId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    schema = registerOutput<String>('schema');
+    schemaType = registerOutput<String>('schemaType');
+    schemaVersion = registerOutput<String>('schemaVersion');
+  }
+
+  /// Creates a typed reference to an existing [MetadataSchema] resource.
+  MetadataSchema.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1:MetadataSchema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     location = registerOutput<String>('location');

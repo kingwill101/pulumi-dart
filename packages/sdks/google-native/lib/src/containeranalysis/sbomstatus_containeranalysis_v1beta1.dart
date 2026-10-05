@@ -6,9 +6,9 @@ import 'sbomstatus_sbom_state_containeranalysis_v1beta1.dart';
 /// The status of an SBOM generation.
 class SBOMStatusContaineranalysisV1beta1 {
   /// If there was an error generating an SBOM, this will indicate what that error was.
-  final pulumi.Input<String>? error;
+  final pulumi.Input<String?>? error;
   /// The progress of the SBOM generation.
-  final pulumi.Input<SBOMStatusSbomStateContaineranalysisV1beta1>? sbomState;
+  final pulumi.Input<SBOMStatusSbomStateContaineranalysisV1beta1?>? sbomState;
 
   /// Creates a new [SBOMStatusContaineranalysisV1beta1].
   /// [error] If there was an error generating an SBOM, this will indicate what that error was.

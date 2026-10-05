@@ -46,16 +46,43 @@ class Artifact extends pulumi.CustomResource {
           'google-native:aiplatform/v1:Artifact',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'metadataStoreId', 'project']).merge(options),
         ) {
     artifactId = registerOutput<String?>('artifactId');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    metadataStoreId = registerOutput<String>('metadataStoreId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    schemaTitle = registerOutput<String>('schemaTitle');
+    schemaVersion = registerOutput<String>('schemaVersion');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    uri = registerOutput<String>('uri');
+  }
+
+  /// Creates a typed reference to an existing [Artifact] resource.
+  Artifact.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1:Artifact',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    artifactId = registerOutput<String?>('artifactId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     metadataStoreId = registerOutput<String>('metadataStoreId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

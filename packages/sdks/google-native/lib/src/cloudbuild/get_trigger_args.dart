@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudbuild_v1_get_trigger_args_doc}
 class GetTriggerArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> projectId;
   final pulumi.Input<String> triggerId;
 

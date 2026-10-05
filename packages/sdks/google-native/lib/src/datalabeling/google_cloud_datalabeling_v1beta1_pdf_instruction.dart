@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Instruction from a PDF file.
 class GoogleCloudDatalabelingV1beta1PdfInstruction {
   /// PDF file for the instruction. Only gcs path is allowed.
-  final pulumi.Input<String>? gcsFileUri;
+  final pulumi.Input<String?>? gcsFileUri;
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1PdfInstruction].
   /// [gcsFileUri] PDF file for the instruction. Only gcs path is allowed.

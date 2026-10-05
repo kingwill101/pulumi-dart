@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Type of trigger
-enum GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType {
+enum GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType implements pulumi.PulumiEnum<String> {
   triggerTypeUnspecified("TRIGGER_TYPE_UNSPECIFIED"),
   cron("CRON"),
   api("API"),
@@ -11,6 +13,7 @@ enum GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType {
   privateTrigger("PRIVATE_TRIGGER");
 
   const GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType fromValue(String value) {

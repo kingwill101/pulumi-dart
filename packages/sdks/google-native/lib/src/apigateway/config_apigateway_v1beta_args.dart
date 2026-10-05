@@ -15,21 +15,21 @@ class ConfigApigatewayV1betaArgs {
   final pulumi.Input<String> apiConfigId;
   final pulumi.Input<String> apiId;
   /// Optional. Display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Immutable. Gateway specific configuration.
-  final pulumi.Input<ApigatewayGatewayConfig>? gatewayConfig;
+  final pulumi.Input<ApigatewayGatewayConfig?>? gatewayConfig;
   /// Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.
-  final pulumi.Input<String>? gatewayServiceAccount;
+  final pulumi.Input<String?>? gatewayServiceAccount;
   /// Optional. gRPC service definition files. If specified, openapi_documents must not be included.
-  final pulumi.Input<List<ApigatewayApiConfigGrpcServiceDefinitionApigatewayV1beta>>? grpcServices;
+  final pulumi.Input<List<ApigatewayApiConfigGrpcServiceDefinitionApigatewayV1beta>?>? grpcServices;
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
-  final pulumi.Input<List<ApigatewayApiConfigFileApigatewayV1beta>>? managedServiceConfigs;
+  final pulumi.Input<List<ApigatewayApiConfigFileApigatewayV1beta>?>? managedServiceConfigs;
   /// Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
-  final pulumi.Input<List<ApigatewayApiConfigOpenApiDocumentApigatewayV1beta>>? openapiDocuments;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<List<ApigatewayApiConfigOpenApiDocumentApigatewayV1beta>?>? openapiDocuments;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [ConfigApigatewayV1betaArgs].
   /// [apiConfigId] Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.

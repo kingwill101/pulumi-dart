@@ -27,7 +27,7 @@ class MonthlyScheduleResponse {
 
   factory MonthlyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return MonthlyScheduleResponse(
-      monthDay: pulumi.Input.fromValue(map['monthDay'] as int),
+      monthDay: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['monthDay'])),
       weekDayOfMonth: pulumi.Input.fromValue(WeekDayOfMonthResponse.fromMap((map['weekDayOfMonth']! as Map).cast<String, dynamic>())),
     );
   }

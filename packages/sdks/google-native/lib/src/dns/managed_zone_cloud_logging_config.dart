@@ -5,8 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cloud Logging configurations for publicly visible zones.
 class ManagedZoneCloudLoggingConfig {
   /// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
-  final pulumi.Input<bool>? enableLogging;
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<bool?>? enableLogging;
+  final pulumi.Input<String?>? kind;
 
   /// Creates a new [ManagedZoneCloudLoggingConfig].
   /// [enableLogging] If set, enable query logging for this ManagedZone. False by default, making logging opt-in.

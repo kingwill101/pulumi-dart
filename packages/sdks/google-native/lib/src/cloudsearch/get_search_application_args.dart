@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_cloudsearch_v1_get_search_application_args_doc}
 class GetSearchApplicationArgs {
-  final pulumi.Input<bool>? debugOptionsEnableDebugging;
+  final pulumi.Input<bool?>? debugOptionsEnableDebugging;
   final pulumi.Input<String> searchapplicationId;
 
   /// Creates a new [GetSearchApplicationArgs].

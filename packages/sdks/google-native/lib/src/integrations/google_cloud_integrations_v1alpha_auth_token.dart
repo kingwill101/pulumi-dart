@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The credentials to authenticate a user agent with a server that is put in HTTP Authorization request header.
 class GoogleCloudIntegrationsV1alphaAuthToken {
   /// The token for the auth type.
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
   /// Authentication type, e.g. "Basic", "Bearer", etc.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaAuthToken].
   /// [token] The token for the auth type.

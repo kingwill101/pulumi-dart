@@ -35,7 +35,7 @@ class UDPHealthCheckResponse {
 
   factory UDPHealthCheckResponse.fromMap(Map<String, dynamic> map) {
     return UDPHealthCheckResponse(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       portName: pulumi.Input.fromValue(map['portName'] as String),
       request: pulumi.Input.fromValue(map['request'] as String),
       response: pulumi.Input.fromValue(map['response'] as String),

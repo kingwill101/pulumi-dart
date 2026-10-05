@@ -9,39 +9,39 @@ import 'google_cloud_contentwarehouse_v1_property_type_options.dart';
 /// Defines the metadata for a schema property.
 class GoogleCloudContentwarehouseV1PropertyDefinition {
   /// Date time property. It is not supported by CMEK compliant deployment.
-  final pulumi.Input<Map<String, dynamic>>? dateTimeTypeOptions;
+  final pulumi.Input<Map<String, dynamic>?>? dateTimeTypeOptions;
   /// The display-name for the property, used for front-end.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Enum/categorical property.
-  final pulumi.Input<GoogleCloudContentwarehouseV1EnumTypeOptions>? enumTypeOptions;
+  final pulumi.Input<GoogleCloudContentwarehouseV1EnumTypeOptions?>? enumTypeOptions;
   /// Float property.
-  final pulumi.Input<Map<String, dynamic>>? floatTypeOptions;
+  final pulumi.Input<Map<String, dynamic>?>? floatTypeOptions;
   /// Integer property.
-  final pulumi.Input<Map<String, dynamic>>? integerTypeOptions;
+  final pulumi.Input<Map<String, dynamic>?>? integerTypeOptions;
   /// Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
-  final pulumi.Input<bool>? isFilterable;
+  final pulumi.Input<bool?>? isFilterable;
   /// Whether the property is user supplied metadata. This out-of-the box placeholder setting can be used to tag derived properties. Its value and interpretation logic should be implemented by API user.
-  final pulumi.Input<bool>? isMetadata;
+  final pulumi.Input<bool?>? isMetadata;
   /// Whether the property can have multiple values.
-  final pulumi.Input<bool>? isRepeatable;
+  final pulumi.Input<bool?>? isRepeatable;
   /// Whether the property is mandatory. Default is 'false', i.e. populating property value can be skipped. If 'true' then user must populate the value for this property.
-  final pulumi.Input<bool>? isRequired;
+  final pulumi.Input<bool?>? isRequired;
   /// Indicates that the property should be included in a global search.
-  final pulumi.Input<bool>? isSearchable;
+  final pulumi.Input<bool?>? isSearchable;
   /// Map property.
-  final pulumi.Input<Map<String, dynamic>>? mapTypeOptions;
+  final pulumi.Input<Map<String, dynamic>?>? mapTypeOptions;
   /// The name of the metadata property. Must be unique within a document schema and is case insensitive. Names must be non-blank, start with a letter, and can contain alphanumeric characters and: /, :, -, _, and .
   final pulumi.Input<String> name;
   /// Nested structured data property.
-  final pulumi.Input<GoogleCloudContentwarehouseV1PropertyTypeOptions>? propertyTypeOptions;
+  final pulumi.Input<GoogleCloudContentwarehouseV1PropertyTypeOptions?>? propertyTypeOptions;
   /// The retrieval importance of the property during search.
-  final pulumi.Input<GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance>? retrievalImportance;
+  final pulumi.Input<GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance?>? retrievalImportance;
   /// The mapping information between this property to another schema source.
-  final pulumi.Input<List<GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource>>? schemaSources;
+  final pulumi.Input<List<GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource>?>? schemaSources;
   /// Text/string property.
-  final pulumi.Input<Map<String, dynamic>>? textTypeOptions;
+  final pulumi.Input<Map<String, dynamic>?>? textTypeOptions;
   /// Timestamp property. It is not supported by CMEK compliant deployment.
-  final pulumi.Input<Map<String, dynamic>>? timestampTypeOptions;
+  final pulumi.Input<Map<String, dynamic>?>? timestampTypeOptions;
 
   /// Creates a new [GoogleCloudContentwarehouseV1PropertyDefinition].
   /// [dateTimeTypeOptions] Date time property. It is not supported by CMEK compliant deployment.

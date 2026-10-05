@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specification that applies to all entries that are part of `CLOUD_BIGTABLE` system (user_specified_type)
 class GoogleCloudDatacatalogV1CloudBigtableSystemSpec {
   /// Display name of the Instance. This is user specified and different from the resource name.
-  final pulumi.Input<String>? instanceDisplayName;
+  final pulumi.Input<String?>? instanceDisplayName;
 
   /// Creates a new [GoogleCloudDatacatalogV1CloudBigtableSystemSpec].
   /// [instanceDisplayName] Display name of the Instance. This is user specified and different from the resource name.

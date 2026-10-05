@@ -7,7 +7,7 @@ class GoogleCloudIntegrationsV1alphaCloudSchedulerConfig {
   /// The cron tab of cloud scheduler trigger.
   final pulumi.Input<String> cronTab;
   /// Optional. When the job was deleted from Pantheon UI, error_message will be populated when Get/List integrations
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// The location where associated cloud scheduler job will be created
   final pulumi.Input<String> location;
   /// Service account used by Cloud Scheduler to trigger the integration at scheduled time

@@ -5,9 +5,9 @@ import 'security_policy_rule_redirect_options_type_compute_beta.dart';
 
 class SecurityPolicyRuleRedirectOptionsComputeBeta {
   /// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
   /// Type of the redirect action.
-  final pulumi.Input<SecurityPolicyRuleRedirectOptionsTypeComputeBeta>? type;
+  final pulumi.Input<SecurityPolicyRuleRedirectOptionsTypeComputeBeta?>? type;
 
   /// Creates a new [SecurityPolicyRuleRedirectOptionsComputeBeta].
   /// [target] Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.

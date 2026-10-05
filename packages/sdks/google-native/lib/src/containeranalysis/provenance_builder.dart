@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_descriptor.dart';
 
 class ProvenanceBuilder {
-  final pulumi.Input<List<ResourceDescriptor>>? builderDependencies;
-  final pulumi.Input<String>? id;
-  final pulumi.Input<Map<String, String>>? version;
+  final pulumi.Input<List<ResourceDescriptor>?>? builderDependencies;
+  final pulumi.Input<String?>? id;
+  final pulumi.Input<Map<String, String>?>? version;
 
   /// Creates a new [ProvenanceBuilder].
   /// [builderDependencies] Optional.

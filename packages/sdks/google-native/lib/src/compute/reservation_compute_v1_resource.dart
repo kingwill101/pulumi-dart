@@ -49,7 +49,7 @@ class ReservationComputeV1Resource extends pulumi.CustomResource {
           'google-native:compute/v1:Reservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'zone']).merge(options),
         ) {
     commitment = registerOutput<String>('commitment');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -58,7 +58,34 @@ class ReservationComputeV1Resource extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    resourcePolicies = registerOutput<Map<String, String>>('resourcePolicies');
+    resourcePolicies = registerOutput<Map<String, String>>('resourcePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    resourceStatus = registerOutput<AllocationResourceStatusResponseComputeV1>('resourceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AllocationResourceStatusResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    selfLink = registerOutput<String>('selfLink');
+    shareSettings = registerOutput<ShareSettingsResponseComputeV1>('shareSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ShareSettingsResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    specificReservation = registerOutput<AllocationSpecificSKUReservationResponseComputeV1>('specificReservation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AllocationSpecificSKUReservationResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    specificReservationRequired = registerOutput<bool>('specificReservationRequired');
+    status = registerOutput<String>('status');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [ReservationComputeV1Resource] resource.
+  ReservationComputeV1Resource.reference(String urn)
+    : super(
+        'google-native:compute/v1:Reservation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    commitment = registerOutput<String>('commitment');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    resourcePolicies = registerOutput<Map<String, String>>('resourcePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceStatus = registerOutput<AllocationResourceStatusResponseComputeV1>('resourceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AllocationResourceStatusResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');

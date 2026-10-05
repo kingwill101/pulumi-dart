@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The type of hosting used by the AppGateway.
-enum AppGatewayHostTypeBeyondcorpV1alpha {
+enum AppGatewayHostTypeBeyondcorpV1alpha implements pulumi.PulumiEnum<String> {
   hostTypeUnspecified("HOST_TYPE_UNSPECIFIED"),
   gcpRegionalMig("GCP_REGIONAL_MIG");
 
   const AppGatewayHostTypeBeyondcorpV1alpha(this.wireValue);
+  @override
   final String wireValue;
 
   static AppGatewayHostTypeBeyondcorpV1alpha fromValue(String value) {

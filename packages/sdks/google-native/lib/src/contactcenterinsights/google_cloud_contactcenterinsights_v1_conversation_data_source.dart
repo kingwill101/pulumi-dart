@@ -7,9 +7,9 @@ import 'google_cloud_contactcenterinsights_v1_gcs_source.dart';
 /// The conversation source, which is a combination of transcript, audio, and metadata.
 class GoogleCloudContactcenterinsightsV1ConversationDataSource {
   /// The source when the conversation comes from Dialogflow.
-  final pulumi.Input<GoogleCloudContactcenterinsightsV1DialogflowSource>? dialogflowSource;
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1DialogflowSource?>? dialogflowSource;
   /// A Cloud Storage location specification for the audio and transcript.
-  final pulumi.Input<GoogleCloudContactcenterinsightsV1GcsSource>? gcsSource;
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1GcsSource?>? gcsSource;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1ConversationDataSource].
   /// [dialogflowSource] The source when the conversation comes from Dialogflow.

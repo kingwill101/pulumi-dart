@@ -37,9 +37,9 @@ class GoogleCloudAiplatformV1beta1TimestampSplitResponse {
   factory GoogleCloudAiplatformV1beta1TimestampSplitResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1TimestampSplitResponse(
       key: pulumi.Input.fromValue(map['key'] as String),
-      testFraction: pulumi.Input.fromValue(map['testFraction'] as double),
-      trainingFraction: pulumi.Input.fromValue(map['trainingFraction'] as double),
-      validationFraction: pulumi.Input.fromValue(map['validationFraction'] as double),
+      testFraction: pulumi.Input.fromValue((map['testFraction'] as num).toDouble()),
+      trainingFraction: pulumi.Input.fromValue((map['trainingFraction'] as num).toDouble()),
+      validationFraction: pulumi.Input.fromValue((map['validationFraction'] as num).toDouble()),
     );
   }
 }

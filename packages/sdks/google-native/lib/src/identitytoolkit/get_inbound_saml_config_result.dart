@@ -6,15 +6,15 @@ import 'google_cloud_identitytoolkit_admin_v2_sp_config_response.dart';
 /// Result data returned by getInboundSamlConfig.
 class GetInboundSamlConfigResult {
   /// The config's display name set by developers.
-  final String displayName;
+  final String? displayName;
   /// True if allows the user to sign in with the provider.
-  final bool enabled;
+  final bool? enabled;
   /// The SAML IdP (Identity Provider) configuration when the project acts as the relying party.
-  final GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse idpConfig;
+  final GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse? idpConfig;
   /// The name of the InboundSamlConfig resource, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'. Ignored during create requests.
-  final String name;
+  final String? name;
   /// The SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an authentication assertion issued by a SAML identity provider.
-  final GoogleCloudIdentitytoolkitAdminV2SpConfigResponse spConfig;
+  final GoogleCloudIdentitytoolkitAdminV2SpConfigResponse? spConfig;
 
   /// Creates a new [GetInboundSamlConfigResult].
   /// [displayName] The config's display name set by developers.
@@ -23,30 +23,30 @@ class GetInboundSamlConfigResult {
   /// [name] The name of the InboundSamlConfig resource, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'. Ignored during create requests.
   /// [spConfig] The SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an authentication assertion issued by a SAML identity provider.
   const GetInboundSamlConfigResult({
-    required this.displayName,
-    required this.enabled,
-    required this.idpConfig,
-    required this.name,
-    required this.spConfig,
+    this.displayName,
+    this.enabled,
+    this.idpConfig,
+    this.name,
+    this.spConfig,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'displayName': displayName,
-      'enabled': enabled,
-      'idpConfig': idpConfig.toMap(),
-      'name': name,
-      'spConfig': spConfig.toMap(),
+      'displayName': ?displayName,
+      'enabled': ?enabled,
+      'idpConfig': ?idpConfig?.toMap(),
+      'name': ?name,
+      'spConfig': ?spConfig?.toMap(),
     };
   }
 
   factory GetInboundSamlConfigResult.fromMap(Map<String, dynamic> map) {
     return GetInboundSamlConfigResult(
-      displayName: map['displayName'] as String,
-      enabled: map['enabled'] as bool,
-      idpConfig: GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse.fromMap((map['idpConfig']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      spConfig: GoogleCloudIdentitytoolkitAdminV2SpConfigResponse.fromMap((map['spConfig']! as Map).cast<String, dynamic>()),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      idpConfig: (() { final guardedValue = map['idpConfig']; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      spConfig: (() { final guardedValue = map['spConfig']; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2SpConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

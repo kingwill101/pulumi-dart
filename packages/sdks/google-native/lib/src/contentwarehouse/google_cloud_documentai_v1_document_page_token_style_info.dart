@@ -6,35 +6,35 @@ import 'google_type_color.dart';
 /// Font and other text style attributes.
 class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
   /// Color of the background.
-  final pulumi.Input<GoogleTypeColor>? backgroundColor;
+  final pulumi.Input<GoogleTypeColor?>? backgroundColor;
   /// Whether the text is bold (equivalent to font_weight is at least `700`).
-  final pulumi.Input<bool>? bold;
+  final pulumi.Input<bool?>? bold;
   /// Font size in points (`1` point is `¹⁄₇₂` inches).
-  final pulumi.Input<int>? fontSize;
+  final pulumi.Input<int?>? fontSize;
   /// Name or style of the font.
-  final pulumi.Input<String>? fontType;
+  final pulumi.Input<String?>? fontType;
   /// TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `400`, bold is `700`.
-  final pulumi.Input<int>? fontWeight;
+  final pulumi.Input<int?>? fontWeight;
   /// Whether the text is handwritten.
-  final pulumi.Input<bool>? handwritten;
+  final pulumi.Input<bool?>? handwritten;
   /// Whether the text is italic.
-  final pulumi.Input<bool>? italic;
+  final pulumi.Input<bool?>? italic;
   /// Letter spacing in points.
-  final pulumi.Input<double>? letterSpacing;
+  final pulumi.Input<double?>? letterSpacing;
   /// Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
-  final pulumi.Input<double>? pixelFontSize;
+  final pulumi.Input<double?>? pixelFontSize;
   /// Whether the text is in small caps.
-  final pulumi.Input<bool>? smallcaps;
+  final pulumi.Input<bool?>? smallcaps;
   /// Whether the text is strikethrough.
-  final pulumi.Input<bool>? strikeout;
+  final pulumi.Input<bool?>? strikeout;
   /// Whether the text is a subscript.
-  final pulumi.Input<bool>? subscript;
+  final pulumi.Input<bool?>? subscript;
   /// Whether the text is a superscript.
-  final pulumi.Input<bool>? superscript;
+  final pulumi.Input<bool?>? superscript;
   /// Color of the text.
-  final pulumi.Input<GoogleTypeColor>? textColor;
+  final pulumi.Input<GoogleTypeColor?>? textColor;
   /// Whether the text is underlined.
-  final pulumi.Input<bool>? underlined;
+  final pulumi.Input<bool?>? underlined;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo].
   /// [backgroundColor] Color of the background.
@@ -94,13 +94,13 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
     return GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo(
       backgroundColor: (() { final guardedValue = map['backgroundColor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleTypeColor.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       bold: (() { final guardedValue = map['bold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      fontSize: (() { final guardedValue = map['fontSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fontSize: (() { final guardedValue = map['fontSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       fontType: (() { final guardedValue = map['fontType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      fontWeight: (() { final guardedValue = map['fontWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fontWeight: (() { final guardedValue = map['fontWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       handwritten: (() { final guardedValue = map['handwritten']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       italic: (() { final guardedValue = map['italic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      letterSpacing: (() { final guardedValue = map['letterSpacing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      pixelFontSize: (() { final guardedValue = map['pixelFontSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      letterSpacing: (() { final guardedValue = map['letterSpacing']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      pixelFontSize: (() { final guardedValue = map['pixelFontSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       smallcaps: (() { final guardedValue = map['smallcaps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       strikeout: (() { final guardedValue = map['strikeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       subscript: (() { final guardedValue = map['subscript']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

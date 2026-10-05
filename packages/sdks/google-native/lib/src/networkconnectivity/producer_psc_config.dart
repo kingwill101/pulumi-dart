@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The PSC configurations on producer side.
 class ProducerPscConfig {
   /// The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
-  final pulumi.Input<String>? serviceAttachmentUri;
+  final pulumi.Input<String?>? serviceAttachmentUri;
 
   /// Creates a new [ProducerPscConfig].
   /// [serviceAttachmentUri] The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.

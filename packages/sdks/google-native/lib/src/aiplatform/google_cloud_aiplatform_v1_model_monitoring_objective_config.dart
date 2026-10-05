@@ -9,13 +9,13 @@ import 'google_cloud_aiplatform_v1_model_monitoring_objective_config_training_pr
 /// The objective configuration for model monitoring, including the information needed to detect anomalies for one particular model.
 class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfig {
   /// The config for integrating with Vertex Explainable AI.
-  final pulumi.Input<GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfig>? explanationConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfig?>? explanationConfig;
   /// The config for drift of prediction data.
-  final pulumi.Input<GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig>? predictionDriftDetectionConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig?>? predictionDriftDetectionConfig;
   /// Training dataset for models. This field has to be set only if TrainingPredictionSkewDetectionConfig is specified.
-  final pulumi.Input<GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDataset>? trainingDataset;
+  final pulumi.Input<GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDataset?>? trainingDataset;
   /// The config for skew between training data and prediction data.
-  final pulumi.Input<GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig>? trainingPredictionSkewDetectionConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig?>? trainingPredictionSkewDetectionConfig;
 
   /// Creates a new [GoogleCloudAiplatformV1ModelMonitoringObjectiveConfig].
   /// [explanationConfig] The config for integrating with Vertex Explainable AI.

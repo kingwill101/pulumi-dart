@@ -10,7 +10,7 @@ class GetEndpointServicedirectoryV1beta1Args {
   final pulumi.Input<String> endpointId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> namespaceId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> serviceId;
 
   /// Creates a new [GetEndpointServicedirectoryV1beta1Args].

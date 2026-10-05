@@ -42,7 +42,7 @@ class GoogleCloudChannelV1ValueResponse {
   factory GoogleCloudChannelV1ValueResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1ValueResponse(
       boolValue: pulumi.Input.fromValue(map['boolValue'] as bool),
-      doubleValue: pulumi.Input.fromValue(map['doubleValue'] as double),
+      doubleValue: pulumi.Input.fromValue((map['doubleValue'] as num).toDouble()),
       int64Value: pulumi.Input.fromValue(map['int64Value'] as String),
       protoValue: pulumi.Input.fromValue((map['protoValue'] as Map).cast<String, String>()),
       stringValue: pulumi.Input.fromValue(map['stringValue'] as String),

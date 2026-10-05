@@ -80,13 +80,13 @@ class GceInstanceResponseWorkstationsV1beta {
   factory GceInstanceResponseWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
     return GceInstanceResponseWorkstationsV1beta(
       accelerators: pulumi.Input.fromValue(pulumi.Input.decodeList<AcceleratorResponse>(map['accelerators']!, (value) => AcceleratorResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      bootDiskSizeGb: pulumi.Input.fromValue(map['bootDiskSizeGb'] as int),
+      bootDiskSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bootDiskSizeGb'])),
       confidentialInstanceConfig: pulumi.Input.fromValue(GceConfidentialInstanceConfigResponseWorkstationsV1beta.fromMap((map['confidentialInstanceConfig']! as Map).cast<String, dynamic>())),
       disablePublicIpAddresses: pulumi.Input.fromValue(map['disablePublicIpAddresses'] as bool),
       enableNestedVirtualization: pulumi.Input.fromValue(map['enableNestedVirtualization'] as bool),
       machineType: pulumi.Input.fromValue(map['machineType'] as String),
-      poolSize: pulumi.Input.fromValue(map['poolSize'] as int),
-      pooledInstances: pulumi.Input.fromValue(map['pooledInstances'] as int),
+      poolSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['poolSize'])),
+      pooledInstances: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['pooledInstances'])),
       serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
       serviceAccountScopes: pulumi.Input.fromValue((map['serviceAccountScopes'] as List).cast<String>()),
       shieldedInstanceConfig: pulumi.Input.fromValue(GceShieldedInstanceConfigResponseWorkstationsV1beta.fromMap((map['shieldedInstanceConfig']! as Map).cast<String, dynamic>())),

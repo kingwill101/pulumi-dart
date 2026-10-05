@@ -56,7 +56,7 @@ class ManagedZoneDnsV1beta2 extends pulumi.CustomResource {
           'google-native:dns/v1beta2:ManagedZone',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     clientOperationId = registerOutput<String?>('clientOperationId');
     cloudLoggingConfig = registerOutput<ManagedZoneCloudLoggingConfigResponseDnsV1beta2>('cloudLoggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedZoneCloudLoggingConfigResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -66,10 +66,39 @@ class ManagedZoneDnsV1beta2 extends pulumi.CustomResource {
     dnssecConfig = registerOutput<ManagedZoneDnsSecConfigResponseDnsV1beta2>('dnssecConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedZoneDnsSecConfigResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     forwardingConfig = registerOutput<ManagedZoneForwardingConfigResponseDnsV1beta2>('forwardingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedZoneForwardingConfigResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     nameServerSet = registerOutput<String>('nameServerSet');
-    nameServers = registerOutput<List<String>>('nameServers');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    peeringConfig = registerOutput<ManagedZonePeeringConfigResponseDnsV1beta2>('peeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedZonePeeringConfigResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateVisibilityConfig = registerOutput<ManagedZonePrivateVisibilityConfigResponseDnsV1beta2>('privateVisibilityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedZonePrivateVisibilityConfigResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    reverseLookupConfig = registerOutput<ManagedZoneReverseLookupConfigResponseDnsV1beta2>('reverseLookupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedZoneReverseLookupConfigResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceDirectoryConfig = registerOutput<ManagedZoneServiceDirectoryConfigResponseDnsV1beta2>('serviceDirectoryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedZoneServiceDirectoryConfigResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    visibility = registerOutput<String>('visibility');
+  }
+
+  /// Creates a typed reference to an existing [ManagedZoneDnsV1beta2] resource.
+  ManagedZoneDnsV1beta2.reference(String urn)
+    : super(
+        'google-native:dns/v1beta2:ManagedZone',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clientOperationId = registerOutput<String?>('clientOperationId');
+    cloudLoggingConfig = registerOutput<ManagedZoneCloudLoggingConfigResponseDnsV1beta2>('cloudLoggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedZoneCloudLoggingConfigResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTime = registerOutput<String>('creationTime');
+    description = registerOutput<String>('description');
+    dnsName = registerOutput<String>('dnsName');
+    dnssecConfig = registerOutput<ManagedZoneDnsSecConfigResponseDnsV1beta2>('dnssecConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedZoneDnsSecConfigResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    forwardingConfig = registerOutput<ManagedZoneForwardingConfigResponseDnsV1beta2>('forwardingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedZoneForwardingConfigResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    nameServerSet = registerOutput<String>('nameServerSet');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     peeringConfig = registerOutput<ManagedZonePeeringConfigResponseDnsV1beta2>('peeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedZonePeeringConfigResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateVisibilityConfig = registerOutput<ManagedZonePrivateVisibilityConfigResponseDnsV1beta2>('privateVisibilityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedZonePrivateVisibilityConfigResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');

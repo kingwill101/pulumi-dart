@@ -27,7 +27,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
   factory GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig(
       email: pulumi.Input.fromValue(map['email'] as String),
-      minAcceptableMeanAveragePrecision: pulumi.Input.fromValue(map['minAcceptableMeanAveragePrecision'] as double),
+      minAcceptableMeanAveragePrecision: pulumi.Input.fromValue((map['minAcceptableMeanAveragePrecision'] as num).toDouble()),
     );
   }
 }

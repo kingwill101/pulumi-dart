@@ -9,17 +9,17 @@ import 'google_cloud_contentwarehouse_v1_property_definition.dart';
 /// {@macro pulumi_contentwarehouse_v1_document_schema_args_doc}
 class DocumentSchemaArgs {
   /// Schema description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the schema given by the user. Must be unique per project.
   final pulumi.Input<String> displayName;
   /// Document Type, true refers the document is a folder, otherwise it is a typical document.
-  final pulumi.Input<bool>? documentIsFolder;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<bool?>? documentIsFolder;
+  final pulumi.Input<String?>? location;
   /// The resource name of the document schema. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}. The name is ignored when creating a document schema.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Document details.
-  final pulumi.Input<List<GoogleCloudContentwarehouseV1PropertyDefinition>>? propertyDefinitions;
+  final pulumi.Input<List<GoogleCloudContentwarehouseV1PropertyDefinition>?>? propertyDefinitions;
 
   /// Creates a new [DocumentSchemaArgs].
   /// [description] Schema description.

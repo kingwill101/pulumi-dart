@@ -6,11 +6,11 @@ import 'preprocessing_config.dart';
 /// Input asset.
 class InputType {
   /// A unique key for this input. Must be specified when using advanced mapping and edit lists.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Preprocessing configurations.
-  final pulumi.Input<PreprocessingConfig>? preprocessingConfig;
+  final pulumi.Input<PreprocessingConfig?>? preprocessingConfig;
   /// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from Job.input_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [InputType].
   /// [key] A unique key for this input. Must be specified when using advanced mapping and edit lists.

@@ -6,9 +6,9 @@ import 'cloud_run_config_load_balancer_type_container_v1beta1.dart';
 /// Configuration options for the Cloud Run feature.
 class CloudRunConfigContainerV1beta1 {
   /// Whether Cloud Run addon is enabled for this cluster.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Which load balancer type is installed for Cloud Run.
-  final pulumi.Input<CloudRunConfigLoadBalancerTypeContainerV1beta1>? loadBalancerType;
+  final pulumi.Input<CloudRunConfigLoadBalancerTypeContainerV1beta1?>? loadBalancerType;
 
   /// Creates a new [CloudRunConfigContainerV1beta1].
   /// [disabled] Whether Cloud Run addon is enabled for this cluster.

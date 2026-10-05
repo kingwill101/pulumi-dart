@@ -51,11 +51,11 @@ class GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponse {
 
   factory GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponse(
-      anomalyDetectionThreshold: pulumi.Input.fromValue(map['anomalyDetectionThreshold'] as double),
+      anomalyDetectionThreshold: pulumi.Input.fromValue((map['anomalyDetectionThreshold'] as num).toDouble()),
       anomalyUri: pulumi.Input.fromValue(map['anomalyUri'] as String),
-      distributionDeviation: pulumi.Input.fromValue(map['distributionDeviation'] as double),
+      distributionDeviation: pulumi.Input.fromValue((map['distributionDeviation'] as num).toDouble()),
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
-      score: pulumi.Input.fromValue(map['score'] as double),
+      score: pulumi.Input.fromValue((map['score'] as num).toDouble()),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       statsUri: pulumi.Input.fromValue(map['statsUri'] as String),
     );

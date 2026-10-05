@@ -31,9 +31,9 @@ class InstanceGroupAutoscalingPolicyConfigResponseDataprocV1beta2 {
 
   factory InstanceGroupAutoscalingPolicyConfigResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return InstanceGroupAutoscalingPolicyConfigResponseDataprocV1beta2(
-      maxInstances: pulumi.Input.fromValue(map['maxInstances'] as int),
-      minInstances: pulumi.Input.fromValue(map['minInstances'] as int),
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      maxInstances: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxInstances'])),
+      minInstances: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minInstances'])),
+      weight: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['weight'])),
     );
   }
 }

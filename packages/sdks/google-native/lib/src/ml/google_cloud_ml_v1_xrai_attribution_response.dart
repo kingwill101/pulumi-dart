@@ -21,7 +21,7 @@ class GoogleCloudMlV1XraiAttributionResponse {
 
   factory GoogleCloudMlV1XraiAttributionResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1XraiAttributionResponse(
-      numIntegralSteps: pulumi.Input.fromValue(map['numIntegralSteps'] as int),
+      numIntegralSteps: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numIntegralSteps'])),
     );
   }
 }

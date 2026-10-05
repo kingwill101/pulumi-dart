@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Settings for revision-level scaling settings.
 class GoogleCloudRunV2RevisionScaling {
   /// Maximum number of serving instances that this resource should have.
-  final pulumi.Input<int>? maxInstanceCount;
+  final pulumi.Input<int?>? maxInstanceCount;
   /// Minimum number of serving instances that this resource should have.
-  final pulumi.Input<int>? minInstanceCount;
+  final pulumi.Input<int?>? minInstanceCount;
 
   /// Creates a new [GoogleCloudRunV2RevisionScaling].
   /// [maxInstanceCount] Maximum number of serving instances that this resource should have.
@@ -26,8 +26,8 @@ class GoogleCloudRunV2RevisionScaling {
 
   factory GoogleCloudRunV2RevisionScaling.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2RevisionScaling(
-      maxInstanceCount: (() { final guardedValue = map['maxInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minInstanceCount: (() { final guardedValue = map['minInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxInstanceCount: (() { final guardedValue = map['maxInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minInstanceCount: (() { final guardedValue = map['minInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

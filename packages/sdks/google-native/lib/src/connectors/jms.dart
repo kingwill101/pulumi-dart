@@ -6,9 +6,9 @@ import 'jmstype.dart';
 /// JMS message denotes the source of the event
 class JMS {
   /// Optional. Name of the JMS source. i.e. queueName or topicName
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Optional. Type of the JMS Source. i.e. Queue or Topic
-  final pulumi.Input<JMSType>? type;
+  final pulumi.Input<JMSType?>? type;
 
   /// Creates a new [JMS].
   /// [name] Optional. Name of the JMS source. i.e. queueName or topicName

@@ -32,7 +32,7 @@ class CustomErrorResponsePolicyCustomErrorResponseRuleResponseComputeBeta {
   factory CustomErrorResponsePolicyCustomErrorResponseRuleResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return CustomErrorResponsePolicyCustomErrorResponseRuleResponseComputeBeta(
       matchResponseCodes: pulumi.Input.fromValue((map['matchResponseCodes'] as List).cast<String>()),
-      overrideResponseCode: pulumi.Input.fromValue(map['overrideResponseCode'] as int),
+      overrideResponseCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['overrideResponseCode'])),
       path: pulumi.Input.fromValue(map['path'] as String),
     );
   }

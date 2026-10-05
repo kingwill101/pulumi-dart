@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Instance type.
-enum InstanceTypeDatafusionV1beta1 {
+enum InstanceTypeDatafusionV1beta1 implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   basic("BASIC"),
   enterprise("ENTERPRISE"),
   developer("DEVELOPER");
 
   const InstanceTypeDatafusionV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceTypeDatafusionV1beta1 fromValue(String value) {

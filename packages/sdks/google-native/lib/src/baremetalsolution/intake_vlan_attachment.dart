@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A GCP vlan attachment.
 class IntakeVlanAttachment {
   /// Identifier of the VLAN attachment.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Attachment pairing key.
-  final pulumi.Input<String>? pairingKey;
+  final pulumi.Input<String?>? pairingKey;
 
   /// Creates a new [IntakeVlanAttachment].
   /// [id] Identifier of the VLAN attachment.

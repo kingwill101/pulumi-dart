@@ -10,7 +10,7 @@ class GetFeatureViewArgs {
   final pulumi.Input<String> featureOnlineStoreId;
   final pulumi.Input<String> featureViewId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetFeatureViewArgs].
   /// [featureOnlineStoreId] Required.

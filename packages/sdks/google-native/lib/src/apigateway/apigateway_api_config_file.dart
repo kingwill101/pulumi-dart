@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A lightweight description of a file.
 class ApigatewayApiConfigFile {
   /// The bytes that constitute the file.
-  final pulumi.Input<String>? contents;
+  final pulumi.Input<String?>? contents;
   /// The file path (full or relative path). This is typically the path of the file when it is uploaded.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [ApigatewayApiConfigFile].
   /// [contents] The bytes that constitute the file.

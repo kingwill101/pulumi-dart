@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_aiplatform_v1_get_training_pipeline_args_doc}
 class GetTrainingPipelineArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> trainingPipelineId;
 
   /// Creates a new [GetTrainingPipelineArgs].

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents preferences for sending email notifications for transfer run events.
 class EmailPreferences {
   /// If true, email notifications will be sent on transfer run failures.
-  final pulumi.Input<bool>? enableFailureEmail;
+  final pulumi.Input<bool?>? enableFailureEmail;
 
   /// Creates a new [EmailPreferences].
   /// [enableFailureEmail] If true, email notifications will be sent on transfer run failures.

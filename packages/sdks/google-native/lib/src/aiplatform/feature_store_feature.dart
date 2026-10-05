@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'feature_store_feature_args.dart';
+import 'google_cloud_aiplatform_v1_feature_monitoring_stats_anomaly_response.dart';
 
 /// Creates a new Feature in a given EntityType.
 class FeatureStoreFeature extends pulumi.CustomResource {
@@ -19,7 +20,7 @@ class FeatureStoreFeature extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
   /// Only applicable for Vertex AI Feature Store (Legacy). The list of historical stats and anomalies with specified objectives.
-  late final pulumi.Output<List<Map<String, dynamic>>> monitoringStatsAnomalies;
+  late final pulumi.Output<List<GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse>> monitoringStatsAnomalies;
   /// Immutable. Name of the Feature. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}` `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The last part feature is assigned by the client. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
@@ -42,7 +43,7 @@ class FeatureStoreFeature extends pulumi.CustomResource {
           'google-native:aiplatform/v1:FeatureStoreFeature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['entityTypeId', 'featureId', 'featurestoreId', 'location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
@@ -51,9 +52,35 @@ class FeatureStoreFeature extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     featureId = registerOutput<String>('featureId');
     featurestoreId = registerOutput<String>('featurestoreId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    monitoringStatsAnomalies = registerOutput<List<Map<String, dynamic>>>('monitoringStatsAnomalies');
+    monitoringStatsAnomalies = registerOutput<List<GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse>>('monitoringStatsAnomalies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse>(guardedValue, (value) => GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+    valueType = registerOutput<String>('valueType');
+    versionColumnName = registerOutput<String>('versionColumnName');
+  }
+
+  /// Creates a typed reference to an existing [FeatureStoreFeature] resource.
+  FeatureStoreFeature.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1:FeatureStoreFeature',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    disableMonitoring = registerOutput<bool>('disableMonitoring');
+    entityTypeId = registerOutput<String>('entityTypeId');
+    etag = registerOutput<String>('etag');
+    featureId = registerOutput<String>('featureId');
+    featurestoreId = registerOutput<String>('featurestoreId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    monitoringStatsAnomalies = registerOutput<List<GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse>>('monitoringStatsAnomalies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse>(guardedValue, (value) => GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');

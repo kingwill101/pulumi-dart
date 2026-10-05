@@ -6,7 +6,7 @@ import 'google_devtools_artifactregistry_v1_remote_repository_config_apt_reposit
 /// Configuration for an Apt remote repository.
 class AptRepository {
   /// One of the publicly available Apt repositories supported by Artifact Registry.
-  final pulumi.Input<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository>? publicRepository;
+  final pulumi.Input<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository?>? publicRepository;
 
   /// Creates a new [AptRepository].
   /// [publicRepository] One of the publicly available Apt repositories supported by Artifact Registry.

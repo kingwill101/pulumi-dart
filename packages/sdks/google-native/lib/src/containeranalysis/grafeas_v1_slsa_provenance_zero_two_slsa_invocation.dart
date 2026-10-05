@@ -5,9 +5,9 @@ import 'grafeas_v1_slsa_provenance_zero_two_slsa_config_source.dart';
 
 /// Identifies the event that kicked off the build.
 class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation {
-  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource>? configSource;
-  final pulumi.Input<Map<String, String>>? environment;
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource?>? configSource;
+  final pulumi.Input<Map<String, String>?>? environment;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation].
   /// [configSource] Optional.

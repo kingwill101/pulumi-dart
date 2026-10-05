@@ -7,9 +7,9 @@ import 'managed_cluster.dart';
 /// Specifies workflow execution target.Either managed_cluster or cluster_selector is required.
 class WorkflowTemplatePlacement {
   /// Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.
-  final pulumi.Input<ClusterSelector>? clusterSelector;
+  final pulumi.Input<ClusterSelector?>? clusterSelector;
   /// A cluster that is managed by the workflow.
-  final pulumi.Input<ManagedCluster>? managedCluster;
+  final pulumi.Input<ManagedCluster?>? managedCluster;
 
   /// Creates a new [WorkflowTemplatePlacement].
   /// [clusterSelector] Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.

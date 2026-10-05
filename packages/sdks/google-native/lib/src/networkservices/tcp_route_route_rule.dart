@@ -9,7 +9,7 @@ class TcpRouteRouteRule {
   /// The detailed rule defining how to route matched traffic.
   final pulumi.Input<TcpRouteRouteAction> action;
   /// Optional. RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation. If no routeMatch field is specified, this rule will unconditionally match traffic.
-  final pulumi.Input<List<TcpRouteRouteMatch>>? matches;
+  final pulumi.Input<List<TcpRouteRouteMatch>?>? matches;
 
   /// Creates a new [TcpRouteRouteRule].
   /// [action] The detailed rule defining how to route matched traffic.

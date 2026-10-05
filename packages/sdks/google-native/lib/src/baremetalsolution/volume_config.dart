@@ -10,27 +10,27 @@ import 'volume_config_type.dart';
 /// Configuration parameters for a new volume.
 class VolumeConfig {
   /// The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
-  final pulumi.Input<String>? gcpService;
+  final pulumi.Input<String?>? gcpService;
   /// A transient unique identifier to identify a volume within an ProvisioningConfig request.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// LUN ranges to be configured. Set only when protocol is PROTOCOL_FC.
-  final pulumi.Input<List<LunRange>>? lunRanges;
+  final pulumi.Input<List<LunRange>?>? lunRanges;
   /// Machine ids connected to this volume. Set only when protocol is PROTOCOL_FC.
-  final pulumi.Input<List<String>>? machineIds;
+  final pulumi.Input<List<String>?>? machineIds;
   /// NFS exports. Set only when protocol is PROTOCOL_NFS.
-  final pulumi.Input<List<NfsExport>>? nfsExports;
+  final pulumi.Input<List<NfsExport>?>? nfsExports;
   /// Performance tier of the Volume. Default is SHARED.
-  final pulumi.Input<VolumeConfigPerformanceTier>? performanceTier;
+  final pulumi.Input<VolumeConfigPerformanceTier?>? performanceTier;
   /// Volume protocol.
-  final pulumi.Input<VolumeConfigProtocol>? protocol;
+  final pulumi.Input<VolumeConfigProtocol?>? protocol;
   /// The requested size of this volume, in GB.
-  final pulumi.Input<int>? sizeGb;
+  final pulumi.Input<int?>? sizeGb;
   /// Whether snapshots should be enabled.
-  final pulumi.Input<bool>? snapshotsEnabled;
+  final pulumi.Input<bool?>? snapshotsEnabled;
   /// The type of this Volume.
-  final pulumi.Input<VolumeConfigType>? type;
+  final pulumi.Input<VolumeConfigType?>? type;
   /// User note field, it can be used by customers to add additional information for the BMS Ops team .
-  final pulumi.Input<String>? userNote;
+  final pulumi.Input<String?>? userNote;
 
   /// Creates a new [VolumeConfig].
   /// [gcpService] The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
@@ -83,7 +83,7 @@ class VolumeConfig {
       nfsExports: (() { final guardedValue = map['nfsExports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NfsExport>(guardedValue, (value) => NfsExport.fromMap((value as Map).cast<String, dynamic>()))); })(),
       performanceTier: (() { final guardedValue = map['performanceTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeConfigPerformanceTier.fromValue(guardedValue as String)); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeConfigProtocol.fromValue(guardedValue as String)); })(),
-      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       snapshotsEnabled: (() { final guardedValue = map['snapshotsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeConfigType.fromValue(guardedValue as String)); })(),
       userNote: (() { final guardedValue = map['userNote']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

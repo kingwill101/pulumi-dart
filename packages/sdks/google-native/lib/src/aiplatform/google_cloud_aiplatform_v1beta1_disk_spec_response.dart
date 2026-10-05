@@ -26,7 +26,7 @@ class GoogleCloudAiplatformV1beta1DiskSpecResponse {
 
   factory GoogleCloudAiplatformV1beta1DiskSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1DiskSpecResponse(
-      bootDiskSizeGb: pulumi.Input.fromValue(map['bootDiskSizeGb'] as int),
+      bootDiskSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bootDiskSizeGb'])),
       bootDiskType: pulumi.Input.fromValue(map['bootDiskType'] as String),
     );
   }

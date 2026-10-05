@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Describes how this key is integrated with the website.
-enum GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType {
+enum GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType implements pulumi.PulumiEnum<String> {
   integrationTypeUnspecified("INTEGRATION_TYPE_UNSPECIFIED"),
   score("SCORE"),
   checkbox("CHECKBOX"),
   invisible("INVISIBLE");
 
   const GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType fromValue(String value) {

@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// MySQL Column.
 class MysqlColumn {
   /// Column collation.
-  final pulumi.Input<String>? collation;
+  final pulumi.Input<String?>? collation;
   /// Column name.
-  final pulumi.Input<String>? column;
+  final pulumi.Input<String?>? column;
   /// The MySQL data type. Full data types list can be found here: https://dev.mysql.com/doc/refman/8.0/en/data-types.html
-  final pulumi.Input<String>? dataType;
+  final pulumi.Input<String?>? dataType;
   /// Column length.
-  final pulumi.Input<int>? length;
+  final pulumi.Input<int?>? length;
   /// Whether or not the column can accept a null value.
-  final pulumi.Input<bool>? nullable;
+  final pulumi.Input<bool?>? nullable;
   /// The ordinal position of the column in the table.
-  final pulumi.Input<int>? ordinalPosition;
+  final pulumi.Input<int?>? ordinalPosition;
   /// Column precision.
-  final pulumi.Input<int>? precision;
+  final pulumi.Input<int?>? precision;
   /// Whether or not the column represents a primary key.
-  final pulumi.Input<bool>? primaryKey;
+  final pulumi.Input<bool?>? primaryKey;
   /// Column scale.
-  final pulumi.Input<int>? scale;
+  final pulumi.Input<int?>? scale;
 
   /// Creates a new [MysqlColumn].
   /// [collation] Column collation.
@@ -64,12 +64,12 @@ class MysqlColumn {
       collation: (() { final guardedValue = map['collation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       column: (() { final guardedValue = map['column']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataType: (() { final guardedValue = map['dataType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      length: (() { final guardedValue = map['length']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      length: (() { final guardedValue = map['length']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nullable: (() { final guardedValue = map['nullable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      ordinalPosition: (() { final guardedValue = map['ordinalPosition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      precision: (() { final guardedValue = map['precision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ordinalPosition: (() { final guardedValue = map['ordinalPosition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      precision: (() { final guardedValue = map['precision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      scale: (() { final guardedValue = map['scale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scale: (() { final guardedValue = map['scale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

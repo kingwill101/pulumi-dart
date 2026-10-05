@@ -1,4 +1,6 @@
-enum GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem implements pulumi.PulumiEnum<String> {
   fileTypeUnspecified("FILE_TYPE_UNSPECIFIED"),
   binaryFile("BINARY_FILE"),
   textFile("TEXT_FILE"),
@@ -12,6 +14,7 @@ enum GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem {
   excel("EXCEL");
 
   const GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem(this.wireValue);
+  @override
   final String wireValue;
 
   static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem fromValue(String value) {

@@ -12,7 +12,7 @@ class GetDocumentArgs {
   final pulumi.Input<String> dataStoreId;
   final pulumi.Input<String> documentId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDocumentArgs].
   /// [branchId] Required.

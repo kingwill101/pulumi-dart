@@ -1,4 +1,6 @@
-enum ScanConfigTargetPlatformsItemWebsecurityscannerV1beta {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ScanConfigTargetPlatformsItemWebsecurityscannerV1beta implements pulumi.PulumiEnum<String> {
   targetPlatformUnspecified("TARGET_PLATFORM_UNSPECIFIED"),
   appEngine("APP_ENGINE"),
   compute("COMPUTE"),
@@ -6,6 +8,7 @@ enum ScanConfigTargetPlatformsItemWebsecurityscannerV1beta {
   cloudFunctions("CLOUD_FUNCTIONS");
 
   const ScanConfigTargetPlatformsItemWebsecurityscannerV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static ScanConfigTargetPlatformsItemWebsecurityscannerV1beta fromValue(String value) {

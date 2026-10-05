@@ -10,15 +10,15 @@ import 'google_cloud_documentai_v1_document_provenance.dart';
 /// A detected token.
 class GoogleCloudDocumentaiV1DocumentPageToken {
   /// Detected break at the end of a Token.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak>? detectedBreak;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak?>? detectedBreak;
   /// A list of detected languages together with confidence.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>>? detectedLanguages;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>?>? detectedLanguages;
   /// Layout for Token.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout>? layout;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout?>? layout;
   /// The history of this annotation.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentProvenance>? provenance;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentProvenance?>? provenance;
   /// Text style attributes.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo>? styleInfo;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo?>? styleInfo;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageToken].
   /// [detectedBreak] Detected break at the end of a Token.

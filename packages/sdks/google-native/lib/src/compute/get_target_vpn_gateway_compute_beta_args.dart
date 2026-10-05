@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_beta_get_target_vpn_gateway_compute_beta_args_doc}
 class GetTargetVpnGatewayComputeBetaArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
   final pulumi.Input<String> targetVpnGateway;
 

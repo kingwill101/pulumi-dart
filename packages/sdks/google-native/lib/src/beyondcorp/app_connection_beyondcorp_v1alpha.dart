@@ -46,15 +46,41 @@ class AppConnectionBeyondcorpV1alpha extends pulumi.CustomResource {
           'google-native:beyondcorp/v1alpha:AppConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     appConnectionId = registerOutput<String?>('appConnectionId');
     applicationEndpoint = registerOutput<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointResponse>('applicationEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    connectors = registerOutput<List<String>>('connectors');
+    connectors = registerOutput<List<String>>('connectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     gateway = registerOutput<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AppConnectionBeyondcorpV1alpha] resource.
+  AppConnectionBeyondcorpV1alpha.reference(String urn)
+    : super(
+        'google-native:beyondcorp/v1alpha:AppConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appConnectionId = registerOutput<String?>('appConnectionId');
+    applicationEndpoint = registerOutput<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointResponse>('applicationEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectors = registerOutput<List<String>>('connectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    gateway = registerOutput<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

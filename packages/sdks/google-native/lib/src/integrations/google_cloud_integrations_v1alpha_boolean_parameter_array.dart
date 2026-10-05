@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// This message only contains a field of boolean array.
 class GoogleCloudIntegrationsV1alphaBooleanParameterArray {
   /// Boolean array.
-  final pulumi.Input<List<bool>>? booleanValues;
+  final pulumi.Input<List<bool>?>? booleanValues;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaBooleanParameterArray].
   /// [booleanValues] Boolean array.

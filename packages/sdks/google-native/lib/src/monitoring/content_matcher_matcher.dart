@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
-enum ContentMatcherMatcher {
+enum ContentMatcherMatcher implements pulumi.PulumiEnum<String> {
   contentMatcherOptionUnspecified("CONTENT_MATCHER_OPTION_UNSPECIFIED"),
   containsString("CONTAINS_STRING"),
   notContainsString("NOT_CONTAINS_STRING"),
@@ -9,6 +11,7 @@ enum ContentMatcherMatcher {
   notMatchesJsonPath("NOT_MATCHES_JSON_PATH");
 
   const ContentMatcherMatcher(this.wireValue);
+  @override
   final String wireValue;
 
   static ContentMatcherMatcher fromValue(String value) {

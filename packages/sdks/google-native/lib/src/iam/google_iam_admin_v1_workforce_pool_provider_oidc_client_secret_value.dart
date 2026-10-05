@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Representation of the value of the client secret.
 class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue {
   /// Input only. The plain text of the client secret value. For security reasons, this field is only used for input and will never be populated in any response.
-  final pulumi.Input<String>? plainText;
+  final pulumi.Input<String?>? plainText;
 
   /// Creates a new [GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue].
   /// [plainText] Input only. The plain text of the client secret value. For security reasons, this field is only used for input and will never be populated in any response.

@@ -22,6 +22,17 @@ Future<GetProductResult> getProduct(
   return GetProductResult.fromMap(result);
 }
 
+pulumi.Output<GetProductResult> getProductOutput(
+  GetProductArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vision/v1:getProduct',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProductResult.fromMap);
+}
+
 /// Gets information associated with a ProductSet. Possible errors: * Returns NOT_FOUND if the ProductSet does not exist.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vision_v1_get_product_set_args_doc}
 /// [options] Invoke options controlling this call.
@@ -38,6 +49,17 @@ Future<GetProductSetResult> getProductSet(
   return GetProductSetResult.fromMap(result);
 }
 
+pulumi.Output<GetProductSetResult> getProductSetOutput(
+  GetProductSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vision/v1:getProductSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProductSetResult.fromMap);
+}
+
 /// Gets information associated with a ReferenceImage. Possible errors: * Returns NOT_FOUND if the specified image does not exist.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vision_v1_get_reference_image_args_doc}
 /// [options] Invoke options controlling this call.
@@ -52,4 +74,15 @@ Future<GetReferenceImageResult> getReferenceImage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReferenceImageResult.fromMap(result);
+}
+
+pulumi.Output<GetReferenceImageResult> getReferenceImageOutput(
+  GetReferenceImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vision/v1:getReferenceImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReferenceImageResult.fromMap);
 }

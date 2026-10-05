@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of discovery for the resource.
-enum DiscoveredAnalysisStatus {
+enum DiscoveredAnalysisStatus implements pulumi.PulumiEnum<String> {
   analysisStatusUnspecified("ANALYSIS_STATUS_UNSPECIFIED"),
   pending("PENDING"),
   scanning("SCANNING"),
@@ -9,6 +11,7 @@ enum DiscoveredAnalysisStatus {
   finishedUnsupported("FINISHED_UNSUPPORTED");
 
   const DiscoveredAnalysisStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static DiscoveredAnalysisStatus fromValue(String value) {

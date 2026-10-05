@@ -11,17 +11,17 @@ import 'on_prem_cluster_gkehub_v1alpha2.dart';
 /// MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
 class MembershipEndpointGkehubV1alpha2 {
   /// Optional. Specific information for a GDC Edge Appliance cluster.
-  final pulumi.Input<ApplianceClusterGkehubV1alpha2>? applianceCluster;
+  final pulumi.Input<ApplianceClusterGkehubV1alpha2?>? applianceCluster;
   /// Optional. Specific information for a Google Edge cluster.
-  final pulumi.Input<EdgeClusterGkehubV1alpha2>? edgeCluster;
+  final pulumi.Input<EdgeClusterGkehubV1alpha2?>? edgeCluster;
   /// Optional. Specific information for a GKE-on-GCP cluster.
-  final pulumi.Input<GkeClusterGkehubV1alpha2>? gkeCluster;
+  final pulumi.Input<GkeClusterGkehubV1alpha2?>? gkeCluster;
   /// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
-  final pulumi.Input<KubernetesResourceGkehubV1alpha2>? kubernetesResource;
+  final pulumi.Input<KubernetesResourceGkehubV1alpha2?>? kubernetesResource;
   /// Optional. Specific information for a GKE Multi-Cloud cluster.
-  final pulumi.Input<MultiCloudClusterGkehubV1alpha2>? multiCloudCluster;
+  final pulumi.Input<MultiCloudClusterGkehubV1alpha2?>? multiCloudCluster;
   /// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
-  final pulumi.Input<OnPremClusterGkehubV1alpha2>? onPremCluster;
+  final pulumi.Input<OnPremClusterGkehubV1alpha2?>? onPremCluster;
 
   /// Creates a new [MembershipEndpointGkehubV1alpha2].
   /// [applianceCluster] Optional. Specific information for a GDC Edge Appliance cluster.

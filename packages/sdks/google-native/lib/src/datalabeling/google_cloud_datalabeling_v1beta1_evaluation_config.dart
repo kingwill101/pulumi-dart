@@ -6,7 +6,7 @@ import 'google_cloud_datalabeling_v1beta1_bounding_box_evaluation_options.dart';
 /// Configuration details used for calculating evaluation metrics and creating an Evaluation.
 class GoogleCloudDatalabelingV1beta1EvaluationConfig {
   /// Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes.
-  final pulumi.Input<GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions>? boundingBoxEvaluationOptions;
+  final pulumi.Input<GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions?>? boundingBoxEvaluationOptions;
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1EvaluationConfig].
   /// [boundingBoxEvaluationOptions] Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes.

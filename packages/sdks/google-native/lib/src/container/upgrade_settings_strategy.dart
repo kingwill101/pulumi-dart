@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Update strategy of the node pool.
-enum UpgradeSettingsStrategy {
+enum UpgradeSettingsStrategy implements pulumi.PulumiEnum<String> {
   nodePoolUpdateStrategyUnspecified("NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED"),
   blueGreen("BLUE_GREEN"),
   surge("SURGE");
 
   const UpgradeSettingsStrategy(this.wireValue);
+  @override
   final String wireValue;
 
   static UpgradeSettingsStrategy fromValue(String value) {

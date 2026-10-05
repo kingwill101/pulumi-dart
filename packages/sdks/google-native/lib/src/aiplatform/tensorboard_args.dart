@@ -9,19 +9,19 @@ import 'google_cloud_aiplatform_v1_encryption_spec.dart';
 /// {@macro pulumi_aiplatform_v1_tensorboard_args_doc}
 class TensorboardArgs {
   /// Description of this Tensorboard.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User provided name of this Tensorboard.
   final pulumi.Input<String> displayName;
   /// Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
-  final pulumi.Input<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1EncryptionSpec?>? encryptionSpec;
   /// Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Used to indicate if the TensorBoard instance is the default one. Each project & region can have at most one default TensorBoard instance. Creation of a default TensorBoard instance and updating an existing TensorBoard instance to be default will mark all other TensorBoard instances (if any) as non default.
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// The labels with user-defined metadata to organize your Tensorboards. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Tensorboard (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [TensorboardArgs].
   /// [description] Description of this Tensorboard.

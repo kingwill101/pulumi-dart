@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Settings for displaying the image. Applies to every image in items.
-enum GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions {
+enum GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions implements pulumi.PulumiEnum<String> {
   imageDisplayOptionsUnspecified("IMAGE_DISPLAY_OPTIONS_UNSPECIFIED"),
   gray("GRAY"),
   white("WHITE"),
@@ -7,6 +9,7 @@ enum GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOpti
   blurredBackground("BLURRED_BACKGROUND");
 
   const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions fromValue(String value) {

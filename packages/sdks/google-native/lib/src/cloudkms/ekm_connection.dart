@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ekm_connection_args.dart';
+import 'service_resolver_response.dart';
 
 /// Creates a new EkmConnection in a given Project and Location.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
@@ -20,7 +21,7 @@ class EkmConnection extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   /// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
-  late final pulumi.Output<List<Map<String, dynamic>>> serviceResolvers;
+  late final pulumi.Output<List<ServiceResolverResponse>> serviceResolvers;
 
   /// Creates a new [EkmConnection].
   /// [name] The Pulumi resource name.
@@ -34,7 +35,7 @@ class EkmConnection extends pulumi.CustomResource {
           'google-native:cloudkms/v1:EkmConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['ekmConnectionId', 'location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     cryptoSpacePath = registerOutput<String>('cryptoSpacePath');
@@ -44,6 +45,26 @@ class EkmConnection extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    serviceResolvers = registerOutput<List<Map<String, dynamic>>>('serviceResolvers');
+    serviceResolvers = registerOutput<List<ServiceResolverResponse>>('serviceResolvers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceResolverResponse>(guardedValue, (value) => ServiceResolverResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [EkmConnection] resource.
+  EkmConnection.reference(String urn)
+    : super(
+        'google-native:cloudkms/v1:EkmConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    cryptoSpacePath = registerOutput<String>('cryptoSpacePath');
+    ekmConnectionId = registerOutput<String>('ekmConnectionId');
+    etag = registerOutput<String>('etag');
+    keyManagementMode = registerOutput<String>('keyManagementMode');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    serviceResolvers = registerOutput<List<ServiceResolverResponse>>('serviceResolvers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceResolverResponse>(guardedValue, (value) => ServiceResolverResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

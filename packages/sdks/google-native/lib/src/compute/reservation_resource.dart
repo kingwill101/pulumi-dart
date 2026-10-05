@@ -57,7 +57,7 @@ class ReservationResource extends pulumi.CustomResource {
           'google-native:compute/beta:Reservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'zone']).merge(options),
         ) {
     aggregateReservation = registerOutput<AllocationAggregateReservationResponseComputeBeta>('aggregateReservation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AllocationAggregateReservationResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     commitment = registerOutput<String>('commitment');
@@ -69,7 +69,37 @@ class ReservationResource extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    resourcePolicies = registerOutput<Map<String, String>>('resourcePolicies');
+    resourcePolicies = registerOutput<Map<String, String>>('resourcePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    resourceStatus = registerOutput<AllocationResourceStatusResponseComputeBeta>('resourceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AllocationResourceStatusResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    selfLink = registerOutput<String>('selfLink');
+    shareSettings = registerOutput<ShareSettingsResponseComputeBeta>('shareSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ShareSettingsResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    specificReservation = registerOutput<AllocationSpecificSKUReservationResponseComputeBeta>('specificReservation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AllocationSpecificSKUReservationResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    specificReservationRequired = registerOutput<bool>('specificReservationRequired');
+    status = registerOutput<String>('status');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [ReservationResource] resource.
+  ReservationResource.reference(String urn)
+    : super(
+        'google-native:compute/beta:Reservation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aggregateReservation = registerOutput<AllocationAggregateReservationResponseComputeBeta>('aggregateReservation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AllocationAggregateReservationResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    commitment = registerOutput<String>('commitment');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deleteAfterDuration = registerOutput<DurationResponseComputeBeta>('deleteAfterDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DurationResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deleteAtTime = registerOutput<String>('deleteAtTime');
+    description = registerOutput<String>('description');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    resourcePolicies = registerOutput<Map<String, String>>('resourcePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceStatus = registerOutput<AllocationResourceStatusResponseComputeBeta>('resourceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AllocationResourceStatusResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');

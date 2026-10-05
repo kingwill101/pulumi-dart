@@ -11,11 +11,11 @@ import 'membership_role_cloudidentity_v1beta1.dart';
 class MembershipCloudidentityV1beta1Args {
   final pulumi.Input<String> groupId;
   /// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-  final pulumi.Input<EntityKeyCloudidentityV1beta1>? memberKey;
+  final pulumi.Input<EntityKeyCloudidentityV1beta1?>? memberKey;
   /// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
   final pulumi.Input<EntityKeyCloudidentityV1beta1> preferredMemberKey;
   /// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
-  final pulumi.Input<List<MembershipRoleCloudidentityV1beta1>>? roles;
+  final pulumi.Input<List<MembershipRoleCloudidentityV1beta1>?>? roles;
 
   /// Creates a new [MembershipCloudidentityV1beta1Args].
   /// [groupId] Required.

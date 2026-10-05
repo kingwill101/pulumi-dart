@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
-enum BackendServiceProtocol {
+enum BackendServiceProtocol implements pulumi.PulumiEnum<String> {
   all("ALL"),
   grpc("GRPC"),
   http("HTTP"),
@@ -11,6 +13,7 @@ enum BackendServiceProtocol {
   unspecified("UNSPECIFIED");
 
   const BackendServiceProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static BackendServiceProtocol fromValue(String value) {

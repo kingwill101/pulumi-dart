@@ -8,17 +8,17 @@ import 'secret_manager_source.dart';
 /// Encryption settings.
 class Encryption {
   /// Configuration for AES-128 encryption.
-  final pulumi.Input<Map<String, dynamic>>? aes128;
+  final pulumi.Input<Map<String, dynamic>?>? aes128;
   /// DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
   final pulumi.Input<DrmSystems> drmSystems;
   /// Identifier for this set of encryption options.
   final pulumi.Input<String> id;
   /// Configuration for MPEG Common Encryption (MPEG-CENC).
-  final pulumi.Input<MpegCommonEncryption>? mpegCenc;
+  final pulumi.Input<MpegCommonEncryption?>? mpegCenc;
   /// Configuration for SAMPLE-AES encryption.
-  final pulumi.Input<Map<String, dynamic>>? sampleAes;
+  final pulumi.Input<Map<String, dynamic>?>? sampleAes;
   /// Keys are stored in Google Secret Manager.
-  final pulumi.Input<SecretManagerSource>? secretManagerKeySource;
+  final pulumi.Input<SecretManagerSource?>? secretManagerKeySource;
 
   /// Creates a new [Encryption].
   /// [aes128] Configuration for AES-128 encryption.

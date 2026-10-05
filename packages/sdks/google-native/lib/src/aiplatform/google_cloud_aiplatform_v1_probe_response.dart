@@ -33,8 +33,8 @@ class GoogleCloudAiplatformV1ProbeResponse {
   factory GoogleCloudAiplatformV1ProbeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ProbeResponse(
       exec: pulumi.Input.fromValue(GoogleCloudAiplatformV1ProbeExecActionResponse.fromMap((map['exec']! as Map).cast<String, dynamic>())),
-      periodSeconds: pulumi.Input.fromValue(map['periodSeconds'] as int),
-      timeoutSeconds: pulumi.Input.fromValue(map['timeoutSeconds'] as int),
+      periodSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['periodSeconds'])),
+      timeoutSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeoutSeconds'])),
     );
   }
 }

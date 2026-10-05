@@ -10,15 +10,15 @@ import 'stretched_cluster_config.dart';
 class ClusterArgs {
   /// Required. The user-provided identifier of the new `Cluster`. This identifier must be unique among clusters within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
   final pulumi.Input<String> clusterId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`).
   final pulumi.Input<Map<String, String>> nodeTypeConfigs;
   final pulumi.Input<String> privateCloudId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Optional. Configuration of a stretched cluster. Required for clusters that belong to a STRETCHED private cloud.
-  final pulumi.Input<StretchedClusterConfig>? stretchedClusterConfig;
+  final pulumi.Input<StretchedClusterConfig?>? stretchedClusterConfig;
 
   /// Creates a new [ClusterArgs].
   /// [clusterId] Required. The user-provided identifier of the new `Cluster`. This identifier must be unique among clusters within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)

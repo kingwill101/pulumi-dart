@@ -7,9 +7,9 @@ import 'security_posture_config.dart';
 /// DefaultClusterConfig describes the default cluster configurations to be applied to all clusters born-in-fleet.
 class DefaultClusterConfig {
   /// Optional. Enable/Disable binary authorization features for the cluster.
-  final pulumi.Input<BinaryAuthorizationConfig>? binaryAuthorizationConfig;
+  final pulumi.Input<BinaryAuthorizationConfig?>? binaryAuthorizationConfig;
   /// Enable/Disable Security Posture features for the cluster.
-  final pulumi.Input<SecurityPostureConfig>? securityPostureConfig;
+  final pulumi.Input<SecurityPostureConfig?>? securityPostureConfig;
 
   /// Creates a new [DefaultClusterConfig].
   /// [binaryAuthorizationConfig] Optional. Enable/Disable binary authorization features for the cluster.

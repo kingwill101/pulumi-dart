@@ -6,7 +6,7 @@ import 'google_iam_admin_v1_workforce_pool_provider_oidc_client_secret_value.dar
 /// Representation of a client secret configured for the OIDC provider.
 class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret {
   /// The value of the client secret.
-  final pulumi.Input<GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue>? value;
+  final pulumi.Input<GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue?>? value;
 
   /// Creates a new [GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret].
   /// [value] The value of the client secret.

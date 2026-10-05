@@ -8,15 +8,15 @@ import 'condition_sys_compute_beta.dart';
 /// This is deprecated and has no effect. Do not use.
 class ConditionComputeBeta {
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<ConditionIamComputeBeta>? iam;
+  final pulumi.Input<ConditionIamComputeBeta?>? iam;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<ConditionOpComputeBeta>? op;
+  final pulumi.Input<ConditionOpComputeBeta?>? op;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<String>? svc;
+  final pulumi.Input<String?>? svc;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<ConditionSysComputeBeta>? sys;
+  final pulumi.Input<ConditionSysComputeBeta?>? sys;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ConditionComputeBeta].
   /// [iam] This is deprecated and has no effect. Do not use.

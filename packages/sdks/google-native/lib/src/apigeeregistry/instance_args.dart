@@ -12,10 +12,10 @@ class InstanceArgs {
   final pulumi.Input<Config> config;
   /// Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource.
   final pulumi.Input<String> instanceId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [InstanceArgs].
   /// [config] Config of the Instance.

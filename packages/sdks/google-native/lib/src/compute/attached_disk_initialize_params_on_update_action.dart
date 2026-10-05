@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
-enum AttachedDiskInitializeParamsOnUpdateAction {
+enum AttachedDiskInitializeParamsOnUpdateAction implements pulumi.PulumiEnum<String> {
   recreateDisk("RECREATE_DISK"),
   recreateDiskIfSourceChanged("RECREATE_DISK_IF_SOURCE_CHANGED"),
   useExistingDisk("USE_EXISTING_DISK");
 
   const AttachedDiskInitializeParamsOnUpdateAction(this.wireValue);
+  @override
   final String wireValue;
 
   static AttachedDiskInitializeParamsOnUpdateAction fromValue(String value) {

@@ -56,7 +56,7 @@ class ResourceRecordSetResponseDnsV1beta2 {
       routingPolicy: pulumi.Input.fromValue(RRSetRoutingPolicyResponseDnsV1beta2.fromMap((map['routingPolicy']! as Map).cast<String, dynamic>())),
       rrdatas: pulumi.Input.fromValue((map['rrdatas'] as List).cast<String>()),
       signatureRrdatas: pulumi.Input.fromValue((map['signatureRrdatas'] as List).cast<String>()),
-      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      ttl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ttl'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

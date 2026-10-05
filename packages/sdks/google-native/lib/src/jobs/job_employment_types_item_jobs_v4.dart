@@ -1,4 +1,6 @@
-enum JobEmploymentTypesItemJobsV4 {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum JobEmploymentTypesItemJobsV4 implements pulumi.PulumiEnum<String> {
   employmentTypeUnspecified("EMPLOYMENT_TYPE_UNSPECIFIED"),
   fullTime("FULL_TIME"),
   partTime("PART_TIME"),
@@ -12,6 +14,7 @@ enum JobEmploymentTypesItemJobsV4 {
   otherEmploymentType("OTHER_EMPLOYMENT_TYPE");
 
   const JobEmploymentTypesItemJobsV4(this.wireValue);
+  @override
   final String wireValue;
 
   static JobEmploymentTypesItemJobsV4 fromValue(String value) {

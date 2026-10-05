@@ -36,8 +36,29 @@ class HcxActivationKey extends pulumi.CustomResource {
           'google-native:vmwareengine/v1:HcxActivationKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['hcxActivationKeyId', 'location', 'privateCloudId', 'project']).merge(options),
         ) {
+    activationKey = registerOutput<String>('activationKey');
+    createTime = registerOutput<String>('createTime');
+    hcxActivationKeyId = registerOutput<String>('hcxActivationKeyId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateCloudId = registerOutput<String>('privateCloudId');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+  }
+
+  /// Creates a typed reference to an existing [HcxActivationKey] resource.
+  HcxActivationKey.reference(String urn)
+    : super(
+        'google-native:vmwareengine/v1:HcxActivationKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     activationKey = registerOutput<String>('activationKey');
     createTime = registerOutput<String>('createTime');
     hcxActivationKeyId = registerOutput<String>('hcxActivationKeyId');

@@ -31,7 +31,7 @@ class GoogleCloudDialogflowCxV3beta1NluSettingsResponse {
 
   factory GoogleCloudDialogflowCxV3beta1NluSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1NluSettingsResponse(
-      classificationThreshold: pulumi.Input.fromValue(map['classificationThreshold'] as double),
+      classificationThreshold: pulumi.Input.fromValue((map['classificationThreshold'] as num).toDouble()),
       modelTrainingMode: pulumi.Input.fromValue(map['modelTrainingMode'] as String),
       modelType: pulumi.Input.fromValue(map['modelType'] as String),
     );

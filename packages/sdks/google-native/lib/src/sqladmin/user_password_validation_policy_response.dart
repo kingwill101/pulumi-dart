@@ -42,7 +42,7 @@ class UserPasswordValidationPolicyResponse {
 
   factory UserPasswordValidationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return UserPasswordValidationPolicyResponse(
-      allowedFailedAttempts: pulumi.Input.fromValue(map['allowedFailedAttempts'] as int),
+      allowedFailedAttempts: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['allowedFailedAttempts'])),
       enableFailedAttemptsCheck: pulumi.Input.fromValue(map['enableFailedAttemptsCheck'] as bool),
       enablePasswordVerification: pulumi.Input.fromValue(map['enablePasswordVerification'] as bool),
       passwordExpirationDuration: pulumi.Input.fromValue(map['passwordExpirationDuration'] as String),

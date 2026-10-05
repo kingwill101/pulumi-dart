@@ -27,7 +27,7 @@ class BasicScalingResponseAppengineV1beta {
   factory BasicScalingResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return BasicScalingResponseAppengineV1beta(
       idleTimeout: pulumi.Input.fromValue(map['idleTimeout'] as String),
-      maxInstances: pulumi.Input.fromValue(map['maxInstances'] as int),
+      maxInstances: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxInstances'])),
     );
   }
 }

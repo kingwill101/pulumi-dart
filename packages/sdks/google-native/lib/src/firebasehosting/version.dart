@@ -48,7 +48,7 @@ class Version extends pulumi.CustomResource {
           'google-native:firebasehosting/v1beta1:Version',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'siteId']).merge(options),
         ) {
     config = registerOutput<ServingConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
@@ -58,7 +58,34 @@ class Version extends pulumi.CustomResource {
     fileCount = registerOutput<String>('fileCount');
     finalizeTime = registerOutput<String>('finalizeTime');
     finalizeUser = registerOutput<ActingUserResponse>('finalizeUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActingUserResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    siteId = registerOutput<String>('siteId');
+    sizeBytes = registerOutput<String?>('sizeBytes');
+    status = registerOutput<String>('status');
+    versionBytes = registerOutput<String>('versionBytes');
+    versionId = registerOutput<String?>('versionId');
+  }
+
+  /// Creates a typed reference to an existing [Version] resource.
+  Version.reference(String urn)
+    : super(
+        'google-native:firebasehosting/v1beta1:Version',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    config = registerOutput<ServingConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    createUser = registerOutput<ActingUserResponse>('createUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActingUserResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deleteTime = registerOutput<String>('deleteTime');
+    deleteUser = registerOutput<ActingUserResponse>('deleteUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActingUserResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fileCount = registerOutput<String>('fileCount');
+    finalizeTime = registerOutput<String>('finalizeTime');
+    finalizeUser = registerOutput<ActingUserResponse>('finalizeUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActingUserResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     siteId = registerOutput<String>('siteId');

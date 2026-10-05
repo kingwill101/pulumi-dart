@@ -6,11 +6,11 @@ import 'google_cloud_datalabeling_v1beta1_image_classification_config_answer_agg
 /// Config for image classification human labeling task.
 class GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
   /// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.
-  final pulumi.Input<bool>? allowMultiLabel;
+  final pulumi.Input<bool?>? allowMultiLabel;
   /// Annotation spec set resource name.
   final pulumi.Input<String> annotationSpecSet;
   /// Optional. The type of how to aggregate answers.
-  final pulumi.Input<GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType>? answerAggregationType;
+  final pulumi.Input<GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType?>? answerAggregationType;
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1ImageClassificationConfig].
   /// [allowMultiLabel] Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.

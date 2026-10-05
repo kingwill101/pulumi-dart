@@ -13,27 +13,27 @@ import 'test_setup.dart';
 /// A description of how to run the test.
 class TestSpecification {
   /// An Android instrumentation test.
-  final pulumi.Input<AndroidInstrumentationTest>? androidInstrumentationTest;
+  final pulumi.Input<AndroidInstrumentationTest?>? androidInstrumentationTest;
   /// An Android robo test.
-  final pulumi.Input<AndroidRoboTest>? androidRoboTest;
+  final pulumi.Input<AndroidRoboTest?>? androidRoboTest;
   /// An Android Application with a Test Loop.
-  final pulumi.Input<AndroidTestLoop>? androidTestLoop;
+  final pulumi.Input<AndroidTestLoop?>? androidTestLoop;
   /// Disables performance metrics recording. May reduce test latency.
-  final pulumi.Input<bool>? disablePerformanceMetrics;
+  final pulumi.Input<bool?>? disablePerformanceMetrics;
   /// Disables video recording. May reduce test latency.
-  final pulumi.Input<bool>? disableVideoRecording;
+  final pulumi.Input<bool?>? disableVideoRecording;
   /// An iOS Robo test.
-  final pulumi.Input<IosRoboTest>? iosRoboTest;
+  final pulumi.Input<IosRoboTest?>? iosRoboTest;
   /// An iOS application with a test loop.
-  final pulumi.Input<IosTestLoop>? iosTestLoop;
+  final pulumi.Input<IosTestLoop?>? iosTestLoop;
   /// Test setup requirements for iOS.
-  final pulumi.Input<IosTestSetup>? iosTestSetup;
+  final pulumi.Input<IosTestSetup?>? iosTestSetup;
   /// An iOS XCTest, via an .xctestrun file.
-  final pulumi.Input<IosXcTest>? iosXcTest;
+  final pulumi.Input<IosXcTest?>? iosXcTest;
   /// Test setup requirements for Android e.g. files to install, bootstrap scripts.
-  final pulumi.Input<TestSetup>? testSetup;
+  final pulumi.Input<TestSetup?>? testSetup;
   /// Max time a test execution is allowed to run before it is automatically cancelled. The default value is 5 min.
-  final pulumi.Input<String>? testTimeout;
+  final pulumi.Input<String?>? testTimeout;
 
   /// Creates a new [TestSpecification].
   /// [androidInstrumentationTest] An Android instrumentation test.

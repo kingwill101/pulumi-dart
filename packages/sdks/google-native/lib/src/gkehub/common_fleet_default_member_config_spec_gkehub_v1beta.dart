@@ -9,13 +9,13 @@ import 'service_mesh_membership_spec_gkehub_v1beta.dart';
 /// CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
 class CommonFleetDefaultMemberConfigSpecGkehubV1beta {
   /// Config Management-specific spec.
-  final pulumi.Input<ConfigManagementMembershipSpecGkehubV1beta>? configmanagement;
+  final pulumi.Input<ConfigManagementMembershipSpecGkehubV1beta?>? configmanagement;
   /// Identity Service-specific spec.
-  final pulumi.Input<IdentityServiceMembershipSpecGkehubV1beta>? identityservice;
+  final pulumi.Input<IdentityServiceMembershipSpecGkehubV1beta?>? identityservice;
   /// Anthos Service Mesh-specific spec
-  final pulumi.Input<ServiceMeshMembershipSpecGkehubV1beta>? mesh;
+  final pulumi.Input<ServiceMeshMembershipSpecGkehubV1beta?>? mesh;
   /// Policy Controller spec.
-  final pulumi.Input<PolicyControllerMembershipSpecGkehubV1beta>? policycontroller;
+  final pulumi.Input<PolicyControllerMembershipSpecGkehubV1beta?>? policycontroller;
 
   /// Creates a new [CommonFleetDefaultMemberConfigSpecGkehubV1beta].
   /// [configmanagement] Config Management-specific spec.

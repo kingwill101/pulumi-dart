@@ -25,8 +25,23 @@ class SubscriptionPubsubV1beta1a extends pulumi.CustomResource {
           'google-native:pubsub/v1beta1a:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
+    ackDeadlineSeconds = registerOutput<int>('ackDeadlineSeconds');
+    this.name = registerOutput<String>('name');
+    pushConfig = registerOutput<PushConfigResponsePubsubV1beta1a>('pushConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PushConfigResponsePubsubV1beta1a.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    topic = registerOutput<String>('topic');
+  }
+
+  /// Creates a typed reference to an existing [SubscriptionPubsubV1beta1a] resource.
+  SubscriptionPubsubV1beta1a.reference(String urn)
+    : super(
+        'google-native:pubsub/v1beta1a:Subscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     ackDeadlineSeconds = registerOutput<int>('ackDeadlineSeconds');
     this.name = registerOutput<String>('name');
     pushConfig = registerOutput<PushConfigResponsePubsubV1beta1a>('pushConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PushConfigResponsePubsubV1beta1a.fromMap((guardedValue as Map).cast<String, dynamic>()); });

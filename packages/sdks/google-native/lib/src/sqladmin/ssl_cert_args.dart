@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sqladmin_v1_ssl_cert_args_doc}
 class SslCertArgs {
   /// User supplied name. Must be a distinct name from the other certificates for this instance.
-  final pulumi.Input<String>? commonName;
+  final pulumi.Input<String?>? commonName;
   final pulumi.Input<String> instance;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [SslCertArgs].
   /// [commonName] User supplied name. Must be a distinct name from the other certificates for this instance.

@@ -9,14 +9,14 @@ import 'data_collector_type.dart';
 /// {@macro pulumi_apigee_v1_data_collector_args_doc}
 class DataCollectorArgs {
   /// ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores.
-  final pulumi.Input<String>? dataCollectorId;
+  final pulumi.Input<String?>? dataCollectorId;
   /// A description of the data collector.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ID of the data collector. Must begin with `dc_`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
   /// Immutable. The type of data this data collector will collect.
-  final pulumi.Input<DataCollectorType>? type;
+  final pulumi.Input<DataCollectorType?>? type;
 
   /// Creates a new [DataCollectorArgs].
   /// [dataCollectorId] ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores.

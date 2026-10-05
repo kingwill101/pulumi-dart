@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudtasks_v2beta3_get_task_cloudtasks_v2beta3_args_doc}
 class GetTaskCloudtasksV2beta3Args {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> queueId;
-  final pulumi.Input<String>? responseView;
+  final pulumi.Input<String?>? responseView;
   final pulumi.Input<String> taskId;
 
   /// Creates a new [GetTaskCloudtasksV2beta3Args].

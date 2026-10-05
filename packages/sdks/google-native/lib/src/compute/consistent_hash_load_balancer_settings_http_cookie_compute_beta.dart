@@ -6,11 +6,11 @@ import 'duration_compute_beta.dart';
 /// The information about the HTTP Cookie on which the hash function is based for load balancing policies that use a consistent hash.
 class ConsistentHashLoadBalancerSettingsHttpCookieComputeBeta {
   /// Name of the cookie.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Path to set for the cookie.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Lifetime of the cookie.
-  final pulumi.Input<DurationComputeBeta>? ttl;
+  final pulumi.Input<DurationComputeBeta?>? ttl;
 
   /// Creates a new [ConsistentHashLoadBalancerSettingsHttpCookieComputeBeta].
   /// [name] Name of the cookie.

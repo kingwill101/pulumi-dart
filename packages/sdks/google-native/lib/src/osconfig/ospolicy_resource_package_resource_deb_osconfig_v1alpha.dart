@@ -6,7 +6,7 @@ import 'ospolicy_resource_file_osconfig_v1alpha.dart';
 /// A deb package file. dpkg packages only support INSTALLED state.
 class OSPolicyResourcePackageResourceDebOsconfigV1alpha {
   /// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
-  final pulumi.Input<bool>? pullDeps;
+  final pulumi.Input<bool?>? pullDeps;
   /// A deb package.
   final pulumi.Input<OSPolicyResourceFileOsconfigV1alpha> source;
 

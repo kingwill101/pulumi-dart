@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAppConnectionBeyondcorpV1alphaArgs {
   final pulumi.Input<String> appConnectionId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAppConnectionBeyondcorpV1alphaArgs].
   /// [appConnectionId] Required.

@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRepositoryArgs {
   final pulumi.Input<String> connectionId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> repositoryId;
 
   /// Creates a new [GetRepositoryArgs].

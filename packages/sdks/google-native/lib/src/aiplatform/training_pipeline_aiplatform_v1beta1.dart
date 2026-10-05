@@ -57,7 +57,7 @@ class TrainingPipelineAiplatformV1beta1 extends pulumi.CustomResource {
           'google-native:aiplatform/v1beta1:TrainingPipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
@@ -65,7 +65,37 @@ class TrainingPipelineAiplatformV1beta1 extends pulumi.CustomResource {
     endTime = registerOutput<String>('endTime');
     error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleRpcStatusResponseAiplatformV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inputDataConfig = registerOutput<GoogleCloudAiplatformV1beta1InputDataConfigResponse>('inputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1InputDataConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    modelId = registerOutput<String>('modelId');
+    modelToUpload = registerOutput<GoogleCloudAiplatformV1beta1ModelResponse>('modelToUpload', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1ModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parentModel = registerOutput<String>('parentModel');
+    project = registerOutput<String>('project');
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+    trainingTaskDefinition = registerOutput<String>('trainingTaskDefinition');
+    trainingTaskInputs = registerOutput<dynamic>('trainingTaskInputs');
+    trainingTaskMetadata = registerOutput<dynamic>('trainingTaskMetadata');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [TrainingPipelineAiplatformV1beta1] resource.
+  TrainingPipelineAiplatformV1beta1.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1beta1:TrainingPipeline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    encryptionSpec = registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endTime = registerOutput<String>('endTime');
+    error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleRpcStatusResponseAiplatformV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inputDataConfig = registerOutput<GoogleCloudAiplatformV1beta1InputDataConfigResponse>('inputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1InputDataConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     modelId = registerOutput<String>('modelId');
     modelToUpload = registerOutput<GoogleCloudAiplatformV1beta1ModelResponse>('modelToUpload', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1ModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

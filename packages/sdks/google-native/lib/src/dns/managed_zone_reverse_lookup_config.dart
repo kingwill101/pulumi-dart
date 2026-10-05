@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedZoneReverseLookupConfig {
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
 
   /// Creates a new [ManagedZoneReverseLookupConfig].
   /// [kind] Optional.

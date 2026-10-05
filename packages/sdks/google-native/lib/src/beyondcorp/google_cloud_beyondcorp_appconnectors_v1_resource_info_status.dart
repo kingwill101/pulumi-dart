@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Overall health status. Overall status is derived based on the status of each sub level resources.
-enum GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus {
+enum GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus implements pulumi.PulumiEnum<String> {
   healthStatusUnspecified("HEALTH_STATUS_UNSPECIFIED"),
   healthy("HEALTHY"),
   unhealthy("UNHEALTHY"),
@@ -7,6 +9,7 @@ enum GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus {
   degraded("DEGRADED");
 
   const GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus fromValue(String value) {

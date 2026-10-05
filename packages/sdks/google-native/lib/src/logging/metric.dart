@@ -43,7 +43,7 @@ class Metric extends pulumi.CustomResource {
           'google-native:logging/v2:Metric',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     bucketName = registerOutput<String>('bucketName');
     bucketOptions = registerOutput<BucketOptionsResponse>('bucketOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -51,7 +51,31 @@ class Metric extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     disabled = registerOutput<bool>('disabled');
     filter = registerOutput<String>('filter');
-    labelExtractors = registerOutput<Map<String, String>>('labelExtractors');
+    labelExtractors = registerOutput<Map<String, String>>('labelExtractors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    metricDescriptor = registerOutput<MetricDescriptorResponse>('metricDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricDescriptorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+    valueExtractor = registerOutput<String>('valueExtractor');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [Metric] resource.
+  Metric.reference(String urn)
+    : super(
+        'google-native:logging/v2:Metric',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucketName = registerOutput<String>('bucketName');
+    bucketOptions = registerOutput<BucketOptionsResponse>('bucketOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    disabled = registerOutput<bool>('disabled');
+    filter = registerOutput<String>('filter');
+    labelExtractors = registerOutput<Map<String, String>>('labelExtractors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     metricDescriptor = registerOutput<MetricDescriptorResponse>('metricDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricDescriptorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

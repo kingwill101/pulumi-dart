@@ -7,7 +7,7 @@ import 'google_cloud_dialogflow_cx_v3_form_parameter_fill_behavior.dart';
 /// Represents a form parameter.
 class GoogleCloudDialogflowCxV3FormParameter {
   /// Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
-  final pulumi.Input<GoogleCloudDialogflowCxV3AdvancedSettings>? advancedSettings;
+  final pulumi.Input<GoogleCloudDialogflowCxV3AdvancedSettings?>? advancedSettings;
   /// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
   final pulumi.Input<dynamic>? defaultValue;
   /// The human-readable name of the parameter, unique within the form.
@@ -17,11 +17,11 @@ class GoogleCloudDialogflowCxV3FormParameter {
   /// Defines fill behavior for the parameter.
   final pulumi.Input<GoogleCloudDialogflowCxV3FormParameterFillBehavior> fillBehavior;
   /// Indicates whether the parameter represents a list of values.
-  final pulumi.Input<bool>? isList;
+  final pulumi.Input<bool?>? isList;
   /// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
-  final pulumi.Input<bool>? redact;
+  final pulumi.Input<bool?>? redact;
   /// Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them. Required parameters must be filled before form filling concludes.
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
 
   /// Creates a new [GoogleCloudDialogflowCxV3FormParameter].
   /// [advancedSettings] Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
-enum RolloutStatus {
+enum RolloutStatus implements pulumi.PulumiEnum<String> {
   rolloutStatusUnspecified("ROLLOUT_STATUS_UNSPECIFIED"),
   inProgress("IN_PROGRESS"),
   success("SUCCESS"),
@@ -9,6 +11,7 @@ enum RolloutStatus {
   failedRolledBack("FAILED_ROLLED_BACK");
 
   const RolloutStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static RolloutStatus fromValue(String value) {

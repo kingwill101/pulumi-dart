@@ -7,11 +7,11 @@ import 'text_style.dart';
 /// A widget that displays textual content.
 class Text {
   /// The text content to be displayed.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// How the text content is formatted.
-  final pulumi.Input<TextFormat>? format;
+  final pulumi.Input<TextFormat?>? format;
   /// How the text is styled
-  final pulumi.Input<TextStyle>? style;
+  final pulumi.Input<TextStyle?>? style;
 
   /// Creates a new [Text].
   /// [content] The text content to be displayed.

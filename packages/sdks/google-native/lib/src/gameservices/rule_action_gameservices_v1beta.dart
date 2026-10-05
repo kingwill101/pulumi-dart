@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required
-enum RuleActionGameservicesV1beta {
+enum RuleActionGameservicesV1beta implements pulumi.PulumiEnum<String> {
   noAction("NO_ACTION"),
   allow("ALLOW"),
   allowWithLog("ALLOW_WITH_LOG"),
@@ -8,6 +10,7 @@ enum RuleActionGameservicesV1beta {
   log("LOG");
 
   const RuleActionGameservicesV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static RuleActionGameservicesV1beta fromValue(String value) {

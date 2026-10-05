@@ -5,15 +5,15 @@ import 'key_data_response.dart';
 /// Result data returned by getWorkloadIdentityPoolKey.
 class GetWorkloadIdentityPoolKeyResult {
   /// Time after which the key will be permanently purged and cannot be recovered. Note that the key may get purged before this timestamp if the total limit of keys per provider is crossed.
-  final String expireTime;
+  final String? expireTime;
   /// Immutable. Public half of the asymmetric key.
-  final KeyDataResponse keyData;
+  final KeyDataResponse? keyData;
   /// The resource name of the key.
-  final String name;
+  final String? name;
   /// The state of the key.
-  final String state;
+  final String? state;
   /// The purpose of the key.
-  final String use;
+  final String? use;
 
   /// Creates a new [GetWorkloadIdentityPoolKeyResult].
   /// [expireTime] Time after which the key will be permanently purged and cannot be recovered. Note that the key may get purged before this timestamp if the total limit of keys per provider is crossed.
@@ -22,30 +22,30 @@ class GetWorkloadIdentityPoolKeyResult {
   /// [state] The state of the key.
   /// [use] The purpose of the key.
   const GetWorkloadIdentityPoolKeyResult({
-    required this.expireTime,
-    required this.keyData,
-    required this.name,
-    required this.state,
-    required this.use,
+    this.expireTime,
+    this.keyData,
+    this.name,
+    this.state,
+    this.use,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expireTime': expireTime,
-      'keyData': keyData.toMap(),
-      'name': name,
-      'state': state,
-      'use': use,
+      'expireTime': ?expireTime,
+      'keyData': ?keyData?.toMap(),
+      'name': ?name,
+      'state': ?state,
+      'use': ?use,
     };
   }
 
   factory GetWorkloadIdentityPoolKeyResult.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolKeyResult(
-      expireTime: map['expireTime'] as String,
-      keyData: KeyDataResponse.fromMap((map['keyData']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      state: map['state'] as String,
-      use: map['use'] as String,
+      expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      keyData: (() { final guardedValue = map['keyData']; if (guardedValue == null) return null; return KeyDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      use: (() { final guardedValue = map['use']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

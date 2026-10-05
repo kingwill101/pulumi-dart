@@ -6,11 +6,11 @@ import 'node_affinity_operator_container_v1beta1.dart';
 /// Specifies the NodeAffinity key, values, and affinity operator according to [shared sole tenant node group affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
 class NodeAffinityContainerV1beta1 {
   /// Key for NodeAffinity.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Operator for NodeAffinity.
-  final pulumi.Input<NodeAffinityOperatorContainerV1beta1>? operator;
+  final pulumi.Input<NodeAffinityOperatorContainerV1beta1?>? operator;
   /// Values for NodeAffinity.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [NodeAffinityContainerV1beta1].
   /// [key] Key for NodeAffinity.

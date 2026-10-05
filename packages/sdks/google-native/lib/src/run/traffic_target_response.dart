@@ -48,7 +48,7 @@ class TrafficTargetResponse {
     return TrafficTargetResponse(
       configurationName: pulumi.Input.fromValue(map['configurationName'] as String),
       latestRevision: pulumi.Input.fromValue(map['latestRevision'] as bool),
-      percent: pulumi.Input.fromValue(map['percent'] as int),
+      percent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['percent'])),
       revisionName: pulumi.Input.fromValue(map['revisionName'] as String),
       tag: pulumi.Input.fromValue(map['tag'] as String),
       url: pulumi.Input.fromValue(map['url'] as String),

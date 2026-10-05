@@ -5,9 +5,9 @@ import 'allocation_specific_skuallocation_allocated_instance_properties_reserved
 
 class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskComputeV1 {
   /// Specifies the size of the disk in base-2 GB.
-  final pulumi.Input<String>? diskSizeGb;
+  final pulumi.Input<String?>? diskSizeGb;
   /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
-  final pulumi.Input<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceComputeV1>? interface;
+  final pulumi.Input<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceComputeV1?>? interface;
 
   /// Creates a new [AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskComputeV1].
   /// [diskSizeGb] Specifies the size of the disk in base-2 GB.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enterprise_crm_frontends_eventbus_proto_param_spec_entry.dart';
 
 class EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage {
-  final pulumi.Input<List<EnterpriseCrmFrontendsEventbusProtoParamSpecEntry>>? parameters;
+  final pulumi.Input<List<EnterpriseCrmFrontendsEventbusProtoParamSpecEntry>?>? parameters;
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage].
   /// [parameters] Optional.

@@ -6,9 +6,9 @@ import 'google_cloud_integrations_v1alpha_parameter_map_field.dart';
 /// Entry is a pair of key and value.
 class GoogleCloudIntegrationsV1alphaParameterMapEntry {
   /// Key of the map entry.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMapField>? key;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMapField?>? key;
   /// Value of the map entry.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMapField>? value;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMapField?>? value;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaParameterMapEntry].
   /// [key] Key of the map entry.

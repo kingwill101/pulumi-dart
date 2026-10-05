@@ -9,16 +9,16 @@ import 'google_cloud_datacatalog_lineage_v1_event_link.dart';
 /// {@macro pulumi_datalineage_v1_lineage_event_args_doc}
 class LineageEventArgs {
   /// Optional. The end of the transformation which resulted in this lineage event. For streaming scenarios, it should be the end of the period from which the lineage is being reported.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Optional. List of source-target pairs. Can't contain more than 100 tuples.
-  final pulumi.Input<List<GoogleCloudDatacatalogLineageV1EventLink>>? links;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<List<GoogleCloudDatacatalogLineageV1EventLink>?>? links;
+  final pulumi.Input<String?>? location;
   /// Immutable. The resource name of the lineage event. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}/lineageEvents/{lineage_event}`. Can be specified or auto-assigned. {lineage_event} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> processId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   final pulumi.Input<String> runId;
   /// The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
   final pulumi.Input<String> startTime;

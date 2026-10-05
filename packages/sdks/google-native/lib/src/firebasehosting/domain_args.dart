@@ -11,8 +11,8 @@ class DomainArgs {
   /// The domain name of the association.
   final pulumi.Input<String> domainName;
   /// If set, the domain should redirect with the provided parameters.
-  final pulumi.Input<DomainRedirect>? domainRedirect;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<DomainRedirect?>? domainRedirect;
+  final pulumi.Input<String?>? project;
   /// The site name of the association.
   final pulumi.Input<String> site;
   final pulumi.Input<String> siteId;

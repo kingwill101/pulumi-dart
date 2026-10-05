@@ -11,16 +11,16 @@ import 'zone_type.dart';
 /// {@macro pulumi_dataplex_v1_zone_args_doc}
 class ZoneArgs {
   /// Optional. Description of the zone.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Specification of the discovery feature applied to data in this zone.
-  final pulumi.Input<GoogleCloudDataplexV1ZoneDiscoverySpec>? discoverySpec;
+  final pulumi.Input<GoogleCloudDataplexV1ZoneDiscoverySpec?>? discoverySpec;
   /// Optional. User friendly display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. User defined labels for the zone.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   final pulumi.Input<String> lakeId;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Specification of the resources that are referenced by the assets within this zone.
   final pulumi.Input<GoogleCloudDataplexV1ZoneResourceSpec> resourceSpec;
   /// Immutable. The type of the zone.

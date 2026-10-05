@@ -8,11 +8,11 @@ import 'time_series_table_metric_visualization.dart';
 /// A table that displays time series data.
 class TimeSeriesTable {
   /// Optional. The list of the persistent column settings for the table.
-  final pulumi.Input<List<ColumnSettings>>? columnSettings;
+  final pulumi.Input<List<ColumnSettings>?>? columnSettings;
   /// The data displayed in this table.
   final pulumi.Input<List<TableDataSet>> dataSets;
   /// Optional. Store rendering strategy
-  final pulumi.Input<TimeSeriesTableMetricVisualization>? metricVisualization;
+  final pulumi.Input<TimeSeriesTableMetricVisualization?>? metricVisualization;
 
   /// Creates a new [TimeSeriesTable].
   /// [columnSettings] Optional. The list of the persistent column settings for the table.

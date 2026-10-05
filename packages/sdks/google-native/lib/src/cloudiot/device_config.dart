@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The device configuration. Eventually delivered to devices.
 class DeviceConfig {
   /// The device configuration data.
-  final pulumi.Input<String>? binaryData;
+  final pulumi.Input<String?>? binaryData;
 
   /// Creates a new [DeviceConfig].
   /// [binaryData] The device configuration data.

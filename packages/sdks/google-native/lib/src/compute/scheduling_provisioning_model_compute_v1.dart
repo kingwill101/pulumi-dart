@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the provisioning model of the instance.
-enum SchedulingProvisioningModelComputeV1 {
+enum SchedulingProvisioningModelComputeV1 implements pulumi.PulumiEnum<String> {
   spot("SPOT"),
   standard("STANDARD");
 
   const SchedulingProvisioningModelComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static SchedulingProvisioningModelComputeV1 fromValue(String value) {

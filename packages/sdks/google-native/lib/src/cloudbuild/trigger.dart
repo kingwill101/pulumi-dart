@@ -83,7 +83,7 @@ class Trigger extends pulumi.CustomResource {
           'google-native:cloudbuild/v1:Trigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'projectId']).merge(options),
         ) {
     approvalConfig = registerOutput<ApprovalConfigResponse>('approvalConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApprovalConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autodetect = registerOutput<bool>('autodetect');
@@ -98,9 +98,9 @@ class Trigger extends pulumi.CustomResource {
     gitFileSource = registerOutput<GitFileSourceResponse>('gitFileSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitFileSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     github = registerOutput<GitHubEventsConfigResponse>('github', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitHubEventsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gitlabEnterpriseEventsConfig = registerOutput<GitLabEventsConfigResponse>('gitlabEnterpriseEventsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitLabEventsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ignoredFiles = registerOutput<List<String>>('ignoredFiles');
+    ignoredFiles = registerOutput<List<String>>('ignoredFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     includeBuildLogs = registerOutput<String>('includeBuildLogs');
-    includedFiles = registerOutput<List<String>>('includedFiles');
+    includedFiles = registerOutput<List<String>>('includedFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -110,8 +110,48 @@ class Trigger extends pulumi.CustomResource {
     resourceName = registerOutput<String>('resourceName');
     serviceAccount = registerOutput<String>('serviceAccount');
     sourceToBuild = registerOutput<GitRepoSourceResponse>('sourceToBuild', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitRepoSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    substitutions = registerOutput<Map<String, String>>('substitutions');
-    tags = registerOutput<List<String>>('tags');
+    substitutions = registerOutput<Map<String, String>>('substitutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    triggerTemplate = registerOutput<RepoSourceResponse>('triggerTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepoSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    webhookConfig = registerOutput<WebhookConfigResponse>('webhookConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebhookConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Trigger] resource.
+  Trigger.reference(String urn)
+    : super(
+        'google-native:cloudbuild/v1:Trigger',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    approvalConfig = registerOutput<ApprovalConfigResponse>('approvalConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApprovalConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autodetect = registerOutput<bool>('autodetect');
+    bitbucketServerTriggerConfig = registerOutput<BitbucketServerTriggerConfigResponse>('bitbucketServerTriggerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BitbucketServerTriggerConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    build = registerOutput<BuildResponse>('build', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    disabled = registerOutput<bool>('disabled');
+    eventType = registerOutput<String>('eventType');
+    filename = registerOutput<String>('filename');
+    filter = registerOutput<String>('filter');
+    gitFileSource = registerOutput<GitFileSourceResponse>('gitFileSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitFileSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    github = registerOutput<GitHubEventsConfigResponse>('github', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitHubEventsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gitlabEnterpriseEventsConfig = registerOutput<GitLabEventsConfigResponse>('gitlabEnterpriseEventsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitLabEventsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ignoredFiles = registerOutput<List<String>>('ignoredFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    includeBuildLogs = registerOutput<String>('includeBuildLogs');
+    includedFiles = registerOutput<List<String>>('includedFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    projectId = registerOutput<String>('projectId');
+    pubsubConfig = registerOutput<PubsubConfigResponse>('pubsubConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PubsubConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    repositoryEventConfig = registerOutput<RepositoryEventConfigResponse>('repositoryEventConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryEventConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceName = registerOutput<String>('resourceName');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    sourceToBuild = registerOutput<GitRepoSourceResponse>('sourceToBuild', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitRepoSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    substitutions = registerOutput<Map<String, String>>('substitutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     triggerTemplate = registerOutput<RepoSourceResponse>('triggerTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepoSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     webhookConfig = registerOutput<WebhookConfigResponse>('webhookConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebhookConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

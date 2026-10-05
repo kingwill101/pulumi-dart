@@ -5,8 +5,8 @@ import 'non_compliant_file.dart';
 
 /// An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
 class ComplianceOccurrence {
-  final pulumi.Input<String>? nonComplianceReason;
-  final pulumi.Input<List<NonCompliantFile>>? nonCompliantFiles;
+  final pulumi.Input<String?>? nonComplianceReason;
+  final pulumi.Input<List<NonCompliantFile>?>? nonCompliantFiles;
 
   /// Creates a new [ComplianceOccurrence].
   /// [nonComplianceReason] Optional.

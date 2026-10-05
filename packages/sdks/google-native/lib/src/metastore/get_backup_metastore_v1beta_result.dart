@@ -5,19 +5,19 @@ import 'service_response_metastore_v1beta.dart';
 /// Result data returned by getBackup.
 class GetBackupMetastoreV1betaResult {
   /// The time when the backup was started.
-  final String createTime;
+  final String? createTime;
   /// The description of the backup.
-  final String description;
+  final String? description;
   /// The time when the backup finished creating.
-  final String endTime;
+  final String? endTime;
   /// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
-  final String name;
+  final String? name;
   /// Services that are restoring from the backup.
-  final List<String> restoringServices;
+  final List<String>? restoringServices;
   /// The revision of the service at the time of backup.
-  final ServiceResponseMetastoreV1beta serviceRevision;
+  final ServiceResponseMetastoreV1beta? serviceRevision;
   /// The current state of the backup.
-  final String state;
+  final String? state;
 
   /// Creates a new [GetBackupMetastoreV1betaResult].
   /// [createTime] The time when the backup was started.
@@ -28,36 +28,36 @@ class GetBackupMetastoreV1betaResult {
   /// [serviceRevision] The revision of the service at the time of backup.
   /// [state] The current state of the backup.
   const GetBackupMetastoreV1betaResult({
-    required this.createTime,
-    required this.description,
-    required this.endTime,
-    required this.name,
-    required this.restoringServices,
-    required this.serviceRevision,
-    required this.state,
+    this.createTime,
+    this.description,
+    this.endTime,
+    this.name,
+    this.restoringServices,
+    this.serviceRevision,
+    this.state,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'endTime': endTime,
-      'name': name,
-      'restoringServices': restoringServices,
-      'serviceRevision': serviceRevision.toMap(),
-      'state': state,
+      'createTime': ?createTime,
+      'description': ?description,
+      'endTime': ?endTime,
+      'name': ?name,
+      'restoringServices': ?restoringServices,
+      'serviceRevision': ?serviceRevision?.toMap(),
+      'state': ?state,
     };
   }
 
   factory GetBackupMetastoreV1betaResult.fromMap(Map<String, dynamic> map) {
     return GetBackupMetastoreV1betaResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      endTime: map['endTime'] as String,
-      name: map['name'] as String,
-      restoringServices: (map['restoringServices'] as List).cast<String>(),
-      serviceRevision: ServiceResponseMetastoreV1beta.fromMap((map['serviceRevision']! as Map).cast<String, dynamic>()),
-      state: map['state'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      restoringServices: (() { final guardedValue = map['restoringServices']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      serviceRevision: (() { final guardedValue = map['serviceRevision']; if (guardedValue == null) return null; return ServiceResponseMetastoreV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -11,7 +11,7 @@ class FolderReplayPolicysimulatorV1beta1Args {
   /// The configuration used for the `Replay`.
   final pulumi.Input<GoogleCloudPolicysimulatorV1beta1ReplayConfig> config;
   final pulumi.Input<String> folderId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
 
   /// Creates a new [FolderReplayPolicysimulatorV1beta1Args].
   /// [config] The configuration used for the `Replay`.

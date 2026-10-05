@@ -7,49 +7,49 @@ import 'google_cloud_apigee_v1_report_property_response.dart';
 /// Result data returned by getReport.
 class GetReportResult {
   /// This field contains the chart type for the report
-  final String chartType;
+  final String? chartType;
   /// Legacy field: not used. This field contains a list of comments associated with custom report
-  final List<String> comments;
+  final List<String>? comments;
   /// Unix time when the app was created json key: createdAt
-  final String createdAt;
+  final String? createdAt;
   /// This contains the list of dimensions for the report
-  final List<String> dimensions;
+  final List<String>? dimensions;
   /// This is the display name for the report
-  final String displayName;
+  final String? displayName;
   /// Environment name
-  final String environment;
+  final String? environment;
   /// This field contains the filter expression
-  final String filter;
+  final String? filter;
   /// Legacy field: not used. Contains the from time for the report
-  final String fromTime;
+  final String? fromTime;
   /// Modified time of this entity as milliseconds since epoch. json key: lastModifiedAt
-  final String lastModifiedAt;
+  final String? lastModifiedAt;
   /// Last viewed time of this entity as milliseconds since epoch
-  final String lastViewedAt;
+  final String? lastViewedAt;
   /// Legacy field: not used This field contains the limit for the result retrieved
-  final String limit;
+  final String? limit;
   /// This contains the list of metrics
-  final List<GoogleCloudApigeeV1CustomReportMetricResponse> metrics;
+  final List<GoogleCloudApigeeV1CustomReportMetricResponse>? metrics;
   /// Unique identifier for the report T his is a legacy field used to encode custom report unique id
-  final String name;
+  final String? name;
   /// Legacy field: not used. This field contains the offset for the data
-  final String offset;
+  final String? offset;
   /// Organization name
-  final String organization;
+  final String? organization;
   /// This field contains report properties such as ui metadata etc.
-  final List<GoogleCloudApigeeV1ReportPropertyResponse> properties;
+  final List<GoogleCloudApigeeV1ReportPropertyResponse>? properties;
   /// Legacy field: not used much. Contains the list of sort by columns
-  final List<String> sortByCols;
+  final List<String>? sortByCols;
   /// Legacy field: not used much. Contains the sort order for the sort columns
-  final String sortOrder;
+  final String? sortOrder;
   /// Legacy field: not used. This field contains a list of tags associated with custom report
-  final List<String> tags;
+  final List<String>? tags;
   /// This field contains the time unit of aggregation for the report
-  final String timeUnit;
+  final String? timeUnit;
   /// Legacy field: not used. Contains the end time for the report
-  final String toTime;
+  final String? toTime;
   /// Legacy field: not used. This field contains the top k parameter value for restricting the result
-  final String topk;
+  final String? topk;
 
   /// Creates a new [GetReportResult].
   /// [chartType] This field contains the chart type for the report
@@ -75,81 +75,81 @@ class GetReportResult {
   /// [toTime] Legacy field: not used. Contains the end time for the report
   /// [topk] Legacy field: not used. This field contains the top k parameter value for restricting the result
   const GetReportResult({
-    required this.chartType,
-    required this.comments,
-    required this.createdAt,
-    required this.dimensions,
-    required this.displayName,
-    required this.environment,
-    required this.filter,
-    required this.fromTime,
-    required this.lastModifiedAt,
-    required this.lastViewedAt,
-    required this.limit,
-    required this.metrics,
-    required this.name,
-    required this.offset,
-    required this.organization,
-    required this.properties,
-    required this.sortByCols,
-    required this.sortOrder,
-    required this.tags,
-    required this.timeUnit,
-    required this.toTime,
-    required this.topk,
+    this.chartType,
+    this.comments,
+    this.createdAt,
+    this.dimensions,
+    this.displayName,
+    this.environment,
+    this.filter,
+    this.fromTime,
+    this.lastModifiedAt,
+    this.lastViewedAt,
+    this.limit,
+    this.metrics,
+    this.name,
+    this.offset,
+    this.organization,
+    this.properties,
+    this.sortByCols,
+    this.sortOrder,
+    this.tags,
+    this.timeUnit,
+    this.toTime,
+    this.topk,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'chartType': chartType,
-      'comments': comments,
-      'createdAt': createdAt,
-      'dimensions': dimensions,
-      'displayName': displayName,
-      'environment': environment,
-      'filter': filter,
-      'fromTime': fromTime,
-      'lastModifiedAt': lastModifiedAt,
-      'lastViewedAt': lastViewedAt,
-      'limit': limit,
-      'metrics': pulumi.Input.encodeList<GoogleCloudApigeeV1CustomReportMetricResponse, Map<String, dynamic>>(metrics, (value) => value.toMap()),
-      'name': name,
-      'offset': offset,
-      'organization': organization,
-      'properties': pulumi.Input.encodeList<GoogleCloudApigeeV1ReportPropertyResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
-      'sortByCols': sortByCols,
-      'sortOrder': sortOrder,
-      'tags': tags,
-      'timeUnit': timeUnit,
-      'toTime': toTime,
-      'topk': topk,
+      'chartType': ?chartType,
+      'comments': ?comments,
+      'createdAt': ?createdAt,
+      'dimensions': ?dimensions,
+      'displayName': ?displayName,
+      'environment': ?environment,
+      'filter': ?filter,
+      'fromTime': ?fromTime,
+      'lastModifiedAt': ?lastModifiedAt,
+      'lastViewedAt': ?lastViewedAt,
+      'limit': ?limit,
+      'metrics': ?(() { final guardedValue = metrics; if (guardedValue == null) return null; return pulumi.Input.encodeList<GoogleCloudApigeeV1CustomReportMetricResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'offset': ?offset,
+      'organization': ?organization,
+      'properties': ?(() { final guardedValue = properties; if (guardedValue == null) return null; return pulumi.Input.encodeList<GoogleCloudApigeeV1ReportPropertyResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'sortByCols': ?sortByCols,
+      'sortOrder': ?sortOrder,
+      'tags': ?tags,
+      'timeUnit': ?timeUnit,
+      'toTime': ?toTime,
+      'topk': ?topk,
     };
   }
 
   factory GetReportResult.fromMap(Map<String, dynamic> map) {
     return GetReportResult(
-      chartType: map['chartType'] as String,
-      comments: (map['comments'] as List).cast<String>(),
-      createdAt: map['createdAt'] as String,
-      dimensions: (map['dimensions'] as List).cast<String>(),
-      displayName: map['displayName'] as String,
-      environment: map['environment'] as String,
-      filter: map['filter'] as String,
-      fromTime: map['fromTime'] as String,
-      lastModifiedAt: map['lastModifiedAt'] as String,
-      lastViewedAt: map['lastViewedAt'] as String,
-      limit: map['limit'] as String,
-      metrics: pulumi.Input.decodeList<GoogleCloudApigeeV1CustomReportMetricResponse>(map['metrics']!, (value) => GoogleCloudApigeeV1CustomReportMetricResponse.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      offset: map['offset'] as String,
-      organization: map['organization'] as String,
-      properties: pulumi.Input.decodeList<GoogleCloudApigeeV1ReportPropertyResponse>(map['properties']!, (value) => GoogleCloudApigeeV1ReportPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sortByCols: (map['sortByCols'] as List).cast<String>(),
-      sortOrder: map['sortOrder'] as String,
-      tags: (map['tags'] as List).cast<String>(),
-      timeUnit: map['timeUnit'] as String,
-      toTime: map['toTime'] as String,
-      topk: map['topk'] as String,
+      chartType: (() { final guardedValue = map['chartType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      comments: (() { final guardedValue = map['comments']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fromTime: (() { final guardedValue = map['fromTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastModifiedAt: (() { final guardedValue = map['lastModifiedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastViewedAt: (() { final guardedValue = map['lastViewedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      limit: (() { final guardedValue = map['limit']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metrics: (() { final guardedValue = map['metrics']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1CustomReportMetricResponse>(guardedValue, (value) => GoogleCloudApigeeV1CustomReportMetricResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      offset: (() { final guardedValue = map['offset']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      organization: (() { final guardedValue = map['organization']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1ReportPropertyResponse>(guardedValue, (value) => GoogleCloudApigeeV1ReportPropertyResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      sortByCols: (() { final guardedValue = map['sortByCols']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      sortOrder: (() { final guardedValue = map['sortOrder']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      timeUnit: (() { final guardedValue = map['timeUnit']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      toTime: (() { final guardedValue = map['toTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      topk: (() { final guardedValue = map['topk']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

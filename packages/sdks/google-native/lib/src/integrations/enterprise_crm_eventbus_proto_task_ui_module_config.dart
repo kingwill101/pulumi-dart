@@ -6,7 +6,7 @@ import 'enterprise_crm_eventbus_proto_task_ui_module_config_module_id.dart';
 /// Task author would use this type to configure a config module.
 class EnterpriseCrmEventbusProtoTaskUiModuleConfig {
   /// ID of the config module.
-  final pulumi.Input<EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId>? moduleId;
+  final pulumi.Input<EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId?>? moduleId;
 
   /// Creates a new [EnterpriseCrmEventbusProtoTaskUiModuleConfig].
   /// [moduleId] ID of the config module.

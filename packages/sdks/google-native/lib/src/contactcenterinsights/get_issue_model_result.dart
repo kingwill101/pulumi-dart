@@ -6,25 +6,25 @@ import 'google_cloud_contactcenterinsights_v1_issue_model_label_stats_response.d
 /// Result data returned by getIssueModel.
 class GetIssueModelResult {
   /// The time at which this issue model was created.
-  final String createTime;
+  final String? createTime;
   /// The representative name for the issue model.
-  final String displayName;
+  final String? displayName;
   /// Configs for the input data that used to create the issue model.
-  final GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse inputDataConfig;
+  final GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse? inputDataConfig;
   /// Number of issues in this issue model.
-  final String issueCount;
+  final String? issueCount;
   /// Language of the model.
-  final String languageCode;
+  final String? languageCode;
   /// Type of the model.
-  final String modelType;
+  final String? modelType;
   /// Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
-  final String name;
+  final String? name;
   /// State of the model.
-  final String state;
+  final String? state;
   /// Immutable. The issue model's label statistics on its training data.
-  final GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse trainingStats;
+  final GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse? trainingStats;
   /// The most recent time at which the issue model was updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetIssueModelResult].
   /// [createTime] The time at which this issue model was created.
@@ -38,45 +38,45 @@ class GetIssueModelResult {
   /// [trainingStats] Immutable. The issue model's label statistics on its training data.
   /// [updateTime] The most recent time at which the issue model was updated.
   const GetIssueModelResult({
-    required this.createTime,
-    required this.displayName,
-    required this.inputDataConfig,
-    required this.issueCount,
-    required this.languageCode,
-    required this.modelType,
-    required this.name,
-    required this.state,
-    required this.trainingStats,
-    required this.updateTime,
+    this.createTime,
+    this.displayName,
+    this.inputDataConfig,
+    this.issueCount,
+    this.languageCode,
+    this.modelType,
+    this.name,
+    this.state,
+    this.trainingStats,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'displayName': displayName,
-      'inputDataConfig': inputDataConfig.toMap(),
-      'issueCount': issueCount,
-      'languageCode': languageCode,
-      'modelType': modelType,
-      'name': name,
-      'state': state,
-      'trainingStats': trainingStats.toMap(),
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'inputDataConfig': ?inputDataConfig?.toMap(),
+      'issueCount': ?issueCount,
+      'languageCode': ?languageCode,
+      'modelType': ?modelType,
+      'name': ?name,
+      'state': ?state,
+      'trainingStats': ?trainingStats?.toMap(),
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetIssueModelResult.fromMap(Map<String, dynamic> map) {
     return GetIssueModelResult(
-      createTime: map['createTime'] as String,
-      displayName: map['displayName'] as String,
-      inputDataConfig: GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse.fromMap((map['inputDataConfig']! as Map).cast<String, dynamic>()),
-      issueCount: map['issueCount'] as String,
-      languageCode: map['languageCode'] as String,
-      modelType: map['modelType'] as String,
-      name: map['name'] as String,
-      state: map['state'] as String,
-      trainingStats: GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse.fromMap((map['trainingStats']! as Map).cast<String, dynamic>()),
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      inputDataConfig: (() { final guardedValue = map['inputDataConfig']; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      issueCount: (() { final guardedValue = map['issueCount']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      languageCode: (() { final guardedValue = map['languageCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      modelType: (() { final guardedValue = map['modelType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      trainingStats: (() { final guardedValue = map['trainingStats']; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

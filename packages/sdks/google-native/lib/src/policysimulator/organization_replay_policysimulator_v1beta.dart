@@ -31,8 +31,25 @@ class OrganizationReplayPolicysimulatorV1beta extends pulumi.CustomResource {
           'google-native:policysimulator/v1beta:OrganizationReplay',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'organizationId']).merge(options),
         ) {
+    config = registerOutput<GoogleCloudPolicysimulatorV1betaReplayConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudPolicysimulatorV1betaReplayConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    resultsSummary = registerOutput<GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponse>('resultsSummary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudPolicysimulatorV1betaReplayResultsSummaryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationReplayPolicysimulatorV1beta] resource.
+  OrganizationReplayPolicysimulatorV1beta.reference(String urn)
+    : super(
+        'google-native:policysimulator/v1beta:OrganizationReplay',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     config = registerOutput<GoogleCloudPolicysimulatorV1betaReplayConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudPolicysimulatorV1betaReplayConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

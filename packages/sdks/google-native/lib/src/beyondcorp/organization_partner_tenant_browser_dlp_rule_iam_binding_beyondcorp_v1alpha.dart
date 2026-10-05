@@ -34,11 +34,28 @@ class OrganizationPartnerTenantBrowserDlpRuleIamBindingBeyondcorpV1alpha extends
           'google-native:beyondcorp/v1alpha:OrganizationPartnerTenantBrowserDlpRuleIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
     condition = registerOutput<Condition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Condition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationPartnerTenantBrowserDlpRuleIamBindingBeyondcorpV1alpha] resource.
+  OrganizationPartnerTenantBrowserDlpRuleIamBindingBeyondcorpV1alpha.reference(String urn)
+    : super(
+        'google-native:beyondcorp/v1alpha:OrganizationPartnerTenantBrowserDlpRuleIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<Condition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Condition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');

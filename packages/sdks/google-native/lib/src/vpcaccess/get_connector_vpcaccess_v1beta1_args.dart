@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetConnectorVpcaccessV1beta1Args {
   final pulumi.Input<String> connectorId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetConnectorVpcaccessV1beta1Args].
   /// [connectorId] Required.

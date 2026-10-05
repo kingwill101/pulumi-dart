@@ -10,7 +10,7 @@ class GetSchemaDiscoveryengineV1betaArgs {
   final pulumi.Input<String> collectionId;
   final pulumi.Input<String> dataStoreId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> schemaId;
 
   /// Creates a new [GetSchemaDiscoveryengineV1betaArgs].

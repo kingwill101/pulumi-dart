@@ -27,7 +27,7 @@ class CpuUtilizationResponse {
   factory CpuUtilizationResponse.fromMap(Map<String, dynamic> map) {
     return CpuUtilizationResponse(
       aggregationWindowLength: pulumi.Input.fromValue(map['aggregationWindowLength'] as String),
-      targetUtilization: pulumi.Input.fromValue(map['targetUtilization'] as double),
+      targetUtilization: pulumi.Input.fromValue((map['targetUtilization'] as num).toDouble()),
     );
   }
 }

@@ -23,56 +23,56 @@ import 'google_cloud_datacatalog_v1_usage_signal.dart';
 /// {@macro pulumi_datacatalog_v1_entry_args_doc}
 class EntryArgs {
   /// Business Context of the entry. Not supported for BigQuery datasets
-  final pulumi.Input<GoogleCloudDatacatalogV1BusinessContext>? businessContext;
+  final pulumi.Input<GoogleCloudDatacatalogV1BusinessContext?>? businessContext;
   /// Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
-  final pulumi.Input<GoogleCloudDatacatalogV1CloudBigtableSystemSpec>? cloudBigtableSystemSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1CloudBigtableSystemSpec?>? cloudBigtableSystemSpec;
   /// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
-  final pulumi.Input<Map<String, dynamic>>? dataSourceConnectionSpec;
+  final pulumi.Input<Map<String, dynamic>?>? dataSourceConnectionSpec;
   /// Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
-  final pulumi.Input<GoogleCloudDatacatalogV1DatabaseTableSpec>? databaseTableSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1DatabaseTableSpec?>? databaseTableSpec;
   /// Specification that applies to a dataset.
-  final pulumi.Input<GoogleCloudDatacatalogV1DatasetSpec>? datasetSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1DatasetSpec?>? datasetSpec;
   /// Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty string.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   final pulumi.Input<String> entryGroupId;
   /// Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
   final pulumi.Input<String> entryId;
   /// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
-  final pulumi.Input<GoogleCloudDatacatalogV1FilesetSpec>? filesetSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1FilesetSpec?>? filesetSpec;
   /// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation, and read-only later. Can be used for search and lookup of the entries.
-  final pulumi.Input<String>? fullyQualifiedName;
+  final pulumi.Input<String?>? fullyQualifiedName;
   /// Specification that applies to a Cloud Storage fileset. Valid only for entries with the `FILESET` type.
-  final pulumi.Input<GoogleCloudDatacatalogV1GcsFilesetSpec>? gcsFilesetSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1GcsFilesetSpec?>? gcsFilesetSpec;
   /// Cloud labels attached to the entry. In Data Catalog, you can create and modify labels attached only to custom entries. Synced entries have unmodifiable labels that come from the source system.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` Output only when the entry is one of the types in the `EntryType` enum. For entries with a `user_specified_type`, this field is optional and defaults to an empty string. The resource string must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (#). The maximum size is 200 bytes when encoded in UTF-8.
-  final pulumi.Input<String>? linkedResource;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? linkedResource;
+  final pulumi.Input<String?>? location;
   /// Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
-  final pulumi.Input<GoogleCloudDatacatalogV1LookerSystemSpec>? lookerSystemSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1LookerSystemSpec?>? lookerSystemSpec;
   /// Model specification.
-  final pulumi.Input<GoogleCloudDatacatalogV1ModelSpec>? modelSpec;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<GoogleCloudDatacatalogV1ModelSpec?>? modelSpec;
+  final pulumi.Input<String?>? project;
   /// Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
-  final pulumi.Input<GoogleCloudDatacatalogV1RoutineSpec>? routineSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1RoutineSpec?>? routineSpec;
   /// Schema of the entry. An entry might not have any schema attached to it.
-  final pulumi.Input<GoogleCloudDatacatalogV1Schema>? schema;
+  final pulumi.Input<GoogleCloudDatacatalogV1Schema?>? schema;
   /// Specification that applies to a Service resource.
-  final pulumi.Input<GoogleCloudDatacatalogV1ServiceSpec>? serviceSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1ServiceSpec?>? serviceSpec;
   /// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
-  final pulumi.Input<GoogleCloudDatacatalogV1SystemTimestamps>? sourceSystemTimestamps;
+  final pulumi.Input<GoogleCloudDatacatalogV1SystemTimestamps?>? sourceSystemTimestamps;
   /// Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
-  final pulumi.Input<GoogleCloudDatacatalogV1SqlDatabaseSystemSpec>? sqlDatabaseSystemSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1SqlDatabaseSystemSpec?>? sqlDatabaseSystemSpec;
   /// The type of the entry. For details, see [`EntryType`](#entrytype).
-  final pulumi.Input<EntryType>? type;
+  final pulumi.Input<EntryType?>? type;
   /// Resource usage statistics.
-  final pulumi.Input<GoogleCloudDatacatalogV1UsageSignal>? usageSignal;
+  final pulumi.Input<GoogleCloudDatacatalogV1UsageSignal?>? usageSignal;
   /// Indicates the entry's source system that Data Catalog doesn't automatically integrate with. The `user_specified_system` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
-  final pulumi.Input<String>? userSpecifiedSystem;
+  final pulumi.Input<String?>? userSpecifiedSystem;
   /// Custom entry type that doesn't match any of the values allowed for input and listed in the `EntryType` enum. When creating an entry, first check the type values in the enum. If there are no appropriate types for the new entry, provide a custom value, for example, `my_special_type`. The `user_specified_type` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
-  final pulumi.Input<String>? userSpecifiedType;
+  final pulumi.Input<String?>? userSpecifiedType;
 
   /// Creates a new [EntryArgs].
   /// [businessContext] Business Context of the entry. Not supported for BigQuery datasets

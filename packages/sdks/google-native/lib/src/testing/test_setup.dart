@@ -10,23 +10,23 @@ import 'systrace_setup.dart';
 /// A description of how to set up the Android device prior to running the test.
 class TestSetup {
   /// The device will be logged in on this account for the duration of the test.
-  final pulumi.Input<Account>? account;
+  final pulumi.Input<Account?>? account;
   /// APKs to install in addition to those being directly tested. These will be installed after the app under test. Currently capped at 100.
-  final pulumi.Input<List<Apk>>? additionalApks;
+  final pulumi.Input<List<Apk>?>? additionalApks;
   /// List of directories on the device to upload to GCS at the end of the test; they must be absolute paths under /sdcard, /storage or /data/local/tmp. Path names are restricted to characters a-z A-Z 0-9 _ - . + and / Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device.
-  final pulumi.Input<List<String>>? directoriesToPull;
+  final pulumi.Input<List<String>?>? directoriesToPull;
   /// Whether to prevent all runtime permissions to be granted at app install
-  final pulumi.Input<bool>? dontAutograntPermissions;
+  final pulumi.Input<bool?>? dontAutograntPermissions;
   /// Environment variables to set for the test (only applicable for instrumentation tests).
-  final pulumi.Input<List<EnvironmentVariable>>? environmentVariables;
+  final pulumi.Input<List<EnvironmentVariable>?>? environmentVariables;
   /// List of files to push to the device before starting the test.
-  final pulumi.Input<List<DeviceFile>>? filesToPush;
+  final pulumi.Input<List<DeviceFile>?>? filesToPush;
   /// Optional. Initial setup APKs to install before the app under test is installed. Currently capped at 100.
-  final pulumi.Input<List<Apk>>? initialSetupApks;
+  final pulumi.Input<List<Apk>?>? initialSetupApks;
   /// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
-  final pulumi.Input<String>? networkProfile;
+  final pulumi.Input<String?>? networkProfile;
   /// Systrace configuration for the run. Deprecated: Systrace used Python 2 which was sunsetted on 2020-01-01. Systrace is no longer supported in the Cloud Testing API, and no Systrace file will be provided in the results.
-  final pulumi.Input<SystraceSetup>? systrace;
+  final pulumi.Input<SystraceSetup?>? systrace;
 
   /// Creates a new [TestSetup].
   /// [account] The device will be logged in on this account for the duration of the test.

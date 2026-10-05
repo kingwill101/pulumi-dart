@@ -7,9 +7,9 @@ import 'service_mesh_membership_spec_management_gkehub_v1beta.dart';
 /// **Service Mesh**: Spec for a single Membership for the servicemesh feature
 class ServiceMeshMembershipSpecGkehubV1beta {
   /// Deprecated: use `management` instead Enables automatic control plane management.
-  final pulumi.Input<ServiceMeshMembershipSpecControlPlaneGkehubV1beta>? controlPlane;
+  final pulumi.Input<ServiceMeshMembershipSpecControlPlaneGkehubV1beta?>? controlPlane;
   /// Enables automatic Service Mesh management.
-  final pulumi.Input<ServiceMeshMembershipSpecManagementGkehubV1beta>? management;
+  final pulumi.Input<ServiceMeshMembershipSpecManagementGkehubV1beta?>? management;
 
   /// Creates a new [ServiceMeshMembershipSpecGkehubV1beta].
   /// [controlPlane] Deprecated: use `management` instead Enables automatic control plane management.

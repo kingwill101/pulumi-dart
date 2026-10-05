@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the termination action for the instance.
-enum SchedulingInstanceTerminationAction {
+enum SchedulingInstanceTerminationAction implements pulumi.PulumiEnum<String> {
   delete("DELETE"),
   instanceTerminationActionUnspecified("INSTANCE_TERMINATION_ACTION_UNSPECIFIED"),
   stop("STOP");
 
   const SchedulingInstanceTerminationAction(this.wireValue);
+  @override
   final String wireValue;
 
   static SchedulingInstanceTerminationAction fromValue(String value) {

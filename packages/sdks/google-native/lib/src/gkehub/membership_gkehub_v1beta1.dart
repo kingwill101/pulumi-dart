@@ -55,7 +55,7 @@ class MembershipGkehubV1beta1 extends pulumi.CustomResource {
           'google-native:gkehub/v1beta1:Membership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'membershipId', 'project']).merge(options),
         ) {
     authority = registerOutput<AuthorityResponseGkehubV1beta1>('authority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityResponseGkehubV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
@@ -64,7 +64,36 @@ class MembershipGkehubV1beta1 extends pulumi.CustomResource {
     endpoint = registerOutput<MembershipEndpointResponseGkehubV1beta1>('endpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipEndpointResponseGkehubV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     externalId = registerOutput<String>('externalId');
     infrastructureType = registerOutput<String>('infrastructureType');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lastConnectionTime = registerOutput<String>('lastConnectionTime');
+    location = registerOutput<String>('location');
+    membershipId = registerOutput<String>('membershipId');
+    monitoringConfig = registerOutput<MonitoringConfigResponseGkehubV1beta1>('monitoringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitoringConfigResponseGkehubV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<MembershipStateResponseGkehubV1beta1>('state', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipStateResponseGkehubV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uniqueId = registerOutput<String>('uniqueId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [MembershipGkehubV1beta1] resource.
+  MembershipGkehubV1beta1.reference(String urn)
+    : super(
+        'google-native:gkehub/v1beta1:Membership',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authority = registerOutput<AuthorityResponseGkehubV1beta1>('authority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityResponseGkehubV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    description = registerOutput<String>('description');
+    endpoint = registerOutput<MembershipEndpointResponseGkehubV1beta1>('endpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipEndpointResponseGkehubV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    externalId = registerOutput<String>('externalId');
+    infrastructureType = registerOutput<String>('infrastructureType');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastConnectionTime = registerOutput<String>('lastConnectionTime');
     location = registerOutput<String>('location');
     membershipId = registerOutput<String>('membershipId');

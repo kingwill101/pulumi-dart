@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Service CIDR, if any.
-enum NetworkConfigServiceCidr {
+enum NetworkConfigServiceCidr implements pulumi.PulumiEnum<String> {
   serviceCidrUnspecified("SERVICE_CIDR_UNSPECIFIED"),
   disabled("DISABLED"),
   high26("HIGH_26"),
@@ -7,6 +9,7 @@ enum NetworkConfigServiceCidr {
   high28("HIGH_28");
 
   const NetworkConfigServiceCidr(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkConfigServiceCidr fromValue(String value) {

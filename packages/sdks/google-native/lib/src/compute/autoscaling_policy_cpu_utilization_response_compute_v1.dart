@@ -27,7 +27,7 @@ class AutoscalingPolicyCpuUtilizationResponseComputeV1 {
   factory AutoscalingPolicyCpuUtilizationResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyCpuUtilizationResponseComputeV1(
       predictiveMethod: pulumi.Input.fromValue(map['predictiveMethod'] as String),
-      utilizationTarget: pulumi.Input.fromValue(map['utilizationTarget'] as double),
+      utilizationTarget: pulumi.Input.fromValue((map['utilizationTarget'] as num).toDouble()),
     );
   }
 }

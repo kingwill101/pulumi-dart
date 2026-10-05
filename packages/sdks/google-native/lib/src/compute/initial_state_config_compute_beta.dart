@@ -6,13 +6,13 @@ import 'file_content_buffer_compute_beta.dart';
 /// Initial State for shielded instance, these are public keys which are safe to store in public
 class InitialStateConfigComputeBeta {
   /// The Key Database (db).
-  final pulumi.Input<List<FileContentBufferComputeBeta>>? dbs;
+  final pulumi.Input<List<FileContentBufferComputeBeta>?>? dbs;
   /// The forbidden key database (dbx).
-  final pulumi.Input<List<FileContentBufferComputeBeta>>? dbxs;
+  final pulumi.Input<List<FileContentBufferComputeBeta>?>? dbxs;
   /// The Key Exchange Key (KEK).
-  final pulumi.Input<List<FileContentBufferComputeBeta>>? keks;
+  final pulumi.Input<List<FileContentBufferComputeBeta>?>? keks;
   /// The Platform Key (PK).
-  final pulumi.Input<FileContentBufferComputeBeta>? pk;
+  final pulumi.Input<FileContentBufferComputeBeta?>? pk;
 
   /// Creates a new [InitialStateConfigComputeBeta].
   /// [dbs] The Key Database (db).

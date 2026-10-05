@@ -6,11 +6,11 @@ import 'sdk_version_sdk_support_status.dart';
 /// The version of the SDK used to run the job.
 class SdkVersion {
   /// The support status for this SDK version.
-  final pulumi.Input<SdkVersionSdkSupportStatus>? sdkSupportStatus;
+  final pulumi.Input<SdkVersionSdkSupportStatus?>? sdkSupportStatus;
   /// The version of the SDK used to run the job.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// A readable string describing the version of the SDK.
-  final pulumi.Input<String>? versionDisplayName;
+  final pulumi.Input<String?>? versionDisplayName;
 
   /// Creates a new [SdkVersion].
   /// [sdkSupportStatus] The support status for this SDK version.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The type of the network to peer with the VMware Engine network.
-enum NetworkPeeringPeerNetworkType {
+enum NetworkPeeringPeerNetworkType implements pulumi.PulumiEnum<String> {
   peerNetworkTypeUnspecified("PEER_NETWORK_TYPE_UNSPECIFIED"),
   standard("STANDARD"),
   vmwareEngineNetwork("VMWARE_ENGINE_NETWORK"),
@@ -9,6 +11,7 @@ enum NetworkPeeringPeerNetworkType {
   dellPowerscale("DELL_POWERSCALE");
 
   const NetworkPeeringPeerNetworkType(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkPeeringPeerNetworkType fromValue(String value) {

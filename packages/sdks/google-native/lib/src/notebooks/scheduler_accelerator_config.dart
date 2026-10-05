@@ -6,9 +6,9 @@ import 'scheduler_accelerator_config_type.dart';
 /// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.
 class SchedulerAcceleratorConfig {
   /// Count of cores of this accelerator.
-  final pulumi.Input<String>? coreCount;
+  final pulumi.Input<String?>? coreCount;
   /// Type of this accelerator.
-  final pulumi.Input<SchedulerAcceleratorConfigType>? type;
+  final pulumi.Input<SchedulerAcceleratorConfigType?>? type;
 
   /// Creates a new [SchedulerAcceleratorConfig].
   /// [coreCount] Count of cores of this accelerator.

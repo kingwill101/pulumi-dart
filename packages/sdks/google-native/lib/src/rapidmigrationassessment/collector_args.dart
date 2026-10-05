@@ -8,27 +8,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_rapidmigrationassessment_v1_collector_args_doc}
 class CollectorArgs {
   /// How many days to collect data.
-  final pulumi.Input<int>? collectionDays;
+  final pulumi.Input<int?>? collectionDays;
   /// Required. Id of the requesting object.
   final pulumi.Input<String> collectorId;
   /// User specified description of the Collector.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User specified name of the Collector.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Uri for EULA (End User License Agreement) from customer.
-  final pulumi.Input<String>? eulaUri;
+  final pulumi.Input<String?>? eulaUri;
   /// User specified expected asset count.
-  final pulumi.Input<String>? expectedAssetCount;
+  final pulumi.Input<String?>? expectedAssetCount;
   /// Labels as key value pairs.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// name of resource.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Optional. An optional request ID to identify requests.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Service Account email used to ingest data to this Collector.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
 
   /// Creates a new [CollectorArgs].
   /// [collectionDays] How many days to collect data.
@@ -77,7 +77,7 @@ class CollectorArgs {
 
   factory CollectorArgs.fromMap(Map<String, dynamic> map) {
     return CollectorArgs(
-      collectionDays: (() { final guardedValue = map['collectionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      collectionDays: (() { final guardedValue = map['collectionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       collectorId: pulumi.Input.fromValue(map['collectorId'] as String),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

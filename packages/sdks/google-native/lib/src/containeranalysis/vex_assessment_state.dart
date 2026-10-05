@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Provides the state of this Vulnerability assessment.
-enum VexAssessmentState {
+enum VexAssessmentState implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   affected("AFFECTED"),
   notAffected("NOT_AFFECTED"),
@@ -7,6 +9,7 @@ enum VexAssessmentState {
   underInvestigation("UNDER_INVESTIGATION");
 
   const VexAssessmentState(this.wireValue);
+  @override
   final String wireValue;
 
   static VexAssessmentState fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for NodeLocal DNSCache
 class DnsCacheConfigContainerV1beta1 {
   /// Whether NodeLocal DNSCache is enabled for this cluster.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DnsCacheConfigContainerV1beta1].
   /// [enabled] Whether NodeLocal DNSCache is enabled for this cluster.

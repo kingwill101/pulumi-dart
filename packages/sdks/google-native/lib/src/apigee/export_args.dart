@@ -9,19 +9,19 @@ import 'google_cloud_apigee_v1_date_range.dart';
 /// {@macro pulumi_apigee_v1_export_args_doc}
 class ExportArgs {
   /// Optional. Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
-  final pulumi.Input<String>? csvDelimiter;
+  final pulumi.Input<String?>? csvDelimiter;
   /// Name of the preconfigured datastore.
   final pulumi.Input<String> datastoreName;
   /// Date range of the data to export.
   final pulumi.Input<GoogleCloudApigeeV1DateRange> dateRange;
   /// Optional. Description of the export job.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   final pulumi.Input<String> environmentId;
   /// Display name of the export job.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
   /// Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
-  final pulumi.Input<String>? outputFormat;
+  final pulumi.Input<String?>? outputFormat;
 
   /// Creates a new [ExportArgs].
   /// [csvDelimiter] Optional. Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).

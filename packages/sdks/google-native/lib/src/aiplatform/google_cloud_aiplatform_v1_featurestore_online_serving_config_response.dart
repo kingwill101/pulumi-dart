@@ -27,7 +27,7 @@ class GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse {
 
   factory GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse(
-      fixedNodeCount: pulumi.Input.fromValue(map['fixedNodeCount'] as int),
+      fixedNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['fixedNodeCount'])),
       scaling: pulumi.Input.fromValue(GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigScalingResponse.fromMap((map['scaling']! as Map).cast<String, dynamic>())),
     );
   }

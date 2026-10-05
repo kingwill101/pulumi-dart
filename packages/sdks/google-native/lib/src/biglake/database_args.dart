@@ -13,11 +13,11 @@ class DatabaseArgs {
   /// Required. The ID to use for the database, which will become the final component of the database's resource name.
   final pulumi.Input<String> databaseId;
   /// Options of a Hive database.
-  final pulumi.Input<HiveDatabaseOptions>? hiveOptions;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<HiveDatabaseOptions?>? hiveOptions;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// The database type.
-  final pulumi.Input<DatabaseType>? type;
+  final pulumi.Input<DatabaseType?>? type;
 
   /// Creates a new [DatabaseArgs].
   /// [catalogId] Required.

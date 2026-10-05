@@ -10,7 +10,7 @@ class GetEntryArgs {
   final pulumi.Input<String> entryGroupId;
   final pulumi.Input<String> entryId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetEntryArgs].
   /// [entryGroupId] Required.

@@ -1,8 +1,11 @@
-enum RegistrationDomainNoticesItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum RegistrationDomainNoticesItem implements pulumi.PulumiEnum<String> {
   domainNoticeUnspecified("DOMAIN_NOTICE_UNSPECIFIED"),
   hstsPreloaded("HSTS_PRELOADED");
 
   const RegistrationDomainNoticesItem(this.wireValue);
+  @override
   final String wireValue;
 
   static RegistrationDomainNoticesItem fromValue(String value) {

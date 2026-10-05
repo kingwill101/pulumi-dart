@@ -45,7 +45,7 @@ class DomainMappingStatusResponse {
     return DomainMappingStatusResponse(
       conditions: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudRunV1ConditionResponse>(map['conditions']!, (value) => GoogleCloudRunV1ConditionResponse.fromMap((value as Map).cast<String, dynamic>()))),
       mappedRouteName: pulumi.Input.fromValue(map['mappedRouteName'] as String),
-      observedGeneration: pulumi.Input.fromValue(map['observedGeneration'] as int),
+      observedGeneration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['observedGeneration'])),
       resourceRecords: pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceRecordResponse>(map['resourceRecords']!, (value) => ResourceRecordResponse.fromMap((value as Map).cast<String, dynamic>()))),
       url: pulumi.Input.fromValue(map['url'] as String),
     );

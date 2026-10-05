@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-enum LbTrafficExtensionLoadBalancingScheme {
+enum LbTrafficExtensionLoadBalancingScheme implements pulumi.PulumiEnum<String> {
   loadBalancingSchemeUnspecified("LOAD_BALANCING_SCHEME_UNSPECIFIED"),
   internalManaged("INTERNAL_MANAGED"),
   externalManaged("EXTERNAL_MANAGED");
 
   const LbTrafficExtensionLoadBalancingScheme(this.wireValue);
+  @override
   final String wireValue;
 
   static LbTrafficExtensionLoadBalancingScheme fromValue(String value) {

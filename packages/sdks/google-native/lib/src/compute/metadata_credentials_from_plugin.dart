@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// [Deprecated] Custom authenticator credentials. Custom authenticator credentials.
 class MetadataCredentialsFromPlugin {
   /// Plugin name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A text proto that conforms to a Struct type definition interpreted by the plugin.
-  final pulumi.Input<String>? structConfig;
+  final pulumi.Input<String?>? structConfig;
 
   /// Creates a new [MetadataCredentialsFromPlugin].
   /// [name] Plugin name.

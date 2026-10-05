@@ -25,7 +25,7 @@ class BigQueryModelTrainingResponse {
 
   factory BigQueryModelTrainingResponse.fromMap(Map<String, dynamic> map) {
     return BigQueryModelTrainingResponse(
-      currentIteration: pulumi.Input.fromValue(map['currentIteration'] as int),
+      currentIteration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['currentIteration'])),
       expectedTotalIterations: pulumi.Input.fromValue(map['expectedTotalIterations'] as String),
     );
   }

@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dialogflow_v2_conversation_dataset_args_doc}
 class ConversationDatasetArgs {
   /// Optional. The description of the dataset. Maximum of 10000 bytes.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the dataset. Maximum of 64 bytes.
   final pulumi.Input<String> displayName;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [ConversationDatasetArgs].
   /// [description] Optional. The description of the dataset. Maximum of 10000 bytes.

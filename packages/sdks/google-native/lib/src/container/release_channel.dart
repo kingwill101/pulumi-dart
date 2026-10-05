@@ -6,7 +6,7 @@ import 'release_channel_channel.dart';
 /// ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk. When a cluster is subscribed to a release channel, Google maintains both the master version and the node version. Node auto-upgrade defaults to true and cannot be disabled.
 class ReleaseChannel {
   /// channel specifies which release channel the cluster is subscribed to.
-  final pulumi.Input<ReleaseChannelChannel>? channel;
+  final pulumi.Input<ReleaseChannelChannel?>? channel;
 
   /// Creates a new [ReleaseChannel].
   /// [channel] channel specifies which release channel the cluster is subscribed to.

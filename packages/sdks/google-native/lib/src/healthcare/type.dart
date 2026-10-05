@@ -7,11 +7,11 @@ import 'type_primitive.dart';
 /// A type definition for some HL7v2 type (incl. Segments and Datatypes).
 class Type {
   /// The (sub) fields this type has (if not primitive).
-  final pulumi.Input<List<Field>>? fields;
+  final pulumi.Input<List<Field>?>? fields;
   /// The name of this type. This would be the segment or datatype name. For example, "PID" or "XPN".
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
-  final pulumi.Input<TypePrimitive>? primitive;
+  final pulumi.Input<TypePrimitive?>? primitive;
 
   /// Creates a new [Type].
   /// [fields] The (sub) fields this type has (if not primitive).

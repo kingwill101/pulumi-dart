@@ -37,8 +37,30 @@ class TargetGrpcProxyComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:TargetGrpcProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    urlMap = registerOutput<String>('urlMap');
+    validateForProxyless = registerOutput<bool>('validateForProxyless');
+  }
+
+  /// Creates a typed reference to an existing [TargetGrpcProxyComputeV1] resource.
+  TargetGrpcProxyComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:TargetGrpcProxy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     fingerprint = registerOutput<String>('fingerprint');

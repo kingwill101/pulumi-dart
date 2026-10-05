@@ -28,8 +28,26 @@ class Instance extends pulumi.CustomResource {
           'google-native:firebasedatabase/v1beta:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    databaseId = registerOutput<String?>('databaseId');
+    databaseUrl = registerOutput<String>('databaseUrl');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'google-native:firebasedatabase/v1beta:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     databaseId = registerOutput<String?>('databaseId');
     databaseUrl = registerOutput<String>('databaseUrl');
     location = registerOutput<String>('location');

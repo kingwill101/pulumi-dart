@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the spec to match discrete values from parent parameter.
 class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
   /// Matches values of the parent parameter with type 'DISCRETE'. All values must exist in `discrete_value_spec` of parent parameter.
-  final pulumi.Input<List<double>>? values;
+  final pulumi.Input<List<double>?>? values;
 
   /// Creates a new [GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec].
   /// [values] Matches values of the parent parameter with type 'DISCRETE'. All values must exist in `discrete_value_spec` of parent parameter.

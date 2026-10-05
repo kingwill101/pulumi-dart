@@ -6,7 +6,7 @@ import 'common_language_settings.dart';
 /// Settings for Node client libraries.
 class NodeSettings {
   /// Some settings.
-  final pulumi.Input<CommonLanguageSettings>? common;
+  final pulumi.Input<CommonLanguageSettings?>? common;
 
   /// Creates a new [NodeSettings].
   /// [common] Some settings.

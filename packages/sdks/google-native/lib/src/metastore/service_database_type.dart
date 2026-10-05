@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The database type that the Metastore service stores its data.
-enum ServiceDatabaseType {
+enum ServiceDatabaseType implements pulumi.PulumiEnum<String> {
   databaseTypeUnspecified("DATABASE_TYPE_UNSPECIFIED"),
   mysql("MYSQL"),
   spanner("SPANNER");
 
   const ServiceDatabaseType(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceDatabaseType fromValue(String value) {

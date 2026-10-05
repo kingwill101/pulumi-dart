@@ -10,11 +10,11 @@ class RestoreArgs {
   /// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*/locations/*/backupPlans/*/backups/*`.
   final pulumi.Input<String> backup;
   /// User specified descriptive string for this Restore.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A set of custom labels supplied by user.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan.
   final pulumi.Input<String> restoreId;
   final pulumi.Input<String> restorePlanId;

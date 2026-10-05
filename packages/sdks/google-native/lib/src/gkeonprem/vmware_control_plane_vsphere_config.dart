@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies control plane node config.
 class VmwareControlPlaneVsphereConfig {
   /// The Vsphere datastore used by the control plane Node.
-  final pulumi.Input<String>? datastore;
+  final pulumi.Input<String?>? datastore;
   /// The Vsphere storage policy used by the control plane Node.
-  final pulumi.Input<String>? storagePolicyName;
+  final pulumi.Input<String?>? storagePolicyName;
 
   /// Creates a new [VmwareControlPlaneVsphereConfig].
   /// [datastore] The Vsphere datastore used by the control plane Node.

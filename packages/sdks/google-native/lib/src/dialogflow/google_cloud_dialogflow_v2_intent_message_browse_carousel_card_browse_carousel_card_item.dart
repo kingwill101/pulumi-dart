@@ -7,11 +7,11 @@ import 'google_cloud_dialogflow_v2_intent_message_image.dart';
 /// Browsing carousel tile
 class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem {
   /// Optional. Description of the carousel item. Maximum of four lines of text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Text that appears at the bottom of the Browse Carousel Card. Maximum of one line of text.
-  final pulumi.Input<String>? footer;
+  final pulumi.Input<String?>? footer;
   /// Optional. Hero image for the carousel item.
-  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImage>? image;
+  final pulumi.Input<GoogleCloudDialogflowV2IntentMessageImage?>? image;
   /// Action to present to the user.
   final pulumi.Input<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction> openUriAction;
   /// Title of the carousel item. Maximum of two lines of text.

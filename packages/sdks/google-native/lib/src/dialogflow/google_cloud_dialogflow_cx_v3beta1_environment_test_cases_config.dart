@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration for continuous tests.
 class GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig {
   /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
-  final pulumi.Input<bool>? enableContinuousRun;
+  final pulumi.Input<bool?>? enableContinuousRun;
   /// Whether to run test cases in TestCasesConfig.test_cases before deploying a flow version to the environment. Default false.
-  final pulumi.Input<bool>? enablePredeploymentRun;
+  final pulumi.Input<bool?>? enablePredeploymentRun;
   /// A list of test case names to run. They should be under the same agent. Format of each test case name: `projects//locations/ /agents//testCases/`
-  final pulumi.Input<List<String>>? testCases;
+  final pulumi.Input<List<String>?>? testCases;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig].
   /// [enableContinuousRun] Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.

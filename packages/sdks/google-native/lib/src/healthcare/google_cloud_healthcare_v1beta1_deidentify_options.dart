@@ -8,15 +8,15 @@ import 'date_shift_config_healthcare_v1beta1.dart';
 /// Specifies additional options to apply to the base ProfileType.
 class GoogleCloudHealthcareV1beta1DeidentifyOptions {
   /// Character mask config for CharacterMaskField.
-  final pulumi.Input<CharacterMaskConfigHealthcareV1beta1>? characterMaskConfig;
+  final pulumi.Input<CharacterMaskConfigHealthcareV1beta1?>? characterMaskConfig;
   /// Configure contextual de-id.
-  final pulumi.Input<Map<String, dynamic>>? contextualDeid;
+  final pulumi.Input<Map<String, dynamic>?>? contextualDeid;
   /// Crypto hash config for CharacterMaskField.
-  final pulumi.Input<CryptoHashConfigHealthcareV1beta1>? cryptoHashConfig;
+  final pulumi.Input<CryptoHashConfigHealthcareV1beta1?>? cryptoHashConfig;
   /// Date shifting config for CharacterMaskField.
-  final pulumi.Input<DateShiftConfigHealthcareV1beta1>? dateShiftConfig;
+  final pulumi.Input<DateShiftConfigHealthcareV1beta1?>? dateShiftConfig;
   /// Configure keeping extensions by default.
-  final pulumi.Input<Map<String, dynamic>>? keepExtensions;
+  final pulumi.Input<Map<String, dynamic>?>? keepExtensions;
 
   /// Creates a new [GoogleCloudHealthcareV1beta1DeidentifyOptions].
   /// [characterMaskConfig] Character mask config for CharacterMaskField.

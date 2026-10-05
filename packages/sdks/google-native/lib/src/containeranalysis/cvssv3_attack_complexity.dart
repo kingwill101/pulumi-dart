@@ -1,9 +1,12 @@
-enum CVSSv3AttackComplexity {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum CVSSv3AttackComplexity implements pulumi.PulumiEnum<String> {
   attackComplexityUnspecified("ATTACK_COMPLEXITY_UNSPECIFIED"),
   attackComplexityLow("ATTACK_COMPLEXITY_LOW"),
   attackComplexityHigh("ATTACK_COMPLEXITY_HIGH");
 
   const CVSSv3AttackComplexity(this.wireValue);
+  @override
   final String wireValue;
 
   static CVSSv3AttackComplexity fromValue(String value) {

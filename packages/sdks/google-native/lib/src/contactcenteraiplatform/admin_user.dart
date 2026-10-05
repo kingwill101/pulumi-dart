@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Message storing info about the first admin user. Next ID: 3
 class AdminUser {
   /// Optional. Last/family name of the first admin user.
-  final pulumi.Input<String>? familyName;
+  final pulumi.Input<String?>? familyName;
   /// Optional. First/given name of the first admin user.
-  final pulumi.Input<String>? givenName;
+  final pulumi.Input<String?>? givenName;
 
   /// Creates a new [AdminUser].
   /// [familyName] Optional. Last/family name of the first admin user.

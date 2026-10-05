@@ -31,8 +31,26 @@ class FolderNotificationConfig extends pulumi.CustomResource {
           'google-native:securitycenter/v1:FolderNotificationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['configId', 'folderId']).merge(options),
         ) {
+    configId = registerOutput<String>('configId');
+    description = registerOutput<String>('description');
+    folderId = registerOutput<String>('folderId');
+    this.name = registerOutput<String>('name');
+    pubsubTopic = registerOutput<String>('pubsubTopic');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    streamingConfig = registerOutput<StreamingConfigResponse>('streamingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [FolderNotificationConfig] resource.
+  FolderNotificationConfig.reference(String urn)
+    : super(
+        'google-native:securitycenter/v1:FolderNotificationConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     configId = registerOutput<String>('configId');
     description = registerOutput<String>('description');
     folderId = registerOutput<String>('folderId');

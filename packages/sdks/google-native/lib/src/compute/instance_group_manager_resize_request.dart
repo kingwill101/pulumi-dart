@@ -48,8 +48,35 @@ class InstanceGroupManagerResizeRequest extends pulumi.CustomResource {
           'google-native:compute/alpha:InstanceGroupManagerResizeRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceGroupManager', 'project', 'zone']).merge(options),
         ) {
+    count = registerOutput<int>('count');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    instanceGroupManager = registerOutput<String>('instanceGroupManager');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    queuingPolicy = registerOutput<QueuingPolicyResponse>('queuingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueuingPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    requestId = registerOutput<String?>('requestId');
+    requestedRunDuration = registerOutput<DurationResponse>('requestedRunDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resizeBy = registerOutput<int>('resizeBy');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    state = registerOutput<String>('state');
+    status = registerOutput<InstanceGroupManagerResizeRequestStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupManagerResizeRequestStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [InstanceGroupManagerResizeRequest] resource.
+  InstanceGroupManagerResizeRequest.reference(String urn)
+    : super(
+        'google-native:compute/alpha:InstanceGroupManagerResizeRequest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     count = registerOutput<int>('count');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The App Engine integration mode to use for this database.
-enum DatabaseAppEngineIntegrationMode {
+enum DatabaseAppEngineIntegrationMode implements pulumi.PulumiEnum<String> {
   appEngineIntegrationModeUnspecified("APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED"),
   enabled("ENABLED"),
   disabled("DISABLED");
 
   const DatabaseAppEngineIntegrationMode(this.wireValue);
+  @override
   final String wireValue;
 
   static DatabaseAppEngineIntegrationMode fromValue(String value) {

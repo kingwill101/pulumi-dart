@@ -48,21 +48,47 @@ class Evaluation extends pulumi.CustomResource {
           'google-native:workloadmanager/v1:Evaluation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['evaluationId', 'location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     customRulesBucket = registerOutput<String>('customRulesBucket');
     description = registerOutput<String>('description');
     evaluationId = registerOutput<String>('evaluationId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
     resourceFilter = registerOutput<ResourceFilterResponse>('resourceFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceFilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceStatus = registerOutput<ResourceStatusResponse>('resourceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ruleNames = registerOutput<List<String>>('ruleNames');
-    ruleVersions = registerOutput<List<String>>('ruleVersions');
+    ruleNames = registerOutput<List<String>>('ruleNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ruleVersions = registerOutput<List<String>>('ruleVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    schedule = registerOutput<String>('schedule');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Evaluation] resource.
+  Evaluation.reference(String urn)
+    : super(
+        'google-native:workloadmanager/v1:Evaluation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    customRulesBucket = registerOutput<String>('customRulesBucket');
+    description = registerOutput<String>('description');
+    evaluationId = registerOutput<String>('evaluationId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    resourceFilter = registerOutput<ResourceFilterResponse>('resourceFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceFilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceStatus = registerOutput<ResourceStatusResponse>('resourceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ruleNames = registerOutput<List<String>>('ruleNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ruleVersions = registerOutput<List<String>>('ruleVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     schedule = registerOutput<String>('schedule');
     updateTime = registerOutput<String>('updateTime');
   }

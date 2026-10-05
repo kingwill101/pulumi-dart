@@ -31,9 +31,9 @@ class DiskConfigResponseDataprocV1beta2 {
 
   factory DiskConfigResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return DiskConfigResponseDataprocV1beta2(
-      bootDiskSizeGb: pulumi.Input.fromValue(map['bootDiskSizeGb'] as int),
+      bootDiskSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bootDiskSizeGb'])),
       bootDiskType: pulumi.Input.fromValue(map['bootDiskType'] as String),
-      numLocalSsds: pulumi.Input.fromValue(map['numLocalSsds'] as int),
+      numLocalSsds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numLocalSsds'])),
     );
   }
 }

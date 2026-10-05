@@ -6,9 +6,9 @@ import 'json_path_matcher_json_matcher.dart';
 /// Information needed to perform a JSONPath content match. Used for ContentMatcherOption::MATCHES_JSON_PATH and ContentMatcherOption::NOT_MATCHES_JSON_PATH.
 class JsonPathMatcher {
   /// The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
-  final pulumi.Input<JsonPathMatcherJsonMatcher>? jsonMatcher;
+  final pulumi.Input<JsonPathMatcherJsonMatcher?>? jsonMatcher;
   /// JSONPath within the response output pointing to the expected ContentMatcher::content to match against.
-  final pulumi.Input<String>? jsonPath;
+  final pulumi.Input<String?>? jsonPath;
 
   /// Creates a new [JsonPathMatcher].
   /// [jsonMatcher] The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)

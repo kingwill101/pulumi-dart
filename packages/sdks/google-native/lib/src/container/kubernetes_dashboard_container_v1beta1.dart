@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for the Kubernetes Dashboard.
 class KubernetesDashboardContainerV1beta1 {
   /// Whether the Kubernetes Dashboard is enabled for this cluster.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
 
   /// Creates a new [KubernetesDashboardContainerV1beta1].
   /// [disabled] Whether the Kubernetes Dashboard is enabled for this cluster.

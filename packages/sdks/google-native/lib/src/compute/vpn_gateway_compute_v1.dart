@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_gateway_compute_v1_args.dart';
+import 'vpn_gateway_vpn_gateway_interface_response_compute_v1.dart';
 
 /// Creates a VPN gateway in the specified project and region using the data included in the request.
 class VpnGatewayComputeV1 extends pulumi.CustomResource {
@@ -26,7 +27,7 @@ class VpnGatewayComputeV1 extends pulumi.CustomResource {
   /// The stack type for this VPN gateway to identify the IP protocols that are enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified, IPV4_ONLY will be used.
   late final pulumi.Output<String> stackType;
   /// The list of VPN interfaces associated with this VPN gateway.
-  late final pulumi.Output<List<Map<String, dynamic>>> vpnInterfaces;
+  late final pulumi.Output<List<VpnGatewayVpnGatewayInterfaceResponseComputeV1>> vpnInterfaces;
 
   /// Creates a new [VpnGatewayComputeV1].
   /// [name] The Pulumi resource name.
@@ -40,13 +41,13 @@ class VpnGatewayComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:VpnGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     kind = registerOutput<String>('kind');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
@@ -54,6 +55,30 @@ class VpnGatewayComputeV1 extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     selfLink = registerOutput<String>('selfLink');
     stackType = registerOutput<String>('stackType');
-    vpnInterfaces = registerOutput<List<Map<String, dynamic>>>('vpnInterfaces');
+    vpnInterfaces = registerOutput<List<VpnGatewayVpnGatewayInterfaceResponseComputeV1>>('vpnInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnGatewayVpnGatewayInterfaceResponseComputeV1>(guardedValue, (value) => VpnGatewayVpnGatewayInterfaceResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [VpnGatewayComputeV1] resource.
+  VpnGatewayComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:VpnGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    kind = registerOutput<String>('kind');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    stackType = registerOutput<String>('stackType');
+    vpnInterfaces = registerOutput<List<VpnGatewayVpnGatewayInterfaceResponseComputeV1>>('vpnInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnGatewayVpnGatewayInterfaceResponseComputeV1>(guardedValue, (value) => VpnGatewayVpnGatewayInterfaceResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

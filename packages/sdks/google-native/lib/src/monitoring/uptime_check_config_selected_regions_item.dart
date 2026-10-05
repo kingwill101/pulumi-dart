@@ -1,4 +1,6 @@
-enum UptimeCheckConfigSelectedRegionsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum UptimeCheckConfigSelectedRegionsItem implements pulumi.PulumiEnum<String> {
   regionUnspecified("REGION_UNSPECIFIED"),
   usa("USA"),
   europe("EUROPE"),
@@ -9,6 +11,7 @@ enum UptimeCheckConfigSelectedRegionsItem {
   usaVirginia("USA_VIRGINIA");
 
   const UptimeCheckConfigSelectedRegionsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static UptimeCheckConfigSelectedRegionsItem fromValue(String value) {

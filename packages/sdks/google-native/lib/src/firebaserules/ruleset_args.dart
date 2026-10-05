@@ -8,7 +8,7 @@ import 'source.dart';
 /// {@endtemplate}
 /// {@macro pulumi_firebaserules_v1_ruleset_args_doc}
 class RulesetArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// `Source` for the `Ruleset`.
   final pulumi.Input<Source> source;
 

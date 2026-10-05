@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the event to trigger.
 class GoogleCloudDialogflowCxV3beta1EventInput {
   /// Name of the event.
-  final pulumi.Input<String>? event;
+  final pulumi.Input<String?>? event;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1EventInput].
   /// [event] Name of the event.

@@ -38,6 +38,17 @@ Future<GetKubeconfigResult> getKubeconfig(
   return GetKubeconfigResult.fromMap(result);
 }
 
+pulumi.Output<GetKubeconfigResult> getKubeconfigOutput(
+  GetKubeconfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:container/v1:Cluster/getKubeconfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKubeconfigResult.fromMap);
+}
+
 /// Gets the details of a specific cluster.
 /// [args] Arguments passed to this invoke. {@macro pulumi_container_v1_get_cluster_args_doc}
 /// [options] Invoke options controlling this call.
@@ -52,6 +63,17 @@ Future<GetClusterResult> getCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:container/v1:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
 }
 
 /// Retrieves the requested node pool.
@@ -70,6 +92,17 @@ Future<GetNodePoolResult> getNodePool(
   return GetNodePoolResult.fromMap(result);
 }
 
+pulumi.Output<GetNodePoolResult> getNodePoolOutput(
+  GetNodePoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:container/v1:getNodePool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodePoolResult.fromMap);
+}
+
 /// Returns configuration info about the Google Kubernetes Engine service.
 /// [args] Arguments passed to this invoke. {@macro pulumi_container_v1_get_server_config_args_doc}
 /// [options] Invoke options controlling this call.
@@ -84,6 +117,17 @@ Future<GetServerConfigResult> getServerConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetServerConfigResult> getServerConfigOutput(
+  GetServerConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:container/v1:getServerConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerConfigResult.fromMap);
 }
 
 /// Generate a kubeconfig for cluster authentication.
@@ -108,6 +152,17 @@ Future<GetKubeconfigContainerV1beta1Result> getKubeconfigContainerV1beta1(
   return GetKubeconfigContainerV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetKubeconfigContainerV1beta1Result> getKubeconfigContainerV1beta1Output(
+  GetKubeconfigContainerV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:container/v1beta1:Cluster/getKubeconfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKubeconfigContainerV1beta1Result.fromMap);
+}
+
 /// Gets the details for a specific cluster.
 /// [args] Arguments passed to this invoke. {@macro pulumi_container_v1beta1_get_cluster_container_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -122,6 +177,17 @@ Future<GetClusterContainerV1beta1Result> getClusterContainerV1beta1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterContainerV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetClusterContainerV1beta1Result> getClusterContainerV1beta1Output(
+  GetClusterContainerV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:container/v1beta1:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterContainerV1beta1Result.fromMap);
 }
 
 /// Retrieves the requested node pool.
@@ -140,6 +206,17 @@ Future<GetNodePoolContainerV1beta1Result> getNodePoolContainerV1beta1(
   return GetNodePoolContainerV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetNodePoolContainerV1beta1Result> getNodePoolContainerV1beta1Output(
+  GetNodePoolContainerV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:container/v1beta1:getNodePool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodePoolContainerV1beta1Result.fromMap);
+}
+
 /// Returns configuration info about the Google Kubernetes Engine service.
 /// [args] Arguments passed to this invoke. {@macro pulumi_container_v1beta1_get_server_config_container_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -154,4 +231,15 @@ Future<GetServerConfigContainerV1beta1Result> getServerConfigContainerV1beta1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerConfigContainerV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetServerConfigContainerV1beta1Result> getServerConfigContainerV1beta1Output(
+  GetServerConfigContainerV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:container/v1beta1:getServerConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerConfigContainerV1beta1Result.fromMap);
 }

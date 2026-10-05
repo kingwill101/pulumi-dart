@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authorization_policy_args.dart';
+import 'rule_response.dart';
 
 /// Creates a new AuthorizationPolicy in a given project and location.
 class AuthorizationPolicy extends pulumi.CustomResource {
@@ -18,7 +19,7 @@ class AuthorizationPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   /// Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<RuleResponse>> rules;
   /// The timestamp when the resource was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -34,17 +35,38 @@ class AuthorizationPolicy extends pulumi.CustomResource {
           'google-native:networksecurity/v1:AuthorizationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['authorizationPolicyId', 'location', 'project']).merge(options),
         ) {
     action = registerOutput<String>('action');
     authorizationPolicyId = registerOutput<String>('authorizationPolicyId');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<RuleResponse>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleResponse>(guardedValue, (value) => RuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AuthorizationPolicy] resource.
+  AuthorizationPolicy.reference(String urn)
+    : super(
+        'google-native:networksecurity/v1:AuthorizationPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    authorizationPolicyId = registerOutput<String>('authorizationPolicyId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rules = registerOutput<List<RuleResponse>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleResponse>(guardedValue, (value) => RuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

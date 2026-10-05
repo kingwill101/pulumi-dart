@@ -1,4 +1,6 @@
-enum FolderContactNotificationCategorySubscriptionsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum FolderContactNotificationCategorySubscriptionsItem implements pulumi.PulumiEnum<String> {
   notificationCategoryUnspecified("NOTIFICATION_CATEGORY_UNSPECIFIED"),
   all("ALL"),
   suspension("SUSPENSION"),
@@ -10,6 +12,7 @@ enum FolderContactNotificationCategorySubscriptionsItem {
   technicalIncidents("TECHNICAL_INCIDENTS");
 
   const FolderContactNotificationCategorySubscriptionsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static FolderContactNotificationCategorySubscriptionsItem fromValue(String value) {

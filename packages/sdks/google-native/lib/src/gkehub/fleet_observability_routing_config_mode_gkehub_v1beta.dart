@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// mode configures the logs routing mode.
-enum FleetObservabilityRoutingConfigModeGkehubV1beta {
+enum FleetObservabilityRoutingConfigModeGkehubV1beta implements pulumi.PulumiEnum<String> {
   modeUnspecified("MODE_UNSPECIFIED"),
   copy("COPY"),
   move("MOVE");
 
   const FleetObservabilityRoutingConfigModeGkehubV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static FleetObservabilityRoutingConfigModeGkehubV1beta fromValue(String value) {

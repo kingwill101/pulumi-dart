@@ -6,9 +6,9 @@ import 'tcp_route_route_destination_networkservices_v1beta1.dart';
 /// The specifications for routing traffic and applying associated policies.
 class TcpRouteRouteActionNetworkservicesV1beta1 {
   /// Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
-  final pulumi.Input<List<TcpRouteRouteDestinationNetworkservicesV1beta1>>? destinations;
+  final pulumi.Input<List<TcpRouteRouteDestinationNetworkservicesV1beta1>?>? destinations;
   /// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
-  final pulumi.Input<bool>? originalDestination;
+  final pulumi.Input<bool?>? originalDestination;
 
   /// Creates a new [TcpRouteRouteActionNetworkservicesV1beta1].
   /// [destinations] Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.

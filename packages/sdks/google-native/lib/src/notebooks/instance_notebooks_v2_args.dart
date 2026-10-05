@@ -9,19 +9,19 @@ import 'gce_setup.dart';
 /// {@macro pulumi_notebooks_v2_instance_notebooks_v2_args_doc}
 class InstanceNotebooksV2Args {
   /// Optional. If true, the notebook instance will not register with the proxy.
-  final pulumi.Input<bool>? disableProxyAccess;
+  final pulumi.Input<bool?>? disableProxyAccess;
   /// Optional. Compute Engine setup for the notebook. Uses notebook-defined fields.
-  final pulumi.Input<GceSetup>? gceSetup;
+  final pulumi.Input<GceSetup?>? gceSetup;
   /// Required. User-defined unique ID of this instance.
   final pulumi.Input<String> instanceId;
   /// Optional. Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
-  final pulumi.Input<List<String>>? instanceOwners;
+  final pulumi.Input<List<String>?>? instanceOwners;
   /// Optional. Labels to apply to this instance. These can be later modified by the UpdateInstance method.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Optional. Idempotent request UUID.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
 
   /// Creates a new [InstanceNotebooksV2Args].
   /// [disableProxyAccess] Optional. If true, the notebook instance will not register with the proxy.

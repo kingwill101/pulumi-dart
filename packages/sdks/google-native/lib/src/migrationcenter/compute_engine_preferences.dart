@@ -7,9 +7,9 @@ import 'machine_preferences.dart';
 /// The user preferences relating to Compute Engine target platform.
 class ComputeEnginePreferences {
   /// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
-  final pulumi.Input<ComputeEnginePreferencesLicenseType>? licenseType;
+  final pulumi.Input<ComputeEnginePreferencesLicenseType?>? licenseType;
   /// Preferences concerning the machine types to consider on Compute Engine.
-  final pulumi.Input<MachinePreferences>? machinePreferences;
+  final pulumi.Input<MachinePreferences?>? machinePreferences;
 
   /// Creates a new [ComputeEnginePreferences].
   /// [licenseType] License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.

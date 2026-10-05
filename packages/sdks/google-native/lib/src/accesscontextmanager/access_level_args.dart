@@ -11,15 +11,15 @@ import 'custom_level.dart';
 class AccessLevelArgs {
   final pulumi.Input<String> accessPolicyId;
   /// A `BasicLevel` composed of `Conditions`.
-  final pulumi.Input<BasicLevel>? basic;
+  final pulumi.Input<BasicLevel?>? basic;
   /// A `CustomLevel` written in the Common Expression Language.
-  final pulumi.Input<CustomLevel>? custom;
+  final pulumi.Input<CustomLevel?>? custom;
   /// Description of the `AccessLevel` and its use. Does not affect behavior.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Human readable title. Must be unique within the Policy.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [AccessLevelArgs].
   /// [accessPolicyId] Required.

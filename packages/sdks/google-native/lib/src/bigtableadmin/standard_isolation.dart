@@ -6,7 +6,7 @@ import 'standard_isolation_priority.dart';
 /// Standard options for isolating this app profile's traffic from other use cases.
 class StandardIsolation {
   /// The priority of requests sent using this app profile.
-  final pulumi.Input<StandardIsolationPriority>? priority;
+  final pulumi.Input<StandardIsolationPriority?>? priority;
 
   /// Creates a new [StandardIsolation].
   /// [priority] The priority of requests sent using this app profile.

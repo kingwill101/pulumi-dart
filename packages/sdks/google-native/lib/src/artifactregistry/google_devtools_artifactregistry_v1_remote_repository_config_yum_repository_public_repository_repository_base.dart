@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A common public repository base for Yum.
-enum GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase {
+enum GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase implements pulumi.PulumiEnum<String> {
   repositoryBaseUnspecified("REPOSITORY_BASE_UNSPECIFIED"),
   centos("CENTOS"),
   centosDebug("CENTOS_DEBUG"),
@@ -9,6 +11,7 @@ enum GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRe
   epel("EPEL");
 
   const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase fromValue(String value) {

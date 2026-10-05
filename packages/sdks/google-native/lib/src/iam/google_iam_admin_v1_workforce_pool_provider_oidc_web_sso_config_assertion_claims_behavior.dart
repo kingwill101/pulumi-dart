@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
-enum GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior {
+enum GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior implements pulumi.PulumiEnum<String> {
   assertionClaimsBehaviorUnspecified("ASSERTION_CLAIMS_BEHAVIOR_UNSPECIFIED"),
   mergeUserInfoOverIdTokenClaims("MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS"),
   onlyIdTokenClaims("ONLY_ID_TOKEN_CLAIMS");
 
   const GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior fromValue(String value) {

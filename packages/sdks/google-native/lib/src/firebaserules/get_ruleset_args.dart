@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_firebaserules_v1_get_ruleset_args_doc}
 class GetRulesetArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> rulesetId;
 
   /// Creates a new [GetRulesetArgs].

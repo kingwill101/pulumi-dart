@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_managedidentities_v1beta1_get_peering_managedidentities_v1beta1_args_doc}
 class GetPeeringManagedidentitiesV1beta1Args {
   final pulumi.Input<String> peeringId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetPeeringManagedidentitiesV1beta1Args].
   /// [peeringId] Required.

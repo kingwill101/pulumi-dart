@@ -57,7 +57,7 @@ class ConnectionProfile extends pulumi.CustomResource {
           'google-native:datastream/v1:ConnectionProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['connectionProfileId', 'location', 'project']).merge(options),
         ) {
     bigqueryProfile = registerOutput<Map<String, dynamic>>('bigqueryProfile');
     connectionProfileId = registerOutput<String>('connectionProfileId');
@@ -66,7 +66,36 @@ class ConnectionProfile extends pulumi.CustomResource {
     force = registerOutput<bool?>('force');
     forwardSshConnectivity = registerOutput<ForwardSshTunnelConnectivityResponse>('forwardSshConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ForwardSshTunnelConnectivityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gcsProfile = registerOutput<GcsProfileResponse>('gcsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    mysqlProfile = registerOutput<MysqlProfileResponse>('mysqlProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MysqlProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    oracleProfile = registerOutput<OracleProfileResponse>('oracleProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OracleProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    postgresqlProfile = registerOutput<PostgresqlProfileResponse>('postgresqlProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PostgresqlProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateConnectivity = registerOutput<PrivateConnectivityResponse>('privateConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectivityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    staticServiceIpConnectivity = registerOutput<Map<String, dynamic>>('staticServiceIpConnectivity');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ConnectionProfile] resource.
+  ConnectionProfile.reference(String urn)
+    : super(
+        'google-native:datastream/v1:ConnectionProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bigqueryProfile = registerOutput<Map<String, dynamic>>('bigqueryProfile');
+    connectionProfileId = registerOutput<String>('connectionProfileId');
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    force = registerOutput<bool?>('force');
+    forwardSshConnectivity = registerOutput<ForwardSshTunnelConnectivityResponse>('forwardSshConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ForwardSshTunnelConnectivityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gcsProfile = registerOutput<GcsProfileResponse>('gcsProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     mysqlProfile = registerOutput<MysqlProfileResponse>('mysqlProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MysqlProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

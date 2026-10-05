@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Disk encryption configuration for an instance.
 class DiskEncryptionConfiguration {
   /// This is always `sql#diskEncryptionConfiguration`.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Resource name of KMS key for disk encryption
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
 
   /// Creates a new [DiskEncryptionConfiguration].
   /// [kind] This is always `sql#diskEncryptionConfiguration`.

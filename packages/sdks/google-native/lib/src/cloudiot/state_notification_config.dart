@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration for notification of new states received from the device.
 class StateNotificationConfig {
   /// A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
-  final pulumi.Input<String>? pubsubTopicName;
+  final pulumi.Input<String?>? pubsubTopicName;
 
   /// Creates a new [StateNotificationConfig].
   /// [pubsubTopicName] A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.

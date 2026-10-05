@@ -11,17 +11,17 @@ import 'google_privacy_dlp_v2_numerical_stats_config.dart';
 /// Privacy metric to compute for reidentification risk analysis.
 class GooglePrivacyDlpV2PrivacyMetric {
   /// Categorical stats
-  final pulumi.Input<GooglePrivacyDlpV2CategoricalStatsConfig>? categoricalStatsConfig;
+  final pulumi.Input<GooglePrivacyDlpV2CategoricalStatsConfig?>? categoricalStatsConfig;
   /// delta-presence
-  final pulumi.Input<GooglePrivacyDlpV2DeltaPresenceEstimationConfig>? deltaPresenceEstimationConfig;
+  final pulumi.Input<GooglePrivacyDlpV2DeltaPresenceEstimationConfig?>? deltaPresenceEstimationConfig;
   /// K-anonymity
-  final pulumi.Input<GooglePrivacyDlpV2KAnonymityConfig>? kAnonymityConfig;
+  final pulumi.Input<GooglePrivacyDlpV2KAnonymityConfig?>? kAnonymityConfig;
   /// k-map
-  final pulumi.Input<GooglePrivacyDlpV2KMapEstimationConfig>? kMapEstimationConfig;
+  final pulumi.Input<GooglePrivacyDlpV2KMapEstimationConfig?>? kMapEstimationConfig;
   /// l-diversity
-  final pulumi.Input<GooglePrivacyDlpV2LDiversityConfig>? lDiversityConfig;
+  final pulumi.Input<GooglePrivacyDlpV2LDiversityConfig?>? lDiversityConfig;
   /// Numerical stats
-  final pulumi.Input<GooglePrivacyDlpV2NumericalStatsConfig>? numericalStatsConfig;
+  final pulumi.Input<GooglePrivacyDlpV2NumericalStatsConfig?>? numericalStatsConfig;
 
   /// Creates a new [GooglePrivacyDlpV2PrivacyMetric].
   /// [categoricalStatsConfig] Categorical stats

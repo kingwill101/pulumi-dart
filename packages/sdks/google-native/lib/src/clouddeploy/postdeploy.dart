@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Postdeploy contains the postdeploy job configuration information.
 class Postdeploy {
   /// Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
-  final pulumi.Input<List<String>>? actions;
+  final pulumi.Input<List<String>?>? actions;
 
   /// Creates a new [Postdeploy].
   /// [actions] Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.

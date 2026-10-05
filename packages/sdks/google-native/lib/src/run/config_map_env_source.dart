@@ -6,11 +6,11 @@ import 'local_object_reference.dart';
 /// Not supported by Cloud Run. ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
 class ConfigMapEnvSource {
   /// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
-  final pulumi.Input<LocalObjectReference>? localObjectReference;
+  final pulumi.Input<LocalObjectReference?>? localObjectReference;
   /// The ConfigMap to select from.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specify whether the ConfigMap must be defined.
-  final pulumi.Input<bool>? optional;
+  final pulumi.Input<bool?>? optional;
 
   /// Creates a new [ConfigMapEnvSource].
   /// [localObjectReference] This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.

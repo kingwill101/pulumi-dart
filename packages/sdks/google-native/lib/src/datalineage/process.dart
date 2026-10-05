@@ -29,9 +29,27 @@ class Process extends pulumi.CustomResource {
           'google-native:datalineage/v1:Process',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
-    attributes = registerOutput<Map<String, String>>('attributes');
+    attributes = registerOutput<Map<String, String>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    origin = registerOutput<GoogleCloudDatacatalogLineageV1OriginResponse>('origin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDatacatalogLineageV1OriginResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+  }
+
+  /// Creates a typed reference to an existing [Process] resource.
+  Process.reference(String urn)
+    : super(
+        'google-native:datalineage/v1:Process',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributes = registerOutput<Map<String, String>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     displayName = registerOutput<String>('displayName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

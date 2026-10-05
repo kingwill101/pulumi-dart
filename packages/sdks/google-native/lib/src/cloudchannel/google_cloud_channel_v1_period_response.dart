@@ -26,7 +26,7 @@ class GoogleCloudChannelV1PeriodResponse {
 
   factory GoogleCloudChannelV1PeriodResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1PeriodResponse(
-      duration: pulumi.Input.fromValue(map['duration'] as int),
+      duration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['duration'])),
       periodType: pulumi.Input.fromValue(map['periodType'] as String),
     );
   }

@@ -8,10 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iap_v1_brand_args_doc}
 class BrandArgs {
   /// Application name displayed on OAuth consent screen.
-  final pulumi.Input<String>? applicationTitle;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? applicationTitle;
+  final pulumi.Input<String?>? project;
   /// Support email displayed on the OAuth consent screen.
-  final pulumi.Input<String>? supportEmail;
+  final pulumi.Input<String?>? supportEmail;
 
   /// Creates a new [BrandArgs].
   /// [applicationTitle] Application name displayed on OAuth consent screen.

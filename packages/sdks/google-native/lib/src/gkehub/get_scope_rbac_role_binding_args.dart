@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_gkehub_v1alpha_get_scope_rbac_role_binding_args_doc}
 class GetScopeRbacRoleBindingArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> rbacrolebindingId;
   final pulumi.Input<String> scopeId;
 

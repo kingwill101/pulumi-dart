@@ -6,7 +6,7 @@ import 'update_policy_mode.dart';
 /// Policy to be used while updating the instance.
 class UpdatePolicy {
   /// Mode for updating the instance.
-  final pulumi.Input<UpdatePolicyMode>? mode;
+  final pulumi.Input<UpdatePolicyMode?>? mode;
 
   /// Creates a new [UpdatePolicy].
   /// [mode] Mode for updating the instance.

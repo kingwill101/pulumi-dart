@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DistributionPolicyZoneConfigurationComputeBeta {
   /// The URL of the zone. The zone must exist in the region where the managed instance group is located.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [DistributionPolicyZoneConfigurationComputeBeta].
   /// [zone] The URL of the zone. The zone must exist in the region where the managed instance group is located.

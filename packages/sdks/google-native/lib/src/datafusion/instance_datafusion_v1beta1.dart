@@ -1,18 +1,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'accelerator_response_datafusion_v1beta1.dart';
 import 'crypto_key_config_response_datafusion_v1beta1.dart';
 import 'event_publish_config_response_datafusion_v1beta1.dart';
 import 'instance_datafusion_v1beta1_args.dart';
 import 'network_config_response_datafusion_v1beta1.dart';
+import 'version_response_datafusion_v1beta1.dart';
 
 /// Creates a new Data Fusion instance in the specified project and location.
 /// Auto-naming is currently not supported for this resource.
 class InstanceDatafusionV1beta1 extends pulumi.CustomResource {
   /// List of accelerators enabled for this CDF instance.
-  late final pulumi.Output<List<Map<String, dynamic>>> accelerators;
+  late final pulumi.Output<List<AcceleratorResponseDatafusionV1beta1>> accelerators;
   /// Endpoint on which the REST APIs is accessible.
   late final pulumi.Output<String> apiEndpoint;
   /// Available versions that the instance can be upgraded to using UpdateInstanceRequest.
-  late final pulumi.Output<List<Map<String, dynamic>>> availableVersion;
+  late final pulumi.Output<List<VersionResponseDatafusionV1beta1>> availableVersion;
   /// The time the instance was created.
   late final pulumi.Output<String> createTime;
   /// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
@@ -90,16 +92,16 @@ class InstanceDatafusionV1beta1 extends pulumi.CustomResource {
           'google-native:datafusion/v1beta1:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceId', 'location', 'project']).merge(options),
         ) {
-    accelerators = registerOutput<List<Map<String, dynamic>>>('accelerators');
+    accelerators = registerOutput<List<AcceleratorResponseDatafusionV1beta1>>('accelerators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AcceleratorResponseDatafusionV1beta1>(guardedValue, (value) => AcceleratorResponseDatafusionV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     apiEndpoint = registerOutput<String>('apiEndpoint');
-    availableVersion = registerOutput<List<Map<String, dynamic>>>('availableVersion');
+    availableVersion = registerOutput<List<VersionResponseDatafusionV1beta1>>('availableVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VersionResponseDatafusionV1beta1>(guardedValue, (value) => VersionResponseDatafusionV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     cryptoKeyConfig = registerOutput<CryptoKeyConfigResponseDatafusionV1beta1>('cryptoKeyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyConfigResponseDatafusionV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataprocServiceAccount = registerOutput<String>('dataprocServiceAccount');
     description = registerOutput<String>('description');
-    disabledReason = registerOutput<List<String>>('disabledReason');
+    disabledReason = registerOutput<List<String>>('disabledReason', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
     enableRbac = registerOutput<bool>('enableRbac');
     enableStackdriverLogging = registerOutput<bool>('enableStackdriverLogging');
@@ -108,11 +110,58 @@ class InstanceDatafusionV1beta1 extends pulumi.CustomResource {
     eventPublishConfig = registerOutput<EventPublishConfigResponseDatafusionV1beta1>('eventPublishConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventPublishConfigResponseDatafusionV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gcsBucket = registerOutput<String>('gcsBucket');
     instanceId = registerOutput<String>('instanceId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<NetworkConfigResponseDatafusionV1beta1>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkConfigResponseDatafusionV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    this.options = registerOutput<Map<String, String>>('options');
+    this.options = registerOutput<Map<String, String>>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    p4ServiceAccount = registerOutput<String>('p4ServiceAccount');
+    patchRevision = registerOutput<String>('patchRevision');
+    privateInstance = registerOutput<bool>('privateInstance');
+    project = registerOutput<String>('project');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    serviceEndpoint = registerOutput<String>('serviceEndpoint');
+    state = registerOutput<String>('state');
+    stateMessage = registerOutput<String>('stateMessage');
+    tenantProjectId = registerOutput<String>('tenantProjectId');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+    version = registerOutput<String>('version');
+    workforceIdentityServiceEndpoint = registerOutput<String>('workforceIdentityServiceEndpoint');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [InstanceDatafusionV1beta1] resource.
+  InstanceDatafusionV1beta1.reference(String urn)
+    : super(
+        'google-native:datafusion/v1beta1:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accelerators = registerOutput<List<AcceleratorResponseDatafusionV1beta1>>('accelerators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AcceleratorResponseDatafusionV1beta1>(guardedValue, (value) => AcceleratorResponseDatafusionV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    apiEndpoint = registerOutput<String>('apiEndpoint');
+    availableVersion = registerOutput<List<VersionResponseDatafusionV1beta1>>('availableVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VersionResponseDatafusionV1beta1>(guardedValue, (value) => VersionResponseDatafusionV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    cryptoKeyConfig = registerOutput<CryptoKeyConfigResponseDatafusionV1beta1>('cryptoKeyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyConfigResponseDatafusionV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataprocServiceAccount = registerOutput<String>('dataprocServiceAccount');
+    description = registerOutput<String>('description');
+    disabledReason = registerOutput<List<String>>('disabledReason', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String>('displayName');
+    enableRbac = registerOutput<bool>('enableRbac');
+    enableStackdriverLogging = registerOutput<bool>('enableStackdriverLogging');
+    enableStackdriverMonitoring = registerOutput<bool>('enableStackdriverMonitoring');
+    enableZoneSeparation = registerOutput<bool>('enableZoneSeparation');
+    eventPublishConfig = registerOutput<EventPublishConfigResponseDatafusionV1beta1>('eventPublishConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventPublishConfigResponseDatafusionV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gcsBucket = registerOutput<String>('gcsBucket');
+    instanceId = registerOutput<String>('instanceId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkConfig = registerOutput<NetworkConfigResponseDatafusionV1beta1>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkConfigResponseDatafusionV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.options = registerOutput<Map<String, String>>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     p4ServiceAccount = registerOutput<String>('p4ServiceAccount');
     patchRevision = registerOutput<String>('patchRevision');
     privateInstance = registerOutput<bool>('privateInstance');

@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
-enum SettingsDataDiskType {
+enum SettingsDataDiskType implements pulumi.PulumiEnum<String> {
   sqlDataDiskTypeUnspecified("SQL_DATA_DISK_TYPE_UNSPECIFIED"),
   pdSsd("PD_SSD"),
   pdHdd("PD_HDD"),
   obsoleteLocalSsd("OBSOLETE_LOCAL_SSD");
 
   const SettingsDataDiskType(this.wireValue);
+  @override
   final String wireValue;
 
   static SettingsDataDiskType fromValue(String value) {

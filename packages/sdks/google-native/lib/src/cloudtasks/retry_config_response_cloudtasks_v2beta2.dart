@@ -46,9 +46,9 @@ class RetryConfigResponseCloudtasksV2beta2 {
 
   factory RetryConfigResponseCloudtasksV2beta2.fromMap(Map<String, dynamic> map) {
     return RetryConfigResponseCloudtasksV2beta2(
-      maxAttempts: pulumi.Input.fromValue(map['maxAttempts'] as int),
+      maxAttempts: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxAttempts'])),
       maxBackoff: pulumi.Input.fromValue(map['maxBackoff'] as String),
-      maxDoublings: pulumi.Input.fromValue(map['maxDoublings'] as int),
+      maxDoublings: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxDoublings'])),
       maxRetryDuration: pulumi.Input.fromValue(map['maxRetryDuration'] as String),
       minBackoff: pulumi.Input.fromValue(map['minBackoff'] as String),
       unlimitedAttempts: pulumi.Input.fromValue(map['unlimitedAttempts'] as bool),

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The bucket's versioning configuration.
 class BucketVersioning {
   /// While set to true, versioning is fully enabled for this bucket.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [BucketVersioning].
   /// [enabled] While set to true, versioning is fully enabled for this bucket.

@@ -7,9 +7,9 @@ import 'security_posture_config_gkehub_v1beta.dart';
 /// DefaultClusterConfig describes the default cluster configurations to be applied to all clusters born-in-fleet.
 class DefaultClusterConfigGkehubV1beta {
   /// Optional. Enable/Disable binary authorization features for the cluster.
-  final pulumi.Input<BinaryAuthorizationConfigGkehubV1beta>? binaryAuthorizationConfig;
+  final pulumi.Input<BinaryAuthorizationConfigGkehubV1beta?>? binaryAuthorizationConfig;
   /// Enable/Disable Security Posture features for the cluster.
-  final pulumi.Input<SecurityPostureConfigGkehubV1beta>? securityPostureConfig;
+  final pulumi.Input<SecurityPostureConfigGkehubV1beta?>? securityPostureConfig;
 
   /// Creates a new [DefaultClusterConfigGkehubV1beta].
   /// [binaryAuthorizationConfig] Optional. Enable/Disable binary authorization features for the cluster.

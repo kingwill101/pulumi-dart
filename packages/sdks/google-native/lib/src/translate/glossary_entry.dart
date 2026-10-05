@@ -29,8 +29,26 @@ class GlossaryEntry extends pulumi.CustomResource {
           'google-native:translate/v3:GlossaryEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['glossaryId', 'location', 'project']).merge(options),
         ) {
+    description = registerOutput<String>('description');
+    glossaryId = registerOutput<String>('glossaryId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    termsPair = registerOutput<GlossaryTermsPairResponse>('termsPair', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlossaryTermsPairResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    termsSet = registerOutput<GlossaryTermsSetResponse>('termsSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlossaryTermsSetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [GlossaryEntry] resource.
+  GlossaryEntry.reference(String urn)
+    : super(
+        'google-native:translate/v3:GlossaryEntry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String>('description');
     glossaryId = registerOutput<String>('glossaryId');
     location = registerOutput<String>('location');

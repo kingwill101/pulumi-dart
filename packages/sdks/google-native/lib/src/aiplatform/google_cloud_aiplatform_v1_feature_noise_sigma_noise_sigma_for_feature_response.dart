@@ -27,7 +27,7 @@ class GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeatureResponse {
   factory GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeatureResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeatureResponse(
       name: pulumi.Input.fromValue(map['name'] as String),
-      sigma: pulumi.Input.fromValue(map['sigma'] as double),
+      sigma: pulumi.Input.fromValue((map['sigma'] as num).toDouble()),
     );
   }
 }

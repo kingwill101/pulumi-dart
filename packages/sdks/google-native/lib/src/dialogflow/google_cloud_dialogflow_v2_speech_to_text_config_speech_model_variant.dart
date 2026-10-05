@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
-enum GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant {
+enum GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant implements pulumi.PulumiEnum<String> {
   speechModelVariantUnspecified("SPEECH_MODEL_VARIANT_UNSPECIFIED"),
   useBestAvailable("USE_BEST_AVAILABLE"),
   useStandard("USE_STANDARD"),
   useEnhanced("USE_ENHANCED");
 
   const GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant fromValue(String value) {

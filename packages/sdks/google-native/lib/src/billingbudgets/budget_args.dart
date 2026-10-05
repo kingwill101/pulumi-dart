@@ -16,16 +16,16 @@ class BudgetArgs {
   final pulumi.Input<GoogleCloudBillingBudgetsV1BudgetAmount> amount;
   final pulumi.Input<String> billingAccountId;
   /// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
-  final pulumi.Input<GoogleCloudBillingBudgetsV1Filter>? budgetFilter;
+  final pulumi.Input<GoogleCloudBillingBudgetsV1Filter?>? budgetFilter;
   /// User data for display name in UI. The name must be less than or equal to 60 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
-  final pulumi.Input<GoogleCloudBillingBudgetsV1NotificationsRule>? notificationsRule;
-  final pulumi.Input<BudgetOwnershipScope>? ownershipScope;
+  final pulumi.Input<GoogleCloudBillingBudgetsV1NotificationsRule?>? notificationsRule;
+  final pulumi.Input<BudgetOwnershipScope?>? ownershipScope;
   /// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
-  final pulumi.Input<List<GoogleCloudBillingBudgetsV1ThresholdRule>>? thresholdRules;
+  final pulumi.Input<List<GoogleCloudBillingBudgetsV1ThresholdRule>?>? thresholdRules;
 
   /// Creates a new [BudgetArgs].
   /// [amount] Budgeted amount.

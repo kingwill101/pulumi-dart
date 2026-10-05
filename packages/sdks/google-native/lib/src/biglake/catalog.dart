@@ -31,8 +31,27 @@ class Catalog extends pulumi.CustomResource {
           'google-native:biglake/v1:Catalog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['catalogId', 'location', 'project']).merge(options),
         ) {
+    catalogId = registerOutput<String>('catalogId');
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    expireTime = registerOutput<String>('expireTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Catalog] resource.
+  Catalog.reference(String urn)
+    : super(
+        'google-native:biglake/v1:Catalog',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     catalogId = registerOutput<String>('catalogId');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');

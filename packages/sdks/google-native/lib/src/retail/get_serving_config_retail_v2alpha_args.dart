@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServingConfigRetailV2alphaArgs {
   final pulumi.Input<String> catalogId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> servingConfigId;
 
   /// Creates a new [GetServingConfigRetailV2alphaArgs].

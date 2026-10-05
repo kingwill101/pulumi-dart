@@ -9,15 +9,15 @@ import 'grpc_route_stateful_session_affinity_policy_networkservices_v1beta1.dart
 /// Specifies how to route matched traffic.
 class GrpcRouteRouteActionNetworkservicesV1beta1 {
   /// Optional. The destination services to which traffic should be forwarded. If multiple destinations are specified, traffic will be split between Backend Service(s) according to the weight field of these destinations.
-  final pulumi.Input<List<GrpcRouteDestinationNetworkservicesV1beta1>>? destinations;
+  final pulumi.Input<List<GrpcRouteDestinationNetworkservicesV1beta1>?>? destinations;
   /// Optional. The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced on a percentage of requests before sending those requests to the destination service. Similarly requests from clients can be aborted by for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
-  final pulumi.Input<GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1>? faultInjectionPolicy;
+  final pulumi.Input<GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1?>? faultInjectionPolicy;
   /// Optional. Specifies the retry policy associated with this route.
-  final pulumi.Input<GrpcRouteRetryPolicyNetworkservicesV1beta1>? retryPolicy;
+  final pulumi.Input<GrpcRouteRetryPolicyNetworkservicesV1beta1?>? retryPolicy;
   /// Optional. Specifies cookie-based stateful session affinity.
-  final pulumi.Input<GrpcRouteStatefulSessionAffinityPolicyNetworkservicesV1beta1>? statefulSessionAffinity;
+  final pulumi.Input<GrpcRouteStatefulSessionAffinityPolicyNetworkservicesV1beta1?>? statefulSessionAffinity;
   /// Optional. Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [GrpcRouteRouteActionNetworkservicesV1beta1].
   /// [destinations] Optional. The destination services to which traffic should be forwarded. If multiple destinations are specified, traffic will be split between Backend Service(s) according to the weight field of these destinations.

@@ -28,10 +28,28 @@ class TagTemplate extends pulumi.CustomResource {
           'google-native:datacatalog/v1:TagTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'tagTemplateId']).merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
-    fields = registerOutput<Map<String, String>>('fields');
+    fields = registerOutput<Map<String, String>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    isPubliclyReadable = registerOutput<bool>('isPubliclyReadable');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    tagTemplateId = registerOutput<String>('tagTemplateId');
+  }
+
+  /// Creates a typed reference to an existing [TagTemplate] resource.
+  TagTemplate.reference(String urn)
+    : super(
+        'google-native:datacatalog/v1:TagTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    displayName = registerOutput<String>('displayName');
+    fields = registerOutput<Map<String, String>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     isPubliclyReadable = registerOutput<bool>('isPubliclyReadable');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

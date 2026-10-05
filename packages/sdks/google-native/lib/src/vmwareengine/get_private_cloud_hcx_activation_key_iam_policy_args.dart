@@ -9,9 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateCloudHcxActivationKeyIamPolicyArgs {
   final pulumi.Input<String> hcxActivationKeyId;
   final pulumi.Input<String> location;
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
   final pulumi.Input<String> privateCloudId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetPrivateCloudHcxActivationKeyIamPolicyArgs].
   /// [hcxActivationKeyId] Required.
@@ -41,7 +41,7 @@ class GetPrivateCloudHcxActivationKeyIamPolicyArgs {
     return GetPrivateCloudHcxActivationKeyIamPolicyArgs(
       hcxActivationKeyId: pulumi.Input.fromValue(map['hcxActivationKeyId'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       privateCloudId: pulumi.Input.fromValue(map['privateCloudId'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

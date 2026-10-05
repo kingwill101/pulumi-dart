@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BuildMetadataContaineranalysisV1beta1 {
-  final pulumi.Input<String>? finishedOn;
-  final pulumi.Input<String>? invocationId;
-  final pulumi.Input<String>? startedOn;
+  final pulumi.Input<String?>? finishedOn;
+  final pulumi.Input<String?>? invocationId;
+  final pulumi.Input<String?>? startedOn;
 
   /// Creates a new [BuildMetadataContaineranalysisV1beta1].
   /// [finishedOn] Optional.

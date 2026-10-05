@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvelopeSignature {
-  final pulumi.Input<String>? keyid;
-  final pulumi.Input<String>? sig;
+  final pulumi.Input<String?>? keyid;
+  final pulumi.Input<String?>? sig;
 
   /// Creates a new [EnvelopeSignature].
   /// [keyid] Optional.

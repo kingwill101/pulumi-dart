@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for how to query telemetry on a Service.
 class Telemetry {
   /// The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
 
   /// Creates a new [Telemetry].
   /// [resourceName] The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.

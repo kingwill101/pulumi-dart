@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Security (HTTPS) enforcement for this URL.
-enum UrlMapSecurityLevel {
+enum UrlMapSecurityLevel implements pulumi.PulumiEnum<String> {
   secureUnspecified("SECURE_UNSPECIFIED"),
   secureDefault("SECURE_DEFAULT"),
   secureNever("SECURE_NEVER"),
@@ -7,6 +9,7 @@ enum UrlMapSecurityLevel {
   secureAlways("SECURE_ALWAYS");
 
   const UrlMapSecurityLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static UrlMapSecurityLevel fromValue(String value) {

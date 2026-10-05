@@ -7,8 +7,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_v1_get_reservation_iam_policy_compute_v1_args_doc}
 class GetReservationIamPolicyComputeV1Args {
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> resource;
   final pulumi.Input<String> zone;
 
@@ -35,7 +35,7 @@ class GetReservationIamPolicyComputeV1Args {
 
   factory GetReservationIamPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetReservationIamPolicyComputeV1Args(
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resource: pulumi.Input.fromValue(map['resource'] as String),
       zone: pulumi.Input.fromValue(map['zone'] as String),

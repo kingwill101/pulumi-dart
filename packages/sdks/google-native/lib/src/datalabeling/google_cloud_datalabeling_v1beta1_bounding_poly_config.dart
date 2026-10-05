@@ -7,7 +7,7 @@ class GoogleCloudDatalabelingV1beta1BoundingPolyConfig {
   /// Annotation spec set resource name.
   final pulumi.Input<String> annotationSpecSet;
   /// Optional. Instruction message showed on contributors UI.
-  final pulumi.Input<String>? instructionMessage;
+  final pulumi.Input<String?>? instructionMessage;
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1BoundingPolyConfig].
   /// [annotationSpecSet] Annotation spec set resource name.

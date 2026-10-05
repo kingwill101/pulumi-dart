@@ -31,9 +31,9 @@ class RateLimitsResponseCloudtasksV2beta2 {
 
   factory RateLimitsResponseCloudtasksV2beta2.fromMap(Map<String, dynamic> map) {
     return RateLimitsResponseCloudtasksV2beta2(
-      maxBurstSize: pulumi.Input.fromValue(map['maxBurstSize'] as int),
-      maxConcurrentTasks: pulumi.Input.fromValue(map['maxConcurrentTasks'] as int),
-      maxTasksDispatchedPerSecond: pulumi.Input.fromValue(map['maxTasksDispatchedPerSecond'] as double),
+      maxBurstSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxBurstSize'])),
+      maxConcurrentTasks: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConcurrentTasks'])),
+      maxTasksDispatchedPerSecond: pulumi.Input.fromValue((map['maxTasksDispatchedPerSecond'] as num).toDouble()),
     );
   }
 }

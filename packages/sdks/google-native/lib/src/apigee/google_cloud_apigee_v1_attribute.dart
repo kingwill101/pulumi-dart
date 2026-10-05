@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Key-value pair to store extra metadata.
 class GoogleCloudApigeeV1Attribute {
   /// API key of the attribute.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Value of the attribute.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [GoogleCloudApigeeV1Attribute].
   /// [name] API key of the attribute.

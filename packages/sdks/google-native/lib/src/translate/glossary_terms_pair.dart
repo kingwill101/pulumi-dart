@@ -6,9 +6,9 @@ import 'glossary_term.dart';
 /// Represents a single entry for an unidirectional glossary.
 class GlossaryTermsPair {
   /// The source term is the term that will get match in the text,
-  final pulumi.Input<GlossaryTerm>? sourceTerm;
+  final pulumi.Input<GlossaryTerm?>? sourceTerm;
   /// The term that will replace the match source term.
-  final pulumi.Input<GlossaryTerm>? targetTerm;
+  final pulumi.Input<GlossaryTerm?>? targetTerm;
 
   /// Creates a new [GlossaryTermsPair].
   /// [sourceTerm] The source term is the term that will get match in the text,

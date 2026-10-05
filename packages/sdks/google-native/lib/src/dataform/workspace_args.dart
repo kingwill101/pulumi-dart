@@ -7,8 +7,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_dataform_v1beta1_workspace_args_doc}
 class WorkspaceArgs {
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> repositoryId;
   /// Required. The ID to use for the workspace, which will become the final component of the workspace's resource name.
   final pulumi.Input<String> workspaceId;

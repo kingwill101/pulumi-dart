@@ -7,9 +7,9 @@ import 'kerberos_config.dart';
 /// Security related configuration, including encryption, Kerberos, etc.
 class SecurityConfig {
   /// Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
-  final pulumi.Input<IdentityConfig>? identityConfig;
+  final pulumi.Input<IdentityConfig?>? identityConfig;
   /// Optional. Kerberos related configuration.
-  final pulumi.Input<KerberosConfig>? kerberosConfig;
+  final pulumi.Input<KerberosConfig?>? kerberosConfig;
 
   /// Creates a new [SecurityConfig].
   /// [identityConfig] Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.

@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkmanagement_v1_get_connectivity_test_iam_policy_args_doc}
 class GetConnectivityTestIamPolicyArgs {
   final pulumi.Input<String> connectivityTestId;
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetConnectivityTestIamPolicyArgs].
   /// [connectivityTestId] Required.
@@ -32,7 +32,7 @@ class GetConnectivityTestIamPolicyArgs {
   factory GetConnectivityTestIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestIamPolicyArgs(
       connectivityTestId: pulumi.Input.fromValue(map['connectivityTestId'] as String),
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

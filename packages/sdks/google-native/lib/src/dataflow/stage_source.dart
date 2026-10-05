@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Description of an input or output of an execution stage.
 class StageSource {
   /// Dataflow service generated name for this source.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// User name for the original user transform or collection with which this source is most closely associated.
-  final pulumi.Input<String>? originalTransformOrCollection;
+  final pulumi.Input<String?>? originalTransformOrCollection;
   /// Size of the source, if measurable.
-  final pulumi.Input<String>? sizeBytes;
+  final pulumi.Input<String?>? sizeBytes;
   /// Human-readable name for this source; may be user or system generated.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [StageSource].
   /// [name] Dataflow service generated name for this source.

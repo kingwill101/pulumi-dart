@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The bucket's custom placement configuration for Custom Dual Regions.
 class BucketCustomPlacementConfig {
   /// The list of regional locations in which data is placed.
-  final pulumi.Input<List<String>>? dataLocations;
+  final pulumi.Input<List<String>?>? dataLocations;
 
   /// Creates a new [BucketCustomPlacementConfig].
   /// [dataLocations] The list of regional locations in which data is placed.

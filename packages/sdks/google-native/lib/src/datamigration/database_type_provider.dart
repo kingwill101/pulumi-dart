@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The database provider.
-enum DatabaseTypeProvider {
+enum DatabaseTypeProvider implements pulumi.PulumiEnum<String> {
   databaseProviderUnspecified("DATABASE_PROVIDER_UNSPECIFIED"),
   cloudsql("CLOUDSQL"),
   rds("RDS"),
@@ -7,6 +9,7 @@ enum DatabaseTypeProvider {
   alloydb("ALLOYDB");
 
   const DatabaseTypeProvider(this.wireValue);
+  @override
   final String wireValue;
 
   static DatabaseTypeProvider fromValue(String value) {

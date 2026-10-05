@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The bucket's uniform bucket-level access configuration.
 class BucketIamConfigurationUniformBucketLevelAccess {
   /// If set, access is controlled only by bucket-level or above IAM policies.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.
-  final pulumi.Input<String>? lockedTime;
+  final pulumi.Input<String?>? lockedTime;
 
   /// Creates a new [BucketIamConfigurationUniformBucketLevelAccess].
   /// [enabled] If set, access is controlled only by bucket-level or above IAM policies.

@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_alpha_get_region_instance_template_args_doc}
 class GetRegionInstanceTemplateArgs {
   final pulumi.Input<String> instanceTemplate;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetRegionInstanceTemplateArgs].
   /// [instanceTemplate] Required.

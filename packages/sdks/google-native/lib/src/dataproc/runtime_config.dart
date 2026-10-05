@@ -6,13 +6,13 @@ import 'repository_config.dart';
 /// Runtime configuration for a workload.
 class RuntimeConfig {
   /// Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
-  final pulumi.Input<String>? containerImage;
+  final pulumi.Input<String?>? containerImage;
   /// Optional. A mapping of property names to values, which are used to configure workload execution.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Optional. Dependency repository configuration.
-  final pulumi.Input<RepositoryConfig>? repositoryConfig;
+  final pulumi.Input<RepositoryConfig?>? repositoryConfig;
   /// Optional. Version of the batch runtime.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [RuntimeConfig].
   /// [containerImage] Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.

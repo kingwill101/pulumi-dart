@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
-enum SslConfigCaSourceAlloydbV1alpha {
+enum SslConfigCaSourceAlloydbV1alpha implements pulumi.PulumiEnum<String> {
   caSourceUnspecified("CA_SOURCE_UNSPECIFIED"),
   caSourceManaged("CA_SOURCE_MANAGED");
 
   const SslConfigCaSourceAlloydbV1alpha(this.wireValue);
+  @override
   final String wireValue;
 
   static SslConfigCaSourceAlloydbV1alpha fromValue(String value) {

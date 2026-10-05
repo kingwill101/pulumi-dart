@@ -1,4 +1,6 @@
-enum EnterpriseCrmEventbusProtoTaskMetadataExternalCategory {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum EnterpriseCrmEventbusProtoTaskMetadataExternalCategory implements pulumi.PulumiEnum<String> {
   unspecifiedExternalCategory("UNSPECIFIED_EXTERNAL_CATEGORY"),
   core("CORE"),
   connectors("CONNECTORS"),
@@ -16,6 +18,7 @@ enum EnterpriseCrmEventbusProtoTaskMetadataExternalCategory {
   externalDataManipulation("EXTERNAL_DATA_MANIPULATION");
 
   const EnterpriseCrmEventbusProtoTaskMetadataExternalCategory(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory fromValue(String value) {

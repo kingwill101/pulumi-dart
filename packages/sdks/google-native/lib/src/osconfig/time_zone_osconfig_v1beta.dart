@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
 class TimeZoneOsconfigV1beta {
   /// IANA Time Zone Database time zone, e.g. "America/New_York".
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Optional. IANA Time Zone Database version number, e.g. "2019a".
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [TimeZoneOsconfigV1beta].
   /// [id] IANA Time Zone Database time zone, e.g. "America/New_York".

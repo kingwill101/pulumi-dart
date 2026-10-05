@@ -6,13 +6,13 @@ import 'bqml_training_run_training_options.dart';
 
 class BqmlTrainingRun {
   /// [Output-only, Beta] List of each iteration results.
-  final pulumi.Input<List<BqmlIterationResult>>? iterationResults;
+  final pulumi.Input<List<BqmlIterationResult>?>? iterationResults;
   /// [Output-only, Beta] Training run start time in milliseconds since the epoch.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-  final pulumi.Input<BqmlTrainingRunTrainingOptions>? trainingOptions;
+  final pulumi.Input<BqmlTrainingRunTrainingOptions?>? trainingOptions;
 
   /// Creates a new [BqmlTrainingRun].
   /// [iterationResults] [Output-only, Beta] List of each iteration results.

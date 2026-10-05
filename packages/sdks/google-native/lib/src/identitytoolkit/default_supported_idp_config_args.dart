@@ -9,18 +9,18 @@ import 'google_cloud_identitytoolkit_admin_v2_apple_sign_in_config.dart';
 /// {@macro pulumi_identitytoolkit_v2_default_supported_idp_config_args_doc}
 class DefaultSupportedIdpConfigArgs {
   /// Additional config for Apple-based projects.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig>? appleSignInConfig;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig?>? appleSignInConfig;
   /// OAuth client ID.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// OAuth client secret.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// True if allows the user to sign in with the provider.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The id of the Idp to create a config for. Call ListDefaultSupportedIdps for list of all default supported Idps.
-  final pulumi.Input<String>? idpId;
+  final pulumi.Input<String?>? idpId;
   /// The name of the DefaultSupportedIdpConfig resource, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> tenantId;
 
   /// Creates a new [DefaultSupportedIdpConfigArgs].

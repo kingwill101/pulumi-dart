@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'router_appliance_instance_response_networkconnectivity_v1alpha1.dart';
 import 'spoke_networkconnectivity_v1alpha1_args.dart';
 
 /// Creates a Network Connectivity Center spoke.
@@ -14,7 +15,7 @@ class SpokeNetworkconnectivityV1alpha1 extends pulumi.CustomResource {
   /// The URIs of linked interconnect attachment resources
   late final pulumi.Output<List<String>> linkedInterconnectAttachments;
   /// The URIs of linked Router appliance resources
-  late final pulumi.Output<List<Map<String, dynamic>>> linkedRouterApplianceInstances;
+  late final pulumi.Output<List<RouterApplianceInstanceResponseNetworkconnectivityV1alpha1>> linkedRouterApplianceInstances;
   /// The URIs of linked VPN tunnel resources
   late final pulumi.Output<List<String>> linkedVpnTunnels;
   late final pulumi.Output<String> location;
@@ -44,15 +45,41 @@ class SpokeNetworkconnectivityV1alpha1 extends pulumi.CustomResource {
           'google-native:networkconnectivity/v1alpha1:Spoke',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     hub = registerOutput<String>('hub');
-    labels = registerOutput<Map<String, String>>('labels');
-    linkedInterconnectAttachments = registerOutput<List<String>>('linkedInterconnectAttachments');
-    linkedRouterApplianceInstances = registerOutput<List<Map<String, dynamic>>>('linkedRouterApplianceInstances');
-    linkedVpnTunnels = registerOutput<List<String>>('linkedVpnTunnels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    linkedInterconnectAttachments = registerOutput<List<String>>('linkedInterconnectAttachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    linkedRouterApplianceInstances = registerOutput<List<RouterApplianceInstanceResponseNetworkconnectivityV1alpha1>>('linkedRouterApplianceInstances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterApplianceInstanceResponseNetworkconnectivityV1alpha1>(guardedValue, (value) => RouterApplianceInstanceResponseNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>())); });
+    linkedVpnTunnels = registerOutput<List<String>>('linkedVpnTunnels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    spokeId = registerOutput<String?>('spokeId');
+    state = registerOutput<String>('state');
+    uniqueId = registerOutput<String>('uniqueId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [SpokeNetworkconnectivityV1alpha1] resource.
+  SpokeNetworkconnectivityV1alpha1.reference(String urn)
+    : super(
+        'google-native:networkconnectivity/v1alpha1:Spoke',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    hub = registerOutput<String>('hub');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    linkedInterconnectAttachments = registerOutput<List<String>>('linkedInterconnectAttachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    linkedRouterApplianceInstances = registerOutput<List<RouterApplianceInstanceResponseNetworkconnectivityV1alpha1>>('linkedRouterApplianceInstances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterApplianceInstanceResponseNetworkconnectivityV1alpha1>(guardedValue, (value) => RouterApplianceInstanceResponseNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>())); });
+    linkedVpnTunnels = registerOutput<List<String>>('linkedVpnTunnels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

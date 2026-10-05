@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_v1_get_external_vpn_gateway_compute_v1_args_doc}
 class GetExternalVpnGatewayComputeV1Args {
   final pulumi.Input<String> externalVpnGateway;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetExternalVpnGatewayComputeV1Args].
   /// [externalVpnGateway] Required.

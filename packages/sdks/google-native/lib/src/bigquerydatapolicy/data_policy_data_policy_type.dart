@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of data policy.
-enum DataPolicyDataPolicyType {
+enum DataPolicyDataPolicyType implements pulumi.PulumiEnum<String> {
   dataPolicyTypeUnspecified("DATA_POLICY_TYPE_UNSPECIFIED"),
   columnLevelSecurityPolicy("COLUMN_LEVEL_SECURITY_POLICY"),
   dataMaskingPolicy("DATA_MASKING_POLICY");
 
   const DataPolicyDataPolicyType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataPolicyDataPolicyType fromValue(String value) {

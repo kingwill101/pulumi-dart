@@ -53,7 +53,7 @@ class EnterpriseCrmEventbusProtoValueTypeResponse {
     return EnterpriseCrmEventbusProtoValueTypeResponse(
       booleanValue: pulumi.Input.fromValue(map['booleanValue'] as bool),
       doubleArray: pulumi.Input.fromValue(EnterpriseCrmEventbusProtoDoubleArrayResponse.fromMap((map['doubleArray']! as Map).cast<String, dynamic>())),
-      doubleValue: pulumi.Input.fromValue(map['doubleValue'] as double),
+      doubleValue: pulumi.Input.fromValue((map['doubleValue'] as num).toDouble()),
       intArray: pulumi.Input.fromValue(EnterpriseCrmEventbusProtoIntArrayResponse.fromMap((map['intArray']! as Map).cast<String, dynamic>())),
       intValue: pulumi.Input.fromValue(map['intValue'] as String),
       protoValue: pulumi.Input.fromValue((map['protoValue'] as Map).cast<String, String>()),

@@ -6,7 +6,7 @@ import 'managed_active_directory_config.dart';
 /// Directory Services configuration for Kerberos-based authentication.
 class DirectoryServicesConfig {
   /// Configuration for Managed Service for Microsoft Active Directory.
-  final pulumi.Input<ManagedActiveDirectoryConfig>? managedActiveDirectory;
+  final pulumi.Input<ManagedActiveDirectoryConfig?>? managedActiveDirectory;
 
   /// Creates a new [DirectoryServicesConfig].
   /// [managedActiveDirectory] Configuration for Managed Service for Microsoft Active Directory.

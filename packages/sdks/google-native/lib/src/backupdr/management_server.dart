@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'management_server_args.dart';
 import 'management_uriresponse.dart';
+import 'network_config_response.dart';
 import 'workforce_identity_based_management_uriresponse.dart';
 import 'workforce_identity_based_oauth2_client_idresponse.dart';
 
@@ -23,7 +24,7 @@ class ManagementServer extends pulumi.CustomResource {
   /// The resource name.
   late final pulumi.Output<String> name;
   /// VPC networks to which the ManagementServer instance is connected. For this version, only a single network is supported.
-  late final pulumi.Output<List<Map<String, dynamic>>> networks;
+  late final pulumi.Output<List<NetworkConfigResponse>> networks;
   /// The OAuth 2.0 client id is required to make API calls to the BackupDR instance API of this ManagementServer. This is the value that should be provided in the ‘aud’ field of the OIDC ID Token (see openid specification https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
   late final pulumi.Output<String> oauth2ClientId;
   late final pulumi.Output<String> project;
@@ -52,17 +53,45 @@ class ManagementServer extends pulumi.CustomResource {
           'google-native:backupdr/v1:ManagementServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'managementServerId', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     managementServerId = registerOutput<String>('managementServerId');
     managementUri = registerOutput<ManagementURIResponse>('managementUri', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementURIResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    networks = registerOutput<List<Map<String, dynamic>>>('networks');
+    networks = registerOutput<List<NetworkConfigResponse>>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConfigResponse>(guardedValue, (value) => NetworkConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    oauth2ClientId = registerOutput<String>('oauth2ClientId');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+    workforceIdentityBasedManagementUri = registerOutput<WorkforceIdentityBasedManagementURIResponse>('workforceIdentityBasedManagementUri', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceIdentityBasedManagementURIResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workforceIdentityBasedOauth2ClientId = registerOutput<WorkforceIdentityBasedOAuth2ClientIDResponse>('workforceIdentityBasedOauth2ClientId', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceIdentityBasedOAuth2ClientIDResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ManagementServer] resource.
+  ManagementServer.reference(String urn)
+    : super(
+        'google-native:backupdr/v1:ManagementServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    managementServerId = registerOutput<String>('managementServerId');
+    managementUri = registerOutput<ManagementURIResponse>('managementUri', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementURIResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networks = registerOutput<List<NetworkConfigResponse>>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConfigResponse>(guardedValue, (value) => NetworkConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     oauth2ClientId = registerOutput<String>('oauth2ClientId');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');

@@ -27,7 +27,7 @@ class GoogleCloudMlV1RequestLoggingConfigResponse {
   factory GoogleCloudMlV1RequestLoggingConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1RequestLoggingConfigResponse(
       bigqueryTableName: pulumi.Input.fromValue(map['bigqueryTableName'] as String),
-      samplingPercentage: pulumi.Input.fromValue(map['samplingPercentage'] as double),
+      samplingPercentage: pulumi.Input.fromValue((map['samplingPercentage'] as num).toDouble()),
     );
   }
 }

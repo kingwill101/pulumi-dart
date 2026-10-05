@@ -6,7 +6,7 @@ import 'logging_component_config_enable_components_item.dart';
 /// LoggingComponentConfig is cluster logging component configuration.
 class LoggingComponentConfig {
   /// Select components to collect logs. An empty set would disable all logging.
-  final pulumi.Input<List<LoggingComponentConfigEnableComponentsItem>>? enableComponents;
+  final pulumi.Input<List<LoggingComponentConfigEnableComponentsItem>?>? enableComponents;
 
   /// Creates a new [LoggingComponentConfig].
   /// [enableComponents] Select components to collect logs. An empty set would disable all logging.

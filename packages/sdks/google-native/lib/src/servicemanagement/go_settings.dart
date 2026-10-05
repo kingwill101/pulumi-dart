@@ -6,7 +6,7 @@ import 'common_language_settings.dart';
 /// Settings for Go client libraries.
 class GoSettings {
   /// Some settings.
-  final pulumi.Input<CommonLanguageSettings>? common;
+  final pulumi.Input<CommonLanguageSettings?>? common;
 
   /// Creates a new [GoSettings].
   /// [common] Some settings.

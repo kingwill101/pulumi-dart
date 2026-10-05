@@ -40,7 +40,7 @@ class GoogleCloudIntegrationsV1alphaAssertionResponse {
       assertionStrategy: pulumi.Input.fromValue(map['assertionStrategy'] as String),
       condition: pulumi.Input.fromValue(map['condition'] as String),
       parameter: pulumi.Input.fromValue(GoogleCloudIntegrationsV1alphaEventParameterResponse.fromMap((map['parameter']! as Map).cast<String, dynamic>())),
-      retryCount: pulumi.Input.fromValue(map['retryCount'] as int),
+      retryCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retryCount'])),
     );
   }
 }

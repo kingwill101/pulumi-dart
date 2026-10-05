@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_group_manager_standby_policy_mode.dart';
 
 class InstanceGroupManagerStandbyPolicy {
-  final pulumi.Input<int>? initialDelaySec;
+  final pulumi.Input<int?>? initialDelaySec;
   /// Defines behaviour of using instances from standby pool to resize MIG.
-  final pulumi.Input<InstanceGroupManagerStandbyPolicyMode>? mode;
+  final pulumi.Input<InstanceGroupManagerStandbyPolicyMode?>? mode;
 
   /// Creates a new [InstanceGroupManagerStandbyPolicy].
   /// [initialDelaySec] Optional.
@@ -25,7 +25,7 @@ class InstanceGroupManagerStandbyPolicy {
 
   factory InstanceGroupManagerStandbyPolicy.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStandbyPolicy(
-      initialDelaySec: (() { final guardedValue = map['initialDelaySec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      initialDelaySec: (() { final guardedValue = map['initialDelaySec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGroupManagerStandbyPolicyMode.fromValue(guardedValue as String)); })(),
     );
   }

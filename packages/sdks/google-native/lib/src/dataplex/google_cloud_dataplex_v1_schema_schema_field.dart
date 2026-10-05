@@ -7,9 +7,9 @@ import 'google_cloud_dataplex_v1_schema_schema_field_type.dart';
 /// Represents a column field within a table schema.
 class GoogleCloudDataplexV1SchemaSchemaField {
   /// Optional. User friendly field description. Must be less than or equal to 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Any nested field for complex types.
-  final pulumi.Input<List<GoogleCloudDataplexV1SchemaSchemaField>>? fields;
+  final pulumi.Input<List<GoogleCloudDataplexV1SchemaSchemaField>?>? fields;
   /// Additional field semantics.
   final pulumi.Input<GoogleCloudDataplexV1SchemaSchemaFieldMode> mode;
   /// The name of the field. Must contain only letters, numbers and underscores, with a maximum length of 767 characters, and must begin with a letter or underscore.

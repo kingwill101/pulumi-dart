@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_alpha_get_instance_template_args_doc}
 class GetInstanceTemplateArgs {
   final pulumi.Input<String> instanceTemplate;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetInstanceTemplateArgs].
   /// [instanceTemplate] Required.

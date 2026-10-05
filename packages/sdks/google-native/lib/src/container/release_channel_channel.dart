@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// channel specifies which release channel the cluster is subscribed to.
-enum ReleaseChannelChannel {
+enum ReleaseChannelChannel implements pulumi.PulumiEnum<String> {
   unspecified("UNSPECIFIED"),
   rapid("RAPID"),
   regular("REGULAR"),
   stable("STABLE");
 
   const ReleaseChannelChannel(this.wireValue);
+  @override
   final String wireValue;
 
   static ReleaseChannelChannel fromValue(String value) {

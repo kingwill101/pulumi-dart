@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The purpose of the resource. This field can be either PRIVATE, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. A subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. A subnet with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is the preferred setting for all regional Envoy load balancers. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-enum SubnetworkPurpose {
+enum SubnetworkPurpose implements pulumi.PulumiEnum<String> {
   aggregate("AGGREGATE"),
   cloudExtension("CLOUD_EXTENSION"),
   globalManagedProxy("GLOBAL_MANAGED_PROXY"),
@@ -11,6 +13,7 @@ enum SubnetworkPurpose {
   regionalManagedProxy("REGIONAL_MANAGED_PROXY");
 
   const SubnetworkPurpose(this.wireValue);
+  @override
   final String wireValue;
 
   static SubnetworkPurpose fromValue(String value) {

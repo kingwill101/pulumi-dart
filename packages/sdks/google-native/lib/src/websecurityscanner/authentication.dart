@@ -8,11 +8,11 @@ import 'iap_credential.dart';
 /// Scan authentication configuration.
 class Authentication {
   /// Authentication using a custom account.
-  final pulumi.Input<CustomAccount>? customAccount;
+  final pulumi.Input<CustomAccount?>? customAccount;
   /// Authentication using a Google account.
-  final pulumi.Input<GoogleAccount>? googleAccount;
+  final pulumi.Input<GoogleAccount?>? googleAccount;
   /// Authentication using Identity-Aware-Proxy (IAP).
-  final pulumi.Input<IapCredential>? iapCredential;
+  final pulumi.Input<IapCredential?>? iapCredential;
 
   /// Creates a new [Authentication].
   /// [customAccount] Authentication using a custom account.

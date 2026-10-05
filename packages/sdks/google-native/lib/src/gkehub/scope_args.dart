@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_gkehub_v1_scope_args_doc}
 class ScopeArgs {
   /// Optional. Labels for this Scope.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Optional. Scope-level cluster namespace labels. For the member clusters bound to the Scope, these labels are applied to each namespace under the Scope. Scope-level labels take precedence over Namespace-level labels (`namespace_labels` in the Fleet Namespace resource) if they share a key. Keys and values must be Kubernetes-conformant.
-  final pulumi.Input<Map<String, String>>? namespaceLabels;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? namespaceLabels;
+  final pulumi.Input<String?>? project;
   /// Required. Client chosen ID for the Scope. `scope_id` must be a ????
   final pulumi.Input<String> scopeId;
 

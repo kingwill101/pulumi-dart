@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// predefined_role is the Kubernetes default role to use
-enum RolePredefinedRole {
+enum RolePredefinedRole implements pulumi.PulumiEnum<String> {
   unknown("UNKNOWN"),
   admin("ADMIN"),
   edit("EDIT"),
@@ -7,6 +9,7 @@ enum RolePredefinedRole {
   anthosSupport("ANTHOS_SUPPORT");
 
   const RolePredefinedRole(this.wireValue);
+  @override
   final String wireValue;
 
   static RolePredefinedRole fromValue(String value) {

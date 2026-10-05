@@ -26,6 +26,17 @@ Future<GetBrandResult> getBrand(
   return GetBrandResult.fromMap(result);
 }
 
+pulumi.Output<GetBrandResult> getBrandOutput(
+  GetBrandArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:iap/v1:getBrand',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBrandResult.fromMap);
+}
+
 /// Retrieves an existing TunnelDestGroup.
 /// [args] Arguments passed to this invoke. {@macro pulumi_iap_v1_get_dest_group_args_doc}
 /// [options] Invoke options controlling this call.
@@ -40,6 +51,17 @@ Future<GetDestGroupResult> getDestGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDestGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetDestGroupResult> getDestGroupOutput(
+  GetDestGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:iap/v1:getDestGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDestGroupResult.fromMap);
 }
 
 /// Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the client is owned by IAP.
@@ -58,6 +80,17 @@ Future<GetIdentityAwareProxyClientResult> getIdentityAwareProxyClient(
   return GetIdentityAwareProxyClientResult.fromMap(result);
 }
 
+pulumi.Output<GetIdentityAwareProxyClientResult> getIdentityAwareProxyClientOutput(
+  GetIdentityAwareProxyClientArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:iap/v1:getIdentityAwareProxyClient',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIdentityAwareProxyClientResult.fromMap);
+}
+
 /// Gets the access control policy for an Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
 /// [args] Arguments passed to this invoke. {@macro pulumi_iap_v1_get_v1_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -74,6 +107,17 @@ Future<GetV1IamPolicyResult> getV1IamPolicy(
   return GetV1IamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetV1IamPolicyResult> getV1IamPolicyOutput(
+  GetV1IamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:iap/v1:getV1IamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetV1IamPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for an Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
 /// [args] Arguments passed to this invoke. {@macro pulumi_iap_v1beta1_get_v1beta1_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -88,4 +132,15 @@ Future<GetV1beta1IamPolicyResult> getV1beta1IamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetV1beta1IamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetV1beta1IamPolicyResult> getV1beta1IamPolicyOutput(
+  GetV1beta1IamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:iap/v1beta1:getV1beta1IamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetV1beta1IamPolicyResult.fromMap);
 }

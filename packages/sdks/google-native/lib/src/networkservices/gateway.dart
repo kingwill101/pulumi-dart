@@ -50,19 +50,48 @@ class Gateway extends pulumi.CustomResource {
           'google-native:networkservices/v1:Gateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['gatewayId', 'location', 'project']).merge(options),
         ) {
-    addresses = registerOutput<List<String>>('addresses');
-    certificateUrls = registerOutput<List<String>>('certificateUrls');
+    addresses = registerOutput<List<String>>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    certificateUrls = registerOutput<List<String>>('certificateUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     gatewayId = registerOutput<String>('gatewayId');
     gatewaySecurityPolicy = registerOutput<String>('gatewaySecurityPolicy');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
-    ports = registerOutput<List<int>>('ports');
+    ports = registerOutput<List<int>>('ports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    project = registerOutput<String>('project');
+    scope = registerOutput<String>('scope');
+    selfLink = registerOutput<String>('selfLink');
+    serverTlsPolicy = registerOutput<String>('serverTlsPolicy');
+    subnetwork = registerOutput<String>('subnetwork');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Gateway] resource.
+  Gateway.reference(String urn)
+    : super(
+        'google-native:networkservices/v1:Gateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addresses = registerOutput<List<String>>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    certificateUrls = registerOutput<List<String>>('certificateUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    gatewayId = registerOutput<String>('gatewayId');
+    gatewaySecurityPolicy = registerOutput<String>('gatewaySecurityPolicy');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    ports = registerOutput<List<int>>('ports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     project = registerOutput<String>('project');
     scope = registerOutput<String>('scope');
     selfLink = registerOutput<String>('selfLink');

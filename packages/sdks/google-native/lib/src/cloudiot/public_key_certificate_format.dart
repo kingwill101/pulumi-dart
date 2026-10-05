@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The certificate format.
-enum PublicKeyCertificateFormat {
+enum PublicKeyCertificateFormat implements pulumi.PulumiEnum<String> {
   unspecifiedPublicKeyCertificateFormat("UNSPECIFIED_PUBLIC_KEY_CERTIFICATE_FORMAT"),
   x509CertificatePem("X509_CERTIFICATE_PEM");
 
   const PublicKeyCertificateFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static PublicKeyCertificateFormat fromValue(String value) {

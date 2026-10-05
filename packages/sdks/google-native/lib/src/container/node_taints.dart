@@ -6,7 +6,7 @@ import 'node_taint.dart';
 /// Collection of Kubernetes [node taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration).
 class NodeTaints {
   /// List of node taints.
-  final pulumi.Input<List<NodeTaint>>? taints;
+  final pulumi.Input<List<NodeTaint>?>? taints;
 
   /// Creates a new [NodeTaints].
   /// [taints] List of node taints.

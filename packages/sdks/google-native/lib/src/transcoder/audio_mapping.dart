@@ -7,7 +7,7 @@ class AudioMapping {
   /// The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list.
   final pulumi.Input<String> atomKey;
   /// Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
-  final pulumi.Input<double>? gainDb;
+  final pulumi.Input<double?>? gainDb;
   /// The zero-based index of the channel in the input audio stream.
   final pulumi.Input<int> inputChannel;
   /// The Input.key that identifies the input file.
@@ -47,11 +47,11 @@ class AudioMapping {
   factory AudioMapping.fromMap(Map<String, dynamic> map) {
     return AudioMapping(
       atomKey: pulumi.Input.fromValue(map['atomKey'] as String),
-      gainDb: (() { final guardedValue = map['gainDb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      inputChannel: pulumi.Input.fromValue(map['inputChannel'] as int),
+      gainDb: (() { final guardedValue = map['gainDb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      inputChannel: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['inputChannel'])),
       inputKey: pulumi.Input.fromValue(map['inputKey'] as String),
-      inputTrack: pulumi.Input.fromValue(map['inputTrack'] as int),
-      outputChannel: pulumi.Input.fromValue(map['outputChannel'] as int),
+      inputTrack: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['inputTrack'])),
+      outputChannel: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['outputChannel'])),
     );
   }
 }

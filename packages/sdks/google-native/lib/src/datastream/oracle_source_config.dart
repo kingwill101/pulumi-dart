@@ -6,17 +6,17 @@ import 'oracle_rdbms.dart';
 /// Oracle data source configuration
 class OracleSourceConfig {
   /// Drop large object values.
-  final pulumi.Input<Map<String, dynamic>>? dropLargeObjects;
+  final pulumi.Input<Map<String, dynamic>?>? dropLargeObjects;
   /// Oracle objects to exclude from the stream.
-  final pulumi.Input<OracleRdbms>? excludeObjects;
+  final pulumi.Input<OracleRdbms?>? excludeObjects;
   /// Oracle objects to include in the stream.
-  final pulumi.Input<OracleRdbms>? includeObjects;
+  final pulumi.Input<OracleRdbms?>? includeObjects;
   /// Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
-  final pulumi.Input<int>? maxConcurrentBackfillTasks;
+  final pulumi.Input<int?>? maxConcurrentBackfillTasks;
   /// Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
-  final pulumi.Input<int>? maxConcurrentCdcTasks;
+  final pulumi.Input<int?>? maxConcurrentCdcTasks;
   /// Stream large object values. NOTE: This feature is currently experimental.
-  final pulumi.Input<Map<String, dynamic>>? streamLargeObjects;
+  final pulumi.Input<Map<String, dynamic>?>? streamLargeObjects;
 
   /// Creates a new [OracleSourceConfig].
   /// [dropLargeObjects] Drop large object values.
@@ -50,8 +50,8 @@ class OracleSourceConfig {
       dropLargeObjects: (() { final guardedValue = map['dropLargeObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       excludeObjects: (() { final guardedValue = map['excludeObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OracleRdbms.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       includeObjects: (() { final guardedValue = map['includeObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OracleRdbms.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxConcurrentBackfillTasks: (() { final guardedValue = map['maxConcurrentBackfillTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxConcurrentCdcTasks: (() { final guardedValue = map['maxConcurrentCdcTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxConcurrentBackfillTasks: (() { final guardedValue = map['maxConcurrentBackfillTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxConcurrentCdcTasks: (() { final guardedValue = map['maxConcurrentCdcTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       streamLargeObjects: (() { final guardedValue = map['streamLargeObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }

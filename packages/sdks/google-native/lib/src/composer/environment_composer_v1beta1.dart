@@ -38,11 +38,33 @@ class EnvironmentComposerV1beta1 extends pulumi.CustomResource {
           'google-native:composer/v1beta1:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     config = registerOutput<EnvironmentConfigResponseComposerV1beta1>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentConfigResponseComposerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    state = registerOutput<String>('state');
+    storageConfig = registerOutput<StorageConfigResponseComposerV1beta1>('storageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageConfigResponseComposerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+    uuid = registerOutput<String>('uuid');
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentComposerV1beta1] resource.
+  EnvironmentComposerV1beta1.reference(String urn)
+    : super(
+        'google-native:composer/v1beta1:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    config = registerOutput<EnvironmentConfigResponseComposerV1beta1>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentConfigResponseComposerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

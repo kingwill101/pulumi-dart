@@ -26,7 +26,7 @@ class GoogleCloudAiplatformV1IndexStatsResponse {
 
   factory GoogleCloudAiplatformV1IndexStatsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1IndexStatsResponse(
-      shardsCount: pulumi.Input.fromValue(map['shardsCount'] as int),
+      shardsCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['shardsCount'])),
       vectorsCount: pulumi.Input.fromValue(map['vectorsCount'] as String),
     );
   }

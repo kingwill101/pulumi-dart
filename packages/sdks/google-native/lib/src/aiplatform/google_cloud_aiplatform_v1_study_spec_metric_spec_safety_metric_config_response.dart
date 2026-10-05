@@ -26,8 +26,8 @@ class GoogleCloudAiplatformV1StudySpecMetricSpecSafetyMetricConfigResponse {
 
   factory GoogleCloudAiplatformV1StudySpecMetricSpecSafetyMetricConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1StudySpecMetricSpecSafetyMetricConfigResponse(
-      desiredMinSafeTrialsFraction: pulumi.Input.fromValue(map['desiredMinSafeTrialsFraction'] as double),
-      safetyThreshold: pulumi.Input.fromValue(map['safetyThreshold'] as double),
+      desiredMinSafeTrialsFraction: pulumi.Input.fromValue((map['desiredMinSafeTrialsFraction'] as num).toDouble()),
+      safetyThreshold: pulumi.Input.fromValue((map['safetyThreshold'] as num).toDouble()),
     );
   }
 }

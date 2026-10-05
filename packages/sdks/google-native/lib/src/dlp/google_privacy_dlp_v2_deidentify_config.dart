@@ -9,13 +9,13 @@ import 'google_privacy_dlp_v2_transformation_error_handling.dart';
 /// The configuration that controls how the data will change.
 class GooglePrivacyDlpV2DeidentifyConfig {
   /// Treat the dataset as an image and redact.
-  final pulumi.Input<GooglePrivacyDlpV2ImageTransformations>? imageTransformations;
+  final pulumi.Input<GooglePrivacyDlpV2ImageTransformations?>? imageTransformations;
   /// Treat the dataset as free-form text and apply the same free text transformation everywhere.
-  final pulumi.Input<GooglePrivacyDlpV2InfoTypeTransformations>? infoTypeTransformations;
+  final pulumi.Input<GooglePrivacyDlpV2InfoTypeTransformations?>? infoTypeTransformations;
   /// Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
-  final pulumi.Input<GooglePrivacyDlpV2RecordTransformations>? recordTransformations;
+  final pulumi.Input<GooglePrivacyDlpV2RecordTransformations?>? recordTransformations;
   /// Mode for handling transformation errors. If left unspecified, the default mode is `TransformationErrorHandling.ThrowError`.
-  final pulumi.Input<GooglePrivacyDlpV2TransformationErrorHandling>? transformationErrorHandling;
+  final pulumi.Input<GooglePrivacyDlpV2TransformationErrorHandling?>? transformationErrorHandling;
 
   /// Creates a new [GooglePrivacyDlpV2DeidentifyConfig].
   /// [imageTransformations] Treat the dataset as an image and redact.

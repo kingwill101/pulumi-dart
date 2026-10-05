@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Ad break.
 class AdBreak {
   /// Start time in seconds for the ad break, relative to the output file timeline. The default is `0s`.
-  final pulumi.Input<String>? startTimeOffset;
+  final pulumi.Input<String?>? startTimeOffset;
 
   /// Creates a new [AdBreak].
   /// [startTimeOffset] Start time in seconds for the ad break, relative to the output file timeline. The default is `0s`.

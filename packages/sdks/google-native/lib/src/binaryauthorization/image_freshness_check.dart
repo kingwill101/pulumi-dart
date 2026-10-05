@@ -21,7 +21,7 @@ class ImageFreshnessCheck {
 
   factory ImageFreshnessCheck.fromMap(Map<String, dynamic> map) {
     return ImageFreshnessCheck(
-      maxUploadAgeDays: pulumi.Input.fromValue(map['maxUploadAgeDays'] as int),
+      maxUploadAgeDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxUploadAgeDays'])),
     );
   }
 }

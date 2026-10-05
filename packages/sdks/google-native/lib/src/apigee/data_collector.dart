@@ -29,8 +29,26 @@ class DataCollector extends pulumi.CustomResource {
           'google-native:apigee/v1:DataCollector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
+    createdAt = registerOutput<String>('createdAt');
+    dataCollectorId = registerOutput<String?>('dataCollectorId');
+    description = registerOutput<String>('description');
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DataCollector] resource.
+  DataCollector.reference(String urn)
+    : super(
+        'google-native:apigee/v1:DataCollector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createdAt = registerOutput<String>('createdAt');
     dataCollectorId = registerOutput<String?>('dataCollectorId');
     description = registerOutput<String>('description');

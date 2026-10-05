@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).
-enum PkixPublicKeySignatureAlgorithm {
+enum PkixPublicKeySignatureAlgorithm implements pulumi.PulumiEnum<String> {
   signatureAlgorithmUnspecified("SIGNATURE_ALGORITHM_UNSPECIFIED"),
   rsaPss2048Sha256("RSA_PSS_2048_SHA256"),
   rsaSignPss2048Sha256("RSA_SIGN_PSS_2048_SHA256"),
@@ -21,6 +23,7 @@ enum PkixPublicKeySignatureAlgorithm {
   ecSignP521Sha512("EC_SIGN_P521_SHA512");
 
   const PkixPublicKeySignatureAlgorithm(this.wireValue);
+  @override
   final String wireValue;
 
   static PkixPublicKeySignatureAlgorithm fromValue(String value) {

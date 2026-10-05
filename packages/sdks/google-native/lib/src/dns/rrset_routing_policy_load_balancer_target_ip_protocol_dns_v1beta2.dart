@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The protocol of the load balancer to health check.
-enum RRSetRoutingPolicyLoadBalancerTargetIpProtocolDnsV1beta2 {
+enum RRSetRoutingPolicyLoadBalancerTargetIpProtocolDnsV1beta2 implements pulumi.PulumiEnum<String> {
   undefined("undefined"),
   tcp("tcp"),
   udp("udp");
 
   const RRSetRoutingPolicyLoadBalancerTargetIpProtocolDnsV1beta2(this.wireValue);
+  @override
   final String wireValue;
 
   static RRSetRoutingPolicyLoadBalancerTargetIpProtocolDnsV1beta2 fromValue(String value) {

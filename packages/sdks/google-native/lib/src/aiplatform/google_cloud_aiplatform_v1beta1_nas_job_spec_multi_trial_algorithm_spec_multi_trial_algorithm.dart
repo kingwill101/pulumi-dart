@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The multi-trial Neural Architecture Search (NAS) algorithm type. Defaults to `REINFORCEMENT_LEARNING`.
-enum GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm {
+enum GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm implements pulumi.PulumiEnum<String> {
   multiTrialAlgorithmUnspecified("MULTI_TRIAL_ALGORITHM_UNSPECIFIED"),
   reinforcementLearning("REINFORCEMENT_LEARNING"),
   gridSearch("GRID_SEARCH");
 
   const GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm fromValue(String value) {

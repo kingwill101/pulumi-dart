@@ -11,23 +11,23 @@ import 'tpu.dart';
 /// {@macro pulumi_tpu_v2alpha1_queued_resource_args_doc}
 class QueuedResourceArgs {
   /// The BestEffort tier.
-  final pulumi.Input<Map<String, dynamic>>? bestEffort;
+  final pulumi.Input<Map<String, dynamic>?>? bestEffort;
   /// The Guaranteed tier.
-  final pulumi.Input<Guaranteed>? guaranteed;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Guaranteed?>? guaranteed;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
-  final pulumi.Input<String>? queuedResourceId;
+  final pulumi.Input<String?>? queuedResourceId;
   /// The queueing policy of the QueuedRequest.
-  final pulumi.Input<QueueingPolicy>? queueingPolicy;
+  final pulumi.Input<QueueingPolicy?>? queueingPolicy;
   /// Idempotent request UUID.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
-  final pulumi.Input<String>? reservationName;
+  final pulumi.Input<String?>? reservationName;
   /// Optional. The Spot tier.
-  final pulumi.Input<Map<String, dynamic>>? spot;
+  final pulumi.Input<Map<String, dynamic>?>? spot;
   /// Defines a TPU resource.
-  final pulumi.Input<Tpu>? tpu;
+  final pulumi.Input<Tpu?>? tpu;
 
   /// Creates a new [QueuedResourceArgs].
   /// [bestEffort] The BestEffort tier.

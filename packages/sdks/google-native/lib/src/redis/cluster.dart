@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
+import 'discovery_endpoint_response.dart';
+import 'psc_config_response.dart';
+import 'psc_connection_response.dart';
 import 'state_info_response.dart';
 
 /// Creates a Redis cluster based on the specified properties. The creation is executed asynchronously and callers may check the returned operation to track its progress. Once the operation is completed the Redis cluster will be fully functional. The completed longrunning.Operation will contain the new cluster object in the response field. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation.
@@ -11,15 +14,15 @@ class Cluster extends pulumi.CustomResource {
   /// The timestamp associated with the cluster creation request.
   late final pulumi.Output<String> createTime;
   /// Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one discovery endpoint is supported.
-  late final pulumi.Output<List<Map<String, dynamic>>> discoveryEndpoints;
+  late final pulumi.Output<List<DiscoveryEndpointResponse>> discoveryEndpoints;
   late final pulumi.Output<String> location;
   /// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   /// Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported.
-  late final pulumi.Output<List<Map<String, dynamic>>> pscConfigs;
+  late final pulumi.Output<List<PscConfigResponse>> pscConfigs;
   /// PSC connections for discovery of the cluster topology and accessing the cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>> pscConnections;
+  late final pulumi.Output<List<PscConnectionResponse>> pscConnections;
   /// Optional. The number of replica nodes per shard.
   late final pulumi.Output<int> replicaCount;
   /// Idempotent request UUID.
@@ -49,17 +52,45 @@ class Cluster extends pulumi.CustomResource {
           'google-native:redis/v1:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['clusterId', 'location', 'project']).merge(options),
         ) {
     authorizationMode = registerOutput<String>('authorizationMode');
     clusterId = registerOutput<String>('clusterId');
     createTime = registerOutput<String>('createTime');
-    discoveryEndpoints = registerOutput<List<Map<String, dynamic>>>('discoveryEndpoints');
+    discoveryEndpoints = registerOutput<List<DiscoveryEndpointResponse>>('discoveryEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiscoveryEndpointResponse>(guardedValue, (value) => DiscoveryEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pscConfigs = registerOutput<List<Map<String, dynamic>>>('pscConfigs');
-    pscConnections = registerOutput<List<Map<String, dynamic>>>('pscConnections');
+    pscConfigs = registerOutput<List<PscConfigResponse>>('pscConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PscConfigResponse>(guardedValue, (value) => PscConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    pscConnections = registerOutput<List<PscConnectionResponse>>('pscConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PscConnectionResponse>(guardedValue, (value) => PscConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    replicaCount = registerOutput<int>('replicaCount');
+    requestId = registerOutput<String?>('requestId');
+    shardCount = registerOutput<int>('shardCount');
+    sizeGb = registerOutput<int>('sizeGb');
+    state = registerOutput<String>('state');
+    stateInfo = registerOutput<StateInfoResponse>('stateInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StateInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    transitEncryptionMode = registerOutput<String>('transitEncryptionMode');
+    uid = registerOutput<String>('uid');
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'google-native:redis/v1:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authorizationMode = registerOutput<String>('authorizationMode');
+    clusterId = registerOutput<String>('clusterId');
+    createTime = registerOutput<String>('createTime');
+    discoveryEndpoints = registerOutput<List<DiscoveryEndpointResponse>>('discoveryEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiscoveryEndpointResponse>(guardedValue, (value) => DiscoveryEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pscConfigs = registerOutput<List<PscConfigResponse>>('pscConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PscConfigResponse>(guardedValue, (value) => PscConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    pscConnections = registerOutput<List<PscConnectionResponse>>('pscConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PscConnectionResponse>(guardedValue, (value) => PscConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     replicaCount = registerOutput<int>('replicaCount');
     requestId = registerOutput<String?>('requestId');
     shardCount = registerOutput<int>('shardCount');

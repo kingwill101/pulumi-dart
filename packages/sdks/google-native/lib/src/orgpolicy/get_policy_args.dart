@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_orgpolicy_v2_get_policy_args_doc}
 class GetPolicyArgs {
   final pulumi.Input<String> policyId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetPolicyArgs].
   /// [policyId] Required.

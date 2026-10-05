@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCertificateTemplateArgs {
   final pulumi.Input<String> certificateTemplateId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetCertificateTemplateArgs].
   /// [certificateTemplateId] Required.

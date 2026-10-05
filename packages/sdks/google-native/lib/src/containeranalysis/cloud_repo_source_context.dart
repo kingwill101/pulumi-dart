@@ -7,11 +7,11 @@ import 'repo_id.dart';
 /// A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.
 class CloudRepoSourceContext {
   /// An alias, which may be a branch or tag.
-  final pulumi.Input<AliasContext>? aliasContext;
+  final pulumi.Input<AliasContext?>? aliasContext;
   /// The ID of the repo.
-  final pulumi.Input<RepoId>? repoId;
+  final pulumi.Input<RepoId?>? repoId;
   /// A revision ID.
-  final pulumi.Input<String>? revisionId;
+  final pulumi.Input<String?>? revisionId;
 
   /// Creates a new [CloudRepoSourceContext].
   /// [aliasContext] An alias, which may be a branch or tag.

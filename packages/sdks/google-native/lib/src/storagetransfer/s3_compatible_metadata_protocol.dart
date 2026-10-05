@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
-enum S3CompatibleMetadataProtocol {
+enum S3CompatibleMetadataProtocol implements pulumi.PulumiEnum<String> {
   networkProtocolUnspecified("NETWORK_PROTOCOL_UNSPECIFIED"),
   networkProtocolHttps("NETWORK_PROTOCOL_HTTPS"),
   networkProtocolHttp("NETWORK_PROTOCOL_HTTP");
 
   const S3CompatibleMetadataProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static S3CompatibleMetadataProtocol fromValue(String value) {

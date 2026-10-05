@@ -53,13 +53,13 @@ class BqmlTrainingRunTrainingOptionsResponse {
   factory BqmlTrainingRunTrainingOptionsResponse.fromMap(Map<String, dynamic> map) {
     return BqmlTrainingRunTrainingOptionsResponse(
       earlyStop: pulumi.Input.fromValue(map['earlyStop'] as bool),
-      l1Reg: pulumi.Input.fromValue(map['l1Reg'] as double),
-      l2Reg: pulumi.Input.fromValue(map['l2Reg'] as double),
-      learnRate: pulumi.Input.fromValue(map['learnRate'] as double),
+      l1Reg: pulumi.Input.fromValue((map['l1Reg'] as num).toDouble()),
+      l2Reg: pulumi.Input.fromValue((map['l2Reg'] as num).toDouble()),
+      learnRate: pulumi.Input.fromValue((map['learnRate'] as num).toDouble()),
       learnRateStrategy: pulumi.Input.fromValue(map['learnRateStrategy'] as String),
-      lineSearchInitLearnRate: pulumi.Input.fromValue(map['lineSearchInitLearnRate'] as double),
+      lineSearchInitLearnRate: pulumi.Input.fromValue((map['lineSearchInitLearnRate'] as num).toDouble()),
       maxIteration: pulumi.Input.fromValue(map['maxIteration'] as String),
-      minRelProgress: pulumi.Input.fromValue(map['minRelProgress'] as double),
+      minRelProgress: pulumi.Input.fromValue((map['minRelProgress'] as num).toDouble()),
       warmStart: pulumi.Input.fromValue(map['warmStart'] as bool),
     );
   }

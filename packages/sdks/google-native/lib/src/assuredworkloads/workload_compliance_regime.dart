@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Immutable. Compliance Regime associated with this workload.
-enum WorkloadComplianceRegime {
+enum WorkloadComplianceRegime implements pulumi.PulumiEnum<String> {
   complianceRegimeUnspecified("COMPLIANCE_REGIME_UNSPECIFIED"),
   il4("IL4"),
   cjis("CJIS"),
@@ -21,6 +23,7 @@ enum WorkloadComplianceRegime {
   jpRegionsAndSupport("JP_REGIONS_AND_SUPPORT");
 
   const WorkloadComplianceRegime(this.wireValue);
+  @override
   final String wireValue;
 
   static WorkloadComplianceRegime fromValue(String value) {

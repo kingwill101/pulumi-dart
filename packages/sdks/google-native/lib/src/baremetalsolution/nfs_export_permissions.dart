@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Export permissions.
-enum NfsExportPermissions {
+enum NfsExportPermissions implements pulumi.PulumiEnum<String> {
   permissionsUnspecified("PERMISSIONS_UNSPECIFIED"),
   readOnly("READ_ONLY"),
   readWrite("READ_WRITE");
 
   const NfsExportPermissions(this.wireValue);
+  @override
   final String wireValue;
 
   static NfsExportPermissions fromValue(String value) {

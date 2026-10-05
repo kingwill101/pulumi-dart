@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Indicates that the builder claims certain fields in this message to be complete.
 class SlsaCompletenessContaineranalysisV1alpha1 {
   /// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
-  final pulumi.Input<bool>? arguments;
+  final pulumi.Input<bool?>? arguments;
   /// If true, the builder claims that recipe.environment is claimed to be complete.
-  final pulumi.Input<bool>? environment;
+  final pulumi.Input<bool?>? environment;
   /// If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
-  final pulumi.Input<bool>? materials;
+  final pulumi.Input<bool?>? materials;
 
   /// Creates a new [SlsaCompletenessContaineranalysisV1alpha1].
   /// [arguments] If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.

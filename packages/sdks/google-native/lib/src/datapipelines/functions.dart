@@ -17,3 +17,14 @@ Future<GetPipelineResult> getPipeline(
   );
   return GetPipelineResult.fromMap(result);
 }
+
+pulumi.Output<GetPipelineResult> getPipelineOutput(
+  GetPipelineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datapipelines/v1:getPipeline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPipelineResult.fromMap);
+}

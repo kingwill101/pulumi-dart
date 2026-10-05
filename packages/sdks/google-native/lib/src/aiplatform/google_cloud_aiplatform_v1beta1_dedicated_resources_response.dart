@@ -40,8 +40,8 @@ class GoogleCloudAiplatformV1beta1DedicatedResourcesResponse {
     return GoogleCloudAiplatformV1beta1DedicatedResourcesResponse(
       autoscalingMetricSpecs: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse>(map['autoscalingMetricSpecs']!, (value) => GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse.fromMap((value as Map).cast<String, dynamic>()))),
       machineSpec: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1MachineSpecResponse.fromMap((map['machineSpec']! as Map).cast<String, dynamic>())),
-      maxReplicaCount: pulumi.Input.fromValue(map['maxReplicaCount'] as int),
-      minReplicaCount: pulumi.Input.fromValue(map['minReplicaCount'] as int),
+      maxReplicaCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxReplicaCount'])),
+      minReplicaCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minReplicaCount'])),
     );
   }
 }

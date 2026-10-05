@@ -6,9 +6,9 @@ import 'google_cloud_dialogflow_v2beta1_notification_config_message_format.dart'
 /// Defines notification behavior.
 class GoogleCloudDialogflowV2beta1NotificationConfig {
   /// Format of message.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat>? messageFormat;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat?>? messageFormat;
   /// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. For chat integration to receive notification, make sure API caller has been granted the `Dialogflow Service Agent` role for the topic. Format: `projects//locations//topics/`.
-  final pulumi.Input<String>? topic;
+  final pulumi.Input<String?>? topic;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1NotificationConfig].
   /// [messageFormat] Format of message.

@@ -45,7 +45,7 @@ class ThresholdResponse {
       direction: pulumi.Input.fromValue(map['direction'] as String),
       label: pulumi.Input.fromValue(map['label'] as String),
       targetAxis: pulumi.Input.fromValue(map['targetAxis'] as String),
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

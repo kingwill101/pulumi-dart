@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_alpha_get_forwarding_rule_args_doc}
 class GetForwardingRuleArgs {
   final pulumi.Input<String> forwardingRule;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
 
   /// Creates a new [GetForwardingRuleArgs].

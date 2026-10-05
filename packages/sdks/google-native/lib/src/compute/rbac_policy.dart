@@ -6,11 +6,11 @@ import 'principal.dart';
 
 class RbacPolicy {
   /// Name of the RbacPolicy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The list of permissions.
-  final pulumi.Input<List<Permission>>? permissions;
+  final pulumi.Input<List<Permission>?>? permissions;
   /// The list of principals.
-  final pulumi.Input<List<Principal>>? principals;
+  final pulumi.Input<List<Principal>?>? principals;
 
   /// Creates a new [RbacPolicy].
   /// [name] Name of the RbacPolicy.

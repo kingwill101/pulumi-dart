@@ -6,7 +6,7 @@ import 'google_type_date_time.dart';
 /// DateTime values.
 class GoogleCloudContentwarehouseV1DateTimeArray {
   /// List of datetime values. Both OffsetDateTime and ZonedDateTime are supported.
-  final pulumi.Input<List<GoogleTypeDateTime>>? values;
+  final pulumi.Input<List<GoogleTypeDateTime>?>? values;
 
   /// Creates a new [GoogleCloudContentwarehouseV1DateTimeArray].
   /// [values] List of datetime values. Both OffsetDateTime and ZonedDateTime are supported.

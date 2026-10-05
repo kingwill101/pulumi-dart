@@ -10,19 +10,19 @@ import 'threat_prevention_profile.dart';
 /// {@macro pulumi_networksecurity_v1beta1_security_profile_args_doc}
 class SecurityProfileArgs {
   /// Optional. An optional description of the profile. Max length 512 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Labels as key value pairs.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Immutable. Identifier. Name of the SecurityProfile resource. It matches pattern `projects|organizations/*/locations/{location}/securityProfiles/{security_profile}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
   /// Required. Short name of the SecurityProfile resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "security_profile1".
   final pulumi.Input<String> securityProfileId;
   /// The threat prevention configuration for the SecurityProfile.
-  final pulumi.Input<ThreatPreventionProfile>? threatPreventionProfile;
+  final pulumi.Input<ThreatPreventionProfile?>? threatPreventionProfile;
   /// Immutable. The single ProfileType that the SecurityProfile resource configures.
-  final pulumi.Input<SecurityProfileType>? type;
+  final pulumi.Input<SecurityProfileType?>? type;
 
   /// Creates a new [SecurityProfileArgs].
   /// [description] Optional. An optional description of the profile. Max length 512 characters.

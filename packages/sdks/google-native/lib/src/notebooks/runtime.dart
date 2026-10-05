@@ -52,12 +52,39 @@ class Runtime extends pulumi.CustomResource {
           'google-native:notebooks/v1:Runtime',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'runtimeId']).merge(options),
         ) {
     accessConfig = registerOutput<RuntimeAccessConfigResponse>('accessConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeAccessConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     healthState = registerOutput<String>('healthState');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    metrics = registerOutput<RuntimeMetricsResponse>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeMetricsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    migrated = registerOutput<bool>('migrated');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    runtimeId = registerOutput<String>('runtimeId');
+    runtimeMigrationEligibility = registerOutput<RuntimeMigrationEligibilityResponse>('runtimeMigrationEligibility', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeMigrationEligibilityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    softwareConfig = registerOutput<RuntimeSoftwareConfigResponse>('softwareConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeSoftwareConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    virtualMachine = registerOutput<VirtualMachineResponse>('virtualMachine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Runtime] resource.
+  Runtime.reference(String urn)
+    : super(
+        'google-native:notebooks/v1:Runtime',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessConfig = registerOutput<RuntimeAccessConfigResponse>('accessConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeAccessConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    healthState = registerOutput<String>('healthState');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     metrics = registerOutput<RuntimeMetricsResponse>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeMetricsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     migrated = registerOutput<bool>('migrated');

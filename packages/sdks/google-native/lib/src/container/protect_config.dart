@@ -7,9 +7,9 @@ import 'workload_config.dart';
 /// ProtectConfig defines the flags needed to enable/disable features for the Protect API.
 class ProtectConfig {
   /// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
-  final pulumi.Input<WorkloadConfig>? workloadConfig;
+  final pulumi.Input<WorkloadConfig?>? workloadConfig;
   /// Sets which mode to use for Protect workload vulnerability scanning feature.
-  final pulumi.Input<ProtectConfigWorkloadVulnerabilityMode>? workloadVulnerabilityMode;
+  final pulumi.Input<ProtectConfigWorkloadVulnerabilityMode?>? workloadVulnerabilityMode;
 
   /// Creates a new [ProtectConfig].
   /// [workloadConfig] WorkloadConfig defines which actions are enabled for a cluster's workload configurations.

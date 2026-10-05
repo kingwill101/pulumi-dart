@@ -39,8 +39,32 @@ class SfdcChannel extends pulumi.CustomResource {
           'google-native:integrations/v1alpha:SfdcChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'productId', 'project', 'sfdcInstanceId']).merge(options),
         ) {
+    channelTopic = registerOutput<String>('channelTopic');
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    isActive = registerOutput<bool>('isActive');
+    lastReplayId = registerOutput<String>('lastReplayId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    productId = registerOutput<String>('productId');
+    project = registerOutput<String>('project');
+    sfdcInstanceId = registerOutput<String>('sfdcInstanceId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [SfdcChannel] resource.
+  SfdcChannel.reference(String urn)
+    : super(
+        'google-native:integrations/v1alpha:SfdcChannel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     channelTopic = registerOutput<String>('channelTopic');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');

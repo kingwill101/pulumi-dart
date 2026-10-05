@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_domains_v1_get_registration_args_doc}
 class GetRegistrationArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> registrationId;
 
   /// Creates a new [GetRegistrationArgs].

@@ -21,7 +21,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessCo
 
   factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse(
-      recentSentencesCount: pulumi.Input.fromValue(map['recentSentencesCount'] as int),
+      recentSentencesCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['recentSentencesCount'])),
     );
   }
 }

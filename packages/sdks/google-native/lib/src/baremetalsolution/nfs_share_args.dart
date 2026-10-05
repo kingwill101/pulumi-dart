@@ -10,19 +10,19 @@ import 'nfs_share_storage_type.dart';
 /// {@macro pulumi_baremetalsolution_v2_nfs_share_args_doc}
 class NfsShareArgs {
   /// List of allowed access points.
-  final pulumi.Input<List<AllowedClient>>? allowedClients;
+  final pulumi.Input<List<AllowedClient>?>? allowedClients;
   /// Labels as key value pairs.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Immutable. The name of the NFS share.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Immutable. Pod name. Pod is an independent part of infrastructure. NFSShare can only be connected to the assets (networks, instances) allocated in the same pod.
-  final pulumi.Input<String>? pod;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? pod;
+  final pulumi.Input<String?>? project;
   /// The requested size, in GiB.
-  final pulumi.Input<String>? requestedSizeGib;
+  final pulumi.Input<String?>? requestedSizeGib;
   /// Immutable. The storage type of the underlying volume.
-  final pulumi.Input<NfsShareStorageType>? storageType;
+  final pulumi.Input<NfsShareStorageType?>? storageType;
 
   /// Creates a new [NfsShareArgs].
   /// [allowedClients] List of allowed access points.

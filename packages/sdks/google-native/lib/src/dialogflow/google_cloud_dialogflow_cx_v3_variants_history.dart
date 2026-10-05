@@ -6,9 +6,9 @@ import 'google_cloud_dialogflow_cx_v3_version_variants.dart';
 /// The history of variants update.
 class GoogleCloudDialogflowCxV3VariantsHistory {
   /// Update time of the variants.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// The flow versions as the variants.
-  final pulumi.Input<GoogleCloudDialogflowCxV3VersionVariants>? versionVariants;
+  final pulumi.Input<GoogleCloudDialogflowCxV3VersionVariants?>? versionVariants;
 
   /// Creates a new [GoogleCloudDialogflowCxV3VariantsHistory].
   /// [updateTime] Update time of the variants.

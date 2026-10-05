@@ -1,4 +1,6 @@
-enum CisBenchmarkSeverity {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum CisBenchmarkSeverity implements pulumi.PulumiEnum<String> {
   severityUnspecified("SEVERITY_UNSPECIFIED"),
   minimal("MINIMAL"),
   low("LOW"),
@@ -7,6 +9,7 @@ enum CisBenchmarkSeverity {
   critical("CRITICAL");
 
   const CisBenchmarkSeverity(this.wireValue);
+  @override
   final String wireValue;
 
   static CisBenchmarkSeverity fromValue(String value) {

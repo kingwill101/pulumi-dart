@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Scaling settings applied at the service level rather than at the revision level.
 class GoogleCloudRunV2ServiceScaling {
   /// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
-  final pulumi.Input<int>? minInstanceCount;
+  final pulumi.Input<int?>? minInstanceCount;
 
   /// Creates a new [GoogleCloudRunV2ServiceScaling].
   /// [minInstanceCount] total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
@@ -21,7 +21,7 @@ class GoogleCloudRunV2ServiceScaling {
 
   factory GoogleCloudRunV2ServiceScaling.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2ServiceScaling(
-      minInstanceCount: (() { final guardedValue = map['minInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minInstanceCount: (() { final guardedValue = map['minInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

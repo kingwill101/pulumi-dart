@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The database provider.
-enum DatabaseTypeProviderDatamigrationV1beta1 {
+enum DatabaseTypeProviderDatamigrationV1beta1 implements pulumi.PulumiEnum<String> {
   databaseProviderUnspecified("DATABASE_PROVIDER_UNSPECIFIED"),
   cloudsql("CLOUDSQL"),
   rds("RDS");
 
   const DatabaseTypeProviderDatamigrationV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static DatabaseTypeProviderDatamigrationV1beta1 fromValue(String value) {

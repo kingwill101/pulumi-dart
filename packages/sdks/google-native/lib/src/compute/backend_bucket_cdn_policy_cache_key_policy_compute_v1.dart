@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Message containing what to include in the cache key for a request for Cloud CDN.
 class BackendBucketCdnPolicyCacheKeyPolicyComputeV1 {
   /// Allows HTTP request headers (by name) to be used in the cache key.
-  final pulumi.Input<List<String>>? includeHttpHeaders;
+  final pulumi.Input<List<String>?>? includeHttpHeaders;
   /// Names of query string parameters to include in cache keys. Default parameters are always included. '&' and '=' will be percent encoded and not treated as delimiters.
-  final pulumi.Input<List<String>>? queryStringWhitelist;
+  final pulumi.Input<List<String>?>? queryStringWhitelist;
 
   /// Creates a new [BackendBucketCdnPolicyCacheKeyPolicyComputeV1].
   /// [includeHttpHeaders] Allows HTTP request headers (by name) to be used in the cache key.

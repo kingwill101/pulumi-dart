@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// For a large document, sharding may be performed to produce several document shards. Each document shard contains this field to detail which shard it is.
 class GoogleCloudDocumentaiV1DocumentShardInfo {
   /// Total number of shards.
-  final pulumi.Input<String>? shardCount;
+  final pulumi.Input<String?>? shardCount;
   /// The 0-based index of this shard.
-  final pulumi.Input<String>? shardIndex;
+  final pulumi.Input<String?>? shardIndex;
   /// The index of the first character in Document.text in the overall document global text.
-  final pulumi.Input<String>? textOffset;
+  final pulumi.Input<String?>? textOffset;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentShardInfo].
   /// [shardCount] Total number of shards.

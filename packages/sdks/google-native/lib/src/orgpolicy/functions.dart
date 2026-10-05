@@ -24,6 +24,17 @@ Future<GetCustomConstraintResult> getCustomConstraint(
   return GetCustomConstraintResult.fromMap(result);
 }
 
+pulumi.Output<GetCustomConstraintResult> getCustomConstraintOutput(
+  GetCustomConstraintArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:orgpolicy/v2:getCustomConstraint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomConstraintResult.fromMap);
+}
+
 /// Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The `etag` value can be used with `UpdatePolicy()` to update a policy during read-modify-write.
 /// [args] Arguments passed to this invoke. {@macro pulumi_orgpolicy_v2_get_folder_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -38,6 +49,17 @@ Future<GetFolderPolicyResult> getFolderPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFolderPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetFolderPolicyResult> getFolderPolicyOutput(
+  GetFolderPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:orgpolicy/v2:getFolderPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFolderPolicyResult.fromMap);
 }
 
 /// Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The `etag` value can be used with `UpdatePolicy()` to update a policy during read-modify-write.
@@ -56,6 +78,17 @@ Future<GetOrganizationPolicyResult> getOrganizationPolicy(
   return GetOrganizationPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationPolicyResult> getOrganizationPolicyOutput(
+  GetOrganizationPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:orgpolicy/v2:getOrganizationPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationPolicyResult.fromMap);
+}
+
 /// Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The `etag` value can be used with `UpdatePolicy()` to update a policy during read-modify-write.
 /// [args] Arguments passed to this invoke. {@macro pulumi_orgpolicy_v2_get_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -70,4 +103,15 @@ Future<GetPolicyResult> getPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetPolicyResult> getPolicyOutput(
+  GetPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:orgpolicy/v2:getPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyResult.fromMap);
 }

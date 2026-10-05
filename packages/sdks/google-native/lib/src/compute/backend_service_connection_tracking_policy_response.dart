@@ -38,7 +38,7 @@ class BackendServiceConnectionTrackingPolicyResponse {
     return BackendServiceConnectionTrackingPolicyResponse(
       connectionPersistenceOnUnhealthyBackends: pulumi.Input.fromValue(map['connectionPersistenceOnUnhealthyBackends'] as String),
       enableStrongAffinity: pulumi.Input.fromValue(map['enableStrongAffinity'] as bool),
-      idleTimeoutSec: pulumi.Input.fromValue(map['idleTimeoutSec'] as int),
+      idleTimeoutSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['idleTimeoutSec'])),
       trackingMode: pulumi.Input.fromValue(map['trackingMode'] as String),
     );
   }

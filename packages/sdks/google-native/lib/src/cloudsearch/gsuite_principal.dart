@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GSuitePrincipal {
   /// This principal represents all users of the Google Workspace domain of the customer.
-  final pulumi.Input<bool>? gsuiteDomain;
+  final pulumi.Input<bool?>? gsuiteDomain;
   /// This principal references a Google Workspace group name.
-  final pulumi.Input<String>? gsuiteGroupEmail;
+  final pulumi.Input<String?>? gsuiteGroupEmail;
   /// This principal references a Google Workspace user account.
-  final pulumi.Input<String>? gsuiteUserEmail;
+  final pulumi.Input<String?>? gsuiteUserEmail;
 
   /// Creates a new [GSuitePrincipal].
   /// [gsuiteDomain] This principal represents all users of the Google Workspace domain of the customer.

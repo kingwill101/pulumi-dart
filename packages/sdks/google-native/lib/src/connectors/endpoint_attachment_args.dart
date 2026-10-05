@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_connectors_v1_endpoint_attachment_args_doc}
 class EndpointAttachmentArgs {
   /// Optional. Description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Required. Identifier to assign to the EndpointAttachment. Must be unique within scope of the parent resource.
   final pulumi.Input<String> endpointAttachmentId;
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// The path of the service attachment
   final pulumi.Input<String> serviceAttachment;
 

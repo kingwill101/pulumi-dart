@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for logging requests made to this project to Stackdriver Logging
 class GoogleCloudIdentitytoolkitAdminV2RequestLogging {
   /// Whether logging is enabled for this project or not.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2RequestLogging].
   /// [enabled] Whether logging is enabled for this project or not.

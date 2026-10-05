@@ -21,39 +21,39 @@ import 'google_cloud_documentai_v1_document_provenance.dart';
 /// A page in a Document.
 class GoogleCloudDocumentaiV1DocumentPage {
   /// A list of visually detected text blocks on the page. A block has a set of lines (collected into paragraphs) that have a common line-spacing and orientation.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageBlock>>? blocks;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageBlock>?>? blocks;
   /// A list of detected barcodes.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedBarcode>>? detectedBarcodes;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedBarcode>?>? detectedBarcodes;
   /// A list of detected languages together with confidence.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>>? detectedLanguages;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>?>? detectedLanguages;
   /// Physical dimension of the page.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageDimension>? dimension;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageDimension?>? dimension;
   /// A list of visually detected form fields on the page.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageFormField>>? formFields;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageFormField>?>? formFields;
   /// Rendered image for this page. This image is preprocessed to remove any skew, rotation, and distortions such that the annotation bounding boxes can be upright and axis-aligned.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageImage>? image;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageImage?>? image;
   /// Image quality scores.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageImageQualityScores>? imageQualityScores;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageImageQualityScores?>? imageQualityScores;
   /// Layout for the page.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout>? layout;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout?>? layout;
   /// A list of visually detected text lines on the page. A collection of tokens that a human would perceive as a line.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageLine>>? lines;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageLine>?>? lines;
   /// 1-based index for current Page in a parent Document. Useful when a page is taken out of a Document for individual processing.
-  final pulumi.Input<int>? pageNumber;
+  final pulumi.Input<int?>? pageNumber;
   /// A list of visually detected text paragraphs on the page. A collection of lines that a human would perceive as a paragraph.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageParagraph>>? paragraphs;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageParagraph>?>? paragraphs;
   /// The history of this page.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentProvenance>? provenance;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentProvenance?>? provenance;
   /// A list of visually detected symbols on the page.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageSymbol>>? symbols;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageSymbol>?>? symbols;
   /// A list of visually detected tables on the page.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageTable>>? tables;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageTable>?>? tables;
   /// A list of visually detected tokens on the page.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageToken>>? tokens;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageToken>?>? tokens;
   /// Transformation matrices that were applied to the original document image to produce Page.image.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageMatrix>>? transforms;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageMatrix>?>? transforms;
   /// A list of detected non-text visual elements e.g. checkbox, signature etc. on the page.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageVisualElement>>? visualElements;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageVisualElement>?>? visualElements;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPage].
   /// [blocks] A list of visually detected text blocks on the page. A block has a set of lines (collected into paragraphs) that have a common line-spacing and orientation.
@@ -126,7 +126,7 @@ class GoogleCloudDocumentaiV1DocumentPage {
       imageQualityScores: (() { final guardedValue = map['imageQualityScores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDocumentaiV1DocumentPageImageQualityScores.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       layout: (() { final guardedValue = map['layout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       lines: (() { final guardedValue = map['lines']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageLine>(guardedValue, (value) => GoogleCloudDocumentaiV1DocumentPageLine.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pageNumber: (() { final guardedValue = map['pageNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       paragraphs: (() { final guardedValue = map['paragraphs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageParagraph>(guardedValue, (value) => GoogleCloudDocumentaiV1DocumentPageParagraph.fromMap((value as Map).cast<String, dynamic>()))); })(),
       provenance: (() { final guardedValue = map['provenance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudDocumentaiV1DocumentProvenance.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       symbols: (() { final guardedValue = map['symbols']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageSymbol>(guardedValue, (value) => GoogleCloudDocumentaiV1DocumentPageSymbol.fromMap((value as Map).cast<String, dynamic>()))); })(),

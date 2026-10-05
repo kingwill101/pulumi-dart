@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Common alphabets.
-enum GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet {
+enum GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet implements pulumi.PulumiEnum<String> {
   ffxCommonNativeAlphabetUnspecified("FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED"),
   numeric("NUMERIC"),
   hexadecimal("HEXADECIMAL"),
@@ -7,6 +9,7 @@ enum GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet {
   alphaNumeric("ALPHA_NUMERIC");
 
   const GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet(this.wireValue);
+  @override
   final String wireValue;
 
   static GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet fromValue(String value) {

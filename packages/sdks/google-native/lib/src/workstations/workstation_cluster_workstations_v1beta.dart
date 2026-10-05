@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_config_response.dart';
 import 'private_cluster_config_response_workstations_v1beta.dart';
+import 'status_response_workstations_v1beta.dart';
 import 'workstation_cluster_workstations_v1beta_args.dart';
 
 /// Creates a new workstation cluster.
@@ -8,7 +9,7 @@ class WorkstationClusterWorkstationsV1beta extends pulumi.CustomResource {
   /// Optional. Client-specified annotations.
   late final pulumi.Output<Map<String, String>> annotations;
   /// Status conditions describing the workstation cluster's current state.
-  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+  late final pulumi.Output<List<StatusResponseWorkstationsV1beta>> conditions;
   /// The private IP address of the control plane for this workstation cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
   late final pulumi.Output<String> controlPlaneIp;
   /// Time when this workstation cluster was created.
@@ -56,10 +57,10 @@ class WorkstationClusterWorkstationsV1beta extends pulumi.CustomResource {
           'google-native:workstations/v1beta:WorkstationCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'workstationClusterId']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    conditions = registerOutput<List<StatusResponseWorkstationsV1beta>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatusResponseWorkstationsV1beta>(guardedValue, (value) => StatusResponseWorkstationsV1beta.fromMap((value as Map).cast<String, dynamic>())); });
     controlPlaneIp = registerOutput<String>('controlPlaneIp');
     createTime = registerOutput<String>('createTime');
     degraded = registerOutput<bool>('degraded');
@@ -67,7 +68,38 @@ class WorkstationClusterWorkstationsV1beta extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     domainConfig = registerOutput<DomainConfigResponse>('domainConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    privateClusterConfig = registerOutput<PrivateClusterConfigResponseWorkstationsV1beta>('privateClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateClusterConfigResponseWorkstationsV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    subnetwork = registerOutput<String>('subnetwork');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    workstationClusterId = registerOutput<String>('workstationClusterId');
+  }
+
+  /// Creates a typed reference to an existing [WorkstationClusterWorkstationsV1beta] resource.
+  WorkstationClusterWorkstationsV1beta.reference(String urn)
+    : super(
+        'google-native:workstations/v1beta:WorkstationCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    conditions = registerOutput<List<StatusResponseWorkstationsV1beta>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatusResponseWorkstationsV1beta>(guardedValue, (value) => StatusResponseWorkstationsV1beta.fromMap((value as Map).cast<String, dynamic>())); });
+    controlPlaneIp = registerOutput<String>('controlPlaneIp');
+    createTime = registerOutput<String>('createTime');
+    degraded = registerOutput<bool>('degraded');
+    deleteTime = registerOutput<String>('deleteTime');
+    displayName = registerOutput<String>('displayName');
+    domainConfig = registerOutput<DomainConfigResponse>('domainConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');

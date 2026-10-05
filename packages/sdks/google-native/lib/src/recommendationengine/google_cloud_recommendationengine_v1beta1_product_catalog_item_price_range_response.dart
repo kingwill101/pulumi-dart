@@ -26,8 +26,8 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse
 
   factory GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse(
-      max: pulumi.Input.fromValue(map['max'] as double),
-      min: pulumi.Input.fromValue(map['min'] as double),
+      max: pulumi.Input.fromValue((map['max'] as num).toDouble()),
+      min: pulumi.Input.fromValue((map['min'] as num).toDouble()),
     );
   }
 }

@@ -57,9 +57,40 @@ class NetworkEndpointGroupComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:NetworkEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'zone']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    appEngine = registerOutput<NetworkEndpointGroupAppEngineResponseComputeV1>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupAppEngineResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudFunction = registerOutput<NetworkEndpointGroupCloudFunctionResponseComputeV1>('cloudFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupCloudFunctionResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudRun = registerOutput<NetworkEndpointGroupCloudRunResponseComputeV1>('cloudRun', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupCloudRunResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    defaultPort = registerOutput<int>('defaultPort');
+    description = registerOutput<String>('description');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    networkEndpointType = registerOutput<String>('networkEndpointType');
+    project = registerOutput<String>('project');
+    pscData = registerOutput<NetworkEndpointGroupPscDataResponseComputeV1>('pscData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupPscDataResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pscTargetService = registerOutput<String>('pscTargetService');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    size = registerOutput<int>('size');
+    subnetwork = registerOutput<String>('subnetwork');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [NetworkEndpointGroupComputeV1] resource.
+  NetworkEndpointGroupComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:NetworkEndpointGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     appEngine = registerOutput<NetworkEndpointGroupAppEngineResponseComputeV1>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupAppEngineResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudFunction = registerOutput<NetworkEndpointGroupCloudFunctionResponseComputeV1>('cloudFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupCloudFunctionResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudRun = registerOutput<NetworkEndpointGroupCloudRunResponseComputeV1>('cloudRun', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupCloudRunResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });

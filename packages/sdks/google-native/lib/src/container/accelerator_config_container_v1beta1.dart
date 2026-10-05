@@ -7,17 +7,17 @@ import 'gpusharing_config_container_v1beta1.dart';
 /// AcceleratorConfig represents a Hardware Accelerator request.
 class AcceleratorConfigContainerV1beta1 {
   /// The number of the accelerator cards exposed to an instance.
-  final pulumi.Input<String>? acceleratorCount;
+  final pulumi.Input<String?>? acceleratorCount;
   /// The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
-  final pulumi.Input<String>? acceleratorType;
+  final pulumi.Input<String?>? acceleratorType;
   /// The configuration for auto installation of GPU driver.
-  final pulumi.Input<GPUDriverInstallationConfigContainerV1beta1>? gpuDriverInstallationConfig;
+  final pulumi.Input<GPUDriverInstallationConfigContainerV1beta1?>? gpuDriverInstallationConfig;
   /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
-  final pulumi.Input<String>? gpuPartitionSize;
+  final pulumi.Input<String?>? gpuPartitionSize;
   /// The configuration for GPU sharing options.
-  final pulumi.Input<GPUSharingConfigContainerV1beta1>? gpuSharingConfig;
+  final pulumi.Input<GPUSharingConfigContainerV1beta1?>? gpuSharingConfig;
   /// The number of time-shared GPU resources to expose for each physical GPU.
-  final pulumi.Input<String>? maxTimeSharedClientsPerGpu;
+  final pulumi.Input<String?>? maxTimeSharedClientsPerGpu;
 
   /// Creates a new [AcceleratorConfigContainerV1beta1].
   /// [acceleratorCount] The number of the accelerator cards exposed to an instance.

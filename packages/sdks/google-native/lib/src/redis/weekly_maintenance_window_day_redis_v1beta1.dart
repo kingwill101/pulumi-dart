@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The day of week that maintenance updates occur.
-enum WeeklyMaintenanceWindowDayRedisV1beta1 {
+enum WeeklyMaintenanceWindowDayRedisV1beta1 implements pulumi.PulumiEnum<String> {
   dayOfWeekUnspecified("DAY_OF_WEEK_UNSPECIFIED"),
   monday("MONDAY"),
   tuesday("TUESDAY"),
@@ -10,6 +12,7 @@ enum WeeklyMaintenanceWindowDayRedisV1beta1 {
   sunday("SUNDAY");
 
   const WeeklyMaintenanceWindowDayRedisV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static WeeklyMaintenanceWindowDayRedisV1beta1 fromValue(String value) {

@@ -1,10 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'accelerator_config_response.dart';
 import 'container_image_response.dart';
+import 'disk_response.dart';
 import 'instance_args.dart';
 import 'instance_migration_eligibility_response.dart';
 import 'reservation_affinity_response.dart';
 import 'shielded_instance_config_response.dart';
+import 'upgrade_history_entry_response.dart';
 import 'vm_image_response.dart';
 
 /// Creates a new Instance in a given project and location.
@@ -33,7 +35,7 @@ class Instance extends pulumi.CustomResource {
   /// Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
   late final pulumi.Output<String> diskEncryption;
   /// Attached disks to notebook instance.
-  late final pulumi.Output<List<Map<String, dynamic>>> disks;
+  late final pulumi.Output<List<DiskResponse>> disks;
   /// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
   late final pulumi.Output<bool> installGpuDriver;
   /// Required. User-defined unique ID of this instance.
@@ -87,7 +89,7 @@ class Instance extends pulumi.CustomResource {
   /// Instance update time.
   late final pulumi.Output<String> updateTime;
   /// The upgrade history of this instance.
-  late final pulumi.Output<List<Map<String, dynamic>>> upgradeHistory;
+  late final pulumi.Output<List<UpgradeHistoryEntryResponse>> upgradeHistory;
   /// Use a Compute Engine VM image to start the notebook instance.
   late final pulumi.Output<VmImageResponse> vmImage;
 
@@ -103,7 +105,7 @@ class Instance extends pulumi.CustomResource {
           'google-native:notebooks/v1:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceId', 'location', 'project']).merge(options),
         ) {
     acceleratorConfig = registerOutput<AcceleratorConfigResponse>('acceleratorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AcceleratorConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bootDiskSizeGb = registerOutput<String>('bootDiskSizeGb');
@@ -116,16 +118,16 @@ class Instance extends pulumi.CustomResource {
     dataDiskSizeGb = registerOutput<String>('dataDiskSizeGb');
     dataDiskType = registerOutput<String>('dataDiskType');
     diskEncryption = registerOutput<String>('diskEncryption');
-    disks = registerOutput<List<Map<String, dynamic>>>('disks');
+    disks = registerOutput<List<DiskResponse>>('disks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiskResponse>(guardedValue, (value) => DiskResponse.fromMap((value as Map).cast<String, dynamic>())); });
     installGpuDriver = registerOutput<bool>('installGpuDriver');
     instanceId = registerOutput<String>('instanceId');
     instanceMigrationEligibility = registerOutput<InstanceMigrationEligibilityResponse>('instanceMigrationEligibility', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMigrationEligibilityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    instanceOwners = registerOutput<List<String>>('instanceOwners');
+    instanceOwners = registerOutput<List<String>>('instanceOwners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kmsKey = registerOutput<String>('kmsKey');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     machineType = registerOutput<String>('machineType');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     migrated = registerOutput<bool>('migrated');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
@@ -138,13 +140,65 @@ class Instance extends pulumi.CustomResource {
     proxyUri = registerOutput<String>('proxyUri');
     reservationAffinity = registerOutput<ReservationAffinityResponse>('reservationAffinity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationAffinityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccount = registerOutput<String>('serviceAccount');
-    serviceAccountScopes = registerOutput<List<String>>('serviceAccountScopes');
+    serviceAccountScopes = registerOutput<List<String>>('serviceAccountScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     shieldedInstanceConfig = registerOutput<ShieldedInstanceConfigResponse>('shieldedInstanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ShieldedInstanceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     subnet = registerOutput<String>('subnet');
-    tags = registerOutput<List<String>>('tags');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
-    upgradeHistory = registerOutput<List<Map<String, dynamic>>>('upgradeHistory');
+    upgradeHistory = registerOutput<List<UpgradeHistoryEntryResponse>>('upgradeHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UpgradeHistoryEntryResponse>(guardedValue, (value) => UpgradeHistoryEntryResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    vmImage = registerOutput<VmImageResponse>('vmImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'google-native:notebooks/v1:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acceleratorConfig = registerOutput<AcceleratorConfigResponse>('acceleratorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AcceleratorConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bootDiskSizeGb = registerOutput<String>('bootDiskSizeGb');
+    bootDiskType = registerOutput<String>('bootDiskType');
+    canIpForward = registerOutput<bool>('canIpForward');
+    containerImage = registerOutput<ContainerImageResponse>('containerImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<String>('creator');
+    customGpuDriverPath = registerOutput<String>('customGpuDriverPath');
+    dataDiskSizeGb = registerOutput<String>('dataDiskSizeGb');
+    dataDiskType = registerOutput<String>('dataDiskType');
+    diskEncryption = registerOutput<String>('diskEncryption');
+    disks = registerOutput<List<DiskResponse>>('disks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiskResponse>(guardedValue, (value) => DiskResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    installGpuDriver = registerOutput<bool>('installGpuDriver');
+    instanceId = registerOutput<String>('instanceId');
+    instanceMigrationEligibility = registerOutput<InstanceMigrationEligibilityResponse>('instanceMigrationEligibility', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMigrationEligibilityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceOwners = registerOutput<List<String>>('instanceOwners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kmsKey = registerOutput<String>('kmsKey');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    machineType = registerOutput<String>('machineType');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    migrated = registerOutput<bool>('migrated');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    nicType = registerOutput<String>('nicType');
+    noProxyAccess = registerOutput<bool>('noProxyAccess');
+    noPublicIp = registerOutput<bool>('noPublicIp');
+    noRemoveDataDisk = registerOutput<bool>('noRemoveDataDisk');
+    postStartupScript = registerOutput<String>('postStartupScript');
+    project = registerOutput<String>('project');
+    proxyUri = registerOutput<String>('proxyUri');
+    reservationAffinity = registerOutput<ReservationAffinityResponse>('reservationAffinity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationAffinityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceAccount = registerOutput<String>('serviceAccount');
+    serviceAccountScopes = registerOutput<List<String>>('serviceAccountScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    shieldedInstanceConfig = registerOutput<ShieldedInstanceConfigResponse>('shieldedInstanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ShieldedInstanceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    subnet = registerOutput<String>('subnet');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    updateTime = registerOutput<String>('updateTime');
+    upgradeHistory = registerOutput<List<UpgradeHistoryEntryResponse>>('upgradeHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UpgradeHistoryEntryResponse>(guardedValue, (value) => UpgradeHistoryEntryResponse.fromMap((value as Map).cast<String, dynamic>())); });
     vmImage = registerOutput<VmImageResponse>('vmImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

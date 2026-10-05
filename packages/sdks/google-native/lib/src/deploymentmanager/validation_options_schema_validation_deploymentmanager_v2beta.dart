@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Customize how deployment manager will validate the resource against schema errors.
-enum ValidationOptionsSchemaValidationDeploymentmanagerV2beta {
+enum ValidationOptionsSchemaValidationDeploymentmanagerV2beta implements pulumi.PulumiEnum<String> {
   unknown("UNKNOWN"),
   ignore("IGNORE"),
   ignoreWithWarnings("IGNORE_WITH_WARNINGS"),
   fail("FAIL");
 
   const ValidationOptionsSchemaValidationDeploymentmanagerV2beta(this.wireValue);
+  @override
   final String wireValue;
 
   static ValidationOptionsSchemaValidationDeploymentmanagerV2beta fromValue(String value) {

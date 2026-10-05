@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the routine.
-enum GoogleCloudDatacatalogV1RoutineSpecRoutineType {
+enum GoogleCloudDatacatalogV1RoutineSpecRoutineType implements pulumi.PulumiEnum<String> {
   routineTypeUnspecified("ROUTINE_TYPE_UNSPECIFIED"),
   scalarFunction("SCALAR_FUNCTION"),
   procedure("PROCEDURE");
 
   const GoogleCloudDatacatalogV1RoutineSpecRoutineType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDatacatalogV1RoutineSpecRoutineType fromValue(String value) {

@@ -26,8 +26,8 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse
 
   factory GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse(
-      displayPrice: pulumi.Input.fromValue(map['displayPrice'] as double),
-      originalPrice: pulumi.Input.fromValue(map['originalPrice'] as double),
+      displayPrice: pulumi.Input.fromValue((map['displayPrice'] as num).toDouble()),
+      originalPrice: pulumi.Input.fromValue((map['originalPrice'] as num).toDouble()),
     );
   }
 }

@@ -9,15 +9,15 @@ import 'ospolicy_resource_repository_resource.dart';
 /// An OS policy resource is used to define the desired state configuration and provides a specific functionality like installing/removing packages, executing a script etc. The system ensures that resources are always in their desired state by taking necessary actions if they have drifted from their desired state.
 class OSPolicyResource {
   /// Exec resource
-  final pulumi.Input<OSPolicyResourceExecResource>? exec;
+  final pulumi.Input<OSPolicyResourceExecResource?>? exec;
   /// File resource
-  final pulumi.Input<OSPolicyResourceFileResource>? file;
+  final pulumi.Input<OSPolicyResourceFileResource?>? file;
   /// The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
   final pulumi.Input<String> id;
   /// Package resource
-  final pulumi.Input<OSPolicyResourcePackageResource>? pkg;
+  final pulumi.Input<OSPolicyResourcePackageResource?>? pkg;
   /// Package repository resource
-  final pulumi.Input<OSPolicyResourceRepositoryResource>? repository;
+  final pulumi.Input<OSPolicyResourceRepositoryResource?>? repository;
 
   /// Creates a new [OSPolicyResource].
   /// [exec] Exec resource

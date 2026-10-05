@@ -40,8 +40,31 @@ class MetadataImportMetastoreV1beta extends pulumi.CustomResource {
           'google-native:metastore/v1beta:MetadataImport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'metadataImportId', 'project', 'serviceId']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    databaseDump = registerOutput<DatabaseDumpResponseMetastoreV1beta>('databaseDump', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseDumpResponseMetastoreV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    endTime = registerOutput<String>('endTime');
+    location = registerOutput<String>('location');
+    metadataImportId = registerOutput<String>('metadataImportId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    serviceId = registerOutput<String>('serviceId');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [MetadataImportMetastoreV1beta] resource.
+  MetadataImportMetastoreV1beta.reference(String urn)
+    : super(
+        'google-native:metastore/v1beta:MetadataImport',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     databaseDump = registerOutput<DatabaseDumpResponseMetastoreV1beta>('databaseDump', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseDumpResponseMetastoreV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');

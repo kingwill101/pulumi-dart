@@ -47,11 +47,11 @@ class KubernetesMetadataResponseGkehubV1beta {
   factory KubernetesMetadataResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return KubernetesMetadataResponseGkehubV1beta(
       kubernetesApiServerVersion: pulumi.Input.fromValue(map['kubernetesApiServerVersion'] as String),
-      memoryMb: pulumi.Input.fromValue(map['memoryMb'] as int),
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      memoryMb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memoryMb'])),
+      nodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodeCount'])),
       nodeProviderId: pulumi.Input.fromValue(map['nodeProviderId'] as String),
       updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
-      vcpuCount: pulumi.Input.fromValue(map['vcpuCount'] as int),
+      vcpuCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vcpuCount'])),
     );
   }
 }

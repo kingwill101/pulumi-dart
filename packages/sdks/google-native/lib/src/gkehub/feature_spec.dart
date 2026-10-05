@@ -7,9 +7,9 @@ import 'membership_spec.dart';
 /// **Workload Certificate**: The Hub-wide input for the WorkloadCertificate feature.
 class FeatureSpec {
   /// Specifies default membership spec. Users can override the default in the member_configs for each member.
-  final pulumi.Input<MembershipSpec>? defaultConfig;
+  final pulumi.Input<MembershipSpec?>? defaultConfig;
   /// Immutable. Specifies CA configuration.
-  final pulumi.Input<FeatureSpecProvisionGoogleCa>? provisionGoogleCa;
+  final pulumi.Input<FeatureSpecProvisionGoogleCa?>? provisionGoogleCa;
 
   /// Creates a new [FeatureSpec].
   /// [defaultConfig] Specifies default membership spec. Users can override the default in the member_configs for each member.

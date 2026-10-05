@@ -42,10 +42,10 @@ class BasicYarnAutoscalingConfigResponseDataprocV1beta2 {
   factory BasicYarnAutoscalingConfigResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return BasicYarnAutoscalingConfigResponseDataprocV1beta2(
       gracefulDecommissionTimeout: pulumi.Input.fromValue(map['gracefulDecommissionTimeout'] as String),
-      scaleDownFactor: pulumi.Input.fromValue(map['scaleDownFactor'] as double),
-      scaleDownMinWorkerFraction: pulumi.Input.fromValue(map['scaleDownMinWorkerFraction'] as double),
-      scaleUpFactor: pulumi.Input.fromValue(map['scaleUpFactor'] as double),
-      scaleUpMinWorkerFraction: pulumi.Input.fromValue(map['scaleUpMinWorkerFraction'] as double),
+      scaleDownFactor: pulumi.Input.fromValue((map['scaleDownFactor'] as num).toDouble()),
+      scaleDownMinWorkerFraction: pulumi.Input.fromValue((map['scaleDownMinWorkerFraction'] as num).toDouble()),
+      scaleUpFactor: pulumi.Input.fromValue((map['scaleUpFactor'] as num).toDouble()),
+      scaleUpMinWorkerFraction: pulumi.Input.fromValue((map['scaleUpMinWorkerFraction'] as num).toDouble()),
     );
   }
 }

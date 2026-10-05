@@ -36,8 +36,8 @@ class QueryInsightsInstanceConfigResponseAlloydbV1alpha {
 
   factory QueryInsightsInstanceConfigResponseAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return QueryInsightsInstanceConfigResponseAlloydbV1alpha(
-      queryPlansPerMinute: pulumi.Input.fromValue(map['queryPlansPerMinute'] as int),
-      queryStringLength: pulumi.Input.fromValue(map['queryStringLength'] as int),
+      queryPlansPerMinute: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['queryPlansPerMinute'])),
+      queryStringLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['queryStringLength'])),
       recordApplicationTags: pulumi.Input.fromValue(map['recordApplicationTags'] as bool),
       recordClientAddress: pulumi.Input.fromValue(map['recordClientAddress'] as bool),
     );

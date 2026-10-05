@@ -1,4 +1,6 @@
-enum GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem implements pulumi.PulumiEnum<String> {
   summarySkippedReasonUnspecified("SUMMARY_SKIPPED_REASON_UNSPECIFIED"),
   adversarialQueryIgnored("ADVERSARIAL_QUERY_IGNORED"),
   nonSummarySeekingQueryIgnored("NON_SUMMARY_SEEKING_QUERY_IGNORED"),
@@ -7,6 +9,7 @@ enum GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsI
   llmAddonNotEnabled("LLM_ADDON_NOT_ENABLED");
 
   const GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem fromValue(String value) {

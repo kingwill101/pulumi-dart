@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_healthcare_v1_dataset_args_doc}
 class DatasetArgs {
   /// The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-  final pulumi.Input<String>? datasetId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? datasetId;
+  final pulumi.Input<String?>? location;
   /// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [DatasetArgs].
   /// [datasetId] The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.

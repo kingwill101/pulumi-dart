@@ -30,7 +30,7 @@ class UrlList extends pulumi.CustomResource {
           'google-native:networksecurity/v1:UrlList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'urlListId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
@@ -39,6 +39,25 @@ class UrlList extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');
     urlListId = registerOutput<String>('urlListId');
-    values = registerOutput<List<String>>('values');
+    values = registerOutput<List<String>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [UrlList] resource.
+  UrlList.reference(String urn)
+    : super(
+        'google-native:networksecurity/v1:UrlList',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+    urlListId = registerOutput<String>('urlListId');
+    values = registerOutput<List<String>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

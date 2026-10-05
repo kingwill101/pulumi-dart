@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer.
-enum RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType {
+enum RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType implements pulumi.PulumiEnum<String> {
   none("none"),
   globalL7ilb("globalL7ilb"),
   regionalL4ilb("regionalL4ilb"),
   regionalL7ilb("regionalL7ilb");
 
   const RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType(this.wireValue);
+  @override
   final String wireValue;
 
   static RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType fromValue(String value) {

@@ -7,9 +7,9 @@ import 'kubernetes_config.dart';
 /// RuntimeConfig contains the runtime specific configurations for a deployment strategy.
 class RuntimeConfig {
   /// Cloud Run runtime configuration.
-  final pulumi.Input<CloudRunConfig>? cloudRun;
+  final pulumi.Input<CloudRunConfig?>? cloudRun;
   /// Kubernetes runtime configuration.
-  final pulumi.Input<KubernetesConfig>? kubernetes;
+  final pulumi.Input<KubernetesConfig?>? kubernetes;
 
   /// Creates a new [RuntimeConfig].
   /// [cloudRun] Cloud Run runtime configuration.

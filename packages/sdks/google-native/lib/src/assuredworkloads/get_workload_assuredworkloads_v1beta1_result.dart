@@ -16,55 +16,55 @@ import 'google_cloud_assuredworkloads_v1beta1_workload_saa_enrollment_response_r
 /// Result data returned by getWorkload.
 class GetWorkloadAssuredworkloadsV1beta1Result {
   /// Optional. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
-  final String billingAccount;
+  final String? billingAccount;
   /// Input only. Immutable. Settings specific to resources needed for CJIS.
-  final GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse cjisSettings;
+  final GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse? cjisSettings;
   /// Immutable. Compliance Regime associated with this workload.
-  final String complianceRegime;
+  final String? complianceRegime;
   /// Count of active Violations in the Workload.
-  final GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse complianceStatus;
+  final GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse? complianceStatus;
   /// Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment.
-  final List<String> compliantButDisallowedServices;
+  final List<String>? compliantButDisallowedServices;
   /// Immutable. The Workload creation timestamp.
-  final String createTime;
+  final String? createTime;
   /// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
-  final String displayName;
+  final String? displayName;
   /// Represents the Ekm Provisioning State of the given workload.
-  final GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse ekmProvisioningResponse;
+  final GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse? ekmProvisioningResponse;
   /// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
-  final bool enableSovereignControls;
+  final bool? enableSovereignControls;
   /// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
-  final String etag;
+  final String? etag;
   /// Input only. Immutable. Settings specific to resources needed for FedRAMP High.
-  final GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse fedrampHighSettings;
+  final GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse? fedrampHighSettings;
   /// Input only. Immutable. Settings specific to resources needed for FedRAMP Moderate.
-  final GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponse fedrampModerateSettings;
+  final GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponse? fedrampModerateSettings;
   /// Input only. Immutable. Settings specific to resources needed for IL4.
-  final GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse il4Settings;
+  final GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse? il4Settings;
   /// Represents the KAJ enrollment state of the given workload.
-  final String kajEnrollmentState;
+  final String? kajEnrollmentState;
   /// Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
-  final GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse kmsSettings;
+  final GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse? kmsSettings;
   /// Optional. Labels applied to the workload.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
-  final String name;
+  final String? name;
   /// Optional. Partner regime associated with this workload.
-  final String partner;
+  final String? partner;
   /// Optional. Permissions granted to the AW Partner SA account for the customer workload
-  final GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse partnerPermissions;
+  final GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse? partnerPermissions;
   /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
-  final String provisionedResourcesParent;
+  final String? provisionedResourcesParent;
   /// Indicates whether resource monitoring is enabled for workload or not. It is true when Resource feed is subscribed to AWM topic and AWM Service Agent Role is binded to AW Service Account for resource Assured workload.
-  final bool resourceMonitoringEnabled;
+  final bool? resourceMonitoringEnabled;
   /// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
-  final List<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse> resourceSettings;
+  final List<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse>? resourceSettings;
   /// The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
-  final List<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse> resources;
+  final List<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse>? resources;
   /// Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
-  final GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse saaEnrollmentResponse;
+  final GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse? saaEnrollmentResponse;
   /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
-  final bool violationNotificationsEnabled;
+  final bool? violationNotificationsEnabled;
 
   /// Creates a new [GetWorkloadAssuredworkloadsV1beta1Result].
   /// [billingAccount] Optional. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
@@ -93,90 +93,90 @@ class GetWorkloadAssuredworkloadsV1beta1Result {
   /// [saaEnrollmentResponse] Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
   /// [violationNotificationsEnabled] Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
   const GetWorkloadAssuredworkloadsV1beta1Result({
-    required this.billingAccount,
-    required this.cjisSettings,
-    required this.complianceRegime,
-    required this.complianceStatus,
-    required this.compliantButDisallowedServices,
-    required this.createTime,
-    required this.displayName,
-    required this.ekmProvisioningResponse,
-    required this.enableSovereignControls,
-    required this.etag,
-    required this.fedrampHighSettings,
-    required this.fedrampModerateSettings,
-    required this.il4Settings,
-    required this.kajEnrollmentState,
-    required this.kmsSettings,
-    required this.labels,
-    required this.name,
-    required this.partner,
-    required this.partnerPermissions,
-    required this.provisionedResourcesParent,
-    required this.resourceMonitoringEnabled,
-    required this.resourceSettings,
-    required this.resources,
-    required this.saaEnrollmentResponse,
-    required this.violationNotificationsEnabled,
+    this.billingAccount,
+    this.cjisSettings,
+    this.complianceRegime,
+    this.complianceStatus,
+    this.compliantButDisallowedServices,
+    this.createTime,
+    this.displayName,
+    this.ekmProvisioningResponse,
+    this.enableSovereignControls,
+    this.etag,
+    this.fedrampHighSettings,
+    this.fedrampModerateSettings,
+    this.il4Settings,
+    this.kajEnrollmentState,
+    this.kmsSettings,
+    this.labels,
+    this.name,
+    this.partner,
+    this.partnerPermissions,
+    this.provisionedResourcesParent,
+    this.resourceMonitoringEnabled,
+    this.resourceSettings,
+    this.resources,
+    this.saaEnrollmentResponse,
+    this.violationNotificationsEnabled,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'billingAccount': billingAccount,
-      'cjisSettings': cjisSettings.toMap(),
-      'complianceRegime': complianceRegime,
-      'complianceStatus': complianceStatus.toMap(),
-      'compliantButDisallowedServices': compliantButDisallowedServices,
-      'createTime': createTime,
-      'displayName': displayName,
-      'ekmProvisioningResponse': ekmProvisioningResponse.toMap(),
-      'enableSovereignControls': enableSovereignControls,
-      'etag': etag,
-      'fedrampHighSettings': fedrampHighSettings.toMap(),
-      'fedrampModerateSettings': fedrampModerateSettings.toMap(),
-      'il4Settings': il4Settings.toMap(),
-      'kajEnrollmentState': kajEnrollmentState,
-      'kmsSettings': kmsSettings.toMap(),
-      'labels': labels,
-      'name': name,
-      'partner': partner,
-      'partnerPermissions': partnerPermissions.toMap(),
-      'provisionedResourcesParent': provisionedResourcesParent,
-      'resourceMonitoringEnabled': resourceMonitoringEnabled,
-      'resourceSettings': pulumi.Input.encodeList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse, Map<String, dynamic>>(resourceSettings, (value) => value.toMap()),
-      'resources': pulumi.Input.encodeList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse, Map<String, dynamic>>(resources, (value) => value.toMap()),
-      'saaEnrollmentResponse': saaEnrollmentResponse.toMap(),
-      'violationNotificationsEnabled': violationNotificationsEnabled,
+      'billingAccount': ?billingAccount,
+      'cjisSettings': ?cjisSettings?.toMap(),
+      'complianceRegime': ?complianceRegime,
+      'complianceStatus': ?complianceStatus?.toMap(),
+      'compliantButDisallowedServices': ?compliantButDisallowedServices,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'ekmProvisioningResponse': ?ekmProvisioningResponse?.toMap(),
+      'enableSovereignControls': ?enableSovereignControls,
+      'etag': ?etag,
+      'fedrampHighSettings': ?fedrampHighSettings?.toMap(),
+      'fedrampModerateSettings': ?fedrampModerateSettings?.toMap(),
+      'il4Settings': ?il4Settings?.toMap(),
+      'kajEnrollmentState': ?kajEnrollmentState,
+      'kmsSettings': ?kmsSettings?.toMap(),
+      'labels': ?labels,
+      'name': ?name,
+      'partner': ?partner,
+      'partnerPermissions': ?partnerPermissions?.toMap(),
+      'provisionedResourcesParent': ?provisionedResourcesParent,
+      'resourceMonitoringEnabled': ?resourceMonitoringEnabled,
+      'resourceSettings': ?(() { final guardedValue = resourceSettings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'resources': ?(() { final guardedValue = resources; if (guardedValue == null) return null; return pulumi.Input.encodeList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'saaEnrollmentResponse': ?saaEnrollmentResponse?.toMap(),
+      'violationNotificationsEnabled': ?violationNotificationsEnabled,
     };
   }
 
   factory GetWorkloadAssuredworkloadsV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetWorkloadAssuredworkloadsV1beta1Result(
-      billingAccount: map['billingAccount'] as String,
-      cjisSettings: GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse.fromMap((map['cjisSettings']! as Map).cast<String, dynamic>()),
-      complianceRegime: map['complianceRegime'] as String,
-      complianceStatus: GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse.fromMap((map['complianceStatus']! as Map).cast<String, dynamic>()),
-      compliantButDisallowedServices: (map['compliantButDisallowedServices'] as List).cast<String>(),
-      createTime: map['createTime'] as String,
-      displayName: map['displayName'] as String,
-      ekmProvisioningResponse: GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse.fromMap((map['ekmProvisioningResponse']! as Map).cast<String, dynamic>()),
-      enableSovereignControls: map['enableSovereignControls'] as bool,
-      etag: map['etag'] as String,
-      fedrampHighSettings: GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse.fromMap((map['fedrampHighSettings']! as Map).cast<String, dynamic>()),
-      fedrampModerateSettings: GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponse.fromMap((map['fedrampModerateSettings']! as Map).cast<String, dynamic>()),
-      il4Settings: GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse.fromMap((map['il4Settings']! as Map).cast<String, dynamic>()),
-      kajEnrollmentState: map['kajEnrollmentState'] as String,
-      kmsSettings: GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse.fromMap((map['kmsSettings']! as Map).cast<String, dynamic>()),
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      partner: map['partner'] as String,
-      partnerPermissions: GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse.fromMap((map['partnerPermissions']! as Map).cast<String, dynamic>()),
-      provisionedResourcesParent: map['provisionedResourcesParent'] as String,
-      resourceMonitoringEnabled: map['resourceMonitoringEnabled'] as bool,
-      resourceSettings: pulumi.Input.decodeList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse>(map['resourceSettings']!, (value) => GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      resources: pulumi.Input.decodeList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse>(map['resources']!, (value) => GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      saaEnrollmentResponse: GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse.fromMap((map['saaEnrollmentResponse']! as Map).cast<String, dynamic>()),
-      violationNotificationsEnabled: map['violationNotificationsEnabled'] as bool,
+      billingAccount: (() { final guardedValue = map['billingAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      cjisSettings: (() { final guardedValue = map['cjisSettings']; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      complianceRegime: (() { final guardedValue = map['complianceRegime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      complianceStatus: (() { final guardedValue = map['complianceStatus']; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      compliantButDisallowedServices: (() { final guardedValue = map['compliantButDisallowedServices']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ekmProvisioningResponse: (() { final guardedValue = map['ekmProvisioningResponse']; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      enableSovereignControls: (() { final guardedValue = map['enableSovereignControls']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fedrampHighSettings: (() { final guardedValue = map['fedrampHighSettings']; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      fedrampModerateSettings: (() { final guardedValue = map['fedrampModerateSettings']; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      il4Settings: (() { final guardedValue = map['il4Settings']; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      kajEnrollmentState: (() { final guardedValue = map['kajEnrollmentState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kmsSettings: (() { final guardedValue = map['kmsSettings']; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      partner: (() { final guardedValue = map['partner']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      partnerPermissions: (() { final guardedValue = map['partnerPermissions']; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      provisionedResourcesParent: (() { final guardedValue = map['provisionedResourcesParent']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceMonitoringEnabled: (() { final guardedValue = map['resourceMonitoringEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      resourceSettings: (() { final guardedValue = map['resourceSettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse>(guardedValue, (value) => GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse>(guardedValue, (value) => GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      saaEnrollmentResponse: (() { final guardedValue = map['saaEnrollmentResponse']; if (guardedValue == null) return null; return GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      violationNotificationsEnabled: (() { final guardedValue = map['violationNotificationsEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }

@@ -8,23 +8,23 @@ import 'vmware_source_details_response.dart';
 /// Result data returned by getSource.
 class GetSourceResult {
   /// AWS type source details.
-  final AwsSourceDetailsResponse aws;
+  final AwsSourceDetailsResponse? aws;
   /// Azure type source details.
-  final AzureSourceDetailsResponse azure;
+  final AzureSourceDetailsResponse? azure;
   /// The create time timestamp.
-  final String createTime;
+  final String? createTime;
   /// User-provided description of the source.
-  final String description;
+  final String? description;
   /// Optional. Immutable. The encryption details of the source data stored by the service.
-  final EncryptionResponse encryption;
+  final EncryptionResponse? encryption;
   /// The labels of the source.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The Source name.
-  final String name;
+  final String? name;
   /// The update time timestamp.
-  final String updateTime;
+  final String? updateTime;
   /// Vmware type source details.
-  final VmwareSourceDetailsResponse vmware;
+  final VmwareSourceDetailsResponse? vmware;
 
   /// Creates a new [GetSourceResult].
   /// [aws] AWS type source details.
@@ -37,42 +37,42 @@ class GetSourceResult {
   /// [updateTime] The update time timestamp.
   /// [vmware] Vmware type source details.
   const GetSourceResult({
-    required this.aws,
-    required this.azure,
-    required this.createTime,
-    required this.description,
-    required this.encryption,
-    required this.labels,
-    required this.name,
-    required this.updateTime,
-    required this.vmware,
+    this.aws,
+    this.azure,
+    this.createTime,
+    this.description,
+    this.encryption,
+    this.labels,
+    this.name,
+    this.updateTime,
+    this.vmware,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aws': aws.toMap(),
-      'azure': azure.toMap(),
-      'createTime': createTime,
-      'description': description,
-      'encryption': encryption.toMap(),
-      'labels': labels,
-      'name': name,
-      'updateTime': updateTime,
-      'vmware': vmware.toMap(),
+      'aws': ?aws?.toMap(),
+      'azure': ?azure?.toMap(),
+      'createTime': ?createTime,
+      'description': ?description,
+      'encryption': ?encryption?.toMap(),
+      'labels': ?labels,
+      'name': ?name,
+      'updateTime': ?updateTime,
+      'vmware': ?vmware?.toMap(),
     };
   }
 
   factory GetSourceResult.fromMap(Map<String, dynamic> map) {
     return GetSourceResult(
-      aws: AwsSourceDetailsResponse.fromMap((map['aws']! as Map).cast<String, dynamic>()),
-      azure: AzureSourceDetailsResponse.fromMap((map['azure']! as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      encryption: EncryptionResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>()),
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      updateTime: map['updateTime'] as String,
-      vmware: VmwareSourceDetailsResponse.fromMap((map['vmware']! as Map).cast<String, dynamic>()),
+      aws: (() { final guardedValue = map['aws']; if (guardedValue == null) return null; return AwsSourceDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      azure: (() { final guardedValue = map['azure']; if (guardedValue == null) return null; return AzureSourceDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return EncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vmware: (() { final guardedValue = map['vmware']; if (guardedValue == null) return null; return VmwareSourceDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

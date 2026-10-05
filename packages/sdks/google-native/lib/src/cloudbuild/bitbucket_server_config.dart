@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bitbucket_server_config_args.dart';
+import 'bitbucket_server_repository_id_response.dart';
 import 'bitbucket_server_secrets_response.dart';
 
 /// Creates a new `BitbucketServerConfig`. This API is experimental.
@@ -9,7 +10,7 @@ class BitbucketServerConfig extends pulumi.CustomResource {
   /// Optional. The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name. bitbucket_server_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
   late final pulumi.Output<String?> bitbucketServerConfigId;
   /// Connected Bitbucket Server repositories for this config.
-  late final pulumi.Output<List<Map<String, dynamic>>> connectedRepositories;
+  late final pulumi.Output<List<BitbucketServerRepositoryIdResponse>> connectedRepositories;
   /// Time when the config was created.
   late final pulumi.Output<String> createTime;
   /// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
@@ -43,11 +44,36 @@ class BitbucketServerConfig extends pulumi.CustomResource {
           'google-native:cloudbuild/v1:BitbucketServerConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     apiKey = registerOutput<String>('apiKey');
     bitbucketServerConfigId = registerOutput<String?>('bitbucketServerConfigId');
-    connectedRepositories = registerOutput<List<Map<String, dynamic>>>('connectedRepositories');
+    connectedRepositories = registerOutput<List<BitbucketServerRepositoryIdResponse>>('connectedRepositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BitbucketServerRepositoryIdResponse>(guardedValue, (value) => BitbucketServerRepositoryIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    hostUri = registerOutput<String>('hostUri');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    peeredNetwork = registerOutput<String>('peeredNetwork');
+    peeredNetworkIpRange = registerOutput<String>('peeredNetworkIpRange');
+    project = registerOutput<String>('project');
+    secrets = registerOutput<BitbucketServerSecretsResponse>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BitbucketServerSecretsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sslCa = registerOutput<String>('sslCa');
+    username = registerOutput<String>('username');
+    webhookKey = registerOutput<String>('webhookKey');
+  }
+
+  /// Creates a typed reference to an existing [BitbucketServerConfig] resource.
+  BitbucketServerConfig.reference(String urn)
+    : super(
+        'google-native:cloudbuild/v1:BitbucketServerConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiKey = registerOutput<String>('apiKey');
+    bitbucketServerConfigId = registerOutput<String?>('bitbucketServerConfigId');
+    connectedRepositories = registerOutput<List<BitbucketServerRepositoryIdResponse>>('connectedRepositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BitbucketServerRepositoryIdResponse>(guardedValue, (value) => BitbucketServerRepositoryIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     hostUri = registerOutput<String>('hostUri');
     location = registerOutput<String>('location');

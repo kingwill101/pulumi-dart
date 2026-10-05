@@ -4,21 +4,21 @@
 /// Result data returned by getGateway.
 class GetGatewayResult {
   /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
-  final String apiConfig;
+  final String? apiConfig;
   /// Created time.
-  final String createTime;
+  final String? createTime;
   /// The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
-  final String defaultHostname;
+  final String? defaultHostname;
   /// Optional. Display name.
-  final String displayName;
+  final String? displayName;
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
-  final String name;
+  final String? name;
   /// The current state of the Gateway.
-  final String state;
+  final String? state;
   /// Updated time.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetGatewayResult].
   /// [apiConfig] Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
@@ -30,39 +30,39 @@ class GetGatewayResult {
   /// [state] The current state of the Gateway.
   /// [updateTime] Updated time.
   const GetGatewayResult({
-    required this.apiConfig,
-    required this.createTime,
-    required this.defaultHostname,
-    required this.displayName,
-    required this.labels,
-    required this.name,
-    required this.state,
-    required this.updateTime,
+    this.apiConfig,
+    this.createTime,
+    this.defaultHostname,
+    this.displayName,
+    this.labels,
+    this.name,
+    this.state,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiConfig': apiConfig,
-      'createTime': createTime,
-      'defaultHostname': defaultHostname,
-      'displayName': displayName,
-      'labels': labels,
-      'name': name,
-      'state': state,
-      'updateTime': updateTime,
+      'apiConfig': ?apiConfig,
+      'createTime': ?createTime,
+      'defaultHostname': ?defaultHostname,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'name': ?name,
+      'state': ?state,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetGatewayResult(
-      apiConfig: map['apiConfig'] as String,
-      createTime: map['createTime'] as String,
-      defaultHostname: map['defaultHostname'] as String,
-      displayName: map['displayName'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      state: map['state'] as String,
-      updateTime: map['updateTime'] as String,
+      apiConfig: (() { final guardedValue = map['apiConfig']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultHostname: (() { final guardedValue = map['defaultHostname']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

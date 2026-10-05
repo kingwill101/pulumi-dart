@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeploymentResourcePoolAiplatformV1beta1Args {
   final pulumi.Input<String> deploymentResourcePoolId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDeploymentResourcePoolAiplatformV1beta1Args].
   /// [deploymentResourcePoolId] Required.

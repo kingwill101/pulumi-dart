@@ -1,4 +1,6 @@
-enum JobJobBenefitsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum JobJobBenefitsItem implements pulumi.PulumiEnum<String> {
   jobBenefitUnspecified("JOB_BENEFIT_UNSPECIFIED"),
   childCare("CHILD_CARE"),
   dental("DENTAL"),
@@ -13,6 +15,7 @@ enum JobJobBenefitsItem {
   vision("VISION");
 
   const JobJobBenefitsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static JobJobBenefitsItem fromValue(String value) {

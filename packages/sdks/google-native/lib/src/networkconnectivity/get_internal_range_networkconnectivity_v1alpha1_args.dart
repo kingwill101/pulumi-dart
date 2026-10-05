@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInternalRangeNetworkconnectivityV1alpha1Args {
   final pulumi.Input<String> internalRangeId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetInternalRangeNetworkconnectivityV1alpha1Args].
   /// [internalRangeId] Required.

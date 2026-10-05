@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 &lt;= i &lt; N-1): scale * (growth_factor ^ i).Lower bound (1 &lt;= i &lt; N): scale * (growth_factor ^ (i - 1)).
 class Exponential {
   /// Must be greater than 1.
-  final pulumi.Input<double>? growthFactor;
+  final pulumi.Input<double?>? growthFactor;
   /// Must be greater than 0.
-  final pulumi.Input<int>? numFiniteBuckets;
+  final pulumi.Input<int?>? numFiniteBuckets;
   /// Must be greater than 0.
-  final pulumi.Input<double>? scale;
+  final pulumi.Input<double?>? scale;
 
   /// Creates a new [Exponential].
   /// [growthFactor] Must be greater than 1.
@@ -31,9 +31,9 @@ class Exponential {
 
   factory Exponential.fromMap(Map<String, dynamic> map) {
     return Exponential(
-      growthFactor: (() { final guardedValue = map['growthFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      numFiniteBuckets: (() { final guardedValue = map['numFiniteBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      scale: (() { final guardedValue = map['scale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      growthFactor: (() { final guardedValue = map['growthFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      numFiniteBuckets: (() { final guardedValue = map['numFiniteBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      scale: (() { final guardedValue = map['scale']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

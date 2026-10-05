@@ -39,7 +39,7 @@ class DsRecordResponse {
       algorithm: pulumi.Input.fromValue(map['algorithm'] as String),
       digest: pulumi.Input.fromValue(map['digest'] as String),
       digestType: pulumi.Input.fromValue(map['digestType'] as String),
-      keyTag: pulumi.Input.fromValue(map['keyTag'] as int),
+      keyTag: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['keyTag'])),
     );
   }
 }

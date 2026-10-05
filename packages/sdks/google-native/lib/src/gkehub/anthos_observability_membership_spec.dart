@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// **Anthosobservability**: Per-Membership Feature spec.
 class AnthosObservabilityMembershipSpec {
   /// Use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
-  final pulumi.Input<bool>? doNotOptimizeMetrics;
+  final pulumi.Input<bool?>? doNotOptimizeMetrics;
   /// Enable collecting and reporting metrics and logs from user apps.
-  final pulumi.Input<bool>? enableStackdriverOnApplications;
+  final pulumi.Input<bool?>? enableStackdriverOnApplications;
   /// the version of stackdriver operator used by this feature
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AnthosObservabilityMembershipSpec].
   /// [doNotOptimizeMetrics] Use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics

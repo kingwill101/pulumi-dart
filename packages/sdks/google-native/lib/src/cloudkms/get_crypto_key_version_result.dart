@@ -6,37 +6,37 @@ import 'key_operation_attestation_response.dart';
 /// Result data returned by getCryptoKeyVersion.
 class GetCryptoKeyVersionResult {
   /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-  final String algorithm;
+  final String? algorithm;
   /// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
-  final KeyOperationAttestationResponse attestation;
+  final KeyOperationAttestationResponse? attestation;
   /// The time at which this CryptoKeyVersion was created.
-  final String createTime;
+  final String? createTime;
   /// The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
-  final String destroyEventTime;
+  final String? destroyEventTime;
   /// The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
-  final String destroyTime;
+  final String? destroyTime;
   /// The root cause of the most recent external destruction failure. Only present if state is EXTERNAL_DESTRUCTION_FAILED.
-  final String externalDestructionFailureReason;
+  final String? externalDestructionFailureReason;
   /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
-  final ExternalProtectionLevelOptionsResponse externalProtectionLevelOptions;
+  final ExternalProtectionLevelOptionsResponse? externalProtectionLevelOptions;
   /// The time this CryptoKeyVersion's key material was generated.
-  final String generateTime;
+  final String? generateTime;
   /// The root cause of the most recent generation failure. Only present if state is GENERATION_FAILED.
-  final String generationFailureReason;
+  final String? generationFailureReason;
   /// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
-  final String importFailureReason;
+  final String? importFailureReason;
   /// The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
-  final String importJob;
+  final String? importJob;
   /// The time at which this CryptoKeyVersion's key material was most recently imported.
-  final String importTime;
+  final String? importTime;
   /// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
-  final String name;
+  final String? name;
   /// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
-  final String protectionLevel;
+  final String? protectionLevel;
   /// Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
-  final bool reimportEligible;
+  final bool? reimportEligible;
   /// The current state of the CryptoKeyVersion.
-  final String state;
+  final String? state;
 
   /// Creates a new [GetCryptoKeyVersionResult].
   /// [algorithm] The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
@@ -56,63 +56,63 @@ class GetCryptoKeyVersionResult {
   /// [reimportEligible] Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
   /// [state] The current state of the CryptoKeyVersion.
   const GetCryptoKeyVersionResult({
-    required this.algorithm,
-    required this.attestation,
-    required this.createTime,
-    required this.destroyEventTime,
-    required this.destroyTime,
-    required this.externalDestructionFailureReason,
-    required this.externalProtectionLevelOptions,
-    required this.generateTime,
-    required this.generationFailureReason,
-    required this.importFailureReason,
-    required this.importJob,
-    required this.importTime,
-    required this.name,
-    required this.protectionLevel,
-    required this.reimportEligible,
-    required this.state,
+    this.algorithm,
+    this.attestation,
+    this.createTime,
+    this.destroyEventTime,
+    this.destroyTime,
+    this.externalDestructionFailureReason,
+    this.externalProtectionLevelOptions,
+    this.generateTime,
+    this.generationFailureReason,
+    this.importFailureReason,
+    this.importJob,
+    this.importTime,
+    this.name,
+    this.protectionLevel,
+    this.reimportEligible,
+    this.state,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'algorithm': algorithm,
-      'attestation': attestation.toMap(),
-      'createTime': createTime,
-      'destroyEventTime': destroyEventTime,
-      'destroyTime': destroyTime,
-      'externalDestructionFailureReason': externalDestructionFailureReason,
-      'externalProtectionLevelOptions': externalProtectionLevelOptions.toMap(),
-      'generateTime': generateTime,
-      'generationFailureReason': generationFailureReason,
-      'importFailureReason': importFailureReason,
-      'importJob': importJob,
-      'importTime': importTime,
-      'name': name,
-      'protectionLevel': protectionLevel,
-      'reimportEligible': reimportEligible,
-      'state': state,
+      'algorithm': ?algorithm,
+      'attestation': ?attestation?.toMap(),
+      'createTime': ?createTime,
+      'destroyEventTime': ?destroyEventTime,
+      'destroyTime': ?destroyTime,
+      'externalDestructionFailureReason': ?externalDestructionFailureReason,
+      'externalProtectionLevelOptions': ?externalProtectionLevelOptions?.toMap(),
+      'generateTime': ?generateTime,
+      'generationFailureReason': ?generationFailureReason,
+      'importFailureReason': ?importFailureReason,
+      'importJob': ?importJob,
+      'importTime': ?importTime,
+      'name': ?name,
+      'protectionLevel': ?protectionLevel,
+      'reimportEligible': ?reimportEligible,
+      'state': ?state,
     };
   }
 
   factory GetCryptoKeyVersionResult.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeyVersionResult(
-      algorithm: map['algorithm'] as String,
-      attestation: KeyOperationAttestationResponse.fromMap((map['attestation']! as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      destroyEventTime: map['destroyEventTime'] as String,
-      destroyTime: map['destroyTime'] as String,
-      externalDestructionFailureReason: map['externalDestructionFailureReason'] as String,
-      externalProtectionLevelOptions: ExternalProtectionLevelOptionsResponse.fromMap((map['externalProtectionLevelOptions']! as Map).cast<String, dynamic>()),
-      generateTime: map['generateTime'] as String,
-      generationFailureReason: map['generationFailureReason'] as String,
-      importFailureReason: map['importFailureReason'] as String,
-      importJob: map['importJob'] as String,
-      importTime: map['importTime'] as String,
-      name: map['name'] as String,
-      protectionLevel: map['protectionLevel'] as String,
-      reimportEligible: map['reimportEligible'] as bool,
-      state: map['state'] as String,
+      algorithm: (() { final guardedValue = map['algorithm']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      attestation: (() { final guardedValue = map['attestation']; if (guardedValue == null) return null; return KeyOperationAttestationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      destroyEventTime: (() { final guardedValue = map['destroyEventTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      destroyTime: (() { final guardedValue = map['destroyTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      externalDestructionFailureReason: (() { final guardedValue = map['externalDestructionFailureReason']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      externalProtectionLevelOptions: (() { final guardedValue = map['externalProtectionLevelOptions']; if (guardedValue == null) return null; return ExternalProtectionLevelOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      generateTime: (() { final guardedValue = map['generateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      generationFailureReason: (() { final guardedValue = map['generationFailureReason']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      importFailureReason: (() { final guardedValue = map['importFailureReason']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      importJob: (() { final guardedValue = map['importJob']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      importTime: (() { final guardedValue = map['importTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      protectionLevel: (() { final guardedValue = map['protectionLevel']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      reimportEligible: (() { final guardedValue = map['reimportEligible']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

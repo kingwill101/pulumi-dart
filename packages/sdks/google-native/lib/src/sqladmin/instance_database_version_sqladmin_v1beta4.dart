@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The database engine type and version. The `databaseVersion` field cannot be changed after instance creation.
-enum InstanceDatabaseVersionSqladminV1beta4 {
+enum InstanceDatabaseVersionSqladminV1beta4 implements pulumi.PulumiEnum<String> {
   sqlDatabaseVersionUnspecified("SQL_DATABASE_VERSION_UNSPECIFIED"),
   mysql51("MYSQL_5_1"),
   mysql55("MYSQL_5_5"),
@@ -39,6 +41,7 @@ enum InstanceDatabaseVersionSqladminV1beta4 {
   sqlserver2022Web("SQLSERVER_2022_WEB");
 
   const InstanceDatabaseVersionSqladminV1beta4(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceDatabaseVersionSqladminV1beta4 fromValue(String value) {

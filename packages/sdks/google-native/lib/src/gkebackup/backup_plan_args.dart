@@ -11,23 +11,23 @@ import 'schedule.dart';
 /// {@macro pulumi_gkebackup_v1_backup_plan_args_doc}
 class BackupPlanArgs {
   /// Optional. Defines the configuration of Backups created via this BackupPlan.
-  final pulumi.Input<BackupConfig>? backupConfig;
+  final pulumi.Input<BackupConfig?>? backupConfig;
   /// Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location
   final pulumi.Input<String> backupPlanId;
   /// Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
-  final pulumi.Input<Schedule>? backupSchedule;
+  final pulumi.Input<Schedule?>? backupSchedule;
   /// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
   final pulumi.Input<String> cluster;
   /// Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
-  final pulumi.Input<bool>? deactivated;
+  final pulumi.Input<bool?>? deactivated;
   /// Optional. User specified descriptive string for this BackupPlan.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. A set of custom labels supplied by user.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
-  final pulumi.Input<RetentionPolicy>? retentionPolicy;
+  final pulumi.Input<RetentionPolicy?>? retentionPolicy;
 
   /// Creates a new [BackupPlanArgs].
   /// [backupConfig] Optional. Defines the configuration of Backups created via this BackupPlan.

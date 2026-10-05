@@ -7,9 +7,9 @@ import 'rsa_key_type.dart';
 /// Describes a "type" of key that may be used in a Certificate issued from a CaPool. Note that a single AllowedKeyType may refer to either a fully-qualified key algorithm, such as RSA 4096, or a family of key algorithms, such as any RSA key.
 class AllowedKeyType {
   /// Represents an allowed Elliptic Curve key type.
-  final pulumi.Input<EcKeyType>? ellipticCurve;
+  final pulumi.Input<EcKeyType?>? ellipticCurve;
   /// Represents an allowed RSA key type.
-  final pulumi.Input<RsaKeyType>? rsa;
+  final pulumi.Input<RsaKeyType?>? rsa;
 
   /// Creates a new [AllowedKeyType].
   /// [ellipticCurve] Represents an allowed Elliptic Curve key type.

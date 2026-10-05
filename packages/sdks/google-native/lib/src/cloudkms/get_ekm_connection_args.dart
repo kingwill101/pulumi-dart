@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetEkmConnectionArgs {
   final pulumi.Input<String> ekmConnectionId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetEkmConnectionArgs].
   /// [ekmConnectionId] Required.

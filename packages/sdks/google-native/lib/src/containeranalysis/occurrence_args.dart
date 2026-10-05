@@ -20,36 +20,36 @@ import 'vulnerability_occurrence.dart';
 /// {@macro pulumi_containeranalysis_v1_occurrence_args_doc}
 class OccurrenceArgs {
   /// Describes an attestation of an artifact.
-  final pulumi.Input<AttestationOccurrence>? attestation;
+  final pulumi.Input<AttestationOccurrence?>? attestation;
   /// Describes a verifiable build.
-  final pulumi.Input<BuildOccurrence>? build;
+  final pulumi.Input<BuildOccurrence?>? build;
   /// Describes a compliance violation on a linked resource.
-  final pulumi.Input<ComplianceOccurrence>? compliance;
+  final pulumi.Input<ComplianceOccurrence?>? compliance;
   /// Describes the deployment of an artifact on a runtime.
-  final pulumi.Input<DeploymentOccurrence>? deployment;
+  final pulumi.Input<DeploymentOccurrence?>? deployment;
   /// Describes when a resource was discovered.
-  final pulumi.Input<DiscoveryOccurrence>? discovery;
+  final pulumi.Input<DiscoveryOccurrence?>? discovery;
   /// Describes an attestation of an artifact using dsse.
-  final pulumi.Input<DSSEAttestationOccurrence>? dsseAttestation;
+  final pulumi.Input<DSSEAttestationOccurrence?>? dsseAttestation;
   /// https://github.com/secure-systems-lab/dsse
-  final pulumi.Input<Envelope>? envelope;
+  final pulumi.Input<Envelope?>? envelope;
   /// Describes how this resource derives from the basis in the associated note.
-  final pulumi.Input<ImageOccurrence>? image;
+  final pulumi.Input<ImageOccurrence?>? image;
   /// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
   final pulumi.Input<String> noteName;
   /// Describes the installation of a package on the linked resource.
-  final pulumi.Input<PackageOccurrence>? package;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<PackageOccurrence?>? package;
+  final pulumi.Input<String?>? project;
   /// A description of actions that can be taken to remedy the note.
-  final pulumi.Input<String>? remediation;
+  final pulumi.Input<String?>? remediation;
   /// Immutable. A URI that represents the resource for which the occurrence applies. For example, `https://gcr.io/project/image@sha256:123abc` for a Docker image.
   final pulumi.Input<String> resourceUri;
   /// Describes a specific SBOM reference occurrences.
-  final pulumi.Input<SBOMReferenceOccurrence>? sbomReference;
+  final pulumi.Input<SBOMReferenceOccurrence?>? sbomReference;
   /// Describes an available package upgrade on the linked resource.
-  final pulumi.Input<UpgradeOccurrence>? upgrade;
+  final pulumi.Input<UpgradeOccurrence?>? upgrade;
   /// Describes a security vulnerability.
-  final pulumi.Input<VulnerabilityOccurrence>? vulnerability;
+  final pulumi.Input<VulnerabilityOccurrence?>? vulnerability;
 
   /// Creates a new [OccurrenceArgs].
   /// [attestation] Describes an attestation of an artifact.

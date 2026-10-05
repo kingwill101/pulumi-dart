@@ -39,8 +39,30 @@ class IosApp extends pulumi.CustomResource {
           'google-native:firebase/v1beta1:IosApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    apiKeyId = registerOutput<String>('apiKeyId');
+    appId = registerOutput<String>('appId');
+    appStoreId = registerOutput<String>('appStoreId');
+    bundleId = registerOutput<String>('bundleId');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    expireTime = registerOutput<String>('expireTime');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    teamId = registerOutput<String>('teamId');
+  }
+
+  /// Creates a typed reference to an existing [IosApp] resource.
+  IosApp.reference(String urn)
+    : super(
+        'google-native:firebase/v1beta1:IosApp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiKeyId = registerOutput<String>('apiKeyId');
     appId = registerOutput<String>('appId');
     appStoreId = registerOutput<String>('appStoreId');

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigFileDeploymentmanagerV2beta {
   /// The contents of the file.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
 
   /// Creates a new [ConfigFileDeploymentmanagerV2beta].
   /// [content] The contents of the file.

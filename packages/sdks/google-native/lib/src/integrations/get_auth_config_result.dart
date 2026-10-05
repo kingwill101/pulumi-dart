@@ -5,39 +5,39 @@ import 'google_cloud_integrations_v1alpha_credential_response.dart';
 /// Result data returned by getAuthConfig.
 class GetAuthConfigResult {
   /// Certificate id for client certificate
-  final String certificateId;
+  final String? certificateId;
   /// The timestamp when the auth config is created.
-  final String createTime;
+  final String? createTime;
   /// The creator's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-  final String creatorEmail;
+  final String? creatorEmail;
   /// Credential type of the encrypted credential.
-  final String credentialType;
+  final String? credentialType;
   /// Raw auth credentials.
-  final GoogleCloudIntegrationsV1alphaCredentialResponse decryptedCredential;
+  final GoogleCloudIntegrationsV1alphaCredentialResponse? decryptedCredential;
   /// A description of the auth config.
-  final String description;
+  final String? description;
   /// The name of the auth config.
-  final String displayName;
+  final String? displayName;
   /// Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.
-  final String encryptedCredential;
+  final String? encryptedCredential;
   /// User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.
-  final List<String> expiryNotificationDuration;
+  final List<String>? expiryNotificationDuration;
   /// The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-  final String lastModifierEmail;
+  final String? lastModifierEmail;
   /// Resource name of the SFDC instance projects/{project}/locations/{location}/authConfigs/{authConfig}.
-  final String name;
+  final String? name;
   /// User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
-  final String overrideValidTime;
+  final String? overrideValidTime;
   /// The reason / details of the current status.
-  final String reason;
+  final String? reason;
   /// The status of the auth config.
-  final String state;
+  final String? state;
   /// The timestamp when the auth config is modified.
-  final String updateTime;
+  final String? updateTime;
   /// The time until the auth config is valid. Empty or max value is considered the auth config won't expire.
-  final String validTime;
+  final String? validTime;
   /// The visibility of the auth config.
-  final String visibility;
+  final String? visibility;
 
   /// Creates a new [GetAuthConfigResult].
   /// [certificateId] Certificate id for client certificate
@@ -58,66 +58,66 @@ class GetAuthConfigResult {
   /// [validTime] The time until the auth config is valid. Empty or max value is considered the auth config won't expire.
   /// [visibility] The visibility of the auth config.
   const GetAuthConfigResult({
-    required this.certificateId,
-    required this.createTime,
-    required this.creatorEmail,
-    required this.credentialType,
-    required this.decryptedCredential,
-    required this.description,
-    required this.displayName,
-    required this.encryptedCredential,
-    required this.expiryNotificationDuration,
-    required this.lastModifierEmail,
-    required this.name,
-    required this.overrideValidTime,
-    required this.reason,
-    required this.state,
-    required this.updateTime,
-    required this.validTime,
-    required this.visibility,
+    this.certificateId,
+    this.createTime,
+    this.creatorEmail,
+    this.credentialType,
+    this.decryptedCredential,
+    this.description,
+    this.displayName,
+    this.encryptedCredential,
+    this.expiryNotificationDuration,
+    this.lastModifierEmail,
+    this.name,
+    this.overrideValidTime,
+    this.reason,
+    this.state,
+    this.updateTime,
+    this.validTime,
+    this.visibility,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateId': certificateId,
-      'createTime': createTime,
-      'creatorEmail': creatorEmail,
-      'credentialType': credentialType,
-      'decryptedCredential': decryptedCredential.toMap(),
-      'description': description,
-      'displayName': displayName,
-      'encryptedCredential': encryptedCredential,
-      'expiryNotificationDuration': expiryNotificationDuration,
-      'lastModifierEmail': lastModifierEmail,
-      'name': name,
-      'overrideValidTime': overrideValidTime,
-      'reason': reason,
-      'state': state,
-      'updateTime': updateTime,
-      'validTime': validTime,
-      'visibility': visibility,
+      'certificateId': ?certificateId,
+      'createTime': ?createTime,
+      'creatorEmail': ?creatorEmail,
+      'credentialType': ?credentialType,
+      'decryptedCredential': ?decryptedCredential?.toMap(),
+      'description': ?description,
+      'displayName': ?displayName,
+      'encryptedCredential': ?encryptedCredential,
+      'expiryNotificationDuration': ?expiryNotificationDuration,
+      'lastModifierEmail': ?lastModifierEmail,
+      'name': ?name,
+      'overrideValidTime': ?overrideValidTime,
+      'reason': ?reason,
+      'state': ?state,
+      'updateTime': ?updateTime,
+      'validTime': ?validTime,
+      'visibility': ?visibility,
     };
   }
 
   factory GetAuthConfigResult.fromMap(Map<String, dynamic> map) {
     return GetAuthConfigResult(
-      certificateId: map['certificateId'] as String,
-      createTime: map['createTime'] as String,
-      creatorEmail: map['creatorEmail'] as String,
-      credentialType: map['credentialType'] as String,
-      decryptedCredential: GoogleCloudIntegrationsV1alphaCredentialResponse.fromMap((map['decryptedCredential']! as Map).cast<String, dynamic>()),
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      encryptedCredential: map['encryptedCredential'] as String,
-      expiryNotificationDuration: (map['expiryNotificationDuration'] as List).cast<String>(),
-      lastModifierEmail: map['lastModifierEmail'] as String,
-      name: map['name'] as String,
-      overrideValidTime: map['overrideValidTime'] as String,
-      reason: map['reason'] as String,
-      state: map['state'] as String,
-      updateTime: map['updateTime'] as String,
-      validTime: map['validTime'] as String,
-      visibility: map['visibility'] as String,
+      certificateId: (() { final guardedValue = map['certificateId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creatorEmail: (() { final guardedValue = map['creatorEmail']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      credentialType: (() { final guardedValue = map['credentialType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      decryptedCredential: (() { final guardedValue = map['decryptedCredential']; if (guardedValue == null) return null; return GoogleCloudIntegrationsV1alphaCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      encryptedCredential: (() { final guardedValue = map['encryptedCredential']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expiryNotificationDuration: (() { final guardedValue = map['expiryNotificationDuration']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      lastModifierEmail: (() { final guardedValue = map['lastModifierEmail']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      overrideValidTime: (() { final guardedValue = map['overrideValidTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      reason: (() { final guardedValue = map['reason']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      validTime: (() { final guardedValue = map['validTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      visibility: (() { final guardedValue = map['visibility']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

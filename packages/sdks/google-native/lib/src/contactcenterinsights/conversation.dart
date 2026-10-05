@@ -5,6 +5,7 @@ import 'google_cloud_contactcenterinsights_v1_conversation_call_metadata_respons
 import 'google_cloud_contactcenterinsights_v1_conversation_data_source_response.dart';
 import 'google_cloud_contactcenterinsights_v1_conversation_summarization_suggestion_data_response.dart';
 import 'google_cloud_contactcenterinsights_v1_conversation_transcript_response.dart';
+import 'google_cloud_contactcenterinsights_v1_runtime_annotation_response.dart';
 
 /// Creates a conversation.
 class Conversation extends pulumi.CustomResource {
@@ -41,7 +42,7 @@ class Conversation extends pulumi.CustomResource {
   late final pulumi.Output<String> obfuscatedUserId;
   late final pulumi.Output<String> project;
   /// The annotations that were generated during the customer and agent interaction.
-  late final pulumi.Output<List<Map<String, dynamic>>> runtimeAnnotations;
+  late final pulumi.Output<List<GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse>> runtimeAnnotations;
   /// The time at which the conversation started.
   late final pulumi.Output<String> startTime;
   /// The conversation transcript.
@@ -65,17 +66,17 @@ class Conversation extends pulumi.CustomResource {
           'google-native:contactcenterinsights/v1:Conversation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     agentId = registerOutput<String>('agentId');
     callMetadata = registerOutput<GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse>('callMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     conversationId = registerOutput<String?>('conversationId');
     createTime = registerOutput<String>('createTime');
     dataSource = registerOutput<GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse>('dataSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    dialogflowIntents = registerOutput<Map<String, String>>('dialogflowIntents');
+    dialogflowIntents = registerOutput<Map<String, String>>('dialogflowIntents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     duration = registerOutput<String>('duration');
     expireTime = registerOutput<String>('expireTime');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     languageCode = registerOutput<String>('languageCode');
     latestAnalysis = registerOutput<GoogleCloudContactcenterinsightsV1AnalysisResponse>('latestAnalysis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1AnalysisResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     latestSummary = registerOutput<GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse>('latestSummary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -84,7 +85,41 @@ class Conversation extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     obfuscatedUserId = registerOutput<String>('obfuscatedUserId');
     project = registerOutput<String>('project');
-    runtimeAnnotations = registerOutput<List<Map<String, dynamic>>>('runtimeAnnotations');
+    runtimeAnnotations = registerOutput<List<GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse>>('runtimeAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse>(guardedValue, (value) => GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    startTime = registerOutput<String>('startTime');
+    transcript = registerOutput<GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse>('transcript', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ttl = registerOutput<String>('ttl');
+    turnCount = registerOutput<int>('turnCount');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Conversation] resource.
+  Conversation.reference(String urn)
+    : super(
+        'google-native:contactcenterinsights/v1:Conversation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentId = registerOutput<String>('agentId');
+    callMetadata = registerOutput<GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse>('callMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    conversationId = registerOutput<String?>('conversationId');
+    createTime = registerOutput<String>('createTime');
+    dataSource = registerOutput<GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse>('dataSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dialogflowIntents = registerOutput<Map<String, String>>('dialogflowIntents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    duration = registerOutput<String>('duration');
+    expireTime = registerOutput<String>('expireTime');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    languageCode = registerOutput<String>('languageCode');
+    latestAnalysis = registerOutput<GoogleCloudContactcenterinsightsV1AnalysisResponse>('latestAnalysis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1AnalysisResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    latestSummary = registerOutput<GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse>('latestSummary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    medium = registerOutput<String>('medium');
+    this.name = registerOutput<String>('name');
+    obfuscatedUserId = registerOutput<String>('obfuscatedUserId');
+    project = registerOutput<String>('project');
+    runtimeAnnotations = registerOutput<List<GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse>>('runtimeAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse>(guardedValue, (value) => GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     startTime = registerOutput<String>('startTime');
     transcript = registerOutput<GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse>('transcript', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ttl = registerOutput<String>('ttl');

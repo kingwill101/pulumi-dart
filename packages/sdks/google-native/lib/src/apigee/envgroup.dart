@@ -27,10 +27,27 @@ class Envgroup extends pulumi.CustomResource {
           'google-native:apigee/v1:Envgroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
-    hostnames = registerOutput<List<String>>('hostnames');
+    hostnames = registerOutput<List<String>>('hostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Envgroup] resource.
+  Envgroup.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Envgroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    hostnames = registerOutput<List<String>>('hostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     lastModifiedAt = registerOutput<String>('lastModifiedAt');
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');

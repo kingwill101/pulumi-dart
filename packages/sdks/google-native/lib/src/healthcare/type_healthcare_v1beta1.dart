@@ -7,11 +7,11 @@ import 'type_primitive_healthcare_v1beta1.dart';
 /// A type definition for some HL7v2 type (incl. Segments and Datatypes).
 class TypeHealthcareV1beta1 {
   /// The (sub) fields this type has (if not primitive).
-  final pulumi.Input<List<FieldHealthcareV1beta1>>? fields;
+  final pulumi.Input<List<FieldHealthcareV1beta1>?>? fields;
   /// The name of this type. This would be the segment or datatype name. For example, "PID" or "XPN".
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
-  final pulumi.Input<TypePrimitiveHealthcareV1beta1>? primitive;
+  final pulumi.Input<TypePrimitiveHealthcareV1beta1?>? primitive;
 
   /// Creates a new [TypeHealthcareV1beta1].
   /// [fields] The (sub) fields this type has (if not primitive).

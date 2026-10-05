@@ -17,9 +17,9 @@ class OrganizationContactArgs {
   final pulumi.Input<List<OrganizationContactNotificationCategorySubscriptionsItem>> notificationCategorySubscriptions;
   final pulumi.Input<String> organizationId;
   /// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
-  final pulumi.Input<String>? validateTime;
+  final pulumi.Input<String?>? validateTime;
   /// The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
-  final pulumi.Input<OrganizationContactValidationState>? validationState;
+  final pulumi.Input<OrganizationContactValidationState?>? validationState;
 
   /// Creates a new [OrganizationContactArgs].
   /// [email] The email address to send notifications to. The email address does not need to be a Google Account.

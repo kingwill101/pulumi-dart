@@ -7,11 +7,11 @@ import 'uri.dart';
 /// Specifies details on how to handle (and presumably, fix) a vulnerability.
 class RemediationContaineranalysisV1alpha1 {
   /// Contains a comprehensive human-readable discussion of the remediation.
-  final pulumi.Input<String>? details;
+  final pulumi.Input<String?>? details;
   /// The type of remediation that can be applied.
-  final pulumi.Input<RemediationRemediationTypeContaineranalysisV1alpha1>? remediationType;
+  final pulumi.Input<RemediationRemediationTypeContaineranalysisV1alpha1?>? remediationType;
   /// Contains the URL where to obtain the remediation.
-  final pulumi.Input<URI>? remediationUri;
+  final pulumi.Input<URI?>? remediationUri;
 
   /// Creates a new [RemediationContaineranalysisV1alpha1].
   /// [details] Contains a comprehensive human-readable discussion of the remediation.

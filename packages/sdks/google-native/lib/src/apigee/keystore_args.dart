@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeystoreArgs {
   final pulumi.Input<String> environmentId;
   /// Resource ID for this keystore. Values must match the regular expression `[\w[:space:].-]{1,255}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
 
   /// Creates a new [KeystoreArgs].

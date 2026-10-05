@@ -29,8 +29,25 @@ class Instance extends pulumi.CustomResource {
           'google-native:remotebuildexecution/v1alpha:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    featurePolicy = registerOutput<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse>('featurePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    loggingEnabled = registerOutput<bool>('loggingEnabled');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'google-native:remotebuildexecution/v1alpha:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     featurePolicy = registerOutput<GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse>('featurePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     loggingEnabled = registerOutput<bool>('loggingEnabled');

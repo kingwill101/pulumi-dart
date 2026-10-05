@@ -1,4 +1,6 @@
-enum LoggingComponentConfigEnableComponentsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum LoggingComponentConfigEnableComponentsItem implements pulumi.PulumiEnum<String> {
   componentUnspecified("COMPONENT_UNSPECIFIED"),
   systemComponents("SYSTEM_COMPONENTS"),
   workloads("WORKLOADS"),
@@ -7,6 +9,7 @@ enum LoggingComponentConfigEnableComponentsItem {
   controllerManager("CONTROLLER_MANAGER");
 
   const LoggingComponentConfigEnableComponentsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static LoggingComponentConfigEnableComponentsItem fromValue(String value) {

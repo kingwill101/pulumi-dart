@@ -17,3 +17,14 @@ Future<GetTraceSinkResult> getTraceSink(
   );
   return GetTraceSinkResult.fromMap(result);
 }
+
+pulumi.Output<GetTraceSinkResult> getTraceSinkOutput(
+  GetTraceSinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudtrace/v2beta1:getTraceSink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTraceSinkResult.fromMap);
+}

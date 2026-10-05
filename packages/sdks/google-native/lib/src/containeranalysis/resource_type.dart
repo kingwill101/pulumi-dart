@@ -6,11 +6,11 @@ import 'hash.dart';
 /// Resource is an entity that can have metadata. E.g., a Docker image.
 class ResourceType {
   /// The hash of the resource content. E.g., the Docker digest.
-  final pulumi.Input<Hash>? contentHash;
+  final pulumi.Input<Hash?>? contentHash;
   /// The name of the resource. E.g., the name of a Docker image - "Debian".
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The unique URI of the resource. E.g., "https://gcr.io/project/image@sha256:foo" for a Docker image.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [ResourceType].
   /// [contentHash] The hash of the resource content. E.g., the Docker digest.

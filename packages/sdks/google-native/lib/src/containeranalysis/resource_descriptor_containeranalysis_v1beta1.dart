@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceDescriptorContaineranalysisV1beta1 {
-  final pulumi.Input<Map<String, String>>? annotations;
-  final pulumi.Input<String>? content;
-  final pulumi.Input<Map<String, String>>? digest;
-  final pulumi.Input<String>? downloadLocation;
-  final pulumi.Input<String>? mediaType;
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<Map<String, String>?>? annotations;
+  final pulumi.Input<String?>? content;
+  final pulumi.Input<Map<String, String>?>? digest;
+  final pulumi.Input<String?>? downloadLocation;
+  final pulumi.Input<String?>? mediaType;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [ResourceDescriptorContaineranalysisV1beta1].
   /// [annotations] Optional.

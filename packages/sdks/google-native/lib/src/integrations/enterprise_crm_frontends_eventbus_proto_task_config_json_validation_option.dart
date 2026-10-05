@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// If set, overrides the option configured in the Task implementation class.
-enum EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption {
+enum EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption implements pulumi.PulumiEnum<String> {
   unspecifiedJsonValidationOption("UNSPECIFIED_JSON_VALIDATION_OPTION"),
   skip("SKIP"),
   preExecution("PRE_EXECUTION"),
@@ -7,6 +9,7 @@ enum EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption {
   prePostExecution("PRE_POST_EXECUTION");
 
   const EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption fromValue(String value) {

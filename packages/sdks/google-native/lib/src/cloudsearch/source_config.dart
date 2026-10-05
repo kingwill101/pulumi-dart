@@ -8,11 +8,11 @@ import 'source_scoring_config.dart';
 /// Configurations for a source while processing a Search or Suggest request.
 class SourceConfig {
   /// The crowding configuration for the source.
-  final pulumi.Input<SourceCrowdingConfig>? crowdingConfig;
+  final pulumi.Input<SourceCrowdingConfig?>? crowdingConfig;
   /// The scoring configuration for the source.
-  final pulumi.Input<SourceScoringConfig>? scoringConfig;
+  final pulumi.Input<SourceScoringConfig?>? scoringConfig;
   /// The source for which this configuration is to be used.
-  final pulumi.Input<Source>? source;
+  final pulumi.Input<Source?>? source;
 
   /// Creates a new [SourceConfig].
   /// [crowdingConfig] The crowding configuration for the source.

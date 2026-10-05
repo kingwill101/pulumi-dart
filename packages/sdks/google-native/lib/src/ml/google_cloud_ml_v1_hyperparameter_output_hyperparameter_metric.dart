@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An observed value of a metric.
 class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
   /// The objective value at this training step.
-  final pulumi.Input<double>? objectiveValue;
+  final pulumi.Input<double?>? objectiveValue;
   /// The global training step for this metric.
-  final pulumi.Input<String>? trainingStep;
+  final pulumi.Input<String?>? trainingStep;
 
   /// Creates a new [GoogleCloudMlV1HyperparameterOutputHyperparameterMetric].
   /// [objectiveValue] The objective value at this training step.
@@ -26,7 +26,7 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
 
   factory GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1HyperparameterOutputHyperparameterMetric(
-      objectiveValue: (() { final guardedValue = map['objectiveValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      objectiveValue: (() { final guardedValue = map['objectiveValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       trainingStep: (() { final guardedValue = map['trainingStep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

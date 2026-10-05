@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The direction in which this rule applies.
-enum FirewallPolicyRuleDirectionComputeV1 {
+enum FirewallPolicyRuleDirectionComputeV1 implements pulumi.PulumiEnum<String> {
   egress("EGRESS"),
   ingress("INGRESS");
 
   const FirewallPolicyRuleDirectionComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static FirewallPolicyRuleDirectionComputeV1 fromValue(String value) {

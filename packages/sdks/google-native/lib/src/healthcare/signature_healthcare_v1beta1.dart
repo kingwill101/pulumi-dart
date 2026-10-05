@@ -6,11 +6,11 @@ import 'image_healthcare_v1beta1.dart';
 /// User signature.
 class SignatureHealthcareV1beta1 {
   /// Optional. An image of the user's signature.
-  final pulumi.Input<ImageHealthcareV1beta1>? image;
+  final pulumi.Input<ImageHealthcareV1beta1?>? image;
   /// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// Optional. Timestamp of the signature.
-  final pulumi.Input<String>? signatureTime;
+  final pulumi.Input<String?>? signatureTime;
   /// User's UUID provided by the client.
   final pulumi.Input<String> userId;
 

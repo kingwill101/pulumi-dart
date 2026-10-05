@@ -42,9 +42,33 @@ class WorkerPool extends pulumi.CustomResource {
           'google-native:cloudbuild/v1:WorkerPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'workerPoolId']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privatePoolV1Config = registerOutput<PrivatePoolV1ConfigResponse>('privatePoolV1Config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivatePoolV1ConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    workerPoolId = registerOutput<String>('workerPoolId');
+  }
+
+  /// Creates a typed reference to an existing [WorkerPool] resource.
+  WorkerPool.reference(String urn)
+    : super(
+        'google-native:cloudbuild/v1:WorkerPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String>('displayName');

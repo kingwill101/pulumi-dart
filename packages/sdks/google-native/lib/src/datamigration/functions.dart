@@ -42,6 +42,17 @@ Future<GetConnectionProfileResult> getConnectionProfile(
   return GetConnectionProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionProfileResult> getConnectionProfileOutput(
+  GetConnectionProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datamigration/v1:getConnectionProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionProfileResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datamigration_v1_get_connection_profile_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -56,6 +67,17 @@ Future<GetConnectionProfileIamPolicyResult> getConnectionProfileIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectionProfileIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetConnectionProfileIamPolicyResult> getConnectionProfileIamPolicyOutput(
+  GetConnectionProfileIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datamigration/v1:getConnectionProfileIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionProfileIamPolicyResult.fromMap);
 }
 
 /// Gets details of a single conversion workspace.
@@ -74,6 +96,17 @@ Future<GetConversionWorkspaceResult> getConversionWorkspace(
   return GetConversionWorkspaceResult.fromMap(result);
 }
 
+pulumi.Output<GetConversionWorkspaceResult> getConversionWorkspaceOutput(
+  GetConversionWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datamigration/v1:getConversionWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConversionWorkspaceResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datamigration_v1_get_conversion_workspace_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -88,6 +121,17 @@ Future<GetConversionWorkspaceIamPolicyResult> getConversionWorkspaceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConversionWorkspaceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetConversionWorkspaceIamPolicyResult> getConversionWorkspaceIamPolicyOutput(
+  GetConversionWorkspaceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datamigration/v1:getConversionWorkspaceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConversionWorkspaceIamPolicyResult.fromMap);
 }
 
 /// Gets the details of a mapping rule.
@@ -106,6 +150,17 @@ Future<GetMappingRuleResult> getMappingRule(
   return GetMappingRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetMappingRuleResult> getMappingRuleOutput(
+  GetMappingRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datamigration/v1:getMappingRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMappingRuleResult.fromMap);
+}
+
 /// Gets details of a single migration job.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datamigration_v1_get_migration_job_args_doc}
 /// [options] Invoke options controlling this call.
@@ -120,6 +175,17 @@ Future<GetMigrationJobResult> getMigrationJob(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMigrationJobResult.fromMap(result);
+}
+
+pulumi.Output<GetMigrationJobResult> getMigrationJobOutput(
+  GetMigrationJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datamigration/v1:getMigrationJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMigrationJobResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -138,6 +204,17 @@ Future<GetMigrationJobIamPolicyResult> getMigrationJobIamPolicy(
   return GetMigrationJobIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetMigrationJobIamPolicyResult> getMigrationJobIamPolicyOutput(
+  GetMigrationJobIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datamigration/v1:getMigrationJobIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMigrationJobIamPolicyResult.fromMap);
+}
+
 /// Gets details of a single private connection.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datamigration_v1_get_private_connection_args_doc}
 /// [options] Invoke options controlling this call.
@@ -152,6 +229,17 @@ Future<GetPrivateConnectionResult> getPrivateConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateConnectionResult> getPrivateConnectionOutput(
+  GetPrivateConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datamigration/v1:getPrivateConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateConnectionResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -170,6 +258,17 @@ Future<GetPrivateConnectionIamPolicyResult> getPrivateConnectionIamPolicy(
   return GetPrivateConnectionIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateConnectionIamPolicyResult> getPrivateConnectionIamPolicyOutput(
+  GetPrivateConnectionIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datamigration/v1:getPrivateConnectionIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateConnectionIamPolicyResult.fromMap);
+}
+
 /// Gets details of a single connection profile.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datamigration_v1beta1_get_connection_profile_datamigration_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -184,6 +283,17 @@ Future<GetConnectionProfileDatamigrationV1beta1Result> getConnectionProfileDatam
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectionProfileDatamigrationV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetConnectionProfileDatamigrationV1beta1Result> getConnectionProfileDatamigrationV1beta1Output(
+  GetConnectionProfileDatamigrationV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datamigration/v1beta1:getConnectionProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionProfileDatamigrationV1beta1Result.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -202,6 +312,17 @@ Future<GetConnectionProfileIamPolicyDatamigrationV1beta1Result> getConnectionPro
   return GetConnectionProfileIamPolicyDatamigrationV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetConnectionProfileIamPolicyDatamigrationV1beta1Result> getConnectionProfileIamPolicyDatamigrationV1beta1Output(
+  GetConnectionProfileIamPolicyDatamigrationV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datamigration/v1beta1:getConnectionProfileIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionProfileIamPolicyDatamigrationV1beta1Result.fromMap);
+}
+
 /// Gets details of a single migration job.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datamigration_v1beta1_get_migration_job_datamigration_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -218,6 +339,17 @@ Future<GetMigrationJobDatamigrationV1beta1Result> getMigrationJobDatamigrationV1
   return GetMigrationJobDatamigrationV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetMigrationJobDatamigrationV1beta1Result> getMigrationJobDatamigrationV1beta1Output(
+  GetMigrationJobDatamigrationV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datamigration/v1beta1:getMigrationJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMigrationJobDatamigrationV1beta1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datamigration_v1beta1_get_migration_job_iam_policy_datamigration_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -232,4 +364,15 @@ Future<GetMigrationJobIamPolicyDatamigrationV1beta1Result> getMigrationJobIamPol
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMigrationJobIamPolicyDatamigrationV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetMigrationJobIamPolicyDatamigrationV1beta1Result> getMigrationJobIamPolicyDatamigrationV1beta1Output(
+  GetMigrationJobIamPolicyDatamigrationV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:datamigration/v1beta1:getMigrationJobIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMigrationJobIamPolicyDatamigrationV1beta1Result.fromMap);
 }

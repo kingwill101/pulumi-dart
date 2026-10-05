@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1beta1ManualBatchTuningParametersResponse {
 
   factory GoogleCloudAiplatformV1beta1ManualBatchTuningParametersResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ManualBatchTuningParametersResponse(
-      batchSize: pulumi.Input.fromValue(map['batchSize'] as int),
+      batchSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['batchSize'])),
     );
   }
 }

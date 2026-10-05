@@ -45,10 +45,10 @@ class ScanConfig extends pulumi.CustomResource {
           'google-native:websecurityscanner/v1:ScanConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     authentication = registerOutput<AuthenticationResponse>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    blacklistPatterns = registerOutput<List<String>>('blacklistPatterns');
+    blacklistPatterns = registerOutput<List<String>>('blacklistPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
     exportToSecurityCommandCenter = registerOutput<String>('exportToSecurityCommandCenter');
     ignoreHttpStatusErrors = registerOutput<bool>('ignoreHttpStatusErrors');
@@ -58,7 +58,32 @@ class ScanConfig extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     riskLevel = registerOutput<String>('riskLevel');
     schedule = registerOutput<ScheduleResponse>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    startingUrls = registerOutput<List<String>>('startingUrls');
+    startingUrls = registerOutput<List<String>>('startingUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    staticIpScan = registerOutput<bool>('staticIpScan');
+    userAgent = registerOutput<String>('userAgent');
+  }
+
+  /// Creates a typed reference to an existing [ScanConfig] resource.
+  ScanConfig.reference(String urn)
+    : super(
+        'google-native:websecurityscanner/v1:ScanConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authentication = registerOutput<AuthenticationResponse>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    blacklistPatterns = registerOutput<List<String>>('blacklistPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String>('displayName');
+    exportToSecurityCommandCenter = registerOutput<String>('exportToSecurityCommandCenter');
+    ignoreHttpStatusErrors = registerOutput<bool>('ignoreHttpStatusErrors');
+    managedScan = registerOutput<bool>('managedScan');
+    maxQps = registerOutput<int>('maxQps');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    riskLevel = registerOutput<String>('riskLevel');
+    schedule = registerOutput<ScheduleResponse>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startingUrls = registerOutput<List<String>>('startingUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     staticIpScan = registerOutput<bool>('staticIpScan');
     userAgent = registerOutput<String>('userAgent');
   }

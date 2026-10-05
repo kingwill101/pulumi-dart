@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Label object for TypeProviders
 class TypeProviderLabelEntry {
   /// Key of the label
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Value of the label
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TypeProviderLabelEntry].
   /// [key] Key of the label

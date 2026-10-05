@@ -9,16 +9,16 @@ import 'google_privacy_dlp_v2_inspect_config.dart';
 /// {@macro pulumi_dlp_v2_inspect_template_args_doc}
 class InspectTemplateArgs {
   /// Short description (max 256 chars).
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name (max 256 chars).
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The core content of the template. Configuration of the scanning process.
-  final pulumi.Input<GooglePrivacyDlpV2InspectConfig>? inspectConfig;
+  final pulumi.Input<GooglePrivacyDlpV2InspectConfig?>? inspectConfig;
   /// Deprecated. This field has no effect.
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-  final pulumi.Input<String>? templateId;
+  final pulumi.Input<String?>? templateId;
 
   /// Creates a new [InspectTemplateArgs].
   /// [description] Short description (max 256 chars).

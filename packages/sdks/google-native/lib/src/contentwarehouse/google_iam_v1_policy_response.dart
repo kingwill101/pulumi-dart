@@ -41,7 +41,7 @@ class GoogleIamV1PolicyResponse {
       auditConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleIamV1AuditConfigResponse>(map['auditConfigs']!, (value) => GoogleIamV1AuditConfigResponse.fromMap((value as Map).cast<String, dynamic>()))),
       bindings: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleIamV1BindingResponse>(map['bindings']!, (value) => GoogleIamV1BindingResponse.fromMap((value as Map).cast<String, dynamic>()))),
       etag: pulumi.Input.fromValue(map['etag'] as String),
-      version: pulumi.Input.fromValue(map['version'] as int),
+      version: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['version'])),
     );
   }
 }

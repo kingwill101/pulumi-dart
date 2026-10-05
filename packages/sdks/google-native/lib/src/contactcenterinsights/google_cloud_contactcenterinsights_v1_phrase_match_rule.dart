@@ -6,9 +6,9 @@ import 'google_cloud_contactcenterinsights_v1_phrase_match_rule_config.dart';
 /// The data for a phrase match rule.
 class GoogleCloudContactcenterinsightsV1PhraseMatchRule {
   /// Provides additional information about the rule that specifies how to apply the rule.
-  final pulumi.Input<GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig>? config;
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig?>? config;
   /// Specifies whether the phrase must be missing from the transcript segment or present in the transcript segment.
-  final pulumi.Input<bool>? negated;
+  final pulumi.Input<bool?>? negated;
   /// The phrase to be matched.
   final pulumi.Input<String> query;
 

@@ -36,17 +36,38 @@ class Api extends pulumi.CustomResource {
           'google-native:apigee/v1:Api',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
     action = registerOutput<String?>('action');
     apiProxyType = registerOutput<String>('apiProxyType');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     latestRevisionId = registerOutput<String>('latestRevisionId');
     metaData = registerOutput<GoogleCloudApigeeV1EntityMetadataResponse>('metaData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1EntityMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
     readOnly = registerOutput<bool>('readOnly');
-    revision = registerOutput<List<String>>('revision');
+    revision = registerOutput<List<String>>('revision', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    validate = registerOutput<bool?>('validate');
+  }
+
+  /// Creates a typed reference to an existing [Api] resource.
+  Api.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Api',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String?>('action');
+    apiProxyType = registerOutput<String>('apiProxyType');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    latestRevisionId = registerOutput<String>('latestRevisionId');
+    metaData = registerOutput<GoogleCloudApigeeV1EntityMetadataResponse>('metaData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1EntityMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    readOnly = registerOutput<bool>('readOnly');
+    revision = registerOutput<List<String>>('revision', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     validate = registerOutput<bool?>('validate');
   }
 }

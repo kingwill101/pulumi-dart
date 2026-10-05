@@ -6,15 +6,15 @@ import 'interval.dart';
 /// Defines the policy of the QueuedRequest.
 class QueueingPolicy {
   /// A relative time after which resources may be created.
-  final pulumi.Input<String>? validAfterDuration;
+  final pulumi.Input<String?>? validAfterDuration;
   /// An absolute time at which resources may be created.
-  final pulumi.Input<String>? validAfterTime;
+  final pulumi.Input<String?>? validAfterTime;
   /// An absolute time interval within which resources may be created.
-  final pulumi.Input<Interval>? validInterval;
+  final pulumi.Input<Interval?>? validInterval;
   /// A relative time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
-  final pulumi.Input<String>? validUntilDuration;
+  final pulumi.Input<String?>? validUntilDuration;
   /// An absolute time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
-  final pulumi.Input<String>? validUntilTime;
+  final pulumi.Input<String?>? validUntilTime;
 
   /// Creates a new [QueueingPolicy].
   /// [validAfterDuration] A relative time after which resources may be created.

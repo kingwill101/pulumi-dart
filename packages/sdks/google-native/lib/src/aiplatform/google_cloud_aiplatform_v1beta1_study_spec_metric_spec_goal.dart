@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The optimization goal of the metric.
-enum GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoal {
+enum GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoal implements pulumi.PulumiEnum<String> {
   goalTypeUnspecified("GOAL_TYPE_UNSPECIFIED"),
   maximize("MAXIMIZE"),
   minimize("MINIMIZE");
 
   const GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoal(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudAiplatformV1beta1StudySpecMetricSpecGoal fromValue(String value) {

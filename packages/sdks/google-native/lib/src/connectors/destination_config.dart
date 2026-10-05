@@ -6,9 +6,9 @@ import 'destination.dart';
 /// Define the Connectors target endpoint.
 class DestinationConfig {
   /// The destinations for the key.
-  final pulumi.Input<List<Destination>>? destinations;
+  final pulumi.Input<List<Destination>?>? destinations;
   /// The key is the destination identifier that is supported by the Connector.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
 
   /// Creates a new [DestinationConfig].
   /// [destinations] The destinations for the key.

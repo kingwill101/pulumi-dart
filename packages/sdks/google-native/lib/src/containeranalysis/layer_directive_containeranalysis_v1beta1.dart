@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The recovered Dockerfile directive used to construct this layer.
-enum LayerDirectiveContaineranalysisV1beta1 {
+enum LayerDirectiveContaineranalysisV1beta1 implements pulumi.PulumiEnum<String> {
   directiveUnspecified("DIRECTIVE_UNSPECIFIED"),
   maintainer("MAINTAINER"),
   run("RUN"),
@@ -20,6 +22,7 @@ enum LayerDirectiveContaineranalysisV1beta1 {
   shell("SHELL");
 
   const LayerDirectiveContaineranalysisV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static LayerDirectiveContaineranalysisV1beta1 fromValue(String value) {

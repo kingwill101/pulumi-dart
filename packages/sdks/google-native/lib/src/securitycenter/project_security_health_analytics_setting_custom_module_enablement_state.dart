@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The enablement state of the custom module.
-enum ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState {
+enum ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState implements pulumi.PulumiEnum<String> {
   enablementStateUnspecified("ENABLEMENT_STATE_UNSPECIFIED"),
   enabled("ENABLED"),
   disabled("DISABLED"),
   inherited("INHERITED");
 
   const ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState(this.wireValue);
+  @override
   final String wireValue;
 
   static ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState fromValue(String value) {

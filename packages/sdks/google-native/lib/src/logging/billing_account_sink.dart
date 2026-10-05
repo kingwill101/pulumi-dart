@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'big_query_options_response.dart';
 import 'billing_account_sink_args.dart';
+import 'log_exclusion_response.dart';
 
 /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
 class BillingAccountSink extends pulumi.CustomResource {
@@ -18,7 +19,7 @@ class BillingAccountSink extends pulumi.CustomResource {
   /// Optional. If set to true, then this sink is disabled and it does not export any log entries.
   late final pulumi.Output<bool> disabled;
   /// Optional. Log entries that match any of these exclusion filters will not be exported.If a log entry is matched by both filter and one of exclusion_filters it will not be exported.
-  late final pulumi.Output<List<Map<String, dynamic>>> exclusions;
+  late final pulumi.Output<List<LogExclusionResponse>> exclusions;
   /// Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only exported log entries are those that are in the resource owning the sink and that match the filter.For example:logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity&gt;=ERROR
   late final pulumi.Output<String> filter;
   /// Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then log entries from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression.For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent.To only export entries from certain child projects, filter on the project part of the log name:logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
@@ -46,7 +47,7 @@ class BillingAccountSink extends pulumi.CustomResource {
           'google-native:logging/v2:BillingAccountSink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['billingAccountId']).merge(options),
         ) {
     bigqueryOptions = registerOutput<BigQueryOptionsResponse>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     billingAccountId = registerOutput<String>('billingAccountId');
@@ -55,7 +56,33 @@ class BillingAccountSink extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     destination = registerOutput<String>('destination');
     disabled = registerOutput<bool>('disabled');
-    exclusions = registerOutput<List<Map<String, dynamic>>>('exclusions');
+    exclusions = registerOutput<List<LogExclusionResponse>>('exclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogExclusionResponse>(guardedValue, (value) => LogExclusionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    filter = registerOutput<String>('filter');
+    includeChildren = registerOutput<bool>('includeChildren');
+    this.name = registerOutput<String>('name');
+    outputVersionFormat = registerOutput<String>('outputVersionFormat');
+    uniqueWriterIdentity = registerOutput<bool?>('uniqueWriterIdentity');
+    updateTime = registerOutput<String>('updateTime');
+    writerIdentity = registerOutput<String>('writerIdentity');
+  }
+
+  /// Creates a typed reference to an existing [BillingAccountSink] resource.
+  BillingAccountSink.reference(String urn)
+    : super(
+        'google-native:logging/v2:BillingAccountSink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bigqueryOptions = registerOutput<BigQueryOptionsResponse>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    billingAccountId = registerOutput<String>('billingAccountId');
+    createTime = registerOutput<String>('createTime');
+    customWriterIdentity = registerOutput<String?>('customWriterIdentity');
+    description = registerOutput<String>('description');
+    destination = registerOutput<String>('destination');
+    disabled = registerOutput<bool>('disabled');
+    exclusions = registerOutput<List<LogExclusionResponse>>('exclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogExclusionResponse>(guardedValue, (value) => LogExclusionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     filter = registerOutput<String>('filter');
     includeChildren = registerOutput<bool>('includeChildren');
     this.name = registerOutput<String>('name');

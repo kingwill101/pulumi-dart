@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Username and password credentials.
 class UsernamePasswordCredentials {
   /// The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// The username to access the remote repository.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [UsernamePasswordCredentials].
   /// [passwordSecretVersion] The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`.

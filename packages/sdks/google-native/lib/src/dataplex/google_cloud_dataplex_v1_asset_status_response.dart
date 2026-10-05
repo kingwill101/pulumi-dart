@@ -31,8 +31,8 @@ class GoogleCloudDataplexV1AssetStatusResponse {
 
   factory GoogleCloudDataplexV1AssetStatusResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1AssetStatusResponse(
-      activeAssets: pulumi.Input.fromValue(map['activeAssets'] as int),
-      securityPolicyApplyingAssets: pulumi.Input.fromValue(map['securityPolicyApplyingAssets'] as int),
+      activeAssets: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['activeAssets'])),
+      securityPolicyApplyingAssets: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['securityPolicyApplyingAssets'])),
       updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }

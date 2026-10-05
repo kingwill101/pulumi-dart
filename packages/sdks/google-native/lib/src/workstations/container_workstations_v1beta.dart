@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A Docker container.
 class ContainerWorkstationsV1beta {
   /// Optional. Arguments passed to the entrypoint.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// Optional. If set, overrides the default ENTRYPOINT specified by the image.
-  final pulumi.Input<List<String>>? command;
+  final pulumi.Input<List<String>?>? command;
   /// Optional. Environment variables passed to the container's entrypoint.
-  final pulumi.Input<Map<String, String>>? env;
+  final pulumi.Input<Map<String, String>?>? env;
   /// Optional. A Docker container image that defines a custom environment. Cloud Workstations provides a number of [preconfigured images](https://cloud.google.com/workstations/docs/preconfigured-base-images), but you can create your own [custom container images](https://cloud.google.com/workstations/docs/custom-container-images). If using a private image, the `host.gceInstance.serviceAccount` field must be specified in the workstation configuration. If using a custom container image, the service account must have [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles) permission to pull the specified image. Otherwise, the image must be publicly accessible.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Optional. If set, overrides the USER specified in the image with the given uid.
-  final pulumi.Input<int>? runAsUser;
+  final pulumi.Input<int?>? runAsUser;
   /// Optional. If set, overrides the default DIR specified by the image.
-  final pulumi.Input<String>? workingDir;
+  final pulumi.Input<String?>? workingDir;
 
   /// Creates a new [ContainerWorkstationsV1beta].
   /// [args] Optional. Arguments passed to the entrypoint.
@@ -50,7 +50,7 @@ class ContainerWorkstationsV1beta {
       command: (() { final guardedValue = map['command']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       env: (() { final guardedValue = map['env']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      runAsUser: (() { final guardedValue = map['runAsUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      runAsUser: (() { final guardedValue = map['runAsUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       workingDir: (() { final guardedValue = map['workingDir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

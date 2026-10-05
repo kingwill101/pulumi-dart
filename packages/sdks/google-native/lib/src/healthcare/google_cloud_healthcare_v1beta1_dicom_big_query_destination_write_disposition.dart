@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
-enum GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition {
+enum GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition implements pulumi.PulumiEnum<String> {
   writeDispositionUnspecified("WRITE_DISPOSITION_UNSPECIFIED"),
   writeEmpty("WRITE_EMPTY"),
   writeTruncate("WRITE_TRUNCATE"),
   writeAppend("WRITE_APPEND");
 
   const GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition fromValue(String value) {

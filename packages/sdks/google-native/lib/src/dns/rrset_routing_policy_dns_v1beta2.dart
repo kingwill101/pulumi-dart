@@ -7,12 +7,12 @@ import 'rrset_routing_policy_wrr_policy_dns_v1beta2.dart';
 
 /// A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
 class RRSetRoutingPolicyDnsV1beta2 {
-  final pulumi.Input<RRSetRoutingPolicyGeoPolicyDnsV1beta2>? geo;
-  final pulumi.Input<RRSetRoutingPolicyGeoPolicyDnsV1beta2>? geoPolicy;
-  final pulumi.Input<String>? kind;
-  final pulumi.Input<RRSetRoutingPolicyPrimaryBackupPolicyDnsV1beta2>? primaryBackup;
-  final pulumi.Input<RRSetRoutingPolicyWrrPolicyDnsV1beta2>? wrr;
-  final pulumi.Input<RRSetRoutingPolicyWrrPolicyDnsV1beta2>? wrrPolicy;
+  final pulumi.Input<RRSetRoutingPolicyGeoPolicyDnsV1beta2?>? geo;
+  final pulumi.Input<RRSetRoutingPolicyGeoPolicyDnsV1beta2?>? geoPolicy;
+  final pulumi.Input<String?>? kind;
+  final pulumi.Input<RRSetRoutingPolicyPrimaryBackupPolicyDnsV1beta2?>? primaryBackup;
+  final pulumi.Input<RRSetRoutingPolicyWrrPolicyDnsV1beta2?>? wrr;
+  final pulumi.Input<RRSetRoutingPolicyWrrPolicyDnsV1beta2?>? wrrPolicy;
 
   /// Creates a new [RRSetRoutingPolicyDnsV1beta2].
   /// [geo] Optional.

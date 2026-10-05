@@ -7,7 +7,7 @@ import 'google_cloud_contactcenterinsights_v1_phrase_match_rule_group_type.dart'
 /// A message representing a rule in the phrase matcher.
 class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup {
   /// A list of phrase match rules that are included in this group.
-  final pulumi.Input<List<GoogleCloudContactcenterinsightsV1PhraseMatchRule>>? phraseMatchRules;
+  final pulumi.Input<List<GoogleCloudContactcenterinsightsV1PhraseMatchRule>?>? phraseMatchRules;
   /// The type of this phrase match rule group.
   final pulumi.Input<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType> type;
 

@@ -16,27 +16,27 @@ import 'google_cloud_retail_v2beta_rule_twoway_synonyms_action.dart';
 /// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently rules only work for controls with SOLUTION_TYPE_SEARCH.
 class GoogleCloudRetailV2betaRule {
   /// A boost action.
-  final pulumi.Input<GoogleCloudRetailV2betaRuleBoostAction>? boostAction;
+  final pulumi.Input<GoogleCloudRetailV2betaRuleBoostAction?>? boostAction;
   /// The condition that triggers the rule. If the condition is empty, the rule will always apply.
   final pulumi.Input<GoogleCloudRetailV2betaCondition> condition;
   /// Prevents term from being associated with other terms.
-  final pulumi.Input<GoogleCloudRetailV2betaRuleDoNotAssociateAction>? doNotAssociateAction;
+  final pulumi.Input<GoogleCloudRetailV2betaRuleDoNotAssociateAction?>? doNotAssociateAction;
   /// Filters results.
-  final pulumi.Input<GoogleCloudRetailV2betaRuleFilterAction>? filterAction;
+  final pulumi.Input<GoogleCloudRetailV2betaRuleFilterAction?>? filterAction;
   /// Force returns an attribute as a facet in the request.
-  final pulumi.Input<GoogleCloudRetailV2betaRuleForceReturnFacetAction>? forceReturnFacetAction;
+  final pulumi.Input<GoogleCloudRetailV2betaRuleForceReturnFacetAction?>? forceReturnFacetAction;
   /// Ignores specific terms from query during search.
-  final pulumi.Input<GoogleCloudRetailV2betaRuleIgnoreAction>? ignoreAction;
+  final pulumi.Input<GoogleCloudRetailV2betaRuleIgnoreAction?>? ignoreAction;
   /// Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
-  final pulumi.Input<GoogleCloudRetailV2betaRuleOnewaySynonymsAction>? onewaySynonymsAction;
+  final pulumi.Input<GoogleCloudRetailV2betaRuleOnewaySynonymsAction?>? onewaySynonymsAction;
   /// Redirects a shopper to a specific page.
-  final pulumi.Input<GoogleCloudRetailV2betaRuleRedirectAction>? redirectAction;
+  final pulumi.Input<GoogleCloudRetailV2betaRuleRedirectAction?>? redirectAction;
   /// Remove an attribute as a facet in the request (if present).
-  final pulumi.Input<GoogleCloudRetailV2betaRuleRemoveFacetAction>? removeFacetAction;
+  final pulumi.Input<GoogleCloudRetailV2betaRuleRemoveFacetAction?>? removeFacetAction;
   /// Replaces specific terms in the query.
-  final pulumi.Input<GoogleCloudRetailV2betaRuleReplacementAction>? replacementAction;
+  final pulumi.Input<GoogleCloudRetailV2betaRuleReplacementAction?>? replacementAction;
   /// Treats a set of terms as synonyms of one another.
-  final pulumi.Input<GoogleCloudRetailV2betaRuleTwowaySynonymsAction>? twowaySynonymsAction;
+  final pulumi.Input<GoogleCloudRetailV2betaRuleTwowaySynonymsAction?>? twowaySynonymsAction;
 
   /// Creates a new [GoogleCloudRetailV2betaRule].
   /// [boostAction] A boost action.

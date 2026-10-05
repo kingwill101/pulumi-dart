@@ -21,7 +21,7 @@ class AutoscalingPolicyLoadBalancingUtilizationResponse {
 
   factory AutoscalingPolicyLoadBalancingUtilizationResponse.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyLoadBalancingUtilizationResponse(
-      utilizationTarget: pulumi.Input.fromValue(map['utilizationTarget'] as double),
+      utilizationTarget: pulumi.Input.fromValue((map['utilizationTarget'] as num).toDouble()),
     );
   }
 }

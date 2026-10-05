@@ -39,8 +39,29 @@ class Queue extends pulumi.CustomResource {
           'google-native:cloudtasks/v2:Queue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    appEngineRoutingOverride = registerOutput<AppEngineRoutingResponse>('appEngineRoutingOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineRoutingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpTarget = registerOutput<HttpTargetResponse>('httpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    purgeTime = registerOutput<String>('purgeTime');
+    rateLimits = registerOutput<RateLimitsResponse>('rateLimits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RateLimitsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retryConfig = registerOutput<RetryConfigResponse>('retryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RetryConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    stackdriverLoggingConfig = registerOutput<StackdriverLoggingConfigResponse>('stackdriverLoggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackdriverLoggingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Queue] resource.
+  Queue.reference(String urn)
+    : super(
+        'google-native:cloudtasks/v2:Queue',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appEngineRoutingOverride = registerOutput<AppEngineRoutingResponse>('appEngineRoutingOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineRoutingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpTarget = registerOutput<HttpTargetResponse>('httpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');

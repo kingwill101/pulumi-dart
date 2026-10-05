@@ -40,11 +40,35 @@ class WorkflowWorkflowsV1beta extends pulumi.CustomResource {
           'google-native:workflows/v1beta:Workflow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'workflowId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    revisionId = registerOutput<String>('revisionId');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    sourceContents = registerOutput<String>('sourceContents');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    workflowId = registerOutput<String>('workflowId');
+  }
+
+  /// Creates a typed reference to an existing [WorkflowWorkflowsV1beta] resource.
+  WorkflowWorkflowsV1beta.reference(String urn)
+    : super(
+        'google-native:workflows/v1beta:Workflow',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -42,8 +42,32 @@ class EventSubscription extends pulumi.CustomResource {
           'google-native:connectors/v1:EventSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['connectionId', 'eventSubscriptionId', 'location', 'project']).merge(options),
         ) {
+    connectionId = registerOutput<String>('connectionId');
+    createTime = registerOutput<String>('createTime');
+    destinations = registerOutput<EventSubscriptionDestinationResponse>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eventSubscriptionId = registerOutput<String>('eventSubscriptionId');
+    eventTypeId = registerOutput<String>('eventTypeId');
+    jms = registerOutput<JMSResponse>('jms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JMSResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    status = registerOutput<EventSubscriptionStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subscriber = registerOutput<String>('subscriber');
+    subscriberLink = registerOutput<String>('subscriberLink');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [EventSubscription] resource.
+  EventSubscription.reference(String urn)
+    : super(
+        'google-native:connectors/v1:EventSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     connectionId = registerOutput<String>('connectionId');
     createTime = registerOutput<String>('createTime');
     destinations = registerOutput<EventSubscriptionDestinationResponse>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -27,7 +27,7 @@ class GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse {
   factory GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1AutoscalingMetricSpecResponse(
       metricName: pulumi.Input.fromValue(map['metricName'] as String),
-      target: pulumi.Input.fromValue(map['target'] as int),
+      target: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['target'])),
     );
   }
 }

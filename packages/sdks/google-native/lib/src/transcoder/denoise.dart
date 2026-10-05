@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Denoise preprocessing configuration. **Note:** This configuration is not supported.
 class Denoise {
   /// Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0.
-  final pulumi.Input<double>? strength;
+  final pulumi.Input<double?>? strength;
   /// Set the denoiser mode. The default is `standard`. Supported denoiser modes: - `standard` - `grain`
-  final pulumi.Input<String>? tune;
+  final pulumi.Input<String?>? tune;
 
   /// Creates a new [Denoise].
   /// [strength] Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0.
@@ -26,7 +26,7 @@ class Denoise {
 
   factory Denoise.fromMap(Map<String, dynamic> map) {
     return Denoise(
-      strength: (() { final guardedValue = map['strength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      strength: (() { final guardedValue = map['strength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       tune: (() { final guardedValue = map['tune']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

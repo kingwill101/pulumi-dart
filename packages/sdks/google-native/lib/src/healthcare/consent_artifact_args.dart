@@ -10,25 +10,25 @@ import 'signature.dart';
 /// {@macro pulumi_healthcare_v1_consent_artifact_args_doc}
 class ConsentArtifactArgs {
   /// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
-  final pulumi.Input<List<Image>>? consentContentScreenshots;
+  final pulumi.Input<List<Image>?>? consentContentScreenshots;
   /// Optional. An string indicating the version of the consent information shown to the user.
-  final pulumi.Input<String>? consentContentVersion;
+  final pulumi.Input<String?>? consentContentVersion;
   final pulumi.Input<String> consentStoreId;
   final pulumi.Input<String> datasetId;
   /// Optional. A signature from a guardian.
-  final pulumi.Input<Signature>? guardianSignature;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Signature?>? guardianSignature;
+  final pulumi.Input<String?>? location;
   /// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// User's UUID provided by the client.
   final pulumi.Input<String> userId;
   /// Optional. User's signature.
-  final pulumi.Input<Signature>? userSignature;
+  final pulumi.Input<Signature?>? userSignature;
   /// Optional. A signature from a witness.
-  final pulumi.Input<Signature>? witnessSignature;
+  final pulumi.Input<Signature?>? witnessSignature;
 
   /// Creates a new [ConsentArtifactArgs].
   /// [consentContentScreenshots] Optional. Screenshots, PDFs, or other binary information documenting the user's consent.

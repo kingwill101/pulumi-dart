@@ -8,39 +8,39 @@ import 'status_response_workstations_v1beta.dart';
 /// Result data returned by getWorkstationCluster.
 class GetWorkstationClusterWorkstationsV1betaResult {
   /// Optional. Client-specified annotations.
-  final Map<String, String> annotations;
+  final Map<String, String>? annotations;
   /// Status conditions describing the workstation cluster's current state.
-  final List<StatusResponseWorkstationsV1beta> conditions;
+  final List<StatusResponseWorkstationsV1beta>? conditions;
   /// The private IP address of the control plane for this workstation cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
-  final String controlPlaneIp;
+  final String? controlPlaneIp;
   /// Time when this workstation cluster was created.
-  final String createTime;
+  final String? createTime;
   /// Whether this workstation cluster is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in conditions.
-  final bool degraded;
+  final bool? degraded;
   /// Time when this workstation cluster was soft-deleted.
-  final String deleteTime;
+  final String? deleteTime;
   /// Optional. Human-readable name for this workstation cluster.
-  final String displayName;
+  final String? displayName;
   /// Optional. Configuration options for a custom domain.
-  final DomainConfigResponse domainConfig;
+  final DomainConfigResponse? domainConfig;
   /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
-  final String etag;
+  final String? etag;
   /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Identifier. Full name of this workstation cluster.
-  final String name;
+  final String? name;
   /// Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster will be created.
-  final String network;
+  final String? network;
   /// Optional. Configuration for private workstation cluster.
-  final PrivateClusterConfigResponseWorkstationsV1beta privateClusterConfig;
+  final PrivateClusterConfigResponseWorkstationsV1beta? privateClusterConfig;
   /// Indicates whether this workstation cluster is currently being updated to match its intended state.
-  final bool reconciling;
+  final bool? reconciling;
   /// Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
-  final String subnetwork;
+  final String? subnetwork;
   /// A system-assigned unique identifier for this workstation cluster.
-  final String uid;
+  final String? uid;
   /// Time when this workstation cluster was most recently updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetWorkstationClusterWorkstationsV1betaResult].
   /// [annotations] Optional. Client-specified annotations.
@@ -61,66 +61,66 @@ class GetWorkstationClusterWorkstationsV1betaResult {
   /// [uid] A system-assigned unique identifier for this workstation cluster.
   /// [updateTime] Time when this workstation cluster was most recently updated.
   const GetWorkstationClusterWorkstationsV1betaResult({
-    required this.annotations,
-    required this.conditions,
-    required this.controlPlaneIp,
-    required this.createTime,
-    required this.degraded,
-    required this.deleteTime,
-    required this.displayName,
-    required this.domainConfig,
-    required this.etag,
-    required this.labels,
-    required this.name,
-    required this.network,
-    required this.privateClusterConfig,
-    required this.reconciling,
-    required this.subnetwork,
-    required this.uid,
-    required this.updateTime,
+    this.annotations,
+    this.conditions,
+    this.controlPlaneIp,
+    this.createTime,
+    this.degraded,
+    this.deleteTime,
+    this.displayName,
+    this.domainConfig,
+    this.etag,
+    this.labels,
+    this.name,
+    this.network,
+    this.privateClusterConfig,
+    this.reconciling,
+    this.subnetwork,
+    this.uid,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'annotations': annotations,
-      'conditions': pulumi.Input.encodeList<StatusResponseWorkstationsV1beta, Map<String, dynamic>>(conditions, (value) => value.toMap()),
-      'controlPlaneIp': controlPlaneIp,
-      'createTime': createTime,
-      'degraded': degraded,
-      'deleteTime': deleteTime,
-      'displayName': displayName,
-      'domainConfig': domainConfig.toMap(),
-      'etag': etag,
-      'labels': labels,
-      'name': name,
-      'network': network,
-      'privateClusterConfig': privateClusterConfig.toMap(),
-      'reconciling': reconciling,
-      'subnetwork': subnetwork,
-      'uid': uid,
-      'updateTime': updateTime,
+      'annotations': ?annotations,
+      'conditions': ?(() { final guardedValue = conditions; if (guardedValue == null) return null; return pulumi.Input.encodeList<StatusResponseWorkstationsV1beta, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'controlPlaneIp': ?controlPlaneIp,
+      'createTime': ?createTime,
+      'degraded': ?degraded,
+      'deleteTime': ?deleteTime,
+      'displayName': ?displayName,
+      'domainConfig': ?domainConfig?.toMap(),
+      'etag': ?etag,
+      'labels': ?labels,
+      'name': ?name,
+      'network': ?network,
+      'privateClusterConfig': ?privateClusterConfig?.toMap(),
+      'reconciling': ?reconciling,
+      'subnetwork': ?subnetwork,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetWorkstationClusterWorkstationsV1betaResult.fromMap(Map<String, dynamic> map) {
     return GetWorkstationClusterWorkstationsV1betaResult(
-      annotations: (map['annotations'] as Map).cast<String, String>(),
-      conditions: pulumi.Input.decodeList<StatusResponseWorkstationsV1beta>(map['conditions']!, (value) => StatusResponseWorkstationsV1beta.fromMap((value as Map).cast<String, dynamic>())),
-      controlPlaneIp: map['controlPlaneIp'] as String,
-      createTime: map['createTime'] as String,
-      degraded: map['degraded'] as bool,
-      deleteTime: map['deleteTime'] as String,
-      displayName: map['displayName'] as String,
-      domainConfig: DomainConfigResponse.fromMap((map['domainConfig']! as Map).cast<String, dynamic>()),
-      etag: map['etag'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      network: map['network'] as String,
-      privateClusterConfig: PrivateClusterConfigResponseWorkstationsV1beta.fromMap((map['privateClusterConfig']! as Map).cast<String, dynamic>()),
-      reconciling: map['reconciling'] as bool,
-      subnetwork: map['subnetwork'] as String,
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatusResponseWorkstationsV1beta>(guardedValue, (value) => StatusResponseWorkstationsV1beta.fromMap((value as Map).cast<String, dynamic>())); })(),
+      controlPlaneIp: (() { final guardedValue = map['controlPlaneIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      degraded: (() { final guardedValue = map['degraded']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      domainConfig: (() { final guardedValue = map['domainConfig']; if (guardedValue == null) return null; return DomainConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateClusterConfig: (() { final guardedValue = map['privateClusterConfig']; if (guardedValue == null) return null; return PrivateClusterConfigResponseWorkstationsV1beta.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

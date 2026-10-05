@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Control over the rate of notifications sent to this alert policy's notification channels.
 class NotificationRateLimit {
   /// Not more than one notification per period.
-  final pulumi.Input<String>? period;
+  final pulumi.Input<String?>? period;
 
   /// Creates a new [NotificationRateLimit].
   /// [period] Not more than one notification per period.

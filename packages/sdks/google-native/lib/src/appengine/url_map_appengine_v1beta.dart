@@ -12,21 +12,21 @@ import 'url_map_security_level_appengine_v1beta.dart';
 /// URL pattern and description of how the URL should be handled. App Engine can handle URLs by executing application code or by serving static files uploaded with the version, such as images, CSS, or JavaScript.
 class UrlMapAppengineV1beta {
   /// Uses API Endpoints to handle requests.
-  final pulumi.Input<ApiEndpointHandlerAppengineV1beta>? apiEndpoint;
+  final pulumi.Input<ApiEndpointHandlerAppengineV1beta?>? apiEndpoint;
   /// Action to take when users access resources that require authentication. Defaults to redirect.
-  final pulumi.Input<UrlMapAuthFailActionAppengineV1beta>? authFailAction;
+  final pulumi.Input<UrlMapAuthFailActionAppengineV1beta?>? authFailAction;
   /// Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
-  final pulumi.Input<UrlMapLoginAppengineV1beta>? login;
+  final pulumi.Input<UrlMapLoginAppengineV1beta?>? login;
   /// 30x code to use when performing redirects for the secure field. Defaults to 302.
-  final pulumi.Input<UrlMapRedirectHttpResponseCodeAppengineV1beta>? redirectHttpResponseCode;
+  final pulumi.Input<UrlMapRedirectHttpResponseCodeAppengineV1beta?>? redirectHttpResponseCode;
   /// Executes a script to handle the requests that match this URL pattern. Only the auto value is supported for Node.js in the App Engine standard environment, for example "script": "auto".
-  final pulumi.Input<ScriptHandlerAppengineV1beta>? script;
+  final pulumi.Input<ScriptHandlerAppengineV1beta?>? script;
   /// Security (HTTPS) enforcement for this URL.
-  final pulumi.Input<UrlMapSecurityLevelAppengineV1beta>? securityLevel;
+  final pulumi.Input<UrlMapSecurityLevelAppengineV1beta?>? securityLevel;
   /// Returns the contents of a file, such as an image, as the response.
-  final pulumi.Input<StaticFilesHandlerAppengineV1beta>? staticFiles;
+  final pulumi.Input<StaticFilesHandlerAppengineV1beta?>? staticFiles;
   /// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
-  final pulumi.Input<String>? urlRegex;
+  final pulumi.Input<String?>? urlRegex;
 
   /// Creates a new [UrlMapAppengineV1beta].
   /// [apiEndpoint] Uses API Endpoints to handle requests.

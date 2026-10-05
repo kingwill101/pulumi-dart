@@ -38,7 +38,7 @@ class SoleTenancyPreferencesResponseMigrationcenterV1alpha1 {
   factory SoleTenancyPreferencesResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return SoleTenancyPreferencesResponseMigrationcenterV1alpha1(
       commitmentPlan: pulumi.Input.fromValue(map['commitmentPlan'] as String),
-      cpuOvercommitRatio: pulumi.Input.fromValue(map['cpuOvercommitRatio'] as double),
+      cpuOvercommitRatio: pulumi.Input.fromValue((map['cpuOvercommitRatio'] as num).toDouble()),
       hostMaintenancePolicy: pulumi.Input.fromValue(map['hostMaintenancePolicy'] as String),
       nodeTypes: pulumi.Input.fromValue(pulumi.Input.decodeList<SoleTenantNodeTypeResponseMigrationcenterV1alpha1>(map['nodeTypes']!, (value) => SoleTenantNodeTypeResponseMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>()))),
     );

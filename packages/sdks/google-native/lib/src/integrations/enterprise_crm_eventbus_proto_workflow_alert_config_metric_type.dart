@@ -1,4 +1,6 @@
-enum EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType implements pulumi.PulumiEnum<String> {
   metricTypeUnspecified("METRIC_TYPE_UNSPECIFIED"),
   eventErrorRate("EVENT_ERROR_RATE"),
   eventWarningRate("EVENT_WARNING_RATE"),
@@ -12,6 +14,7 @@ enum EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType {
   taskPercentileDuration("TASK_PERCENTILE_DURATION");
 
   const EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType fromValue(String value) {

@@ -8,13 +8,13 @@ import 'video_stream.dart';
 /// Encoding of an input file such as an audio, video, or text track. Elementary streams must be packaged before mapping and sharing between different output formats.
 class ElementaryStream {
   /// Encoding of an audio stream.
-  final pulumi.Input<AudioStream>? audioStream;
+  final pulumi.Input<AudioStream?>? audioStream;
   /// A unique key for this elementary stream.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Encoding of a text stream. For example, closed captions or subtitles.
-  final pulumi.Input<TextStream>? textStream;
+  final pulumi.Input<TextStream?>? textStream;
   /// Encoding of a video stream.
-  final pulumi.Input<VideoStream>? videoStream;
+  final pulumi.Input<VideoStream?>? videoStream;
 
   /// Creates a new [ElementaryStream].
   /// [audioStream] Encoding of an audio stream.

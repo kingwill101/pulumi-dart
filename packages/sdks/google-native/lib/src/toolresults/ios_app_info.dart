@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// iOS app information
 class IosAppInfo {
   /// The name of the app. Required
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [IosAppInfo].
   /// [name] The name of the app. Required

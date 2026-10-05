@@ -58,12 +58,12 @@ class EndpointInfoResponse {
     return EndpointInfoResponse(
       destinationIp: pulumi.Input.fromValue(map['destinationIp'] as String),
       destinationNetworkUri: pulumi.Input.fromValue(map['destinationNetworkUri'] as String),
-      destinationPort: pulumi.Input.fromValue(map['destinationPort'] as int),
+      destinationPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['destinationPort'])),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       sourceAgentUri: pulumi.Input.fromValue(map['sourceAgentUri'] as String),
       sourceIp: pulumi.Input.fromValue(map['sourceIp'] as String),
       sourceNetworkUri: pulumi.Input.fromValue(map['sourceNetworkUri'] as String),
-      sourcePort: pulumi.Input.fromValue(map['sourcePort'] as int),
+      sourcePort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sourcePort'])),
     );
   }
 }

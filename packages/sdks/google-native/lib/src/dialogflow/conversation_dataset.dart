@@ -35,8 +35,28 @@ class ConversationDataset extends pulumi.CustomResource {
           'google-native:dialogflow/v2:ConversationDataset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    conversationCount = registerOutput<String>('conversationCount');
+    conversationInfo = registerOutput<GoogleCloudDialogflowV2ConversationInfoResponse>('conversationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2ConversationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    inputConfig = registerOutput<GoogleCloudDialogflowV2InputConfigResponse>('inputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2InputConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [ConversationDataset] resource.
+  ConversationDataset.reference(String urn)
+    : super(
+        'google-native:dialogflow/v2:ConversationDataset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     conversationCount = registerOutput<String>('conversationCount');
     conversationInfo = registerOutput<GoogleCloudDialogflowV2ConversationInfoResponse>('conversationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2ConversationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

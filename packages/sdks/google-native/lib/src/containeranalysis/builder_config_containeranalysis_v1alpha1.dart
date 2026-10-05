@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BuilderConfigContaineranalysisV1alpha1 {
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [BuilderConfigContaineranalysisV1alpha1].
   /// [id] Optional.

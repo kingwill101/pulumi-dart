@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines a hash object for use in Materials and Products.
 class ArtifactHashes {
-  final pulumi.Input<String>? sha256;
+  final pulumi.Input<String?>? sha256;
 
   /// Creates a new [ArtifactHashes].
   /// [sha256] Optional.
