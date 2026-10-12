@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecWorkerBitbucket {
   /// The name of the branch to use.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// Whether to automatically deploy new commits made to the repo.
-  final pulumi.Input<bool>? deployOnPush;
+  final pulumi.Input<bool?>? deployOnPush;
   /// The name of the repo in the format `owner/repo`.
-  final pulumi.Input<String>? repo;
+  final pulumi.Input<String?>? repo;
 
   /// Creates a new [AppSpecWorkerBitbucket].
   /// [branch] The name of the branch to use.

@@ -5,27 +5,27 @@ import 'partner_attachment_bgp.dart';
 
 /// Input properties used for looking up and filtering PartnerAttachment resources.
 class PartnerAttachmentState {
-  final pulumi.Input<PartnerAttachmentBgp>? bgp;
+  final pulumi.Input<PartnerAttachmentBgp?>? bgp;
   /// The children uuids of Partner Attachment
-  final pulumi.Input<List<String>>? childrens;
+  final pulumi.Input<List<String>?>? childrens;
   /// The connection bandwidth in Mbps
-  final pulumi.Input<int>? connectionBandwidthInMbps;
+  final pulumi.Input<int?>? connectionBandwidthInMbps;
   /// The date and time when the Partner Attachment was created
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// The NaaS provider
-  final pulumi.Input<String>? naasProvider;
+  final pulumi.Input<String?>? naasProvider;
   /// The name of the Partner Attachment
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The UUID of the Parent Partner Attachment
-  final pulumi.Input<String>? parentUuid;
+  final pulumi.Input<String?>? parentUuid;
   /// The redundancy zone for the NaaS
-  final pulumi.Input<String>? redundancyZone;
+  final pulumi.Input<String?>? redundancyZone;
   /// The region where the Partner Attachment will be created
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The state of the Partner Attachment
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The list of VPC IDs to attach the Partner Attachment to
-  final pulumi.Input<List<String>>? vpcIds;
+  final pulumi.Input<List<String>?>? vpcIds;
 
   /// Creates a new [PartnerAttachmentState].
   /// [bgp] Optional.
@@ -73,7 +73,7 @@ class PartnerAttachmentState {
     return PartnerAttachmentState(
       bgp: (() { final guardedValue = map['bgp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PartnerAttachmentBgp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       childrens: (() { final guardedValue = map['childrens']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      connectionBandwidthInMbps: (() { final guardedValue = map['connectionBandwidthInMbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      connectionBandwidthInMbps: (() { final guardedValue = map['connectionBandwidthInMbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       naasProvider: (() { final guardedValue = map['naasProvider']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

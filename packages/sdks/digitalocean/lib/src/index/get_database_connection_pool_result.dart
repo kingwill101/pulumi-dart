@@ -3,38 +3,38 @@
 
 /// Result data returned by getDatabaseConnectionPool.
 class GetDatabaseConnectionPoolResult {
-  final String clusterId;
+  final String? clusterId;
   /// Name of the connection pool's default database.
-  final String dbName;
+  final String? dbName;
   /// Connection pool hostname.
-  final String host;
+  final String? host;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The transaction mode for the connection pool.
-  final String mode;
-  final String name;
+  final String? mode;
+  final String? name;
   /// Password for the connection pool's default user.
-  final String password;
+  final String? password;
   /// Network port that the connection pool is listening on.
-  final int port;
+  final int? port;
   /// Same as `host`, but only accessible from resources within the account and in the same region.
-  final String privateHost;
+  final String? privateHost;
   /// Same as `uri`, but only accessible from resources within the account and in the same region.
-  final String privateUri;
+  final String? privateUri;
   /// Size of the connection pool.
-  final int size;
+  final int? size;
   /// The full URI for connecting to the database connection pool.
-  final String uri;
+  final String? uri;
   /// Username for the connection pool's default user.
-  final String user;
+  final String? user;
 
   /// Creates a new [GetDatabaseConnectionPoolResult].
-  /// [clusterId] Required.
+  /// [clusterId] Optional.
   /// [dbName] Name of the connection pool's default database.
   /// [host] Connection pool hostname.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [mode] The transaction mode for the connection pool.
-  /// [name] Required.
+  /// [name] Optional.
   /// [password] Password for the connection pool's default user.
   /// [port] Network port that the connection pool is listening on.
   /// [privateHost] Same as `host`, but only accessible from resources within the account and in the same region.
@@ -43,54 +43,54 @@ class GetDatabaseConnectionPoolResult {
   /// [uri] The full URI for connecting to the database connection pool.
   /// [user] Username for the connection pool's default user.
   const GetDatabaseConnectionPoolResult({
-    required this.clusterId,
-    required this.dbName,
-    required this.host,
-    required this.id,
-    required this.mode,
-    required this.name,
-    required this.password,
-    required this.port,
-    required this.privateHost,
-    required this.privateUri,
-    required this.size,
-    required this.uri,
-    required this.user,
+    this.clusterId,
+    this.dbName,
+    this.host,
+    this.id,
+    this.mode,
+    this.name,
+    this.password,
+    this.port,
+    this.privateHost,
+    this.privateUri,
+    this.size,
+    this.uri,
+    this.user,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterId': clusterId,
-      'dbName': dbName,
-      'host': host,
-      'id': id,
-      'mode': mode,
-      'name': name,
-      'password': password,
-      'port': port,
-      'privateHost': privateHost,
-      'privateUri': privateUri,
-      'size': size,
-      'uri': uri,
-      'user': user,
+      'clusterId': ?clusterId,
+      'dbName': ?dbName,
+      'host': ?host,
+      'id': ?id,
+      'mode': ?mode,
+      'name': ?name,
+      'password': ?password,
+      'port': ?port,
+      'privateHost': ?privateHost,
+      'privateUri': ?privateUri,
+      'size': ?size,
+      'uri': ?uri,
+      'user': ?user,
     };
   }
 
   factory GetDatabaseConnectionPoolResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseConnectionPoolResult(
-      clusterId: map['clusterId'] as String,
-      dbName: map['dbName'] as String,
-      host: map['host'] as String,
-      id: map['id'] as String,
-      mode: map['mode'] as String,
-      name: map['name'] as String,
-      password: map['password'] as String,
-      port: map['port'] as int,
-      privateHost: map['privateHost'] as String,
-      privateUri: map['privateUri'] as String,
-      size: map['size'] as int,
-      uri: map['uri'] as String,
-      user: map['user'] as String,
+      clusterId: (() { final guardedValue = map['clusterId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dbName: (() { final guardedValue = map['dbName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      privateHost: (() { final guardedValue = map['privateHost']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateUri: (() { final guardedValue = map['privateUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      user: (() { final guardedValue = map['user']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -9,17 +9,17 @@ import 'vector_database_config.dart';
 /// {@macro pulumi_index_vector_database_vector_database_args_doc}
 class VectorDatabaseArgs {
   /// Advanced configuration for the vector database. The structure is documented below.
-  final pulumi.Input<VectorDatabaseConfig>? config;
+  final pulumi.Input<VectorDatabaseConfig?>? config;
   /// The name of the vector database. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project that the vector database is assigned to. If excluded, the database will be assigned to your default project. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// The slug identifier for the region where the vector database will be created (ex. `nyc1`). Changing this forces a new resource to be created.
   final pulumi.Input<String> region;
   /// The slug identifier representing the size of the vector database (ex. `db-s-1vcpu-1gb`).
   final pulumi.Input<String> size;
   /// A list of tag names to be applied to the vector database.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
 
   /// Creates a new [VectorDatabaseArgs].
   /// [config] Advanced configuration for the vector database. The structure is documented below.

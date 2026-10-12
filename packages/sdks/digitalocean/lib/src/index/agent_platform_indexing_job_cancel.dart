@@ -1,0 +1,134 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'agent_platform_indexing_job_cancel_args.dart';
+import 'agent_platform_indexing_job_cancel_state.dart';
+
+class AgentPlatformIndexingJobCancel extends pulumi.CustomResource {
+  /// Number of data sources that were completed before cancellation.
+  late final pulumi.Output<int> completedDatasources;
+  /// When the indexing job was created.
+  late final pulumi.Output<String> createdAt;
+  /// List of data source UUIDs associated with this indexing job.
+  late final pulumi.Output<List<String>> dataSourceUuids;
+  /// When the indexing job was finished.
+  late final pulumi.Output<String> finishedAt;
+  /// The UUID of the knowledge base associated with this indexing job.
+  late final pulumi.Output<String> knowledgeBaseUuid;
+  /// Current phase of the indexing job.
+  late final pulumi.Output<String> phase;
+  /// When the indexing job was started.
+  late final pulumi.Output<String> startedAt;
+  /// The status of the indexing job after cancellation.
+  late final pulumi.Output<String> status;
+  /// Number of tokens processed before cancellation.
+  late final pulumi.Output<int> tokens;
+  /// Total number of data sources in the indexing job.
+  late final pulumi.Output<int> totalDatasources;
+  /// Total number of items that failed during indexing.
+  late final pulumi.Output<int> totalItemsFailed;
+  /// Total number of items that were successfully indexed.
+  late final pulumi.Output<int> totalItemsIndexed;
+  /// Total number of items that were skipped during indexing.
+  late final pulumi.Output<int> totalItemsSkipped;
+  /// When the indexing job was last updated.
+  late final pulumi.Output<String> updatedAt;
+  /// The UUID of the indexing job to cancel.
+  late final pulumi.Output<String> uuid;
+
+  /// Creates a new [AgentPlatformIndexingJobCancel].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [AgentPlatformIndexingJobCancel]. {@macro pulumi_index_agent_platform_indexing_job_cancel_agent_platform_indexing_job_cancel_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  AgentPlatformIndexingJobCancel(
+    String name, {
+    AgentPlatformIndexingJobCancelArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'digitalocean:index/agentPlatformIndexingJobCancel:AgentPlatformIndexingJobCancel',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          pulumi.CustomResourceOptions(version: '4.83.0').merge(options),
+        ) {
+    completedDatasources = registerOutput<int>('completedDatasources');
+    createdAt = registerOutput<String>('createdAt');
+    dataSourceUuids = registerOutput<List<String>>('dataSourceUuids', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    finishedAt = registerOutput<String>('finishedAt');
+    knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
+    phase = registerOutput<String>('phase');
+    startedAt = registerOutput<String>('startedAt');
+    status = registerOutput<String>('status');
+    tokens = registerOutput<int>('tokens');
+    totalDatasources = registerOutput<int>('totalDatasources');
+    totalItemsFailed = registerOutput<int>('totalItemsFailed');
+    totalItemsIndexed = registerOutput<int>('totalItemsIndexed');
+    totalItemsSkipped = registerOutput<int>('totalItemsSkipped');
+    updatedAt = registerOutput<String>('updatedAt');
+    uuid = registerOutput<String>('uuid');
+  }
+
+  /// Gets an existing [AgentPlatformIndexingJobCancel] resource's state with the given [name] and [id].
+  static AgentPlatformIndexingJobCancel get(
+    String name,
+    pulumi.Input<String> id, {
+    AgentPlatformIndexingJobCancelState? state,
+    pulumi.CustomResourceOptions? options,
+  }) {
+    return AgentPlatformIndexingJobCancel._get(
+      name,
+      state: state?.toMap(),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
+    );
+  }
+
+  AgentPlatformIndexingJobCancel._get(
+    String name, {
+    Map<String, dynamic>? state,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'digitalocean:index/agentPlatformIndexingJobCancel:AgentPlatformIndexingJobCancel',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    completedDatasources = registerOutput<int>('completedDatasources');
+    createdAt = registerOutput<String>('createdAt');
+    dataSourceUuids = registerOutput<List<String>>('dataSourceUuids', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    finishedAt = registerOutput<String>('finishedAt');
+    knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
+    phase = registerOutput<String>('phase');
+    startedAt = registerOutput<String>('startedAt');
+    status = registerOutput<String>('status');
+    tokens = registerOutput<int>('tokens');
+    totalDatasources = registerOutput<int>('totalDatasources');
+    totalItemsFailed = registerOutput<int>('totalItemsFailed');
+    totalItemsIndexed = registerOutput<int>('totalItemsIndexed');
+    totalItemsSkipped = registerOutput<int>('totalItemsSkipped');
+    updatedAt = registerOutput<String>('updatedAt');
+    uuid = registerOutput<String>('uuid');
+  }
+
+  /// Creates a typed reference to an existing [AgentPlatformIndexingJobCancel] resource.
+  AgentPlatformIndexingJobCancel.reference(String urn)
+    : super(
+        'digitalocean:index/agentPlatformIndexingJobCancel:AgentPlatformIndexingJobCancel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    completedDatasources = registerOutput<int>('completedDatasources');
+    createdAt = registerOutput<String>('createdAt');
+    dataSourceUuids = registerOutput<List<String>>('dataSourceUuids', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    finishedAt = registerOutput<String>('finishedAt');
+    knowledgeBaseUuid = registerOutput<String>('knowledgeBaseUuid');
+    phase = registerOutput<String>('phase');
+    startedAt = registerOutput<String>('startedAt');
+    status = registerOutput<String>('status');
+    tokens = registerOutput<int>('tokens');
+    totalDatasources = registerOutput<int>('totalDatasources');
+    totalItemsFailed = registerOutput<int>('totalItemsFailed');
+    totalItemsIndexed = registerOutput<int>('totalItemsIndexed');
+    totalItemsSkipped = registerOutput<int>('totalItemsSkipped');
+    updatedAt = registerOutput<String>('updatedAt');
+    uuid = registerOutput<String>('uuid');
+  }
+}

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDropletsSort {
   /// The sort direction. This may be either `asc` or `desc`.
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   /// Sort the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
   /// `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
   /// `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,

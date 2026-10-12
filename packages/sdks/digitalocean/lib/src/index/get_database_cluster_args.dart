@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseClusterArgs {
   /// The name of the database cluster.
   final pulumi.Input<String> name;
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
 
   /// Creates a new [GetDatabaseClusterArgs].
   /// [name] The name of the database cluster.

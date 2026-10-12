@@ -6,22 +6,22 @@ import 'database_user_setting.dart';
 /// Input properties used for looking up and filtering DatabaseUser resources.
 class DatabaseUserState {
   /// Access certificate for TLS client authentication. (Kafka only)
-  final pulumi.Input<String>? accessCert;
+  final pulumi.Input<String?>? accessCert;
   /// Access key for TLS client authentication. (Kafka only)
-  final pulumi.Input<String>? accessKey;
+  final pulumi.Input<String?>? accessKey;
   /// The ID of the original source database cluster.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
-  final pulumi.Input<String>? mysqlAuthPlugin;
+  final pulumi.Input<String?>? mysqlAuthPlugin;
   /// The name for the database user.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Password for the database user.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Role for the database user. The value will be either "primary" or "normal".
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// Contains optional settings for the user.
   /// The `settings` block is documented below.
-  final pulumi.Input<List<DatabaseUserSetting>>? settings;
+  final pulumi.Input<List<DatabaseUserSetting>?>? settings;
 
   /// Creates a new [DatabaseUserState].
   /// [accessCert] Access certificate for TLS client authentication. (Kafka only)

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerForwardingRule {
   /// **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificateName` instead.
-  final pulumi.Input<String>? certificateId;
+  final pulumi.Input<String?>? certificateId;
   /// The unique name of the TLS certificate to be used for SSL termination.
-  final pulumi.Input<String>? certificateName;
+  final pulumi.Input<String?>? certificateName;
   /// An integer representing the port on which the Load Balancer instance will listen.
   final pulumi.Input<int> entryPort;
   /// The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
@@ -16,7 +16,7 @@ class LoadBalancerForwardingRule {
   /// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
   final pulumi.Input<String> targetProtocol;
   /// A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
-  final pulumi.Input<bool>? tlsPassthrough;
+  final pulumi.Input<bool?>? tlsPassthrough;
 
   /// Creates a new [LoadBalancerForwardingRule].
   /// [certificateId] **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificateName` instead.
@@ -52,9 +52,9 @@ class LoadBalancerForwardingRule {
     return LoadBalancerForwardingRule(
       certificateId: (() { final guardedValue = map['certificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       certificateName: (() { final guardedValue = map['certificateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      entryPort: pulumi.Input.fromValue(map['entryPort'] as int),
+      entryPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['entryPort'])),
       entryProtocol: pulumi.Input.fromValue(map['entryProtocol'] as String),
-      targetPort: pulumi.Input.fromValue(map['targetPort'] as int),
+      targetPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetPort'])),
       targetProtocol: pulumi.Input.fromValue(map['targetProtocol'] as String),
       tlsPassthrough: (() { final guardedValue = map['tlsPassthrough']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

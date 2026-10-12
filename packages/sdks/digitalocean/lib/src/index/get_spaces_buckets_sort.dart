@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetSpacesBucketsSort {
   /// The sort direction. This may be either `asc` or `desc`.
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   /// Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
   final pulumi.Input<String> key;
 

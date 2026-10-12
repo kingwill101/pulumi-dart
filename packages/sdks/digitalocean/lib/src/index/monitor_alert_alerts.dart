@@ -5,8 +5,8 @@ import 'monitor_alert_alerts_slack.dart';
 
 class MonitorAlertAlerts {
   /// List of email addresses to sent notifications to
-  final pulumi.Input<List<String>>? emails;
-  final pulumi.Input<List<MonitorAlertAlertsSlack>>? slacks;
+  final pulumi.Input<List<String>?>? emails;
+  final pulumi.Input<List<MonitorAlertAlertsSlack>?>? slacks;
 
   /// Creates a new [MonitorAlertAlerts].
   /// [emails] List of email addresses to sent notifications to

@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GradientaiAgentChildAgentChatbotIdentifier {
-  final pulumi.Input<String>? chatbotId;
+  final pulumi.Input<String?>? chatbotId;
 
   /// Creates a new [GradientaiAgentChildAgentChatbotIdentifier].
   /// [chatbotId] Optional.
