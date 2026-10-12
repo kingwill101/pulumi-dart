@@ -147,7 +147,7 @@ import 'active_directory_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -416,7 +416,7 @@ class ActiveDirectory extends pulumi.CustomResource {
           'gcp:netapp/activeDirectory:ActiveDirectory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'password', 'pulumiLabels'],
         ) {
     administrators = registerOutput<List<String>?>('administrators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

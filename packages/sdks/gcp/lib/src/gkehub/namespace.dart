@@ -22,9 +22,9 @@ import 'namespace_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_25601"});
+/// const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_67762"});
 /// const namespace = new gcp.gkehub.Namespace("namespace", {
-///     scopeNamespaceId: "tf-test-namespace_17228",
+///     scopeNamespaceId: "tf-test-namespace_44154",
 ///     scopeId: scope.scopeId,
 ///     scope: scope.name,
 ///     namespaceLabels: {
@@ -45,9 +45,9 @@ import 'namespace_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_25601")
+/// scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_67762")
 /// namespace = gcp.gkehub.Namespace("namespace",
-///     scope_namespace_id="tf-test-namespace_17228",
+///     scope_namespace_id="tf-test-namespace_44154",
 ///     scope_id=scope.scope_id,
 ///     scope=scope.name,
 ///     namespace_labels={
@@ -72,12 +72,12 @@ import 'namespace_state.dart';
 /// {
 ///     var scope = new Gcp.GkeHub.Scope("scope", new()
 ///     {
-///         ScopeId = "tf-test-scope_25601",
+///         ScopeId = "tf-test-scope_67762",
 ///     });
 ///
 ///     var @namespace = new Gcp.GkeHub.Namespace("namespace", new()
 ///     {
-///         ScopeNamespaceId = "tf-test-namespace_17228",
+///         ScopeNamespaceId = "tf-test-namespace_44154",
 ///         ScopeId = scope.ScopeId,
 ///         Scope = scope.Name,
 ///         NamespaceLabels =
@@ -106,20 +106,20 @@ import 'namespace_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-/// 			ScopeId: pulumi.String("tf-test-scope_25601"),
+/// 			ScopeId: pulumi.String("tf-test-scope_67762"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = gkehub.NewNamespace(ctx, "namespace", &gkehub.NamespaceArgs{
-/// 			ScopeNamespaceId: pulumi.String("tf-test-namespace_17228"),
+/// 			ScopeNamespaceId: pulumi.String("tf-test-namespace_44154"),
 /// 			ScopeId:          scope.ScopeId,
 /// 			Scope:            scope.Name,
 /// 			NamespaceLabels: pulumi.StringMap{
@@ -152,11 +152,11 @@ import 'namespace_state.dart';
 /// }
 ///
 /// resource "gcp_gkehub_scope" "scope" {
-///   scope_id = "tf-test-scope_25601"
+///   scope_id = "tf-test-scope_67762"
 /// }
 /// resource "gcp_gkehub_namespace" "namespace" {
 ///   depends_on         = [gcp_gkehub_scope.scope]
-///   scope_namespace_id = "tf-test-namespace_17228"
+///   scope_namespace_id = "tf-test-namespace_44154"
 ///   scope_id           = gcp_gkehub_scope.scope.scope_id
 ///   scope              = gcp_gkehub_scope.scope.name
 ///   namespace_labels = {
@@ -196,11 +196,11 @@ import 'namespace_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var scope = new Scope("scope", ScopeArgs.builder()
-///             .scopeId("tf-test-scope_25601")
+///             .scopeId("tf-test-scope_67762")
 ///             .build());
 ///
 ///         var namespace = new Namespace("namespace", NamespaceArgs.builder()
-///             .scopeNamespaceId("tf-test-namespace_17228")
+///             .scopeNamespaceId("tf-test-namespace_44154")
 ///             .scopeId(scope.scopeId())
 ///             .scope(scope.name())
 ///             .namespaceLabels(Map.ofEntries(
@@ -225,11 +225,11 @@ import 'namespace_state.dart';
 ///   scope:
 ///     type: gcp:gkehub:Scope
 ///     properties:
-///       scopeId: tf-test-scope_25601
+///       scopeId: tf-test-scope_67762
 ///   namespace:
 ///     type: gcp:gkehub:Namespace
 ///     properties:
-///       scopeNamespaceId: tf-test-namespace_17228
+///       scopeNamespaceId: tf-test-namespace_44154
 ///       scopeId: ${scope.scopeId}
 ///       scope: ${scope.name}
 ///       namespaceLabels:
@@ -321,7 +321,7 @@ class Namespace extends pulumi.CustomResource {
           'gcp:gkehub/namespace:Namespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

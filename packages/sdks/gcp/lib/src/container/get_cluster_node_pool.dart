@@ -30,7 +30,7 @@ class GetClusterNodePool {
   final pulumi.Input<int> maxPodsPerNode;
   /// The name of the cluster.
   final pulumi.Input<String> name;
-  /// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+  /// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
   final pulumi.Input<String> namePrefix;
   /// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
   final pulumi.Input<List<GetClusterNodePoolNetworkConfig>> networkConfigs;
@@ -61,7 +61,7 @@ class GetClusterNodePool {
   /// [managements] Node management configuration, wherein auto-repair and auto-upgrade is configured.
   /// [maxPodsPerNode] The maximum number of pods per node in this node pool. Note that this does not work on node pools which are "route-based" - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
   /// [name] The name of the cluster.
-  /// [namePrefix] Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+  /// [namePrefix] Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
   /// [networkConfigs] Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
   /// [nodeConfigs] The configuration of the nodepool
   /// [nodeCount] The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
@@ -121,17 +121,17 @@ class GetClusterNodePool {
     return GetClusterNodePool(
       autoscalings: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolAutoscaling>(map['autoscalings']!, (value) => GetClusterNodePoolAutoscaling.fromMap((value as Map).cast<String, dynamic>()))),
       ignoreNodeCountChanges: pulumi.Input.fromValue(map['ignoreNodeCountChanges'] as bool),
-      initialNodeCount: pulumi.Input.fromValue((map['initialNodeCount'] as num).toInt()),
+      initialNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['initialNodeCount'])),
       instanceGroupUrls: pulumi.Input.fromValue((map['instanceGroupUrls'] as List).cast<String>()),
       maintenancePolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolMaintenancePolicy>(map['maintenancePolicies']!, (value) => GetClusterNodePoolMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>()))),
       managedInstanceGroupUrls: pulumi.Input.fromValue((map['managedInstanceGroupUrls'] as List).cast<String>()),
       managements: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolManagement>(map['managements']!, (value) => GetClusterNodePoolManagement.fromMap((value as Map).cast<String, dynamic>()))),
-      maxPodsPerNode: pulumi.Input.fromValue((map['maxPodsPerNode'] as num).toInt()),
+      maxPodsPerNode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPodsPerNode'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       namePrefix: pulumi.Input.fromValue(map['namePrefix'] as String),
       networkConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNetworkConfig>(map['networkConfigs']!, (value) => GetClusterNodePoolNetworkConfig.fromMap((value as Map).cast<String, dynamic>()))),
       nodeConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeConfig>(map['nodeConfigs']!, (value) => GetClusterNodePoolNodeConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
+      nodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodeCount'])),
       nodeDrainConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeDrainConfig>(map['nodeDrainConfigs']!, (value) => GetClusterNodePoolNodeDrainConfig.fromMap((value as Map).cast<String, dynamic>()))),
       nodeLocations: pulumi.Input.fromValue((map['nodeLocations'] as List).cast<String>()),
       placementPolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolPlacementPolicy>(map['placementPolicies']!, (value) => GetClusterNodePoolPlacementPolicy.fromMap((value as Map).cast<String, dynamic>()))),

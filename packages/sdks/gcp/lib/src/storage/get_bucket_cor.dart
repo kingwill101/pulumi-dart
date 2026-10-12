@@ -35,7 +35,7 @@ class GetBucketCor {
 
   factory GetBucketCor.fromMap(Map<String, dynamic> map) {
     return GetBucketCor(
-      maxAgeSeconds: pulumi.Input.fromValue((map['maxAgeSeconds'] as num).toInt()),
+      maxAgeSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxAgeSeconds'])),
       methods: pulumi.Input.fromValue((map['methods'] as List).cast<String>()),
       origins: pulumi.Input.fromValue((map['origins'] as List).cast<String>()),
       responseHeaders: pulumi.Input.fromValue((map['responseHeaders'] as List).cast<String>()),

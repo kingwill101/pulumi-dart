@@ -127,7 +127,7 @@ import 'organizations_policy_binding_target.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -299,6 +299,406 @@ import 'organizations_policy_binding_target.dart';
 ///         - ${wait60Seconds}
 /// ```
 ///
+/// ### Iam Organizations Policy Binding Access Policy
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as time from "@pulumiverse/time";
+///
+/// const testSa = new gcp.serviceaccount.Account("test_sa", {
+///     accountId: "ap-sa-",
+///     displayName: "Test Service Account for Access Policy",
+/// });
+/// const accessPolicy = new gcp.iam.OrganizationAccessPolicy("access_policy", {
+///     organization: "123456789",
+///     location: "global",
+///     accessPolicyId: "my-org-policy-",
+///     details: {
+///         rules: [{
+///             effect: "ALLOW",
+///             principals: [pulumi.interpolate`principal://iam.googleapis.com/projects/-/serviceAccounts/${testSa.email}`],
+///             operation: {
+///                 permissions: ["eventarc.googleapis.com/messageBuses.publish"],
+///             },
+///         }],
+///     },
+/// });
+/// const wait60Seconds = new time.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+///     dependsOn: [accessPolicy],
+/// });
+/// const my_org_access_policy_binding = new gcp.iam.OrganizationsPolicyBinding("my-org-access-policy-binding", {
+///     organization: "123456789",
+///     location: "global",
+///     displayName: "Binding for an organization access policy",
+///     policyKind: "ACCESS",
+///     policyBindingId: "my-org-access-binding-",
+///     policy: pulumi.interpolate`organizations/123456789/locations/global/accessPolicies/${accessPolicy.accessPolicyId}`,
+///     target: {
+///         resource: "//cloudresourcemanager.googleapis.com/organizations/123456789",
+///     },
+/// }, {
+///     dependsOn: [wait60Seconds],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumiverse_time as time
+///
+/// test_sa = gcp.serviceaccount.Account("test_sa",
+///     account_id="ap-sa-",
+///     display_name="Test Service Account for Access Policy")
+/// access_policy = gcp.iam.OrganizationAccessPolicy("access_policy",
+///     organization="123456789",
+///     location="global",
+///     access_policy_id="my-org-policy-",
+///     details={
+///         "rules": [{
+///             "effect": "ALLOW",
+///             "principals": [test_sa.email.apply(lambda email: f"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}")],
+///             "operation": {
+///                 "permissions": ["eventarc.googleapis.com/messageBuses.publish"],
+///             },
+///         }],
+///     })
+/// wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+/// opts = pulumi.ResourceOptions(depends_on=[access_policy]))
+/// my_org_access_policy_binding = gcp.iam.OrganizationsPolicyBinding("my-org-access-policy-binding",
+///     organization="123456789",
+///     location="global",
+///     display_name="Binding for an organization access policy",
+///     policy_kind="ACCESS",
+///     policy_binding_id="my-org-access-binding-",
+///     policy=access_policy.access_policy_id.apply(lambda access_policy_id: f"organizations/123456789/locations/global/accessPolicies/{access_policy_id}"),
+///     target={
+///         "resource": "//cloudresourcemanager.googleapis.com/organizations/123456789",
+///     },
+///     opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Time = Pulumiverse.Time;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var testSa = new Gcp.ServiceAccount.Account("test_sa", new()
+///     {
+///         AccountId = "ap-sa-",
+///         DisplayName = "Test Service Account for Access Policy",
+///     });
+///
+///     var accessPolicy = new Gcp.Iam.OrganizationAccessPolicy("access_policy", new()
+///     {
+///         Organization = "123456789",
+///         Location = "global",
+///         AccessPolicyId = "my-org-policy-",
+///         Details = new Gcp.Iam.Inputs.OrganizationAccessPolicyDetailsArgs
+///         {
+///             Rules = new[]
+///             {
+///                 new Gcp.Iam.Inputs.OrganizationAccessPolicyDetailsRuleArgs
+///                 {
+///                     Effect = "ALLOW",
+///                     Principals = new[]
+///                     {
+///                         testSa.Email.Apply(email => $"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}"),
+///                     },
+///                     Operation = new Gcp.Iam.Inputs.OrganizationAccessPolicyDetailsRuleOperationArgs
+///                     {
+///                         Permissions = new[]
+///                         {
+///                             "eventarc.googleapis.com/messageBuses.publish",
+///                         },
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+///     var wait60Seconds = new Time.Sleep("wait_60_seconds", new()
+///     {
+///         CreateDuration = "60s",
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             accessPolicy,
+///         },
+///     });
+///
+///     var my_org_access_policy_binding = new Gcp.Iam.OrganizationsPolicyBinding("my-org-access-policy-binding", new()
+///     {
+///         Organization = "123456789",
+///         Location = "global",
+///         DisplayName = "Binding for an organization access policy",
+///         PolicyKind = "ACCESS",
+///         PolicyBindingId = "my-org-access-binding-",
+///         Policy = accessPolicy.AccessPolicyId.Apply(accessPolicyId => $"organizations/123456789/locations/global/accessPolicies/{accessPolicyId}"),
+///         Target = new Gcp.Iam.Inputs.OrganizationsPolicyBindingTargetArgs
+///         {
+///             Resource = "//cloudresourcemanager.googleapis.com/organizations/123456789",
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             wait60Seconds,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		testSa, err := serviceaccount.NewAccount(ctx, "test_sa", &serviceaccount.AccountArgs{
+/// 			AccountId:   pulumi.String("ap-sa-"),
+/// 			DisplayName: pulumi.String("Test Service Account for Access Policy"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		accessPolicy, err := iam.NewOrganizationAccessPolicy(ctx, "access_policy", &iam.OrganizationAccessPolicyArgs{
+/// 			Organization:   pulumi.String("123456789"),
+/// 			Location:       pulumi.String("global"),
+/// 			AccessPolicyId: pulumi.String("my-org-policy-"),
+/// 			Details: &iam.OrganizationAccessPolicyDetailsArgs{
+/// 				Rules: iam.OrganizationAccessPolicyDetailsRuleArray{
+/// 					&iam.OrganizationAccessPolicyDetailsRuleArgs{
+/// 						Effect: pulumi.String("ALLOW"),
+/// 						Principals: pulumi.StringArray{
+/// 							testSa.Email.ApplyT(func(email string) (string, error) {
+/// 								return fmt.Sprintf("principal://iam.googleapis.com/projects/-/serviceAccounts/%v", email), nil
+/// 							}).(pulumi.StringOutput),
+/// 						},
+/// 						Operation: &iam.OrganizationAccessPolicyDetailsRuleOperationArgs{
+/// 							Permissions: pulumi.StringArray{
+/// 								pulumi.String("eventarc.googleapis.com/messageBuses.publish"),
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+/// 			CreateDuration: pulumi.String("60s"),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			accessPolicy,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.NewOrganizationsPolicyBinding(ctx, "my-org-access-policy-binding", &iam.OrganizationsPolicyBindingArgs{
+/// 			Organization:    pulumi.String("123456789"),
+/// 			Location:        pulumi.String("global"),
+/// 			DisplayName:     pulumi.String("Binding for an organization access policy"),
+/// 			PolicyKind:      pulumi.String("ACCESS"),
+/// 			PolicyBindingId: pulumi.String("my-org-access-binding-"),
+/// 			Policy: accessPolicy.AccessPolicyId.ApplyT(func(accessPolicyId string) (string, error) {
+/// 				return fmt.Sprintf("organizations/123456789/locations/global/accessPolicies/%v", accessPolicyId), nil
+/// 			}).(pulumi.StringOutput),
+/// 			Target: &iam.OrganizationsPolicyBindingTargetArgs{
+/// 				Resource: pulumi.String("//cloudresourcemanager.googleapis.com/organizations/123456789"),
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			wait60Seconds,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "test_sa" {
+///   account_id   = "ap-sa-"
+///   display_name = "Test Service Account for Access Policy"
+/// }
+/// resource "gcp_iam_organizationaccesspolicy" "access_policy" {
+///   organization     = "123456789"
+///   location         = "global"
+///   access_policy_id = "my-org-policy-"
+///   details = {
+///     rules = [{
+///       "effect"     = "ALLOW"
+///       "principals" = ["principal://iam.googleapis.com/projects/-/serviceAccounts/${gcp_serviceaccount_account.test_sa.email}"]
+///       "operation" = {
+///         "permissions" = ["eventarc.googleapis.com/messageBuses.publish"]
+///       }
+///     }]
+///   }
+/// }
+/// resource "time_sleep" "wait_60_seconds" {
+///   depends_on      = [gcp_iam_organizationaccesspolicy.access_policy]
+///   create_duration = "60s"
+/// }
+/// resource "gcp_iam_organizationspolicybinding" "my-org-access-policy-binding" {
+///   depends_on        = [time_sleep.wait_60_seconds]
+///   organization      = "123456789"
+///   location          = "global"
+///   display_name      = "Binding for an organization access policy"
+///   policy_kind       = "ACCESS"
+///   policy_binding_id = "my-org-access-binding-"
+///   policy            ="organizations/123456789/locations/global/accessPolicies/${gcp_iam_organizationaccesspolicy.access_policy.access_policy_id}"
+///   target = {
+///     resource = "//cloudresourcemanager.googleapis.com/organizations/123456789"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.serviceaccount.Account;
+/// import com.pulumi.gcp.serviceaccount.AccountArgs;
+/// import com.pulumi.gcp.iam.OrganizationAccessPolicy;
+/// import com.pulumi.gcp.iam.OrganizationAccessPolicyArgs;
+/// import com.pulumi.gcp.iam.inputs.OrganizationAccessPolicyDetailsArgs;
+/// import com.pulumi.gcp.iam.inputs.OrganizationAccessPolicyDetailsRuleArgs;
+/// import com.pulumi.gcp.iam.inputs.OrganizationAccessPolicyDetailsRuleOperationArgs;
+/// import com.pulumiverse.time.Sleep;
+/// import com.pulumiverse.time.SleepArgs;
+/// import com.pulumi.gcp.iam.OrganizationsPolicyBinding;
+/// import com.pulumi.gcp.iam.OrganizationsPolicyBindingArgs;
+/// import com.pulumi.gcp.iam.inputs.OrganizationsPolicyBindingTargetArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var testSa = new Account("testSa", AccountArgs.builder()
+///             .accountId("ap-sa-")
+///             .displayName("Test Service Account for Access Policy")
+///             .build());
+///
+///         var accessPolicy = new OrganizationAccessPolicy("accessPolicy", OrganizationAccessPolicyArgs.builder()
+///             .organization("123456789")
+///             .location("global")
+///             .accessPolicyId("my-org-policy-")
+///             .details(OrganizationAccessPolicyDetailsArgs.builder()
+///                 .rules(OrganizationAccessPolicyDetailsRuleArgs.builder()
+///                     .effect("ALLOW")
+///                     .principals(testSa.email().applyValue(_email -> String.format("principal://iam.googleapis.com/projects/-/serviceAccounts/%s", _email)))
+///                     .operation(OrganizationAccessPolicyDetailsRuleOperationArgs.builder()
+///                         .permissions("eventarc.googleapis.com/messageBuses.publish")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
+///             .createDuration("60s")
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(accessPolicy)
+///                 .build());
+///
+///         var my_org_access_policy_binding = new OrganizationsPolicyBinding("my-org-access-policy-binding", OrganizationsPolicyBindingArgs.builder()
+///             .organization("123456789")
+///             .location("global")
+///             .displayName("Binding for an organization access policy")
+///             .policyKind("ACCESS")
+///             .policyBindingId("my-org-access-binding-")
+///             .policy(accessPolicy.accessPolicyId().applyValue(_accessPolicyId -> String.format("organizations/123456789/locations/global/accessPolicies/%s", _accessPolicyId)))
+///             .target(OrganizationsPolicyBindingTargetArgs.builder()
+///                 .resource("//cloudresourcemanager.googleapis.com/organizations/123456789")
+///                 .build())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(wait60Seconds)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   testSa:
+///     type: gcp:serviceaccount:Account
+///     name: test_sa
+///     properties:
+///       accountId: ap-sa-
+///       displayName: Test Service Account for Access Policy
+///   accessPolicy:
+///     type: gcp:iam:OrganizationAccessPolicy
+///     name: access_policy
+///     properties:
+///       organization: '123456789'
+///       location: global
+///       accessPolicyId: my-org-policy-
+///       details:
+///         rules:
+///           - effect: ALLOW
+///             principals:
+///               - principal://iam.googleapis.com/projects/-/serviceAccounts/${testSa.email}
+///             operation:
+///               permissions:
+///                 - eventarc.googleapis.com/messageBuses.publish
+///   wait60Seconds:
+///     type: time:Sleep
+///     name: wait_60_seconds
+///     properties:
+///       createDuration: 60s
+///     options:
+///       dependsOn:
+///         - ${accessPolicy}
+///   my-org-access-policy-binding:
+///     type: gcp:iam:OrganizationsPolicyBinding
+///     properties:
+///       organization: '123456789'
+///       location: global
+///       displayName: Binding for an organization access policy
+///       policyKind: ACCESS
+///       policyBindingId: my-org-access-binding-
+///       policy: organizations/123456789/locations/global/accessPolicies/${accessPolicy.accessPolicyId}
+///       target:
+///         resource: //cloudresourcemanager.googleapis.com/organizations/123456789
+///     options:
+///       dependsOn:
+///         - ${wait60Seconds}
+/// ```
+///
 ///
 /// ## Import
 ///
@@ -343,6 +743,7 @@ class OrganizationsPolicyBinding extends pulumi.CustomResource {
   /// The exact variables and functions that may be referenced within an expression are
   /// determined by the service that evaluates it. See the service documentation for
   /// additional information.
+  /// Conditions are currently only supported when the bound policy is a principal access boundary policy.
   /// Structure is documented below.
   late final pulumi.Output<OrganizationsPolicyBindingCondition?> condition;
   /// Output only. The time when the policy binding was created.
@@ -377,6 +778,8 @@ class OrganizationsPolicyBinding extends pulumi.CustomResource {
   /// Output only. The globally unique ID of the policy to be bound.
   late final pulumi.Output<String> policyUid;
   /// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+  /// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+  /// `resource` (for access policy bindings) must be set.
   /// Structure is documented below.
   late final pulumi.Output<OrganizationsPolicyBindingTarget> target;
   /// Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
@@ -396,7 +799,7 @@ class OrganizationsPolicyBinding extends pulumi.CustomResource {
           'gcp:iam/organizationsPolicyBinding:OrganizationsPolicyBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     condition = registerOutput<OrganizationsPolicyBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationsPolicyBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

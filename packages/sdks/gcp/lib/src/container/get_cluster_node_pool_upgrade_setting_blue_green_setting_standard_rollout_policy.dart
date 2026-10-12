@@ -30,7 +30,7 @@ class GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy {
 
   factory GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy(
-      batchNodeCount: pulumi.Input.fromValue((map['batchNodeCount'] as num).toInt()),
+      batchNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['batchNodeCount'])),
       batchPercentage: pulumi.Input.fromValue((map['batchPercentage'] as num).toDouble()),
       batchSoakDuration: pulumi.Input.fromValue(map['batchSoakDuration'] as String),
     );

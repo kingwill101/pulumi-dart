@@ -9,6 +9,8 @@ export 'managedkafka/cluster_capacity_config.dart';
 export 'managedkafka/cluster_gcp_config.dart';
 export 'managedkafka/cluster_gcp_config_access_config.dart';
 export 'managedkafka/cluster_gcp_config_access_config_network_config.dart';
+export 'managedkafka/cluster_gcp_config_access_config_public_cluster_config.dart';
+export 'managedkafka/cluster_public_cluster_detail.dart';
 export 'managedkafka/cluster_rebalance_config.dart';
 export 'managedkafka/cluster_state.dart';
 export 'managedkafka/cluster_tls_config.dart';

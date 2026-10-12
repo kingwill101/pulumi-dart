@@ -168,7 +168,7 @@ import 'chat_engine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -510,8 +510,8 @@ import 'chat_engine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -774,7 +774,7 @@ class ChatEngine extends pulumi.CustomResource {
           'gcp:discoveryengine/chatEngine:ChatEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     chatEngineConfig = registerOutput<ChatEngineChatEngineConfig>('chatEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChatEngineChatEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     chatEngineMetadatas = registerOutput<List<ChatEngineChatEngineMetadata>>('chatEngineMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChatEngineChatEngineMetadata>(guardedValue, (value) => ChatEngineChatEngineMetadata.fromMap((value as Map).cast<String, dynamic>())); });

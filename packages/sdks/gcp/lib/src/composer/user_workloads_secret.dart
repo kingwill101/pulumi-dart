@@ -110,7 +110,7 @@ import 'user_workloads_secret_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/composer"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -338,7 +338,7 @@ class UserWorkloadsSecret extends pulumi.CustomResource {
           'gcp:composer/userWorkloadsSecret:UserWorkloadsSecret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['data'],
         ) {
     data = registerOutput<Map<String, String>?>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);

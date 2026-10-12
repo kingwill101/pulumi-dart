@@ -71,7 +71,7 @@ class ConfigurationArgs {
       configurationId: pulumi.Input.fromValue(map['configurationId'] as String),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      licenseCount: pulumi.Input.fromValue((map['licenseCount'] as num).toInt()),
+      licenseCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['licenseCount'])),
       location: pulumi.Input.fromValue(map['location'] as String),
       product: pulumi.Input.fromValue(map['product'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

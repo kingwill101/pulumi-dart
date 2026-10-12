@@ -120,7 +120,7 @@ class BackendServiceArgs {
   /// external load balancing. A backend service created for one type of
   /// load balancing cannot be used with the other. For more information, refer to
   /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-  /// Default value is `EXTERNAL`.
+  /// Default value is `EXTERNAL_MANAGED`.
   /// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
   final pulumi.Input<String?>? loadBalancingScheme;
   /// A list of locality load balancing policies to be used in order of
@@ -239,7 +239,7 @@ class BackendServiceArgs {
   /// Structure is documented below.
   final pulumi.Input<BackendServiceSecuritySettings?>? securitySettings;
   /// URL to networkservices.ServiceLbPolicy resource.
-  /// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+  /// Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
   final pulumi.Input<String?>? serviceLbPolicy;
   /// Type of session affinity to use. The default is NONE. Session affinity is
   /// not applicable if the protocol is UDP.
@@ -385,12 +385,12 @@ class BackendServiceArgs {
 
   factory BackendServiceArgs.fromMap(Map<String, dynamic> map) {
     return BackendServiceArgs(
-      affinityCookieTtlSec: (() { final guardedValue = map['affinityCookieTtlSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      affinityCookieTtlSec: (() { final guardedValue = map['affinityCookieTtlSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       backends: (() { final guardedValue = map['backends']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BackendServiceBackend>(guardedValue, (value) => BackendServiceBackend.fromMap((value as Map).cast<String, dynamic>()))); })(),
       cdnPolicy: (() { final guardedValue = map['cdnPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendServiceCdnPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       circuitBreakers: (() { final guardedValue = map['circuitBreakers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendServiceCircuitBreakers.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       compressionMode: (() { final guardedValue = map['compressionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      connectionDrainingTimeoutSec: (() { final guardedValue = map['connectionDrainingTimeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      connectionDrainingTimeoutSec: (() { final guardedValue = map['connectionDrainingTimeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       consistentHash: (() { final guardedValue = map['consistentHash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendServiceConsistentHash.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customMetrics: (() { final guardedValue = map['customMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BackendServiceCustomMetric>(guardedValue, (value) => BackendServiceCustomMetric.fromMap((value as Map).cast<String, dynamic>()))); })(),
       customRequestHeaders: (() { final guardedValue = map['customRequestHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -422,7 +422,7 @@ class BackendServiceArgs {
       serviceLbPolicy: (() { final guardedValue = map['serviceLbPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sessionAffinity: (() { final guardedValue = map['sessionAffinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       strongSessionAffinityCookie: (() { final guardedValue = map['strongSessionAffinityCookie']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendServiceStrongSessionAffinityCookie.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tlsSettings: (() { final guardedValue = map['tlsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendServiceTlsSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -50,7 +50,7 @@ import 'get_static_ips_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

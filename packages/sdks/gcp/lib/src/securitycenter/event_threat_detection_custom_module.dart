@@ -105,7 +105,7 @@ import 'event_threat_detection_custom_module_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -289,7 +289,7 @@ class EventThreatDetectionCustomModule extends pulumi.CustomResource {
           'gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     config = registerOutput<String>('config');
     deletionPolicy = registerOutput<String>('deletionPolicy');

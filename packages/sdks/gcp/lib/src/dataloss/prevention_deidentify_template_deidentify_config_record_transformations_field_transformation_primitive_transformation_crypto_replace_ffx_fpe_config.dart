@@ -68,7 +68,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
       context: (() { final guardedValue = map['context']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cryptoKey: (() { final guardedValue = map['cryptoKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customAlphabet: (() { final guardedValue = map['customAlphabet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      radix: (() { final guardedValue = map['radix']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      radix: (() { final guardedValue = map['radix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       surrogateInfoType: (() { final guardedValue = map['surrogateInfoType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

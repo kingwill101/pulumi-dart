@@ -35,7 +35,7 @@ import 'get_instance_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memcache"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memcache"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

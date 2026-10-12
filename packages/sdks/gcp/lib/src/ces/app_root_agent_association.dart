@@ -133,7 +133,7 @@ import 'app_root_agent_association_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -357,7 +357,7 @@ class AppRootAgentAssociation extends pulumi.CustomResource {
           'gcp:ces/appRootAgentAssociation:AppRootAgentAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     agentId = registerOutput<String>('agentId');
     appId = registerOutput<String>('appId');

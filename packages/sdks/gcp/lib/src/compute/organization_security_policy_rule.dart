@@ -26,7 +26,7 @@ import 'organization_security_policy_rule_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
-///     shortName: "tf-test_75092",
+///     shortName: "tf-test_8493",
 ///     parent: "organizations/123456789",
 ///     type: "CLOUD_ARMOR",
 /// });
@@ -47,7 +47,7 @@ import 'organization_security_policy_rule_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// policy = gcp.compute.OrganizationSecurityPolicy("policy",
-///     short_name="tf-test_75092",
+///     short_name="tf-test_8493",
 ///     parent="organizations/123456789",
 ///     type="CLOUD_ARMOR")
 /// policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -71,7 +71,7 @@ import 'organization_security_policy_rule_state.dart';
 /// {
 ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
 ///     {
-///         ShortName = "tf-test_75092",
+///         ShortName = "tf-test_8493",
 ///         Parent = "organizations/123456789",
 ///         Type = "CLOUD_ARMOR",
 ///     });
@@ -100,14 +100,14 @@ import 'organization_security_policy_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-/// 			ShortName: pulumi.String("tf-test_75092"),
+/// 			ShortName: pulumi.String("tf-test_8493"),
 /// 			Parent:    pulumi.String("organizations/123456789"),
 /// 			Type:      pulumi.String("CLOUD_ARMOR"),
 /// 		})
@@ -144,7 +144,7 @@ import 'organization_security_policy_rule_state.dart';
 /// }
 ///
 /// resource "gcp_compute_organizationsecuritypolicy" "policy" {
-///   short_name = "tf-test_75092"
+///   short_name = "tf-test_8493"
 ///   parent     = "organizations/123456789"
 ///   type       = "CLOUD_ARMOR"
 /// }
@@ -186,7 +186,7 @@ import 'organization_security_policy_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
-///             .shortName("tf-test_75092")
+///             .shortName("tf-test_8493")
 ///             .parent("organizations/123456789")
 ///             .type("CLOUD_ARMOR")
 ///             .build());
@@ -211,7 +211,7 @@ import 'organization_security_policy_rule_state.dart';
 ///   policy:
 ///     type: gcp:compute:OrganizationSecurityPolicy
 ///     properties:
-///       shortName: tf-test_75092
+///       shortName: tf-test_8493
 ///       parent: organizations/123456789
 ///       type: CLOUD_ARMOR
 ///   policyOrganizationSecurityPolicyRule:
@@ -237,7 +237,7 @@ import 'organization_security_policy_rule_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
-///     shortName: "tf-test_2605",
+///     shortName: "tf-test_9106",
 ///     parent: "organizations/123456789",
 ///     type: "CLOUD_ARMOR",
 /// });
@@ -258,7 +258,7 @@ import 'organization_security_policy_rule_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// policy = gcp.compute.OrganizationSecurityPolicy("policy",
-///     short_name="tf-test_2605",
+///     short_name="tf-test_9106",
 ///     parent="organizations/123456789",
 ///     type="CLOUD_ARMOR")
 /// policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -282,7 +282,7 @@ import 'organization_security_policy_rule_state.dart';
 /// {
 ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
 ///     {
-///         ShortName = "tf-test_2605",
+///         ShortName = "tf-test_9106",
 ///         Parent = "organizations/123456789",
 ///         Type = "CLOUD_ARMOR",
 ///     });
@@ -308,14 +308,14 @@ import 'organization_security_policy_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-/// 			ShortName: pulumi.String("tf-test_2605"),
+/// 			ShortName: pulumi.String("tf-test_9106"),
 /// 			Parent:    pulumi.String("organizations/123456789"),
 /// 			Type:      pulumi.String("CLOUD_ARMOR"),
 /// 		})
@@ -350,7 +350,7 @@ import 'organization_security_policy_rule_state.dart';
 /// }
 ///
 /// resource "gcp_compute_organizationsecuritypolicy" "policy" {
-///   short_name = "tf-test_2605"
+///   short_name = "tf-test_9106"
 ///   parent     = "organizations/123456789"
 ///   type       = "CLOUD_ARMOR"
 /// }
@@ -392,7 +392,7 @@ import 'organization_security_policy_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
-///             .shortName("tf-test_2605")
+///             .shortName("tf-test_9106")
 ///             .parent("organizations/123456789")
 ///             .type("CLOUD_ARMOR")
 ///             .build());
@@ -417,7 +417,7 @@ import 'organization_security_policy_rule_state.dart';
 ///   policy:
 ///     type: gcp:compute:OrganizationSecurityPolicy
 ///     properties:
-///       shortName: tf-test_2605
+///       shortName: tf-test_9106
 ///       parent: organizations/123456789
 ///       type: CLOUD_ARMOR
 ///   policyOrganizationSecurityPolicyRule:
@@ -442,7 +442,7 @@ import 'organization_security_policy_rule_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
-///     shortName: "tf-test_34535",
+///     shortName: "tf-test_27169",
 ///     parent: "organizations/123456789",
 ///     type: "CLOUD_ARMOR",
 /// });
@@ -485,7 +485,7 @@ import 'organization_security_policy_rule_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// policy = gcp.compute.OrganizationSecurityPolicy("policy",
-///     short_name="tf-test_34535",
+///     short_name="tf-test_27169",
 ///     parent="organizations/123456789",
 ///     type="CLOUD_ARMOR")
 /// policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -531,7 +531,7 @@ import 'organization_security_policy_rule_state.dart';
 /// {
 ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
 ///     {
-///         ShortName = "tf-test_34535",
+///         ShortName = "tf-test_27169",
 ///         Parent = "organizations/123456789",
 ///         Type = "CLOUD_ARMOR",
 ///     });
@@ -595,14 +595,14 @@ import 'organization_security_policy_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-/// 			ShortName: pulumi.String("tf-test_34535"),
+/// 			ShortName: pulumi.String("tf-test_27169"),
 /// 			Parent:    pulumi.String("organizations/123456789"),
 /// 			Type:      pulumi.String("CLOUD_ARMOR"),
 /// 		})
@@ -665,7 +665,7 @@ import 'organization_security_policy_rule_state.dart';
 /// }
 ///
 /// resource "gcp_compute_organizationsecuritypolicy" "policy" {
-///   short_name = "tf-test_34535"
+///   short_name = "tf-test_27169"
 ///   parent     = "organizations/123456789"
 ///   type       = "CLOUD_ARMOR"
 /// }
@@ -731,7 +731,7 @@ import 'organization_security_policy_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
-///             .shortName("tf-test_34535")
+///             .shortName("tf-test_27169")
 ///             .parent("organizations/123456789")
 ///             .type("CLOUD_ARMOR")
 ///             .build());
@@ -777,7 +777,7 @@ import 'organization_security_policy_rule_state.dart';
 ///   policy:
 ///     type: gcp:compute:OrganizationSecurityPolicy
 ///     properties:
-///       shortName: tf-test_34535
+///       shortName: tf-test_27169
 ///       parent: organizations/123456789
 ///       type: CLOUD_ARMOR
 ///   policyOrganizationSecurityPolicyRule:
@@ -815,7 +815,7 @@ import 'organization_security_policy_rule_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
-///     shortName: "tf-test_22375",
+///     shortName: "tf-test_75223",
 ///     parent: "organizations/123456789",
 ///     type: "CLOUD_ARMOR",
 /// });
@@ -848,7 +848,7 @@ import 'organization_security_policy_rule_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// policy = gcp.compute.OrganizationSecurityPolicy("policy",
-///     short_name="tf-test_22375",
+///     short_name="tf-test_75223",
 ///     parent="organizations/123456789",
 ///     type="CLOUD_ARMOR")
 /// policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -884,7 +884,7 @@ import 'organization_security_policy_rule_state.dart';
 /// {
 ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
 ///     {
-///         ShortName = "tf-test_22375",
+///         ShortName = "tf-test_75223",
 ///         Parent = "organizations/123456789",
 ///         Type = "CLOUD_ARMOR",
 ///     });
@@ -926,14 +926,14 @@ import 'organization_security_policy_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-/// 			ShortName: pulumi.String("tf-test_22375"),
+/// 			ShortName: pulumi.String("tf-test_75223"),
 /// 			Parent:    pulumi.String("organizations/123456789"),
 /// 			Type:      pulumi.String("CLOUD_ARMOR"),
 /// 		})
@@ -980,7 +980,7 @@ import 'organization_security_policy_rule_state.dart';
 /// }
 ///
 /// resource "gcp_compute_organizationsecuritypolicy" "policy" {
-///   short_name = "tf-test_22375"
+///   short_name = "tf-test_75223"
 ///   parent     = "organizations/123456789"
 ///   type       = "CLOUD_ARMOR"
 /// }
@@ -1033,7 +1033,7 @@ import 'organization_security_policy_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
-///             .shortName("tf-test_22375")
+///             .shortName("tf-test_75223")
 ///             .parent("organizations/123456789")
 ///             .type("CLOUD_ARMOR")
 ///             .build());
@@ -1069,7 +1069,7 @@ import 'organization_security_policy_rule_state.dart';
 ///   policy:
 ///     type: gcp:compute:OrganizationSecurityPolicy
 ///     properties:
-///       shortName: tf-test_22375
+///       shortName: tf-test_75223
 ///       parent: organizations/123456789
 ///       type: CLOUD_ARMOR
 ///   policyOrganizationSecurityPolicyRule:
@@ -1100,7 +1100,7 @@ import 'organization_security_policy_rule_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
-///     shortName: "tf-test_29439",
+///     shortName: "tf-test_41819",
 ///     parent: "organizations/123456789",
 ///     type: "CLOUD_ARMOR",
 /// });
@@ -1125,7 +1125,7 @@ import 'organization_security_policy_rule_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// policy = gcp.compute.OrganizationSecurityPolicy("policy",
-///     short_name="tf-test_29439",
+///     short_name="tf-test_41819",
 ///     parent="organizations/123456789",
 ///     type="CLOUD_ARMOR")
 /// policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -1153,7 +1153,7 @@ import 'organization_security_policy_rule_state.dart';
 /// {
 ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
 ///     {
-///         ShortName = "tf-test_29439",
+///         ShortName = "tf-test_41819",
 ///         Parent = "organizations/123456789",
 ///         Type = "CLOUD_ARMOR",
 ///     });
@@ -1187,14 +1187,14 @@ import 'organization_security_policy_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-/// 			ShortName: pulumi.String("tf-test_29439"),
+/// 			ShortName: pulumi.String("tf-test_41819"),
 /// 			Parent:    pulumi.String("organizations/123456789"),
 /// 			Type:      pulumi.String("CLOUD_ARMOR"),
 /// 		})
@@ -1235,7 +1235,7 @@ import 'organization_security_policy_rule_state.dart';
 /// }
 ///
 /// resource "gcp_compute_organizationsecuritypolicy" "policy" {
-///   short_name = "tf-test_29439"
+///   short_name = "tf-test_41819"
 ///   parent     = "organizations/123456789"
 ///   type       = "CLOUD_ARMOR"
 /// }
@@ -1282,7 +1282,7 @@ import 'organization_security_policy_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
-///             .shortName("tf-test_29439")
+///             .shortName("tf-test_41819")
 ///             .parent("organizations/123456789")
 ///             .type("CLOUD_ARMOR")
 ///             .build());
@@ -1311,7 +1311,7 @@ import 'organization_security_policy_rule_state.dart';
 ///   policy:
 ///     type: gcp:compute:OrganizationSecurityPolicy
 ///     properties:
-///       shortName: tf-test_29439
+///       shortName: tf-test_41819
 ///       parent: organizations/123456789
 ///       type: CLOUD_ARMOR
 ///   policyOrganizationSecurityPolicyRule:
@@ -1457,7 +1457,7 @@ import 'organization_security_policy_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1709,7 +1709,7 @@ class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
           'gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     deletionPolicy = registerOutput<String>('deletionPolicy');

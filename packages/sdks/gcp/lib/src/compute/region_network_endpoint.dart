@@ -96,7 +96,7 @@ import 'region_network_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -306,7 +306,7 @@ import 'region_network_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -463,7 +463,7 @@ import 'region_network_endpoint_state.dart';
 ///     networkEndpointType: "GCE_VM_IP_PORTMAP",
 /// });
 /// const myImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const defaultInstance = new gcp.compute.Instance("default", {
@@ -507,7 +507,7 @@ import 'region_network_endpoint_state.dart';
 ///     network=default.id,
 ///     subnetwork=default_subnetwork.id,
 ///     network_endpoint_type="GCE_VM_IP_PORTMAP")
-/// my_image = gcp.compute.get_image(family="debian-11",
+/// my_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// default_instance = gcp.compute.Instance("default",
 ///     network_interfaces=[{
@@ -563,7 +563,7 @@ import 'region_network_endpoint_state.dart';
 ///
 ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -608,7 +608,7 @@ import 'region_network_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -641,7 +641,7 @@ import 'region_network_endpoint_state.dart';
 /// 			return err
 /// 		}
 /// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -695,7 +695,7 @@ import 'region_network_endpoint_state.dart';
 /// }
 ///
 /// data "gcp_compute_getimage" "myImage" {
-///   family  = "debian-11"
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
@@ -796,7 +796,7 @@ import 'region_network_endpoint_state.dart';
 ///             .build());
 ///
 ///         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -881,7 +881,7 @@ import 'region_network_endpoint_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -947,7 +947,7 @@ class RegionNetworkEndpoint extends pulumi.CustomResource {
           'gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     clientDestinationPort = registerOutput<int?>('clientDestinationPort');
     deletionPolicy = registerOutput<String>('deletionPolicy');

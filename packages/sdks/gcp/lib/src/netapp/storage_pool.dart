@@ -178,9 +178,9 @@ import 'storage_pool_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -505,13 +505,6 @@ class StoragePool extends pulumi.CustomResource {
   /// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
   /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
   late final pulumi.Output<String?> replicaZone;
-  /// (Optional, Beta, Deprecated)
-  /// The effective scale tier of the storage pool. If `scaleTier` is not
-  /// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-  /// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-  ///
-  /// &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-  late final pulumi.Output<String> scaleTier;
   /// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
   /// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
   late final pulumi.Output<String> scaleType;
@@ -548,7 +541,7 @@ class StoragePool extends pulumi.CustomResource {
           'gcp:netapp/storagePool:StoragePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     activeDirectory = registerOutput<String?>('activeDirectory');
@@ -575,7 +568,6 @@ class StoragePool extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     qosType = registerOutput<String>('qosType');
     replicaZone = registerOutput<String?>('replicaZone');
-    scaleTier = registerOutput<String>('scaleTier');
     scaleType = registerOutput<String>('scaleType');
     serviceLevel = registerOutput<String>('serviceLevel');
     totalIops = registerOutput<String>('totalIops');
@@ -634,7 +626,6 @@ class StoragePool extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     qosType = registerOutput<String>('qosType');
     replicaZone = registerOutput<String?>('replicaZone');
-    scaleTier = registerOutput<String>('scaleTier');
     scaleType = registerOutput<String>('scaleType');
     serviceLevel = registerOutput<String>('serviceLevel');
     totalIops = registerOutput<String>('totalIops');
@@ -679,7 +670,6 @@ class StoragePool extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     qosType = registerOutput<String>('qosType');
     replicaZone = registerOutput<String?>('replicaZone');
-    scaleTier = registerOutput<String>('scaleTier');
     scaleType = registerOutput<String>('scaleType');
     serviceLevel = registerOutput<String>('serviceLevel');
     totalIops = registerOutput<String>('totalIops');

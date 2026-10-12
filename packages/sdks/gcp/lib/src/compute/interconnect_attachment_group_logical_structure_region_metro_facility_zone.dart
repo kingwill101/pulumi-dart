@@ -3,11 +3,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone {
-  /// (Output, Deprecated)
-  /// URLs of Attachments in the given zone, to the given
-  /// region, on Interconnects in the given facility and metro. Every
-  /// Attachment in the AG has such an entry.
-  final pulumi.Input<List<String>?>? attachment;
   /// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
   /// strings. Users are encouraged, but not required, to use their preferred
   /// format for resource links as keys.
@@ -22,18 +17,15 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone {
   final pulumi.Input<String?>? zone;
 
   /// Creates a new [InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone].
-  /// [attachment] (Output, Deprecated)
   /// [attachments] Attachments in the AttachmentGroup. Keys are arbitrary user-specified
   /// [zone] (Output)
   const InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone({
-    this.attachment,
     this.attachments,
     this.zone,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachment': ?attachment,
       'attachments': ?attachments,
       'zone': ?zone,
     };
@@ -41,7 +33,6 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone {
 
   factory InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone(
-      attachment: (() { final guardedValue = map['attachment']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       attachments: (() { final guardedValue = map['attachments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -515,7 +515,7 @@ import 'cx_test_case_test_config.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1180,7 +1180,7 @@ class CxTestCase extends pulumi.CustomResource {
           'gcp:diagflow/cxTestCase:CxTestCase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

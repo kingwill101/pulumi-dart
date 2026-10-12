@@ -36,6 +36,9 @@ class HookArgs {
   /// The sensitive query string to be appended to the target URI.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String?>? sensitiveQueryString;
+  /// Determines if the hook uses the Repository Service Account to
+  /// generate an OIDC ID Token for webhook authentication.
+  final pulumi.Input<bool?>? serviceAccountAuth;
   /// The target URI to which the payloads will be delivered.
   final pulumi.Input<String> targetUri;
 
@@ -49,6 +52,7 @@ class HookArgs {
   /// [pushOption] The trigger option for push events.
   /// [repositoryId] The ID for the Repository.
   /// [sensitiveQueryString] The sensitive query string to be appended to the target URI.
+  /// [serviceAccountAuth] Determines if the hook uses the Repository Service Account to
   /// [targetUri] The target URI to which the payloads will be delivered.
   const HookArgs({
     this.deletionPolicy,
@@ -60,6 +64,7 @@ class HookArgs {
     this.pushOption,
     required this.repositoryId,
     this.sensitiveQueryString,
+    this.serviceAccountAuth,
     required this.targetUri,
   });
 
@@ -74,6 +79,7 @@ class HookArgs {
       'pushOption': ?pulumi.Input.mapOptionalInputValue<HookPushOption, Map<String, dynamic>>(pushOption, (value) => value.toMap()),
       'repositoryId': repositoryId,
       'sensitiveQueryString': ?sensitiveQueryString,
+      'serviceAccountAuth': ?serviceAccountAuth,
       'targetUri': targetUri,
     };
   }
@@ -89,6 +95,7 @@ class HookArgs {
       pushOption: (() { final guardedValue = map['pushOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HookPushOption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
       sensitiveQueryString: (() { final guardedValue = map['sensitiveQueryString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceAccountAuth: (() { final guardedValue = map['serviceAccountAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       targetUri: pulumi.Input.fromValue(map['targetUri'] as String),
     );
   }

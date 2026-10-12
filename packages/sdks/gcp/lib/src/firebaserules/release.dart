@@ -84,7 +84,7 @@ import 'release_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebaserules"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebaserules"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -282,7 +282,7 @@ import 'release_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebaserules"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebaserules"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -450,7 +450,7 @@ class Release extends pulumi.CustomResource {
           'gcp:firebaserules/release:Release',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

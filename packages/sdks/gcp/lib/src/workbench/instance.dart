@@ -25,7 +25,13 @@ import 'instance_upgrade_history.dart';
 ///
 /// const instance = new gcp.workbench.Instance("instance", {
 ///     name: "workbench-instance",
-///     location: "us-west1-a",
+///     location: "us-east1-b",
+///     gceSetup: {
+///         machineType: "n4-standard-2",
+///         bootDisk: {
+///             diskType: "HYPERDISK_BALANCED",
+///         },
+///     },
 /// });
 /// ```
 /// ```python
@@ -34,7 +40,13 @@ import 'instance_upgrade_history.dart';
 ///
 /// instance = gcp.workbench.Instance("instance",
 ///     name="workbench-instance",
-///     location="us-west1-a")
+///     location="us-east1-b",
+///     gce_setup={
+///         "machine_type": "n4-standard-2",
+///         "boot_disk": {
+///             "disk_type": "HYPERDISK_BALANCED",
+///         },
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -47,7 +59,15 @@ import 'instance_upgrade_history.dart';
 ///     var instance = new Gcp.Workbench.Instance("instance", new()
 ///     {
 ///         Name = "workbench-instance",
-///         Location = "us-west1-a",
+///         Location = "us-east1-b",
+///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
+///         {
+///             MachineType = "n4-standard-2",
+///             BootDisk = new Gcp.Workbench.Inputs.InstanceGceSetupBootDiskArgs
+///             {
+///                 DiskType = "HYPERDISK_BALANCED",
+///             },
+///         },
 ///     });
 ///
 /// });
@@ -56,7 +76,7 @@ import 'instance_upgrade_history.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workbench"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workbench"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -64,7 +84,13 @@ import 'instance_upgrade_history.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 /// 			Name:     pulumi.String("workbench-instance"),
-/// 			Location: pulumi.String("us-west1-a"),
+/// 			Location: pulumi.String("us-east1-b"),
+/// 			GceSetup: &workbench.InstanceGceSetupArgs{
+/// 				MachineType: pulumi.String("n4-standard-2"),
+/// 				BootDisk: &workbench.InstanceGceSetupBootDiskArgs{
+/// 					DiskType: pulumi.String("HYPERDISK_BALANCED"),
+/// 				},
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -84,7 +110,13 @@ import 'instance_upgrade_history.dart';
 ///
 /// resource "gcp_workbench_instance" "instance" {
 ///   name     = "workbench-instance"
-///   location = "us-west1-a"
+///   location = "us-east1-b"
+///   gce_setup = {
+///     machine_type = "n4-standard-2"
+///     boot_disk = {
+///       disk_type = "HYPERDISK_BALANCED"
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -95,6 +127,8 @@ import 'instance_upgrade_history.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.workbench.Instance;
 /// import com.pulumi.gcp.workbench.InstanceArgs;
+/// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+/// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -110,7 +144,13 @@ import 'instance_upgrade_history.dart';
 ///     public static void stack(Context ctx) {
 ///         var instance = new Instance("instance", InstanceArgs.builder()
 ///             .name("workbench-instance")
-///             .location("us-west1-a")
+///             .location("us-east1-b")
+///             .gceSetup(InstanceGceSetupArgs.builder()
+///                 .machineType("n4-standard-2")
+///                 .bootDisk(InstanceGceSetupBootDiskArgs.builder()
+///                     .diskType("HYPERDISK_BALANCED")
+///                     .build())
+///                 .build())
 ///             .build());
 ///
 ///     }
@@ -122,7 +162,11 @@ import 'instance_upgrade_history.dart';
 ///     type: gcp:workbench:Instance
 ///     properties:
 ///       name: workbench-instance
-///       location: us-west1-a
+///       location: us-east1-b
+///       gceSetup:
+///         machineType: n4-standard-2
+///         bootDisk:
+///           diskType: HYPERDISK_BALANCED
 /// ```
 ///
 /// ### Workbench Instance Basic Container
@@ -135,8 +179,12 @@ import 'instance_upgrade_history.dart';
 ///
 /// const instance = new gcp.workbench.Instance("instance", {
 ///     name: "workbench-instance",
-///     location: "us-west1-a",
+///     location: "us-east1-b",
 ///     gceSetup: {
+///         machineType: "n4-standard-2",
+///         bootDisk: {
+///             diskType: "HYPERDISK_BALANCED",
+///         },
 ///         containerImage: {
 ///             repository: "us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
 ///             tag: "latest",
@@ -150,8 +198,12 @@ import 'instance_upgrade_history.dart';
 ///
 /// instance = gcp.workbench.Instance("instance",
 ///     name="workbench-instance",
-///     location="us-west1-a",
+///     location="us-east1-b",
 ///     gce_setup={
+///         "machine_type": "n4-standard-2",
+///         "boot_disk": {
+///             "disk_type": "HYPERDISK_BALANCED",
+///         },
 ///         "container_image": {
 ///             "repository": "us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
 ///             "tag": "latest",
@@ -169,9 +221,14 @@ import 'instance_upgrade_history.dart';
 ///     var instance = new Gcp.Workbench.Instance("instance", new()
 ///     {
 ///         Name = "workbench-instance",
-///         Location = "us-west1-a",
+///         Location = "us-east1-b",
 ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
 ///         {
+///             MachineType = "n4-standard-2",
+///             BootDisk = new Gcp.Workbench.Inputs.InstanceGceSetupBootDiskArgs
+///             {
+///                 DiskType = "HYPERDISK_BALANCED",
+///             },
 ///             ContainerImage = new Gcp.Workbench.Inputs.InstanceGceSetupContainerImageArgs
 ///             {
 ///                 Repository = "us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
@@ -186,7 +243,7 @@ import 'instance_upgrade_history.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workbench"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workbench"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -194,8 +251,12 @@ import 'instance_upgrade_history.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 /// 			Name:     pulumi.String("workbench-instance"),
-/// 			Location: pulumi.String("us-west1-a"),
+/// 			Location: pulumi.String("us-east1-b"),
 /// 			GceSetup: &workbench.InstanceGceSetupArgs{
+/// 				MachineType: pulumi.String("n4-standard-2"),
+/// 				BootDisk: &workbench.InstanceGceSetupBootDiskArgs{
+/// 					DiskType: pulumi.String("HYPERDISK_BALANCED"),
+/// 				},
 /// 				ContainerImage: &workbench.InstanceGceSetupContainerImageArgs{
 /// 					Repository: pulumi.String("us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310"),
 /// 					Tag:        pulumi.String("latest"),
@@ -220,8 +281,12 @@ import 'instance_upgrade_history.dart';
 ///
 /// resource "gcp_workbench_instance" "instance" {
 ///   name     = "workbench-instance"
-///   location = "us-west1-a"
+///   location = "us-east1-b"
 ///   gce_setup = {
+///     machine_type = "n4-standard-2"
+///     boot_disk = {
+///       disk_type = "HYPERDISK_BALANCED"
+///     }
 ///     container_image = {
 ///       repository = "us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310"
 ///       tag        = "latest"
@@ -238,6 +303,7 @@ import 'instance_upgrade_history.dart';
 /// import com.pulumi.gcp.workbench.Instance;
 /// import com.pulumi.gcp.workbench.InstanceArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+/// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupContainerImageArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -254,8 +320,12 @@ import 'instance_upgrade_history.dart';
 ///     public static void stack(Context ctx) {
 ///         var instance = new Instance("instance", InstanceArgs.builder()
 ///             .name("workbench-instance")
-///             .location("us-west1-a")
+///             .location("us-east1-b")
 ///             .gceSetup(InstanceGceSetupArgs.builder()
+///                 .machineType("n4-standard-2")
+///                 .bootDisk(InstanceGceSetupBootDiskArgs.builder()
+///                     .diskType("HYPERDISK_BALANCED")
+///                     .build())
 ///                 .containerImage(InstanceGceSetupContainerImageArgs.builder()
 ///                     .repository("us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310")
 ///                     .tag("latest")
@@ -272,8 +342,11 @@ import 'instance_upgrade_history.dart';
 ///     type: gcp:workbench:Instance
 ///     properties:
 ///       name: workbench-instance
-///       location: us-west1-a
+///       location: us-east1-b
 ///       gceSetup:
+///         machineType: n4-standard-2
+///         bootDisk:
+///           diskType: HYPERDISK_BALANCED
 ///         containerImage:
 ///           repository: us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310
 ///           tag: latest
@@ -289,13 +362,13 @@ import 'instance_upgrade_history.dart';
 ///
 /// const gpuReservation = new gcp.compute.Reservation("gpu_reservation", {
 ///     name: "wbi-reservation",
-///     zone: "us-central1-a",
+///     zone: "us-east1-b",
 ///     specificReservation: {
 ///         count: 1,
 ///         instanceProperties: {
-///             machineType: "n1-standard-1",
+///             machineType: "g2-standard-4",
 ///             guestAccelerators: [{
-///                 acceleratorType: "nvidia-tesla-t4",
+///                 acceleratorType: "nvidia-l4",
 ///                 acceleratorCount: 1,
 ///             }],
 ///         },
@@ -304,13 +377,19 @@ import 'instance_upgrade_history.dart';
 /// });
 /// const instance = new gcp.workbench.Instance("instance", {
 ///     name: "workbench-instance",
-///     location: "us-central1-a",
+///     location: "us-east1-b",
 ///     gceSetup: {
-///         machineType: "n1-standard-1",
+///         machineType: "g2-standard-4",
 ///         acceleratorConfigs: [{
-///             type: "NVIDIA_TESLA_T4",
+///             type: "NVIDIA_L4",
 ///             coreCount: "1",
 ///         }],
+///         bootDisk: {
+///             diskType: "PD_SSD",
+///         },
+///         dataDisks: {
+///             diskType: "PD_SSD",
+///         },
 ///         vmImage: {
 ///             project: "cloud-notebooks-managed",
 ///             family: "workbench-instances",
@@ -329,13 +408,13 @@ import 'instance_upgrade_history.dart';
 ///
 /// gpu_reservation = gcp.compute.Reservation("gpu_reservation",
 ///     name="wbi-reservation",
-///     zone="us-central1-a",
+///     zone="us-east1-b",
 ///     specific_reservation={
 ///         "count": 1,
 ///         "instance_properties": {
-///             "machine_type": "n1-standard-1",
+///             "machine_type": "g2-standard-4",
 ///             "guest_accelerators": [{
-///                 "accelerator_type": "nvidia-tesla-t4",
+///                 "accelerator_type": "nvidia-l4",
 ///                 "accelerator_count": 1,
 ///             }],
 ///         },
@@ -343,13 +422,19 @@ import 'instance_upgrade_history.dart';
 ///     specific_reservation_required=False)
 /// instance = gcp.workbench.Instance("instance",
 ///     name="workbench-instance",
-///     location="us-central1-a",
+///     location="us-east1-b",
 ///     gce_setup={
-///         "machine_type": "n1-standard-1",
+///         "machine_type": "g2-standard-4",
 ///         "accelerator_configs": [{
-///             "type": "NVIDIA_TESLA_T4",
+///             "type": "NVIDIA_L4",
 ///             "core_count": "1",
 ///         }],
+///         "boot_disk": {
+///             "disk_type": "PD_SSD",
+///         },
+///         "data_disks": {
+///             "disk_type": "PD_SSD",
+///         },
 ///         "vm_image": {
 ///             "project": "cloud-notebooks-managed",
 ///             "family": "workbench-instances",
@@ -371,18 +456,18 @@ import 'instance_upgrade_history.dart';
 ///     var gpuReservation = new Gcp.Compute.Reservation("gpu_reservation", new()
 ///     {
 ///         Name = "wbi-reservation",
-///         Zone = "us-central1-a",
+///         Zone = "us-east1-b",
 ///         SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
 ///         {
 ///             Count = 1,
 ///             InstanceProperties = new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesArgs
 ///             {
-///                 MachineType = "n1-standard-1",
+///                 MachineType = "g2-standard-4",
 ///                 GuestAccelerators = new[]
 ///                 {
 ///                     new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs
 ///                     {
-///                         AcceleratorType = "nvidia-tesla-t4",
+///                         AcceleratorType = "nvidia-l4",
 ///                         AcceleratorCount = 1,
 ///                     },
 ///                 },
@@ -394,17 +479,25 @@ import 'instance_upgrade_history.dart';
 ///     var instance = new Gcp.Workbench.Instance("instance", new()
 ///     {
 ///         Name = "workbench-instance",
-///         Location = "us-central1-a",
+///         Location = "us-east1-b",
 ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
 ///         {
-///             MachineType = "n1-standard-1",
+///             MachineType = "g2-standard-4",
 ///             AcceleratorConfigs = new[]
 ///             {
 ///                 new Gcp.Workbench.Inputs.InstanceGceSetupAcceleratorConfigArgs
 ///                 {
-///                     Type = "NVIDIA_TESLA_T4",
+///                     Type = "NVIDIA_L4",
 ///                     CoreCount = "1",
 ///                 },
+///             },
+///             BootDisk = new Gcp.Workbench.Inputs.InstanceGceSetupBootDiskArgs
+///             {
+///                 DiskType = "PD_SSD",
+///             },
+///             DataDisks = new Gcp.Workbench.Inputs.InstanceGceSetupDataDisksArgs
+///             {
+///                 DiskType = "PD_SSD",
 ///             },
 ///             VmImage = new Gcp.Workbench.Inputs.InstanceGceSetupVmImageArgs
 ///             {
@@ -430,8 +523,8 @@ import 'instance_upgrade_history.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workbench"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workbench"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -439,14 +532,14 @@ import 'instance_upgrade_history.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		gpuReservation, err := compute.NewReservation(ctx, "gpu_reservation", &compute.ReservationArgs{
 /// 			Name: pulumi.String("wbi-reservation"),
-/// 			Zone: pulumi.String("us-central1-a"),
+/// 			Zone: pulumi.String("us-east1-b"),
 /// 			SpecificReservation: &compute.ReservationSpecificReservationArgs{
 /// 				Count: pulumi.Int(1),
 /// 				InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
-/// 					MachineType: pulumi.String("n1-standard-1"),
+/// 					MachineType: pulumi.String("g2-standard-4"),
 /// 					GuestAccelerators: compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArray{
 /// 						&compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs{
-/// 							AcceleratorType:  pulumi.String("nvidia-tesla-t4"),
+/// 							AcceleratorType:  pulumi.String("nvidia-l4"),
 /// 							AcceleratorCount: pulumi.Int(1),
 /// 						},
 /// 					},
@@ -459,14 +552,20 @@ import 'instance_upgrade_history.dart';
 /// 		}
 /// 		_, err = workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 /// 			Name:     pulumi.String("workbench-instance"),
-/// 			Location: pulumi.String("us-central1-a"),
+/// 			Location: pulumi.String("us-east1-b"),
 /// 			GceSetup: &workbench.InstanceGceSetupArgs{
-/// 				MachineType: pulumi.String("n1-standard-1"),
+/// 				MachineType: pulumi.String("g2-standard-4"),
 /// 				AcceleratorConfigs: workbench.InstanceGceSetupAcceleratorConfigArray{
 /// 					&workbench.InstanceGceSetupAcceleratorConfigArgs{
-/// 						Type:      pulumi.String("NVIDIA_TESLA_T4"),
+/// 						Type:      pulumi.String("NVIDIA_L4"),
 /// 						CoreCount: pulumi.String("1"),
 /// 					},
+/// 				},
+/// 				BootDisk: &workbench.InstanceGceSetupBootDiskArgs{
+/// 					DiskType: pulumi.String("PD_SSD"),
+/// 				},
+/// 				DataDisks: &workbench.InstanceGceSetupDataDisksArgs{
+/// 					DiskType: pulumi.String("PD_SSD"),
 /// 				},
 /// 				VmImage: &workbench.InstanceGceSetupVmImageArgs{
 /// 					Project: pulumi.String("cloud-notebooks-managed"),
@@ -497,13 +596,13 @@ import 'instance_upgrade_history.dart';
 ///
 /// resource "gcp_compute_reservation" "gpu_reservation" {
 ///   name = "wbi-reservation"
-///   zone = "us-central1-a"
+///   zone = "us-east1-b"
 ///   specific_reservation = {
 ///     count = 1
 ///     instance_properties = {
-///       machine_type = "n1-standard-1"
+///       machine_type = "g2-standard-4"
 ///       guest_accelerators = [{
-///         "acceleratorType"  = "nvidia-tesla-t4"
+///         "acceleratorType"  = "nvidia-l4"
 ///         "acceleratorCount" = 1
 ///       }]
 ///     }
@@ -513,13 +612,19 @@ import 'instance_upgrade_history.dart';
 /// resource "gcp_workbench_instance" "instance" {
 ///   depends_on = [gcp_compute_reservation.gpu_reservation]
 ///   name       = "workbench-instance"
-///   location   = "us-central1-a"
+///   location   = "us-east1-b"
 ///   gce_setup = {
-///     machine_type = "n1-standard-1"
+///     machine_type = "g2-standard-4"
 ///     accelerator_configs = [{
-///       "type"      = "NVIDIA_TESLA_T4"
+///       "type"      = "NVIDIA_L4"
 ///       "coreCount" = 1
 ///     }]
+///     boot_disk = {
+///       disk_type = "PD_SSD"
+///     }
+///     data_disks = {
+///       disk_type = "PD_SSD"
+///     }
 ///     vm_image = {
 ///       project = "cloud-notebooks-managed"
 ///       family  = "workbench-instances"
@@ -545,6 +650,8 @@ import 'instance_upgrade_history.dart';
 /// import com.pulumi.gcp.workbench.InstanceArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupAcceleratorConfigArgs;
+/// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
+/// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupDataDisksArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupVmImageArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupReservationAffinityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
@@ -563,13 +670,13 @@ import 'instance_upgrade_history.dart';
 ///     public static void stack(Context ctx) {
 ///         var gpuReservation = new Reservation("gpuReservation", ReservationArgs.builder()
 ///             .name("wbi-reservation")
-///             .zone("us-central1-a")
+///             .zone("us-east1-b")
 ///             .specificReservation(ReservationSpecificReservationArgs.builder()
 ///                 .count(1)
 ///                 .instanceProperties(ReservationSpecificReservationInstancePropertiesArgs.builder()
-///                     .machineType("n1-standard-1")
+///                     .machineType("g2-standard-4")
 ///                     .guestAccelerators(ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs.builder()
-///                         .acceleratorType("nvidia-tesla-t4")
+///                         .acceleratorType("nvidia-l4")
 ///                         .acceleratorCount(1)
 ///                         .build())
 ///                     .build())
@@ -579,12 +686,18 @@ import 'instance_upgrade_history.dart';
 ///
 ///         var instance = new Instance("instance", InstanceArgs.builder()
 ///             .name("workbench-instance")
-///             .location("us-central1-a")
+///             .location("us-east1-b")
 ///             .gceSetup(InstanceGceSetupArgs.builder()
-///                 .machineType("n1-standard-1")
+///                 .machineType("g2-standard-4")
 ///                 .acceleratorConfigs(InstanceGceSetupAcceleratorConfigArgs.builder()
-///                     .type("NVIDIA_TESLA_T4")
+///                     .type("NVIDIA_L4")
 ///                     .coreCount("1")
+///                     .build())
+///                 .bootDisk(InstanceGceSetupBootDiskArgs.builder()
+///                     .diskType("PD_SSD")
+///                     .build())
+///                 .dataDisks(InstanceGceSetupDataDisksArgs.builder()
+///                     .diskType("PD_SSD")
 ///                     .build())
 ///                 .vmImage(InstanceGceSetupVmImageArgs.builder()
 ///                     .project("cloud-notebooks-managed")
@@ -608,25 +721,29 @@ import 'instance_upgrade_history.dart';
 ///     name: gpu_reservation
 ///     properties:
 ///       name: wbi-reservation
-///       zone: us-central1-a
+///       zone: us-east1-b
 ///       specificReservation:
 ///         count: 1
 ///         instanceProperties:
-///           machineType: n1-standard-1
+///           machineType: g2-standard-4
 ///           guestAccelerators:
-///             - acceleratorType: nvidia-tesla-t4
+///             - acceleratorType: nvidia-l4
 ///               acceleratorCount: 1
 ///       specificReservationRequired: false
 ///   instance:
 ///     type: gcp:workbench:Instance
 ///     properties:
 ///       name: workbench-instance
-///       location: us-central1-a
+///       location: us-east1-b
 ///       gceSetup:
-///         machineType: n1-standard-1
+///         machineType: g2-standard-4
 ///         acceleratorConfigs:
-///           - type: NVIDIA_TESLA_T4
+///           - type: NVIDIA_L4
 ///             coreCount: 1
+///         bootDisk:
+///           diskType: PD_SSD
+///         dataDisks:
+///           diskType: PD_SSD
 ///         vmImage:
 ///           project: cloud-notebooks-managed
 ///           family: workbench-instances
@@ -647,9 +764,12 @@ import 'instance_upgrade_history.dart';
 ///
 /// const instance = new gcp.workbench.Instance("instance", {
 ///     name: "workbench-instance",
-///     location: "us-central1-a",
+///     location: "us-east1-b",
 ///     gceSetup: {
-///         machineType: "e2-standard-4",
+///         machineType: "n4-standard-4",
+///         bootDisk: {
+///             diskType: "HYPERDISK_BALANCED",
+///         },
 ///         shieldedInstanceConfig: {
 ///             enableSecureBoot: false,
 ///             enableVtpm: false,
@@ -674,9 +794,12 @@ import 'instance_upgrade_history.dart';
 ///
 /// instance = gcp.workbench.Instance("instance",
 ///     name="workbench-instance",
-///     location="us-central1-a",
+///     location="us-east1-b",
 ///     gce_setup={
-///         "machine_type": "e2-standard-4",
+///         "machine_type": "n4-standard-4",
+///         "boot_disk": {
+///             "disk_type": "HYPERDISK_BALANCED",
+///         },
 ///         "shielded_instance_config": {
 ///             "enable_secure_boot": False,
 ///             "enable_vtpm": False,
@@ -705,10 +828,14 @@ import 'instance_upgrade_history.dart';
 ///     var instance = new Gcp.Workbench.Instance("instance", new()
 ///     {
 ///         Name = "workbench-instance",
-///         Location = "us-central1-a",
+///         Location = "us-east1-b",
 ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
 ///         {
-///             MachineType = "e2-standard-4",
+///             MachineType = "n4-standard-4",
+///             BootDisk = new Gcp.Workbench.Inputs.InstanceGceSetupBootDiskArgs
+///             {
+///                 DiskType = "HYPERDISK_BALANCED",
+///             },
 ///             ShieldedInstanceConfig = new Gcp.Workbench.Inputs.InstanceGceSetupShieldedInstanceConfigArgs
 ///             {
 ///                 EnableSecureBoot = false,
@@ -740,7 +867,7 @@ import 'instance_upgrade_history.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workbench"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workbench"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -748,9 +875,12 @@ import 'instance_upgrade_history.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 /// 			Name:     pulumi.String("workbench-instance"),
-/// 			Location: pulumi.String("us-central1-a"),
+/// 			Location: pulumi.String("us-east1-b"),
 /// 			GceSetup: &workbench.InstanceGceSetupArgs{
-/// 				MachineType: pulumi.String("e2-standard-4"),
+/// 				MachineType: pulumi.String("n4-standard-4"),
+/// 				BootDisk: &workbench.InstanceGceSetupBootDiskArgs{
+/// 					DiskType: pulumi.String("HYPERDISK_BALANCED"),
+/// 				},
 /// 				ShieldedInstanceConfig: &workbench.InstanceGceSetupShieldedInstanceConfigArgs{
 /// 					EnableSecureBoot:          pulumi.Bool(false),
 /// 					EnableVtpm:                pulumi.Bool(false),
@@ -788,9 +918,12 @@ import 'instance_upgrade_history.dart';
 ///
 /// resource "gcp_workbench_instance" "instance" {
 ///   name     = "workbench-instance"
-///   location = "us-central1-a"
+///   location = "us-east1-b"
 ///   gce_setup = {
-///     machine_type = "e2-standard-4"
+///     machine_type = "n4-standard-4"
+///     boot_disk = {
+///       disk_type = "HYPERDISK_BALANCED"
+///     }
 ///     shielded_instance_config = {
 ///       enable_secure_boot          = false
 ///       enable_vtpm                 = false
@@ -818,6 +951,7 @@ import 'instance_upgrade_history.dart';
 /// import com.pulumi.gcp.workbench.Instance;
 /// import com.pulumi.gcp.workbench.InstanceArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+/// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupShieldedInstanceConfigArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupServiceAccountArgs;
 /// import java.util.ArrayList;
@@ -835,9 +969,12 @@ import 'instance_upgrade_history.dart';
 ///     public static void stack(Context ctx) {
 ///         var instance = new Instance("instance", InstanceArgs.builder()
 ///             .name("workbench-instance")
-///             .location("us-central1-a")
+///             .location("us-east1-b")
 ///             .gceSetup(InstanceGceSetupArgs.builder()
-///                 .machineType("e2-standard-4")
+///                 .machineType("n4-standard-4")
+///                 .bootDisk(InstanceGceSetupBootDiskArgs.builder()
+///                     .diskType("HYPERDISK_BALANCED")
+///                     .build())
 ///                 .shieldedInstanceConfig(InstanceGceSetupShieldedInstanceConfigArgs.builder()
 ///                     .enableSecureBoot(false)
 ///                     .enableVtpm(false)
@@ -861,9 +998,11 @@ import 'instance_upgrade_history.dart';
 ///     type: gcp:workbench:Instance
 ///     properties:
 ///       name: workbench-instance
-///       location: us-central1-a
+///       location: us-east1-b
 ///       gceSetup:
-///         machineType: e2-standard-4
+///         machineType: n4-standard-4
+///         bootDisk:
+///           diskType: HYPERDISK_BALANCED
 ///         shieldedInstanceConfig:
 ///           enableSecureBoot: false
 ///           enableVtpm: false
@@ -892,10 +1031,13 @@ import 'instance_upgrade_history.dart';
 /// const mySubnetwork = new gcp.compute.Subnetwork("my_subnetwork", {
 ///     name: "wbi-test-default",
 ///     network: myNetwork.id,
-///     region: "us-central1",
+///     region: "us-east1",
 ///     ipCidrRange: "10.0.1.0/24",
 /// });
-/// const static = new gcp.compute.Address("static", {name: "wbi-test-default"});
+/// const static = new gcp.compute.Address("static", {
+///     name: "wbi-test-default",
+///     region: "us-east1",
+/// });
 /// const actAsPermission = new gcp.serviceaccount.IAMMember("act_as_permission", {
 ///     serviceAccountId: "projects/my-project-name/serviceAccounts/my@service-account.com",
 ///     role: "roles/iam.serviceAccountUser",
@@ -903,14 +1045,14 @@ import 'instance_upgrade_history.dart';
 /// });
 /// const gpuReservation = new gcp.compute.Reservation("gpu_reservation", {
 ///     name: "wbi-reservation",
-///     zone: "us-central1-a",
+///     zone: "us-east1-b",
 ///     specificReservation: {
 ///         count: 1,
 ///         instanceProperties: {
-///             machineType: "n1-standard-4",
-///             minCpuPlatform: "Intel Broadwell",
+///             machineType: "g2-standard-4",
+///             minCpuPlatform: "Intel Cascade Lake",
 ///             guestAccelerators: [{
-///                 acceleratorType: "nvidia-tesla-t4",
+///                 acceleratorType: "nvidia-l4",
 ///                 acceleratorCount: 1,
 ///             }],
 ///         },
@@ -919,7 +1061,7 @@ import 'instance_upgrade_history.dart';
 /// });
 /// const myPolicy = new gcp.compute.ResourcePolicy("my_policy", {
 ///     name: "wbi-policy",
-///     region: "us-central1",
+///     region: "us-east1",
 ///     snapshotSchedulePolicy: {
 ///         schedule: {
 ///             dailySchedule: {
@@ -931,13 +1073,13 @@ import 'instance_upgrade_history.dart';
 /// });
 /// const instance = new gcp.workbench.Instance("instance", {
 ///     name: "workbench-instance",
-///     location: "us-central1-a",
+///     location: "us-east1-b",
 ///     enableDeletionProtection: false,
 ///     gceSetup: {
-///         machineType: "n1-standard-4",
-///         minCpuPlatform: "Intel Broadwell",
+///         machineType: "g2-standard-4",
+///         minCpuPlatform: "Intel Cascade Lake",
 ///         acceleratorConfigs: [{
-///             type: "NVIDIA_TESLA_T4",
+///             type: "NVIDIA_L4",
 ///             coreCount: "1",
 ///         }],
 ///         shieldedInstanceConfig: {
@@ -1014,23 +1156,25 @@ import 'instance_upgrade_history.dart';
 /// my_subnetwork = gcp.compute.Subnetwork("my_subnetwork",
 ///     name="wbi-test-default",
 ///     network=my_network.id,
-///     region="us-central1",
+///     region="us-east1",
 ///     ip_cidr_range="10.0.1.0/24")
-/// static = gcp.compute.Address("static", name="wbi-test-default")
+/// static = gcp.compute.Address("static",
+///     name="wbi-test-default",
+///     region="us-east1")
 /// act_as_permission = gcp.serviceaccount.IAMMember("act_as_permission",
 ///     service_account_id="projects/my-project-name/serviceAccounts/my@service-account.com",
 ///     role="roles/iam.serviceAccountUser",
 ///     member="user:example@example.com")
 /// gpu_reservation = gcp.compute.Reservation("gpu_reservation",
 ///     name="wbi-reservation",
-///     zone="us-central1-a",
+///     zone="us-east1-b",
 ///     specific_reservation={
 ///         "count": 1,
 ///         "instance_properties": {
-///             "machine_type": "n1-standard-4",
-///             "min_cpu_platform": "Intel Broadwell",
+///             "machine_type": "g2-standard-4",
+///             "min_cpu_platform": "Intel Cascade Lake",
 ///             "guest_accelerators": [{
-///                 "accelerator_type": "nvidia-tesla-t4",
+///                 "accelerator_type": "nvidia-l4",
 ///                 "accelerator_count": 1,
 ///             }],
 ///         },
@@ -1038,7 +1182,7 @@ import 'instance_upgrade_history.dart';
 ///     specific_reservation_required=True)
 /// my_policy = gcp.compute.ResourcePolicy("my_policy",
 ///     name="wbi-policy",
-///     region="us-central1",
+///     region="us-east1",
 ///     snapshot_schedule_policy={
 ///         "schedule": {
 ///             "daily_schedule": {
@@ -1049,13 +1193,13 @@ import 'instance_upgrade_history.dart';
 ///     })
 /// instance = gcp.workbench.Instance("instance",
 ///     name="workbench-instance",
-///     location="us-central1-a",
+///     location="us-east1-b",
 ///     enable_deletion_protection=False,
 ///     gce_setup={
-///         "machine_type": "n1-standard-4",
-///         "min_cpu_platform": "Intel Broadwell",
+///         "machine_type": "g2-standard-4",
+///         "min_cpu_platform": "Intel Cascade Lake",
 ///         "accelerator_configs": [{
-///             "type": "NVIDIA_TESLA_T4",
+///             "type": "NVIDIA_L4",
 ///             "core_count": "1",
 ///         }],
 ///         "shielded_instance_config": {
@@ -1138,13 +1282,14 @@ import 'instance_upgrade_history.dart';
 ///     {
 ///         Name = "wbi-test-default",
 ///         Network = myNetwork.Id,
-///         Region = "us-central1",
+///         Region = "us-east1",
 ///         IpCidrRange = "10.0.1.0/24",
 ///     });
 ///
 ///     var @static = new Gcp.Compute.Address("static", new()
 ///     {
 ///         Name = "wbi-test-default",
+///         Region = "us-east1",
 ///     });
 ///
 ///     var actAsPermission = new Gcp.ServiceAccount.IAMMember("act_as_permission", new()
@@ -1157,19 +1302,19 @@ import 'instance_upgrade_history.dart';
 ///     var gpuReservation = new Gcp.Compute.Reservation("gpu_reservation", new()
 ///     {
 ///         Name = "wbi-reservation",
-///         Zone = "us-central1-a",
+///         Zone = "us-east1-b",
 ///         SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
 ///         {
 ///             Count = 1,
 ///             InstanceProperties = new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesArgs
 ///             {
-///                 MachineType = "n1-standard-4",
-///                 MinCpuPlatform = "Intel Broadwell",
+///                 MachineType = "g2-standard-4",
+///                 MinCpuPlatform = "Intel Cascade Lake",
 ///                 GuestAccelerators = new[]
 ///                 {
 ///                     new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs
 ///                     {
-///                         AcceleratorType = "nvidia-tesla-t4",
+///                         AcceleratorType = "nvidia-l4",
 ///                         AcceleratorCount = 1,
 ///                     },
 ///                 },
@@ -1181,7 +1326,7 @@ import 'instance_upgrade_history.dart';
 ///     var myPolicy = new Gcp.Compute.ResourcePolicy("my_policy", new()
 ///     {
 ///         Name = "wbi-policy",
-///         Region = "us-central1",
+///         Region = "us-east1",
 ///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
 ///         {
 ///             Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
@@ -1198,17 +1343,17 @@ import 'instance_upgrade_history.dart';
 ///     var instance = new Gcp.Workbench.Instance("instance", new()
 ///     {
 ///         Name = "workbench-instance",
-///         Location = "us-central1-a",
+///         Location = "us-east1-b",
 ///         EnableDeletionProtection = false,
 ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
 ///         {
-///             MachineType = "n1-standard-4",
-///             MinCpuPlatform = "Intel Broadwell",
+///             MachineType = "g2-standard-4",
+///             MinCpuPlatform = "Intel Cascade Lake",
 ///             AcceleratorConfigs = new[]
 ///             {
 ///                 new Gcp.Workbench.Inputs.InstanceGceSetupAcceleratorConfigArgs
 ///                 {
-///                     Type = "NVIDIA_TESLA_T4",
+///                     Type = "NVIDIA_L4",
 ///                     CoreCount = "1",
 ///                 },
 ///             },
@@ -1312,9 +1457,9 @@ import 'instance_upgrade_history.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workbench"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workbench"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1330,14 +1475,15 @@ import 'instance_upgrade_history.dart';
 /// 		mySubnetwork, err := compute.NewSubnetwork(ctx, "my_subnetwork", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("wbi-test-default"),
 /// 			Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 			Region:      pulumi.String("us-central1"),
+/// 			Region:      pulumi.String("us-east1"),
 /// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		static, err := compute.NewAddress(ctx, "static", &compute.AddressArgs{
-/// 			Name: pulumi.String("wbi-test-default"),
+/// 			Name:   pulumi.String("wbi-test-default"),
+/// 			Region: pulumi.String("us-east1"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1352,15 +1498,15 @@ import 'instance_upgrade_history.dart';
 /// 		}
 /// 		gpuReservation, err := compute.NewReservation(ctx, "gpu_reservation", &compute.ReservationArgs{
 /// 			Name: pulumi.String("wbi-reservation"),
-/// 			Zone: pulumi.String("us-central1-a"),
+/// 			Zone: pulumi.String("us-east1-b"),
 /// 			SpecificReservation: &compute.ReservationSpecificReservationArgs{
 /// 				Count: pulumi.Int(1),
 /// 				InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
-/// 					MachineType:    pulumi.String("n1-standard-4"),
-/// 					MinCpuPlatform: pulumi.String("Intel Broadwell"),
+/// 					MachineType:    pulumi.String("g2-standard-4"),
+/// 					MinCpuPlatform: pulumi.String("Intel Cascade Lake"),
 /// 					GuestAccelerators: compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArray{
 /// 						&compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs{
-/// 							AcceleratorType:  pulumi.String("nvidia-tesla-t4"),
+/// 							AcceleratorType:  pulumi.String("nvidia-l4"),
 /// 							AcceleratorCount: pulumi.Int(1),
 /// 						},
 /// 					},
@@ -1373,7 +1519,7 @@ import 'instance_upgrade_history.dart';
 /// 		}
 /// 		myPolicy, err := compute.NewResourcePolicy(ctx, "my_policy", &compute.ResourcePolicyArgs{
 /// 			Name:   pulumi.String("wbi-policy"),
-/// 			Region: pulumi.String("us-central1"),
+/// 			Region: pulumi.String("us-east1"),
 /// 			SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
 /// 				Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
 /// 					DailySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{
@@ -1388,14 +1534,14 @@ import 'instance_upgrade_history.dart';
 /// 		}
 /// 		_, err = workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 /// 			Name:                     pulumi.String("workbench-instance"),
-/// 			Location:                 pulumi.String("us-central1-a"),
+/// 			Location:                 pulumi.String("us-east1-b"),
 /// 			EnableDeletionProtection: pulumi.Bool(false),
 /// 			GceSetup: &workbench.InstanceGceSetupArgs{
-/// 				MachineType:    pulumi.String("n1-standard-4"),
-/// 				MinCpuPlatform: pulumi.String("Intel Broadwell"),
+/// 				MachineType:    pulumi.String("g2-standard-4"),
+/// 				MinCpuPlatform: pulumi.String("Intel Cascade Lake"),
 /// 				AcceleratorConfigs: workbench.InstanceGceSetupAcceleratorConfigArray{
 /// 					&workbench.InstanceGceSetupAcceleratorConfigArgs{
-/// 						Type:      pulumi.String("NVIDIA_TESLA_T4"),
+/// 						Type:      pulumi.String("NVIDIA_L4"),
 /// 						CoreCount: pulumi.String("1"),
 /// 					},
 /// 				},
@@ -1495,11 +1641,12 @@ import 'instance_upgrade_history.dart';
 /// resource "gcp_compute_subnetwork" "my_subnetwork" {
 ///   name          = "wbi-test-default"
 ///   network       = gcp_compute_network.my_network.id
-///   region        = "us-central1"
+///   region        = "us-east1"
 ///   ip_cidr_range = "10.0.1.0/24"
 /// }
 /// resource "gcp_compute_address" "static" {
-///   name = "wbi-test-default"
+///   name   = "wbi-test-default"
+///   region = "us-east1"
 /// }
 /// resource "gcp_serviceaccount_iammember" "act_as_permission" {
 ///   service_account_id = "projects/my-project-name/serviceAccounts/my@service-account.com"
@@ -1508,14 +1655,14 @@ import 'instance_upgrade_history.dart';
 /// }
 /// resource "gcp_compute_reservation" "gpu_reservation" {
 ///   name = "wbi-reservation"
-///   zone = "us-central1-a"
+///   zone = "us-east1-b"
 ///   specific_reservation = {
 ///     count = 1
 ///     instance_properties = {
-///       machine_type     = "n1-standard-4"
-///       min_cpu_platform = "Intel Broadwell"
+///       machine_type     = "g2-standard-4"
+///       min_cpu_platform = "Intel Cascade Lake"
 ///       guest_accelerators = [{
-///         "acceleratorType"  = "nvidia-tesla-t4"
+///         "acceleratorType"  = "nvidia-l4"
 ///         "acceleratorCount" = 1
 ///       }]
 ///     }
@@ -1524,7 +1671,7 @@ import 'instance_upgrade_history.dart';
 /// }
 /// resource "gcp_compute_resourcepolicy" "my_policy" {
 ///   name   = "wbi-policy"
-///   region = "us-central1"
+///   region = "us-east1"
 ///   snapshot_schedule_policy = {
 ///     schedule = {
 ///       daily_schedule = {
@@ -1537,13 +1684,13 @@ import 'instance_upgrade_history.dart';
 /// resource "gcp_workbench_instance" "instance" {
 ///   depends_on                 = [gcp_compute_network.my_network, gcp_compute_subnetwork.my_subnetwork, gcp_compute_address.static, gcp_serviceaccount_iammember.act_as_permission, gcp_compute_reservation.gpu_reservation, gcp_compute_resourcepolicy.my_policy]
 ///   name                       = "workbench-instance"
-///   location                   = "us-central1-a"
+///   location                   = "us-east1-b"
 ///   enable_deletion_protection = false
 ///   gce_setup = {
-///     machine_type     = "n1-standard-4"
-///     min_cpu_platform = "Intel Broadwell"
+///     machine_type     = "g2-standard-4"
+///     min_cpu_platform = "Intel Cascade Lake"
 ///     accelerator_configs = [{
-///       "type"      = "NVIDIA_TESLA_T4"
+///       "type"      = "NVIDIA_L4"
 ///       "coreCount" = 1
 ///     }]
 ///     shielded_instance_config = {
@@ -1589,7 +1736,6 @@ import 'instance_upgrade_history.dart';
 ///     enable_ip_forwarding = true
 ///     tags                 = ["abc", "def"]
 ///   }
-///   // cant be e2 because of accelerator
 ///   disable_proxy_access = "true"
 ///   instance_owners      = ["example@example.com"]
 ///   labels = {
@@ -1656,12 +1802,13 @@ import 'instance_upgrade_history.dart';
 ///         var mySubnetwork = new Subnetwork("mySubnetwork", SubnetworkArgs.builder()
 ///             .name("wbi-test-default")
 ///             .network(myNetwork.id())
-///             .region("us-central1")
+///             .region("us-east1")
 ///             .ipCidrRange("10.0.1.0/24")
 ///             .build());
 ///
 ///         var static_ = new Address("static", AddressArgs.builder()
 ///             .name("wbi-test-default")
+///             .region("us-east1")
 ///             .build());
 ///
 ///         var actAsPermission = new IAMMember("actAsPermission", IAMMemberArgs.builder()
@@ -1672,14 +1819,14 @@ import 'instance_upgrade_history.dart';
 ///
 ///         var gpuReservation = new Reservation("gpuReservation", ReservationArgs.builder()
 ///             .name("wbi-reservation")
-///             .zone("us-central1-a")
+///             .zone("us-east1-b")
 ///             .specificReservation(ReservationSpecificReservationArgs.builder()
 ///                 .count(1)
 ///                 .instanceProperties(ReservationSpecificReservationInstancePropertiesArgs.builder()
-///                     .machineType("n1-standard-4")
-///                     .minCpuPlatform("Intel Broadwell")
+///                     .machineType("g2-standard-4")
+///                     .minCpuPlatform("Intel Cascade Lake")
 ///                     .guestAccelerators(ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs.builder()
-///                         .acceleratorType("nvidia-tesla-t4")
+///                         .acceleratorType("nvidia-l4")
 ///                         .acceleratorCount(1)
 ///                         .build())
 ///                     .build())
@@ -1689,7 +1836,7 @@ import 'instance_upgrade_history.dart';
 ///
 ///         var myPolicy = new ResourcePolicy("myPolicy", ResourcePolicyArgs.builder()
 ///             .name("wbi-policy")
-///             .region("us-central1")
+///             .region("us-east1")
 ///             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
 ///                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
 ///                     .dailySchedule(ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs.builder()
@@ -1702,13 +1849,13 @@ import 'instance_upgrade_history.dart';
 ///
 ///         var instance = new Instance("instance", InstanceArgs.builder()
 ///             .name("workbench-instance")
-///             .location("us-central1-a")
+///             .location("us-east1-b")
 ///             .enableDeletionProtection(false)
 ///             .gceSetup(InstanceGceSetupArgs.builder()
-///                 .machineType("n1-standard-4")
-///                 .minCpuPlatform("Intel Broadwell")
+///                 .machineType("g2-standard-4")
+///                 .minCpuPlatform("Intel Cascade Lake")
 ///                 .acceleratorConfigs(InstanceGceSetupAcceleratorConfigArgs.builder()
-///                     .type("NVIDIA_TESLA_T4")
+///                     .type("NVIDIA_L4")
 ///                     .coreCount("1")
 ///                     .build())
 ///                 .shieldedInstanceConfig(InstanceGceSetupShieldedInstanceConfigArgs.builder()
@@ -1788,12 +1935,13 @@ import 'instance_upgrade_history.dart';
 ///     properties:
 ///       name: wbi-test-default
 ///       network: ${myNetwork.id}
-///       region: us-central1
+///       region: us-east1
 ///       ipCidrRange: 10.0.1.0/24
 ///   static:
 ///     type: gcp:compute:Address
 ///     properties:
 ///       name: wbi-test-default
+///       region: us-east1
 ///   actAsPermission:
 ///     type: gcp:serviceaccount:IAMMember
 ///     name: act_as_permission
@@ -1806,14 +1954,14 @@ import 'instance_upgrade_history.dart';
 ///     name: gpu_reservation
 ///     properties:
 ///       name: wbi-reservation
-///       zone: us-central1-a
+///       zone: us-east1-b
 ///       specificReservation:
 ///         count: 1
 ///         instanceProperties:
-///           machineType: n1-standard-4
-///           minCpuPlatform: Intel Broadwell
+///           machineType: g2-standard-4
+///           minCpuPlatform: Intel Cascade Lake
 ///           guestAccelerators:
-///             - acceleratorType: nvidia-tesla-t4
+///             - acceleratorType: nvidia-l4
 ///               acceleratorCount: 1
 ///       specificReservationRequired: true
 ///   myPolicy:
@@ -1821,7 +1969,7 @@ import 'instance_upgrade_history.dart';
 ///     name: my_policy
 ///     properties:
 ///       name: wbi-policy
-///       region: us-central1
+///       region: us-east1
 ///       snapshotSchedulePolicy:
 ///         schedule:
 ///           dailySchedule:
@@ -1831,13 +1979,13 @@ import 'instance_upgrade_history.dart';
 ///     type: gcp:workbench:Instance
 ///     properties:
 ///       name: workbench-instance
-///       location: us-central1-a
+///       location: us-east1-b
 ///       enableDeletionProtection: false
 ///       gceSetup:
-///         machineType: n1-standard-4
-///         minCpuPlatform: Intel Broadwell
+///         machineType: g2-standard-4
+///         minCpuPlatform: Intel Cascade Lake
 ///         acceleratorConfigs:
-///           - type: NVIDIA_TESLA_T4
+///           - type: NVIDIA_L4
 ///             coreCount: 1
 ///         shieldedInstanceConfig:
 ///           enableSecureBoot: true
@@ -1904,7 +2052,7 @@ import 'instance_upgrade_history.dart';
 ///
 /// const instance = new gcp.workbench.Instance("instance", {
 ///     name: "workbench-instance",
-///     location: "us-central1-a",
+///     location: "us-east1-b",
 ///     gceSetup: {
 ///         machineType: "n2d-standard-2",
 ///         shieldedInstanceConfig: {
@@ -1927,7 +2075,7 @@ import 'instance_upgrade_history.dart';
 ///
 /// instance = gcp.workbench.Instance("instance",
 ///     name="workbench-instance",
-///     location="us-central1-a",
+///     location="us-east1-b",
 ///     gce_setup={
 ///         "machine_type": "n2d-standard-2",
 ///         "shielded_instance_config": {
@@ -1954,7 +2102,7 @@ import 'instance_upgrade_history.dart';
 ///     var instance = new Gcp.Workbench.Instance("instance", new()
 ///     {
 ///         Name = "workbench-instance",
-///         Location = "us-central1-a",
+///         Location = "us-east1-b",
 ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
 ///         {
 ///             MachineType = "n2d-standard-2",
@@ -1981,7 +2129,7 @@ import 'instance_upgrade_history.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workbench"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workbench"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1989,7 +2137,7 @@ import 'instance_upgrade_history.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 /// 			Name:     pulumi.String("workbench-instance"),
-/// 			Location: pulumi.String("us-central1-a"),
+/// 			Location: pulumi.String("us-east1-b"),
 /// 			GceSetup: &workbench.InstanceGceSetupArgs{
 /// 				MachineType: pulumi.String("n2d-standard-2"),
 /// 				ShieldedInstanceConfig: &workbench.InstanceGceSetupShieldedInstanceConfigArgs{
@@ -2023,7 +2171,7 @@ import 'instance_upgrade_history.dart';
 ///
 /// resource "gcp_workbench_instance" "instance" {
 ///   name     = "workbench-instance"
-///   location = "us-central1-a"
+///   location = "us-east1-b"
 ///   gce_setup = {
 ///     machine_type = "n2d-standard-2"
 ///     shielded_instance_config = {
@@ -2066,7 +2214,7 @@ import 'instance_upgrade_history.dart';
 ///     public static void stack(Context ctx) {
 ///         var instance = new Instance("instance", InstanceArgs.builder()
 ///             .name("workbench-instance")
-///             .location("us-central1-a")
+///             .location("us-east1-b")
 ///             .gceSetup(InstanceGceSetupArgs.builder()
 ///                 .machineType("n2d-standard-2")
 ///                 .shieldedInstanceConfig(InstanceGceSetupShieldedInstanceConfigArgs.builder()
@@ -2090,7 +2238,7 @@ import 'instance_upgrade_history.dart';
 ///     type: gcp:workbench:Instance
 ///     properties:
 ///       name: workbench-instance
-///       location: us-central1-a
+///       location: us-east1-b
 ///       gceSetup:
 ///         machineType: n2d-standard-2
 ///         shieldedInstanceConfig:
@@ -2118,9 +2266,12 @@ import 'instance_upgrade_history.dart';
 /// });
 /// const instance = new gcp.workbench.Instance("instance", {
 ///     name: "workbench-instance",
-///     location: "us-central1-a",
+///     location: "us-east1-b",
 ///     gceSetup: {
-///         machineType: "e2-standard-4",
+///         machineType: "n4-standard-4",
+///         bootDisk: {
+///             diskType: "HYPERDISK_BALANCED",
+///         },
 ///         metadata: {
 ///             terraform: "true",
 ///         },
@@ -2141,9 +2292,12 @@ import 'instance_upgrade_history.dart';
 ///     members=["user:example@example.com"])
 /// instance = gcp.workbench.Instance("instance",
 ///     name="workbench-instance",
-///     location="us-central1-a",
+///     location="us-east1-b",
 ///     gce_setup={
-///         "machine_type": "e2-standard-4",
+///         "machine_type": "n4-standard-4",
+///         "boot_disk": {
+///             "disk_type": "HYPERDISK_BALANCED",
+///         },
 ///         "metadata": {
 ///             "terraform": "true",
 ///         },
@@ -2173,10 +2327,14 @@ import 'instance_upgrade_history.dart';
 ///     var instance = new Gcp.Workbench.Instance("instance", new()
 ///     {
 ///         Name = "workbench-instance",
-///         Location = "us-central1-a",
+///         Location = "us-east1-b",
 ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
 ///         {
-///             MachineType = "e2-standard-4",
+///             MachineType = "n4-standard-4",
+///             BootDisk = new Gcp.Workbench.Inputs.InstanceGceSetupBootDiskArgs
+///             {
+///                 DiskType = "HYPERDISK_BALANCED",
+///             },
 ///             Metadata =
 ///             {
 ///                 { "terraform", "true" },
@@ -2201,8 +2359,8 @@ import 'instance_upgrade_history.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workbench"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workbench"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2220,9 +2378,12 @@ import 'instance_upgrade_history.dart';
 /// 		}
 /// 		_, err = workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 /// 			Name:     pulumi.String("workbench-instance"),
-/// 			Location: pulumi.String("us-central1-a"),
+/// 			Location: pulumi.String("us-east1-b"),
 /// 			GceSetup: &workbench.InstanceGceSetupArgs{
-/// 				MachineType: pulumi.String("e2-standard-4"),
+/// 				MachineType: pulumi.String("n4-standard-4"),
+/// 				BootDisk: &workbench.InstanceGceSetupBootDiskArgs{
+/// 					DiskType: pulumi.String("HYPERDISK_BALANCED"),
+/// 				},
 /// 				Metadata: pulumi.StringMap{
 /// 					"terraform": pulumi.String("true"),
 /// 				},
@@ -2258,9 +2419,12 @@ import 'instance_upgrade_history.dart';
 /// resource "gcp_workbench_instance" "instance" {
 ///   depends_on = [gcp_serviceaccount_iambinding.act_as_permission]
 ///   name       = "workbench-instance"
-///   location   = "us-central1-a"
+///   location   = "us-east1-b"
 ///   gce_setup = {
-///     machine_type = "e2-standard-4"
+///     machine_type = "n4-standard-4"
+///     boot_disk = {
+///       disk_type = "HYPERDISK_BALANCED"
+///     }
 ///     metadata = {
 ///       "terraform" = "true"
 ///     }
@@ -2280,6 +2444,7 @@ import 'instance_upgrade_history.dart';
 /// import com.pulumi.gcp.workbench.Instance;
 /// import com.pulumi.gcp.workbench.InstanceArgs;
 /// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+/// import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -2302,9 +2467,12 @@ import 'instance_upgrade_history.dart';
 ///
 ///         var instance = new Instance("instance", InstanceArgs.builder()
 ///             .name("workbench-instance")
-///             .location("us-central1-a")
+///             .location("us-east1-b")
 ///             .gceSetup(InstanceGceSetupArgs.builder()
-///                 .machineType("e2-standard-4")
+///                 .machineType("n4-standard-4")
+///                 .bootDisk(InstanceGceSetupBootDiskArgs.builder()
+///                     .diskType("HYPERDISK_BALANCED")
+///                     .build())
 ///                 .metadata(Map.of("terraform", "true"))
 ///                 .build())
 ///             .instanceOwners("example@example.com")
@@ -2330,9 +2498,11 @@ import 'instance_upgrade_history.dart';
 ///     type: gcp:workbench:Instance
 ///     properties:
 ///       name: workbench-instance
-///       location: us-central1-a
+///       location: us-east1-b
 ///       gceSetup:
-///         machineType: e2-standard-4
+///         machineType: n4-standard-4
+///         bootDisk:
+///           diskType: HYPERDISK_BALANCED
 ///         metadata:
 ///           terraform: 'true'
 ///       instanceOwners:
@@ -2443,7 +2613,7 @@ class Instance extends pulumi.CustomResource {
           'gcp:workbench/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

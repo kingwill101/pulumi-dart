@@ -103,7 +103,7 @@ import 'search_engine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -368,7 +368,7 @@ import 'search_engine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -621,6 +621,8 @@ class SearchEngine extends pulumi.CustomResource {
   /// This field must be a UTF-8 encoded string with a length limit of 1024
   /// characters.
   late final pulumi.Output<String> name;
+  /// The emails of the procurement contacts.
+  late final pulumi.Output<List<String>?> procurementContactEmails;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -642,7 +644,7 @@ class SearchEngine extends pulumi.CustomResource {
           'gcp:discoveryengine/searchEngine:SearchEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     appType = registerOutput<String?>('appType');
     collectionId = registerOutput<String>('collectionId');
@@ -659,6 +661,7 @@ class SearchEngine extends pulumi.CustomResource {
     knowledgeGraphConfig = registerOutput<SearchEngineKnowledgeGraphConfig>('knowledgeGraphConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineKnowledgeGraphConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
+    procurementContactEmails = registerOutput<List<String>?>('procurementContactEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     searchEngineConfig = registerOutput<SearchEngineSearchEngineConfig>('searchEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineSearchEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
@@ -703,6 +706,7 @@ class SearchEngine extends pulumi.CustomResource {
     knowledgeGraphConfig = registerOutput<SearchEngineKnowledgeGraphConfig>('knowledgeGraphConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineKnowledgeGraphConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
+    procurementContactEmails = registerOutput<List<String>?>('procurementContactEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     searchEngineConfig = registerOutput<SearchEngineSearchEngineConfig>('searchEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineSearchEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
@@ -732,6 +736,7 @@ class SearchEngine extends pulumi.CustomResource {
     knowledgeGraphConfig = registerOutput<SearchEngineKnowledgeGraphConfig>('knowledgeGraphConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineKnowledgeGraphConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
+    procurementContactEmails = registerOutput<List<String>?>('procurementContactEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     searchEngineConfig = registerOutput<SearchEngineSearchEngineConfig>('searchEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineSearchEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');

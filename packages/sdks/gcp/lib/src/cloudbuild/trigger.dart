@@ -93,7 +93,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -564,7 +564,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1117,10 +1117,10 @@ import 'trigger_webhook_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1383,7 +1383,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1597,8 +1597,8 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1942,9 +1942,9 @@ import 'trigger_webhook_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2297,7 +2297,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2482,7 +2482,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2678,7 +2678,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2905,8 +2905,8 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuildv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuildv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3146,7 +3146,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3331,7 +3331,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3514,7 +3514,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3901,7 +3901,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4535,7 +4535,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5026,9 +5026,9 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuildv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuildv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5313,7 +5313,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5478,7 +5478,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5636,7 +5636,7 @@ import 'trigger_webhook_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5867,7 +5867,7 @@ class Trigger extends pulumi.CustomResource {
           'gcp:cloudbuild/trigger:Trigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     approvalConfig = registerOutput<TriggerApprovalConfig>('approvalConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerApprovalConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bitbucketServerTriggerConfig = registerOutput<TriggerBitbucketServerTriggerConfig?>('bitbucketServerTriggerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TriggerBitbucketServerTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

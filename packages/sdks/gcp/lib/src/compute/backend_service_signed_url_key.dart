@@ -32,7 +32,7 @@ import 'backend_service_signed_url_key_state.dart';
 ///         network: "default",
 ///     }],
 ///     disks: [{
-///         sourceImage: "debian-cloud/debian-11",
+///         sourceImage: "debian-cloud/debian-13",
 ///         autoDelete: true,
 ///         boot: true,
 ///     }],
@@ -47,11 +47,14 @@ import 'backend_service_signed_url_key_state.dart';
 ///     zone: "us-central1-f",
 ///     targetSize: 1,
 /// });
-/// const _default = new gcp.compute.HttpHealthCheck("default", {
+/// const _default = new gcp.compute.HealthCheck("default", {
 ///     name: "test",
-///     requestPath: "/",
 ///     checkIntervalSec: 1,
 ///     timeoutSec: 1,
+///     httpHealthCheck: {
+///         port: 80,
+///         requestPath: "/",
+///     },
 /// });
 /// const exampleBackend = new gcp.compute.BackendService("example_backend", {
 ///     name: "my-backend-service",
@@ -84,7 +87,7 @@ import 'backend_service_signed_url_key_state.dart';
 ///         "network": "default",
 ///     }],
 ///     disks=[{
-///         "source_image": "debian-cloud/debian-11",
+///         "source_image": "debian-cloud/debian-13",
 ///         "auto_delete": True,
 ///         "boot": True,
 ///     }])
@@ -97,11 +100,14 @@ import 'backend_service_signed_url_key_state.dart';
 ///     base_instance_name="webserver",
 ///     zone="us-central1-f",
 ///     target_size=1)
-/// default = gcp.compute.HttpHealthCheck("default",
+/// default = gcp.compute.HealthCheck("default",
 ///     name="test",
-///     request_path="/",
 ///     check_interval_sec=1,
-///     timeout_sec=1)
+///     timeout_sec=1,
+///     http_health_check={
+///         "port": 80,
+///         "request_path": "/",
+///     })
 /// example_backend = gcp.compute.BackendService("example_backend",
 ///     name="my-backend-service",
 ///     description="Our company website",
@@ -147,7 +153,7 @@ import 'backend_service_signed_url_key_state.dart';
 ///         {
 ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
 ///             {
-///                 SourceImage = "debian-cloud/debian-11",
+///                 SourceImage = "debian-cloud/debian-13",
 ///                 AutoDelete = true,
 ///                 Boot = true,
 ///             },
@@ -170,12 +176,16 @@ import 'backend_service_signed_url_key_state.dart';
 ///         TargetSize = 1,
 ///     });
 ///
-///     var @default = new Gcp.Compute.HttpHealthCheck("default", new()
+///     var @default = new Gcp.Compute.HealthCheck("default", new()
 ///     {
 ///         Name = "test",
-///         RequestPath = "/",
 ///         CheckIntervalSec = 1,
 ///         TimeoutSec = 1,
+///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+///         {
+///             Port = 80,
+///             RequestPath = "/",
+///         },
 ///     });
 ///
 ///     var exampleBackend = new Gcp.Compute.BackendService("example_backend", new()
@@ -209,7 +219,7 @@ import 'backend_service_signed_url_key_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -232,7 +242,7 @@ import 'backend_service_signed_url_key_state.dart';
 /// 			},
 /// 			Disks: compute.InstanceTemplateDiskArray{
 /// 				&compute.InstanceTemplateDiskArgs{
-/// 					SourceImage: pulumi.String("debian-cloud/debian-11"),
+/// 					SourceImage: pulumi.String("debian-cloud/debian-13"),
 /// 					AutoDelete:  pulumi.Bool(true),
 /// 					Boot:        pulumi.Bool(true),
 /// 				},
@@ -256,11 +266,14 @@ import 'backend_service_signed_url_key_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_default, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+/// 		_default, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 /// 			Name:             pulumi.String("test"),
-/// 			RequestPath:      pulumi.String("/"),
 /// 			CheckIntervalSec: pulumi.Int(1),
 /// 			TimeoutSec:       pulumi.Int(1),
+/// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+/// 				Port:        pulumi.Int(80),
+/// 				RequestPath: pulumi.String("/"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -324,7 +337,7 @@ import 'backend_service_signed_url_key_state.dart';
 ///   backends {
 ///     group = gcp_compute_instancegroupmanager.webservers.instance_group
 ///   }
-///   health_checks = gcp_compute_httphealthcheck.default.id
+///   health_checks = gcp_compute_healthcheck.default.id
 /// }
 /// resource "gcp_compute_instancegroupmanager" "webservers" {
 ///   name = "my-webservers"
@@ -343,16 +356,19 @@ import 'backend_service_signed_url_key_state.dart';
 ///     network = "default"
 ///   }
 ///   disks {
-///     source_image = "debian-cloud/debian-11"
+///     source_image = "debian-cloud/debian-13"
 ///     auto_delete  = true
 ///     boot         = true
 ///   }
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_healthcheck" "default" {
 ///   name               = "test"
-///   request_path       = "/"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
+///   http_health_check = {
+///     port         = 80
+///     request_path = "/"
+///   }
 /// }
 /// ```
 /// ```java
@@ -370,8 +386,9 @@ import 'backend_service_signed_url_key_state.dart';
 /// import com.pulumi.gcp.compute.InstanceGroupManager;
 /// import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
-/// import com.pulumi.gcp.compute.HttpHealthCheck;
-/// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
@@ -401,7 +418,7 @@ import 'backend_service_signed_url_key_state.dart';
 ///                 .network("default")
 ///                 .build())
 ///             .disks(InstanceTemplateDiskArgs.builder()
-///                 .sourceImage("debian-cloud/debian-11")
+///                 .sourceImage("debian-cloud/debian-13")
 ///                 .autoDelete(true)
 ///                 .boot(true)
 ///                 .build())
@@ -418,11 +435,14 @@ import 'backend_service_signed_url_key_state.dart';
 ///             .targetSize(1)
 ///             .build());
 ///
-///         var default_ = new HttpHealthCheck("default", HttpHealthCheckArgs.builder()
+///         var default_ = new HealthCheck("default", HealthCheckArgs.builder()
 ///             .name("test")
-///             .requestPath("/")
 ///             .checkIntervalSec(1)
 ///             .timeoutSec(1)
+///             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .requestPath("/")
+///                 .build())
 ///             .build());
 ///
 ///         var exampleBackend = new BackendService("exampleBackend", BackendServiceArgs.builder()
@@ -492,16 +512,18 @@ import 'backend_service_signed_url_key_state.dart';
 ///       networkInterfaces:
 ///         - network: default
 ///       disks:
-///         - sourceImage: debian-cloud/debian-11
+///         - sourceImage: debian-cloud/debian-13
 ///           autoDelete: true
 ///           boot: true
 ///   default:
-///     type: gcp:compute:HttpHealthCheck
+///     type: gcp:compute:HealthCheck
 ///     properties:
 ///       name: test
-///       requestPath: /
 ///       checkIntervalSec: 1
 ///       timeoutSec: 1
+///       httpHealthCheck:
+///         port: 80
+///         requestPath: /
 /// ```
 ///
 ///
@@ -540,7 +562,7 @@ class BackendServiceSignedUrlKey extends pulumi.CustomResource {
           'gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['keyValue'],
         ) {
     backendService = registerOutput<String>('backendService');

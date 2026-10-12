@@ -168,7 +168,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -516,7 +516,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -878,7 +878,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1186,7 +1186,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1427,7 +1427,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1569,7 +1569,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: "my-project-name-gcf-source",
+///     name: "gcf-source-my-project-name",
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -1612,7 +1612,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// import pulumi_gcp as gcp
 ///
 /// bucket = gcp.storage.Bucket("bucket",
-///     name="my-project-name-gcf-source",
+///     name="gcf-source-my-project-name",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -1656,7 +1656,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// {
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = "my-project-name-gcf-source",
+///         Name = "gcf-source-my-project-name",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -1712,16 +1712,16 @@ import 'uptime_check_config_tcp_check.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.String("my-project-name-gcf-source"),
+/// 			Name:                     pulumi.String("gcf-source-my-project-name"),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -1784,7 +1784,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        = "my-project-name-gcf-source"
+///   name                        = "gcf-source-my-project-name"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
@@ -1857,7 +1857,7 @@ import 'uptime_check_config_tcp_check.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name("my-project-name-gcf-source")
+///             .name("gcf-source-my-project-name")
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -1906,7 +1906,7 @@ import 'uptime_check_config_tcp_check.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: my-project-name-gcf-source
+///       name: gcf-source-my-project-name
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -2022,7 +2022,7 @@ class UptimeCheckConfig extends pulumi.CustomResource {
           'gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     checkerType = registerOutput<String>('checkerType');
     contentMatchers = registerOutput<List<UptimeCheckConfigContentMatcher>?>('contentMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UptimeCheckConfigContentMatcher>(guardedValue, (value) => UptimeCheckConfigContentMatcher.fromMap((value as Map).cast<String, dynamic>())); });

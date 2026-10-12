@@ -52,8 +52,8 @@ class RegionAutoscalerAutoscalingPolicyScalingSchedule {
     return RegionAutoscalerAutoscalingPolicyScalingSchedule(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      durationSec: pulumi.Input.fromValue((map['durationSec'] as num).toInt()),
-      minRequiredReplicas: pulumi.Input.fromValue((map['minRequiredReplicas'] as num).toInt()),
+      durationSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['durationSec'])),
+      minRequiredReplicas: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minRequiredReplicas'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       schedule: pulumi.Input.fromValue(map['schedule'] as String),
       timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

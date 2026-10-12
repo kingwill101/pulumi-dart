@@ -160,7 +160,7 @@ import 'control_synonyms_action.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -449,7 +449,7 @@ class Control extends pulumi.CustomResource {
           'gcp:discoveryengine/control:Control',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     boostAction = registerOutput<ControlBoostAction?>('boostAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlBoostAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     collectionId = registerOutput<String?>('collectionId');

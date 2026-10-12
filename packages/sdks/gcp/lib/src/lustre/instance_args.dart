@@ -79,6 +79,17 @@ class InstanceArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
+  /// The version to upgrade this instance to. Set this to the value reported in
+  /// `availableVersion`, or to `latest` to move to the newest version available
+  /// at the time of the upgrade.
+  /// This field cannot be set when the instance is created; new instances are
+  /// always provisioned from the current release. It also cannot be changed in
+  /// the same operation as `capacityGib` or `maintenancePolicy`, and the
+  /// instance must be ACTIVE and outside of the hour preceding a scheduled
+  /// maintenance window.
+  /// The API clears this field once the upgrade finishes, so it always reads
+  /// back as empty on an idle instance.
+  final pulumi.Input<String?>? targetVersion;
 
   /// Creates a new [InstanceArgs].
   /// [accessRulesOptions] IP-based access rules for the Managed Lustre instance. These options
@@ -97,6 +108,7 @@ class InstanceArgs {
   /// [perUnitStorageThroughput] The throughput of the instance in MBps per TiB. Valid values are 125, 250,
   /// [placementPolicy] The placement policy name for the instance in the format of
   /// [project] The ID of the project in which the resource belongs.
+  /// [targetVersion] The version to upgrade this instance to. Set this to the value reported in
   const InstanceArgs({
     this.accessRulesOptions,
     required this.capacityGib,
@@ -114,6 +126,7 @@ class InstanceArgs {
     this.perUnitStorageThroughput,
     this.placementPolicy,
     this.project,
+    this.targetVersion,
   });
 
   Map<String, dynamic> toMap() {
@@ -134,6 +147,7 @@ class InstanceArgs {
       'perUnitStorageThroughput': ?perUnitStorageThroughput,
       'placementPolicy': ?placementPolicy,
       'project': ?project,
+      'targetVersion': ?targetVersion,
     };
   }
 
@@ -155,6 +169,7 @@ class InstanceArgs {
       perUnitStorageThroughput: (() { final guardedValue = map['perUnitStorageThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       placementPolicy: (() { final guardedValue = map['placementPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetVersion: (() { final guardedValue = map['targetVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

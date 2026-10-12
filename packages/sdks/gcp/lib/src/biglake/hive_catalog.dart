@@ -5,8 +5,6 @@ import 'hive_catalog_state.dart';
 
 /// Hive Catalogs in Biglake Metastore
 ///
-/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
 ///
 /// To get more information about HiveCatalog, see:
 /// * How-to Guides
@@ -88,8 +86,8 @@ import 'hive_catalog_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -283,8 +281,8 @@ import 'hive_catalog_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -410,7 +408,7 @@ import 'hive_catalog_state.dart';
 ///
 /// HiveCatalog can be imported using any of these accepted formats:
 ///
-/// * `hive/v1beta/projects/{{project}}/catalogs/{{name}}`
+/// * `hive/v1/projects/{{project}}/catalogs/{{name}}`
 /// * `{{project}}/{{name}}`
 /// * `{{name}}`
 ///
@@ -418,7 +416,7 @@ import 'hive_catalog_state.dart';
 /// When using the `pulumi import` command, HiveCatalog can be imported using one of the formats above. For example:
 ///
 /// ```sh
-/// $ pulumi import gcp:biglake/hiveCatalog:HiveCatalog default hive/v1beta/projects/{{project}}/catalogs/{{name}}
+/// $ pulumi import gcp:biglake/hiveCatalog:HiveCatalog default hive/v1/projects/{{project}}/catalogs/{{name}}
 /// $ pulumi import gcp:biglake/hiveCatalog:HiveCatalog default {{project}}/{{name}}
 /// $ pulumi import gcp:biglake/hiveCatalog:HiveCatalog default {{name}}
 /// ```
@@ -463,7 +461,7 @@ class HiveCatalog extends pulumi.CustomResource {
           'gcp:biglake/hiveCatalog:HiveCatalog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

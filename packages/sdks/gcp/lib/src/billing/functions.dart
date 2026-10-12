@@ -40,7 +40,7 @@ import 'get_account_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/billing"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

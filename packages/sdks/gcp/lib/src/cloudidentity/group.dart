@@ -85,7 +85,7 @@ import 'group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudidentity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudidentity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -250,7 +250,7 @@ class Group extends pulumi.CustomResource {
           'gcp:cloudidentity/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     additionalGroupKeys = registerOutput<List<GroupAdditionalGroupKey>>('additionalGroupKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupAdditionalGroupKey>(guardedValue, (value) => GroupAdditionalGroupKey.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');

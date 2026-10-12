@@ -178,7 +178,7 @@ import 'guardrail_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -569,7 +569,7 @@ import 'guardrail_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -965,7 +965,7 @@ import 'guardrail_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1336,7 +1336,7 @@ import 'guardrail_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1667,7 +1667,7 @@ import 'guardrail_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1924,6 +1924,7 @@ import 'guardrail_state.dart';
 ///             disabled: true,
 ///             pythonCode: `def callback(context):
 ///     return {'override': False}`,
+///             proactiveExecutionEnabled: true,
 ///         },
 ///     },
 /// });
@@ -1985,6 +1986,7 @@ import 'guardrail_state.dart';
 ///             "disabled": True,
 ///             "python_code": """def callback(context):
 ///     return {'override': False}""",
+///             "proactive_execution_enabled": True,
 ///         },
 ///     })
 /// ```
@@ -2063,6 +2065,7 @@ import 'guardrail_state.dart';
 ///                 Disabled = true,
 ///                 PythonCode = @"def callback(context):
 ///     return {'override': False}",
+///                 ProactiveExecutionEnabled = true,
 ///             },
 ///         },
 ///     });
@@ -2073,7 +2076,7 @@ import 'guardrail_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2129,9 +2132,10 @@ import 'guardrail_state.dart';
 /// 					PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
 /// 				},
 /// 				AfterModelCallback: &ces.GuardrailCodeCallbackAfterModelCallbackArgs{
-/// 					Description: pulumi.String("Example callback"),
-/// 					Disabled:    pulumi.Bool(true),
-/// 					PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
+/// 					Description:               pulumi.String("Example callback"),
+/// 					Disabled:                  pulumi.Bool(true),
+/// 					PythonCode:                pulumi.String("def callback(context):\n    return {'override': False}"),
+/// 					ProactiveExecutionEnabled: pulumi.Bool(true),
 /// 				},
 /// 			},
 /// 		})
@@ -2195,9 +2199,10 @@ import 'guardrail_state.dart';
 ///       python_code = "def callback(context):\n    return {'override': False}"
 ///     }
 ///     after_model_callback = {
-///       description = "Example callback"
-///       disabled    = true
-///       python_code = "def callback(context):\n    return {'override': False}"
+///       description                 = "Example callback"
+///       disabled                    = true
+///       python_code                 = "def callback(context):\n    return {'override': False}"
+///       proactive_execution_enabled = true
 ///     }
 ///   }
 /// }
@@ -2292,6 +2297,7 @@ import 'guardrail_state.dart';
 ///                     .pythonCode("""
 /// def callback(context):
 ///     return {'override': False}                    """)
+///                     .proactiveExecutionEnabled(true)
 ///                     .build())
 ///                 .build())
 ///             .build());
@@ -2356,6 +2362,7 @@ import 'guardrail_state.dart';
 ///           pythonCode: |-
 ///             def callback(context):
 ///                 return {'override': False}
+///           proactiveExecutionEnabled: true
 /// ```
 ///
 /// ### Ces Guardrail Llm Policy
@@ -2521,7 +2528,7 @@ import 'guardrail_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2836,7 +2843,7 @@ class Guardrail extends pulumi.CustomResource {
           'gcp:ces/guardrail:Guardrail',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     action = registerOutput<GuardrailAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuardrailAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     app = registerOutput<String>('app');

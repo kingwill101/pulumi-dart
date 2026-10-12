@@ -76,9 +76,9 @@ class TemplateTemplateMetadata {
 
   factory TemplateTemplateMetadata.fromMap(Map<String, dynamic> map) {
     return TemplateTemplateMetadata(
-      customLlmResponseSafetyErrorCode: (() { final guardedValue = map['customLlmResponseSafetyErrorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      customLlmResponseSafetyErrorCode: (() { final guardedValue = map['customLlmResponseSafetyErrorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       customLlmResponseSafetyErrorMessage: (() { final guardedValue = map['customLlmResponseSafetyErrorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      customPromptSafetyErrorCode: (() { final guardedValue = map['customPromptSafetyErrorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      customPromptSafetyErrorCode: (() { final guardedValue = map['customPromptSafetyErrorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       customPromptSafetyErrorMessage: (() { final guardedValue = map['customPromptSafetyErrorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enforcementType: (() { final guardedValue = map['enforcementType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filterVersionSelector: (() { final guardedValue = map['filterVersionSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TemplateTemplateMetadataFilterVersionSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

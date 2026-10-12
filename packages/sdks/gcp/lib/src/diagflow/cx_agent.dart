@@ -402,8 +402,8 @@ import 'cx_agent_text_to_speech_settings.dart';
 /// 	"encoding/json"
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -998,7 +998,7 @@ class CxAgent extends pulumi.CustomResource {
           'gcp:diagflow/cxAgent:CxAgent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     advancedSettings = registerOutput<CxAgentAdvancedSettings>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentAdvancedSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     answerFeedbackSettings = registerOutput<CxAgentAnswerFeedbackSettings?>('answerFeedbackSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentAnswerFeedbackSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

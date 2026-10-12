@@ -267,9 +267,9 @@ import 'settings_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -731,9 +731,9 @@ import 'settings_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -955,6 +955,10 @@ class Settings extends pulumi.CustomResource {
   /// * projects/{project_id}/iap_web/compute-{region}
   /// * projects/{project_id}/iap_web/compute/services/{service_id}
   /// * projects/{project_id}/iap_web/compute-{region}/services/{service_id}
+  /// * projects/{project_id}/iap_web/forwarding_rule
+  /// * projects/{project_id}/iap_web/forwarding_rule-{region}
+  /// * projects/{project_id}/iap_web/forwarding_rule/services/{service_id}
+  /// * projects/{project_id}/iap_web/forwarding_rule-{region}/services/{service_id}
   /// * projects/{project_id}/iap_web/appengine-{app_id}
   /// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
   /// * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
@@ -972,7 +976,7 @@ class Settings extends pulumi.CustomResource {
           'gcp:iap/settings:Settings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     accessSettings = registerOutput<SettingsAccessSettings?>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     applicationSettings = registerOutput<SettingsApplicationSettings?>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

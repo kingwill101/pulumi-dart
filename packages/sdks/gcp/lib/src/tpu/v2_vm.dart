@@ -71,7 +71,7 @@ import 'v2_vm_symptom.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tpu"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tpu"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -188,7 +188,7 @@ import 'v2_vm_symptom.dart';
 /// });
 /// const disk = new gcp.compute.Disk("disk", {
 ///     name: "tpu-disk",
-///     image: "debian-cloud/debian-11",
+///     image: "debian-cloud/debian-13",
 ///     size: 10,
 ///     type: "pd-ssd",
 ///     zone: "us-central1-c",
@@ -260,7 +260,7 @@ import 'v2_vm_symptom.dart';
 ///     display_name="Test TPU VM")
 /// disk = gcp.compute.Disk("disk",
 ///     name="tpu-disk",
-///     image="debian-cloud/debian-11",
+///     image="debian-cloud/debian-13",
 ///     size=10,
 ///     type="pd-ssd",
 ///     zone="us-central1-c")
@@ -344,7 +344,7 @@ import 'v2_vm_symptom.dart';
 ///     var disk = new Gcp.Compute.Disk("disk", new()
 ///     {
 ///         Name = "tpu-disk",
-///         Image = "debian-cloud/debian-11",
+///         Image = "debian-cloud/debian-13",
 ///         Size = 10,
 ///         Type = "pd-ssd",
 ///         Zone = "us-central1-c",
@@ -433,9 +433,9 @@ import 'v2_vm_symptom.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tpu"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tpu"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -475,7 +475,7 @@ import 'v2_vm_symptom.dart';
 /// 		}
 /// 		disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
 /// 			Name:  pulumi.String("tpu-disk"),
-/// 			Image: pulumi.String("debian-cloud/debian-11"),
+/// 			Image: pulumi.String("debian-cloud/debian-13"),
 /// 			Size:  pulumi.Int(10),
 /// 			Type:  pulumi.String("pd-ssd"),
 /// 			Zone:  pulumi.String("us-central1-c"),
@@ -621,7 +621,7 @@ import 'v2_vm_symptom.dart';
 /// }
 /// resource "gcp_compute_disk" "disk" {
 ///   name  = "tpu-disk"
-///   image = "debian-cloud/debian-11"
+///   image = "debian-cloud/debian-13"
 ///   size  = 10
 ///   type  = "pd-ssd"
 ///   zone  = "us-central1-c"
@@ -698,7 +698,7 @@ import 'v2_vm_symptom.dart';
 ///
 ///         var disk = new Disk("disk", DiskArgs.builder()
 ///             .name("tpu-disk")
-///             .image("debian-cloud/debian-11")
+///             .image("debian-cloud/debian-13")
 ///             .size(10)
 ///             .type("pd-ssd")
 ///             .zone("us-central1-c")
@@ -814,7 +814,7 @@ import 'v2_vm_symptom.dart';
 ///     type: gcp:compute:Disk
 ///     properties:
 ///       name: tpu-disk
-///       image: debian-cloud/debian-11
+///       image: debian-cloud/debian-13
 ///       size: 10
 ///       type: pd-ssd
 ///       zone: us-central1-c
@@ -955,7 +955,7 @@ class V2Vm extends pulumi.CustomResource {
           'gcp:tpu/v2Vm:V2Vm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     acceleratorConfig = registerOutput<V2VmAcceleratorConfig>('acceleratorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmAcceleratorConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

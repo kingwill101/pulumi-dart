@@ -37,7 +37,7 @@ import 'get_v2_runtime_versions_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tpu"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tpu"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -154,7 +154,7 @@ import 'get_v2_runtime_versions_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tpu"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tpu"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -320,7 +320,7 @@ pulumi.Output<GetV2AcceleratorTypesResult> getV2AcceleratorTypesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tpu"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tpu"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -430,7 +430,7 @@ pulumi.Output<GetV2AcceleratorTypesResult> getV2AcceleratorTypesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tpu"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tpu"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

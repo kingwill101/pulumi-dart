@@ -78,7 +78,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -480,9 +480,9 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -771,7 +771,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -953,7 +953,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1170,7 +1170,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1416,7 +1416,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1667,7 +1667,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1873,7 +1873,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2055,7 +2055,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2256,7 +2256,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2477,6 +2477,8 @@ class DatabaseInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> dnsName;
   /// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
   late final pulumi.Output<List<DatabaseInstanceDnsName>> dnsNames;
+  /// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+  late final pulumi.Output<bool> encryptionConfidentialMode;
   /// The full path to the encryption key used for the CMEK disk encryption.  Setting
   /// up disk encryption currently requires manual steps outside of this provider.
   /// The provided key must be in the same region as the SQL instance.  In order
@@ -2577,7 +2579,7 @@ class DatabaseInstance extends pulumi.CustomResource {
           'gcp:sql/databaseInstance:DatabaseInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['replicaConfiguration', 'rootPassword', 'rootPasswordWo', 'serverCaCerts'],
         ) {
     availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
@@ -2589,6 +2591,7 @@ class DatabaseInstance extends pulumi.CustomResource {
     deletionProtection = registerOutput<bool?>('deletionProtection');
     dnsName = registerOutput<String>('dnsName');
     dnsNames = registerOutput<List<DatabaseInstanceDnsName>>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceDnsName>(guardedValue, (value) => DatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>())); });
+    encryptionConfidentialMode = registerOutput<bool>('encryptionConfidentialMode');
     encryptionKeyName = registerOutput<String>('encryptionKeyName');
     enforceNewSqlNetworkArchitecture = registerOutput<bool>('enforceNewSqlNetworkArchitecture');
     finalBackupDescription = registerOutput<String?>('finalBackupDescription');
@@ -2653,6 +2656,7 @@ class DatabaseInstance extends pulumi.CustomResource {
     deletionProtection = registerOutput<bool?>('deletionProtection');
     dnsName = registerOutput<String>('dnsName');
     dnsNames = registerOutput<List<DatabaseInstanceDnsName>>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceDnsName>(guardedValue, (value) => DatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>())); });
+    encryptionConfidentialMode = registerOutput<bool>('encryptionConfidentialMode');
     encryptionKeyName = registerOutput<String>('encryptionKeyName');
     enforceNewSqlNetworkArchitecture = registerOutput<bool>('enforceNewSqlNetworkArchitecture');
     finalBackupDescription = registerOutput<String?>('finalBackupDescription');
@@ -2703,6 +2707,7 @@ class DatabaseInstance extends pulumi.CustomResource {
     deletionProtection = registerOutput<bool?>('deletionProtection');
     dnsName = registerOutput<String>('dnsName');
     dnsNames = registerOutput<List<DatabaseInstanceDnsName>>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceDnsName>(guardedValue, (value) => DatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>())); });
+    encryptionConfidentialMode = registerOutput<bool>('encryptionConfidentialMode');
     encryptionKeyName = registerOutput<String>('encryptionKeyName');
     enforceNewSqlNetworkArchitecture = registerOutput<bool>('enforceNewSqlNetworkArchitecture');
     finalBackupDescription = registerOutput<String?>('finalBackupDescription');

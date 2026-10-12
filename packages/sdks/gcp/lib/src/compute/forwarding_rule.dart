@@ -25,7 +25,7 @@ import 'forwarding_rule_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const hc = new gcp.compute.RegionHealthCheck("hc", {
-///     name: "check-website-backend",
+///     name: "website-backend-check",
 ///     checkIntervalSec: 1,
 ///     timeoutSec: 1,
 ///     region: "us-central1",
@@ -52,7 +52,7 @@ import 'forwarding_rule_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// hc = gcp.compute.RegionHealthCheck("hc",
-///     name="check-website-backend",
+///     name="website-backend-check",
 ///     check_interval_sec=1,
 ///     timeout_sec=1,
 ///     region="us-central1",
@@ -81,7 +81,7 @@ import 'forwarding_rule_state.dart';
 /// {
 ///     var hc = new Gcp.Compute.RegionHealthCheck("hc", new()
 ///     {
-///         Name = "check-website-backend",
+///         Name = "website-backend-check",
 ///         CheckIntervalSec = 1,
 ///         TimeoutSec = 1,
 ///         Region = "us-central1",
@@ -114,14 +114,14 @@ import 'forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		hc, err := compute.NewRegionHealthCheck(ctx, "hc", &compute.RegionHealthCheckArgs{
-/// 			Name:             pulumi.String("check-website-backend"),
+/// 			Name:             pulumi.String("website-backend-check"),
 /// 			CheckIntervalSec: pulumi.Int(1),
 /// 			TimeoutSec:       pulumi.Int(1),
 /// 			Region:           pulumi.String("us-central1"),
@@ -178,7 +178,7 @@ import 'forwarding_rule_state.dart';
 ///   health_checks         = gcp_compute_regionhealthcheck.hc.id
 /// }
 /// resource "gcp_compute_regionhealthcheck" "hc" {
-///   name               = "check-website-backend"
+///   name               = "website-backend-check"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
 ///   region             = "us-central1"
@@ -214,7 +214,7 @@ import 'forwarding_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var hc = new RegionHealthCheck("hc", RegionHealthCheckArgs.builder()
-///             .name("check-website-backend")
+///             .name("website-backend-check")
 ///             .checkIntervalSec(1)
 ///             .timeoutSec(1)
 ///             .region("us-central1")
@@ -261,7 +261,7 @@ import 'forwarding_rule_state.dart';
 ///   hc:
 ///     type: gcp:compute:RegionHealthCheck
 ///     properties:
-///       name: check-website-backend
+///       name: website-backend-check
 ///       checkIntervalSec: 1
 ///       timeoutSec: 1
 ///       region: us-central1
@@ -278,7 +278,7 @@ import 'forwarding_rule_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const hc = new gcp.compute.HealthCheck("hc", {
-///     name: "check-website-backend",
+///     name: "website-backend-check",
 ///     checkIntervalSec: 1,
 ///     timeoutSec: 1,
 ///     tcpHealthCheck: {
@@ -317,7 +317,7 @@ import 'forwarding_rule_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// hc = gcp.compute.HealthCheck("hc",
-///     name="check-website-backend",
+///     name="website-backend-check",
 ///     check_interval_sec=1,
 ///     timeout_sec=1,
 ///     tcp_health_check={
@@ -356,7 +356,7 @@ import 'forwarding_rule_state.dart';
 /// {
 ///     var hc = new Gcp.Compute.HealthCheck("hc", new()
 ///     {
-///         Name = "check-website-backend",
+///         Name = "website-backend-check",
 ///         CheckIntervalSec = 1,
 ///         TimeoutSec = 1,
 ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
@@ -405,14 +405,14 @@ import 'forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		hc, err := compute.NewHealthCheck(ctx, "hc", &compute.HealthCheckArgs{
-/// 			Name:             pulumi.String("check-website-backend"),
+/// 			Name:             pulumi.String("website-backend-check"),
 /// 			CheckIntervalSec: pulumi.Int(1),
 /// 			TimeoutSec:       pulumi.Int(1),
 /// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
@@ -490,7 +490,7 @@ import 'forwarding_rule_state.dart';
 ///   health_checks = gcp_compute_healthcheck.hc.id
 /// }
 /// resource "gcp_compute_healthcheck" "hc" {
-///   name               = "check-website-backend"
+///   name               = "website-backend-check"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
 ///   tcp_health_check = {
@@ -539,7 +539,7 @@ import 'forwarding_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var hc = new HealthCheck("hc", HealthCheckArgs.builder()
-///             .name("check-website-backend")
+///             .name("website-backend-check")
 ///             .checkIntervalSec(1)
 ///             .timeoutSec(1)
 ///             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
@@ -603,7 +603,7 @@ import 'forwarding_rule_state.dart';
 ///   hc:
 ///     type: gcp:compute:HealthCheck
 ///     properties:
-///       name: check-website-backend
+///       name: website-backend-check
 ///       checkIntervalSec: 1
 ///       timeoutSec: 1
 ///       tcpHealthCheck:
@@ -675,7 +675,7 @@ import 'forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -860,7 +860,7 @@ import 'forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1018,7 +1018,7 @@ import 'forwarding_rule_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const hc = new gcp.compute.HealthCheck("hc", {
-///     name: "check-website-backend",
+///     name: "website-backend-check",
 ///     checkIntervalSec: 1,
 ///     timeoutSec: 1,
 ///     tcpHealthCheck: {
@@ -1057,7 +1057,7 @@ import 'forwarding_rule_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// hc = gcp.compute.HealthCheck("hc",
-///     name="check-website-backend",
+///     name="website-backend-check",
 ///     check_interval_sec=1,
 ///     timeout_sec=1,
 ///     tcp_health_check={
@@ -1096,7 +1096,7 @@ import 'forwarding_rule_state.dart';
 /// {
 ///     var hc = new Gcp.Compute.HealthCheck("hc", new()
 ///     {
-///         Name = "check-website-backend",
+///         Name = "website-backend-check",
 ///         CheckIntervalSec = 1,
 ///         TimeoutSec = 1,
 ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
@@ -1145,14 +1145,14 @@ import 'forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		hc, err := compute.NewHealthCheck(ctx, "hc", &compute.HealthCheckArgs{
-/// 			Name:             pulumi.String("check-website-backend"),
+/// 			Name:             pulumi.String("website-backend-check"),
 /// 			CheckIntervalSec: pulumi.Int(1),
 /// 			TimeoutSec:       pulumi.Int(1),
 /// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
@@ -1230,7 +1230,7 @@ import 'forwarding_rule_state.dart';
 ///   health_checks = gcp_compute_healthcheck.hc.id
 /// }
 /// resource "gcp_compute_healthcheck" "hc" {
-///   name               = "check-website-backend"
+///   name               = "website-backend-check"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
 ///   tcp_health_check = {
@@ -1279,7 +1279,7 @@ import 'forwarding_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var hc = new HealthCheck("hc", HealthCheckArgs.builder()
-///             .name("check-website-backend")
+///             .name("website-backend-check")
 ///             .checkIntervalSec(1)
 ///             .timeoutSec(1)
 ///             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
@@ -1343,7 +1343,7 @@ import 'forwarding_rule_state.dart';
 ///   hc:
 ///     type: gcp:compute:HealthCheck
 ///     properties:
-///       name: check-website-backend
+///       name: website-backend-check
 ///       checkIntervalSec: 1
 ///       timeoutSec: 1
 ///       tcpHealthCheck:
@@ -1373,7 +1373,7 @@ import 'forwarding_rule_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const debianImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const defaultNetwork = new gcp.compute.Network("default", {
@@ -1388,7 +1388,7 @@ import 'forwarding_rule_state.dart';
 ///     network: defaultNetwork.id,
 /// });
 /// const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
-///     name: "template-website-backend",
+///     name: "website-backend-template",
 ///     machineType: "e2-medium",
 ///     networkInterfaces: [{
 ///         network: defaultNetwork.id,
@@ -1541,7 +1541,7 @@ import 'forwarding_rule_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// debian_image = gcp.compute.get_image(family="debian-11",
+/// debian_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// default_network = gcp.compute.Network("default",
 ///     name="website-net",
@@ -1553,7 +1553,7 @@ import 'forwarding_rule_state.dart';
 ///     region="us-central1",
 ///     network=default_network.id)
 /// instance_template = gcp.compute.InstanceTemplate("instance_template",
-///     name="template-website-backend",
+///     name="website-backend-template",
 ///     machine_type="e2-medium",
 ///     network_interfaces=[{
 ///         "network": default_network.id,
@@ -1695,7 +1695,7 @@ import 'forwarding_rule_state.dart';
 /// {
 ///     var debianImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -1716,7 +1716,7 @@ import 'forwarding_rule_state.dart';
 ///
 ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instance_template", new()
 ///     {
-///         Name = "template-website-backend",
+///         Name = "website-backend-template",
 ///         MachineType = "e2-medium",
 ///         NetworkInterfaces = new[]
 ///         {
@@ -1978,14 +1978,14 @@ import 'forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		debianImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -2009,7 +2009,7 @@ import 'forwarding_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		instanceTemplate, err := compute.NewInstanceTemplate(ctx, "instance_template", &compute.InstanceTemplateArgs{
-/// 			Name:        pulumi.String("template-website-backend"),
+/// 			Name:        pulumi.String("website-backend-template"),
 /// 			MachineType: pulumi.String("e2-medium"),
 /// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
 /// 				&compute.InstanceTemplateNetworkInterfaceArgs{
@@ -2239,7 +2239,7 @@ import 'forwarding_rule_state.dart';
 /// }
 ///
 /// data "gcp_compute_getimage" "debianImage" {
-///   family  = "debian-11"
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
@@ -2290,7 +2290,7 @@ import 'forwarding_rule_state.dart';
 ///   target_size        = 1
 /// }
 /// resource "gcp_compute_instancetemplate" "instance_template" {
-///   name         = "template-website-backend"
+///   name         = "website-backend-template"
 ///   machine_type = "e2-medium"
 ///   network_interfaces {
 ///     network    = gcp_compute_network.default.id
@@ -2438,7 +2438,7 @@ import 'forwarding_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var debianImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -2456,7 +2456,7 @@ import 'forwarding_rule_state.dart';
 ///             .build());
 ///
 ///         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()
-///             .name("template-website-backend")
+///             .name("website-backend-template")
 ///             .machineType("e2-medium")
 ///             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
 ///                 .network(defaultNetwork.id())
@@ -2675,7 +2675,7 @@ import 'forwarding_rule_state.dart';
 ///     type: gcp:compute:InstanceTemplate
 ///     name: instance_template
 ///     properties:
-///       name: template-website-backend
+///       name: website-backend-template
 ///       machineType: e2-medium
 ///       networkInterfaces:
 ///         - network: ${defaultNetwork.id}
@@ -2795,7 +2795,7 @@ import 'forwarding_rule_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -2808,7 +2808,7 @@ import 'forwarding_rule_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const debianImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const defaultNetwork = new gcp.compute.Network("default", {
@@ -2823,7 +2823,7 @@ import 'forwarding_rule_state.dart';
 ///     network: defaultNetwork.id,
 /// });
 /// const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
-///     name: "template-website-backend",
+///     name: "website-backend-template",
 ///     machineType: "e2-medium",
 ///     networkInterfaces: [{
 ///         network: defaultNetwork.id,
@@ -2981,7 +2981,7 @@ import 'forwarding_rule_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// debian_image = gcp.compute.get_image(family="debian-11",
+/// debian_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// default_network = gcp.compute.Network("default",
 ///     name="website-net",
@@ -2993,7 +2993,7 @@ import 'forwarding_rule_state.dart';
 ///     region="us-central1",
 ///     network=default_network.id)
 /// instance_template = gcp.compute.InstanceTemplate("instance_template",
-///     name="template-website-backend",
+///     name="website-backend-template",
 ///     machine_type="e2-medium",
 ///     network_interfaces=[{
 ///         "network": default_network.id,
@@ -3139,7 +3139,7 @@ import 'forwarding_rule_state.dart';
 /// {
 ///     var debianImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -3160,7 +3160,7 @@ import 'forwarding_rule_state.dart';
 ///
 ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instance_template", new()
 ///     {
-///         Name = "template-website-backend",
+///         Name = "website-backend-template",
 ///         MachineType = "e2-medium",
 ///         NetworkInterfaces = new[]
 ///         {
@@ -3429,14 +3429,14 @@ import 'forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		debianImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -3460,7 +3460,7 @@ import 'forwarding_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		instanceTemplate, err := compute.NewInstanceTemplate(ctx, "instance_template", &compute.InstanceTemplateArgs{
-/// 			Name:        pulumi.String("template-website-backend"),
+/// 			Name:        pulumi.String("website-backend-template"),
 /// 			MachineType: pulumi.String("e2-medium"),
 /// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
 /// 				&compute.InstanceTemplateNetworkInterfaceArgs{
@@ -3698,7 +3698,7 @@ import 'forwarding_rule_state.dart';
 /// }
 ///
 /// data "gcp_compute_getimage" "debianImage" {
-///   family  = "debian-11"
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
@@ -3749,7 +3749,7 @@ import 'forwarding_rule_state.dart';
 ///   target_size        = 1
 /// }
 /// resource "gcp_compute_instancetemplate" "instance_template" {
-///   name         = "template-website-backend"
+///   name         = "website-backend-template"
 ///   machine_type = "e2-medium"
 ///   network_interfaces {
 ///     network    = gcp_compute_network.default.id
@@ -3904,7 +3904,7 @@ import 'forwarding_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var debianImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -3922,7 +3922,7 @@ import 'forwarding_rule_state.dart';
 ///             .build());
 ///
 ///         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()
-///             .name("template-website-backend")
+///             .name("website-backend-template")
 ///             .machineType("e2-medium")
 ///             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
 ///                 .network(defaultNetwork.id())
@@ -4147,7 +4147,7 @@ import 'forwarding_rule_state.dart';
 ///     type: gcp:compute:InstanceTemplate
 ///     name: instance_template
 ///     properties:
-///       name: template-website-backend
+///       name: website-backend-template
 ///       machineType: e2-medium
 ///       networkInterfaces:
 ///         - network: ${defaultNetwork.id}
@@ -4274,7 +4274,7 @@ import 'forwarding_rule_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -4549,7 +4549,7 @@ import 'forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5246,7 +5246,7 @@ import 'forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5793,7 +5793,7 @@ import 'forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5987,7 +5987,7 @@ import 'forwarding_rule_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const hc = new gcp.compute.HealthCheck("hc", {
-///     name: "check-ilb-ipv6-backend",
+///     name: "ilb-ipv6-backend-check",
 ///     checkIntervalSec: 1,
 ///     timeoutSec: 1,
 ///     tcpHealthCheck: {
@@ -6029,7 +6029,7 @@ import 'forwarding_rule_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// hc = gcp.compute.HealthCheck("hc",
-///     name="check-ilb-ipv6-backend",
+///     name="ilb-ipv6-backend-check",
 ///     check_interval_sec=1,
 ///     timeout_sec=1,
 ///     tcp_health_check={
@@ -6071,7 +6071,7 @@ import 'forwarding_rule_state.dart';
 /// {
 ///     var hc = new Gcp.Compute.HealthCheck("hc", new()
 ///     {
-///         Name = "check-ilb-ipv6-backend",
+///         Name = "ilb-ipv6-backend-check",
 ///         CheckIntervalSec = 1,
 ///         TimeoutSec = 1,
 ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
@@ -6123,14 +6123,14 @@ import 'forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		hc, err := compute.NewHealthCheck(ctx, "hc", &compute.HealthCheckArgs{
-/// 			Name:             pulumi.String("check-ilb-ipv6-backend"),
+/// 			Name:             pulumi.String("ilb-ipv6-backend-check"),
 /// 			CheckIntervalSec: pulumi.Int(1),
 /// 			TimeoutSec:       pulumi.Int(1),
 /// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
@@ -6211,7 +6211,7 @@ import 'forwarding_rule_state.dart';
 ///   health_checks = gcp_compute_healthcheck.hc.id
 /// }
 /// resource "gcp_compute_healthcheck" "hc" {
-///   name               = "check-ilb-ipv6-backend"
+///   name               = "ilb-ipv6-backend-check"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
 ///   tcp_health_check = {
@@ -6263,7 +6263,7 @@ import 'forwarding_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var hc = new HealthCheck("hc", HealthCheckArgs.builder()
-///             .name("check-ilb-ipv6-backend")
+///             .name("ilb-ipv6-backend-check")
 ///             .checkIntervalSec(1)
 ///             .timeoutSec(1)
 ///             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
@@ -6330,7 +6330,7 @@ import 'forwarding_rule_state.dart';
 ///   hc:
 ///     type: gcp:compute:HealthCheck
 ///     properties:
-///       name: check-ilb-ipv6-backend
+///       name: ilb-ipv6-backend-check
 ///       checkIntervalSec: 1
 ///       timeoutSec: 1
 ///       tcpHealthCheck:
@@ -6644,7 +6644,7 @@ class ForwardingRule extends pulumi.CustomResource {
           'gcp:compute/forwardingRule:ForwardingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     allPorts = registerOutput<bool?>('allPorts');

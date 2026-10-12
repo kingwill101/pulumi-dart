@@ -35,10 +35,10 @@ class FlexibleAppVersionAutomaticScalingNetworkUtilization {
 
   factory FlexibleAppVersionAutomaticScalingNetworkUtilization.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionAutomaticScalingNetworkUtilization(
-      targetReceivedBytesPerSecond: (() { final guardedValue = map['targetReceivedBytesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      targetReceivedPacketsPerSecond: (() { final guardedValue = map['targetReceivedPacketsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      targetSentBytesPerSecond: (() { final guardedValue = map['targetSentBytesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      targetSentPacketsPerSecond: (() { final guardedValue = map['targetSentPacketsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetReceivedBytesPerSecond: (() { final guardedValue = map['targetReceivedBytesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      targetReceivedPacketsPerSecond: (() { final guardedValue = map['targetReceivedPacketsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      targetSentBytesPerSecond: (() { final guardedValue = map['targetSentBytesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      targetSentPacketsPerSecond: (() { final guardedValue = map['targetSentPacketsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

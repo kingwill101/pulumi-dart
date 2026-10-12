@@ -125,7 +125,7 @@ class GetInsightsDatasetConfigResult {
 
   factory GetInsightsDatasetConfigResult.fromMap(Map<String, dynamic> map) {
     return GetInsightsDatasetConfigResult(
-      activityDataRetentionPeriodDays: (() { final guardedValue = map['activityDataRetentionPeriodDays']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      activityDataRetentionPeriodDays: (() { final guardedValue = map['activityDataRetentionPeriodDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       datasetConfigId: (() { final guardedValue = map['datasetConfigId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       datasetConfigState: (() { final guardedValue = map['datasetConfigState']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -145,7 +145,7 @@ class GetInsightsDatasetConfigResult {
       organizationNumber: (() { final guardedValue = map['organizationNumber']; if (guardedValue == null) return null; return guardedValue as String; })(),
       organizationScope: (() { final guardedValue = map['organizationScope']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      retentionPeriodDays: (() { final guardedValue = map['retentionPeriodDays']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      retentionPeriodDays: (() { final guardedValue = map['retentionPeriodDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       sourceFolders: (() { final guardedValue = map['sourceFolders']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInsightsDatasetConfigSourceFolder>(guardedValue, (value) => GetInsightsDatasetConfigSourceFolder.fromMap((value as Map).cast<String, dynamic>())); })(),
       sourceProjects: (() { final guardedValue = map['sourceProjects']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInsightsDatasetConfigSourceProject>(guardedValue, (value) => GetInsightsDatasetConfigSourceProject.fromMap((value as Map).cast<String, dynamic>())); })(),
       uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),

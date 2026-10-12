@@ -84,7 +84,7 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -298,7 +298,7 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -538,7 +538,7 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -928,10 +928,10 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1406,7 +1406,7 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1641,7 +1641,7 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1975,9 +1975,9 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2385,7 +2385,7 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2668,8 +2668,8 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2949,7 +2949,7 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3276,8 +3276,8 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/filestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3697,10 +3697,10 @@ import 'worker_pool_terminal_condition.dart';
 ///                             Port = 8080,
 ///                             HttpHeaders = new[]
 ///                             {
-///
+///                                 new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs
 ///                                 {
-///                                     { "name", "TEST-HEADER" },
-///                                     { "value", "test-value" },
+///                                     Name = "TEST-HEADER",
+///                                     Value = "test-value",
 ///                                 },
 ///                             },
 ///                         },
@@ -3728,8 +3728,8 @@ import 'worker_pool_terminal_condition.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3780,10 +3780,10 @@ import 'worker_pool_terminal_condition.dart';
 /// 							HttpGet: &cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetArgs{
 /// 								Path: pulumi.String("/"),
 /// 								Port: pulumi.Int(8080),
-/// 								HttpHeaders: cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{
-/// 									map[string]string{
-/// 										"name":  "TEST-HEADER",
-/// 										"value": "test-value",
+/// 								HttpHeaders: cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray{
+/// 									&cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{
+/// 										Name:  pulumi.String("TEST-HEADER"),
+/// 										Value: pulumi.String("test-value"),
 /// 									},
 /// 								},
 /// 							},
@@ -3890,6 +3890,7 @@ import 'worker_pool_terminal_condition.dart';
 /// import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerStartupProbeTcpSocketArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerLivenessProbeArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetArgs;
+/// import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVpcAccessArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVpcAccessNetworkInterfaceArgs;
 /// import java.util.ArrayList;
@@ -3947,7 +3948,7 @@ import 'worker_pool_terminal_condition.dart';
 ///                         .httpGet(WorkerPoolTemplateContainerLivenessProbeHttpGetArgs.builder()
 ///                             .path("/")
 ///                             .port(8080)
-///                             .httpHeaders(com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs.builder()
+///                             .httpHeaders(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs.builder()
 ///                                 .name("TEST-HEADER")
 ///                                 .value("test-value")
 ///                                 .build())
@@ -4060,12 +4061,6 @@ class WorkerPool extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Email address of the authenticated creator.
   late final pulumi.Output<String> creator;
-  /// (Optional, Deprecated)
-  /// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-  /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-  ///
-  /// &gt; **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-  late final pulumi.Output<List<String>?> customAudiences;
   /// The deletion time.
   late final pulumi.Output<String> deleteTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -4161,7 +4156,7 @@ class WorkerPool extends pulumi.CustomResource {
           'gcp:cloudrunv2/workerPool:WorkerPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
@@ -4171,7 +4166,6 @@ class WorkerPool extends pulumi.CustomResource {
     conditions = registerOutput<List<WorkerPoolCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolCondition>(guardedValue, (value) => WorkerPoolCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
-    customAudiences = registerOutput<List<String>?>('customAudiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -4232,7 +4226,6 @@ class WorkerPool extends pulumi.CustomResource {
     conditions = registerOutput<List<WorkerPoolCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolCondition>(guardedValue, (value) => WorkerPoolCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
-    customAudiences = registerOutput<List<String>?>('customAudiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -4279,7 +4272,6 @@ class WorkerPool extends pulumi.CustomResource {
     conditions = registerOutput<List<WorkerPoolCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerPoolCondition>(guardedValue, (value) => WorkerPoolCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
-    customAudiences = registerOutput<List<String>?>('customAudiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');

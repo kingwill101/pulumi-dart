@@ -119,7 +119,7 @@ import 'batch_operations_job_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -374,7 +374,7 @@ import 'batch_operations_job_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -598,7 +598,7 @@ class BatchOperationsJob extends pulumi.CustomResource {
           'gcp:storage/batchOperationsJob:BatchOperationsJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     bucketList = registerOutput<BatchOperationsJobBucketList?>('bucketList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchOperationsJobBucketList.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     completeTime = registerOutput<String>('completeTime');

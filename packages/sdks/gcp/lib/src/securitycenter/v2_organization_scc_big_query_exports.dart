@@ -111,8 +111,8 @@ import 'v2_organization_scc_big_query_exports_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -336,7 +336,7 @@ class V2OrganizationSccBigQueryExports extends pulumi.CustomResource {
           'gcp:securitycenter/v2OrganizationSccBigQueryExports:V2OrganizationSccBigQueryExports',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     bigQueryExportId = registerOutput<String>('bigQueryExportId');
     createTime = registerOutput<String>('createTime');

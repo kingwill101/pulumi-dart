@@ -106,7 +106,7 @@ import 'entry_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -661,7 +661,7 @@ import 'entry_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1585,8 +1585,8 @@ import 'entry_state.dart';
 /// 	"encoding/json"
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1667,18 +1667,18 @@ import 'entry_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal([]map[string]string{
-/// 			{
+/// 		tmpJSON0, err := json.Marshal([]interface{}{
+/// 			map[string]string{
 /// 				"name": "event_time",
 /// 				"type": "TIMESTAMP",
 /// 				"mode": "REQUIRED",
 /// 			},
-/// 			{
+/// 			map[string]string{
 /// 				"name": "user_id",
 /// 				"type": "STRING",
 /// 				"mode": "NULLABLE",
 /// 			},
-/// 			{
+/// 			map[string]string{
 /// 				"name": "event_type",
 /// 				"type": "STRING",
 /// 				"mode": "NULLABLE",
@@ -2242,7 +2242,7 @@ import 'entry_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -2533,7 +2533,7 @@ class Entry extends pulumi.CustomResource {
           'gcp:dataplex/entry:Entry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     aspects = registerOutput<List<EntryAspect>?>('aspects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryAspect>(guardedValue, (value) => EntryAspect.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');

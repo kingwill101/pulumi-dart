@@ -51,7 +51,7 @@ import 'get_variable_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/runtimeconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/runtimeconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -186,7 +186,7 @@ pulumi.Output<GetConfigResult> getConfigOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/runtimeconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/runtimeconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -329,7 +329,7 @@ pulumi.Output<GetConfigIamPolicyResult> getConfigIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/runtimeconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/runtimeconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

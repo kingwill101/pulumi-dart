@@ -8,6 +8,8 @@ import 'get_workforce_pool_iam_policy_result.dart';
 import 'get_workload_identity_pool_args.dart';
 import 'get_workload_identity_pool_iam_policy_args.dart';
 import 'get_workload_identity_pool_iam_policy_result.dart';
+import 'get_workload_identity_pool_jwks_args.dart';
+import 'get_workload_identity_pool_jwks_result.dart';
 import 'get_workload_identity_pool_openid_config_args.dart';
 import 'get_workload_identity_pool_openid_config_result.dart';
 import 'get_workload_identity_pool_provider_args.dart';
@@ -56,7 +58,7 @@ import 'get_workload_identity_pool_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -208,7 +210,7 @@ pulumi.Output<GetRuleResult> getRuleOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -352,7 +354,7 @@ pulumi.Output<GetTestablePermissionsResult> getTestablePermissionsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -490,7 +492,7 @@ pulumi.Output<GetWorkforcePoolIamPolicyResult> getWorkforcePoolIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -623,7 +625,7 @@ pulumi.Output<GetWorkloadIdentityPoolResult> getWorkloadIdentityPoolOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -718,6 +720,163 @@ pulumi.Output<GetWorkloadIdentityPoolIamPolicyResult> getWorkloadIdentityPoolIam
   ).apply(GetWorkloadIdentityPoolIamPolicyResult.fromMap);
 }
 
+/// Get the JSON Web Key Set (JWKS) public keys (`/openid/jwks`) for an Agent Workload Identity Pool from GCP.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const oidc = gcp.iam.getWorkloadIdentityPoolOpenidConfig({
+///     resourceName: "https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration",
+/// });
+/// const example = oidc.then(oidc => gcp.iam.getWorkloadIdentityPoolJwks({
+///     resourceName: oidc.jwksUri,
+/// }));
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// oidc = gcp.iam.get_workload_identity_pool_openid_config(resource_name="https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration")
+/// example = gcp.iam.get_workload_identity_pool_jwks(resource_name=oidc.jwks_uri)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var oidc = Gcp.Iam.GetWorkloadIdentityPoolOpenidConfig.Invoke(new()
+///     {
+///         ResourceName = "https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration",
+///     });
+///
+///     var example = Gcp.Iam.GetWorkloadIdentityPoolJwks.Invoke(new()
+///     {
+///         ResourceName = oidc.Apply(getWorkloadIdentityPoolOpenidConfigResult => getWorkloadIdentityPoolOpenidConfigResult.JwksUri),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		oidc, err := iam.GetWorkloadIdentityPoolOpenidConfig(ctx, &iam.GetWorkloadIdentityPoolOpenidConfigArgs{
+/// 			ResourceName: "https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.GetWorkloadIdentityPoolJwks(ctx, &iam.GetWorkloadIdentityPoolJwksArgs{
+/// 			ResourceName: oidc.JwksUri,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_iam_getworkloadidentitypoolopenidconfig" "oidc" {
+///   resource_name = "https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration"
+/// }
+/// data "gcp_iam_getworkloadidentitypooljwks" "example" {
+///   resource_name = data.gcp_iam_getworkloadidentitypoolopenidconfig.oidc.jwks_uri
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.iam.IamFunctions;
+/// import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolOpenidConfigArgs;
+/// import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolJwksArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var oidc = IamFunctions.getWorkloadIdentityPoolOpenidConfig(GetWorkloadIdentityPoolOpenidConfigArgs.builder()
+///             .resourceName("https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration")
+///             .build());
+///
+///         final var example = IamFunctions.getWorkloadIdentityPoolJwks(GetWorkloadIdentityPoolJwksArgs.builder()
+///             .resourceName(oidc.jwksUri())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   oidc:
+///     fn::invoke:
+///       function: gcp:iam:getWorkloadIdentityPoolOpenidConfig
+///       arguments:
+///         resourceName: https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration
+///   example:
+///     fn::invoke:
+///       function: gcp:iam:getWorkloadIdentityPoolJwks
+///       arguments:
+///         resourceName: ${oidc.jwksUri}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_iam_get_workload_identity_pool_jwks_get_workload_identity_pool_jwks_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetWorkloadIdentityPoolJwksResult> getWorkloadIdentityPoolJwks(
+  GetWorkloadIdentityPoolJwksArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:iam/getWorkloadIdentityPoolJwks:getWorkloadIdentityPoolJwks',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetWorkloadIdentityPoolJwksResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkloadIdentityPoolJwksResult> getWorkloadIdentityPoolJwksOutput(
+  GetWorkloadIdentityPoolJwksArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:iam/getWorkloadIdentityPoolJwks:getWorkloadIdentityPoolJwks',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkloadIdentityPoolJwksResult.fromMap);
+}
+
 /// Get the OpenID provider configuration (`/.well-known/openid-configuration`) for an Agent Workload Identity Pool from Google Cloud.
 ///
 /// ## Example Usage
@@ -756,7 +915,7 @@ pulumi.Output<GetWorkloadIdentityPoolIamPolicyResult> getWorkloadIdentityPoolIam
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -891,7 +1050,7 @@ pulumi.Output<GetWorkloadIdentityPoolOpenidConfigResult> getWorkloadIdentityPool
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

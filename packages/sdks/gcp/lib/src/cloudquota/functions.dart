@@ -48,7 +48,7 @@ import 'get_squota_infos_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudquota"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudquota"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -188,7 +188,7 @@ pulumi.Output<GetSQuotaInfoResult> getSQuotaInfoOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudquota"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudquota"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

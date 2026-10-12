@@ -82,11 +82,11 @@ class CloudExadataInfrastructurePropertiesMaintenanceWindow {
 
   factory CloudExadataInfrastructurePropertiesMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return CloudExadataInfrastructurePropertiesMaintenanceWindow(
-      customActionTimeoutMins: (() { final guardedValue = map['customActionTimeoutMins']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      customActionTimeoutMins: (() { final guardedValue = map['customActionTimeoutMins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       daysOfWeeks: (() { final guardedValue = map['daysOfWeeks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       hoursOfDays: (() { final guardedValue = map['hoursOfDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
       isCustomActionTimeoutEnabled: (() { final guardedValue = map['isCustomActionTimeoutEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      leadTimeWeek: (() { final guardedValue = map['leadTimeWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      leadTimeWeek: (() { final guardedValue = map['leadTimeWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       months: (() { final guardedValue = map['months']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       patchingMode: (() { final guardedValue = map['patchingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       preference: (() { final guardedValue = map['preference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

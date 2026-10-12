@@ -35,7 +35,7 @@ import 'data_product_state.dart';
 ///         groupId: "analyst",
 ///         displayName: "Data Analyst",
 ///         principal: {
-///             googleGroup: "tf-test-analysts-_60365@example.com",
+///             googleGroup: "tf-test-analysts-_11380@example.com",
 ///         },
 ///     }],
 /// });
@@ -55,7 +55,7 @@ import 'data_product_state.dart';
 ///         "group_id": "analyst",
 ///         "display_name": "Data Analyst",
 ///         "principal": {
-///             "google_group": "tf-test-analysts-_60365@example.com",
+///             "google_group": "tf-test-analysts-_11380@example.com",
 ///         },
 ///     }])
 /// ```
@@ -86,7 +86,7 @@ import 'data_product_state.dart';
 ///                 DisplayName = "Data Analyst",
 ///                 Principal = new Gcp.DataPlex.Inputs.DataProductAccessGroupPrincipalArgs
 ///                 {
-///                     GoogleGroup = "tf-test-analysts-_60365@example.com",
+///                     GoogleGroup = "tf-test-analysts-_11380@example.com",
 ///                 },
 ///             },
 ///         },
@@ -98,7 +98,7 @@ import 'data_product_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -118,7 +118,7 @@ import 'data_product_state.dart';
 /// 					GroupId:     pulumi.String("analyst"),
 /// 					DisplayName: pulumi.String("Data Analyst"),
 /// 					Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-/// 						GoogleGroup: pulumi.String("tf-test-analysts-_60365@example.com"),
+/// 						GoogleGroup: pulumi.String("tf-test-analysts-_11380@example.com"),
 /// 					},
 /// 				},
 /// 			},
@@ -150,7 +150,7 @@ import 'data_product_state.dart';
 ///     group_id     = "analyst"
 ///     display_name = "Data Analyst"
 ///     principal = {
-///       google_group = "tf-test-analysts-_60365@example.com"
+///       google_group = "tf-test-analysts-_11380@example.com"
 ///     }
 ///   }
 /// }
@@ -189,7 +189,7 @@ import 'data_product_state.dart';
 ///                 .groupId("analyst")
 ///                 .displayName("Data Analyst")
 ///                 .principal(DataProductAccessGroupPrincipalArgs.builder()
-///                     .googleGroup("tf-test-analysts-_60365@example.com")
+///                     .googleGroup("tf-test-analysts-_11380@example.com")
 ///                     .build())
 ///                 .build())
 ///             .build());
@@ -213,7 +213,7 @@ import 'data_product_state.dart';
 ///           groupId: analyst
 ///           displayName: Data Analyst
 ///           principal:
-///             googleGroup: tf-test-analysts-_60365@example.com
+///             googleGroup: tf-test-analysts-_11380@example.com
 /// ```
 ///
 /// ### Dataplex Data Product Full
@@ -225,7 +225,7 @@ import 'data_product_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const testSa = new gcp.serviceaccount.Account("test_sa", {
-///     accountId: "tf-test-sa-_80215",
+///     accountId: "tf-test-sa-_35305",
 ///     displayName: "Test Service Account",
 /// });
 /// const example = new gcp.dataplex.DataProduct("example", {
@@ -248,7 +248,7 @@ import 'data_product_state.dart';
 ///             displayName: "Data Analyst - Updated",
 ///             description: "In-place update verified",
 ///             principal: {
-///                 googleGroup: "tf-test-analysts-_59033@example.com",
+///                 googleGroup: "tf-test-analysts-_62793@example.com",
 ///             },
 ///         },
 ///         {
@@ -267,7 +267,7 @@ import 'data_product_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// test_sa = gcp.serviceaccount.Account("test_sa",
-///     account_id="tf-test-sa-_80215",
+///     account_id="tf-test-sa-_35305",
 ///     display_name="Test Service Account")
 /// example = gcp.dataplex.DataProduct("example",
 ///     project="my-project-name",
@@ -289,7 +289,7 @@ import 'data_product_state.dart';
 ///             "display_name": "Data Analyst - Updated",
 ///             "description": "In-place update verified",
 ///             "principal": {
-///                 "google_group": "tf-test-analysts-_59033@example.com",
+///                 "google_group": "tf-test-analysts-_62793@example.com",
 ///             },
 ///         },
 ///         {
@@ -312,7 +312,7 @@ import 'data_product_state.dart';
 /// {
 ///     var testSa = new Gcp.ServiceAccount.Account("test_sa", new()
 ///     {
-///         AccountId = "tf-test-sa-_80215",
+///         AccountId = "tf-test-sa-_35305",
 ///         DisplayName = "Test Service Account",
 ///     });
 ///
@@ -348,7 +348,7 @@ import 'data_product_state.dart';
 ///                 Description = "In-place update verified",
 ///                 Principal = new Gcp.DataPlex.Inputs.DataProductAccessGroupPrincipalArgs
 ///                 {
-///                     GoogleGroup = "tf-test-analysts-_59033@example.com",
+///                     GoogleGroup = "tf-test-analysts-_62793@example.com",
 ///                 },
 ///             },
 ///             new Gcp.DataPlex.Inputs.DataProductAccessGroupArgs
@@ -370,15 +370,15 @@ import 'data_product_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		testSa, err := serviceaccount.NewAccount(ctx, "test_sa", &serviceaccount.AccountArgs{
-/// 			AccountId:   pulumi.String("tf-test-sa-_80215"),
+/// 			AccountId:   pulumi.String("tf-test-sa-_35305"),
 /// 			DisplayName: pulumi.String("Test Service Account"),
 /// 		})
 /// 		if err != nil {
@@ -408,7 +408,7 @@ import 'data_product_state.dart';
 /// 					DisplayName: pulumi.String("Data Analyst - Updated"),
 /// 					Description: pulumi.String("In-place update verified"),
 /// 					Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-/// 						GoogleGroup: pulumi.String("tf-test-analysts-_59033@example.com"),
+/// 						GoogleGroup: pulumi.String("tf-test-analysts-_62793@example.com"),
 /// 					},
 /// 				},
 /// 				&dataplex.DataProductAccessGroupArgs{
@@ -438,7 +438,7 @@ import 'data_product_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "test_sa" {
-///   account_id   = "tf-test-sa-_80215"
+///   account_id   = "tf-test-sa-_35305"
 ///   display_name = "Test Service Account"
 /// }
 /// resource "gcp_dataplex_dataproduct" "example" {
@@ -460,7 +460,7 @@ import 'data_product_state.dart';
 ///     display_name = "Data Analyst - Updated"
 ///     description  = "In-place update verified"
 ///     principal = {
-///       google_group = "tf-test-analysts-_59033@example.com"
+///       google_group = "tf-test-analysts-_62793@example.com"
 ///     }
 ///   }
 ///   access_groups {
@@ -500,7 +500,7 @@ import 'data_product_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testSa = new Account("testSa", AccountArgs.builder()
-///             .accountId("tf-test-sa-_80215")
+///             .accountId("tf-test-sa-_35305")
 ///             .displayName("Test Service Account")
 ///             .build());
 ///
@@ -522,7 +522,7 @@ import 'data_product_state.dart';
 ///                     .displayName("Data Analyst - Updated")
 ///                     .description("In-place update verified")
 ///                     .principal(DataProductAccessGroupPrincipalArgs.builder()
-///                         .googleGroup("tf-test-analysts-_59033@example.com")
+///                         .googleGroup("tf-test-analysts-_62793@example.com")
 ///                         .build())
 ///                     .build(),
 ///                 DataProductAccessGroupArgs.builder()
@@ -544,7 +544,7 @@ import 'data_product_state.dart';
 ///     type: gcp:serviceaccount:Account
 ///     name: test_sa
 ///     properties:
-///       accountId: tf-test-sa-_80215
+///       accountId: tf-test-sa-_35305
 ///       displayName: Test Service Account
 ///   example:
 ///     type: gcp:dataplex:DataProduct
@@ -567,7 +567,7 @@ import 'data_product_state.dart';
 ///           displayName: Data Analyst - Updated
 ///           description: In-place update verified
 ///           principal:
-///             googleGroup: tf-test-analysts-_59033@example.com
+///             googleGroup: tf-test-analysts-_62793@example.com
 ///         - id: scientist
 ///           groupId: scientist
 ///           displayName: Data Scientist
@@ -659,7 +659,7 @@ class DataProduct extends pulumi.CustomResource {
           'gcp:dataplex/dataProduct:DataProduct',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accessApprovalConfig = registerOutput<DataProductAccessApprovalConfig?>('accessApprovalConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataProductAccessApprovalConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

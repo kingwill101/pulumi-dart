@@ -20,6 +20,8 @@ class CloudExadataInfrastructureExascaleConfigState {
   final pulumi.Input<String?>? project;
   /// The total storage to be allocated to Exascale in GBs.
   final pulumi.Input<int?>? totalStorageSizeGb;
+  /// Storage size needed for VM storage on Exascale in GBs.
+  final pulumi.Input<int?>? totalVmStorageSizeGb;
 
   /// Creates a new [CloudExadataInfrastructureExascaleConfigState].
   /// [cloudExadataInfrastructure] A reference to CloudExadataInfrastructure resource
@@ -27,12 +29,14 @@ class CloudExadataInfrastructureExascaleConfigState {
   /// [location] (Required)
   /// [project] The ID of the project in which the resource belongs.
   /// [totalStorageSizeGb] The total storage to be allocated to Exascale in GBs.
+  /// [totalVmStorageSizeGb] Storage size needed for VM storage on Exascale in GBs.
   const CloudExadataInfrastructureExascaleConfigState({
     this.cloudExadataInfrastructure,
     this.deletionPolicy,
     this.location,
     this.project,
     this.totalStorageSizeGb,
+    this.totalVmStorageSizeGb,
   });
 
   Map<String, dynamic> toMap() {
@@ -42,6 +46,7 @@ class CloudExadataInfrastructureExascaleConfigState {
       'location': ?location,
       'project': ?project,
       'totalStorageSizeGb': ?totalStorageSizeGb,
+      'totalVmStorageSizeGb': ?totalVmStorageSizeGb,
     };
   }
 
@@ -51,7 +56,8 @@ class CloudExadataInfrastructureExascaleConfigState {
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      totalStorageSizeGb: (() { final guardedValue = map['totalStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      totalStorageSizeGb: (() { final guardedValue = map['totalStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      totalVmStorageSizeGb: (() { final guardedValue = map['totalVmStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

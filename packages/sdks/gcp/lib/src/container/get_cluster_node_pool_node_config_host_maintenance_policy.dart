@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_cluster_node_pool_node_config_host_maintenance_policy_opportunistic_maintenance_strategy.dart';
 
 class GetClusterNodePoolNodeConfigHostMaintenancePolicy {
-  /// .
+  /// Specifies the frequency of planned maintenance events. One of: "MAINTENANCE_INTERVAL_UNSPECIFIED", "AS_NEEDED", "PERIODIC".
   final pulumi.Input<String> maintenanceInterval;
   /// Strategy that will trigger maintenance on behalf of the customer.
   final pulumi.Input<List<GetClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy>> opportunisticMaintenanceStrategies;
 
   /// Creates a new [GetClusterNodePoolNodeConfigHostMaintenancePolicy].
-  /// [maintenanceInterval] .
+  /// [maintenanceInterval] Specifies the frequency of planned maintenance events. One of: "MAINTENANCE_INTERVAL_UNSPECIFIED", "AS_NEEDED", "PERIODIC".
   /// [opportunisticMaintenanceStrategies] Strategy that will trigger maintenance on behalf of the customer.
   const GetClusterNodePoolNodeConfigHostMaintenancePolicy({
     required this.maintenanceInterval,

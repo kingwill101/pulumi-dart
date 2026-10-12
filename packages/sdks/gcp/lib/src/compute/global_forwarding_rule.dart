@@ -23,21 +23,24 @@ import 'global_forwarding_rule_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
-///     name: "check-backend",
-///     requestPath: "/",
+/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+///     name: "backend-check",
 ///     checkIntervalSec: 1,
 ///     timeoutSec: 1,
+///     httpHealthCheck: {
+///         port: 80,
+///         requestPath: "/",
+///     },
 /// });
 /// const defaultBackendService = new gcp.compute.BackendService("default", {
 ///     name: "backend",
 ///     portName: "http",
 ///     protocol: "HTTP",
 ///     timeoutSec: 10,
-///     healthChecks: defaultHttpHealthCheck.id,
+///     healthChecks: defaultHealthCheck.id,
 /// });
 /// const defaultURLMap = new gcp.compute.URLMap("default", {
-///     name: "url-map-target-proxy",
+///     name: "target-proxy-url-map",
 ///     description: "a description",
 ///     defaultService: defaultBackendService.id,
 ///     hostRules: [{
@@ -68,19 +71,22 @@ import 'global_forwarding_rule_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default_http_health_check = gcp.compute.HttpHealthCheck("default",
-///     name="check-backend",
-///     request_path="/",
+/// default_health_check = gcp.compute.HealthCheck("default",
+///     name="backend-check",
 ///     check_interval_sec=1,
-///     timeout_sec=1)
+///     timeout_sec=1,
+///     http_health_check={
+///         "port": 80,
+///         "request_path": "/",
+///     })
 /// default_backend_service = gcp.compute.BackendService("default",
 ///     name="backend",
 ///     port_name="http",
 ///     protocol="HTTP",
 ///     timeout_sec=10,
-///     health_checks=default_http_health_check.id)
+///     health_checks=default_health_check.id)
 /// default_url_map = gcp.compute.URLMap("default",
-///     name="url-map-target-proxy",
+///     name="target-proxy-url-map",
 ///     description="a description",
 ///     default_service=default_backend_service.id,
 ///     host_rules=[{
@@ -112,12 +118,16 @@ import 'global_forwarding_rule_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
 ///     {
-///         Name = "check-backend",
-///         RequestPath = "/",
+///         Name = "backend-check",
 ///         CheckIntervalSec = 1,
 ///         TimeoutSec = 1,
+///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+///         {
+///             Port = 80,
+///             RequestPath = "/",
+///         },
 ///     });
 ///
 ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
@@ -126,12 +136,12 @@ import 'global_forwarding_rule_state.dart';
 ///         PortName = "http",
 ///         Protocol = "HTTP",
 ///         TimeoutSec = 10,
-///         HealthChecks = defaultHttpHealthCheck.Id,
+///         HealthChecks = defaultHealthCheck.Id,
 ///     });
 ///
 ///     var defaultURLMap = new Gcp.Compute.URLMap("default", new()
 ///     {
-///         Name = "url-map-target-proxy",
+///         Name = "target-proxy-url-map",
 ///         Description = "a description",
 ///         DefaultService = defaultBackendService.Id,
 ///         HostRules = new[]
@@ -186,17 +196,20 @@ import 'global_forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
-/// 			Name:             pulumi.String("check-backend"),
-/// 			RequestPath:      pulumi.String("/"),
+/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+/// 			Name:             pulumi.String("backend-check"),
 /// 			CheckIntervalSec: pulumi.Int(1),
 /// 			TimeoutSec:       pulumi.Int(1),
+/// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+/// 				Port:        pulumi.Int(80),
+/// 				RequestPath: pulumi.String("/"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -206,13 +219,13 @@ import 'global_forwarding_rule_state.dart';
 /// 			PortName:     pulumi.String("http"),
 /// 			Protocol:     pulumi.String("HTTP"),
 /// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
-/// 			Name:           pulumi.String("url-map-target-proxy"),
+/// 			Name:           pulumi.String("target-proxy-url-map"),
 /// 			Description:    pulumi.String("a description"),
 /// 			DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.URLMapHostRuleArray{
@@ -281,7 +294,7 @@ import 'global_forwarding_rule_state.dart';
 ///   url_map     = gcp_compute_urlmap.default.id
 /// }
 /// resource "gcp_compute_urlmap" "default" {
-///   name            = "url-map-target-proxy"
+///   name            = "target-proxy-url-map"
 ///   description     = "a description"
 ///   default_service = gcp_compute_backendservice.default.id
 ///   host_rules {
@@ -302,13 +315,16 @@ import 'global_forwarding_rule_state.dart';
 ///   port_name     = "http"
 ///   protocol      = "HTTP"
 ///   timeout_sec   = 10
-///   health_checks = gcp_compute_httphealthcheck.default.id
+///   health_checks = gcp_compute_healthcheck.default.id
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
-///   name               = "check-backend"
-///   request_path       = "/"
+/// resource "gcp_compute_healthcheck" "default" {
+///   name               = "backend-check"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
+///   http_health_check = {
+///     port         = 80
+///     request_path = "/"
+///   }
 /// }
 /// ```
 /// ```java
@@ -317,8 +333,9 @@ import 'global_forwarding_rule_state.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.HttpHealthCheck;
-/// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.URLMap;
@@ -343,11 +360,14 @@ import 'global_forwarding_rule_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
-///             .name("check-backend")
-///             .requestPath("/")
+///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+///             .name("backend-check")
 ///             .checkIntervalSec(1)
 ///             .timeoutSec(1)
+///             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .requestPath("/")
+///                 .build())
 ///             .build());
 ///
 ///         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
@@ -355,11 +375,11 @@ import 'global_forwarding_rule_state.dart';
 ///             .portName("http")
 ///             .protocol("HTTP")
 ///             .timeoutSec(10)
-///             .healthChecks(defaultHttpHealthCheck.id())
+///             .healthChecks(defaultHealthCheck.id())
 ///             .build());
 ///
 ///         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()
-///             .name("url-map-target-proxy")
+///             .name("target-proxy-url-map")
 ///             .description("a description")
 ///             .defaultService(defaultBackendService.id())
 ///             .hostRules(URLMapHostRuleArgs.builder()
@@ -410,7 +430,7 @@ import 'global_forwarding_rule_state.dart';
 ///     type: gcp:compute:URLMap
 ///     name: default
 ///     properties:
-///       name: url-map-target-proxy
+///       name: target-proxy-url-map
 ///       description: a description
 ///       defaultService: ${defaultBackendService.id}
 ///       hostRules:
@@ -432,15 +452,17 @@ import 'global_forwarding_rule_state.dart';
 ///       portName: http
 ///       protocol: HTTP
 ///       timeoutSec: 10
-///       healthChecks: ${defaultHttpHealthCheck.id}
-///   defaultHttpHealthCheck:
-///     type: gcp:compute:HttpHealthCheck
+///       healthChecks: ${defaultHealthCheck.id}
+///   defaultHealthCheck:
+///     type: gcp:compute:HealthCheck
 ///     name: default
 ///     properties:
-///       name: check-backend
-///       requestPath: /
+///       name: backend-check
 ///       checkIntervalSec: 1
 ///       timeoutSec: 1
+///       httpHealthCheck:
+///         port: 80
+///         requestPath: /
 /// ```
 ///
 /// ### Global Forwarding Rule Internal
@@ -452,11 +474,11 @@ import 'global_forwarding_rule_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const debianImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
-///     name: "template-backend",
+///     name: "backend-template",
 ///     machineType: "e2-medium",
 ///     networkInterfaces: [{
 ///         network: "default",
@@ -478,7 +500,7 @@ import 'global_forwarding_rule_state.dart';
 ///     targetSize: 1,
 /// });
 /// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
-///     name: "check-backend",
+///     name: "backend-check",
 ///     checkIntervalSec: 1,
 ///     timeoutSec: 1,
 ///     tcpHealthCheck: {
@@ -500,7 +522,7 @@ import 'global_forwarding_rule_state.dart';
 ///     healthChecks: defaultHealthCheck.id,
 /// });
 /// const defaultURLMap = new gcp.compute.URLMap("default", {
-///     name: "url-map-target-proxy",
+///     name: "target-proxy-url-map",
 ///     description: "a description",
 ///     defaultService: defaultBackendService.id,
 ///     hostRules: [{
@@ -540,10 +562,10 @@ import 'global_forwarding_rule_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// debian_image = gcp.compute.get_image(family="debian-11",
+/// debian_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// instance_template = gcp.compute.InstanceTemplate("instance_template",
-///     name="template-backend",
+///     name="backend-template",
 ///     machine_type="e2-medium",
 ///     network_interfaces=[{
 ///         "network": "default",
@@ -563,7 +585,7 @@ import 'global_forwarding_rule_state.dart';
 ///     zone="us-central1-f",
 ///     target_size=1)
 /// default_health_check = gcp.compute.HealthCheck("default",
-///     name="check-backend",
+///     name="backend-check",
 ///     check_interval_sec=1,
 ///     timeout_sec=1,
 ///     tcp_health_check={
@@ -583,7 +605,7 @@ import 'global_forwarding_rule_state.dart';
 ///     }],
 ///     health_checks=default_health_check.id)
 /// default_url_map = gcp.compute.URLMap("default",
-///     name="url-map-target-proxy",
+///     name="target-proxy-url-map",
 ///     description="a description",
 ///     default_service=default_backend_service.id,
 ///     host_rules=[{
@@ -626,13 +648,13 @@ import 'global_forwarding_rule_state.dart';
 /// {
 ///     var debianImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
 ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instance_template", new()
 ///     {
-///         Name = "template-backend",
+///         Name = "backend-template",
 ///         MachineType = "e2-medium",
 ///         NetworkInterfaces = new[]
 ///         {
@@ -670,7 +692,7 @@ import 'global_forwarding_rule_state.dart';
 ///
 ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
 ///     {
-///         Name = "check-backend",
+///         Name = "backend-check",
 ///         CheckIntervalSec = 1,
 ///         TimeoutSec = 1,
 ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
@@ -701,7 +723,7 @@ import 'global_forwarding_rule_state.dart';
 ///
 ///     var defaultURLMap = new Gcp.Compute.URLMap("default", new()
 ///     {
-///         Name = "url-map-target-proxy",
+///         Name = "target-proxy-url-map",
 ///         Description = "a description",
 ///         DefaultService = defaultBackendService.Id,
 ///         HostRules = new[]
@@ -773,21 +795,21 @@ import 'global_forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		debianImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		instanceTemplate, err := compute.NewInstanceTemplate(ctx, "instance_template", &compute.InstanceTemplateArgs{
-/// 			Name:        pulumi.String("template-backend"),
+/// 			Name:        pulumi.String("backend-template"),
 /// 			MachineType: pulumi.String("e2-medium"),
 /// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
 /// 				&compute.InstanceTemplateNetworkInterfaceArgs{
@@ -821,7 +843,7 @@ import 'global_forwarding_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
-/// 			Name:             pulumi.String("check-backend"),
+/// 			Name:             pulumi.String("backend-check"),
 /// 			CheckIntervalSec: pulumi.Int(1),
 /// 			TimeoutSec:       pulumi.Int(1),
 /// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
@@ -851,7 +873,7 @@ import 'global_forwarding_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
-/// 			Name:           pulumi.String("url-map-target-proxy"),
+/// 			Name:           pulumi.String("target-proxy-url-map"),
 /// 			Description:    pulumi.String("a description"),
 /// 			DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.URLMapHostRuleArray{
@@ -923,7 +945,7 @@ import 'global_forwarding_rule_state.dart';
 /// }
 ///
 /// data "gcp_compute_getimage" "debianImage" {
-///   family  = "debian-11"
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
@@ -947,7 +969,7 @@ import 'global_forwarding_rule_state.dart';
 ///   url_map     = gcp_compute_urlmap.default.id
 /// }
 /// resource "gcp_compute_urlmap" "default" {
-///   name            = "url-map-target-proxy"
+///   name            = "target-proxy-url-map"
 ///   description     = "a description"
 ///   default_service = gcp_compute_backendservice.default.id
 ///   host_rules {
@@ -988,7 +1010,7 @@ import 'global_forwarding_rule_state.dart';
 ///   target_size        = 1
 /// }
 /// resource "gcp_compute_instancetemplate" "instance_template" {
-///   name         = "template-backend"
+///   name         = "backend-template"
 ///   machine_type = "e2-medium"
 ///   network_interfaces {
 ///     network = "default"
@@ -1000,7 +1022,7 @@ import 'global_forwarding_rule_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_healthcheck" "default" {
-///   name               = "check-backend"
+///   name               = "backend-check"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
 ///   tcp_health_check = {
@@ -1054,12 +1076,12 @@ import 'global_forwarding_rule_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var debianImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
 ///         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()
-///             .name("template-backend")
+///             .name("backend-template")
 ///             .machineType("e2-medium")
 ///             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
 ///                 .network("default")
@@ -1083,7 +1105,7 @@ import 'global_forwarding_rule_state.dart';
 ///             .build());
 ///
 ///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
-///             .name("check-backend")
+///             .name("backend-check")
 ///             .checkIntervalSec(1)
 ///             .timeoutSec(1)
 ///             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
@@ -1107,7 +1129,7 @@ import 'global_forwarding_rule_state.dart';
 ///             .build());
 ///
 ///         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()
-///             .name("url-map-target-proxy")
+///             .name("target-proxy-url-map")
 ///             .description("a description")
 ///             .defaultService(defaultBackendService.id())
 ///             .hostRules(URLMapHostRuleArgs.builder()
@@ -1174,7 +1196,7 @@ import 'global_forwarding_rule_state.dart';
 ///     type: gcp:compute:URLMap
 ///     name: default
 ///     properties:
-///       name: url-map-target-proxy
+///       name: target-proxy-url-map
 ///       description: a description
 ///       defaultService: ${defaultBackendService.id}
 ///       hostRules:
@@ -1217,7 +1239,7 @@ import 'global_forwarding_rule_state.dart';
 ///     type: gcp:compute:InstanceTemplate
 ///     name: instance_template
 ///     properties:
-///       name: template-backend
+///       name: backend-template
 ///       machineType: e2-medium
 ///       networkInterfaces:
 ///         - network: default
@@ -1229,7 +1251,7 @@ import 'global_forwarding_rule_state.dart';
 ///     type: gcp:compute:HealthCheck
 ///     name: default
 ///     properties:
-///       name: check-backend
+///       name: backend-check
 ///       checkIntervalSec: 1
 ///       timeoutSec: 1
 ///       tcpHealthCheck:
@@ -1239,7 +1261,7 @@ import 'global_forwarding_rule_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -1259,7 +1281,7 @@ import 'global_forwarding_rule_state.dart';
 ///     loadBalancingScheme: "EXTERNAL_MANAGED",
 /// });
 /// const defaultURLMap = new gcp.compute.URLMap("default", {
-///     name: "url-map-target-proxy",
+///     name: "target-proxy-url-map",
 ///     description: "a description",
 ///     defaultService: defaultBackendService.id,
 ///     hostRules: [{
@@ -1299,7 +1321,7 @@ import 'global_forwarding_rule_state.dart';
 ///     timeout_sec=10,
 ///     load_balancing_scheme="EXTERNAL_MANAGED")
 /// default_url_map = gcp.compute.URLMap("default",
-///     name="url-map-target-proxy",
+///     name="target-proxy-url-map",
 ///     description="a description",
 ///     default_service=default_backend_service.id,
 ///     host_rules=[{
@@ -1344,7 +1366,7 @@ import 'global_forwarding_rule_state.dart';
 ///
 ///     var defaultURLMap = new Gcp.Compute.URLMap("default", new()
 ///     {
-///         Name = "url-map-target-proxy",
+///         Name = "target-proxy-url-map",
 ///         Description = "a description",
 ///         DefaultService = defaultBackendService.Id,
 ///         HostRules = new[]
@@ -1401,7 +1423,7 @@ import 'global_forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1418,7 +1440,7 @@ import 'global_forwarding_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
-/// 			Name:           pulumi.String("url-map-target-proxy"),
+/// 			Name:           pulumi.String("target-proxy-url-map"),
 /// 			Description:    pulumi.String("a description"),
 /// 			DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.URLMapHostRuleArray{
@@ -1491,7 +1513,7 @@ import 'global_forwarding_rule_state.dart';
 ///   url_map     = gcp_compute_urlmap.default.id
 /// }
 /// resource "gcp_compute_urlmap" "default" {
-///   name            = "url-map-target-proxy"
+///   name            = "target-proxy-url-map"
 ///   description     = "a description"
 ///   default_service = gcp_compute_backendservice.default.id
 ///   host_rules {
@@ -1554,7 +1576,7 @@ import 'global_forwarding_rule_state.dart';
 ///             .build());
 ///
 ///         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()
-///             .name("url-map-target-proxy")
+///             .name("target-proxy-url-map")
 ///             .description("a description")
 ///             .defaultService(defaultBackendService.id())
 ///             .hostRules(URLMapHostRuleArgs.builder()
@@ -1609,7 +1631,7 @@ import 'global_forwarding_rule_state.dart';
 ///     type: gcp:compute:URLMap
 ///     name: default
 ///     properties:
-///       name: url-map-target-proxy
+///       name: target-proxy-url-map
 ///       description: a description
 ///       defaultService: ${defaultBackendService.id}
 ///       hostRules:
@@ -1720,7 +1742,7 @@ import 'global_forwarding_rule_state.dart';
 ///     healthChecks: defaultHealthCheck.id,
 /// });
 /// const defaultURLMap = new gcp.compute.URLMap("default", {
-///     name: "url-map-target-proxy",
+///     name: "target-proxy-url-map",
 ///     description: "a description",
 ///     defaultService: defaultBackendService.id,
 ///     hostRules: [{
@@ -1828,7 +1850,7 @@ import 'global_forwarding_rule_state.dart';
 ///     }],
 ///     health_checks=default_health_check.id)
 /// default_url_map = gcp.compute.URLMap("default",
-///     name="url-map-target-proxy",
+///     name="target-proxy-url-map",
 ///     description="a description",
 ///     default_service=default_backend_service.id,
 ///     host_rules=[{
@@ -1976,7 +1998,7 @@ import 'global_forwarding_rule_state.dart';
 ///
 ///     var defaultURLMap = new Gcp.Compute.URLMap("default", new()
 ///     {
-///         Name = "url-map-target-proxy",
+///         Name = "target-proxy-url-map",
 ///         Description = "a description",
 ///         DefaultService = defaultBackendService.Id,
 ///         HostRules = new[]
@@ -2039,7 +2061,7 @@ import 'global_forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 /// )
@@ -2163,7 +2185,7 @@ import 'global_forwarding_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
-/// 			Name:           pulumi.String("url-map-target-proxy"),
+/// 			Name:           pulumi.String("target-proxy-url-map"),
 /// 			Description:    pulumi.String("a description"),
 /// 			DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.URLMapHostRuleArray{
@@ -2305,7 +2327,7 @@ import 'global_forwarding_rule_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_urlmap" "default" {
-///   name            = "url-map-target-proxy"
+///   name            = "target-proxy-url-map"
 ///   description     = "a description"
 ///   default_service = gcp_compute_backendservice.default.id
 ///   host_rules {
@@ -2473,7 +2495,7 @@ import 'global_forwarding_rule_state.dart';
 ///             .build());
 ///
 ///         var defaultURLMap = new URLMap("defaultURLMap", URLMapArgs.builder()
-///             .name("url-map-target-proxy")
+///             .name("target-proxy-url-map")
 ///             .description("a description")
 ///             .defaultService(defaultBackendService.id())
 ///             .hostRules(URLMapHostRuleArgs.builder()
@@ -2611,7 +2633,7 @@ import 'global_forwarding_rule_state.dart';
 ///     type: gcp:compute:URLMap
 ///     name: default
 ///     properties:
-///       name: url-map-target-proxy
+///       name: target-proxy-url-map
 ///       description: a description
 ///       defaultService: ${defaultBackendService.id}
 ///       hostRules:
@@ -2776,7 +2798,7 @@ import 'global_forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3106,7 +3128,7 @@ import 'global_forwarding_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3414,7 +3436,7 @@ class GlobalForwardingRule extends pulumi.CustomResource {
   /// Specifies the forwarding rule type.
   /// For more information about forwarding rules, refer to
   /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-  /// Default value is `EXTERNAL`.
+  /// Default value is `EXTERNAL_MANAGED`.
   /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
   late final pulumi.Output<String?> loadBalancingScheme;
   /// Opaque filter criteria used by Loadbalancer to restrict routing
@@ -3534,7 +3556,7 @@ class GlobalForwardingRule extends pulumi.CustomResource {
           'gcp:compute/globalForwardingRule:GlobalForwardingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     allowPscGlobalAccess = registerOutput<bool?>('allowPscGlobalAccess');

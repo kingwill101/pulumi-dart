@@ -57,6 +57,7 @@ import 'managed_ssl_certificate_state.dart';
 ///     portName: "http",
 ///     protocol: "HTTP",
 ///     timeoutSec: 10,
+///     loadBalancingScheme: "EXTERNAL",
 ///     healthChecks: defaultHttpHealthCheck.id,
 /// });
 /// const defaultURLMap = new gcp.compute.URLMap("default", {
@@ -85,6 +86,7 @@ import 'managed_ssl_certificate_state.dart';
 ///     name: "forwarding-rule",
 ///     target: defaultTargetHttpsProxy.id,
 ///     portRange: "443",
+///     loadBalancingScheme: "EXTERNAL",
 /// });
 /// ```
 /// ```python
@@ -106,6 +108,7 @@ import 'managed_ssl_certificate_state.dart';
 ///     port_name="http",
 ///     protocol="HTTP",
 ///     timeout_sec=10,
+///     load_balancing_scheme="EXTERNAL",
 ///     health_checks=default_http_health_check.id)
 /// default_url_map = gcp.compute.URLMap("default",
 ///     name="url-map",
@@ -130,7 +133,8 @@ import 'managed_ssl_certificate_state.dart';
 /// default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("default",
 ///     name="forwarding-rule",
 ///     target=default_target_https_proxy.id,
-///     port_range="443")
+///     port_range="443",
+///     load_balancing_scheme="EXTERNAL")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -166,6 +170,7 @@ import 'managed_ssl_certificate_state.dart';
 ///         PortName = "http",
 ///         Protocol = "HTTP",
 ///         TimeoutSec = 10,
+///         LoadBalancingScheme = "EXTERNAL",
 ///         HealthChecks = defaultHttpHealthCheck.Id,
 ///     });
 ///
@@ -221,6 +226,7 @@ import 'managed_ssl_certificate_state.dart';
 ///         Name = "forwarding-rule",
 ///         Target = defaultTargetHttpsProxy.Id,
 ///         PortRange = "443",
+///         LoadBalancingScheme = "EXTERNAL",
 ///     });
 ///
 /// });
@@ -229,7 +235,7 @@ import 'managed_ssl_certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -256,11 +262,12 @@ import 'managed_ssl_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultBackendService, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("backend-service"),
-/// 			PortName:     pulumi.String("http"),
-/// 			Protocol:     pulumi.String("HTTP"),
-/// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                pulumi.String("backend-service"),
+/// 			PortName:            pulumi.String("http"),
+/// 			Protocol:            pulumi.String("HTTP"),
+/// 			TimeoutSec:          pulumi.Int(10),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+/// 			HealthChecks:        defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -306,9 +313,10 @@ import 'managed_ssl_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewGlobalForwardingRule(ctx, "default", &compute.GlobalForwardingRuleArgs{
-/// 			Name:      pulumi.String("forwarding-rule"),
-/// 			Target:    defaultTargetHttpsProxy.ID().ToIDOutput().ToStringOutput(),
-/// 			PortRange: pulumi.String("443"),
+/// 			Name:                pulumi.String("forwarding-rule"),
+/// 			Target:              defaultTargetHttpsProxy.ID().ToIDOutput().ToStringOutput(),
+/// 			PortRange:           pulumi.String("443"),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -355,11 +363,12 @@ import 'managed_ssl_certificate_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_backendservice" "default" {
-///   name          = "backend-service"
-///   port_name     = "http"
-///   protocol      = "HTTP"
-///   timeout_sec   = 10
-///   health_checks = gcp_compute_httphealthcheck.default.id
+///   name                  = "backend-service"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL"
+///   health_checks         = gcp_compute_httphealthcheck.default.id
 /// }
 /// resource "gcp_compute_httphealthcheck" "default" {
 ///   name               = "http-health-check"
@@ -368,9 +377,10 @@ import 'managed_ssl_certificate_state.dart';
 ///   timeout_sec        = 1
 /// }
 /// resource "gcp_compute_globalforwardingrule" "default" {
-///   name       = "forwarding-rule"
-///   target     = gcp_compute_targethttpsproxy.default.id
-///   port_range = 443
+///   name                  = "forwarding-rule"
+///   target                = gcp_compute_targethttpsproxy.default.id
+///   port_range            = 443
+///   load_balancing_scheme = "EXTERNAL"
 /// }
 /// ```
 /// ```java
@@ -427,6 +437,7 @@ import 'managed_ssl_certificate_state.dart';
 ///             .portName("http")
 ///             .protocol("HTTP")
 ///             .timeoutSec(10)
+///             .loadBalancingScheme("EXTERNAL")
 ///             .healthChecks(defaultHttpHealthCheck.id())
 ///             .build());
 ///
@@ -458,6 +469,7 @@ import 'managed_ssl_certificate_state.dart';
 ///             .name("forwarding-rule")
 ///             .target(defaultTargetHttpsProxy.id())
 ///             .portRange("443")
+///             .loadBalancingScheme("EXTERNAL")
 ///             .build());
 ///
 ///     }
@@ -506,6 +518,7 @@ import 'managed_ssl_certificate_state.dart';
 ///       portName: http
 ///       protocol: HTTP
 ///       timeoutSec: 10
+///       loadBalancingScheme: EXTERNAL
 ///       healthChecks: ${defaultHttpHealthCheck.id}
 ///   defaultHttpHealthCheck:
 ///     type: gcp:compute:HttpHealthCheck
@@ -522,6 +535,7 @@ import 'managed_ssl_certificate_state.dart';
 ///       name: forwarding-rule
 ///       target: ${defaultTargetHttpsProxy.id}
 ///       portRange: 443
+///       loadBalancingScheme: EXTERNAL
 /// ```
 ///
 /// ## Import
@@ -594,7 +608,7 @@ class ManagedSslCertificate extends pulumi.CustomResource {
           'gcp:compute/managedSslCertificate:ManagedSslCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     certificateId = registerOutput<int>('certificateId');
     creationTimestamp = registerOutput<String>('creationTimestamp');

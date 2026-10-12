@@ -77,7 +77,7 @@ import 'entry_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -239,7 +239,7 @@ import 'entry_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -522,7 +522,7 @@ import 'entry_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -830,7 +830,7 @@ class Entry extends pulumi.CustomResource {
           'gcp:datacatalog/entry:Entry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     bigqueryDateShardedSpecs = registerOutput<List<EntryBigqueryDateShardedSpec>>('bigqueryDateShardedSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryBigqueryDateShardedSpec>(guardedValue, (value) => EntryBigqueryDateShardedSpec.fromMap((value as Map).cast<String, dynamic>())); });
     bigqueryTableSpecs = registerOutput<List<EntryBigqueryTableSpec>>('bigqueryTableSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryBigqueryTableSpec>(guardedValue, (value) => EntryBigqueryTableSpec.fromMap((value as Map).cast<String, dynamic>())); });

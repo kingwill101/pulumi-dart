@@ -24,7 +24,7 @@ import 'rollout_plan_wave.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const _default = new gcp.compute.RolloutPlan("default", {
-///     name: "tf-test-rollout-plan-_91980",
+///     name: "tf-test-rollout-plan-_79169",
 ///     description: "A test rollout plan",
 ///     locationScope: "ZONAL",
 ///     waves: [{
@@ -45,7 +45,7 @@ import 'rollout_plan_wave.dart';
 /// import pulumi_gcp as gcp
 ///
 /// default = gcp.compute.RolloutPlan("default",
-///     name="tf-test-rollout-plan-_91980",
+///     name="tf-test-rollout-plan-_79169",
 ///     description="A test rollout plan",
 ///     location_scope="ZONAL",
 ///     waves=[{
@@ -70,7 +70,7 @@ import 'rollout_plan_wave.dart';
 /// {
 ///     var @default = new Gcp.Compute.RolloutPlan("default", new()
 ///     {
-///         Name = "tf-test-rollout-plan-_91980",
+///         Name = "tf-test-rollout-plan-_79169",
 ///         Description = "A test rollout plan",
 ///         LocationScope = "ZONAL",
 ///         Waves = new[]
@@ -105,14 +105,14 @@ import 'rollout_plan_wave.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := compute.NewRolloutPlan(ctx, "default", &compute.RolloutPlanArgs{
-/// 			Name:          pulumi.String("tf-test-rollout-plan-_91980"),
+/// 			Name:          pulumi.String("tf-test-rollout-plan-_79169"),
 /// 			Description:   pulumi.String("A test rollout plan"),
 /// 			LocationScope: pulumi.String("ZONAL"),
 /// 			Waves: compute.RolloutPlanWaveArray{
@@ -150,7 +150,7 @@ import 'rollout_plan_wave.dart';
 /// }
 ///
 /// resource "gcp_compute_rolloutplan" "default" {
-///   name           = "tf-test-rollout-plan-_91980"
+///   name           = "tf-test-rollout-plan-_79169"
 ///   description    = "A test rollout plan"
 ///   location_scope = "ZONAL"
 ///   waves {
@@ -192,7 +192,7 @@ import 'rollout_plan_wave.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var default_ = new RolloutPlan("default", RolloutPlanArgs.builder()
-///             .name("tf-test-rollout-plan-_91980")
+///             .name("tf-test-rollout-plan-_79169")
 ///             .description("A test rollout plan")
 ///             .locationScope("ZONAL")
 ///             .waves(RolloutPlanWaveArgs.builder()
@@ -216,7 +216,7 @@ import 'rollout_plan_wave.dart';
 ///   default:
 ///     type: gcp:compute:RolloutPlan
 ///     properties:
-///       name: tf-test-rollout-plan-_91980
+///       name: tf-test-rollout-plan-_79169
 ///       description: A test rollout plan
 ///       locationScope: ZONAL
 ///       waves:
@@ -283,7 +283,7 @@ class RolloutPlan extends pulumi.CustomResource {
           'gcp:compute/rolloutPlan:RolloutPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

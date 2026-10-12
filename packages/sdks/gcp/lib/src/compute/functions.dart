@@ -140,6 +140,8 @@ import 'get_security_policy_args.dart';
 import 'get_security_policy_result.dart';
 import 'get_service_attachment_args.dart';
 import 'get_service_attachment_result.dart';
+import 'get_service_attachments_args.dart';
+import 'get_service_attachments_result.dart';
 import 'get_snapshot_args.dart';
 import 'get_snapshot_iam_policy_args.dart';
 import 'get_snapshot_iam_policy_result.dart';
@@ -248,8 +250,8 @@ import 'router_status_result.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -482,8 +484,8 @@ pulumi.Output<GetAddressResult> getAddressOutput(
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -656,7 +658,7 @@ pulumi.Output<GetAddressesResult> getAddressesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -791,7 +793,7 @@ pulumi.Output<GetBackendBucketResult> getBackendBucketOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -939,7 +941,7 @@ pulumi.Output<GetBackendBucketIamPolicyResult> getBackendBucketIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1099,7 +1101,7 @@ pulumi.Output<GetBackendServiceResult> getBackendServiceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1244,7 +1246,7 @@ pulumi.Output<GetBackendServiceIamPolicyResult> getBackendServiceIamPolicyOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1394,7 +1396,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1548,7 +1550,7 @@ pulumi.Output<GetDefaultServiceAccountResult> getDefaultServiceAccountOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1721,7 +1723,7 @@ pulumi.Output<GetDiskResult> getDiskOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1859,7 +1861,7 @@ pulumi.Output<GetDiskIamPolicyResult> getDiskIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1988,7 +1990,7 @@ pulumi.Output<GetFirewallPolicyIamPolicyResult> getFirewallPolicyIamPolicyOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2120,7 +2122,7 @@ pulumi.Output<GetForwardingRuleResult> getForwardingRuleOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2294,8 +2296,8 @@ pulumi.Output<GetForwardingRulesResult> getForwardingRulesOutput(
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2489,7 +2491,7 @@ pulumi.Output<GetGlobalAddressResult> getGlobalAddressOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2618,7 +2620,7 @@ pulumi.Output<GetGlobalForwardingRuleResult> getGlobalForwardingRuleOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2747,7 +2749,7 @@ pulumi.Output<GetHcVpnGatewayResult> getHcVpnGatewayOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2901,7 +2903,7 @@ pulumi.Output<GetHealthCheckResult> getHealthCheckOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3075,7 +3077,7 @@ pulumi.Output<GetImageResult> getImageOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3255,7 +3257,7 @@ pulumi.Output<GetImageIamPolicyResult> getImageIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3454,7 +3456,7 @@ pulumi.Output<GetImagesResult> getImagesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3590,7 +3592,7 @@ pulumi.Output<GetInstanceResult> getInstanceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3737,7 +3739,7 @@ pulumi.Output<GetInstanceGroupResult> getInstanceGroupOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3889,7 +3891,7 @@ pulumi.Output<GetInstanceGroupManagerResult> getInstanceGroupManagerOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4033,7 +4035,7 @@ pulumi.Output<GetInstanceGroupsResult> getInstanceGroupsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4150,7 +4152,7 @@ pulumi.Output<GetInstanceGroupsResult> getInstanceGroupsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4294,7 +4296,7 @@ pulumi.Output<GetInstanceGuestAttributesResult> getInstanceGuestAttributesOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4444,7 +4446,7 @@ pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4686,7 +4688,7 @@ pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5004,7 +5006,7 @@ pulumi.Output<GetInstanceTemplateResult> getInstanceTemplateOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5144,7 +5146,7 @@ pulumi.Output<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicyOu
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5298,7 +5300,7 @@ pulumi.Output<GetInstantSnapshotIamPolicyResult> getInstantSnapshotIamPolicyOutp
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5459,7 +5461,7 @@ pulumi.Output<GetInterconnectLocationResult> getInterconnectLocationOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5629,7 +5631,7 @@ pulumi.Output<GetInterconnectLocationsResult> getInterconnectLocationsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5820,7 +5822,7 @@ pulumi.Output<GetLBIPRangesResult> getLBIPRangesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -6014,7 +6016,7 @@ pulumi.Output<GetMachineImageIamPolicyResult> getMachineImageIamPolicyOutput(
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -6374,7 +6376,7 @@ pulumi.Output<GetMachineTypesResult> getMachineTypesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -6534,7 +6536,7 @@ pulumi.Output<GetMachineTypesResult> getMachineTypesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -6739,7 +6741,7 @@ pulumi.Output<GetNetblockIPRangesResult> getNetblockIPRangesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -6876,7 +6878,7 @@ pulumi.Output<GetNetworkResult> getNetworkOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -7027,7 +7029,7 @@ pulumi.Output<GetNetworkAttachmentResult> getNetworkAttachmentOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -7182,7 +7184,7 @@ pulumi.Output<GetNetworkEndpointGroupResult> getNetworkEndpointGroupOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -7319,7 +7321,7 @@ pulumi.Output<GetNetworkEndpointGroupsResult> getNetworkEndpointGroupsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -7516,7 +7518,7 @@ pulumi.Output<GetNetworkFirewallPolicyIamPolicyResult> getNetworkFirewallPolicyI
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -7744,7 +7746,7 @@ pulumi.Output<GetNetworkPeeringResult> getNetworkPeeringOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -7890,7 +7892,7 @@ pulumi.Output<GetNetworksResult> getNetworksOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -8057,7 +8059,7 @@ pulumi.Output<GetNodeTypesResult> getNodeTypesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -8199,7 +8201,7 @@ pulumi.Output<GetRegionBackendBucketIamPolicyResult> getRegionBackendBucketIamPo
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -8341,7 +8343,7 @@ pulumi.Output<GetRegionBackendServiceResult> getRegionBackendServiceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -8563,7 +8565,7 @@ pulumi.Output<GetRegionDiskResult> getRegionDiskOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -8699,7 +8701,7 @@ pulumi.Output<GetRegionDiskIamPolicyResult> getRegionDiskIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -8836,7 +8838,7 @@ pulumi.Output<GetRegionInstanceGroupResult> getRegionInstanceGroupOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -8990,7 +8992,7 @@ pulumi.Output<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManager
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -9157,7 +9159,7 @@ pulumi.Output<GetRegionInstanceTemplateResult> getRegionInstanceTemplateOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -9308,7 +9310,7 @@ pulumi.Output<GetRegionInstantSnapshotIamPolicyResult> getRegionInstantSnapshotI
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -9466,7 +9468,7 @@ pulumi.Output<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroup
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -9604,7 +9606,7 @@ pulumi.Output<GetRegionNetworkFirewallPolicyIamPolicyResult> getRegionNetworkFir
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -9736,7 +9738,7 @@ pulumi.Output<GetRegionSSLPolicyResult> getRegionSSLPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -9881,7 +9883,7 @@ pulumi.Output<GetRegionSecurityPolicyResult> getRegionSecurityPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10034,7 +10036,7 @@ pulumi.Output<GetRegionSslCertificateResult> getRegionSslCertificateOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10167,7 +10169,7 @@ pulumi.Output<GetRegionTargetHttpProxyResult> getRegionTargetHttpProxyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10266,18 +10268,20 @@ pulumi.Output<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxyOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const available = gcp.compute.getRegions({});
-/// const cluster: gcp.compute.Subnetwork[] = [];
-/// available.then(available => available.names).length.apply(rangeBody => {
-///     for (let range = 0; range < rangeBody; range++) {
-///         cluster.push(new gcp.compute.Subnetwork(`cluster-${range}`, {
-///             name: "my-network",
-///             ipCidrRange: `10.36.${range}.0/24`,
-///             network: "my-network",
-///             region: available.then(available => available.names[range]),
-///         }));
-///     }
-/// });
+/// export = async () => {
+///     const available = await gcp.compute.getRegions({});
+///     const cluster: gcp.compute.Subnetwork[] = [];
+/// available.names.length.apply(rangeBody => {
+///         for (let range = 0; range < rangeBody; range++) {
+///             cluster.push(new gcp.compute.Subnetwork(`cluster-${range}`, {
+///                 name: "my-network",
+///                 ipCidrRange: `10.36.${range}.0/24`,
+///                 network: "my-network",
+///                 region: available.names[range],
+///             }));
+///         }
+///     });
+/// }
 /// ```
 /// ```python
 /// import pulumi
@@ -10299,15 +10303,16 @@ pulumi.Output<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxyOutput(
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
+/// using System.Threading.Tasks;
 /// using Pulumi;
 /// using Gcp = Pulumi.Gcp;
 ///
-/// return await Deployment.RunAsync(() =>
+/// return await Deployment.RunAsync(async() =>
 /// {
-///     var available = Gcp.Compute.GetRegions.Invoke();
+///     var available = await Gcp.Compute.GetRegions.InvokeAsync();
 ///
 ///     var cluster = new List<Gcp.Compute.Subnetwork>();
-///     available.Apply(getRegionsResult => getRegionsResult.Names).Length().Apply(rangeBody =>
+///     available.Names.Length.Apply(rangeBody =>
 ///     {
 ///         for (var rangeIndex = 0; rangeIndex < rangeBody; rangeIndex++)
 ///         {
@@ -10317,7 +10322,7 @@ pulumi.Output<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxyOutput(
 ///                 Name = "my-network",
 ///                 IpCidrRange = $"10.36.{range.Value}.0/24",
 ///                 Network = "my-network",
-///                 Region = available.Apply(getRegionsResult => getRegionsResult.Names)[range.Value],
+///                 Region = available.Names[range.Value],
 ///             }));
 ///         }
 ///         return 0;
@@ -10330,7 +10335,7 @@ pulumi.Output<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxyOutput(
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10485,7 +10490,7 @@ pulumi.Output<GetRegionsResult> getRegionsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10636,7 +10641,7 @@ pulumi.Output<GetReservationResult> getReservationOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10808,7 +10813,7 @@ pulumi.Output<GetReservationBlockResult> getReservationBlockOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10967,7 +10972,7 @@ pulumi.Output<GetReservationSubBlockResult> getReservationSubBlockOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -11103,7 +11108,7 @@ pulumi.Output<GetResourcePolicyResult> getResourcePolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -11243,7 +11248,7 @@ pulumi.Output<GetRouterResult> getRouterOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -11381,7 +11386,7 @@ pulumi.Output<GetRouterNatResult> getRouterNatOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -11514,7 +11519,7 @@ pulumi.Output<GetRouterStatusResult> getRouterStatusOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -11648,7 +11653,7 @@ pulumi.Output<GetRoutersResult> getRoutersOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -11793,7 +11798,7 @@ pulumi.Output<GetSSLPolicyResult> getSSLPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -11952,7 +11957,7 @@ pulumi.Output<GetSecurityPolicyResult> getSecurityPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -12051,6 +12056,262 @@ pulumi.Output<GetServiceAttachmentResult> getServiceAttachmentOutput(
   ).apply(GetServiceAttachmentResult.fromMap);
 }
 
+/// List all service attachments in a given project and region. For more information see
+/// [the official documentation](https://cloud.google.com/vpc/docs/about-service-attachments)
+/// and
+/// [API reference](https://cloud.google.com/compute/docs/reference/rest/v1/serviceAttachments/list).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const all = gcp.compute.getServiceAttachments({
+///     project: "my-project",
+///     region: "us-central1",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// all = gcp.compute.get_service_attachments(project="my-project",
+///     region="us-central1")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var all = Gcp.Compute.GetServiceAttachments.Invoke(new()
+///     {
+///         Project = "my-project",
+///         Region = "us-central1",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.GetServiceAttachments(ctx, &compute.GetServiceAttachmentsArgs{
+/// 			Project: pulumi.StringRef("my-project"),
+/// 			Region:  pulumi.StringRef("us-central1"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getserviceattachments" "all" {
+///   project = "my-project"
+///   region  = "us-central1"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var all = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+///             .project("my-project")
+///             .region("us-central1")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   all:
+///     fn::invoke:
+///       function: gcp:compute:getServiceAttachments
+///       arguments:
+///         project: my-project
+///         region: us-central1
+/// ```
+///
+///
+/// ### With Filter
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const filtered = gcp.compute.getServiceAttachments({
+///     project: "my-project",
+///     region: "us-central1",
+///     filter: "name = my-service-attachment",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// filtered = gcp.compute.get_service_attachments(project="my-project",
+///     region="us-central1",
+///     filter="name = my-service-attachment")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var filtered = Gcp.Compute.GetServiceAttachments.Invoke(new()
+///     {
+///         Project = "my-project",
+///         Region = "us-central1",
+///         Filter = "name = my-service-attachment",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.GetServiceAttachments(ctx, &compute.GetServiceAttachmentsArgs{
+/// 			Project: pulumi.StringRef("my-project"),
+/// 			Region:  pulumi.StringRef("us-central1"),
+/// 			Filter:  pulumi.StringRef("name = my-service-attachment"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getserviceattachments" "filtered" {
+///   project = "my-project"
+///   region  = "us-central1"
+///   filter  = "name = my-service-attachment"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.ComputeFunctions;
+/// import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var filtered = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+///             .project("my-project")
+///             .region("us-central1")
+///             .filter("name = my-service-attachment")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   filtered:
+///     fn::invoke:
+///       function: gcp:compute:getServiceAttachments
+///       arguments:
+///         project: my-project
+///         region: us-central1
+///         filter: name = my-service-attachment
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_compute_get_service_attachments_get_service_attachments_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetServiceAttachmentsResult> getServiceAttachments(
+  GetServiceAttachmentsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:compute/getServiceAttachments:getServiceAttachments',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetServiceAttachmentsResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceAttachmentsResult> getServiceAttachmentsOutput(
+  GetServiceAttachmentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:compute/getServiceAttachments:getServiceAttachments',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceAttachmentsResult.fromMap);
+}
+
 /// To get more information about Snapshot, see:
 ///
 /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
@@ -12111,7 +12372,7 @@ pulumi.Output<GetServiceAttachmentResult> getServiceAttachmentOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -12275,7 +12536,7 @@ pulumi.Output<GetSnapshotResult> getSnapshotOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -12421,7 +12682,7 @@ pulumi.Output<GetSnapshotIamPolicyResult> getSnapshotIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -12580,7 +12841,7 @@ pulumi.Output<GetStoragePoolResult> getStoragePoolOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -12746,7 +13007,7 @@ pulumi.Output<GetStoragePoolTypesResult> getStoragePoolTypesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -12886,7 +13147,7 @@ pulumi.Output<GetSubnetworkResult> getSubnetworkOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -13031,7 +13292,7 @@ pulumi.Output<GetSubnetworkIamPolicyResult> getSubnetworkIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -13172,7 +13433,7 @@ pulumi.Output<GetSubnetworksResult> getSubnetworksOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -13305,7 +13566,7 @@ pulumi.Output<GetTargetHttpProxyResult> getTargetHttpProxyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -13434,7 +13695,7 @@ pulumi.Output<GetTargetHttpsProxyResult> getTargetHttpsProxyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -13533,19 +13794,21 @@ pulumi.Output<GetVPNGatewayResult> getVPNGatewayOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const available = gcp.compute.getZones({});
-/// const foo: gcp.compute.InstanceGroupManager[] = [];
-/// available.then(available => available.names).length.apply(rangeBody => {
-///     for (let range = 0; range < rangeBody; range++) {
-///         foo.push(new gcp.compute.InstanceGroupManager(`foo-${range}`, {
-///             name: `test-${range}`,
-///             instanceTemplate: foobar.selfLink,
-///             baseInstanceName: `foobar-${range}`,
-///             zone: available.then(available => available.names[range]),
-///             targetSize: 1,
-///         }));
-///     }
-/// });
+/// export = async () => {
+///     const available = await gcp.compute.getZones({});
+///     const foo: gcp.compute.InstanceGroupManager[] = [];
+/// available.names.length.apply(rangeBody => {
+///         for (let range = 0; range < rangeBody; range++) {
+///             foo.push(new gcp.compute.InstanceGroupManager(`foo-${range}`, {
+///                 name: `test-${range}`,
+///                 instanceTemplate: foobar.selfLink,
+///                 baseInstanceName: `foobar-${range}`,
+///                 zone: available.names[range],
+///                 targetSize: 1,
+///             }));
+///         }
+///     });
+/// }
 /// ```
 /// ```python
 /// import pulumi
@@ -13568,15 +13831,16 @@ pulumi.Output<GetVPNGatewayResult> getVPNGatewayOutput(
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
+/// using System.Threading.Tasks;
 /// using Pulumi;
 /// using Gcp = Pulumi.Gcp;
 ///
-/// return await Deployment.RunAsync(() =>
+/// return await Deployment.RunAsync(async() =>
 /// {
-///     var available = Gcp.Compute.GetZones.Invoke();
+///     var available = await Gcp.Compute.GetZones.InvokeAsync();
 ///
 ///     var foo = new List<Gcp.Compute.InstanceGroupManager>();
-///     available.Apply(getZonesResult => getZonesResult.Names).Length().Apply(rangeBody =>
+///     available.Names.Length.Apply(rangeBody =>
 ///     {
 ///         for (var rangeIndex = 0; rangeIndex < rangeBody; rangeIndex++)
 ///         {
@@ -13586,7 +13850,7 @@ pulumi.Output<GetVPNGatewayResult> getVPNGatewayOutput(
 ///                 Name = $"test-{range.Value}",
 ///                 InstanceTemplate = foobar.SelfLink,
 ///                 BaseInstanceName = $"foobar-{range.Value}",
-///                 Zone = available.Apply(getZonesResult => getZonesResult.Names)[range.Value],
+///                 Zone = available.Names[range.Value],
 ///                 TargetSize = 1,
 ///             }));
 ///         }
@@ -13600,7 +13864,7 @@ pulumi.Output<GetVPNGatewayResult> getVPNGatewayOutput(
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -13761,7 +14025,7 @@ pulumi.Output<GetZonesResult> getZonesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

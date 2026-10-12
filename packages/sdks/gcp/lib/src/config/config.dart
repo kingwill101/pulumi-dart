@@ -1006,13 +1006,6 @@ class GcpConfig {
 
   bool get migrationCenterCustomEndpointIsSecret => _isSecret('migrationCenterCustomEndpoint');
 
-  String? get mlEngineCustomEndpoint {
-    final raw = _raw('mlEngineCustomEndpoint');
-    return raw;
-  }
-
-  bool get mlEngineCustomEndpointIsSecret => _isSecret('mlEngineCustomEndpoint');
-
   String? get modelArmorCustomEndpoint {
     final raw = _raw('modelArmorCustomEndpoint');
     return raw;
@@ -1062,6 +1055,13 @@ class GcpConfig {
 
   bool get networkManagementCustomEndpointIsSecret => _isSecret('networkManagementCustomEndpoint');
 
+  String? get networkManagementv1CustomEndpoint {
+    final raw = _raw('networkManagementv1CustomEndpoint');
+    return raw;
+  }
+
+  bool get networkManagementv1CustomEndpointIsSecret => _isSecret('networkManagementv1CustomEndpoint');
+
   String? get networkSecurityCustomEndpoint {
     final raw = _raw('networkSecurityCustomEndpoint');
     return raw;
@@ -1075,13 +1075,6 @@ class GcpConfig {
   }
 
   bool get networkServicesCustomEndpointIsSecret => _isSecret('networkServicesCustomEndpoint');
-
-  String? get notebooksCustomEndpoint {
-    final raw = _raw('notebooksCustomEndpoint');
-    return raw;
-  }
-
-  bool get notebooksCustomEndpointIsSecret => _isSecret('notebooksCustomEndpoint');
 
   String? get observabilityCustomEndpoint {
     final raw = _raw('observabilityCustomEndpoint');
@@ -1384,6 +1377,13 @@ class GcpConfig {
 
   bool get serviceUsageCustomEndpointIsSecret => _isSecret('serviceUsageCustomEndpoint');
 
+  String? get serviceUsageV2CustomEndpoint {
+    final raw = _raw('serviceUsageV2CustomEndpoint');
+    return raw;
+  }
+
+  bool get serviceUsageV2CustomEndpointIsSecret => _isSecret('serviceUsageV2CustomEndpoint');
+
   String? get siteVerificationCustomEndpoint {
     final raw = _raw('siteVerificationCustomEndpoint');
     return raw;
@@ -1439,6 +1439,13 @@ class GcpConfig {
   }
 
   bool get storageCustomEndpointIsSecret => _isSecret('storageCustomEndpoint');
+
+  String? get storageFtpCustomEndpoint {
+    final raw = _raw('storageFtpCustomEndpoint');
+    return raw;
+  }
+
+  bool get storageFtpCustomEndpointIsSecret => _isSecret('storageFtpCustomEndpoint');
 
   String? get storageInsightsCustomEndpoint {
     final raw = _raw('storageInsightsCustomEndpoint');

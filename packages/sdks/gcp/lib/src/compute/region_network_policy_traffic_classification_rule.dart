@@ -133,7 +133,7 @@ import 'region_network_policy_traffic_classification_rule_target_secure_tag.dart
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -380,7 +380,7 @@ class RegionNetworkPolicyTrafficClassificationRule extends pulumi.CustomResource
           'gcp:compute/regionNetworkPolicyTrafficClassificationRule:RegionNetworkPolicyTrafficClassificationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     action = registerOutput<RegionNetworkPolicyTrafficClassificationRuleAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkPolicyTrafficClassificationRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');

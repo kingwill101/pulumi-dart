@@ -50,7 +50,7 @@ import 'client_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/applicationintegration"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/applicationintegration"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -233,9 +233,9 @@ import 'client_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/applicationintegration"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/applicationintegration"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -495,11 +495,6 @@ class Client extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-  /// (Optional, Deprecated)
-  /// User input run-as service account, if empty, will bring up a new default service account.
-  ///
-  /// &gt; **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
-  late final pulumi.Output<String?> runAsServiceAccount;
 
   /// Creates a new [Client].
   /// [name] The Pulumi resource name.
@@ -513,14 +508,13 @@ class Client extends pulumi.CustomResource {
           'gcp:applicationintegration/client:Client',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     cloudKmsConfig = registerOutput<ClientCloudKmsConfig?>('cloudKmsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientCloudKmsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createSampleIntegrations = registerOutput<bool?>('createSampleIntegrations');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
-    runAsServiceAccount = registerOutput<String?>('runAsServiceAccount');
   }
 
   /// Gets an existing [Client] resource's state with the given [name] and [id].
@@ -552,7 +546,6 @@ class Client extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
-    runAsServiceAccount = registerOutput<String?>('runAsServiceAccount');
   }
 
   /// Creates a typed reference to an existing [Client] resource.
@@ -569,6 +562,5 @@ class Client extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
-    runAsServiceAccount = registerOutput<String?>('runAsServiceAccount');
   }
 }

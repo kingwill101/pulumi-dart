@@ -59,7 +59,7 @@ import 'ai_model_garden_enable_model_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -156,7 +156,7 @@ class AiModelGardenEnableModel extends pulumi.CustomResource {
           'gcp:vertex/aiModelGardenEnableModel:AiModelGardenEnableModel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     enablementState = registerOutput<String>('enablementState');
     project = registerOutput<String>('project');

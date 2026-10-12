@@ -50,6 +50,8 @@ class ServiceAttachmentState {
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
   final pulumi.Input<String?>? name;
+  /// The number of NAT IPs allocated per connected endpoint.
+  final pulumi.Input<int?>? natIpsPerEndpoint;
   /// An array of subnets that is provided for NAT in this service attachment.
   final pulumi.Input<List<String>?>? natSubnets;
   /// The ID of the project in which the resource belongs.
@@ -99,6 +101,7 @@ class ServiceAttachmentState {
   /// [enableProxyProtocol] If true, enable the proxy protocol which is for supplying client TCP/IP
   /// [fingerprint] Fingerprint of this resource. This field is used internally during
   /// [name] Name of the resource. The name must be 1-63 characters long, and
+  /// [natIpsPerEndpoint] The number of NAT IPs allocated per connected endpoint.
   /// [natSubnets] An array of subnets that is provided for NAT in this service attachment.
   /// [project] The ID of the project in which the resource belongs.
   /// [propagatedConnectionLimit] The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
@@ -121,6 +124,7 @@ class ServiceAttachmentState {
     this.enableProxyProtocol,
     this.fingerprint,
     this.name,
+    this.natIpsPerEndpoint,
     this.natSubnets,
     this.project,
     this.propagatedConnectionLimit,
@@ -146,6 +150,7 @@ class ServiceAttachmentState {
       'enableProxyProtocol': ?enableProxyProtocol,
       'fingerprint': ?fingerprint,
       'name': ?name,
+      'natIpsPerEndpoint': ?natIpsPerEndpoint,
       'natSubnets': ?natSubnets,
       'project': ?project,
       'propagatedConnectionLimit': ?propagatedConnectionLimit,
@@ -172,9 +177,10 @@ class ServiceAttachmentState {
       enableProxyProtocol: (() { final guardedValue = map['enableProxyProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      natIpsPerEndpoint: (() { final guardedValue = map['natIpsPerEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       natSubnets: (() { final guardedValue = map['natSubnets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      propagatedConnectionLimit: (() { final guardedValue = map['propagatedConnectionLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      propagatedConnectionLimit: (() { final guardedValue = map['propagatedConnectionLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       pscServiceAttachmentIds: (() { final guardedValue = map['pscServiceAttachmentIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceAttachmentPscServiceAttachmentId>(guardedValue, (value) => ServiceAttachmentPscServiceAttachmentId.fromMap((value as Map).cast<String, dynamic>()))); })(),
       reconcileConnections: (() { final guardedValue = map['reconcileConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

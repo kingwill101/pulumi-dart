@@ -174,7 +174,7 @@ import 'service_perimeter_status.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -789,7 +789,7 @@ import 'service_perimeter_status.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1364,7 +1364,7 @@ import 'service_perimeter_status.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1523,6 +1523,8 @@ class ServicePerimeter extends pulumi.CustomResource {
   /// Description of the ServicePerimeter and its use. Does not affect
   /// behavior.
   late final pulumi.Output<String?> description;
+  /// The etag for the version of the ServicePerimeter that this request is based on.
+  late final pulumi.Output<String> etag;
   /// Resource name for the ServicePerimeter. The shortName component must
   /// begin with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -1585,11 +1587,12 @@ class ServicePerimeter extends pulumi.CustomResource {
           'gcp:accesscontextmanager/servicePerimeter:ServicePerimeter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     perimeterType = registerOutput<String?>('perimeterType');
@@ -1627,6 +1630,7 @@ class ServicePerimeter extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     perimeterType = registerOutput<String?>('perimeterType');
@@ -1649,6 +1653,7 @@ class ServicePerimeter extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     perimeterType = registerOutput<String?>('perimeterType');

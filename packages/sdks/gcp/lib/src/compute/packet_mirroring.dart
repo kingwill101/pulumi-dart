@@ -37,7 +37,7 @@ import 'packet_mirroring_state.dart';
 ///     machineType: "e2-medium",
 ///     bootDisk: {
 ///         initializeParams: {
-///             image: "debian-cloud/debian-11",
+///             image: "debian-cloud/debian-13",
 ///         },
 ///     },
 /// });
@@ -111,7 +111,7 @@ import 'packet_mirroring_state.dart';
 ///     machine_type="e2-medium",
 ///     boot_disk={
 ///         "initialize_params": {
-///             "image": "debian-cloud/debian-11",
+///             "image": "debian-cloud/debian-13",
 ///         },
 ///     })
 /// default_subnetwork = gcp.compute.Subnetwork("default",
@@ -196,7 +196,7 @@ import 'packet_mirroring_state.dart';
 ///         {
 ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
 ///             {
-///                 Image = "debian-cloud/debian-11",
+///                 Image = "debian-cloud/debian-13",
 ///             },
 ///         },
 ///     });
@@ -298,7 +298,7 @@ import 'packet_mirroring_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -323,7 +323,7 @@ import 'packet_mirroring_state.dart';
 /// 			MachineType: pulumi.String("e2-medium"),
 /// 			BootDisk: &compute.InstanceBootDiskArgs{
 /// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-/// 					Image: pulumi.String("debian-cloud/debian-11"),
+/// 					Image: pulumi.String("debian-cloud/debian-13"),
 /// 				},
 /// 			},
 /// 		})
@@ -433,7 +433,7 @@ import 'packet_mirroring_state.dart';
 ///   machine_type = "e2-medium"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = "debian-cloud/debian-11"
+///       image = "debian-cloud/debian-13"
 ///     }
 ///   }
 /// }
@@ -554,7 +554,7 @@ import 'packet_mirroring_state.dart';
 ///             .machineType("e2-medium")
 ///             .bootDisk(InstanceBootDiskArgs.builder()
 ///                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-///                     .image("debian-cloud/debian-11")
+///                     .image("debian-cloud/debian-13")
 ///                     .build())
 ///                 .build())
 ///             .build());
@@ -635,7 +635,7 @@ import 'packet_mirroring_state.dart';
 ///       machineType: e2-medium
 ///       bootDisk:
 ///         initializeParams:
-///           image: debian-cloud/debian-11
+///           image: debian-cloud/debian-13
 ///   default:
 ///     type: gcp:compute:Network
 ///     properties:
@@ -778,7 +778,7 @@ class PacketMirroring extends pulumi.CustomResource {
           'gcp:compute/packetMirroring:PacketMirroring',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     collectorIlb = registerOutput<PacketMirroringCollectorIlb>('collectorIlb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringCollectorIlb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

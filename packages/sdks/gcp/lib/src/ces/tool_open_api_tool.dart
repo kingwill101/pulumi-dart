@@ -7,7 +7,7 @@ import 'tool_open_api_tool_tls_config.dart';
 
 class ToolOpenApiTool {
   /// (Output)
-  /// Authentication information required for API calls.
+  /// Authentication information required for calling the remote agent.
   /// Structure is documented below.
   final pulumi.Input<List<ToolOpenApiToolApiAuthentication>?>? apiAuthentications;
   /// (Output)

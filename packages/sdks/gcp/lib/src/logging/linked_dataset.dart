@@ -77,7 +77,7 @@ import 'linked_dataset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -261,7 +261,7 @@ import 'linked_dataset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -442,7 +442,7 @@ class LinkedDataset extends pulumi.CustomResource {
           'gcp:logging/linkedDataset:LinkedDataset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     bigqueryDatasets = registerOutput<List<LinkedDatasetBigqueryDataset>>('bigqueryDatasets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkedDatasetBigqueryDataset>(guardedValue, (value) => LinkedDatasetBigqueryDataset.fromMap((value as Map).cast<String, dynamic>())); });
     bucket = registerOutput<String>('bucket');

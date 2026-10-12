@@ -28,7 +28,7 @@ class VolumeReplicationDestinationVolumeParametersTieringPolicy {
 
   factory VolumeReplicationDestinationVolumeParametersTieringPolicy.fromMap(Map<String, dynamic> map) {
     return VolumeReplicationDestinationVolumeParametersTieringPolicy(
-      coolingThresholdDays: (() { final guardedValue = map['coolingThresholdDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      coolingThresholdDays: (() { final guardedValue = map['coolingThresholdDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tierAction: (() { final guardedValue = map['tierAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

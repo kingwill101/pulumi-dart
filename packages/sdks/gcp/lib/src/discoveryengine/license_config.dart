@@ -95,7 +95,7 @@ import 'license_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -241,6 +241,8 @@ class LicenseConfig extends pulumi.CustomResource {
   late final pulumi.Output<LicenseConfigEndDate?> endDate;
   /// Whether the license config is for free trial.
   late final pulumi.Output<bool?> freeTrial;
+  /// Timestamp of the most recent user-initiated update.
+  late final pulumi.Output<String?> lastUserUpdateTime;
   /// The unique id of the license config.
   late final pulumi.Output<String> licenseConfigId;
   /// Number of licenses purchased.
@@ -276,11 +278,12 @@ class LicenseConfig extends pulumi.CustomResource {
           'gcp:discoveryengine/licenseConfig:LicenseConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     autoRenew = registerOutput<bool?>('autoRenew');
     endDate = registerOutput<LicenseConfigEndDate?>('endDate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LicenseConfigEndDate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     freeTrial = registerOutput<bool?>('freeTrial');
+    lastUserUpdateTime = registerOutput<String?>('lastUserUpdateTime');
     licenseConfigId = registerOutput<String>('licenseConfigId');
     licenseCount = registerOutput<int>('licenseCount');
     location = registerOutput<String>('location');
@@ -318,6 +321,7 @@ class LicenseConfig extends pulumi.CustomResource {
     autoRenew = registerOutput<bool?>('autoRenew');
     endDate = registerOutput<LicenseConfigEndDate?>('endDate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LicenseConfigEndDate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     freeTrial = registerOutput<bool?>('freeTrial');
+    lastUserUpdateTime = registerOutput<String?>('lastUserUpdateTime');
     licenseConfigId = registerOutput<String>('licenseConfigId');
     licenseCount = registerOutput<int>('licenseCount');
     location = registerOutput<String>('location');
@@ -340,6 +344,7 @@ class LicenseConfig extends pulumi.CustomResource {
     autoRenew = registerOutput<bool?>('autoRenew');
     endDate = registerOutput<LicenseConfigEndDate?>('endDate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LicenseConfigEndDate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     freeTrial = registerOutput<bool?>('freeTrial');
+    lastUserUpdateTime = registerOutput<String?>('lastUserUpdateTime');
     licenseConfigId = registerOutput<String>('licenseConfigId');
     licenseCount = registerOutput<int>('licenseCount');
     location = registerOutput<String>('location');

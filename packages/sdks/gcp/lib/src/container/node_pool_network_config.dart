@@ -7,7 +7,7 @@ import 'node_pool_network_config_network_performance_config.dart';
 import 'node_pool_network_config_pod_cidr_overprovision_config.dart';
 
 class NodePoolNetworkConfig {
-  /// ) - Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+  /// Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
   final pulumi.Input<String?>? acceleratorNetworkProfile;
   /// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
   /// Structure is documented below
@@ -31,7 +31,7 @@ class NodePoolNetworkConfig {
   final pulumi.Input<String?>? subnetwork;
 
   /// Creates a new [NodePoolNetworkConfig].
-  /// [acceleratorNetworkProfile] ) - Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+  /// [acceleratorNetworkProfile] Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
   /// [additionalNodeNetworkConfigs] We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
   /// [additionalPodNetworkConfigs] We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
   /// [createPodRange] Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.

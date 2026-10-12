@@ -110,6 +110,7 @@ import 'example_state.dart';
 ///                     data: std.base64encode({
 ///                         input: "This is some fake image binary data.",
 ///                     }).then(invoke => invoke.result),
+///                     altText: "alt text",
 ///                 },
 ///             },
 ///             {
@@ -271,6 +272,7 @@ import 'example_state.dart';
 ///                 "image": {
 ///                     "mime_type": "image/png",
 ///                     "data": std.base64encode(input="This is some fake image binary data.").result,
+///                     "alt_text": "alt text",
 ///                 },
 ///             },
 ///             {
@@ -496,6 +498,7 @@ import 'example_state.dart';
 ///                             {
 ///                                 Input = "This is some fake image binary data.",
 ///                             }).Apply(invoke => invoke.Result),
+///                             AltText = "alt text",
 ///                         },
 ///                     },
 ///                     new Gcp.Ces.Inputs.ExampleMessageChunkArgs
@@ -607,7 +610,7 @@ import 'example_state.dart';
 /// 	"encoding/json"
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -776,6 +779,7 @@ import 'example_state.dart';
 /// 							Image: &ces.ExampleMessageChunkImageArgs{
 /// 								MimeType: pulumi.String("image/png"),
 /// 								Data:     pulumi.String(invokeBase64encode.Result),
+/// 								AltText:  pulumi.String("alt text"),
 /// 							},
 /// 						},
 /// 						&ces.ExampleMessageChunkArgs{
@@ -943,6 +947,7 @@ import 'example_state.dart';
 ///       image = {
 ///         mime_type = "image/png"
 ///         data      = base64encode("This is some fake image binary data.")
+///         alt_text  = "alt text"
 ///       }
 ///     }
 ///     chunks {
@@ -1163,6 +1168,7 @@ import 'example_state.dart';
 ///                             .data(StdFunctions.base64encode(Base64encodeArgs.builder()
 ///                                 .input("This is some fake image binary data.")
 ///                                 .build()).result())
+///                             .altText("alt text")
 ///                             .build())
 ///                         .build(),
 ///                     ExampleMessageChunkArgs.builder()
@@ -1345,6 +1351,7 @@ import 'example_state.dart';
 ///                     arguments:
 ///                       input: This is some fake image binary data.
 ///                     return: result
+///                 altText: alt text
 ///             - text: text_data
 ///             - toolCall:
 ///                 args:
@@ -1457,7 +1464,7 @@ class Example extends pulumi.CustomResource {
           'gcp:ces/example:Example',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     app = registerOutput<String>('app');
     createTime = registerOutput<String>('createTime');

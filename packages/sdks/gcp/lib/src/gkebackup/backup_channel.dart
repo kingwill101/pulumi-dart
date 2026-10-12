@@ -26,7 +26,7 @@ import 'backup_channel_state.dart';
 ///
 /// const basic = new gcp.gkebackup.BackupChannel("basic", {
 ///     name: "basic-channel",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     description: "Description",
 ///     destinationProject: "projects/24240755850",
 ///     labels: {
@@ -40,7 +40,7 @@ import 'backup_channel_state.dart';
 ///
 /// basic = gcp.gkebackup.BackupChannel("basic",
 ///     name="basic-channel",
-///     location="us-central1",
+///     location="us-east1",
 ///     description="Description",
 ///     destination_project="projects/24240755850",
 ///     labels={
@@ -58,7 +58,7 @@ import 'backup_channel_state.dart';
 ///     var basic = new Gcp.GkeBackup.BackupChannel("basic", new()
 ///     {
 ///         Name = "basic-channel",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         Description = "Description",
 ///         DestinationProject = "projects/24240755850",
 ///         Labels =
@@ -73,7 +73,7 @@ import 'backup_channel_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -81,7 +81,7 @@ import 'backup_channel_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := gkebackup.NewBackupChannel(ctx, "basic", &gkebackup.BackupChannelArgs{
 /// 			Name:               pulumi.String("basic-channel"),
-/// 			Location:           pulumi.String("us-central1"),
+/// 			Location:           pulumi.String("us-east1"),
 /// 			Description:        pulumi.String("Description"),
 /// 			DestinationProject: pulumi.String("projects/24240755850"),
 /// 			Labels: pulumi.StringMap{
@@ -106,7 +106,7 @@ import 'backup_channel_state.dart';
 ///
 /// resource "gcp_gkebackup_backupchannel" "basic" {
 ///   name                = "basic-channel"
-///   location            = "us-central1"
+///   location            = "us-east1"
 ///   description         = "Description"
 ///   destination_project = "projects/24240755850"
 ///   labels = {
@@ -137,7 +137,7 @@ import 'backup_channel_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var basic = new BackupChannel("basic", BackupChannelArgs.builder()
 ///             .name("basic-channel")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .description("Description")
 ///             .destinationProject("projects/24240755850")
 ///             .labels(Map.of("key", "some-value"))
@@ -152,7 +152,7 @@ import 'backup_channel_state.dart';
 ///     type: gcp:gkebackup:BackupChannel
 ///     properties:
 ///       name: basic-channel
-///       location: us-central1
+///       location: us-east1
 ///       description: Description
 ///       destinationProject: projects/24240755850
 ///       labels:
@@ -234,7 +234,7 @@ class BackupChannel extends pulumi.CustomResource {
           'gcp:gkebackup/backupChannel:BackupChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

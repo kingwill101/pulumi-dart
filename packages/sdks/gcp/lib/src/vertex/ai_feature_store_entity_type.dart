@@ -23,7 +23,7 @@ import 'ai_feature_store_entity_type_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
-///     name: "terraform",
+///     name: "terraform_entitytype",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -36,7 +36,7 @@ import 'ai_feature_store_entity_type_state.dart';
 ///     },
 /// });
 /// const entity = new gcp.vertex.AiFeatureStoreEntityType("entity", {
-///     name: "terraform",
+///     name: "terraform_entitytype",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -66,7 +66,7 @@ import 'ai_feature_store_entity_type_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// featurestore = gcp.vertex.AiFeatureStore("featurestore",
-///     name="terraform",
+///     name="terraform_entitytype",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -78,7 +78,7 @@ import 'ai_feature_store_entity_type_state.dart';
 ///         "kms_key_name": "kms-name",
 ///     })
 /// entity = gcp.vertex.AiFeatureStoreEntityType("entity",
-///     name="terraform",
+///     name="terraform_entitytype",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -112,7 +112,7 @@ import 'ai_feature_store_entity_type_state.dart';
 /// {
 ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
 ///     {
-///         Name = "terraform",
+///         Name = "terraform_entitytype",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -130,7 +130,7 @@ import 'ai_feature_store_entity_type_state.dart';
 ///
 ///     var entity = new Gcp.Vertex.AiFeatureStoreEntityType("entity", new()
 ///     {
-///         Name = "terraform",
+///         Name = "terraform_entitytype",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -167,14 +167,14 @@ import 'ai_feature_store_entity_type_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		featurestore, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
-/// 			Name: pulumi.String("terraform"),
+/// 			Name: pulumi.String("terraform_entitytype"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -190,7 +190,7 @@ import 'ai_feature_store_entity_type_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vertex.NewAiFeatureStoreEntityType(ctx, "entity", &vertex.AiFeatureStoreEntityTypeArgs{
-/// 			Name: pulumi.String("terraform"),
+/// 			Name: pulumi.String("terraform_entitytype"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -231,7 +231,7 @@ import 'ai_feature_store_entity_type_state.dart';
 /// }
 ///
 /// resource "gcp_vertex_aifeaturestore" "featurestore" {
-///   name = "terraform"
+///   name = "terraform_entitytype"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -244,7 +244,7 @@ import 'ai_feature_store_entity_type_state.dart';
 ///   }
 /// }
 /// resource "gcp_vertex_aifeaturestoreentitytype" "entity" {
-///   name = "terraform"
+///   name = "terraform_entitytype"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -300,7 +300,7 @@ import 'ai_feature_store_entity_type_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()
-///             .name("terraform")
+///             .name("terraform_entitytype")
 ///             .labels(Map.of("foo", "bar"))
 ///             .region("us-central1")
 ///             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
@@ -312,7 +312,7 @@ import 'ai_feature_store_entity_type_state.dart';
 ///             .build());
 ///
 ///         var entity = new AiFeatureStoreEntityType("entity", AiFeatureStoreEntityTypeArgs.builder()
-///             .name("terraform")
+///             .name("terraform_entitytype")
 ///             .labels(Map.of("foo", "bar"))
 ///             .description("test description")
 ///             .featurestore(featurestore.id())
@@ -343,7 +343,7 @@ import 'ai_feature_store_entity_type_state.dart';
 ///   featurestore:
 ///     type: gcp:vertex:AiFeatureStore
 ///     properties:
-///       name: terraform
+///       name: terraform_entitytype
 ///       labels:
 ///         foo: bar
 ///       region: us-central1
@@ -354,7 +354,7 @@ import 'ai_feature_store_entity_type_state.dart';
 ///   entity:
 ///     type: gcp:vertex:AiFeatureStoreEntityType
 ///     properties:
-///       name: terraform
+///       name: terraform_entitytype
 ///       labels:
 ///         foo: bar
 ///       description: test description
@@ -382,7 +382,7 @@ import 'ai_feature_store_entity_type_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
-///     name: "terraform2",
+///     name: "terraform_entitytype_2",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -395,7 +395,7 @@ import 'ai_feature_store_entity_type_state.dart';
 ///     },
 /// });
 /// const entity = new gcp.vertex.AiFeatureStoreEntityType("entity", {
-///     name: "terraform2",
+///     name: "terraform_entitytype_2",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -420,7 +420,7 @@ import 'ai_feature_store_entity_type_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// featurestore = gcp.vertex.AiFeatureStore("featurestore",
-///     name="terraform2",
+///     name="terraform_entitytype_2",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -432,7 +432,7 @@ import 'ai_feature_store_entity_type_state.dart';
 ///         "kms_key_name": "kms-name",
 ///     })
 /// entity = gcp.vertex.AiFeatureStoreEntityType("entity",
-///     name="terraform2",
+///     name="terraform_entitytype_2",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -461,7 +461,7 @@ import 'ai_feature_store_entity_type_state.dart';
 /// {
 ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
 ///     {
-///         Name = "terraform2",
+///         Name = "terraform_entitytype_2",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -479,7 +479,7 @@ import 'ai_feature_store_entity_type_state.dart';
 ///
 ///     var entity = new Gcp.Vertex.AiFeatureStoreEntityType("entity", new()
 ///     {
-///         Name = "terraform2",
+///         Name = "terraform_entitytype_2",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -510,14 +510,14 @@ import 'ai_feature_store_entity_type_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		featurestore, err := vertex.NewAiFeatureStore(ctx, "featurestore", &vertex.AiFeatureStoreArgs{
-/// 			Name: pulumi.String("terraform2"),
+/// 			Name: pulumi.String("terraform_entitytype_2"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -533,7 +533,7 @@ import 'ai_feature_store_entity_type_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vertex.NewAiFeatureStoreEntityType(ctx, "entity", &vertex.AiFeatureStoreEntityTypeArgs{
-/// 			Name: pulumi.String("terraform2"),
+/// 			Name: pulumi.String("terraform_entitytype_2"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -569,7 +569,7 @@ import 'ai_feature_store_entity_type_state.dart';
 /// }
 ///
 /// resource "gcp_vertex_aifeaturestore" "featurestore" {
-///   name = "terraform2"
+///   name = "terraform_entitytype_2"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -582,7 +582,7 @@ import 'ai_feature_store_entity_type_state.dart';
 ///   }
 /// }
 /// resource "gcp_vertex_aifeaturestoreentitytype" "entity" {
-///   name = "terraform2"
+///   name = "terraform_entitytype_2"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -632,7 +632,7 @@ import 'ai_feature_store_entity_type_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()
-///             .name("terraform2")
+///             .name("terraform_entitytype_2")
 ///             .labels(Map.of("foo", "bar"))
 ///             .region("us-central1")
 ///             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
@@ -644,7 +644,7 @@ import 'ai_feature_store_entity_type_state.dart';
 ///             .build());
 ///
 ///         var entity = new AiFeatureStoreEntityType("entity", AiFeatureStoreEntityTypeArgs.builder()
-///             .name("terraform2")
+///             .name("terraform_entitytype_2")
 ///             .labels(Map.of("foo", "bar"))
 ///             .featurestore(featurestore.id())
 ///             .monitoringConfig(AiFeatureStoreEntityTypeMonitoringConfigArgs.builder()
@@ -670,7 +670,7 @@ import 'ai_feature_store_entity_type_state.dart';
 ///   featurestore:
 ///     type: gcp:vertex:AiFeatureStore
 ///     properties:
-///       name: terraform2
+///       name: terraform_entitytype_2
 ///       labels:
 ///         foo: bar
 ///       region: us-central1
@@ -681,7 +681,7 @@ import 'ai_feature_store_entity_type_state.dart';
 ///   entity:
 ///     type: gcp:vertex:AiFeatureStoreEntityType
 ///     properties:
-///       name: terraform2
+///       name: terraform_entitytype_2
 ///       labels:
 ///         foo: bar
 ///       featurestore: ${featurestore.id}
@@ -761,7 +761,7 @@ class AiFeatureStoreEntityType extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

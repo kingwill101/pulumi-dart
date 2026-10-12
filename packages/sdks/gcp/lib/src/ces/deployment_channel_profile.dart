@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_channel_profile_persona_property.dart';
 import 'deployment_channel_profile_web_widget_config.dart';
+import 'deployment_channel_profile_whatsapp_config.dart';
 
 class DeploymentChannelProfile {
   /// The type of the channel profile.
@@ -15,6 +16,8 @@ class DeploymentChannelProfile {
   /// CONTACT_CENTER_AS_A_SERVICE
   /// FIVE9
   /// CONTACT_CENTER_INTEGRATION
+  /// WHATSAPP
+  /// INSTAGRAM
   final pulumi.Input<String?>? channelType;
   /// Whether to disable user barge-in control in the conversation.
   /// - **true**: User interruptions are disabled while the agent is speaking.
@@ -31,6 +34,9 @@ class DeploymentChannelProfile {
   /// Message for configuration for the web widget.
   /// Structure is documented below.
   final pulumi.Input<DeploymentChannelProfileWebWidgetConfig?>? webWidgetConfig;
+  /// Configuration specific to WhatsApp deployments.
+  /// Structure is documented below.
+  final pulumi.Input<DeploymentChannelProfileWhatsappConfig?>? whatsappConfig;
 
   /// Creates a new [DeploymentChannelProfile].
   /// [channelType] The type of the channel profile.
@@ -39,6 +45,7 @@ class DeploymentChannelProfile {
   /// [personaProperty] Represents the persona property of a channel.
   /// [profileId] The unique identifier of the channel profile.
   /// [webWidgetConfig] Message for configuration for the web widget.
+  /// [whatsappConfig] Configuration specific to WhatsApp deployments.
   const DeploymentChannelProfile({
     this.channelType,
     this.disableBargeInControl,
@@ -46,6 +53,7 @@ class DeploymentChannelProfile {
     this.personaProperty,
     this.profileId,
     this.webWidgetConfig,
+    this.whatsappConfig,
   });
 
   Map<String, dynamic> toMap() {
@@ -56,6 +64,7 @@ class DeploymentChannelProfile {
       'personaProperty': ?pulumi.Input.mapOptionalInputValue<DeploymentChannelProfilePersonaProperty, Map<String, dynamic>>(personaProperty, (value) => value.toMap()),
       'profileId': ?profileId,
       'webWidgetConfig': ?pulumi.Input.mapOptionalInputValue<DeploymentChannelProfileWebWidgetConfig, Map<String, dynamic>>(webWidgetConfig, (value) => value.toMap()),
+      'whatsappConfig': ?pulumi.Input.mapOptionalInputValue<DeploymentChannelProfileWhatsappConfig, Map<String, dynamic>>(whatsappConfig, (value) => value.toMap()),
     };
   }
 
@@ -67,6 +76,7 @@ class DeploymentChannelProfile {
       personaProperty: (() { final guardedValue = map['personaProperty']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentChannelProfilePersonaProperty.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       profileId: (() { final guardedValue = map['profileId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       webWidgetConfig: (() { final guardedValue = map['webWidgetConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentChannelProfileWebWidgetConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      whatsappConfig: (() { final guardedValue = map['whatsappConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentChannelProfileWhatsappConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

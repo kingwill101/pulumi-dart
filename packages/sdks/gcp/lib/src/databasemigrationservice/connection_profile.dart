@@ -55,7 +55,7 @@ import 'connection_profile_state.dart';
 /// const cloudsqlprofile = new gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile", {
 ///     location: "us-central1",
 ///     connectionProfileId: "my-fromprofileid",
-///     displayName: "my-fromprofileid_display",
+///     displayName: "my-fromprofileid-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -78,7 +78,7 @@ import 'connection_profile_state.dart';
 /// const cloudsqlprofileDestination = new gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile_destination", {
 ///     location: "us-central1",
 ///     connectionProfileId: "my-toprofileid",
-///     displayName: "my-toprofileid_displayname",
+///     displayName: "my-toprofileid-displayname",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -133,7 +133,7 @@ import 'connection_profile_state.dart';
 /// cloudsqlprofile = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile",
 ///     location="us-central1",
 ///     connection_profile_id="my-fromprofileid",
-///     display_name="my-fromprofileid_display",
+///     display_name="my-fromprofileid-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -154,7 +154,7 @@ import 'connection_profile_state.dart';
 /// cloudsqlprofile_destination = gcp.databasemigrationservice.ConnectionProfile("cloudsqlprofile_destination",
 ///     location="us-central1",
 ///     connection_profile_id="my-toprofileid",
-///     display_name="my-toprofileid_displayname",
+///     display_name="my-toprofileid-displayname",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -233,7 +233,7 @@ import 'connection_profile_state.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "my-fromprofileid",
-///         DisplayName = "my-fromprofileid_display",
+///         DisplayName = "my-fromprofileid-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -265,7 +265,7 @@ import 'connection_profile_state.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "my-toprofileid",
-///         DisplayName = "my-toprofileid_displayname",
+///         DisplayName = "my-toprofileid-displayname",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -310,9 +310,9 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -356,7 +356,7 @@ import 'connection_profile_state.dart';
 /// 		cloudsqlprofile, err := databasemigrationservice.NewConnectionProfile(ctx, "cloudsqlprofile", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("my-fromprofileid"),
-/// 			DisplayName:         pulumi.String("my-fromprofileid_display"),
+/// 			DisplayName:         pulumi.String("my-fromprofileid-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -384,7 +384,7 @@ import 'connection_profile_state.dart';
 /// 		_, err = databasemigrationservice.NewConnectionProfile(ctx, "cloudsqlprofile_destination", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("my-toprofileid"),
-/// 			DisplayName:         pulumi.String("my-toprofileid_displayname"),
+/// 			DisplayName:         pulumi.String("my-toprofileid-displayname"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -456,7 +456,7 @@ import 'connection_profile_state.dart';
 ///   depends_on            = [gcp_sql_user.sqldb_user]
 ///   location              = "us-central1"
 ///   connection_profile_id = "my-fromprofileid"
-///   display_name          = "my-fromprofileid_display"
+///   display_name          = "my-fromprofileid-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -478,7 +478,7 @@ import 'connection_profile_state.dart';
 ///   depends_on            = [gcp_databasemigrationservice_connectionprofile.cloudsqlprofile]
 ///   location              = "us-central1"
 ///   connection_profile_id = "my-toprofileid"
-///   display_name          = "my-toprofileid_displayname"
+///   display_name          = "my-toprofileid-displayname"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -573,7 +573,7 @@ import 'connection_profile_state.dart';
 ///         var cloudsqlprofile = new ConnectionProfile("cloudsqlprofile", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("my-fromprofileid")
-///             .displayName("my-fromprofileid_display")
+///             .displayName("my-fromprofileid-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .mysql(ConnectionProfileMysqlArgs.builder()
 ///                 .host(cloudsqldb.ipAddresses().applyValue(_ipAddresses -> _ipAddresses.get(0).ipAddress()))
@@ -595,7 +595,7 @@ import 'connection_profile_state.dart';
 ///         var cloudsqlprofileDestination = new ConnectionProfile("cloudsqlprofileDestination", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("my-toprofileid")
-///             .displayName("my-toprofileid_displayname")
+///             .displayName("my-toprofileid-displayname")
 ///             .labels(Map.of("foo", "bar"))
 ///             .cloudsql(ConnectionProfileCloudsqlArgs.builder()
 ///                 .settings(ConnectionProfileCloudsqlSettingsArgs.builder()
@@ -659,7 +659,7 @@ import 'connection_profile_state.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: my-fromprofileid
-///       displayName: my-fromprofileid_display
+///       displayName: my-fromprofileid-display
 ///       labels:
 ///         foo: bar
 ///       mysql:
@@ -682,7 +682,7 @@ import 'connection_profile_state.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: my-toprofileid
-///       displayName: my-toprofileid_displayname
+///       displayName: my-toprofileid-displayname
 ///       labels:
 ///         foo: bar
 ///       cloudsql:
@@ -745,7 +745,7 @@ import 'connection_profile_state.dart';
 /// const postgresprofile = new gcp.databasemigrationservice.ConnectionProfile("postgresprofile", {
 ///     location: "us-central1",
 ///     connectionProfileId: "my-profileid",
-///     displayName: "my-profileid_display",
+///     displayName: "my-profileid-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -789,7 +789,7 @@ import 'connection_profile_state.dart';
 /// postgresprofile = gcp.databasemigrationservice.ConnectionProfile("postgresprofile",
 ///     location="us-central1",
 ///     connection_profile_id="my-profileid",
-///     display_name="my-profileid_display",
+///     display_name="my-profileid-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -856,7 +856,7 @@ import 'connection_profile_state.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "my-profileid",
-///         DisplayName = "my-profileid_display",
+///         DisplayName = "my-profileid-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -890,8 +890,8 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -930,7 +930,7 @@ import 'connection_profile_state.dart';
 /// 		_, err = databasemigrationservice.NewConnectionProfile(ctx, "postgresprofile", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("my-profileid"),
-/// 			DisplayName:         pulumi.String("my-profileid_display"),
+/// 			DisplayName:         pulumi.String("my-profileid-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -991,7 +991,7 @@ import 'connection_profile_state.dart';
 ///   depends_on            = [gcp_sql_user.sqldb_user]
 ///   location              = "us-central1"
 ///   connection_profile_id = "my-profileid"
-///   display_name          = "my-profileid_display"
+///   display_name          = "my-profileid-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -1068,7 +1068,7 @@ import 'connection_profile_state.dart';
 ///         var postgresprofile = new ConnectionProfile("postgresprofile", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("my-profileid")
-///             .displayName("my-profileid_display")
+///             .displayName("my-profileid-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
 ///                 .host(postgresqldb.ipAddresses().applyValue(_ipAddresses -> _ipAddresses.get(0).ipAddress()))
@@ -1124,7 +1124,7 @@ import 'connection_profile_state.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: my-profileid
-///       displayName: my-profileid_display
+///       displayName: my-profileid-display
 ///       labels:
 ///         foo: bar
 ///       postgresql:
@@ -1175,7 +1175,7 @@ import 'connection_profile_state.dart';
 /// const postgresprofile = new gcp.databasemigrationservice.ConnectionProfile("postgresprofile", {
 ///     location: "us-central1",
 ///     connectionProfileId: "my-profileid",
-///     displayName: "my-profileid_display",
+///     displayName: "my-profileid-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -1216,7 +1216,7 @@ import 'connection_profile_state.dart';
 /// postgresprofile = gcp.databasemigrationservice.ConnectionProfile("postgresprofile",
 ///     location="us-central1",
 ///     connection_profile_id="my-profileid",
-///     display_name="my-profileid_display",
+///     display_name="my-profileid-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -1280,7 +1280,7 @@ import 'connection_profile_state.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "my-profileid",
-///         DisplayName = "my-profileid_display",
+///         DisplayName = "my-profileid-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -1311,8 +1311,8 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1351,7 +1351,7 @@ import 'connection_profile_state.dart';
 /// 		_, err = databasemigrationservice.NewConnectionProfile(ctx, "postgresprofile", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("my-profileid"),
-/// 			DisplayName:         pulumi.String("my-profileid_display"),
+/// 			DisplayName:         pulumi.String("my-profileid-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -1409,7 +1409,7 @@ import 'connection_profile_state.dart';
 ///   depends_on            = [gcp_sql_user.sqldb_user]
 ///   location              = "us-central1"
 ///   connection_profile_id = "my-profileid"
-///   display_name          = "my-profileid_display"
+///   display_name          = "my-profileid-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -1483,7 +1483,7 @@ import 'connection_profile_state.dart';
 ///         var postgresprofile = new ConnectionProfile("postgresprofile", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("my-profileid")
-///             .displayName("my-profileid_display")
+///             .displayName("my-profileid-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
 ///                 .host(postgresqldb.ipAddresses().applyValue(_ipAddresses -> _ipAddresses.get(0).ipAddress()))
@@ -1536,7 +1536,7 @@ import 'connection_profile_state.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: my-profileid
-///       displayName: my-profileid_display
+///       displayName: my-profileid-display
 ///       labels:
 ///         foo: bar
 ///       postgresql:
@@ -1584,7 +1584,7 @@ import 'connection_profile_state.dart';
 /// const postgresprofile = new gcp.databasemigrationservice.ConnectionProfile("postgresprofile", {
 ///     location: "us-central1",
 ///     connectionProfileId: "my-profileid",
-///     displayName: "my-profileid_display",
+///     displayName: "my-profileid-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -1625,7 +1625,7 @@ import 'connection_profile_state.dart';
 /// postgresprofile = gcp.databasemigrationservice.ConnectionProfile("postgresprofile",
 ///     location="us-central1",
 ///     connection_profile_id="my-profileid",
-///     display_name="my-profileid_display",
+///     display_name="my-profileid-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -1689,7 +1689,7 @@ import 'connection_profile_state.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "my-profileid",
-///         DisplayName = "my-profileid_display",
+///         DisplayName = "my-profileid-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -1720,8 +1720,8 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1760,7 +1760,7 @@ import 'connection_profile_state.dart';
 /// 		_, err = databasemigrationservice.NewConnectionProfile(ctx, "postgresprofile", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("my-profileid"),
-/// 			DisplayName:         pulumi.String("my-profileid_display"),
+/// 			DisplayName:         pulumi.String("my-profileid-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -1818,7 +1818,7 @@ import 'connection_profile_state.dart';
 ///   depends_on            = [gcp_sql_user.sqldb_user]
 ///   location              = "us-central1"
 ///   connection_profile_id = "my-profileid"
-///   display_name          = "my-profileid_display"
+///   display_name          = "my-profileid-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -1892,7 +1892,7 @@ import 'connection_profile_state.dart';
 ///         var postgresprofile = new ConnectionProfile("postgresprofile", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("my-profileid")
-///             .displayName("my-profileid_display")
+///             .displayName("my-profileid-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
 ///                 .host(postgresqldb.ipAddresses().applyValue(_ipAddresses -> _ipAddresses.get(0).ipAddress()))
@@ -1945,7 +1945,7 @@ import 'connection_profile_state.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: my-profileid
-///       displayName: my-profileid_display
+///       displayName: my-profileid-display
 ///       labels:
 ///         foo: bar
 ///       postgresql:
@@ -1972,7 +1972,7 @@ import 'connection_profile_state.dart';
 /// const oracleprofile = new gcp.databasemigrationservice.ConnectionProfile("oracleprofile", {
 ///     location: "us-central1",
 ///     connectionProfileId: "my-profileid",
-///     displayName: "my-profileid_display",
+///     displayName: "my-profileid-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -1993,7 +1993,7 @@ import 'connection_profile_state.dart';
 /// oracleprofile = gcp.databasemigrationservice.ConnectionProfile("oracleprofile",
 ///     location="us-central1",
 ///     connection_profile_id="my-profileid",
-///     display_name="my-profileid_display",
+///     display_name="my-profileid-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -2018,7 +2018,7 @@ import 'connection_profile_state.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "my-profileid",
-///         DisplayName = "my-profileid_display",
+///         DisplayName = "my-profileid-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -2040,7 +2040,7 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2049,7 +2049,7 @@ import 'connection_profile_state.dart';
 /// 		_, err := databasemigrationservice.NewConnectionProfile(ctx, "oracleprofile", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("my-profileid"),
-/// 			DisplayName:         pulumi.String("my-profileid_display"),
+/// 			DisplayName:         pulumi.String("my-profileid-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -2081,7 +2081,7 @@ import 'connection_profile_state.dart';
 /// resource "gcp_databasemigrationservice_connectionprofile" "oracleprofile" {
 ///   location              = "us-central1"
 ///   connection_profile_id = "my-profileid"
-///   display_name          = "my-profileid_display"
+///   display_name          = "my-profileid-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -2121,7 +2121,7 @@ import 'connection_profile_state.dart';
 ///         var oracleprofile = new ConnectionProfile("oracleprofile", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("my-profileid")
-///             .displayName("my-profileid_display")
+///             .displayName("my-profileid-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .oracle(ConnectionProfileOracleArgs.builder()
 ///                 .host("host")
@@ -2144,7 +2144,7 @@ import 'connection_profile_state.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: my-profileid
-///       displayName: my-profileid_display
+///       displayName: my-profileid-display
 ///       labels:
 ///         foo: bar
 ///       oracle:
@@ -2181,16 +2181,16 @@ import 'connection_profile_state.dart';
 /// const alloydbprofile = new gcp.databasemigrationservice.ConnectionProfile("alloydbprofile", {
 ///     location: "us-central1",
 ///     connectionProfileId: "my-profileid",
-///     displayName: "my-profileid_display",
+///     displayName: "my-profileid-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
 ///     alloydb: {
-///         clusterId: "tf-test-dbmsalloycluster_69391",
+///         clusterId: "tf-test-dbmsalloycluster_37118",
 ///         settings: {
 ///             initialUser: {
-///                 user: "alloyuser_8270",
-///                 password: "alloypass_41150",
+///                 user: "alloyuser_80332",
+///                 password: "alloypass_13293",
 ///             },
 ///             vpcNetwork: _default.id,
 ///             labels: {
@@ -2231,16 +2231,16 @@ import 'connection_profile_state.dart';
 /// alloydbprofile = gcp.databasemigrationservice.ConnectionProfile("alloydbprofile",
 ///     location="us-central1",
 ///     connection_profile_id="my-profileid",
-///     display_name="my-profileid_display",
+///     display_name="my-profileid-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
 ///     alloydb={
-///         "cluster_id": "tf-test-dbmsalloycluster_69391",
+///         "cluster_id": "tf-test-dbmsalloycluster_37118",
 ///         "settings": {
 ///             "initial_user": {
-///                 "user": "alloyuser_8270",
-///                 "password": "alloypass_41150",
+///                 "user": "alloyuser_80332",
+///                 "password": "alloypass_13293",
 ///             },
 ///             "vpc_network": default.id,
 ///             "labels": {
@@ -2298,20 +2298,20 @@ import 'connection_profile_state.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "my-profileid",
-///         DisplayName = "my-profileid_display",
+///         DisplayName = "my-profileid-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
 ///         },
 ///         Alloydb = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbArgs
 ///         {
-///             ClusterId = "tf-test-dbmsalloycluster_69391",
+///             ClusterId = "tf-test-dbmsalloycluster_37118",
 ///             Settings = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsArgs
 ///             {
 ///                 InitialUser = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsInitialUserArgs
 ///                 {
-///                     User = "alloyuser_8270",
-///                     Password = "alloypass_41150",
+///                     User = "alloyuser_80332",
+///                     Password = "alloypass_13293",
 ///                 },
 ///                 VpcNetwork = @default.Id,
 ///                 Labels =
@@ -2347,10 +2347,10 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2389,16 +2389,16 @@ import 'connection_profile_state.dart';
 /// 		_, err = databasemigrationservice.NewConnectionProfile(ctx, "alloydbprofile", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("my-profileid"),
-/// 			DisplayName:         pulumi.String("my-profileid_display"),
+/// 			DisplayName:         pulumi.String("my-profileid-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
 /// 			Alloydb: &databasemigrationservice.ConnectionProfileAlloydbArgs{
-/// 				ClusterId: pulumi.String("tf-test-dbmsalloycluster_69391"),
+/// 				ClusterId: pulumi.String("tf-test-dbmsalloycluster_37118"),
 /// 				Settings: &databasemigrationservice.ConnectionProfileAlloydbSettingsArgs{
 /// 					InitialUser: &databasemigrationservice.ConnectionProfileAlloydbSettingsInitialUserArgs{
-/// 						User:     pulumi.String("alloyuser_8270"),
-/// 						Password: pulumi.String("alloypass_41150"),
+/// 						User:     pulumi.String("alloyuser_80332"),
+/// 						Password: pulumi.String("alloypass_13293"),
 /// 					},
 /// 					VpcNetwork: _default.ID().ToIDOutput().ToStringOutput(),
 /// 					Labels: pulumi.StringMap{
@@ -2457,16 +2457,16 @@ import 'connection_profile_state.dart';
 ///   depends_on            = [gcp_servicenetworking_connection.vpc_connection]
 ///   location              = "us-central1"
 ///   connection_profile_id = "my-profileid"
-///   display_name          = "my-profileid_display"
+///   display_name          = "my-profileid-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 ///   alloydb = {
-///     cluster_id = "tf-test-dbmsalloycluster_69391"
+///     cluster_id = "tf-test-dbmsalloycluster_37118"
 ///     settings = {
 ///       initial_user = {
-///         user     = "alloyuser_8270"
-///         password = "alloypass_41150"
+///         user     = "alloyuser_80332"
+///         password = "alloypass_13293"
 ///       }
 ///       vpc_network = gcp_compute_network.default.id
 ///       labels = {
@@ -2545,14 +2545,14 @@ import 'connection_profile_state.dart';
 ///         var alloydbprofile = new ConnectionProfile("alloydbprofile", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("my-profileid")
-///             .displayName("my-profileid_display")
+///             .displayName("my-profileid-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .alloydb(ConnectionProfileAlloydbArgs.builder()
-///                 .clusterId("tf-test-dbmsalloycluster_69391")
+///                 .clusterId("tf-test-dbmsalloycluster_37118")
 ///                 .settings(ConnectionProfileAlloydbSettingsArgs.builder()
 ///                     .initialUser(ConnectionProfileAlloydbSettingsInitialUserArgs.builder()
-///                         .user("alloyuser_8270")
-///                         .password("alloypass_41150")
+///                         .user("alloyuser_80332")
+///                         .password("alloypass_13293")
 ///                         .build())
 ///                     .vpcNetwork(default_.id())
 ///                     .labels(Map.of("alloyfoo", "alloybar"))
@@ -2602,15 +2602,15 @@ import 'connection_profile_state.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: my-profileid
-///       displayName: my-profileid_display
+///       displayName: my-profileid-display
 ///       labels:
 ///         foo: bar
 ///       alloydb:
-///         clusterId: tf-test-dbmsalloycluster_69391
+///         clusterId: tf-test-dbmsalloycluster_37118
 ///         settings:
 ///           initialUser:
-///             user: alloyuser_8270
-///             password: alloypass_41150
+///             user: alloyuser_80332
+///             password: alloypass_13293
 ///           vpcNetwork: ${default.id}
 ///           labels:
 ///             alloyfoo: alloybar
@@ -2652,7 +2652,7 @@ import 'connection_profile_state.dart';
 /// const existing_mysql = new gcp.databasemigrationservice.ConnectionProfile("existing-mysql", {
 ///     location: "us-central1",
 ///     connectionProfileId: "destination-cp",
-///     displayName: "destination-cp_display",
+///     displayName: "destination-cp-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -2679,7 +2679,7 @@ import 'connection_profile_state.dart';
 /// existing_mysql = gcp.databasemigrationservice.ConnectionProfile("existing-mysql",
 ///     location="us-central1",
 ///     connection_profile_id="destination-cp",
-///     display_name="destination-cp_display",
+///     display_name="destination-cp-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -2714,7 +2714,7 @@ import 'connection_profile_state.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "destination-cp",
-///         DisplayName = "destination-cp_display",
+///         DisplayName = "destination-cp-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -2737,9 +2737,9 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2764,7 +2764,7 @@ import 'connection_profile_state.dart';
 /// 		_, err = databasemigrationservice.NewConnectionProfile(ctx, "existing-mysql", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("destination-cp"),
-/// 			DisplayName:         pulumi.String("destination-cp_display"),
+/// 			DisplayName:         pulumi.String("destination-cp-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -2806,7 +2806,7 @@ import 'connection_profile_state.dart';
 ///   depends_on            = [gcp_sql_databaseinstance.destination_csql]
 ///   location              = "us-central1"
 ///   connection_profile_id = "destination-cp"
-///   display_name          = "destination-cp_display"
+///   display_name          = "destination-cp-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -2859,7 +2859,7 @@ import 'connection_profile_state.dart';
 ///         var existing_mysql = new ConnectionProfile("existing-mysql", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("destination-cp")
-///             .displayName("destination-cp_display")
+///             .displayName("destination-cp-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .mysql(ConnectionProfileMysqlArgs.builder()
 ///                 .cloudSqlId("destination-csql")
@@ -2888,7 +2888,7 @@ import 'connection_profile_state.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: destination-cp
-///       displayName: destination-cp_display
+///       displayName: destination-cp-display
 ///       labels:
 ///         foo: bar
 ///       mysql:
@@ -2924,7 +2924,7 @@ import 'connection_profile_state.dart';
 /// const existing_psql = new gcp.databasemigrationservice.ConnectionProfile("existing-psql", {
 ///     location: "us-central1",
 ///     connectionProfileId: "destination-cp",
-///     displayName: "destination-cp_display",
+///     displayName: "destination-cp-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -2951,7 +2951,7 @@ import 'connection_profile_state.dart';
 /// existing_psql = gcp.databasemigrationservice.ConnectionProfile("existing-psql",
 ///     location="us-central1",
 ///     connection_profile_id="destination-cp",
-///     display_name="destination-cp_display",
+///     display_name="destination-cp-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -2986,7 +2986,7 @@ import 'connection_profile_state.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "destination-cp",
-///         DisplayName = "destination-cp_display",
+///         DisplayName = "destination-cp-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -3009,9 +3009,9 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3036,7 +3036,7 @@ import 'connection_profile_state.dart';
 /// 		_, err = databasemigrationservice.NewConnectionProfile(ctx, "existing-psql", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("destination-cp"),
-/// 			DisplayName:         pulumi.String("destination-cp_display"),
+/// 			DisplayName:         pulumi.String("destination-cp-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -3078,7 +3078,7 @@ import 'connection_profile_state.dart';
 ///   depends_on            = [gcp_sql_databaseinstance.destination_csql]
 ///   location              = "us-central1"
 ///   connection_profile_id = "destination-cp"
-///   display_name          = "destination-cp_display"
+///   display_name          = "destination-cp-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -3131,7 +3131,7 @@ import 'connection_profile_state.dart';
 ///         var existing_psql = new ConnectionProfile("existing-psql", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("destination-cp")
-///             .displayName("destination-cp_display")
+///             .displayName("destination-cp-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
 ///                 .cloudSqlId("destination-csql")
@@ -3160,7 +3160,7 @@ import 'connection_profile_state.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: destination-cp
-///       displayName: destination-cp_display
+///       displayName: destination-cp-display
 ///       labels:
 ///         foo: bar
 ///       postgresql:
@@ -3220,7 +3220,7 @@ import 'connection_profile_state.dart';
 /// const existing_alloydb = new gcp.databasemigrationservice.ConnectionProfile("existing-alloydb", {
 ///     location: "us-central1",
 ///     connectionProfileId: "destination-cp",
-///     displayName: "destination-cp_display",
+///     displayName: "destination-cp-display",
 ///     labels: {
 ///         foo: "bar",
 ///     },
@@ -3270,7 +3270,7 @@ import 'connection_profile_state.dart';
 /// existing_alloydb = gcp.databasemigrationservice.ConnectionProfile("existing-alloydb",
 ///     location="us-central1",
 ///     connection_profile_id="destination-cp",
-///     display_name="destination-cp_display",
+///     display_name="destination-cp-display",
 ///     labels={
 ///         "foo": "bar",
 ///     },
@@ -3350,7 +3350,7 @@ import 'connection_profile_state.dart';
 ///     {
 ///         Location = "us-central1",
 ///         ConnectionProfileId = "destination-cp",
-///         DisplayName = "destination-cp_display",
+///         DisplayName = "destination-cp-display",
 ///         Labels =
 ///         {
 ///             { "foo", "bar" },
@@ -3374,11 +3374,11 @@ import 'connection_profile_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/alloydb"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3443,7 +3443,7 @@ import 'connection_profile_state.dart';
 /// 		_, err = databasemigrationservice.NewConnectionProfile(ctx, "existing-alloydb", &databasemigrationservice.ConnectionProfileArgs{
 /// 			Location:            pulumi.String("us-central1"),
 /// 			ConnectionProfileId: pulumi.String("destination-cp"),
-/// 			DisplayName:         pulumi.String("destination-cp_display"),
+/// 			DisplayName:         pulumi.String("destination-cp-display"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -3511,7 +3511,7 @@ import 'connection_profile_state.dart';
 ///   depends_on            = [gcp_alloydb_cluster.destination_alloydb, gcp_alloydb_instance.destination_alloydb_primary]
 ///   location              = "us-central1"
 ///   connection_profile_id = "destination-cp"
-///   display_name          = "destination-cp_display"
+///   display_name          = "destination-cp-display"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -3603,7 +3603,7 @@ import 'connection_profile_state.dart';
 ///         var existing_alloydb = new ConnectionProfile("existing-alloydb", ConnectionProfileArgs.builder()
 ///             .location("us-central1")
 ///             .connectionProfileId("destination-cp")
-///             .displayName("destination-cp_display")
+///             .displayName("destination-cp-display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
 ///                 .alloydbClusterId("destination-alloydb")
@@ -3668,7 +3668,7 @@ import 'connection_profile_state.dart';
 ///     properties:
 ///       location: us-central1
 ///       connectionProfileId: destination-cp
-///       displayName: destination-cp_display
+///       displayName: destination-cp-display
 ///       labels:
 ///         foo: bar
 ///       postgresql:
@@ -3770,7 +3770,7 @@ class ConnectionProfile extends pulumi.CustomResource {
           'gcp:databasemigrationservice/connectionProfile:ConnectionProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     alloydb = registerOutput<ConnectionProfileAlloydb?>('alloydb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileAlloydb.fromMap((guardedValue as Map).cast<String, dynamic>()); });

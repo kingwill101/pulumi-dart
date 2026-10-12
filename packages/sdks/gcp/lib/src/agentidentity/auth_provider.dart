@@ -72,7 +72,7 @@ import 'auth_provider_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/agentidentity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentidentity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -259,7 +259,7 @@ class AuthProvider extends pulumi.CustomResource {
           'gcp:agentidentity/authProvider:AuthProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     allowedScopes = registerOutput<List<String>?>('allowedScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

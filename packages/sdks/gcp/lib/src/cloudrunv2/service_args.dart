@@ -83,6 +83,8 @@ class ServiceArgs {
   /// Scaling settings that apply to the whole service
   /// Structure is documented below.
   final pulumi.Input<ServiceScaling?>? scaling;
+  /// Enables SSH access to the Service.
+  final pulumi.Input<bool?>? sshEnabled;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -115,6 +117,7 @@ class ServiceArgs {
   /// [name] Name of the Service.
   /// [project] The ID of the project in which the resource belongs.
   /// [scaling] Scaling settings that apply to the whole service
+  /// [sshEnabled] Enables SSH access to the Service.
   /// [tags] A map of resource manager tags.
   /// [template] The template used to create revisions for this Service.
   /// [traffics] Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
@@ -139,6 +142,7 @@ class ServiceArgs {
     this.name,
     this.project,
     this.scaling,
+    this.sshEnabled,
     this.tags,
     required this.template,
     this.traffics,
@@ -166,6 +170,7 @@ class ServiceArgs {
       'name': ?name,
       'project': ?project,
       'scaling': ?pulumi.Input.mapOptionalInputValue<ServiceScaling, Map<String, dynamic>>(scaling, (value) => value.toMap()),
+      'sshEnabled': ?sshEnabled,
       'tags': ?tags,
       'template': pulumi.Input.mapInputValue<ServiceTemplate, Map<String, dynamic>>(template, (value) => value.toMap()),
       'traffics': ?pulumi.Input.mapOptionalInputValue<List<ServiceTraffic>, List<Map<String, dynamic>>>(traffics, (value) => pulumi.Input.encodeList<ServiceTraffic, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -194,6 +199,7 @@ class ServiceArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scaling: (() { final guardedValue = map['scaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceScaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sshEnabled: (() { final guardedValue = map['sshEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       template: pulumi.Input.fromValue(ServiceTemplate.fromMap((map['template']! as Map).cast<String, dynamic>())),
       traffics: (() { final guardedValue = map['traffics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTraffic>(guardedValue, (value) => ServiceTraffic.fromMap((value as Map).cast<String, dynamic>()))); })(),

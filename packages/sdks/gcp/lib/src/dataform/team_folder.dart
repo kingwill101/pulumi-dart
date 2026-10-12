@@ -23,7 +23,7 @@ import 'team_folder_state.dart';
 ///
 /// const dataformTeamFolderBasic = new gcp.dataform.TeamFolder("dataform_team_folder_basic", {
 ///     region: "us-central1",
-///     displayName: "Basic TeamFolder-_11380",
+///     displayName: "Basic TeamFolder-_69391",
 /// });
 /// ```
 /// ```python
@@ -32,7 +32,7 @@ import 'team_folder_state.dart';
 ///
 /// dataform_team_folder_basic = gcp.dataform.TeamFolder("dataform_team_folder_basic",
 ///     region="us-central1",
-///     display_name="Basic TeamFolder-_11380")
+///     display_name="Basic TeamFolder-_69391")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,7 +45,7 @@ import 'team_folder_state.dart';
 ///     var dataformTeamFolderBasic = new Gcp.Dataform.TeamFolder("dataform_team_folder_basic", new()
 ///     {
 ///         Region = "us-central1",
-///         DisplayName = "Basic TeamFolder-_11380",
+///         DisplayName = "Basic TeamFolder-_69391",
 ///     });
 ///
 /// });
@@ -54,7 +54,7 @@ import 'team_folder_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataform"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -62,7 +62,7 @@ import 'team_folder_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dataform.NewTeamFolder(ctx, "dataform_team_folder_basic", &dataform.TeamFolderArgs{
 /// 			Region:      pulumi.String("us-central1"),
-/// 			DisplayName: pulumi.String("Basic TeamFolder-_11380"),
+/// 			DisplayName: pulumi.String("Basic TeamFolder-_69391"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -82,7 +82,7 @@ import 'team_folder_state.dart';
 ///
 /// resource "gcp_dataform_teamfolder" "dataform_team_folder_basic" {
 ///   region       = "us-central1"
-///   display_name = "Basic TeamFolder-_11380"
+///   display_name = "Basic TeamFolder-_69391"
 /// }
 /// ```
 /// ```java
@@ -108,7 +108,7 @@ import 'team_folder_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var dataformTeamFolderBasic = new TeamFolder("dataformTeamFolderBasic", TeamFolderArgs.builder()
 ///             .region("us-central1")
-///             .displayName("Basic TeamFolder-_11380")
+///             .displayName("Basic TeamFolder-_69391")
 ///             .build());
 ///
 ///     }
@@ -121,7 +121,7 @@ import 'team_folder_state.dart';
 ///     name: dataform_team_folder_basic
 ///     properties:
 ///       region: us-central1
-///       displayName: Basic TeamFolder-_11380
+///       displayName: Basic TeamFolder-_69391
 /// ```
 ///
 ///
@@ -177,7 +177,7 @@ class TeamFolder extends pulumi.CustomResource {
           'gcp:dataform/teamFolder:TeamFolder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');

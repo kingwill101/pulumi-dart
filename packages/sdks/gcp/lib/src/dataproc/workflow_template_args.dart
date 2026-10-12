@@ -35,7 +35,7 @@ class WorkflowTemplateArgs {
   final pulumi.Input<String?>? name;
   /// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
   final pulumi.Input<List<WorkflowTemplateParameter>?>? parameters;
-  /// (Required) WorkflowTemplate scheduling information.
+  /// WorkflowTemplate scheduling information. Structure is documented below.
   final pulumi.Input<WorkflowTemplatePlacement> placement;
   /// The project for the resource
   final pulumi.Input<String?>? project;
@@ -51,7 +51,7 @@ class WorkflowTemplateArgs {
   /// [location] The location for the resource
   /// [name] (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
   /// [parameters] Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-  /// [placement] (Required) WorkflowTemplate scheduling information.
+  /// [placement] WorkflowTemplate scheduling information. Structure is documented below.
   /// [project] The project for the resource
   /// [version] Output only. The current version of this workflow template.
   const WorkflowTemplateArgs({
@@ -96,7 +96,7 @@ class WorkflowTemplateArgs {
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkflowTemplateParameter>(guardedValue, (value) => WorkflowTemplateParameter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       placement: pulumi.Input.fromValue(WorkflowTemplatePlacement.fromMap((map['placement']! as Map).cast<String, dynamic>())),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

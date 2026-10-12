@@ -43,7 +43,7 @@ class ManagedZoneDnssecConfigDefaultKeySpec {
   factory ManagedZoneDnssecConfigDefaultKeySpec.fromMap(Map<String, dynamic> map) {
     return ManagedZoneDnssecConfigDefaultKeySpec(
       algorithm: (() { final guardedValue = map['algorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      keyLength: (() { final guardedValue = map['keyLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      keyLength: (() { final guardedValue = map['keyLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       keyType: (() { final guardedValue = map['keyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

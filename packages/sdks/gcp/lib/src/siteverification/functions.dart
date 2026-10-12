@@ -56,7 +56,7 @@ import 'get_token_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/siteverification"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/siteverification"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -173,7 +173,7 @@ import 'get_token_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/siteverification"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/siteverification"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

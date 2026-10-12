@@ -27,6 +27,8 @@ class WorkerPoolTemplateContainer {
   /// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
   /// Structure is documented below.
   final pulumi.Input<WorkerPoolTemplateContainerResources?>? resources;
+  /// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+  final pulumi.Input<bool?>? sandboxLauncher;
   /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
   /// Structure is documented below.
   final pulumi.Input<WorkerPoolTemplateContainerStartupProbe?>? startupProbe;
@@ -45,6 +47,7 @@ class WorkerPoolTemplateContainer {
   /// [livenessProbe] Periodic probe of container liveness. Container will be restarted if the probe fails.
   /// [name] Name of the container specified as a DNS_LABEL.
   /// [resources] Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+  /// [sandboxLauncher] Indicates that this container can act as a sandbox supervisor and launch sandboxes.
   /// [startupProbe] Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
   /// [volumeMounts] Volume to mount into the container's filesystem.
   /// [workingDir] Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
@@ -57,6 +60,7 @@ class WorkerPoolTemplateContainer {
     this.livenessProbe,
     this.name,
     this.resources,
+    this.sandboxLauncher,
     this.startupProbe,
     this.volumeMounts,
     this.workingDir,
@@ -72,6 +76,7 @@ class WorkerPoolTemplateContainer {
       'livenessProbe': ?pulumi.Input.mapOptionalInputValue<WorkerPoolTemplateContainerLivenessProbe, Map<String, dynamic>>(livenessProbe, (value) => value.toMap()),
       'name': ?name,
       'resources': ?pulumi.Input.mapOptionalInputValue<WorkerPoolTemplateContainerResources, Map<String, dynamic>>(resources, (value) => value.toMap()),
+      'sandboxLauncher': ?sandboxLauncher,
       'startupProbe': ?pulumi.Input.mapOptionalInputValue<WorkerPoolTemplateContainerStartupProbe, Map<String, dynamic>>(startupProbe, (value) => value.toMap()),
       'volumeMounts': ?pulumi.Input.mapOptionalInputValue<List<WorkerPoolTemplateContainerVolumeMount>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<WorkerPoolTemplateContainerVolumeMount, Map<String, dynamic>>(value, (value) => value.toMap())),
       'workingDir': ?workingDir,
@@ -88,6 +93,7 @@ class WorkerPoolTemplateContainer {
       livenessProbe: (() { final guardedValue = map['livenessProbe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolTemplateContainerLivenessProbe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolTemplateContainerResources.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sandboxLauncher: (() { final guardedValue = map['sandboxLauncher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       startupProbe: (() { final guardedValue = map['startupProbe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolTemplateContainerStartupProbe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       volumeMounts: (() { final guardedValue = map['volumeMounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkerPoolTemplateContainerVolumeMount>(guardedValue, (value) => WorkerPoolTemplateContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))); })(),
       workingDir: (() { final guardedValue = map['workingDir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

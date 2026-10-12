@@ -51,7 +51,7 @@ import 'secret_ciphertext_state.dart';
 ///     zone: "us-central1-a",
 ///     bootDisk: {
 ///         initializeParams: {
-///             image: "debian-cloud/debian-11",
+///             image: "debian-cloud/debian-13",
 ///         },
 ///     },
 ///     metadata: {
@@ -83,7 +83,7 @@ import 'secret_ciphertext_state.dart';
 ///     zone="us-central1-a",
 ///     boot_disk={
 ///         "initialize_params": {
-///             "image": "debian-cloud/debian-11",
+///             "image": "debian-cloud/debian-13",
 ///         },
 ///     },
 ///     metadata={
@@ -137,7 +137,7 @@ import 'secret_ciphertext_state.dart';
 ///         {
 ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
 ///             {
-///                 Image = "debian-cloud/debian-11",
+///                 Image = "debian-cloud/debian-13",
 ///             },
 ///         },
 ///         Metadata =
@@ -152,8 +152,8 @@ import 'secret_ciphertext_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -195,7 +195,7 @@ import 'secret_ciphertext_state.dart';
 /// 			Zone:        pulumi.String("us-central1-a"),
 /// 			BootDisk: &compute.InstanceBootDiskArgs{
 /// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-/// 					Image: pulumi.String("debian-cloud/debian-11"),
+/// 					Image: pulumi.String("debian-cloud/debian-13"),
 /// 				},
 /// 			},
 /// 			Metadata: pulumi.StringMap{
@@ -242,7 +242,7 @@ import 'secret_ciphertext_state.dart';
 ///   zone         = "us-central1-a"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = "debian-cloud/debian-11"
+///       image = "debian-cloud/debian-13"
 ///     }
 ///   }
 ///   metadata = {
@@ -308,7 +308,7 @@ import 'secret_ciphertext_state.dart';
 ///             .zone("us-central1-a")
 ///             .bootDisk(InstanceBootDiskArgs.builder()
 ///                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-///                     .image("debian-cloud/debian-11")
+///                     .image("debian-cloud/debian-13")
 ///                     .build())
 ///                 .build())
 ///             .metadata(Map.of("password", myPassword.ciphertext()))
@@ -348,7 +348,7 @@ import 'secret_ciphertext_state.dart';
 ///       zone: us-central1-a
 ///       bootDisk:
 ///         initializeParams:
-///           image: debian-cloud/debian-11
+///           image: debian-cloud/debian-13
 ///       metadata:
 ///         password: ${myPassword.ciphertext}
 /// ```
@@ -382,7 +382,7 @@ class SecretCiphertext extends pulumi.CustomResource {
           'gcp:kms/secretCiphertext:SecretCiphertext',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['additionalAuthenticatedData', 'plaintext'],
         ) {
     additionalAuthenticatedData = registerOutput<String?>('additionalAuthenticatedData', isSecret: true);

@@ -10,6 +10,8 @@ class AgentModelSettings {
   /// controls the randomness of the model's responses. Lower temperatures
   /// produce responses that are more predictable. Higher temperatures produce
   /// responses that are more creative.
+  ///
+  /// &lt;a name="nestedRemoteA2aAgent"&gt;&lt;/a&gt;The `remoteA2aAgent` block supports:
   final pulumi.Input<double?>? temperature;
 
   /// Creates a new [AgentModelSettings].

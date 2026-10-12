@@ -19,7 +19,7 @@ import 'zone_vm_extension_policy_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const opsAgentPolicy = new gcp.compute.ZoneVmExtensionPolicy("ops_agent_policy", {
-///     name: "zonal-ops-agent-vme-policy-_40289",
+///     name: "zonal-ops-agent-policy",
 ///     zone: "us-central1-a",
 ///     extensionPolicies: [{
 ///         extensionName: "ops-agent",
@@ -32,7 +32,7 @@ import 'zone_vm_extension_policy_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// ops_agent_policy = gcp.compute.ZoneVmExtensionPolicy("ops_agent_policy",
-///     name="zonal-ops-agent-vme-policy-_40289",
+///     name="zonal-ops-agent-policy",
 ///     zone="us-central1-a",
 ///     extension_policies=[{
 ///         "extension_name": "ops-agent",
@@ -49,7 +49,7 @@ import 'zone_vm_extension_policy_state.dart';
 /// {
 ///     var opsAgentPolicy = new Gcp.Compute.ZoneVmExtensionPolicy("ops_agent_policy", new()
 ///     {
-///         Name = "zonal-ops-agent-vme-policy-_40289",
+///         Name = "zonal-ops-agent-policy",
 ///         Zone = "us-central1-a",
 ///         ExtensionPolicies = new[]
 ///         {
@@ -67,14 +67,14 @@ import 'zone_vm_extension_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := compute.NewZoneVmExtensionPolicy(ctx, "ops_agent_policy", &compute.ZoneVmExtensionPolicyArgs{
-/// 			Name: pulumi.String("zonal-ops-agent-vme-policy-_40289"),
+/// 			Name: pulumi.String("zonal-ops-agent-policy"),
 /// 			Zone: pulumi.String("us-central1-a"),
 /// 			ExtensionPolicies: compute.ZoneVmExtensionPolicyExtensionPolicyArray{
 /// 				&compute.ZoneVmExtensionPolicyExtensionPolicyArgs{
@@ -100,7 +100,7 @@ import 'zone_vm_extension_policy_state.dart';
 /// }
 ///
 /// resource "gcp_compute_zonevmextensionpolicy" "ops_agent_policy" {
-///   name = "zonal-ops-agent-vme-policy-_40289"
+///   name = "zonal-ops-agent-policy"
 ///   zone = "us-central1-a"
 ///   extension_policies {
 ///     extension_name = "ops-agent"
@@ -131,7 +131,7 @@ import 'zone_vm_extension_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var opsAgentPolicy = new ZoneVmExtensionPolicy("opsAgentPolicy", ZoneVmExtensionPolicyArgs.builder()
-///             .name("zonal-ops-agent-vme-policy-_40289")
+///             .name("zonal-ops-agent-policy")
 ///             .zone("us-central1-a")
 ///             .extensionPolicies(ZoneVmExtensionPolicyExtensionPolicyArgs.builder()
 ///                 .extensionName("ops-agent")
@@ -148,7 +148,7 @@ import 'zone_vm_extension_policy_state.dart';
 ///     type: gcp:compute:ZoneVmExtensionPolicy
 ///     name: ops_agent_policy
 ///     properties:
-///       name: zonal-ops-agent-vme-policy-_40289
+///       name: zonal-ops-agent-policy
 ///       zone: us-central1-a
 ///       extensionPolicies:
 ///         - extensionName: ops-agent
@@ -220,7 +220,7 @@ class ZoneVmExtensionPolicy extends pulumi.CustomResource {
           'gcp:compute/zoneVmExtensionPolicy:ZoneVmExtensionPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -54,7 +54,7 @@ import 'usage_export_bucket_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -166,7 +166,7 @@ class UsageExportBucket extends pulumi.CustomResource {
           'gcp:projects/usageExportBucket:UsageExportBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     bucketName = registerOutput<String>('bucketName');
     deletionPolicy = registerOutput<String>('deletionPolicy');

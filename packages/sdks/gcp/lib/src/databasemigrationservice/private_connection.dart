@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_connection_args.dart';
 import 'private_connection_error.dart';
 import 'private_connection_psc_interface_config.dart';
+import 'private_connection_reserved_public_ip_config.dart';
 import 'private_connection_state.dart';
 import 'private_connection_vpc_peering_config.dart';
 
@@ -25,7 +26,7 @@ import 'private_connection_vpc_peering_config.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const _default = new gcp.databasemigrationservice.PrivateConnection("default", {
-///     displayName: "dbms_pc",
+///     displayName: "dbms-pc",
 ///     location: "us-west1",
 ///     privateConnectionId: "my-connection",
 ///     labels: {
@@ -47,7 +48,7 @@ import 'private_connection_vpc_peering_config.dart';
 /// import pulumi_gcp as gcp
 ///
 /// default = gcp.databasemigrationservice.PrivateConnection("default",
-///     display_name="dbms_pc",
+///     display_name="dbms-pc",
 ///     location="us-west1",
 ///     private_connection_id="my-connection",
 ///     labels={
@@ -72,7 +73,7 @@ import 'private_connection_vpc_peering_config.dart';
 /// {
 ///     var @default = new Gcp.DatabaseMigrationService.PrivateConnection("default", new()
 ///     {
-///         DisplayName = "dbms_pc",
+///         DisplayName = "dbms-pc",
 ///         Location = "us-west1",
 ///         PrivateConnectionId = "my-connection",
 ///         Labels =
@@ -99,15 +100,15 @@ import 'private_connection_vpc_peering_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := databasemigrationservice.NewPrivateConnection(ctx, "default", &databasemigrationservice.PrivateConnectionArgs{
-/// 			DisplayName:         pulumi.String("dbms_pc"),
+/// 			DisplayName:         pulumi.String("dbms-pc"),
 /// 			Location:            pulumi.String("us-west1"),
 /// 			PrivateConnectionId: pulumi.String("my-connection"),
 /// 			Labels: pulumi.StringMap{
@@ -143,7 +144,7 @@ import 'private_connection_vpc_peering_config.dart';
 /// }
 ///
 /// resource "gcp_databasemigrationservice_privateconnection" "default" {
-///   display_name          = "dbms_pc"
+///   display_name          = "dbms-pc"
 ///   location              = "us-west1"
 ///   private_connection_id = "my-connection"
 ///   labels = {
@@ -185,7 +186,7 @@ import 'private_connection_vpc_peering_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var default_ = new PrivateConnection("default", PrivateConnectionArgs.builder()
-///             .displayName("dbms_pc")
+///             .displayName("dbms-pc")
 ///             .location("us-west1")
 ///             .privateConnectionId("my-connection")
 ///             .labels(Map.of("key", "value"))
@@ -209,7 +210,7 @@ import 'private_connection_vpc_peering_config.dart';
 ///   default:
 ///     type: gcp:databasemigrationservice:PrivateConnection
 ///     properties:
-///       displayName: dbms_pc
+///       displayName: dbms-pc
 ///       location: us-west1
 ///       privateConnectionId: my-connection
 ///       labels:
@@ -235,7 +236,7 @@ import 'private_connection_vpc_peering_config.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const _default = new gcp.databasemigrationservice.PrivateConnection("default", {
-///     displayName: "dbms_pc",
+///     displayName: "dbms-pc",
 ///     location: "us-west1",
 ///     privateConnectionId: "my-connection",
 ///     labels: {
@@ -268,7 +269,7 @@ import 'private_connection_vpc_peering_config.dart';
 /// import pulumi_gcp as gcp
 ///
 /// default = gcp.databasemigrationservice.PrivateConnection("default",
-///     display_name="dbms_pc",
+///     display_name="dbms-pc",
 ///     location="us-west1",
 ///     private_connection_id="my-connection",
 ///     labels={
@@ -302,7 +303,7 @@ import 'private_connection_vpc_peering_config.dart';
 /// {
 ///     var @default = new Gcp.DatabaseMigrationService.PrivateConnection("default", new()
 ///     {
-///         DisplayName = "dbms_pc",
+///         DisplayName = "dbms-pc",
 ///         Location = "us-west1",
 ///         PrivateConnectionId = "my-connection",
 ///         Labels =
@@ -347,15 +348,15 @@ import 'private_connection_vpc_peering_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := databasemigrationservice.NewPrivateConnection(ctx, "default", &databasemigrationservice.PrivateConnectionArgs{
-/// 			DisplayName:         pulumi.String("dbms_pc"),
+/// 			DisplayName:         pulumi.String("dbms-pc"),
 /// 			Location:            pulumi.String("us-west1"),
 /// 			PrivateConnectionId: pulumi.String("my-connection"),
 /// 			Labels: pulumi.StringMap{
@@ -410,7 +411,7 @@ import 'private_connection_vpc_peering_config.dart';
 /// }
 ///
 /// resource "gcp_databasemigrationservice_privateconnection" "default" {
-///   display_name          = "dbms_pc"
+///   display_name          = "dbms-pc"
 ///   location              = "us-west1"
 ///   private_connection_id = "my-connection"
 ///   labels = {
@@ -467,7 +468,7 @@ import 'private_connection_vpc_peering_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var default_ = new PrivateConnection("default", PrivateConnectionArgs.builder()
-///             .displayName("dbms_pc")
+///             .displayName("dbms-pc")
 ///             .location("us-west1")
 ///             .privateConnectionId("my-connection")
 ///             .labels(Map.of("key", "value"))
@@ -504,7 +505,7 @@ import 'private_connection_vpc_peering_config.dart';
 ///   default:
 ///     type: gcp:databasemigrationservice:PrivateConnection
 ///     properties:
-///       displayName: dbms_pc
+///       displayName: dbms-pc
 ///       location: us-west1
 ///       privateConnectionId: my-connection
 ///       labels:
@@ -535,6 +536,171 @@ import 'private_connection_vpc_peering_config.dart';
 ///       ipCidrRange: 10.0.0.0/16
 ///       region: us-west1
 ///       network: ${defaultNetwork.id}
+/// ```
+///
+/// ### Database Migration Service Private Connection Reserved Public Ip
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.databasemigrationservice.PrivateConnection("default", {
+///     displayName: "dbms_pc",
+///     location: "us-west1",
+///     privateConnectionId: "my-connection",
+///     labels: {
+///         key: "value",
+///     },
+///     reservedPublicIpConfig: {
+///         natIpsCount: 1,
+///     },
+///     createWithoutValidation: false,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.databasemigrationservice.PrivateConnection("default",
+///     display_name="dbms_pc",
+///     location="us-west1",
+///     private_connection_id="my-connection",
+///     labels={
+///         "key": "value",
+///     },
+///     reserved_public_ip_config={
+///         "nat_ips_count": 1,
+///     },
+///     create_without_validation=False)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.DatabaseMigrationService.PrivateConnection("default", new()
+///     {
+///         DisplayName = "dbms_pc",
+///         Location = "us-west1",
+///         PrivateConnectionId = "my-connection",
+///         Labels =
+///         {
+///             { "key", "value" },
+///         },
+///         ReservedPublicIpConfig = new Gcp.DatabaseMigrationService.Inputs.PrivateConnectionReservedPublicIpConfigArgs
+///         {
+///             NatIpsCount = 1,
+///         },
+///         CreateWithoutValidation = false,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := databasemigrationservice.NewPrivateConnection(ctx, "default", &databasemigrationservice.PrivateConnectionArgs{
+/// 			DisplayName:         pulumi.String("dbms_pc"),
+/// 			Location:            pulumi.String("us-west1"),
+/// 			PrivateConnectionId: pulumi.String("my-connection"),
+/// 			Labels: pulumi.StringMap{
+/// 				"key": pulumi.String("value"),
+/// 			},
+/// 			ReservedPublicIpConfig: &databasemigrationservice.PrivateConnectionReservedPublicIpConfigArgs{
+/// 				NatIpsCount: pulumi.Int(1),
+/// 			},
+/// 			CreateWithoutValidation: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_databasemigrationservice_privateconnection" "default" {
+///   display_name          = "dbms_pc"
+///   location              = "us-west1"
+///   private_connection_id = "my-connection"
+///   labels = {
+///     "key" = "value"
+///   }
+///   reserved_public_ip_config = {
+///     nat_ips_count = 1
+///   }
+///   create_without_validation = false
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.databasemigrationservice.PrivateConnection;
+/// import com.pulumi.gcp.databasemigrationservice.PrivateConnectionArgs;
+/// import com.pulumi.gcp.databasemigrationservice.inputs.PrivateConnectionReservedPublicIpConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new PrivateConnection("default", PrivateConnectionArgs.builder()
+///             .displayName("dbms_pc")
+///             .location("us-west1")
+///             .privateConnectionId("my-connection")
+///             .labels(Map.of("key", "value"))
+///             .reservedPublicIpConfig(PrivateConnectionReservedPublicIpConfigArgs.builder()
+///                 .natIpsCount(1)
+///                 .build())
+///             .createWithoutValidation(false)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:databasemigrationservice:PrivateConnection
+///     properties:
+///       displayName: dbms_pc
+///       location: us-west1
+///       privateConnectionId: my-connection
+///       labels:
+///         key: value
+///       reservedPublicIpConfig:
+///         natIpsCount: 1
+///       createWithoutValidation: false
 /// ```
 ///
 ///
@@ -591,6 +757,9 @@ class PrivateConnection extends pulumi.CustomResource {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+  /// The Reserved Public IP configuration.
+  /// Structure is documented below.
+  late final pulumi.Output<PrivateConnectionReservedPublicIpConfig?> reservedPublicIpConfig;
   /// State of the PrivateConnection.
   late final pulumi.Output<String> state;
   /// The VPC Peering configuration is used to create VPC peering
@@ -610,7 +779,7 @@ class PrivateConnection extends pulumi.CustomResource {
           'gcp:databasemigrationservice/privateConnection:PrivateConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
@@ -625,6 +794,7 @@ class PrivateConnection extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pscInterfaceConfig = registerOutput<PrivateConnectionPscInterfaceConfig?>('pscInterfaceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionPscInterfaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reservedPublicIpConfig = registerOutput<PrivateConnectionReservedPublicIpConfig?>('reservedPublicIpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionReservedPublicIpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     vpcPeeringConfig = registerOutput<PrivateConnectionVpcPeeringConfig?>('vpcPeeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionVpcPeeringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -665,6 +835,7 @@ class PrivateConnection extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pscInterfaceConfig = registerOutput<PrivateConnectionPscInterfaceConfig?>('pscInterfaceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionPscInterfaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reservedPublicIpConfig = registerOutput<PrivateConnectionReservedPublicIpConfig?>('reservedPublicIpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionReservedPublicIpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
     vpcPeeringConfig = registerOutput<PrivateConnectionVpcPeeringConfig?>('vpcPeeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionVpcPeeringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -691,6 +862,7 @@ class PrivateConnection extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pscInterfaceConfig = registerOutput<PrivateConnectionPscInterfaceConfig?>('pscInterfaceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionPscInterfaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reservedPublicIpConfig = registerOutput<PrivateConnectionReservedPublicIpConfig?>('reservedPublicIpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionReservedPublicIpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     vpcPeeringConfig = registerOutput<PrivateConnectionVpcPeeringConfig?>('vpcPeeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionVpcPeeringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

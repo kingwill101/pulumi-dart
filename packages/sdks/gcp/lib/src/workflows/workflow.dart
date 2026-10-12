@@ -180,8 +180,8 @@ import 'workflow_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workflows"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workflows"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -587,10 +587,10 @@ import 'workflow_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workflows"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workflows"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 /// func main() {
@@ -930,7 +930,7 @@ class Workflow extends pulumi.CustomResource {
   late final pulumi.Output<String> serviceAccount;
   /// Workflow code to be executed. The size limit is 128KB.
   /// &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
-  late final pulumi.Output<String?> sourceContents;
+  late final pulumi.Output<String> sourceContents;
   /// State of the workflow deployment.
   late final pulumi.Output<String> state;
   /// A map of resource manager tags. Resource manager tag keys and values have the same definition
@@ -954,7 +954,7 @@ class Workflow extends pulumi.CustomResource {
           'gcp:workflows/workflow:Workflow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     callLogLevel = registerOutput<String?>('callLogLevel');
@@ -973,7 +973,7 @@ class Workflow extends pulumi.CustomResource {
     region = registerOutput<String?>('region');
     revisionId = registerOutput<String>('revisionId');
     serviceAccount = registerOutput<String>('serviceAccount');
-    sourceContents = registerOutput<String?>('sourceContents');
+    sourceContents = registerOutput<String>('sourceContents');
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
@@ -1020,7 +1020,7 @@ class Workflow extends pulumi.CustomResource {
     region = registerOutput<String?>('region');
     revisionId = registerOutput<String>('revisionId');
     serviceAccount = registerOutput<String>('serviceAccount');
-    sourceContents = registerOutput<String?>('sourceContents');
+    sourceContents = registerOutput<String>('sourceContents');
     this.state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
@@ -1053,7 +1053,7 @@ class Workflow extends pulumi.CustomResource {
     region = registerOutput<String?>('region');
     revisionId = registerOutput<String>('revisionId');
     serviceAccount = registerOutput<String>('serviceAccount');
-    sourceContents = registerOutput<String?>('sourceContents');
+    sourceContents = registerOutput<String>('sourceContents');
     state = registerOutput<String>('state');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');

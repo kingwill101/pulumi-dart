@@ -134,7 +134,7 @@ import 'security_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -388,8 +388,8 @@ import 'security_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/recaptcha"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -683,7 +683,7 @@ import 'security_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1010,7 +1010,7 @@ import 'security_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1284,7 +1284,7 @@ import 'security_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1402,6 +1402,282 @@ import 'security_policy_state.dart';
 /// ```
 ///
 ///
+/// ### With Request Body Expression
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const policy = new gcp.compute.SecurityPolicy("policy", {
+///     name: "my-policy",
+///     description: "Policy with Request Body inspection",
+///     rules: [
+///         {
+///             action: "deny(403)",
+///             priority: 1000,
+///             match: {
+///                 expr: {
+///                     expression: "request.body.contains('my-match-string')",
+///                 },
+///             },
+///             description: "Deny requests containing specific body string",
+///         },
+///         {
+///             action: "allow",
+///             priority: 2147483647,
+///             match: {
+///                 versionedExpr: "SRC_IPS_V1",
+///                 config: {
+///                     srcIpRanges: ["*"],
+///                 },
+///             },
+///             description: "default rule",
+///         },
+///     ],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// policy = gcp.compute.SecurityPolicy("policy",
+///     name="my-policy",
+///     description="Policy with Request Body inspection",
+///     rules=[
+///         {
+///             "action": "deny(403)",
+///             "priority": 1000,
+///             "match": {
+///                 "expr": {
+///                     "expression": "request.body.contains('my-match-string')",
+///                 },
+///             },
+///             "description": "Deny requests containing specific body string",
+///         },
+///         {
+///             "action": "allow",
+///             "priority": 2147483647,
+///             "match": {
+///                 "versioned_expr": "SRC_IPS_V1",
+///                 "config": {
+///                     "src_ip_ranges": ["*"],
+///                 },
+///             },
+///             "description": "default rule",
+///         },
+///     ])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
+///     {
+///         Name = "my-policy",
+///         Description = "Policy with Request Body inspection",
+///         Rules = new[]
+///         {
+///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
+///             {
+///                 Action = "deny(403)",
+///                 Priority = 1000,
+///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+///                 {
+///                     Expr = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchExprArgs
+///                     {
+///                         Expression = "request.body.contains('my-match-string')",
+///                     },
+///                 },
+///                 Description = "Deny requests containing specific body string",
+///             },
+///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
+///             {
+///                 Action = "allow",
+///                 Priority = 2147483647,
+///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+///                 {
+///                     VersionedExpr = "SRC_IPS_V1",
+///                     Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
+///                     {
+///                         SrcIpRanges = new[]
+///                         {
+///                             "*",
+///                         },
+///                     },
+///                 },
+///                 Description = "default rule",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
+/// 			Name:        pulumi.String("my-policy"),
+/// 			Description: pulumi.String("Policy with Request Body inspection"),
+/// 			Rules: compute.SecurityPolicyRuleTypeArray{
+/// 				&compute.SecurityPolicyRuleTypeArgs{
+/// 					Action:   pulumi.String("deny(403)"),
+/// 					Priority: pulumi.Int(1000),
+/// 					Match: &compute.SecurityPolicyRuleMatchArgs{
+/// 						Expr: &compute.SecurityPolicyRuleMatchExprArgs{
+/// 							Expression: pulumi.String("request.body.contains('my-match-string')"),
+/// 						},
+/// 					},
+/// 					Description: pulumi.String("Deny requests containing specific body string"),
+/// 				},
+/// 				&compute.SecurityPolicyRuleTypeArgs{
+/// 					Action:   pulumi.String("allow"),
+/// 					Priority: pulumi.Int(2147483647),
+/// 					Match: &compute.SecurityPolicyRuleMatchArgs{
+/// 						VersionedExpr: pulumi.String("SRC_IPS_V1"),
+/// 						Config: &compute.SecurityPolicyRuleMatchConfigArgs{
+/// 							SrcIpRanges: pulumi.StringArray{
+/// 								pulumi.String("*"),
+/// 							},
+/// 						},
+/// 					},
+/// 					Description: pulumi.String("default rule"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_securitypolicy" "policy" {
+///   name        = "my-policy"
+///   description = "Policy with Request Body inspection"
+///   rules {
+///     action   = "deny(403)"
+///     priority = 1000
+///     match = {
+///       expr = {
+///         expression = "request.body.contains('my-match-string')"
+///       }
+///     }
+///     description = "Deny requests containing specific body string"
+///   }
+///   rules {
+///     action   = "allow"
+///     priority = 2147483647
+///     match = {
+///       versioned_expr = "SRC_IPS_V1"
+///       config = {
+///         src_ip_ranges = ["*"]
+///       }
+///     }
+///     description = "default rule"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.SecurityPolicy;
+/// import com.pulumi.gcp.compute.SecurityPolicyArgs;
+/// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchArgs;
+/// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchExprArgs;
+/// import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()
+///             .name("my-policy")
+///             .description("Policy with Request Body inspection")
+///             .rules(
+///                 SecurityPolicyRuleArgs.builder()
+///                     .action("deny(403)")
+///                     .priority(1000)
+///                     .match(SecurityPolicyRuleMatchArgs.builder()
+///                         .expr(SecurityPolicyRuleMatchExprArgs.builder()
+///                             .expression("request.body.contains('my-match-string')")
+///                             .build())
+///                         .build())
+///                     .description("Deny requests containing specific body string")
+///                     .build(),
+///                 SecurityPolicyRuleArgs.builder()
+///                     .action("allow")
+///                     .priority(2147483647)
+///                     .match(SecurityPolicyRuleMatchArgs.builder()
+///                         .versionedExpr("SRC_IPS_V1")
+///                         .config(SecurityPolicyRuleMatchConfigArgs.builder()
+///                             .srcIpRanges("*")
+///                             .build())
+///                         .build())
+///                     .description("default rule")
+///                     .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   policy:
+///     type: gcp:compute:SecurityPolicy
+///     properties:
+///       name: my-policy
+///       description: Policy with Request Body inspection
+///       rules:
+///         - action: deny(403)
+///           priority: 1000
+///           match:
+///             expr:
+///               expression: request.body.contains('my-match-string')
+///           description: Deny requests containing specific body string
+///         - action: allow
+///           priority: 2.147483647e+09
+///           match:
+///             versionedExpr: SRC_IPS_V1
+///             config:
+///               srcIpRanges:
+///                 - '*'
+///           description: default rule
+/// ```
+///
+///
 /// ## Import
 ///
 /// Security policies can be imported using any of these accepted formats:
@@ -1482,7 +1758,7 @@ class SecurityPolicy extends pulumi.CustomResource {
           'gcp:compute/securityPolicy:SecurityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     adaptiveProtectionConfig = registerOutput<SecurityPolicyAdaptiveProtectionConfig?>('adaptiveProtectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityPolicyAdaptiveProtectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

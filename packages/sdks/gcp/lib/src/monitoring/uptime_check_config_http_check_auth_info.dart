@@ -13,7 +13,7 @@ class UptimeCheckConfigHttpCheckAuthInfo {
   ///
   /// &gt; **Note:** One of `password` or `passwordWo` can only be set.
   final pulumi.Input<String?>? passwordWo;
-  /// The password write-only version.
+  /// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   final pulumi.Input<String?>? passwordWoVersion;
   /// The username to authenticate.
   final pulumi.Input<String> username;
@@ -21,7 +21,7 @@ class UptimeCheckConfigHttpCheckAuthInfo {
   /// Creates a new [UptimeCheckConfigHttpCheckAuthInfo].
   /// [password] The password to authenticate.
   /// [passwordWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [passwordWoVersion] The password write-only version.
+  /// [passwordWoVersion] Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   /// [username] The username to authenticate.
   const UptimeCheckConfigHttpCheckAuthInfo({
     this.password,

@@ -81,7 +81,7 @@ class RegionSecurityPolicyRuleRateLimitOptions {
 
   factory RegionSecurityPolicyRuleRateLimitOptions.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyRuleRateLimitOptions(
-      banDurationSec: (() { final guardedValue = map['banDurationSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      banDurationSec: (() { final guardedValue = map['banDurationSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       banThreshold: (() { final guardedValue = map['banThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionSecurityPolicyRuleRateLimitOptionsBanThreshold.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       conformAction: (() { final guardedValue = map['conformAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enforceOnKey: (() { final guardedValue = map['enforceOnKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

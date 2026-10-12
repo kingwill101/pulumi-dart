@@ -78,7 +78,7 @@ import 'routine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -275,7 +275,7 @@ import 'routine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -530,7 +530,7 @@ import 'routine_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -818,7 +818,7 @@ import 'routine_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1124,7 +1124,7 @@ import 'routine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1416,7 +1416,7 @@ import 'routine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1699,7 +1699,7 @@ import 'routine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1884,7 +1884,7 @@ import 'routine_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const test = new gcp.bigquery.Dataset("test", {datasetId: "tf_test_dataset_id_60302"});
+/// const test = new gcp.bigquery.Dataset("test", {datasetId: "tf_test_dataset_id_22811"});
 /// const customMaskingRoutine = new gcp.bigquery.Routine("custom_masking_routine", {
 ///     datasetId: test.datasetId,
 ///     routineId: "custom_masking_routine",
@@ -1903,7 +1903,7 @@ import 'routine_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// test = gcp.bigquery.Dataset("test", dataset_id="tf_test_dataset_id_60302")
+/// test = gcp.bigquery.Dataset("test", dataset_id="tf_test_dataset_id_22811")
 /// custom_masking_routine = gcp.bigquery.Routine("custom_masking_routine",
 ///     dataset_id=test.dataset_id,
 ///     routine_id="custom_masking_routine",
@@ -1927,7 +1927,7 @@ import 'routine_state.dart';
 /// {
 ///     var test = new Gcp.BigQuery.Dataset("test", new()
 ///     {
-///         DatasetId = "tf_test_dataset_id_60302",
+///         DatasetId = "tf_test_dataset_id_22811",
 ///     });
 ///
 ///     var customMaskingRoutine = new Gcp.BigQuery.Routine("custom_masking_routine", new()
@@ -1955,14 +1955,14 @@ import 'routine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
-/// 			DatasetId: pulumi.String("tf_test_dataset_id_60302"),
+/// 			DatasetId: pulumi.String("tf_test_dataset_id_22811"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1999,7 +1999,7 @@ import 'routine_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "test" {
-///   dataset_id = "tf_test_dataset_id_60302"
+///   dataset_id = "tf_test_dataset_id_22811"
 /// }
 /// resource "gcp_bigquery_routine" "custom_masking_routine" {
 ///   dataset_id           = gcp_bigquery_dataset.test.dataset_id
@@ -2040,7 +2040,7 @@ import 'routine_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var test = new Dataset("test", DatasetArgs.builder()
-///             .datasetId("tf_test_dataset_id_60302")
+///             .datasetId("tf_test_dataset_id_22811")
 ///             .build());
 ///
 ///         var customMaskingRoutine = new Routine("customMaskingRoutine", RoutineArgs.builder()
@@ -2065,7 +2065,7 @@ import 'routine_state.dart';
 ///   test:
 ///     type: gcp:bigquery:Dataset
 ///     properties:
-///       datasetId: tf_test_dataset_id_60302
+///       datasetId: tf_test_dataset_id_22811
 ///   customMaskingRoutine:
 ///     type: gcp:bigquery:Routine
 ///     name: custom_masking_routine
@@ -2181,7 +2181,7 @@ import 'routine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2469,7 +2469,7 @@ import 'routine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2755,7 +2755,7 @@ class Routine extends pulumi.CustomResource {
           'gcp:bigquery/routine:Routine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     arguments = registerOutput<List<RoutineArgument>?>('arguments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutineArgument>(guardedValue, (value) => RoutineArgument.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<int>('creationTime');

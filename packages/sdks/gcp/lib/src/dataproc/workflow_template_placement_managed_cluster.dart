@@ -6,14 +6,14 @@ import 'workflow_template_placement_managed_cluster_config.dart';
 class WorkflowTemplatePlacementManagedCluster {
   /// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
   final pulumi.Input<String> clusterName;
-  /// Required. The cluster configuration.
+  /// Required. The cluster configuration. Structure is documented below.
   final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfig> config;
   /// The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
   final pulumi.Input<Map<String, String>?>? labels;
 
   /// Creates a new [WorkflowTemplatePlacementManagedCluster].
   /// [clusterName] Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
-  /// [config] Required. The cluster configuration.
+  /// [config] Required. The cluster configuration. Structure is documented below.
   /// [labels] The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
   const WorkflowTemplatePlacementManagedCluster({
     required this.clusterName,

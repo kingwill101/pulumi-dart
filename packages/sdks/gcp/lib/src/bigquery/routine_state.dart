@@ -161,7 +161,7 @@ class RoutineState {
   factory RoutineState.fromMap(Map<String, dynamic> map) {
     return RoutineState(
       arguments: (() { final guardedValue = map['arguments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RoutineArgument>(guardedValue, (value) => RoutineArgument.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dataGovernanceType: (() { final guardedValue = map['dataGovernanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       datasetId: (() { final guardedValue = map['datasetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       definitionBody: (() { final guardedValue = map['definitionBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -171,7 +171,7 @@ class RoutineState {
       externalRuntimeOptions: (() { final guardedValue = map['externalRuntimeOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutineExternalRuntimeOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       importedLibraries: (() { final guardedValue = map['importedLibraries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       language: (() { final guardedValue = map['language']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pythonOptions: (() { final guardedValue = map['pythonOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutinePythonOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       remoteFunctionOptions: (() { final guardedValue = map['remoteFunctionOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutineRemoteFunctionOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -26,7 +26,7 @@ class GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
   factory GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig(
       gpuSharingStrategy: pulumi.Input.fromValue(map['gpuSharingStrategy'] as String),
-      maxSharedClientsPerGpu: pulumi.Input.fromValue((map['maxSharedClientsPerGpu'] as num).toInt()),
+      maxSharedClientsPerGpu: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxSharedClientsPerGpu'])),
     );
   }
 }

@@ -6,6 +6,7 @@ import 'query_template_state.dart';
 /// Represents a BigQuery Query Template within a Data Exchange.
 /// This resource defines a reusable SQL routine (e.g., a TVF) that can be
 /// shared or executed via the Data Exchange.
+/// &gt; **Note:** Approving a Query Template is not supported by Terraform. The approve flow includes steps that can only be performed through the Google Cloud console UI. You can still create a Query Template (e.g. a TVF) and add it as a listing to a Data Clean Room via Terraform, but the final approval must be done manually.
 ///
 ///
 /// To get more information about QueryTemplate, see:
@@ -121,8 +122,8 @@ import 'query_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -365,7 +366,7 @@ class QueryTemplate extends pulumi.CustomResource {
           'gcp:bigqueryanalyticshub/queryTemplate:QueryTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     dataExchangeId = registerOutput<String>('dataExchangeId');

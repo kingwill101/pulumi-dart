@@ -95,7 +95,7 @@ import 'secret_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -225,7 +225,7 @@ import 'secret_version_state.dart';
 /// });
 /// const secret_version_basic_write_only = new gcp.secretmanager.SecretVersion("secret-version-basic-write-only", {
 ///     secret: secret_basic_write_only.id,
-///     secretDataWoVersion: 1,
+///     secretDataWoVersion: "1",
 ///     secretDataWo: "secret-data-write-only",
 /// });
 /// ```
@@ -243,7 +243,7 @@ import 'secret_version_state.dart';
 ///     })
 /// secret_version_basic_write_only = gcp.secretmanager.SecretVersion("secret-version-basic-write-only",
 ///     secret=secret_basic_write_only.id,
-///     secret_data_wo_version=1,
+///     secret_data_wo_version="1",
 ///     secret_data_wo="secret-data-write-only")
 /// ```
 /// ```csharp
@@ -270,7 +270,7 @@ import 'secret_version_state.dart';
 ///     var secret_version_basic_write_only = new Gcp.SecretManager.SecretVersion("secret-version-basic-write-only", new()
 ///     {
 ///         Secret = secret_basic_write_only.Id,
-///         SecretDataWoVersion = 1,
+///         SecretDataWoVersion = "1",
 ///         SecretDataWo = "secret-data-write-only",
 ///     });
 ///
@@ -280,7 +280,7 @@ import 'secret_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -300,7 +300,7 @@ import 'secret_version_state.dart';
 /// 		}
 /// 		_, err = secretmanager.NewSecretVersion(ctx, "secret-version-basic-write-only", &secretmanager.SecretVersionArgs{
 /// 			Secret:              secret_basic_write_only.ID().ToIDOutput().ToStringOutput(),
-/// 			SecretDataWoVersion: pulumi.Int(1),
+/// 			SecretDataWoVersion: pulumi.String("1"),
 /// 			SecretDataWo:        pulumi.String("secret-data-write-only"),
 /// 		})
 /// 		if err != nil {
@@ -370,7 +370,7 @@ import 'secret_version_state.dart';
 ///
 ///         var secret_version_basic_write_only = new SecretVersion("secret-version-basic-write-only", SecretVersionArgs.builder()
 ///             .secret(secret_basic_write_only.id())
-///             .secretDataWoVersion(1)
+///             .secretDataWoVersion("1")
 ///             .secretDataWo("secret-data-write-only")
 ///             .build());
 ///
@@ -476,7 +476,7 @@ import 'secret_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -679,7 +679,7 @@ import 'secret_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -890,7 +890,7 @@ import 'secret_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1053,7 +1053,7 @@ import 'secret_version_state.dart';
 /// const secret_version_base64_write_only = new gcp.secretmanager.SecretVersion("secret-version-base64-write-only", {
 ///     secret: secret_basic.id,
 ///     isSecretDataBase64: true,
-///     secretDataWoVersion: 1,
+///     secretDataWoVersion: "1",
 ///     secretDataWo: std.filebase64({
 ///         input: "secret-data-base64-write-only.pfx",
 ///     }).then(invoke => invoke.result),
@@ -1076,7 +1076,7 @@ import 'secret_version_state.dart';
 /// secret_version_base64_write_only = gcp.secretmanager.SecretVersion("secret-version-base64-write-only",
 ///     secret=secret_basic.id,
 ///     is_secret_data_base64=True,
-///     secret_data_wo_version=1,
+///     secret_data_wo_version="1",
 ///     secret_data_wo=std.filebase64(input="secret-data-base64-write-only.pfx").result)
 /// ```
 /// ```csharp
@@ -1110,7 +1110,7 @@ import 'secret_version_state.dart';
 ///     {
 ///         Secret = secret_basic.Id,
 ///         IsSecretDataBase64 = true,
-///         SecretDataWoVersion = 1,
+///         SecretDataWoVersion = "1",
 ///         SecretDataWo = Std.Filebase64.Invoke(new()
 ///         {
 ///             Input = "secret-data-base64-write-only.pfx",
@@ -1123,7 +1123,7 @@ import 'secret_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1154,7 +1154,7 @@ import 'secret_version_state.dart';
 /// 		_, err = secretmanager.NewSecretVersion(ctx, "secret-version-base64-write-only", &secretmanager.SecretVersionArgs{
 /// 			Secret:              secret_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			IsSecretDataBase64:  pulumi.Bool(true),
-/// 			SecretDataWoVersion: pulumi.Int(1),
+/// 			SecretDataWoVersion: pulumi.String("1"),
 /// 			SecretDataWo:        pulumi.String(invokeFilebase64.Result),
 /// 		})
 /// 		if err != nil {
@@ -1235,7 +1235,7 @@ import 'secret_version_state.dart';
 ///         var secret_version_base64_write_only = new SecretVersion("secret-version-base64-write-only", SecretVersionArgs.builder()
 ///             .secret(secret_basic.id())
 ///             .isSecretDataBase64(true)
-///             .secretDataWoVersion(1)
+///             .secretDataWoVersion("1")
 ///             .secretDataWo(StdFunctions.filebase64(Filebase64Args.builder()
 ///                 .input("secret-data-base64-write-only.pfx")
 ///                 .build()).result())
@@ -1273,13 +1273,13 @@ import 'secret_version_state.dart';
 ///
 /// SecretVersion can be imported using any of these accepted formats:
 ///
-/// * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
+/// * `projects/{{project}}/secrets/{{secret}}/versions/{{version}}`
 ///
 ///
 /// When using the `pulumi import` command, SecretVersion can be imported using one of the formats above. For example:
 ///
 /// ```sh
-/// $ pulumi import gcp:secretmanager/secretVersion:SecretVersion default projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}
+/// $ pulumi import gcp:secretmanager/secretVersion:SecretVersion default projects/{{project}}/secrets/{{secret}}/versions/{{version}}
 /// ```
 class SecretVersion extends pulumi.CustomResource {
   /// The time at which the Secret was created.
@@ -1316,13 +1316,13 @@ class SecretVersion extends pulumi.CustomResource {
   late final pulumi.Output<String?> secretData;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
-  /// The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+  /// The secret data. Must be no larger than 64KiB.
   /// **Note**: This property is write-only and will not be read from the API.
   ///
   /// &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
   late final pulumi.Output<String?> secretDataWo;
-  /// Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  late final pulumi.Output<int?> secretDataWoVersion;
+  /// Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+  late final pulumi.Output<String?> secretDataWoVersion;
   /// The version of the Secret.
   late final pulumi.Output<String> version;
 
@@ -1338,7 +1338,7 @@ class SecretVersion extends pulumi.CustomResource {
           'gcp:secretmanager/secretVersion:SecretVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['secretData', 'secretDataWo'],
         ) {
     createTime = registerOutput<String>('createTime');
@@ -1351,7 +1351,7 @@ class SecretVersion extends pulumi.CustomResource {
     secret = registerOutput<String>('secret');
     secretData = registerOutput<String?>('secretData', isSecret: true);
     secretDataWo = registerOutput<String?>('secretDataWo', isSecret: true);
-    secretDataWoVersion = registerOutput<int?>('secretDataWoVersion');
+    secretDataWoVersion = registerOutput<String?>('secretDataWoVersion');
     version = registerOutput<String>('version');
   }
 
@@ -1389,7 +1389,7 @@ class SecretVersion extends pulumi.CustomResource {
     secret = registerOutput<String>('secret');
     secretData = registerOutput<String?>('secretData', isSecret: true);
     secretDataWo = registerOutput<String?>('secretDataWo', isSecret: true);
-    secretDataWoVersion = registerOutput<int?>('secretDataWoVersion');
+    secretDataWoVersion = registerOutput<String?>('secretDataWoVersion');
     version = registerOutput<String>('version');
   }
 
@@ -1413,7 +1413,7 @@ class SecretVersion extends pulumi.CustomResource {
     secret = registerOutput<String>('secret');
     secretData = registerOutput<String?>('secretData', isSecret: true);
     secretDataWo = registerOutput<String?>('secretDataWo', isSecret: true);
-    secretDataWoVersion = registerOutput<int?>('secretDataWoVersion');
+    secretDataWoVersion = registerOutput<String?>('secretDataWoVersion');
     version = registerOutput<String>('version');
   }
 }

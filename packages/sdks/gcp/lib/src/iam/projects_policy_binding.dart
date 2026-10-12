@@ -131,8 +131,8 @@ import 'projects_policy_binding_target.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -321,6 +321,701 @@ import 'projects_policy_binding_target.dart';
 ///       arguments: {}
 /// ```
 ///
+/// ### Iam Projects Policy Binding Access Policy
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as time from "@pulumiverse/time";
+///
+/// const project = new gcp.organizations.Project("project", {
+///     projectId: "ap-proj-",
+///     name: "ap-proj-",
+///     orgId: "123456789",
+///     billingAccount: "000000-0000000-0000000-000000",
+///     deletionPolicy: "DELETE",
+/// });
+/// const iamApi = new gcp.projects.Service("iam_api", {
+///     project: project.projectId,
+///     service: "iam.googleapis.com",
+///     disableOnDestroy: false,
+/// });
+/// // Binding access policies can be blocked by the managed org policy constraint
+/// // iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this project.
+/// const allowAccessPolicyBinding = new gcp.orgpolicy.Policy("allow_access_policy_binding", {
+///     name: pulumi.interpolate`projects/${project.projectId}/policies/iam.managed.disableAccessPolicyBinding`,
+///     parent: pulumi.interpolate`projects/${project.projectId}`,
+///     spec: {
+///         rules: [{
+///             enforce: "FALSE",
+///         }],
+///     },
+/// });
+/// const waitForProjectSetup = new time.Sleep("wait_for_project_setup", {createDuration: "120s"}, {
+///     dependsOn: [
+///         iamApi,
+///         allowAccessPolicyBinding,
+///     ],
+/// });
+/// const testSa = new gcp.serviceaccount.Account("test_sa", {
+///     project: project.projectId,
+///     accountId: "ap-sa-",
+///     displayName: "Test Service Account for Access Policy",
+/// }, {
+///     dependsOn: [waitForProjectSetup],
+/// });
+/// const accessPolicy = new gcp.iam.ProjectAccessPolicy("access_policy", {
+///     project: project.projectId,
+///     location: "global",
+///     accessPolicyId: "my-project-policy-",
+///     details: {
+///         rules: [{
+///             effect: "ALLOW",
+///             principals: [pulumi.interpolate`principal://iam.googleapis.com/projects/-/serviceAccounts/${testSa.email}`],
+///             operation: {
+///                 permissions: ["eventarc.googleapis.com/messageBuses.publish"],
+///             },
+///         }],
+///     },
+/// });
+/// const wait60Seconds = new time.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+///     dependsOn: [accessPolicy],
+/// });
+/// const my_project_access_policy_binding = new gcp.iam.ProjectsPolicyBinding("my-project-access-policy-binding", {
+///     project: project.projectId,
+///     location: "global",
+///     displayName: "Binding for a project access policy",
+///     policyKind: "ACCESS",
+///     policyBindingId: "my-project-access-binding-",
+///     policy: pulumi.interpolate`projects/${project.projectId}/locations/global/accessPolicies/${accessPolicy.accessPolicyId}`,
+///     target: {
+///         resource: pulumi.interpolate`//cloudresourcemanager.googleapis.com/projects/${project.projectId}`,
+///     },
+/// }, {
+///     dependsOn: [wait60Seconds],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumiverse_time as time
+///
+/// project = gcp.organizations.Project("project",
+///     project_id="ap-proj-",
+///     name="ap-proj-",
+///     org_id="123456789",
+///     billing_account="000000-0000000-0000000-000000",
+///     deletion_policy="DELETE")
+/// iam_api = gcp.projects.Service("iam_api",
+///     project=project.project_id,
+///     service="iam.googleapis.com",
+///     disable_on_destroy=False)
+/// # Binding access policies can be blocked by the managed org policy constraint
+/// # iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this project.
+/// allow_access_policy_binding = gcp.orgpolicy.Policy("allow_access_policy_binding",
+///     name=project.project_id.apply(lambda project_id: f"projects/{project_id}/policies/iam.managed.disableAccessPolicyBinding"),
+///     parent=project.project_id.apply(lambda project_id: f"projects/{project_id}"),
+///     spec={
+///         "rules": [{
+///             "enforce": "FALSE",
+///         }],
+///     })
+/// wait_for_project_setup = time.Sleep("wait_for_project_setup", create_duration="120s",
+/// opts = pulumi.ResourceOptions(depends_on=[
+///         iam_api,
+///         allow_access_policy_binding,
+///     ]))
+/// test_sa = gcp.serviceaccount.Account("test_sa",
+///     project=project.project_id,
+///     account_id="ap-sa-",
+///     display_name="Test Service Account for Access Policy",
+///     opts = pulumi.ResourceOptions(depends_on=[wait_for_project_setup]))
+/// access_policy = gcp.iam.ProjectAccessPolicy("access_policy",
+///     project=project.project_id,
+///     location="global",
+///     access_policy_id="my-project-policy-",
+///     details={
+///         "rules": [{
+///             "effect": "ALLOW",
+///             "principals": [test_sa.email.apply(lambda email: f"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}")],
+///             "operation": {
+///                 "permissions": ["eventarc.googleapis.com/messageBuses.publish"],
+///             },
+///         }],
+///     })
+/// wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+/// opts = pulumi.ResourceOptions(depends_on=[access_policy]))
+/// my_project_access_policy_binding = gcp.iam.ProjectsPolicyBinding("my-project-access-policy-binding",
+///     project=project.project_id,
+///     location="global",
+///     display_name="Binding for a project access policy",
+///     policy_kind="ACCESS",
+///     policy_binding_id="my-project-access-binding-",
+///     policy=pulumi.Output.all(
+///         project_id=project.project_id,
+///         access_policy_id=access_policy.access_policy_id
+/// ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project_id']}/locations/global/accessPolicies/{resolved_outputs['access_policy_id']}")
+/// ,
+///     target={
+///         "resource": project.project_id.apply(lambda project_id: f"//cloudresourcemanager.googleapis.com/projects/{project_id}"),
+///     },
+///     opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Time = Pulumiverse.Time;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var project = new Gcp.Organizations.Project("project", new()
+///     {
+///         ProjectId = "ap-proj-",
+///         Name = "ap-proj-",
+///         OrgId = "123456789",
+///         BillingAccount = "000000-0000000-0000000-000000",
+///         DeletionPolicy = "DELETE",
+///     });
+///
+///     var iamApi = new Gcp.Projects.Service("iam_api", new()
+///     {
+///         Project = project.ProjectId,
+///         ServiceName = "iam.googleapis.com",
+///         DisableOnDestroy = false,
+///     });
+///
+///     // Binding access policies can be blocked by the managed org policy constraint
+///     // iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this project.
+///     var allowAccessPolicyBinding = new Gcp.OrgPolicy.Policy("allow_access_policy_binding", new()
+///     {
+///         Name = project.ProjectId.Apply(projectId => $"projects/{projectId}/policies/iam.managed.disableAccessPolicyBinding"),
+///         Parent = project.ProjectId.Apply(projectId => $"projects/{projectId}"),
+///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
+///         {
+///             Rules = new[]
+///             {
+///                 new Gcp.OrgPolicy.Inputs.PolicySpecRuleArgs
+///                 {
+///                     Enforce = "FALSE",
+///                 },
+///             },
+///         },
+///     });
+///
+///     var waitForProjectSetup = new Time.Sleep("wait_for_project_setup", new()
+///     {
+///         CreateDuration = "120s",
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             iamApi,
+///             allowAccessPolicyBinding,
+///         },
+///     });
+///
+///     var testSa = new Gcp.ServiceAccount.Account("test_sa", new()
+///     {
+///         Project = project.ProjectId,
+///         AccountId = "ap-sa-",
+///         DisplayName = "Test Service Account for Access Policy",
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             waitForProjectSetup,
+///         },
+///     });
+///
+///     var accessPolicy = new Gcp.Iam.ProjectAccessPolicy("access_policy", new()
+///     {
+///         Project = project.ProjectId,
+///         Location = "global",
+///         AccessPolicyId = "my-project-policy-",
+///         Details = new Gcp.Iam.Inputs.ProjectAccessPolicyDetailsArgs
+///         {
+///             Rules = new[]
+///             {
+///                 new Gcp.Iam.Inputs.ProjectAccessPolicyDetailsRuleArgs
+///                 {
+///                     Effect = "ALLOW",
+///                     Principals = new[]
+///                     {
+///                         testSa.Email.Apply(email => $"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}"),
+///                     },
+///                     Operation = new Gcp.Iam.Inputs.ProjectAccessPolicyDetailsRuleOperationArgs
+///                     {
+///                         Permissions = new[]
+///                         {
+///                             "eventarc.googleapis.com/messageBuses.publish",
+///                         },
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+///     var wait60Seconds = new Time.Sleep("wait_60_seconds", new()
+///     {
+///         CreateDuration = "60s",
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             accessPolicy,
+///         },
+///     });
+///
+///     var my_project_access_policy_binding = new Gcp.Iam.ProjectsPolicyBinding("my-project-access-policy-binding", new()
+///     {
+///         Project = project.ProjectId,
+///         Location = "global",
+///         DisplayName = "Binding for a project access policy",
+///         PolicyKind = "ACCESS",
+///         PolicyBindingId = "my-project-access-binding-",
+///         Policy = Output.Tuple(project.ProjectId, accessPolicy.AccessPolicyId).Apply(values =>
+///         {
+///             var projectId = values.Item1;
+///             var accessPolicyId = values.Item2;
+///             return $"projects/{projectId}/locations/global/accessPolicies/{accessPolicyId}";
+///         }),
+///         Target = new Gcp.Iam.Inputs.ProjectsPolicyBindingTargetArgs
+///         {
+///             Resource = project.ProjectId.Apply(projectId => $"//cloudresourcemanager.googleapis.com/projects/{projectId}"),
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             wait60Seconds,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+/// 			ProjectId:      pulumi.String("ap-proj-"),
+/// 			Name:           pulumi.String("ap-proj-"),
+/// 			OrgId:          pulumi.String("123456789"),
+/// 			BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+/// 			DeletionPolicy: pulumi.String("DELETE"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		iamApi, err := projects.NewService(ctx, "iam_api", &projects.ServiceArgs{
+/// 			Project:          project.ProjectId,
+/// 			Service:          pulumi.String("iam.googleapis.com"),
+/// 			DisableOnDestroy: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		// Binding access policies can be blocked by the managed org policy constraint
+/// 		// iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this project.
+/// 		allowAccessPolicyBinding, err := orgpolicy.NewPolicy(ctx, "allow_access_policy_binding", &orgpolicy.PolicyArgs{
+/// 			Name: project.ProjectId.ApplyT(func(projectId string) (string, error) {
+/// 				return fmt.Sprintf("projects/%v/policies/iam.managed.disableAccessPolicyBinding", projectId), nil
+/// 			}).(pulumi.StringOutput),
+/// 			Parent: project.ProjectId.ApplyT(func(projectId string) (string, error) {
+/// 				return fmt.Sprintf("projects/%v", projectId), nil
+/// 			}).(pulumi.StringOutput),
+/// 			Spec: &orgpolicy.PolicySpecArgs{
+/// 				Rules: orgpolicy.PolicySpecRuleArray{
+/// 					&orgpolicy.PolicySpecRuleArgs{
+/// 						Enforce: pulumi.String("FALSE"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		waitForProjectSetup, err := time.NewSleep(ctx, "wait_for_project_setup", &time.SleepArgs{
+/// 			CreateDuration: pulumi.String("120s"),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			iamApi,
+/// 			allowAccessPolicyBinding,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		testSa, err := serviceaccount.NewAccount(ctx, "test_sa", &serviceaccount.AccountArgs{
+/// 			Project:     project.ProjectId,
+/// 			AccountId:   pulumi.String("ap-sa-"),
+/// 			DisplayName: pulumi.String("Test Service Account for Access Policy"),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			waitForProjectSetup,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		accessPolicy, err := iam.NewProjectAccessPolicy(ctx, "access_policy", &iam.ProjectAccessPolicyArgs{
+/// 			Project:        project.ProjectId,
+/// 			Location:       pulumi.String("global"),
+/// 			AccessPolicyId: pulumi.String("my-project-policy-"),
+/// 			Details: &iam.ProjectAccessPolicyDetailsArgs{
+/// 				Rules: iam.ProjectAccessPolicyDetailsRuleArray{
+/// 					&iam.ProjectAccessPolicyDetailsRuleArgs{
+/// 						Effect: pulumi.String("ALLOW"),
+/// 						Principals: pulumi.StringArray{
+/// 							testSa.Email.ApplyT(func(email string) (string, error) {
+/// 								return fmt.Sprintf("principal://iam.googleapis.com/projects/-/serviceAccounts/%v", email), nil
+/// 							}).(pulumi.StringOutput),
+/// 						},
+/// 						Operation: &iam.ProjectAccessPolicyDetailsRuleOperationArgs{
+/// 							Permissions: pulumi.StringArray{
+/// 								pulumi.String("eventarc.googleapis.com/messageBuses.publish"),
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+/// 			CreateDuration: pulumi.String("60s"),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			accessPolicy,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.NewProjectsPolicyBinding(ctx, "my-project-access-policy-binding", &iam.ProjectsPolicyBindingArgs{
+/// 			Project:         project.ProjectId,
+/// 			Location:        pulumi.String("global"),
+/// 			DisplayName:     pulumi.String("Binding for a project access policy"),
+/// 			PolicyKind:      pulumi.String("ACCESS"),
+/// 			PolicyBindingId: pulumi.String("my-project-access-binding-"),
+/// 			Policy: pulumi.All(project.ProjectId, accessPolicy.AccessPolicyId).ApplyT(func(_args []interface{}) (string, error) {
+/// 				projectId := _args[0].(string)
+/// 				accessPolicyId := _args[1].(string)
+/// 				return fmt.Sprintf("projects/%v/locations/global/accessPolicies/%v", projectId, accessPolicyId), nil
+/// 			}).(pulumi.StringOutput),
+/// 			Target: &iam.ProjectsPolicyBindingTargetArgs{
+/// 				Resource: project.ProjectId.ApplyT(func(projectId string) (string, error) {
+/// 					return fmt.Sprintf("//cloudresourcemanager.googleapis.com/projects/%v", projectId), nil
+/// 				}).(pulumi.StringOutput),
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			wait60Seconds,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "ap-proj-"
+///   name            = "ap-proj-"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_projects_service" "iam_api" {
+///   project            = gcp_organizations_project.project.project_id
+///   service            = "iam.googleapis.com"
+///   disable_on_destroy = false
+/// }
+/// # Binding access policies can be blocked by the managed org policy constraint
+/// # iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this project.
+/// resource "gcp_orgpolicy_policy" "allow_access_policy_binding" {
+///   name   ="projects/${gcp_organizations_project.project.project_id}/policies/iam.managed.disableAccessPolicyBinding"
+///   parent ="projects/${gcp_organizations_project.project.project_id}"
+///   spec = {
+///     rules = [{
+///       "enforce" = "FALSE"
+///     }]
+///   }
+/// }
+/// resource "time_sleep" "wait_for_project_setup" {
+///   depends_on      = [gcp_projects_service.iam_api, gcp_orgpolicy_policy.allow_access_policy_binding]
+///   create_duration = "120s"
+/// }
+/// resource "gcp_serviceaccount_account" "test_sa" {
+///   depends_on   = [time_sleep.wait_for_project_setup]
+///   project      = gcp_organizations_project.project.project_id
+///   account_id   = "ap-sa-"
+///   display_name = "Test Service Account for Access Policy"
+/// }
+/// resource "gcp_iam_projectaccesspolicy" "access_policy" {
+///   project          = gcp_organizations_project.project.project_id
+///   location         = "global"
+///   access_policy_id = "my-project-policy-"
+///   details = {
+///     rules = [{
+///       "effect"     = "ALLOW"
+///       "principals" = ["principal://iam.googleapis.com/projects/-/serviceAccounts/${gcp_serviceaccount_account.test_sa.email}"]
+///       "operation" = {
+///         "permissions" = ["eventarc.googleapis.com/messageBuses.publish"]
+///       }
+///     }]
+///   }
+/// }
+/// resource "time_sleep" "wait_60_seconds" {
+///   depends_on      = [gcp_iam_projectaccesspolicy.access_policy]
+///   create_duration = "60s"
+/// }
+/// resource "gcp_iam_projectspolicybinding" "my-project-access-policy-binding" {
+///   depends_on        = [time_sleep.wait_60_seconds]
+///   project           = gcp_organizations_project.project.project_id
+///   location          = "global"
+///   display_name      = "Binding for a project access policy"
+///   policy_kind       = "ACCESS"
+///   policy_binding_id = "my-project-access-binding-"
+///   policy            ="projects/${gcp_organizations_project.project.project_id}/locations/global/accessPolicies/${gcp_iam_projectaccesspolicy.access_policy.access_policy_id}"
+///   target = {
+///     resource ="//cloudresourcemanager.googleapis.com/projects/${gcp_organizations_project.project.project_id}"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.Project;
+/// import com.pulumi.gcp.organizations.ProjectArgs;
+/// import com.pulumi.gcp.projects.Service;
+/// import com.pulumi.gcp.projects.ServiceArgs;
+/// import com.pulumi.gcp.orgpolicy.Policy;
+/// import com.pulumi.gcp.orgpolicy.PolicyArgs;
+/// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+/// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleArgs;
+/// import com.pulumiverse.time.Sleep;
+/// import com.pulumiverse.time.SleepArgs;
+/// import com.pulumi.gcp.serviceaccount.Account;
+/// import com.pulumi.gcp.serviceaccount.AccountArgs;
+/// import com.pulumi.gcp.iam.ProjectAccessPolicy;
+/// import com.pulumi.gcp.iam.ProjectAccessPolicyArgs;
+/// import com.pulumi.gcp.iam.inputs.ProjectAccessPolicyDetailsArgs;
+/// import com.pulumi.gcp.iam.inputs.ProjectAccessPolicyDetailsRuleArgs;
+/// import com.pulumi.gcp.iam.inputs.ProjectAccessPolicyDetailsRuleOperationArgs;
+/// import com.pulumi.gcp.iam.ProjectsPolicyBinding;
+/// import com.pulumi.gcp.iam.ProjectsPolicyBindingArgs;
+/// import com.pulumi.gcp.iam.inputs.ProjectsPolicyBindingTargetArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var project = new Project("project", ProjectArgs.builder()
+///             .projectId("ap-proj-")
+///             .name("ap-proj-")
+///             .orgId("123456789")
+///             .billingAccount("000000-0000000-0000000-000000")
+///             .deletionPolicy("DELETE")
+///             .build());
+///
+///         var iamApi = new Service("iamApi", ServiceArgs.builder()
+///             .project(project.projectId())
+///             .service("iam.googleapis.com")
+///             .disableOnDestroy(false)
+///             .build());
+///
+///         // Binding access policies can be blocked by the managed org policy constraint
+///         // iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this project.
+///         var allowAccessPolicyBinding = new Policy("allowAccessPolicyBinding", PolicyArgs.builder()
+///             .name(project.projectId().applyValue(_projectId -> String.format("projects/%s/policies/iam.managed.disableAccessPolicyBinding", _projectId)))
+///             .parent(project.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))
+///             .spec(PolicySpecArgs.builder()
+///                 .rules(PolicySpecRuleArgs.builder()
+///                     .enforce("FALSE")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         var waitForProjectSetup = new Sleep("waitForProjectSetup", SleepArgs.builder()
+///             .createDuration("120s")
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(
+///                     iamApi,
+///                     allowAccessPolicyBinding)
+///                 .build());
+///
+///         var testSa = new Account("testSa", AccountArgs.builder()
+///             .project(project.projectId())
+///             .accountId("ap-sa-")
+///             .displayName("Test Service Account for Access Policy")
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(waitForProjectSetup)
+///                 .build());
+///
+///         var accessPolicy = new ProjectAccessPolicy("accessPolicy", ProjectAccessPolicyArgs.builder()
+///             .project(project.projectId())
+///             .location("global")
+///             .accessPolicyId("my-project-policy-")
+///             .details(ProjectAccessPolicyDetailsArgs.builder()
+///                 .rules(ProjectAccessPolicyDetailsRuleArgs.builder()
+///                     .effect("ALLOW")
+///                     .principals(testSa.email().applyValue(_email -> String.format("principal://iam.googleapis.com/projects/-/serviceAccounts/%s", _email)))
+///                     .operation(ProjectAccessPolicyDetailsRuleOperationArgs.builder()
+///                         .permissions("eventarc.googleapis.com/messageBuses.publish")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
+///             .createDuration("60s")
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(accessPolicy)
+///                 .build());
+///
+///         var my_project_access_policy_binding = new ProjectsPolicyBinding("my-project-access-policy-binding", ProjectsPolicyBindingArgs.builder()
+///             .project(project.projectId())
+///             .location("global")
+///             .displayName("Binding for a project access policy")
+///             .policyKind("ACCESS")
+///             .policyBindingId("my-project-access-binding-")
+///             .policy(Output.tuple(project.projectId(), accessPolicy.accessPolicyId()).applyValue(values -> {
+///                 var projectId = values.t1;
+///                 var accessPolicyId = values.t2;
+///                 return String.format("projects/%s/locations/global/accessPolicies/%s", projectId,accessPolicyId);
+///             }))
+///             .target(ProjectsPolicyBindingTargetArgs.builder()
+///                 .resource(project.projectId().applyValue(_projectId -> String.format("//cloudresourcemanager.googleapis.com/projects/%s", _projectId)))
+///                 .build())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(wait60Seconds)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   project:
+///     type: gcp:organizations:Project
+///     properties:
+///       projectId: ap-proj-
+///       name: ap-proj-
+///       orgId: '123456789'
+///       billingAccount: 000000-0000000-0000000-000000
+///       deletionPolicy: DELETE
+///   iamApi:
+///     type: gcp:projects:Service
+///     name: iam_api
+///     properties:
+///       project: ${project.projectId}
+///       service: iam.googleapis.com
+///       disableOnDestroy: false
+///   # Binding access policies can be blocked by the managed org policy constraint
+///   # iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this project.
+///   allowAccessPolicyBinding:
+///     type: gcp:orgpolicy:Policy
+///     name: allow_access_policy_binding
+///     properties:
+///       name: projects/${project.projectId}/policies/iam.managed.disableAccessPolicyBinding
+///       parent: projects/${project.projectId}
+///       spec:
+///         rules:
+///           - enforce: FALSE
+///   waitForProjectSetup:
+///     type: time:Sleep
+///     name: wait_for_project_setup
+///     properties:
+///       createDuration: 120s
+///     options:
+///       dependsOn:
+///         - ${iamApi}
+///         - ${allowAccessPolicyBinding}
+///   testSa:
+///     type: gcp:serviceaccount:Account
+///     name: test_sa
+///     properties:
+///       project: ${project.projectId}
+///       accountId: ap-sa-
+///       displayName: Test Service Account for Access Policy
+///     options:
+///       dependsOn:
+///         - ${waitForProjectSetup}
+///   accessPolicy:
+///     type: gcp:iam:ProjectAccessPolicy
+///     name: access_policy
+///     properties:
+///       project: ${project.projectId}
+///       location: global
+///       accessPolicyId: my-project-policy-
+///       details:
+///         rules:
+///           - effect: ALLOW
+///             principals:
+///               - principal://iam.googleapis.com/projects/-/serviceAccounts/${testSa.email}
+///             operation:
+///               permissions:
+///                 - eventarc.googleapis.com/messageBuses.publish
+///   wait60Seconds:
+///     type: time:Sleep
+///     name: wait_60_seconds
+///     properties:
+///       createDuration: 60s
+///     options:
+///       dependsOn:
+///         - ${accessPolicy}
+///   my-project-access-policy-binding:
+///     type: gcp:iam:ProjectsPolicyBinding
+///     properties:
+///       project: ${project.projectId}
+///       location: global
+///       displayName: Binding for a project access policy
+///       policyKind: ACCESS
+///       policyBindingId: my-project-access-binding-
+///       policy: projects/${project.projectId}/locations/global/accessPolicies/${accessPolicy.accessPolicyId}
+///       target:
+///         resource: //cloudresourcemanager.googleapis.com/projects/${project.projectId}
+///     options:
+///       dependsOn:
+///         - ${wait60Seconds}
+/// ```
+///
 ///
 /// ## Import
 ///
@@ -367,6 +1062,7 @@ class ProjectsPolicyBinding extends pulumi.CustomResource {
   /// The exact variables and functions that may be referenced within an expression are
   /// determined by the service that evaluates it. See the service documentation for
   /// additional information.
+  /// Conditions are currently only supported when the bound policy is a principal access boundary policy.
   /// Structure is documented below.
   late final pulumi.Output<ProjectsPolicyBindingCondition?> condition;
   /// Output only. The time when the policy binding was created.
@@ -402,6 +1098,8 @@ class ProjectsPolicyBinding extends pulumi.CustomResource {
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
   /// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+  /// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+  /// `resource` (for access policy bindings) must be set.
   /// Structure is documented below.
   late final pulumi.Output<ProjectsPolicyBindingTarget> target;
   /// Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
@@ -421,7 +1119,7 @@ class ProjectsPolicyBinding extends pulumi.CustomResource {
           'gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     condition = registerOutput<ProjectsPolicyBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectsPolicyBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

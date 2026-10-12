@@ -54,7 +54,7 @@ import 'get_regional_parameters_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -186,7 +186,7 @@ pulumi.Output<GetParameterResult> getParameterOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -323,7 +323,7 @@ pulumi.Output<GetParameterVersionResult> getParameterVersionOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -451,7 +451,7 @@ pulumi.Output<GetParameterVersionRenderResult> getParameterVersionRenderOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -578,7 +578,7 @@ pulumi.Output<GetParametersResult> getParametersOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -717,7 +717,7 @@ pulumi.Output<GetRegionalParameterResult> getRegionalParameterOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -862,7 +862,7 @@ pulumi.Output<GetRegionalParameterVersionResult> getRegionalParameterVersionOutp
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -999,7 +999,7 @@ pulumi.Output<GetRegionalParameterVersionRenderResult> getRegionalParameterVersi
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

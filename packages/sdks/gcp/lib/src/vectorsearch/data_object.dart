@@ -231,7 +231,7 @@ import 'data_object_vector.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vectorsearch"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vectorsearch"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -783,7 +783,7 @@ import 'data_object_vector.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vectorsearch"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vectorsearch"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1193,7 +1193,7 @@ class DataObject extends pulumi.CustomResource {
           'gcp:vectorsearch/dataObject:DataObject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     collectionId = registerOutput<String>('collectionId');
     createTime = registerOutput<String>('createTime');

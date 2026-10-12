@@ -50,6 +50,8 @@ class SearchEngineArgs {
   final pulumi.Input<SearchEngineKnowledgeGraphConfig?>? knowledgeGraphConfig;
   /// Location.
   final pulumi.Input<String> location;
+  /// The emails of the procurement contacts.
+  final pulumi.Input<List<String>?>? procurementContactEmails;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
@@ -71,6 +73,7 @@ class SearchEngineArgs {
   /// [kmsKeyName] The KMS key to be used to protect this Engine at creation time.
   /// [knowledgeGraphConfig] Configurations for the Knowledge Graph.
   /// [location] Location.
+  /// [procurementContactEmails] The emails of the procurement contacts.
   /// [project] The ID of the project in which the resource belongs.
   /// [searchEngineConfig] Configurations for a Search Engine.
   const SearchEngineArgs({
@@ -87,6 +90,7 @@ class SearchEngineArgs {
     this.kmsKeyName,
     this.knowledgeGraphConfig,
     required this.location,
+    this.procurementContactEmails,
     this.project,
     required this.searchEngineConfig,
   });
@@ -106,6 +110,7 @@ class SearchEngineArgs {
       'kmsKeyName': ?kmsKeyName,
       'knowledgeGraphConfig': ?pulumi.Input.mapOptionalInputValue<SearchEngineKnowledgeGraphConfig, Map<String, dynamic>>(knowledgeGraphConfig, (value) => value.toMap()),
       'location': location,
+      'procurementContactEmails': ?procurementContactEmails,
       'project': ?project,
       'searchEngineConfig': pulumi.Input.mapInputValue<SearchEngineSearchEngineConfig, Map<String, dynamic>>(searchEngineConfig, (value) => value.toMap()),
     };
@@ -126,6 +131,7 @@ class SearchEngineArgs {
       kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       knowledgeGraphConfig: (() { final guardedValue = map['knowledgeGraphConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SearchEngineKnowledgeGraphConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
+      procurementContactEmails: (() { final guardedValue = map['procurementContactEmails']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       searchEngineConfig: pulumi.Input.fromValue(SearchEngineSearchEngineConfig.fromMap((map['searchEngineConfig']! as Map).cast<String, dynamic>())),
     );

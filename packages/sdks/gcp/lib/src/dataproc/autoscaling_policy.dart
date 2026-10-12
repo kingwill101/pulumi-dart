@@ -21,7 +21,7 @@ import 'autoscaling_policy_worker_config.dart';
 ///
 /// const asp = new gcp.dataproc.AutoscalingPolicy("asp", {
 ///     policyId: "dataproc-policy",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     workerConfig: {
 ///         maxInstances: 3,
 ///     },
@@ -35,10 +35,26 @@ import 'autoscaling_policy_worker_config.dart';
 /// });
 /// const basic = new gcp.dataproc.Cluster("basic", {
 ///     name: "dataproc-policy",
-///     region: "us-central1",
+///     region: "us-east1",
 ///     clusterConfig: {
 ///         autoscalingConfig: {
 ///             policyUri: asp.name,
+///         },
+///         masterConfig: {
+///             numInstances: 1,
+///             machineType: "n4-standard-2",
+///             diskConfig: {
+///                 bootDiskType: "hyperdisk-balanced",
+///                 bootDiskSizeGb: 35,
+///             },
+///         },
+///         workerConfig: {
+///             numInstances: 2,
+///             machineType: "n4-standard-2",
+///             diskConfig: {
+///                 bootDiskType: "hyperdisk-balanced",
+///                 bootDiskSizeGb: 35,
+///             },
 ///         },
 ///     },
 /// });
@@ -49,7 +65,7 @@ import 'autoscaling_policy_worker_config.dart';
 ///
 /// asp = gcp.dataproc.AutoscalingPolicy("asp",
 ///     policy_id="dataproc-policy",
-///     location="us-central1",
+///     location="us-east1",
 ///     worker_config={
 ///         "max_instances": 3,
 ///     },
@@ -62,10 +78,26 @@ import 'autoscaling_policy_worker_config.dart';
 ///     })
 /// basic = gcp.dataproc.Cluster("basic",
 ///     name="dataproc-policy",
-///     region="us-central1",
+///     region="us-east1",
 ///     cluster_config={
 ///         "autoscaling_config": {
 ///             "policy_uri": asp.name,
+///         },
+///         "master_config": {
+///             "num_instances": 1,
+///             "machine_type": "n4-standard-2",
+///             "disk_config": {
+///                 "boot_disk_type": "hyperdisk-balanced",
+///                 "boot_disk_size_gb": 35,
+///             },
+///         },
+///         "worker_config": {
+///             "num_instances": 2,
+///             "machine_type": "n4-standard-2",
+///             "disk_config": {
+///                 "boot_disk_type": "hyperdisk-balanced",
+///                 "boot_disk_size_gb": 35,
+///             },
 ///         },
 ///     })
 /// ```
@@ -80,7 +112,7 @@ import 'autoscaling_policy_worker_config.dart';
 ///     var asp = new Gcp.Dataproc.AutoscalingPolicy("asp", new()
 ///     {
 ///         PolicyId = "dataproc-policy",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         WorkerConfig = new Gcp.Dataproc.Inputs.AutoscalingPolicyWorkerConfigArgs
 ///         {
 ///             MaxInstances = 3,
@@ -99,12 +131,32 @@ import 'autoscaling_policy_worker_config.dart';
 ///     var basic = new Gcp.Dataproc.Cluster("basic", new()
 ///     {
 ///         Name = "dataproc-policy",
-///         Region = "us-central1",
+///         Region = "us-east1",
 ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
 ///         {
 ///             AutoscalingConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigAutoscalingConfigArgs
 ///             {
 ///                 PolicyUri = asp.Name,
+///             },
+///             MasterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigArgs
+///             {
+///                 NumInstances = 1,
+///                 MachineType = "n4-standard-2",
+///                 DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigDiskConfigArgs
+///                 {
+///                     BootDiskType = "hyperdisk-balanced",
+///                     BootDiskSizeGb = 35,
+///                 },
+///             },
+///             WorkerConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerConfigArgs
+///             {
+///                 NumInstances = 2,
+///                 MachineType = "n4-standard-2",
+///                 DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerConfigDiskConfigArgs
+///                 {
+///                     BootDiskType = "hyperdisk-balanced",
+///                     BootDiskSizeGb = 35,
+///                 },
 ///             },
 ///         },
 ///     });
@@ -115,7 +167,7 @@ import 'autoscaling_policy_worker_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -123,7 +175,7 @@ import 'autoscaling_policy_worker_config.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		asp, err := dataproc.NewAutoscalingPolicy(ctx, "asp", &dataproc.AutoscalingPolicyArgs{
 /// 			PolicyId: pulumi.String("dataproc-policy"),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			WorkerConfig: &dataproc.AutoscalingPolicyWorkerConfigArgs{
 /// 				MaxInstances: pulumi.Int(3),
 /// 			},
@@ -140,10 +192,26 @@ import 'autoscaling_policy_worker_config.dart';
 /// 		}
 /// 		_, err = dataproc.NewCluster(ctx, "basic", &dataproc.ClusterArgs{
 /// 			Name:   pulumi.String("dataproc-policy"),
-/// 			Region: pulumi.String("us-central1"),
+/// 			Region: pulumi.String("us-east1"),
 /// 			ClusterConfig: &dataproc.ClusterClusterConfigArgs{
 /// 				AutoscalingConfig: &dataproc.ClusterClusterConfigAutoscalingConfigArgs{
 /// 					PolicyUri: asp.Name,
+/// 				},
+/// 				MasterConfig: &dataproc.ClusterClusterConfigMasterConfigArgs{
+/// 					NumInstances: pulumi.Int(1),
+/// 					MachineType:  pulumi.String("n4-standard-2"),
+/// 					DiskConfig: &dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs{
+/// 						BootDiskType:   pulumi.String("hyperdisk-balanced"),
+/// 						BootDiskSizeGb: pulumi.Int(35),
+/// 					},
+/// 				},
+/// 				WorkerConfig: &dataproc.ClusterClusterConfigWorkerConfigArgs{
+/// 					NumInstances: pulumi.Int(2),
+/// 					MachineType:  pulumi.String("n4-standard-2"),
+/// 					DiskConfig: &dataproc.ClusterClusterConfigWorkerConfigDiskConfigArgs{
+/// 						BootDiskType:   pulumi.String("hyperdisk-balanced"),
+/// 						BootDiskSizeGb: pulumi.Int(35),
+/// 					},
 /// 				},
 /// 			},
 /// 		})
@@ -165,16 +233,32 @@ import 'autoscaling_policy_worker_config.dart';
 ///
 /// resource "gcp_dataproc_cluster" "basic" {
 ///   name   = "dataproc-policy"
-///   region = "us-central1"
+///   region = "us-east1"
 ///   cluster_config = {
 ///     autoscaling_config = {
 ///       policy_uri = gcp_dataproc_autoscalingpolicy.asp.name
+///     }
+///     master_config = {
+///       num_instances = 1
+///       machine_type  = "n4-standard-2"
+///       disk_config = {
+///         boot_disk_type    = "hyperdisk-balanced"
+///         boot_disk_size_gb = 35
+///       }
+///     }
+///     worker_config = {
+///       num_instances = 2
+///       machine_type  = "n4-standard-2"
+///       disk_config = {
+///         boot_disk_type    = "hyperdisk-balanced"
+///         boot_disk_size_gb = 35
+///       }
 ///     }
 ///   }
 /// }
 /// resource "gcp_dataproc_autoscalingpolicy" "asp" {
 ///   policy_id = "dataproc-policy"
-///   location  = "us-central1"
+///   location  = "us-east1"
 ///   worker_config = {
 ///     max_instances = 3
 ///   }
@@ -202,6 +286,10 @@ import 'autoscaling_policy_worker_config.dart';
 /// import com.pulumi.gcp.dataproc.ClusterArgs;
 /// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigAutoscalingConfigArgs;
+/// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigArgs;
+/// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigDiskConfigArgs;
+/// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigWorkerConfigArgs;
+/// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigWorkerConfigDiskConfigArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -217,7 +305,7 @@ import 'autoscaling_policy_worker_config.dart';
 ///     public static void stack(Context ctx) {
 ///         var asp = new AutoscalingPolicy("asp", AutoscalingPolicyArgs.builder()
 ///             .policyId("dataproc-policy")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .workerConfig(AutoscalingPolicyWorkerConfigArgs.builder()
 ///                 .maxInstances(3)
 ///                 .build())
@@ -232,10 +320,26 @@ import 'autoscaling_policy_worker_config.dart';
 ///
 ///         var basic = new Cluster("basic", ClusterArgs.builder()
 ///             .name("dataproc-policy")
-///             .region("us-central1")
+///             .region("us-east1")
 ///             .clusterConfig(ClusterClusterConfigArgs.builder()
 ///                 .autoscalingConfig(ClusterClusterConfigAutoscalingConfigArgs.builder()
 ///                     .policyUri(asp.name())
+///                     .build())
+///                 .masterConfig(ClusterClusterConfigMasterConfigArgs.builder()
+///                     .numInstances(1)
+///                     .machineType("n4-standard-2")
+///                     .diskConfig(ClusterClusterConfigMasterConfigDiskConfigArgs.builder()
+///                         .bootDiskType("hyperdisk-balanced")
+///                         .bootDiskSizeGb(35)
+///                         .build())
+///                     .build())
+///                 .workerConfig(ClusterClusterConfigWorkerConfigArgs.builder()
+///                     .numInstances(2)
+///                     .machineType("n4-standard-2")
+///                     .diskConfig(ClusterClusterConfigWorkerConfigDiskConfigArgs.builder()
+///                         .bootDiskType("hyperdisk-balanced")
+///                         .bootDiskSizeGb(35)
+///                         .build())
 ///                     .build())
 ///                 .build())
 ///             .build());
@@ -249,15 +353,27 @@ import 'autoscaling_policy_worker_config.dart';
 ///     type: gcp:dataproc:Cluster
 ///     properties:
 ///       name: dataproc-policy
-///       region: us-central1
+///       region: us-east1
 ///       clusterConfig:
 ///         autoscalingConfig:
 ///           policyUri: ${asp.name}
+///         masterConfig:
+///           numInstances: 1
+///           machineType: n4-standard-2
+///           diskConfig:
+///             bootDiskType: hyperdisk-balanced
+///             bootDiskSizeGb: 35
+///         workerConfig:
+///           numInstances: 2
+///           machineType: n4-standard-2
+///           diskConfig:
+///             bootDiskType: hyperdisk-balanced
+///             bootDiskSizeGb: 35
 ///   asp:
 ///     type: gcp:dataproc:AutoscalingPolicy
 ///     properties:
 ///       policyId: dataproc-policy
-///       location: us-central1
+///       location: us-east1
 ///       workerConfig:
 ///         maxInstances: 3
 ///       basicAlgorithm:
@@ -326,7 +442,7 @@ class AutoscalingPolicy extends pulumi.CustomResource {
           'gcp:dataproc/autoscalingPolicy:AutoscalingPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     basicAlgorithm = registerOutput<AutoscalingPolicyBasicAlgorithm?>('basicAlgorithm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalingPolicyBasicAlgorithm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

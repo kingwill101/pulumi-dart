@@ -42,7 +42,7 @@ class GetAccountJwtResult {
   factory GetAccountJwtResult.fromMap(Map<String, dynamic> map) {
     return GetAccountJwtResult(
       delegates: (() { final guardedValue = map['delegates']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      expiresIn: (() { final guardedValue = map['expiresIn']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      expiresIn: (() { final guardedValue = map['expiresIn']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       jwt: (() { final guardedValue = map['jwt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       payload: (() { final guardedValue = map['payload']; if (guardedValue == null) return null; return guardedValue as String; })(),

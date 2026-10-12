@@ -66,7 +66,7 @@ class GetAddressesAddress {
       description: pulumi.Input.fromValue(map['description'] as String),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
-      prefixLength: pulumi.Input.fromValue((map['prefixLength'] as num).toInt()),
+      prefixLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['prefixLength'])),
       region: pulumi.Input.fromValue(map['region'] as String),
       selfLink: pulumi.Input.fromValue(map['selfLink'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),

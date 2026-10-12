@@ -99,7 +99,7 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -223,7 +223,6 @@ import 'service_traffic_status.dart';
 ///     location: "us-central1",
 ///     deletionProtection: false,
 ///     ingress: "INGRESS_TRAFFIC_ALL",
-///     launchStage: "BETA",
 ///     template: {
 ///         scaling: {
 ///             minInstanceCount: 1,
@@ -246,7 +245,6 @@ import 'service_traffic_status.dart';
 ///     location="us-central1",
 ///     deletion_protection=False,
 ///     ingress="INGRESS_TRAFFIC_ALL",
-///     launch_stage="BETA",
 ///     template={
 ///         "scaling": {
 ///             "min_instance_count": 1,
@@ -273,7 +271,6 @@ import 'service_traffic_status.dart';
 ///         Location = "us-central1",
 ///         DeletionProtection = false,
 ///         Ingress = "INGRESS_TRAFFIC_ALL",
-///         LaunchStage = "BETA",
 ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
 ///         {
 ///             Scaling = new Gcp.CloudRunV2.Inputs.ServiceTemplateScalingArgs
@@ -299,7 +296,7 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -310,7 +307,6 @@ import 'service_traffic_status.dart';
 /// 			Location:           pulumi.String("us-central1"),
 /// 			DeletionProtection: pulumi.Bool(false),
 /// 			Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
-/// 			LaunchStage:        pulumi.String("BETA"),
 /// 			Template: &cloudrunv2.ServiceTemplateArgs{
 /// 				Scaling: &cloudrunv2.ServiceTemplateScalingArgs{
 /// 					MinInstanceCount:       pulumi.Int(1),
@@ -346,7 +342,6 @@ import 'service_traffic_status.dart';
 ///   location            = "us-central1"
 ///   deletion_protection = false
 ///   ingress             = "INGRESS_TRAFFIC_ALL"
-///   launch_stage        = "BETA"
 ///   template = {
 ///     scaling = {
 ///       min_instance_count      = 1
@@ -389,7 +384,6 @@ import 'service_traffic_status.dart';
 ///             .location("us-central1")
 ///             .deletionProtection(false)
 ///             .ingress("INGRESS_TRAFFIC_ALL")
-///             .launchStage("BETA")
 ///             .template(ServiceTemplateArgs.builder()
 ///                 .scaling(ServiceTemplateScalingArgs.builder()
 ///                     .minInstanceCount(1)
@@ -415,7 +409,6 @@ import 'service_traffic_status.dart';
 ///       location: us-central1
 ///       deletionProtection: false
 ///       ingress: INGRESS_TRAFFIC_ALL
-///       launchStage: BETA
 ///       template:
 ///         scaling:
 ///           minInstanceCount: 1
@@ -516,7 +509,7 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -927,10 +920,10 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1459,9 +1452,9 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vpcaccess"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vpcaccess"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1781,7 +1774,7 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2036,7 +2029,7 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2304,7 +2297,7 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2548,7 +2541,7 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2875,9 +2868,9 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3337,7 +3330,7 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3681,8 +3674,8 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4039,8 +4032,8 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/filestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4400,8 +4393,8 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -4645,7 +4638,7 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4822,7 +4815,7 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4935,7 +4928,7 @@ import 'service_traffic_status.dart';
 ///
 /// const project = gcp.organizations.getProject({});
 /// const sourcebucket = new gcp.storage.Bucket("sourcebucket", {
-///     name: project.then(project => `${project.projectId}-tf-test-gcf-source_75125`),
+///     name: project.then(project => `tf-test-gcf-source_39249-${project.projectId}`),
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -4971,7 +4964,7 @@ import 'service_traffic_status.dart';
 ///
 /// project = gcp.organizations.get_project()
 /// sourcebucket = gcp.storage.Bucket("sourcebucket",
-///     name=f"{project.project_id}-tf-test-gcf-source_75125",
+///     name=f"tf-test-gcf-source_39249-{project.project_id}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// source_tar = gcp.storage.BucketObject("source_tar",
@@ -5010,7 +5003,7 @@ import 'service_traffic_status.dart';
 ///
 ///     var sourcebucket = new Gcp.Storage.Bucket("sourcebucket", new()
 ///     {
-///         Name = $"{project.Apply(getProjectResult => getProjectResult.ProjectId)}-tf-test-gcf-source_75125",
+///         Name = $"tf-test-gcf-source_39249-{project.Apply(getProjectResult => getProjectResult.ProjectId)}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -5063,9 +5056,9 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5076,7 +5069,7 @@ import 'service_traffic_status.dart';
 /// 			return err
 /// 		}
 /// 		sourcebucket, err := storage.NewBucket(ctx, "sourcebucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-tf-test-gcf-source_75125", project.ProjectId),
+/// 			Name:                     pulumi.Sprintf("tf-test-gcf-source_39249-%v", project.ProjectId),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -5137,7 +5130,7 @@ import 'service_traffic_status.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "sourcebucket" {
-///   name                        ="${data.gcp_organizations_getproject.project.project_id}-tf-test-gcf-source_75125"
+///   name                        ="tf-test-gcf-source_39249-${data.gcp_organizations_getproject.project.project_id}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
@@ -5203,7 +5196,7 @@ import 'service_traffic_status.dart';
 ///             .build());
 ///
 ///         var sourcebucket = new Bucket("sourcebucket", BucketArgs.builder()
-///             .name(String.format("%s-tf-test-gcf-source_75125", project.projectId()))
+///             .name(String.format("tf-test-gcf-source_39249-%s", project.projectId()))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -5243,7 +5236,7 @@ import 'service_traffic_status.dart';
 ///   sourcebucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project.projectId}-tf-test-gcf-source_75125
+///       name: tf-test-gcf-source_39249-${project.projectId}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   sourceTar:
@@ -5392,7 +5385,7 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5617,7 +5610,7 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5791,7 +5784,7 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -6086,7 +6079,7 @@ import 'service_traffic_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -6448,6 +6441,8 @@ class Service extends pulumi.CustomResource {
   /// Scaling settings that apply to the whole service
   /// Structure is documented below.
   late final pulumi.Output<ServiceScaling> scaling;
+  /// Enables SSH access to the Service.
+  late final pulumi.Output<bool?> sshEnabled;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -6486,7 +6481,7 @@ class Service extends pulumi.CustomResource {
           'gcp:cloudrunv2/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
@@ -6524,6 +6519,7 @@ class Service extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     scaling = registerOutput<ServiceScaling>('scaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sshEnabled = registerOutput<bool?>('sshEnabled');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     template = registerOutput<ServiceTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     terminalConditions = registerOutput<List<ServiceTerminalCondition>>('terminalConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceTerminalCondition>(guardedValue, (value) => ServiceTerminalCondition.fromMap((value as Map).cast<String, dynamic>())); });
@@ -6594,6 +6590,7 @@ class Service extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     scaling = registerOutput<ServiceScaling>('scaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sshEnabled = registerOutput<bool?>('sshEnabled');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     template = registerOutput<ServiceTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     terminalConditions = registerOutput<List<ServiceTerminalCondition>>('terminalConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceTerminalCondition>(guardedValue, (value) => ServiceTerminalCondition.fromMap((value as Map).cast<String, dynamic>())); });
@@ -6650,6 +6647,7 @@ class Service extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     scaling = registerOutput<ServiceScaling>('scaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sshEnabled = registerOutput<bool?>('sshEnabled');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     template = registerOutput<ServiceTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     terminalConditions = registerOutput<List<ServiceTerminalCondition>>('terminalConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceTerminalCondition>(guardedValue, (value) => ServiceTerminalCondition.fromMap((value as Map).cast<String, dynamic>())); });

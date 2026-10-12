@@ -178,8 +178,8 @@ import 'ai_feature_group_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -467,7 +467,7 @@ class AiFeatureGroup extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureGroup:AiFeatureGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     bigQuery = registerOutput<AiFeatureGroupBigQuery?>('bigQuery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureGroupBigQuery.fromMap((guardedValue as Map).cast<String, dynamic>()); });

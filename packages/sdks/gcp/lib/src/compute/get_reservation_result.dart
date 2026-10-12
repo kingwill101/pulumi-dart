@@ -24,7 +24,6 @@ class GetReservationResult {
   final String? name;
   final List<GetReservationParam>? params;
   final String? project;
-  final int? reservationBlockCount;
   final List<GetReservationReservationSharingPolicy>? reservationSharingPolicies;
   final List<GetReservationResourceStatus>? resourceStatuses;
   final bool? satisfiesPzs;
@@ -50,7 +49,6 @@ class GetReservationResult {
   /// [name] Optional.
   /// [params] Optional.
   /// [project] Optional.
-  /// [reservationBlockCount] Optional.
   /// [reservationSharingPolicies] Optional.
   /// [resourceStatuses] Optional.
   /// [satisfiesPzs] Optional.
@@ -75,7 +73,6 @@ class GetReservationResult {
     this.name,
     this.params,
     this.project,
-    this.reservationBlockCount,
     this.reservationSharingPolicies,
     this.resourceStatuses,
     this.satisfiesPzs,
@@ -103,7 +100,6 @@ class GetReservationResult {
       'name': ?name,
       'params': ?(() { final guardedValue = params; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetReservationParam, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'project': ?project,
-      'reservationBlockCount': ?reservationBlockCount,
       'reservationSharingPolicies': ?(() { final guardedValue = reservationSharingPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetReservationReservationSharingPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'resourceStatuses': ?(() { final guardedValue = resourceStatuses; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetReservationResourceStatus, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'satisfiesPzs': ?satisfiesPzs,
@@ -132,7 +128,6 @@ class GetReservationResult {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetReservationParam>(guardedValue, (value) => GetReservationParam.fromMap((value as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      reservationBlockCount: (() { final guardedValue = map['reservationBlockCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
       reservationSharingPolicies: (() { final guardedValue = map['reservationSharingPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetReservationReservationSharingPolicy>(guardedValue, (value) => GetReservationReservationSharingPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
       resourceStatuses: (() { final guardedValue = map['resourceStatuses']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetReservationResourceStatus>(guardedValue, (value) => GetReservationResourceStatus.fromMap((value as Map).cast<String, dynamic>())); })(),
       satisfiesPzs: (() { final guardedValue = map['satisfiesPzs']; if (guardedValue == null) return null; return guardedValue as bool; })(),

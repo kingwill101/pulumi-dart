@@ -155,8 +155,8 @@ import 'network_attachment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -411,7 +411,7 @@ import 'network_attachment_state.dart';
 ///     machineType: "e2-micro",
 ///     bootDisk: {
 ///         initializeParams: {
-///             image: "debian-cloud/debian-11",
+///             image: "debian-cloud/debian-13",
 ///         },
 ///     },
 ///     networkInterfaces: [
@@ -448,7 +448,7 @@ import 'network_attachment_state.dart';
 ///     machine_type="e2-micro",
 ///     boot_disk={
 ///         "initialize_params": {
-///             "image": "debian-cloud/debian-11",
+///             "image": "debian-cloud/debian-13",
 ///         },
 ///     },
 ///     network_interfaces=[
@@ -503,7 +503,7 @@ import 'network_attachment_state.dart';
 ///         {
 ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
 ///             {
-///                 Image = "debian-cloud/debian-11",
+///                 Image = "debian-cloud/debian-13",
 ///             },
 ///         },
 ///         NetworkInterfaces = new[]
@@ -525,7 +525,7 @@ import 'network_attachment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -565,7 +565,7 @@ import 'network_attachment_state.dart';
 /// 			MachineType: pulumi.String("e2-micro"),
 /// 			BootDisk: &compute.InstanceBootDiskArgs{
 /// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-/// 					Image: pulumi.String("debian-cloud/debian-11"),
+/// 					Image: pulumi.String("debian-cloud/debian-13"),
 /// 				},
 /// 			},
 /// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
@@ -616,7 +616,7 @@ import 'network_attachment_state.dart';
 ///   machine_type = "e2-micro"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = "debian-cloud/debian-11"
+///       image = "debian-cloud/debian-13"
 ///     }
 ///   }
 ///   network_interfaces {
@@ -683,7 +683,7 @@ import 'network_attachment_state.dart';
 ///             .machineType("e2-micro")
 ///             .bootDisk(InstanceBootDiskArgs.builder()
 ///                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-///                     .image("debian-cloud/debian-11")
+///                     .image("debian-cloud/debian-13")
 ///                     .build())
 ///                 .build())
 ///             .networkInterfaces(
@@ -732,7 +732,7 @@ import 'network_attachment_state.dart';
 ///       machineType: e2-micro
 ///       bootDisk:
 ///         initializeParams:
-///           image: debian-cloud/debian-11
+///           image: debian-cloud/debian-13
 ///       networkInterfaces:
 ///         - network: default
 ///         - networkAttachment: ${defaultNetworkAttachment.selfLink}
@@ -813,7 +813,7 @@ class NetworkAttachment extends pulumi.CustomResource {
           'gcp:compute/networkAttachment:NetworkAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     connectionEndpoints = registerOutput<List<NetworkAttachmentConnectionEndpoint>>('connectionEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkAttachmentConnectionEndpoint>(guardedValue, (value) => NetworkAttachmentConnectionEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     connectionPreference = registerOutput<String>('connectionPreference');

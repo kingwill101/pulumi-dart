@@ -27,7 +27,7 @@ class AiIndexIndexStat {
 
   factory AiIndexIndexStat.fromMap(Map<String, dynamic> map) {
     return AiIndexIndexStat(
-      shardsCount: (() { final guardedValue = map['shardsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      shardsCount: (() { final guardedValue = map['shardsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       vectorsCount: (() { final guardedValue = map['vectorsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

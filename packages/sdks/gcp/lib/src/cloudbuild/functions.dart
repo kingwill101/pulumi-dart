@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_trigger_args.dart';
 import 'get_trigger_result.dart';
+import 'get_worker_pool_args.dart';
+import 'get_worker_pool_result.dart';
 
 /// To get more information about Cloudbuild Trigger, see:
 ///
@@ -50,7 +52,7 @@ import 'get_trigger_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -147,4 +149,151 @@ pulumi.Output<GetTriggerResult> getTriggerOutput(
     pulumi.Input.mapToInputs(args.toMap()),
     options: options,
   ).apply(GetTriggerResult.fromMap);
+}
+
+/// To get more information about Cloudbuild worker pool, see:
+///
+/// * [API documentation](https://docs.cloud.google.com/build/docs/api/reference/rest/v1/projects.locations.workerPools)
+/// * How-to Guides
+/// * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const name = gcp.cloudbuild.getWorkerPool({
+///     project: "your-project-id",
+///     name: "your-pool",
+///     location: "europe-west1",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// name = gcp.cloudbuild.get_worker_pool(project="your-project-id",
+///     name="your-pool",
+///     location="europe-west1")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var name = Gcp.CloudBuild.GetWorkerPool.Invoke(new()
+///     {
+///         Project = "your-project-id",
+///         Name = "your-pool",
+///         Location = "europe-west1",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudbuild.LookupWorkerPool(ctx, &cloudbuild.LookupWorkerPoolArgs{
+/// 			Project:  pulumi.StringRef("your-project-id"),
+/// 			Name:     "your-pool",
+/// 			Location: "europe-west1",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudbuild_getworkerpool" "name" {
+///   project  = "your-project-id"
+///   name     = "your-pool"
+///   location = "europe-west1"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.cloudbuild.CloudbuildFunctions;
+/// import com.pulumi.gcp.cloudbuild.inputs.GetWorkerPoolArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var name = CloudbuildFunctions.getWorkerPool(GetWorkerPoolArgs.builder()
+///             .project("your-project-id")
+///             .name("your-pool")
+///             .location("europe-west1")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   name:
+///     fn::invoke:
+///       function: gcp:cloudbuild:getWorkerPool
+///       arguments:
+///         project: your-project-id
+///         name: your-pool
+///         location: europe-west1
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_cloudbuild_get_worker_pool_get_worker_pool_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetWorkerPoolResult> getWorkerPool(
+  GetWorkerPoolArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:cloudbuild/getWorkerPool:getWorkerPool',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetWorkerPoolResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkerPoolResult> getWorkerPoolOutput(
+  GetWorkerPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudbuild/getWorkerPool:getWorkerPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkerPoolResult.fromMap);
 }

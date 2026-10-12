@@ -111,7 +111,7 @@ import 'row_access_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -357,7 +357,7 @@ class RowAccessPolicy extends pulumi.CustomResource {
           'gcp:bigquery/rowAccessPolicy:RowAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     datasetId = registerOutput<String>('datasetId');

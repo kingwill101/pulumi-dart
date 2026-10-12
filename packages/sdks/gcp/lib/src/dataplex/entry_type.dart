@@ -53,7 +53,7 @@ import 'entry_type_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -136,7 +136,7 @@ import 'entry_type_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const testEntryTypeFull = new gcp.dataplex.AspectType("test_entry_type_full", {
-///     aspectTypeId: "tf-test-aspect-type_44339",
+///     aspectTypeId: "tf-test-aspect-type_45397",
 ///     location: "us-central1",
 ///     project: "my-project-name",
 ///     metadataTemplate: `{
@@ -190,7 +190,7 @@ import 'entry_type_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// test_entry_type_full = gcp.dataplex.AspectType("test_entry_type_full",
-///     aspect_type_id="tf-test-aspect-type_44339",
+///     aspect_type_id="tf-test-aspect-type_45397",
 ///     location="us-central1",
 ///     project="my-project-name",
 ///     metadata_template="""{
@@ -247,7 +247,7 @@ import 'entry_type_state.dart';
 /// {
 ///     var testEntryTypeFull = new Gcp.DataPlex.AspectType("test_entry_type_full", new()
 ///     {
-///         AspectTypeId = "tf-test-aspect-type_44339",
+///         AspectTypeId = "tf-test-aspect-type_45397",
 ///         Location = "us-central1",
 ///         Project = "my-project-name",
 ///         MetadataTemplate = @"{
@@ -310,14 +310,14 @@ import 'entry_type_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		testEntryTypeFull, err := dataplex.NewAspectType(ctx, "test_entry_type_full", &dataplex.AspectTypeArgs{
-/// 			AspectTypeId: pulumi.String("tf-test-aspect-type_44339"),
+/// 			AspectTypeId: pulumi.String("tf-test-aspect-type_45397"),
 /// 			Location:     pulumi.String("us-central1"),
 /// 			Project:      pulumi.String("my-project-name"),
 /// 			MetadataTemplate: pulumi.String(`{
@@ -387,7 +387,7 @@ import 'entry_type_state.dart';
 /// }
 ///
 /// resource "gcp_dataplex_aspecttype" "test_entry_type_full" {
-///   aspect_type_id    = "tf-test-aspect-type_44339"
+///   aspect_type_id    = "tf-test-aspect-type_45397"
 ///   location          = "us-central1"
 ///   project           = "my-project-name"
 ///   metadata_template = "{\n  \\\"name\\\": \\\"tf-test-template\\\",\n  \\\"type\\\": \\\"record\\\",\n  \\\"recordFields\\\": [\n    {\n      \\\"name\\\": \\\"type\\\",\n      \\\"type\\\": \\\"enum\\\",\n      \\\"annotations\\\": {\n        \\\"displayName\\\": \\\"Type\\\",\n        \\\"description\\\": \\\"Specifies the type of view represented by the entry.\\\"\n      },\n      \\\"index\\\": 1,\n      \\\"constraints\\\": {\n        \\\"required\\\": true\n      },\n      \\\"enumValues\\\": [\n        {\n          \\\"name\\\": \\\"VIEW\\\",\n          \\\"index\\\": 1\n        }\n      ]\n    }\n  ]\n}\n"
@@ -434,7 +434,7 @@ import 'entry_type_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testEntryTypeFull = new AspectType("testEntryTypeFull", AspectTypeArgs.builder()
-///             .aspectTypeId("tf-test-aspect-type_44339")
+///             .aspectTypeId("tf-test-aspect-type_45397")
 ///             .location("us-central1")
 ///             .project("my-project-name")
 ///             .metadataTemplate("""
@@ -491,7 +491,7 @@ import 'entry_type_state.dart';
 ///     type: gcp:dataplex:AspectType
 ///     name: test_entry_type_full
 ///     properties:
-///       aspectTypeId: tf-test-aspect-type_44339
+///       aspectTypeId: tf-test-aspect-type_45397
 ///       location: us-central1
 ///       project: my-project-name
 ///       metadataTemplate: |
@@ -615,7 +615,7 @@ class EntryType extends pulumi.CustomResource {
           'gcp:dataplex/entryType:EntryType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

@@ -50,29 +50,35 @@ import 'backend_service_tls_settings.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
 ///     name: "health-check",
-///     requestPath: "/",
 ///     checkIntervalSec: 1,
 ///     timeoutSec: 1,
+///     httpHealthCheck: {
+///         port: 80,
+///         requestPath: "/",
+///     },
 /// });
 /// const _default = new gcp.compute.BackendService("default", {
 ///     name: "backend-service",
-///     healthChecks: defaultHttpHealthCheck.id,
+///     healthChecks: defaultHealthCheck.id,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default_http_health_check = gcp.compute.HttpHealthCheck("default",
+/// default_health_check = gcp.compute.HealthCheck("default",
 ///     name="health-check",
-///     request_path="/",
 ///     check_interval_sec=1,
-///     timeout_sec=1)
+///     timeout_sec=1,
+///     http_health_check={
+///         "port": 80,
+///         "request_path": "/",
+///     })
 /// default = gcp.compute.BackendService("default",
 ///     name="backend-service",
-///     health_checks=default_http_health_check.id)
+///     health_checks=default_health_check.id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -82,18 +88,22 @@ import 'backend_service_tls_settings.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
 ///     {
 ///         Name = "health-check",
-///         RequestPath = "/",
 ///         CheckIntervalSec = 1,
 ///         TimeoutSec = 1,
+///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+///         {
+///             Port = 80,
+///             RequestPath = "/",
+///         },
 ///     });
 ///
 ///     var @default = new Gcp.Compute.BackendService("default", new()
 ///     {
 ///         Name = "backend-service",
-///         HealthChecks = defaultHttpHealthCheck.Id,
+///         HealthChecks = defaultHealthCheck.Id,
 ///     });
 ///
 /// });
@@ -102,24 +112,27 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 /// 			Name:             pulumi.String("health-check"),
-/// 			RequestPath:      pulumi.String("/"),
 /// 			CheckIntervalSec: pulumi.Int(1),
 /// 			TimeoutSec:       pulumi.Int(1),
+/// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+/// 				Port:        pulumi.Int(80),
+/// 				RequestPath: pulumi.String("/"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:         pulumi.String("backend-service"),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -139,13 +152,16 @@ import 'backend_service_tls_settings.dart';
 ///
 /// resource "gcp_compute_backendservice" "default" {
 ///   name          = "backend-service"
-///   health_checks = gcp_compute_httphealthcheck.default.id
+///   health_checks = gcp_compute_healthcheck.default.id
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_healthcheck" "default" {
 ///   name               = "health-check"
-///   request_path       = "/"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
+///   http_health_check = {
+///     port         = 80
+///     request_path = "/"
+///   }
 /// }
 /// ```
 /// ```java
@@ -154,8 +170,9 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.HttpHealthCheck;
-/// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import java.util.ArrayList;
@@ -171,16 +188,19 @@ import 'backend_service_tls_settings.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
 ///             .name("health-check")
-///             .requestPath("/")
 ///             .checkIntervalSec(1)
 ///             .timeoutSec(1)
+///             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .requestPath("/")
+///                 .build())
 ///             .build());
 ///
 ///         var default_ = new BackendService("default", BackendServiceArgs.builder()
 ///             .name("backend-service")
-///             .healthChecks(defaultHttpHealthCheck.id())
+///             .healthChecks(defaultHealthCheck.id())
 ///             .build());
 ///
 ///     }
@@ -192,15 +212,17 @@ import 'backend_service_tls_settings.dart';
 ///     type: gcp:compute:BackendService
 ///     properties:
 ///       name: backend-service
-///       healthChecks: ${defaultHttpHealthCheck.id}
-///   defaultHttpHealthCheck:
-///     type: gcp:compute:HttpHealthCheck
+///       healthChecks: ${defaultHealthCheck.id}
+///   defaultHealthCheck:
+///     type: gcp:compute:HealthCheck
 ///     name: default
 ///     properties:
 ///       name: health-check
-///       requestPath: /
 ///       checkIntervalSec: 1
 ///       timeoutSec: 1
+///       httpHealthCheck:
+///         port: 80
+///         requestPath: /
 /// ```
 ///
 /// ### Backend Service External Iap
@@ -263,7 +285,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -364,15 +386,18 @@ import 'backend_service_tls_settings.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
 ///     name: "health-check",
-///     requestPath: "/",
 ///     checkIntervalSec: 1,
 ///     timeoutSec: 1,
+///     httpHealthCheck: {
+///         port: 80,
+///         requestPath: "/",
+///     },
 /// });
 /// const _default = new gcp.compute.BackendService("default", {
 ///     name: "backend-service",
-///     healthChecks: defaultHttpHealthCheck.id,
+///     healthChecks: defaultHealthCheck.id,
 ///     enableCdn: true,
 ///     cdnPolicy: {
 ///         signedUrlCacheMaxAgeSec: 7200,
@@ -383,14 +408,17 @@ import 'backend_service_tls_settings.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default_http_health_check = gcp.compute.HttpHealthCheck("default",
+/// default_health_check = gcp.compute.HealthCheck("default",
 ///     name="health-check",
-///     request_path="/",
 ///     check_interval_sec=1,
-///     timeout_sec=1)
+///     timeout_sec=1,
+///     http_health_check={
+///         "port": 80,
+///         "request_path": "/",
+///     })
 /// default = gcp.compute.BackendService("default",
 ///     name="backend-service",
-///     health_checks=default_http_health_check.id,
+///     health_checks=default_health_check.id,
 ///     enable_cdn=True,
 ///     cdn_policy={
 ///         "signed_url_cache_max_age_sec": 7200,
@@ -404,18 +432,22 @@ import 'backend_service_tls_settings.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
 ///     {
 ///         Name = "health-check",
-///         RequestPath = "/",
 ///         CheckIntervalSec = 1,
 ///         TimeoutSec = 1,
+///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+///         {
+///             Port = 80,
+///             RequestPath = "/",
+///         },
 ///     });
 ///
 ///     var @default = new Gcp.Compute.BackendService("default", new()
 ///     {
 ///         Name = "backend-service",
-///         HealthChecks = defaultHttpHealthCheck.Id,
+///         HealthChecks = defaultHealthCheck.Id,
 ///         EnableCdn = true,
 ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
 ///         {
@@ -429,24 +461,27 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 /// 			Name:             pulumi.String("health-check"),
-/// 			RequestPath:      pulumi.String("/"),
 /// 			CheckIntervalSec: pulumi.Int(1),
 /// 			TimeoutSec:       pulumi.Int(1),
+/// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+/// 				Port:        pulumi.Int(80),
+/// 				RequestPath: pulumi.String("/"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:         pulumi.String("backend-service"),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			EnableCdn:    pulumi.Bool(true),
 /// 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 /// 				SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
@@ -470,17 +505,20 @@ import 'backend_service_tls_settings.dart';
 ///
 /// resource "gcp_compute_backendservice" "default" {
 ///   name          = "backend-service"
-///   health_checks = gcp_compute_httphealthcheck.default.id
+///   health_checks = gcp_compute_healthcheck.default.id
 ///   enable_cdn    = true
 ///   cdn_policy = {
 ///     signed_url_cache_max_age_sec = 7200
 ///   }
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_healthcheck" "default" {
 ///   name               = "health-check"
-///   request_path       = "/"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
+///   http_health_check = {
+///     port         = 80
+///     request_path = "/"
+///   }
 /// }
 /// ```
 /// ```java
@@ -489,8 +527,9 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.HttpHealthCheck;
-/// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
@@ -507,16 +546,19 @@ import 'backend_service_tls_settings.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
 ///             .name("health-check")
-///             .requestPath("/")
 ///             .checkIntervalSec(1)
 ///             .timeoutSec(1)
+///             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .requestPath("/")
+///                 .build())
 ///             .build());
 ///
 ///         var default_ = new BackendService("default", BackendServiceArgs.builder()
 ///             .name("backend-service")
-///             .healthChecks(defaultHttpHealthCheck.id())
+///             .healthChecks(defaultHealthCheck.id())
 ///             .enableCdn(true)
 ///             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
 ///                 .signedUrlCacheMaxAgeSec(7200)
@@ -532,18 +574,20 @@ import 'backend_service_tls_settings.dart';
 ///     type: gcp:compute:BackendService
 ///     properties:
 ///       name: backend-service
-///       healthChecks: ${defaultHttpHealthCheck.id}
+///       healthChecks: ${defaultHealthCheck.id}
 ///       enableCdn: true
 ///       cdnPolicy:
 ///         signedUrlCacheMaxAgeSec: 7200
-///   defaultHttpHealthCheck:
-///     type: gcp:compute:HttpHealthCheck
+///   defaultHealthCheck:
+///     type: gcp:compute:HealthCheck
 ///     name: default
 ///     properties:
 ///       name: health-check
-///       requestPath: /
 ///       checkIntervalSec: 1
 ///       timeoutSec: 1
+///       httpHealthCheck:
+///         port: 80
+///         requestPath: /
 /// ```
 ///
 /// ### Backend Service Cache Include Http Headers
@@ -619,7 +663,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -816,7 +860,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -948,15 +992,18 @@ import 'backend_service_tls_settings.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
 ///     name: "health-check",
-///     requestPath: "/",
 ///     checkIntervalSec: 1,
 ///     timeoutSec: 1,
+///     httpHealthCheck: {
+///         port: 80,
+///         requestPath: "/",
+///     },
 /// });
 /// const _default = new gcp.compute.BackendService("default", {
 ///     name: "backend-service",
-///     healthChecks: defaultHttpHealthCheck.id,
+///     healthChecks: defaultHealthCheck.id,
 ///     enableCdn: true,
 ///     cdnPolicy: {
 ///         cacheMode: "CACHE_ALL_STATIC",
@@ -972,14 +1019,17 @@ import 'backend_service_tls_settings.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default_http_health_check = gcp.compute.HttpHealthCheck("default",
+/// default_health_check = gcp.compute.HealthCheck("default",
 ///     name="health-check",
-///     request_path="/",
 ///     check_interval_sec=1,
-///     timeout_sec=1)
+///     timeout_sec=1,
+///     http_health_check={
+///         "port": 80,
+///         "request_path": "/",
+///     })
 /// default = gcp.compute.BackendService("default",
 ///     name="backend-service",
-///     health_checks=default_http_health_check.id,
+///     health_checks=default_health_check.id,
 ///     enable_cdn=True,
 ///     cdn_policy={
 ///         "cache_mode": "CACHE_ALL_STATIC",
@@ -998,18 +1048,22 @@ import 'backend_service_tls_settings.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
 ///     {
 ///         Name = "health-check",
-///         RequestPath = "/",
 ///         CheckIntervalSec = 1,
 ///         TimeoutSec = 1,
+///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+///         {
+///             Port = 80,
+///             RequestPath = "/",
+///         },
 ///     });
 ///
 ///     var @default = new Gcp.Compute.BackendService("default", new()
 ///     {
 ///         Name = "backend-service",
-///         HealthChecks = defaultHttpHealthCheck.Id,
+///         HealthChecks = defaultHealthCheck.Id,
 ///         EnableCdn = true,
 ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
 ///         {
@@ -1028,24 +1082,27 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 /// 			Name:             pulumi.String("health-check"),
-/// 			RequestPath:      pulumi.String("/"),
 /// 			CheckIntervalSec: pulumi.Int(1),
 /// 			TimeoutSec:       pulumi.Int(1),
+/// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+/// 				Port:        pulumi.Int(80),
+/// 				RequestPath: pulumi.String("/"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:         pulumi.String("backend-service"),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			EnableCdn:    pulumi.Bool(true),
 /// 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 /// 				CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
@@ -1074,7 +1131,7 @@ import 'backend_service_tls_settings.dart';
 ///
 /// resource "gcp_compute_backendservice" "default" {
 ///   name          = "backend-service"
-///   health_checks = gcp_compute_httphealthcheck.default.id
+///   health_checks = gcp_compute_healthcheck.default.id
 ///   enable_cdn    = true
 ///   cdn_policy = {
 ///     cache_mode                   = "CACHE_ALL_STATIC"
@@ -1085,11 +1142,14 @@ import 'backend_service_tls_settings.dart';
 ///     signed_url_cache_max_age_sec = 7200
 ///   }
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_healthcheck" "default" {
 ///   name               = "health-check"
-///   request_path       = "/"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
+///   http_health_check = {
+///     port         = 80
+///     request_path = "/"
+///   }
 /// }
 /// ```
 /// ```java
@@ -1098,8 +1158,9 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.HttpHealthCheck;
-/// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
@@ -1116,16 +1177,19 @@ import 'backend_service_tls_settings.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
 ///             .name("health-check")
-///             .requestPath("/")
 ///             .checkIntervalSec(1)
 ///             .timeoutSec(1)
+///             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .requestPath("/")
+///                 .build())
 ///             .build());
 ///
 ///         var default_ = new BackendService("default", BackendServiceArgs.builder()
 ///             .name("backend-service")
-///             .healthChecks(defaultHttpHealthCheck.id())
+///             .healthChecks(defaultHealthCheck.id())
 ///             .enableCdn(true)
 ///             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
 ///                 .cacheMode("CACHE_ALL_STATIC")
@@ -1146,7 +1210,7 @@ import 'backend_service_tls_settings.dart';
 ///     type: gcp:compute:BackendService
 ///     properties:
 ///       name: backend-service
-///       healthChecks: ${defaultHttpHealthCheck.id}
+///       healthChecks: ${defaultHealthCheck.id}
 ///       enableCdn: true
 ///       cdnPolicy:
 ///         cacheMode: CACHE_ALL_STATIC
@@ -1155,14 +1219,16 @@ import 'backend_service_tls_settings.dart';
 ///         maxTtl: 10800
 ///         negativeCaching: true
 ///         signedUrlCacheMaxAgeSec: 7200
-///   defaultHttpHealthCheck:
-///     type: gcp:compute:HttpHealthCheck
+///   defaultHealthCheck:
+///     type: gcp:compute:HealthCheck
 ///     name: default
 ///     properties:
 ///       name: health-check
-///       requestPath: /
 ///       checkIntervalSec: 1
 ///       timeoutSec: 1
+///       httpHealthCheck:
+///         port: 80
+///         requestPath: /
 /// ```
 ///
 /// ### Backend Service Cache Bypass Cache On Request Headers
@@ -1173,15 +1239,18 @@ import 'backend_service_tls_settings.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
 ///     name: "health-check",
-///     requestPath: "/",
 ///     checkIntervalSec: 1,
 ///     timeoutSec: 1,
+///     httpHealthCheck: {
+///         port: 80,
+///         requestPath: "/",
+///     },
 /// });
 /// const _default = new gcp.compute.BackendService("default", {
 ///     name: "backend-service",
-///     healthChecks: defaultHttpHealthCheck.id,
+///     healthChecks: defaultHealthCheck.id,
 ///     enableCdn: true,
 ///     cdnPolicy: {
 ///         cacheMode: "CACHE_ALL_STATIC",
@@ -1205,14 +1274,17 @@ import 'backend_service_tls_settings.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default_http_health_check = gcp.compute.HttpHealthCheck("default",
+/// default_health_check = gcp.compute.HealthCheck("default",
 ///     name="health-check",
-///     request_path="/",
 ///     check_interval_sec=1,
-///     timeout_sec=1)
+///     timeout_sec=1,
+///     http_health_check={
+///         "port": 80,
+///         "request_path": "/",
+///     })
 /// default = gcp.compute.BackendService("default",
 ///     name="backend-service",
-///     health_checks=default_http_health_check.id,
+///     health_checks=default_health_check.id,
 ///     enable_cdn=True,
 ///     cdn_policy={
 ///         "cache_mode": "CACHE_ALL_STATIC",
@@ -1239,18 +1311,22 @@ import 'backend_service_tls_settings.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
 ///     {
 ///         Name = "health-check",
-///         RequestPath = "/",
 ///         CheckIntervalSec = 1,
 ///         TimeoutSec = 1,
+///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+///         {
+///             Port = 80,
+///             RequestPath = "/",
+///         },
 ///     });
 ///
 ///     var @default = new Gcp.Compute.BackendService("default", new()
 ///     {
 ///         Name = "backend-service",
-///         HealthChecks = defaultHttpHealthCheck.Id,
+///         HealthChecks = defaultHealthCheck.Id,
 ///         EnableCdn = true,
 ///         CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
 ///         {
@@ -1280,24 +1356,27 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 /// 			Name:             pulumi.String("health-check"),
-/// 			RequestPath:      pulumi.String("/"),
 /// 			CheckIntervalSec: pulumi.Int(1),
 /// 			TimeoutSec:       pulumi.Int(1),
+/// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+/// 				Port:        pulumi.Int(80),
+/// 				RequestPath: pulumi.String("/"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:         pulumi.String("backend-service"),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			EnableCdn:    pulumi.Bool(true),
 /// 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 /// 				CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
@@ -1334,7 +1413,7 @@ import 'backend_service_tls_settings.dart';
 ///
 /// resource "gcp_compute_backendservice" "default" {
 ///   name          = "backend-service"
-///   health_checks = gcp_compute_httphealthcheck.default.id
+///   health_checks = gcp_compute_healthcheck.default.id
 ///   enable_cdn    = true
 ///   cdn_policy = {
 ///     cache_mode                   = "CACHE_ALL_STATIC"
@@ -1350,11 +1429,14 @@ import 'backend_service_tls_settings.dart';
 ///     }]
 ///   }
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_healthcheck" "default" {
 ///   name               = "health-check"
-///   request_path       = "/"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
+///   http_health_check = {
+///     port         = 80
+///     request_path = "/"
+///   }
 /// }
 /// ```
 /// ```java
@@ -1363,8 +1445,9 @@ import 'backend_service_tls_settings.dart';
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.HttpHealthCheck;
-/// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
@@ -1382,16 +1465,19 @@ import 'backend_service_tls_settings.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var defaultHttpHealthCheck = new HttpHealthCheck("defaultHttpHealthCheck", HttpHealthCheckArgs.builder()
+///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
 ///             .name("health-check")
-///             .requestPath("/")
 ///             .checkIntervalSec(1)
 ///             .timeoutSec(1)
+///             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .requestPath("/")
+///                 .build())
 ///             .build());
 ///
 ///         var default_ = new BackendService("default", BackendServiceArgs.builder()
 ///             .name("backend-service")
-///             .healthChecks(defaultHttpHealthCheck.id())
+///             .healthChecks(defaultHealthCheck.id())
 ///             .enableCdn(true)
 ///             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
 ///                 .cacheMode("CACHE_ALL_STATIC")
@@ -1419,7 +1505,7 @@ import 'backend_service_tls_settings.dart';
 ///     type: gcp:compute:BackendService
 ///     properties:
 ///       name: backend-service
-///       healthChecks: ${defaultHttpHealthCheck.id}
+///       healthChecks: ${defaultHealthCheck.id}
 ///       enableCdn: true
 ///       cdnPolicy:
 ///         cacheMode: CACHE_ALL_STATIC
@@ -1431,14 +1517,16 @@ import 'backend_service_tls_settings.dart';
 ///         bypassCacheOnRequestHeaders:
 ///           - headerName: Authorization
 ///           - headerName: Proxy-Authorization
-///   defaultHttpHealthCheck:
-///     type: gcp:compute:HttpHealthCheck
+///   defaultHealthCheck:
+///     type: gcp:compute:HealthCheck
 ///     name: default
 ///     properties:
 ///       name: health-check
-///       requestPath: /
 ///       checkIntervalSec: 1
 ///       timeoutSec: 1
+///       httpHealthCheck:
+///         port: 80
+///         requestPath: /
 /// ```
 ///
 /// ### Backend Service Traffic Director Round Robin
@@ -1508,7 +1596,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1761,7 +1849,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2059,7 +2147,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2306,7 +2394,7 @@ import 'backend_service_tls_settings.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2490,7 +2578,7 @@ import 'backend_service_tls_settings.dart';
 ///     name: "instance-template",
 ///     machineType: "e2-micro",
 ///     disks: [{
-///         sourceImage: "debian-cloud/debian-11",
+///         sourceImage: "debian-cloud/debian-13",
 ///         autoDelete: true,
 ///         boot: true,
 ///     }],
@@ -2553,7 +2641,7 @@ import 'backend_service_tls_settings.dart';
 ///     name="instance-template",
 ///     machine_type="e2-micro",
 ///     disks=[{
-///         "source_image": "debian-cloud/debian-11",
+///         "source_image": "debian-cloud/debian-13",
 ///         "auto_delete": True,
 ///         "boot": True,
 ///     }],
@@ -2626,7 +2714,7 @@ import 'backend_service_tls_settings.dart';
 ///         {
 ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
 ///             {
-///                 SourceImage = "debian-cloud/debian-11",
+///                 SourceImage = "debian-cloud/debian-13",
 ///                 AutoDelete = true,
 ///                 Boot = true,
 ///             },
@@ -2700,7 +2788,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2727,7 +2815,7 @@ import 'backend_service_tls_settings.dart';
 /// 			MachineType: pulumi.String("e2-micro"),
 /// 			Disks: compute.InstanceTemplateDiskArray{
 /// 				&compute.InstanceTemplateDiskArgs{
-/// 					SourceImage: pulumi.String("debian-cloud/debian-11"),
+/// 					SourceImage: pulumi.String("debian-cloud/debian-13"),
 /// 					AutoDelete:  pulumi.Bool(true),
 /// 					Boot:        pulumi.Bool(true),
 /// 				},
@@ -2819,7 +2907,7 @@ import 'backend_service_tls_settings.dart';
 ///   name         = "instance-template"
 ///   machine_type = "e2-micro"
 ///   disks {
-///     source_image = "debian-cloud/debian-11"
+///     source_image = "debian-cloud/debian-13"
 ///     auto_delete  = true
 ///     boot         = true
 ///   }
@@ -2913,7 +3001,7 @@ import 'backend_service_tls_settings.dart';
 ///             .name("instance-template")
 ///             .machineType("e2-micro")
 ///             .disks(InstanceTemplateDiskArgs.builder()
-///                 .sourceImage("debian-cloud/debian-11")
+///                 .sourceImage("debian-cloud/debian-13")
 ///                 .autoDelete(true)
 ///                 .boot(true)
 ///                 .build())
@@ -2986,7 +3074,7 @@ import 'backend_service_tls_settings.dart';
 ///       name: instance-template
 ///       machineType: e2-micro
 ///       disks:
-///         - sourceImage: debian-cloud/debian-11
+///         - sourceImage: debian-cloud/debian-13
 ///           autoDelete: true
 ///           boot: true
 ///       networkInterfaces:
@@ -3099,7 +3187,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3252,7 +3340,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3524,7 +3612,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3925,8 +4013,8 @@ import 'backend_service_tls_settings.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4101,6 +4189,211 @@ import 'backend_service_tls_settings.dart';
 ///       wellKnownRoots: PUBLIC_ROOTS
 /// ```
 ///
+/// ### Backend Service Identity
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+///     name: "health-check",
+///     httpHealthCheck: {
+///         port: 80,
+///     },
+/// });
+/// const _default = new gcp.compute.BackendService("default", {
+///     name: "backend-service",
+///     healthChecks: defaultHealthCheck.id,
+///     loadBalancingScheme: "EXTERNAL_MANAGED",
+///     protocol: "HTTPS",
+///     tlsSettings: {
+///         identity: "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id",
+///     },
+///     description: "description",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default_health_check = gcp.compute.HealthCheck("default",
+///     name="health-check",
+///     http_health_check={
+///         "port": 80,
+///     })
+/// default = gcp.compute.BackendService("default",
+///     name="backend-service",
+///     health_checks=default_health_check.id,
+///     load_balancing_scheme="EXTERNAL_MANAGED",
+///     protocol="HTTPS",
+///     tls_settings={
+///         "identity": "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id",
+///     },
+///     description="description")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+///     {
+///         Name = "health-check",
+///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+///         {
+///             Port = 80,
+///         },
+///     });
+///
+///     var @default = new Gcp.Compute.BackendService("default", new()
+///     {
+///         Name = "backend-service",
+///         HealthChecks = defaultHealthCheck.Id,
+///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+///         Protocol = "HTTPS",
+///         TlsSettings = new Gcp.Compute.Inputs.BackendServiceTlsSettingsArgs
+///         {
+///             Identity = "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id",
+///         },
+///         Description = "description",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+/// 			Name: pulumi.String("health-check"),
+/// 			HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+/// 				Port: pulumi.Int(80),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+/// 			Name:                pulumi.String("backend-service"),
+/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+/// 			Protocol:            pulumi.String("HTTPS"),
+/// 			TlsSettings: &compute.BackendServiceTlsSettingsArgs{
+/// 				Identity: pulumi.String("//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id"),
+/// 			},
+/// 			Description: pulumi.String("description"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "backend-service"
+///   health_checks         = gcp_compute_healthcheck.default.id
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   protocol              = "HTTPS"
+///   tls_settings = {
+///     identity = "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id"
+///   }
+///   description = "description"
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.BackendService;
+/// import com.pulumi.gcp.compute.BackendServiceArgs;
+/// import com.pulumi.gcp.compute.inputs.BackendServiceTlsSettingsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+///             .name("health-check")
+///             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .build())
+///             .build());
+///
+///         var default_ = new BackendService("default", BackendServiceArgs.builder()
+///             .name("backend-service")
+///             .healthChecks(defaultHealthCheck.id())
+///             .loadBalancingScheme("EXTERNAL_MANAGED")
+///             .protocol("HTTPS")
+///             .tlsSettings(BackendServiceTlsSettingsArgs.builder()
+///                 .identity("//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id")
+///                 .build())
+///             .description("description")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:compute:BackendService
+///     properties:
+///       name: backend-service
+///       healthChecks: ${defaultHealthCheck.id}
+///       loadBalancingScheme: EXTERNAL_MANAGED
+///       protocol: HTTPS
+///       tlsSettings:
+///         identity: //test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id
+///       description: description
+///   defaultHealthCheck:
+///     type: gcp:compute:HealthCheck
+///     name: default
+///     properties:
+///       name: health-check
+///       httpHealthCheck:
+///         port: 80
+/// ```
+///
 /// ### Backend Service Dynamic Forwarding
 ///
 ///
@@ -4159,7 +4452,7 @@ import 'backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4370,7 +4663,7 @@ class BackendService extends pulumi.CustomResource {
   /// external load balancing. A backend service created for one type of
   /// load balancing cannot be used with the other. For more information, refer to
   /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
-  /// Default value is `EXTERNAL`.
+  /// Default value is `EXTERNAL_MANAGED`.
   /// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
   late final pulumi.Output<String?> loadBalancingScheme;
   /// A list of locality load balancing policies to be used in order of
@@ -4491,7 +4784,7 @@ class BackendService extends pulumi.CustomResource {
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
   /// URL to networkservices.ServiceLbPolicy resource.
-  /// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+  /// Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
   late final pulumi.Output<String?> serviceLbPolicy;
   /// Type of session affinity to use. The default is NONE. Session affinity is
   /// not applicable if the protocol is UDP.
@@ -4521,7 +4814,7 @@ class BackendService extends pulumi.CustomResource {
           'gcp:compute/backendService:BackendService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
     backends = registerOutput<List<BackendServiceBackend>?>('backends', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackendServiceBackend>(guardedValue, (value) => BackendServiceBackend.fromMap((value as Map).cast<String, dynamic>())); });

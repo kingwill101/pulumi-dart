@@ -4,6 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ToolMcpToolApiAuthenticationServiceAccountAuthConfig {
   /// (Output)
+  /// The OAuth scopes to grant. If not specified, the default scope
+  /// `https://www.googleapis.com/auth/cloud-platform` is used.
+  final pulumi.Input<List<String>?>? scopes;
+  /// (Output)
   /// The email address of the service account used for authenticatation. CES
   /// uses this service account to exchange an access token and the access token
   /// is then sent in the `Authorization` header of the request.
@@ -14,19 +18,23 @@ class ToolMcpToolApiAuthenticationServiceAccountAuthConfig {
   final pulumi.Input<String?>? serviceAccount;
 
   /// Creates a new [ToolMcpToolApiAuthenticationServiceAccountAuthConfig].
+  /// [scopes] (Output)
   /// [serviceAccount] (Output)
   const ToolMcpToolApiAuthenticationServiceAccountAuthConfig({
+    this.scopes,
     this.serviceAccount,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'scopes': ?scopes,
       'serviceAccount': ?serviceAccount,
     };
   }
 
   factory ToolMcpToolApiAuthenticationServiceAccountAuthConfig.fromMap(Map<String, dynamic> map) {
     return ToolMcpToolApiAuthenticationServiceAccountAuthConfig(
+      scopes: (() { final guardedValue = map['scopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

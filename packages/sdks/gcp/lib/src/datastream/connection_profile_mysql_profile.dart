@@ -50,7 +50,7 @@ class ConnectionProfileMysqlProfile {
     return ConnectionProfileMysqlProfile(
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       secretManagerStoredPassword: (() { final guardedValue = map['secretManagerStoredPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslConfig: (() { final guardedValue = map['sslConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionProfileMysqlProfileSslConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       username: pulumi.Input.fromValue(map['username'] as String),

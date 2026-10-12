@@ -24,6 +24,7 @@ import 'gemini_gcp_enablement_setting_state.dart';
 ///     },
 ///     enableCustomerDataSharing: true,
 ///     webGroundingType: "WEB_GROUNDING_FOR_ENTERPRISE",
+///     mutationsEnabled: true,
 /// });
 /// ```
 /// ```python
@@ -37,7 +38,8 @@ import 'gemini_gcp_enablement_setting_state.dart';
 ///         "my_key": "my_value",
 ///     },
 ///     enable_customer_data_sharing=True,
-///     web_grounding_type="WEB_GROUNDING_FOR_ENTERPRISE")
+///     web_grounding_type="WEB_GROUNDING_FOR_ENTERPRISE",
+///     mutations_enabled=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -57,6 +59,7 @@ import 'gemini_gcp_enablement_setting_state.dart';
 ///         },
 ///         EnableCustomerDataSharing = true,
 ///         WebGroundingType = "WEB_GROUNDING_FOR_ENTERPRISE",
+///         MutationsEnabled = true,
 ///     });
 ///
 /// });
@@ -65,7 +68,7 @@ import 'gemini_gcp_enablement_setting_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gemini"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gemini"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -79,6 +82,7 @@ import 'gemini_gcp_enablement_setting_state.dart';
 /// 			},
 /// 			EnableCustomerDataSharing: pulumi.Bool(true),
 /// 			WebGroundingType:          pulumi.String("WEB_GROUNDING_FOR_ENTERPRISE"),
+/// 			MutationsEnabled:          pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -104,6 +108,7 @@ import 'gemini_gcp_enablement_setting_state.dart';
 ///   }
 ///   enable_customer_data_sharing = true
 ///   web_grounding_type           = "WEB_GROUNDING_FOR_ENTERPRISE"
+///   mutations_enabled            = true
 /// }
 /// ```
 /// ```java
@@ -133,6 +138,7 @@ import 'gemini_gcp_enablement_setting_state.dart';
 ///             .labels(Map.of("my_key", "my_value"))
 ///             .enableCustomerDataSharing(true)
 ///             .webGroundingType("WEB_GROUNDING_FOR_ENTERPRISE")
+///             .mutationsEnabled(true)
 ///             .build());
 ///
 ///     }
@@ -149,6 +155,7 @@ import 'gemini_gcp_enablement_setting_state.dart';
 ///         my_key: my_value
 ///       enableCustomerDataSharing: true
 ///       webGroundingType: WEB_GROUNDING_FOR_ENTERPRISE
+///       mutationsEnabled: true
 /// ```
 ///
 ///
@@ -195,6 +202,8 @@ class GeminiGcpEnablementSetting extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
+  /// Whether resource mutations should be enabled.
+  late final pulumi.Output<bool?> mutationsEnabled;
   /// Identifier. Name of the resource.
   /// Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{geminiGcpEnablementSetting}
   late final pulumi.Output<String> name;
@@ -224,7 +233,7 @@ class GeminiGcpEnablementSetting extends pulumi.CustomResource {
           'gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
@@ -235,6 +244,7 @@ class GeminiGcpEnablementSetting extends pulumi.CustomResource {
     geminiGcpEnablementSettingId = registerOutput<String>('geminiGcpEnablementSettingId');
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
+    mutationsEnabled = registerOutput<bool?>('mutationsEnabled');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
@@ -274,6 +284,7 @@ class GeminiGcpEnablementSetting extends pulumi.CustomResource {
     geminiGcpEnablementSettingId = registerOutput<String>('geminiGcpEnablementSettingId');
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
+    mutationsEnabled = registerOutput<bool?>('mutationsEnabled');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
@@ -299,6 +310,7 @@ class GeminiGcpEnablementSetting extends pulumi.CustomResource {
     geminiGcpEnablementSettingId = registerOutput<String>('geminiGcpEnablementSettingId');
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
+    mutationsEnabled = registerOutput<bool?>('mutationsEnabled');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);

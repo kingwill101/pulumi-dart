@@ -49,7 +49,7 @@ import 'get_restore_plan_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -193,7 +193,7 @@ pulumi.Output<GetBackupPlanIamPolicyResult> getBackupPlanIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

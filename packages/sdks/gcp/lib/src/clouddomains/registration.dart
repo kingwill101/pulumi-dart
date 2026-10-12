@@ -260,7 +260,7 @@ import 'registration_yearly_price.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/clouddomains"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/clouddomains"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -640,7 +640,7 @@ class Registration extends pulumi.CustomResource {
           'gcp:clouddomains/registration:Registration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     contactNotices = registerOutput<List<String>?>('contactNotices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

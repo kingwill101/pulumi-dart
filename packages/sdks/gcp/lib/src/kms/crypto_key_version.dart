@@ -81,7 +81,7 @@ import 'crypto_key_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -252,7 +252,7 @@ class CryptoKeyVersion extends pulumi.CustomResource {
           'gcp:kms/cryptoKeyVersion:CryptoKeyVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     algorithm = registerOutput<String>('algorithm');
     attestations = registerOutput<List<CryptoKeyVersionAttestation>>('attestations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CryptoKeyVersionAttestation>(guardedValue, (value) => CryptoKeyVersionAttestation.fromMap((value as Map).cast<String, dynamic>())); });

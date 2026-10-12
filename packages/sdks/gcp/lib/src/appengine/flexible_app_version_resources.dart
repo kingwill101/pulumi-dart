@@ -37,8 +37,8 @@ class FlexibleAppVersionResources {
 
   factory FlexibleAppVersionResources.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionResources(
-      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      diskGb: (() { final guardedValue = map['diskGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      diskGb: (() { final guardedValue = map['diskGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       memoryGb: (() { final guardedValue = map['memoryGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FlexibleAppVersionResourcesVolume>(guardedValue, (value) => FlexibleAppVersionResourcesVolume.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

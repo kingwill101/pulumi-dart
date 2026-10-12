@@ -248,9 +248,9 @@ import 'region_network_firewall_policy_rule_target_secure_tag.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -705,7 +705,7 @@ import 'region_network_firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -990,7 +990,7 @@ import 'region_network_firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1288,7 +1288,7 @@ import 'region_network_firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1560,7 +1560,7 @@ import 'region_network_firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1731,7 +1731,7 @@ import 'region_network_firewall_policy_rule_target_secure_tag.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const net = new gcp.compute.Network("net", {
-///     name: "test-net",
+///     name: "fw-policy-net",
 ///     autoCreateSubnetworks: false,
 /// });
 /// const fwPolicy = new gcp.compute.RegionNetworkFirewallPolicy("fw_policy", {
@@ -1764,7 +1764,7 @@ import 'region_network_firewall_policy_rule_target_secure_tag.dart';
 /// import pulumi_gcp as gcp
 ///
 /// net = gcp.compute.Network("net",
-///     name="test-net",
+///     name="fw-policy-net",
 ///     auto_create_subnetworks=False)
 /// fw_policy = gcp.compute.RegionNetworkFirewallPolicy("fw_policy",
 ///     name="simple-fw-policy",
@@ -1798,7 +1798,7 @@ import 'region_network_firewall_policy_rule_target_secure_tag.dart';
 /// {
 ///     var net = new Gcp.Compute.Network("net", new()
 ///     {
-///         Name = "test-net",
+///         Name = "fw-policy-net",
 ///         AutoCreateSubnetworks = false,
 ///     });
 ///
@@ -1846,14 +1846,14 @@ import 'region_network_firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		net, err := compute.NewNetwork(ctx, "net", &compute.NetworkArgs{
-/// 			Name:                  pulumi.String("test-net"),
+/// 			Name:                  pulumi.String("fw-policy-net"),
 /// 			AutoCreateSubnetworks: pulumi.Bool(false),
 /// 		})
 /// 		if err != nil {
@@ -1910,7 +1910,7 @@ import 'region_network_firewall_policy_rule_target_secure_tag.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "net" {
-///   name                    = "test-net"
+///   name                    = "fw-policy-net"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_regionnetworkfirewallpolicy" "fw_policy" {
@@ -1968,7 +1968,7 @@ import 'region_network_firewall_policy_rule_target_secure_tag.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var net = new Network("net", NetworkArgs.builder()
-///             .name("test-net")
+///             .name("fw-policy-net")
 ///             .autoCreateSubnetworks(false)
 ///             .build());
 ///
@@ -2007,7 +2007,7 @@ import 'region_network_firewall_policy_rule_target_secure_tag.dart';
 ///   net:
 ///     type: gcp:compute:Network
 ///     properties:
-///       name: test-net
+///       name: fw-policy-net
 ///       autoCreateSubnetworks: false
 ///   fwPolicy:
 ///     type: gcp:compute:RegionNetworkFirewallPolicy
@@ -2145,7 +2145,7 @@ class RegionNetworkFirewallPolicyRule extends pulumi.CustomResource {
           'gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     creationTimestamp = registerOutput<String>('creationTimestamp');

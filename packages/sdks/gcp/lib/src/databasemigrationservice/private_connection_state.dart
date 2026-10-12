@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_connection_error.dart';
 import 'private_connection_psc_interface_config.dart';
+import 'private_connection_reserved_public_ip_config.dart';
 import 'private_connection_vpc_peering_config.dart';
 
 /// Input properties used for looking up and filtering PrivateConnection resources.
@@ -43,6 +44,9 @@ class PrivateConnectionState {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>?>? pulumiLabels;
+  /// The Reserved Public IP configuration.
+  /// Structure is documented below.
+  final pulumi.Input<PrivateConnectionReservedPublicIpConfig?>? reservedPublicIpConfig;
   /// State of the PrivateConnection.
   final pulumi.Input<String?>? state;
   /// The VPC Peering configuration is used to create VPC peering
@@ -63,6 +67,7 @@ class PrivateConnectionState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pscInterfaceConfig] The PSC Interface configuration is used to create PSC Interface
   /// [pulumiLabels] The combination of labels configured directly on the resource
+  /// [reservedPublicIpConfig] The Reserved Public IP configuration.
   /// [state] State of the PrivateConnection.
   /// [vpcPeeringConfig] The VPC Peering configuration is used to create VPC peering
   const PrivateConnectionState({
@@ -78,6 +83,7 @@ class PrivateConnectionState {
     this.project,
     this.pscInterfaceConfig,
     this.pulumiLabels,
+    this.reservedPublicIpConfig,
     this.state,
     this.vpcPeeringConfig,
   });
@@ -96,6 +102,7 @@ class PrivateConnectionState {
       'project': ?project,
       'pscInterfaceConfig': ?pulumi.Input.mapOptionalInputValue<PrivateConnectionPscInterfaceConfig, Map<String, dynamic>>(pscInterfaceConfig, (value) => value.toMap()),
       'pulumiLabels': ?pulumiLabels,
+      'reservedPublicIpConfig': ?pulumi.Input.mapOptionalInputValue<PrivateConnectionReservedPublicIpConfig, Map<String, dynamic>>(reservedPublicIpConfig, (value) => value.toMap()),
       'state': ?state,
       'vpcPeeringConfig': ?pulumi.Input.mapOptionalInputValue<PrivateConnectionVpcPeeringConfig, Map<String, dynamic>>(vpcPeeringConfig, (value) => value.toMap()),
     };
@@ -115,6 +122,7 @@ class PrivateConnectionState {
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pscInterfaceConfig: (() { final guardedValue = map['pscInterfaceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateConnectionPscInterfaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      reservedPublicIpConfig: (() { final guardedValue = map['reservedPublicIpConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateConnectionReservedPublicIpConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcPeeringConfig: (() { final guardedValue = map['vpcPeeringConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateConnectionVpcPeeringConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

@@ -79,7 +79,7 @@ import 'reservation_assignment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -247,7 +247,7 @@ class ReservationAssignment extends pulumi.CustomResource {
           'gcp:bigquery/reservationAssignment:ReservationAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     assignee = registerOutput<String>('assignee');
     deletionPolicy = registerOutput<String>('deletionPolicy');

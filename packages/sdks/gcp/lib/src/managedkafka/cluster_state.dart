@@ -4,11 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_broker_capacity_config.dart';
 import 'cluster_capacity_config.dart';
 import 'cluster_gcp_config.dart';
+import 'cluster_public_cluster_detail.dart';
 import 'cluster_rebalance_config.dart';
 import 'cluster_tls_config.dart';
 
 /// Input properties used for looking up and filtering Cluster resources.
 class ClusterState {
+  /// The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+  final pulumi.Input<String?>? bootstrapAddress;
   /// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
   /// Structure is documented below.
   final pulumi.Input<ClusterBrokerCapacityConfig?>? brokerCapacityConfig;
@@ -31,6 +34,8 @@ class ClusterState {
   /// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
   /// Structure is documented below.
   final pulumi.Input<ClusterGcpConfig?>? gcpConfig;
+  /// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+  final pulumi.Input<String?>? kafkaVersion;
   /// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -42,6 +47,9 @@ class ClusterState {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
+  /// Details of the public cluster feature for the Kafka cluster.
+  /// Structure is documented below.
+  final pulumi.Input<List<ClusterPublicClusterDetail>?>? publicClusterDetails;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>?>? pulumiLabels;
@@ -57,6 +65,7 @@ class ClusterState {
   final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ClusterState].
+  /// [bootstrapAddress] The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
   /// [brokerCapacityConfig] Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
   /// [capacityConfig] A capacity configuration of a Kafka cluster.
   /// [clusterId] The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
@@ -64,16 +73,19 @@ class ClusterState {
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [gcpConfig] Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
+  /// [kafkaVersion] The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
   /// [labels] List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
   /// [location] ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   /// [name] The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
   /// [project] The ID of the project in which the resource belongs.
+  /// [publicClusterDetails] Details of the public cluster feature for the Kafka cluster.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [rebalanceConfig] Defines rebalancing behavior of a Kafka cluster.
   /// [state] The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
   /// [tlsConfig] TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tlsConfig` block.
   /// [updateTime] The time when the cluster was last updated.
   const ClusterState({
+    this.bootstrapAddress,
     this.brokerCapacityConfig,
     this.capacityConfig,
     this.clusterId,
@@ -81,10 +93,12 @@ class ClusterState {
     this.deletionPolicy,
     this.effectiveLabels,
     this.gcpConfig,
+    this.kafkaVersion,
     this.labels,
     this.location,
     this.name,
     this.project,
+    this.publicClusterDetails,
     this.pulumiLabels,
     this.rebalanceConfig,
     this.state,
@@ -94,6 +108,7 @@ class ClusterState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'bootstrapAddress': ?bootstrapAddress,
       'brokerCapacityConfig': ?pulumi.Input.mapOptionalInputValue<ClusterBrokerCapacityConfig, Map<String, dynamic>>(brokerCapacityConfig, (value) => value.toMap()),
       'capacityConfig': ?pulumi.Input.mapOptionalInputValue<ClusterCapacityConfig, Map<String, dynamic>>(capacityConfig, (value) => value.toMap()),
       'clusterId': ?clusterId,
@@ -101,10 +116,12 @@ class ClusterState {
       'deletionPolicy': ?deletionPolicy,
       'effectiveLabels': ?effectiveLabels,
       'gcpConfig': ?pulumi.Input.mapOptionalInputValue<ClusterGcpConfig, Map<String, dynamic>>(gcpConfig, (value) => value.toMap()),
+      'kafkaVersion': ?kafkaVersion,
       'labels': ?labels,
       'location': ?location,
       'name': ?name,
       'project': ?project,
+      'publicClusterDetails': ?pulumi.Input.mapOptionalInputValue<List<ClusterPublicClusterDetail>, List<Map<String, dynamic>>>(publicClusterDetails, (value) => pulumi.Input.encodeList<ClusterPublicClusterDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
       'pulumiLabels': ?pulumiLabels,
       'rebalanceConfig': ?pulumi.Input.mapOptionalInputValue<ClusterRebalanceConfig, Map<String, dynamic>>(rebalanceConfig, (value) => value.toMap()),
       'state': ?state,
@@ -115,6 +132,7 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
+      bootstrapAddress: (() { final guardedValue = map['bootstrapAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       brokerCapacityConfig: (() { final guardedValue = map['brokerCapacityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterBrokerCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       capacityConfig: (() { final guardedValue = map['capacityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clusterId: (() { final guardedValue = map['clusterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -122,10 +140,12 @@ class ClusterState {
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       gcpConfig: (() { final guardedValue = map['gcpConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterGcpConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      kafkaVersion: (() { final guardedValue = map['kafkaVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicClusterDetails: (() { final guardedValue = map['publicClusterDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterPublicClusterDetail>(guardedValue, (value) => ClusterPublicClusterDetail.fromMap((value as Map).cast<String, dynamic>()))); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       rebalanceConfig: (() { final guardedValue = map['rebalanceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterRebalanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -173,7 +173,7 @@ import 'cx_generative_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -439,7 +439,7 @@ class CxGenerativeSettings extends pulumi.CustomResource {
           'gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     fallbackSettings = registerOutput<CxGenerativeSettingsFallbackSettings?>('fallbackSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGenerativeSettingsFallbackSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     generativeSafetySettings = registerOutput<CxGenerativeSettingsGenerativeSafetySettings?>('generativeSafetySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGenerativeSettingsGenerativeSafetySettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
