@@ -8,14 +8,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_floating_ip_get_floating_ip_args_doc}
 class GetFloatingIpArgs {
   /// ID of the Floating IP.
-  final pulumi.Input<int>? id;
+  final pulumi.Input<int?>? id;
   /// IP address of the Floating IP.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Name of the Floating IP.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? selector;
   /// [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  final pulumi.Input<String>? withSelector;
+  final pulumi.Input<String?>? withSelector;
 
   /// Creates a new [GetFloatingIpArgs].
   /// [id] ID of the Floating IP.
@@ -43,7 +43,7 @@ class GetFloatingIpArgs {
 
   factory GetFloatingIpArgs.fromMap(Map<String, dynamic> map) {
     return GetFloatingIpArgs(
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

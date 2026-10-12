@@ -5,24 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ManagedCertificate resources.
 class ManagedCertificateState {
   /// (string) PEM encoded TLS certificate.
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// (string) Point in time when the Certificate was created at Hetzner Cloud (in ISO-8601 format).
-  final pulumi.Input<String>? created;
+  final pulumi.Input<String?>? created;
   /// Domain names for which a certificate
   /// should be obtained.
-  final pulumi.Input<List<String>>? domainNames;
+  final pulumi.Input<List<String>?>? domainNames;
   /// (string) Fingerprint of the certificate.
-  final pulumi.Input<String>? fingerprint;
+  final pulumi.Input<String?>? fingerprint;
   /// User-defined labels (key-value pairs) the
   /// certificate should be created with.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the Certificate.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (string) Point in time when the Certificate stops being valid (in ISO-8601 format).
-  final pulumi.Input<String>? notValidAfter;
+  final pulumi.Input<String?>? notValidAfter;
   /// (string) Point in time when the Certificate becomes valid (in ISO-8601 format).
-  final pulumi.Input<String>? notValidBefore;
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? notValidBefore;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ManagedCertificateState].
   /// [certificate] (string) PEM encoded TLS certificate.

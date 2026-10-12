@@ -4,25 +4,25 @@
 /// Result data returned by getLoadBalancerType.
 class GetLoadBalancerTypeResult {
   /// Date of the Load Balancer Type deprecation announcement.
-  final String deprecationAnnounced;
+  final String? deprecationAnnounced;
   /// Description of the Load Balancer Type.
-  final String description;
+  final String? description;
   /// ID of the Load Balancer Type.
-  final int id;
+  final int? id;
   /// Whether the Load Balancer Type is deprecated.
-  final bool isDeprecated;
+  final bool? isDeprecated;
   /// Maximum number of certificates that can be assigned for the Load Balancer of this type.
-  final int maxAssignedCertificates;
+  final int? maxAssignedCertificates;
   /// Maximum number of simultaneous open connections for the Load Balancer of this type.
-  final int maxConnections;
+  final int? maxConnections;
   /// Maximum number of services for the Load Balancer of this type.
-  final int maxServices;
+  final int? maxServices;
   /// Maximum number of targets for the Load Balancer of this type.
-  final int maxTargets;
+  final int? maxTargets;
   /// Name of the Load Balancer Type.
-  final String name;
+  final String? name;
   /// Date of the Load Balancer Type removal. After this date, the Load Balancer Type cannot be used anymore.
-  final String unavailableAfter;
+  final String? unavailableAfter;
 
   /// Creates a new [GetLoadBalancerTypeResult].
   /// [deprecationAnnounced] Date of the Load Balancer Type deprecation announcement.
@@ -36,45 +36,45 @@ class GetLoadBalancerTypeResult {
   /// [name] Name of the Load Balancer Type.
   /// [unavailableAfter] Date of the Load Balancer Type removal. After this date, the Load Balancer Type cannot be used anymore.
   const GetLoadBalancerTypeResult({
-    required this.deprecationAnnounced,
-    required this.description,
-    required this.id,
-    required this.isDeprecated,
-    required this.maxAssignedCertificates,
-    required this.maxConnections,
-    required this.maxServices,
-    required this.maxTargets,
-    required this.name,
-    required this.unavailableAfter,
+    this.deprecationAnnounced,
+    this.description,
+    this.id,
+    this.isDeprecated,
+    this.maxAssignedCertificates,
+    this.maxConnections,
+    this.maxServices,
+    this.maxTargets,
+    this.name,
+    this.unavailableAfter,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deprecationAnnounced': deprecationAnnounced,
-      'description': description,
-      'id': id,
-      'isDeprecated': isDeprecated,
-      'maxAssignedCertificates': maxAssignedCertificates,
-      'maxConnections': maxConnections,
-      'maxServices': maxServices,
-      'maxTargets': maxTargets,
-      'name': name,
-      'unavailableAfter': unavailableAfter,
+      'deprecationAnnounced': ?deprecationAnnounced,
+      'description': ?description,
+      'id': ?id,
+      'isDeprecated': ?isDeprecated,
+      'maxAssignedCertificates': ?maxAssignedCertificates,
+      'maxConnections': ?maxConnections,
+      'maxServices': ?maxServices,
+      'maxTargets': ?maxTargets,
+      'name': ?name,
+      'unavailableAfter': ?unavailableAfter,
     };
   }
 
   factory GetLoadBalancerTypeResult.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerTypeResult(
-      deprecationAnnounced: map['deprecationAnnounced'] as String,
-      description: map['description'] as String,
-      id: map['id'] as int,
-      isDeprecated: map['isDeprecated'] as bool,
-      maxAssignedCertificates: map['maxAssignedCertificates'] as int,
-      maxConnections: map['maxConnections'] as int,
-      maxServices: map['maxServices'] as int,
-      maxTargets: map['maxTargets'] as int,
-      name: map['name'] as String,
-      unavailableAfter: map['unavailableAfter'] as String,
+      deprecationAnnounced: (() { final guardedValue = map['deprecationAnnounced']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      isDeprecated: (() { final guardedValue = map['isDeprecated']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      maxAssignedCertificates: (() { final guardedValue = map['maxAssignedCertificates']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      maxConnections: (() { final guardedValue = map['maxConnections']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      maxServices: (() { final guardedValue = map['maxServices']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      maxTargets: (() { final guardedValue = map['maxTargets']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      unavailableAfter: (() { final guardedValue = map['unavailableAfter']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

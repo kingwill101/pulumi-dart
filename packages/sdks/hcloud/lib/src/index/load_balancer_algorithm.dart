@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerAlgorithm {
   /// Type of the Load Balancer Algorithm. `roundRobin` or `leastConnections`
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [LoadBalancerAlgorithm].
   /// [type] Type of the Load Balancer Algorithm. `roundRobin` or `leastConnections`

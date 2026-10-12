@@ -42,7 +42,7 @@ class GetNetworksNetwork {
     return GetNetworksNetwork(
       deleteProtection: pulumi.Input.fromValue(map['deleteProtection'] as bool),
       exposeRoutesToVswitch: pulumi.Input.fromValue(map['exposeRoutesToVswitch'] as bool),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       ipRange: pulumi.Input.fromValue(map['ipRange'] as String),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       name: pulumi.Input.fromValue(map['name'] as String),

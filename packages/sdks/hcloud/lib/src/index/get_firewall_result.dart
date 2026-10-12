@@ -14,7 +14,7 @@ class GetFirewallResult {
   final Map<String, String>? labels;
   final bool? mostRecent;
   /// (string) Name of the Firewall.
-  final String name;
+  final String? name;
   /// (string) Configuration of a Rule from this Firewall.
   final List<GetFirewallRule>? rules;
   final String? withSelector;
@@ -32,7 +32,7 @@ class GetFirewallResult {
     this.id,
     this.labels,
     this.mostRecent,
-    required this.name,
+    this.name,
     this.rules,
     this.withSelector,
   });
@@ -43,7 +43,7 @@ class GetFirewallResult {
       'id': ?id,
       'labels': ?labels,
       'mostRecent': ?mostRecent,
-      'name': name,
+      'name': ?name,
       'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetFirewallRule, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'withSelector': ?withSelector,
     };
@@ -52,10 +52,10 @@ class GetFirewallResult {
   factory GetFirewallResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallResult(
       applyTos: (() { final guardedValue = map['applyTos']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFirewallApplyTo>(guardedValue, (value) => GetFirewallApplyTo.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFirewallRule>(guardedValue, (value) => GetFirewallRule.fromMap((value as Map).cast<String, dynamic>())); })(),
       withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

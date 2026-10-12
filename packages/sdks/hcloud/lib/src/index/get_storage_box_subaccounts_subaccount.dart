@@ -64,11 +64,11 @@ class GetStorageBoxSubaccountsSubaccount {
       accessSettings: pulumi.Input.fromValue(GetStorageBoxSubaccountsSubaccountAccessSettings.fromMap((map['accessSettings']! as Map).cast<String, dynamic>())),
       description: pulumi.Input.fromValue(map['description'] as String),
       homeDirectory: pulumi.Input.fromValue(map['homeDirectory'] as String),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       server: pulumi.Input.fromValue(map['server'] as String),
-      storageBoxId: pulumi.Input.fromValue(map['storageBoxId'] as int),
+      storageBoxId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['storageBoxId'])),
       username: pulumi.Input.fromValue(map['username'] as String),
     );
   }
