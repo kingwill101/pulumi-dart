@@ -6,13 +6,13 @@ import 'synchronization_job_schedule.dart';
 /// Input properties used for looking up and filtering SynchronizationJob resources.
 class SynchronizationJobState {
   /// Whether the provisioning job is enabled. Default state is `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// A `schedule` list as documented below.
-  final pulumi.Input<List<SynchronizationJobSchedule>>? schedules;
+  final pulumi.Input<List<SynchronizationJobSchedule>?>? schedules;
   /// The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
-  final pulumi.Input<String>? servicePrincipalId;
+  final pulumi.Input<String?>? servicePrincipalId;
   /// Identifier of the synchronization template this job is based on.
-  final pulumi.Input<String>? templateId;
+  final pulumi.Input<String?>? templateId;
 
   /// Creates a new [SynchronizationJobState].
   /// [enabled] Whether the provisioning job is enabled. Default state is `true`.

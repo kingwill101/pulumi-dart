@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_application_template_get_application_template_args_doc}
 class GetApplicationTemplateArgs {
   /// Specifies the display name of the templated application.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Specifies the ID of the templated application.
   ///
   /// &gt; One of `templateId` or `displayName` must be specified.
-  final pulumi.Input<String>? templateId;
+  final pulumi.Input<String?>? templateId;
 
   /// Creates a new [GetApplicationTemplateArgs].
   /// [displayName] Specifies the display name of the templated application.

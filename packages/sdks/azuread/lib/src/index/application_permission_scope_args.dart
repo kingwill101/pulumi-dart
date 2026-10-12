@@ -16,13 +16,13 @@ class ApplicationPermissionScopeArgs {
   /// The unique identifier of the permission scope. Must be a valid UUID. Changing this forces a new resource to be created.
   final pulumi.Input<String> scopeId;
   /// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
-  final pulumi.Input<String>? userConsentDescription;
+  final pulumi.Input<String?>? userConsentDescription;
   /// Display name for the delegated permission that appears in the end user consent experience.
   ///
   /// &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
-  final pulumi.Input<String>? userConsentDisplayName;
+  final pulumi.Input<String?>? userConsentDisplayName;
   /// The value that is used for the `scp` claim in OAuth access tokens.
   ///
   /// &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.

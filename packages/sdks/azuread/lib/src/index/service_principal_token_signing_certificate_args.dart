@@ -10,9 +10,9 @@ class ServicePrincipalTokenSigningCertificateArgs {
   /// Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
   ///
   /// &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
-  final pulumi.Input<String>? endDate;
+  final pulumi.Input<String?>? endDate;
   /// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
   final pulumi.Input<String> servicePrincipalId;
 

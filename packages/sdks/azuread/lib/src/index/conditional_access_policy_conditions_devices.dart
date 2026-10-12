@@ -7,7 +7,7 @@ class ConditionalAccessPolicyConditionsDevices {
   /// A `filter` block as documented below.
   ///
   /// &gt; **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
-  final pulumi.Input<ConditionalAccessPolicyConditionsDevicesFilter>? filter;
+  final pulumi.Input<ConditionalAccessPolicyConditionsDevicesFilter?>? filter;
 
   /// Creates a new [ConditionalAccessPolicyConditionsDevices].
   /// [filter] A `filter` block as documented below.

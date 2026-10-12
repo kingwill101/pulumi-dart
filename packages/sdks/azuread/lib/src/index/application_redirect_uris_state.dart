@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ApplicationRedirectUris resources.
 class ApplicationRedirectUrisState {
   /// The resource ID of the application registration. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// A set of redirect URIs to assign to the application.
-  final pulumi.Input<List<String>>? redirectUris;
+  final pulumi.Input<List<String>?>? redirectUris;
   /// The type of redirect URIs to manage. Must be one of: `PublicClient`, `SPA`, or `Web`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ApplicationRedirectUrisState].
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.

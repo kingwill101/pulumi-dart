@@ -7,7 +7,7 @@ class AccessPackageAssignmentPolicyQuestionText {
   /// The default text of this question
   final pulumi.Input<String> defaultText;
   /// The localized text of this question
-  final pulumi.Input<List<AccessPackageAssignmentPolicyQuestionTextLocalizedText>>? localizedTexts;
+  final pulumi.Input<List<AccessPackageAssignmentPolicyQuestionTextLocalizedText>?>? localizedTexts;
 
   /// Creates a new [AccessPackageAssignmentPolicyQuestionText].
   /// [defaultText] The default text of this question

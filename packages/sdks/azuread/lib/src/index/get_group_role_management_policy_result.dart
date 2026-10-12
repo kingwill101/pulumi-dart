@@ -4,45 +4,45 @@
 /// Result data returned by getGroupRoleManagementPolicy.
 class GetGroupRoleManagementPolicyResult {
   /// (String) The description of this policy.
-  final String description;
+  final String? description;
   /// (String) The display name of this policy.
-  final String displayName;
-  final String groupId;
+  final String? displayName;
+  final String? groupId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String roleId;
+  final String? id;
+  final String? roleId;
 
   /// Creates a new [GetGroupRoleManagementPolicyResult].
   /// [description] (String) The description of this policy.
   /// [displayName] (String) The display name of this policy.
-  /// [groupId] Required.
+  /// [groupId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [roleId] Required.
+  /// [roleId] Optional.
   const GetGroupRoleManagementPolicyResult({
-    required this.description,
-    required this.displayName,
-    required this.groupId,
-    required this.id,
-    required this.roleId,
+    this.description,
+    this.displayName,
+    this.groupId,
+    this.id,
+    this.roleId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'description': description,
-      'displayName': displayName,
-      'groupId': groupId,
-      'id': id,
-      'roleId': roleId,
+      'description': ?description,
+      'displayName': ?displayName,
+      'groupId': ?groupId,
+      'id': ?id,
+      'roleId': ?roleId,
     };
   }
 
   factory GetGroupRoleManagementPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetGroupRoleManagementPolicyResult(
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      groupId: map['groupId'] as String,
-      id: map['id'] as String,
-      roleId: map['roleId'] as String,
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      groupId: (() { final guardedValue = map['groupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      roleId: (() { final guardedValue = map['roleId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }
