@@ -47,7 +47,7 @@ class GetZeroTrustAccessCustomPagesResult {
 
   factory GetZeroTrustAccessCustomPagesResult.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustAccessCustomPagesResult(
-      contractVersion: pulumi.Input.fromValue((map['contractVersion'] as num).toInt()),
+      contractVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['contractVersion'])),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),

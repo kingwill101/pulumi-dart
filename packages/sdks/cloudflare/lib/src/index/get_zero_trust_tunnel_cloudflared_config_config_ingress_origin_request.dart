@@ -93,19 +93,19 @@ class GetZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequest {
     return GetZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequest(
       access: pulumi.Input.fromValue(GetZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccess.fromMap((map['access']! as Map).cast<String, dynamic>())),
       caPool: pulumi.Input.fromValue(map['caPool'] as String),
-      connectTimeout: pulumi.Input.fromValue((map['connectTimeout'] as num).toInt()),
+      connectTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['connectTimeout'])),
       disableChunkedEncoding: pulumi.Input.fromValue(map['disableChunkedEncoding'] as bool),
       http2Origin: pulumi.Input.fromValue(map['http2Origin'] as bool),
       httpHostHeader: pulumi.Input.fromValue(map['httpHostHeader'] as String),
-      keepAliveConnections: pulumi.Input.fromValue((map['keepAliveConnections'] as num).toInt()),
-      keepAliveTimeout: pulumi.Input.fromValue((map['keepAliveTimeout'] as num).toInt()),
+      keepAliveConnections: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['keepAliveConnections'])),
+      keepAliveTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['keepAliveTimeout'])),
       matchSnItoHost: pulumi.Input.fromValue(map['matchSnItoHost'] as bool),
       noHappyEyeballs: pulumi.Input.fromValue(map['noHappyEyeballs'] as bool),
       noTlsVerify: pulumi.Input.fromValue(map['noTlsVerify'] as bool),
       originServerName: pulumi.Input.fromValue(map['originServerName'] as String),
       proxyType: pulumi.Input.fromValue(map['proxyType'] as String),
-      tcpKeepAlive: pulumi.Input.fromValue((map['tcpKeepAlive'] as num).toInt()),
-      tlsTimeout: pulumi.Input.fromValue((map['tlsTimeout'] as num).toInt()),
+      tcpKeepAlive: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tcpKeepAlive'])),
+      tlsTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tlsTimeout'])),
     );
   }
 }

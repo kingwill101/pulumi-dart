@@ -5,7 +5,7 @@ import 'get_r2_bucket_sippy_source.dart';
 
 /// Result data returned by getR2BucketSippy.
 class GetR2BucketSippyResult {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final String? accountId;
   /// Name of the bucket.
   final String? bucketName;
@@ -17,7 +17,7 @@ class GetR2BucketSippyResult {
   final GetR2BucketSippySource? source;
 
   /// Creates a new [GetR2BucketSippyResult].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   /// [destination] Details about the configured destination bucket.
   /// [enabled] State of Sippy for this bucket.

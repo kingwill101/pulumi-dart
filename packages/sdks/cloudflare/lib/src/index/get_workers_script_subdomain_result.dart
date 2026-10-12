@@ -9,14 +9,14 @@ class GetWorkersScriptSubdomainResult {
   final bool? enabled;
   /// Whether the Worker's Preview URLs are available on the workers.dev subdomain.
   final bool? previewsEnabled;
-  /// Name of the script, used in URLs and route configuration.
+  /// Name of the script.
   final String? scriptName;
 
   /// Creates a new [GetWorkersScriptSubdomainResult].
   /// [accountId] Identifier.
   /// [enabled] Whether the Worker is available on the workers.dev subdomain.
   /// [previewsEnabled] Whether the Worker's Preview URLs are available on the workers.dev subdomain.
-  /// [scriptName] Name of the script, used in URLs and route configuration.
+  /// [scriptName] Name of the script.
   const GetWorkersScriptSubdomainResult({
     this.accountId,
     this.enabled,

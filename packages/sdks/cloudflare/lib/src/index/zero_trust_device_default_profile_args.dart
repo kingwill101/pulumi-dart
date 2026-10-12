@@ -51,6 +51,8 @@ class ZeroTrustDeviceDefaultProfileArgs {
   final pulumi.Input<bool?>? switchLocked;
   /// Determines which tunnel protocol to use.
   final pulumi.Input<String?>? tunnelProtocol;
+  /// Determines whether uninstalling the WARP client requires an override code. (Windows only).
+  final pulumi.Input<bool?>? uninstallProtection;
   /// Virtual network access settings for the device.
   final pulumi.Input<ZeroTrustDeviceDefaultProfileVirtualNetworks?>? virtualNetworks;
 
@@ -75,6 +77,7 @@ class ZeroTrustDeviceDefaultProfileArgs {
   /// [supportUrl] The URL to launch when the Send Feedback button is clicked.
   /// [switchLocked] Whether to allow the user to turn off the WARP switch and disconnect the client.
   /// [tunnelProtocol] Determines which tunnel protocol to use.
+  /// [uninstallProtection] Determines whether uninstalling the WARP client requires an override code. (Windows only).
   /// [virtualNetworks] Virtual network access settings for the device.
   const ZeroTrustDeviceDefaultProfileArgs({
     required this.accountId,
@@ -97,6 +100,7 @@ class ZeroTrustDeviceDefaultProfileArgs {
     this.supportUrl,
     this.switchLocked,
     this.tunnelProtocol,
+    this.uninstallProtection,
     this.virtualNetworks,
   });
 
@@ -122,6 +126,7 @@ class ZeroTrustDeviceDefaultProfileArgs {
       'supportUrl': ?supportUrl,
       'switchLocked': ?switchLocked,
       'tunnelProtocol': ?tunnelProtocol,
+      'uninstallProtection': ?uninstallProtection,
       'virtualNetworks': ?pulumi.Input.mapOptionalInputValue<ZeroTrustDeviceDefaultProfileVirtualNetworks, Map<String, dynamic>>(virtualNetworks, (value) => value.toMap()),
     };
   }
@@ -148,6 +153,7 @@ class ZeroTrustDeviceDefaultProfileArgs {
       supportUrl: (() { final guardedValue = map['supportUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       switchLocked: (() { final guardedValue = map['switchLocked']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tunnelProtocol: (() { final guardedValue = map['tunnelProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      uninstallProtection: (() { final guardedValue = map['uninstallProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       virtualNetworks: (() { final guardedValue = map['virtualNetworks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustDeviceDefaultProfileVirtualNetworks.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

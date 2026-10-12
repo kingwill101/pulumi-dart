@@ -148,7 +148,7 @@ class WorkersScriptSubdomain extends pulumi.CustomResource {
   late final pulumi.Output<bool> enabled;
   /// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
   late final pulumi.Output<bool> previewsEnabled;
-  /// Name of the script, used in URLs and route configuration.
+  /// Name of the script.
   late final pulumi.Output<String> scriptName;
 
   /// Creates a new [WorkersScriptSubdomain].
@@ -163,7 +163,7 @@ class WorkersScriptSubdomain extends pulumi.CustomResource {
           'cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     enabled = registerOutput<bool>('enabled');

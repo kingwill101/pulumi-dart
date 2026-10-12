@@ -25,8 +25,8 @@ class ZeroTrustDeviceSubnetCapacity {
 
   factory ZeroTrustDeviceSubnetCapacity.fromMap(Map<String, dynamic> map) {
     return ZeroTrustDeviceSubnetCapacity(
-      total: (() { final guardedValue = map['total']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      used: (() { final guardedValue = map['used']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      total: (() { final guardedValue = map['total']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      used: (() { final guardedValue = map['used']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

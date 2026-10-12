@@ -7,7 +7,7 @@ class GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClause {
   final pulumi.Input<List<String>> clauses;
   /// Available values: "AND", "OR".
   final pulumi.Input<String> logicalOperator;
-  /// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+  /// Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
   final pulumi.Input<String> operator;
   /// Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
   final pulumi.Input<String> value;
@@ -16,7 +16,7 @@ class GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClause {
   /// [attribute] Required.
   /// [clauses] Required.
   /// [logicalOperator] Available values: "AND", "OR".
-  /// [operator] Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in".
+  /// [operator] Available values: "equals", "not*equals", "greater*than", "less*than", "greater*than*or*equals", "less*than*or*equals", "contains", "starts*with", "ends*with", "in", "not*in", "has", "notHas".
   /// [value] Value to compare against the context attribute. Must be an array for `in` and `notIn`; numeric and ISO-8601 datetime strings are accepted by the ordering operators.
   const GetFlagshipFlagsResultRuleConditionClauseClauseClauseClauseClause({
     required this.attribute,

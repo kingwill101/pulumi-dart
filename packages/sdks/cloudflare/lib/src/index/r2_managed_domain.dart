@@ -124,7 +124,7 @@ import 'r2_managed_domain_state.dart';
 ///
 /// &gt; This resource does not currently support `pulumi import`.
 class R2ManagedDomain extends pulumi.CustomResource {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   late final pulumi.Output<String> accountId;
   /// Bucket ID.
   late final pulumi.Output<String> bucketId;
@@ -149,7 +149,7 @@ class R2ManagedDomain extends pulumi.CustomResource {
           'cloudflare:index/r2ManagedDomain:R2ManagedDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     bucketId = registerOutput<String>('bucketId');

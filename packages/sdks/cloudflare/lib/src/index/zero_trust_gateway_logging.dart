@@ -222,6 +222,7 @@ import 'zero_trust_gateway_logging_state.dart';
 /// $ pulumi import cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging example '<account_id>'
 /// ```
 class ZeroTrustGatewayLogging extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   /// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
   late final pulumi.Output<bool> redactPii;
@@ -240,7 +241,7 @@ class ZeroTrustGatewayLogging extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     redactPii = registerOutput<bool>('redactPii');

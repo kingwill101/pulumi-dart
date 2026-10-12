@@ -16,7 +16,7 @@ class GetCustomHostnamesResult {
   final pulumi.Input<String> customOriginSni;
   /// The custom hostname that will point to your hostname via CNAME.
   final pulumi.Input<String> hostname;
-  /// Identifier.
+  /// Custom hostname identifier tag.
   final pulumi.Input<String> id;
   /// This is a record which can be placed to activate a hostname.
   final pulumi.Input<GetCustomHostnamesResultOwnershipVerification> ownershipVerification;
@@ -35,7 +35,7 @@ class GetCustomHostnamesResult {
   /// [customOriginServer] a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
   /// [customOriginSni] A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
   /// [hostname] The custom hostname that will point to your hostname via CNAME.
-  /// [id] Identifier.
+  /// [id] Custom hostname identifier tag.
   /// [ownershipVerification] This is a record which can be placed to activate a hostname.
   /// [ownershipVerificationHttp] This presents the token to be served by the given http url to activate a hostname.
   /// [ssl] Required.

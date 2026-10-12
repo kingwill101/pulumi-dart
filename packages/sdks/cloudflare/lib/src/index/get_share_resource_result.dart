@@ -20,7 +20,7 @@ class GetShareResourceResult {
   /// Share Resource identifier.
   final String? resourceId;
   /// Resource Type.
-  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant".
+  /// Available values: "custom-ruleset", "gateway-policy", "gateway-destination-ip", "gateway-block-page-settings", "gateway-extended-email-matching", "idp-federation-grant", "trust-grant".
   final String? resourceType;
   /// Resource Version.
   final int? resourceVersion;
@@ -91,7 +91,7 @@ class GetShareResourceResult {
       resourceAccountId: (() { final guardedValue = map['resourceAccountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      resourceVersion: (() { final guardedValue = map['resourceVersion']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      resourceVersion: (() { final guardedValue = map['resourceVersion']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       shareId: (() { final guardedValue = map['shareId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       shareResourceId: (() { final guardedValue = map['shareResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),

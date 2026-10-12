@@ -168,6 +168,7 @@ import 'teams_list_state.dart';
 /// $ pulumi import cloudflare:index/teamsList:TeamsList example '<account_id>/<list_id>'
 /// ```
 class TeamsList extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   late final pulumi.Output<String> createdAt;
   /// Provide the list description.
@@ -195,7 +196,7 @@ class TeamsList extends pulumi.CustomResource {
           'cloudflare:index/teamsList:TeamsList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');

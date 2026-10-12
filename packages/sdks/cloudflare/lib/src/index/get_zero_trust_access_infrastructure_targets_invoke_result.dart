@@ -51,6 +51,10 @@ class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
   final String? order;
   /// The items returned by the data source
   final List<GetZeroTrustAccessInfrastructureTargetsResult>? results;
+  /// Filter by tag key:value pairs. Multiple `tag` params are AND'd.
+  /// Format: `tag=key:value` (e.g., `tag=environment:production`).
+  /// Key and value must both be non-empty; `tag=:value` and `tag=key:` return 400.
+  final List<String>? tags;
   /// Filters for targets that have any of the following UUIDs. Specify
   /// `targetIds` multiple times in query parameter to build list of
   /// candidates.
@@ -78,6 +82,7 @@ class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
   /// [modifiedBefore] Date and time at which the target was modified before (inclusive)
   /// [order] The field to sort by.
   /// [results] The items returned by the data source
+  /// [tags] Filter by tag key:value pairs. Multiple `tag` params are AND'd.
   /// [targetIds] Filters for targets that have any of the following UUIDs. Specify
   /// [virtualNetworkId] Private virtual network identifier of the target
   const GetZeroTrustAccessInfrastructureTargetsInvokeResult({
@@ -100,6 +105,7 @@ class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
     this.modifiedBefore,
     this.order,
     this.results,
+    this.tags,
     this.targetIds,
     this.virtualNetworkId,
   });
@@ -125,6 +131,7 @@ class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
       'modifiedBefore': ?modifiedBefore,
       'order': ?order,
       'results': ?(() { final guardedValue = results; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetZeroTrustAccessInfrastructureTargetsResult, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'tags': ?tags,
       'targetIds': ?targetIds,
       'virtualNetworkId': ?virtualNetworkId,
     };
@@ -146,11 +153,12 @@ class GetZeroTrustAccessInfrastructureTargetsInvokeResult {
       ipv4Start: (() { final guardedValue = map['ipv4Start']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipv6End: (() { final guardedValue = map['ipv6End']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipv6Start: (() { final guardedValue = map['ipv6Start']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       modifiedAfter: (() { final guardedValue = map['modifiedAfter']; if (guardedValue == null) return null; return guardedValue as String; })(),
       modifiedBefore: (() { final guardedValue = map['modifiedBefore']; if (guardedValue == null) return null; return guardedValue as String; })(),
       order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return guardedValue as String; })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustAccessInfrastructureTargetsResult>(guardedValue, (value) => GetZeroTrustAccessInfrastructureTargetsResult.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       targetIds: (() { final guardedValue = map['targetIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       virtualNetworkId: (() { final guardedValue = map['virtualNetworkId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

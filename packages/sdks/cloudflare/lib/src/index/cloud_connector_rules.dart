@@ -97,7 +97,7 @@ import 'cloud_connector_rules_state.dart';
 /// 					Parameters: &cloudflare.CloudConnectorRulesRuleParametersArgs{
 /// 						Host: pulumi.String("examplebucket.s3.eu-north-1.amazonaws.com"),
 /// 					},
-/// 					CloudConnectorRulesProvider: "aws_s3",
+/// 					CloudConnectorRulesProvider: pulumi.String("aws_s3"),
 /// 				},
 /// 			},
 /// 		})
@@ -195,7 +195,7 @@ import 'cloud_connector_rules_state.dart';
 /// $ pulumi import cloudflare:index/cloudConnectorRules:CloudConnectorRules example '<zone_id>'
 /// ```
 class CloudConnectorRules extends pulumi.CustomResource {
-  late final pulumi.Output<List<CloudConnectorRulesRule>?> rules;
+  late final pulumi.Output<List<CloudConnectorRulesRule>> rules;
   /// Identifier.
   late final pulumi.Output<String> zoneId;
 
@@ -211,9 +211,9 @@ class CloudConnectorRules extends pulumi.CustomResource {
           'cloudflare:index/cloudConnectorRules:CloudConnectorRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
-    rules = registerOutput<List<CloudConnectorRulesRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudConnectorRulesRule>(guardedValue, (value) => CloudConnectorRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
+    rules = registerOutput<List<CloudConnectorRulesRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudConnectorRulesRule>(guardedValue, (value) => CloudConnectorRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
     zoneId = registerOutput<String>('zoneId');
   }
 
@@ -241,7 +241,7 @@ class CloudConnectorRules extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    rules = registerOutput<List<CloudConnectorRulesRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudConnectorRulesRule>(guardedValue, (value) => CloudConnectorRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
+    rules = registerOutput<List<CloudConnectorRulesRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudConnectorRulesRule>(guardedValue, (value) => CloudConnectorRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
     zoneId = registerOutput<String>('zoneId');
   }
 
@@ -254,7 +254,7 @@ class CloudConnectorRules extends pulumi.CustomResource {
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
         isResourceReference: true,
       ) {
-    rules = registerOutput<List<CloudConnectorRulesRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudConnectorRulesRule>(guardedValue, (value) => CloudConnectorRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
+    rules = registerOutput<List<CloudConnectorRulesRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloudConnectorRulesRule>(guardedValue, (value) => CloudConnectorRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
     zoneId = registerOutput<String>('zoneId');
   }
 }

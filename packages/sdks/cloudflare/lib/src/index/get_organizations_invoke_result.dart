@@ -60,9 +60,9 @@ class GetOrganizationsInvokeResult {
     return GetOrganizationsInvokeResult(
       containing: (() { final guardedValue = map['containing']; if (guardedValue == null) return null; return GetOrganizationsContaining.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       ids: (() { final guardedValue = map['ids']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return GetOrganizationsName.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       pageToken: (() { final guardedValue = map['pageToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
       parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return GetOrganizationsParent.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetOrganizationsResult>(guardedValue, (value) => GetOrganizationsResult.fromMap((value as Map).cast<String, dynamic>())); })(),

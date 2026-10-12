@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSnippetRulesListArgs {
   /// Max items to fetch, default: 1000
   final pulumi.Input<int?>? maxItems;
-  /// The unique ID of the zone.
+  /// Use this field to specify the unique ID of the zone.
   final pulumi.Input<String> zoneId;
 
   /// Creates a new [GetSnippetRulesListArgs].
   /// [maxItems] Max items to fetch, default: 1000
-  /// [zoneId] The unique ID of the zone.
+  /// [zoneId] Use this field to specify the unique ID of the zone.
   const GetSnippetRulesListArgs({
     this.maxItems,
     required this.zoneId,
@@ -29,7 +29,7 @@ class GetSnippetRulesListArgs {
 
   factory GetSnippetRulesListArgs.fromMap(Map<String, dynamic> map) {
     return GetSnippetRulesListArgs(
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),
     );
   }

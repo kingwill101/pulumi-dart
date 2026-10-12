@@ -209,7 +209,7 @@ import 'r2_bucket_sippy_state.dart';
 ///
 /// &gt; This resource does not currently support `pulumi import`.
 class R2BucketSippy extends pulumi.CustomResource {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   late final pulumi.Output<String> accountId;
   /// Name of the bucket.
   late final pulumi.Output<String> bucketName;
@@ -234,7 +234,7 @@ class R2BucketSippy extends pulumi.CustomResource {
           'cloudflare:index/r2BucketSippy:R2BucketSippy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     bucketName = registerOutput<String>('bucketName');

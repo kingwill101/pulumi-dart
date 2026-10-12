@@ -7,14 +7,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_flagship_app_get_flagship_app_args_doc}
 class GetFlagshipAppArgs {
-  /// Cloudflare account ID.
+  /// Cloudflare account ID that owns the Flagship app.
   final pulumi.Input<String> accountId;
-  /// App identifier.
+  /// Flagship app ID returned when the app was created.
   final pulumi.Input<String> appId;
 
   /// Creates a new [GetFlagshipAppArgs].
-  /// [accountId] Cloudflare account ID.
-  /// [appId] App identifier.
+  /// [accountId] Cloudflare account ID that owns the Flagship app.
+  /// [appId] Flagship app ID returned when the app was created.
   const GetFlagshipAppArgs({
     required this.accountId,
     required this.appId,

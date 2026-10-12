@@ -8,6 +8,7 @@ import 'zero_trust_list_item.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_zero_trust_list_zero_trust_list_args_doc}
 class ZeroTrustListArgs {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String> accountId;
   /// Provide the list description.
   final pulumi.Input<String?>? description;
@@ -20,7 +21,7 @@ class ZeroTrustListArgs {
   final pulumi.Input<String> type;
 
   /// Creates a new [ZeroTrustListArgs].
-  /// [accountId] Required.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [description] Provide the list description.
   /// [items] Add items to the list.
   /// [name] Specify the list name.

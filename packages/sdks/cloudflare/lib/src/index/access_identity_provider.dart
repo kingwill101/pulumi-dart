@@ -35,6 +35,7 @@ import 'access_identity_provider_state.dart';
 ///     name: "Widget Corps IDP",
 ///     type: "onetimepin",
 ///     zoneId: "zone_id",
+///     samlCertificateSetId: "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
 ///     scimConfig: {
 ///         enabled: true,
 ///         identityUpdateBehavior: "automatic",
@@ -65,6 +66,7 @@ import 'access_identity_provider_state.dart';
 ///     name="Widget Corps IDP",
 ///     type="onetimepin",
 ///     zone_id="zone_id",
+///     saml_certificate_set_id="c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
 ///     scim_config={
 ///         "enabled": True,
 ///         "identity_update_behavior": "automatic",
@@ -101,6 +103,7 @@ import 'access_identity_provider_state.dart';
 ///         Name = "Widget Corps IDP",
 ///         Type = "onetimepin",
 ///         ZoneId = "zone_id",
+///         SamlCertificateSetId = "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8",
 ///         ScimConfig = new Cloudflare.Inputs.ZeroTrustAccessIdentityProviderScimConfigArgs
 ///         {
 ///             Enabled = true,
@@ -137,9 +140,10 @@ import 'access_identity_provider_state.dart';
 /// 				Prompt:                   pulumi.String("login"),
 /// 				SupportGroups:            pulumi.Bool(true),
 /// 			},
-/// 			Name:   pulumi.String("Widget Corps IDP"),
-/// 			Type:   pulumi.String("onetimepin"),
-/// 			ZoneId: pulumi.String("zone_id"),
+/// 			Name:                 pulumi.String("Widget Corps IDP"),
+/// 			Type:                 pulumi.String("onetimepin"),
+/// 			ZoneId:               pulumi.String("zone_id"),
+/// 			SamlCertificateSetId: pulumi.String("c409ef44-e72c-41c8-8c0b-278c8a6f4fd8"),
 /// 			ScimConfig: &cloudflare.ZeroTrustAccessIdentityProviderScimConfigArgs{
 /// 				Enabled:                pulumi.Bool(true),
 /// 				IdentityUpdateBehavior: pulumi.String("automatic"),
@@ -174,9 +178,10 @@ import 'access_identity_provider_state.dart';
 ///     prompt                     = "login"
 ///     support_groups             = true
 ///   }
-///   name    = "Widget Corps IDP"
-///   type    = "onetimepin"
-///   zone_id = "zone_id"
+///   name                    = "Widget Corps IDP"
+///   type                    = "onetimepin"
+///   zone_id                 = "zone_id"
+///   saml_certificate_set_id = "c409ef44-e72c-41c8-8c0b-278c8a6f4fd8"
 ///   scim_config = {
 ///     enabled                  = true
 ///     identity_update_behavior = "automatic"
@@ -225,6 +230,7 @@ import 'access_identity_provider_state.dart';
 ///             .name("Widget Corps IDP")
 ///             .type("onetimepin")
 ///             .zoneId("zone_id")
+///             .samlCertificateSetId("c409ef44-e72c-41c8-8c0b-278c8a6f4fd8")
 ///             .scimConfig(ZeroTrustAccessIdentityProviderScimConfigArgs.builder()
 ///                 .enabled(true)
 ///                 .identityUpdateBehavior("automatic")
@@ -257,6 +263,7 @@ import 'access_identity_provider_state.dart';
 ///       name: Widget Corps IDP
 ///       type: onetimepin
 ///       zoneId: zone_id
+///       samlCertificateSetId: c409ef44-e72c-41c8-8c0b-278c8a6f4fd8
 ///       scimConfig:
 ///         enabled: true
 ///         identityUpdateBehavior: automatic
@@ -306,7 +313,7 @@ class AccessIdentityProvider extends pulumi.CustomResource {
           'cloudflare:index/accessIdentityProvider:AccessIdentityProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     config = registerOutput<AccessIdentityProviderConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessIdentityProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

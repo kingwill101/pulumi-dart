@@ -1,21 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_flagship_flag_filter.dart';
 import 'get_flagship_flag_rule.dart';
 
 /// Result data returned by getFlagshipFlag.
 class GetFlagshipFlagResult {
-  /// Cloudflare account ID.
+  /// Cloudflare account ID that owns the Flagship app.
   final String? accountId;
-  /// App identifier.
+  /// Flagship app ID returned when the app was created.
   final String? appId;
   /// Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
   final String? defaultVariation;
+  /// Optional operator-facing description. It does not affect flag evaluation.
   final String? description;
   /// When false, the flag bypasses all rules and always serves `defaultVariation`.
   final bool? enabled;
-  /// Flag key (slug).
+  final GetFlagshipFlagFilter? filter;
+  /// Case-sensitive key identifying the flag within the app.
   final String? flagKey;
+  /// Case-sensitive key identifying the flag within the app.
+  final String? id;
   /// Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
   final String? key;
   /// Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
@@ -29,12 +34,14 @@ class GetFlagshipFlagResult {
   final Map<String, String>? variations;
 
   /// Creates a new [GetFlagshipFlagResult].
-  /// [accountId] Cloudflare account ID.
-  /// [appId] App identifier.
+  /// [accountId] Cloudflare account ID that owns the Flagship app.
+  /// [appId] Flagship app ID returned when the app was created.
   /// [defaultVariation] Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.
-  /// [description] Optional.
+  /// [description] Optional operator-facing description. It does not affect flag evaluation.
   /// [enabled] When false, the flag bypasses all rules and always serves `defaultVariation`.
-  /// [flagKey] Flag key (slug).
+  /// [filter] Optional.
+  /// [flagKey] Case-sensitive key identifying the flag within the app.
+  /// [id] Case-sensitive key identifying the flag within the app.
   /// [key] Unique identifier for the flag within an app. Used in all evaluation and SDK calls.
   /// [rules] Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `defaultVariation`.
   /// [type] Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.
@@ -47,7 +54,9 @@ class GetFlagshipFlagResult {
     this.defaultVariation,
     this.description,
     this.enabled,
+    this.filter,
     this.flagKey,
+    this.id,
     this.key,
     this.rules,
     this.type,
@@ -63,7 +72,9 @@ class GetFlagshipFlagResult {
       'defaultVariation': ?defaultVariation,
       'description': ?description,
       'enabled': ?enabled,
+      'filter': ?filter?.toMap(),
       'flagKey': ?flagKey,
+      'id': ?id,
       'key': ?key,
       'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetFlagshipFlagRule, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'type': ?type,
@@ -80,7 +91,9 @@ class GetFlagshipFlagResult {
       defaultVariation: (() { final guardedValue = map['defaultVariation']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetFlagshipFlagFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       flagKey: (() { final guardedValue = map['flagKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return guardedValue as String; })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFlagshipFlagRule>(guardedValue, (value) => GetFlagshipFlagRule.fromMap((value as Map).cast<String, dynamic>())); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),

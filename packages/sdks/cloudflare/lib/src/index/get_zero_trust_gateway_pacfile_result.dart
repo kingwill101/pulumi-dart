@@ -3,6 +3,7 @@
 
 /// Result data returned by getZeroTrustGatewayPacfile.
 class GetZeroTrustGatewayPacfileResult {
+  /// Specify the Cloudflare account identifier.
   final String? accountId;
   /// Actual contents of the PAC file
   final String? contents;
@@ -21,7 +22,7 @@ class GetZeroTrustGatewayPacfileResult {
   final String? url;
 
   /// Creates a new [GetZeroTrustGatewayPacfileResult].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [contents] Actual contents of the PAC file
   /// [createdAt] Optional.
   /// [description] Detailed description of the PAC file.

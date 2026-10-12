@@ -208,7 +208,7 @@ class QueueConsumerResource extends pulumi.CustomResource {
   /// Name of a Worker
   late final pulumi.Output<String> scriptName;
   late final pulumi.Output<QueueConsumerSettings> settings;
-  /// Available values: "worker", "httpPull".
+  /// Available values: "worker", "httpPull", "notification".
   late final pulumi.Output<String> type;
 
   /// Creates a new [QueueConsumerResource].
@@ -223,7 +223,7 @@ class QueueConsumerResource extends pulumi.CustomResource {
           'cloudflare:index/queueConsumer:QueueConsumer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     consumerId = registerOutput<String>('consumerId');

@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkersCronTriggerArgs {
   /// Identifier.
   final pulumi.Input<String?>? accountId;
-  /// Name of the script, used in URLs and route configuration.
+  /// Name of the script.
   final pulumi.Input<String> scriptName;
 
   /// Creates a new [GetWorkersCronTriggerArgs].
   /// [accountId] Identifier.
-  /// [scriptName] Name of the script, used in URLs and route configuration.
+  /// [scriptName] Name of the script.
   const GetWorkersCronTriggerArgs({
     this.accountId,
     required this.scriptName,

@@ -145,6 +145,7 @@ import 'zero_trust_gateway_pacfile_state.dart';
 /// $ pulumi import cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile example '<account_id>/<pacfile_id>'
 /// ```
 class ZeroTrustGatewayPacfile extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   /// Actual contents of the PAC file
   late final pulumi.Output<String> contents;
@@ -171,7 +172,7 @@ class ZeroTrustGatewayPacfile extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     contents = registerOutput<String>('contents');

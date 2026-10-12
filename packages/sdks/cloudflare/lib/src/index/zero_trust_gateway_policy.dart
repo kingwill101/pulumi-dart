@@ -1057,6 +1057,7 @@ import 'zero_trust_gateway_policy_state.dart';
 /// $ pulumi import cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy example '<account_id>/<rule_id>'
 /// ```
 class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
   /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -1110,7 +1111,7 @@ class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     action = registerOutput<String>('action');

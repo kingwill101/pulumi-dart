@@ -20,7 +20,7 @@ import 'email_security_trusted_domains_state.dart';
 ///     isRegex: false,
 ///     isSimilarity: false,
 ///     pattern: "example.com",
-///     comments: null,
+///     comments: "Trusted partner domain",
 /// });
 /// ```
 /// ```python
@@ -33,7 +33,7 @@ import 'email_security_trusted_domains_state.dart';
 ///     is_regex=False,
 ///     is_similarity=False,
 ///     pattern="example.com",
-///     comments=None)
+///     comments="Trusted partner domain")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -50,7 +50,7 @@ import 'email_security_trusted_domains_state.dart';
 ///         IsRegex = false,
 ///         IsSimilarity = false,
 ///         Pattern = "example.com",
-///         Comments = null,
+///         Comments = "Trusted partner domain",
 ///     });
 ///
 /// });
@@ -71,7 +71,7 @@ import 'email_security_trusted_domains_state.dart';
 /// 			IsRegex:      pulumi.Bool(false),
 /// 			IsSimilarity: pulumi.Bool(false),
 /// 			Pattern:      pulumi.String("example.com"),
-/// 			Comments:     nil,
+/// 			Comments:     pulumi.String("Trusted partner domain"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -95,7 +95,7 @@ import 'email_security_trusted_domains_state.dart';
 ///   is_regex      = false
 ///   is_similarity = false
 ///   pattern       = "example.com"
-///   comments      = null
+///   comments      = "Trusted partner domain"
 /// }
 /// ```
 /// ```java
@@ -125,7 +125,7 @@ import 'email_security_trusted_domains_state.dart';
 ///             .isRegex(false)
 ///             .isSimilarity(false)
 ///             .pattern("example.com")
-///             .comments(null)
+///             .comments("Trusted partner domain")
 ///             .build());
 ///
 ///     }
@@ -142,7 +142,7 @@ import 'email_security_trusted_domains_state.dart';
 ///       isRegex: false
 ///       isSimilarity: false
 ///       pattern: example.com
-///       comments: null
+///       comments: Trusted partner domain
 /// ```
 ///
 ///
@@ -158,12 +158,14 @@ class EmailSecurityTrustedDomains extends pulumi.CustomResource {
   late final pulumi.Output<String> createdAt;
   /// Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition.
   late final pulumi.Output<bool?> isRecent;
+  /// Whether `pattern` is a regular expression instead of a literal domain.
   late final pulumi.Output<bool?> isRegex;
   /// Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition.
   late final pulumi.Output<bool?> isSimilarity;
   /// Deprecated, use `modifiedAt` instead. End of life: November 1, 2026.
   late final pulumi.Output<String> lastModified;
   late final pulumi.Output<String> modifiedAt;
+  /// The domain pattern to trust, e.g. `example.com`.
   late final pulumi.Output<String> pattern;
 
   /// Creates a new [EmailSecurityTrustedDomains].
@@ -178,7 +180,7 @@ class EmailSecurityTrustedDomains extends pulumi.CustomResource {
           'cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     comments = registerOutput<String?>('comments');

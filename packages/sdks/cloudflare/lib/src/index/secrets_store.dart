@@ -127,6 +127,10 @@ class SecretsStore extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   /// When the secret was created.
   late final pulumi.Output<String> created;
+  /// When true, cascade-deletes all secrets in the store before deleting the store itself.
+  /// Required when deleting a non-empty store. Without this parameter, attempting to
+  /// delete a non-empty store returns 409.
+  late final pulumi.Output<bool> force;
   /// When the secret was modified.
   late final pulumi.Output<String> modified;
   /// The name of the store.
@@ -144,10 +148,11 @@ class SecretsStore extends pulumi.CustomResource {
           'cloudflare:index/secretsStore:SecretsStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     created = registerOutput<String>('created');
+    force = registerOutput<bool>('force');
     modified = registerOutput<String>('modified');
     this.name = registerOutput<String>('name');
   }
@@ -178,6 +183,7 @@ class SecretsStore extends pulumi.CustomResource {
         ) {
     accountId = registerOutput<String>('accountId');
     created = registerOutput<String>('created');
+    force = registerOutput<bool>('force');
     modified = registerOutput<String>('modified');
     this.name = registerOutput<String>('name');
   }
@@ -193,6 +199,7 @@ class SecretsStore extends pulumi.CustomResource {
       ) {
     accountId = registerOutput<String>('accountId');
     created = registerOutput<String>('created');
+    force = registerOutput<bool>('force');
     modified = registerOutput<String>('modified');
     this.name = registerOutput<String>('name');
   }

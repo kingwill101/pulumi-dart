@@ -598,6 +598,7 @@ import 'zero_trust_gateway_settings_state.dart';
 /// $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example '<account_id>'
 /// ```
 class ZeroTrustGatewaySettings extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   late final pulumi.Output<String> createdAt;
   /// Specify account settings.
@@ -616,7 +617,7 @@ class ZeroTrustGatewaySettings extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');

@@ -11,13 +11,13 @@ class GetTurnstileWidgetArgs {
   /// Identifier
   final pulumi.Input<String?>? accountId;
   final pulumi.Input<GetTurnstileWidgetFilter?>? filter;
-  /// Widget item identifier tag.
+  /// Unique identifier for a Turnstile widget.
   final pulumi.Input<String?>? sitekey;
 
   /// Creates a new [GetTurnstileWidgetArgs].
   /// [accountId] Identifier
   /// [filter] Optional.
-  /// [sitekey] Widget item identifier tag.
+  /// [sitekey] Unique identifier for a Turnstile widget.
   const GetTurnstileWidgetArgs({
     this.accountId,
     this.filter,

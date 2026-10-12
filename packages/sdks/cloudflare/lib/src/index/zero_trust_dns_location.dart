@@ -396,6 +396,7 @@ import 'zero_trust_dns_location_state.dart';
 /// $ pulumi import cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation example '<account_id>/<location_id>'
 /// ```
 class ZeroTrustDnsLocation extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   /// Indicate whether this location is the default location.
   late final pulumi.Output<bool> clientDefault;
@@ -436,7 +437,7 @@ class ZeroTrustDnsLocation extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     clientDefault = registerOutput<bool>('clientDefault');

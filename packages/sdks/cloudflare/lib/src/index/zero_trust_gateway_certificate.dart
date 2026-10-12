@@ -119,6 +119,7 @@ import 'zero_trust_gateway_certificate_state.dart';
 /// $ pulumi import cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate example '<account_id>/<certificate_id>'
 /// ```
 class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   /// Whether to activate the certificate on Cloudflare's edge. When true, the certificate will be activated. When false, the certificate will be deactivated at the edge. This is a Terraform-only field and does not appear in the API response. Monitor `bindingStatus` for the activation status. Once a certificate is activated, you may use the certificate to intercept traffic
   late final pulumi.Output<bool?> activate;
@@ -157,7 +158,7 @@ class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     activate = registerOutput<bool?>('activate');

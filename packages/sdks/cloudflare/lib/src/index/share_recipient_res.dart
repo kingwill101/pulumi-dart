@@ -143,6 +143,8 @@ class ShareRecipientRes extends pulumi.CustomResource {
   late final pulumi.Output<String> associationStatus;
   /// When the share was created.
   late final pulumi.Output<String> created;
+  /// Include resources in the response.
+  late final pulumi.Output<bool?> includeResources;
   /// When the share was modified.
   late final pulumi.Output<String> modified;
   /// Organization identifier.
@@ -165,11 +167,12 @@ class ShareRecipientRes extends pulumi.CustomResource {
           'cloudflare:index/shareRecipient:ShareRecipient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     associationStatus = registerOutput<String>('associationStatus');
     created = registerOutput<String>('created');
+    includeResources = registerOutput<bool?>('includeResources');
     modified = registerOutput<String>('modified');
     organizationId = registerOutput<String?>('organizationId');
     recipientAccountId = registerOutput<String?>('recipientAccountId');
@@ -204,6 +207,7 @@ class ShareRecipientRes extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     associationStatus = registerOutput<String>('associationStatus');
     created = registerOutput<String>('created');
+    includeResources = registerOutput<bool?>('includeResources');
     modified = registerOutput<String>('modified');
     organizationId = registerOutput<String?>('organizationId');
     recipientAccountId = registerOutput<String?>('recipientAccountId');
@@ -223,6 +227,7 @@ class ShareRecipientRes extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     associationStatus = registerOutput<String>('associationStatus');
     created = registerOutput<String>('created');
+    includeResources = registerOutput<bool?>('includeResources');
     modified = registerOutput<String>('modified');
     organizationId = registerOutput<String?>('organizationId');
     recipientAccountId = registerOutput<String?>('recipientAccountId');

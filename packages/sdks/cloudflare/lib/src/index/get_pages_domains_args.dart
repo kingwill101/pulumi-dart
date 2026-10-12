@@ -11,13 +11,13 @@ class GetPagesDomainsArgs {
   final pulumi.Input<String?>? accountId;
   /// Max items to fetch, default: 1000
   final pulumi.Input<int?>? maxItems;
-  /// Name of the project.
+  /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final pulumi.Input<String> projectName;
 
   /// Creates a new [GetPagesDomainsArgs].
   /// [accountId] Identifier.
   /// [maxItems] Max items to fetch, default: 1000
-  /// [projectName] Name of the project.
+  /// [projectName] Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   const GetPagesDomainsArgs({
     this.accountId,
     this.maxItems,
@@ -35,7 +35,7 @@ class GetPagesDomainsArgs {
   factory GetPagesDomainsArgs.fromMap(Map<String, dynamic> map) {
     return GetPagesDomainsArgs(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
     );
   }

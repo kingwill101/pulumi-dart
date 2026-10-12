@@ -22,7 +22,7 @@ import 'pages_domain_verification_data.dart';
 /// const examplePagesDomain = new cloudflare.PagesDomain("example_pages_domain", {
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     projectName: "this-is-my-project-01",
-///     name: "this-is-my-domain-01.com",
+///     name: "example.com",
 /// });
 /// ```
 /// ```python
@@ -32,7 +32,7 @@ import 'pages_domain_verification_data.dart';
 /// example_pages_domain = cloudflare.PagesDomain("example_pages_domain",
 ///     account_id="023e105f4ecef8ad9ca31a8372d0c353",
 ///     project_name="this-is-my-project-01",
-///     name="this-is-my-domain-01.com")
+///     name="example.com")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -46,7 +46,7 @@ import 'pages_domain_verification_data.dart';
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///         ProjectName = "this-is-my-project-01",
-///         Name = "this-is-my-domain-01.com",
+///         Name = "example.com",
 ///     });
 ///
 /// });
@@ -64,7 +64,7 @@ import 'pages_domain_verification_data.dart';
 /// 		_, err := cloudflare.NewPagesDomain(ctx, "example_pages_domain", &cloudflare.PagesDomainArgs{
 /// 			AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 			ProjectName: pulumi.String("this-is-my-project-01"),
-/// 			Name:        pulumi.String("this-is-my-domain-01.com"),
+/// 			Name:        pulumi.String("example.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -85,7 +85,7 @@ import 'pages_domain_verification_data.dart';
 /// resource "cloudflare_pagesdomain" "example_pages_domain" {
 ///   account_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   project_name = "this-is-my-project-01"
-///   name         = "this-is-my-domain-01.com"
+///   name         = "example.com"
 /// }
 /// ```
 /// ```java
@@ -112,7 +112,7 @@ import 'pages_domain_verification_data.dart';
 ///         var examplePagesDomain = new PagesDomain("examplePagesDomain", PagesDomainArgs.builder()
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .projectName("this-is-my-project-01")
-///             .name("this-is-my-domain-01.com")
+///             .name("example.com")
 ///             .build());
 ///
 ///     }
@@ -126,7 +126,7 @@ import 'pages_domain_verification_data.dart';
 ///     properties:
 ///       accountId: 023e105f4ecef8ad9ca31a8372d0c353
 ///       projectName: this-is-my-project-01
-///       name: this-is-my-domain-01.com
+///       name: example.com
 /// ```
 ///
 ///
@@ -142,9 +142,9 @@ class PagesDomain extends pulumi.CustomResource {
   late final pulumi.Output<String> certificateAuthority;
   late final pulumi.Output<String> createdOn;
   late final pulumi.Output<String> domainId;
-  /// The domain name.
+  /// Fully qualified domain name for the Pages project, such as `example.com`.
   late final pulumi.Output<String> name;
-  /// Name of the project.
+  /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   late final pulumi.Output<String> projectName;
   /// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
   late final pulumi.Output<String> status;
@@ -164,7 +164,7 @@ class PagesDomain extends pulumi.CustomResource {
           'cloudflare:index/pagesDomain:PagesDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     certificateAuthority = registerOutput<String>('certificateAuthority');

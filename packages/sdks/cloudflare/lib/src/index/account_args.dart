@@ -16,21 +16,25 @@ class AccountArgs {
   final pulumi.Input<String> name;
   /// Account settings
   final pulumi.Input<AccountSettings?>? settings;
+  /// Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+  final pulumi.Input<bool?>? standalone;
   /// Available values: "standard", "enterprise".
   final pulumi.Input<String?>? type;
-  /// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+  /// Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
   final pulumi.Input<AccountUnit?>? unit;
 
   /// Creates a new [AccountArgs].
   /// [managedBy] Parent container details
   /// [name] Account name
   /// [settings] Account settings
+  /// [standalone] Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
   /// [type] Available values: "standard", "enterprise".
-  /// [unit] information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+  /// [unit] Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
   const AccountArgs({
     this.managedBy,
     required this.name,
     this.settings,
+    this.standalone,
     this.type,
     this.unit,
   });
@@ -40,6 +44,7 @@ class AccountArgs {
       'managedBy': ?pulumi.Input.mapOptionalInputValue<AccountManagedBy, Map<String, dynamic>>(managedBy, (value) => value.toMap()),
       'name': name,
       'settings': ?pulumi.Input.mapOptionalInputValue<AccountSettings, Map<String, dynamic>>(settings, (value) => value.toMap()),
+      'standalone': ?standalone,
       'type': ?type,
       'unit': ?pulumi.Input.mapOptionalInputValue<AccountUnit, Map<String, dynamic>>(unit, (value) => value.toMap()),
     };
@@ -50,6 +55,7 @@ class AccountArgs {
       managedBy: (() { final guardedValue = map['managedBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccountManagedBy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccountSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      standalone: (() { final guardedValue = map['standalone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccountUnit.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

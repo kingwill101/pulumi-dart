@@ -491,7 +491,7 @@ class WaitingRoom extends pulumi.CustomResource {
           'cloudflare:index/waitingRoom:WaitingRoom',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     additionalRoutes = registerOutput<List<WaitingRoomAdditionalRoute>>('additionalRoutes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WaitingRoomAdditionalRoute>(guardedValue, (value) => WaitingRoomAdditionalRoute.fromMap((value as Map).cast<String, dynamic>())); });
     cookieAttributes = registerOutput<WaitingRoomCookieAttributes>('cookieAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WaitingRoomCookieAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });

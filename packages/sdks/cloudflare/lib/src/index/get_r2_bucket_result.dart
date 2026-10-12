@@ -3,7 +3,7 @@
 
 /// Result data returned by getR2Bucket.
 class GetR2BucketResult {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final String? accountId;
   /// Name of the bucket.
   final String? bucketName;
@@ -12,7 +12,7 @@ class GetR2BucketResult {
   /// Name of the bucket.
   final String? id;
   /// Jurisdiction where objects in this bucket are guaranteed to be stored.
-  /// Available values: "default", "eu", "fedramp", "us".
+  /// Available values: "default", "eu", "us", "fedramp", "fedramp-high".
   final String? jurisdiction;
   /// Location of the bucket.
   /// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
@@ -24,7 +24,7 @@ class GetR2BucketResult {
   final String? storageClass;
 
   /// Creates a new [GetR2BucketResult].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
   /// [creationDate] Creation timestamp.
   /// [id] Name of the bucket.

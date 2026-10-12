@@ -16,6 +16,8 @@ class RecordState {
   final pulumi.Input<String?>? createdOn;
   /// Components of a MX record.
   final pulumi.Input<RecordData?>? data;
+  /// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+  final pulumi.Input<bool?>? includeShadowMetadata;
   /// Extra Cloudflare-specific information about the record.
   final pulumi.Input<String?>? meta;
   /// When the record was last modified.
@@ -50,6 +52,7 @@ class RecordState {
   /// [content] A valid IPv4 address.
   /// [createdOn] When the record was created.
   /// [data] Components of a MX record.
+  /// [includeShadowMetadata] Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
   /// [meta] Extra Cloudflare-specific information about the record.
   /// [modifiedOn] When the record was last modified.
   /// [name] DNS record name (or @ for the zone apex) in Punycode.
@@ -69,6 +72,7 @@ class RecordState {
     this.content,
     this.createdOn,
     this.data,
+    this.includeShadowMetadata,
     this.meta,
     this.modifiedOn,
     this.name,
@@ -91,6 +95,7 @@ class RecordState {
       'content': ?content,
       'createdOn': ?createdOn,
       'data': ?pulumi.Input.mapOptionalInputValue<RecordData, Map<String, dynamic>>(data, (value) => value.toMap()),
+      'includeShadowMetadata': ?includeShadowMetadata,
       'meta': ?meta,
       'modifiedOn': ?modifiedOn,
       'name': ?name,
@@ -114,6 +119,7 @@ class RecordState {
       content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RecordData.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      includeShadowMetadata: (() { final guardedValue = map['includeShadowMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       meta: (() { final guardedValue = map['meta']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       modifiedOn: (() { final guardedValue = map['modifiedOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

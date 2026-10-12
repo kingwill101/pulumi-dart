@@ -10,7 +10,7 @@ import 'organization_profile_state.dart';
 /// import * as cloudflare from "@pulumi/cloudflare";
 ///
 /// const exampleOrganizationProfile = new cloudflare.OrganizationProfile("example_organization_profile", {
-///     organizationId: "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///     organizationId: "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 ///     businessAddress: "business_address",
 ///     businessEmail: "business_email",
 ///     businessName: "business_name",
@@ -23,7 +23,7 @@ import 'organization_profile_state.dart';
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_organization_profile = cloudflare.OrganizationProfile("example_organization_profile",
-///     organization_id="a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///     organization_id="a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 ///     business_address="business_address",
 ///     business_email="business_email",
 ///     business_name="business_name",
@@ -40,7 +40,7 @@ import 'organization_profile_state.dart';
 /// {
 ///     var exampleOrganizationProfile = new Cloudflare.OrganizationProfile("example_organization_profile", new()
 ///     {
-///         OrganizationId = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///         OrganizationId = "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 ///         BusinessAddress = "business_address",
 ///         BusinessEmail = "business_email",
 ///         BusinessName = "business_name",
@@ -61,7 +61,7 @@ import 'organization_profile_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.NewOrganizationProfile(ctx, "example_organization_profile", &cloudflare.OrganizationProfileArgs{
-/// 			OrganizationId:   pulumi.String("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"),
+/// 			OrganizationId:   pulumi.String("a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8"),
 /// 			BusinessAddress:  pulumi.String("business_address"),
 /// 			BusinessEmail:    pulumi.String("business_email"),
 /// 			BusinessName:     pulumi.String("business_name"),
@@ -85,7 +85,7 @@ import 'organization_profile_state.dart';
 /// }
 ///
 /// resource "cloudflare_organizationprofile" "example_organization_profile" {
-///   organization_id   = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"
+///   organization_id   = "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8"
 ///   business_address  = "business_address"
 ///   business_email    = "business_email"
 ///   business_name     = "business_name"
@@ -115,7 +115,7 @@ import 'organization_profile_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleOrganizationProfile = new OrganizationProfile("exampleOrganizationProfile", OrganizationProfileArgs.builder()
-///             .organizationId("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+///             .organizationId("a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8")
 ///             .businessAddress("business_address")
 ///             .businessEmail("business_email")
 ///             .businessName("business_name")
@@ -132,7 +132,7 @@ import 'organization_profile_state.dart';
 ///     type: cloudflare:OrganizationProfile
 ///     name: example_organization_profile
 ///     properties:
-///       organizationId: a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8
+///       organizationId: a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8
 ///       businessAddress: business_address
 ///       businessEmail: business_email
 ///       businessName: business_name
@@ -164,7 +164,7 @@ class OrganizationProfileResource extends pulumi.CustomResource {
           'cloudflare:index/organizationProfile:OrganizationProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     businessAddress = registerOutput<String>('businessAddress');
     businessEmail = registerOutput<String>('businessEmail');

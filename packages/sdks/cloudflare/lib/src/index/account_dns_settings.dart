@@ -292,6 +292,7 @@ class AccountDnsSettings extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   /// When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only).
   late final pulumi.Output<bool?> enforceDnsOnly;
+  /// Default settings for new zones created in this account.
   late final pulumi.Output<AccountDnsSettingsZoneDefaults> zoneDefaults;
 
   /// Creates a new [AccountDnsSettings].
@@ -306,7 +307,7 @@ class AccountDnsSettings extends pulumi.CustomResource {
           'cloudflare:index/accountDnsSettings:AccountDnsSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     enforceDnsOnly = registerOutput<bool?>('enforceDnsOnly');

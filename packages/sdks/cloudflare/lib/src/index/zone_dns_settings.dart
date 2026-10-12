@@ -28,7 +28,6 @@ import 'zone_dns_settings_state.dart';
 ///     },
 ///     multiProvider: false,
 ///     nameservers: {
-///         nsSet: 1,
 ///         type: "cloudflare.standard",
 ///     },
 ///     nsTtl: 86400,
@@ -58,7 +57,6 @@ import 'zone_dns_settings_state.dart';
 ///     },
 ///     multi_provider=False,
 ///     nameservers={
-///         "ns_set": 1,
 ///         "type": "cloudflare.standard",
 ///     },
 ///     ns_ttl=float(86400),
@@ -94,7 +92,6 @@ import 'zone_dns_settings_state.dart';
 ///         MultiProvider = false,
 ///         Nameservers = new Cloudflare.Inputs.ZoneDnsSettingsNameserversArgs
 ///         {
-///             NsSet = 1,
 ///             Type = "cloudflare.standard",
 ///         },
 ///         NsTtl = 86400,
@@ -133,8 +130,7 @@ import 'zone_dns_settings_state.dart';
 /// 			},
 /// 			MultiProvider: pulumi.Bool(false),
 /// 			Nameservers: &cloudflare.ZoneDnsSettingsNameserversArgs{
-/// 				NsSet: pulumi.Int(1),
-/// 				Type:  pulumi.String("cloudflare.standard"),
+/// 				Type: pulumi.String("cloudflare.standard"),
 /// 			},
 /// 			NsTtl:              pulumi.Float64(86400),
 /// 			SecondaryOverrides: pulumi.Bool(false),
@@ -174,8 +170,7 @@ import 'zone_dns_settings_state.dart';
 ///   }
 ///   multi_provider = false
 ///   nameservers = {
-///     ns_set = 1
-///     type   = "cloudflare.standard"
+///     type = "cloudflare.standard"
 ///   }
 ///   ns_ttl              = 86400
 ///   secondary_overrides = false
@@ -224,7 +219,6 @@ import 'zone_dns_settings_state.dart';
 ///                 .build())
 ///             .multiProvider(false)
 ///             .nameservers(ZoneDnsSettingsNameserversArgs.builder()
-///                 .nsSet(1)
 ///                 .type("cloudflare.standard")
 ///                 .build())
 ///             .nsTtl(86400.0)
@@ -257,7 +251,6 @@ import 'zone_dns_settings_state.dart';
 ///         referenceZoneId: reference_zone_id
 ///       multiProvider: false
 ///       nameservers:
-///         nsSet: 1
 ///         type: cloudflare.standard
 ///       nsTtl: 86400
 ///       secondaryOverrides: false
@@ -279,13 +272,13 @@ import 'zone_dns_settings_state.dart';
 class ZoneDnsSettings extends pulumi.CustomResource {
   /// Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
   late final pulumi.Output<bool?> flattenAllCnames;
-  /// Whether to enable Foundation DNS Advanced Nameservers on the zone.
+  /// Deprecated. Use nameservers.type to configure Advanced Nameservers.
   late final pulumi.Output<bool?> foundationDns;
   /// Settings for this internal zone.
   late final pulumi.Output<ZoneDnsSettingsInternalDns> internalDns;
   /// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
   late final pulumi.Output<bool?> multiProvider;
-  /// Settings determining the nameservers through which the zone should be available.
+  /// Controls the nameservers through which the zone is available.
   late final pulumi.Output<ZoneDnsSettingsNameservers> nameservers;
   /// The time to live (TTL) of the zone's nameserver (NS) records.
   late final pulumi.Output<double?> nsTtl;
@@ -311,7 +304,7 @@ class ZoneDnsSettings extends pulumi.CustomResource {
           'cloudflare:index/zoneDnsSettings:ZoneDnsSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     flattenAllCnames = registerOutput<bool?>('flattenAllCnames');
     foundationDns = registerOutput<bool?>('foundationDns');

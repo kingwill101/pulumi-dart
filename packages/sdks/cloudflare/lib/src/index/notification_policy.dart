@@ -75,6 +75,7 @@ import 'notification_policy_state.dart';
 ///         targetHostnames: ["string"],
 ///         targetIps: ["string"],
 ///         targetZoneNames: ["string"],
+///         tokenIds: ["x"],
 ///         trafficExclusions: ["security_events"],
 ///         tunnelIds: ["string"],
 ///         tunnelNames: ["string"],
@@ -144,6 +145,7 @@ import 'notification_policy_state.dart';
 ///         "target_hostnames": ["string"],
 ///         "target_ips": ["string"],
 ///         "target_zone_names": ["string"],
+///         "token_ids": ["x"],
 ///         "traffic_exclusions": ["security_events"],
 ///         "tunnel_ids": ["string"],
 ///         "tunnel_names": ["string"],
@@ -342,6 +344,10 @@ import 'notification_policy_state.dart';
 ///             {
 ///                 "string",
 ///             },
+///             TokenIds = new[]
+///             {
+///                 "x",
+///             },
 ///             TrafficExclusions = new[]
 ///             {
 ///                 "security_events",
@@ -517,6 +523,9 @@ import 'notification_policy_state.dart';
 /// 				TargetZoneNames: pulumi.StringArray{
 /// 					pulumi.String("string"),
 /// 				},
+/// 				TokenIds: pulumi.StringArray{
+/// 					pulumi.String("x"),
+/// 				},
 /// 				TrafficExclusions: pulumi.StringArray{
 /// 					pulumi.String("security_events"),
 /// 				},
@@ -609,6 +618,7 @@ import 'notification_policy_state.dart';
 ///     target_hostnames                 = ["string"]
 ///     target_ips                       = ["string"]
 ///     target_zone_names                = ["string"]
+///     token_ids                        = ["x"]
 ///     traffic_exclusions               = ["security_events"]
 ///     tunnel_ids                       = ["string"]
 ///     tunnel_names                     = ["string"]
@@ -700,6 +710,7 @@ import 'notification_policy_state.dart';
 ///                 .targetHostnames("string")
 ///                 .targetIps("string")
 ///                 .targetZoneNames("string")
+///                 .tokenIds("x")
 ///                 .trafficExclusions("security_events")
 ///                 .tunnelIds("string")
 ///                 .tunnelNames("string")
@@ -806,6 +817,8 @@ import 'notification_policy_state.dart';
 ///           - string
 ///         targetZoneNames:
 ///           - string
+///         tokenIds:
+///           - x
 ///         trafficExclusions:
 ///           - security_events
 ///         tunnelIds:
@@ -859,7 +872,7 @@ class NotificationPolicy extends pulumi.CustomResource {
           'cloudflare:index/notificationPolicy:NotificationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     alertInterval = registerOutput<String?>('alertInterval');

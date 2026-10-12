@@ -3,17 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HyperdriveConfigCaching {
-  /// Set to true to disable caching of SQL responses. Default is false.
   final pulumi.Input<bool?>? disabled;
-  /// Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
   final pulumi.Input<int?>? maxAge;
-  /// Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
   final pulumi.Input<int?>? staleWhileRevalidate;
 
   /// Creates a new [HyperdriveConfigCaching].
-  /// [disabled] Set to true to disable caching of SQL responses. Default is false.
-  /// [maxAge] Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.
-  /// [staleWhileRevalidate] Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.
+  /// [disabled] Optional.
+  /// [maxAge] Optional.
+  /// [staleWhileRevalidate] Optional.
   const HyperdriveConfigCaching({
     this.disabled,
     this.maxAge,
@@ -31,8 +28,8 @@ class HyperdriveConfigCaching {
   factory HyperdriveConfigCaching.fromMap(Map<String, dynamic> map) {
     return HyperdriveConfigCaching(
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxAge: (() { final guardedValue = map['maxAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      staleWhileRevalidate: (() { final guardedValue = map['staleWhileRevalidate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxAge: (() { final guardedValue = map['maxAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      staleWhileRevalidate: (() { final guardedValue = map['staleWhileRevalidate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

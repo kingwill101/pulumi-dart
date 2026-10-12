@@ -19,11 +19,12 @@ import 'workers_kv_state.dart';
 ///     namespaceId: "0f2ac74b498b48028cb68387c421e279",
 ///     keyName: "My-Key",
 ///     value: "Some Value",
-///     metadata: {},
+///     metadata: JSON.stringify({}),
 /// });
 /// ```
 /// ```python
 /// import pulumi
+/// import json
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_workers_kv = cloudflare.WorkersKv("example_workers_kv",
@@ -31,11 +32,12 @@ import 'workers_kv_state.dart';
 ///     namespace_id="0f2ac74b498b48028cb68387c421e279",
 ///     key_name="My-Key",
 ///     value="Some Value",
-///     metadata={})
+///     metadata=json.dumps({}))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
+/// using System.Text.Json;
 /// using Pulumi;
 /// using Cloudflare = Pulumi.Cloudflare;
 ///
@@ -47,7 +49,9 @@ import 'workers_kv_state.dart';
 ///         NamespaceId = "0f2ac74b498b48028cb68387c421e279",
 ///         KeyName = "My-Key",
 ///         Value = "Some Value",
-///         Metadata = null,
+///         Metadata = JsonSerializer.Serialize(new Dictionary<string, object?>
+///         {
+///         }),
 ///     });
 ///
 /// });
@@ -56,18 +60,25 @@ import 'workers_kv_state.dart';
 /// package main
 ///
 /// import (
+/// 	"encoding/json"
+///
 /// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := cloudflare.NewWorkersKv(ctx, "example_workers_kv", &cloudflare.WorkersKvArgs{
+/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		_, err = cloudflare.NewWorkersKv(ctx, "example_workers_kv", &cloudflare.WorkersKvArgs{
 /// 			AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 			NamespaceId: pulumi.String("0f2ac74b498b48028cb68387c421e279"),
 /// 			KeyName:     pulumi.String("My-Key"),
 /// 			Value:       pulumi.String("Some Value"),
-/// 			Metadata:    pulumi.String{},
+/// 			Metadata:    pulumi.String(json0),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -90,7 +101,7 @@ import 'workers_kv_state.dart';
 ///   namespace_id = "0f2ac74b498b48028cb68387c421e279"
 ///   key_name     = "My-Key"
 ///   value        = "Some Value"
-///   metadata     = {}
+///   metadata     = jsonencode({})
 /// }
 /// ```
 /// ```java
@@ -101,6 +112,7 @@ import 'workers_kv_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.cloudflare.WorkersKv;
 /// import com.pulumi.cloudflare.WorkersKvArgs;
+/// import static com.pulumi.codegen.internal.Serialization.*;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -119,8 +131,10 @@ import 'workers_kv_state.dart';
 ///             .namespaceId("0f2ac74b498b48028cb68387c421e279")
 ///             .keyName("My-Key")
 ///             .value("Some Value")
-///             .metadata(Map.ofEntries(
-///             ))
+///             .metadata(serializeJson(
+///                 jsonObject(
+///
+///                 )))
 ///             .build());
 ///
 ///     }
@@ -136,7 +150,8 @@ import 'workers_kv_state.dart';
 ///       namespaceId: 0f2ac74b498b48028cb68387c421e279
 ///       keyName: My-Key
 ///       value: Some Value
-///       metadata: {}
+///       metadata:
+///         fn::toJSON: {}
 /// ```
 ///
 ///
@@ -146,13 +161,17 @@ import 'workers_kv_state.dart';
 /// $ pulumi import cloudflare:index/workersKv:WorkersKv example '<account_id>/<namespace_id>/<key_name>'
 /// ```
 class WorkersKv extends pulumi.CustomResource {
-  /// Identifier.
+  /// ID of the Cloudflare account that owns the Workers KV namespaces.
   late final pulumi.Output<String> accountId;
+  /// Expires the key at a certain time, measured in number of seconds since the UNIX epoch.
+  late final pulumi.Output<double?> expiration;
+  /// Expires the key after a number of seconds. Must be at least 60.
+  late final pulumi.Output<double?> expirationTtl;
   /// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
   late final pulumi.Output<String> keyName;
   /// Associates arbitrary JSON data with a key/value pair.
   late final pulumi.Output<String?> metadata;
-  /// Namespace identifier tag.
+  /// ID of the Workers KV namespace.
   late final pulumi.Output<String> namespaceId;
   /// A byte sequence to be stored, up to 25 MiB in length.
   late final pulumi.Output<String> value;
@@ -169,9 +188,11 @@ class WorkersKv extends pulumi.CustomResource {
           'cloudflare:index/workersKv:WorkersKv',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
+    expiration = registerOutput<double?>('expiration');
+    expirationTtl = registerOutput<double?>('expirationTtl');
     keyName = registerOutput<String>('keyName');
     metadata = registerOutput<String?>('metadata');
     namespaceId = registerOutput<String>('namespaceId');
@@ -203,6 +224,8 @@ class WorkersKv extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accountId = registerOutput<String>('accountId');
+    expiration = registerOutput<double?>('expiration');
+    expirationTtl = registerOutput<double?>('expirationTtl');
     keyName = registerOutput<String>('keyName');
     metadata = registerOutput<String?>('metadata');
     namespaceId = registerOutput<String>('namespaceId');
@@ -219,6 +242,8 @@ class WorkersKv extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     accountId = registerOutput<String>('accountId');
+    expiration = registerOutput<double?>('expiration');
+    expirationTtl = registerOutput<double?>('expirationTtl');
     keyName = registerOutput<String>('keyName');
     metadata = registerOutput<String?>('metadata');
     namespaceId = registerOutput<String>('namespaceId');

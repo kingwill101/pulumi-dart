@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'worker_args.dart';
 import 'worker_observability.dart';
+import 'worker_previews_base_config.dart';
 import 'worker_references.dart';
 import 'worker_state.dart';
 import 'worker_subdomain.dart';
@@ -26,6 +27,9 @@ import 'worker_tail_consumer.dart';
 ///     observability: {
 ///         enabled: true,
 ///         headSamplingRate: 1,
+///         issues: {
+///             enabled: true,
+///         },
 ///         logs: {
 ///             destinations: ["string"],
 ///             enabled: true,
@@ -33,12 +37,58 @@ import 'worker_tail_consumer.dart';
 ///             invocationLogs: true,
 ///             persist: true,
 ///         },
+///         redactQueryString: true,
 ///         traces: {
 ///             destinations: ["string"],
 ///             enabled: true,
 ///             headSamplingRate: 1,
 ///             persist: true,
+///             propagationPolicy: "authenticated",
 ///         },
+///     },
+///     previewsBaseConfig: {
+///         cacheOptions: {
+///             enabled: true,
+///             crossVersionCache: true,
+///         },
+///         env: {
+///             MY_ENV_VAR: {
+///                 type: "plain_text",
+///             },
+///         },
+///         limits: {
+///             cpuMs: 50,
+///             subrequests: 1000,
+///         },
+///         logpush: true,
+///         observability: {
+///             enabled: true,
+///             headSamplingRate: 1,
+///             issues: {
+///                 enabled: true,
+///             },
+///             logs: {
+///                 destinations: ["string"],
+///                 enabled: true,
+///                 headSamplingRate: 1,
+///                 invocationLogs: true,
+///                 persist: true,
+///             },
+///             redactQueryString: true,
+///             traces: {
+///                 destinations: ["string"],
+///                 enabled: true,
+///                 headSamplingRate: 1,
+///                 persist: true,
+///                 propagationPolicy: "authenticated",
+///             },
+///         },
+///         placement: {
+///             mode: "smart",
+///         },
+///         tailConsumers: [{
+///             name: "my-tail-consumer",
+///         }],
 ///     },
 ///     subdomain: {
 ///         enabled: true,
@@ -64,6 +114,9 @@ import 'worker_tail_consumer.dart';
 ///     observability={
 ///         "enabled": True,
 ///         "head_sampling_rate": float(1),
+///         "issues": {
+///             "enabled": True,
+///         },
 ///         "logs": {
 ///             "destinations": ["string"],
 ///             "enabled": True,
@@ -71,12 +124,58 @@ import 'worker_tail_consumer.dart';
 ///             "invocation_logs": True,
 ///             "persist": True,
 ///         },
+///         "redact_query_string": True,
 ///         "traces": {
 ///             "destinations": ["string"],
 ///             "enabled": True,
 ///             "head_sampling_rate": float(1),
 ///             "persist": True,
+///             "propagation_policy": "authenticated",
 ///         },
+///     },
+///     previews_base_config={
+///         "cache_options": {
+///             "enabled": True,
+///             "cross_version_cache": True,
+///         },
+///         "env": {
+///             "MY_ENV_VAR": {
+///                 "type": "plain_text",
+///             },
+///         },
+///         "limits": {
+///             "cpu_ms": 50,
+///             "subrequests": 1000,
+///         },
+///         "logpush": True,
+///         "observability": {
+///             "enabled": True,
+///             "head_sampling_rate": float(1),
+///             "issues": {
+///                 "enabled": True,
+///             },
+///             "logs": {
+///                 "destinations": ["string"],
+///                 "enabled": True,
+///                 "head_sampling_rate": float(1),
+///                 "invocation_logs": True,
+///                 "persist": True,
+///             },
+///             "redact_query_string": True,
+///             "traces": {
+///                 "destinations": ["string"],
+///                 "enabled": True,
+///                 "head_sampling_rate": float(1),
+///                 "persist": True,
+///                 "propagation_policy": "authenticated",
+///             },
+///         },
+///         "placement": {
+///             "mode": "smart",
+///         },
+///         "tail_consumers": [{
+///             "name": "my-tail-consumer",
+///         }],
 ///     },
 ///     subdomain={
 ///         "enabled": True,
@@ -107,6 +206,10 @@ import 'worker_tail_consumer.dart';
 ///         {
 ///             Enabled = true,
 ///             HeadSamplingRate = 1,
+///             Issues = new Cloudflare.Inputs.WorkerObservabilityIssuesArgs
+///             {
+///                 Enabled = true,
+///             },
 ///             Logs = new Cloudflare.Inputs.WorkerObservabilityLogsArgs
 ///             {
 ///                 Destinations = new[]
@@ -118,6 +221,7 @@ import 'worker_tail_consumer.dart';
 ///                 InvocationLogs = true,
 ///                 Persist = true,
 ///             },
+///             RedactQueryString = true,
 ///             Traces = new Cloudflare.Inputs.WorkerObservabilityTracesArgs
 ///             {
 ///                 Destinations = new[]
@@ -127,6 +231,71 @@ import 'worker_tail_consumer.dart';
 ///                 Enabled = true,
 ///                 HeadSamplingRate = 1,
 ///                 Persist = true,
+///                 PropagationPolicy = "authenticated",
+///             },
+///         },
+///         PreviewsBaseConfig = new Cloudflare.Inputs.WorkerPreviewsBaseConfigArgs
+///         {
+///             CacheOptions = new Cloudflare.Inputs.WorkerPreviewsBaseConfigCacheOptionsArgs
+///             {
+///                 Enabled = true,
+///                 CrossVersionCache = true,
+///             },
+///             Env =
+///             {
+///                 { "MY_ENV_VAR", new Cloudflare.Inputs.WorkerPreviewsBaseConfigEnvArgs
+///                 {
+///                     Type = "plain_text",
+///                 } },
+///             },
+///             Limits = new Cloudflare.Inputs.WorkerPreviewsBaseConfigLimitsArgs
+///             {
+///                 CpuMs = 50,
+///                 Subrequests = 1000,
+///             },
+///             Logpush = true,
+///             Observability = new Cloudflare.Inputs.WorkerPreviewsBaseConfigObservabilityArgs
+///             {
+///                 Enabled = true,
+///                 HeadSamplingRate = 1,
+///                 Issues = new Cloudflare.Inputs.WorkerPreviewsBaseConfigObservabilityIssuesArgs
+///                 {
+///                     Enabled = true,
+///                 },
+///                 Logs = new Cloudflare.Inputs.WorkerPreviewsBaseConfigObservabilityLogsArgs
+///                 {
+///                     Destinations = new[]
+///                     {
+///                         "string",
+///                     },
+///                     Enabled = true,
+///                     HeadSamplingRate = 1,
+///                     InvocationLogs = true,
+///                     Persist = true,
+///                 },
+///                 RedactQueryString = true,
+///                 Traces = new Cloudflare.Inputs.WorkerPreviewsBaseConfigObservabilityTracesArgs
+///                 {
+///                     Destinations = new[]
+///                     {
+///                         "string",
+///                     },
+///                     Enabled = true,
+///                     HeadSamplingRate = 1,
+///                     Persist = true,
+///                     PropagationPolicy = "authenticated",
+///                 },
+///             },
+///             Placement = new Cloudflare.Inputs.WorkerPreviewsBaseConfigPlacementArgs
+///             {
+///                 Mode = "smart",
+///             },
+///             TailConsumers = new[]
+///             {
+///                 new Cloudflare.Inputs.WorkerPreviewsBaseConfigTailConsumerArgs
+///                 {
+///                     Name = "my-tail-consumer",
+///                 },
 ///             },
 ///         },
 ///         Subdomain = new Cloudflare.Inputs.WorkerSubdomainArgs
@@ -167,6 +336,9 @@ import 'worker_tail_consumer.dart';
 /// 			Observability: &cloudflare.WorkerObservabilityArgs{
 /// 				Enabled:          pulumi.Bool(true),
 /// 				HeadSamplingRate: pulumi.Float64(1),
+/// 				Issues: &cloudflare.WorkerObservabilityIssuesArgs{
+/// 					Enabled: pulumi.Bool(true),
+/// 				},
 /// 				Logs: &cloudflare.WorkerObservabilityLogsArgs{
 /// 					Destinations: pulumi.StringArray{
 /// 						pulumi.String("string"),
@@ -176,13 +348,65 @@ import 'worker_tail_consumer.dart';
 /// 					InvocationLogs:   pulumi.Bool(true),
 /// 					Persist:          pulumi.Bool(true),
 /// 				},
+/// 				RedactQueryString: true,
 /// 				Traces: &cloudflare.WorkerObservabilityTracesArgs{
 /// 					Destinations: pulumi.StringArray{
 /// 						pulumi.String("string"),
 /// 					},
+/// 					Enabled:           pulumi.Bool(true),
+/// 					HeadSamplingRate:  pulumi.Float64(1),
+/// 					Persist:           pulumi.Bool(true),
+/// 					PropagationPolicy: pulumi.String("authenticated"),
+/// 				},
+/// 			},
+/// 			PreviewsBaseConfig: &cloudflare.WorkerPreviewsBaseConfigArgs{
+/// 				CacheOptions: &cloudflare.WorkerPreviewsBaseConfigCacheOptionsArgs{
+/// 					Enabled:           pulumi.Bool(true),
+/// 					CrossVersionCache: pulumi.Bool(true),
+/// 				},
+/// 				Env: cloudflare.WorkerPreviewsBaseConfigEnvMap{
+/// 					"MY_ENV_VAR": &cloudflare.WorkerPreviewsBaseConfigEnvArgs{
+/// 						Type: pulumi.String("plain_text"),
+/// 					},
+/// 				},
+/// 				Limits: &cloudflare.WorkerPreviewsBaseConfigLimitsArgs{
+/// 					CpuMs:       pulumi.Int(50),
+/// 					Subrequests: pulumi.Int(1000),
+/// 				},
+/// 				Logpush: pulumi.Bool(true),
+/// 				Observability: &cloudflare.WorkerPreviewsBaseConfigObservabilityArgs{
 /// 					Enabled:          pulumi.Bool(true),
 /// 					HeadSamplingRate: pulumi.Float64(1),
-/// 					Persist:          pulumi.Bool(true),
+/// 					Issues: &cloudflare.WorkerPreviewsBaseConfigObservabilityIssuesArgs{
+/// 						Enabled: pulumi.Bool(true),
+/// 					},
+/// 					Logs: &cloudflare.WorkerPreviewsBaseConfigObservabilityLogsArgs{
+/// 						Destinations: pulumi.StringArray{
+/// 							pulumi.String("string"),
+/// 						},
+/// 						Enabled:          pulumi.Bool(true),
+/// 						HeadSamplingRate: pulumi.Float64(1),
+/// 						InvocationLogs:   pulumi.Bool(true),
+/// 						Persist:          pulumi.Bool(true),
+/// 					},
+/// 					RedactQueryString: pulumi.Bool(true),
+/// 					Traces: &cloudflare.WorkerPreviewsBaseConfigObservabilityTracesArgs{
+/// 						Destinations: pulumi.StringArray{
+/// 							pulumi.String("string"),
+/// 						},
+/// 						Enabled:           pulumi.Bool(true),
+/// 						HeadSamplingRate:  pulumi.Float64(1),
+/// 						Persist:           pulumi.Bool(true),
+/// 						PropagationPolicy: pulumi.String("authenticated"),
+/// 					},
+/// 				},
+/// 				Placement: &cloudflare.WorkerPreviewsBaseConfigPlacementArgs{
+/// 					Mode: pulumi.String("smart"),
+/// 				},
+/// 				TailConsumers: cloudflare.WorkerPreviewsBaseConfigTailConsumerArray{
+/// 					&cloudflare.WorkerPreviewsBaseConfigTailConsumerArgs{
+/// 						Name: pulumi.String("my-tail-consumer"),
+/// 					},
 /// 				},
 /// 			},
 /// 			Subdomain: &cloudflare.WorkerSubdomainArgs{
@@ -222,6 +446,9 @@ import 'worker_tail_consumer.dart';
 ///   observability = {
 ///     enabled            = true
 ///     head_sampling_rate = 1
+///     issues = {
+///       enabled = true
+///     }
 ///     logs = {
 ///       destinations       = ["string"]
 ///       enabled            = true
@@ -229,12 +456,58 @@ import 'worker_tail_consumer.dart';
 ///       invocation_logs    = true
 ///       persist            = true
 ///     }
+///     redact_query_string = true
 ///     traces = {
 ///       destinations       = ["string"]
 ///       enabled            = true
 ///       head_sampling_rate = 1
 ///       persist            = true
+///       propagation_policy = "authenticated"
 ///     }
+///   }
+///   previews_base_config = {
+///     cache_options = {
+///       enabled             = true
+///       cross_version_cache = true
+///     }
+///     env = {
+///       "MY_ENV_VAR" = {
+///         type = "plain_text"
+///       }
+///     }
+///     limits = {
+///       cpu_ms      = 50
+///       subrequests = 1000
+///     }
+///     logpush = true
+///     observability = {
+///       enabled            = true
+///       head_sampling_rate = 1
+///       issues = {
+///         enabled = true
+///       }
+///       logs = {
+///         destinations       = ["string"]
+///         enabled            = true
+///         head_sampling_rate = 1
+///         invocation_logs    = true
+///         persist            = true
+///       }
+///       redact_query_string = true
+///       traces = {
+///         destinations       = ["string"]
+///         enabled            = true
+///         head_sampling_rate = 1
+///         persist            = true
+///         propagation_policy = "authenticated"
+///       }
+///     }
+///     placement = {
+///       mode = "smart"
+///     }
+///     tail_consumers = [{
+///       "name" = "my-tail-consumer"
+///     }]
 ///   }
 ///   subdomain = {
 ///     enabled          = true
@@ -255,8 +528,19 @@ import 'worker_tail_consumer.dart';
 /// import com.pulumi.cloudflare.Worker;
 /// import com.pulumi.cloudflare.WorkerArgs;
 /// import com.pulumi.cloudflare.inputs.WorkerObservabilityArgs;
+/// import com.pulumi.cloudflare.inputs.WorkerObservabilityIssuesArgs;
 /// import com.pulumi.cloudflare.inputs.WorkerObservabilityLogsArgs;
 /// import com.pulumi.cloudflare.inputs.WorkerObservabilityTracesArgs;
+/// import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigArgs;
+/// import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigCacheOptionsArgs;
+/// import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigEnvArgs;
+/// import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigLimitsArgs;
+/// import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigObservabilityArgs;
+/// import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigObservabilityIssuesArgs;
+/// import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigObservabilityLogsArgs;
+/// import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigObservabilityTracesArgs;
+/// import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigPlacementArgs;
+/// import com.pulumi.cloudflare.inputs.WorkerPreviewsBaseConfigTailConsumerArgs;
 /// import com.pulumi.cloudflare.inputs.WorkerSubdomainArgs;
 /// import com.pulumi.cloudflare.inputs.WorkerTailConsumerArgs;
 /// import java.util.ArrayList;
@@ -279,6 +563,9 @@ import 'worker_tail_consumer.dart';
 ///             .observability(WorkerObservabilityArgs.builder()
 ///                 .enabled(true)
 ///                 .headSamplingRate(1.0)
+///                 .issues(WorkerObservabilityIssuesArgs.builder()
+///                     .enabled(true)
+///                     .build())
 ///                 .logs(WorkerObservabilityLogsArgs.builder()
 ///                     .destinations("string")
 ///                     .enabled(true)
@@ -286,11 +573,55 @@ import 'worker_tail_consumer.dart';
 ///                     .invocationLogs(true)
 ///                     .persist(true)
 ///                     .build())
+///                 .redactQueryString(true)
 ///                 .traces(WorkerObservabilityTracesArgs.builder()
 ///                     .destinations("string")
 ///                     .enabled(true)
 ///                     .headSamplingRate(1.0)
 ///                     .persist(true)
+///                     .propagationPolicy("authenticated")
+///                     .build())
+///                 .build())
+///             .previewsBaseConfig(WorkerPreviewsBaseConfigArgs.builder()
+///                 .cacheOptions(WorkerPreviewsBaseConfigCacheOptionsArgs.builder()
+///                     .enabled(true)
+///                     .crossVersionCache(true)
+///                     .build())
+///                 .env(Map.of("MY_ENV_VAR", WorkerPreviewsBaseConfigEnvArgs.builder()
+///                     .type("plain_text")
+///                     .build()))
+///                 .limits(WorkerPreviewsBaseConfigLimitsArgs.builder()
+///                     .cpuMs(50)
+///                     .subrequests(1000)
+///                     .build())
+///                 .logpush(true)
+///                 .observability(WorkerPreviewsBaseConfigObservabilityArgs.builder()
+///                     .enabled(true)
+///                     .headSamplingRate(1.0)
+///                     .issues(WorkerPreviewsBaseConfigObservabilityIssuesArgs.builder()
+///                         .enabled(true)
+///                         .build())
+///                     .logs(WorkerPreviewsBaseConfigObservabilityLogsArgs.builder()
+///                         .destinations("string")
+///                         .enabled(true)
+///                         .headSamplingRate(1.0)
+///                         .invocationLogs(true)
+///                         .persist(true)
+///                         .build())
+///                     .redactQueryString(true)
+///                     .traces(WorkerPreviewsBaseConfigObservabilityTracesArgs.builder()
+///                         .destinations("string")
+///                         .enabled(true)
+///                         .headSamplingRate(1.0)
+///                         .persist(true)
+///                         .propagationPolicy("authenticated")
+///                         .build())
+///                     .build())
+///                 .placement(WorkerPreviewsBaseConfigPlacementArgs.builder()
+///                     .mode("smart")
+///                     .build())
+///                 .tailConsumers(WorkerPreviewsBaseConfigTailConsumerArgs.builder()
+///                     .name("my-tail-consumer")
 ///                     .build())
 ///                 .build())
 ///             .subdomain(WorkerSubdomainArgs.builder()
@@ -320,6 +651,8 @@ import 'worker_tail_consumer.dart';
 ///       observability:
 ///         enabled: true
 ///         headSamplingRate: 1
+///         issues:
+///           enabled: true
 ///         logs:
 ///           destinations:
 ///             - string
@@ -327,12 +660,49 @@ import 'worker_tail_consumer.dart';
 ///           headSamplingRate: 1
 ///           invocationLogs: true
 ///           persist: true
+///         redactQueryString: true
 ///         traces:
 ///           destinations:
 ///             - string
 ///           enabled: true
 ///           headSamplingRate: 1
 ///           persist: true
+///           propagationPolicy: authenticated
+///       previewsBaseConfig:
+///         cacheOptions:
+///           enabled: true
+///           crossVersionCache: true
+///         env:
+///           MY_ENV_VAR:
+///             type: plain_text
+///         limits:
+///           cpuMs: 50
+///           subrequests: 1000
+///         logpush: true
+///         observability:
+///           enabled: true
+///           headSamplingRate: 1
+///           issues:
+///             enabled: true
+///           logs:
+///             destinations:
+///               - string
+///             enabled: true
+///             headSamplingRate: 1
+///             invocationLogs: true
+///             persist: true
+///           redactQueryString: true
+///           traces:
+///             destinations:
+///               - string
+///             enabled: true
+///             headSamplingRate: 1
+///             persist: true
+///             propagationPolicy: authenticated
+///         placement:
+///           mode: smart
+///         tailConsumers:
+///           - name: my-tail-consumer
 ///       subdomain:
 ///         enabled: true
 ///         previewsEnabled: true
@@ -356,12 +726,16 @@ class Worker extends pulumi.CustomResource {
   late final pulumi.Output<String> createdOn;
   /// When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.
   late final pulumi.Output<String> deployedOn;
+  /// If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them.
+  late final pulumi.Output<bool?> force;
   /// Whether logpush is enabled for the Worker.
   late final pulumi.Output<bool> logpush;
   /// Name of the Worker.
   late final pulumi.Output<String> name;
   /// Observability settings for the Worker.
   late final pulumi.Output<WorkerObservability> observability;
+  /// Template configuration used when creating new Previews for this Worker.
+  late final pulumi.Output<WorkerPreviewsBaseConfig> previewsBaseConfig;
   /// Other resources that reference the Worker and depend on it existing.
   late final pulumi.Output<WorkerReferences> references;
   /// Subdomain settings for the Worker.
@@ -385,14 +759,16 @@ class Worker extends pulumi.CustomResource {
           'cloudflare:index/worker:Worker',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdOn = registerOutput<String>('createdOn');
     deployedOn = registerOutput<String>('deployedOn');
+    force = registerOutput<bool?>('force');
     logpush = registerOutput<bool>('logpush');
     this.name = registerOutput<String>('name');
     observability = registerOutput<WorkerObservability>('observability', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerObservability.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    previewsBaseConfig = registerOutput<WorkerPreviewsBaseConfig>('previewsBaseConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPreviewsBaseConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     references = registerOutput<WorkerReferences>('references', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerReferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subdomain = registerOutput<WorkerSubdomain>('subdomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerSubdomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
@@ -427,9 +803,11 @@ class Worker extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     createdOn = registerOutput<String>('createdOn');
     deployedOn = registerOutput<String>('deployedOn');
+    force = registerOutput<bool?>('force');
     logpush = registerOutput<bool>('logpush');
     this.name = registerOutput<String>('name');
     observability = registerOutput<WorkerObservability>('observability', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerObservability.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    previewsBaseConfig = registerOutput<WorkerPreviewsBaseConfig>('previewsBaseConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPreviewsBaseConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     references = registerOutput<WorkerReferences>('references', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerReferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subdomain = registerOutput<WorkerSubdomain>('subdomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerSubdomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
@@ -449,9 +827,11 @@ class Worker extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     createdOn = registerOutput<String>('createdOn');
     deployedOn = registerOutput<String>('deployedOn');
+    force = registerOutput<bool?>('force');
     logpush = registerOutput<bool>('logpush');
     this.name = registerOutput<String>('name');
     observability = registerOutput<WorkerObservability>('observability', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerObservability.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    previewsBaseConfig = registerOutput<WorkerPreviewsBaseConfig>('previewsBaseConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerPreviewsBaseConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     references = registerOutput<WorkerReferences>('references', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerReferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subdomain = registerOutput<WorkerSubdomain>('subdomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerSubdomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
