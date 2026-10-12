@@ -237,12 +237,12 @@ import 'ai_endpoint_state.dart';
 /// 	"encoding/json"
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -584,10 +584,10 @@ import 'ai_endpoint_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const _default = new gcp.compute.Network("default", {name: "psc-network-_13786"});
+/// const _default = new gcp.compute.Network("default", {name: "psc-network-_78545"});
 /// const project = gcp.organizations.getProject({});
 /// const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
-///     name: "endpoint-name_29040",
+///     name: "endpoint-name",
 ///     displayName: "sample-endpoint",
 ///     description: "A sample vertex endpoint",
 ///     location: "us-central1",
@@ -609,10 +609,10 @@ import 'ai_endpoint_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default = gcp.compute.Network("default", name="psc-network-_13786")
+/// default = gcp.compute.Network("default", name="psc-network-_78545")
 /// project = gcp.organizations.get_project()
 /// endpoint = gcp.vertex.AiEndpoint("endpoint",
-///     name="endpoint-name_29040",
+///     name="endpoint-name",
 ///     display_name="sample-endpoint",
 ///     description="A sample vertex endpoint",
 ///     location="us-central1",
@@ -639,14 +639,14 @@ import 'ai_endpoint_state.dart';
 /// {
 ///     var @default = new Gcp.Compute.Network("default", new()
 ///     {
-///         Name = "psc-network-_13786",
+///         Name = "psc-network-_78545",
 ///     });
 ///
 ///     var project = Gcp.Organizations.GetProject.Invoke();
 ///
 ///     var endpoint = new Gcp.Vertex.AiEndpoint("endpoint", new()
 ///     {
-///         Name = "endpoint-name_29040",
+///         Name = "endpoint-name",
 ///         DisplayName = "sample-endpoint",
 ///         Description = "A sample vertex endpoint",
 ///         Location = "us-central1",
@@ -679,16 +679,16 @@ import 'ai_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-/// 			Name: pulumi.String("psc-network-_13786"),
+/// 			Name: pulumi.String("psc-network-_78545"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -698,7 +698,7 @@ import 'ai_endpoint_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-/// 			Name:        pulumi.String("endpoint-name_29040"),
+/// 			Name:        pulumi.String("endpoint-name"),
 /// 			DisplayName: pulumi.String("sample-endpoint"),
 /// 			Description: pulumi.String("A sample vertex endpoint"),
 /// 			Location:    pulumi.String("us-central1"),
@@ -739,10 +739,10 @@ import 'ai_endpoint_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
-///   name = "psc-network-_13786"
+///   name = "psc-network-_78545"
 /// }
 /// resource "gcp_vertex_aiendpoint" "endpoint" {
-///   name         = "endpoint-name_29040"
+///   name         = "endpoint-name"
 ///   display_name = "sample-endpoint"
 ///   description  = "A sample vertex endpoint"
 ///   location     = "us-central1"
@@ -788,14 +788,14 @@ import 'ai_endpoint_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var default_ = new Network("default", NetworkArgs.builder()
-///             .name("psc-network-_13786")
+///             .name("psc-network-_78545")
 ///             .build());
 ///
 ///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
 ///             .build());
 ///
 ///         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
-///             .name("endpoint-name_29040")
+///             .name("endpoint-name")
 ///             .displayName("sample-endpoint")
 ///             .description("A sample vertex endpoint")
 ///             .location("us-central1")
@@ -819,11 +819,11 @@ import 'ai_endpoint_state.dart';
 ///   default:
 ///     type: gcp:compute:Network
 ///     properties:
-///       name: psc-network-_13786
+///       name: psc-network-_78545
 ///   endpoint:
 ///     type: gcp:vertex:AiEndpoint
 ///     properties:
-///       name: endpoint-name_29040
+///       name: endpoint-name
 ///       displayName: sample-endpoint
 ///       description: A sample vertex endpoint
 ///       location: us-central1
@@ -853,7 +853,7 @@ import 'ai_endpoint_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
-///     name: "endpoint-name_78181",
+///     name: "endpoint-name",
 ///     displayName: "sample-endpoint",
 ///     description: "A sample vertex endpoint",
 ///     location: "us-central1",
@@ -870,7 +870,7 @@ import 'ai_endpoint_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// endpoint = gcp.vertex.AiEndpoint("endpoint",
-///     name="endpoint-name_78181",
+///     name="endpoint-name",
 ///     display_name="sample-endpoint",
 ///     description="A sample vertex endpoint",
 ///     location="us-central1",
@@ -891,7 +891,7 @@ import 'ai_endpoint_state.dart';
 /// {
 ///     var endpoint = new Gcp.Vertex.AiEndpoint("endpoint", new()
 ///     {
-///         Name = "endpoint-name_78181",
+///         Name = "endpoint-name",
 ///         DisplayName = "sample-endpoint",
 ///         Description = "A sample vertex endpoint",
 ///         Location = "us-central1",
@@ -911,15 +911,15 @@ import 'ai_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-/// 			Name:        pulumi.String("endpoint-name_78181"),
+/// 			Name:        pulumi.String("endpoint-name"),
 /// 			DisplayName: pulumi.String("sample-endpoint"),
 /// 			Description: pulumi.String("A sample vertex endpoint"),
 /// 			Location:    pulumi.String("us-central1"),
@@ -953,7 +953,7 @@ import 'ai_endpoint_state.dart';
 /// }
 ///
 /// resource "gcp_vertex_aiendpoint" "endpoint" {
-///   name         = "endpoint-name_78181"
+///   name         = "endpoint-name"
 ///   display_name = "sample-endpoint"
 ///   description  = "A sample vertex endpoint"
 ///   location     = "us-central1"
@@ -988,7 +988,7 @@ import 'ai_endpoint_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
-///             .name("endpoint-name_78181")
+///             .name("endpoint-name")
 ///             .displayName("sample-endpoint")
 ///             .description("A sample vertex endpoint")
 ///             .location("us-central1")
@@ -1008,7 +1008,7 @@ import 'ai_endpoint_state.dart';
 ///   endpoint:
 ///     type: gcp:vertex:AiEndpoint
 ///     properties:
-///       name: endpoint-name_78181
+///       name: endpoint-name
 ///       displayName: sample-endpoint
 ///       description: A sample vertex endpoint
 ///       location: us-central1
@@ -1117,7 +1117,7 @@ class AiEndpoint extends pulumi.CustomResource {
           'gcp:vertex/aiEndpoint:AiEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

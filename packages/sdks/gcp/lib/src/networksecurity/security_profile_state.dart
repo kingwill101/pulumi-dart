@@ -5,6 +5,7 @@ import 'security_profile_custom_intercept_profile.dart';
 import 'security_profile_custom_mirroring_profile.dart';
 import 'security_profile_threat_prevention_profile.dart';
 import 'security_profile_url_filtering_profile.dart';
+import 'security_profile_wildfire_analysis_profile.dart';
 
 /// Input properties used for looking up and filtering SecurityProfile resources.
 class SecurityProfileState {
@@ -54,14 +55,18 @@ class SecurityProfileState {
   /// The threat prevention configuration for the security profile.
   /// Structure is documented below.
   final pulumi.Input<SecurityProfileThreatPreventionProfile?>? threatPreventionProfile;
-  /// The type of security profile.
-  /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+  /// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+  /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
   final pulumi.Input<String?>? type;
   /// Time the security profile was updated in UTC.
   final pulumi.Input<String?>? updateTime;
   /// The url filtering configuration for the security profile.
   /// Structure is documented below.
   final pulumi.Input<SecurityProfileUrlFilteringProfile?>? urlFilteringProfile;
+  /// (Optional, Beta)
+  /// The wildfire analysis configuration for the security profile.
+  /// Structure is documented below.
+  final pulumi.Input<SecurityProfileWildfireAnalysisProfile?>? wildfireAnalysisProfile;
 
   /// Creates a new [SecurityProfileState].
   /// [createTime] Time the security profile was created in UTC.
@@ -78,9 +83,10 @@ class SecurityProfileState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [selfLink] Server-defined URL of this resource.
   /// [threatPreventionProfile] The threat prevention configuration for the security profile.
-  /// [type] The type of security profile.
+  /// [type] The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
   /// [updateTime] Time the security profile was updated in UTC.
   /// [urlFilteringProfile] The url filtering configuration for the security profile.
+  /// [wildfireAnalysisProfile] (Optional, Beta)
   const SecurityProfileState({
     this.createTime,
     this.customInterceptProfile,
@@ -99,6 +105,7 @@ class SecurityProfileState {
     this.type,
     this.updateTime,
     this.urlFilteringProfile,
+    this.wildfireAnalysisProfile,
   });
 
   Map<String, dynamic> toMap() {
@@ -120,6 +127,7 @@ class SecurityProfileState {
       'type': ?type,
       'updateTime': ?updateTime,
       'urlFilteringProfile': ?pulumi.Input.mapOptionalInputValue<SecurityProfileUrlFilteringProfile, Map<String, dynamic>>(urlFilteringProfile, (value) => value.toMap()),
+      'wildfireAnalysisProfile': ?pulumi.Input.mapOptionalInputValue<SecurityProfileWildfireAnalysisProfile, Map<String, dynamic>>(wildfireAnalysisProfile, (value) => value.toMap()),
     };
   }
 
@@ -142,6 +150,7 @@ class SecurityProfileState {
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       urlFilteringProfile: (() { final guardedValue = map['urlFilteringProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityProfileUrlFilteringProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      wildfireAnalysisProfile: (() { final guardedValue = map['wildfireAnalysisProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityProfileWildfireAnalysisProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

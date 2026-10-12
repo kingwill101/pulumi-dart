@@ -648,11 +648,11 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1801,7 +1801,7 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2510,7 +2510,7 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3237,8 +3237,8 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4002,8 +4002,8 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4767,8 +4767,8 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5210,7 +5210,7 @@ import 'stream_state.dart';
 /// import * as random from "@pulumi/random";
 ///
 /// const postgres = new gcp.bigquery.Dataset("postgres", {
-///     datasetId: "postgres",
+///     datasetId: "postgres_dataset",
 ///     friendlyName: "postgres",
 ///     description: "Database of postgres",
 ///     location: "us-central1",
@@ -5303,7 +5303,7 @@ import 'stream_state.dart';
 /// import pulumi_random as random
 ///
 /// postgres = gcp.bigquery.Dataset("postgres",
-///     dataset_id="postgres",
+///     dataset_id="postgres_dataset",
 ///     friendly_name="postgres",
 ///     description="Database of postgres",
 ///     location="us-central1")
@@ -5393,7 +5393,7 @@ import 'stream_state.dart';
 /// {
 ///     var postgres = new Gcp.BigQuery.Dataset("postgres", new()
 ///     {
-///         DatasetId = "postgres",
+///         DatasetId = "postgres_dataset",
 ///         FriendlyName = "postgres",
 ///         Description = "Database of postgres",
 ///         Location = "us-central1",
@@ -5514,9 +5514,9 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -5524,7 +5524,7 @@ import 'stream_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		postgres, err := bigquery.NewDataset(ctx, "postgres", &bigquery.DatasetArgs{
-/// 			DatasetId:    pulumi.String("postgres"),
+/// 			DatasetId:    pulumi.String("postgres_dataset"),
 /// 			FriendlyName: pulumi.String("postgres"),
 /// 			Description:  pulumi.String("Database of postgres"),
 /// 			Location:     pulumi.String("us-central1"),
@@ -5651,7 +5651,7 @@ import 'stream_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "postgres" {
-///   dataset_id    = "postgres"
+///   dataset_id    = "postgres_dataset"
 ///   friendly_name = "postgres"
 ///   description   = "Database of postgres"
 ///   location      = "us-central1"
@@ -5778,7 +5778,7 @@ import 'stream_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var postgres = new Dataset("postgres", DatasetArgs.builder()
-///             .datasetId("postgres")
+///             .datasetId("postgres_dataset")
 ///             .friendlyName("postgres")
 ///             .description("Database of postgres")
 ///             .location("us-central1")
@@ -5882,7 +5882,7 @@ import 'stream_state.dart';
 ///   postgres:
 ///     type: gcp:bigquery:Dataset
 ///     properties:
-///       datasetId: postgres
+///       datasetId: postgres_dataset
 ///       friendlyName: postgres
 ///       description: Database of postgres
 ///       location: us-central1
@@ -6294,11 +6294,11 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -6799,8 +6799,8 @@ import 'stream_state.dart';
 ///
 /// const project = gcp.organizations.getProject({});
 /// const cross_project_dataset = new gcp.organizations.Project("cross-project-dataset", {
-///     projectId: "tf-test_21912",
-///     name: "tf-test_46731",
+///     projectId: "tf-test_2234",
+///     name: "tf-test_29225",
 ///     orgId: "123456789",
 ///     billingAccount: "000000-0000000-0000000-000000",
 ///     deletionPolicy: "DELETE",
@@ -6914,8 +6914,8 @@ import 'stream_state.dart';
 ///
 /// project = gcp.organizations.get_project()
 /// cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-///     project_id="tf-test_21912",
-///     name="tf-test_46731",
+///     project_id="tf-test_2234",
+///     name="tf-test_29225",
 ///     org_id="123456789",
 ///     billing_account="000000-0000000-0000000-000000",
 ///     deletion_policy="DELETE")
@@ -7022,8 +7022,8 @@ import 'stream_state.dart';
 ///
 ///     var cross_project_dataset = new Gcp.Organizations.Project("cross-project-dataset", new()
 ///     {
-///         ProjectId = "tf-test_21912",
-///         Name = "tf-test_46731",
+///         ProjectId = "tf-test_2234",
+///         Name = "tf-test_29225",
 ///         OrgId = "123456789",
 ///         BillingAccount = "000000-0000000-0000000-000000",
 ///         DeletionPolicy = "DELETE",
@@ -7184,10 +7184,10 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
@@ -7200,8 +7200,8 @@ import 'stream_state.dart';
 /// 			return err
 /// 		}
 /// 		cross_project_dataset, err := organizations.NewProject(ctx, "cross-project-dataset", &organizations.ProjectArgs{
-/// 			ProjectId:      pulumi.String("tf-test_21912"),
-/// 			Name:           pulumi.String("tf-test_46731"),
+/// 			ProjectId:      pulumi.String("tf-test_2234"),
+/// 			Name:           pulumi.String("tf-test_29225"),
 /// 			OrgId:          pulumi.String("123456789"),
 /// 			BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 /// 			DeletionPolicy: pulumi.String("DELETE"),
@@ -7364,8 +7364,8 @@ import 'stream_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "cross-project-dataset" {
-///   project_id      = "tf-test_21912"
-///   name            = "tf-test_46731"
+///   project_id      = "tf-test_2234"
+///   name            = "tf-test_29225"
 ///   org_id          = "123456789"
 ///   billing_account = "000000-0000000-0000000-000000"
 ///   deletion_policy = "DELETE"
@@ -7523,8 +7523,8 @@ import 'stream_state.dart';
 ///             .build());
 ///
 ///         var cross_project_dataset = new Project("cross-project-dataset", ProjectArgs.builder()
-///             .projectId("tf-test_21912")
-///             .name("tf-test_46731")
+///             .projectId("tf-test_2234")
+///             .name("tf-test_29225")
 ///             .orgId("123456789")
 ///             .billingAccount("000000-0000000-0000000-000000")
 ///             .deletionPolicy("DELETE")
@@ -7652,8 +7652,8 @@ import 'stream_state.dart';
 ///   cross-project-dataset:
 ///     type: gcp:organizations:Project
 ///     properties:
-///       projectId: tf-test_21912
-///       name: tf-test_46731
+///       projectId: tf-test_2234
+///       name: tf-test_29225
 ///       orgId: '123456789'
 ///       billingAccount: 000000-0000000-0000000-000000
 ///       deletionPolicy: DELETE
@@ -8069,9 +8069,9 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -8895,11 +8895,11 @@ import 'stream_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -9751,8 +9751,8 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10299,7 +10299,7 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10610,7 +10610,7 @@ class Stream extends pulumi.CustomResource {
           'gcp:datastream/stream:Stream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     backfillAll = registerOutput<StreamBackfillAll?>('backfillAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamBackfillAll.fromMap((guardedValue as Map).cast<String, dynamic>()); });

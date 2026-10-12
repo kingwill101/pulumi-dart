@@ -31,7 +31,7 @@ class GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript {
   factory GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript(
       gcpSecretManagerSecretUri: pulumi.Input.fromValue(map['gcpSecretManagerSecretUri'] as String),
-      gcsGeneration: pulumi.Input.fromValue((map['gcsGeneration'] as num).toInt()),
+      gcsGeneration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['gcsGeneration'])),
       gcsUri: pulumi.Input.fromValue(map['gcsUri'] as String),
     );
   }

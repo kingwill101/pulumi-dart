@@ -121,8 +121,8 @@ import 'dataset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -350,8 +350,8 @@ import 'dataset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -690,8 +690,8 @@ import 'dataset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1124,7 +1124,7 @@ import 'dataset_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1433,7 +1433,7 @@ import 'dataset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1593,7 +1593,7 @@ import 'dataset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1728,7 +1728,7 @@ class Dataset extends pulumi.CustomResource {
   /// The following values are supported:
   /// - 'und:ci': undetermined locale, case insensitive.
   /// - '': empty string. Default to case-sensitive behavior.
-  late final pulumi.Output<String> defaultCollation;
+  late final pulumi.Output<String?> defaultCollation;
   /// The default encryption key for all tables in the dataset. Once this property is set,
   /// all newly-created partitioned tables in the dataset will have encryption key set to
   /// this value, unless table creation request (or query) overrides the key.
@@ -1842,13 +1842,13 @@ class Dataset extends pulumi.CustomResource {
           'gcp:bigquery/dataset:Dataset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accesses = registerOutput<List<DatasetAccess>>('accesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetAccess>(guardedValue, (value) => DatasetAccess.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<int>('creationTime');
     datasetId = registerOutput<String>('datasetId');
-    defaultCollation = registerOutput<String>('defaultCollation');
+    defaultCollation = registerOutput<String?>('defaultCollation');
     defaultEncryptionConfiguration = registerOutput<DatasetDefaultEncryptionConfiguration?>('defaultEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetDefaultEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultPartitionExpirationMs = registerOutput<int?>('defaultPartitionExpirationMs');
     defaultTableExpirationMs = registerOutput<int?>('defaultTableExpirationMs');
@@ -1899,7 +1899,7 @@ class Dataset extends pulumi.CustomResource {
     accesses = registerOutput<List<DatasetAccess>>('accesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetAccess>(guardedValue, (value) => DatasetAccess.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<int>('creationTime');
     datasetId = registerOutput<String>('datasetId');
-    defaultCollation = registerOutput<String>('defaultCollation');
+    defaultCollation = registerOutput<String?>('defaultCollation');
     defaultEncryptionConfiguration = registerOutput<DatasetDefaultEncryptionConfiguration?>('defaultEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetDefaultEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultPartitionExpirationMs = registerOutput<int?>('defaultPartitionExpirationMs');
     defaultTableExpirationMs = registerOutput<int?>('defaultTableExpirationMs');
@@ -1936,7 +1936,7 @@ class Dataset extends pulumi.CustomResource {
     accesses = registerOutput<List<DatasetAccess>>('accesses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetAccess>(guardedValue, (value) => DatasetAccess.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<int>('creationTime');
     datasetId = registerOutput<String>('datasetId');
-    defaultCollation = registerOutput<String>('defaultCollation');
+    defaultCollation = registerOutput<String?>('defaultCollation');
     defaultEncryptionConfiguration = registerOutput<DatasetDefaultEncryptionConfiguration?>('defaultEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetDefaultEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultPartitionExpirationMs = registerOutput<int?>('defaultPartitionExpirationMs');
     defaultTableExpirationMs = registerOutput<int?>('defaultTableExpirationMs');

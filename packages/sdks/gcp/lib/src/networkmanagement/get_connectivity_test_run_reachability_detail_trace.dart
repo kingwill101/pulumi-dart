@@ -38,7 +38,7 @@ class GetConnectivityTestRunReachabilityDetailTrace {
   factory GetConnectivityTestRunReachabilityDetailTrace.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestRunReachabilityDetailTrace(
       endpointInfos: pulumi.Input.fromValue(pulumi.Input.decodeList<GetConnectivityTestRunReachabilityDetailTraceEndpointInfo>(map['endpointInfos']!, (value) => GetConnectivityTestRunReachabilityDetailTraceEndpointInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      forwardTraceId: pulumi.Input.fromValue((map['forwardTraceId'] as num).toInt()),
+      forwardTraceId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['forwardTraceId'])),
       steps: pulumi.Input.fromValue(pulumi.Input.decodeList<GetConnectivityTestRunReachabilityDetailTraceStep>(map['steps']!, (value) => GetConnectivityTestRunReachabilityDetailTraceStep.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

@@ -27,7 +27,7 @@ import 'connectivity_test_state.dart';
 ///
 /// const vpc = new gcp.compute.Network("vpc", {name: "conn-test-net"});
 /// const debian9 = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const source = new gcp.compute.Instance("source", {
@@ -75,7 +75,7 @@ import 'connectivity_test_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// vpc = gcp.compute.Network("vpc", name="conn-test-net")
-/// debian9 = gcp.compute.get_image(family="debian-11",
+/// debian9 = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// source = gcp.compute.Instance("source",
 ///     network_interfaces=[{
@@ -129,7 +129,7 @@ import 'connectivity_test_state.dart';
 ///
 ///     var debian9 = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -205,8 +205,8 @@ import 'connectivity_test_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkmanagement"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkmanagement"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -219,7 +219,7 @@ import 'connectivity_test_state.dart';
 /// 			return err
 /// 		}
 /// 		debian9, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -295,7 +295,7 @@ import 'connectivity_test_state.dart';
 /// }
 ///
 /// data "gcp_compute_getimage" "debian9" {
-///   family  = "debian-11"
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
@@ -382,7 +382,7 @@ import 'connectivity_test_state.dart';
 ///             .build());
 ///
 ///         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -477,7 +477,7 @@ import 'connectivity_test_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -627,8 +627,8 @@ import 'connectivity_test_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkmanagement"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkmanagement"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -977,7 +977,7 @@ import 'connectivity_test_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkmanagement"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkmanagement"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1218,7 +1218,7 @@ import 'connectivity_test_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkmanagement"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkmanagement"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1414,7 +1414,7 @@ class ConnectivityTest extends pulumi.CustomResource {
           'gcp:networkmanagement/connectivityTest:ConnectivityTest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     bypassFirewallChecks = registerOutput<bool?>('bypassFirewallChecks');

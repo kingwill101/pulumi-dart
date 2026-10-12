@@ -38,6 +38,9 @@ class HookState {
   /// The sensitive query string to be appended to the target URI.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String?>? sensitiveQueryString;
+  /// Determines if the hook uses the Repository Service Account to
+  /// generate an OIDC ID Token for webhook authentication.
+  final pulumi.Input<bool?>? serviceAccountAuth;
   /// The target URI to which the payloads will be delivered.
   final pulumi.Input<String?>? targetUri;
   /// Unique identifier of the hook.
@@ -57,6 +60,7 @@ class HookState {
   /// [pushOption] The trigger option for push events.
   /// [repositoryId] The ID for the Repository.
   /// [sensitiveQueryString] The sensitive query string to be appended to the target URI.
+  /// [serviceAccountAuth] Determines if the hook uses the Repository Service Account to
   /// [targetUri] The target URI to which the payloads will be delivered.
   /// [uid] Unique identifier of the hook.
   /// [updateTime] Update timestamp.
@@ -72,6 +76,7 @@ class HookState {
     this.pushOption,
     this.repositoryId,
     this.sensitiveQueryString,
+    this.serviceAccountAuth,
     this.targetUri,
     this.uid,
     this.updateTime,
@@ -90,6 +95,7 @@ class HookState {
       'pushOption': ?pulumi.Input.mapOptionalInputValue<HookPushOption, Map<String, dynamic>>(pushOption, (value) => value.toMap()),
       'repositoryId': ?repositoryId,
       'sensitiveQueryString': ?sensitiveQueryString,
+      'serviceAccountAuth': ?serviceAccountAuth,
       'targetUri': ?targetUri,
       'uid': ?uid,
       'updateTime': ?updateTime,
@@ -109,6 +115,7 @@ class HookState {
       pushOption: (() { final guardedValue = map['pushOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HookPushOption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       repositoryId: (() { final guardedValue = map['repositoryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sensitiveQueryString: (() { final guardedValue = map['sensitiveQueryString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceAccountAuth: (() { final guardedValue = map['serviceAccountAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       targetUri: (() { final guardedValue = map['targetUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

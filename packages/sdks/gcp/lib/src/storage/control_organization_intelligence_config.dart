@@ -104,7 +104,7 @@ import 'control_organization_intelligence_config_trial_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -263,7 +263,7 @@ class ControlOrganizationIntelligenceConfig extends pulumi.CustomResource {
           'gcp:storage/controlOrganizationIntelligenceConfig:ControlOrganizationIntelligenceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     editionConfig = registerOutput<String>('editionConfig');
     effectiveIntelligenceConfigs = registerOutput<List<ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>>('effectiveIntelligenceConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>(guardedValue, (value) => ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>())); });

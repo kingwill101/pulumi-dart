@@ -242,9 +242,9 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -685,7 +685,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -956,7 +956,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1240,7 +1240,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1511,7 +1511,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1772,7 +1772,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///     },
 /// });
 /// const globalAssoc = new gcp.compute.NetworkFirewallPolicyAssociation("global_assoc", {
-///     name: "global-policy-assoc-_27169",
+///     name: "global-policy-assoc",
 ///     firewallPolicy: fwPolicy.id,
 ///     attachmentTarget: net.id,
 /// });
@@ -1843,7 +1843,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///         }],
 ///     })
 /// global_assoc = gcp.compute.NetworkFirewallPolicyAssociation("global_assoc",
-///     name="global-policy-assoc-_27169",
+///     name="global-policy-assoc",
 ///     firewall_policy=fw_policy.id,
 ///     attachment_target=net.id)
 /// ```
@@ -1965,7 +1965,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///
 ///     var globalAssoc = new Gcp.Compute.NetworkFirewallPolicyAssociation("global_assoc", new()
 ///     {
-///         Name = "global-policy-assoc-_27169",
+///         Name = "global-policy-assoc",
 ///         FirewallPolicy = fwPolicy.Id,
 ///         AttachmentTarget = net.Id,
 ///     });
@@ -1976,7 +1976,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2091,7 +2091,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewNetworkFirewallPolicyAssociation(ctx, "global_assoc", &compute.NetworkFirewallPolicyAssociationArgs{
-/// 			Name:             pulumi.String("global-policy-assoc-_27169"),
+/// 			Name:             pulumi.String("global-policy-assoc"),
 /// 			FirewallPolicy:   fwPolicy.ID().ToIDOutput().ToStringOutput(),
 /// 			AttachmentTarget: net.ID().ToIDOutput().ToStringOutput(),
 /// 		})
@@ -2183,7 +2183,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///   }
 /// }
 /// resource "gcp_compute_networkfirewallpolicyassociation" "global_assoc" {
-///   name              = "global-policy-assoc-_27169"
+///   name              = "global-policy-assoc"
 ///   firewall_policy   = gcp_compute_networkfirewallpolicy.fw_policy.id
 ///   attachment_target = gcp_compute_network.net.id
 /// }
@@ -2314,7 +2314,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///             .build());
 ///
 ///         var globalAssoc = new NetworkFirewallPolicyAssociation("globalAssoc", NetworkFirewallPolicyAssociationArgs.builder()
-///             .name("global-policy-assoc-_27169")
+///             .name("global-policy-assoc")
 ///             .firewallPolicy(fwPolicy.id())
 ///             .attachmentTarget(net.id())
 ///             .build());
@@ -2414,7 +2414,7 @@ import 'network_firewall_policy_rule_target_secure_tag.dart';
 ///     type: gcp:compute:NetworkFirewallPolicyAssociation
 ///     name: global_assoc
 ///     properties:
-///       name: global-policy-assoc-_27169
+///       name: global-policy-assoc
 ///       firewallPolicy: ${fwPolicy.id}
 ///       attachmentTarget: ${net.id}
 /// ```
@@ -2520,7 +2520,7 @@ class NetworkFirewallPolicyRule extends pulumi.CustomResource {
           'gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     action = registerOutput<String>('action');
     creationTimestamp = registerOutput<String>('creationTimestamp');

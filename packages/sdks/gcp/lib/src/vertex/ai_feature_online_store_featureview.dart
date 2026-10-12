@@ -248,9 +248,9 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -870,8 +870,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1288,8 +1288,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///
 /// const testProject = gcp.organizations.getProject({});
 /// const project = new gcp.organizations.Project("project", {
-///     projectId: "tf-test_79241",
-///     name: "tf-test_57926",
+///     projectId: "tf-test_48234",
+///     name: "tf-test_74065",
 ///     orgId: "123456789",
 ///     billingAccount: "000000-0000000-0000000-000000",
 ///     deletionPolicy: "DELETE",
@@ -1412,8 +1412,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///
 /// test_project = gcp.organizations.get_project()
 /// project = gcp.organizations.Project("project",
-///     project_id="tf-test_79241",
-///     name="tf-test_57926",
+///     project_id="tf-test_48234",
+///     name="tf-test_74065",
 ///     org_id="123456789",
 ///     billing_account="000000-0000000-0000000-000000",
 ///     deletion_policy="DELETE")
@@ -1532,8 +1532,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///
 ///     var project = new Gcp.Organizations.Project("project", new()
 ///     {
-///         ProjectId = "tf-test_79241",
-///         Name = "tf-test_57926",
+///         ProjectId = "tf-test_48234",
+///         Name = "tf-test_74065",
 ///         OrgId = "123456789",
 ///         BillingAccount = "000000-0000000-0000000-000000",
 ///         DeletionPolicy = "DELETE",
@@ -1728,10 +1728,10 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -1743,8 +1743,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// 			return err
 /// 		}
 /// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-/// 			ProjectId:      pulumi.String("tf-test_79241"),
-/// 			Name:           pulumi.String("tf-test_57926"),
+/// 			ProjectId:      pulumi.String("tf-test_48234"),
+/// 			Name:           pulumi.String("tf-test_74065"),
 /// 			OrgId:          pulumi.String("123456789"),
 /// 			BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 /// 			DeletionPolicy: pulumi.String("DELETE"),
@@ -1927,8 +1927,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
-///   project_id      = "tf-test_79241"
-///   name            = "tf-test_57926"
+///   project_id      = "tf-test_48234"
+///   name            = "tf-test_74065"
 ///   org_id          = "123456789"
 ///   billing_account = "000000-0000000-0000000-000000"
 ///   deletion_policy = "DELETE"
@@ -2075,8 +2075,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///             .build());
 ///
 ///         var project = new Project("project", ProjectArgs.builder()
-///             .projectId("tf-test_79241")
-///             .name("tf-test_57926")
+///             .projectId("tf-test_48234")
+///             .name("tf-test_74065")
 ///             .orgId("123456789")
 ///             .billingAccount("000000-0000000-0000000-000000")
 ///             .deletionPolicy("DELETE")
@@ -2213,8 +2213,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///   project:
 ///     type: gcp:organizations:Project
 ///     properties:
-///       projectId: tf-test_79241
-///       name: tf-test_57926
+///       projectId: tf-test_48234
+///       name: tf-test_74065
 ///       orgId: '123456789'
 ///       billingAccount: 000000-0000000-0000000-000000
 ///       deletionPolicy: DELETE
@@ -2680,9 +2680,9 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3178,7 +3178,7 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     bigQuerySource = registerOutput<AiFeatureOnlineStoreFeatureviewBigQuerySource?>('bigQuerySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });

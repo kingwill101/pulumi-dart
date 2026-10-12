@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_exadata_infrastructure_properties_customer_contact.dart';
+import 'cloud_exadata_infrastructure_properties_exascale_config.dart';
 import 'cloud_exadata_infrastructure_properties_maintenance_window.dart';
 
 class CloudExadataInfrastructureProperties {
@@ -35,6 +36,10 @@ class CloudExadataInfrastructureProperties {
   /// The software version of the database servers (dom0) in the Exadata
   /// Infrastructure.
   final pulumi.Input<String?>? dbServerVersion;
+  /// (Output)
+  /// The Exascale configuration for the Exadata Infrastructure.
+  /// Structure is documented below.
+  final pulumi.Input<List<CloudExadataInfrastructurePropertiesExascaleConfig>?>? exascaleConfigs;
   /// Maintenance window as defined by Oracle.
   /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
   /// Structure is documented below.
@@ -113,6 +118,7 @@ class CloudExadataInfrastructureProperties {
   /// [dataStorageSizeTb] (Output)
   /// [dbNodeStorageSizeGb] (Output)
   /// [dbServerVersion] (Output)
+  /// [exascaleConfigs] (Output)
   /// [maintenanceWindow] Maintenance window as defined by Oracle.
   /// [maxCpuCount] (Output)
   /// [maxDataStorageTb] (Output)
@@ -141,6 +147,7 @@ class CloudExadataInfrastructureProperties {
     this.dataStorageSizeTb,
     this.dbNodeStorageSizeGb,
     this.dbServerVersion,
+    this.exascaleConfigs,
     this.maintenanceWindow,
     this.maxCpuCount,
     this.maxDataStorageTb,
@@ -172,6 +179,7 @@ class CloudExadataInfrastructureProperties {
       'dataStorageSizeTb': ?dataStorageSizeTb,
       'dbNodeStorageSizeGb': ?dbNodeStorageSizeGb,
       'dbServerVersion': ?dbServerVersion,
+      'exascaleConfigs': ?pulumi.Input.mapOptionalInputValue<List<CloudExadataInfrastructurePropertiesExascaleConfig>, List<Map<String, dynamic>>>(exascaleConfigs, (value) => pulumi.Input.encodeList<CloudExadataInfrastructurePropertiesExascaleConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'maintenanceWindow': ?pulumi.Input.mapOptionalInputValue<CloudExadataInfrastructurePropertiesMaintenanceWindow, Map<String, dynamic>>(maintenanceWindow, (value) => value.toMap()),
       'maxCpuCount': ?maxCpuCount,
       'maxDataStorageTb': ?maxDataStorageTb,
@@ -195,21 +203,22 @@ class CloudExadataInfrastructureProperties {
 
   factory CloudExadataInfrastructureProperties.fromMap(Map<String, dynamic> map) {
     return CloudExadataInfrastructureProperties(
-      activatedStorageCount: (() { final guardedValue = map['activatedStorageCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      additionalStorageCount: (() { final guardedValue = map['additionalStorageCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      availableStorageSizeGb: (() { final guardedValue = map['availableStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      computeCount: (() { final guardedValue = map['computeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      cpuCount: (() { final guardedValue = map['cpuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      activatedStorageCount: (() { final guardedValue = map['activatedStorageCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      additionalStorageCount: (() { final guardedValue = map['additionalStorageCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      availableStorageSizeGb: (() { final guardedValue = map['availableStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      computeCount: (() { final guardedValue = map['computeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      cpuCount: (() { final guardedValue = map['cpuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       customerContacts: (() { final guardedValue = map['customerContacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CloudExadataInfrastructurePropertiesCustomerContact>(guardedValue, (value) => CloudExadataInfrastructurePropertiesCustomerContact.fromMap((value as Map).cast<String, dynamic>()))); })(),
       dataStorageSizeTb: (() { final guardedValue = map['dataStorageSizeTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
-      dbNodeStorageSizeGb: (() { final guardedValue = map['dbNodeStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dbNodeStorageSizeGb: (() { final guardedValue = map['dbNodeStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dbServerVersion: (() { final guardedValue = map['dbServerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      exascaleConfigs: (() { final guardedValue = map['exascaleConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CloudExadataInfrastructurePropertiesExascaleConfig>(guardedValue, (value) => CloudExadataInfrastructurePropertiesExascaleConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CloudExadataInfrastructurePropertiesMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxCpuCount: (() { final guardedValue = map['maxCpuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxCpuCount: (() { final guardedValue = map['maxCpuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       maxDataStorageTb: (() { final guardedValue = map['maxDataStorageTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
-      maxDbNodeStorageSizeGb: (() { final guardedValue = map['maxDbNodeStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxMemoryGb: (() { final guardedValue = map['maxMemoryGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      memorySizeGb: (() { final guardedValue = map['memorySizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxDbNodeStorageSizeGb: (() { final guardedValue = map['maxDbNodeStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxMemoryGb: (() { final guardedValue = map['maxMemoryGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      memorySizeGb: (() { final guardedValue = map['memorySizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       monthlyDbServerVersion: (() { final guardedValue = map['monthlyDbServerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       monthlyStorageServerVersion: (() { final guardedValue = map['monthlyStorageServerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nextMaintenanceRunId: (() { final guardedValue = map['nextMaintenanceRunId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -219,9 +228,9 @@ class CloudExadataInfrastructureProperties {
       ocid: (() { final guardedValue = map['ocid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       shape: pulumi.Input.fromValue(map['shape'] as String),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageCount: (() { final guardedValue = map['storageCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      storageCount: (() { final guardedValue = map['storageCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       storageServerVersion: (() { final guardedValue = map['storageServerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      totalStorageSizeGb: (() { final guardedValue = map['totalStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      totalStorageSizeGb: (() { final guardedValue = map['totalStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

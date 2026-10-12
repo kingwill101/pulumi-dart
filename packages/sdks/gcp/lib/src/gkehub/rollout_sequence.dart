@@ -213,9 +213,9 @@ import 'rollout_sequence_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -721,9 +721,9 @@ import 'rollout_sequence_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -1093,7 +1093,7 @@ import 'rollout_sequence_state.dart';
 ///         channel: "REGULAR",
 ///     },
 ///     resourceLabels: {
-///         rs_test_cluster: "tf-test-_89239",
+///         rs_test_cluster: "tf-test-_90221",
 ///     },
 ///     fleet: {
 ///         project: project.number,
@@ -1107,7 +1107,7 @@ import 'rollout_sequence_state.dart';
 ///     displayName: "User Triggered Rollout Sequence",
 ///     minControlPlaneVersion: versions.apply(versions => versions.releaseChannelLatestVersion?.REGULAR),
 ///     ignoredClustersSelector: {
-///         labelSelector: "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_41898')",
+///         labelSelector: "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_88987')",
 ///     },
 ///     stages: [{
 ///         fleetProjects: [pulumi.interpolate`projects/${project.projectId}`],
@@ -1166,7 +1166,7 @@ import 'rollout_sequence_state.dart';
 ///         "channel": "REGULAR",
 ///     },
 ///     resource_labels={
-///         "rs_test_cluster": "tf-test-_89239",
+///         "rs_test_cluster": "tf-test-_90221",
 ///     },
 ///     fleet={
 ///         "project": project.number,
@@ -1178,7 +1178,7 @@ import 'rollout_sequence_state.dart';
 ///     display_name="User Triggered Rollout Sequence",
 ///     min_control_plane_version=versions.release_channel_latest_version["REGULAR"],
 ///     ignored_clusters_selector={
-///         "label_selector": "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_41898')",
+///         "label_selector": "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_88987')",
 ///     },
 ///     stages=[{
 ///         "fleet_projects": [project.project_id.apply(lambda project_id: f"projects/{project_id}")],
@@ -1285,7 +1285,7 @@ import 'rollout_sequence_state.dart';
 ///         },
 ///         ResourceLabels =
 ///         {
-///             { "rs_test_cluster", "tf-test-_89239" },
+///             { "rs_test_cluster", "tf-test-_90221" },
 ///         },
 ///         Fleet = new Gcp.Container.Inputs.ClusterFleetArgs
 ///         {
@@ -1307,7 +1307,7 @@ import 'rollout_sequence_state.dart';
 ///         MinControlPlaneVersion = versions.Apply(getEngineVersionsResult => getEngineVersionsResult.ReleaseChannelLatestVersion?.REGULAR),
 ///         IgnoredClustersSelector = new Gcp.GkeHub.Inputs.RolloutSequenceIgnoredClustersSelectorArgs
 ///         {
-///             LabelSelector = "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_41898')",
+///             LabelSelector = "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_88987')",
 ///         },
 ///         Stages = new[]
 ///         {
@@ -1343,10 +1343,10 @@ import 'rollout_sequence_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -1427,7 +1427,7 @@ import 'rollout_sequence_state.dart';
 /// 				Channel: pulumi.String("REGULAR"),
 /// 			},
 /// 			ResourceLabels: pulumi.StringMap{
-/// 				"rs_test_cluster": pulumi.String("tf-test-_89239"),
+/// 				"rs_test_cluster": pulumi.String("tf-test-_90221"),
 /// 			},
 /// 			Fleet: &container.ClusterFleetArgs{
 /// 				Project: project.Number,
@@ -1446,7 +1446,7 @@ import 'rollout_sequence_state.dart';
 /// 				return &versions.ReleaseChannelLatestVersion.REGULAR, nil
 /// 			}).(pulumi.StringPtrOutput),
 /// 			IgnoredClustersSelector: &gkehub.RolloutSequenceIgnoredClustersSelectorArgs{
-/// 				LabelSelector: pulumi.String("!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_41898')"),
+/// 				LabelSelector: pulumi.String("!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_88987')"),
 /// 			},
 /// 			Stages: gkehub.RolloutSequenceStageArray{
 /// 				&gkehub.RolloutSequenceStageArgs{
@@ -1535,7 +1535,7 @@ import 'rollout_sequence_state.dart';
 ///     channel = "REGULAR"
 ///   }
 ///   resource_labels = {
-///     "rs_test_cluster" = "tf-test-_89239"
+///     "rs_test_cluster" = "tf-test-_90221"
 ///   }
 ///   fleet = {
 ///     project = gcp_organizations_project.project.number
@@ -1548,7 +1548,7 @@ import 'rollout_sequence_state.dart';
 ///   display_name              = "User Triggered Rollout Sequence"
 ///   min_control_plane_version = data.gcp_container_getengineversions.versions.release_channel_latest_version["REGULAR"]
 ///   ignored_clusters_selector = {
-///     label_selector = "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_41898')"
+///     label_selector = "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_88987')"
 ///   }
 ///   stages {
 ///     fleet_projects = ["projects/${gcp_organizations_project.project.project_id}"]
@@ -1659,7 +1659,7 @@ import 'rollout_sequence_state.dart';
 ///             .releaseChannel(ClusterReleaseChannelArgs.builder()
 ///                 .channel("REGULAR")
 ///                 .build())
-///             .resourceLabels(Map.of("rs_test_cluster", "tf-test-_89239"))
+///             .resourceLabels(Map.of("rs_test_cluster", "tf-test-_90221"))
 ///             .fleet(ClusterFleetArgs.builder()
 ///                 .project(project.number())
 ///                 .build())
@@ -1673,7 +1673,7 @@ import 'rollout_sequence_state.dart';
 ///             .displayName("User Triggered Rollout Sequence")
 ///             .minControlPlaneVersion(versions.applyValue(_versions -> _versions.releaseChannelLatestVersion().get("REGULAR")))
 ///             .ignoredClustersSelector(RolloutSequenceIgnoredClustersSelectorArgs.builder()
-///                 .labelSelector("!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_41898')")
+///                 .labelSelector("!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_88987')")
 ///                 .build())
 ///             .stages(RolloutSequenceStageArgs.builder()
 ///                 .fleetProjects(project.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))
@@ -1753,7 +1753,7 @@ import 'rollout_sequence_state.dart';
 ///       releaseChannel:
 ///         channel: REGULAR
 ///       resourceLabels:
-///         rs_test_cluster: tf-test-_89239
+///         rs_test_cluster: tf-test-_90221
 ///       fleet:
 ///         project: ${project.number}
 ///     options:
@@ -1768,7 +1768,7 @@ import 'rollout_sequence_state.dart';
 ///       displayName: User Triggered Rollout Sequence
 ///       minControlPlaneVersion: ${versions.releaseChannelLatestVersion.REGULAR}
 ///       ignoredClustersSelector:
-///         labelSelector: '!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == ''tf-test-_41898'')'
+///         labelSelector: '!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == ''tf-test-_88987'')'
 ///       stages:
 ///         - fleetProjects:
 ///             - projects/${project.projectId}
@@ -1888,7 +1888,7 @@ class RolloutSequence extends pulumi.CustomResource {
           'gcp:gkehub/rolloutSequence:RolloutSequence',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     autoUpgradeConfig = registerOutput<RolloutSequenceAutoUpgradeConfig?>('autoUpgradeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RolloutSequenceAutoUpgradeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

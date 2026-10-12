@@ -30,11 +30,11 @@ class WorkflowTemplatePlacementManagedClusterConfig {
   final pulumi.Input<List<WorkflowTemplatePlacementManagedClusterConfigInitializationAction>?>? initializationActions;
   /// Lifecycle setting for the cluster.
   final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig?>? lifecycleConfig;
-  /// The Compute Engine config settings for additional worker instances in a cluster.
+  /// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
   final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigMasterConfig?>? masterConfig;
   /// Metastore configuration.
   final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig?>? metastoreConfig;
-  /// The Compute Engine config settings for additional worker instances in a cluster.
+  /// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
   final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig?>? secondaryWorkerConfig;
   /// Security settings for the cluster.
   final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigSecurityConfig?>? securityConfig;
@@ -44,7 +44,7 @@ class WorkflowTemplatePlacementManagedClusterConfig {
   final pulumi.Input<String?>? stagingBucket;
   /// A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
   final pulumi.Input<String?>? tempBucket;
-  /// The Compute Engine config settings for additional worker instances in a cluster.
+  /// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
   ///
   /// - - -
   final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigWorkerConfig?>? workerConfig;
@@ -57,14 +57,14 @@ class WorkflowTemplatePlacementManagedClusterConfig {
   /// [gkeClusterConfig] The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gceClusterConfig`, `masterConfig`, `workerConfig`, `secondaryWorkerConfig`, and `autoscalingConfig`.
   /// [initializationActions] Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
   /// [lifecycleConfig] Lifecycle setting for the cluster.
-  /// [masterConfig] The Compute Engine config settings for additional worker instances in a cluster.
+  /// [masterConfig] The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
   /// [metastoreConfig] Metastore configuration.
-  /// [secondaryWorkerConfig] The Compute Engine config settings for additional worker instances in a cluster.
+  /// [secondaryWorkerConfig] The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
   /// [securityConfig] Security settings for the cluster.
   /// [softwareConfig] The config settings for software inside the cluster.
   /// [stagingBucket] A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
   /// [tempBucket] A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
-  /// [workerConfig] The Compute Engine config settings for additional worker instances in a cluster.
+  /// [workerConfig] The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
   const WorkflowTemplatePlacementManagedClusterConfig({
     this.autoscalingConfig,
     this.encryptionConfig,

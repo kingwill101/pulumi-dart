@@ -18,8 +18,8 @@ import 'trace_scope_state.dart';
 ///
 /// const project = gcp.organizations.getProject({});
 /// const project_2 = new gcp.organizations.Project("project-2", {
-///     projectId: "tf-test_78545",
-///     name: "tf-test_48234",
+///     projectId: "tf-test_10996",
+///     name: "tf-test_80411",
 ///     orgId: "123456789",
 ///     deletionPolicy: "DELETE",
 /// });
@@ -41,8 +41,8 @@ import 'trace_scope_state.dart';
 ///
 /// project = gcp.organizations.get_project()
 /// project_2 = gcp.organizations.Project("project-2",
-///     project_id="tf-test_78545",
-///     name="tf-test_48234",
+///     project_id="tf-test_10996",
+///     name="tf-test_80411",
 ///     org_id="123456789",
 ///     deletion_policy="DELETE")
 /// observability_trace_scope = gcp.observability.TraceScope("observability_trace_scope",
@@ -67,8 +67,8 @@ import 'trace_scope_state.dart';
 ///
 ///     var project_2 = new Gcp.Organizations.Project("project-2", new()
 ///     {
-///         ProjectId = "tf-test_78545",
-///         Name = "tf-test_48234",
+///         ProjectId = "tf-test_10996",
+///         Name = "tf-test_80411",
 ///         OrgId = "123456789",
 ///         DeletionPolicy = "DELETE",
 ///     });
@@ -99,8 +99,8 @@ import 'trace_scope_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/observability"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/observability"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -111,8 +111,8 @@ import 'trace_scope_state.dart';
 /// 			return err
 /// 		}
 /// 		project_2, err := organizations.NewProject(ctx, "project-2", &organizations.ProjectArgs{
-/// 			ProjectId:      pulumi.String("tf-test_78545"),
-/// 			Name:           pulumi.String("tf-test_48234"),
+/// 			ProjectId:      pulumi.String("tf-test_10996"),
+/// 			Name:           pulumi.String("tf-test_80411"),
 /// 			OrgId:          pulumi.String("123456789"),
 /// 			DeletionPolicy: pulumi.String("DELETE"),
 /// 		})
@@ -159,8 +159,8 @@ import 'trace_scope_state.dart';
 ///   description    = "A trace scope configured with Terraform"
 /// }
 /// resource "gcp_organizations_project" "project-2" {
-///   project_id      = "tf-test_78545"
-///   name            = "tf-test_48234"
+///   project_id      = "tf-test_10996"
+///   name            = "tf-test_80411"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
@@ -195,8 +195,8 @@ import 'trace_scope_state.dart';
 ///             .build());
 ///
 ///         var project_2 = new Project("project-2", ProjectArgs.builder()
-///             .projectId("tf-test_78545")
-///             .name("tf-test_48234")
+///             .projectId("tf-test_10996")
+///             .name("tf-test_80411")
 ///             .orgId("123456789")
 ///             .deletionPolicy("DELETE")
 ///             .build());
@@ -233,8 +233,8 @@ import 'trace_scope_state.dart';
 ///   project-2:
 ///     type: gcp:organizations:Project
 ///     properties:
-///       projectId: tf-test_78545
-///       name: tf-test_48234
+///       projectId: tf-test_10996
+///       name: tf-test_80411
 ///       orgId: '123456789'
 ///       deletionPolicy: DELETE
 /// variables:
@@ -304,7 +304,7 @@ class TraceScope extends pulumi.CustomResource {
           'gcp:observability/traceScope:TraceScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

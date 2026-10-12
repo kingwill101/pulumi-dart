@@ -87,7 +87,7 @@ import 'instance_from_machine_image_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -284,6 +284,8 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
   /// The zone that the machine should be created in. If not
   /// set, the provider zone is used.
   ///
+  /// * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+  ///
   /// In addition to these, most* arguments from `gcp.compute.Instance` are supported
   /// as a way to override the properties in the machine image. All exported attributes
   /// from `gcp.compute.Instance` are likewise exported here.
@@ -303,7 +305,7 @@ class InstanceFromMachineImage extends pulumi.CustomResource {
           'gcp:compute/instanceFromMachineImage:InstanceFromMachineImage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     advancedMachineFeatures = registerOutput<InstanceFromMachineImageAdvancedMachineFeatures>('advancedMachineFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFromMachineImageAdvancedMachineFeatures.fromMap((guardedValue as Map).cast<String, dynamic>()); });

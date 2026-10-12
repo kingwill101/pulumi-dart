@@ -105,7 +105,7 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -318,7 +318,7 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -526,7 +526,7 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -705,7 +705,7 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -953,9 +953,9 @@ import 'subscription_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1287,9 +1287,9 @@ import 'subscription_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1689,11 +1689,11 @@ import 'subscription_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2025,7 +2025,7 @@ import 'subscription_state.dart';
 ///     cloudStorageConfig: {
 ///         bucket: example.name,
 ///         filenamePrefix: "pre-",
-///         filenameSuffix: "-_75303",
+///         filenameSuffix: "-_45598",
 ///         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
 ///         maxBytes: 1000,
 ///         maxDuration: "300s",
@@ -2058,7 +2058,7 @@ import 'subscription_state.dart';
 ///     cloud_storage_config={
 ///         "bucket": example.name,
 ///         "filename_prefix": "pre-",
-///         "filename_suffix": "-_75303",
+///         "filename_suffix": "-_45598",
 ///         "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
 ///         "max_bytes": 1000,
 ///         "max_duration": "300s",
@@ -2106,7 +2106,7 @@ import 'subscription_state.dart';
 ///         {
 ///             Bucket = example.Name,
 ///             FilenamePrefix = "pre-",
-///             FilenameSuffix = "-_75303",
+///             FilenameSuffix = "-_45598",
 ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
 ///             MaxBytes = 1000,
 ///             MaxDuration = "300s",
@@ -2127,9 +2127,9 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2167,7 +2167,7 @@ import 'subscription_state.dart';
 /// 			CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 /// 				Bucket:                 example.Name,
 /// 				FilenamePrefix:         pulumi.String("pre-"),
-/// 				FilenameSuffix:         pulumi.String("-_75303"),
+/// 				FilenameSuffix:         pulumi.String("-_45598"),
 /// 				FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 /// 				MaxBytes:               pulumi.Int(1000),
 /// 				MaxDuration:            pulumi.String("300s"),
@@ -2211,7 +2211,7 @@ import 'subscription_state.dart';
 ///   cloud_storage_config = {
 ///     bucket                   = gcp_storage_bucket.example.name
 ///     filename_prefix          = "pre-"
-///     filename_suffix          = "-_75303"
+///     filename_suffix          = "-_45598"
 ///     filename_datetime_format = "YYYY-MM-DD/hh_mm_ssZ"
 ///     max_bytes                = 1000
 ///     max_duration             = "300s"
@@ -2280,7 +2280,7 @@ import 'subscription_state.dart';
 ///             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
 ///                 .bucket(example.name())
 ///                 .filenamePrefix("pre-")
-///                 .filenameSuffix("-_75303")
+///                 .filenameSuffix("-_45598")
 ///                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
 ///                 .maxBytes(1000)
 ///                 .maxDuration("300s")
@@ -2317,7 +2317,7 @@ import 'subscription_state.dart';
 ///       cloudStorageConfig:
 ///         bucket: ${example.name}
 ///         filenamePrefix: pre-
-///         filenameSuffix: -_75303
+///         filenameSuffix: -_45598
 ///         filenameDatetimeFormat: YYYY-MM-DD/hh_mm_ssZ
 ///         maxBytes: 1000
 ///         maxDuration: 300s
@@ -2365,7 +2365,7 @@ import 'subscription_state.dart';
 ///     cloudStorageConfig: {
 ///         bucket: example.name,
 ///         filenamePrefix: "pre-",
-///         filenameSuffix: "-_72437",
+///         filenameSuffix: "-_64623",
 ///         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
 ///         maxBytes: 1000,
 ///         maxDuration: "300s",
@@ -2399,7 +2399,7 @@ import 'subscription_state.dart';
 ///     cloud_storage_config={
 ///         "bucket": example.name,
 ///         "filename_prefix": "pre-",
-///         "filename_suffix": "-_72437",
+///         "filename_suffix": "-_64623",
 ///         "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
 ///         "max_bytes": 1000,
 ///         "max_duration": "300s",
@@ -2448,7 +2448,7 @@ import 'subscription_state.dart';
 ///         {
 ///             Bucket = example.Name,
 ///             FilenamePrefix = "pre-",
-///             FilenameSuffix = "-_72437",
+///             FilenameSuffix = "-_64623",
 ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
 ///             MaxBytes = 1000,
 ///             MaxDuration = "300s",
@@ -2470,9 +2470,9 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2510,7 +2510,7 @@ import 'subscription_state.dart';
 /// 			CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 /// 				Bucket:                 example.Name,
 /// 				FilenamePrefix:         pulumi.String("pre-"),
-/// 				FilenameSuffix:         pulumi.String("-_72437"),
+/// 				FilenameSuffix:         pulumi.String("-_64623"),
 /// 				FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 /// 				MaxBytes:               pulumi.Int(1000),
 /// 				MaxDuration:            pulumi.String("300s"),
@@ -2555,7 +2555,7 @@ import 'subscription_state.dart';
 ///   cloud_storage_config = {
 ///     bucket                   = gcp_storage_bucket.example.name
 ///     filename_prefix          = "pre-"
-///     filename_suffix          = "-_72437"
+///     filename_suffix          = "-_64623"
 ///     filename_datetime_format = "YYYY-MM-DD/hh_mm_ssZ"
 ///     max_bytes                = 1000
 ///     max_duration             = "300s"
@@ -2626,7 +2626,7 @@ import 'subscription_state.dart';
 ///             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
 ///                 .bucket(example.name())
 ///                 .filenamePrefix("pre-")
-///                 .filenameSuffix("-_72437")
+///                 .filenameSuffix("-_64623")
 ///                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
 ///                 .maxBytes(1000)
 ///                 .maxDuration("300s")
@@ -2665,7 +2665,7 @@ import 'subscription_state.dart';
 ///       cloudStorageConfig:
 ///         bucket: ${example.name}
 ///         filenamePrefix: pre-
-///         filenameSuffix: -_72437
+///         filenameSuffix: -_64623
 ///         filenameDatetimeFormat: YYYY-MM-DD/hh_mm_ssZ
 ///         maxBytes: 1000
 ///         maxDuration: 300s
@@ -2714,7 +2714,7 @@ import 'subscription_state.dart';
 ///     cloudStorageConfig: {
 ///         bucket: example.name,
 ///         filenamePrefix: "pre-",
-///         filenameSuffix: "-_7864",
+///         filenameSuffix: "-_42057",
 ///         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
 ///         maxBytes: 1000,
 ///         maxDuration: "300s",
@@ -2751,7 +2751,7 @@ import 'subscription_state.dart';
 ///     cloud_storage_config={
 ///         "bucket": example.name,
 ///         "filename_prefix": "pre-",
-///         "filename_suffix": "-_7864",
+///         "filename_suffix": "-_42057",
 ///         "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
 ///         "max_bytes": 1000,
 ///         "max_duration": "300s",
@@ -2803,7 +2803,7 @@ import 'subscription_state.dart';
 ///         {
 ///             Bucket = example.Name,
 ///             FilenamePrefix = "pre-",
-///             FilenameSuffix = "-_7864",
+///             FilenameSuffix = "-_42057",
 ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
 ///             MaxBytes = 1000,
 ///             MaxDuration = "300s",
@@ -2829,9 +2829,9 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2869,7 +2869,7 @@ import 'subscription_state.dart';
 /// 			CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 /// 				Bucket:                 example.Name,
 /// 				FilenamePrefix:         pulumi.String("pre-"),
-/// 				FilenameSuffix:         pulumi.String("-_7864"),
+/// 				FilenameSuffix:         pulumi.String("-_42057"),
 /// 				FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 /// 				MaxBytes:               pulumi.Int(1000),
 /// 				MaxDuration:            pulumi.String("300s"),
@@ -2917,7 +2917,7 @@ import 'subscription_state.dart';
 ///   cloud_storage_config = {
 ///     bucket                   = gcp_storage_bucket.example.name
 ///     filename_prefix          = "pre-"
-///     filename_suffix          = "-_7864"
+///     filename_suffix          = "-_42057"
 ///     filename_datetime_format = "YYYY-MM-DD/hh_mm_ssZ"
 ///     max_bytes                = 1000
 ///     max_duration             = "300s"
@@ -2991,7 +2991,7 @@ import 'subscription_state.dart';
 ///             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
 ///                 .bucket(example.name())
 ///                 .filenamePrefix("pre-")
-///                 .filenameSuffix("-_7864")
+///                 .filenameSuffix("-_42057")
 ///                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
 ///                 .maxBytes(1000)
 ///                 .maxDuration("300s")
@@ -3032,7 +3032,7 @@ import 'subscription_state.dart';
 ///       cloudStorageConfig:
 ///         bucket: ${example.name}
 ///         filenamePrefix: pre-
-///         filenameSuffix: -_7864
+///         filenameSuffix: -_42057
 ///         filenameDatetimeFormat: YYYY-MM-DD/hh_mm_ssZ
 ///         maxBytes: 1000
 ///         maxDuration: 300s
@@ -3086,7 +3086,7 @@ import 'subscription_state.dart';
 ///     cloudStorageConfig: {
 ///         bucket: example.name,
 ///         filenamePrefix: "pre-",
-///         filenameSuffix: "-_70324",
+///         filenameSuffix: "-_84735",
 ///         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
 ///         maxBytes: 1000,
 ///         maxDuration: "300s",
@@ -3123,7 +3123,7 @@ import 'subscription_state.dart';
 ///     cloud_storage_config={
 ///         "bucket": example.name,
 ///         "filename_prefix": "pre-",
-///         "filename_suffix": "-_70324",
+///         "filename_suffix": "-_84735",
 ///         "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
 ///         "max_bytes": 1000,
 ///         "max_duration": "300s",
@@ -3177,7 +3177,7 @@ import 'subscription_state.dart';
 ///         {
 ///             Bucket = example.Name,
 ///             FilenamePrefix = "pre-",
-///             FilenameSuffix = "-_70324",
+///             FilenameSuffix = "-_84735",
 ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
 ///             MaxBytes = 1000,
 ///             MaxDuration = "300s",
@@ -3203,10 +3203,10 @@ import 'subscription_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3249,7 +3249,7 @@ import 'subscription_state.dart';
 /// 			CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 /// 				Bucket:                 example.Name,
 /// 				FilenamePrefix:         pulumi.String("pre-"),
-/// 				FilenameSuffix:         pulumi.String("-_70324"),
+/// 				FilenameSuffix:         pulumi.String("-_84735"),
 /// 				FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 /// 				MaxBytes:               pulumi.Int(1000),
 /// 				MaxDuration:            pulumi.String("300s"),
@@ -3298,7 +3298,7 @@ import 'subscription_state.dart';
 ///   cloud_storage_config = {
 ///     bucket                   = gcp_storage_bucket.example.name
 ///     filename_prefix          = "pre-"
-///     filename_suffix          = "-_70324"
+///     filename_suffix          = "-_84735"
 ///     filename_datetime_format = "YYYY-MM-DD/hh_mm_ssZ"
 ///     max_bytes                = 1000
 ///     max_duration             = "300s"
@@ -3375,7 +3375,7 @@ import 'subscription_state.dart';
 ///             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
 ///                 .bucket(example.name())
 ///                 .filenamePrefix("pre-")
-///                 .filenameSuffix("-_70324")
+///                 .filenameSuffix("-_84735")
 ///                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
 ///                 .maxBytes(1000)
 ///                 .maxDuration("300s")
@@ -3416,7 +3416,7 @@ import 'subscription_state.dart';
 ///       cloudStorageConfig:
 ///         bucket: ${example.name}
 ///         filenamePrefix: pre-
-///         filenameSuffix: -_70324
+///         filenameSuffix: -_84735
 ///         filenameDatetimeFormat: YYYY-MM-DD/hh_mm_ssZ
 ///         maxBytes: 1000
 ///         maxDuration: 300s
@@ -3528,7 +3528,7 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3797,7 +3797,7 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4091,9 +4091,9 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4420,9 +4420,9 @@ import 'subscription_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -4803,7 +4803,7 @@ class Subscription extends pulumi.CustomResource {
           'gcp:pubsub/subscription:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     ackDeadlineSeconds = registerOutput<int>('ackDeadlineSeconds');

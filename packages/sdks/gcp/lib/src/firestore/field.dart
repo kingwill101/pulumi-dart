@@ -43,7 +43,7 @@ import 'field_ttl_config.dart';
 /// const basic = new gcp.firestore.Field("basic", {
 ///     project: "my-project-name",
 ///     database: database.name,
-///     collection: "chatrooms__79580",
+///     collection: "chatrooms__46731",
 ///     field: "basic",
 ///     indexConfig: {
 ///         indexes: [
@@ -72,7 +72,7 @@ import 'field_ttl_config.dart';
 /// basic = gcp.firestore.Field("basic",
 ///     project="my-project-name",
 ///     database=database.name,
-///     collection="chatrooms__79580",
+///     collection="chatrooms__46731",
 ///     field="basic",
 ///     index_config={
 ///         "indexes": [
@@ -108,7 +108,7 @@ import 'field_ttl_config.dart';
 ///     {
 ///         Project = "my-project-name",
 ///         Database = database.Name,
-///         Collection = "chatrooms__79580",
+///         Collection = "chatrooms__46731",
 ///         FieldId = "basic",
 ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
 ///         {
@@ -133,7 +133,7 @@ import 'field_ttl_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -153,7 +153,7 @@ import 'field_ttl_config.dart';
 /// 		_, err = firestore.NewField(ctx, "basic", &firestore.FieldArgs{
 /// 			Project:    pulumi.String("my-project-name"),
 /// 			Database:   database.Name,
-/// 			Collection: pulumi.String("chatrooms__79580"),
+/// 			Collection: pulumi.String("chatrooms__46731"),
 /// 			Field:      pulumi.String("basic"),
 /// 			IndexConfig: &firestore.FieldIndexConfigArgs{
 /// 				Indexes: firestore.FieldIndexConfigIndexArray{
@@ -194,7 +194,7 @@ import 'field_ttl_config.dart';
 /// resource "gcp_firestore_field" "basic" {
 ///   project    = "my-project-name"
 ///   database   = gcp_firestore_database.database.name
-///   collection = "chatrooms__79580"
+///   collection = "chatrooms__46731"
 ///   field      = "basic"
 ///   index_config = {
 ///     indexes = [{
@@ -243,7 +243,7 @@ import 'field_ttl_config.dart';
 ///         var basic = new Field("basic", FieldArgs.builder()
 ///             .project("my-project-name")
 ///             .database(database.name())
-///             .collection("chatrooms__79580")
+///             .collection("chatrooms__46731")
 ///             .field("basic")
 ///             .indexConfig(FieldIndexConfigArgs.builder()
 ///                 .indexes(
@@ -276,7 +276,7 @@ import 'field_ttl_config.dart';
 ///     properties:
 ///       project: my-project-name
 ///       database: ${database.name}
-///       collection: chatrooms__79580
+///       collection: chatrooms__46731
 ///       field: basic
 ///       indexConfig:
 ///         indexes:
@@ -363,7 +363,7 @@ import 'field_ttl_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -574,7 +574,7 @@ import 'field_ttl_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -784,7 +784,7 @@ import 'field_ttl_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -997,7 +997,7 @@ import 'field_ttl_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1152,7 +1152,7 @@ import 'field_ttl_config.dart';
 /// const matchOverride = new gcp.firestore.Field("match_override", {
 ///     project: "my-project-name",
 ///     database: database.name,
-///     collection: "chatrooms__98863",
+///     collection: "chatrooms__26240",
 ///     field: "field_with_same_configuration_as_ancestor",
 ///     indexConfig: {
 ///         indexes: [
@@ -1183,7 +1183,7 @@ import 'field_ttl_config.dart';
 /// match_override = gcp.firestore.Field("match_override",
 ///     project="my-project-name",
 ///     database=database.name,
-///     collection="chatrooms__98863",
+///     collection="chatrooms__26240",
 ///     field="field_with_same_configuration_as_ancestor",
 ///     index_config={
 ///         "indexes": [
@@ -1221,7 +1221,7 @@ import 'field_ttl_config.dart';
 ///     {
 ///         Project = "my-project-name",
 ///         Database = database.Name,
-///         Collection = "chatrooms__98863",
+///         Collection = "chatrooms__26240",
 ///         FieldId = "field_with_same_configuration_as_ancestor",
 ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
 ///         {
@@ -1249,7 +1249,7 @@ import 'field_ttl_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1269,7 +1269,7 @@ import 'field_ttl_config.dart';
 /// 		_, err = firestore.NewField(ctx, "match_override", &firestore.FieldArgs{
 /// 			Project:    pulumi.String("my-project-name"),
 /// 			Database:   database.Name,
-/// 			Collection: pulumi.String("chatrooms__98863"),
+/// 			Collection: pulumi.String("chatrooms__26240"),
 /// 			Field:      pulumi.String("field_with_same_configuration_as_ancestor"),
 /// 			IndexConfig: &firestore.FieldIndexConfigArgs{
 /// 				Indexes: firestore.FieldIndexConfigIndexArray{
@@ -1312,7 +1312,7 @@ import 'field_ttl_config.dart';
 /// resource "gcp_firestore_field" "match_override" {
 ///   project    = "my-project-name"
 ///   database   = gcp_firestore_database.database.name
-///   collection = "chatrooms__98863"
+///   collection = "chatrooms__26240"
 ///   field      = "field_with_same_configuration_as_ancestor"
 ///   index_config = {
 ///     indexes = [{
@@ -1362,7 +1362,7 @@ import 'field_ttl_config.dart';
 ///         var matchOverride = new Field("matchOverride", FieldArgs.builder()
 ///             .project("my-project-name")
 ///             .database(database.name())
-///             .collection("chatrooms__98863")
+///             .collection("chatrooms__26240")
 ///             .field("field_with_same_configuration_as_ancestor")
 ///             .indexConfig(FieldIndexConfigArgs.builder()
 ///                 .indexes(
@@ -1398,7 +1398,7 @@ import 'field_ttl_config.dart';
 ///     properties:
 ///       project: my-project-name
 ///       database: ${database.name}
-///       collection: chatrooms__98863
+///       collection: chatrooms__26240
 ///       field: field_with_same_configuration_as_ancestor
 ///       indexConfig:
 ///         indexes:
@@ -1426,7 +1426,7 @@ import 'field_ttl_config.dart';
 /// const wildcard = new gcp.firestore.Field("wildcard", {
 ///     project: "my-project-name",
 ///     database: database.name,
-///     collection: "chatrooms__64134",
+///     collection: "chatrooms__35711",
 ///     field: "*",
 ///     indexConfig: {
 ///         indexes: [
@@ -1455,7 +1455,7 @@ import 'field_ttl_config.dart';
 /// wildcard = gcp.firestore.Field("wildcard",
 ///     project="my-project-name",
 ///     database=database.name,
-///     collection="chatrooms__64134",
+///     collection="chatrooms__35711",
 ///     field="*",
 ///     index_config={
 ///         "indexes": [
@@ -1491,7 +1491,7 @@ import 'field_ttl_config.dart';
 ///     {
 ///         Project = "my-project-name",
 ///         Database = database.Name,
-///         Collection = "chatrooms__64134",
+///         Collection = "chatrooms__35711",
 ///         FieldId = "*",
 ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
 ///         {
@@ -1516,7 +1516,7 @@ import 'field_ttl_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1536,7 +1536,7 @@ import 'field_ttl_config.dart';
 /// 		_, err = firestore.NewField(ctx, "wildcard", &firestore.FieldArgs{
 /// 			Project:    pulumi.String("my-project-name"),
 /// 			Database:   database.Name,
-/// 			Collection: pulumi.String("chatrooms__64134"),
+/// 			Collection: pulumi.String("chatrooms__35711"),
 /// 			Field:      pulumi.String("*"),
 /// 			IndexConfig: &firestore.FieldIndexConfigArgs{
 /// 				Indexes: firestore.FieldIndexConfigIndexArray{
@@ -1577,7 +1577,7 @@ import 'field_ttl_config.dart';
 /// resource "gcp_firestore_field" "wildcard" {
 ///   project    = "my-project-name"
 ///   database   = gcp_firestore_database.database.name
-///   collection = "chatrooms__64134"
+///   collection = "chatrooms__35711"
 ///   field      = "*"
 ///   index_config = {
 ///     indexes = [{
@@ -1626,7 +1626,7 @@ import 'field_ttl_config.dart';
 ///         var wildcard = new Field("wildcard", FieldArgs.builder()
 ///             .project("my-project-name")
 ///             .database(database.name())
-///             .collection("chatrooms__64134")
+///             .collection("chatrooms__35711")
 ///             .field("*")
 ///             .indexConfig(FieldIndexConfigArgs.builder()
 ///                 .indexes(
@@ -1659,7 +1659,7 @@ import 'field_ttl_config.dart';
 ///     properties:
 ///       project: my-project-name
 ///       database: ${database.name}
-///       collection: chatrooms__64134
+///       collection: chatrooms__35711
 ///       field: '*'
 ///       indexConfig:
 ///         indexes:
@@ -1687,7 +1687,7 @@ import 'field_ttl_config.dart';
 /// const skipWait = new gcp.firestore.Field("skip_wait", {
 ///     project: "my-project-name",
 ///     database: database.name,
-///     collection: "chatrooms__67762",
+///     collection: "chatrooms__85072",
 ///     field: "skip_wait",
 ///     indexConfig: {
 ///         indexes: [
@@ -1717,7 +1717,7 @@ import 'field_ttl_config.dart';
 /// skip_wait = gcp.firestore.Field("skip_wait",
 ///     project="my-project-name",
 ///     database=database.name,
-///     collection="chatrooms__67762",
+///     collection="chatrooms__85072",
 ///     field="skip_wait",
 ///     index_config={
 ///         "indexes": [
@@ -1754,7 +1754,7 @@ import 'field_ttl_config.dart';
 ///     {
 ///         Project = "my-project-name",
 ///         Database = database.Name,
-///         Collection = "chatrooms__67762",
+///         Collection = "chatrooms__85072",
 ///         FieldId = "skip_wait",
 ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
 ///         {
@@ -1780,7 +1780,7 @@ import 'field_ttl_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1800,7 +1800,7 @@ import 'field_ttl_config.dart';
 /// 		_, err = firestore.NewField(ctx, "skip_wait", &firestore.FieldArgs{
 /// 			Project:    pulumi.String("my-project-name"),
 /// 			Database:   database.Name,
-/// 			Collection: pulumi.String("chatrooms__67762"),
+/// 			Collection: pulumi.String("chatrooms__85072"),
 /// 			Field:      pulumi.String("skip_wait"),
 /// 			IndexConfig: &firestore.FieldIndexConfigArgs{
 /// 				Indexes: firestore.FieldIndexConfigIndexArray{
@@ -1842,7 +1842,7 @@ import 'field_ttl_config.dart';
 /// resource "gcp_firestore_field" "skip_wait" {
 ///   project    = "my-project-name"
 ///   database   = gcp_firestore_database.database.name
-///   collection = "chatrooms__67762"
+///   collection = "chatrooms__85072"
 ///   field      = "skip_wait"
 ///   index_config = {
 ///     indexes = [{
@@ -1892,7 +1892,7 @@ import 'field_ttl_config.dart';
 ///         var skipWait = new Field("skipWait", FieldArgs.builder()
 ///             .project("my-project-name")
 ///             .database(database.name())
-///             .collection("chatrooms__67762")
+///             .collection("chatrooms__85072")
 ///             .field("skip_wait")
 ///             .indexConfig(FieldIndexConfigArgs.builder()
 ///                 .indexes(
@@ -1927,7 +1927,7 @@ import 'field_ttl_config.dart';
 ///     properties:
 ///       project: my-project-name
 ///       database: ${database.name}
-///       collection: chatrooms__67762
+///       collection: chatrooms__85072
 ///       field: skip_wait
 ///       indexConfig:
 ///         indexes:
@@ -1994,7 +1994,7 @@ class Field extends pulumi.CustomResource {
           'gcp:firestore/field:Field',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     collection = registerOutput<String>('collection');
     database = registerOutput<String?>('database');

@@ -22,7 +22,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 ///
 /// const disk = new gcp.compute.Disk("disk", {
 ///     name: "my-base-disk",
-///     image: "debian-cloud/debian-11",
+///     image: "debian-cloud/debian-13",
 ///     size: 50,
 ///     type: "pd-ssd",
 ///     zone: "us-central1-a",
@@ -61,7 +61,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 ///     region: "us-central1",
 /// });
 /// const myImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// ```
@@ -71,7 +71,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 ///
 /// disk = gcp.compute.Disk("disk",
 ///     name="my-base-disk",
-///     image="debian-cloud/debian-11",
+///     image="debian-cloud/debian-13",
 ///     size=50,
 ///     type="pd-ssd",
 ///     zone="us-central1-a")
@@ -104,7 +104,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 ///     name=policy.name,
 ///     disk=ssd.name,
 ///     region="us-central1")
-/// my_image = gcp.compute.get_image(family="debian-11",
+/// my_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// ```
 /// ```csharp
@@ -118,7 +118,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 ///     var disk = new Gcp.Compute.Disk("disk", new()
 ///     {
 ///         Name = "my-base-disk",
-///         Image = "debian-cloud/debian-11",
+///         Image = "debian-cloud/debian-13",
 ///         Size = 50,
 ///         Type = "pd-ssd",
 ///         Zone = "us-central1-a",
@@ -171,7 +171,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 ///
 ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -181,7 +181,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -189,7 +189,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
 /// 			Name:  pulumi.String("my-base-disk"),
-/// 			Image: pulumi.String("debian-cloud/debian-11"),
+/// 			Image: pulumi.String("debian-cloud/debian-13"),
 /// 			Size:  pulumi.Int(50),
 /// 			Type:  pulumi.String("pd-ssd"),
 /// 			Zone:  pulumi.String("us-central1-a"),
@@ -243,7 +243,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -263,7 +263,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 /// }
 ///
 /// data "gcp_compute_getimage" "myImage" {
-///   family  = "debian-11"
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
@@ -274,7 +274,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 /// }
 /// resource "gcp_compute_disk" "disk" {
 ///   name  = "my-base-disk"
-///   image = "debian-cloud/debian-11"
+///   image = "debian-cloud/debian-13"
 ///   size  = 50
 ///   type  = "pd-ssd"
 ///   zone  = "us-central1-a"
@@ -341,7 +341,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var disk = new Disk("disk", DiskArgs.builder()
 ///             .name("my-base-disk")
-///             .image("debian-cloud/debian-11")
+///             .image("debian-cloud/debian-13")
 ///             .size(50)
 ///             .type("pd-ssd")
 ///             .zone("us-central1-a")
@@ -384,7 +384,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 ///             .build());
 ///
 ///         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -403,7 +403,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 ///     type: gcp:compute:Disk
 ///     properties:
 ///       name: my-base-disk
-///       image: debian-cloud/debian-11
+///       image: debian-cloud/debian-13
 ///       size: 50
 ///       type: pd-ssd
 ///       zone: us-central1-a
@@ -439,7 +439,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -493,7 +493,7 @@ class RegionDiskResourcePolicyAttachment extends pulumi.CustomResource {
           'gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disk = registerOutput<String>('disk');

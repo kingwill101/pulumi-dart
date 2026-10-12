@@ -33,233 +33,6 @@ import 'target_tcpproxy_state.dart';
 /// });
 /// const defaultBackendService = new gcp.compute.BackendService("default", {
 ///     name: "backend-service",
-///     protocol: "TCP",
-///     timeoutSec: 10,
-///     healthChecks: defaultHealthCheck.id,
-/// });
-/// const _default = new gcp.compute.TargetTCPProxy("default", {
-///     name: "test-proxy",
-///     backendService: defaultBackendService.id,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default_health_check = gcp.compute.HealthCheck("default",
-///     name="health-check",
-///     timeout_sec=1,
-///     check_interval_sec=1,
-///     tcp_health_check={
-///         "port": 443,
-///     })
-/// default_backend_service = gcp.compute.BackendService("default",
-///     name="backend-service",
-///     protocol="TCP",
-///     timeout_sec=10,
-///     health_checks=default_health_check.id)
-/// default = gcp.compute.TargetTCPProxy("default",
-///     name="test-proxy",
-///     backend_service=default_backend_service.id)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
-///     {
-///         Name = "health-check",
-///         TimeoutSec = 1,
-///         CheckIntervalSec = 1,
-///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
-///         {
-///             Port = 443,
-///         },
-///     });
-///
-///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
-///     {
-///         Name = "backend-service",
-///         Protocol = "TCP",
-///         TimeoutSec = 10,
-///         HealthChecks = defaultHealthCheck.Id,
-///     });
-///
-///     var @default = new Gcp.Compute.TargetTCPProxy("default", new()
-///     {
-///         Name = "test-proxy",
-///         BackendService = defaultBackendService.Id,
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
-/// 			Name:             pulumi.String("health-check"),
-/// 			TimeoutSec:       pulumi.Int(1),
-/// 			CheckIntervalSec: pulumi.Int(1),
-/// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
-/// 				Port: pulumi.Int(443),
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		defaultBackendService, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("backend-service"),
-/// 			Protocol:     pulumi.String("TCP"),
-/// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = compute.NewTargetTCPProxy(ctx, "default", &compute.TargetTCPProxyArgs{
-/// 			Name:           pulumi.String("test-proxy"),
-/// 			BackendService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```hcl
-/// pulumi {
-///   required_providers {
-///     gcp = {
-///       source = "pulumi/gcp"
-///     }
-///   }
-/// }
-///
-/// resource "gcp_compute_targettcpproxy" "default" {
-///   name            = "test-proxy"
-///   backend_service = gcp_compute_backendservice.default.id
-/// }
-/// resource "gcp_compute_backendservice" "default" {
-///   name          = "backend-service"
-///   protocol      = "TCP"
-///   timeout_sec   = 10
-///   health_checks = gcp_compute_healthcheck.default.id
-/// }
-/// resource "gcp_compute_healthcheck" "default" {
-///   name               = "health-check"
-///   timeout_sec        = 1
-///   check_interval_sec = 1
-///   tcp_health_check = {
-///     port = "443"
-///   }
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.HealthCheck;
-/// import com.pulumi.gcp.compute.HealthCheckArgs;
-/// import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
-/// import com.pulumi.gcp.compute.BackendService;
-/// import com.pulumi.gcp.compute.BackendServiceArgs;
-/// import com.pulumi.gcp.compute.TargetTCPProxy;
-/// import com.pulumi.gcp.compute.TargetTCPProxyArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
-///             .name("health-check")
-///             .timeoutSec(1)
-///             .checkIntervalSec(1)
-///             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
-///                 .port(443)
-///                 .build())
-///             .build());
-///
-///         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
-///             .name("backend-service")
-///             .protocol("TCP")
-///             .timeoutSec(10)
-///             .healthChecks(defaultHealthCheck.id())
-///             .build());
-///
-///         var default_ = new TargetTCPProxy("default", TargetTCPProxyArgs.builder()
-///             .name("test-proxy")
-///             .backendService(defaultBackendService.id())
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   default:
-///     type: gcp:compute:TargetTCPProxy
-///     properties:
-///       name: test-proxy
-///       backendService: ${defaultBackendService.id}
-///   defaultBackendService:
-///     type: gcp:compute:BackendService
-///     name: default
-///     properties:
-///       name: backend-service
-///       protocol: TCP
-///       timeoutSec: 10
-///       healthChecks: ${defaultHealthCheck.id}
-///   defaultHealthCheck:
-///     type: gcp:compute:HealthCheck
-///     name: default
-///     properties:
-///       name: health-check
-///       timeoutSec: 1
-///       checkIntervalSec: 1
-///       tcpHealthCheck:
-///         port: '443'
-/// ```
-///
-/// ### Target Tcp Proxy Basic Beta
-///
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
-///
-/// const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
-///     name: "health-check",
-///     timeoutSec: 1,
-///     checkIntervalSec: 1,
-///     tcpHealthCheck: {
-///         port: 443,
-///     },
-/// });
-/// const defaultBackendService = new gcp.compute.BackendService("default", {
-///     name: "backend-service",
 ///     loadBalancingScheme: "EXTERNAL_MANAGED",
 ///     protocol: "TCP",
 ///     timeoutSec: 10,
@@ -334,7 +107,7 @@ import 'target_tcpproxy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -524,7 +297,7 @@ import 'target_tcpproxy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -735,8 +508,8 @@ import 'target_tcpproxy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -964,7 +737,7 @@ import 'target_tcpproxy_state.dart';
 /// ```
 class TargetTCPProxy extends pulumi.CustomResource {
   /// A reference to the BackendService resource. This field is optional when
-  /// the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+  /// the loadBalancingScheme is set to INTERNAL_MANAGED.
   late final pulumi.Output<String?> backendService;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
@@ -977,7 +750,6 @@ class TargetTCPProxy extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-  /// (Optional, Beta)
   /// Specifies the load balancer type. A target TCP proxy created for one type
   /// of load balancer cannot be used with another. For more information, refer
   /// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -1019,7 +791,7 @@ class TargetTCPProxy extends pulumi.CustomResource {
           'gcp:compute/targetTCPProxy:TargetTCPProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     backendService = registerOutput<String?>('backendService');
     creationTimestamp = registerOutput<String>('creationTimestamp');

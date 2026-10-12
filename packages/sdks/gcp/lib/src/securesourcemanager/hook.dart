@@ -66,6 +66,9 @@ class Hook extends pulumi.CustomResource {
   /// The sensitive query string to be appended to the target URI.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String?> sensitiveQueryString;
+  /// Determines if the hook uses the Repository Service Account to
+  /// generate an OIDC ID Token for webhook authentication.
+  late final pulumi.Output<bool?> serviceAccountAuth;
   /// The target URI to which the payloads will be delivered.
   late final pulumi.Output<String> targetUri;
   /// Unique identifier of the hook.
@@ -85,7 +88,7 @@ class Hook extends pulumi.CustomResource {
           'gcp:securesourcemanager/hook:Hook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['sensitiveQueryString'],
         ) {
     createTime = registerOutput<String>('createTime');
@@ -99,6 +102,7 @@ class Hook extends pulumi.CustomResource {
     pushOption = registerOutput<HookPushOption>('pushOption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HookPushOption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     repositoryId = registerOutput<String>('repositoryId');
     sensitiveQueryString = registerOutput<String?>('sensitiveQueryString', isSecret: true);
+    serviceAccountAuth = registerOutput<bool?>('serviceAccountAuth');
     targetUri = registerOutput<String>('targetUri');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -139,6 +143,7 @@ class Hook extends pulumi.CustomResource {
     pushOption = registerOutput<HookPushOption>('pushOption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HookPushOption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     repositoryId = registerOutput<String>('repositoryId');
     sensitiveQueryString = registerOutput<String?>('sensitiveQueryString', isSecret: true);
+    serviceAccountAuth = registerOutput<bool?>('serviceAccountAuth');
     targetUri = registerOutput<String>('targetUri');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -165,6 +170,7 @@ class Hook extends pulumi.CustomResource {
     pushOption = registerOutput<HookPushOption>('pushOption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HookPushOption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     repositoryId = registerOutput<String>('repositoryId');
     sensitiveQueryString = registerOutput<String?>('sensitiveQueryString', isSecret: true);
+    serviceAccountAuth = registerOutput<bool?>('serviceAccountAuth');
     targetUri = registerOutput<String>('targetUri');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

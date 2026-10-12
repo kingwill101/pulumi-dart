@@ -55,7 +55,7 @@ import 'get_search_all_resources_cloudasset_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudasset"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudasset"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -174,7 +174,7 @@ import 'get_search_all_resources_cloudasset_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudasset"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudasset"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -294,7 +294,7 @@ import 'get_search_all_resources_cloudasset_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudasset"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudasset"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -440,7 +440,7 @@ pulumi.Output<GetResourcesSearchAllCloudassetResult> getResourcesSearchAllOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudasset"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudasset"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -559,7 +559,7 @@ pulumi.Output<GetResourcesSearchAllCloudassetResult> getResourcesSearchAllOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudasset"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudasset"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -679,7 +679,7 @@ pulumi.Output<GetResourcesSearchAllCloudassetResult> getResourcesSearchAllOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudasset"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudasset"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

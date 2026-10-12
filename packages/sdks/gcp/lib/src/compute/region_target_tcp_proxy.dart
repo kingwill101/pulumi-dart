@@ -38,11 +38,12 @@ import 'region_target_tcp_proxy_state.dart';
 ///     timeoutSec: 10,
 ///     region: "us-central1",
 ///     healthChecks: defaultRegionHealthCheck.id,
-///     loadBalancingScheme: "INTERNAL_MANAGED",
+///     loadBalancingScheme: "EXTERNAL_MANAGED",
 /// });
 /// const _default = new gcp.compute.RegionTargetTcpProxy("default", {
 ///     name: "test-proxy",
 ///     region: "us-central1",
+///     loadBalancingScheme: "EXTERNAL_MANAGED",
 ///     backendService: defaultRegionBackendService.id,
 /// });
 /// ```
@@ -64,10 +65,11 @@ import 'region_target_tcp_proxy_state.dart';
 ///     timeout_sec=10,
 ///     region="us-central1",
 ///     health_checks=default_region_health_check.id,
-///     load_balancing_scheme="INTERNAL_MANAGED")
+///     load_balancing_scheme="EXTERNAL_MANAGED")
 /// default = gcp.compute.RegionTargetTcpProxy("default",
 ///     name="test-proxy",
 ///     region="us-central1",
+///     load_balancing_scheme="EXTERNAL_MANAGED",
 ///     backend_service=default_region_backend_service.id)
 /// ```
 /// ```csharp
@@ -97,13 +99,14 @@ import 'region_target_tcp_proxy_state.dart';
 ///         TimeoutSec = 10,
 ///         Region = "us-central1",
 ///         HealthChecks = defaultRegionHealthCheck.Id,
-///         LoadBalancingScheme = "INTERNAL_MANAGED",
+///         LoadBalancingScheme = "EXTERNAL_MANAGED",
 ///     });
 ///
 ///     var @default = new Gcp.Compute.RegionTargetTcpProxy("default", new()
 ///     {
 ///         Name = "test-proxy",
 ///         Region = "us-central1",
+///         LoadBalancingScheme = "EXTERNAL_MANAGED",
 ///         BackendService = defaultRegionBackendService.Id,
 ///     });
 ///
@@ -113,7 +116,7 @@ import 'region_target_tcp_proxy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -137,15 +140,16 @@ import 'region_target_tcp_proxy_state.dart';
 /// 			TimeoutSec:          pulumi.Int(10),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
-/// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewRegionTargetTcpProxy(ctx, "default", &compute.RegionTargetTcpProxyArgs{
-/// 			Name:           pulumi.String("test-proxy"),
-/// 			Region:         pulumi.String("us-central1"),
-/// 			BackendService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                pulumi.String("test-proxy"),
+/// 			Region:              pulumi.String("us-central1"),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+/// 			BackendService:      defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -164,9 +168,10 @@ import 'region_target_tcp_proxy_state.dart';
 /// }
 ///
 /// resource "gcp_compute_regiontargettcpproxy" "default" {
-///   name            = "test-proxy"
-///   region          = "us-central1"
-///   backend_service = gcp_compute_regionbackendservice.default.id
+///   name                  = "test-proxy"
+///   region                = "us-central1"
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   backend_service       = gcp_compute_regionbackendservice.default.id
 /// }
 /// resource "gcp_compute_regionbackendservice" "default" {
 ///   name                  = "backend-service"
@@ -174,7 +179,7 @@ import 'region_target_tcp_proxy_state.dart';
 ///   timeout_sec           = 10
 ///   region                = "us-central1"
 ///   health_checks         = gcp_compute_regionhealthcheck.default.id
-///   load_balancing_scheme = "INTERNAL_MANAGED"
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
 /// }
 /// resource "gcp_compute_regionhealthcheck" "default" {
 ///   name               = "health-check"
@@ -228,272 +233,12 @@ import 'region_target_tcp_proxy_state.dart';
 ///             .timeoutSec(10)
 ///             .region("us-central1")
 ///             .healthChecks(defaultRegionHealthCheck.id())
-///             .loadBalancingScheme("INTERNAL_MANAGED")
+///             .loadBalancingScheme("EXTERNAL_MANAGED")
 ///             .build());
 ///
 ///         var default_ = new RegionTargetTcpProxy("default", RegionTargetTcpProxyArgs.builder()
 ///             .name("test-proxy")
 ///             .region("us-central1")
-///             .backendService(defaultRegionBackendService.id())
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   default:
-///     type: gcp:compute:RegionTargetTcpProxy
-///     properties:
-///       name: test-proxy
-///       region: us-central1
-///       backendService: ${defaultRegionBackendService.id}
-///   defaultRegionBackendService:
-///     type: gcp:compute:RegionBackendService
-///     name: default
-///     properties:
-///       name: backend-service
-///       protocol: TCP
-///       timeoutSec: 10
-///       region: us-central1
-///       healthChecks: ${defaultRegionHealthCheck.id}
-///       loadBalancingScheme: INTERNAL_MANAGED
-///   defaultRegionHealthCheck:
-///     type: gcp:compute:RegionHealthCheck
-///     name: default
-///     properties:
-///       name: health-check
-///       region: us-central1
-///       timeoutSec: 1
-///       checkIntervalSec: 1
-///       tcpHealthCheck:
-///         port: '80'
-/// ```
-///
-/// ### Region Target Tcp Proxy Basic Beta
-///
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
-///
-/// const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
-///     name: "health-check",
-///     region: "europe-west4",
-///     timeoutSec: 1,
-///     checkIntervalSec: 1,
-///     tcpHealthCheck: {
-///         port: 80,
-///     },
-/// });
-/// const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
-///     name: "backend-service",
-///     protocol: "TCP",
-///     timeoutSec: 10,
-///     region: "europe-west4",
-///     healthChecks: defaultRegionHealthCheck.id,
-///     loadBalancingScheme: "EXTERNAL_MANAGED",
-/// });
-/// const _default = new gcp.compute.RegionTargetTcpProxy("default", {
-///     name: "test-proxy",
-///     region: "europe-west4",
-///     loadBalancingScheme: "EXTERNAL_MANAGED",
-///     backendService: defaultRegionBackendService.id,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default_region_health_check = gcp.compute.RegionHealthCheck("default",
-///     name="health-check",
-///     region="europe-west4",
-///     timeout_sec=1,
-///     check_interval_sec=1,
-///     tcp_health_check={
-///         "port": 80,
-///     })
-/// default_region_backend_service = gcp.compute.RegionBackendService("default",
-///     name="backend-service",
-///     protocol="TCP",
-///     timeout_sec=10,
-///     region="europe-west4",
-///     health_checks=default_region_health_check.id,
-///     load_balancing_scheme="EXTERNAL_MANAGED")
-/// default = gcp.compute.RegionTargetTcpProxy("default",
-///     name="test-proxy",
-///     region="europe-west4",
-///     load_balancing_scheme="EXTERNAL_MANAGED",
-///     backend_service=default_region_backend_service.id)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
-///     {
-///         Name = "health-check",
-///         Region = "europe-west4",
-///         TimeoutSec = 1,
-///         CheckIntervalSec = 1,
-///         TcpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckTcpHealthCheckArgs
-///         {
-///             Port = 80,
-///         },
-///     });
-///
-///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
-///     {
-///         Name = "backend-service",
-///         Protocol = "TCP",
-///         TimeoutSec = 10,
-///         Region = "europe-west4",
-///         HealthChecks = defaultRegionHealthCheck.Id,
-///         LoadBalancingScheme = "EXTERNAL_MANAGED",
-///     });
-///
-///     var @default = new Gcp.Compute.RegionTargetTcpProxy("default", new()
-///     {
-///         Name = "test-proxy",
-///         Region = "europe-west4",
-///         LoadBalancingScheme = "EXTERNAL_MANAGED",
-///         BackendService = defaultRegionBackendService.Id,
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
-/// 			Name:             pulumi.String("health-check"),
-/// 			Region:           pulumi.String("europe-west4"),
-/// 			TimeoutSec:       pulumi.Int(1),
-/// 			CheckIntervalSec: pulumi.Int(1),
-/// 			TcpHealthCheck: &compute.RegionHealthCheckTcpHealthCheckArgs{
-/// 				Port: pulumi.Int(80),
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
-/// 			Name:                pulumi.String("backend-service"),
-/// 			Protocol:            pulumi.String("TCP"),
-/// 			TimeoutSec:          pulumi.Int(10),
-/// 			Region:              pulumi.String("europe-west4"),
-/// 			HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
-/// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		_, err = compute.NewRegionTargetTcpProxy(ctx, "default", &compute.RegionTargetTcpProxyArgs{
-/// 			Name:                pulumi.String("test-proxy"),
-/// 			Region:              pulumi.String("europe-west4"),
-/// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
-/// 			BackendService:      defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```hcl
-/// pulumi {
-///   required_providers {
-///     gcp = {
-///       source = "pulumi/gcp"
-///     }
-///   }
-/// }
-///
-/// resource "gcp_compute_regiontargettcpproxy" "default" {
-///   name                  = "test-proxy"
-///   region                = "europe-west4"
-///   load_balancing_scheme = "EXTERNAL_MANAGED"
-///   backend_service       = gcp_compute_regionbackendservice.default.id
-/// }
-/// resource "gcp_compute_regionbackendservice" "default" {
-///   name                  = "backend-service"
-///   protocol              = "TCP"
-///   timeout_sec           = 10
-///   region                = "europe-west4"
-///   health_checks         = gcp_compute_regionhealthcheck.default.id
-///   load_balancing_scheme = "EXTERNAL_MANAGED"
-/// }
-/// resource "gcp_compute_regionhealthcheck" "default" {
-///   name               = "health-check"
-///   region             = "europe-west4"
-///   timeout_sec        = 1
-///   check_interval_sec = 1
-///   tcp_health_check = {
-///     port = "80"
-///   }
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.RegionHealthCheck;
-/// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
-/// import com.pulumi.gcp.compute.inputs.RegionHealthCheckTcpHealthCheckArgs;
-/// import com.pulumi.gcp.compute.RegionBackendService;
-/// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
-/// import com.pulumi.gcp.compute.RegionTargetTcpProxy;
-/// import com.pulumi.gcp.compute.RegionTargetTcpProxyArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
-///             .name("health-check")
-///             .region("europe-west4")
-///             .timeoutSec(1)
-///             .checkIntervalSec(1)
-///             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
-///                 .port(80)
-///                 .build())
-///             .build());
-///
-///         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
-///             .name("backend-service")
-///             .protocol("TCP")
-///             .timeoutSec(10)
-///             .region("europe-west4")
-///             .healthChecks(defaultRegionHealthCheck.id())
-///             .loadBalancingScheme("EXTERNAL_MANAGED")
-///             .build());
-///
-///         var default_ = new RegionTargetTcpProxy("default", RegionTargetTcpProxyArgs.builder()
-///             .name("test-proxy")
-///             .region("europe-west4")
 ///             .loadBalancingScheme("EXTERNAL_MANAGED")
 ///             .backendService(defaultRegionBackendService.id())
 ///             .build());
@@ -507,7 +252,7 @@ import 'region_target_tcp_proxy_state.dart';
 ///     type: gcp:compute:RegionTargetTcpProxy
 ///     properties:
 ///       name: test-proxy
-///       region: europe-west4
+///       region: us-central1
 ///       loadBalancingScheme: EXTERNAL_MANAGED
 ///       backendService: ${defaultRegionBackendService.id}
 ///   defaultRegionBackendService:
@@ -517,7 +262,7 @@ import 'region_target_tcp_proxy_state.dart';
 ///       name: backend-service
 ///       protocol: TCP
 ///       timeoutSec: 10
-///       region: europe-west4
+///       region: us-central1
 ///       healthChecks: ${defaultRegionHealthCheck.id}
 ///       loadBalancingScheme: EXTERNAL_MANAGED
 ///   defaultRegionHealthCheck:
@@ -525,7 +270,7 @@ import 'region_target_tcp_proxy_state.dart';
 ///     name: default
 ///     properties:
 ///       name: health-check
-///       region: europe-west4
+///       region: us-central1
 ///       timeoutSec: 1
 ///       checkIntervalSec: 1
 ///       tcpHealthCheck:
@@ -576,7 +321,7 @@ import 'region_target_tcp_proxy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -812,8 +557,8 @@ import 'region_target_tcp_proxy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1071,7 +816,7 @@ import 'region_target_tcp_proxy_state.dart';
 /// ```
 class RegionTargetTcpProxy extends pulumi.CustomResource {
   /// A reference to the BackendService resource. This field is optional when
-  /// the loadBalancingScheme (available in beta) is specified.
+  /// the loadBalancingScheme is specified.
   late final pulumi.Output<String?> backendService;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
@@ -1084,7 +829,6 @@ class RegionTargetTcpProxy extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
-  /// (Optional, Beta)
   /// Specifies the load balancer type. A target TCP proxy created for one type
   /// of load balancer cannot be used with another. For more information, refer
   /// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -1129,7 +873,7 @@ class RegionTargetTcpProxy extends pulumi.CustomResource {
           'gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     backendService = registerOutput<String?>('backendService');
     creationTimestamp = registerOutput<String>('creationTimestamp');

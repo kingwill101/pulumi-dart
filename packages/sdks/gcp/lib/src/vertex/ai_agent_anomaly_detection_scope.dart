@@ -100,9 +100,9 @@ import 'ai_agent_anomaly_detection_scope_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -304,7 +304,7 @@ class AiAgentAnomalyDetectionScope extends pulumi.CustomResource {
           'gcp:vertex/aiAgentAnomalyDetectionScope:AiAgentAnomalyDetectionScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     agentAnomalyDetectionScopeId = registerOutput<String>('agentAnomalyDetectionScopeId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

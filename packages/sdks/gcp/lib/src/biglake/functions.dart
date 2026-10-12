@@ -13,8 +13,6 @@ import 'get_iceberg_table_iam_policy_args.dart';
 import 'get_iceberg_table_iam_policy_result.dart';
 
 /// Retrieves the current IAM policy data for hivecatalog
-/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
 ///
 ///
 /// ## Example Usage
@@ -56,7 +54,7 @@ import 'get_iceberg_table_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -152,8 +150,6 @@ pulumi.Output<GetHiveCatalogIamPolicyResult> getHiveCatalogIamPolicyOutput(
 }
 
 /// Retrieves the current IAM policy data for hivedatabase
-/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
 ///
 ///
 /// ## Example Usage
@@ -198,7 +194,7 @@ pulumi.Output<GetHiveCatalogIamPolicyResult> getHiveCatalogIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -298,8 +294,6 @@ pulumi.Output<GetHiveDatabaseIamPolicyResult> getHiveDatabaseIamPolicyOutput(
 }
 
 /// Retrieves the current IAM policy data for hivetable
-/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
 ///
 ///
 /// ## Example Usage
@@ -347,7 +341,7 @@ pulumi.Output<GetHiveDatabaseIamPolicyResult> getHiveDatabaseIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -492,7 +486,7 @@ pulumi.Output<GetHiveTableIamPolicyResult> getHiveTableIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -632,7 +626,7 @@ pulumi.Output<GetIcebergCatalogIamPolicyResult> getIcebergCatalogIamPolicyOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -779,7 +773,7 @@ pulumi.Output<GetIcebergNamespaceIamPolicyResult> getIcebergNamespaceIamPolicyOu
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

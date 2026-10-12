@@ -51,12 +51,12 @@ class GetResourcePolicyGroupPlacementPolicy {
 
   factory GetResourcePolicyGroupPlacementPolicy.fromMap(Map<String, dynamic> map) {
     return GetResourcePolicyGroupPlacementPolicy(
-      availabilityDomainCount: pulumi.Input.fromValue((map['availabilityDomainCount'] as num).toInt()),
+      availabilityDomainCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['availabilityDomainCount'])),
       collocation: pulumi.Input.fromValue(map['collocation'] as String),
       gpuTopology: pulumi.Input.fromValue(map['gpuTopology'] as String),
-      maxDistance: pulumi.Input.fromValue((map['maxDistance'] as num).toInt()),
+      maxDistance: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxDistance'])),
       tpuTopology: pulumi.Input.fromValue(map['tpuTopology'] as String),
-      vmCount: pulumi.Input.fromValue((map['vmCount'] as num).toInt()),
+      vmCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vmCount'])),
     );
   }
 }

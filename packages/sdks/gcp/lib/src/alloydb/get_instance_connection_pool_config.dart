@@ -40,7 +40,7 @@ class GetInstanceConnectionPoolConfig {
     return GetInstanceConnectionPoolConfig(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       flags: pulumi.Input.fromValue((map['flags'] as Map).cast<String, String>()),
-      poolerCount: pulumi.Input.fromValue((map['poolerCount'] as num).toInt()),
+      poolerCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['poolerCount'])),
     );
   }
 }

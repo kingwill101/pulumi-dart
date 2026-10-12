@@ -40,7 +40,7 @@ class EnvironmentTextToSpeechSettings {
     return EnvironmentTextToSpeechSettings(
       enableTextToSpeech: (() { final guardedValue = map['enableTextToSpeech']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       outputAudioEncoding: (() { final guardedValue = map['outputAudioEncoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sampleRateHertz: (() { final guardedValue = map['sampleRateHertz']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      sampleRateHertz: (() { final guardedValue = map['sampleRateHertz']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       synthesizeSpeechConfigs: (() { final guardedValue = map['synthesizeSpeechConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig>(guardedValue, (value) => EnvironmentTextToSpeechSettingsSynthesizeSpeechConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

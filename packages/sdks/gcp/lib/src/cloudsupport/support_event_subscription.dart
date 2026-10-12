@@ -23,7 +23,7 @@ import 'support_event_subscription_state.dart';
 /// });
 /// const supportTopic = new gcp.pubsub.Topic("support_topic", {
 ///     project: "my-project-name",
-///     name: "test-topic-_88722",
+///     name: "test-topic",
 /// });
 /// const supportPublisher = new gcp.pubsub.TopicIAMMember("support_publisher", {
 ///     project: "my-project-name",
@@ -51,7 +51,7 @@ import 'support_event_subscription_state.dart';
 ///     disable_on_destroy=False)
 /// support_topic = gcp.pubsub.Topic("support_topic",
 ///     project="my-project-name",
-///     name="test-topic-_88722")
+///     name="test-topic")
 /// support_publisher = gcp.pubsub.TopicIAMMember("support_publisher",
 ///     project="my-project-name",
 ///     topic=support_topic.id,
@@ -83,7 +83,7 @@ import 'support_event_subscription_state.dart';
 ///     var supportTopic = new Gcp.PubSub.Topic("support_topic", new()
 ///     {
 ///         Project = "my-project-name",
-///         Name = "test-topic-_88722",
+///         Name = "test-topic",
 ///     });
 ///
 ///     var supportPublisher = new Gcp.PubSub.TopicIAMMember("support_publisher", new()
@@ -113,9 +113,9 @@ import 'support_event_subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsupport"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsupport"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -131,7 +131,7 @@ import 'support_event_subscription_state.dart';
 /// 		}
 /// 		supportTopic, err := pubsub.NewTopic(ctx, "support_topic", &pubsub.TopicArgs{
 /// 			Project: pulumi.String("my-project-name"),
-/// 			Name:    pulumi.String("test-topic-_88722"),
+/// 			Name:    pulumi.String("test-topic"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -175,7 +175,7 @@ import 'support_event_subscription_state.dart';
 /// }
 /// resource "gcp_pubsub_topic" "support_topic" {
 ///   project = "my-project-name"
-///   name    = "test-topic-_88722"
+///   name    = "test-topic"
 /// }
 /// resource "gcp_pubsub_topiciammember" "support_publisher" {
 ///   project = "my-project-name"
@@ -225,7 +225,7 @@ import 'support_event_subscription_state.dart';
 ///
 ///         var supportTopic = new Topic("supportTopic", TopicArgs.builder()
 ///             .project("my-project-name")
-///             .name("test-topic-_88722")
+///             .name("test-topic")
 ///             .build());
 ///
 ///         var supportPublisher = new TopicIAMMember("supportPublisher", TopicIAMMemberArgs.builder()
@@ -260,7 +260,7 @@ import 'support_event_subscription_state.dart';
 ///     name: support_topic
 ///     properties:
 ///       project: my-project-name
-///       name: test-topic-_88722
+///       name: test-topic
 ///   supportPublisher:
 ///     type: gcp:pubsub:TopicIAMMember
 ///     name: support_publisher
@@ -295,7 +295,7 @@ import 'support_event_subscription_state.dart';
 /// });
 /// const supportTopic2 = new gcp.pubsub.Topic("support_topic_2", {
 ///     project: "my-project-name",
-///     name: "test-topic-2-_39249",
+///     name: "test-topic-2",
 /// });
 /// const supportPublisher2 = new gcp.pubsub.TopicIAMMember("support_publisher_2", {
 ///     project: "my-project-name",
@@ -323,7 +323,7 @@ import 'support_event_subscription_state.dart';
 ///     disable_on_destroy=False)
 /// support_topic2 = gcp.pubsub.Topic("support_topic_2",
 ///     project="my-project-name",
-///     name="test-topic-2-_39249")
+///     name="test-topic-2")
 /// support_publisher2 = gcp.pubsub.TopicIAMMember("support_publisher_2",
 ///     project="my-project-name",
 ///     topic=support_topic2.id,
@@ -355,7 +355,7 @@ import 'support_event_subscription_state.dart';
 ///     var supportTopic2 = new Gcp.PubSub.Topic("support_topic_2", new()
 ///     {
 ///         Project = "my-project-name",
-///         Name = "test-topic-2-_39249",
+///         Name = "test-topic-2",
 ///     });
 ///
 ///     var supportPublisher2 = new Gcp.PubSub.TopicIAMMember("support_publisher_2", new()
@@ -385,9 +385,9 @@ import 'support_event_subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudsupport"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudsupport"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -403,7 +403,7 @@ import 'support_event_subscription_state.dart';
 /// 		}
 /// 		supportTopic2, err := pubsub.NewTopic(ctx, "support_topic_2", &pubsub.TopicArgs{
 /// 			Project: pulumi.String("my-project-name"),
-/// 			Name:    pulumi.String("test-topic-2-_39249"),
+/// 			Name:    pulumi.String("test-topic-2"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -447,7 +447,7 @@ import 'support_event_subscription_state.dart';
 /// }
 /// resource "gcp_pubsub_topic" "support_topic_2" {
 ///   project = "my-project-name"
-///   name    = "test-topic-2-_39249"
+///   name    = "test-topic-2"
 /// }
 /// resource "gcp_pubsub_topiciammember" "support_publisher_2" {
 ///   project = "my-project-name"
@@ -497,7 +497,7 @@ import 'support_event_subscription_state.dart';
 ///
 ///         var supportTopic2 = new Topic("supportTopic2", TopicArgs.builder()
 ///             .project("my-project-name")
-///             .name("test-topic-2-_39249")
+///             .name("test-topic-2")
 ///             .build());
 ///
 ///         var supportPublisher2 = new TopicIAMMember("supportPublisher2", TopicIAMMemberArgs.builder()
@@ -532,7 +532,7 @@ import 'support_event_subscription_state.dart';
 ///     name: support_topic_2
 ///     properties:
 ///       project: my-project-name
-///       name: test-topic-2-_39249
+///       name: test-topic-2
 ///   supportPublisher2:
 ///     type: gcp:pubsub:TopicIAMMember
 ///     name: support_publisher_2
@@ -618,7 +618,7 @@ class SupportEventSubscription extends pulumi.CustomResource {
           'gcp:cloudsupport/supportEventSubscription:SupportEventSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');

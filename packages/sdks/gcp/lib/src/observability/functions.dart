@@ -14,9 +14,6 @@ import 'get_project_settings_result.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
 ///
-/// &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
-///
 /// ## Example Usage
 ///
 /// ### Observability Folder Settings Basic
@@ -58,7 +55,7 @@ import 'get_project_settings_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/observability"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/observability"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -161,9 +158,6 @@ pulumi.Output<GetFolderSettingsResult> getFolderSettingsOutput(
 /// * How-to Guides
 /// * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
 ///
-/// &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
-///
 /// ## Example Usage
 ///
 /// ### Observability Organization Settings Basic
@@ -205,7 +199,7 @@ pulumi.Output<GetFolderSettingsResult> getFolderSettingsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/observability"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/observability"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -308,9 +302,6 @@ pulumi.Output<GetOrganizationSettingsResult> getOrganizationSettingsOutput(
 /// * How-to Guides
 /// * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
 ///
-/// &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
-///
 /// ## Example Usage
 ///
 /// ### Observability Project Settings Basic
@@ -352,7 +343,7 @@ pulumi.Output<GetOrganizationSettingsResult> getOrganizationSettingsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/observability"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/observability"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

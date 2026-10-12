@@ -41,7 +41,7 @@ import 'agent_gateway_state.dart';
 /// const defaultNetworkAttachment = new gcp.compute.NetworkAttachment("default", {
 ///     name: "my-gateway-attachment",
 ///     region: "us-central1",
-///     connectionPreference: "ACCEPT_MANUAL",
+///     connectionPreference: "ACCEPT_AUTOMATIC",
 ///     subnetworks: [defaultSubnetwork.id],
 /// });
 /// const defaultManagedZone = new gcp.dns.ManagedZone("default", {
@@ -53,6 +53,23 @@ import 'agent_gateway_state.dart';
 ///         networks: [{
 ///             networkUrl: defaultNetwork.id,
 ///         }],
+///     },
+/// });
+/// const defaultAgentConnectivityTemplate = new gcp.networkservices.AgentConnectivityTemplate("default", {
+///     agentConnectivityTemplateId: "my-full-agent-gateway-template",
+///     location: "us-central1",
+///     description: "A basic configuration for Agent Connectivity Template",
+///     labels: {
+///         env: "test",
+///         tier: "gold",
+///     },
+///     accessPath: "AGENT_TO_ANYWHERE",
+///     egressNetworkConfig: {
+///         networkAttachment: defaultNetworkAttachment.id,
+///         dnsPeeringConfig: {
+///             domain: defaultManagedZone.dnsName,
+///             targetNetwork: defaultNetwork.id,
+///         },
 ///     },
 /// });
 /// const _default = new gcp.networkservices.AgentGateway("default", {
@@ -67,17 +84,8 @@ import 'agent_gateway_state.dart';
 ///     googleManaged: {
 ///         governedAccessPath: "AGENT_TO_ANYWHERE",
 ///     },
+///     agentConnectivityTemplate: pulumi.all([project, defaultAgentConnectivityTemplate.agentConnectivityTemplateId]).apply(([project, agentConnectivityTemplateId]) => `projects/${project.number}/locations/us-central1/agentConnectivityTemplates/${agentConnectivityTemplateId}`),
 ///     registries: ["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"],
-///     networkConfig: {
-///         egress: {
-///             networkAttachment: defaultNetworkAttachment.id,
-///         },
-///         dnsPeeringConfig: {
-///             domains: [defaultManagedZone.dnsName],
-///             targetProject: project.then(project => project.projectId),
-///             targetNetwork: defaultNetwork.id,
-///         },
-///     },
 /// }, {
 ///     dependsOn: [agentRegistry],
 /// });
@@ -101,7 +109,7 @@ import 'agent_gateway_state.dart';
 /// default_network_attachment = gcp.compute.NetworkAttachment("default",
 ///     name="my-gateway-attachment",
 ///     region="us-central1",
-///     connection_preference="ACCEPT_MANUAL",
+///     connection_preference="ACCEPT_AUTOMATIC",
 ///     subnetworks=[default_subnetwork.id])
 /// default_managed_zone = gcp.dns.ManagedZone("default",
 ///     name="my-gateway-zone",
@@ -112,6 +120,22 @@ import 'agent_gateway_state.dart';
 ///         "networks": [{
 ///             "network_url": default_network.id,
 ///         }],
+///     })
+/// default_agent_connectivity_template = gcp.networkservices.AgentConnectivityTemplate("default",
+///     agent_connectivity_template_id="my-full-agent-gateway-template",
+///     location="us-central1",
+///     description="A basic configuration for Agent Connectivity Template",
+///     labels={
+///         "env": "test",
+///         "tier": "gold",
+///     },
+///     access_path="AGENT_TO_ANYWHERE",
+///     egress_network_config={
+///         "network_attachment": default_network_attachment.id,
+///         "dns_peering_config": {
+///             "domain": default_managed_zone.dns_name,
+///             "target_network": default_network.id,
+///         },
 ///     })
 /// default = gcp.networkservices.AgentGateway("default",
 ///     name="my-full-agent-gateway",
@@ -125,17 +149,8 @@ import 'agent_gateway_state.dart';
 ///     google_managed={
 ///         "governed_access_path": "AGENT_TO_ANYWHERE",
 ///     },
+///     agent_connectivity_template=default_agent_connectivity_template.agent_connectivity_template_id.apply(lambda agent_connectivity_template_id: f"projects/{project.number}/locations/us-central1/agentConnectivityTemplates/{agent_connectivity_template_id}"),
 ///     registries=["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"],
-///     network_config={
-///         "egress": {
-///             "network_attachment": default_network_attachment.id,
-///         },
-///         "dns_peering_config": {
-///             "domains": [default_managed_zone.dns_name],
-///             "target_project": project.project_id,
-///             "target_network": default_network.id,
-///         },
-///     },
 ///     opts = pulumi.ResourceOptions(depends_on=[agent_registry]))
 /// ```
 /// ```csharp
@@ -172,7 +187,7 @@ import 'agent_gateway_state.dart';
 ///     {
 ///         Name = "my-gateway-attachment",
 ///         Region = "us-central1",
-///         ConnectionPreference = "ACCEPT_MANUAL",
+///         ConnectionPreference = "ACCEPT_AUTOMATIC",
 ///         Subnetworks = new[]
 ///         {
 ///             defaultSubnetwork.Id,
@@ -197,6 +212,28 @@ import 'agent_gateway_state.dart';
 ///         },
 ///     });
 ///
+///     var defaultAgentConnectivityTemplate = new Gcp.NetworkServices.AgentConnectivityTemplate("default", new()
+///     {
+///         AgentConnectivityTemplateId = "my-full-agent-gateway-template",
+///         Location = "us-central1",
+///         Description = "A basic configuration for Agent Connectivity Template",
+///         Labels =
+///         {
+///             { "env", "test" },
+///             { "tier", "gold" },
+///         },
+///         AccessPath = "AGENT_TO_ANYWHERE",
+///         EgressNetworkConfig = new Gcp.NetworkServices.Inputs.AgentConnectivityTemplateEgressNetworkConfigArgs
+///         {
+///             NetworkAttachment = defaultNetworkAttachment.Id,
+///             DnsPeeringConfig = new Gcp.NetworkServices.Inputs.AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs
+///             {
+///                 Domain = defaultManagedZone.DnsName,
+///                 TargetNetwork = defaultNetwork.Id,
+///             },
+///         },
+///     });
+///
 ///     var @default = new Gcp.NetworkServices.AgentGateway("default", new()
 ///     {
 ///         Name = "my-full-agent-gateway",
@@ -215,25 +252,15 @@ import 'agent_gateway_state.dart';
 ///         {
 ///             GovernedAccessPath = "AGENT_TO_ANYWHERE",
 ///         },
+///         AgentConnectivityTemplate = Output.Tuple(project, defaultAgentConnectivityTemplate.AgentConnectivityTemplateId).Apply(values =>
+///         {
+///             var project = values.Item1;
+///             var agentConnectivityTemplateId = values.Item2;
+///             return $"projects/{project.Apply(getProjectResult => getProjectResult.Number)}/locations/us-central1/agentConnectivityTemplates/{agentConnectivityTemplateId}";
+///         }),
 ///         Registries = new[]
 ///         {
 ///             "//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1",
-///         },
-///         NetworkConfig = new Gcp.NetworkServices.Inputs.AgentGatewayNetworkConfigArgs
-///         {
-///             Egress = new Gcp.NetworkServices.Inputs.AgentGatewayNetworkConfigEgressArgs
-///             {
-///                 NetworkAttachment = defaultNetworkAttachment.Id,
-///             },
-///             DnsPeeringConfig = new Gcp.NetworkServices.Inputs.AgentGatewayNetworkConfigDnsPeeringConfigArgs
-///             {
-///                 Domains = new[]
-///                 {
-///                     defaultManagedZone.DnsName,
-///                 },
-///                 TargetProject = project.Apply(getProjectResult => getProjectResult.ProjectId),
-///                 TargetNetwork = defaultNetwork.Id,
-///             },
 ///         },
 ///     }, new CustomResourceOptions
 ///     {
@@ -249,11 +276,13 @@ import 'agent_gateway_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -289,7 +318,7 @@ import 'agent_gateway_state.dart';
 /// 		defaultNetworkAttachment, err := compute.NewNetworkAttachment(ctx, "default", &compute.NetworkAttachmentArgs{
 /// 			Name:                 pulumi.String("my-gateway-attachment"),
 /// 			Region:               pulumi.String("us-central1"),
-/// 			ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
+/// 			ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
 /// 			Subnetworks: pulumi.StringArray{
 /// 				defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			},
@@ -313,6 +342,26 @@ import 'agent_gateway_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
+/// 		defaultAgentConnectivityTemplate, err := networkservices.NewAgentConnectivityTemplate(ctx, "default", &networkservices.AgentConnectivityTemplateArgs{
+/// 			AgentConnectivityTemplateId: pulumi.String("my-full-agent-gateway-template"),
+/// 			Location:                    pulumi.String("us-central1"),
+/// 			Description:                 pulumi.String("A basic configuration for Agent Connectivity Template"),
+/// 			Labels: pulumi.StringMap{
+/// 				"env":  pulumi.String("test"),
+/// 				"tier": pulumi.String("gold"),
+/// 			},
+/// 			AccessPath: pulumi.String("AGENT_TO_ANYWHERE"),
+/// 			EgressNetworkConfig: &networkservices.AgentConnectivityTemplateEgressNetworkConfigArgs{
+/// 				NetworkAttachment: defaultNetworkAttachment.ID().ToIDOutput().ToStringOutput(),
+/// 				DnsPeeringConfig: &networkservices.AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs{
+/// 					Domain:        defaultManagedZone.DnsName,
+/// 					TargetNetwork: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
 /// 		_, err = networkservices.NewAgentGateway(ctx, "default", &networkservices.AgentGatewayArgs{
 /// 			Name:        pulumi.String("my-full-agent-gateway"),
 /// 			Location:    pulumi.String("us-central1"),
@@ -327,20 +376,11 @@ import 'agent_gateway_state.dart';
 /// 			GoogleManaged: &networkservices.AgentGatewayGoogleManagedArgs{
 /// 				GovernedAccessPath: pulumi.String("AGENT_TO_ANYWHERE"),
 /// 			},
+/// 			AgentConnectivityTemplate: defaultAgentConnectivityTemplate.AgentConnectivityTemplateId.ApplyT(func(agentConnectivityTemplateId string) (string, error) {
+/// 				return fmt.Sprintf("projects/%v/locations/us-central1/agentConnectivityTemplates/%v", project.Number, agentConnectivityTemplateId), nil
+/// 			}).(pulumi.StringOutput),
 /// 			Registries: pulumi.StringArray{
 /// 				pulumi.String("//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"),
-/// 			},
-/// 			NetworkConfig: &networkservices.AgentGatewayNetworkConfigArgs{
-/// 				Egress: &networkservices.AgentGatewayNetworkConfigEgressArgs{
-/// 					NetworkAttachment: defaultNetworkAttachment.ID().ToIDOutput().ToStringOutput(),
-/// 				},
-/// 				DnsPeeringConfig: &networkservices.AgentGatewayNetworkConfigDnsPeeringConfigArgs{
-/// 					Domains: pulumi.StringArray{
-/// 						defaultManagedZone.DnsName,
-/// 					},
-/// 					TargetProject: pulumi.String(project.ProjectId),
-/// 					TargetNetwork: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-/// 				},
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			agentRegistry,
@@ -377,21 +417,29 @@ import 'agent_gateway_state.dart';
 ///   google_managed = {
 ///     governed_access_path = "AGENT_TO_ANYWHERE"
 ///   }
-///   registries = ["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"]
-///   network_config = {
-///     egress = {
-///       network_attachment = gcp_compute_networkattachment.default.id
-///     }
-///     dns_peering_config = {
-///       domains        = [gcp_dns_managedzone.default.dns_name]
-///       target_project = data.gcp_organizations_getproject.project.project_id
-///       target_network = gcp_compute_network.default.id
-///     }
-///   }
+///   agent_connectivity_template ="projects/${data.gcp_organizations_getproject.project.number}/locations/us-central1/agentConnectivityTemplates/${gcp_networkservices_agentconnectivitytemplate.default.agent_connectivity_template_id}"
+///   registries                  = ["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"]
 /// }
 /// resource "gcp_projects_service" "agent_registry" {
 ///   service            = "agentregistry.googleapis.com"
 ///   disable_on_destroy = false
+/// }
+/// resource "gcp_networkservices_agentconnectivitytemplate" "default" {
+///   agent_connectivity_template_id = "my-full-agent-gateway-template"
+///   location                       = "us-central1"
+///   description                    = "A basic configuration for Agent Connectivity Template"
+///   labels = {
+///     "env"  = "test"
+///     "tier" = "gold"
+///   }
+///   access_path = "AGENT_TO_ANYWHERE"
+///   egress_network_config = {
+///     network_attachment = gcp_compute_networkattachment.default.id
+///     dns_peering_config = {
+///       domain         = gcp_dns_managedzone.default.dns_name
+///       target_network = gcp_compute_network.default.id
+///     }
+///   }
 /// }
 /// resource "gcp_compute_network" "default" {
 ///   name                    = "my-gateway-network"
@@ -406,7 +454,7 @@ import 'agent_gateway_state.dart';
 /// resource "gcp_compute_networkattachment" "default" {
 ///   name                  = "my-gateway-attachment"
 ///   region                = "us-central1"
-///   connection_preference = "ACCEPT_MANUAL"
+///   connection_preference = "ACCEPT_AUTOMATIC"
 ///   subnetworks           = [gcp_compute_subnetwork.default.id]
 /// }
 /// resource "gcp_dns_managedzone" "default" {
@@ -441,12 +489,13 @@ import 'agent_gateway_state.dart';
 /// import com.pulumi.gcp.dns.ManagedZoneArgs;
 /// import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
 /// import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigNetworkArgs;
+/// import com.pulumi.gcp.networkservices.AgentConnectivityTemplate;
+/// import com.pulumi.gcp.networkservices.AgentConnectivityTemplateArgs;
+/// import com.pulumi.gcp.networkservices.inputs.AgentConnectivityTemplateEgressNetworkConfigArgs;
+/// import com.pulumi.gcp.networkservices.inputs.AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs;
 /// import com.pulumi.gcp.networkservices.AgentGateway;
 /// import com.pulumi.gcp.networkservices.AgentGatewayArgs;
 /// import com.pulumi.gcp.networkservices.inputs.AgentGatewayGoogleManagedArgs;
-/// import com.pulumi.gcp.networkservices.inputs.AgentGatewayNetworkConfigArgs;
-/// import com.pulumi.gcp.networkservices.inputs.AgentGatewayNetworkConfigEgressArgs;
-/// import com.pulumi.gcp.networkservices.inputs.AgentGatewayNetworkConfigDnsPeeringConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -484,7 +533,7 @@ import 'agent_gateway_state.dart';
 ///         var defaultNetworkAttachment = new NetworkAttachment("defaultNetworkAttachment", NetworkAttachmentArgs.builder()
 ///             .name("my-gateway-attachment")
 ///             .region("us-central1")
-///             .connectionPreference("ACCEPT_MANUAL")
+///             .connectionPreference("ACCEPT_AUTOMATIC")
 ///             .subnetworks(defaultSubnetwork.id())
 ///             .build());
 ///
@@ -496,6 +545,24 @@ import 'agent_gateway_state.dart';
 ///             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
 ///                 .networks(ManagedZonePrivateVisibilityConfigNetworkArgs.builder()
 ///                     .networkUrl(defaultNetwork.id())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         var defaultAgentConnectivityTemplate = new AgentConnectivityTemplate("defaultAgentConnectivityTemplate", AgentConnectivityTemplateArgs.builder()
+///             .agentConnectivityTemplateId("my-full-agent-gateway-template")
+///             .location("us-central1")
+///             .description("A basic configuration for Agent Connectivity Template")
+///             .labels(Map.ofEntries(
+///                 Map.entry("env", "test"),
+///                 Map.entry("tier", "gold")
+///             ))
+///             .accessPath("AGENT_TO_ANYWHERE")
+///             .egressNetworkConfig(AgentConnectivityTemplateEgressNetworkConfigArgs.builder()
+///                 .networkAttachment(defaultNetworkAttachment.id())
+///                 .dnsPeeringConfig(AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs.builder()
+///                     .domain(defaultManagedZone.dnsName())
+///                     .targetNetwork(defaultNetwork.id())
 ///                     .build())
 ///                 .build())
 ///             .build());
@@ -512,17 +579,8 @@ import 'agent_gateway_state.dart';
 ///             .googleManaged(AgentGatewayGoogleManagedArgs.builder()
 ///                 .governedAccessPath("AGENT_TO_ANYWHERE")
 ///                 .build())
+///             .agentConnectivityTemplate(defaultAgentConnectivityTemplate.agentConnectivityTemplateId().applyValue(_agentConnectivityTemplateId -> String.format("projects/%s/locations/us-central1/agentConnectivityTemplates/%s", project.number(),_agentConnectivityTemplateId)))
 ///             .registries("//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1")
-///             .networkConfig(AgentGatewayNetworkConfigArgs.builder()
-///                 .egress(AgentGatewayNetworkConfigEgressArgs.builder()
-///                     .networkAttachment(defaultNetworkAttachment.id())
-///                     .build())
-///                 .dnsPeeringConfig(AgentGatewayNetworkConfigDnsPeeringConfigArgs.builder()
-///                     .domains(defaultManagedZone.dnsName())
-///                     .targetProject(project.projectId())
-///                     .targetNetwork(defaultNetwork.id())
-///                     .build())
-///                 .build())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(agentRegistry)
 ///                 .build());
@@ -545,16 +603,9 @@ import 'agent_gateway_state.dart';
 ///         - MCP
 ///       googleManaged:
 ///         governedAccessPath: AGENT_TO_ANYWHERE
+///       agentConnectivityTemplate: projects/${project.number}/locations/us-central1/agentConnectivityTemplates/${defaultAgentConnectivityTemplate.agentConnectivityTemplateId}
 ///       registries:
 ///         - //agentregistry.googleapis.com/projects/my-project-name/locations/us-central1
-///       networkConfig:
-///         egress:
-///           networkAttachment: ${defaultNetworkAttachment.id}
-///         dnsPeeringConfig:
-///           domains:
-///             - ${defaultManagedZone.dnsName}
-///           targetProject: ${project.projectId}
-///           targetNetwork: ${defaultNetwork.id}
 ///     options:
 ///       dependsOn:
 ///         - ${agentRegistry}
@@ -564,6 +615,22 @@ import 'agent_gateway_state.dart';
 ///     properties:
 ///       service: agentregistry.googleapis.com
 ///       disableOnDestroy: false
+///   defaultAgentConnectivityTemplate:
+///     type: gcp:networkservices:AgentConnectivityTemplate
+///     name: default
+///     properties:
+///       agentConnectivityTemplateId: my-full-agent-gateway-template
+///       location: us-central1
+///       description: A basic configuration for Agent Connectivity Template
+///       labels:
+///         env: test
+///         tier: gold
+///       accessPath: AGENT_TO_ANYWHERE
+///       egressNetworkConfig:
+///         networkAttachment: ${defaultNetworkAttachment.id}
+///         dnsPeeringConfig:
+///           domain: ${defaultManagedZone.dnsName}
+///           targetNetwork: ${defaultNetwork.id}
 ///   defaultNetwork:
 ///     type: gcp:compute:Network
 ///     name: default
@@ -584,7 +651,7 @@ import 'agent_gateway_state.dart';
 ///     properties:
 ///       name: my-gateway-attachment
 ///       region: us-central1
-///       connectionPreference: ACCEPT_MANUAL
+///       connectionPreference: ACCEPT_AUTOMATIC
 ///       subnetworks:
 ///         - ${defaultSubnetwork.id}
 ///   defaultManagedZone:
@@ -684,8 +751,8 @@ import 'agent_gateway_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -863,7 +930,7 @@ import 'agent_gateway_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -969,6 +1036,10 @@ import 'agent_gateway_state.dart';
 /// $ pulumi import gcp:networkservices/agentGateway:AgentGateway default {{location}}/{{name}}
 /// ```
 class AgentGateway extends pulumi.CustomResource {
+  /// The resource name of the AgentConnectivityTemplate.
+  /// Must be of format
+  /// `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+  late final pulumi.Output<String?> agentConnectivityTemplate;
   /// AgentGatewayOutputCard contains informational output-only fields.
   /// Structure is documented below.
   late final pulumi.Output<List<AgentGatewayAgentGatewayCard>> agentGatewayCards;
@@ -1041,9 +1112,10 @@ class AgentGateway extends pulumi.CustomResource {
           'gcp:networkservices/agentGateway:AgentGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
+    agentConnectivityTemplate = registerOutput<String?>('agentConnectivityTemplate');
     agentGatewayCards = registerOutput<List<AgentGatewayAgentGatewayCard>>('agentGatewayCards', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentGatewayAgentGatewayCard>(guardedValue, (value) => AgentGatewayAgentGatewayCard.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1087,6 +1159,7 @@ class AgentGateway extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    agentConnectivityTemplate = registerOutput<String?>('agentConnectivityTemplate');
     agentGatewayCards = registerOutput<List<AgentGatewayAgentGatewayCard>>('agentGatewayCards', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentGatewayAgentGatewayCard>(guardedValue, (value) => AgentGatewayAgentGatewayCard.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1116,6 +1189,7 @@ class AgentGateway extends pulumi.CustomResource {
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         isResourceReference: true,
       ) {
+    agentConnectivityTemplate = registerOutput<String?>('agentConnectivityTemplate');
     agentGatewayCards = registerOutput<List<AgentGatewayAgentGatewayCard>>('agentGatewayCards', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentGatewayAgentGatewayCard>(guardedValue, (value) => AgentGatewayAgentGatewayCard.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

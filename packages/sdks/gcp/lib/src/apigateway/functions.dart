@@ -50,7 +50,7 @@ import 'get_gateway_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigateway"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigateway"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -189,7 +189,7 @@ pulumi.Output<GetApiConfigIamPolicyResult> getApiConfigIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigateway"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigateway"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -331,7 +331,7 @@ pulumi.Output<GetApiIamPolicyResult> getApiIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigateway"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigateway"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

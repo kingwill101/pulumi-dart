@@ -34,7 +34,7 @@ import 'membership_rbac_role_binding_state.dart';
 ///     subnetwork: "default",
 /// });
 /// const membership = new gcp.gkehub.Membership("membership", {
-///     membershipId: "tf-test-membership_19370",
+///     membershipId: "tf-test-membership_98863",
 ///     endpoint: {
 ///         gkeCluster: {
 ///             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
@@ -45,7 +45,7 @@ import 'membership_rbac_role_binding_state.dart';
 /// });
 /// const project = gcp.organizations.getProject({});
 /// const membershipRbacRoleBinding = new gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding", {
-///     membershipRbacRoleBindingId: "tf-test-membership-rbac-role-binding_76273",
+///     membershipRbacRoleBindingId: "tf-test-membership-rbac-role-binding_64134",
 ///     membershipId: membership.membershipId,
 ///     user: project.then(project => `service-${project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com`),
 ///     role: {
@@ -68,7 +68,7 @@ import 'membership_rbac_role_binding_state.dart';
 ///     network="default",
 ///     subnetwork="default")
 /// membership = gcp.gkehub.Membership("membership",
-///     membership_id="tf-test-membership_19370",
+///     membership_id="tf-test-membership_98863",
 ///     endpoint={
 ///         "gke_cluster": {
 ///             "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
@@ -77,7 +77,7 @@ import 'membership_rbac_role_binding_state.dart';
 ///     opts = pulumi.ResourceOptions(depends_on=[primary]))
 /// project = gcp.organizations.get_project()
 /// membership_rbac_role_binding = gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding",
-///     membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_76273",
+///     membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_64134",
 ///     membership_id=membership.membership_id,
 ///     user=f"service-{project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com",
 ///     role={
@@ -106,7 +106,7 @@ import 'membership_rbac_role_binding_state.dart';
 ///
 ///     var membership = new Gcp.GkeHub.Membership("membership", new()
 ///     {
-///         MembershipId = "tf-test-membership_19370",
+///         MembershipId = "tf-test-membership_98863",
 ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
 ///         {
 ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
@@ -126,7 +126,7 @@ import 'membership_rbac_role_binding_state.dart';
 ///
 ///     var membershipRbacRoleBinding = new Gcp.GkeHub.MembershipRbacRoleBinding("membership_rbac_role_binding", new()
 ///     {
-///         MembershipRbacRoleBindingId = "tf-test-membership-rbac-role-binding_76273",
+///         MembershipRbacRoleBindingId = "tf-test-membership-rbac-role-binding_64134",
 ///         MembershipId = membership.MembershipId,
 ///         User = $"service-{project.Apply(getProjectResult => getProjectResult.Number)}@gcp-sa-anthossupport.iam.gserviceaccount.com",
 ///         Role = new Gcp.GkeHub.Inputs.MembershipRbacRoleBindingRoleArgs
@@ -150,9 +150,9 @@ import 'membership_rbac_role_binding_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -170,7 +170,7 @@ import 'membership_rbac_role_binding_state.dart';
 /// 			return err
 /// 		}
 /// 		membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
-/// 			MembershipId: pulumi.String("tf-test-membership_19370"),
+/// 			MembershipId: pulumi.String("tf-test-membership_98863"),
 /// 			Endpoint: &gkehub.MembershipEndpointArgs{
 /// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
 /// 					ResourceLink: primary.ID().ApplyT(func(id pulumi.ID) (string, error) {
@@ -189,7 +189,7 @@ import 'membership_rbac_role_binding_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = gkehub.NewMembershipRbacRoleBinding(ctx, "membership_rbac_role_binding", &gkehub.MembershipRbacRoleBindingArgs{
-/// 			MembershipRbacRoleBindingId: pulumi.String("tf-test-membership-rbac-role-binding_76273"),
+/// 			MembershipRbacRoleBindingId: pulumi.String("tf-test-membership-rbac-role-binding_64134"),
 /// 			MembershipId:                membership.MembershipId,
 /// 			User:                        pulumi.Sprintf("service-%v@gcp-sa-anthossupport.iam.gserviceaccount.com", project.Number),
 /// 			Role: &gkehub.MembershipRbacRoleBindingRoleArgs{
@@ -228,7 +228,7 @@ import 'membership_rbac_role_binding_state.dart';
 /// }
 /// resource "gcp_gkehub_membership" "membership" {
 ///   depends_on    = [gcp_container_cluster.primary]
-///   membership_id = "tf-test-membership_19370"
+///   membership_id = "tf-test-membership_98863"
 ///   endpoint = {
 ///     gke_cluster = {
 ///       resource_link ="//container.googleapis.com/${gcp_container_cluster.primary.id}"
@@ -237,7 +237,7 @@ import 'membership_rbac_role_binding_state.dart';
 /// }
 /// resource "gcp_gkehub_membershiprbacrolebinding" "membership_rbac_role_binding" {
 ///   depends_on                      = [gcp_gkehub_membership.membership]
-///   membership_rbac_role_binding_id = "tf-test-membership-rbac-role-binding_76273"
+///   membership_rbac_role_binding_id = "tf-test-membership-rbac-role-binding_64134"
 ///   membership_id                   = gcp_gkehub_membership.membership.membership_id
 ///   user                            ="service-${data.gcp_organizations_getproject.project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com"
 ///   role = {
@@ -287,7 +287,7 @@ import 'membership_rbac_role_binding_state.dart';
 ///             .build());
 ///
 ///         var membership = new Membership("membership", MembershipArgs.builder()
-///             .membershipId("tf-test-membership_19370")
+///             .membershipId("tf-test-membership_98863")
 ///             .endpoint(MembershipEndpointArgs.builder()
 ///                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
 ///                     .resourceLink(primary.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
@@ -301,7 +301,7 @@ import 'membership_rbac_role_binding_state.dart';
 ///             .build());
 ///
 ///         var membershipRbacRoleBinding = new MembershipRbacRoleBinding("membershipRbacRoleBinding", MembershipRbacRoleBindingArgs.builder()
-///             .membershipRbacRoleBindingId("tf-test-membership-rbac-role-binding_76273")
+///             .membershipRbacRoleBindingId("tf-test-membership-rbac-role-binding_64134")
 ///             .membershipId(membership.membershipId())
 ///             .user(String.format("service-%s@gcp-sa-anthossupport.iam.gserviceaccount.com", project.number()))
 ///             .role(MembershipRbacRoleBindingRoleArgs.builder()
@@ -329,7 +329,7 @@ import 'membership_rbac_role_binding_state.dart';
 ///   membership:
 ///     type: gcp:gkehub:Membership
 ///     properties:
-///       membershipId: tf-test-membership_19370
+///       membershipId: tf-test-membership_98863
 ///       endpoint:
 ///         gkeCluster:
 ///           resourceLink: //container.googleapis.com/${primary.id}
@@ -340,7 +340,7 @@ import 'membership_rbac_role_binding_state.dart';
 ///     type: gcp:gkehub:MembershipRbacRoleBinding
 ///     name: membership_rbac_role_binding
 ///     properties:
-///       membershipRbacRoleBindingId: tf-test-membership-rbac-role-binding_76273
+///       membershipRbacRoleBindingId: tf-test-membership-rbac-role-binding_64134
 ///       membershipId: ${membership.membershipId}
 ///       user: service-${project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com
 ///       role:
@@ -424,7 +424,7 @@ class MembershipRbacRoleBinding extends pulumi.CustomResource {
           'gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');

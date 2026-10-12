@@ -3,12 +3,17 @@ import 'regional_parameter_args.dart';
 import 'regional_parameter_policy_member.dart';
 import 'regional_parameter_state.dart';
 
-/// A Regional Parameter is a logical regional parameter.
+/// A Regional Parameter is a configuration value stored in a specific region
+/// through Parameter Manager. Regional parameters support labels, encryption
+/// via Cloud KMS, and resource manager tags for fine-grained access control,
+/// organization, and regional compliance.
 ///
 ///
 /// To get more information about RegionalParameter, see:
 ///
 /// * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+/// * How-to Guides
+/// * [Work with parameter tags](https://docs.cloud.google.com/secret-manager/parameter-manager/docs/create-and-manage-tags)
 ///
 /// ## Example Usage
 ///
@@ -53,7 +58,7 @@ import 'regional_parameter_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -166,7 +171,7 @@ import 'regional_parameter_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -302,7 +307,7 @@ import 'regional_parameter_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -446,8 +451,8 @@ import 'regional_parameter_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -537,6 +542,135 @@ import 'regional_parameter_state.dart';
 ///       arguments: {}
 /// ```
 ///
+/// ### Regional Parameter With Tags
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const regional_parameter_with_tags = new gcp.parametermanager.RegionalParameter("regional-parameter-with-tags", {
+///     location: "us-central1",
+///     parameterId: "regional_parameter",
+///     tags: {
+///         "tagKeys/123456": "tagValues/789012",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// regional_parameter_with_tags = gcp.parametermanager.RegionalParameter("regional-parameter-with-tags",
+///     location="us-central1",
+///     parameter_id="regional_parameter",
+///     tags={
+///         "tagKeys/123456": "tagValues/789012",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var regional_parameter_with_tags = new Gcp.ParameterManager.RegionalParameter("regional-parameter-with-tags", new()
+///     {
+///         Location = "us-central1",
+///         ParameterId = "regional_parameter",
+///         Tags =
+///         {
+///             { "tagKeys/123456", "tagValues/789012" },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := parametermanager.NewRegionalParameter(ctx, "regional-parameter-with-tags", &parametermanager.RegionalParameterArgs{
+/// 			Location:    pulumi.String("us-central1"),
+/// 			ParameterId: pulumi.String("regional_parameter"),
+/// 			Tags: pulumi.StringMap{
+/// 				"tagKeys/123456": pulumi.String("tagValues/789012"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_parametermanager_regionalparameter" "regional-parameter-with-tags" {
+///   location     = "us-central1"
+///   parameter_id = "regional_parameter"
+///   tags = {
+///     "tagKeys/123456" = "tagValues/789012"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.parametermanager.RegionalParameter;
+/// import com.pulumi.gcp.parametermanager.RegionalParameterArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var regional_parameter_with_tags = new RegionalParameter("regional-parameter-with-tags", RegionalParameterArgs.builder()
+///             .location("us-central1")
+///             .parameterId("regional_parameter")
+///             .tags(Map.of("tagKeys/123456", "tagValues/789012"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   regional-parameter-with-tags:
+///     type: gcp:parametermanager:RegionalParameter
+///     properties:
+///       location: us-central1
+///       parameterId: regional_parameter
+///       tags:
+///         tagKeys/123456: tagValues/789012
+/// ```
+///
 ///
 /// ## Import
 ///
@@ -601,6 +735,10 @@ class RegionalParameter extends pulumi.CustomResource {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+  /// A map of resource manager tags.
+  /// Resource manager tag keys and values have the same definition as resource manager tags.
+  /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+  late final pulumi.Output<Map<String, String>?> tags;
   /// The time at which the regional Parameter was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -616,7 +754,7 @@ class RegionalParameter extends pulumi.CustomResource {
           'gcp:parametermanager/regionalParameter:RegionalParameter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
@@ -631,6 +769,7 @@ class RegionalParameter extends pulumi.CustomResource {
     policyMembers = registerOutput<List<RegionalParameterPolicyMember>>('policyMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionalParameterPolicyMember>(guardedValue, (value) => RegionalParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -670,6 +809,7 @@ class RegionalParameter extends pulumi.CustomResource {
     policyMembers = registerOutput<List<RegionalParameterPolicyMember>>('policyMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionalParameterPolicyMember>(guardedValue, (value) => RegionalParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -695,6 +835,7 @@ class RegionalParameter extends pulumi.CustomResource {
     policyMembers = registerOutput<List<RegionalParameterPolicyMember>>('policyMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionalParameterPolicyMember>(guardedValue, (value) => RegionalParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

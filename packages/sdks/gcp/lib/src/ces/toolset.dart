@@ -210,7 +210,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -676,7 +676,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1132,7 +1132,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1582,7 +1582,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2042,7 +2042,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2465,7 +2465,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2875,7 +2875,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3165,6 +3165,11 @@ import 'toolset_tool_fake_config.dart';
 ///         apiAuthentication: {
 ///             serviceAgentIdTokenAuthConfig: {},
 ///         },
+///         toolOverrides: [{
+///             tool: "my-tool",
+///             nameOverride: "my_tool_override",
+///             descriptionOverride: "A tool description override",
+///         }],
 ///     },
 /// });
 /// ```
@@ -3211,6 +3216,11 @@ import 'toolset_tool_fake_config.dart';
 ///         "api_authentication": {
 ///             "service_agent_id_token_auth_config": {},
 ///         },
+///         "tool_overrides": [{
+///             "tool": "my-tool",
+///             "name_override": "my_tool_override",
+///             "description_override": "A tool description override",
+///         }],
 ///     })
 /// ```
 /// ```csharp
@@ -3276,6 +3286,15 @@ import 'toolset_tool_fake_config.dart';
 ///             {
 ///                 ServiceAgentIdTokenAuthConfig = null,
 ///             },
+///             ToolOverrides = new[]
+///             {
+///                 new Gcp.Ces.Inputs.ToolsetMcpToolsetToolOverrideArgs
+///                 {
+///                     Tool = "my-tool",
+///                     NameOverride = "my_tool_override",
+///                     DescriptionOverride = "A tool description override",
+///                 },
+///             },
 ///         },
 ///     });
 ///
@@ -3285,7 +3304,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3335,6 +3354,13 @@ import 'toolset_tool_fake_config.dart';
 /// 				},
 /// 				ApiAuthentication: &ces.ToolsetMcpToolsetApiAuthenticationArgs{
 /// 					ServiceAgentIdTokenAuthConfig: &ces.ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs{},
+/// 				},
+/// 				ToolOverrides: ces.ToolsetMcpToolsetToolOverrideArray{
+/// 					&ces.ToolsetMcpToolsetToolOverrideArgs{
+/// 						Tool:                pulumi.String("my-tool"),
+/// 						NameOverride:        pulumi.String("my_tool_override"),
+/// 						DescriptionOverride: pulumi.String("A tool description override"),
+/// 					},
 /// 				},
 /// 			},
 /// 		})
@@ -3391,6 +3417,11 @@ import 'toolset_tool_fake_config.dart';
 ///     api_authentication = {
 ///       service_agent_id_token_auth_config = {}
 ///     }
+///     tool_overrides = [{
+///       "tool"                = "my-tool"
+///       "nameOverride"        = "my_tool_override"
+///       "descriptionOverride" = "A tool description override"
+///     }]
 ///   }
 /// }
 /// ```
@@ -3412,6 +3443,7 @@ import 'toolset_tool_fake_config.dart';
 /// import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetToolOverrideArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -3464,6 +3496,11 @@ import 'toolset_tool_fake_config.dart';
 ///                     .serviceAgentIdTokenAuthConfig(ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs.builder()
 ///                         .build())
 ///                     .build())
+///                 .toolOverrides(ToolsetMcpToolsetToolOverrideArgs.builder()
+///                     .tool("my-tool")
+///                     .nameOverride("my_tool_override")
+///                     .descriptionOverride("A tool description override")
+///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -3509,6 +3546,10 @@ import 'toolset_tool_fake_config.dart';
 ///           service: projects/example/locations/us/namespaces/namespace/services/service
 ///         apiAuthentication:
 ///           serviceAgentIdTokenAuthConfig: {}
+///         toolOverrides:
+///           - tool: my-tool
+///             nameOverride: my_tool_override
+///             descriptionOverride: A tool description override
 /// ```
 ///
 /// ### Ces Toolset Mcp Api Key Config
@@ -3688,7 +3729,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4092,7 +4133,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4402,7 +4443,7 @@ class Toolset extends pulumi.CustomResource {
           'gcp:ces/toolset:Toolset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     app = registerOutput<String>('app');
     connectorToolset = registerOutput<ToolsetConnectorToolset?>('connectorToolset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolsetConnectorToolset.fromMap((guardedValue as Map).cast<String, dynamic>()); });

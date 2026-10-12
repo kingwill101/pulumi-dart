@@ -221,12 +221,12 @@ class GetBackendServiceResult {
 
   factory GetBackendServiceResult.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceResult(
-      affinityCookieTtlSec: (() { final guardedValue = map['affinityCookieTtlSec']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      affinityCookieTtlSec: (() { final guardedValue = map['affinityCookieTtlSec']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       backends: (() { final guardedValue = map['backends']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBackendServiceBackend>(guardedValue, (value) => GetBackendServiceBackend.fromMap((value as Map).cast<String, dynamic>())); })(),
       cdnPolicies: (() { final guardedValue = map['cdnPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBackendServiceCdnPolicy>(guardedValue, (value) => GetBackendServiceCdnPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
       circuitBreakers: (() { final guardedValue = map['circuitBreakers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBackendServiceCircuitBreaker>(guardedValue, (value) => GetBackendServiceCircuitBreaker.fromMap((value as Map).cast<String, dynamic>())); })(),
       compressionMode: (() { final guardedValue = map['compressionMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      connectionDrainingTimeoutSec: (() { final guardedValue = map['connectionDrainingTimeoutSec']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      connectionDrainingTimeoutSec: (() { final guardedValue = map['connectionDrainingTimeoutSec']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       consistentHash: (() { final guardedValue = map['consistentHash']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBackendServiceConsistentHash>(guardedValue, (value) => GetBackendServiceConsistentHash.fromMap((value as Map).cast<String, dynamic>())); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
       customMetrics: (() { final guardedValue = map['customMetrics']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBackendServiceCustomMetric>(guardedValue, (value) => GetBackendServiceCustomMetric.fromMap((value as Map).cast<String, dynamic>())); })(),
@@ -240,7 +240,7 @@ class GetBackendServiceResult {
       externalManagedMigrationState: (() { final guardedValue = map['externalManagedMigrationState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       externalManagedMigrationTestingPercentage: (() { final guardedValue = map['externalManagedMigrationTestingPercentage']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      generatedId: (() { final guardedValue = map['generatedId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      generatedId: (() { final guardedValue = map['generatedId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       healthChecks: (() { final guardedValue = map['healthChecks']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       iaps: (() { final guardedValue = map['iaps']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBackendServiceIap>(guardedValue, (value) => GetBackendServiceIap.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -263,7 +263,7 @@ class GetBackendServiceResult {
       serviceLbPolicy: (() { final guardedValue = map['serviceLbPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sessionAffinity: (() { final guardedValue = map['sessionAffinity']; if (guardedValue == null) return null; return guardedValue as String; })(),
       strongSessionAffinityCookies: (() { final guardedValue = map['strongSessionAffinityCookies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBackendServiceStrongSessionAffinityCooky>(guardedValue, (value) => GetBackendServiceStrongSessionAffinityCooky.fromMap((value as Map).cast<String, dynamic>())); })(),
-      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       tlsSettings: (() { final guardedValue = map['tlsSettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBackendServiceTlsSetting>(guardedValue, (value) => GetBackendServiceTlsSetting.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -58,7 +58,7 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfig {
       crowdingColumn: (() { final guardedValue = map['crowdingColumn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       distanceMeasureType: (() { final guardedValue = map['distanceMeasureType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       embeddingColumn: pulumi.Input.fromValue(map['embeddingColumn'] as String),
-      embeddingDimension: (() { final guardedValue = map['embeddingDimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      embeddingDimension: (() { final guardedValue = map['embeddingDimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       filterColumns: (() { final guardedValue = map['filterColumns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       treeAhConfig: (() { final guardedValue = map['treeAhConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

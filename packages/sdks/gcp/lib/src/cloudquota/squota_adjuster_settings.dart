@@ -54,7 +54,7 @@ import 'squota_adjuster_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudquota"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudquota"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -170,7 +170,7 @@ class SQuotaAdjusterSettings extends pulumi.CustomResource {
           'gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     effectiveContainer = registerOutput<String>('effectiveContainer');
     effectiveEnablement = registerOutput<String>('effectiveEnablement');

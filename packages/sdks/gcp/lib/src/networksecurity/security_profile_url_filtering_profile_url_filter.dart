@@ -35,7 +35,7 @@ class SecurityProfileUrlFilteringProfileUrlFilter {
   factory SecurityProfileUrlFilteringProfileUrlFilter.fromMap(Map<String, dynamic> map) {
     return SecurityProfileUrlFilteringProfileUrlFilter(
       filteringAction: pulumi.Input.fromValue(map['filteringAction'] as String),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       urls: (() { final guardedValue = map['urls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

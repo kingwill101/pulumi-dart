@@ -40,11 +40,11 @@ class GetReservationSubBlockHealthInfo {
 
   factory GetReservationSubBlockHealthInfo.fromMap(Map<String, dynamic> map) {
     return GetReservationSubBlockHealthInfo(
-      degradedHostCount: pulumi.Input.fromValue((map['degradedHostCount'] as num).toInt()),
-      degradedInfraCount: pulumi.Input.fromValue((map['degradedInfraCount'] as num).toInt()),
+      degradedHostCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['degradedHostCount'])),
+      degradedInfraCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['degradedInfraCount'])),
       healthStatus: pulumi.Input.fromValue(map['healthStatus'] as String),
-      healthyHostCount: pulumi.Input.fromValue((map['healthyHostCount'] as num).toInt()),
-      healthyInfraCount: pulumi.Input.fromValue((map['healthyInfraCount'] as num).toInt()),
+      healthyHostCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['healthyHostCount'])),
+      healthyInfraCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['healthyInfraCount'])),
     );
   }
 }

@@ -112,7 +112,7 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -296,7 +296,7 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -466,7 +466,7 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -656,7 +656,7 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -849,7 +849,7 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1096,7 +1096,7 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1376,7 +1376,7 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1534,7 +1534,7 @@ import 'region_backend_service_tls_settings.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const debianImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const defaultNetwork = new gcp.compute.Network("default", {
@@ -1549,7 +1549,7 @@ import 'region_backend_service_tls_settings.dart';
 ///     network: defaultNetwork.id,
 /// });
 /// const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
-///     name: "template-region-service",
+///     name: "region-service-template",
 ///     machineType: "e2-medium",
 ///     networkInterfaces: [{
 ///         network: defaultNetwork.id,
@@ -1600,7 +1600,7 @@ import 'region_backend_service_tls_settings.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// debian_image = gcp.compute.get_image(family="debian-11",
+/// debian_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// default_network = gcp.compute.Network("default",
 ///     name="rbs-net",
@@ -1612,7 +1612,7 @@ import 'region_backend_service_tls_settings.dart';
 ///     region="us-central1",
 ///     network=default_network.id)
 /// instance_template = gcp.compute.InstanceTemplate("instance_template",
-///     name="template-region-service",
+///     name="region-service-template",
 ///     machine_type="e2-medium",
 ///     network_interfaces=[{
 ///         "network": default_network.id,
@@ -1665,7 +1665,7 @@ import 'region_backend_service_tls_settings.dart';
 /// {
 ///     var debianImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -1686,7 +1686,7 @@ import 'region_backend_service_tls_settings.dart';
 ///
 ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instance_template", new()
 ///     {
-///         Name = "template-region-service",
+///         Name = "region-service-template",
 ///         MachineType = "e2-medium",
 ///         NetworkInterfaces = new[]
 ///         {
@@ -1763,14 +1763,14 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		debianImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -1794,7 +1794,7 @@ import 'region_backend_service_tls_settings.dart';
 /// 			return err
 /// 		}
 /// 		instanceTemplate, err := compute.NewInstanceTemplate(ctx, "instance_template", &compute.InstanceTemplateArgs{
-/// 			Name:        pulumi.String("template-region-service"),
+/// 			Name:        pulumi.String("region-service-template"),
 /// 			MachineType: pulumi.String("e2-medium"),
 /// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
 /// 				&compute.InstanceTemplateNetworkInterfaceArgs{
@@ -1874,7 +1874,7 @@ import 'region_backend_service_tls_settings.dart';
 /// }
 ///
 /// data "gcp_compute_getimage" "debianImage" {
-///   family  = "debian-11"
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
@@ -1902,7 +1902,7 @@ import 'region_backend_service_tls_settings.dart';
 ///   target_size        = 1
 /// }
 /// resource "gcp_compute_instancetemplate" "instance_template" {
-///   name         = "template-region-service"
+///   name         = "region-service-template"
 ///   machine_type = "e2-medium"
 ///   network_interfaces {
 ///     network    = gcp_compute_network.default.id
@@ -1973,7 +1973,7 @@ import 'region_backend_service_tls_settings.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var debianImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -1991,7 +1991,7 @@ import 'region_backend_service_tls_settings.dart';
 ///             .build());
 ///
 ///         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()
-///             .name("template-region-service")
+///             .name("region-service-template")
 ///             .machineType("e2-medium")
 ///             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
 ///                 .network(defaultNetwork.id())
@@ -2072,7 +2072,7 @@ import 'region_backend_service_tls_settings.dart';
 ///     type: gcp:compute:InstanceTemplate
 ///     name: instance_template
 ///     properties:
-///       name: template-region-service
+///       name: region-service-template
 ///       machineType: e2-medium
 ///       networkInterfaces:
 ///         - network: ${defaultNetwork.id}
@@ -2112,8 +2112,593 @@ import 'region_backend_service_tls_settings.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
+/// ```
+///
+/// ### Region Backend Service In Flight
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const custom = new gcp.compute.Network("custom", {
+///     name: "custom-vpc",
+///     autoCreateSubnetworks: false,
+/// });
+/// const _default = new gcp.compute.Subnetwork("default", {
+///     name: "custom-subnet",
+///     ipCidrRange: "10.0.0.0/24",
+///     region: "us-central1",
+///     network: custom.id,
+/// });
+/// const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("default", {
+///     name: "instance-template",
+///     machineType: "e2-micro",
+///     disks: [{
+///         sourceImage: "debian-cloud/debian-13",
+///         autoDelete: true,
+///         boot: true,
+///     }],
+///     networkInterfaces: [{
+///         network: custom.id,
+///         subnetwork: _default.id,
+///     }],
+///     metadata: {
+///         "startup-script": `#!/bin/bash
+/// echo \\"Hello World from MIG VM\\" > /var/www/html/index.html
+/// apt-get update -y
+/// apt-get install -y apache2
+/// systemctl start apache2
+/// `,
+///     },
+/// });
+/// const foobar = new gcp.compute.RegionInstanceGroupManager("foobar", {
+///     name: "instance-group-manager",
+///     baseInstanceName: "vm",
+///     region: "us-central1",
+///     versions: [{
+///         instanceTemplate: defaultInstanceTemplate.id,
+///     }],
+///     targetSize: 1,
+/// });
+/// const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
+///     name: "rbs-health-check",
+///     region: "us-central1",
+///     httpHealthCheck: {
+///         port: 80,
+///     },
+/// });
+/// const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+///     name: "region-service",
+///     region: "us-central1",
+///     description: "Hello World 1234",
+///     portName: "http",
+///     protocol: "HTTP",
+///     loadBalancingScheme: "EXTERNAL_MANAGED",
+///     backends: [{
+///         group: foobar.instanceGroup,
+///         balancingMode: "IN_FLIGHT",
+///         capacityScaler: 1,
+///         maxInFlightRequestsPerInstance: 100,
+///         trafficDuration: "LONG",
+///     }],
+///     healthChecks: defaultRegionHealthCheck.selfLink,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// custom = gcp.compute.Network("custom",
+///     name="custom-vpc",
+///     auto_create_subnetworks=False)
+/// default = gcp.compute.Subnetwork("default",
+///     name="custom-subnet",
+///     ip_cidr_range="10.0.0.0/24",
+///     region="us-central1",
+///     network=custom.id)
+/// default_instance_template = gcp.compute.InstanceTemplate("default",
+///     name="instance-template",
+///     machine_type="e2-micro",
+///     disks=[{
+///         "source_image": "debian-cloud/debian-13",
+///         "auto_delete": True,
+///         "boot": True,
+///     }],
+///     network_interfaces=[{
+///         "network": custom.id,
+///         "subnetwork": default.id,
+///     }],
+///     metadata={
+///         "startup-script": """#!/bin/bash
+/// echo \"Hello World from MIG VM\" > /var/www/html/index.html
+/// apt-get update -y
+/// apt-get install -y apache2
+/// systemctl start apache2
+/// """,
+///     })
+/// foobar = gcp.compute.RegionInstanceGroupManager("foobar",
+///     name="instance-group-manager",
+///     base_instance_name="vm",
+///     region="us-central1",
+///     versions=[{
+///         "instance_template": default_instance_template.id,
+///     }],
+///     target_size=1)
+/// default_region_health_check = gcp.compute.RegionHealthCheck("default",
+///     name="rbs-health-check",
+///     region="us-central1",
+///     http_health_check={
+///         "port": 80,
+///     })
+/// default_region_backend_service = gcp.compute.RegionBackendService("default",
+///     name="region-service",
+///     region="us-central1",
+///     description="Hello World 1234",
+///     port_name="http",
+///     protocol="HTTP",
+///     load_balancing_scheme="EXTERNAL_MANAGED",
+///     backends=[{
+///         "group": foobar.instance_group,
+///         "balancing_mode": "IN_FLIGHT",
+///         "capacity_scaler": float(1),
+///         "max_in_flight_requests_per_instance": 100,
+///         "traffic_duration": "LONG",
+///     }],
+///     health_checks=default_region_health_check.self_link)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var custom = new Gcp.Compute.Network("custom", new()
+///     {
+///         Name = "custom-vpc",
+///         AutoCreateSubnetworks = false,
+///     });
+///
+///     var @default = new Gcp.Compute.Subnetwork("default", new()
+///     {
+///         Name = "custom-subnet",
+///         IpCidrRange = "10.0.0.0/24",
+///         Region = "us-central1",
+///         Network = custom.Id,
+///     });
+///
+///     var defaultInstanceTemplate = new Gcp.Compute.InstanceTemplate("default", new()
+///     {
+///         Name = "instance-template",
+///         MachineType = "e2-micro",
+///         Disks = new[]
+///         {
+///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+///             {
+///                 SourceImage = "debian-cloud/debian-13",
+///                 AutoDelete = true,
+///                 Boot = true,
+///             },
+///         },
+///         NetworkInterfaces = new[]
+///         {
+///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+///             {
+///                 Network = custom.Id,
+///                 Subnetwork = @default.Id,
+///             },
+///         },
+///         Metadata =
+///         {
+///             { "startup-script", @"#!/bin/bash
+/// echo \""Hello World from MIG VM\"" > /var/www/html/index.html
+/// apt-get update -y
+/// apt-get install -y apache2
+/// systemctl start apache2
+/// " },
+///         },
+///     });
+///
+///     var foobar = new Gcp.Compute.RegionInstanceGroupManager("foobar", new()
+///     {
+///         Name = "instance-group-manager",
+///         BaseInstanceName = "vm",
+///         Region = "us-central1",
+///         Versions = new[]
+///         {
+///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+///             {
+///                 InstanceTemplate = defaultInstanceTemplate.Id,
+///             },
+///         },
+///         TargetSize = 1,
+///     });
+///
+///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+///     {
+///         Name = "rbs-health-check",
+///         Region = "us-central1",
+///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+///         {
+///             Port = 80,
+///         },
+///     });
+///
+///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+///     {
+///         Name = "region-service",
+///         Region = "us-central1",
+///         Description = "Hello World 1234",
+///         PortName = "http",
+///         Protocol = "HTTP",
+///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+///         Backends = new[]
+///         {
+///             new Gcp.Compute.Inputs.RegionBackendServiceBackendArgs
+///             {
+///                 Group = foobar.InstanceGroup,
+///                 BalancingMode = "IN_FLIGHT",
+///                 CapacityScaler = 1.0,
+///                 MaxInFlightRequestsPerInstance = 100,
+///                 TrafficDuration = "LONG",
+///             },
+///         },
+///         HealthChecks = defaultRegionHealthCheck.SelfLink,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		custom, err := compute.NewNetwork(ctx, "custom", &compute.NetworkArgs{
+/// 			Name:                  pulumi.String("custom-vpc"),
+/// 			AutoCreateSubnetworks: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_default, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+/// 			Name:        pulumi.String("custom-subnet"),
+/// 			IpCidrRange: pulumi.String("10.0.0.0/24"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			Network:     custom.ID().ToIDOutput().ToStringOutput(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		defaultInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "default", &compute.InstanceTemplateArgs{
+/// 			Name:        pulumi.String("instance-template"),
+/// 			MachineType: pulumi.String("e2-micro"),
+/// 			Disks: compute.InstanceTemplateDiskArray{
+/// 				&compute.InstanceTemplateDiskArgs{
+/// 					SourceImage: pulumi.String("debian-cloud/debian-13"),
+/// 					AutoDelete:  pulumi.Bool(true),
+/// 					Boot:        pulumi.Bool(true),
+/// 				},
+/// 			},
+/// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+/// 				&compute.InstanceTemplateNetworkInterfaceArgs{
+/// 					Network:    custom.ID().ToIDOutput().ToStringOutput(),
+/// 					Subnetwork: _default.ID().ToIDOutput().ToStringOutput(),
+/// 				},
+/// 			},
+/// 			Metadata: pulumi.StringMap{
+/// 				"startup-script": pulumi.String(`#!/bin/bash
+/// echo \"Hello World from MIG VM\" > /var/www/html/index.html
+/// apt-get update -y
+/// apt-get install -y apache2
+/// systemctl start apache2
+/// `),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		foobar, err := compute.NewRegionInstanceGroupManager(ctx, "foobar", &compute.RegionInstanceGroupManagerArgs{
+/// 			Name:             pulumi.String("instance-group-manager"),
+/// 			BaseInstanceName: pulumi.String("vm"),
+/// 			Region:           pulumi.String("us-central1"),
+/// 			Versions: compute.RegionInstanceGroupManagerVersionArray{
+/// 				&compute.RegionInstanceGroupManagerVersionArgs{
+/// 					InstanceTemplate: defaultInstanceTemplate.ID().ToIDOutput().ToStringOutput(),
+/// 				},
+/// 			},
+/// 			TargetSize: pulumi.Int(1),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+/// 			Name:   pulumi.String("rbs-health-check"),
+/// 			Region: pulumi.String("us-central1"),
+/// 			HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
+/// 				Port: pulumi.Int(80),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+/// 			Name:                pulumi.String("region-service"),
+/// 			Region:              pulumi.String("us-central1"),
+/// 			Description:         pulumi.String("Hello World 1234"),
+/// 			PortName:            pulumi.String("http"),
+/// 			Protocol:            pulumi.String("HTTP"),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+/// 			Backends: compute.RegionBackendServiceBackendArray{
+/// 				&compute.RegionBackendServiceBackendArgs{
+/// 					Group:                          foobar.InstanceGroup,
+/// 					BalancingMode:                  pulumi.String("IN_FLIGHT"),
+/// 					CapacityScaler:                 pulumi.Float64(1),
+/// 					MaxInFlightRequestsPerInstance: pulumi.Int(100),
+/// 					TrafficDuration:                pulumi.String("LONG"),
+/// 				},
+/// 			},
+/// 			HealthChecks: defaultRegionHealthCheck.SelfLink,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "custom" {
+///   name                    = "custom-vpc"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "custom-subnet"
+///   ip_cidr_range = "10.0.0.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.custom.id
+/// }
+/// resource "gcp_compute_instancetemplate" "default" {
+///   name         = "instance-template"
+///   machine_type = "e2-micro"
+///   disks {
+///     source_image = "debian-cloud/debian-13"
+///     auto_delete  = true
+///     boot         = true
+///   }
+///   network_interfaces {
+///     network    = gcp_compute_network.custom.id
+///     subnetwork = gcp_compute_subnetwork.default.id
+///   }
+///   metadata = {
+///     "startup-script" = "#!/bin/bash\necho \\\"Hello World from MIG VM\\\" > /var/www/html/index.html\napt-get update -y\napt-get install -y apache2\nsystemctl start apache2\n"
+///   }
+/// }
+/// resource "gcp_compute_regioninstancegroupmanager" "foobar" {
+///   name               = "instance-group-manager"
+///   base_instance_name = "vm"
+///   region             = "us-central1"
+///   versions {
+///     instance_template = gcp_compute_instancetemplate.default.id
+///   }
+///   target_size = 1
+/// }
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   name                  = "region-service"
+///   region                = "us-central1"
+///   description           = "Hello World 1234"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   backends {
+///     group                               = gcp_compute_regioninstancegroupmanager.foobar.instance_group
+///     balancing_mode                      = "IN_FLIGHT"
+///     capacity_scaler                     = 1
+///     max_in_flight_requests_per_instance = 100
+///     traffic_duration                    = "LONG"
+///   }
+///   health_checks = gcp_compute_regionhealthcheck.default.self_link
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   name   = "rbs-health-check"
+///   region = "us-central1"
+///   http_health_check = {
+///     port = 80
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.Network;
+/// import com.pulumi.gcp.compute.NetworkArgs;
+/// import com.pulumi.gcp.compute.Subnetwork;
+/// import com.pulumi.gcp.compute.SubnetworkArgs;
+/// import com.pulumi.gcp.compute.InstanceTemplate;
+/// import com.pulumi.gcp.compute.InstanceTemplateArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.RegionInstanceGroupManager;
+/// import com.pulumi.gcp.compute.RegionInstanceGroupManagerArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerVersionArgs;
+/// import com.pulumi.gcp.compute.RegionHealthCheck;
+/// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.RegionBackendService;
+/// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionBackendServiceBackendArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var custom = new Network("custom", NetworkArgs.builder()
+///             .name("custom-vpc")
+///             .autoCreateSubnetworks(false)
+///             .build());
+///
+///         var default_ = new Subnetwork("default", SubnetworkArgs.builder()
+///             .name("custom-subnet")
+///             .ipCidrRange("10.0.0.0/24")
+///             .region("us-central1")
+///             .network(custom.id())
+///             .build());
+///
+///         var defaultInstanceTemplate = new InstanceTemplate("defaultInstanceTemplate", InstanceTemplateArgs.builder()
+///             .name("instance-template")
+///             .machineType("e2-micro")
+///             .disks(InstanceTemplateDiskArgs.builder()
+///                 .sourceImage("debian-cloud/debian-13")
+///                 .autoDelete(true)
+///                 .boot(true)
+///                 .build())
+///             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
+///                 .network(custom.id())
+///                 .subnetwork(default_.id())
+///                 .build())
+///             .metadata(Map.of("startup-script", """
+/// #!/bin/bash
+/// echo \"Hello World from MIG VM\" > /var/www/html/index.html
+/// apt-get update -y
+/// apt-get install -y apache2
+/// systemctl start apache2
+///             """))
+///             .build());
+///
+///         var foobar = new RegionInstanceGroupManager("foobar", RegionInstanceGroupManagerArgs.builder()
+///             .name("instance-group-manager")
+///             .baseInstanceName("vm")
+///             .region("us-central1")
+///             .versions(RegionInstanceGroupManagerVersionArgs.builder()
+///                 .instanceTemplate(defaultInstanceTemplate.id())
+///                 .build())
+///             .targetSize(1)
+///             .build());
+///
+///         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
+///             .name("rbs-health-check")
+///             .region("us-central1")
+///             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .build())
+///             .build());
+///
+///         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
+///             .name("region-service")
+///             .region("us-central1")
+///             .description("Hello World 1234")
+///             .portName("http")
+///             .protocol("HTTP")
+///             .loadBalancingScheme("EXTERNAL_MANAGED")
+///             .backends(RegionBackendServiceBackendArgs.builder()
+///                 .group(foobar.instanceGroup())
+///                 .balancingMode("IN_FLIGHT")
+///                 .capacityScaler(1.0)
+///                 .maxInFlightRequestsPerInstance(100)
+///                 .trafficDuration("LONG")
+///                 .build())
+///             .healthChecks(defaultRegionHealthCheck.selfLink())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   custom:
+///     type: gcp:compute:Network
+///     properties:
+///       name: custom-vpc
+///       autoCreateSubnetworks: false
+///   default:
+///     type: gcp:compute:Subnetwork
+///     properties:
+///       name: custom-subnet
+///       ipCidrRange: 10.0.0.0/24
+///       region: us-central1
+///       network: ${custom.id}
+///   defaultInstanceTemplate:
+///     type: gcp:compute:InstanceTemplate
+///     name: default
+///     properties:
+///       name: instance-template
+///       machineType: e2-micro
+///       disks:
+///         - sourceImage: debian-cloud/debian-13
+///           autoDelete: true
+///           boot: true
+///       networkInterfaces:
+///         - network: ${custom.id}
+///           subnetwork: ${default.id}
+///       metadata:
+///         startup-script: |
+///           #!/bin/bash
+///           echo \"Hello World from MIG VM\" > /var/www/html/index.html
+///           apt-get update -y
+///           apt-get install -y apache2
+///           systemctl start apache2
+///   foobar:
+///     type: gcp:compute:RegionInstanceGroupManager
+///     properties:
+///       name: instance-group-manager
+///       baseInstanceName: vm
+///       region: us-central1
+///       versions:
+///         - instanceTemplate: ${defaultInstanceTemplate.id}
+///       targetSize: 1
+///   defaultRegionBackendService:
+///     type: gcp:compute:RegionBackendService
+///     name: default
+///     properties:
+///       name: region-service
+///       region: us-central1
+///       description: Hello World 1234
+///       portName: http
+///       protocol: HTTP
+///       loadBalancingScheme: EXTERNAL_MANAGED
+///       backends:
+///         - group: ${foobar.instanceGroup}
+///           balancingMode: IN_FLIGHT
+///           capacityScaler: 1
+///           maxInFlightRequestsPerInstance: 100
+///           trafficDuration: LONG
+///       healthChecks: ${defaultRegionHealthCheck.selfLink}
+///   defaultRegionHealthCheck:
+///     type: gcp:compute:RegionHealthCheck
+///     name: default
+///     properties:
+///       name: rbs-health-check
+///       region: us-central1
+///       httpHealthCheck:
+///         port: 80
 /// ```
 ///
 /// ### Region Backend Service Connection Tracking
@@ -2214,7 +2799,7 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2439,7 +3024,7 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2730,7 +3315,7 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3038,7 +3623,7 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3198,7 +3783,7 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3366,7 +3951,7 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3537,7 +4122,7 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3884,7 +4469,7 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4476,7 +5061,7 @@ import 'region_backend_service_tls_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4967,8 +5552,8 @@ import 'region_backend_service_tls_settings.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5153,6 +5738,225 @@ import 'region_backend_service_tls_settings.dart';
 ///       name: authentication
 ///       location: europe-north1
 ///       wellKnownRoots: PUBLIC_ROOTS
+/// ```
+///
+/// ### Region Backend Service Identity
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
+///     name: "health-check",
+///     region: "europe-north1",
+///     httpHealthCheck: {
+///         port: 80,
+///     },
+/// });
+/// const _default = new gcp.compute.RegionBackendService("default", {
+///     region: "europe-north1",
+///     name: "backend-service",
+///     healthChecks: defaultRegionHealthCheck.id,
+///     loadBalancingScheme: "EXTERNAL_MANAGED",
+///     protocol: "HTTPS",
+///     tlsSettings: {
+///         identity: "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id",
+///     },
+///     description: "description",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default_region_health_check = gcp.compute.RegionHealthCheck("default",
+///     name="health-check",
+///     region="europe-north1",
+///     http_health_check={
+///         "port": 80,
+///     })
+/// default = gcp.compute.RegionBackendService("default",
+///     region="europe-north1",
+///     name="backend-service",
+///     health_checks=default_region_health_check.id,
+///     load_balancing_scheme="EXTERNAL_MANAGED",
+///     protocol="HTTPS",
+///     tls_settings={
+///         "identity": "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id",
+///     },
+///     description="description")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+///     {
+///         Name = "health-check",
+///         Region = "europe-north1",
+///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+///         {
+///             Port = 80,
+///         },
+///     });
+///
+///     var @default = new Gcp.Compute.RegionBackendService("default", new()
+///     {
+///         Region = "europe-north1",
+///         Name = "backend-service",
+///         HealthChecks = defaultRegionHealthCheck.Id,
+///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+///         Protocol = "HTTPS",
+///         TlsSettings = new Gcp.Compute.Inputs.RegionBackendServiceTlsSettingsArgs
+///         {
+///             Identity = "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id",
+///         },
+///         Description = "description",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+/// 			Name:   pulumi.String("health-check"),
+/// 			Region: pulumi.String("europe-north1"),
+/// 			HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
+/// 				Port: pulumi.Int(80),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+/// 			Region:              pulumi.String("europe-north1"),
+/// 			Name:                pulumi.String("backend-service"),
+/// 			HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+/// 			Protocol:            pulumi.String("HTTPS"),
+/// 			TlsSettings: &compute.RegionBackendServiceTlsSettingsArgs{
+/// 				Identity: pulumi.String("//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id"),
+/// 			},
+/// 			Description: pulumi.String("description"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   region                = "europe-north1"
+///   name                  = "backend-service"
+///   health_checks         = gcp_compute_regionhealthcheck.default.id
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   protocol              = "HTTPS"
+///   tls_settings = {
+///     identity = "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id"
+///   }
+///   description = "description"
+/// }
+/// resource "gcp_compute_regionhealthcheck" "default" {
+///   name   = "health-check"
+///   region = "europe-north1"
+///   http_health_check = {
+///     port = 80
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.RegionHealthCheck;
+/// import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.RegionBackendService;
+/// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionBackendServiceTlsSettingsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
+///             .name("health-check")
+///             .region("europe-north1")
+///             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .build())
+///             .build());
+///
+///         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
+///             .region("europe-north1")
+///             .name("backend-service")
+///             .healthChecks(defaultRegionHealthCheck.id())
+///             .loadBalancingScheme("EXTERNAL_MANAGED")
+///             .protocol("HTTPS")
+///             .tlsSettings(RegionBackendServiceTlsSettingsArgs.builder()
+///                 .identity("//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id")
+///                 .build())
+///             .description("description")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:compute:RegionBackendService
+///     properties:
+///       region: europe-north1
+///       name: backend-service
+///       healthChecks: ${defaultRegionHealthCheck.id}
+///       loadBalancingScheme: EXTERNAL_MANAGED
+///       protocol: HTTPS
+///       tlsSettings:
+///         identity: //test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id
+///       description: description
+///   defaultRegionHealthCheck:
+///     type: gcp:compute:RegionHealthCheck
+///     name: default
+///     properties:
+///       name: health-check
+///       region: europe-north1
+///       httpHealthCheck:
+///         port: 80
 /// ```
 ///
 ///
@@ -5372,6 +6176,10 @@ class RegionBackendService extends pulumi.CustomResource {
   late final pulumi.Output<String?> securityPolicy;
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+  /// URL to networkservices.ServiceLbPolicy resource.
+  /// Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+  /// The service lb policy must be regional and in the same region as the backend service.
+  late final pulumi.Output<String?> serviceLbPolicy;
   /// Type of session affinity to use. The default is NONE. Session affinity is
   /// not applicable if the protocol is UDP.
   /// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
@@ -5404,7 +6212,7 @@ class RegionBackendService extends pulumi.CustomResource {
           'gcp:compute/regionBackendService:RegionBackendService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     affinityCookieTtlSec = registerOutput<int?>('affinityCookieTtlSec');
     backends = registerOutput<List<RegionBackendServiceBackend>?>('backends', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionBackendServiceBackend>(guardedValue, (value) => RegionBackendServiceBackend.fromMap((value as Map).cast<String, dynamic>())); });
@@ -5440,6 +6248,7 @@ class RegionBackendService extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     securityPolicy = registerOutput<String?>('securityPolicy');
     selfLink = registerOutput<String>('selfLink');
+    serviceLbPolicy = registerOutput<String?>('serviceLbPolicy');
     sessionAffinity = registerOutput<String>('sessionAffinity');
     strongSessionAffinityCookie = registerOutput<RegionBackendServiceStrongSessionAffinityCookie?>('strongSessionAffinityCookie', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceStrongSessionAffinityCookie.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subsetting = registerOutput<RegionBackendServiceSubsetting?>('subsetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceSubsetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -5505,6 +6314,7 @@ class RegionBackendService extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     securityPolicy = registerOutput<String?>('securityPolicy');
     selfLink = registerOutput<String>('selfLink');
+    serviceLbPolicy = registerOutput<String?>('serviceLbPolicy');
     sessionAffinity = registerOutput<String>('sessionAffinity');
     strongSessionAffinityCookie = registerOutput<RegionBackendServiceStrongSessionAffinityCookie?>('strongSessionAffinityCookie', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceStrongSessionAffinityCookie.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subsetting = registerOutput<RegionBackendServiceSubsetting?>('subsetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceSubsetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -5555,6 +6365,7 @@ class RegionBackendService extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     securityPolicy = registerOutput<String?>('securityPolicy');
     selfLink = registerOutput<String>('selfLink');
+    serviceLbPolicy = registerOutput<String?>('serviceLbPolicy');
     sessionAffinity = registerOutput<String>('sessionAffinity');
     strongSessionAffinityCookie = registerOutput<RegionBackendServiceStrongSessionAffinityCookie?>('strongSessionAffinityCookie', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceStrongSessionAffinityCookie.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subsetting = registerOutput<RegionBackendServiceSubsetting?>('subsetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionBackendServiceSubsetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });

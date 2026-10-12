@@ -14,6 +14,9 @@ class UllMirroringCollectorRuleMatch {
   /// IP protocols to match. When unset, matches any IP protocol.
   /// Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
   final pulumi.Input<List<String>?>? ipProtocols;
+  /// Primary IP ranges to match (for the capture point).
+  /// When unset, matches any primary IP.
+  final pulumi.Input<List<String>?>? primaryIpRanges;
   /// Source IP ranges to match. When unset, matches any source IP range.
   final pulumi.Input<List<String>?>? srcIpRanges;
 
@@ -21,11 +24,13 @@ class UllMirroringCollectorRuleMatch {
   /// [direction] Direction of traffic to match. When unset, matches any direction.
   /// [dstIpRanges] Destination IP ranges to match. When unset, matches any destination IP
   /// [ipProtocols] IP protocols to match. When unset, matches any IP protocol.
+  /// [primaryIpRanges] Primary IP ranges to match (for the capture point).
   /// [srcIpRanges] Source IP ranges to match. When unset, matches any source IP range.
   const UllMirroringCollectorRuleMatch({
     this.direction,
     this.dstIpRanges,
     this.ipProtocols,
+    this.primaryIpRanges,
     this.srcIpRanges,
   });
 
@@ -34,6 +39,7 @@ class UllMirroringCollectorRuleMatch {
       'direction': ?direction,
       'dstIpRanges': ?dstIpRanges,
       'ipProtocols': ?ipProtocols,
+      'primaryIpRanges': ?primaryIpRanges,
       'srcIpRanges': ?srcIpRanges,
     };
   }
@@ -43,6 +49,7 @@ class UllMirroringCollectorRuleMatch {
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dstIpRanges: (() { final guardedValue = map['dstIpRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipProtocols: (() { final guardedValue = map['ipProtocols']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      primaryIpRanges: (() { final guardedValue = map['primaryIpRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       srcIpRanges: (() { final guardedValue = map['srcIpRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

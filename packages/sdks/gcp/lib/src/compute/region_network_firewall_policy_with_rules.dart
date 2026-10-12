@@ -20,11 +20,11 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///
 /// const project = gcp.organizations.getProject({});
 /// const targetForwardingRule = new gcp.compute.Network("target_forwarding_rule", {
-///     name: "tf-test-network-_87786",
+///     name: "tf-test-network-_75092",
 ///     autoCreateSubnetworks: false,
 /// });
 /// const targetForwardingRuleProxySubnetwork = new gcp.compute.Subnetwork("target_forwarding_rule_proxy_subnetwork", {
-///     name: "tf-test-proxy-subnetwork-_2067",
+///     name: "tf-test-proxy-subnetwork-_2605",
 ///     region: "us-west2",
 ///     network: targetForwardingRule.id,
 ///     ipCidrRange: "10.20.0.0/24",
@@ -32,37 +32,37 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///     role: "ACTIVE",
 /// });
 /// const targetForwardingRuleDefaultSubnetwork = new gcp.compute.Subnetwork("target_forwarding_rule_default_subnetwork", {
-///     name: "tf-test-default-subnetwork-_40785",
+///     name: "tf-test-default-subnetwork-_34535",
 ///     region: "us-west2",
 ///     network: targetForwardingRule.id,
 ///     ipCidrRange: "10.10.0.0/24",
 /// });
 /// const targetForwardingRuleRegionHealthCheck = new gcp.compute.RegionHealthCheck("target_forwarding_rule", {
-///     name: "tf-test-health-check-_79169",
+///     name: "tf-test-health-check-_22375",
 ///     region: "us-west2",
 ///     httpHealthCheck: {
 ///         port: 80,
 ///     },
 /// });
 /// const targetForwardingRuleRegionBackendService = new gcp.compute.RegionBackendService("target_forwarding_rule", {
-///     name: "tf-test-backend-service-_56529",
+///     name: "tf-test-backend-service-_29439",
 ///     region: "us-west2",
 ///     protocol: "HTTP",
 ///     loadBalancingScheme: "INTERNAL_MANAGED",
 ///     healthChecks: targetForwardingRuleRegionHealthCheck.id,
 /// });
 /// const targetForwardingRuleRegionUrlMap = new gcp.compute.RegionUrlMap("target_forwarding_rule", {
-///     name: "tf-test-url-map-_75413",
+///     name: "tf-test-url-map-_87786",
 ///     region: "us-west2",
 ///     defaultService: targetForwardingRuleRegionBackendService.id,
 /// });
 /// const targetForwardingRuleRegionTargetHttpProxy = new gcp.compute.RegionTargetHttpProxy("target_forwarding_rule", {
-///     name: "tf-test-target-http-proxy-_55138",
+///     name: "tf-test-target-http-proxy-_2067",
 ///     region: "us-west2",
 ///     urlMap: targetForwardingRuleRegionUrlMap.id,
 /// });
 /// const targetForwardingRuleForwardingRule = new gcp.compute.ForwardingRule("target_forwarding_rule", {
-///     name: "tf-test-forwarding-rule-_37559",
+///     name: "tf-test-forwarding-rule-_40785",
 ///     region: "us-west2",
 ///     network: targetForwardingRule.id,
 ///     subnetwork: targetForwardingRuleDefaultSubnetwork.id,
@@ -188,42 +188,42 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///
 /// project = gcp.organizations.get_project()
 /// target_forwarding_rule = gcp.compute.Network("target_forwarding_rule",
-///     name="tf-test-network-_87786",
+///     name="tf-test-network-_75092",
 ///     auto_create_subnetworks=False)
 /// target_forwarding_rule_proxy_subnetwork = gcp.compute.Subnetwork("target_forwarding_rule_proxy_subnetwork",
-///     name="tf-test-proxy-subnetwork-_2067",
+///     name="tf-test-proxy-subnetwork-_2605",
 ///     region="us-west2",
 ///     network=target_forwarding_rule.id,
 ///     ip_cidr_range="10.20.0.0/24",
 ///     purpose="REGIONAL_MANAGED_PROXY",
 ///     role="ACTIVE")
 /// target_forwarding_rule_default_subnetwork = gcp.compute.Subnetwork("target_forwarding_rule_default_subnetwork",
-///     name="tf-test-default-subnetwork-_40785",
+///     name="tf-test-default-subnetwork-_34535",
 ///     region="us-west2",
 ///     network=target_forwarding_rule.id,
 ///     ip_cidr_range="10.10.0.0/24")
 /// target_forwarding_rule_region_health_check = gcp.compute.RegionHealthCheck("target_forwarding_rule",
-///     name="tf-test-health-check-_79169",
+///     name="tf-test-health-check-_22375",
 ///     region="us-west2",
 ///     http_health_check={
 ///         "port": 80,
 ///     })
 /// target_forwarding_rule_region_backend_service = gcp.compute.RegionBackendService("target_forwarding_rule",
-///     name="tf-test-backend-service-_56529",
+///     name="tf-test-backend-service-_29439",
 ///     region="us-west2",
 ///     protocol="HTTP",
 ///     load_balancing_scheme="INTERNAL_MANAGED",
 ///     health_checks=target_forwarding_rule_region_health_check.id)
 /// target_forwarding_rule_region_url_map = gcp.compute.RegionUrlMap("target_forwarding_rule",
-///     name="tf-test-url-map-_75413",
+///     name="tf-test-url-map-_87786",
 ///     region="us-west2",
 ///     default_service=target_forwarding_rule_region_backend_service.id)
 /// target_forwarding_rule_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("target_forwarding_rule",
-///     name="tf-test-target-http-proxy-_55138",
+///     name="tf-test-target-http-proxy-_2067",
 ///     region="us-west2",
 ///     url_map=target_forwarding_rule_region_url_map.id)
 /// target_forwarding_rule_forwarding_rule = gcp.compute.ForwardingRule("target_forwarding_rule",
-///     name="tf-test-forwarding-rule-_37559",
+///     name="tf-test-forwarding-rule-_40785",
 ///     region="us-west2",
 ///     network=target_forwarding_rule.id,
 ///     subnetwork=target_forwarding_rule_default_subnetwork.id,
@@ -349,13 +349,13 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///
 ///     var targetForwardingRule = new Gcp.Compute.Network("target_forwarding_rule", new()
 ///     {
-///         Name = "tf-test-network-_87786",
+///         Name = "tf-test-network-_75092",
 ///         AutoCreateSubnetworks = false,
 ///     });
 ///
 ///     var targetForwardingRuleProxySubnetwork = new Gcp.Compute.Subnetwork("target_forwarding_rule_proxy_subnetwork", new()
 ///     {
-///         Name = "tf-test-proxy-subnetwork-_2067",
+///         Name = "tf-test-proxy-subnetwork-_2605",
 ///         Region = "us-west2",
 ///         Network = targetForwardingRule.Id,
 ///         IpCidrRange = "10.20.0.0/24",
@@ -365,7 +365,7 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///
 ///     var targetForwardingRuleDefaultSubnetwork = new Gcp.Compute.Subnetwork("target_forwarding_rule_default_subnetwork", new()
 ///     {
-///         Name = "tf-test-default-subnetwork-_40785",
+///         Name = "tf-test-default-subnetwork-_34535",
 ///         Region = "us-west2",
 ///         Network = targetForwardingRule.Id,
 ///         IpCidrRange = "10.10.0.0/24",
@@ -373,7 +373,7 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///
 ///     var targetForwardingRuleRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("target_forwarding_rule", new()
 ///     {
-///         Name = "tf-test-health-check-_79169",
+///         Name = "tf-test-health-check-_22375",
 ///         Region = "us-west2",
 ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
 ///         {
@@ -383,7 +383,7 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///
 ///     var targetForwardingRuleRegionBackendService = new Gcp.Compute.RegionBackendService("target_forwarding_rule", new()
 ///     {
-///         Name = "tf-test-backend-service-_56529",
+///         Name = "tf-test-backend-service-_29439",
 ///         Region = "us-west2",
 ///         Protocol = "HTTP",
 ///         LoadBalancingScheme = "INTERNAL_MANAGED",
@@ -392,21 +392,21 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///
 ///     var targetForwardingRuleRegionUrlMap = new Gcp.Compute.RegionUrlMap("target_forwarding_rule", new()
 ///     {
-///         Name = "tf-test-url-map-_75413",
+///         Name = "tf-test-url-map-_87786",
 ///         Region = "us-west2",
 ///         DefaultService = targetForwardingRuleRegionBackendService.Id,
 ///     });
 ///
 ///     var targetForwardingRuleRegionTargetHttpProxy = new Gcp.Compute.RegionTargetHttpProxy("target_forwarding_rule", new()
 ///     {
-///         Name = "tf-test-target-http-proxy-_55138",
+///         Name = "tf-test-target-http-proxy-_2067",
 ///         Region = "us-west2",
 ///         UrlMap = targetForwardingRuleRegionUrlMap.Id,
 ///     });
 ///
 ///     var targetForwardingRuleForwardingRule = new Gcp.Compute.ForwardingRule("target_forwarding_rule", new()
 ///     {
-///         Name = "tf-test-forwarding-rule-_37559",
+///         Name = "tf-test-forwarding-rule-_40785",
 ///         Region = "us-west2",
 ///         Network = targetForwardingRule.Id,
 ///         Subnetwork = targetForwardingRuleDefaultSubnetwork.Id,
@@ -600,10 +600,10 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -614,14 +614,14 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 /// 			return err
 /// 		}
 /// 		targetForwardingRule, err := compute.NewNetwork(ctx, "target_forwarding_rule", &compute.NetworkArgs{
-/// 			Name:                  pulumi.String("tf-test-network-_87786"),
+/// 			Name:                  pulumi.String("tf-test-network-_75092"),
 /// 			AutoCreateSubnetworks: pulumi.Bool(false),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		targetForwardingRuleProxySubnetwork, err := compute.NewSubnetwork(ctx, "target_forwarding_rule_proxy_subnetwork", &compute.SubnetworkArgs{
-/// 			Name:        pulumi.String("tf-test-proxy-subnetwork-_2067"),
+/// 			Name:        pulumi.String("tf-test-proxy-subnetwork-_2605"),
 /// 			Region:      pulumi.String("us-west2"),
 /// 			Network:     targetForwardingRule.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.20.0.0/24"),
@@ -632,7 +632,7 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 /// 			return err
 /// 		}
 /// 		targetForwardingRuleDefaultSubnetwork, err := compute.NewSubnetwork(ctx, "target_forwarding_rule_default_subnetwork", &compute.SubnetworkArgs{
-/// 			Name:        pulumi.String("tf-test-default-subnetwork-_40785"),
+/// 			Name:        pulumi.String("tf-test-default-subnetwork-_34535"),
 /// 			Region:      pulumi.String("us-west2"),
 /// 			Network:     targetForwardingRule.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.10.0.0/24"),
@@ -641,7 +641,7 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 /// 			return err
 /// 		}
 /// 		targetForwardingRuleRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "target_forwarding_rule", &compute.RegionHealthCheckArgs{
-/// 			Name:   pulumi.String("tf-test-health-check-_79169"),
+/// 			Name:   pulumi.String("tf-test-health-check-_22375"),
 /// 			Region: pulumi.String("us-west2"),
 /// 			HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
 /// 				Port: pulumi.Int(80),
@@ -651,7 +651,7 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 /// 			return err
 /// 		}
 /// 		targetForwardingRuleRegionBackendService, err := compute.NewRegionBackendService(ctx, "target_forwarding_rule", &compute.RegionBackendServiceArgs{
-/// 			Name:                pulumi.String("tf-test-backend-service-_56529"),
+/// 			Name:                pulumi.String("tf-test-backend-service-_29439"),
 /// 			Region:              pulumi.String("us-west2"),
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
@@ -661,7 +661,7 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 /// 			return err
 /// 		}
 /// 		targetForwardingRuleRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "target_forwarding_rule", &compute.RegionUrlMapArgs{
-/// 			Name:           pulumi.String("tf-test-url-map-_75413"),
+/// 			Name:           pulumi.String("tf-test-url-map-_87786"),
 /// 			Region:         pulumi.String("us-west2"),
 /// 			DefaultService: targetForwardingRuleRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 		})
@@ -669,7 +669,7 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 /// 			return err
 /// 		}
 /// 		targetForwardingRuleRegionTargetHttpProxy, err := compute.NewRegionTargetHttpProxy(ctx, "target_forwarding_rule", &compute.RegionTargetHttpProxyArgs{
-/// 			Name:   pulumi.String("tf-test-target-http-proxy-_55138"),
+/// 			Name:   pulumi.String("tf-test-target-http-proxy-_2067"),
 /// 			Region: pulumi.String("us-west2"),
 /// 			UrlMap: targetForwardingRuleRegionUrlMap.ID().ToIDOutput().ToStringOutput(),
 /// 		})
@@ -677,7 +677,7 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 /// 			return err
 /// 		}
 /// 		targetForwardingRuleForwardingRule, err := compute.NewForwardingRule(ctx, "target_forwarding_rule", &compute.ForwardingRuleArgs{
-/// 			Name:                pulumi.String("tf-test-forwarding-rule-_37559"),
+/// 			Name:                pulumi.String("tf-test-forwarding-rule-_40785"),
 /// 			Region:              pulumi.String("us-west2"),
 /// 			Network:             targetForwardingRule.ID().ToIDOutput().ToStringOutput(),
 /// 			Subnetwork:          targetForwardingRuleDefaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
@@ -852,11 +852,11 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "target_forwarding_rule" {
-///   name                    = "tf-test-network-_87786"
+///   name                    = "tf-test-network-_75092"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "target_forwarding_rule_proxy_subnetwork" {
-///   name          = "tf-test-proxy-subnetwork-_2067"
+///   name          = "tf-test-proxy-subnetwork-_2605"
 ///   region        = "us-west2"
 ///   network       = gcp_compute_network.target_forwarding_rule.id
 ///   ip_cidr_range = "10.20.0.0/24"
@@ -864,38 +864,38 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///   role          = "ACTIVE"
 /// }
 /// resource "gcp_compute_subnetwork" "target_forwarding_rule_default_subnetwork" {
-///   name          = "tf-test-default-subnetwork-_40785"
+///   name          = "tf-test-default-subnetwork-_34535"
 ///   region        = "us-west2"
 ///   network       = gcp_compute_network.target_forwarding_rule.id
 ///   ip_cidr_range = "10.10.0.0/24"
 /// }
 /// resource "gcp_compute_regionhealthcheck" "target_forwarding_rule" {
-///   name   = "tf-test-health-check-_79169"
+///   name   = "tf-test-health-check-_22375"
 ///   region = "us-west2"
 ///   http_health_check = {
 ///     port = 80
 ///   }
 /// }
 /// resource "gcp_compute_regionbackendservice" "target_forwarding_rule" {
-///   name                  = "tf-test-backend-service-_56529"
+///   name                  = "tf-test-backend-service-_29439"
 ///   region                = "us-west2"
 ///   protocol              = "HTTP"
 ///   load_balancing_scheme = "INTERNAL_MANAGED"
 ///   health_checks         = gcp_compute_regionhealthcheck.target_forwarding_rule.id
 /// }
 /// resource "gcp_compute_regionurlmap" "target_forwarding_rule" {
-///   name            = "tf-test-url-map-_75413"
+///   name            = "tf-test-url-map-_87786"
 ///   region          = "us-west2"
 ///   default_service = gcp_compute_regionbackendservice.target_forwarding_rule.id
 /// }
 /// resource "gcp_compute_regiontargethttpproxy" "target_forwarding_rule" {
-///   name    = "tf-test-target-http-proxy-_55138"
+///   name    = "tf-test-target-http-proxy-_2067"
 ///   region  = "us-west2"
 ///   url_map = gcp_compute_regionurlmap.target_forwarding_rule.id
 /// }
 /// resource "gcp_compute_forwardingrule" "target_forwarding_rule" {
 ///   depends_on            = [gcp_compute_subnetwork.target_forwarding_rule_proxy_subnetwork]
-///   name                  = "tf-test-forwarding-rule-_37559"
+///   name                  = "tf-test-forwarding-rule-_40785"
 ///   region                = "us-west2"
 ///   network               = gcp_compute_network.target_forwarding_rule.id
 ///   subnetwork            = gcp_compute_subnetwork.target_forwarding_rule_default_subnetwork.id
@@ -1044,12 +1044,12 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///             .build());
 ///
 ///         var targetForwardingRule = new Network("targetForwardingRule", NetworkArgs.builder()
-///             .name("tf-test-network-_87786")
+///             .name("tf-test-network-_75092")
 ///             .autoCreateSubnetworks(false)
 ///             .build());
 ///
 ///         var targetForwardingRuleProxySubnetwork = new Subnetwork("targetForwardingRuleProxySubnetwork", SubnetworkArgs.builder()
-///             .name("tf-test-proxy-subnetwork-_2067")
+///             .name("tf-test-proxy-subnetwork-_2605")
 ///             .region("us-west2")
 ///             .network(targetForwardingRule.id())
 ///             .ipCidrRange("10.20.0.0/24")
@@ -1058,14 +1058,14 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///             .build());
 ///
 ///         var targetForwardingRuleDefaultSubnetwork = new Subnetwork("targetForwardingRuleDefaultSubnetwork", SubnetworkArgs.builder()
-///             .name("tf-test-default-subnetwork-_40785")
+///             .name("tf-test-default-subnetwork-_34535")
 ///             .region("us-west2")
 ///             .network(targetForwardingRule.id())
 ///             .ipCidrRange("10.10.0.0/24")
 ///             .build());
 ///
 ///         var targetForwardingRuleRegionHealthCheck = new RegionHealthCheck("targetForwardingRuleRegionHealthCheck", RegionHealthCheckArgs.builder()
-///             .name("tf-test-health-check-_79169")
+///             .name("tf-test-health-check-_22375")
 ///             .region("us-west2")
 ///             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
 ///                 .port(80)
@@ -1073,7 +1073,7 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///             .build());
 ///
 ///         var targetForwardingRuleRegionBackendService = new RegionBackendService("targetForwardingRuleRegionBackendService", RegionBackendServiceArgs.builder()
-///             .name("tf-test-backend-service-_56529")
+///             .name("tf-test-backend-service-_29439")
 ///             .region("us-west2")
 ///             .protocol("HTTP")
 ///             .loadBalancingScheme("INTERNAL_MANAGED")
@@ -1081,19 +1081,19 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///             .build());
 ///
 ///         var targetForwardingRuleRegionUrlMap = new RegionUrlMap("targetForwardingRuleRegionUrlMap", RegionUrlMapArgs.builder()
-///             .name("tf-test-url-map-_75413")
+///             .name("tf-test-url-map-_87786")
 ///             .region("us-west2")
 ///             .defaultService(targetForwardingRuleRegionBackendService.id())
 ///             .build());
 ///
 ///         var targetForwardingRuleRegionTargetHttpProxy = new RegionTargetHttpProxy("targetForwardingRuleRegionTargetHttpProxy", RegionTargetHttpProxyArgs.builder()
-///             .name("tf-test-target-http-proxy-_55138")
+///             .name("tf-test-target-http-proxy-_2067")
 ///             .region("us-west2")
 ///             .urlMap(targetForwardingRuleRegionUrlMap.id())
 ///             .build());
 ///
 ///         var targetForwardingRuleForwardingRule = new ForwardingRule("targetForwardingRuleForwardingRule", ForwardingRuleArgs.builder()
-///             .name("tf-test-forwarding-rule-_37559")
+///             .name("tf-test-forwarding-rule-_40785")
 ///             .region("us-west2")
 ///             .network(targetForwardingRule.id())
 ///             .subnetwork(targetForwardingRuleDefaultSubnetwork.id())
@@ -1216,13 +1216,13 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///     type: gcp:compute:Network
 ///     name: target_forwarding_rule
 ///     properties:
-///       name: tf-test-network-_87786
+///       name: tf-test-network-_75092
 ///       autoCreateSubnetworks: false
 ///   targetForwardingRuleProxySubnetwork:
 ///     type: gcp:compute:Subnetwork
 ///     name: target_forwarding_rule_proxy_subnetwork
 ///     properties:
-///       name: tf-test-proxy-subnetwork-_2067
+///       name: tf-test-proxy-subnetwork-_2605
 ///       region: us-west2
 ///       network: ${targetForwardingRule.id}
 ///       ipCidrRange: 10.20.0.0/24
@@ -1232,7 +1232,7 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///     type: gcp:compute:Subnetwork
 ///     name: target_forwarding_rule_default_subnetwork
 ///     properties:
-///       name: tf-test-default-subnetwork-_40785
+///       name: tf-test-default-subnetwork-_34535
 ///       region: us-west2
 ///       network: ${targetForwardingRule.id}
 ///       ipCidrRange: 10.10.0.0/24
@@ -1240,7 +1240,7 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///     type: gcp:compute:RegionHealthCheck
 ///     name: target_forwarding_rule
 ///     properties:
-///       name: tf-test-health-check-_79169
+///       name: tf-test-health-check-_22375
 ///       region: us-west2
 ///       httpHealthCheck:
 ///         port: 80
@@ -1248,7 +1248,7 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///     type: gcp:compute:RegionBackendService
 ///     name: target_forwarding_rule
 ///     properties:
-///       name: tf-test-backend-service-_56529
+///       name: tf-test-backend-service-_29439
 ///       region: us-west2
 ///       protocol: HTTP
 ///       loadBalancingScheme: INTERNAL_MANAGED
@@ -1257,21 +1257,21 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 ///     type: gcp:compute:RegionUrlMap
 ///     name: target_forwarding_rule
 ///     properties:
-///       name: tf-test-url-map-_75413
+///       name: tf-test-url-map-_87786
 ///       region: us-west2
 ///       defaultService: ${targetForwardingRuleRegionBackendService.id}
 ///   targetForwardingRuleRegionTargetHttpProxy:
 ///     type: gcp:compute:RegionTargetHttpProxy
 ///     name: target_forwarding_rule
 ///     properties:
-///       name: tf-test-target-http-proxy-_55138
+///       name: tf-test-target-http-proxy-_2067
 ///       region: us-west2
 ///       urlMap: ${targetForwardingRuleRegionUrlMap.id}
 ///   targetForwardingRuleForwardingRule:
 ///     type: gcp:compute:ForwardingRule
 ///     name: target_forwarding_rule
 ///     properties:
-///       name: tf-test-forwarding-rule-_37559
+///       name: tf-test-forwarding-rule-_40785
 ///       region: us-west2
 ///       network: ${targetForwardingRule.id}
 ///       subnetwork: ${targetForwardingRuleDefaultSubnetwork.id}
@@ -1483,7 +1483,7 @@ import 'region_network_firewall_policy_with_rules_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1692,7 +1692,7 @@ class RegionNetworkFirewallPolicyWithRules extends pulumi.CustomResource {
           'gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

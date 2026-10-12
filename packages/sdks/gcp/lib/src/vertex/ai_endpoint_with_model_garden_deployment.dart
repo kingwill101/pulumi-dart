@@ -69,7 +69,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -201,7 +201,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -366,7 +366,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -683,7 +683,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1159,7 +1159,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1512,7 +1512,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1743,9 +1743,9 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1954,7 +1954,7 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionPolicy;
   /// The deploy config to use for the deployment.
   /// Structure is documented below.
-  late final pulumi.Output<AiEndpointWithModelGardenDeploymentDeployConfig?> deployConfig;
+  late final pulumi.Output<AiEndpointWithModelGardenDeploymentDeployConfig> deployConfig;
   /// Output only. The display name assigned to the model deployed to the endpoint.
   /// This is not required to delete the resource but is used for debug logging.
   late final pulumi.Output<String> deployedModelDisplayName;
@@ -1996,10 +1996,10 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
           'gcp:vertex/aiEndpointWithModelGardenDeployment:AiEndpointWithModelGardenDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deployedModelDisplayName = registerOutput<String>('deployedModelDisplayName');
     deployedModelId = registerOutput<String>('deployedModelId');
     endpoint = registerOutput<String>('endpoint');
@@ -2036,7 +2036,7 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deployedModelDisplayName = registerOutput<String>('deployedModelDisplayName');
     deployedModelId = registerOutput<String>('deployedModelId');
     endpoint = registerOutput<String>('endpoint');
@@ -2058,7 +2058,7 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deployedModelDisplayName = registerOutput<String>('deployedModelDisplayName');
     deployedModelId = registerOutput<String>('deployedModelId');
     endpoint = registerOutput<String>('endpoint');

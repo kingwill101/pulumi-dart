@@ -44,10 +44,11 @@ import 'target_sslproxy_state.dart';
 /// const defaultBackendService = new gcp.compute.BackendService("default", {
 ///     name: "backend-service",
 ///     protocol: "SSL",
+///     loadBalancingScheme: "EXTERNAL",
 ///     healthChecks: defaultHealthCheck.id,
 /// });
 /// const defaultCertificateMap = new gcp.certificatemanager.CertificateMap("default", {
-///     name: "certificate-map-test",
+///     name: "certificate-map",
 ///     description: "My acceptance test certificate map",
 /// });
 /// const _default = new gcp.compute.TargetSSLProxy("default", {
@@ -76,9 +77,10 @@ import 'target_sslproxy_state.dart';
 /// default_backend_service = gcp.compute.BackendService("default",
 ///     name="backend-service",
 ///     protocol="SSL",
+///     load_balancing_scheme="EXTERNAL",
 ///     health_checks=default_health_check.id)
 /// default_certificate_map = gcp.certificatemanager.CertificateMap("default",
-///     name="certificate-map-test",
+///     name="certificate-map",
 ///     description="My acceptance test certificate map")
 /// default = gcp.compute.TargetSSLProxy("default",
 ///     name="test-proxy",
@@ -123,12 +125,13 @@ import 'target_sslproxy_state.dart';
 ///     {
 ///         Name = "backend-service",
 ///         Protocol = "SSL",
+///         LoadBalancingScheme = "EXTERNAL",
 ///         HealthChecks = defaultHealthCheck.Id,
 ///     });
 ///
 ///     var defaultCertificateMap = new Gcp.CertificateManager.CertificateMap("default", new()
 ///     {
-///         Name = "certificate-map-test",
+///         Name = "certificate-map",
 ///         Description = "My acceptance test certificate map",
 ///     });
 ///
@@ -151,8 +154,8 @@ import 'target_sslproxy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -191,15 +194,16 @@ import 'target_sslproxy_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultBackendService, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("backend-service"),
-/// 			Protocol:     pulumi.String("SSL"),
-/// 			HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                pulumi.String("backend-service"),
+/// 			Protocol:            pulumi.String("SSL"),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		defaultCertificateMap, err := certificatemanager.NewCertificateMapResource(ctx, "default", &certificatemanager.CertificateMapResourceArgs{
-/// 			Name:        pulumi.String("certificate-map-test"),
+/// 			Name:        pulumi.String("certificate-map"),
 /// 			Description: pulumi.String("My acceptance test certificate map"),
 /// 		})
 /// 		if err != nil {
@@ -246,9 +250,10 @@ import 'target_sslproxy_state.dart';
 ///   certificate = file("path/to/certificate.crt")
 /// }
 /// resource "gcp_compute_backendservice" "default" {
-///   name          = "backend-service"
-///   protocol      = "SSL"
-///   health_checks = gcp_compute_healthcheck.default.id
+///   name                  = "backend-service"
+///   protocol              = "SSL"
+///   load_balancing_scheme = "EXTERNAL"
+///   health_checks         = gcp_compute_healthcheck.default.id
 /// }
 /// resource "gcp_compute_healthcheck" "default" {
 ///   name               = "health-check"
@@ -259,7 +264,7 @@ import 'target_sslproxy_state.dart';
 ///   }
 /// }
 /// resource "gcp_certificatemanager_certificatemap" "default" {
-///   name        = "certificate-map-test"
+///   name        = "certificate-map"
 ///   description = "My acceptance test certificate map"
 /// }
 /// ```
@@ -317,11 +322,12 @@ import 'target_sslproxy_state.dart';
 ///         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
 ///             .name("backend-service")
 ///             .protocol("SSL")
+///             .loadBalancingScheme("EXTERNAL")
 ///             .healthChecks(defaultHealthCheck.id())
 ///             .build());
 ///
 ///         var defaultCertificateMap = new CertificateMap("defaultCertificateMap", CertificateMapArgs.builder()
-///             .name("certificate-map-test")
+///             .name("certificate-map")
 ///             .description("My acceptance test certificate map")
 ///             .build());
 ///
@@ -368,6 +374,7 @@ import 'target_sslproxy_state.dart';
 ///     properties:
 ///       name: backend-service
 ///       protocol: SSL
+///       loadBalancingScheme: EXTERNAL
 ///       healthChecks: ${defaultHealthCheck.id}
 ///   defaultHealthCheck:
 ///     type: gcp:compute:HealthCheck
@@ -382,7 +389,7 @@ import 'target_sslproxy_state.dart';
 ///     type: gcp:certificatemanager:CertificateMap
 ///     name: default
 ///     properties:
-///       name: certificate-map-test
+///       name: certificate-map
 ///       description: My acceptance test certificate map
 /// ```
 ///
@@ -462,7 +469,7 @@ class TargetSSLProxy extends pulumi.CustomResource {
           'gcp:compute/targetSSLProxy:TargetSSLProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     backendService = registerOutput<String>('backendService');
     certificateMap = registerOutput<String?>('certificateMap');

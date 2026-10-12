@@ -193,7 +193,7 @@ import 'workforce_pool_provider_scim_tenant_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -462,7 +462,7 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
   /// https://iamscim.googleapis.com/{version}/{tenant_id}/
   late final pulumi.Output<String> baseUri;
   /// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
-  late final pulumi.Output<Map<String, String>?> claimMapping;
+  late final pulumi.Output<Map<String, String>> claimMapping;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -510,10 +510,10 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
           'gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     baseUri = registerOutput<String>('baseUri');
-    claimMapping = registerOutput<Map<String, String>?>('claimMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    claimMapping = registerOutput<Map<String, String>>('claimMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -553,7 +553,7 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     baseUri = registerOutput<String>('baseUri');
-    claimMapping = registerOutput<Map<String, String>?>('claimMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    claimMapping = registerOutput<Map<String, String>>('claimMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -578,7 +578,7 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     baseUri = registerOutput<String>('baseUri');
-    claimMapping = registerOutput<Map<String, String>?>('claimMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    claimMapping = registerOutput<Map<String, String>>('claimMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

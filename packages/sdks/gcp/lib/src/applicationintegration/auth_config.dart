@@ -99,7 +99,7 @@ import 'auth_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/applicationintegration"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/applicationintegration"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -317,7 +317,7 @@ class AuthConfig extends pulumi.CustomResource {
           'gcp:applicationintegration/authConfig:AuthConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     certificateId = registerOutput<String>('certificateId');
     clientCertificate = registerOutput<AuthConfigClientCertificate?>('clientCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthConfigClientCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });

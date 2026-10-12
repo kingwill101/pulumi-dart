@@ -8,6 +8,7 @@ import 'analyst_agent_persona_resource.dart';
 import 'analyst_agent_persona_skill.dart';
 import 'analyst_agent_persona_state.dart';
 import 'analyst_agent_persona_table.dart';
+import 'analyst_agent_persona_web_search_config.dart';
 
 /// Represents a persona configuration for an analyst agent in Agentic Applications.
 ///
@@ -54,6 +55,10 @@ import 'analyst_agent_persona_table.dart';
 ///         content: `# Finance Analysis
 /// Analyze financial data.`,
 ///     }],
+///     mathRenderingMode: "MATH_RENDERING_MODE_LATEX",
+///     webSearchConfig: {
+///         excludedDomains: ["example.com"],
+///     },
 /// });
 /// ```
 /// ```python
@@ -88,7 +93,11 @@ import 'analyst_agent_persona_table.dart';
 ///         "description": "Skill for finance analysis",
 ///         "content": """# Finance Analysis
 /// Analyze financial data.""",
-///     }])
+///     }],
+///     math_rendering_mode="MATH_RENDERING_MODE_LATEX",
+///     web_search_config={
+///         "excluded_domains": ["example.com"],
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -139,6 +148,14 @@ import 'analyst_agent_persona_table.dart';
 /// Analyze financial data.",
 ///             },
 ///         },
+///         MathRenderingMode = "MATH_RENDERING_MODE_LATEX",
+///         WebSearchConfig = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaWebSearchConfigArgs
+///         {
+///             ExcludedDomains = new[]
+///             {
+///                 "example.com",
+///             },
+///         },
 ///     });
 ///
 /// });
@@ -147,7 +164,7 @@ import 'analyst_agent_persona_table.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/agenticapplications"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agenticapplications"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -183,6 +200,12 @@ import 'analyst_agent_persona_table.dart';
 /// 					SkillId:     pulumi.String("finance_analysis_skill"),
 /// 					Description: pulumi.String("Skill for finance analysis"),
 /// 					Content:     pulumi.String("# Finance Analysis\nAnalyze financial data."),
+/// 				},
+/// 			},
+/// 			MathRenderingMode: pulumi.String("MATH_RENDERING_MODE_LATEX"),
+/// 			WebSearchConfig: &agenticapplications.AnalystAgentPersonaWebSearchConfigArgs{
+/// 				ExcludedDomains: pulumi.StringArray{
+/// 					pulumi.String("example.com"),
 /// 				},
 /// 			},
 /// 		})
@@ -227,6 +250,10 @@ import 'analyst_agent_persona_table.dart';
 ///     description = "Skill for finance analysis"
 ///     content     = "# Finance Analysis\nAnalyze financial data."
 ///   }
+///   math_rendering_mode = "MATH_RENDERING_MODE_LATEX"
+///   web_search_config = {
+///     excluded_domains = ["example.com"]
+///   }
 /// }
 /// ```
 /// ```java
@@ -241,6 +268,7 @@ import 'analyst_agent_persona_table.dart';
 /// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactExampleResourceArgs;
 /// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactExampleResourceRawFileResourceArgs;
 /// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaSkillArgs;
+/// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaWebSearchConfigArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -283,6 +311,10 @@ import 'analyst_agent_persona_table.dart';
 /// # Finance Analysis
 /// Analyze financial data.                """)
 ///                 .build())
+///             .mathRenderingMode("MATH_RENDERING_MODE_LATEX")
+///             .webSearchConfig(AnalystAgentPersonaWebSearchConfigArgs.builder()
+///                 .excludedDomains("example.com")
+///                 .build())
 ///             .build());
 ///
 ///     }
@@ -317,6 +349,10 @@ import 'analyst_agent_persona_table.dart';
 ///           content: |-
 ///             # Finance Analysis
 ///             Analyze financial data.
+///       mathRenderingMode: MATH_RENDERING_MODE_LATEX
+///       webSearchConfig:
+///         excludedDomains:
+///           - example.com
 /// ```
 ///
 /// ### Analyst Agent Persona Full
@@ -434,6 +470,7 @@ import 'analyst_agent_persona_table.dart';
 ///             }],
 ///         },
 ///         visualizationOptions: {
+///             visualizationMode: "VISUALIZATION_MODE_WHEN_NECESSARY",
 ///             visualizationExamples: [{
 ///                 visualizationType: "VISUALIZATION_TYPE_UNSPECIFIED",
 ///                 resource: {
@@ -459,6 +496,7 @@ import 'analyst_agent_persona_table.dart';
 ///         enabled: true,
 ///         prompt: "Use this server for queries",
 ///         apiKeyName: "x-api-key",
+///         apiKeyHeader: "x-api-key-header",
 ///         clientId: "sample-client-id",
 ///         oauthTokenUrl: "https://example.com/oauth/token",
 ///     }],
@@ -510,6 +548,11 @@ import 'analyst_agent_persona_table.dart';
 ///             dataType: "STRING",
 ///         }],
 ///     }],
+///     mathRenderingMode: "MATH_RENDERING_MODE_LATEX",
+///     webSearchConfig: {
+///         disabled: false,
+///         excludedDomains: ["example.com"],
+///     },
 /// });
 /// ```
 /// ```python
@@ -631,6 +674,7 @@ import 'analyst_agent_persona_table.dart';
 ///             }],
 ///         },
 ///         "visualization_options": {
+///             "visualization_mode": "VISUALIZATION_MODE_WHEN_NECESSARY",
 ///             "visualization_examples": [{
 ///                 "visualization_type": "VISUALIZATION_TYPE_UNSPECIFIED",
 ///                 "resource": {
@@ -656,6 +700,7 @@ import 'analyst_agent_persona_table.dart';
 ///         "enabled": True,
 ///         "prompt": "Use this server for queries",
 ///         "api_key_name": "x-api-key",
+///         "api_key_header": "x-api-key-header",
 ///         "client_id": "sample-client-id",
 ///         "oauth_token_url": "https://example.com/oauth/token",
 ///     }],
@@ -715,7 +760,12 @@ import 'analyst_agent_persona_table.dart';
 ///             "description": "First column description",
 ///             "data_type": "STRING",
 ///         }],
-///     }])
+///     }],
+///     math_rendering_mode="MATH_RENDERING_MODE_LATEX",
+///     web_search_config={
+///         "disabled": False,
+///         "excluded_domains": ["example.com"],
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -889,6 +939,7 @@ import 'analyst_agent_persona_table.dart';
 ///             },
 ///             VisualizationOptions = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs
 ///             {
+///                 VisualizationMode = "VISUALIZATION_MODE_WHEN_NECESSARY",
 ///                 VisualizationExamples = new[]
 ///                 {
 ///                     new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgs
@@ -927,6 +978,7 @@ import 'analyst_agent_persona_table.dart';
 ///                 Enabled = true,
 ///                 Prompt = "Use this server for queries",
 ///                 ApiKeyName = "x-api-key",
+///                 ApiKeyHeader = "x-api-key-header",
 ///                 ClientId = "sample-client-id",
 ///                 OauthTokenUrl = "https://example.com/oauth/token",
 ///             },
@@ -1016,6 +1068,15 @@ import 'analyst_agent_persona_table.dart';
 ///                 },
 ///             },
 ///         },
+///         MathRenderingMode = "MATH_RENDERING_MODE_LATEX",
+///         WebSearchConfig = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaWebSearchConfigArgs
+///         {
+///             Disabled = false,
+///             ExcludedDomains = new[]
+///             {
+///                 "example.com",
+///             },
+///         },
 ///     });
 ///
 /// });
@@ -1026,9 +1087,9 @@ import 'analyst_agent_persona_table.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/agenticapplications"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agenticapplications"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1171,6 +1232,7 @@ import 'analyst_agent_persona_table.dart';
 /// 					},
 /// 				},
 /// 				VisualizationOptions: &agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs{
+/// 					VisualizationMode: pulumi.String("VISUALIZATION_MODE_WHEN_NECESSARY"),
 /// 					VisualizationExamples: agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArray{
 /// 						&agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgs{
 /// 							VisualizationType: pulumi.String("VISUALIZATION_TYPE_UNSPECIFIED"),
@@ -1201,6 +1263,7 @@ import 'analyst_agent_persona_table.dart';
 /// 					Enabled:       pulumi.Bool(true),
 /// 					Prompt:        pulumi.String("Use this server for queries"),
 /// 					ApiKeyName:    pulumi.String("x-api-key"),
+/// 					ApiKeyHeader:  pulumi.String("x-api-key-header"),
 /// 					ClientId:      pulumi.String("sample-client-id"),
 /// 					OauthTokenUrl: pulumi.String("https://example.com/oauth/token"),
 /// 				},
@@ -1269,6 +1332,13 @@ import 'analyst_agent_persona_table.dart';
 /// 							DataType:    pulumi.String("STRING"),
 /// 						},
 /// 					},
+/// 				},
+/// 			},
+/// 			MathRenderingMode: pulumi.String("MATH_RENDERING_MODE_LATEX"),
+/// 			WebSearchConfig: &agenticapplications.AnalystAgentPersonaWebSearchConfigArgs{
+/// 				Disabled: pulumi.Bool(false),
+/// 				ExcludedDomains: pulumi.StringArray{
+/// 					pulumi.String("example.com"),
 /// 				},
 /// 			},
 /// 		})
@@ -1390,6 +1460,7 @@ import 'analyst_agent_persona_table.dart';
 ///       }]
 ///     }
 ///     visualization_options = {
+///       visualization_mode = "VISUALIZATION_MODE_WHEN_NECESSARY"
 ///       visualization_examples = [{
 ///         "visualizationType" = "VISUALIZATION_TYPE_UNSPECIFIED"
 ///         "resource" = {
@@ -1415,6 +1486,7 @@ import 'analyst_agent_persona_table.dart';
 ///     enabled         = true
 ///     prompt          = "Use this server for queries"
 ///     api_key_name    = "x-api-key"
+///     api_key_header  = "x-api-key-header"
 ///     client_id       = "sample-client-id"
 ///     oauth_token_url = "https://example.com/oauth/token"
 ///   }
@@ -1463,6 +1535,11 @@ import 'analyst_agent_persona_table.dart';
 ///       data_type   = "STRING"
 ///     }
 ///   }
+///   math_rendering_mode = "MATH_RENDERING_MODE_LATEX"
+///   web_search_config = {
+///     disabled         = false
+///     excluded_domains = ["example.com"]
+///   }
 /// }
 /// ```
 /// ```java
@@ -1510,6 +1587,7 @@ import 'analyst_agent_persona_table.dart';
 /// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaSkillReferenceArgs;
 /// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaTableArgs;
 /// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaTableColumnArgs;
+/// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaWebSearchConfigArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1644,6 +1722,7 @@ import 'analyst_agent_persona_table.dart';
 ///                         .build())
 ///                     .build())
 ///                 .visualizationOptions(AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs.builder()
+///                     .visualizationMode("VISUALIZATION_MODE_WHEN_NECESSARY")
 ///                     .visualizationExamples(AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgs.builder()
 ///                         .visualizationType("VISUALIZATION_TYPE_UNSPECIFIED")
 ///                         .resource(AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceArgs.builder()
@@ -1669,6 +1748,7 @@ import 'analyst_agent_persona_table.dart';
 ///                 .enabled(true)
 ///                 .prompt("Use this server for queries")
 ///                 .apiKeyName("x-api-key")
+///                 .apiKeyHeader("x-api-key-header")
 ///                 .clientId("sample-client-id")
 ///                 .oauthTokenUrl("https://example.com/oauth/token")
 ///                 .build())
@@ -1728,6 +1808,11 @@ import 'analyst_agent_persona_table.dart';
 ///                     .description("First column description")
 ///                     .dataType("STRING")
 ///                     .build())
+///                 .build())
+///             .mathRenderingMode("MATH_RENDERING_MODE_LATEX")
+///             .webSearchConfig(AnalystAgentPersonaWebSearchConfigArgs.builder()
+///                 .disabled(false)
+///                 .excludedDomains("example.com")
 ///                 .build())
 ///             .build());
 ///
@@ -1826,6 +1911,7 @@ import 'analyst_agent_persona_table.dart';
 ///                   fileContent: UTEgUmV2ZW51ZTogMTAwTQ==
 ///                   mimeType: text/plain
 ///         visualizationOptions:
+///           visualizationMode: VISUALIZATION_MODE_WHEN_NECESSARY
 ///           visualizationExamples:
 ///             - visualizationType: VISUALIZATION_TYPE_UNSPECIFIED
 ///               resource:
@@ -1845,6 +1931,7 @@ import 'analyst_agent_persona_table.dart';
 ///           enabled: true
 ///           prompt: Use this server for queries
 ///           apiKeyName: x-api-key
+///           apiKeyHeader: x-api-key-header
 ///           clientId: sample-client-id
 ///           oauthTokenUrl: https://example.com/oauth/token
 ///       resources:
@@ -1883,6 +1970,200 @@ import 'analyst_agent_persona_table.dart';
 ///             - name: column_1
 ///               description: First column description
 ///               dataType: STRING
+///       mathRenderingMode: MATH_RENDERING_MODE_LATEX
+///       webSearchConfig:
+///         disabled: false
+///         excludedDomains:
+///           - example.com
+/// ```
+///
+/// ### Analyst Agent Persona Methodology Export Options
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const example = new gcp.agenticapplications.AnalystAgentPersona("example", {
+///     location: "us",
+///     analystAgentPersonaId: "methodology",
+///     displayName: "Test Analyst Persona Methodology Export",
+///     displayDescription: "Sample analyst agent persona description",
+///     modelDescription: "Sample model description",
+///     role: "ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+///     artifactsConfig: {
+///         methodologyExportOptions: {
+///             appendMethodology: true,
+///             exportFormat: "MARKDOWN",
+///             exportMethodologyArtifact: true,
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// example = gcp.agenticapplications.AnalystAgentPersona("example",
+///     location="us",
+///     analyst_agent_persona_id="methodology",
+///     display_name="Test Analyst Persona Methodology Export",
+///     display_description="Sample analyst agent persona description",
+///     model_description="Sample model description",
+///     role="ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+///     artifacts_config={
+///         "methodology_export_options": {
+///             "append_methodology": True,
+///             "export_format": "MARKDOWN",
+///             "export_methodology_artifact": True,
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Gcp.AgenticApplications.AnalystAgentPersona("example", new()
+///     {
+///         Location = "us",
+///         AnalystAgentPersonaId = "methodology",
+///         DisplayName = "Test Analyst Persona Methodology Export",
+///         DisplayDescription = "Sample analyst agent persona description",
+///         ModelDescription = "Sample model description",
+///         Role = "ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+///         ArtifactsConfig = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaArtifactsConfigArgs
+///         {
+///             MethodologyExportOptions = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs
+///             {
+///                 AppendMethodology = true,
+///                 ExportFormat = "MARKDOWN",
+///                 ExportMethodologyArtifact = true,
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agenticapplications"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := agenticapplications.NewAnalystAgentPersona(ctx, "example", &agenticapplications.AnalystAgentPersonaArgs{
+/// 			Location:              pulumi.String("us"),
+/// 			AnalystAgentPersonaId: pulumi.String("methodology"),
+/// 			DisplayName:           pulumi.String("Test Analyst Persona Methodology Export"),
+/// 			DisplayDescription:    pulumi.String("Sample analyst agent persona description"),
+/// 			ModelDescription:      pulumi.String("Sample model description"),
+/// 			Role:                  pulumi.String("ANALYST_ROLE_GENERIC_FINANCE_ANALYST"),
+/// 			ArtifactsConfig: &agenticapplications.AnalystAgentPersonaArtifactsConfigArgs{
+/// 				MethodologyExportOptions: &agenticapplications.AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs{
+/// 					AppendMethodology:         pulumi.Bool(true),
+/// 					ExportFormat:              pulumi.String("MARKDOWN"),
+/// 					ExportMethodologyArtifact: pulumi.Bool(true),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_agenticapplications_analystagentpersona" "example" {
+///   location                 = "us"
+///   analyst_agent_persona_id = "methodology"
+///   display_name             = "Test Analyst Persona Methodology Export"
+///   display_description      = "Sample analyst agent persona description"
+///   model_description        = "Sample model description"
+///   role                     = "ANALYST_ROLE_GENERIC_FINANCE_ANALYST"
+///   artifacts_config = {
+///     methodology_export_options = {
+///       append_methodology          = true
+///       export_format               = "MARKDOWN"
+///       export_methodology_artifact = true
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.agenticapplications.AnalystAgentPersona;
+/// import com.pulumi.gcp.agenticapplications.AnalystAgentPersonaArgs;
+/// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigArgs;
+/// import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new AnalystAgentPersona("example", AnalystAgentPersonaArgs.builder()
+///             .location("us")
+///             .analystAgentPersonaId("methodology")
+///             .displayName("Test Analyst Persona Methodology Export")
+///             .displayDescription("Sample analyst agent persona description")
+///             .modelDescription("Sample model description")
+///             .role("ANALYST_ROLE_GENERIC_FINANCE_ANALYST")
+///             .artifactsConfig(AnalystAgentPersonaArtifactsConfigArgs.builder()
+///                 .methodologyExportOptions(AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs.builder()
+///                     .appendMethodology(true)
+///                     .exportFormat("MARKDOWN")
+///                     .exportMethodologyArtifact(true)
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: gcp:agenticapplications:AnalystAgentPersona
+///     properties:
+///       location: us
+///       analystAgentPersonaId: methodology
+///       displayName: Test Analyst Persona Methodology Export
+///       displayDescription: Sample analyst agent persona description
+///       modelDescription: Sample model description
+///       role: ANALYST_ROLE_GENERIC_FINANCE_ANALYST
+///       artifactsConfig:
+///         methodologyExportOptions:
+///           appendMethodology: true
+///           exportFormat: MARKDOWN
+///           exportMethodologyArtifact: true
 /// ```
 ///
 ///
@@ -1939,6 +2220,11 @@ import 'analyst_agent_persona_table.dart';
 /// * `documentGenerationOptions` -
 /// (Optional)
 /// Options for document generation.
+/// Structure is documented below.
+///
+/// * `methodologyExportOptions` -
+/// (Optional)
+/// Options for methodology export.
 /// Structure is documented below.
 ///
 /// * `slideGenerationOptions` -
@@ -2089,6 +2375,24 @@ import 'analyst_agent_persona_table.dart';
 /// (Required)
 /// The mime type of the file.
 ///
+/// &lt;a name="nestedArtifactsConfigMethodologyExportOptions"&gt;&lt;/a&gt;The `methodologyExportOptions` block supports:
+///
+/// * `appendMethodology` -
+/// (Optional)
+/// If true, append the detailed methodology to the final response.
+///
+/// * `exportFormat` -
+/// (Optional)
+/// Format for methodology export.
+/// Possible values:
+/// MARKDOWN
+/// HTML
+/// PDF
+///
+/// * `exportMethodologyArtifact` -
+/// (Optional)
+/// If true, export the detailed methodology as a separate artifact.
+///
 /// &lt;a name="nestedArtifactsConfigSlideGenerationOptions"&gt;&lt;/a&gt;The `slideGenerationOptions` block supports:
 ///
 /// * `exportFormat` -
@@ -2233,6 +2537,15 @@ import 'analyst_agent_persona_table.dart';
 /// (Optional)
 /// Examples for visualizations.
 /// Structure is documented below.
+///
+/// * `visualizationMode` -
+/// (Optional)
+/// Mode for generating visualizations.
+/// Possible values:
+/// VISUALIZATION_MODE_EXPLICIT_ONLY
+/// VISUALIZATION_MODE_WHEN_NECESSARY
+/// VISUALIZATION_MODE_WHEN_HELPFUL
+/// VISUALIZATION_MODE_ALWAYS
 ///
 ///
 /// &lt;a name="nestedArtifactsConfigVisualizationOptionsVisualizationExamples"&gt;&lt;/a&gt;The `visualizationExamples` block supports:
@@ -2410,6 +2723,11 @@ import 'analyst_agent_persona_table.dart';
 /// (Optional)
 /// Input only. The API key of the MCP server.
 /// **Note**: This property is sensitive and will not be displayed in the plan.
+///
+/// * `apiKeyHeader` -
+/// (Optional)
+/// The HTTP header when the API key is passed in a request header
+/// (e.g. `x-api-key`, `api-key`, `X-Auth-Token`).
 ///
 /// * `apiKeyName` -
 /// (Optional)
@@ -2626,6 +2944,18 @@ import 'analyst_agent_persona_table.dart';
 /// (Required)
 /// The name of the column.
 ///
+/// &lt;a name="nestedWebSearchConfig"&gt;&lt;/a&gt;The `webSearchConfig` block supports:
+///
+/// * `disabled` -
+/// (Optional)
+/// Whether web search grounding is disabled for the analyst agent.
+/// Defaults to false if not specified (i.e. web search grounding is enabled).
+///
+/// * `excludedDomains` -
+/// (Optional)
+/// List of domains to be excluded from Google Search / Enterprise Web Search
+/// grounding.
+///
 /// ## Import
 ///
 /// AnalystAgentPersona can be imported using any of these accepted formats:
@@ -2679,6 +3009,11 @@ class AnalystAgentPersona extends pulumi.CustomResource {
   late final pulumi.Output<String?> geminiEnterpriseEngine;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
+  /// The math rendering mode selected for this persona.
+  /// Possible values:
+  /// MATH_RENDERING_MODE_LATEX
+  /// MATH_RENDERING_MODE_PLAIN_TEXT
+  late final pulumi.Output<String?> mathRenderingMode;
   /// The MCP data source selections to be used by the agent.
   /// Structure is documented below.
   late final pulumi.Output<List<AnalystAgentPersonaMcpDataSource>?> mcpDataSources;
@@ -2733,6 +3068,9 @@ class AnalystAgentPersona extends pulumi.CustomResource {
   late final pulumi.Output<List<AnalystAgentPersonaTable>?> tables;
   /// Update time stamp.
   late final pulumi.Output<String> updateTime;
+  /// Configuration for web search grounding for the analyst agent.
+  /// Structure is documented below.
+  late final pulumi.Output<AnalystAgentPersonaWebSearchConfig?> webSearchConfig;
 
   /// Creates a new [AnalystAgentPersona].
   /// [name] The Pulumi resource name.
@@ -2746,7 +3084,7 @@ class AnalystAgentPersona extends pulumi.CustomResource {
           'gcp:agenticapplications/analystAgentPersona:AnalystAgentPersona',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     analystAgentPersonaId = registerOutput<String>('analystAgentPersonaId');
     artifactExamples = registerOutput<List<AnalystAgentPersonaArtifactExample>?>('artifactExamples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaArtifactExample>(guardedValue, (value) => AnalystAgentPersonaArtifactExample.fromMap((value as Map).cast<String, dynamic>())); });
@@ -2759,6 +3097,7 @@ class AnalystAgentPersona extends pulumi.CustomResource {
     externalDataSources = registerOutput<List<AnalystAgentPersonaExternalDataSource>?>('externalDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaExternalDataSource>(guardedValue, (value) => AnalystAgentPersonaExternalDataSource.fromMap((value as Map).cast<String, dynamic>())); });
     geminiEnterpriseEngine = registerOutput<String?>('geminiEnterpriseEngine');
     location = registerOutput<String>('location');
+    mathRenderingMode = registerOutput<String?>('mathRenderingMode');
     mcpDataSources = registerOutput<List<AnalystAgentPersonaMcpDataSource>?>('mcpDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaMcpDataSource>(guardedValue, (value) => AnalystAgentPersonaMcpDataSource.fromMap((value as Map).cast<String, dynamic>())); });
     modelDescription = registerOutput<String?>('modelDescription');
     this.name = registerOutput<String>('name');
@@ -2768,6 +3107,7 @@ class AnalystAgentPersona extends pulumi.CustomResource {
     skills = registerOutput<List<AnalystAgentPersonaSkill>?>('skills', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaSkill>(guardedValue, (value) => AnalystAgentPersonaSkill.fromMap((value as Map).cast<String, dynamic>())); });
     tables = registerOutput<List<AnalystAgentPersonaTable>?>('tables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaTable>(guardedValue, (value) => AnalystAgentPersonaTable.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
+    webSearchConfig = registerOutput<AnalystAgentPersonaWebSearchConfig?>('webSearchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalystAgentPersonaWebSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AnalystAgentPersona] resource's state with the given [name] and [id].
@@ -2805,6 +3145,7 @@ class AnalystAgentPersona extends pulumi.CustomResource {
     externalDataSources = registerOutput<List<AnalystAgentPersonaExternalDataSource>?>('externalDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaExternalDataSource>(guardedValue, (value) => AnalystAgentPersonaExternalDataSource.fromMap((value as Map).cast<String, dynamic>())); });
     geminiEnterpriseEngine = registerOutput<String?>('geminiEnterpriseEngine');
     location = registerOutput<String>('location');
+    mathRenderingMode = registerOutput<String?>('mathRenderingMode');
     mcpDataSources = registerOutput<List<AnalystAgentPersonaMcpDataSource>?>('mcpDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaMcpDataSource>(guardedValue, (value) => AnalystAgentPersonaMcpDataSource.fromMap((value as Map).cast<String, dynamic>())); });
     modelDescription = registerOutput<String?>('modelDescription');
     this.name = registerOutput<String>('name');
@@ -2814,6 +3155,7 @@ class AnalystAgentPersona extends pulumi.CustomResource {
     skills = registerOutput<List<AnalystAgentPersonaSkill>?>('skills', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaSkill>(guardedValue, (value) => AnalystAgentPersonaSkill.fromMap((value as Map).cast<String, dynamic>())); });
     tables = registerOutput<List<AnalystAgentPersonaTable>?>('tables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaTable>(guardedValue, (value) => AnalystAgentPersonaTable.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
+    webSearchConfig = registerOutput<AnalystAgentPersonaWebSearchConfig?>('webSearchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalystAgentPersonaWebSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Creates a typed reference to an existing [AnalystAgentPersona] resource.
@@ -2836,6 +3178,7 @@ class AnalystAgentPersona extends pulumi.CustomResource {
     externalDataSources = registerOutput<List<AnalystAgentPersonaExternalDataSource>?>('externalDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaExternalDataSource>(guardedValue, (value) => AnalystAgentPersonaExternalDataSource.fromMap((value as Map).cast<String, dynamic>())); });
     geminiEnterpriseEngine = registerOutput<String?>('geminiEnterpriseEngine');
     location = registerOutput<String>('location');
+    mathRenderingMode = registerOutput<String?>('mathRenderingMode');
     mcpDataSources = registerOutput<List<AnalystAgentPersonaMcpDataSource>?>('mcpDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaMcpDataSource>(guardedValue, (value) => AnalystAgentPersonaMcpDataSource.fromMap((value as Map).cast<String, dynamic>())); });
     modelDescription = registerOutput<String?>('modelDescription');
     this.name = registerOutput<String>('name');
@@ -2845,5 +3188,6 @@ class AnalystAgentPersona extends pulumi.CustomResource {
     skills = registerOutput<List<AnalystAgentPersonaSkill>?>('skills', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaSkill>(guardedValue, (value) => AnalystAgentPersonaSkill.fromMap((value as Map).cast<String, dynamic>())); });
     tables = registerOutput<List<AnalystAgentPersonaTable>?>('tables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AnalystAgentPersonaTable>(guardedValue, (value) => AnalystAgentPersonaTable.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
+    webSearchConfig = registerOutput<AnalystAgentPersonaWebSearchConfig?>('webSearchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalystAgentPersonaWebSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

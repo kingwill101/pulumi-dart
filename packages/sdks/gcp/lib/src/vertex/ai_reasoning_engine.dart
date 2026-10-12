@@ -11,9 +11,9 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///
 /// To get more information about ReasoningEngine, see:
 ///
-/// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.reasoningEngines/)
+/// * [API documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform/reference/rest/v1/projects.locations.reasoningEngines)
 /// * How-to Guides
-/// * [Develop and deploy agents on Vertex AI Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/quickstart)
+/// * [Scale your agents](https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale)
 ///
 /// ## Example Usage
 ///
@@ -109,7 +109,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -351,8 +351,8 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -593,7 +593,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -923,9 +923,9 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1537,10 +1537,10 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -2091,6 +2091,9 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///         agentFramework: "google-adk",
 ///         classMethods: JSON.stringify(classMethods),
 ///         serviceAccount: serviceAccount.email,
+///         buildSpec: {
+///             serviceAccount: serviceAccount.email,
+///         },
 ///         deploymentSpec: {
 ///             minInstances: 1,
 ///             maxInstances: 3,
@@ -2216,6 +2219,9 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///         "agent_framework": "google-adk",
 ///         "class_methods": json.dumps(class_methods),
 ///         "service_account": service_account.email,
+///         "build_spec": {
+///             "service_account": service_account.email,
+///         },
 ///         "deployment_spec": {
 ///             "min_instances": 1,
 ///             "max_instances": 3,
@@ -2284,17 +2290,21 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// {
 ///     var classMethods = new[]
 ///     {
-///
+///         new Dictionary<string, object?>
 ///         {
-///             { "apiMode", "async" },
-///             { "description", null },
-///             { "name", "async_query" },
-///             { "parameters",
+///             ["apiMode"] = "async",
+///             ["description"] = null,
+///             ["name"] = "async_query",
+///             ["parameters"] = new Dictionary<string, object?>
 ///             {
-///                 { "type", "object" },
-///                 { "required", new object?[] {} },
-///                 { "properties", null },
-///             } },
+///                 ["type"] = "object",
+///                 ["required"] = new[]
+///                 {
+///                 },
+///                 ["properties"] = new Dictionary<string, object?>
+///                 {
+///                 },
+///             },
 ///         },
 ///     };
 ///
@@ -2407,6 +2417,10 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///             AgentFramework = "google-adk",
 ///             ClassMethods = JsonSerializer.Serialize(classMethods),
 ///             ServiceAccount = serviceAccount.Email,
+///             BuildSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecBuildSpecArgs
+///             {
+///                 ServiceAccount = serviceAccount.Email,
+///             },
 ///             DeploymentSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecDeploymentSpecArgs
 ///             {
 ///                 MinInstances = 1,
@@ -2492,12 +2506,12 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 	"encoding/json"
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -2636,6 +2650,9 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 				AgentFramework: pulumi.String("google-adk"),
 /// 				ClassMethods:   pulumi.String(json0),
 /// 				ServiceAccount: serviceAccount.Email,
+/// 				BuildSpec: &vertex.AiReasoningEngineSpecBuildSpecArgs{
+/// 					ServiceAccount: serviceAccount.Email,
+/// 				},
 /// 				DeploymentSpec: &vertex.AiReasoningEngineSpecDeploymentSpecArgs{
 /// 					MinInstances:         pulumi.Int(1),
 /// 					MaxInstances:         pulumi.Int(3),
@@ -2727,6 +2744,9 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///     agent_framework = "google-adk"
 ///     class_methods   = jsonencode(local.classMethods)
 ///     service_account = gcp_serviceaccount_account.service_account.email
+///     build_spec = {
+///       service_account = gcp_serviceaccount_account.service_account.email
+///     }
 ///     deployment_spec = {
 ///       min_instances         = 1
 ///       max_instances         = 3
@@ -2866,6 +2886,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineEncryptionSpecArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecBuildSpecArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecEnvArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecSecretEnvArgs;
@@ -2992,6 +3013,9 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                 .classMethods(serializeJson(
 ///                     classMethods))
 ///                 .serviceAccount(serviceAccount.email())
+///                 .buildSpec(AiReasoningEngineSpecBuildSpecArgs.builder()
+///                     .serviceAccount(serviceAccount.email())
+///                     .build())
 ///                 .deploymentSpec(AiReasoningEngineSpecDeploymentSpecArgs.builder()
 ///                     .minInstances(1)
 ///                     .maxInstances(3)
@@ -3067,6 +3091,8 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///         classMethods:
 ///           fn::toJSON: ${classMethods}
 ///         serviceAccount: ${serviceAccount.email}
+///         buildSpec:
+///           serviceAccount: ${serviceAccount.email}
 ///         deploymentSpec:
 ///           minInstances: 1
 ///           maxInstances: 3
@@ -3219,7 +3245,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///     contextSpec: {
 ///         memoryBankConfig: {
 ///             generationConfig: {
-///                 model: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-2.5-flash`),
+///                 model: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-3.5-flash`),
 ///                 generationTriggerConfig: {
 ///                     generationRule: {
 ///                         idleDuration: "300s",
@@ -3282,6 +3308,17 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                                                 id: "exec-result-1",
 ///                                                 outcome: "OUTCOME_OK",
 ///                                                 output: "pizza",
+///                                             },
+///                                         },
+///                                         {
+///                                             audioTranscription: {
+///                                                 speakerLabel: "spk_1",
+///                                                 text: "I like pepperoni pizza",
+///                                                 words: [{
+///                                                     startOffset: "0.5s",
+///                                                     endOffset: "1.5s",
+///                                                     word: "pepperoni",
+///                                                 }],
 ///                                             },
 ///                                         },
 ///                                     ],
@@ -3399,7 +3436,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///     context_spec={
 ///         "memory_bank_config": {
 ///             "generation_config": {
-///                 "model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///                 "model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/gemini-3.5-flash",
 ///                 "generation_trigger_config": {
 ///                     "generation_rule": {
 ///                         "idle_duration": "300s",
@@ -3462,6 +3499,17 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                                                 "id": "exec-result-1",
 ///                                                 "outcome": "OUTCOME_OK",
 ///                                                 "output": "pizza",
+///                                             },
+///                                         },
+///                                         {
+///                                             "audio_transcription": {
+///                                                 "speaker_label": "spk_1",
+///                                                 "text": "I like pepperoni pizza",
+///                                                 "words": [{
+///                                                     "start_offset": "0.5s",
+///                                                     "end_offset": "1.5s",
+///                                                     "word": "pepperoni",
+///                                                 }],
 ///                                             },
 ///                                         },
 ///                                     ],
@@ -3588,7 +3636,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///             {
 ///                 GenerationConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs
 ///                 {
-///                     Model = $"projects/{project.Apply(getProjectResult => getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///                     Model = $"projects/{project.Apply(getProjectResult => getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/gemini-3.5-flash",
 ///                     GenerationTriggerConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs
 ///                     {
 ///                         GenerationRule = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs
@@ -3685,6 +3733,23 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                                                             Id = "exec-result-1",
 ///                                                             Outcome = "OUTCOME_OK",
 ///                                                             Output = "pizza",
+///                                                         },
+///                                                     },
+///                                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs
+///                                                     {
+///                                                         AudioTranscription = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs
+///                                                         {
+///                                                             SpeakerLabel = "spk_1",
+///                                                             Text = "I like pepperoni pizza",
+///                                                             Words = new[]
+///                                                             {
+///                                                                 new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWordArgs
+///                                                                 {
+///                                                                     StartOffset = "0.5s",
+///                                                                     EndOffset = "1.5s",
+///                                                                     Word = "pepperoni",
+///                                                                 },
+///                                                             },
 ///                                                         },
 ///                                                     },
 ///                                                 },
@@ -3840,8 +3905,8 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3932,7 +3997,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 			ContextSpec: &vertex.AiReasoningEngineContextSpecArgs{
 /// 				MemoryBankConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigArgs{
 /// 					GenerationConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{
-/// 						Model: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.ProjectId),
+/// 						Model: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/gemini-3.5-flash", project.ProjectId),
 /// 						GenerationTriggerConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs{
 /// 							GenerationRule: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs{
 /// 								IdleDuration:      pulumi.String("300s"),
@@ -3997,6 +4062,19 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 																Id:      pulumi.String("exec-result-1"),
 /// 																Outcome: pulumi.String("OUTCOME_OK"),
 /// 																Output:  pulumi.String("pizza"),
+/// 															},
+/// 														},
+/// 														&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs{
+/// 															AudioTranscription: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs{
+/// 																SpeakerLabel: pulumi.String("spk_1"),
+/// 																Text:         pulumi.String("I like pepperoni pizza"),
+/// 																Words: vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWordArray{
+/// 																	&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWordArgs{
+/// 																		StartOffset: pulumi.String("0.5s"),
+/// 																		EndOffset:   pulumi.String("1.5s"),
+/// 																		Word:        pulumi.String("pepperoni"),
+/// 																	},
+/// 																},
 /// 															},
 /// 														},
 /// 													},
@@ -4093,7 +4171,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///   context_spec = {
 ///     memory_bank_config = {
 ///       generation_config = {
-///         model ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash"
+///         model ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/publishers/google/models/gemini-3.5-flash"
 ///         generation_trigger_config = {
 ///           generation_rule = {
 ///             idle_duration       = "300s"
@@ -4150,6 +4228,16 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                     "id"      = "exec-result-1"
 ///                     "outcome" = "OUTCOME_OK"
 ///                     "output"  = "pizza"
+///                   }
+///                   }, {
+///                   "audioTranscription" = {
+///                     "speakerLabel" = "spk_1"
+///                     "text"         = "I like pepperoni pizza"
+///                     "words" = [{
+///                       "startOffset" = "0.5s"
+///                       "endOffset"   = "1.5s"
+///                       "word"        = "pepperoni"
+///                     }]
 ///                   }
 ///                 }]
 ///               }
@@ -4261,6 +4349,8 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCodeArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResultArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWordArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopicArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs;
@@ -4295,7 +4385,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///             .contextSpec(AiReasoningEngineContextSpecArgs.builder()
 ///                 .memoryBankConfig(AiReasoningEngineContextSpecMemoryBankConfigArgs.builder()
 ///                     .generationConfig(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs.builder()
-///                         .model(String.format("projects/%s/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.projectId()))
+///                         .model(String.format("projects/%s/locations/us-central1/publishers/google/models/gemini-3.5-flash", project.projectId()))
 ///                         .generationTriggerConfig(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs.builder()
 ///                             .generationRule(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs.builder()
 ///                                 .idleDuration("300s")
@@ -4360,6 +4450,17 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                                                         .id("exec-result-1")
 ///                                                         .outcome("OUTCOME_OK")
 ///                                                         .output("pizza")
+///                                                         .build())
+///                                                     .build(),
+///                                                 AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs.builder()
+///                                                     .audioTranscription(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs.builder()
+///                                                         .speakerLabel("spk_1")
+///                                                         .text("I like pepperoni pizza")
+///                                                         .words(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWordArgs.builder()
+///                                                             .startOffset("0.5s")
+///                                                             .endOffset("1.5s")
+///                                                             .word("pepperoni")
+///                                                             .build())
 ///                                                         .build())
 ///                                                     .build())
 ///                                             .build())
@@ -4475,7 +4576,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///       contextSpec:
 ///         memoryBankConfig:
 ///           generationConfig:
-///             model: projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-2.5-flash
+///             model: projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-3.5-flash
 ///             generationTriggerConfig:
 ///               generationRule:
 ///                 idleDuration: 300s
@@ -4519,6 +4620,13 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                                 id: exec-result-1
 ///                                 outcome: OUTCOME_OK
 ///                                 output: pizza
+///                             - audioTranscription:
+///                                 speakerLabel: spk_1
+///                                 text: I like pepperoni pizza
+///                                 words:
+///                                   - startOffset: 0.5s
+///                                     endOffset: 1.5s
+///                                     word: pepperoni
 ///                   generatedMemories:
 ///                     - fact: User likes pepperoni pizza.
 ///                       topics:
@@ -4604,7 +4712,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///     contextSpec: {
 ///         memoryBankConfig: {
 ///             generationConfig: {
-///                 model: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-2.5-flash`),
+///                 model: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-3.5-flash`),
 ///             },
 ///             similaritySearchConfig: {
 ///                 embeddingModel: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/text-embedding-005`),
@@ -4634,7 +4742,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///     context_spec={
 ///         "memory_bank_config": {
 ///             "generation_config": {
-///                 "model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///                 "model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/gemini-3.5-flash",
 ///             },
 ///             "similarity_search_config": {
 ///                 "embedding_model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005",
@@ -4672,7 +4780,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///             {
 ///                 GenerationConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs
 ///                 {
-///                     Model = $"projects/{project.Apply(getProjectResult => getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///                     Model = $"projects/{project.Apply(getProjectResult => getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/gemini-3.5-flash",
 ///                 },
 ///                 SimilaritySearchConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs
 ///                 {
@@ -4699,8 +4807,8 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4717,7 +4825,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 			ContextSpec: &vertex.AiReasoningEngineContextSpecArgs{
 /// 				MemoryBankConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigArgs{
 /// 					GenerationConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{
-/// 						Model: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.ProjectId),
+/// 						Model: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/gemini-3.5-flash", project.ProjectId),
 /// 					},
 /// 					SimilaritySearchConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs{
 /// 						EmbeddingModel: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/text-embedding-005", project.ProjectId),
@@ -4760,7 +4868,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///   context_spec = {
 ///     memory_bank_config = {
 ///       generation_config = {
-///         model ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash"
+///         model ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/publishers/google/models/gemini-3.5-flash"
 ///       }
 ///       similarity_search_config = {
 ///         embedding_model ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005"
@@ -4817,7 +4925,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///             .contextSpec(AiReasoningEngineContextSpecArgs.builder()
 ///                 .memoryBankConfig(AiReasoningEngineContextSpecMemoryBankConfigArgs.builder()
 ///                     .generationConfig(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs.builder()
-///                         .model(String.format("projects/%s/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.projectId()))
+///                         .model(String.format("projects/%s/locations/us-central1/publishers/google/models/gemini-3.5-flash", project.projectId()))
 ///                         .build())
 ///                     .similaritySearchConfig(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs.builder()
 ///                         .embeddingModel(String.format("projects/%s/locations/us-central1/publishers/google/models/text-embedding-005", project.projectId()))
@@ -4850,7 +4958,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///       contextSpec:
 ///         memoryBankConfig:
 ///           generationConfig:
-///             model: projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-2.5-flash
+///             model: projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-3.5-flash
 ///           similaritySearchConfig:
 ///             embeddingModel: projects/${project.projectId}/locations/us-central1/publishers/google/models/text-embedding-005
 ///           disableMemoryRevisions: false
@@ -4931,7 +5039,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5051,7 +5159,6 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{name}}
 /// ```
 class AiReasoningEngine extends pulumi.CustomResource {
-  /// (Optional, Beta)
   /// Optional. Configuration for how Agent Engine sub-resources should manage context.
   /// Structure is documented below.
   late final pulumi.Output<AiReasoningEngineContextSpec> contextSpec;
@@ -5122,7 +5229,7 @@ class AiReasoningEngine extends pulumi.CustomResource {
           'gcp:vertex/aiReasoningEngine:AiReasoningEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     contextSpec = registerOutput<AiReasoningEngineContextSpec>('contextSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineContextSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });

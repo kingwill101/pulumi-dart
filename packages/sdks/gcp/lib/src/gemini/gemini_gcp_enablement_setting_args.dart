@@ -29,6 +29,8 @@ class GeminiGcpEnablementSettingArgs {
   final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
+  /// Whether resource mutations should be enabled.
+  final pulumi.Input<bool?>? mutationsEnabled;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
@@ -45,6 +47,7 @@ class GeminiGcpEnablementSettingArgs {
   /// [geminiGcpEnablementSettingId] Id of the Gemini Gcp Enablement setting.
   /// [labels] Labels as key value pairs.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// [mutationsEnabled] Whether resource mutations should be enabled.
   /// [project] The ID of the project in which the resource belongs.
   /// [webGroundingType] Web grounding type.
   const GeminiGcpEnablementSettingArgs({
@@ -54,6 +57,7 @@ class GeminiGcpEnablementSettingArgs {
     required this.geminiGcpEnablementSettingId,
     this.labels,
     required this.location,
+    this.mutationsEnabled,
     this.project,
     this.webGroundingType,
   });
@@ -66,6 +70,7 @@ class GeminiGcpEnablementSettingArgs {
       'geminiGcpEnablementSettingId': geminiGcpEnablementSettingId,
       'labels': ?labels,
       'location': location,
+      'mutationsEnabled': ?mutationsEnabled,
       'project': ?project,
       'webGroundingType': ?webGroundingType,
     };
@@ -79,6 +84,7 @@ class GeminiGcpEnablementSettingArgs {
       geminiGcpEnablementSettingId: pulumi.Input.fromValue(map['geminiGcpEnablementSettingId'] as String),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
+      mutationsEnabled: (() { final guardedValue = map['mutationsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       webGroundingType: (() { final guardedValue = map['webGroundingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

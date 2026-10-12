@@ -5,6 +5,7 @@ import 'data_connector_bap_config.dart';
 import 'data_connector_destination_config.dart';
 import 'data_connector_entity.dart';
 import 'data_connector_error.dart';
+import 'data_connector_metadata.dart';
 import 'data_connector_state.dart';
 
 /// DataConnector manages the connection to external data sources for all data stores grouped
@@ -212,7 +213,7 @@ import 'data_connector_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -476,10 +477,9 @@ import 'data_connector_state.dart';
 ///     collectionId: "collection-id",
 ///     collectionDisplayName: "Jira Federated",
 ///     dataSource: "jira",
-///     dataSourceVersion: 3,
 ///     params: {
 ///         instance_uri: "https://example.atlassian.net",
-///         instance_id: "SECRET_MANAGER_RESOURCE_NAME",
+///         instance_id: "12345678-1234-1234-1234-123456789abc",
 ///         client_id: "SECRET_MANAGER_RESOURCE_NAME",
 ///         client_secret: "SECRET_MANAGER_RESOURCE_NAME",
 ///         refresh_token: "SECRET_MANAGER_RESOURCE_NAME",
@@ -521,7 +521,7 @@ import 'data_connector_state.dart';
 ///     actionConfig: {
 ///         actionParams: {
 ///             instance_uri: "https://example.atlassian.net",
-///             instance_id: "SECRET_MANAGER_RESOURCE_NAME",
+///             instance_id: "12345678-1234-1234-1234-123456789abc",
 ///             client_id: "SECRET_MANAGER_RESOURCE_NAME",
 ///             client_secret: "SECRET_MANAGER_RESOURCE_NAME",
 ///             auth_type: "OAUTH",
@@ -539,6 +539,14 @@ import 'data_connector_state.dart';
 ///             "upload_attachment",
 ///         ],
 ///     },
+///     tag: "sample-tag",
+///     metadata: {
+///         title: "Jira Connector",
+///         description: "Jira Connector Description",
+///         shortDescription: "Jira Connector Short Description",
+///         author: "Google",
+///         note: "Sample Note",
+///     },
 /// });
 /// ```
 /// ```python
@@ -551,10 +559,9 @@ import 'data_connector_state.dart';
 ///     collection_id="collection-id",
 ///     collection_display_name="Jira Federated",
 ///     data_source="jira",
-///     data_source_version=3,
 ///     params={
 ///         "instance_uri": "https://example.atlassian.net",
-///         "instance_id": "SECRET_MANAGER_RESOURCE_NAME",
+///         "instance_id": "12345678-1234-1234-1234-123456789abc",
 ///         "client_id": "SECRET_MANAGER_RESOURCE_NAME",
 ///         "client_secret": "SECRET_MANAGER_RESOURCE_NAME",
 ///         "refresh_token": "SECRET_MANAGER_RESOURCE_NAME",
@@ -596,7 +603,7 @@ import 'data_connector_state.dart';
 ///     action_config={
 ///         "action_params": {
 ///             "instance_uri": "https://example.atlassian.net",
-///             "instance_id": "SECRET_MANAGER_RESOURCE_NAME",
+///             "instance_id": "12345678-1234-1234-1234-123456789abc",
 ///             "client_id": "SECRET_MANAGER_RESOURCE_NAME",
 ///             "client_secret": "SECRET_MANAGER_RESOURCE_NAME",
 ///             "auth_type": "OAUTH",
@@ -613,6 +620,14 @@ import 'data_connector_state.dart';
 ///             "update_comment",
 ///             "upload_attachment",
 ///         ],
+///     },
+///     tag="sample-tag",
+///     metadata={
+///         "title": "Jira Connector",
+///         "description": "Jira Connector Description",
+///         "short_description": "Jira Connector Short Description",
+///         "author": "Google",
+///         "note": "Sample Note",
 ///     })
 /// ```
 /// ```csharp
@@ -630,11 +645,10 @@ import 'data_connector_state.dart';
 ///         CollectionId = "collection-id",
 ///         CollectionDisplayName = "Jira Federated",
 ///         DataSource = "jira",
-///         DataSourceVersion = 3,
 ///         Params =
 ///         {
 ///             { "instance_uri", "https://example.atlassian.net" },
-///             { "instance_id", "SECRET_MANAGER_RESOURCE_NAME" },
+///             { "instance_id", "12345678-1234-1234-1234-123456789abc" },
 ///             { "client_id", "SECRET_MANAGER_RESOURCE_NAME" },
 ///             { "client_secret", "SECRET_MANAGER_RESOURCE_NAME" },
 ///             { "refresh_token", "SECRET_MANAGER_RESOURCE_NAME" },
@@ -693,7 +707,7 @@ import 'data_connector_state.dart';
 ///             ActionParams =
 ///             {
 ///                 { "instance_uri", "https://example.atlassian.net" },
-///                 { "instance_id", "SECRET_MANAGER_RESOURCE_NAME" },
+///                 { "instance_id", "12345678-1234-1234-1234-123456789abc" },
 ///                 { "client_id", "SECRET_MANAGER_RESOURCE_NAME" },
 ///                 { "client_secret", "SECRET_MANAGER_RESOURCE_NAME" },
 ///                 { "auth_type", "OAUTH" },
@@ -716,6 +730,15 @@ import 'data_connector_state.dart';
 ///                 "upload_attachment",
 ///             },
 ///         },
+///         Tag = "sample-tag",
+///         Metadata = new Gcp.DiscoveryEngine.Inputs.DataConnectorMetadataArgs
+///         {
+///             Title = "Jira Connector",
+///             Description = "Jira Connector Description",
+///             ShortDescription = "Jira Connector Short Description",
+///             Author = "Google",
+///             Note = "Sample Note",
+///         },
 ///     });
 ///
 /// });
@@ -726,7 +749,7 @@ import 'data_connector_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -744,10 +767,9 @@ import 'data_connector_state.dart';
 /// 			CollectionId:          pulumi.String("collection-id"),
 /// 			CollectionDisplayName: pulumi.String("Jira Federated"),
 /// 			DataSource:            pulumi.String("jira"),
-/// 			DataSourceVersion:     pulumi.Int(3),
 /// 			Params: pulumi.StringMap{
 /// 				"instance_uri":  pulumi.String("https://example.atlassian.net"),
-/// 				"instance_id":   pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
+/// 				"instance_id":   pulumi.String("12345678-1234-1234-1234-123456789abc"),
 /// 				"client_id":     pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
 /// 				"client_secret": pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
 /// 				"refresh_token": pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
@@ -791,7 +813,7 @@ import 'data_connector_state.dart';
 /// 			ActionConfig: &discoveryengine.DataConnectorActionConfigArgs{
 /// 				ActionParams: pulumi.StringMap{
 /// 					"instance_uri":  pulumi.String("https://example.atlassian.net"),
-/// 					"instance_id":   pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
+/// 					"instance_id":   pulumi.String("12345678-1234-1234-1234-123456789abc"),
 /// 					"client_id":     pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
 /// 					"client_secret": pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
 /// 					"auth_type":     pulumi.String("OAUTH"),
@@ -810,6 +832,14 @@ import 'data_connector_state.dart';
 /// 					pulumi.String("update_comment"),
 /// 					pulumi.String("upload_attachment"),
 /// 				},
+/// 			},
+/// 			Tag: pulumi.String("sample-tag"),
+/// 			Metadata: &discoveryengine.DataConnectorMetadataArgs{
+/// 				Title:            pulumi.String("Jira Connector"),
+/// 				Description:      pulumi.String("Jira Connector Description"),
+/// 				ShortDescription: pulumi.String("Jira Connector Short Description"),
+/// 				Author:           pulumi.String("Google"),
+/// 				Note:             pulumi.String("Sample Note"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -833,10 +863,9 @@ import 'data_connector_state.dart';
 ///   collection_id           = "collection-id"
 ///   collection_display_name = "Jira Federated"
 ///   data_source             = "jira"
-///   data_source_version     = 3
 ///   params = {
 ///     "instance_uri"  = "https://example.atlassian.net"
-///     "instance_id"   = "SECRET_MANAGER_RESOURCE_NAME"
+///     "instance_id"   = "12345678-1234-1234-1234-123456789abc"
 ///     "client_id"     = "SECRET_MANAGER_RESOURCE_NAME"
 ///     "client_secret" = "SECRET_MANAGER_RESOURCE_NAME"
 ///     "refresh_token" = "SECRET_MANAGER_RESOURCE_NAME"
@@ -873,7 +902,7 @@ import 'data_connector_state.dart';
 ///   action_config = {
 ///     action_params = {
 ///       "instance_uri"  = "https://example.atlassian.net"
-///       "instance_id"   = "SECRET_MANAGER_RESOURCE_NAME"
+///       "instance_id"   = "12345678-1234-1234-1234-123456789abc"
 ///       "client_id"     = "SECRET_MANAGER_RESOURCE_NAME"
 ///       "client_secret" = "SECRET_MANAGER_RESOURCE_NAME"
 ///       "auth_type"     = "OAUTH"
@@ -883,6 +912,14 @@ import 'data_connector_state.dart';
 ///   bap_config = {
 ///     supported_connector_modes = ["ACTIONS"]
 ///     enabled_actions           = ["create_issue", "update_issue", "change_issue_status", "create_comment", "update_comment", "upload_attachment"]
+///   }
+///   tag = "sample-tag"
+///   metadata = {
+///     title             = "Jira Connector"
+///     description       = "Jira Connector Description"
+///     short_description = "Jira Connector Short Description"
+///     author            = "Google"
+///     note              = "Sample Note"
 ///   }
 /// }
 /// ```
@@ -899,6 +936,7 @@ import 'data_connector_state.dart';
 /// import com.pulumi.gcp.discoveryengine.inputs.DataConnectorDestinationConfigDestinationArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.DataConnectorActionConfigArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.DataConnectorBapConfigArgs;
+/// import com.pulumi.gcp.discoveryengine.inputs.DataConnectorMetadataArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -918,10 +956,9 @@ import 'data_connector_state.dart';
 ///             .collectionId("collection-id")
 ///             .collectionDisplayName("Jira Federated")
 ///             .dataSource("jira")
-///             .dataSourceVersion(3)
 ///             .params(Map.ofEntries(
 ///                 Map.entry("instance_uri", "https://example.atlassian.net"),
-///                 Map.entry("instance_id", "SECRET_MANAGER_RESOURCE_NAME"),
+///                 Map.entry("instance_id", "12345678-1234-1234-1234-123456789abc"),
 ///                 Map.entry("client_id", "SECRET_MANAGER_RESOURCE_NAME"),
 ///                 Map.entry("client_secret", "SECRET_MANAGER_RESOURCE_NAME"),
 ///                 Map.entry("refresh_token", "SECRET_MANAGER_RESOURCE_NAME"),
@@ -962,7 +999,7 @@ import 'data_connector_state.dart';
 ///             .actionConfig(DataConnectorActionConfigArgs.builder()
 ///                 .actionParams(Map.ofEntries(
 ///                     Map.entry("instance_uri", "https://example.atlassian.net"),
-///                     Map.entry("instance_id", "SECRET_MANAGER_RESOURCE_NAME"),
+///                     Map.entry("instance_id", "12345678-1234-1234-1234-123456789abc"),
 ///                     Map.entry("client_id", "SECRET_MANAGER_RESOURCE_NAME"),
 ///                     Map.entry("client_secret", "SECRET_MANAGER_RESOURCE_NAME"),
 ///                     Map.entry("auth_type", "OAUTH")
@@ -979,6 +1016,14 @@ import 'data_connector_state.dart';
 ///                     "update_comment",
 ///                     "upload_attachment")
 ///                 .build())
+///             .tag("sample-tag")
+///             .metadata(DataConnectorMetadataArgs.builder()
+///                 .title("Jira Connector")
+///                 .description("Jira Connector Description")
+///                 .shortDescription("Jira Connector Short Description")
+///                 .author("Google")
+///                 .note("Sample Note")
+///                 .build())
 ///             .build());
 ///
 ///     }
@@ -993,10 +1038,9 @@ import 'data_connector_state.dart';
 ///       collectionId: collection-id
 ///       collectionDisplayName: Jira Federated
 ///       dataSource: jira
-///       dataSourceVersion: 3
 ///       params:
 ///         instance_uri: https://example.atlassian.net
-///         instance_id: SECRET_MANAGER_RESOURCE_NAME
+///         instance_id: 12345678-1234-1234-1234-123456789abc
 ///         client_id: SECRET_MANAGER_RESOURCE_NAME
 ///         client_secret: SECRET_MANAGER_RESOURCE_NAME
 ///         refresh_token: SECRET_MANAGER_RESOURCE_NAME
@@ -1025,7 +1069,7 @@ import 'data_connector_state.dart';
 ///       actionConfig:
 ///         actionParams:
 ///           instance_uri: https://example.atlassian.net
-///           instance_id: SECRET_MANAGER_RESOURCE_NAME
+///           instance_id: 12345678-1234-1234-1234-123456789abc
 ///           client_id: SECRET_MANAGER_RESOURCE_NAME
 ///           client_secret: SECRET_MANAGER_RESOURCE_NAME
 ///           auth_type: OAUTH
@@ -1040,6 +1084,13 @@ import 'data_connector_state.dart';
 ///           - create_comment
 ///           - update_comment
 ///           - upload_attachment
+///       tag: sample-tag
+///       metadata:
+///         title: Jira Connector
+///         description: Jira Connector Description
+///         shortDescription: Jira Connector Short Description
+///         author: Google
+///         note: Sample Note
 /// ```
 ///
 ///
@@ -1159,6 +1210,9 @@ class DataConnector extends pulumi.CustomResource {
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   late final pulumi.Output<String> location;
+  /// User-facing metadata for the connector.
+  /// Structure is documented below.
+  late final pulumi.Output<DataConnectorMetadata> metadata;
   /// The full resource name of the Data Connector.
   /// Format: `projects/*/locations/*/collections/*/dataConnector`.
   late final pulumi.Output<String> name;
@@ -1191,6 +1245,8 @@ class DataConnector extends pulumi.CustomResource {
   /// The data synchronization mode supported by the data connector. The possible value can be:
   /// 'PERIODIC', 'STREAMING'.
   late final pulumi.Output<String?> syncMode;
+  /// User-facing, version-independent label for this connector.
+  late final pulumi.Output<String?> tag;
   /// Timestamp when the DataConnector was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -1206,7 +1262,7 @@ class DataConnector extends pulumi.CustomResource {
           'gcp:discoveryengine/dataConnector:DataConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     actionConfig = registerOutput<DataConnectorActionConfig?>('actionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataConnectorActionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     actionState = registerOutput<String>('actionState');
@@ -1231,6 +1287,7 @@ class DataConnector extends pulumi.CustomResource {
     lastSyncTime = registerOutput<String>('lastSyncTime');
     latestPauseTime = registerOutput<String>('latestPauseTime');
     location = registerOutput<String>('location');
+    metadata = registerOutput<DataConnectorMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataConnectorMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     params = registerOutput<Map<String, String>?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     privateConnectivityProjectId = registerOutput<String>('privateConnectivityProjectId');
@@ -1241,6 +1298,7 @@ class DataConnector extends pulumi.CustomResource {
     staticIpAddresses = registerOutput<List<String>>('staticIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     staticIpEnabled = registerOutput<bool?>('staticIpEnabled');
     syncMode = registerOutput<String?>('syncMode');
+    tag = registerOutput<String?>('tag');
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -1291,6 +1349,7 @@ class DataConnector extends pulumi.CustomResource {
     lastSyncTime = registerOutput<String>('lastSyncTime');
     latestPauseTime = registerOutput<String>('latestPauseTime');
     location = registerOutput<String>('location');
+    metadata = registerOutput<DataConnectorMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataConnectorMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     params = registerOutput<Map<String, String>?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     privateConnectivityProjectId = registerOutput<String>('privateConnectivityProjectId');
@@ -1301,6 +1360,7 @@ class DataConnector extends pulumi.CustomResource {
     staticIpAddresses = registerOutput<List<String>>('staticIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     staticIpEnabled = registerOutput<bool?>('staticIpEnabled');
     syncMode = registerOutput<String?>('syncMode');
+    tag = registerOutput<String?>('tag');
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -1336,6 +1396,7 @@ class DataConnector extends pulumi.CustomResource {
     lastSyncTime = registerOutput<String>('lastSyncTime');
     latestPauseTime = registerOutput<String>('latestPauseTime');
     location = registerOutput<String>('location');
+    metadata = registerOutput<DataConnectorMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataConnectorMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     params = registerOutput<Map<String, String>?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     privateConnectivityProjectId = registerOutput<String>('privateConnectivityProjectId');
@@ -1346,6 +1407,7 @@ class DataConnector extends pulumi.CustomResource {
     staticIpAddresses = registerOutput<List<String>>('staticIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     staticIpEnabled = registerOutput<bool?>('staticIpEnabled');
     syncMode = registerOutput<String?>('syncMode');
+    tag = registerOutput<String?>('tag');
     updateTime = registerOutput<String>('updateTime');
   }
 }

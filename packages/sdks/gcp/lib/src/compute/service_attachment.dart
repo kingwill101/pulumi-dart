@@ -250,7 +250,7 @@ import 'service_attachment_tunneling_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -622,6 +622,491 @@ import 'service_attachment_tunneling_config.dart';
 ///       ipCidrRange: 10.1.0.0/16
 /// ```
 ///
+/// ### Service Attachment Nat Ips
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const producerServiceHealthCheck = new gcp.compute.HealthCheck("producer_service_health_check", {
+///     name: "producer-service-health-check",
+///     checkIntervalSec: 1,
+///     timeoutSec: 1,
+///     tcpHealthCheck: {
+///         port: 80,
+///     },
+/// });
+/// const producerServiceBackend = new gcp.compute.RegionBackendService("producer_service_backend", {
+///     name: "producer-service",
+///     region: "us-central1",
+///     healthChecks: producerServiceHealthCheck.id,
+/// });
+/// const pscIlbNetwork = new gcp.compute.Network("psc_ilb_network", {
+///     name: "psc-ilb-network",
+///     autoCreateSubnetworks: false,
+/// });
+/// const pscIlbProducerSubnetwork = new gcp.compute.Subnetwork("psc_ilb_producer_subnetwork", {
+///     name: "psc-ilb-producer-subnetwork",
+///     region: "us-central1",
+///     network: pscIlbNetwork.id,
+///     ipCidrRange: "10.0.0.0/16",
+/// });
+/// const pscIlbTargetService = new gcp.compute.ForwardingRule("psc_ilb_target_service", {
+///     name: "producer-forwarding-rule",
+///     region: "us-central1",
+///     loadBalancingScheme: "INTERNAL",
+///     backendService: producerServiceBackend.id,
+///     allPorts: true,
+///     network: pscIlbNetwork.name,
+///     subnetwork: pscIlbProducerSubnetwork.name,
+/// });
+/// const pscIlbNat = new gcp.compute.Subnetwork("psc_ilb_nat", {
+///     name: "psc-ilb-nat",
+///     region: "us-central1",
+///     network: pscIlbNetwork.id,
+///     purpose: "PRIVATE_SERVICE_CONNECT",
+///     ipCidrRange: "10.1.0.0/16",
+/// });
+/// const pscIlbServiceAttachment = new gcp.compute.ServiceAttachment("psc_ilb_service_attachment", {
+///     name: "my-psc-ilb",
+///     region: "us-central1",
+///     description: "A service attachment configured with Terraform",
+///     enableProxyProtocol: true,
+///     natIpsPerEndpoint: 2,
+///     connectionPreference: "ACCEPT_AUTOMATIC",
+///     natSubnets: [pscIlbNat.id],
+///     targetService: pscIlbTargetService.id,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+///     name="producer-service-health-check",
+///     check_interval_sec=1,
+///     timeout_sec=1,
+///     tcp_health_check={
+///         "port": 80,
+///     })
+/// producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+///     name="producer-service",
+///     region="us-central1",
+///     health_checks=producer_service_health_check.id)
+/// psc_ilb_network = gcp.compute.Network("psc_ilb_network",
+///     name="psc-ilb-network",
+///     auto_create_subnetworks=False)
+/// psc_ilb_producer_subnetwork = gcp.compute.Subnetwork("psc_ilb_producer_subnetwork",
+///     name="psc-ilb-producer-subnetwork",
+///     region="us-central1",
+///     network=psc_ilb_network.id,
+///     ip_cidr_range="10.0.0.0/16")
+/// psc_ilb_target_service = gcp.compute.ForwardingRule("psc_ilb_target_service",
+///     name="producer-forwarding-rule",
+///     region="us-central1",
+///     load_balancing_scheme="INTERNAL",
+///     backend_service=producer_service_backend.id,
+///     all_ports=True,
+///     network=psc_ilb_network.name,
+///     subnetwork=psc_ilb_producer_subnetwork.name)
+/// psc_ilb_nat = gcp.compute.Subnetwork("psc_ilb_nat",
+///     name="psc-ilb-nat",
+///     region="us-central1",
+///     network=psc_ilb_network.id,
+///     purpose="PRIVATE_SERVICE_CONNECT",
+///     ip_cidr_range="10.1.0.0/16")
+/// psc_ilb_service_attachment = gcp.compute.ServiceAttachment("psc_ilb_service_attachment",
+///     name="my-psc-ilb",
+///     region="us-central1",
+///     description="A service attachment configured with Terraform",
+///     enable_proxy_protocol=True,
+///     nat_ips_per_endpoint=2,
+///     connection_preference="ACCEPT_AUTOMATIC",
+///     nat_subnets=[psc_ilb_nat.id],
+///     target_service=psc_ilb_target_service.id)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var producerServiceHealthCheck = new Gcp.Compute.HealthCheck("producer_service_health_check", new()
+///     {
+///         Name = "producer-service-health-check",
+///         CheckIntervalSec = 1,
+///         TimeoutSec = 1,
+///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+///         {
+///             Port = 80,
+///         },
+///     });
+///
+///     var producerServiceBackend = new Gcp.Compute.RegionBackendService("producer_service_backend", new()
+///     {
+///         Name = "producer-service",
+///         Region = "us-central1",
+///         HealthChecks = producerServiceHealthCheck.Id,
+///     });
+///
+///     var pscIlbNetwork = new Gcp.Compute.Network("psc_ilb_network", new()
+///     {
+///         Name = "psc-ilb-network",
+///         AutoCreateSubnetworks = false,
+///     });
+///
+///     var pscIlbProducerSubnetwork = new Gcp.Compute.Subnetwork("psc_ilb_producer_subnetwork", new()
+///     {
+///         Name = "psc-ilb-producer-subnetwork",
+///         Region = "us-central1",
+///         Network = pscIlbNetwork.Id,
+///         IpCidrRange = "10.0.0.0/16",
+///     });
+///
+///     var pscIlbTargetService = new Gcp.Compute.ForwardingRule("psc_ilb_target_service", new()
+///     {
+///         Name = "producer-forwarding-rule",
+///         Region = "us-central1",
+///         LoadBalancingScheme = "INTERNAL",
+///         BackendService = producerServiceBackend.Id,
+///         AllPorts = true,
+///         Network = pscIlbNetwork.Name,
+///         Subnetwork = pscIlbProducerSubnetwork.Name,
+///     });
+///
+///     var pscIlbNat = new Gcp.Compute.Subnetwork("psc_ilb_nat", new()
+///     {
+///         Name = "psc-ilb-nat",
+///         Region = "us-central1",
+///         Network = pscIlbNetwork.Id,
+///         Purpose = "PRIVATE_SERVICE_CONNECT",
+///         IpCidrRange = "10.1.0.0/16",
+///     });
+///
+///     var pscIlbServiceAttachment = new Gcp.Compute.ServiceAttachment("psc_ilb_service_attachment", new()
+///     {
+///         Name = "my-psc-ilb",
+///         Region = "us-central1",
+///         Description = "A service attachment configured with Terraform",
+///         EnableProxyProtocol = true,
+///         NatIpsPerEndpoint = 2,
+///         ConnectionPreference = "ACCEPT_AUTOMATIC",
+///         NatSubnets = new[]
+///         {
+///             pscIlbNat.Id,
+///         },
+///         TargetService = pscIlbTargetService.Id,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		producerServiceHealthCheck, err := compute.NewHealthCheck(ctx, "producer_service_health_check", &compute.HealthCheckArgs{
+/// 			Name:             pulumi.String("producer-service-health-check"),
+/// 			CheckIntervalSec: pulumi.Int(1),
+/// 			TimeoutSec:       pulumi.Int(1),
+/// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+/// 				Port: pulumi.Int(80),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		producerServiceBackend, err := compute.NewRegionBackendService(ctx, "producer_service_backend", &compute.RegionBackendServiceArgs{
+/// 			Name:         pulumi.String("producer-service"),
+/// 			Region:       pulumi.String("us-central1"),
+/// 			HealthChecks: producerServiceHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		pscIlbNetwork, err := compute.NewNetwork(ctx, "psc_ilb_network", &compute.NetworkArgs{
+/// 			Name:                  pulumi.String("psc-ilb-network"),
+/// 			AutoCreateSubnetworks: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		pscIlbProducerSubnetwork, err := compute.NewSubnetwork(ctx, "psc_ilb_producer_subnetwork", &compute.SubnetworkArgs{
+/// 			Name:        pulumi.String("psc-ilb-producer-subnetwork"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			Network:     pscIlbNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		pscIlbTargetService, err := compute.NewForwardingRule(ctx, "psc_ilb_target_service", &compute.ForwardingRuleArgs{
+/// 			Name:                pulumi.String("producer-forwarding-rule"),
+/// 			Region:              pulumi.String("us-central1"),
+/// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
+/// 			BackendService:      producerServiceBackend.ID().ToIDOutput().ToStringOutput(),
+/// 			AllPorts:            pulumi.Bool(true),
+/// 			Network:             pscIlbNetwork.Name,
+/// 			Subnetwork:          pscIlbProducerSubnetwork.Name,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		pscIlbNat, err := compute.NewSubnetwork(ctx, "psc_ilb_nat", &compute.SubnetworkArgs{
+/// 			Name:        pulumi.String("psc-ilb-nat"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			Network:     pscIlbNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
+/// 			IpCidrRange: pulumi.String("10.1.0.0/16"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewServiceAttachment(ctx, "psc_ilb_service_attachment", &compute.ServiceAttachmentArgs{
+/// 			Name:                 pulumi.String("my-psc-ilb"),
+/// 			Region:               pulumi.String("us-central1"),
+/// 			Description:          pulumi.String("A service attachment configured with Terraform"),
+/// 			EnableProxyProtocol:  pulumi.Bool(true),
+/// 			NatIpsPerEndpoint:    pulumi.Int(2),
+/// 			ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
+/// 			NatSubnets: pulumi.StringArray{
+/// 				pscIlbNat.ID().ToIDOutput().ToStringOutput(),
+/// 			},
+/// 			TargetService: pscIlbTargetService.ID().ToIDOutput().ToStringOutput(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_serviceattachment" "psc_ilb_service_attachment" {
+///   name                  = "my-psc-ilb"
+///   region                = "us-central1"
+///   description           = "A service attachment configured with Terraform"
+///   enable_proxy_protocol = true
+///   nat_ips_per_endpoint  = 2
+///   connection_preference = "ACCEPT_AUTOMATIC"
+///   nat_subnets           = [gcp_compute_subnetwork.psc_ilb_nat.id]
+///   target_service        = gcp_compute_forwardingrule.psc_ilb_target_service.id
+/// }
+/// resource "gcp_compute_forwardingrule" "psc_ilb_target_service" {
+///   name                  = "producer-forwarding-rule"
+///   region                = "us-central1"
+///   load_balancing_scheme = "INTERNAL"
+///   backend_service       = gcp_compute_regionbackendservice.producer_service_backend.id
+///   all_ports             = true
+///   network               = gcp_compute_network.psc_ilb_network.name
+///   subnetwork            = gcp_compute_subnetwork.psc_ilb_producer_subnetwork.name
+/// }
+/// resource "gcp_compute_regionbackendservice" "producer_service_backend" {
+///   name          = "producer-service"
+///   region        = "us-central1"
+///   health_checks = gcp_compute_healthcheck.producer_service_health_check.id
+/// }
+/// resource "gcp_compute_healthcheck" "producer_service_health_check" {
+///   name               = "producer-service-health-check"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+///   tcp_health_check = {
+///     port = "80"
+///   }
+/// }
+/// resource "gcp_compute_network" "psc_ilb_network" {
+///   name                    = "psc-ilb-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "psc_ilb_producer_subnetwork" {
+///   name          = "psc-ilb-producer-subnetwork"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.psc_ilb_network.id
+///   ip_cidr_range = "10.0.0.0/16"
+/// }
+/// resource "gcp_compute_subnetwork" "psc_ilb_nat" {
+///   name          = "psc-ilb-nat"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.psc_ilb_network.id
+///   purpose       = "PRIVATE_SERVICE_CONNECT"
+///   ip_cidr_range = "10.1.0.0/16"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.HealthCheck;
+/// import com.pulumi.gcp.compute.HealthCheckArgs;
+/// import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+/// import com.pulumi.gcp.compute.RegionBackendService;
+/// import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+/// import com.pulumi.gcp.compute.Network;
+/// import com.pulumi.gcp.compute.NetworkArgs;
+/// import com.pulumi.gcp.compute.Subnetwork;
+/// import com.pulumi.gcp.compute.SubnetworkArgs;
+/// import com.pulumi.gcp.compute.ForwardingRule;
+/// import com.pulumi.gcp.compute.ForwardingRuleArgs;
+/// import com.pulumi.gcp.compute.ServiceAttachment;
+/// import com.pulumi.gcp.compute.ServiceAttachmentArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var producerServiceHealthCheck = new HealthCheck("producerServiceHealthCheck", HealthCheckArgs.builder()
+///             .name("producer-service-health-check")
+///             .checkIntervalSec(1)
+///             .timeoutSec(1)
+///             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+///                 .port(80)
+///                 .build())
+///             .build());
+///
+///         var producerServiceBackend = new RegionBackendService("producerServiceBackend", RegionBackendServiceArgs.builder()
+///             .name("producer-service")
+///             .region("us-central1")
+///             .healthChecks(producerServiceHealthCheck.id())
+///             .build());
+///
+///         var pscIlbNetwork = new Network("pscIlbNetwork", NetworkArgs.builder()
+///             .name("psc-ilb-network")
+///             .autoCreateSubnetworks(false)
+///             .build());
+///
+///         var pscIlbProducerSubnetwork = new Subnetwork("pscIlbProducerSubnetwork", SubnetworkArgs.builder()
+///             .name("psc-ilb-producer-subnetwork")
+///             .region("us-central1")
+///             .network(pscIlbNetwork.id())
+///             .ipCidrRange("10.0.0.0/16")
+///             .build());
+///
+///         var pscIlbTargetService = new ForwardingRule("pscIlbTargetService", ForwardingRuleArgs.builder()
+///             .name("producer-forwarding-rule")
+///             .region("us-central1")
+///             .loadBalancingScheme("INTERNAL")
+///             .backendService(producerServiceBackend.id())
+///             .allPorts(true)
+///             .network(pscIlbNetwork.name())
+///             .subnetwork(pscIlbProducerSubnetwork.name())
+///             .build());
+///
+///         var pscIlbNat = new Subnetwork("pscIlbNat", SubnetworkArgs.builder()
+///             .name("psc-ilb-nat")
+///             .region("us-central1")
+///             .network(pscIlbNetwork.id())
+///             .purpose("PRIVATE_SERVICE_CONNECT")
+///             .ipCidrRange("10.1.0.0/16")
+///             .build());
+///
+///         var pscIlbServiceAttachment = new ServiceAttachment("pscIlbServiceAttachment", ServiceAttachmentArgs.builder()
+///             .name("my-psc-ilb")
+///             .region("us-central1")
+///             .description("A service attachment configured with Terraform")
+///             .enableProxyProtocol(true)
+///             .natIpsPerEndpoint(2)
+///             .connectionPreference("ACCEPT_AUTOMATIC")
+///             .natSubnets(pscIlbNat.id())
+///             .targetService(pscIlbTargetService.id())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   pscIlbServiceAttachment:
+///     type: gcp:compute:ServiceAttachment
+///     name: psc_ilb_service_attachment
+///     properties:
+///       name: my-psc-ilb
+///       region: us-central1
+///       description: A service attachment configured with Terraform
+///       enableProxyProtocol: true
+///       natIpsPerEndpoint: 2
+///       connectionPreference: ACCEPT_AUTOMATIC
+///       natSubnets:
+///         - ${pscIlbNat.id}
+///       targetService: ${pscIlbTargetService.id}
+///   pscIlbTargetService:
+///     type: gcp:compute:ForwardingRule
+///     name: psc_ilb_target_service
+///     properties:
+///       name: producer-forwarding-rule
+///       region: us-central1
+///       loadBalancingScheme: INTERNAL
+///       backendService: ${producerServiceBackend.id}
+///       allPorts: true
+///       network: ${pscIlbNetwork.name}
+///       subnetwork: ${pscIlbProducerSubnetwork.name}
+///   producerServiceBackend:
+///     type: gcp:compute:RegionBackendService
+///     name: producer_service_backend
+///     properties:
+///       name: producer-service
+///       region: us-central1
+///       healthChecks: ${producerServiceHealthCheck.id}
+///   producerServiceHealthCheck:
+///     type: gcp:compute:HealthCheck
+///     name: producer_service_health_check
+///     properties:
+///       name: producer-service-health-check
+///       checkIntervalSec: 1
+///       timeoutSec: 1
+///       tcpHealthCheck:
+///         port: '80'
+///   pscIlbNetwork:
+///     type: gcp:compute:Network
+///     name: psc_ilb_network
+///     properties:
+///       name: psc-ilb-network
+///       autoCreateSubnetworks: false
+///   pscIlbProducerSubnetwork:
+///     type: gcp:compute:Subnetwork
+///     name: psc_ilb_producer_subnetwork
+///     properties:
+///       name: psc-ilb-producer-subnetwork
+///       region: us-central1
+///       network: ${pscIlbNetwork.id}
+///       ipCidrRange: 10.0.0.0/16
+///   pscIlbNat:
+///     type: gcp:compute:Subnetwork
+///     name: psc_ilb_nat
+///     properties:
+///       name: psc-ilb-nat
+///       region: us-central1
+///       network: ${pscIlbNetwork.id}
+///       purpose: PRIVATE_SERVICE_CONNECT
+///       ipCidrRange: 10.1.0.0/16
+/// ```
+///
 /// ### Service Attachment Explicit Projects
 ///
 ///
@@ -884,7 +1369,7 @@ import 'service_attachment_tunneling_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1563,7 +2048,7 @@ import 'service_attachment_tunneling_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2223,7 +2708,7 @@ import 'service_attachment_tunneling_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2754,7 +3239,7 @@ import 'service_attachment_tunneling_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3311,7 +3796,7 @@ import 'service_attachment_tunneling_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3765,6 +4250,8 @@ class ServiceAttachment extends pulumi.CustomResource {
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
+  /// The number of NAT IPs allocated per connected endpoint.
+  late final pulumi.Output<int?> natIpsPerEndpoint;
   /// An array of subnets that is provided for NAT in this service attachment.
   late final pulumi.Output<List<String>> natSubnets;
   /// The ID of the project in which the resource belongs.
@@ -3815,7 +4302,7 @@ class ServiceAttachment extends pulumi.CustomResource {
           'gcp:compute/serviceAttachment:ServiceAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     connectedEndpoints = registerOutput<List<ServiceAttachmentConnectedEndpoint>>('connectedEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceAttachmentConnectedEndpoint>(guardedValue, (value) => ServiceAttachmentConnectedEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     connectionPreference = registerOutput<String>('connectionPreference');
@@ -3827,6 +4314,7 @@ class ServiceAttachment extends pulumi.CustomResource {
     enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
+    natIpsPerEndpoint = registerOutput<int?>('natIpsPerEndpoint');
     natSubnets = registerOutput<List<String>>('natSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     propagatedConnectionLimit = registerOutput<int>('propagatedConnectionLimit');
@@ -3874,6 +4362,7 @@ class ServiceAttachment extends pulumi.CustomResource {
     enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
+    natIpsPerEndpoint = registerOutput<int?>('natIpsPerEndpoint');
     natSubnets = registerOutput<List<String>>('natSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     propagatedConnectionLimit = registerOutput<int>('propagatedConnectionLimit');
@@ -3906,6 +4395,7 @@ class ServiceAttachment extends pulumi.CustomResource {
     enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
+    natIpsPerEndpoint = registerOutput<int?>('natIpsPerEndpoint');
     natSubnets = registerOutput<List<String>>('natSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     propagatedConnectionLimit = registerOutput<int>('propagatedConnectionLimit');

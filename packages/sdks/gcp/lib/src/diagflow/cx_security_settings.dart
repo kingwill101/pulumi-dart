@@ -63,7 +63,7 @@ import 'cx_security_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -342,9 +342,9 @@ import 'cx_security_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -711,7 +711,7 @@ class CxSecuritySettings extends pulumi.CustomResource {
           'gcp:diagflow/cxSecuritySettings:CxSecuritySettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     audioExportSettings = registerOutput<CxSecuritySettingsAudioExportSettings?>('audioExportSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxSecuritySettingsAudioExportSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deidentifyTemplate = registerOutput<String?>('deidentifyTemplate');

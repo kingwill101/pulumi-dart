@@ -104,8 +104,8 @@ import 'authz_extension_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -345,8 +345,8 @@ import 'authz_extension_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -551,7 +551,7 @@ import 'authz_extension_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -677,6 +677,13 @@ class AuthzExtension extends pulumi.CustomResource {
   /// * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer.
   /// * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
   late final pulumi.Output<bool> failOpen;
+  /// List of the Envoy attributes to forward to the extension server. The attributes
+  /// provided here are included as part of the `ProcessingRequest.attributes` field
+  /// (of type `map`), where the keys are the attribute names. Refer to the
+  /// [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+  /// for the names of attributes that can be forwarded. If omitted, no attributes
+  /// are sent. Each element is a string indicating the attribute name.
+  late final pulumi.Output<List<String>?> forwardAttributes;
   /// List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
   late final pulumi.Output<List<String>?> forwardHeaders;
   /// Set of labels associated with the AuthzExtension resource.
@@ -744,7 +751,7 @@ class AuthzExtension extends pulumi.CustomResource {
           'gcp:networkservices/authzExtension:AuthzExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     authority = registerOutput<String?>('authority');
@@ -753,6 +760,7 @@ class AuthzExtension extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     failOpen = registerOutput<bool>('failOpen');
+    forwardAttributes = registerOutput<List<String>?>('forwardAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     forwardHeaders = registerOutput<List<String>?>('forwardHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
@@ -797,6 +805,7 @@ class AuthzExtension extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     failOpen = registerOutput<bool>('failOpen');
+    forwardAttributes = registerOutput<List<String>?>('forwardAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     forwardHeaders = registerOutput<List<String>?>('forwardHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
@@ -827,6 +836,7 @@ class AuthzExtension extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     failOpen = registerOutput<bool>('failOpen');
+    forwardAttributes = registerOutput<List<String>?>('forwardAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     forwardHeaders = registerOutput<List<String>?>('forwardHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');

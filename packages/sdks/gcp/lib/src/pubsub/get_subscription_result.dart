@@ -112,7 +112,7 @@ class GetSubscriptionResult {
 
   factory GetSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionResult(
-      ackDeadlineSeconds: (() { final guardedValue = map['ackDeadlineSeconds']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      ackDeadlineSeconds: (() { final guardedValue = map['ackDeadlineSeconds']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       bigqueryConfigs: (() { final guardedValue = map['bigqueryConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSubscriptionBigqueryConfig>(guardedValue, (value) => GetSubscriptionBigqueryConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       cloudStorageConfigs: (() { final guardedValue = map['cloudStorageConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSubscriptionCloudStorageConfig>(guardedValue, (value) => GetSubscriptionCloudStorageConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
       deadLetterPolicies: (() { final guardedValue = map['deadLetterPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSubscriptionDeadLetterPolicy>(guardedValue, (value) => GetSubscriptionDeadLetterPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),

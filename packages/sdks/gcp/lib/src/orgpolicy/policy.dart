@@ -98,8 +98,8 @@ import 'policy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/orgpolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -307,8 +307,8 @@ import 'policy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/orgpolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -483,7 +483,7 @@ import 'policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/orgpolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -695,8 +695,8 @@ import 'policy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/orgpolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -883,7 +883,7 @@ import 'policy_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const constraint = new gcp.orgpolicy.CustomConstraint("constraint", {
-///     name: "custom.disableGkeAutoUpgrade_74065",
+///     name: "custom.disableGkeAutoUpgrade_44263",
 ///     parent: "organizations/123456789",
 ///     displayName: "Disable GKE auto upgrade",
 ///     description: "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
@@ -914,7 +914,7 @@ import 'policy_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// constraint = gcp.orgpolicy.CustomConstraint("constraint",
-///     name="custom.disableGkeAutoUpgrade_74065",
+///     name="custom.disableGkeAutoUpgrade_44263",
 ///     parent="organizations/123456789",
 ///     display_name="Disable GKE auto upgrade",
 ///     description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
@@ -948,7 +948,7 @@ import 'policy_state.dart';
 /// {
 ///     var constraint = new Gcp.OrgPolicy.CustomConstraint("constraint", new()
 ///     {
-///         Name = "custom.disableGkeAutoUpgrade_74065",
+///         Name = "custom.disableGkeAutoUpgrade_44263",
 ///         Parent = "organizations/123456789",
 ///         DisplayName = "Disable GKE auto upgrade",
 ///         Description = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
@@ -1000,14 +1000,14 @@ import 'policy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/orgpolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		constraint, err := orgpolicy.NewCustomConstraint(ctx, "constraint", &orgpolicy.CustomConstraintArgs{
-/// 			Name:        pulumi.String("custom.disableGkeAutoUpgrade_74065"),
+/// 			Name:        pulumi.String("custom.disableGkeAutoUpgrade_44263"),
 /// 			Parent:      pulumi.String("organizations/123456789"),
 /// 			DisplayName: pulumi.String("Disable GKE auto upgrade"),
 /// 			Description: pulumi.String("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."),
@@ -1062,7 +1062,7 @@ import 'policy_state.dart';
 /// }
 ///
 /// resource "gcp_orgpolicy_customconstraint" "constraint" {
-///   name           = "custom.disableGkeAutoUpgrade_74065"
+///   name           = "custom.disableGkeAutoUpgrade_44263"
 ///   parent         = "organizations/123456789"
 ///   display_name   = "Disable GKE auto upgrade"
 ///   description    = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."
@@ -1116,7 +1116,7 @@ import 'policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var constraint = new CustomConstraint("constraint", CustomConstraintArgs.builder()
-///             .name("custom.disableGkeAutoUpgrade_74065")
+///             .name("custom.disableGkeAutoUpgrade_44263")
 ///             .parent("organizations/123456789")
 ///             .displayName("Disable GKE auto upgrade")
 ///             .description("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.")
@@ -1151,7 +1151,7 @@ import 'policy_state.dart';
 ///   constraint:
 ///     type: gcp:orgpolicy:CustomConstraint
 ///     properties:
-///       name: custom.disableGkeAutoUpgrade_74065
+///       name: custom.disableGkeAutoUpgrade_44263
 ///       parent: organizations/123456789
 ///       displayName: Disable GKE auto upgrade
 ///       description: Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.
@@ -1284,8 +1284,8 @@ import 'policy_state.dart';
 /// 	"encoding/json"
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/orgpolicy"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1488,7 +1488,7 @@ class Policy extends pulumi.CustomResource {
           'gcp:orgpolicy/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     dryRunSpec = registerOutput<PolicyDryRunSpec?>('dryRunSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDryRunSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });

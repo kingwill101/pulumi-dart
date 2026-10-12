@@ -70,7 +70,7 @@ pulumi.Output<GetServiceConsumersIamPolicyResult> getServiceConsumersIamPolicyOu
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/endpoints"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/endpoints"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

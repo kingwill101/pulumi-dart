@@ -160,9 +160,9 @@ import 'ai_logic_config_traffic_filter.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -404,16 +404,6 @@ import 'ai_logic_config_traffic_filter.dart';
 ///     project: project.projectId,
 ///     service: "firebasevertexai.googleapis.com",
 /// });
-/// const gemini = new gcp.projects.ApiKey("gemini", {
-///     project: project.projectId,
-///     name: "gemini-api-key",
-///     displayName: "Gemini Developer API key",
-///     restrictions: {
-///         apiTargets: [{
-///             service: "generativelanguage.googleapis.com",
-///         }],
-///     },
-/// });
 /// // It takes a while for permissions to propagate
 /// // If your Terraform setup has a retry mechanism, this wait is unnecessary
 /// const wait30s = new time.Sleep("wait_30s", {createDuration: "30s"}, {
@@ -425,9 +415,6 @@ import 'ai_logic_config_traffic_filter.dart';
 /// const defaultAiLogicConfig = new gcp.firebase.AiLogicConfig("default", {
 ///     project: _default.project,
 ///     location: "global",
-///     generativeLanguageConfig: {
-///         apiKey: gemini.keyString,
-///     },
 ///     telemetryConfig: {
 ///         mode: "ALL",
 ///         samplingRate: 1,
@@ -457,15 +444,6 @@ import 'ai_logic_config_traffic_filter.dart';
 /// ailogic = gcp.projects.Service("ailogic",
 ///     project=project.project_id,
 ///     service="firebasevertexai.googleapis.com")
-/// gemini = gcp.projects.ApiKey("gemini",
-///     project=project.project_id,
-///     name="gemini-api-key",
-///     display_name="Gemini Developer API key",
-///     restrictions={
-///         "api_targets": [{
-///             "service": "generativelanguage.googleapis.com",
-///         }],
-///     })
 /// # It takes a while for permissions to propagate
 /// # If your Terraform setup has a retry mechanism, this wait is unnecessary
 /// wait30s = time.Sleep("wait_30s", create_duration="30s",
@@ -476,9 +454,6 @@ import 'ai_logic_config_traffic_filter.dart';
 /// default_ai_logic_config = gcp.firebase.AiLogicConfig("default",
 ///     project=default.project,
 ///     location="global",
-///     generative_language_config={
-///         "api_key": gemini.key_string,
-///     },
 ///     telemetry_config={
 ///         "mode": "ALL",
 ///         "sampling_rate": float(1),
@@ -523,23 +498,6 @@ import 'ai_logic_config_traffic_filter.dart';
 ///         ServiceName = "firebasevertexai.googleapis.com",
 ///     });
 ///
-///     var gemini = new Gcp.Projects.ApiKey("gemini", new()
-///     {
-///         Project = project.ProjectId,
-///         Name = "gemini-api-key",
-///         DisplayName = "Gemini Developer API key",
-///         Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
-///         {
-///             ApiTargets = new[]
-///             {
-///                 new Gcp.Projects.Inputs.ApiKeyRestrictionsApiTargetArgs
-///                 {
-///                     Service = "generativelanguage.googleapis.com",
-///                 },
-///             },
-///         },
-///     });
-///
 ///     // It takes a while for permissions to propagate
 ///     // If your Terraform setup has a retry mechanism, this wait is unnecessary
 ///     var wait30s = new Time.Sleep("wait_30s", new()
@@ -558,10 +516,6 @@ import 'ai_logic_config_traffic_filter.dart';
 ///     {
 ///         Project = @default.ProjectID,
 ///         Location = "global",
-///         GenerativeLanguageConfig = new Gcp.Firebase.Inputs.AiLogicConfigGenerativeLanguageConfigArgs
-///         {
-///             ApiKey = gemini.KeyString,
-///         },
 ///         TelemetryConfig = new Gcp.Firebase.Inputs.AiLogicConfigTelemetryConfigArgs
 ///         {
 ///             Mode = "ALL",
@@ -585,9 +539,9 @@ import 'ai_logic_config_traffic_filter.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -624,21 +578,6 @@ import 'ai_logic_config_traffic_filter.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		gemini, err := projects.NewApiKey(ctx, "gemini", &projects.ApiKeyArgs{
-/// 			Project:     project.ProjectId,
-/// 			Name:        pulumi.String("gemini-api-key"),
-/// 			DisplayName: pulumi.String("Gemini Developer API key"),
-/// 			Restrictions: &projects.ApiKeyRestrictionsArgs{
-/// 				ApiTargets: projects.ApiKeyRestrictionsApiTargetArray{
-/// 					&projects.ApiKeyRestrictionsApiTargetArgs{
-/// 						Service: pulumi.String("generativelanguage.googleapis.com"),
-/// 					},
-/// 				},
-/// 			},
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		// It takes a while for permissions to propagate
 /// 		// If your Terraform setup has a retry mechanism, this wait is unnecessary
 /// 		wait30s, err := time.NewSleep(ctx, "wait_30s", &time.SleepArgs{
@@ -653,9 +592,6 @@ import 'ai_logic_config_traffic_filter.dart';
 /// 		_, err = firebase.NewAiLogicConfig(ctx, "default", &firebase.AiLogicConfigArgs{
 /// 			Project:  _default.Project,
 /// 			Location: pulumi.String("global"),
-/// 			GenerativeLanguageConfig: &firebase.AiLogicConfigGenerativeLanguageConfigArgs{
-/// 				ApiKey: gemini.KeyString,
-/// 			},
 /// 			TelemetryConfig: &firebase.AiLogicConfigTelemetryConfigArgs{
 /// 				Mode:         pulumi.String("ALL"),
 /// 				SamplingRate: pulumi.Float64(1),
@@ -703,16 +639,6 @@ import 'ai_logic_config_traffic_filter.dart';
 ///   project = gcp_organizations_project.project.project_id
 ///   service = "firebasevertexai.googleapis.com"
 /// }
-/// resource "gcp_projects_apikey" "gemini" {
-///   project      = gcp_organizations_project.project.project_id
-///   name         = "gemini-api-key"
-///   display_name = "Gemini Developer API key"
-///   restrictions = {
-///     api_targets = [{
-///       "service" = "generativelanguage.googleapis.com"
-///     }]
-///   }
-/// }
 /// # It takes a while for permissions to propagate
 /// # If your Terraform setup has a retry mechanism, this wait is unnecessary
 /// resource "time_sleep" "wait_30s" {
@@ -723,9 +649,6 @@ import 'ai_logic_config_traffic_filter.dart';
 ///   depends_on = [time_sleep.wait_30s]
 ///   project    = gcp_firebase_project.default.project
 ///   location   = "global"
-///   generative_language_config = {
-///     api_key = gcp_projects_apikey.gemini.key_string
-///   }
 ///   telemetry_config = {
 ///     mode          = "ALL"
 ///     sampling_rate = 1
@@ -743,15 +666,10 @@ import 'ai_logic_config_traffic_filter.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.projects.Service;
 /// import com.pulumi.gcp.projects.ServiceArgs;
-/// import com.pulumi.gcp.projects.ApiKey;
-/// import com.pulumi.gcp.projects.ApiKeyArgs;
-/// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
-/// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsApiTargetArgs;
 /// import com.pulumiverse.time.Sleep;
 /// import com.pulumiverse.time.SleepArgs;
 /// import com.pulumi.gcp.firebase.AiLogicConfig;
 /// import com.pulumi.gcp.firebase.AiLogicConfigArgs;
-/// import com.pulumi.gcp.firebase.inputs.AiLogicConfigGenerativeLanguageConfigArgs;
 /// import com.pulumi.gcp.firebase.inputs.AiLogicConfigTelemetryConfigArgs;
 /// import com.pulumi.gcp.firebase.inputs.AiLogicConfigTrafficFilterArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
@@ -790,17 +708,6 @@ import 'ai_logic_config_traffic_filter.dart';
 ///             .service("firebasevertexai.googleapis.com")
 ///             .build());
 ///
-///         var gemini = new ApiKey("gemini", ApiKeyArgs.builder()
-///             .project(project.projectId())
-///             .name("gemini-api-key")
-///             .displayName("Gemini Developer API key")
-///             .restrictions(ApiKeyRestrictionsArgs.builder()
-///                 .apiTargets(ApiKeyRestrictionsApiTargetArgs.builder()
-///                     .service("generativelanguage.googleapis.com")
-///                     .build())
-///                 .build())
-///             .build());
-///
 ///         // It takes a while for permissions to propagate
 ///         // If your Terraform setup has a retry mechanism, this wait is unnecessary
 ///         var wait30s = new Sleep("wait30s", SleepArgs.builder()
@@ -814,9 +721,6 @@ import 'ai_logic_config_traffic_filter.dart';
 ///         var defaultAiLogicConfig = new AiLogicConfig("defaultAiLogicConfig", AiLogicConfigArgs.builder()
 ///             .project(default_.project())
 ///             .location("global")
-///             .generativeLanguageConfig(AiLogicConfigGenerativeLanguageConfigArgs.builder()
-///                 .apiKey(gemini.keyString())
-///                 .build())
 ///             .telemetryConfig(AiLogicConfigTelemetryConfigArgs.builder()
 ///                 .mode("ALL")
 ///                 .samplingRate(1.0)
@@ -855,15 +759,6 @@ import 'ai_logic_config_traffic_filter.dart';
 ///     properties:
 ///       project: ${project.projectId}
 ///       service: firebasevertexai.googleapis.com
-///   gemini:
-///     type: gcp:projects:ApiKey
-///     properties:
-///       project: ${project.projectId}
-///       name: gemini-api-key
-///       displayName: Gemini Developer API key
-///       restrictions:
-///         apiTargets:
-///           - service: generativelanguage.googleapis.com
 ///   # It takes a while for permissions to propagate
 ///   # If your Terraform setup has a retry mechanism, this wait is unnecessary
 ///   wait30s:
@@ -881,8 +776,6 @@ import 'ai_logic_config_traffic_filter.dart';
 ///     properties:
 ///       project: ${default.project}
 ///       location: global
-///       generativeLanguageConfig:
-///         apiKey: ${gemini.keyString}
 ///       telemetryConfig:
 ///         mode: ALL
 ///         samplingRate: 1
@@ -918,11 +811,15 @@ class AiLogicConfig extends pulumi.CustomResource {
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
   late final pulumi.Output<String> deletionPolicy;
+  /// (Optional, Deprecated)
   /// Configuration for using the Gemini Developer API via Firebase AI Logic.
-  /// When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
-  /// API key is stored in this configuration *on the server* so that you do
-  /// **not** add your Gemini API key directly into your app's codebase.
+  /// Firebase AI Logic now uses a Google-managed service account to authenticate
+  /// requests to the Gemini Developer API and no longer requires an API key.
+  /// Values provided here may be silently ignored on input, and may be omitted in
+  /// responses.
   /// Structure is documented below.
+  ///
+  /// &gt; **Warning:** `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
   late final pulumi.Output<AiLogicConfigGenerativeLanguageConfig?> generativeLanguageConfig;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String?> location;
@@ -953,7 +850,7 @@ class AiLogicConfig extends pulumi.CustomResource {
           'gcp:firebase/aiLogicConfig:AiLogicConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     generativeLanguageConfig = registerOutput<AiLogicConfigGenerativeLanguageConfig?>('generativeLanguageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiLogicConfigGenerativeLanguageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

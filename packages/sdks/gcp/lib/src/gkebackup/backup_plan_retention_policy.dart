@@ -48,8 +48,8 @@ class BackupPlanRetentionPolicy {
 
   factory BackupPlanRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return BackupPlanRetentionPolicy(
-      backupDeleteLockDays: (() { final guardedValue = map['backupDeleteLockDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      backupRetainDays: (() { final guardedValue = map['backupRetainDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      backupDeleteLockDays: (() { final guardedValue = map['backupDeleteLockDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      backupRetainDays: (() { final guardedValue = map['backupRetainDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       locked: (() { final guardedValue = map['locked']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

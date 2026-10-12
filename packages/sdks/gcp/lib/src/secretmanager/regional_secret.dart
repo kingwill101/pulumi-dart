@@ -86,7 +86,7 @@ import 'regional_secret_topic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -267,9 +267,9 @@ import 'regional_secret_topic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -506,9 +506,9 @@ import 'regional_secret_topic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -700,6 +700,7 @@ import 'regional_secret_topic.dart';
 ///         key3: "value3",
 ///     },
 ///     ttl: "36000s",
+///     secretType: "ACCESS_KEY",
 /// });
 /// ```
 /// ```python
@@ -717,7 +718,8 @@ import 'regional_secret_topic.dart';
 ///         "key2": "value2",
 ///         "key3": "value3",
 ///     },
-///     ttl="36000s")
+///     ttl="36000s",
+///     secret_type="ACCESS_KEY")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -742,6 +744,7 @@ import 'regional_secret_topic.dart';
 ///             { "key3", "value3" },
 ///         },
 ///         Ttl = "36000s",
+///         SecretType = "ACCESS_KEY",
 ///     });
 ///
 /// });
@@ -750,7 +753,7 @@ import 'regional_secret_topic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -767,7 +770,8 @@ import 'regional_secret_topic.dart';
 /// 				"key2": pulumi.String("value2"),
 /// 				"key3": pulumi.String("value3"),
 /// 			},
-/// 			Ttl: pulumi.String("36000s"),
+/// 			Ttl:        pulumi.String("36000s"),
+/// 			SecretType: pulumi.String("ACCESS_KEY"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -796,7 +800,8 @@ import 'regional_secret_topic.dart';
 ///     "key2" = "value2"
 ///     "key3" = "value3"
 ///   }
-///   ttl = "36000s"
+///   ttl         = "36000s"
+///   secret_type = "ACCESS_KEY"
 /// }
 /// ```
 /// ```java
@@ -830,6 +835,7 @@ import 'regional_secret_topic.dart';
 ///                 Map.entry("key3", "value3")
 ///             ))
 ///             .ttl("36000s")
+///             .secretType("ACCESS_KEY")
 ///             .build());
 ///
 ///     }
@@ -849,6 +855,7 @@ import 'regional_secret_topic.dart';
 ///         key2: value2
 ///         key3: value3
 ///       ttl: 36000s
+///       secretType: ACCESS_KEY
 /// ```
 ///
 /// ### Regional Secret With Expire Time
@@ -921,7 +928,7 @@ import 'regional_secret_topic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1092,7 +1099,7 @@ import 'regional_secret_topic.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1280,6 +1287,9 @@ class RegionalSecret extends pulumi.CustomResource {
   late final pulumi.Output<RegionalSecretRotation?> rotation;
   /// This must be unique within the project.
   late final pulumi.Output<String> secretId;
+  /// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+  /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+  late final pulumi.Output<String?> secretType;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -1318,7 +1328,7 @@ class RegionalSecret extends pulumi.CustomResource {
           'gcp:secretmanager/regionalSecret:RegionalSecret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
@@ -1336,6 +1346,7 @@ class RegionalSecret extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rotation = registerOutput<RegionalSecretRotation?>('rotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionalSecretRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretId = registerOutput<String>('secretId');
+    secretType = registerOutput<String?>('secretType');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     topics = registerOutput<List<RegionalSecretTopic>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionalSecretTopic>(guardedValue, (value) => RegionalSecretTopic.fromMap((value as Map).cast<String, dynamic>())); });
     ttl = registerOutput<String?>('ttl');
@@ -1382,6 +1393,7 @@ class RegionalSecret extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rotation = registerOutput<RegionalSecretRotation?>('rotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionalSecretRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretId = registerOutput<String>('secretId');
+    secretType = registerOutput<String?>('secretType');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     topics = registerOutput<List<RegionalSecretTopic>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionalSecretTopic>(guardedValue, (value) => RegionalSecretTopic.fromMap((value as Map).cast<String, dynamic>())); });
     ttl = registerOutput<String?>('ttl');
@@ -1414,6 +1426,7 @@ class RegionalSecret extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rotation = registerOutput<RegionalSecretRotation?>('rotation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionalSecretRotation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretId = registerOutput<String>('secretId');
+    secretType = registerOutput<String?>('secretType');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     topics = registerOutput<List<RegionalSecretTopic>?>('topics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionalSecretTopic>(guardedValue, (value) => RegionalSecretTopic.fromMap((value as Map).cast<String, dynamic>())); });
     ttl = registerOutput<String?>('ttl');

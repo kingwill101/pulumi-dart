@@ -24,6 +24,7 @@ class GetRegionalSecretResult {
   final Map<String, String>? pulumiLabels;
   final List<GetRegionalSecretRotation>? rotations;
   final String? secretId;
+  final String? secretType;
   final Map<String, String>? tags;
   final List<GetRegionalSecretTopic>? topics;
   final String? ttl;
@@ -47,6 +48,7 @@ class GetRegionalSecretResult {
   /// [pulumiLabels] Optional.
   /// [rotations] Optional.
   /// [secretId] Optional.
+  /// [secretType] Optional.
   /// [tags] Optional.
   /// [topics] Optional.
   /// [ttl] Optional.
@@ -69,6 +71,7 @@ class GetRegionalSecretResult {
     this.pulumiLabels,
     this.rotations,
     this.secretId,
+    this.secretType,
     this.tags,
     this.topics,
     this.ttl,
@@ -94,6 +97,7 @@ class GetRegionalSecretResult {
       'pulumiLabels': ?pulumiLabels,
       'rotations': ?(() { final guardedValue = rotations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionalSecretRotation, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'secretId': ?secretId,
+      'secretType': ?secretType,
       'tags': ?tags,
       'topics': ?(() { final guardedValue = topics; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionalSecretTopic, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'ttl': ?ttl,
@@ -120,6 +124,7 @@ class GetRegionalSecretResult {
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       rotations: (() { final guardedValue = map['rotations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionalSecretRotation>(guardedValue, (value) => GetRegionalSecretRotation.fromMap((value as Map).cast<String, dynamic>())); })(),
       secretId: (() { final guardedValue = map['secretId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secretType: (() { final guardedValue = map['secretType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       topics: (() { final guardedValue = map['topics']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionalSecretTopic>(guardedValue, (value) => GetRegionalSecretTopic.fromMap((value as Map).cast<String, dynamic>())); })(),
       ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return guardedValue as String; })(),

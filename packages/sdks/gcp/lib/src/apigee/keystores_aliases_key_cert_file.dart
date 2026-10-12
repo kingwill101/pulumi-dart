@@ -63,7 +63,7 @@ class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
           'gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['key', 'password'],
         ) {
     alias = registerOutput<String>('alias');

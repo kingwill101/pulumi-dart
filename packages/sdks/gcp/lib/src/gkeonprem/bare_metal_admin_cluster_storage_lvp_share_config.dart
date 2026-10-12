@@ -28,7 +28,7 @@ class BareMetalAdminClusterStorageLvpShareConfig {
   factory BareMetalAdminClusterStorageLvpShareConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterStorageLvpShareConfig(
       lvpConfig: pulumi.Input.fromValue(BareMetalAdminClusterStorageLvpShareConfigLvpConfig.fromMap((map['lvpConfig']! as Map).cast<String, dynamic>())),
-      sharedPathPvCount: (() { final guardedValue = map['sharedPathPvCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      sharedPathPvCount: (() { final guardedValue = map['sharedPathPvCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -113,7 +113,7 @@ class GetSubnetworkResult {
       secondaryIpRanges: (() { final guardedValue = map['secondaryIpRanges']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSubnetworkSecondaryIpRange>(guardedValue, (value) => GetSubnetworkSecondaryIpRange.fromMap((value as Map).cast<String, dynamic>())); })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
       stackType: (() { final guardedValue = map['stackType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      subnetworkId: (() { final guardedValue = map['subnetworkId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      subnetworkId: (() { final guardedValue = map['subnetworkId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

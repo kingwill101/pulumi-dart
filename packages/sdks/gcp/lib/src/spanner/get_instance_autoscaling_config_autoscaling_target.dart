@@ -37,9 +37,9 @@ class GetInstanceAutoscalingConfigAutoscalingTarget {
 
   factory GetInstanceAutoscalingConfigAutoscalingTarget.fromMap(Map<String, dynamic> map) {
     return GetInstanceAutoscalingConfigAutoscalingTarget(
-      highPriorityCpuUtilizationPercent: pulumi.Input.fromValue((map['highPriorityCpuUtilizationPercent'] as num).toInt()),
-      storageUtilizationPercent: pulumi.Input.fromValue((map['storageUtilizationPercent'] as num).toInt()),
-      totalCpuUtilizationPercent: pulumi.Input.fromValue((map['totalCpuUtilizationPercent'] as num).toInt()),
+      highPriorityCpuUtilizationPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['highPriorityCpuUtilizationPercent'])),
+      storageUtilizationPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['storageUtilizationPercent'])),
+      totalCpuUtilizationPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalCpuUtilizationPercent'])),
     );
   }
 }

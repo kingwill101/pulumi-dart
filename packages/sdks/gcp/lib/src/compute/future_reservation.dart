@@ -117,7 +117,7 @@ import 'future_reservation_time_window.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -369,7 +369,7 @@ import 'future_reservation_time_window.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -641,7 +641,7 @@ class FutureReservation extends pulumi.CustomResource {
           'gcp:compute/futureReservation:FutureReservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     aggregateReservation = registerOutput<FutureReservationAggregateReservation?>('aggregateReservation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationAggregateReservation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoCreatedReservationsDeleteTime = registerOutput<String?>('autoCreatedReservationsDeleteTime');

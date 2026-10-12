@@ -39,7 +39,7 @@ class GetReservationResourceStatus {
   factory GetReservationResourceStatus.fromMap(Map<String, dynamic> map) {
     return GetReservationResourceStatus(
       healthInfos: pulumi.Input.fromValue(pulumi.Input.decodeList<GetReservationResourceStatusHealthInfo>(map['healthInfos']!, (value) => GetReservationResourceStatusHealthInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      reservationBlockCount: pulumi.Input.fromValue((map['reservationBlockCount'] as num).toInt()),
+      reservationBlockCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['reservationBlockCount'])),
       reservationMaintenances: pulumi.Input.fromValue(pulumi.Input.decodeList<GetReservationResourceStatusReservationMaintenance>(map['reservationMaintenances']!, (value) => GetReservationResourceStatusReservationMaintenance.fromMap((value as Map).cast<String, dynamic>()))),
       specificSkuAllocations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetReservationResourceStatusSpecificSkuAllocation>(map['specificSkuAllocations']!, (value) => GetReservationResourceStatusSpecificSkuAllocation.fromMap((value as Map).cast<String, dynamic>()))),
     );

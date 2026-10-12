@@ -74,6 +74,7 @@ import 'ull_mirroring_collector_rule_state.dart';
 ///         ipProtocols: ["tcp"],
 ///         srcIpRanges: ["10.0.0.0/8"],
 ///         dstIpRanges: ["192.168.0.0/16"],
+///         primaryIpRanges: ["10.1.0.0/16"],
 ///     },
 /// });
 /// ```
@@ -131,6 +132,7 @@ import 'ull_mirroring_collector_rule_state.dart';
 ///         "ip_protocols": ["tcp"],
 ///         "src_ip_ranges": ["10.0.0.0/8"],
 ///         "dst_ip_ranges": ["192.168.0.0/16"],
+///         "primary_ip_ranges": ["10.1.0.0/16"],
 ///     })
 /// ```
 /// ```csharp
@@ -228,6 +230,10 @@ import 'ull_mirroring_collector_rule_state.dart';
 ///             {
 ///                 "192.168.0.0/16",
 ///             },
+///             PrimaryIpRanges = new[]
+///             {
+///                 "10.1.0.0/16",
+///             },
 ///         },
 ///     });
 ///
@@ -237,8 +243,8 @@ import 'ull_mirroring_collector_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -330,6 +336,9 @@ import 'ull_mirroring_collector_rule_state.dart';
 /// 				DstIpRanges: pulumi.StringArray{
 /// 					pulumi.String("192.168.0.0/16"),
 /// 				},
+/// 				PrimaryIpRanges: pulumi.StringArray{
+/// 					pulumi.String("10.1.0.0/16"),
+/// 				},
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -401,10 +410,11 @@ import 'ull_mirroring_collector_rule_state.dart';
 ///   location                        = "us-south1-d"
 ///   ull_mirroring_collector         = gcp_networksecurity_ullmirroringcollector.collector.ull_mirroring_collector_id
 ///   match = {
-///     direction     = "INGRESS"
-///     ip_protocols  = ["tcp"]
-///     src_ip_ranges = ["10.0.0.0/8"]
-///     dst_ip_ranges = ["192.168.0.0/16"]
+///     direction         = "INGRESS"
+///     ip_protocols      = ["tcp"]
+///     src_ip_ranges     = ["10.0.0.0/8"]
+///     dst_ip_ranges     = ["192.168.0.0/16"]
+///     primary_ip_ranges = ["10.1.0.0/16"]
 ///   }
 /// }
 /// ```
@@ -507,6 +517,7 @@ import 'ull_mirroring_collector_rule_state.dart';
 ///                 .ipProtocols("tcp")
 ///                 .srcIpRanges("10.0.0.0/8")
 ///                 .dstIpRanges("192.168.0.0/16")
+///                 .primaryIpRanges("10.1.0.0/16")
 ///                 .build())
 ///             .build());
 ///
@@ -587,6 +598,8 @@ import 'ull_mirroring_collector_rule_state.dart';
 ///           - 10.0.0.0/8
 ///         dstIpRanges:
 ///           - 192.168.0.0/16
+///         primaryIpRanges:
+///           - 10.1.0.0/16
 /// ```
 ///
 ///
@@ -657,7 +670,7 @@ class UllMirroringCollectorRule extends pulumi.CustomResource {
           'gcp:networksecurity/ullMirroringCollectorRule:UllMirroringCollectorRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

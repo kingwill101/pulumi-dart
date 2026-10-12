@@ -588,7 +588,7 @@ import 'dashboard_chart_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1355,7 +1355,7 @@ class DashboardChart extends pulumi.CustomResource {
           'gcp:chronicle/dashboardChart:DashboardChart',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     chartId = registerOutput<String>('chartId');
     chartLayout = registerOutput<DashboardChartChartLayout?>('chartLayout', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DashboardChartChartLayout.fromMap((guardedValue as Map).cast<String, dynamic>()); });

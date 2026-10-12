@@ -32,12 +32,6 @@ class WorkerPoolState {
   final pulumi.Input<String?>? createTime;
   /// Email address of the authenticated creator.
   final pulumi.Input<String?>? creator;
-  /// (Optional, Deprecated)
-  /// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-  /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-  ///
-  /// &gt; **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-  final pulumi.Input<List<String>?>? customAudiences;
   /// The deletion time.
   final pulumi.Input<String?>? deleteTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -129,7 +123,6 @@ class WorkerPoolState {
   /// [conditions] The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the WorkerPool does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
   /// [createTime] The creation time.
   /// [creator] Email address of the authenticated creator.
-  /// [customAudiences] (Optional, Deprecated)
   /// [deleteTime] The deletion time.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deletionProtection] Whether Terraform will be prevented from destroying the service. Defaults to true.
@@ -165,7 +158,6 @@ class WorkerPoolState {
     this.conditions,
     this.createTime,
     this.creator,
-    this.customAudiences,
     this.deleteTime,
     this.deletionPolicy,
     this.deletionProtection,
@@ -204,7 +196,6 @@ class WorkerPoolState {
       'conditions': ?pulumi.Input.mapOptionalInputValue<List<WorkerPoolCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<WorkerPoolCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': ?createTime,
       'creator': ?creator,
-      'customAudiences': ?customAudiences,
       'deleteTime': ?deleteTime,
       'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
@@ -244,7 +235,6 @@ class WorkerPoolState {
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkerPoolCondition>(guardedValue, (value) => WorkerPoolCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creator: (() { final guardedValue = map['creator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      customAudiences: (() { final guardedValue = map['customAudiences']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

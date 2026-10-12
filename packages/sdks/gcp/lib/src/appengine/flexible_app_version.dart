@@ -368,11 +368,11 @@ import 'flexible_app_version_vpc_access_connector.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -995,7 +995,7 @@ class FlexibleAppVersion extends pulumi.CustomResource {
           'gcp:appengine/flexibleAppVersion:FlexibleAppVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     apiConfig = registerOutput<FlexibleAppVersionApiConfig?>('apiConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionApiConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     automaticScaling = registerOutput<FlexibleAppVersionAutomaticScaling?>('automaticScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionAutomaticScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });

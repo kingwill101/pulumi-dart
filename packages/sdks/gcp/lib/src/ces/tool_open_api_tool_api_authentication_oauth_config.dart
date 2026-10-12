@@ -20,7 +20,8 @@ class ToolOpenApiToolApiAuthenticationOauthConfig {
   /// CLIENT_CREDENTIAL
   final pulumi.Input<String?>? oauthGrantType;
   /// (Output)
-  /// The OAuth scopes to grant.
+  /// The OAuth scopes to grant. If not specified, the default scope
+  /// `https://www.googleapis.com/auth/cloud-platform` is used.
   final pulumi.Input<List<String>?>? scopes;
   /// (Output)
   /// The token endpoint in the OAuth provider to exchange for an access token.

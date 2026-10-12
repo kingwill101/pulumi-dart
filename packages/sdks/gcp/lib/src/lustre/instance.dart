@@ -116,8 +116,8 @@ import 'instance_upcoming_maintenance_schedule.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/lustre"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/lustre"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -291,6 +291,9 @@ class Instance extends pulumi.CustomResource {
   /// define the root user squash configuration.
   /// Structure is documented below.
   late final pulumi.Output<InstanceAccessRulesOptions?> accessRulesOptions;
+  /// The version this instance can be upgraded to, if one is available. Empty
+  /// when the instance is already running the newest release.
+  late final pulumi.Output<String> availableVersion;
   /// The storage capacity of the instance in gibibytes (GiB). Allowed values
   /// are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
   /// See [Performance tiers and maximum storage
@@ -313,6 +316,9 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<InstanceDynamicTierOptions?> dynamicTierOptions;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+  /// The version of Managed Lustre software that this instance is currently
+  /// running.
+  late final pulumi.Output<String> effectiveVersion;
   /// The filesystem name for this instance. This name is used by client-side
   /// tools, including when mounting the instance. Must be eight characters or
   /// less and can only contain letters and numbers.
@@ -380,6 +386,17 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> state;
   /// The reason why the instance is in a certain state (e.g. SUSPENDED).
   late final pulumi.Output<String> stateReason;
+  /// The version to upgrade this instance to. Set this to the value reported in
+  /// `availableVersion`, or to `latest` to move to the newest version available
+  /// at the time of the upgrade.
+  /// This field cannot be set when the instance is created; new instances are
+  /// always provisioned from the current release. It also cannot be changed in
+  /// the same operation as `capacityGib` or `maintenancePolicy`, and the
+  /// instance must be ACTIVE and outside of the hour preceding a scheduled
+  /// maintenance window.
+  /// The API clears this field once the upgrade finishes, so it always reads
+  /// back as empty on an idle instance.
+  late final pulumi.Output<String?> targetVersion;
   /// Unique ID of the resource.
   /// This is unrelated to the access rules which allow specifying the root
   /// squash uid.
@@ -402,16 +419,18 @@ class Instance extends pulumi.CustomResource {
           'gcp:lustre/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accessRulesOptions = registerOutput<InstanceAccessRulesOptions?>('accessRulesOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAccessRulesOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    availableVersion = registerOutput<String>('availableVersion');
     capacityGib = registerOutput<String>('capacityGib');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dynamicTierOptions = registerOutput<InstanceDynamicTierOptions?>('dynamicTierOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDynamicTierOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    effectiveVersion = registerOutput<String>('effectiveVersion');
     filesystem = registerOutput<String>('filesystem');
     gkeSupportEnabled = registerOutput<bool?>('gkeSupportEnabled');
     instanceId = registerOutput<String>('instanceId');
@@ -428,6 +447,7 @@ class Instance extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
+    targetVersion = registerOutput<String?>('targetVersion');
     uid = registerOutput<String>('uid');
     upcomingMaintenanceSchedules = registerOutput<List<InstanceUpcomingMaintenanceSchedule>>('upcomingMaintenanceSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceUpcomingMaintenanceSchedule>(guardedValue, (value) => InstanceUpcomingMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
@@ -458,12 +478,14 @@ class Instance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessRulesOptions = registerOutput<InstanceAccessRulesOptions?>('accessRulesOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAccessRulesOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    availableVersion = registerOutput<String>('availableVersion');
     capacityGib = registerOutput<String>('capacityGib');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dynamicTierOptions = registerOutput<InstanceDynamicTierOptions?>('dynamicTierOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDynamicTierOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    effectiveVersion = registerOutput<String>('effectiveVersion');
     filesystem = registerOutput<String>('filesystem');
     gkeSupportEnabled = registerOutput<bool?>('gkeSupportEnabled');
     instanceId = registerOutput<String>('instanceId');
@@ -480,6 +502,7 @@ class Instance extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     this.state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
+    targetVersion = registerOutput<String?>('targetVersion');
     uid = registerOutput<String>('uid');
     upcomingMaintenanceSchedules = registerOutput<List<InstanceUpcomingMaintenanceSchedule>>('upcomingMaintenanceSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceUpcomingMaintenanceSchedule>(guardedValue, (value) => InstanceUpcomingMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
@@ -496,12 +519,14 @@ class Instance extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     accessRulesOptions = registerOutput<InstanceAccessRulesOptions?>('accessRulesOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceAccessRulesOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    availableVersion = registerOutput<String>('availableVersion');
     capacityGib = registerOutput<String>('capacityGib');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dynamicTierOptions = registerOutput<InstanceDynamicTierOptions?>('dynamicTierOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDynamicTierOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    effectiveVersion = registerOutput<String>('effectiveVersion');
     filesystem = registerOutput<String>('filesystem');
     gkeSupportEnabled = registerOutput<bool?>('gkeSupportEnabled');
     instanceId = registerOutput<String>('instanceId');
@@ -518,6 +543,7 @@ class Instance extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     state = registerOutput<String>('state');
     stateReason = registerOutput<String>('stateReason');
+    targetVersion = registerOutput<String?>('targetVersion');
     uid = registerOutput<String>('uid');
     upcomingMaintenanceSchedules = registerOutput<List<InstanceUpcomingMaintenanceSchedule>>('upcomingMaintenanceSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceUpcomingMaintenanceSchedule>(guardedValue, (value) => InstanceUpcomingMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');

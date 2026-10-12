@@ -103,7 +103,7 @@ import 'security_gateway_application_upstream.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/beyondcorp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -364,8 +364,8 @@ import 'security_gateway_application_upstream.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/beyondcorp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -653,7 +653,7 @@ import 'security_gateway_application_upstream.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/beyondcorp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -988,7 +988,7 @@ import 'security_gateway_application_upstream.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/beyondcorp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1307,7 +1307,7 @@ class SecurityGatewayApplication extends pulumi.CustomResource {
           'gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     createTime = registerOutput<String>('createTime');

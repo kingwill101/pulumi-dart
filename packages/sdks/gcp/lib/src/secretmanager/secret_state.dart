@@ -72,6 +72,9 @@ class SecretState {
   final pulumi.Input<SecretRotation?>? rotation;
   /// This must be unique within the project.
   final pulumi.Input<String?>? secretId;
+  /// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+  /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+  final pulumi.Input<String?>? secretType;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -113,6 +116,7 @@ class SecretState {
   /// [replication] The replication policy of the secret data attached to the Secret. It cannot be changed
   /// [rotation] The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
   /// [secretId] This must be unique within the project.
+  /// [secretType] This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
   /// [tags] A map of resource manager tags.
   /// [topics] A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
   /// [ttl] The TTL for the Secret.
@@ -133,6 +137,7 @@ class SecretState {
     this.replication,
     this.rotation,
     this.secretId,
+    this.secretType,
     this.tags,
     this.topics,
     this.ttl,
@@ -156,6 +161,7 @@ class SecretState {
       'replication': ?pulumi.Input.mapOptionalInputValue<SecretReplication, Map<String, dynamic>>(replication, (value) => value.toMap()),
       'rotation': ?pulumi.Input.mapOptionalInputValue<SecretRotation, Map<String, dynamic>>(rotation, (value) => value.toMap()),
       'secretId': ?secretId,
+      'secretType': ?secretType,
       'tags': ?tags,
       'topics': ?pulumi.Input.mapOptionalInputValue<List<SecretTopic>, List<Map<String, dynamic>>>(topics, (value) => pulumi.Input.encodeList<SecretTopic, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ttl': ?ttl,
@@ -180,6 +186,7 @@ class SecretState {
       replication: (() { final guardedValue = map['replication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecretReplication.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rotation: (() { final guardedValue = map['rotation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecretRotation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       secretId: (() { final guardedValue = map['secretId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretType: (() { final guardedValue = map['secretType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       topics: (() { final guardedValue = map['topics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SecretTopic>(guardedValue, (value) => SecretTopic.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

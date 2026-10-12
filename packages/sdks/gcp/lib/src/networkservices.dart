@@ -1,3 +1,9 @@
+export 'networkservices/agent_connectivity_template.dart';
+export 'networkservices/agent_connectivity_template_args.dart';
+export 'networkservices/agent_connectivity_template_egress_network_config.dart';
+export 'networkservices/agent_connectivity_template_egress_network_config_dns_peering_config.dart';
+export 'networkservices/agent_connectivity_template_egress_network_config_tls_config.dart';
+export 'networkservices/agent_connectivity_template_state.dart';
 export 'networkservices/agent_gateway.dart';
 export 'networkservices/agent_gateway_agent_gateway_card.dart';
 export 'networkservices/agent_gateway_args.dart';
@@ -58,9 +64,12 @@ export 'networkservices/endpoint_policy_endpoint_matcher_metadata_label_matcher.
 export 'networkservices/endpoint_policy_endpoint_matcher_metadata_label_matcher_metadata_label.dart';
 export 'networkservices/endpoint_policy_state.dart';
 export 'networkservices/endpoint_policy_traffic_port_selector.dart';
+export 'networkservices/functions.dart';
 export 'networkservices/gateway.dart';
 export 'networkservices/gateway_args.dart';
 export 'networkservices/gateway_state.dart';
+export 'networkservices/get_gateway_args.dart';
+export 'networkservices/get_gateway_result.dart';
 export 'networkservices/grpc_route.dart';
 export 'networkservices/grpc_route_args.dart';
 export 'networkservices/grpc_route_rule.dart';

@@ -99,7 +99,7 @@ import 'endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicedirectory"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicedirectory"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -346,9 +346,9 @@ import 'endpoint_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicedirectory"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicedirectory"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -570,7 +570,7 @@ class Endpoint extends pulumi.CustomResource {
   /// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
   late final pulumi.Output<String> name;
   /// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
-  late final pulumi.Output<String?> network;
+  late final pulumi.Output<String> network;
   /// Port that the endpoint is running on, must be in the
   /// range of [0, 65535]. If unspecified, the default is 0.
   late final pulumi.Output<int?> port;
@@ -589,14 +589,14 @@ class Endpoint extends pulumi.CustomResource {
           'gcp:servicedirectory/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     address = registerOutput<String?>('address');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     endpointId = registerOutput<String>('endpointId');
     metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    network = registerOutput<String?>('network');
+    network = registerOutput<String>('network');
     port = registerOutput<int?>('port');
     service = registerOutput<String>('service');
   }
@@ -630,7 +630,7 @@ class Endpoint extends pulumi.CustomResource {
     endpointId = registerOutput<String>('endpointId');
     metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    network = registerOutput<String?>('network');
+    network = registerOutput<String>('network');
     port = registerOutput<int?>('port');
     service = registerOutput<String>('service');
   }
@@ -649,7 +649,7 @@ class Endpoint extends pulumi.CustomResource {
     endpointId = registerOutput<String>('endpointId');
     metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    network = registerOutput<String?>('network');
+    network = registerOutput<String>('network');
     port = registerOutput<int?>('port');
     service = registerOutput<String>('service');
   }

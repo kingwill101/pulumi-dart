@@ -27,7 +27,7 @@ import 'autoscaler_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const debian9 = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("default", {
@@ -87,7 +87,7 @@ import 'autoscaler_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// debian9 = gcp.compute.get_image(family="debian-11",
+/// debian9 = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// default_instance_template = gcp.compute.InstanceTemplate("default",
 ///     name="my-instance-template",
@@ -149,7 +149,7 @@ import 'autoscaler_state.dart';
 /// {
 ///     var debian9 = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -245,14 +245,14 @@ import 'autoscaler_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		debian9, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -348,7 +348,7 @@ import 'autoscaler_state.dart';
 /// }
 ///
 /// data "gcp_compute_getimage" "debian9" {
-///   family  = "debian-11"
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
@@ -436,7 +436,7 @@ import 'autoscaler_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -557,7 +557,7 @@ import 'autoscaler_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -570,7 +570,7 @@ import 'autoscaler_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const debian9 = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const foobarInstanceTemplate = new gcp.compute.InstanceTemplate("foobar", {
@@ -628,7 +628,7 @@ import 'autoscaler_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// debian9 = gcp.compute.get_image(family="debian-11",
+/// debian9 = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// foobar_instance_template = gcp.compute.InstanceTemplate("foobar",
 ///     name="my-instance-template",
@@ -688,7 +688,7 @@ import 'autoscaler_state.dart';
 /// {
 ///     var debian9 = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -779,14 +779,14 @@ import 'autoscaler_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		debian9, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -878,7 +878,7 @@ import 'autoscaler_state.dart';
 /// }
 ///
 /// data "gcp_compute_getimage" "debian9" {
-///   family  = "debian-11"
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
@@ -964,7 +964,7 @@ import 'autoscaler_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -1081,7 +1081,7 @@ import 'autoscaler_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -1151,7 +1151,7 @@ class Autoscaler extends pulumi.CustomResource {
           'gcp:compute/autoscaler:Autoscaler',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     autoscalingPolicy = registerOutput<AutoscalerAutoscalingPolicy>('autoscalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalerAutoscalingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');

@@ -27,8 +27,8 @@ import 'config_state.dart';
 /// import * as time from "@pulumiverse/time";
 ///
 /// const project = new gcp.organizations.Project("project", {
-///     projectId: "tf-test_33395",
-///     name: "tf-test_76044",
+///     projectId: "tf-test_37559",
+///     name: "tf-test_91980",
 ///     orgId: "123456789",
 ///     deletionPolicy: "DELETE",
 /// });
@@ -64,8 +64,8 @@ import 'config_state.dart';
 /// import pulumiverse_time as time
 ///
 /// project = gcp.organizations.Project("project",
-///     project_id="tf-test_33395",
-///     name="tf-test_76044",
+///     project_id="tf-test_37559",
+///     name="tf-test_91980",
 ///     org_id="123456789",
 ///     deletion_policy="DELETE")
 /// wait_for_project = time.Sleep("wait_for_project", create_duration="60s",
@@ -100,8 +100,8 @@ import 'config_state.dart';
 /// {
 ///     var project = new Gcp.Organizations.Project("project", new()
 ///     {
-///         ProjectId = "tf-test_33395",
-///         Name = "tf-test_76044",
+///         ProjectId = "tf-test_37559",
+///         Name = "tf-test_91980",
 ///         OrgId = "123456789",
 ///         DeletionPolicy = "DELETE",
 ///     });
@@ -166,9 +166,9 @@ import 'config_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datalineage"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datalineage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -176,8 +176,8 @@ import 'config_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-/// 			ProjectId:      pulumi.String("tf-test_33395"),
-/// 			Name:           pulumi.String("tf-test_76044"),
+/// 			ProjectId:      pulumi.String("tf-test_37559"),
+/// 			Name:           pulumi.String("tf-test_91980"),
 /// 			OrgId:          pulumi.String("123456789"),
 /// 			DeletionPolicy: pulumi.String("DELETE"),
 /// 		})
@@ -241,8 +241,8 @@ import 'config_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
-///   project_id      = "tf-test_33395"
-///   name            = "tf-test_76044"
+///   project_id      = "tf-test_37559"
+///   name            = "tf-test_91980"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
@@ -304,8 +304,8 @@ import 'config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var project = new Project("project", ProjectArgs.builder()
-///             .projectId("tf-test_33395")
-///             .name("tf-test_76044")
+///             .projectId("tf-test_37559")
+///             .name("tf-test_91980")
 ///             .orgId("123456789")
 ///             .deletionPolicy("DELETE")
 ///             .build());
@@ -348,8 +348,8 @@ import 'config_state.dart';
 ///   project:
 ///     type: gcp:organizations:Project
 ///     properties:
-///       projectId: tf-test_33395
-///       name: tf-test_76044
+///       projectId: tf-test_37559
+///       name: tf-test_91980
 ///       orgId: '123456789'
 ///       deletionPolicy: DELETE
 ///   waitForProject:
@@ -523,9 +523,9 @@ import 'config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datalineage"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/folder"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datalineage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/folder"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -810,7 +810,7 @@ import 'config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datalineage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datalineage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -971,7 +971,7 @@ class Config extends pulumi.CustomResource {
           'gcp:datalineage/config:Config',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');

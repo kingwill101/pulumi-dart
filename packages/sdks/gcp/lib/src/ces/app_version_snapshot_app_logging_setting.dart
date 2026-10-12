@@ -5,6 +5,7 @@ import 'app_version_snapshot_app_logging_setting_audio_recording_config.dart';
 import 'app_version_snapshot_app_logging_setting_bigquery_export_setting.dart';
 import 'app_version_snapshot_app_logging_setting_cloud_logging_setting.dart';
 import 'app_version_snapshot_app_logging_setting_conversation_logging_setting.dart';
+import 'app_version_snapshot_app_logging_setting_metric_analysis_setting.dart';
 import 'app_version_snapshot_app_logging_setting_redaction_config.dart';
 
 class AppVersionSnapshotAppLoggingSetting {
@@ -25,6 +26,11 @@ class AppVersionSnapshotAppLoggingSetting {
   /// Structure is documented below.
   final pulumi.Input<List<AppVersionSnapshotAppLoggingSettingConversationLoggingSetting>?>? conversationLoggingSettings;
   /// (Output)
+  /// Settings to describe the conversation data collection behaviors for the LLM
+  /// analysis pipeline for the app.
+  /// Structure is documented below.
+  final pulumi.Input<List<AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting>?>? metricAnalysisSettings;
+  /// (Output)
   /// Configuration to instruct how sensitive data should be handled.
   /// Structure is documented below.
   final pulumi.Input<List<AppVersionSnapshotAppLoggingSettingRedactionConfig>?>? redactionConfigs;
@@ -34,12 +40,14 @@ class AppVersionSnapshotAppLoggingSetting {
   /// [bigqueryExportSettings] (Output)
   /// [cloudLoggingSettings] (Output)
   /// [conversationLoggingSettings] (Output)
+  /// [metricAnalysisSettings] (Output)
   /// [redactionConfigs] (Output)
   const AppVersionSnapshotAppLoggingSetting({
     this.audioRecordingConfigs,
     this.bigqueryExportSettings,
     this.cloudLoggingSettings,
     this.conversationLoggingSettings,
+    this.metricAnalysisSettings,
     this.redactionConfigs,
   });
 
@@ -49,6 +57,7 @@ class AppVersionSnapshotAppLoggingSetting {
       'bigqueryExportSettings': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppLoggingSettingBigqueryExportSetting>, List<Map<String, dynamic>>>(bigqueryExportSettings, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppLoggingSettingBigqueryExportSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
       'cloudLoggingSettings': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppLoggingSettingCloudLoggingSetting>, List<Map<String, dynamic>>>(cloudLoggingSettings, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppLoggingSettingCloudLoggingSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
       'conversationLoggingSettings': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppLoggingSettingConversationLoggingSetting>, List<Map<String, dynamic>>>(conversationLoggingSettings, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppLoggingSettingConversationLoggingSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'metricAnalysisSettings': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting>, List<Map<String, dynamic>>>(metricAnalysisSettings, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
       'redactionConfigs': ?pulumi.Input.mapOptionalInputValue<List<AppVersionSnapshotAppLoggingSettingRedactionConfig>, List<Map<String, dynamic>>>(redactionConfigs, (value) => pulumi.Input.encodeList<AppVersionSnapshotAppLoggingSettingRedactionConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
@@ -59,6 +68,7 @@ class AppVersionSnapshotAppLoggingSetting {
       bigqueryExportSettings: (() { final guardedValue = map['bigqueryExportSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppLoggingSettingBigqueryExportSetting>(guardedValue, (value) => AppVersionSnapshotAppLoggingSettingBigqueryExportSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
       cloudLoggingSettings: (() { final guardedValue = map['cloudLoggingSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppLoggingSettingCloudLoggingSetting>(guardedValue, (value) => AppVersionSnapshotAppLoggingSettingCloudLoggingSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
       conversationLoggingSettings: (() { final guardedValue = map['conversationLoggingSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppLoggingSettingConversationLoggingSetting>(guardedValue, (value) => AppVersionSnapshotAppLoggingSettingConversationLoggingSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      metricAnalysisSettings: (() { final guardedValue = map['metricAnalysisSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting>(guardedValue, (value) => AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
       redactionConfigs: (() { final guardedValue = map['redactionConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotAppLoggingSettingRedactionConfig>(guardedValue, (value) => AppVersionSnapshotAppLoggingSettingRedactionConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

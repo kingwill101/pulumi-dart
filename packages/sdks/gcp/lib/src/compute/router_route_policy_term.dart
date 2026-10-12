@@ -36,7 +36,7 @@ class RouterRoutePolicyTerm {
     return RouterRoutePolicyTerm(
       actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RouterRoutePolicyTermAction>(guardedValue, (value) => RouterRoutePolicyTermAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       match: pulumi.Input.fromValue(RouterRoutePolicyTermMatch.fromMap((map['match']! as Map).cast<String, dynamic>())),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
     );
   }
 }

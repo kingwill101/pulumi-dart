@@ -4,8 +4,6 @@ import 'project_settings_state.dart';
 
 /// Manages Cloud Observability settings for a project.
 ///
-/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
 ///
 ///
 /// ## Example Usage
@@ -20,8 +18,8 @@ import 'project_settings_state.dart';
 /// import * as time from "@pulumiverse/time";
 ///
 /// const project = new gcp.organizations.Project("project", {
-///     projectId: "tf-test_42057",
-///     name: "tf-test_84735",
+///     projectId: "tf-test_59865",
+///     name: "tf-test_34995",
 ///     orgId: "123456789",
 ///     deletionPolicy: "DELETE",
 /// });
@@ -48,8 +46,8 @@ import 'project_settings_state.dart';
 /// import pulumiverse_time as time
 ///
 /// project = gcp.organizations.Project("project",
-///     project_id="tf-test_42057",
-///     name="tf-test_84735",
+///     project_id="tf-test_59865",
+///     name="tf-test_34995",
 ///     org_id="123456789",
 ///     deletion_policy="DELETE")
 /// observability_api = gcp.projects.Service("observability_api",
@@ -76,8 +74,8 @@ import 'project_settings_state.dart';
 /// {
 ///     var project = new Gcp.Organizations.Project("project", new()
 ///     {
-///         ProjectId = "tf-test_42057",
-///         Name = "tf-test_84735",
+///         ProjectId = "tf-test_59865",
+///         Name = "tf-test_34995",
 ///         OrgId = "123456789",
 ///         DeletionPolicy = "DELETE",
 ///     });
@@ -120,9 +118,9 @@ import 'project_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/observability"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/observability"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -130,8 +128,8 @@ import 'project_settings_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-/// 			ProjectId:      pulumi.String("tf-test_42057"),
-/// 			Name:           pulumi.String("tf-test_84735"),
+/// 			ProjectId:      pulumi.String("tf-test_59865"),
+/// 			Name:           pulumi.String("tf-test_34995"),
 /// 			OrgId:          pulumi.String("123456789"),
 /// 			DeletionPolicy: pulumi.String("DELETE"),
 /// 		})
@@ -182,8 +180,8 @@ import 'project_settings_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
-///   project_id      = "tf-test_42057"
-///   name            = "tf-test_84735"
+///   project_id      = "tf-test_59865"
+///   name            = "tf-test_34995"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
@@ -233,8 +231,8 @@ import 'project_settings_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var project = new Project("project", ProjectArgs.builder()
-///             .projectId("tf-test_42057")
-///             .name("tf-test_84735")
+///             .projectId("tf-test_59865")
+///             .name("tf-test_34995")
 ///             .orgId("123456789")
 ///             .deletionPolicy("DELETE")
 ///             .build());
@@ -268,8 +266,8 @@ import 'project_settings_state.dart';
 ///   project:
 ///     type: gcp:organizations:Project
 ///     properties:
-///       projectId: tf-test_42057
-///       name: tf-test_84735
+///       projectId: tf-test_59865
+///       name: tf-test_34995
 ///       orgId: '123456789'
 ///       deletionPolicy: DELETE
 ///   observabilityApi:
@@ -344,7 +342,7 @@ class ProjectSettings extends pulumi.CustomResource {
           'gcp:observability/projectSettings:ProjectSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     defaultStorageLocation = registerOutput<String?>('defaultStorageLocation');
     kmsKeyName = registerOutput<String?>('kmsKeyName');

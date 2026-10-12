@@ -39,7 +39,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService {
     return RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService(
       backendService: pulumi.Input.fromValue(map['backendService'] as String),
       headerAction: (() { final guardedValue = map['headerAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
+      weight: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['weight'])),
     );
   }
 }

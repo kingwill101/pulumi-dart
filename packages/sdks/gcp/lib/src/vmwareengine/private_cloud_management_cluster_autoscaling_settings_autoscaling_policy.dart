@@ -56,7 +56,7 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy {
       consumedMemoryThresholds: (() { final guardedValue = map['consumedMemoryThresholds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cpuThresholds: (() { final guardedValue = map['cpuThresholds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       nodeTypeId: pulumi.Input.fromValue(map['nodeTypeId'] as String),
-      scaleOutSize: pulumi.Input.fromValue((map['scaleOutSize'] as num).toInt()),
+      scaleOutSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scaleOutSize'])),
       storageThresholds: (() { final guardedValue = map['storageThresholds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

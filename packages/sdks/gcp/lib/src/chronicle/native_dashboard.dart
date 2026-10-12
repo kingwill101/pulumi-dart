@@ -119,7 +119,7 @@ import 'native_dashboard_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -347,7 +347,7 @@ class NativeDashboard extends pulumi.CustomResource {
           'gcp:chronicle/nativeDashboard:NativeDashboard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     access = registerOutput<String?>('access');
     charts = registerOutput<List<NativeDashboardChart>>('charts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NativeDashboardChart>(guardedValue, (value) => NativeDashboardChart.fromMap((value as Map).cast<String, dynamic>())); });

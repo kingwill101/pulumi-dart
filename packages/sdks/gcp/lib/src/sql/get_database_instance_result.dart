@@ -22,6 +22,7 @@ class GetDatabaseInstanceResult {
   final bool? deletionProtection;
   final String? dnsName;
   final List<GetDatabaseInstanceDnsName>? dnsNames;
+  final bool? encryptionConfidentialMode;
   final String? encryptionKeyName;
   final bool? enforceNewSqlNetworkArchitecture;
   final String? finalBackupDescription;
@@ -64,6 +65,7 @@ class GetDatabaseInstanceResult {
   /// [deletionProtection] Optional.
   /// [dnsName] Optional.
   /// [dnsNames] Optional.
+  /// [encryptionConfidentialMode] Optional.
   /// [encryptionKeyName] Optional.
   /// [enforceNewSqlNetworkArchitecture] Optional.
   /// [finalBackupDescription] Optional.
@@ -104,6 +106,7 @@ class GetDatabaseInstanceResult {
     this.deletionProtection,
     this.dnsName,
     this.dnsNames,
+    this.encryptionConfidentialMode,
     this.encryptionKeyName,
     this.enforceNewSqlNetworkArchitecture,
     this.finalBackupDescription,
@@ -147,6 +150,7 @@ class GetDatabaseInstanceResult {
       'deletionProtection': ?deletionProtection,
       'dnsName': ?dnsName,
       'dnsNames': ?(() { final guardedValue = dnsNames; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDatabaseInstanceDnsName, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'encryptionConfidentialMode': ?encryptionConfidentialMode,
       'encryptionKeyName': ?encryptionKeyName,
       'enforceNewSqlNetworkArchitecture': ?enforceNewSqlNetworkArchitecture,
       'finalBackupDescription': ?finalBackupDescription,
@@ -191,6 +195,7 @@ class GetDatabaseInstanceResult {
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dnsNames: (() { final guardedValue = map['dnsNames']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDatabaseInstanceDnsName>(guardedValue, (value) => GetDatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>())); })(),
+      encryptionConfidentialMode: (() { final guardedValue = map['encryptionConfidentialMode']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       encryptionKeyName: (() { final guardedValue = map['encryptionKeyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enforceNewSqlNetworkArchitecture: (() { final guardedValue = map['enforceNewSqlNetworkArchitecture']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       finalBackupDescription: (() { final guardedValue = map['finalBackupDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -202,7 +207,7 @@ class GetDatabaseInstanceResult {
       maintenanceVersion: (() { final guardedValue = map['maintenanceVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       masterInstanceName: (() { final guardedValue = map['masterInstanceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       pointInTimeRestoreContexts: (() { final guardedValue = map['pointInTimeRestoreContexts']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDatabaseInstancePointInTimeRestoreContext>(guardedValue, (value) => GetDatabaseInstancePointInTimeRestoreContext.fromMap((value as Map).cast<String, dynamic>())); })(),
       privateIpAddress: (() { final guardedValue = map['privateIpAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),

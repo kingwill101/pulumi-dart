@@ -88,7 +88,7 @@ import 'feed_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -212,7 +212,7 @@ import 'feed_state.dart';
 /// });
 /// // 1. Create the Pub/Sub Topic
 /// const testTopic = new gcp.pubsub.Topic("test_topic", {
-///     name: "chronicle-test-topic-my-project-name-_64336",
+///     name: "chronicle-test-topic-my-project-name-_74000",
 ///     project: "my-project-name",
 /// });
 /// // 2. Grant GCS permission to publish to the topic
@@ -224,14 +224,14 @@ import 'feed_state.dart';
 /// });
 /// // 3. Create the Pub/Sub Subscription
 /// const testSubscription = new gcp.pubsub.Subscription("test_subscription", {
-///     name: "chronicle-test-sub-my-project-name-_34962",
+///     name: "chronicle-test-sub-my-project-name-_75125",
 ///     project: "my-project-name",
 ///     topic: testTopic.name,
 ///     messageRetentionDuration: "1200s",
 /// });
 /// // 4. Define the GCS Bucket
 /// const testBucket = new gcp.storage.Bucket("test_bucket", {
-///     name: "chronicle-test-bucket-my-project-name-_74000",
+///     name: "chronicle-test-bucket-my-project-name-_88722",
 ///     project: "my-project-name",
 ///     location: "US",
 ///     forceDestroy: true,
@@ -276,7 +276,7 @@ import 'feed_state.dart';
 /// gcs_account = gcp.storage.get_project_service_account(project="my-project-name")
 /// # 1. Create the Pub/Sub Topic
 /// test_topic = gcp.pubsub.Topic("test_topic",
-///     name="chronicle-test-topic-my-project-name-_64336",
+///     name="chronicle-test-topic-my-project-name-_74000",
 ///     project="my-project-name")
 /// # 2. Grant GCS permission to publish to the topic
 /// # This must remain so GCS can send file notifications to Pub/Sub
@@ -286,13 +286,13 @@ import 'feed_state.dart';
 ///     member=f"serviceAccount:{gcs_account.email_address}")
 /// # 3. Create the Pub/Sub Subscription
 /// test_subscription = gcp.pubsub.Subscription("test_subscription",
-///     name="chronicle-test-sub-my-project-name-_34962",
+///     name="chronicle-test-sub-my-project-name-_75125",
 ///     project="my-project-name",
 ///     topic=test_topic.name,
 ///     message_retention_duration="1200s")
 /// # 4. Define the GCS Bucket
 /// test_bucket = gcp.storage.Bucket("test_bucket",
-///     name="chronicle-test-bucket-my-project-name-_74000",
+///     name="chronicle-test-bucket-my-project-name-_88722",
 ///     project="my-project-name",
 ///     location="US",
 ///     force_destroy=True)
@@ -341,7 +341,7 @@ import 'feed_state.dart';
 ///     // 1. Create the Pub/Sub Topic
 ///     var testTopic = new Gcp.PubSub.Topic("test_topic", new()
 ///     {
-///         Name = "chronicle-test-topic-my-project-name-_64336",
+///         Name = "chronicle-test-topic-my-project-name-_74000",
 ///         Project = "my-project-name",
 ///     });
 ///
@@ -357,7 +357,7 @@ import 'feed_state.dart';
 ///     // 3. Create the Pub/Sub Subscription
 ///     var testSubscription = new Gcp.PubSub.Subscription("test_subscription", new()
 ///     {
-///         Name = "chronicle-test-sub-my-project-name-_34962",
+///         Name = "chronicle-test-sub-my-project-name-_75125",
 ///         Project = "my-project-name",
 ///         Topic = testTopic.Name,
 ///         MessageRetentionDuration = "1200s",
@@ -366,7 +366,7 @@ import 'feed_state.dart';
 ///     // 4. Define the GCS Bucket
 ///     var testBucket = new Gcp.Storage.Bucket("test_bucket", new()
 ///     {
-///         Name = "chronicle-test-bucket-my-project-name-_74000",
+///         Name = "chronicle-test-bucket-my-project-name-_88722",
 ///         Project = "my-project-name",
 ///         Location = "US",
 ///         ForceDestroy = true,
@@ -429,9 +429,9 @@ import 'feed_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -448,7 +448,7 @@ import 'feed_state.dart';
 /// 		}
 /// 		// 1. Create the Pub/Sub Topic
 /// 		testTopic, err := pubsub.NewTopic(ctx, "test_topic", &pubsub.TopicArgs{
-/// 			Name:    pulumi.String("chronicle-test-topic-my-project-name-_64336"),
+/// 			Name:    pulumi.String("chronicle-test-topic-my-project-name-_74000"),
 /// 			Project: pulumi.String("my-project-name"),
 /// 		})
 /// 		if err != nil {
@@ -466,7 +466,7 @@ import 'feed_state.dart';
 /// 		}
 /// 		// 3. Create the Pub/Sub Subscription
 /// 		testSubscription, err := pubsub.NewSubscription(ctx, "test_subscription", &pubsub.SubscriptionArgs{
-/// 			Name:                     pulumi.String("chronicle-test-sub-my-project-name-_34962"),
+/// 			Name:                     pulumi.String("chronicle-test-sub-my-project-name-_75125"),
 /// 			Project:                  pulumi.String("my-project-name"),
 /// 			Topic:                    testTopic.Name,
 /// 			MessageRetentionDuration: pulumi.String("1200s"),
@@ -476,7 +476,7 @@ import 'feed_state.dart';
 /// 		}
 /// 		// 4. Define the GCS Bucket
 /// 		testBucket, err := storage.NewBucket(ctx, "test_bucket", &storage.BucketArgs{
-/// 			Name:         pulumi.String("chronicle-test-bucket-my-project-name-_74000"),
+/// 			Name:         pulumi.String("chronicle-test-bucket-my-project-name-_88722"),
 /// 			Project:      pulumi.String("my-project-name"),
 /// 			Location:     pulumi.String("US"),
 /// 			ForceDestroy: pulumi.Bool(true),
@@ -544,7 +544,7 @@ import 'feed_state.dart';
 ///
 /// # 1. Create the Pub/Sub Topic
 /// resource "gcp_pubsub_topic" "test_topic" {
-///   name    = "chronicle-test-topic-my-project-name-_64336"
+///   name    = "chronicle-test-topic-my-project-name-_74000"
 ///   project = "my-project-name"
 /// }
 /// # 2. Grant GCS permission to publish to the topic
@@ -556,14 +556,14 @@ import 'feed_state.dart';
 /// }
 /// # 3. Create the Pub/Sub Subscription
 /// resource "gcp_pubsub_subscription" "test_subscription" {
-///   name                       = "chronicle-test-sub-my-project-name-_34962"
+///   name                       = "chronicle-test-sub-my-project-name-_75125"
 ///   project                    = "my-project-name"
 ///   topic                      = gcp_pubsub_topic.test_topic.name
 ///   message_retention_duration = "1200s"
 /// }
 /// # 4. Define the GCS Bucket
 /// resource "gcp_storage_bucket" "test_bucket" {
-///   name          = "chronicle-test-bucket-my-project-name-_74000"
+///   name          = "chronicle-test-bucket-my-project-name-_88722"
 ///   project       = "my-project-name"
 ///   location      = "US"
 ///   force_destroy = true
@@ -647,7 +647,7 @@ import 'feed_state.dart';
 ///
 ///         // 1. Create the Pub/Sub Topic
 ///         var testTopic = new Topic("testTopic", TopicArgs.builder()
-///             .name("chronicle-test-topic-my-project-name-_64336")
+///             .name("chronicle-test-topic-my-project-name-_74000")
 ///             .project("my-project-name")
 ///             .build());
 ///
@@ -661,7 +661,7 @@ import 'feed_state.dart';
 ///
 ///         // 3. Create the Pub/Sub Subscription
 ///         var testSubscription = new Subscription("testSubscription", SubscriptionArgs.builder()
-///             .name("chronicle-test-sub-my-project-name-_34962")
+///             .name("chronicle-test-sub-my-project-name-_75125")
 ///             .project("my-project-name")
 ///             .topic(testTopic.name())
 ///             .messageRetentionDuration("1200s")
@@ -669,7 +669,7 @@ import 'feed_state.dart';
 ///
 ///         // 4. Define the GCS Bucket
 ///         var testBucket = new Bucket("testBucket", BucketArgs.builder()
-///             .name("chronicle-test-bucket-my-project-name-_74000")
+///             .name("chronicle-test-bucket-my-project-name-_88722")
 ///             .project("my-project-name")
 ///             .location("US")
 ///             .forceDestroy(true)
@@ -716,7 +716,7 @@ import 'feed_state.dart';
 ///     type: gcp:pubsub:Topic
 ///     name: test_topic
 ///     properties:
-///       name: chronicle-test-topic-my-project-name-_64336
+///       name: chronicle-test-topic-my-project-name-_74000
 ///       project: my-project-name
 ///   # 2. Grant GCS permission to publish to the topic
 ///   # This must remain so GCS can send file notifications to Pub/Sub
@@ -732,7 +732,7 @@ import 'feed_state.dart';
 ///     type: gcp:pubsub:Subscription
 ///     name: test_subscription
 ///     properties:
-///       name: chronicle-test-sub-my-project-name-_34962
+///       name: chronicle-test-sub-my-project-name-_75125
 ///       project: my-project-name
 ///       topic: ${testTopic.name}
 ///       messageRetentionDuration: 1200s
@@ -741,7 +741,7 @@ import 'feed_state.dart';
 ///     type: gcp:storage:Bucket
 ///     name: test_bucket
 ///     properties:
-///       name: chronicle-test-bucket-my-project-name-_74000
+///       name: chronicle-test-bucket-my-project-name-_88722
 ///       project: my-project-name
 ///       location: US
 ///       forceDestroy: true
@@ -872,7 +872,7 @@ import 'feed_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1072,7 +1072,7 @@ class Feed extends pulumi.CustomResource {
           'gcp:chronicle/feed:Feed',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['secret'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

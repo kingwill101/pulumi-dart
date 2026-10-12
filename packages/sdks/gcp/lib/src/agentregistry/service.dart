@@ -85,7 +85,7 @@ import 'service_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/agentregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -268,7 +268,7 @@ import 'service_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/agentregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -448,7 +448,7 @@ class Service extends pulumi.CustomResource {
           'gcp:agentregistry/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     agentSpec = registerOutput<ServiceAgentSpec?>('agentSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAgentSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

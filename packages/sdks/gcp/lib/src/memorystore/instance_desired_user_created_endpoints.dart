@@ -33,12 +33,12 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// const subnetNetwork1 = new gcp.compute.Subnetwork("subnet_network1", {
 ///     name: "subnet-net1",
 ///     ipCidrRange: "10.0.0.248/29",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     network: network1.id,
 /// });
 /// const ip1Network1 = new gcp.compute.Address("ip1_network1", {
 ///     name: "ip1-net1",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     subnetwork: subnetNetwork1.id,
 ///     addressType: "INTERNAL",
 ///     purpose: "GCE_ENDPOINT",
@@ -47,12 +47,12 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// const instance_user_connInstance = new gcp.memorystore.Instance("instance-user-conn", {
 ///     instanceId: "instance-user-conn",
 ///     shardCount: 1,
-///     location: "us-central1",
+///     location: "us-west1",
 ///     deletionProtectionEnabled: false,
 /// });
 /// const forwardingRule1Network1 = new gcp.compute.ForwardingRule("forwarding_rule1_network1", {
 ///     name: "fwd1-net1",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     ipAddress: ip1Network1.id,
 ///     loadBalancingScheme: "",
 ///     network: network1.id,
@@ -60,14 +60,14 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// });
 /// const ip2Network1 = new gcp.compute.Address("ip2_network1", {
 ///     name: "ip2-net1",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     subnetwork: subnetNetwork1.id,
 ///     addressType: "INTERNAL",
 ///     purpose: "GCE_ENDPOINT",
 /// });
 /// const forwardingRule2Network1 = new gcp.compute.ForwardingRule("forwarding_rule2_network1", {
 ///     name: "fwd2-net1",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     ipAddress: ip2Network1.id,
 ///     loadBalancingScheme: "",
 ///     network: network1.id,
@@ -80,19 +80,19 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// const subnetNetwork2 = new gcp.compute.Subnetwork("subnet_network2", {
 ///     name: "subnet-net2",
 ///     ipCidrRange: "10.0.0.248/29",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     network: network2.id,
 /// });
 /// const ip1Network2 = new gcp.compute.Address("ip1_network2", {
 ///     name: "ip1-net2",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     subnetwork: subnetNetwork2.id,
 ///     addressType: "INTERNAL",
 ///     purpose: "GCE_ENDPOINT",
 /// });
 /// const forwardingRule1Network2 = new gcp.compute.ForwardingRule("forwarding_rule1_network2", {
 ///     name: "fwd1-net2",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     ipAddress: ip1Network2.id,
 ///     loadBalancingScheme: "",
 ///     network: network2.id,
@@ -100,14 +100,14 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// });
 /// const ip2Network2 = new gcp.compute.Address("ip2_network2", {
 ///     name: "ip2-net2",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     subnetwork: subnetNetwork2.id,
 ///     addressType: "INTERNAL",
 ///     purpose: "GCE_ENDPOINT",
 /// });
 /// const forwardingRule2Network2 = new gcp.compute.ForwardingRule("forwarding_rule2_network2", {
 ///     name: "fwd2-net2",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     ipAddress: ip2Network2.id,
 ///     loadBalancingScheme: "",
 ///     network: network2.id,
@@ -115,7 +115,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// });
 /// const instance_user_conn = new gcp.memorystore.InstanceDesiredUserCreatedEndpoints("instance-user-conn", {
 ///     name: "instance-user-conn",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     desiredUserCreatedEndpoints: [
 ///         {
 ///             connections: [
@@ -175,11 +175,11 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// subnet_network1 = gcp.compute.Subnetwork("subnet_network1",
 ///     name="subnet-net1",
 ///     ip_cidr_range="10.0.0.248/29",
-///     region="us-central1",
+///     region="us-west1",
 ///     network=network1.id)
 /// ip1_network1 = gcp.compute.Address("ip1_network1",
 ///     name="ip1-net1",
-///     region="us-central1",
+///     region="us-west1",
 ///     subnetwork=subnet_network1.id,
 ///     address_type="INTERNAL",
 ///     purpose="GCE_ENDPOINT")
@@ -187,24 +187,24 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// instance_user_conn_instance = gcp.memorystore.Instance("instance-user-conn",
 ///     instance_id="instance-user-conn",
 ///     shard_count=1,
-///     location="us-central1",
+///     location="us-west1",
 ///     deletion_protection_enabled=False)
 /// forwarding_rule1_network1 = gcp.compute.ForwardingRule("forwarding_rule1_network1",
 ///     name="fwd1-net1",
-///     region="us-central1",
+///     region="us-west1",
 ///     ip_address=ip1_network1.id,
 ///     load_balancing_scheme="",
 ///     network=network1.id,
 ///     target=instance_user_conn_instance.psc_attachment_details[0].service_attachment)
 /// ip2_network1 = gcp.compute.Address("ip2_network1",
 ///     name="ip2-net1",
-///     region="us-central1",
+///     region="us-west1",
 ///     subnetwork=subnet_network1.id,
 ///     address_type="INTERNAL",
 ///     purpose="GCE_ENDPOINT")
 /// forwarding_rule2_network1 = gcp.compute.ForwardingRule("forwarding_rule2_network1",
 ///     name="fwd2-net1",
-///     region="us-central1",
+///     region="us-west1",
 ///     ip_address=ip2_network1.id,
 ///     load_balancing_scheme="",
 ///     network=network1.id,
@@ -215,37 +215,37 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// subnet_network2 = gcp.compute.Subnetwork("subnet_network2",
 ///     name="subnet-net2",
 ///     ip_cidr_range="10.0.0.248/29",
-///     region="us-central1",
+///     region="us-west1",
 ///     network=network2.id)
 /// ip1_network2 = gcp.compute.Address("ip1_network2",
 ///     name="ip1-net2",
-///     region="us-central1",
+///     region="us-west1",
 ///     subnetwork=subnet_network2.id,
 ///     address_type="INTERNAL",
 ///     purpose="GCE_ENDPOINT")
 /// forwarding_rule1_network2 = gcp.compute.ForwardingRule("forwarding_rule1_network2",
 ///     name="fwd1-net2",
-///     region="us-central1",
+///     region="us-west1",
 ///     ip_address=ip1_network2.id,
 ///     load_balancing_scheme="",
 ///     network=network2.id,
 ///     target=instance_user_conn_instance.psc_attachment_details[0].service_attachment)
 /// ip2_network2 = gcp.compute.Address("ip2_network2",
 ///     name="ip2-net2",
-///     region="us-central1",
+///     region="us-west1",
 ///     subnetwork=subnet_network2.id,
 ///     address_type="INTERNAL",
 ///     purpose="GCE_ENDPOINT")
 /// forwarding_rule2_network2 = gcp.compute.ForwardingRule("forwarding_rule2_network2",
 ///     name="fwd2-net2",
-///     region="us-central1",
+///     region="us-west1",
 ///     ip_address=ip2_network2.id,
 ///     load_balancing_scheme="",
 ///     network=network2.id,
 ///     target=instance_user_conn_instance.psc_attachment_details[1].service_attachment)
 /// instance_user_conn = gcp.memorystore.InstanceDesiredUserCreatedEndpoints("instance-user-conn",
 ///     name="instance-user-conn",
-///     region="us-central1",
+///     region="us-west1",
 ///     desired_user_created_endpoints=[
 ///         {
 ///             "connections": [
@@ -312,14 +312,14 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     {
 ///         Name = "subnet-net1",
 ///         IpCidrRange = "10.0.0.248/29",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         Network = network1.Id,
 ///     });
 ///
 ///     var ip1Network1 = new Gcp.Compute.Address("ip1_network1", new()
 ///     {
 ///         Name = "ip1-net1",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         Subnetwork = subnetNetwork1.Id,
 ///         AddressType = "INTERNAL",
 ///         Purpose = "GCE_ENDPOINT",
@@ -330,14 +330,14 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     {
 ///         InstanceId = "instance-user-conn",
 ///         ShardCount = 1,
-///         Location = "us-central1",
+///         Location = "us-west1",
 ///         DeletionProtectionEnabled = false,
 ///     });
 ///
 ///     var forwardingRule1Network1 = new Gcp.Compute.ForwardingRule("forwarding_rule1_network1", new()
 ///     {
 ///         Name = "fwd1-net1",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         IpAddress = ip1Network1.Id,
 ///         LoadBalancingScheme = "",
 ///         Network = network1.Id,
@@ -347,7 +347,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     var ip2Network1 = new Gcp.Compute.Address("ip2_network1", new()
 ///     {
 ///         Name = "ip2-net1",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         Subnetwork = subnetNetwork1.Id,
 ///         AddressType = "INTERNAL",
 ///         Purpose = "GCE_ENDPOINT",
@@ -356,7 +356,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     var forwardingRule2Network1 = new Gcp.Compute.ForwardingRule("forwarding_rule2_network1", new()
 ///     {
 ///         Name = "fwd2-net1",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         IpAddress = ip2Network1.Id,
 ///         LoadBalancingScheme = "",
 ///         Network = network1.Id,
@@ -373,14 +373,14 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     {
 ///         Name = "subnet-net2",
 ///         IpCidrRange = "10.0.0.248/29",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         Network = network2.Id,
 ///     });
 ///
 ///     var ip1Network2 = new Gcp.Compute.Address("ip1_network2", new()
 ///     {
 ///         Name = "ip1-net2",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         Subnetwork = subnetNetwork2.Id,
 ///         AddressType = "INTERNAL",
 ///         Purpose = "GCE_ENDPOINT",
@@ -389,7 +389,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     var forwardingRule1Network2 = new Gcp.Compute.ForwardingRule("forwarding_rule1_network2", new()
 ///     {
 ///         Name = "fwd1-net2",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         IpAddress = ip1Network2.Id,
 ///         LoadBalancingScheme = "",
 ///         Network = network2.Id,
@@ -399,7 +399,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     var ip2Network2 = new Gcp.Compute.Address("ip2_network2", new()
 ///     {
 ///         Name = "ip2-net2",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         Subnetwork = subnetNetwork2.Id,
 ///         AddressType = "INTERNAL",
 ///         Purpose = "GCE_ENDPOINT",
@@ -408,7 +408,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     var forwardingRule2Network2 = new Gcp.Compute.ForwardingRule("forwarding_rule2_network2", new()
 ///     {
 ///         Name = "fwd2-net2",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         IpAddress = ip2Network2.Id,
 ///         LoadBalancingScheme = "",
 ///         Network = network2.Id,
@@ -418,7 +418,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     var instance_user_conn = new Gcp.MemoryStore.InstanceDesiredUserCreatedEndpoints("instance-user-conn", new()
 ///     {
 ///         Name = "instance-user-conn",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         DesiredUserCreatedEndpoints = new[]
 ///         {
 ///             new Gcp.MemoryStore.Inputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs
@@ -488,9 +488,9 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memorystore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -506,7 +506,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		subnetNetwork1, err := compute.NewSubnetwork(ctx, "subnet_network1", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("subnet-net1"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
-/// 			Region:      pulumi.String("us-central1"),
+/// 			Region:      pulumi.String("us-west1"),
 /// 			Network:     network1.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
@@ -514,7 +514,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		ip1Network1, err := compute.NewAddress(ctx, "ip1_network1", &compute.AddressArgs{
 /// 			Name:        pulumi.String("ip1-net1"),
-/// 			Region:      pulumi.String("us-central1"),
+/// 			Region:      pulumi.String("us-west1"),
 /// 			Subnetwork:  subnetNetwork1.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Purpose:     pulumi.String("GCE_ENDPOINT"),
@@ -526,7 +526,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		instance_user_connInstance, err := memorystore.NewInstance(ctx, "instance-user-conn", &memorystore.InstanceArgs{
 /// 			InstanceId:                pulumi.String("instance-user-conn"),
 /// 			ShardCount:                pulumi.Int(1),
-/// 			Location:                  pulumi.String("us-central1"),
+/// 			Location:                  pulumi.String("us-west1"),
 /// 			DeletionProtectionEnabled: pulumi.Bool(false),
 /// 		})
 /// 		if err != nil {
@@ -534,7 +534,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		forwardingRule1Network1, err := compute.NewForwardingRule(ctx, "forwarding_rule1_network1", &compute.ForwardingRuleArgs{
 /// 			Name:                pulumi.String("fwd1-net1"),
-/// 			Region:              pulumi.String("us-central1"),
+/// 			Region:              pulumi.String("us-west1"),
 /// 			IpAddress:           ip1Network1.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String(""),
 /// 			Network:             network1.ID().ToIDOutput().ToStringOutput(),
@@ -547,7 +547,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		ip2Network1, err := compute.NewAddress(ctx, "ip2_network1", &compute.AddressArgs{
 /// 			Name:        pulumi.String("ip2-net1"),
-/// 			Region:      pulumi.String("us-central1"),
+/// 			Region:      pulumi.String("us-west1"),
 /// 			Subnetwork:  subnetNetwork1.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Purpose:     pulumi.String("GCE_ENDPOINT"),
@@ -557,7 +557,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		forwardingRule2Network1, err := compute.NewForwardingRule(ctx, "forwarding_rule2_network1", &compute.ForwardingRuleArgs{
 /// 			Name:                pulumi.String("fwd2-net1"),
-/// 			Region:              pulumi.String("us-central1"),
+/// 			Region:              pulumi.String("us-west1"),
 /// 			IpAddress:           ip2Network1.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String(""),
 /// 			Network:             network1.ID().ToIDOutput().ToStringOutput(),
@@ -578,7 +578,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		subnetNetwork2, err := compute.NewSubnetwork(ctx, "subnet_network2", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("subnet-net2"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
-/// 			Region:      pulumi.String("us-central1"),
+/// 			Region:      pulumi.String("us-west1"),
 /// 			Network:     network2.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
@@ -586,7 +586,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		ip1Network2, err := compute.NewAddress(ctx, "ip1_network2", &compute.AddressArgs{
 /// 			Name:        pulumi.String("ip1-net2"),
-/// 			Region:      pulumi.String("us-central1"),
+/// 			Region:      pulumi.String("us-west1"),
 /// 			Subnetwork:  subnetNetwork2.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Purpose:     pulumi.String("GCE_ENDPOINT"),
@@ -596,7 +596,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		forwardingRule1Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule1_network2", &compute.ForwardingRuleArgs{
 /// 			Name:                pulumi.String("fwd1-net2"),
-/// 			Region:              pulumi.String("us-central1"),
+/// 			Region:              pulumi.String("us-west1"),
 /// 			IpAddress:           ip1Network2.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String(""),
 /// 			Network:             network2.ID().ToIDOutput().ToStringOutput(),
@@ -609,7 +609,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		ip2Network2, err := compute.NewAddress(ctx, "ip2_network2", &compute.AddressArgs{
 /// 			Name:        pulumi.String("ip2-net2"),
-/// 			Region:      pulumi.String("us-central1"),
+/// 			Region:      pulumi.String("us-west1"),
 /// 			Subnetwork:  subnetNetwork2.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Purpose:     pulumi.String("GCE_ENDPOINT"),
@@ -619,7 +619,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		forwardingRule2Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule2_network2", &compute.ForwardingRuleArgs{
 /// 			Name:                pulumi.String("fwd2-net2"),
-/// 			Region:              pulumi.String("us-central1"),
+/// 			Region:              pulumi.String("us-west1"),
 /// 			IpAddress:           ip2Network2.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String(""),
 /// 			Network:             network2.ID().ToIDOutput().ToStringOutput(),
@@ -632,7 +632,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		_, err = memorystore.NewInstanceDesiredUserCreatedEndpoints(ctx, "instance-user-conn", &memorystore.InstanceDesiredUserCreatedEndpointsArgs{
 /// 			Name:   pulumi.String("instance-user-conn"),
-/// 			Region: pulumi.String("us-central1"),
+/// 			Region: pulumi.String("us-west1"),
 /// 			DesiredUserCreatedEndpoints: memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArray{
 /// 				&memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs{
 /// 					Connections: memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArray{
@@ -713,7 +713,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///
 /// resource "gcp_memorystore_instancedesiredusercreatedendpoints" "instance-user-conn" {
 ///   name   = "instance-user-conn"
-///   region = "us-central1"
+///   region = "us-west1"
 ///   desired_user_created_endpoints {
 ///     connections {
 ///       psc_connection = {
@@ -757,7 +757,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// }
 /// resource "gcp_compute_forwardingrule" "forwarding_rule1_network1" {
 ///   name                  = "fwd1-net1"
-///   region                = "us-central1"
+///   region                = "us-west1"
 ///   ip_address            = gcp_compute_address.ip1_network1.id
 ///   load_balancing_scheme = ""
 ///   network               = gcp_compute_network.network1.id
@@ -765,7 +765,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// }
 /// resource "gcp_compute_forwardingrule" "forwarding_rule2_network1" {
 ///   name                  = "fwd2-net1"
-///   region                = "us-central1"
+///   region                = "us-west1"
 ///   ip_address            = gcp_compute_address.ip2_network1.id
 ///   load_balancing_scheme = ""
 ///   network               = gcp_compute_network.network1.id
@@ -773,14 +773,14 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// }
 /// resource "gcp_compute_address" "ip1_network1" {
 ///   name         = "ip1-net1"
-///   region       = "us-central1"
+///   region       = "us-west1"
 ///   subnetwork   = gcp_compute_subnetwork.subnet_network1.id
 ///   address_type = "INTERNAL"
 ///   purpose      = "GCE_ENDPOINT"
 /// }
 /// resource "gcp_compute_address" "ip2_network1" {
 ///   name         = "ip2-net1"
-///   region       = "us-central1"
+///   region       = "us-west1"
 ///   subnetwork   = gcp_compute_subnetwork.subnet_network1.id
 ///   address_type = "INTERNAL"
 ///   purpose      = "GCE_ENDPOINT"
@@ -788,7 +788,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// resource "gcp_compute_subnetwork" "subnet_network1" {
 ///   name          = "subnet-net1"
 ///   ip_cidr_range = "10.0.0.248/29"
-///   region        = "us-central1"
+///   region        = "us-west1"
 ///   network       = gcp_compute_network.network1.id
 /// }
 /// resource "gcp_compute_network" "network1" {
@@ -797,7 +797,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// }
 /// resource "gcp_compute_forwardingrule" "forwarding_rule1_network2" {
 ///   name                  = "fwd1-net2"
-///   region                = "us-central1"
+///   region                = "us-west1"
 ///   ip_address            = gcp_compute_address.ip1_network2.id
 ///   load_balancing_scheme = ""
 ///   network               = gcp_compute_network.network2.id
@@ -805,7 +805,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// }
 /// resource "gcp_compute_forwardingrule" "forwarding_rule2_network2" {
 ///   name                  = "fwd2-net2"
-///   region                = "us-central1"
+///   region                = "us-west1"
 ///   ip_address            = gcp_compute_address.ip2_network2.id
 ///   load_balancing_scheme = ""
 ///   network               = gcp_compute_network.network2.id
@@ -813,14 +813,14 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// }
 /// resource "gcp_compute_address" "ip1_network2" {
 ///   name         = "ip1-net2"
-///   region       = "us-central1"
+///   region       = "us-west1"
 ///   subnetwork   = gcp_compute_subnetwork.subnet_network2.id
 ///   address_type = "INTERNAL"
 ///   purpose      = "GCE_ENDPOINT"
 /// }
 /// resource "gcp_compute_address" "ip2_network2" {
 ///   name         = "ip2-net2"
-///   region       = "us-central1"
+///   region       = "us-west1"
 ///   subnetwork   = gcp_compute_subnetwork.subnet_network2.id
 ///   address_type = "INTERNAL"
 ///   purpose      = "GCE_ENDPOINT"
@@ -829,13 +829,13 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// resource "gcp_memorystore_instance" "instance-user-conn" {
 ///   instance_id                 = "instance-user-conn"
 ///   shard_count                 = 1
-///   location                    = "us-central1"
+///   location                    = "us-west1"
 ///   deletion_protection_enabled = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnet_network2" {
 ///   name          = "subnet-net2"
 ///   ip_cidr_range = "10.0.0.248/29"
-///   region        = "us-central1"
+///   region        = "us-west1"
 ///   network       = gcp_compute_network.network2.id
 /// }
 /// resource "gcp_compute_network" "network2" {
@@ -887,13 +887,13 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///         var subnetNetwork1 = new Subnetwork("subnetNetwork1", SubnetworkArgs.builder()
 ///             .name("subnet-net1")
 ///             .ipCidrRange("10.0.0.248/29")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .network(network1.id())
 ///             .build());
 ///
 ///         var ip1Network1 = new Address("ip1Network1", AddressArgs.builder()
 ///             .name("ip1-net1")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .subnetwork(subnetNetwork1.id())
 ///             .addressType("INTERNAL")
 ///             .purpose("GCE_ENDPOINT")
@@ -903,13 +903,13 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///         var instance_user_connInstance = new Instance("instance-user-connInstance", InstanceArgs.builder()
 ///             .instanceId("instance-user-conn")
 ///             .shardCount(1)
-///             .location("us-central1")
+///             .location("us-west1")
 ///             .deletionProtectionEnabled(false)
 ///             .build());
 ///
 ///         var forwardingRule1Network1 = new ForwardingRule("forwardingRule1Network1", ForwardingRuleArgs.builder()
 ///             .name("fwd1-net1")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .ipAddress(ip1Network1.id())
 ///             .loadBalancingScheme("")
 ///             .network(network1.id())
@@ -918,7 +918,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///
 ///         var ip2Network1 = new Address("ip2Network1", AddressArgs.builder()
 ///             .name("ip2-net1")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .subnetwork(subnetNetwork1.id())
 ///             .addressType("INTERNAL")
 ///             .purpose("GCE_ENDPOINT")
@@ -926,7 +926,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///
 ///         var forwardingRule2Network1 = new ForwardingRule("forwardingRule2Network1", ForwardingRuleArgs.builder()
 ///             .name("fwd2-net1")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .ipAddress(ip2Network1.id())
 ///             .loadBalancingScheme("")
 ///             .network(network1.id())
@@ -941,13 +941,13 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///         var subnetNetwork2 = new Subnetwork("subnetNetwork2", SubnetworkArgs.builder()
 ///             .name("subnet-net2")
 ///             .ipCidrRange("10.0.0.248/29")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .network(network2.id())
 ///             .build());
 ///
 ///         var ip1Network2 = new Address("ip1Network2", AddressArgs.builder()
 ///             .name("ip1-net2")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .subnetwork(subnetNetwork2.id())
 ///             .addressType("INTERNAL")
 ///             .purpose("GCE_ENDPOINT")
@@ -955,7 +955,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///
 ///         var forwardingRule1Network2 = new ForwardingRule("forwardingRule1Network2", ForwardingRuleArgs.builder()
 ///             .name("fwd1-net2")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .ipAddress(ip1Network2.id())
 ///             .loadBalancingScheme("")
 ///             .network(network2.id())
@@ -964,7 +964,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///
 ///         var ip2Network2 = new Address("ip2Network2", AddressArgs.builder()
 ///             .name("ip2-net2")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .subnetwork(subnetNetwork2.id())
 ///             .addressType("INTERNAL")
 ///             .purpose("GCE_ENDPOINT")
@@ -972,7 +972,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///
 ///         var forwardingRule2Network2 = new ForwardingRule("forwardingRule2Network2", ForwardingRuleArgs.builder()
 ///             .name("fwd2-net2")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .ipAddress(ip2Network2.id())
 ///             .loadBalancingScheme("")
 ///             .network(network2.id())
@@ -981,7 +981,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///
 ///         var instance_user_conn = new InstanceDesiredUserCreatedEndpoints("instance-user-conn", InstanceDesiredUserCreatedEndpointsArgs.builder()
 ///             .name("instance-user-conn")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .desiredUserCreatedEndpoints(
 ///                 InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs.builder()
 ///                     .connections(
@@ -1039,7 +1039,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     type: gcp:memorystore:InstanceDesiredUserCreatedEndpoints
 ///     properties:
 ///       name: instance-user-conn
-///       region: us-central1
+///       region: us-west1
 ///       desiredUserCreatedEndpoints:
 ///         - connections:
 ///             - pscConnection:
@@ -1072,7 +1072,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     name: forwarding_rule1_network1
 ///     properties:
 ///       name: fwd1-net1
-///       region: us-central1
+///       region: us-west1
 ///       ipAddress: ${ip1Network1.id}
 ///       loadBalancingScheme: ""
 ///       network: ${network1.id}
@@ -1082,7 +1082,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     name: forwarding_rule2_network1
 ///     properties:
 ///       name: fwd2-net1
-///       region: us-central1
+///       region: us-west1
 ///       ipAddress: ${ip2Network1.id}
 ///       loadBalancingScheme: ""
 ///       network: ${network1.id}
@@ -1092,7 +1092,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     name: ip1_network1
 ///     properties:
 ///       name: ip1-net1
-///       region: us-central1
+///       region: us-west1
 ///       subnetwork: ${subnetNetwork1.id}
 ///       addressType: INTERNAL
 ///       purpose: GCE_ENDPOINT
@@ -1101,7 +1101,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     name: ip2_network1
 ///     properties:
 ///       name: ip2-net1
-///       region: us-central1
+///       region: us-west1
 ///       subnetwork: ${subnetNetwork1.id}
 ///       addressType: INTERNAL
 ///       purpose: GCE_ENDPOINT
@@ -1111,7 +1111,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     properties:
 ///       name: subnet-net1
 ///       ipCidrRange: 10.0.0.248/29
-///       region: us-central1
+///       region: us-west1
 ///       network: ${network1.id}
 ///   network1:
 ///     type: gcp:compute:Network
@@ -1123,7 +1123,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     name: forwarding_rule1_network2
 ///     properties:
 ///       name: fwd1-net2
-///       region: us-central1
+///       region: us-west1
 ///       ipAddress: ${ip1Network2.id}
 ///       loadBalancingScheme: ""
 ///       network: ${network2.id}
@@ -1133,7 +1133,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     name: forwarding_rule2_network2
 ///     properties:
 ///       name: fwd2-net2
-///       region: us-central1
+///       region: us-west1
 ///       ipAddress: ${ip2Network2.id}
 ///       loadBalancingScheme: ""
 ///       network: ${network2.id}
@@ -1143,7 +1143,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     name: ip1_network2
 ///     properties:
 ///       name: ip1-net2
-///       region: us-central1
+///       region: us-west1
 ///       subnetwork: ${subnetNetwork2.id}
 ///       addressType: INTERNAL
 ///       purpose: GCE_ENDPOINT
@@ -1152,7 +1152,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     name: ip2_network2
 ///     properties:
 ///       name: ip2-net2
-///       region: us-central1
+///       region: us-west1
 ///       subnetwork: ${subnetNetwork2.id}
 ///       addressType: INTERNAL
 ///       purpose: GCE_ENDPOINT
@@ -1163,7 +1163,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     properties:
 ///       instanceId: instance-user-conn
 ///       shardCount: 1
-///       location: us-central1
+///       location: us-west1
 ///       deletionProtectionEnabled: false
 ///   subnetNetwork2:
 ///     type: gcp:compute:Subnetwork
@@ -1171,7 +1171,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     properties:
 ///       name: subnet-net2
 ///       ipCidrRange: 10.0.0.248/29
-///       region: us-central1
+///       region: us-west1
 ///       network: ${network2.id}
 ///   network2:
 ///     type: gcp:compute:Network
@@ -1200,12 +1200,12 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// const subnetNetwork2 = new gcp.compute.Subnetwork("subnet_network2", {
 ///     name: "subnet-net2",
 ///     ipCidrRange: "10.0.0.248/29",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     network: network2.id,
 /// });
 /// const ip1Network2 = new gcp.compute.Address("ip1_network2", {
 ///     name: "ip1-net2",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     subnetwork: subnetNetwork2.id,
 ///     addressType: "INTERNAL",
 ///     purpose: "GCE_ENDPOINT",
@@ -1217,12 +1217,12 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// const subnetNetwork1 = new gcp.compute.Subnetwork("subnet_network1", {
 ///     name: "subnet-net1",
 ///     ipCidrRange: "10.0.0.248/29",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     network: network1.id,
 /// });
 /// const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
 ///     name: "scpolicy",
-///     location: "us-central1",
+///     location: "us-west1",
 ///     serviceClass: "gcp-memorystore",
 ///     description: "my basic service connection policy",
 ///     network: network1.id,
@@ -1239,14 +1239,14 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///         network: network1.id,
 ///         projectId: project.then(project => project.projectId),
 ///     }],
-///     location: "us-central1",
+///     location: "us-west1",
 ///     deletionProtectionEnabled: false,
 /// }, {
 ///     dependsOn: [_default],
 /// });
 /// const forwardingRule1Network2 = new gcp.compute.ForwardingRule("forwarding_rule1_network2", {
 ///     name: "fwd1-net2",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     ipAddress: ip1Network2.id,
 ///     loadBalancingScheme: "",
 ///     network: network2.id,
@@ -1254,14 +1254,14 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// });
 /// const ip2Network2 = new gcp.compute.Address("ip2_network2", {
 ///     name: "ip2-net2",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     subnetwork: subnetNetwork2.id,
 ///     addressType: "INTERNAL",
 ///     purpose: "GCE_ENDPOINT",
 /// });
 /// const forwardingRule2Network2 = new gcp.compute.ForwardingRule("forwarding_rule2_network2", {
 ///     name: "fwd2-net2",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     ipAddress: ip2Network2.id,
 ///     loadBalancingScheme: "",
 ///     network: network2.id,
@@ -1269,7 +1269,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// });
 /// const instance_user_auto_conn = new gcp.memorystore.InstanceDesiredUserCreatedEndpoints("instance-user-auto-conn", {
 ///     name: "instance-user-auto-conn",
-///     region: "us-central1",
+///     region: "us-west1",
 ///     desiredUserCreatedEndpoints: [{
 ///         connections: [
 ///             {
@@ -1304,11 +1304,11 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// subnet_network2 = gcp.compute.Subnetwork("subnet_network2",
 ///     name="subnet-net2",
 ///     ip_cidr_range="10.0.0.248/29",
-///     region="us-central1",
+///     region="us-west1",
 ///     network=network2.id)
 /// ip1_network2 = gcp.compute.Address("ip1_network2",
 ///     name="ip1-net2",
-///     region="us-central1",
+///     region="us-west1",
 ///     subnetwork=subnet_network2.id,
 ///     address_type="INTERNAL",
 ///     purpose="GCE_ENDPOINT")
@@ -1318,11 +1318,11 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// subnet_network1 = gcp.compute.Subnetwork("subnet_network1",
 ///     name="subnet-net1",
 ///     ip_cidr_range="10.0.0.248/29",
-///     region="us-central1",
+///     region="us-west1",
 ///     network=network1.id)
 /// default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
 ///     name="scpolicy",
-///     location="us-central1",
+///     location="us-west1",
 ///     service_class="gcp-memorystore",
 ///     description="my basic service connection policy",
 ///     network=network1.id,
@@ -1338,32 +1338,32 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///         "network": network1.id,
 ///         "project_id": project.project_id,
 ///     }],
-///     location="us-central1",
+///     location="us-west1",
 ///     deletion_protection_enabled=False,
 ///     opts = pulumi.ResourceOptions(depends_on=[default]))
 /// forwarding_rule1_network2 = gcp.compute.ForwardingRule("forwarding_rule1_network2",
 ///     name="fwd1-net2",
-///     region="us-central1",
+///     region="us-west1",
 ///     ip_address=ip1_network2.id,
 ///     load_balancing_scheme="",
 ///     network=network2.id,
 ///     target=instance_user_auto_conn_instance.psc_attachment_details[0].service_attachment)
 /// ip2_network2 = gcp.compute.Address("ip2_network2",
 ///     name="ip2-net2",
-///     region="us-central1",
+///     region="us-west1",
 ///     subnetwork=subnet_network2.id,
 ///     address_type="INTERNAL",
 ///     purpose="GCE_ENDPOINT")
 /// forwarding_rule2_network2 = gcp.compute.ForwardingRule("forwarding_rule2_network2",
 ///     name="fwd2-net2",
-///     region="us-central1",
+///     region="us-west1",
 ///     ip_address=ip2_network2.id,
 ///     load_balancing_scheme="",
 ///     network=network2.id,
 ///     target=instance_user_auto_conn_instance.psc_attachment_details[1].service_attachment)
 /// instance_user_auto_conn = gcp.memorystore.InstanceDesiredUserCreatedEndpoints("instance-user-auto-conn",
 ///     name="instance-user-auto-conn",
-///     region="us-central1",
+///     region="us-west1",
 ///     desired_user_created_endpoints=[{
 ///         "connections": [
 ///             {
@@ -1405,14 +1405,14 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     {
 ///         Name = "subnet-net2",
 ///         IpCidrRange = "10.0.0.248/29",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         Network = network2.Id,
 ///     });
 ///
 ///     var ip1Network2 = new Gcp.Compute.Address("ip1_network2", new()
 ///     {
 ///         Name = "ip1-net2",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         Subnetwork = subnetNetwork2.Id,
 ///         AddressType = "INTERNAL",
 ///         Purpose = "GCE_ENDPOINT",
@@ -1428,14 +1428,14 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     {
 ///         Name = "subnet-net1",
 ///         IpCidrRange = "10.0.0.248/29",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         Network = network1.Id,
 ///     });
 ///
 ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
 ///     {
 ///         Name = "scpolicy",
-///         Location = "us-central1",
+///         Location = "us-west1",
 ///         ServiceClass = "gcp-memorystore",
 ///         Description = "my basic service connection policy",
 ///         Network = network1.Id,
@@ -1463,7 +1463,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///                 ProjectId = project.Apply(getProjectResult => getProjectResult.ProjectId),
 ///             },
 ///         },
-///         Location = "us-central1",
+///         Location = "us-west1",
 ///         DeletionProtectionEnabled = false,
 ///     }, new CustomResourceOptions
 ///     {
@@ -1476,7 +1476,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     var forwardingRule1Network2 = new Gcp.Compute.ForwardingRule("forwarding_rule1_network2", new()
 ///     {
 ///         Name = "fwd1-net2",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         IpAddress = ip1Network2.Id,
 ///         LoadBalancingScheme = "",
 ///         Network = network2.Id,
@@ -1486,7 +1486,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     var ip2Network2 = new Gcp.Compute.Address("ip2_network2", new()
 ///     {
 ///         Name = "ip2-net2",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         Subnetwork = subnetNetwork2.Id,
 ///         AddressType = "INTERNAL",
 ///         Purpose = "GCE_ENDPOINT",
@@ -1495,7 +1495,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     var forwardingRule2Network2 = new Gcp.Compute.ForwardingRule("forwarding_rule2_network2", new()
 ///     {
 ///         Name = "fwd2-net2",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         IpAddress = ip2Network2.Id,
 ///         LoadBalancingScheme = "",
 ///         Network = network2.Id,
@@ -1505,7 +1505,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     var instance_user_auto_conn = new Gcp.MemoryStore.InstanceDesiredUserCreatedEndpoints("instance-user-auto-conn", new()
 ///     {
 ///         Name = "instance-user-auto-conn",
-///         Region = "us-central1",
+///         Region = "us-west1",
 ///         DesiredUserCreatedEndpoints = new[]
 ///         {
 ///             new Gcp.MemoryStore.Inputs.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs
@@ -1545,10 +1545,10 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memorystore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1564,7 +1564,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		subnetNetwork2, err := compute.NewSubnetwork(ctx, "subnet_network2", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("subnet-net2"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
-/// 			Region:      pulumi.String("us-central1"),
+/// 			Region:      pulumi.String("us-west1"),
 /// 			Network:     network2.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
@@ -1572,7 +1572,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		ip1Network2, err := compute.NewAddress(ctx, "ip1_network2", &compute.AddressArgs{
 /// 			Name:        pulumi.String("ip1-net2"),
-/// 			Region:      pulumi.String("us-central1"),
+/// 			Region:      pulumi.String("us-west1"),
 /// 			Subnetwork:  subnetNetwork2.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Purpose:     pulumi.String("GCE_ENDPOINT"),
@@ -1590,7 +1590,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		subnetNetwork1, err := compute.NewSubnetwork(ctx, "subnet_network1", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("subnet-net1"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
-/// 			Region:      pulumi.String("us-central1"),
+/// 			Region:      pulumi.String("us-west1"),
 /// 			Network:     network1.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
@@ -1598,7 +1598,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 /// 			Name:         pulumi.String("scpolicy"),
-/// 			Location:     pulumi.String("us-central1"),
+/// 			Location:     pulumi.String("us-west1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
 /// 			Network:      network1.ID().ToIDOutput().ToStringOutput(),
@@ -1625,7 +1625,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 					ProjectId: pulumi.String(project.ProjectId),
 /// 				},
 /// 			},
-/// 			Location:                  pulumi.String("us-central1"),
+/// 			Location:                  pulumi.String("us-west1"),
 /// 			DeletionProtectionEnabled: pulumi.Bool(false),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			_default,
@@ -1635,7 +1635,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		forwardingRule1Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule1_network2", &compute.ForwardingRuleArgs{
 /// 			Name:                pulumi.String("fwd1-net2"),
-/// 			Region:              pulumi.String("us-central1"),
+/// 			Region:              pulumi.String("us-west1"),
 /// 			IpAddress:           ip1Network2.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String(""),
 /// 			Network:             network2.ID().ToIDOutput().ToStringOutput(),
@@ -1648,7 +1648,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		ip2Network2, err := compute.NewAddress(ctx, "ip2_network2", &compute.AddressArgs{
 /// 			Name:        pulumi.String("ip2-net2"),
-/// 			Region:      pulumi.String("us-central1"),
+/// 			Region:      pulumi.String("us-west1"),
 /// 			Subnetwork:  subnetNetwork2.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Purpose:     pulumi.String("GCE_ENDPOINT"),
@@ -1658,7 +1658,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		forwardingRule2Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule2_network2", &compute.ForwardingRuleArgs{
 /// 			Name:                pulumi.String("fwd2-net2"),
-/// 			Region:              pulumi.String("us-central1"),
+/// 			Region:              pulumi.String("us-west1"),
 /// 			IpAddress:           ip2Network2.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String(""),
 /// 			Network:             network2.ID().ToIDOutput().ToStringOutput(),
@@ -1671,7 +1671,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// 		}
 /// 		_, err = memorystore.NewInstanceDesiredUserCreatedEndpoints(ctx, "instance-user-auto-conn", &memorystore.InstanceDesiredUserCreatedEndpointsArgs{
 /// 			Name:   pulumi.String("instance-user-auto-conn"),
-/// 			Region: pulumi.String("us-central1"),
+/// 			Region: pulumi.String("us-west1"),
 /// 			DesiredUserCreatedEndpoints: memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArray{
 /// 				&memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs{
 /// 					Connections: memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArray{
@@ -1722,7 +1722,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///
 /// resource "gcp_memorystore_instancedesiredusercreatedendpoints" "instance-user-auto-conn" {
 ///   name   = "instance-user-auto-conn"
-///   region = "us-central1"
+///   region = "us-west1"
 ///   desired_user_created_endpoints {
 ///     connections {
 ///       psc_connection = {
@@ -1746,7 +1746,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// }
 /// resource "gcp_compute_forwardingrule" "forwarding_rule1_network2" {
 ///   name                  = "fwd1-net2"
-///   region                = "us-central1"
+///   region                = "us-west1"
 ///   ip_address            = gcp_compute_address.ip1_network2.id
 ///   load_balancing_scheme = ""
 ///   network               = gcp_compute_network.network2.id
@@ -1754,7 +1754,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// }
 /// resource "gcp_compute_forwardingrule" "forwarding_rule2_network2" {
 ///   name                  = "fwd2-net2"
-///   region                = "us-central1"
+///   region                = "us-west1"
 ///   ip_address            = gcp_compute_address.ip2_network2.id
 ///   load_balancing_scheme = ""
 ///   network               = gcp_compute_network.network2.id
@@ -1762,14 +1762,14 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// }
 /// resource "gcp_compute_address" "ip1_network2" {
 ///   name         = "ip1-net2"
-///   region       = "us-central1"
+///   region       = "us-west1"
 ///   subnetwork   = gcp_compute_subnetwork.subnet_network2.id
 ///   address_type = "INTERNAL"
 ///   purpose      = "GCE_ENDPOINT"
 /// }
 /// resource "gcp_compute_address" "ip2_network2" {
 ///   name         = "ip2-net2"
-///   region       = "us-central1"
+///   region       = "us-west1"
 ///   subnetwork   = gcp_compute_subnetwork.subnet_network2.id
 ///   address_type = "INTERNAL"
 ///   purpose      = "GCE_ENDPOINT"
@@ -1777,7 +1777,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// resource "gcp_compute_subnetwork" "subnet_network2" {
 ///   name          = "subnet-net2"
 ///   ip_cidr_range = "10.0.0.248/29"
-///   region        = "us-central1"
+///   region        = "us-west1"
 ///   network       = gcp_compute_network.network2.id
 /// }
 /// resource "gcp_compute_network" "network2" {
@@ -1793,12 +1793,12 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     network    = gcp_compute_network.network1.id
 ///     project_id = data.gcp_organizations_getproject.project.project_id
 ///   }
-///   location                    = "us-central1"
+///   location                    = "us-west1"
 ///   deletion_protection_enabled = false
 /// }
 /// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
 ///   name          = "scpolicy"
-///   location      = "us-central1"
+///   location      = "us-west1"
 ///   service_class = "gcp-memorystore"
 ///   description   = "my basic service connection policy"
 ///   network       = gcp_compute_network.network1.id
@@ -1809,7 +1809,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 /// resource "gcp_compute_subnetwork" "subnet_network1" {
 ///   name          = "subnet-net1"
 ///   ip_cidr_range = "10.0.0.248/29"
-///   region        = "us-central1"
+///   region        = "us-west1"
 ///   network       = gcp_compute_network.network1.id
 /// }
 /// resource "gcp_compute_network" "network1" {
@@ -1866,13 +1866,13 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///         var subnetNetwork2 = new Subnetwork("subnetNetwork2", SubnetworkArgs.builder()
 ///             .name("subnet-net2")
 ///             .ipCidrRange("10.0.0.248/29")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .network(network2.id())
 ///             .build());
 ///
 ///         var ip1Network2 = new Address("ip1Network2", AddressArgs.builder()
 ///             .name("ip1-net2")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .subnetwork(subnetNetwork2.id())
 ///             .addressType("INTERNAL")
 ///             .purpose("GCE_ENDPOINT")
@@ -1886,13 +1886,13 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///         var subnetNetwork1 = new Subnetwork("subnetNetwork1", SubnetworkArgs.builder()
 ///             .name("subnet-net1")
 ///             .ipCidrRange("10.0.0.248/29")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .network(network1.id())
 ///             .build());
 ///
 ///         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
 ///             .name("scpolicy")
-///             .location("us-central1")
+///             .location("us-west1")
 ///             .serviceClass("gcp-memorystore")
 ///             .description("my basic service connection policy")
 ///             .network(network1.id())
@@ -1912,7 +1912,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///                 .network(network1.id())
 ///                 .projectId(project.projectId())
 ///                 .build())
-///             .location("us-central1")
+///             .location("us-west1")
 ///             .deletionProtectionEnabled(false)
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(default_)
@@ -1920,7 +1920,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///
 ///         var forwardingRule1Network2 = new ForwardingRule("forwardingRule1Network2", ForwardingRuleArgs.builder()
 ///             .name("fwd1-net2")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .ipAddress(ip1Network2.id())
 ///             .loadBalancingScheme("")
 ///             .network(network2.id())
@@ -1929,7 +1929,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///
 ///         var ip2Network2 = new Address("ip2Network2", AddressArgs.builder()
 ///             .name("ip2-net2")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .subnetwork(subnetNetwork2.id())
 ///             .addressType("INTERNAL")
 ///             .purpose("GCE_ENDPOINT")
@@ -1937,7 +1937,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///
 ///         var forwardingRule2Network2 = new ForwardingRule("forwardingRule2Network2", ForwardingRuleArgs.builder()
 ///             .name("fwd2-net2")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .ipAddress(ip2Network2.id())
 ///             .loadBalancingScheme("")
 ///             .network(network2.id())
@@ -1946,7 +1946,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///
 ///         var instance_user_auto_conn = new InstanceDesiredUserCreatedEndpoints("instance-user-auto-conn", InstanceDesiredUserCreatedEndpointsArgs.builder()
 ///             .name("instance-user-auto-conn")
-///             .region("us-central1")
+///             .region("us-west1")
 ///             .desiredUserCreatedEndpoints(InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs.builder()
 ///                 .connections(
 ///                     InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs.builder()
@@ -1979,7 +1979,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     type: gcp:memorystore:InstanceDesiredUserCreatedEndpoints
 ///     properties:
 ///       name: instance-user-auto-conn
-///       region: us-central1
+///       region: us-west1
 ///       desiredUserCreatedEndpoints:
 ///         - connections:
 ///             - pscConnection:
@@ -1999,7 +1999,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     name: forwarding_rule1_network2
 ///     properties:
 ///       name: fwd1-net2
-///       region: us-central1
+///       region: us-west1
 ///       ipAddress: ${ip1Network2.id}
 ///       loadBalancingScheme: ""
 ///       network: ${network2.id}
@@ -2009,7 +2009,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     name: forwarding_rule2_network2
 ///     properties:
 ///       name: fwd2-net2
-///       region: us-central1
+///       region: us-west1
 ///       ipAddress: ${ip2Network2.id}
 ///       loadBalancingScheme: ""
 ///       network: ${network2.id}
@@ -2019,7 +2019,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     name: ip1_network2
 ///     properties:
 ///       name: ip1-net2
-///       region: us-central1
+///       region: us-west1
 ///       subnetwork: ${subnetNetwork2.id}
 ///       addressType: INTERNAL
 ///       purpose: GCE_ENDPOINT
@@ -2028,7 +2028,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     name: ip2_network2
 ///     properties:
 ///       name: ip2-net2
-///       region: us-central1
+///       region: us-west1
 ///       subnetwork: ${subnetNetwork2.id}
 ///       addressType: INTERNAL
 ///       purpose: GCE_ENDPOINT
@@ -2038,7 +2038,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     properties:
 ///       name: subnet-net2
 ///       ipCidrRange: 10.0.0.248/29
-///       region: us-central1
+///       region: us-west1
 ///       network: ${network2.id}
 ///   network2:
 ///     type: gcp:compute:Network
@@ -2055,7 +2055,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///       desiredAutoCreatedEndpoints:
 ///         - network: ${network1.id}
 ///           projectId: ${project.projectId}
-///       location: us-central1
+///       location: us-west1
 ///       deletionProtectionEnabled: false
 ///     options:
 ///       dependsOn:
@@ -2064,7 +2064,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     type: gcp:networkconnectivity:ServiceConnectionPolicy
 ///     properties:
 ///       name: scpolicy
-///       location: us-central1
+///       location: us-west1
 ///       serviceClass: gcp-memorystore
 ///       description: my basic service connection policy
 ///       network: ${network1.id}
@@ -2077,7 +2077,7 @@ import 'instance_desired_user_created_endpoints_state.dart';
 ///     properties:
 ///       name: subnet-net1
 ///       ipCidrRange: 10.0.0.248/29
-///       region: us-central1
+///       region: us-west1
 ///       network: ${network1.id}
 ///   network1:
 ///     type: gcp:compute:Network
@@ -2141,7 +2141,7 @@ class InstanceDesiredUserCreatedEndpoints extends pulumi.CustomResource {
           'gcp:memorystore/instanceDesiredUserCreatedEndpoints:InstanceDesiredUserCreatedEndpoints',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     desiredUserCreatedEndpoints = registerOutput<List<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>?>('desiredUserCreatedEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>(guardedValue, (value) => InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint.fromMap((value as Map).cast<String, dynamic>())); });

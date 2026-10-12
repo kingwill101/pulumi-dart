@@ -8,6 +8,7 @@ import 'standard_app_version_handler.dart';
 import 'standard_app_version_library.dart';
 import 'standard_app_version_manual_scaling.dart';
 import 'standard_app_version_state.dart';
+import 'standard_app_version_vpc_access.dart';
 import 'standard_app_version_vpc_access_connector.dart';
 
 /// Standard App Version resource to create a new version of standard GAE Application.
@@ -318,10 +319,10 @@ import 'standard_app_version_vpc_access_connector.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -757,7 +758,7 @@ import 'standard_app_version_vpc_access_connector.dart';
 ///     member: pulumi.interpolate`serviceAccount:${serviceAccount.email}`,
 /// });
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: "tf-test-gae-bkt-bundled",
+///     name: "gae-bkt-bundled",
 ///     location: "US",
 /// });
 /// const requirements = new gcp.storage.BucketObject("requirements", {
@@ -818,7 +819,7 @@ import 'standard_app_version_vpc_access_connector.dart';
 ///     role="roles/storage.objectViewer",
 ///     member=service_account.email.apply(lambda email: f"serviceAccount:{email}"))
 /// bucket = gcp.storage.Bucket("bucket",
-///     name="tf-test-gae-bkt-bundled",
+///     name="gae-bkt-bundled",
 ///     location="US")
 /// requirements = gcp.storage.BucketObject("requirements",
 ///     name="requirements.txt",
@@ -896,7 +897,7 @@ import 'standard_app_version_vpc_access_connector.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = "tf-test-gae-bkt-bundled",
+///         Name = "gae-bkt-bundled",
 ///         Location = "US",
 ///     });
 ///
@@ -973,10 +974,10 @@ import 'standard_app_version_vpc_access_connector.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1010,7 +1011,7 @@ import 'standard_app_version_vpc_access_connector.dart';
 /// 			return err
 /// 		}
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:     pulumi.String("tf-test-gae-bkt-bundled"),
+/// 			Name:     pulumi.String("gae-bkt-bundled"),
 /// 			Location: pulumi.String("US"),
 /// 		})
 /// 		if err != nil {
@@ -1100,7 +1101,7 @@ import 'standard_app_version_vpc_access_connector.dart';
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.service_account.email}"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
-///   name     = "tf-test-gae-bkt-bundled"
+///   name     = "gae-bkt-bundled"
 ///   location = "US"
 /// }
 /// resource "gcp_storage_bucketobject" "requirements" {
@@ -1187,7 +1188,7 @@ import 'standard_app_version_vpc_access_connector.dart';
 ///             .build());
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name("tf-test-gae-bkt-bundled")
+///             .name("gae-bkt-bundled")
 ///             .location("US")
 ///             .build());
 ///
@@ -1268,7 +1269,7 @@ import 'standard_app_version_vpc_access_connector.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: tf-test-gae-bkt-bundled
+///       name: gae-bkt-bundled
 ///       location: US
 ///   requirements:
 ///     type: gcp:storage:BucketObject
@@ -1301,6 +1302,732 @@ import 'standard_app_version_vpc_access_connector.dart';
 ///       appEngineBundledServices:
 ///         - BUNDLED_SERVICE_TYPE_MAIL
 ///         - BUNDLED_SERVICE_TYPE_DATASTORE_V3
+///       deleteServiceOnDestroy: true
+///       serviceAccount: ${serviceAccount.email}
+///     options:
+///       dependsOn:
+///         - ${gaeApi}
+///         - ${storageViewer}
+/// ```
+///
+/// ### App Engine Standard App Version Vpc Access
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const serviceAccount = new gcp.serviceaccount.Account("service_account", {
+///     accountId: "gae-sa",
+///     displayName: "Test Service Account for GAE",
+/// });
+/// const gaeApi = new gcp.projects.IAMMember("gae_api", {
+///     project: serviceAccount.project,
+///     role: "roles/compute.networkUser",
+///     member: pulumi.interpolate`serviceAccount:${serviceAccount.email}`,
+/// });
+/// const storageViewer = new gcp.projects.IAMMember("storage_viewer", {
+///     project: serviceAccount.project,
+///     role: "roles/storage.objectViewer",
+///     member: pulumi.interpolate`serviceAccount:${serviceAccount.email}`,
+/// });
+/// const custom = new gcp.compute.Network("custom", {
+///     name: "vpc-service-net",
+///     autoCreateSubnetworks: false,
+/// });
+/// const customSubnetwork = new gcp.compute.Subnetwork("custom", {
+///     name: "vpc-service-sub",
+///     ipCidrRange: "10.0.0.0/24",
+///     region: "us-central1",
+///     network: custom.id,
+/// });
+/// const bucket = new gcp.storage.Bucket("bucket", {
+///     name: "gae-bkt-vpc-access",
+///     location: "US",
+///     uniformBucketLevelAccess: true,
+/// });
+/// const requirements = new gcp.storage.BucketObject("requirements", {
+///     name: "requirements.txt",
+///     bucket: bucket.name,
+///     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world-flask/requirements.txt"),
+/// });
+/// const main = new gcp.storage.BucketObject("main", {
+///     name: "main.py",
+///     bucket: bucket.name,
+///     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world-flask/main.py"),
+/// });
+/// const gae_std_app_ver_vpc_access = new gcp.appengine.StandardAppVersion("gae-std-app-ver-vpc-access", {
+///     versionId: "v1",
+///     service: "vpc-service",
+///     runtime: "python310",
+///     vpcAccess: {
+///         egressSetting: "ALL_TRAFFIC",
+///         networkInterfaces: [{
+///             network: custom.name,
+///             subnetwork: customSubnetwork.name,
+///             tags: [
+///                 "tag1",
+///                 "tag2",
+///             ],
+///         }],
+///     },
+///     deployment: {
+///         files: [
+///             {
+///                 name: "main.py",
+///                 sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${main.name}`,
+///             },
+///             {
+///                 name: "requirements.txt",
+///                 sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${requirements.name}`,
+///             },
+///         ],
+///     },
+///     entrypoint: {
+///         shell: "gunicorn -b :$PORT main:app",
+///     },
+///     deleteServiceOnDestroy: true,
+///     serviceAccount: serviceAccount.email,
+/// }, {
+///     dependsOn: [
+///         gaeApi,
+///         storageViewer,
+///     ],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// service_account = gcp.serviceaccount.Account("service_account",
+///     account_id="gae-sa",
+///     display_name="Test Service Account for GAE")
+/// gae_api = gcp.projects.IAMMember("gae_api",
+///     project=service_account.project,
+///     role="roles/compute.networkUser",
+///     member=service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+/// storage_viewer = gcp.projects.IAMMember("storage_viewer",
+///     project=service_account.project,
+///     role="roles/storage.objectViewer",
+///     member=service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+/// custom = gcp.compute.Network("custom",
+///     name="vpc-service-net",
+///     auto_create_subnetworks=False)
+/// custom_subnetwork = gcp.compute.Subnetwork("custom",
+///     name="vpc-service-sub",
+///     ip_cidr_range="10.0.0.0/24",
+///     region="us-central1",
+///     network=custom.id)
+/// bucket = gcp.storage.Bucket("bucket",
+///     name="gae-bkt-vpc-access",
+///     location="US",
+///     uniform_bucket_level_access=True)
+/// requirements = gcp.storage.BucketObject("requirements",
+///     name="requirements.txt",
+///     bucket=bucket.name,
+///     source=pulumi.FileAsset("./test-fixtures/hello-world-flask/requirements.txt"))
+/// main = gcp.storage.BucketObject("main",
+///     name="main.py",
+///     bucket=bucket.name,
+///     source=pulumi.FileAsset("./test-fixtures/hello-world-flask/main.py"))
+/// gae_std_app_ver_vpc_access = gcp.appengine.StandardAppVersion("gae-std-app-ver-vpc-access",
+///     version_id="v1",
+///     service="vpc-service",
+///     runtime="python310",
+///     vpc_access={
+///         "egress_setting": "ALL_TRAFFIC",
+///         "network_interfaces": [{
+///             "network": custom.name,
+///             "subnetwork": custom_subnetwork.name,
+///             "tags": [
+///                 "tag1",
+///                 "tag2",
+///             ],
+///         }],
+///     },
+///     deployment={
+///         "files": [
+///             {
+///                 "name": "main.py",
+///                 "source_url": pulumi.Output.all(
+///                     bucketName=bucket.name,
+///                     mainName=main.name
+/// ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['bucketName']}/{resolved_outputs['mainName']}")
+/// ,
+///             },
+///             {
+///                 "name": "requirements.txt",
+///                 "source_url": pulumi.Output.all(
+///                     bucketName=bucket.name,
+///                     requirementsName=requirements.name
+/// ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['bucketName']}/{resolved_outputs['requirementsName']}")
+/// ,
+///             },
+///         ],
+///     },
+///     entrypoint={
+///         "shell": "gunicorn -b :$PORT main:app",
+///     },
+///     delete_service_on_destroy=True,
+///     service_account=service_account.email,
+///     opts = pulumi.ResourceOptions(depends_on=[
+///             gae_api,
+///             storage_viewer,
+///         ]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
+///     {
+///         AccountId = "gae-sa",
+///         DisplayName = "Test Service Account for GAE",
+///     });
+///
+///     var gaeApi = new Gcp.Projects.IAMMember("gae_api", new()
+///     {
+///         Project = serviceAccount.Project,
+///         Role = "roles/compute.networkUser",
+///         Member = serviceAccount.Email.Apply(email => $"serviceAccount:{email}"),
+///     });
+///
+///     var storageViewer = new Gcp.Projects.IAMMember("storage_viewer", new()
+///     {
+///         Project = serviceAccount.Project,
+///         Role = "roles/storage.objectViewer",
+///         Member = serviceAccount.Email.Apply(email => $"serviceAccount:{email}"),
+///     });
+///
+///     var custom = new Gcp.Compute.Network("custom", new()
+///     {
+///         Name = "vpc-service-net",
+///         AutoCreateSubnetworks = false,
+///     });
+///
+///     var customSubnetwork = new Gcp.Compute.Subnetwork("custom", new()
+///     {
+///         Name = "vpc-service-sub",
+///         IpCidrRange = "10.0.0.0/24",
+///         Region = "us-central1",
+///         Network = custom.Id,
+///     });
+///
+///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+///     {
+///         Name = "gae-bkt-vpc-access",
+///         Location = "US",
+///         UniformBucketLevelAccess = true,
+///     });
+///
+///     var requirements = new Gcp.Storage.BucketObject("requirements", new()
+///     {
+///         Name = "requirements.txt",
+///         Bucket = bucket.Name,
+///         Source = new FileAsset("./test-fixtures/hello-world-flask/requirements.txt"),
+///     });
+///
+///     var main = new Gcp.Storage.BucketObject("main", new()
+///     {
+///         Name = "main.py",
+///         Bucket = bucket.Name,
+///         Source = new FileAsset("./test-fixtures/hello-world-flask/main.py"),
+///     });
+///
+///     var gae_std_app_ver_vpc_access = new Gcp.AppEngine.StandardAppVersion("gae-std-app-ver-vpc-access", new()
+///     {
+///         VersionId = "v1",
+///         Service = "vpc-service",
+///         Runtime = "python310",
+///         VpcAccess = new Gcp.AppEngine.Inputs.StandardAppVersionVpcAccessArgs
+///         {
+///             EgressSetting = "ALL_TRAFFIC",
+///             NetworkInterfaces = new[]
+///             {
+///                 new Gcp.AppEngine.Inputs.StandardAppVersionVpcAccessNetworkInterfaceArgs
+///                 {
+///                     Network = custom.Name,
+///                     Subnetwork = customSubnetwork.Name,
+///                     Tags = new[]
+///                     {
+///                         "tag1",
+///                         "tag2",
+///                     },
+///                 },
+///             },
+///         },
+///         Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+///         {
+///             Files = new[]
+///             {
+///                 new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentFileArgs
+///                 {
+///                     Name = "main.py",
+///                     SourceUrl = Output.Tuple(bucket.Name, main.Name).Apply(values =>
+///                     {
+///                         var bucketName = values.Item1;
+///                         var mainName = values.Item2;
+///                         return $"https://storage.googleapis.com/{bucketName}/{mainName}";
+///                     }),
+///                 },
+///                 new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentFileArgs
+///                 {
+///                     Name = "requirements.txt",
+///                     SourceUrl = Output.Tuple(bucket.Name, requirements.Name).Apply(values =>
+///                     {
+///                         var bucketName = values.Item1;
+///                         var requirementsName = values.Item2;
+///                         return $"https://storage.googleapis.com/{bucketName}/{requirementsName}";
+///                     }),
+///                 },
+///             },
+///         },
+///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+///         {
+///             Shell = "gunicorn -b :$PORT main:app",
+///         },
+///         DeleteServiceOnDestroy = true,
+///         ServiceAccount = serviceAccount.Email,
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             gaeApi,
+///             storageViewer,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
+/// 			AccountId:   pulumi.String("gae-sa"),
+/// 			DisplayName: pulumi.String("Test Service Account for GAE"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		gaeApi, err := projects.NewIAMMember(ctx, "gae_api", &projects.IAMMemberArgs{
+/// 			Project: serviceAccount.Project,
+/// 			Role:    pulumi.String("roles/compute.networkUser"),
+/// 			Member: serviceAccount.Email.ApplyT(func(email string) (string, error) {
+/// 				return fmt.Sprintf("serviceAccount:%v", email), nil
+/// 			}).(pulumi.StringOutput),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		storageViewer, err := projects.NewIAMMember(ctx, "storage_viewer", &projects.IAMMemberArgs{
+/// 			Project: serviceAccount.Project,
+/// 			Role:    pulumi.String("roles/storage.objectViewer"),
+/// 			Member: serviceAccount.Email.ApplyT(func(email string) (string, error) {
+/// 				return fmt.Sprintf("serviceAccount:%v", email), nil
+/// 			}).(pulumi.StringOutput),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		custom, err := compute.NewNetwork(ctx, "custom", &compute.NetworkArgs{
+/// 			Name:                  pulumi.String("vpc-service-net"),
+/// 			AutoCreateSubnetworks: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		customSubnetwork, err := compute.NewSubnetwork(ctx, "custom", &compute.SubnetworkArgs{
+/// 			Name:        pulumi.String("vpc-service-sub"),
+/// 			IpCidrRange: pulumi.String("10.0.0.0/24"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			Network:     custom.ID().ToIDOutput().ToStringOutput(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+/// 			Name:                     pulumi.String("gae-bkt-vpc-access"),
+/// 			Location:                 pulumi.String("US"),
+/// 			UniformBucketLevelAccess: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		requirements, err := storage.NewBucketObject(ctx, "requirements", &storage.BucketObjectArgs{
+/// 			Name:   pulumi.String("requirements.txt"),
+/// 			Bucket: bucket.Name,
+/// 			Source: pulumi.NewFileAsset("./test-fixtures/hello-world-flask/requirements.txt"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		main, err := storage.NewBucketObject(ctx, "main", &storage.BucketObjectArgs{
+/// 			Name:   pulumi.String("main.py"),
+/// 			Bucket: bucket.Name,
+/// 			Source: pulumi.NewFileAsset("./test-fixtures/hello-world-flask/main.py"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = appengine.NewStandardAppVersion(ctx, "gae-std-app-ver-vpc-access", &appengine.StandardAppVersionArgs{
+/// 			VersionId: pulumi.String("v1"),
+/// 			Service:   pulumi.String("vpc-service"),
+/// 			Runtime:   pulumi.String("python310"),
+/// 			VpcAccess: &appengine.StandardAppVersionVpcAccessArgs{
+/// 				EgressSetting: pulumi.String("ALL_TRAFFIC"),
+/// 				NetworkInterfaces: appengine.StandardAppVersionVpcAccessNetworkInterfaceArray{
+/// 					&appengine.StandardAppVersionVpcAccessNetworkInterfaceArgs{
+/// 						Network:    custom.Name,
+/// 						Subnetwork: customSubnetwork.Name,
+/// 						Tags: pulumi.StringArray{
+/// 							pulumi.String("tag1"),
+/// 							pulumi.String("tag2"),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 			Deployment: &appengine.StandardAppVersionDeploymentArgs{
+/// 				Files: appengine.StandardAppVersionDeploymentFileArray{
+/// 					&appengine.StandardAppVersionDeploymentFileArgs{
+/// 						Name: pulumi.String("main.py"),
+/// 						SourceUrl: pulumi.All(bucket.Name, main.Name).ApplyT(func(_args []interface{}) (string, error) {
+/// 							bucketName := _args[0].(string)
+/// 							mainName := _args[1].(string)
+/// 							return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, mainName), nil
+/// 						}).(pulumi.StringOutput),
+/// 					},
+/// 					&appengine.StandardAppVersionDeploymentFileArgs{
+/// 						Name: pulumi.String("requirements.txt"),
+/// 						SourceUrl: pulumi.All(bucket.Name, requirements.Name).ApplyT(func(_args []interface{}) (string, error) {
+/// 							bucketName := _args[0].(string)
+/// 							requirementsName := _args[1].(string)
+/// 							return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, requirementsName), nil
+/// 						}).(pulumi.StringOutput),
+/// 					},
+/// 				},
+/// 			},
+/// 			Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
+/// 				Shell: pulumi.String("gunicorn -b :$PORT main:app"),
+/// 			},
+/// 			DeleteServiceOnDestroy: pulumi.Bool(true),
+/// 			ServiceAccount:         serviceAccount.Email,
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			gaeApi,
+/// 			storageViewer,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   account_id   = "gae-sa"
+///   display_name = "Test Service Account for GAE"
+/// }
+/// resource "gcp_projects_iammember" "gae_api" {
+///   project = gcp_serviceaccount_account.service_account.project
+///   role    = "roles/compute.networkUser"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.service_account.email}"
+/// }
+/// resource "gcp_projects_iammember" "storage_viewer" {
+///   project = gcp_serviceaccount_account.service_account.project
+///   role    = "roles/storage.objectViewer"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.service_account.email}"
+/// }
+/// resource "gcp_compute_network" "custom" {
+///   name                    = "vpc-service-net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "custom" {
+///   name          = "vpc-service-sub"
+///   ip_cidr_range = "10.0.0.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.custom.id
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        = "gae-bkt-vpc-access"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "requirements" {
+///   name   = "requirements.txt"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("./test-fixtures/hello-world-flask/requirements.txt")
+/// }
+/// resource "gcp_storage_bucketobject" "main" {
+///   name   = "main.py"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("./test-fixtures/hello-world-flask/main.py")
+/// }
+/// resource "gcp_appengine_standardappversion" "gae-std-app-ver-vpc-access" {
+///   depends_on = [gcp_projects_iammember.gae_api, gcp_projects_iammember.storage_viewer]
+///   version_id = "v1"
+///   service    = "vpc-service"
+///   runtime    = "python310"
+///   vpc_access = {
+///     egress_setting = "ALL_TRAFFIC"
+///     network_interfaces = [{
+///       "network"    = gcp_compute_network.custom.name
+///       "subnetwork" = gcp_compute_subnetwork.custom.name
+///       "tags"       = ["tag1", "tag2"]
+///     }]
+///   }
+///   deployment = {
+///     files = [{
+///       "name"      = "main.py"
+///       "sourceUrl" ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.main.name}"
+///       }, {
+///       "name"      = "requirements.txt"
+///       "sourceUrl" ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.requirements.name}"
+///     }]
+///   }
+///   entrypoint = {
+///     shell = "gunicorn -b :$PORT main:app"
+///   }
+///   delete_service_on_destroy = true
+///   service_account           = gcp_serviceaccount_account.service_account.email
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.serviceaccount.Account;
+/// import com.pulumi.gcp.serviceaccount.AccountArgs;
+/// import com.pulumi.gcp.projects.IAMMember;
+/// import com.pulumi.gcp.projects.IAMMemberArgs;
+/// import com.pulumi.gcp.compute.Network;
+/// import com.pulumi.gcp.compute.NetworkArgs;
+/// import com.pulumi.gcp.compute.Subnetwork;
+/// import com.pulumi.gcp.compute.SubnetworkArgs;
+/// import com.pulumi.gcp.storage.Bucket;
+/// import com.pulumi.gcp.storage.BucketArgs;
+/// import com.pulumi.gcp.storage.BucketObject;
+/// import com.pulumi.gcp.storage.BucketObjectArgs;
+/// import com.pulumi.gcp.appengine.StandardAppVersion;
+/// import com.pulumi.gcp.appengine.StandardAppVersionArgs;
+/// import com.pulumi.gcp.appengine.inputs.StandardAppVersionVpcAccessArgs;
+/// import com.pulumi.gcp.appengine.inputs.StandardAppVersionVpcAccessNetworkInterfaceArgs;
+/// import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentArgs;
+/// import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentFileArgs;
+/// import com.pulumi.gcp.appengine.inputs.StandardAppVersionEntrypointArgs;
+/// import com.pulumi.asset.FileAsset;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
+///             .accountId("gae-sa")
+///             .displayName("Test Service Account for GAE")
+///             .build());
+///
+///         var gaeApi = new IAMMember("gaeApi", IAMMemberArgs.builder()
+///             .project(serviceAccount.project())
+///             .role("roles/compute.networkUser")
+///             .member(serviceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+///             .build());
+///
+///         var storageViewer = new IAMMember("storageViewer", IAMMemberArgs.builder()
+///             .project(serviceAccount.project())
+///             .role("roles/storage.objectViewer")
+///             .member(serviceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+///             .build());
+///
+///         var custom = new Network("custom", NetworkArgs.builder()
+///             .name("vpc-service-net")
+///             .autoCreateSubnetworks(false)
+///             .build());
+///
+///         var customSubnetwork = new Subnetwork("customSubnetwork", SubnetworkArgs.builder()
+///             .name("vpc-service-sub")
+///             .ipCidrRange("10.0.0.0/24")
+///             .region("us-central1")
+///             .network(custom.id())
+///             .build());
+///
+///         var bucket = new Bucket("bucket", BucketArgs.builder()
+///             .name("gae-bkt-vpc-access")
+///             .location("US")
+///             .uniformBucketLevelAccess(true)
+///             .build());
+///
+///         var requirements = new BucketObject("requirements", BucketObjectArgs.builder()
+///             .name("requirements.txt")
+///             .bucket(bucket.name())
+///             .source(new FileAsset("./test-fixtures/hello-world-flask/requirements.txt"))
+///             .build());
+///
+///         var main = new BucketObject("main", BucketObjectArgs.builder()
+///             .name("main.py")
+///             .bucket(bucket.name())
+///             .source(new FileAsset("./test-fixtures/hello-world-flask/main.py"))
+///             .build());
+///
+///         var gae_std_app_ver_vpc_access = new StandardAppVersion("gae-std-app-ver-vpc-access", StandardAppVersionArgs.builder()
+///             .versionId("v1")
+///             .service("vpc-service")
+///             .runtime("python310")
+///             .vpcAccess(StandardAppVersionVpcAccessArgs.builder()
+///                 .egressSetting("ALL_TRAFFIC")
+///                 .networkInterfaces(StandardAppVersionVpcAccessNetworkInterfaceArgs.builder()
+///                     .network(custom.name())
+///                     .subnetwork(customSubnetwork.name())
+///                     .tags(
+///                         "tag1",
+///                         "tag2")
+///                     .build())
+///                 .build())
+///             .deployment(StandardAppVersionDeploymentArgs.builder()
+///                 .files(
+///                     StandardAppVersionDeploymentFileArgs.builder()
+///                         .name("main.py")
+///                         .sourceUrl(Output.tuple(bucket.name(), main.name()).applyValue(values -> {
+///                             var bucketName = values.t1;
+///                             var mainName = values.t2;
+///                             return String.format("https://storage.googleapis.com/%s/%s", bucketName,mainName);
+///                         }))
+///                         .build(),
+///                     StandardAppVersionDeploymentFileArgs.builder()
+///                         .name("requirements.txt")
+///                         .sourceUrl(Output.tuple(bucket.name(), requirements.name()).applyValue(values -> {
+///                             var bucketName = values.t1;
+///                             var requirementsName = values.t2;
+///                             return String.format("https://storage.googleapis.com/%s/%s", bucketName,requirementsName);
+///                         }))
+///                         .build())
+///                 .build())
+///             .entrypoint(StandardAppVersionEntrypointArgs.builder()
+///                 .shell("gunicorn -b :$PORT main:app")
+///                 .build())
+///             .deleteServiceOnDestroy(true)
+///             .serviceAccount(serviceAccount.email())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(
+///                     gaeApi,
+///                     storageViewer)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   serviceAccount:
+///     type: gcp:serviceaccount:Account
+///     name: service_account
+///     properties:
+///       accountId: gae-sa
+///       displayName: Test Service Account for GAE
+///   gaeApi:
+///     type: gcp:projects:IAMMember
+///     name: gae_api
+///     properties:
+///       project: ${serviceAccount.project}
+///       role: roles/compute.networkUser
+///       member: serviceAccount:${serviceAccount.email}
+///   storageViewer:
+///     type: gcp:projects:IAMMember
+///     name: storage_viewer
+///     properties:
+///       project: ${serviceAccount.project}
+///       role: roles/storage.objectViewer
+///       member: serviceAccount:${serviceAccount.email}
+///   custom:
+///     type: gcp:compute:Network
+///     properties:
+///       name: vpc-service-net
+///       autoCreateSubnetworks: false
+///   customSubnetwork:
+///     type: gcp:compute:Subnetwork
+///     name: custom
+///     properties:
+///       name: vpc-service-sub
+///       ipCidrRange: 10.0.0.0/24
+///       region: us-central1
+///       network: ${custom.id}
+///   bucket:
+///     type: gcp:storage:Bucket
+///     properties:
+///       name: gae-bkt-vpc-access
+///       location: US
+///       uniformBucketLevelAccess: true
+///   requirements:
+///     type: gcp:storage:BucketObject
+///     properties:
+///       name: requirements.txt
+///       bucket: ${bucket.name}
+///       source:
+///         fn::fileAsset: ./test-fixtures/hello-world-flask/requirements.txt
+///   main:
+///     type: gcp:storage:BucketObject
+///     properties:
+///       name: main.py
+///       bucket: ${bucket.name}
+///       source:
+///         fn::fileAsset: ./test-fixtures/hello-world-flask/main.py
+///   gae-std-app-ver-vpc-access:
+///     type: gcp:appengine:StandardAppVersion
+///     properties:
+///       versionId: v1
+///       service: vpc-service
+///       runtime: python310
+///       vpcAccess:
+///         egressSetting: ALL_TRAFFIC
+///         networkInterfaces:
+///           - network: ${custom.name}
+///             subnetwork: ${customSubnetwork.name}
+///             tags:
+///               - tag1
+///               - tag2
+///       deployment:
+///         files:
+///           - name: main.py
+///             sourceUrl: https://storage.googleapis.com/${bucket.name}/${main.name}
+///           - name: requirements.txt
+///             sourceUrl: https://storage.googleapis.com/${bucket.name}/${requirements.name}
+///       entrypoint:
+///         shell: gunicorn -b :$PORT main:app
 ///       deleteServiceOnDestroy: true
 ///       serviceAccount: ${serviceAccount.email}
 ///     options:
@@ -1396,6 +2123,10 @@ class StandardAppVersion extends pulumi.CustomResource {
   late final pulumi.Output<bool?> threadsafe;
   /// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
   late final pulumi.Output<String?> versionId;
+  /// (Optional, Beta)
+  /// Direct VPC Access settings for standard apps.
+  /// Structure is documented below.
+  late final pulumi.Output<StandardAppVersionVpcAccess?> vpcAccess;
   /// Enables VPC connectivity for standard apps.
   /// Structure is documented below.
   late final pulumi.Output<StandardAppVersionVpcAccessConnector?> vpcAccessConnector;
@@ -1412,7 +2143,7 @@ class StandardAppVersion extends pulumi.CustomResource {
           'gcp:appengine/standardAppVersion:StandardAppVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     appEngineApis = registerOutput<bool?>('appEngineApis');
     appEngineBundledServices = registerOutput<List<String>?>('appEngineBundledServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
@@ -1437,6 +2168,7 @@ class StandardAppVersion extends pulumi.CustomResource {
     serviceAccount = registerOutput<String>('serviceAccount');
     threadsafe = registerOutput<bool?>('threadsafe');
     versionId = registerOutput<String?>('versionId');
+    vpcAccess = registerOutput<StandardAppVersionVpcAccess?>('vpcAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionVpcAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcAccessConnector = registerOutput<StandardAppVersionVpcAccessConnector?>('vpcAccessConnector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionVpcAccessConnector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -1487,6 +2219,7 @@ class StandardAppVersion extends pulumi.CustomResource {
     serviceAccount = registerOutput<String>('serviceAccount');
     threadsafe = registerOutput<bool?>('threadsafe');
     versionId = registerOutput<String?>('versionId');
+    vpcAccess = registerOutput<StandardAppVersionVpcAccess?>('vpcAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionVpcAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcAccessConnector = registerOutput<StandardAppVersionVpcAccessConnector?>('vpcAccessConnector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionVpcAccessConnector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -1522,6 +2255,7 @@ class StandardAppVersion extends pulumi.CustomResource {
     serviceAccount = registerOutput<String>('serviceAccount');
     threadsafe = registerOutput<bool?>('threadsafe');
     versionId = registerOutput<String?>('versionId');
+    vpcAccess = registerOutput<StandardAppVersionVpcAccess?>('vpcAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionVpcAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vpcAccessConnector = registerOutput<StandardAppVersionVpcAccessConnector?>('vpcAccessConnector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardAppVersionVpcAccessConnector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

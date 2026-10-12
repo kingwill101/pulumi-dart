@@ -6,6 +6,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionalParameterVersionState {
   /// The time at which the Regional Parameter Version was created.
   final pulumi.Input<String?>? createTime;
+  /// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+  final pulumi.Input<String?>? dataCrc32c;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -35,6 +37,7 @@ class RegionalParameterVersionState {
 
   /// Creates a new [RegionalParameterVersionState].
   /// [createTime] The time at which the Regional Parameter Version was created.
+  /// [dataCrc32c] The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disabled] The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
   /// [kmsKeyVersion] The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
@@ -46,6 +49,7 @@ class RegionalParameterVersionState {
   /// [updateTime] The time at which the Regional Parameter Version was updated.
   const RegionalParameterVersionState({
     this.createTime,
+    this.dataCrc32c,
     this.deletionPolicy,
     this.disabled,
     this.kmsKeyVersion,
@@ -60,6 +64,7 @@ class RegionalParameterVersionState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'dataCrc32c': ?dataCrc32c,
       'deletionPolicy': ?deletionPolicy,
       'disabled': ?disabled,
       'kmsKeyVersion': ?kmsKeyVersion,
@@ -75,6 +80,7 @@ class RegionalParameterVersionState {
   factory RegionalParameterVersionState.fromMap(Map<String, dynamic> map) {
     return RegionalParameterVersionState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataCrc32c: (() { final guardedValue = map['dataCrc32c']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kmsKeyVersion: (() { final guardedValue = map['kmsKeyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

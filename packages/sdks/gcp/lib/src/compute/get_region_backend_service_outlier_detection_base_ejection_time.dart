@@ -28,8 +28,8 @@ class GetRegionBackendServiceOutlierDetectionBaseEjectionTime {
 
   factory GetRegionBackendServiceOutlierDetectionBaseEjectionTime.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceOutlierDetectionBaseEjectionTime(
-      nanos: pulumi.Input.fromValue((map['nanos'] as num).toInt()),
-      seconds: pulumi.Input.fromValue((map['seconds'] as num).toInt()),
+      nanos: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nanos'])),
+      seconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['seconds'])),
     );
   }
 }

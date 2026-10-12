@@ -25,7 +25,7 @@ class GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig {
 
   factory GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig(
-      retentionDays: pulumi.Input.fromValue((map['retentionDays'] as num).toInt()),
+      retentionDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionDays'])),
       retentionMode: pulumi.Input.fromValue(map['retentionMode'] as String),
     );
   }

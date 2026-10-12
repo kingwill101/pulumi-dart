@@ -134,7 +134,7 @@ class ClusterArgs {
       authorization: pulumi.Input.fromValue(ClusterAuthorization.fromMap((map['authorization']! as Map).cast<String, dynamic>())),
       controlPlane: (() { final guardedValue = map['controlPlane']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       controlPlaneEncryption: (() { final guardedValue = map['controlPlaneEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterControlPlaneEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      defaultMaxPodsPerNode: (() { final guardedValue = map['defaultMaxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultMaxPodsPerNode: (() { final guardedValue = map['defaultMaxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalLoadBalancerIpv4AddressPools: (() { final guardedValue = map['externalLoadBalancerIpv4AddressPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       fleet: pulumi.Input.fromValue(ClusterFleet.fromMap((map['fleet']! as Map).cast<String, dynamic>())),

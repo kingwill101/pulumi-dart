@@ -72,7 +72,7 @@ import 'big_query_export_udm_events_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -266,7 +266,7 @@ import 'big_query_export_udm_events_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -481,7 +481,7 @@ class BigQueryExport extends pulumi.CustomResource {
           'gcp:chronicle/bigQueryExport:BigQueryExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     bigQueryExportPackage = registerOutput<String>('bigQueryExportPackage');
     entityGraphSettings = registerOutput<BigQueryExportEntityGraphSettings>('entityGraphSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryExportEntityGraphSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

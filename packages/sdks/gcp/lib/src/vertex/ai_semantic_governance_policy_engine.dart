@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ai_semantic_governance_policy_engine_args.dart';
+import 'ai_semantic_governance_policy_engine_gateway_config.dart';
 import 'ai_semantic_governance_policy_engine_state.dart';
 
 /// A SemanticGovernancePolicyEngine (SGPE) is the managed, runtime evaluation
@@ -59,7 +60,7 @@ import 'ai_semantic_governance_policy_engine_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -152,6 +153,12 @@ class AiSemanticGovernancePolicyEngine extends pulumi.CustomResource {
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
   late final pulumi.Output<String> deletionPolicy;
+  /// Configurations for gateways, keyed by a user-defined gateway name. At most
+  /// 5 gateway configurations are allowed. Each gateway name must be 1-63
+  /// characters, start with a lowercase letter, contain only lowercase letters,
+  /// numbers and hyphens, and not end with a hyphen.
+  /// Structure is documented below.
+  late final pulumi.Output<List<AiSemanticGovernancePolicyEngineGatewayConfig>?> gatewayConfigs;
   /// The IP address allocated for the SGPE's managed PSC endpoint.
   late final pulumi.Output<String> ipAddress;
   /// The resource name of the SemanticGovernancePolicyEngine, in the form
@@ -189,10 +196,11 @@ class AiSemanticGovernancePolicyEngine extends pulumi.CustomResource {
           'gcp:vertex/aiSemanticGovernancePolicyEngine:AiSemanticGovernancePolicyEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
+    gatewayConfigs = registerOutput<List<AiSemanticGovernancePolicyEngineGatewayConfig>?>('gatewayConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiSemanticGovernancePolicyEngineGatewayConfig>(guardedValue, (value) => AiSemanticGovernancePolicyEngineGatewayConfig.fromMap((value as Map).cast<String, dynamic>())); });
     ipAddress = registerOutput<String>('ipAddress');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -229,6 +237,7 @@ class AiSemanticGovernancePolicyEngine extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
+    gatewayConfigs = registerOutput<List<AiSemanticGovernancePolicyEngineGatewayConfig>?>('gatewayConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiSemanticGovernancePolicyEngineGatewayConfig>(guardedValue, (value) => AiSemanticGovernancePolicyEngineGatewayConfig.fromMap((value as Map).cast<String, dynamic>())); });
     ipAddress = registerOutput<String>('ipAddress');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -250,6 +259,7 @@ class AiSemanticGovernancePolicyEngine extends pulumi.CustomResource {
       ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
+    gatewayConfigs = registerOutput<List<AiSemanticGovernancePolicyEngineGatewayConfig>?>('gatewayConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiSemanticGovernancePolicyEngineGatewayConfig>(guardedValue, (value) => AiSemanticGovernancePolicyEngineGatewayConfig.fromMap((value as Map).cast<String, dynamic>())); });
     ipAddress = registerOutput<String>('ipAddress');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

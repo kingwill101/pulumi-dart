@@ -68,7 +68,7 @@ class AclPolicy extends pulumi.CustomResource {
           'gcp:memorystore/aclPolicy:AclPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     aclPolicyId = registerOutput<String>('aclPolicyId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -144,7 +144,7 @@ import 'job_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -457,7 +457,7 @@ import 'job_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -779,7 +779,7 @@ import 'job_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -979,7 +979,7 @@ import 'job_status.dart';
 ///
 /// const project = "my-project-name";
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-bq-geojson`,
+///     name: `bq-geojson-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -1028,7 +1028,7 @@ import 'job_status.dart';
 ///
 /// project = "my-project-name"
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-bq-geojson",
+///     name=f"bq-geojson-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -1081,7 +1081,7 @@ import 'job_status.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-bq-geojson",
+///         Name = $"bq-geojson-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -1155,8 +1155,8 @@ import 'job_status.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1164,7 +1164,7 @@ import 'job_status.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project := "my-project-name"
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-bq-geojson", project),
+/// 			Name:                     pulumi.Sprintf("bq-geojson-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -1239,7 +1239,7 @@ import 'job_status.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-bq-geojson"
+///   name                        ="bq-geojson-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
@@ -1317,7 +1317,7 @@ import 'job_status.dart';
 ///         final var project = "my-project-name";
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-bq-geojson", project))
+///             .name(String.format("bq-geojson-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -1375,7 +1375,7 @@ import 'job_status.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-bq-geojson
+///       name: bq-geojson-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -1613,8 +1613,8 @@ import 'job_status.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2253,9 +2253,9 @@ import 'job_status.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2806,8 +2806,8 @@ import 'job_status.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3140,7 +3140,7 @@ class Job extends pulumi.CustomResource {
           'gcp:bigquery/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     copy = registerOutput<JobCopy?>('copy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobCopy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

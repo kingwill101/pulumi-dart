@@ -101,7 +101,7 @@ import 'subnet_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/edgenetwork"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/edgenetwork"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -326,7 +326,7 @@ import 'subnet_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/edgenetwork"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/edgenetwork"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -549,7 +549,7 @@ class Subnet extends pulumi.CustomResource {
           'gcp:edgenetwork/subnet:Subnet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

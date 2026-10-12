@@ -78,7 +78,7 @@ class GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty {
 
   factory GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty.fromMap(Map<String, dynamic> map) {
     return GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty(
-      additionalFlashCachePercent: pulumi.Input.fromValue((map['additionalFlashCachePercent'] as num).toInt()),
+      additionalFlashCachePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['additionalFlashCachePercent'])),
       attachedShapeAttributes: pulumi.Input.fromValue((map['attachedShapeAttributes'] as List).cast<String>()),
       availableShapeAttributes: pulumi.Input.fromValue((map['availableShapeAttributes'] as List).cast<String>()),
       exascaleDbStorageDetails: pulumi.Input.fromValue(pulumi.Input.decodeList<GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetail>(map['exascaleDbStorageDetails']!, (value) => GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetail.fromMap((value as Map).cast<String, dynamic>()))),
@@ -86,7 +86,7 @@ class GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty {
       ocid: pulumi.Input.fromValue(map['ocid'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
       timeZones: pulumi.Input.fromValue(pulumi.Input.decodeList<GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZone>(map['timeZones']!, (value) => GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZone.fromMap((value as Map).cast<String, dynamic>()))),
-      vmClusterCount: pulumi.Input.fromValue((map['vmClusterCount'] as num).toInt()),
+      vmClusterCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vmClusterCount'])),
       vmClusterIds: pulumi.Input.fromValue((map['vmClusterIds'] as List).cast<String>()),
     );
   }

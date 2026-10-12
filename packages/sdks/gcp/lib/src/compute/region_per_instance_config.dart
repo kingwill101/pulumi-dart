@@ -25,7 +25,7 @@ import 'region_per_instance_config_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const myImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const igm_basic = new gcp.compute.InstanceTemplate("igm-basic", {
@@ -72,7 +72,7 @@ import 'region_per_instance_config_state.dart';
 ///     name: "my-disk-name",
 ///     type: "pd-ssd",
 ///     zone: "us-central1-a",
-///     image: "debian-11-bullseye-v20220719",
+///     image: "debian-13-trixie-v20260827",
 ///     physicalBlockSizeBytes: 4096,
 /// });
 /// const withDisk = new gcp.compute.RegionPerInstanceConfig("with_disk", {
@@ -96,7 +96,7 @@ import 'region_per_instance_config_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// my_image = gcp.compute.get_image(family="debian-11",
+/// my_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// igm_basic = gcp.compute.InstanceTemplate("igm-basic",
 ///     name="my-template",
@@ -140,7 +140,7 @@ import 'region_per_instance_config_state.dart';
 ///     name="my-disk-name",
 ///     type="pd-ssd",
 ///     zone="us-central1-a",
-///     image="debian-11-bullseye-v20220719",
+///     image="debian-13-trixie-v20260827",
 ///     physical_block_size_bytes=4096)
 /// with_disk = gcp.compute.RegionPerInstanceConfig("with_disk",
 ///     region=igm["region"],
@@ -168,7 +168,7 @@ import 'region_per_instance_config_state.dart';
 /// {
 ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -237,7 +237,7 @@ import 'region_per_instance_config_state.dart';
 ///         Name = "my-disk-name",
 ///         Type = "pd-ssd",
 ///         Zone = "us-central1-a",
-///         Image = "debian-11-bullseye-v20220719",
+///         Image = "debian-13-trixie-v20260827",
 ///         PhysicalBlockSizeBytes = 4096,
 ///     });
 ///
@@ -271,14 +271,14 @@ import 'region_per_instance_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -340,7 +340,7 @@ import 'region_per_instance_config_state.dart';
 /// 			Name:                   pulumi.String("my-disk-name"),
 /// 			Type:                   pulumi.String("pd-ssd"),
 /// 			Zone:                   pulumi.String("us-central1-a"),
-/// 			Image:                  pulumi.String("debian-11-bullseye-v20220719"),
+/// 			Image:                  pulumi.String("debian-13-trixie-v20260827"),
 /// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
 /// 		})
 /// 		if err != nil {
@@ -381,7 +381,7 @@ import 'region_per_instance_config_state.dart';
 /// }
 ///
 /// data "gcp_compute_getimage" "myImage" {
-///   family  = "debian-11"
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
@@ -422,7 +422,7 @@ import 'region_per_instance_config_state.dart';
 ///   name                      = "my-disk-name"
 ///   type                      = "pd-ssd"
 ///   zone                      = "us-central1-a"
-///   image                     = "debian-11-bullseye-v20220719"
+///   image                     = "debian-13-trixie-v20260827"
 ///   physical_block_size_bytes = 4096
 /// }
 /// resource "gcp_compute_regionperinstanceconfig" "with_disk" {
@@ -479,7 +479,7 @@ import 'region_per_instance_config_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -527,7 +527,7 @@ import 'region_per_instance_config_state.dart';
 ///             .name("my-disk-name")
 ///             .type("pd-ssd")
 ///             .zone("us-central1-a")
-///             .image("debian-11-bullseye-v20220719")
+///             .image("debian-13-trixie-v20260827")
 ///             .physicalBlockSizeBytes(4096)
 ///             .build());
 ///
@@ -594,7 +594,7 @@ import 'region_per_instance_config_state.dart';
 ///       name: my-disk-name
 ///       type: pd-ssd
 ///       zone: us-central1-a
-///       image: debian-11-bullseye-v20220719
+///       image: debian-13-trixie-v20260827
 ///       physicalBlockSizeBytes: 4096
 ///   withDisk:
 ///     type: gcp:compute:RegionPerInstanceConfig
@@ -616,7 +616,7 @@ import 'region_per_instance_config_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -693,7 +693,7 @@ class RegionPerInstanceConfig extends pulumi.CustomResource {
           'gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     minimalAction = registerOutput<String?>('minimalAction');

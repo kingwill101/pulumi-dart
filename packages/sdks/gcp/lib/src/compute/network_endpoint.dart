@@ -30,7 +30,7 @@ import 'network_endpoint_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const myImage = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const _default = new gcp.compute.Network("default", {
@@ -59,7 +59,7 @@ import 'network_endpoint_state.dart';
 /// const default_endpoint = new gcp.compute.NetworkEndpoint("default-endpoint", {
 ///     networkEndpointGroup: neg.name,
 ///     instance: endpoint_instance.name,
-///     port: Number(neg.defaultPort),
+///     port: neg.defaultPort,
 ///     ipAddress: endpoint_instance.networkInterfaces[0].networkIp,
 /// });
 /// const group = new gcp.compute.NetworkEndpointGroup("group", {
@@ -74,7 +74,7 @@ import 'network_endpoint_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// my_image = gcp.compute.get_image(family="debian-11",
+/// my_image = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// default = gcp.compute.Network("default",
 ///     name="neg-network",
@@ -99,7 +99,7 @@ import 'network_endpoint_state.dart';
 /// default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
 ///     network_endpoint_group=neg["name"],
 ///     instance=endpoint_instance.name,
-///     port=int(neg["defaultPort"]),
+///     port=neg["defaultPort"],
 ///     ip_address=endpoint_instance.network_interfaces[0].network_ip)
 /// group = gcp.compute.NetworkEndpointGroup("group",
 ///     name="my-lb-neg",
@@ -118,7 +118,7 @@ import 'network_endpoint_state.dart';
 /// {
 ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -164,7 +164,7 @@ import 'network_endpoint_state.dart';
 ///     {
 ///         NetworkEndpointGroup = neg.Name,
 ///         Instance = endpoint_instance.Name,
-///         Port = int.Parse(neg.DefaultPort, System.Globalization.CultureInfo.InvariantCulture),
+///         Port = neg.DefaultPort,
 ///         IpAddress = endpoint_instance.NetworkInterfaces.Apply(networkInterfaces => networkInterfaces[0].NetworkIp),
 ///     });
 ///
@@ -183,14 +183,14 @@ import 'network_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -267,7 +267,7 @@ import 'network_endpoint_state.dart';
 /// }
 ///
 /// data "gcp_compute_getimage" "myImage" {
-///   family  = "debian-11"
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
@@ -345,7 +345,7 @@ import 'network_endpoint_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var myImage = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -379,7 +379,7 @@ import 'network_endpoint_state.dart';
 ///         var default_endpoint = new NetworkEndpoint("default-endpoint", NetworkEndpointArgs.builder()
 ///             .networkEndpointGroup(neg.get("name"))
 ///             .instance(endpoint_instance.name())
-///             .port(((Number) neg.get("defaultPort")).intValue())
+///             .port(neg.get("defaultPort"))
 ///             .ipAddress(endpoint_instance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
 ///             .build());
 ///
@@ -441,7 +441,7 @@ import 'network_endpoint_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -504,7 +504,7 @@ class NetworkEndpoint extends pulumi.CustomResource {
           'gcp:compute/networkEndpoint:NetworkEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     instance = registerOutput<String?>('instance');

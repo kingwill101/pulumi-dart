@@ -12,20 +12,17 @@ class GetBackupPlanAssociationsResult {
   final String? location;
   /// The ID of the project in which the resource belongs.
   final String? project;
-  final String? resourceType;
 
   /// Creates a new [GetBackupPlanAssociationsResult].
   /// [associations] A list of the backup plan associations found.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Optional.
   /// [project] The ID of the project in which the resource belongs.
-  /// [resourceType] Optional.
   const GetBackupPlanAssociationsResult({
     this.associations,
     this.id,
     this.location,
     this.project,
-    this.resourceType,
   });
 
   Map<String, dynamic> toMap() {
@@ -34,7 +31,6 @@ class GetBackupPlanAssociationsResult {
       'id': ?id,
       'location': ?location,
       'project': ?project,
-      'resourceType': ?resourceType,
     };
   }
 
@@ -44,7 +40,6 @@ class GetBackupPlanAssociationsResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

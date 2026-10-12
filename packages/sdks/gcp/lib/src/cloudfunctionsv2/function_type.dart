@@ -24,7 +24,7 @@ import 'function_state.dart';
 ///
 /// const project = "my-project-name";
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -60,7 +60,7 @@ import 'function_state.dart';
 ///
 /// project = "my-project-name"
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -99,7 +99,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -143,8 +143,8 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -152,7 +152,7 @@ import 'function_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project := "my-project-name"
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -204,7 +204,7 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
@@ -270,7 +270,7 @@ import 'function_state.dart';
 ///         final var project = "my-project-name";
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -310,7 +310,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -356,7 +356,7 @@ import 'function_state.dart';
 /// });
 /// const topic = new gcp.pubsub.Topic("topic", {name: "functions2-topic"});
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -415,7 +415,7 @@ import 'function_state.dart';
 ///     display_name="Test Service Account")
 /// topic = gcp.pubsub.Topic("topic", name="functions2-topic")
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -484,7 +484,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -550,10 +550,10 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -574,7 +574,7 @@ import 'function_state.dart';
 /// 			return err
 /// 		}
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -652,7 +652,7 @@ import 'function_state.dart';
 ///   name = "functions2-topic"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
@@ -752,7 +752,7 @@ import 'function_state.dart';
 ///             .build());
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -818,7 +818,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -879,7 +879,7 @@ import 'function_state.dart';
 ///     displayName: "Test Service Account",
 /// });
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -948,7 +948,7 @@ import 'function_state.dart';
 ///     account_id="gcf-sa",
 ///     display_name="Test Service Account")
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -1020,7 +1020,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -1104,11 +1104,11 @@ import 'function_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudscheduler"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudscheduler"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1123,7 +1123,7 @@ import 'function_state.dart';
 /// 			return err
 /// 		}
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -1224,7 +1224,7 @@ import 'function_state.dart';
 ///   display_name = "Test Service Account"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
@@ -1335,7 +1335,7 @@ import 'function_state.dart';
 ///             .build());
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -1413,7 +1413,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -1817,10 +1817,10 @@ import 'function_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2666,10 +2666,10 @@ import 'function_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3190,7 +3190,7 @@ import 'function_state.dart';
 ///     member: pulumi.interpolate`serviceAccount:${account.email}`,
 /// });
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -3253,7 +3253,7 @@ import 'function_state.dart';
 ///     role="roles/storage.objectAdmin",
 ///     member=account.email.apply(lambda email: f"serviceAccount:{email}"))
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -3329,7 +3329,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -3396,10 +3396,10 @@ import 'function_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -3445,7 +3445,7 @@ import 'function_state.dart';
 /// 			return err
 /// 		}
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -3533,7 +3533,7 @@ import 'function_state.dart';
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.account.email}"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
@@ -3636,7 +3636,7 @@ import 'function_state.dart';
 ///             .build());
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -3715,7 +3715,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -3771,7 +3771,7 @@ import 'function_state.dart';
 ///
 /// const project = "my-project-name";
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -3830,7 +3830,7 @@ import 'function_state.dart';
 ///
 /// project = "my-project-name"
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -3889,7 +3889,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -3974,9 +3974,9 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3984,7 +3984,7 @@ import 'function_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project := "my-project-name"
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -4069,7 +4069,7 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
@@ -4166,7 +4166,7 @@ import 'function_state.dart';
 ///         final var project = "my-project-name";
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -4231,7 +4231,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -4295,7 +4295,7 @@ import 'function_state.dart';
 ///
 /// const project = "my-project-name";
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -4353,7 +4353,7 @@ import 'function_state.dart';
 ///
 /// project = "my-project-name"
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -4411,7 +4411,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -4495,9 +4495,9 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4505,7 +4505,7 @@ import 'function_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project := "my-project-name"
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -4589,7 +4589,7 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
@@ -4685,7 +4685,7 @@ import 'function_state.dart';
 ///         final var project = "my-project-name";
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -4749,7 +4749,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -4812,7 +4812,7 @@ import 'function_state.dart';
 ///
 /// const project = "my-project-name";
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -4858,7 +4858,7 @@ import 'function_state.dart';
 ///
 /// project = "my-project-name"
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -4906,7 +4906,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -4963,9 +4963,9 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4973,7 +4973,7 @@ import 'function_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project := "my-project-name"
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -5038,7 +5038,7 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
@@ -5117,7 +5117,7 @@ import 'function_state.dart';
 ///         final var project = "my-project-name";
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -5168,7 +5168,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -5220,7 +5220,7 @@ import 'function_state.dart';
 /// const project = "my-project-name";
 /// const projectGetProject = gcp.organizations.getProject({});
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -5297,7 +5297,7 @@ import 'function_state.dart';
 /// project = "my-project-name"
 /// project_get_project = gcp.organizations.get_project()
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -5370,7 +5370,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -5480,12 +5480,12 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5497,7 +5497,7 @@ import 'function_state.dart';
 /// 			return err
 /// 		}
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -5609,7 +5609,7 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
@@ -5721,7 +5721,7 @@ import 'function_state.dart';
 ///             .build());
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -5805,7 +5805,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -5905,7 +5905,7 @@ import 'function_state.dart';
 /// });
 /// const topic = new gcp.pubsub.Topic("topic", {name: "functions2-topic"});
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -5964,7 +5964,7 @@ import 'function_state.dart';
 ///     display_name="Test Service Account")
 /// topic = gcp.pubsub.Topic("topic", name="functions2-topic")
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -6033,7 +6033,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -6099,10 +6099,10 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -6123,7 +6123,7 @@ import 'function_state.dart';
 /// 			return err
 /// 		}
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -6201,7 +6201,7 @@ import 'function_state.dart';
 ///   name = "functions2-topic"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
@@ -6302,7 +6302,7 @@ import 'function_state.dart';
 ///             .build());
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -6367,7 +6367,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -6429,7 +6429,7 @@ import 'function_state.dart';
 /// });
 /// const topic = new gcp.pubsub.Topic("topic", {name: "functions2-topic"});
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -6488,7 +6488,7 @@ import 'function_state.dart';
 ///     display_name="Test Service Account")
 /// topic = gcp.pubsub.Topic("topic", name="functions2-topic")
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -6557,7 +6557,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -6623,10 +6623,10 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -6647,7 +6647,7 @@ import 'function_state.dart';
 /// 			return err
 /// 		}
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -6725,7 +6725,7 @@ import 'function_state.dart';
 ///   name = "functions2-topic"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
@@ -6826,7 +6826,7 @@ import 'function_state.dart';
 ///             .build());
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -6891,7 +6891,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -6948,7 +6948,7 @@ import 'function_state.dart';
 ///
 /// const project = "my-project-name";
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: `${project}-gcf-source`,
+///     name: `gcf-source-${project}`,
 ///     location: "US",
 ///     uniformBucketLevelAccess: true,
 /// });
@@ -6993,7 +6993,7 @@ import 'function_state.dart';
 ///
 /// project = "my-project-name"
 /// bucket = gcp.storage.Bucket("bucket",
-///     name=f"{project}-gcf-source",
+///     name=f"gcf-source-{project}",
 ///     location="US",
 ///     uniform_bucket_level_access=True)
 /// object = gcp.storage.BucketObject("object",
@@ -7041,7 +7041,7 @@ import 'function_state.dart';
 ///
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = $"{project}-gcf-source",
+///         Name = $"gcf-source-{project}",
 ///         Location = "US",
 ///         UniformBucketLevelAccess = true,
 ///     });
@@ -7099,8 +7099,8 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -7108,7 +7108,7 @@ import 'function_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project := "my-project-name"
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:                     pulumi.Sprintf("%v-gcf-source", project),
+/// 			Name:                     pulumi.Sprintf("gcf-source-%v", project),
 /// 			Location:                 pulumi.String("US"),
 /// 			UniformBucketLevelAccess: pulumi.Bool(true),
 /// 		})
@@ -7171,7 +7171,7 @@ import 'function_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
-///   name                        ="${local.project}-gcf-source"
+///   name                        ="gcf-source-${local.project}"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
@@ -7244,7 +7244,7 @@ import 'function_state.dart';
 ///         final var project = "my-project-name";
 ///
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name(String.format("%s-gcf-source", project))
+///             .name(String.format("gcf-source-%s", project))
 ///             .location("US")
 ///             .uniformBucketLevelAccess(true)
 ///             .build());
@@ -7292,7 +7292,7 @@ import 'function_state.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: ${project}-gcf-source
+///       name: gcf-source-${project}
 ///       location: US
 ///       uniformBucketLevelAccess: true
 ///   object:
@@ -7410,7 +7410,7 @@ class FunctionType extends pulumi.CustomResource {
           'gcp:cloudfunctionsv2/function:Function',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     buildConfig = registerOutput<FunctionBuildConfig?>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

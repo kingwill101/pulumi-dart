@@ -11,8 +11,6 @@ import 'get_app_engine_service_iam_policy_args.dart';
 import 'get_app_engine_service_iam_policy_result.dart';
 import 'get_app_engine_version_iam_policy_args.dart';
 import 'get_app_engine_version_iam_policy_result.dart';
-import 'get_client_args.dart';
-import 'get_client_result.dart';
 import 'get_location_web_iam_policy_args.dart';
 import 'get_location_web_iam_policy_result.dart';
 import 'get_tunnel_dest_group_iam_policy_args.dart';
@@ -83,7 +81,7 @@ import 'get_web_type_compute_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -227,7 +225,7 @@ pulumi.Output<GetAgentRegistryAgentIamPolicyResult> getAgentRegistryAgentIamPoli
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -368,7 +366,7 @@ pulumi.Output<GetAgentRegistryEndpointIamPolicyResult> getAgentRegistryEndpointI
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -508,7 +506,7 @@ pulumi.Output<GetAgentRegistryIamPolicyResult> getAgentRegistryIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -652,7 +650,7 @@ pulumi.Output<GetAgentRegistryMcpServerIamPolicyResult> getAgentRegistryMcpServe
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -799,7 +797,7 @@ pulumi.Output<GetAppEngineServiceIamPolicyResult> getAppEngineServiceIamPolicyOu
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -902,144 +900,6 @@ pulumi.Output<GetAppEngineVersionIamPolicyResult> getAppEngineVersionIamPolicyOu
   ).apply(GetAppEngineVersionIamPolicyResult.fromMap);
 }
 
-/// Get information about a Identity-Aware Proxy Client.
-///
-///
-///
-/// ## Example Usage
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
-///
-/// const _default = gcp.iap.getClient({
-///     brand: projectClient.brand,
-///     clientId: projectClient.clientId,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default = gcp.iap.get_client(brand=project_client["brand"],
-///     client_id=project_client["clientId"])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var @default = Gcp.Iap.GetClient.Invoke(new()
-///     {
-///         Brand = projectClient.Brand,
-///         ClientId = projectClient.ClientId,
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := iap.LookupClient(ctx, &iap.LookupClientArgs{
-/// 			Brand:    projectClient.Brand,
-/// 			ClientId: projectClient.ClientId,
-/// 		}, nil)
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```hcl
-/// pulumi {
-///   required_providers {
-///     gcp = {
-///       source = "pulumi/gcp"
-///     }
-///   }
-/// }
-///
-/// data "gcp_iap_getclient" "default" {
-///   brand     = projectClient.brand
-///   client_id = projectClient.clientId
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.iap.IapFunctions;
-/// import com.pulumi.gcp.iap.inputs.GetClientArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         final var default = IapFunctions.getClient(GetClientArgs.builder()
-///             .brand(projectClient.get("brand"))
-///             .clientId(projectClient.get("clientId"))
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// variables:
-///   default:
-///     fn::invoke:
-///       function: gcp:iap:getClient
-///       arguments:
-///         brand: ${projectClient.brand}
-///         clientId: ${projectClient.clientId}
-/// ```
-/// [args] Arguments passed to this invoke. {@macro pulumi_iap_get_client_get_client_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetClientResult> getClient(
-  GetClientArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'gcp:iap/getClient:getClient',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetClientResult.fromMap(result);
-}
-
-pulumi.Output<GetClientResult> getClientOutput(
-  GetClientArgs args, {
-  pulumi.InvokeOutputOptions? options,
-}) {
-  return pulumi.invokeOutput<Map<String, dynamic>>(
-    'gcp:iap/getClient:getClient',
-    pulumi.Input.mapToInputs(args.toMap()),
-    options: options,
-  ).apply(GetClientResult.fromMap);
-}
-
 /// Retrieves the current IAM policy data for locationweb
 ///
 ///
@@ -1082,7 +942,7 @@ pulumi.Output<GetClientResult> getClientOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1222,7 +1082,7 @@ pulumi.Output<GetLocationWebIamPolicyResult> getLocationWebIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1360,7 +1220,7 @@ pulumi.Output<GetTunnelDestGroupIamPolicyResult> getTunnelDestGroupIamPolicyOutp
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1496,7 +1356,7 @@ pulumi.Output<GetTunnelIamPolicyResult> getTunnelIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1637,7 +1497,7 @@ pulumi.Output<GetTunnelInstanceIamPolicyResult> getTunnelInstanceIamPolicyOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1777,7 +1637,7 @@ pulumi.Output<GetWebBackendServiceIamPolicyResult> getWebBackendServiceIamPolicy
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1918,7 +1778,7 @@ pulumi.Output<GetWebCloudRunServiceIamPolicyResult> getWebCloudRunServiceIamPoli
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2052,7 +1912,7 @@ pulumi.Output<GetWebForwardingRuleServiceIamPolicyResult> getWebForwardingRuleSe
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2188,7 +2048,7 @@ pulumi.Output<GetWebIamPolicyResult> getWebIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2332,7 +2192,7 @@ pulumi.Output<GetWebRegionBackendServiceIamPolicyResult> getWebRegionBackendServ
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2473,7 +2333,7 @@ pulumi.Output<GetWebRegionForwardingRuleServiceIamPolicyResult> getWebRegionForw
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2607,7 +2467,7 @@ pulumi.Output<GetWebTypeAppEngineIamPolicyResult> getWebTypeAppEngineIamPolicyOu
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iap"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iap"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///

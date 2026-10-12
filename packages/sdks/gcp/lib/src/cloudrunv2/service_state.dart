@@ -118,6 +118,8 @@ class ServiceState {
   /// Scaling settings that apply to the whole service
   /// Structure is documented below.
   final pulumi.Input<ServiceScaling?>? scaling;
+  /// Enables SSH access to the Service.
+  final pulumi.Input<bool?>? sshEnabled;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -180,6 +182,7 @@ class ServiceState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [reconciling] Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
   /// [scaling] Scaling settings that apply to the whole service
+  /// [sshEnabled] Enables SSH access to the Service.
   /// [tags] A map of resource manager tags.
   /// [template] The template used to create revisions for this Service.
   /// [terminalConditions] The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -225,6 +228,7 @@ class ServiceState {
     this.pulumiLabels,
     this.reconciling,
     this.scaling,
+    this.sshEnabled,
     this.tags,
     this.template,
     this.terminalConditions,
@@ -273,6 +277,7 @@ class ServiceState {
       'pulumiLabels': ?pulumiLabels,
       'reconciling': ?reconciling,
       'scaling': ?pulumi.Input.mapOptionalInputValue<ServiceScaling, Map<String, dynamic>>(scaling, (value) => value.toMap()),
+      'sshEnabled': ?sshEnabled,
       'tags': ?tags,
       'template': ?pulumi.Input.mapOptionalInputValue<ServiceTemplate, Map<String, dynamic>>(template, (value) => value.toMap()),
       'terminalConditions': ?pulumi.Input.mapOptionalInputValue<List<ServiceTerminalCondition>, List<Map<String, dynamic>>>(terminalConditions, (value) => pulumi.Input.encodeList<ServiceTerminalCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -322,6 +327,7 @@ class ServiceState {
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       scaling: (() { final guardedValue = map['scaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceScaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sshEnabled: (() { final guardedValue = map['sshEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       template: (() { final guardedValue = map['template']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       terminalConditions: (() { final guardedValue = map['terminalConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTerminalCondition>(guardedValue, (value) => ServiceTerminalCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),

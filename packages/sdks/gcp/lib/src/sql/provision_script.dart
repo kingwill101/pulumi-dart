@@ -162,7 +162,7 @@ import 'provision_script_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -441,7 +441,7 @@ class ProvisionScript extends pulumi.CustomResource {
           'gcp:sql/provisionScript:ProvisionScript',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     database = registerOutput<String?>('database');
     deletionPolicy = registerOutput<String?>('deletionPolicy');

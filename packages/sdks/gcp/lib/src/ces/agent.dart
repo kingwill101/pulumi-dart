@@ -7,9 +7,11 @@ import 'agent_before_agent_callback.dart';
 import 'agent_before_model_callback.dart';
 import 'agent_before_tool_callback.dart';
 import 'agent_model_settings.dart';
+import 'agent_remote_a2a_agent.dart';
 import 'agent_remote_dialogflow_agent.dart';
 import 'agent_state.dart';
 import 'agent_toolset.dart';
+import 'agent_transfer_rule.dart';
 
 /// Description
 ///
@@ -165,6 +167,15 @@ import 'agent_toolset.dart';
 ///         toolIds: ["testtoolid"],
 ///     }],
 ///     childAgents: [pulumi.interpolate`projects/${cesAppForAgent.project}/locations/us/apps/${cesAppForAgent.appId}/agents/${cesChildAgent.agentId}`],
+///     transferRules: [{
+///         childAgent: pulumi.interpolate`projects/${cesAppForAgent.project}/locations/us/apps/${cesAppForAgent.appId}/agents/${cesChildAgent.agentId}`,
+///         direction: "PARENT_TO_CHILD",
+///         deterministicTransfer: {
+///             expressionCondition: {
+///                 expression: "true",
+///             },
+///         },
+///     }],
 ///     llmAgent: {},
 /// });
 /// ```
@@ -312,6 +323,20 @@ import 'agent_toolset.dart';
 ///         agent_id=ces_child_agent.agent_id
 /// ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/agents/{resolved_outputs['agent_id']}")
 /// ],
+///     transfer_rules=[{
+///         "child_agent": pulumi.Output.all(
+///             project=ces_app_for_agent.project,
+///             app_id=ces_app_for_agent.app_id,
+///             agent_id=ces_child_agent.agent_id
+/// ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/agents/{resolved_outputs['agent_id']}")
+/// ,
+///         "direction": "PARENT_TO_CHILD",
+///         "deterministic_transfer": {
+///             "expression_condition": {
+///                 "expression": "true",
+///             },
+///         },
+///     }],
 ///     llm_agent={})
 /// ```
 /// ```csharp
@@ -544,6 +569,27 @@ import 'agent_toolset.dart';
 ///                 return $"projects/{project}/locations/us/apps/{appId}/agents/{agentId}";
 ///             }),
 ///         },
+///         TransferRules = new[]
+///         {
+///             new Gcp.Ces.Inputs.AgentTransferRuleArgs
+///             {
+///                 ChildAgent = Output.Tuple(cesAppForAgent.Project, cesAppForAgent.AppId, cesChildAgent.AgentId).Apply(values =>
+///                 {
+///                     var project = values.Item1;
+///                     var appId = values.Item2;
+///                     var agentId = values.Item3;
+///                     return $"projects/{project}/locations/us/apps/{appId}/agents/{agentId}";
+///                 }),
+///                 Direction = "PARENT_TO_CHILD",
+///                 DeterministicTransfer = new Gcp.Ces.Inputs.AgentTransferRuleDeterministicTransferArgs
+///                 {
+///                     ExpressionCondition = new Gcp.Ces.Inputs.AgentTransferRuleDeterministicTransferExpressionConditionArgs
+///                     {
+///                         Expression = "true",
+///                     },
+///                 },
+///             },
+///         },
 ///         LlmAgent = new() { },
 ///     });
 ///
@@ -555,7 +601,7 @@ import 'agent_toolset.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -749,6 +795,22 @@ import 'agent_toolset.dart';
 /// 					return fmt.Sprintf("projects/%v/locations/us/apps/%v/agents/%v", project, appId, agentId), nil
 /// 				}).(pulumi.StringOutput),
 /// 			},
+/// 			TransferRules: ces.AgentTransferRuleArray{
+/// 				&ces.AgentTransferRuleArgs{
+/// 					ChildAgent: pulumi.All(cesAppForAgent.Project, cesAppForAgent.AppId, cesChildAgent.AgentId).ApplyT(func(_args []interface{}) (string, error) {
+/// 						project := _args[0].(string)
+/// 						appId := _args[1].(string)
+/// 						agentId := _args[2].(*string)
+/// 						return fmt.Sprintf("projects/%v/locations/us/apps/%v/agents/%v", project, appId, agentId), nil
+/// 					}).(pulumi.StringOutput),
+/// 					Direction: pulumi.String("PARENT_TO_CHILD"),
+/// 					DeterministicTransfer: &ces.AgentTransferRuleDeterministicTransferArgs{
+/// 						ExpressionCondition: &ces.AgentTransferRuleDeterministicTransferExpressionConditionArgs{
+/// 							Expression: pulumi.String("true"),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
 /// 			LlmAgent: &ces.AgentLlmAgentArgs{},
 /// 		})
 /// 		if err != nil {
@@ -896,7 +958,16 @@ import 'agent_toolset.dart';
 ///     tool_ids = ["testtoolid"]
 ///   }
 ///   child_agents = ["projects/${gcp_ces_app.ces_app_for_agent.project}/locations/us/apps/${gcp_ces_app.ces_app_for_agent.app_id}/agents/${gcp_ces_agent.ces_child_agent.agent_id}"]
-///   llm_agent    = {}
+///   transfer_rules {
+///     child_agent ="projects/${gcp_ces_app.ces_app_for_agent.project}/locations/us/apps/${gcp_ces_app.ces_app_for_agent.app_id}/agents/${gcp_ces_agent.ces_child_agent.agent_id}"
+///     direction   = "PARENT_TO_CHILD"
+///     deterministic_transfer = {
+///       expression_condition = {
+///         expression = "true"
+///       }
+///     }
+///   }
+///   llm_agent = {}
 /// }
 /// ```
 /// ```java
@@ -938,6 +1009,9 @@ import 'agent_toolset.dart';
 /// import com.pulumi.gcp.ces.inputs.AgentBeforeToolCallbackArgs;
 /// import com.pulumi.gcp.ces.inputs.AgentAfterToolCallbackArgs;
 /// import com.pulumi.gcp.ces.inputs.AgentToolsetArgs;
+/// import com.pulumi.gcp.ces.inputs.AgentTransferRuleArgs;
+/// import com.pulumi.gcp.ces.inputs.AgentTransferRuleDeterministicTransferArgs;
+/// import com.pulumi.gcp.ces.inputs.AgentTransferRuleDeterministicTransferExpressionConditionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1103,6 +1177,20 @@ import 'agent_toolset.dart';
 ///                 var agentId = values.t3;
 ///                 return String.format("projects/%s/locations/us/apps/%s/agents/%s", project,appId,agentId);
 ///             }))
+///             .transferRules(AgentTransferRuleArgs.builder()
+///                 .childAgent(Output.tuple(cesAppForAgent.project(), cesAppForAgent.appId(), cesChildAgent.agentId()).applyValue(values -> {
+///                     var project = values.t1;
+///                     var appId = values.t2;
+///                     var agentId = values.t3;
+///                     return String.format("projects/%s/locations/us/apps/%s/agents/%s", project,appId,agentId);
+///                 }))
+///                 .direction("PARENT_TO_CHILD")
+///                 .deterministicTransfer(AgentTransferRuleDeterministicTransferArgs.builder()
+///                     .expressionCondition(AgentTransferRuleDeterministicTransferExpressionConditionArgs.builder()
+///                         .expression("true")
+///                         .build())
+///                     .build())
+///                 .build())
 ///             .llmAgent(AgentLlmAgentArgs.builder()
 ///                 .build())
 ///             .build());
@@ -1246,7 +1334,571 @@ import 'agent_toolset.dart';
 ///             - testtoolid
 ///       childAgents:
 ///         - projects/${cesAppForAgent.project}/locations/us/apps/${cesAppForAgent.appId}/agents/${cesChildAgent.agentId}
+///       transferRules:
+///         - childAgent: projects/${cesAppForAgent.project}/locations/us/apps/${cesAppForAgent.appId}/agents/${cesChildAgent.agentId}
+///           direction: PARENT_TO_CHILD
+///           deterministicTransfer:
+///             expressionCondition:
+///               expression: 'true'
 ///       llmAgent: {}
+/// ```
+///
+/// ### Ces Agent Remote A2a Agent
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const cesAppForAgent = new gcp.ces.App("ces_app_for_agent", {
+///     appId: "app-id",
+///     location: "us",
+///     description: "App used as parent for CES Agent example",
+///     displayName: "my-app",
+///     languageSettings: {
+///         defaultLanguageCode: "en-US",
+///         supportedLanguageCodes: [
+///             "es-ES",
+///             "fr-FR",
+///         ],
+///         enableMultilingualSupport: true,
+///         fallbackAction: "escalate",
+///     },
+///     timeZoneSettings: {
+///         timeZone: "America/Los_Angeles",
+///     },
+/// });
+/// const cesAgentRemoteA2aAgent = new gcp.ces.Agent("ces_agent_remote_a2a_agent", {
+///     agentId: "agent-id",
+///     location: "us",
+///     app: cesAppForAgent.appId,
+///     displayName: "my-agent",
+///     remoteA2aAgent: {
+///         a2aConfig: {
+///             agentCard: {
+///                 name: "test-card",
+///                 description: "Test A2A Agent Card",
+///                 version: "1.0.0",
+///                 supportedInterfaces: [{
+///                     url: "https://example.com/a2a",
+///                     protocolBinding: "HTTP+JSON",
+///                     protocolVersion: "1.0",
+///                 }],
+///                 skills: [{
+///                     id: "test-skill",
+///                     name: "test-skill-name",
+///                     description: "test-skill-desc",
+///                     tags: [
+///                         "test",
+///                         "skill",
+///                     ],
+///                     examples: ["example 1"],
+///                     inputModes: ["text/plain"],
+///                     outputModes: ["text/plain"],
+///                 }],
+///             },
+///             apiAuthentication: {
+///                 bearerTokenConfig: {
+///                     token: "$context.variables.token",
+///                 },
+///             },
+///             contextId: "$context.variables.session_id",
+///             inputVariableMapping: {
+///                 remote_in: "local_in",
+///             },
+///             outputVariableMapping: {
+///                 remote_out: "local_out",
+///             },
+///             streamingEnabled: false,
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// ces_app_for_agent = gcp.ces.App("ces_app_for_agent",
+///     app_id="app-id",
+///     location="us",
+///     description="App used as parent for CES Agent example",
+///     display_name="my-app",
+///     language_settings={
+///         "default_language_code": "en-US",
+///         "supported_language_codes": [
+///             "es-ES",
+///             "fr-FR",
+///         ],
+///         "enable_multilingual_support": True,
+///         "fallback_action": "escalate",
+///     },
+///     time_zone_settings={
+///         "time_zone": "America/Los_Angeles",
+///     })
+/// ces_agent_remote_a2a_agent = gcp.ces.Agent("ces_agent_remote_a2a_agent",
+///     agent_id="agent-id",
+///     location="us",
+///     app=ces_app_for_agent.app_id,
+///     display_name="my-agent",
+///     remote_a2a_agent={
+///         "a2a_config": {
+///             "agent_card": {
+///                 "name": "test-card",
+///                 "description": "Test A2A Agent Card",
+///                 "version": "1.0.0",
+///                 "supported_interfaces": [{
+///                     "url": "https://example.com/a2a",
+///                     "protocol_binding": "HTTP+JSON",
+///                     "protocol_version": "1.0",
+///                 }],
+///                 "skills": [{
+///                     "id": "test-skill",
+///                     "name": "test-skill-name",
+///                     "description": "test-skill-desc",
+///                     "tags": [
+///                         "test",
+///                         "skill",
+///                     ],
+///                     "examples": ["example 1"],
+///                     "input_modes": ["text/plain"],
+///                     "output_modes": ["text/plain"],
+///                 }],
+///             },
+///             "api_authentication": {
+///                 "bearer_token_config": {
+///                     "token": "$context.variables.token",
+///                 },
+///             },
+///             "context_id": "$context.variables.session_id",
+///             "input_variable_mapping": {
+///                 "remote_in": "local_in",
+///             },
+///             "output_variable_mapping": {
+///                 "remote_out": "local_out",
+///             },
+///             "streaming_enabled": False,
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var cesAppForAgent = new Gcp.Ces.App("ces_app_for_agent", new()
+///     {
+///         AppId = "app-id",
+///         Location = "us",
+///         Description = "App used as parent for CES Agent example",
+///         DisplayName = "my-app",
+///         LanguageSettings = new Gcp.Ces.Inputs.AppLanguageSettingsArgs
+///         {
+///             DefaultLanguageCode = "en-US",
+///             SupportedLanguageCodes = new[]
+///             {
+///                 "es-ES",
+///                 "fr-FR",
+///             },
+///             EnableMultilingualSupport = true,
+///             FallbackAction = "escalate",
+///         },
+///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+///         {
+///             TimeZone = "America/Los_Angeles",
+///         },
+///     });
+///
+///     var cesAgentRemoteA2aAgent = new Gcp.Ces.Agent("ces_agent_remote_a2a_agent", new()
+///     {
+///         AgentId = "agent-id",
+///         Location = "us",
+///         App = cesAppForAgent.AppId,
+///         DisplayName = "my-agent",
+///         RemoteA2aAgent = new Gcp.Ces.Inputs.AgentRemoteA2aAgentArgs
+///         {
+///             A2aConfig = new Gcp.Ces.Inputs.AgentRemoteA2aAgentA2aConfigArgs
+///             {
+///                 AgentCard = new Gcp.Ces.Inputs.AgentRemoteA2aAgentA2aConfigAgentCardArgs
+///                 {
+///                     Name = "test-card",
+///                     Description = "Test A2A Agent Card",
+///                     Version = "1.0.0",
+///                     SupportedInterfaces = new[]
+///                     {
+///                         new Gcp.Ces.Inputs.AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgs
+///                         {
+///                             Url = "https://example.com/a2a",
+///                             ProtocolBinding = "HTTP+JSON",
+///                             ProtocolVersion = "1.0",
+///                         },
+///                     },
+///                     Skills = new[]
+///                     {
+///                         new Gcp.Ces.Inputs.AgentRemoteA2aAgentA2aConfigAgentCardSkillArgs
+///                         {
+///                             Id = "test-skill",
+///                             Name = "test-skill-name",
+///                             Description = "test-skill-desc",
+///                             Tags = new[]
+///                             {
+///                                 "test",
+///                                 "skill",
+///                             },
+///                             Examples = new[]
+///                             {
+///                                 "example 1",
+///                             },
+///                             InputModes = new[]
+///                             {
+///                                 "text/plain",
+///                             },
+///                             OutputModes = new[]
+///                             {
+///                                 "text/plain",
+///                             },
+///                         },
+///                     },
+///                 },
+///                 ApiAuthentication = new Gcp.Ces.Inputs.AgentRemoteA2aAgentA2aConfigApiAuthenticationArgs
+///                 {
+///                     BearerTokenConfig = new Gcp.Ces.Inputs.AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgs
+///                     {
+///                         Token = "$context.variables.token",
+///                     },
+///                 },
+///                 ContextId = "$context.variables.session_id",
+///                 InputVariableMapping =
+///                 {
+///                     { "remote_in", "local_in" },
+///                 },
+///                 OutputVariableMapping =
+///                 {
+///                     { "remote_out", "local_out" },
+///                 },
+///                 StreamingEnabled = false,
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		cesAppForAgent, err := ces.NewApp(ctx, "ces_app_for_agent", &ces.AppArgs{
+/// 			AppId:       pulumi.String("app-id"),
+/// 			Location:    pulumi.String("us"),
+/// 			Description: pulumi.String("App used as parent for CES Agent example"),
+/// 			DisplayName: pulumi.String("my-app"),
+/// 			LanguageSettings: &ces.AppLanguageSettingsArgs{
+/// 				DefaultLanguageCode: pulumi.String("en-US"),
+/// 				SupportedLanguageCodes: pulumi.StringArray{
+/// 					pulumi.String("es-ES"),
+/// 					pulumi.String("fr-FR"),
+/// 				},
+/// 				EnableMultilingualSupport: pulumi.Bool(true),
+/// 				FallbackAction:            pulumi.String("escalate"),
+/// 			},
+/// 			TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+/// 				TimeZone: pulumi.String("America/Los_Angeles"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = ces.NewAgent(ctx, "ces_agent_remote_a2a_agent", &ces.AgentArgs{
+/// 			AgentId:     pulumi.String("agent-id"),
+/// 			Location:    pulumi.String("us"),
+/// 			App:         cesAppForAgent.AppId,
+/// 			DisplayName: pulumi.String("my-agent"),
+/// 			RemoteA2aAgent: &ces.AgentRemoteA2aAgentArgs{
+/// 				A2aConfig: &ces.AgentRemoteA2aAgentA2aConfigArgs{
+/// 					AgentCard: &ces.AgentRemoteA2aAgentA2aConfigAgentCardArgs{
+/// 						Name:        pulumi.String("test-card"),
+/// 						Description: pulumi.String("Test A2A Agent Card"),
+/// 						Version:     pulumi.String("1.0.0"),
+/// 						SupportedInterfaces: ces.AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArray{
+/// 							&ces.AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgs{
+/// 								Url:             pulumi.String("https://example.com/a2a"),
+/// 								ProtocolBinding: pulumi.String("HTTP+JSON"),
+/// 								ProtocolVersion: pulumi.String("1.0"),
+/// 							},
+/// 						},
+/// 						Skills: ces.AgentRemoteA2aAgentA2aConfigAgentCardSkillArray{
+/// 							&ces.AgentRemoteA2aAgentA2aConfigAgentCardSkillArgs{
+/// 								Id:          pulumi.String("test-skill"),
+/// 								Name:        pulumi.String("test-skill-name"),
+/// 								Description: pulumi.String("test-skill-desc"),
+/// 								Tags: pulumi.StringArray{
+/// 									pulumi.String("test"),
+/// 									pulumi.String("skill"),
+/// 								},
+/// 								Examples: pulumi.StringArray{
+/// 									pulumi.String("example 1"),
+/// 								},
+/// 								InputModes: pulumi.StringArray{
+/// 									pulumi.String("text/plain"),
+/// 								},
+/// 								OutputModes: pulumi.StringArray{
+/// 									pulumi.String("text/plain"),
+/// 								},
+/// 							},
+/// 						},
+/// 					},
+/// 					ApiAuthentication: &ces.AgentRemoteA2aAgentA2aConfigApiAuthenticationArgs{
+/// 						BearerTokenConfig: &ces.AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgs{
+/// 							Token: pulumi.String("$context.variables.token"),
+/// 						},
+/// 					},
+/// 					ContextId: pulumi.String("$context.variables.session_id"),
+/// 					InputVariableMapping: pulumi.StringMap{
+/// 						"remote_in": pulumi.String("local_in"),
+/// 					},
+/// 					OutputVariableMapping: pulumi.StringMap{
+/// 						"remote_out": pulumi.String("local_out"),
+/// 					},
+/// 					StreamingEnabled: pulumi.Bool(false),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_ces_app" "ces_app_for_agent" {
+///   app_id       = "app-id"
+///   location     = "us"
+///   description  = "App used as parent for CES Agent example"
+///   display_name = "my-app"
+///   language_settings = {
+///     default_language_code       = "en-US"
+///     supported_language_codes    = ["es-ES", "fr-FR"]
+///     enable_multilingual_support = true
+///     fallback_action             = "escalate"
+///   }
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+/// }
+/// resource "gcp_ces_agent" "ces_agent_remote_a2a_agent" {
+///   agent_id     = "agent-id"
+///   location     = "us"
+///   app          = gcp_ces_app.ces_app_for_agent.app_id
+///   display_name = "my-agent"
+///   remote_a2a_agent = {
+///     a2a_config = {
+///       agent_card = {
+///         name        = "test-card"
+///         description = "Test A2A Agent Card"
+///         version     = "1.0.0"
+///         supported_interfaces = [{
+///           "url"             = "https://example.com/a2a"
+///           "protocolBinding" = "HTTP+JSON"
+///           "protocolVersion" = "1.0"
+///         }]
+///         skills = [{
+///           "id"          = "test-skill"
+///           "name"        = "test-skill-name"
+///           "description" = "test-skill-desc"
+///           "tags"        = ["test", "skill"]
+///           "examples"    = ["example 1"]
+///           "inputModes"  = ["text/plain"]
+///           "outputModes" = ["text/plain"]
+///         }]
+///       }
+///       api_authentication = {
+///         bearer_token_config = {
+///           token = "$context.variables.token"
+///         }
+///       }
+///       context_id = "$context.variables.session_id"
+///       input_variable_mapping = {
+///         "remote_in" = "local_in"
+///       }
+///       output_variable_mapping = {
+///         "remote_out" = "local_out"
+///       }
+///       streaming_enabled = false
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.ces.App;
+/// import com.pulumi.gcp.ces.AppArgs;
+/// import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
+/// import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+/// import com.pulumi.gcp.ces.Agent;
+/// import com.pulumi.gcp.ces.AgentArgs;
+/// import com.pulumi.gcp.ces.inputs.AgentRemoteA2aAgentArgs;
+/// import com.pulumi.gcp.ces.inputs.AgentRemoteA2aAgentA2aConfigArgs;
+/// import com.pulumi.gcp.ces.inputs.AgentRemoteA2aAgentA2aConfigAgentCardArgs;
+/// import com.pulumi.gcp.ces.inputs.AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgs;
+/// import com.pulumi.gcp.ces.inputs.AgentRemoteA2aAgentA2aConfigAgentCardSkillArgs;
+/// import com.pulumi.gcp.ces.inputs.AgentRemoteA2aAgentA2aConfigApiAuthenticationArgs;
+/// import com.pulumi.gcp.ces.inputs.AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var cesAppForAgent = new App("cesAppForAgent", AppArgs.builder()
+///             .appId("app-id")
+///             .location("us")
+///             .description("App used as parent for CES Agent example")
+///             .displayName("my-app")
+///             .languageSettings(AppLanguageSettingsArgs.builder()
+///                 .defaultLanguageCode("en-US")
+///                 .supportedLanguageCodes(
+///                     "es-ES",
+///                     "fr-FR")
+///                 .enableMultilingualSupport(true)
+///                 .fallbackAction("escalate")
+///                 .build())
+///             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+///                 .timeZone("America/Los_Angeles")
+///                 .build())
+///             .build());
+///
+///         var cesAgentRemoteA2aAgent = new Agent("cesAgentRemoteA2aAgent", AgentArgs.builder()
+///             .agentId("agent-id")
+///             .location("us")
+///             .app(cesAppForAgent.appId())
+///             .displayName("my-agent")
+///             .remoteA2aAgent(AgentRemoteA2aAgentArgs.builder()
+///                 .a2aConfig(AgentRemoteA2aAgentA2aConfigArgs.builder()
+///                     .agentCard(AgentRemoteA2aAgentA2aConfigAgentCardArgs.builder()
+///                         .name("test-card")
+///                         .description("Test A2A Agent Card")
+///                         .version("1.0.0")
+///                         .supportedInterfaces(AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgs.builder()
+///                             .url("https://example.com/a2a")
+///                             .protocolBinding("HTTP+JSON")
+///                             .protocolVersion("1.0")
+///                             .build())
+///                         .skills(AgentRemoteA2aAgentA2aConfigAgentCardSkillArgs.builder()
+///                             .id("test-skill")
+///                             .name("test-skill-name")
+///                             .description("test-skill-desc")
+///                             .tags(
+///                                 "test",
+///                                 "skill")
+///                             .examples("example 1")
+///                             .inputModes("text/plain")
+///                             .outputModes("text/plain")
+///                             .build())
+///                         .build())
+///                     .apiAuthentication(AgentRemoteA2aAgentA2aConfigApiAuthenticationArgs.builder()
+///                         .bearerTokenConfig(AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgs.builder()
+///                             .token("$context.variables.token")
+///                             .build())
+///                         .build())
+///                     .contextId("$context.variables.session_id")
+///                     .inputVariableMapping(Map.of("remote_in", "local_in"))
+///                     .outputVariableMapping(Map.of("remote_out", "local_out"))
+///                     .streamingEnabled(false)
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   cesAppForAgent:
+///     type: gcp:ces:App
+///     name: ces_app_for_agent
+///     properties:
+///       appId: app-id
+///       location: us
+///       description: App used as parent for CES Agent example
+///       displayName: my-app
+///       languageSettings:
+///         defaultLanguageCode: en-US
+///         supportedLanguageCodes:
+///           - es-ES
+///           - fr-FR
+///         enableMultilingualSupport: true
+///         fallbackAction: escalate
+///       timeZoneSettings:
+///         timeZone: America/Los_Angeles
+///   cesAgentRemoteA2aAgent:
+///     type: gcp:ces:Agent
+///     name: ces_agent_remote_a2a_agent
+///     properties:
+///       agentId: agent-id
+///       location: us
+///       app: ${cesAppForAgent.appId}
+///       displayName: my-agent
+///       remoteA2aAgent:
+///         a2aConfig:
+///           agentCard:
+///             name: test-card
+///             description: Test A2A Agent Card
+///             version: 1.0.0
+///             supportedInterfaces:
+///               - url: https://example.com/a2a
+///                 protocolBinding: HTTP+JSON
+///                 protocolVersion: '1.0'
+///             skills:
+///               - id: test-skill
+///                 name: test-skill-name
+///                 description: test-skill-desc
+///                 tags:
+///                   - test
+///                   - skill
+///                 examples:
+///                   - example 1
+///                 inputModes:
+///                   - text/plain
+///                 outputModes:
+///                   - text/plain
+///           apiAuthentication:
+///             bearerTokenConfig:
+///               token: $context.variables.token
+///           contextId: $context.variables.session_id
+///           inputVariableMapping:
+///             remote_in: local_in
+///           outputVariableMapping:
+///             remote_out: local_out
+///           streamingEnabled: false
 /// ```
 ///
 /// ### Ces Agent Remote Dialogflow Agent
@@ -1288,6 +1940,7 @@ import 'agent_toolset.dart';
 ///         agent: "projects/example/locations/us/agents/fake-agent",
 ///         flowId: "fake-flow",
 ///         environmentId: "fake-env",
+///         languageCodeVariable: "language_code",
 ///         inputVariableMapping: {
 ///             example: "1",
 ///         },
@@ -1331,6 +1984,7 @@ import 'agent_toolset.dart';
 ///         "agent": "projects/example/locations/us/agents/fake-agent",
 ///         "flow_id": "fake-flow",
 ///         "environment_id": "fake-env",
+///         "language_code_variable": "language_code",
 ///         "input_variable_mapping": {
 ///             "example": "1",
 ///         },
@@ -1386,6 +2040,7 @@ import 'agent_toolset.dart';
 ///             Agent = "projects/example/locations/us/agents/fake-agent",
 ///             FlowId = "fake-flow",
 ///             EnvironmentId = "fake-env",
+///             LanguageCodeVariable = "language_code",
 ///             InputVariableMapping =
 ///             {
 ///                 { "example", "1" },
@@ -1403,7 +2058,7 @@ import 'agent_toolset.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1440,9 +2095,10 @@ import 'agent_toolset.dart';
 /// 				Temperature: pulumi.Float64(0.5),
 /// 			},
 /// 			RemoteDialogflowAgent: &ces.AgentRemoteDialogflowAgentArgs{
-/// 				Agent:         pulumi.String("projects/example/locations/us/agents/fake-agent"),
-/// 				FlowId:        pulumi.String("fake-flow"),
-/// 				EnvironmentId: pulumi.String("fake-env"),
+/// 				Agent:                pulumi.String("projects/example/locations/us/agents/fake-agent"),
+/// 				FlowId:               pulumi.String("fake-flow"),
+/// 				EnvironmentId:        pulumi.String("fake-env"),
+/// 				LanguageCodeVariable: pulumi.String("language_code"),
 /// 				InputVariableMapping: pulumi.StringMap{
 /// 					"example": pulumi.String("1"),
 /// 				},
@@ -1492,9 +2148,10 @@ import 'agent_toolset.dart';
 ///     temperature = 0.5
 ///   }
 ///   remote_dialogflow_agent = {
-///     agent          = "projects/example/locations/us/agents/fake-agent"
-///     flow_id        = "fake-flow"
-///     environment_id = "fake-env"
+///     agent                  = "projects/example/locations/us/agents/fake-agent"
+///     flow_id                = "fake-flow"
+///     environment_id         = "fake-env"
+///     language_code_variable = "language_code"
 ///     input_variable_mapping = {
 ///       "example" = 1
 ///     }
@@ -1562,6 +2219,7 @@ import 'agent_toolset.dart';
 ///                 .agent("projects/example/locations/us/agents/fake-agent")
 ///                 .flowId("fake-flow")
 ///                 .environmentId("fake-env")
+///                 .languageCodeVariable("language_code")
 ///                 .inputVariableMapping(Map.of("example", "1"))
 ///                 .outputVariableMapping(Map.of("example", "1"))
 ///                 .build())
@@ -1604,6 +2262,7 @@ import 'agent_toolset.dart';
 ///         agent: projects/example/locations/us/agents/fake-agent
 ///         flowId: fake-flow
 ///         environmentId: fake-env
+///         languageCodeVariable: language_code
 ///         inputVariableMapping:
 ///           example: 1
 ///         outputVariableMapping:
@@ -1767,7 +2426,7 @@ import 'agent_toolset.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2085,6 +2744,10 @@ class Agent extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// The agent which will transfer execution to a remote
+  /// [A2A](https://github.com/a2aproject/A2A) agent.
+  /// Structure is documented below.
+  late final pulumi.Output<AgentRemoteA2aAgent?> remoteA2aAgent;
   /// The agent which will transfer execution to an existing remote
   /// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
   /// agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -2098,6 +2761,10 @@ class Agent extends pulumi.CustomResource {
   /// List of toolsets for the agent.
   /// Structure is documented below.
   late final pulumi.Output<List<AgentToolset>?> toolsets;
+  /// List of transfer rules for the agent.
+  /// If multiple rules match, the first one in the list will be used.
+  /// Structure is documented below.
+  late final pulumi.Output<List<AgentTransferRule>?> transferRules;
   /// Timestamp when the agent was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -2113,7 +2780,7 @@ class Agent extends pulumi.CustomResource {
           'gcp:ces/agent:Agent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.0').merge(options),
         ) {
     afterAgentCallbacks = registerOutput<List<AgentAfterAgentCallback>?>('afterAgentCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAfterAgentCallback>(guardedValue, (value) => AgentAfterAgentCallback.fromMap((value as Map).cast<String, dynamic>())); });
     afterModelCallbacks = registerOutput<List<AgentAfterModelCallback>?>('afterModelCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAfterModelCallback>(guardedValue, (value) => AgentAfterModelCallback.fromMap((value as Map).cast<String, dynamic>())); });
@@ -2137,9 +2804,11 @@ class Agent extends pulumi.CustomResource {
     modelSettings = registerOutput<AgentModelSettings?>('modelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
+    remoteA2aAgent = registerOutput<AgentRemoteA2aAgent?>('remoteA2aAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentRemoteA2aAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     remoteDialogflowAgent = registerOutput<AgentRemoteDialogflowAgent?>('remoteDialogflowAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentRemoteDialogflowAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tools = registerOutput<List<String>?>('tools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     toolsets = registerOutput<List<AgentToolset>?>('toolsets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentToolset>(guardedValue, (value) => AgentToolset.fromMap((value as Map).cast<String, dynamic>())); });
+    transferRules = registerOutput<List<AgentTransferRule>?>('transferRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentTransferRule>(guardedValue, (value) => AgentTransferRule.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -2189,9 +2858,11 @@ class Agent extends pulumi.CustomResource {
     modelSettings = registerOutput<AgentModelSettings?>('modelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
+    remoteA2aAgent = registerOutput<AgentRemoteA2aAgent?>('remoteA2aAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentRemoteA2aAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     remoteDialogflowAgent = registerOutput<AgentRemoteDialogflowAgent?>('remoteDialogflowAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentRemoteDialogflowAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tools = registerOutput<List<String>?>('tools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     toolsets = registerOutput<List<AgentToolset>?>('toolsets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentToolset>(guardedValue, (value) => AgentToolset.fromMap((value as Map).cast<String, dynamic>())); });
+    transferRules = registerOutput<List<AgentTransferRule>?>('transferRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentTransferRule>(guardedValue, (value) => AgentTransferRule.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -2226,9 +2897,11 @@ class Agent extends pulumi.CustomResource {
     modelSettings = registerOutput<AgentModelSettings?>('modelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
+    remoteA2aAgent = registerOutput<AgentRemoteA2aAgent?>('remoteA2aAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentRemoteA2aAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     remoteDialogflowAgent = registerOutput<AgentRemoteDialogflowAgent?>('remoteDialogflowAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentRemoteDialogflowAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tools = registerOutput<List<String>?>('tools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     toolsets = registerOutput<List<AgentToolset>?>('toolsets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentToolset>(guardedValue, (value) => AgentToolset.fromMap((value as Map).cast<String, dynamic>())); });
+    transferRules = registerOutput<List<AgentTransferRule>?>('transferRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentTransferRule>(guardedValue, (value) => AgentTransferRule.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }
