@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServicePrincipalSamlSingleSignOn {
   /// The relative URI the service provider would redirect to after completion of the single sign-on flow.
-  final pulumi.Input<String>? relayState;
+  final pulumi.Input<String?>? relayState;
 
   /// Creates a new [ServicePrincipalSamlSingleSignOn].
   /// [relayState] The relative URI the service provider would redirect to after completion of the single sign-on flow.

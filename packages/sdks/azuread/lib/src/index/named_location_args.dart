@@ -10,13 +10,13 @@ import 'named_location_ip.dart';
 /// {@macro pulumi_index_named_location_named_location_args_doc}
 class NamedLocationArgs {
   /// A `country` block as documented below, which configures a country-based named location.
-  final pulumi.Input<NamedLocationCountry>? country;
+  final pulumi.Input<NamedLocationCountry?>? country;
   /// The friendly name for this named location.
   final pulumi.Input<String> displayName;
   /// An `ip` block as documented below, which configures an IP-based named location.
   ///
   /// &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
-  final pulumi.Input<NamedLocationIp>? ip;
+  final pulumi.Input<NamedLocationIp?>? ip;
 
   /// Creates a new [NamedLocationArgs].
   /// [country] A `country` block as documented below, which configures a country-based named location.

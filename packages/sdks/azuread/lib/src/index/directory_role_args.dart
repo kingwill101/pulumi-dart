@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_directory_role_directory_role_args_doc}
 class DirectoryRoleArgs {
   /// The display name of the directory role to activate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
   ///
   /// &gt; Either `displayName` or `templateId` must be specified.
-  final pulumi.Input<String>? templateId;
+  final pulumi.Input<String?>? templateId;
 
   /// Creates a new [DirectoryRoleArgs].
   /// [displayName] The display name of the directory role to activate. Changing this forces a new resource to be created.

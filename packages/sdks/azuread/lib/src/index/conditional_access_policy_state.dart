@@ -8,19 +8,19 @@ import 'conditional_access_policy_session_controls.dart';
 /// Input properties used for looking up and filtering ConditionalAccessPolicy resources.
 class ConditionalAccessPolicyState {
   /// A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
-  final pulumi.Input<ConditionalAccessPolicyConditions>? conditions;
+  final pulumi.Input<ConditionalAccessPolicyConditions?>? conditions;
   /// The friendly name for this Conditional Access Policy.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-  final pulumi.Input<ConditionalAccessPolicyGrantControls>? grantControls;
+  final pulumi.Input<ConditionalAccessPolicyGrantControls?>? grantControls;
   /// The object ID of the policy
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
   ///
   /// &gt; Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
-  final pulumi.Input<ConditionalAccessPolicySessionControls>? sessionControls;
+  final pulumi.Input<ConditionalAccessPolicySessionControls?>? sessionControls;
   /// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ConditionalAccessPolicyState].
   /// [conditions] A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.

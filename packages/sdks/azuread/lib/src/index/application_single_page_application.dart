@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationSinglePageApplication {
   /// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
-  final pulumi.Input<List<String>>? redirectUris;
+  final pulumi.Input<List<String>?>? redirectUris;
 
   /// Creates a new [ApplicationSinglePageApplication].
   /// [redirectUris] A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.

@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_service_principal_get_service_principal_args_doc}
 class GetServicePrincipalArgs {
   /// The client ID of the application associated with this service principal.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The display name of the application associated with this service principal.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The object ID of the service principal.
   ///
   /// &gt; One of `clientId`, `displayName` or `objectId` must be specified.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
 
   /// Creates a new [GetServicePrincipalArgs].
   /// [clientId] The client ID of the application associated with this service principal.

@@ -6,19 +6,19 @@ import 'custom_directory_role_permission.dart';
 /// Input properties used for looking up and filtering CustomDirectoryRole resources.
 class CustomDirectoryRoleState {
   /// The description of the custom directory role.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the custom directory role.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Indicates whether the role is enabled for assignment.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The object ID of the custom directory role.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// A collection of `permissions` blocks as documented below.
-  final pulumi.Input<List<CustomDirectoryRolePermission>>? permissions;
+  final pulumi.Input<List<CustomDirectoryRolePermission>?>? permissions;
   /// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? templateId;
+  final pulumi.Input<String?>? templateId;
   /// The version of the role definition. This can be any arbitrary string between 1-128 characters.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [CustomDirectoryRoleState].
   /// [description] The description of the custom directory role.

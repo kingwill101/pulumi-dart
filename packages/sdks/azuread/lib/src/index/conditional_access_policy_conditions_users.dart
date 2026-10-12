@@ -6,32 +6,32 @@ import 'conditional_access_policy_conditions_users_included_guests_or_external_u
 
 class ConditionalAccessPolicyConditionsUsers {
   /// A list of group IDs excluded from scope of policy.
-  final pulumi.Input<List<String>>? excludedGroups;
+  final pulumi.Input<List<String>?>? excludedGroups;
   /// A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users excluded from scope of policy.
-  final pulumi.Input<List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser>>? excludedGuestsOrExternalUsers;
-  /// A list of role IDs excluded from scope of policy.
-  final pulumi.Input<List<String>>? excludedRoles;
+  final pulumi.Input<List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser>?>? excludedGuestsOrExternalUsers;
+  /// A list of role template IDs excluded from scope of policy.
+  final pulumi.Input<List<String>?>? excludedRoles;
   /// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
-  final pulumi.Input<List<String>>? excludedUsers;
+  final pulumi.Input<List<String>?>? excludedUsers;
   /// A list of group IDs in scope of policy unless explicitly excluded.
-  final pulumi.Input<List<String>>? includedGroups;
+  final pulumi.Input<List<String>?>? includedGroups;
   /// A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users in scope of policy.
-  final pulumi.Input<List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser>>? includedGuestsOrExternalUsers;
-  /// A list of role IDs in scope of policy unless explicitly excluded.
-  final pulumi.Input<List<String>>? includedRoles;
+  final pulumi.Input<List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser>?>? includedGuestsOrExternalUsers;
+  /// A list of role template IDs in scope of policy unless explicitly excluded.
+  final pulumi.Input<List<String>?>? includedRoles;
   /// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
   ///
   /// &gt; At least one of `includedGroups`, `includedGuestsOrExternalUsers`, `includedRoles` or `includedUsers` must be specified.
-  final pulumi.Input<List<String>>? includedUsers;
+  final pulumi.Input<List<String>?>? includedUsers;
 
   /// Creates a new [ConditionalAccessPolicyConditionsUsers].
   /// [excludedGroups] A list of group IDs excluded from scope of policy.
   /// [excludedGuestsOrExternalUsers] A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users excluded from scope of policy.
-  /// [excludedRoles] A list of role IDs excluded from scope of policy.
+  /// [excludedRoles] A list of role template IDs excluded from scope of policy.
   /// [excludedUsers] A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
   /// [includedGroups] A list of group IDs in scope of policy unless explicitly excluded.
   /// [includedGuestsOrExternalUsers] A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users in scope of policy.
-  /// [includedRoles] A list of role IDs in scope of policy unless explicitly excluded.
+  /// [includedRoles] A list of role template IDs in scope of policy unless explicitly excluded.
   /// [includedUsers] A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
   const ConditionalAccessPolicyConditionsUsers({
     this.excludedGroups,

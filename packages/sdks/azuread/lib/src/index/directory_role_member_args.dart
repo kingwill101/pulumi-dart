@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_directory_role_member_directory_role_member_args_doc}
 class DirectoryRoleMemberArgs {
   /// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? memberObjectId;
+  final pulumi.Input<String?>? memberObjectId;
   /// The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? roleObjectId;
+  final pulumi.Input<String?>? roleObjectId;
 
   /// Creates a new [DirectoryRoleMemberArgs].
   /// [memberObjectId] The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.

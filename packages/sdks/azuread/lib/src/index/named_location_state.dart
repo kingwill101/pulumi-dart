@@ -7,15 +7,15 @@ import 'named_location_ip.dart';
 /// Input properties used for looking up and filtering NamedLocation resources.
 class NamedLocationState {
   /// A `country` block as documented below, which configures a country-based named location.
-  final pulumi.Input<NamedLocationCountry>? country;
+  final pulumi.Input<NamedLocationCountry?>? country;
   /// The friendly name for this named location.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// An `ip` block as documented below, which configures an IP-based named location.
   ///
   /// &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
-  final pulumi.Input<NamedLocationIp>? ip;
+  final pulumi.Input<NamedLocationIp?>? ip;
   /// The object ID of the named location.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
 
   /// Creates a new [NamedLocationState].
   /// [country] A `country` block as documented below, which configures a country-based named location.
