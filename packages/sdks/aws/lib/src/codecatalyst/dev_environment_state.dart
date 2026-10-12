@@ -12,7 +12,7 @@ class DevEnvironmentState {
   final pulumi.Input<DevEnvironmentIdes?>? ides;
   /// The amount of time the Dev Environment will run without any activity detected before stopping, in minutes. Only whole integers are allowed. Dev Environments consume compute minutes when running.
   final pulumi.Input<int?>? inactivityTimeoutMinutes;
-  /// The Amazon EC2 instace type to use for the Dev Environment. Valid values include dev.standard1.small,dev.standard1.medium,dev.standard1.large,dev.standard1.xlarge
+  /// The Amazon EC2 instance type to use for the Dev Environment. Valid values include dev.standard1.small,dev.standard1.medium,dev.standard1.large,dev.standard1.xlarge
   ///
   /// The following arguments are optional:
   final pulumi.Input<String?>? instanceType;
@@ -31,7 +31,7 @@ class DevEnvironmentState {
   /// [alias] Optional.
   /// [ides] Information about the integrated development environment (IDE) configured for a Dev Environment.
   /// [inactivityTimeoutMinutes] The amount of time the Dev Environment will run without any activity detected before stopping, in minutes. Only whole integers are allowed. Dev Environments consume compute minutes when running.
-  /// [instanceType] The Amazon EC2 instace type to use for the Dev Environment. Valid values include dev.standard1.small,dev.standard1.medium,dev.standard1.large,dev.standard1.xlarge
+  /// [instanceType] The Amazon EC2 instance type to use for the Dev Environment. Valid values include dev.standard1.small,dev.standard1.medium,dev.standard1.large,dev.standard1.xlarge
   /// [persistentStorage] Information about the amount of storage allocated to the Dev Environment.
   /// [projectName] The name of the project in the space.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -67,7 +67,7 @@ class DevEnvironmentState {
     return DevEnvironmentState(
       alias: (() { final guardedValue = map['alias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ides: (() { final guardedValue = map['ides']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DevEnvironmentIdes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      inactivityTimeoutMinutes: (() { final guardedValue = map['inactivityTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      inactivityTimeoutMinutes: (() { final guardedValue = map['inactivityTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       persistentStorage: (() { final guardedValue = map['persistentStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DevEnvironmentPersistentStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       projectName: (() { final guardedValue = map['projectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

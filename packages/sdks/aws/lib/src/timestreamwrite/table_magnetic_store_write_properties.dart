@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_magnetic_store_write_properties_magnetic_store_rejected_data_location.dart';
 
 class TableMagneticStoreWriteProperties {
-  /// A flag to enable magnetic store writes.
+  /// Whether to enable magnetic store writes.
   final pulumi.Input<bool?>? enableMagneticStoreWrites;
-  /// The location to write error reports for records rejected asynchronously during magnetic store writes. See Magnetic Store Rejected Data Location below for more details.
+  /// Location to write error reports for records rejected asynchronously during magnetic store writes. See `magneticStoreRejectedDataLocation` Block below for more details.
   final pulumi.Input<TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation?>? magneticStoreRejectedDataLocation;
 
   /// Creates a new [TableMagneticStoreWriteProperties].
-  /// [enableMagneticStoreWrites] A flag to enable magnetic store writes.
-  /// [magneticStoreRejectedDataLocation] The location to write error reports for records rejected asynchronously during magnetic store writes. See Magnetic Store Rejected Data Location below for more details.
+  /// [enableMagneticStoreWrites] Whether to enable magnetic store writes.
+  /// [magneticStoreRejectedDataLocation] Location to write error reports for records rejected asynchronously during magnetic store writes. See `magneticStoreRejectedDataLocation` Block below for more details.
   const TableMagneticStoreWriteProperties({
     this.enableMagneticStoreWrites,
     this.magneticStoreRejectedDataLocation,

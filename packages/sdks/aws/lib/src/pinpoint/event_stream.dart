@@ -15,8 +15,10 @@ import 'event_stream_state.dart';
 ///
 /// const app = new aws.pinpoint.App("app", {});
 /// const testStream = new aws.kinesis.Stream("test_stream", {
+///     streamModeDetails: {
+///         streamMode: "ON_DEMAND",
+///     },
 ///     name: "pinpoint-kinesis-test",
-///     shardCount: 1,
 /// });
 /// const assumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
@@ -56,8 +58,10 @@ import 'event_stream_state.dart';
 ///
 /// app = aws.pinpoint.App("app")
 /// test_stream = aws.kinesis.Stream("test_stream",
-///     name="pinpoint-kinesis-test",
-///     shard_count=1)
+///     stream_mode_details={
+///         "stream_mode": "ON_DEMAND",
+///     },
+///     name="pinpoint-kinesis-test")
 /// assume_role = aws.iam.get_policy_document(statements=[{
 ///     "principals": [{
 ///         "type": "Service",
@@ -96,8 +100,11 @@ import 'event_stream_state.dart';
 ///
 ///     var testStream = new Aws.Kinesis.Stream("test_stream", new()
 ///     {
+///         StreamModeDetails = new Aws.Kinesis.Inputs.StreamStreamModeDetailsArgs
+///         {
+///             StreamMode = "ON_DEMAND",
+///         },
 ///         Name = "pinpoint-kinesis-test",
-///         ShardCount = 1,
 ///     });
 ///
 ///     var assumeRole = Aws.Iam.GetPolicyDocument.Invoke(new()
@@ -184,8 +191,10 @@ import 'event_stream_state.dart';
 /// 			return err
 /// 		}
 /// 		testStream, err := kinesis.NewStream(ctx, "test_stream", &kinesis.StreamArgs{
-/// 			Name:       pulumi.String("pinpoint-kinesis-test"),
-/// 			ShardCount: pulumi.Int(1),
+/// 			StreamModeDetails: &kinesis.StreamStreamModeDetailsArgs{
+/// 				StreamMode: pulumi.String("ON_DEMAND"),
+/// 			},
+/// 			Name: pulumi.String("pinpoint-kinesis-test"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -289,8 +298,10 @@ import 'event_stream_state.dart';
 /// resource "aws_pinpoint_app" "app" {
 /// }
 /// resource "aws_kinesis_stream" "test_stream" {
-///   name        = "pinpoint-kinesis-test"
-///   shard_count = 1
+///   stream_mode_details = {
+///     stream_mode = "ON_DEMAND"
+///   }
+///   name = "pinpoint-kinesis-test"
 /// }
 /// resource "aws_iam_role" "test_role" {
 ///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
@@ -310,6 +321,7 @@ import 'event_stream_state.dart';
 /// import com.pulumi.aws.pinpoint.App;
 /// import com.pulumi.aws.kinesis.Stream;
 /// import com.pulumi.aws.kinesis.StreamArgs;
+/// import com.pulumi.aws.kinesis.inputs.StreamStreamModeDetailsArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
@@ -336,8 +348,10 @@ import 'event_stream_state.dart';
 ///         var app = new App("app");
 ///
 ///         var testStream = new Stream("testStream", StreamArgs.builder()
+///             .streamModeDetails(StreamStreamModeDetailsArgs.builder()
+///                 .streamMode("ON_DEMAND")
+///                 .build())
 ///             .name("pinpoint-kinesis-test")
-///             .shardCount(1)
 ///             .build());
 ///
 ///         final var assumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
@@ -394,8 +408,9 @@ import 'event_stream_state.dart';
 ///     type: aws:kinesis:Stream
 ///     name: test_stream
 ///     properties:
+///       streamModeDetails:
+///         streamMode: ON_DEMAND
 ///       name: pinpoint-kinesis-test
-///       shardCount: 1
 ///   testRole:
 ///     type: aws:iam:Role
 ///     name: test_role
@@ -464,7 +479,7 @@ class EventStream extends pulumi.CustomResource {
           'aws:pinpoint/eventStream:EventStream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     destinationStreamArn = registerOutput<String>('destinationStreamArn');

@@ -134,7 +134,7 @@ class ClusterIamRoles extends pulumi.CustomResource {
   late final pulumi.Output<String> clusterIdentifier;
   /// ARN for the IAM role that was set as default for the cluster when the cluster was created.
   late final pulumi.Output<String> defaultIamRoleArn;
-  /// A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
+  /// A list of IAM Role ARNs to associate with the cluster. A maximum of 50 (or 10 in ISO regions) can be associated with the cluster at any time.
   late final pulumi.Output<List<String>> iamRoleArns;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -151,7 +151,7 @@ class ClusterIamRoles extends pulumi.CustomResource {
           'aws:redshift/clusterIamRoles:ClusterIamRoles',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     clusterIdentifier = registerOutput<String>('clusterIdentifier');
     defaultIamRoleArn = registerOutput<String>('defaultIamRoleArn');

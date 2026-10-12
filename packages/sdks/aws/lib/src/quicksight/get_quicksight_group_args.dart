@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQuicksightGroupArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String?>? awsAccountId;
-  /// The name of the group that you want to match.
+  /// Name of the group that you want to match.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> groupName;
@@ -20,7 +20,7 @@ class GetQuicksightGroupArgs {
 
   /// Creates a new [GetQuicksightGroupArgs].
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  /// [groupName] The name of the group that you want to match.
+  /// [groupName] Name of the group that you want to match.
   /// [namespace] QuickSight namespace. Defaults to `default`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetQuicksightGroupArgs({

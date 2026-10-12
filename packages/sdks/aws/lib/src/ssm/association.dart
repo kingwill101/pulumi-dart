@@ -1825,7 +1825,7 @@ class Association extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
   late final pulumi.Output<List<AssociationTarget>> targets;
-  /// The number of seconds to wait for the association status to be `Success`. If `Success` status is not reached within the given time, create opration will fail.
+  /// The number of seconds to wait for the association status to be `Success`. If `Success` status is not reached within the given time, create operation will fail.
   ///
   /// Output Location (`outputLocation`) is an S3 bucket where you want to store the results of this association:
   late final pulumi.Output<int?> waitForSuccessTimeoutSeconds;
@@ -1842,7 +1842,7 @@ class Association extends pulumi.CustomResource {
           'aws:ssm/association:Association',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     applyOnlyAtCronInterval = registerOutput<bool?>('applyOnlyAtCronInterval');
     arn = registerOutput<String>('arn');

@@ -3,12 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WebAclRuleStatementRateBasedStatementForwardedIpConfig {
+  /// Action to take when the IP address in the header is invalid. Valid values: `MATCH`, `NO_MATCH`.
   final pulumi.Input<String> fallbackBehavior;
   /// Name of the header containing the forwarded IP address.
   final pulumi.Input<String> headerName;
 
   /// Creates a new [WebAclRuleStatementRateBasedStatementForwardedIpConfig].
-  /// [fallbackBehavior] Required.
+  /// [fallbackBehavior] Action to take when the IP address in the header is invalid. Valid values: `MATCH`, `NO_MATCH`.
   /// [headerName] Name of the header containing the forwarded IP address.
   const WebAclRuleStatementRateBasedStatementForwardedIpConfig({
     required this.fallbackBehavior,

@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'budget_auto_adjust_data_historical_options.dart';
 
 class BudgetAutoAdjustData {
-  /// (Required) - The string that defines whether your budget auto-adjusts based on historical or forecasted data. Valid values: `FORECAST`,`HISTORICAL`
+  /// Whether your budget auto-adjusts based on historical or forecasted data. Valid values: `FORECAST`, `HISTORICAL`.
   final pulumi.Input<String> autoAdjustType;
-  /// (Optional) - Configuration block of Historical Options. Required for `autoAdjustType` of `HISTORICAL` Configuration block that defines the historical data that your auto-adjusting budget is based on.
+  /// Configuration block of Historical Options. Required for `autoAdjustType` of `HISTORICAL`. Defines the historical data that your auto-adjusting budget is based on.
   final pulumi.Input<BudgetAutoAdjustDataHistoricalOptions?>? historicalOptions;
-  /// (Optional) - The last time that your budget was auto-adjusted.
+  /// Last time that your budget was auto-adjusted.
   final pulumi.Input<String?>? lastAutoAdjustTime;
 
   /// Creates a new [BudgetAutoAdjustData].
-  /// [autoAdjustType] (Required) - The string that defines whether your budget auto-adjusts based on historical or forecasted data. Valid values: `FORECAST`,`HISTORICAL`
-  /// [historicalOptions] (Optional) - Configuration block of Historical Options. Required for `autoAdjustType` of `HISTORICAL` Configuration block that defines the historical data that your auto-adjusting budget is based on.
-  /// [lastAutoAdjustTime] (Optional) - The last time that your budget was auto-adjusted.
+  /// [autoAdjustType] Whether your budget auto-adjusts based on historical or forecasted data. Valid values: `FORECAST`, `HISTORICAL`.
+  /// [historicalOptions] Configuration block of Historical Options. Required for `autoAdjustType` of `HISTORICAL`. Defines the historical data that your auto-adjusting budget is based on.
+  /// [lastAutoAdjustTime] Last time that your budget was auto-adjusted.
   const BudgetAutoAdjustData({
     required this.autoAdjustType,
     this.historicalOptions,

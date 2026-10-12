@@ -7,46 +7,46 @@ import 'vpc_connection_timeouts.dart';
 class VpcConnectionState {
   /// ARN of the VPC connection.
   final pulumi.Input<String?>? arn;
-  /// The availability status of the VPC connection. Valid values are `AVAILABLE`, `UNAVAILABLE` or `PARTIALLY_AVAILABLE`.
+  /// Availability status of the VPC connection. Valid values are `AVAILABLE`, `UNAVAILABLE` or `PARTIALLY_AVAILABLE`.
   final pulumi.Input<String?>? availabilityStatus;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String?>? awsAccountId;
-  /// A list of IP addresses of DNS resolver endpoints for the VPC connection.
+  /// List of IP addresses of DNS resolver endpoints for the VPC connection.
   final pulumi.Input<List<String>?>? dnsResolvers;
-  /// The display name for the VPC connection.
+  /// Display name for the VPC connection.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The IAM role to associate with the VPC connection.
+  /// IAM role to associate with the VPC connection.
   final pulumi.Input<String?>? roleArn;
-  /// A list of security group IDs for the VPC connection.
+  /// List of security group IDs for the VPC connection.
   final pulumi.Input<List<String>?>? securityGroupIds;
-  /// A list of subnet IDs for the VPC connection.
-  ///
-  /// The following arguments are optional:
+  /// List of subnet IDs for the VPC connection.
   final pulumi.Input<List<String>?>? subnetIds;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
   final pulumi.Input<VpcConnectionTimeouts?>? timeouts;
-  /// The ID of the VPC connection.
+  /// ID of the VPC connection.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String?>? vpcConnectionId;
 
   /// Creates a new [VpcConnectionState].
   /// [arn] ARN of the VPC connection.
-  /// [availabilityStatus] The availability status of the VPC connection. Valid values are `AVAILABLE`, `UNAVAILABLE` or `PARTIALLY_AVAILABLE`.
+  /// [availabilityStatus] Availability status of the VPC connection. Valid values are `AVAILABLE`, `UNAVAILABLE` or `PARTIALLY_AVAILABLE`.
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  /// [dnsResolvers] A list of IP addresses of DNS resolver endpoints for the VPC connection.
-  /// [name] The display name for the VPC connection.
+  /// [dnsResolvers] List of IP addresses of DNS resolver endpoints for the VPC connection.
+  /// [name] Display name for the VPC connection.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [roleArn] The IAM role to associate with the VPC connection.
-  /// [securityGroupIds] A list of security group IDs for the VPC connection.
-  /// [subnetIds] A list of subnet IDs for the VPC connection.
+  /// [roleArn] IAM role to associate with the VPC connection.
+  /// [securityGroupIds] List of security group IDs for the VPC connection.
+  /// [subnetIds] List of subnet IDs for the VPC connection.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
-  /// [vpcConnectionId] The ID of the VPC connection.
+  /// [vpcConnectionId] ID of the VPC connection.
   const VpcConnectionState({
     this.arn,
     this.availabilityStatus,

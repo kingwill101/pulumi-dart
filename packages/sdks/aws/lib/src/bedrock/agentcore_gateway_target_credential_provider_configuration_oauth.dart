@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreGatewayTargetCredentialProviderConfigurationOauth {
   /// Map of custom parameters to include in OAuth requests.
   final pulumi.Input<Map<String, String>?>? customParameters;
-  /// The URL where the end user's browser is redirected after obtaining the authorization code. Required when `grantType` is `AUTHORIZATION_CODE`.
+  /// URL where the end user's browser is redirected after obtaining the authorization code. Required when `grantType` is `AUTHORIZATION_CODE`.
   final pulumi.Input<String?>? defaultReturnUrl;
-  /// The OAuth grant type. Valid values: `CLIENT_CREDENTIALS` (machine-to-machine authentication), `AUTHORIZATION_CODE` (user-delegated access).
+  /// OAuth grant type. Valid values: `CLIENT_CREDENTIALS` (machine-to-machine authentication), `AUTHORIZATION_CODE` (user-delegated access).
   final pulumi.Input<String?>? grantType;
   /// ARN of the Oauth credential provider for OAuth authentication.
   final pulumi.Input<String> providerArn;
@@ -16,8 +16,8 @@ class AgentcoreGatewayTargetCredentialProviderConfigurationOauth {
 
   /// Creates a new [AgentcoreGatewayTargetCredentialProviderConfigurationOauth].
   /// [customParameters] Map of custom parameters to include in OAuth requests.
-  /// [defaultReturnUrl] The URL where the end user's browser is redirected after obtaining the authorization code. Required when `grantType` is `AUTHORIZATION_CODE`.
-  /// [grantType] The OAuth grant type. Valid values: `CLIENT_CREDENTIALS` (machine-to-machine authentication), `AUTHORIZATION_CODE` (user-delegated access).
+  /// [defaultReturnUrl] URL where the end user's browser is redirected after obtaining the authorization code. Required when `grantType` is `AUTHORIZATION_CODE`.
+  /// [grantType] OAuth grant type. Valid values: `CLIENT_CREDENTIALS` (machine-to-machine authentication), `AUTHORIZATION_CODE` (user-delegated access).
   /// [providerArn] ARN of the Oauth credential provider for OAuth authentication.
   /// [scopes] Set of OAuth scopes to request.
   const AgentcoreGatewayTargetCredentialProviderConfigurationOauth({

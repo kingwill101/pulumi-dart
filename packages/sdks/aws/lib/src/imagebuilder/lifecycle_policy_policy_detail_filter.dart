@@ -37,10 +37,10 @@ class LifecyclePolicyPolicyDetailFilter {
 
   factory LifecyclePolicyPolicyDetailFilter.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailFilter(
-      retainAtLeast: (() { final guardedValue = map['retainAtLeast']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retainAtLeast: (() { final guardedValue = map['retainAtLeast']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
+      value: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['value'])),
     );
   }
 }

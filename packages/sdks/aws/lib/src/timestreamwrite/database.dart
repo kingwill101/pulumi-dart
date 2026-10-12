@@ -243,19 +243,19 @@ import 'database_state.dart';
 /// $ pulumi import aws:timestreamwrite/database:Database example example
 /// ```
 class Database extends pulumi.CustomResource {
-  /// The ARN that uniquely identifies this database.
+  /// ARN that uniquely identifies this database.
   late final pulumi.Output<String> arn;
-  /// The name of the Timestream database. Minimum length of 3. Maximum length of 64.
+  /// Name of the Timestream database. Minimum length of 3. Maximum length of 64.
   late final pulumi.Output<String> databaseName;
-  /// The ARN (not Alias ARN) of the KMS key to be used to encrypt the data stored in the database. If the KMS key is not specified, the database will be encrypted with a Timestream managed KMS key located in your account. Refer to [AWS managed KMS keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk) for more info.
+  /// ARN (not Alias ARN) of the KMS key to be used to encrypt the data stored in the database. If the KMS key is not specified, the database will be encrypted with a Timestream managed KMS key located in your account. Refer to [AWS managed KMS keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk) for more info.
   late final pulumi.Output<String> kmsKeyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The total number of tables found within the Timestream database.
+  /// Total number of tables found within the Timestream database.
   late final pulumi.Output<int> tableCount;
   /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Database].
@@ -270,7 +270,7 @@ class Database extends pulumi.CustomResource {
           'aws:timestreamwrite/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     databaseName = registerOutput<String>('databaseName');

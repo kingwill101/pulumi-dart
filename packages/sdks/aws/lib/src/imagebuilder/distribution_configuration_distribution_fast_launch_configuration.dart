@@ -45,7 +45,7 @@ class DistributionConfigurationDistributionFastLaunchConfiguration {
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       launchTemplate: (() { final guardedValue = map['launchTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxParallelLaunches: (() { final guardedValue = map['maxParallelLaunches']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxParallelLaunches: (() { final guardedValue = map['maxParallelLaunches']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       snapshotConfiguration: (() { final guardedValue = map['snapshotConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

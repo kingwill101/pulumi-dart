@@ -5,14 +5,14 @@ import 'index_user_token_configurations_json_token_type_configuration.dart';
 import 'index_user_token_configurations_jwt_token_type_configuration.dart';
 
 class IndexUserTokenConfigurations {
-  /// A block that specifies the information about the JSON token type configuration. Detailed below.
+  /// Block that specifies the information about the JSON token type configuration. Detailed below.
   final pulumi.Input<IndexUserTokenConfigurationsJsonTokenTypeConfiguration?>? jsonTokenTypeConfiguration;
-  /// A block that specifies the information about the JWT token type configuration. Detailed below.
+  /// Block that specifies the information about the JWT token type configuration. Detailed below.
   final pulumi.Input<IndexUserTokenConfigurationsJwtTokenTypeConfiguration?>? jwtTokenTypeConfiguration;
 
   /// Creates a new [IndexUserTokenConfigurations].
-  /// [jsonTokenTypeConfiguration] A block that specifies the information about the JSON token type configuration. Detailed below.
-  /// [jwtTokenTypeConfiguration] A block that specifies the information about the JWT token type configuration. Detailed below.
+  /// [jsonTokenTypeConfiguration] Block that specifies the information about the JSON token type configuration. Detailed below.
+  /// [jwtTokenTypeConfiguration] Block that specifies the information about the JWT token type configuration. Detailed below.
   const IndexUserTokenConfigurations({
     this.jsonTokenTypeConfiguration,
     this.jwtTokenTypeConfiguration,

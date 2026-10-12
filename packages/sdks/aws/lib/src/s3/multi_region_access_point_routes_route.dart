@@ -32,7 +32,7 @@ class MultiRegionAccessPointRoutesRoute {
     return MultiRegionAccessPointRoutesRoute(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
       region: pulumi.Input.fromValue(map['region'] as String),
-      trafficDialPercentage: pulumi.Input.fromValue((map['trafficDialPercentage'] as num).toInt()),
+      trafficDialPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['trafficDialPercentage'])),
     );
   }
 }

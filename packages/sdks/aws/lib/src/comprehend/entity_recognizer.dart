@@ -318,7 +318,7 @@ class EntityRecognizer extends pulumi.CustomResource {
   late final pulumi.Output<String?> modelKmsKeyId;
   /// Name for the Entity Recognizer.
   /// Has a maximum length of 63 characters.
-  /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
+  /// Can contain upper- and lower-case letters, numbers, and hyphen (`-`).
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
@@ -333,12 +333,12 @@ class EntityRecognizer extends pulumi.CustomResource {
   /// If omitted, the provider will assign a random, unique version name.
   /// If explicitly set to `""`, no version name will be set.
   /// Has a maximum length of 63 characters.
-  /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
+  /// Can contain upper- and lower-case letters, numbers, and hyphen (`-`).
   /// Conflicts with `versionNamePrefix`.
   late final pulumi.Output<String> versionName;
   /// Creates a unique version name beginning with the specified prefix.
   /// Has a maximum length of 37 characters.
-  /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
+  /// Can contain upper- and lower-case letters, numbers, and hyphen (`-`).
   /// Conflicts with `versionName`.
   late final pulumi.Output<String> versionNamePrefix;
   /// ID or ARN of a KMS Key used to encrypt storage volumes during job processing.
@@ -359,7 +359,7 @@ class EntityRecognizer extends pulumi.CustomResource {
           'aws:comprehend/entityRecognizer:EntityRecognizer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');

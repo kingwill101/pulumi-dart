@@ -5288,6 +5288,250 @@ import 'firehose_delivery_stream_state.dart';
 /// ```
 ///
 ///
+/// ### Data Format Conversion
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.kinesis.FirehoseDeliveryStream("example", {extendedS3Configuration: {
+///     dataFormatConversionConfiguration: {
+///         inputFormatConfiguration: {
+///             deserializer: {
+///                 hiveJsonSerDe: {},
+///             },
+///         },
+///         outputFormatConfiguration: {
+///             serializer: {
+///                 orcSerDe: {},
+///             },
+///         },
+///         schemaConfiguration: {
+///             databaseName: exampleAwsGlueCatalogTable.databaseName,
+///             roleArn: exampleAwsIamRole.arn,
+///             tableName: exampleAwsGlueCatalogTable.name,
+///         },
+///     },
+///     bufferingSize: 128,
+/// }});
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.kinesis.FirehoseDeliveryStream("example", extended_s3_configuration={
+///     "data_format_conversion_configuration": {
+///         "input_format_configuration": {
+///             "deserializer": {
+///                 "hive_json_ser_de": {},
+///             },
+///         },
+///         "output_format_configuration": {
+///             "serializer": {
+///                 "orc_ser_de": {},
+///             },
+///         },
+///         "schema_configuration": {
+///             "database_name": example_aws_glue_catalog_table["databaseName"],
+///             "role_arn": example_aws_iam_role["arn"],
+///             "table_name": example_aws_glue_catalog_table["name"],
+///         },
+///     },
+///     "buffering_size": 128,
+/// })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Kinesis.FirehoseDeliveryStream("example", new()
+///     {
+///         ExtendedS3Configuration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationArgs
+///         {
+///             DataFormatConversionConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationArgs
+///             {
+///                 InputFormatConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationArgs
+///                 {
+///                     Deserializer = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerArgs
+///                     {
+///                         HiveJsonSerDe = null,
+///                     },
+///                 },
+///                 OutputFormatConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationArgs
+///                 {
+///                     Serializer = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerArgs
+///                     {
+///                         OrcSerDe = null,
+///                     },
+///                 },
+///                 SchemaConfiguration = new Aws.Kinesis.Inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationArgs
+///                 {
+///                     DatabaseName = exampleAwsGlueCatalogTable.DatabaseName,
+///                     RoleArn = exampleAwsIamRole.Arn,
+///                     TableName = exampleAwsGlueCatalogTable.Name,
+///                 },
+///             },
+///             BufferingSize = 128,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/kinesis"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := kinesis.NewFirehoseDeliveryStream(ctx, "example", &kinesis.FirehoseDeliveryStreamArgs{
+/// 			ExtendedS3Configuration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationArgs{
+/// 				DataFormatConversionConfiguration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationArgs{
+/// 					InputFormatConfiguration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationArgs{
+/// 						Deserializer: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerArgs{
+/// 							HiveJsonSerDe: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeArgs{},
+/// 						},
+/// 					},
+/// 					OutputFormatConfiguration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationArgs{
+/// 						Serializer: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerArgs{
+/// 							OrcSerDe: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeArgs{},
+/// 						},
+/// 					},
+/// 					SchemaConfiguration: &kinesis.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationArgs{
+/// 						DatabaseName: pulumi.Any(exampleAwsGlueCatalogTable.DatabaseName),
+/// 						RoleArn:      pulumi.Any(exampleAwsIamRole.Arn),
+/// 						TableName:    pulumi.Any(exampleAwsGlueCatalogTable.Name),
+/// 					},
+/// 				},
+/// 				BufferingSize: pulumi.Int(128),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_kinesis_firehosedeliverystream" "example" {
+///   extended_s3_configuration = {
+///     data_format_conversion_configuration = {
+///       input_format_configuration = {
+///         deserializer = {
+///           hive_json_ser_de = {}
+///         }
+///       }
+///       output_format_configuration = {
+///         serializer = {
+///           orc_ser_de = {}
+///         }
+///       }
+///       schema_configuration = {
+///         database_name = exampleAwsGlueCatalogTable.databaseName
+///         role_arn      = exampleAwsIamRole.arn
+///         table_name    = exampleAwsGlueCatalogTable.name
+///       }
+///     }
+///     buffering_size = 128
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.kinesis.FirehoseDeliveryStream;
+/// import com.pulumi.aws.kinesis.FirehoseDeliveryStreamArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeArgs;
+/// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new FirehoseDeliveryStream("example", FirehoseDeliveryStreamArgs.builder()
+///             .extendedS3Configuration(FirehoseDeliveryStreamExtendedS3ConfigurationArgs.builder()
+///                 .dataFormatConversionConfiguration(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationArgs.builder()
+///                     .inputFormatConfiguration(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationArgs.builder()
+///                         .deserializer(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerArgs.builder()
+///                             .hiveJsonSerDe(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeArgs.builder()
+///                                 .build())
+///                             .build())
+///                         .build())
+///                     .outputFormatConfiguration(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationArgs.builder()
+///                         .serializer(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerArgs.builder()
+///                             .orcSerDe(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeArgs.builder()
+///                                 .build())
+///                             .build())
+///                         .build())
+///                     .schemaConfiguration(FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationArgs.builder()
+///                         .databaseName(exampleAwsGlueCatalogTable.databaseName())
+///                         .roleArn(exampleAwsIamRole.arn())
+///                         .tableName(exampleAwsGlueCatalogTable.name())
+///                         .build())
+///                     .build())
+///                 .bufferingSize(128)
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:kinesis:FirehoseDeliveryStream
+///     properties:
+///       extendedS3Configuration:
+///         dataFormatConversionConfiguration:
+///           inputFormatConfiguration:
+///             deserializer:
+///               hiveJsonSerDe: {}
+///           outputFormatConfiguration:
+///             serializer:
+///               orcSerDe: {}
+///           schemaConfiguration:
+///             databaseName: ${exampleAwsGlueCatalogTable.databaseName}
+///             roleArn: ${exampleAwsIamRole.arn}
+///             tableName: ${exampleAwsGlueCatalogTable.name}
+///         bufferingSize: 128
+/// ```
+///
+///
 /// ## Import
 ///
 /// ### Identity Schema
@@ -5307,8 +5551,9 @@ import 'firehose_delivery_stream_state.dart';
 class FirehoseDeliveryStream extends pulumi.CustomResource {
   /// ARN specifying the Stream
   late final pulumi.Output<String> arn;
-  /// This is the destination to where the data is delivered. The only options are `s3` (Deprecated, use `extendedS3` instead), `extendedS3`, `redshift`, `elasticsearch`, `splunk`, `httpEndpoint`, `opensearch`, `opensearchserverless` and `snowflake`.
+  /// Destination where the data is delivered. The only options are `s3` (Deprecated, use `extendedS3` instead), `extendedS3`, `redshift`, `elasticsearch`, `splunk`, `httpEndpoint`, `opensearch`, `opensearchserverless` and `snowflake`.
   late final pulumi.Output<String> destination;
+  /// Identifier of the destination for the delivery stream.
   late final pulumi.Output<String> destinationId;
   /// Configuration options when `destination` is `elasticsearch`. See `elasticsearchConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamElasticsearchConfiguration?> elasticsearchConfiguration;
@@ -5320,9 +5565,9 @@ class FirehoseDeliveryStream extends pulumi.CustomResource {
   late final pulumi.Output<FirehoseDeliveryStreamIcebergConfiguration?> icebergConfiguration;
   /// Stream and role ARNs for a Kinesis data stream used as the source for a delivery stream. See `kinesisSourceConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamKinesisSourceConfiguration?> kinesisSourceConfiguration;
-  /// The configuration for the Amazon MSK cluster to be used as the source for a delivery stream. See `mskSourceConfiguration` block below for details.
+  /// Configuration for the Amazon MSK cluster to be used as the source for a delivery stream. See `mskSourceConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamMskSourceConfiguration?> mskSourceConfiguration;
-  /// A name to identify the stream. This is unique to the AWS account and region the Stream is created in. When using for WAF logging, name must be prefixed with `aws-waf-logs-`. See [AWS Documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-policies.html#waf-policies-logging-config) for more details.
+  /// Name to identify the stream. This is unique to the AWS account and region the Stream is created in. When using for WAF logging, name must be prefixed with `aws-waf-logs-`. See [AWS Documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-policies.html#waf-policies-logging-config) for more details.
   late final pulumi.Output<String> name;
   /// Configuration options when `destination` is `opensearch`. See `opensearchConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamOpensearchConfiguration?> opensearchConfiguration;
@@ -5337,13 +5582,14 @@ class FirehoseDeliveryStream extends pulumi.CustomResource {
   /// Configuration options when `destination` is `snowflake`. See `snowflakeConfiguration` block below for details.
   late final pulumi.Output<FirehoseDeliveryStreamSnowflakeConfiguration?> snowflakeConfiguration;
   /// Configuration options when `destination` is `splunk`. See `splunkConfiguration` block below for details.
-  ///
-  /// **NOTE:** Server-side encryption should not be enabled when a kinesis stream is configured as the source of the firehose delivery stream.
   late final pulumi.Output<FirehoseDeliveryStreamSplunkConfiguration?> splunkConfiguration;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+  /// Version identifier of the delivery stream.
+  ///
+  /// &gt; **NOTE:** Server-side encryption should not be enabled when a kinesis stream is configured as the source of the firehose delivery stream.
   late final pulumi.Output<String> versionId;
 
   /// Creates a new [FirehoseDeliveryStream].
@@ -5358,7 +5604,7 @@ class FirehoseDeliveryStream extends pulumi.CustomResource {
           'aws:kinesis/firehoseDeliveryStream:FirehoseDeliveryStream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destination = registerOutput<String>('destination');

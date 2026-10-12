@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableComment {
-  /// A description of the table.
+  /// Description of the table.
   final pulumi.Input<String?>? message;
 
   /// Creates a new [TableComment].
-  /// [message] A description of the table.
+  /// [message] Description of the table.
   const TableComment({
     this.message,
   });

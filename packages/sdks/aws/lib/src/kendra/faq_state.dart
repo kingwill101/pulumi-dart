@@ -7,50 +7,56 @@ import 'faq_s3_path.dart';
 class FaqState {
   /// ARN of the FAQ.
   final pulumi.Input<String?>? arn;
-  /// The Unix datetime that the FAQ was created.
+  /// Unix datetime that the FAQ was created.
   final pulumi.Input<String?>? createdAt;
+  /// Description for a FAQ.
   final pulumi.Input<String?>? description;
   /// When the Status field value is `FAILED`, this contains a message that explains why.
   final pulumi.Input<String?>? errorMessage;
-  /// The identifier of the FAQ.
+  /// Identifier of the FAQ.
   final pulumi.Input<String?>? faqId;
+  /// File format used by the input files for the FAQ. Valid Values are `CSV`, `CSV_WITH_HEADER`, `JSON`.
   final pulumi.Input<String?>? fileFormat;
-  /// The identifier of the index for a FAQ.
+  /// Identifier of the index for a FAQ.
   final pulumi.Input<String?>? indexId;
+  /// Code for a language. This shows a supported language for the FAQ document. English is supported by default. For more information on supported languages, including their codes, see [Adding documents in languages other than English](https://docs.aws.amazon.com/kendra/latest/dg/in-adding-languages.html).
   final pulumi.Input<String?>? languageCode;
-  /// The name that should be associated with the FAQ.
+  /// Name that should be associated with the FAQ.
   final pulumi.Input<String?>? name;
-  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// ARN of a role with permission to access the S3 bucket that contains the FAQs. For more information, see [IAM Roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
   final pulumi.Input<String?>? roleArn;
-  /// The S3 location of the FAQ input data. Detailed below.
+  /// S3 location of the FAQ input data. Detailed below.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<FaqS3Path?>? s3Path;
-  /// The status of the FAQ. It is ready to use when the status is ACTIVE.
+  /// Status of the FAQ. It is ready to use when the status is ACTIVE.
   final pulumi.Input<String?>? status;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
-  /// The date and time that the FAQ was last updated.
+  /// Date and time that the FAQ was last updated.
   final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [FaqState].
   /// [arn] ARN of the FAQ.
-  /// [createdAt] The Unix datetime that the FAQ was created.
-  /// [description] Optional.
+  /// [createdAt] Unix datetime that the FAQ was created.
+  /// [description] Description for a FAQ.
   /// [errorMessage] When the Status field value is `FAILED`, this contains a message that explains why.
-  /// [faqId] The identifier of the FAQ.
-  /// [fileFormat] Optional.
-  /// [indexId] The identifier of the index for a FAQ.
-  /// [languageCode] Optional.
-  /// [name] The name that should be associated with the FAQ.
-  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+  /// [faqId] Identifier of the FAQ.
+  /// [fileFormat] File format used by the input files for the FAQ. Valid Values are `CSV`, `CSV_WITH_HEADER`, `JSON`.
+  /// [indexId] Identifier of the index for a FAQ.
+  /// [languageCode] Code for a language. This shows a supported language for the FAQ document. English is supported by default. For more information on supported languages, including their codes, see [Adding documents in languages other than English](https://docs.aws.amazon.com/kendra/latest/dg/in-adding-languages.html).
+  /// [name] Name that should be associated with the FAQ.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of a role with permission to access the S3 bucket that contains the FAQs. For more information, see [IAM Roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
-  /// [s3Path] The S3 location of the FAQ input data. Detailed below.
-  /// [status] The status of the FAQ. It is ready to use when the status is ACTIVE.
-  /// [tags] Optional.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [updatedAt] The date and time that the FAQ was last updated.
+  /// [s3Path] S3 location of the FAQ input data. Detailed below.
+  /// [status] Status of the FAQ. It is ready to use when the status is ACTIVE.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [updatedAt] Date and time that the FAQ was last updated.
   const FaqState({
     this.arn,
     this.createdAt,

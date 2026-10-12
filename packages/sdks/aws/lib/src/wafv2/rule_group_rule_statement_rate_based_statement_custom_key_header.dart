@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_statement_rate_based_statement_custom_key_header_text_transformation.dart';
 
 class RuleGroupRuleStatementRateBasedStatementCustomKeyHeader {
-  /// A friendly name of the rule group.
+  /// The name of the header to use.
   final pulumi.Input<String> name;
-  /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. They are used in rate-based rule statements, to transform request components before using them as custom aggregation keys. Atleast one transformation is required. See Text Transformation above for details.
+  /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. They are used in rate-based rule statements, to transform request components before using them as custom aggregation keys. Atleast one transformation is required.  See Text Transformation above for details.
   final pulumi.Input<List<RuleGroupRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation>> textTransformations;
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementCustomKeyHeader].
-  /// [name] A friendly name of the rule group.
-  /// [textTransformations] Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. They are used in rate-based rule statements, to transform request components before using them as custom aggregation keys. Atleast one transformation is required. See Text Transformation above for details.
+  /// [name] The name of the header to use.
+  /// [textTransformations] Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. They are used in rate-based rule statements, to transform request components before using them as custom aggregation keys. Atleast one transformation is required.  See Text Transformation above for details.
   const RuleGroupRuleStatementRateBasedStatementCustomKeyHeader({
     required this.name,
     required this.textTransformations,

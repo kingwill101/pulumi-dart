@@ -3,14 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsApplicationOutputLambda {
-  /// The ARN of the Lambda function.
   final pulumi.Input<String> resourceArn;
-  /// The ARN of the IAM Role used to access the Lambda function.
   final pulumi.Input<String> roleArn;
 
   /// Creates a new [AnalyticsApplicationOutputLambda].
-  /// [resourceArn] The ARN of the Lambda function.
-  /// [roleArn] The ARN of the IAM Role used to access the Lambda function.
+  /// [resourceArn] Required.
+  /// [roleArn] Required.
   const AnalyticsApplicationOutputLambda({
     required this.resourceArn,
     required this.roleArn,

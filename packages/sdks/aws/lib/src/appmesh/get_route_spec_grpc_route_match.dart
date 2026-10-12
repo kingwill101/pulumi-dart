@@ -38,7 +38,7 @@ class GetRouteSpecGrpcRouteMatch {
     return GetRouteSpecGrpcRouteMatch(
       metadatas: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRouteSpecGrpcRouteMatchMetadata>(map['metadatas']!, (value) => GetRouteSpecGrpcRouteMatchMetadata.fromMap((value as Map).cast<String, dynamic>()))),
       methodName: pulumi.Input.fromValue(map['methodName'] as String),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );

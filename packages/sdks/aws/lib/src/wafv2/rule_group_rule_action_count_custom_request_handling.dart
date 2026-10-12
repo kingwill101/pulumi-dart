@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_action_count_custom_request_handling_insert_header.dart';
 
 class RuleGroupRuleActionCountCustomRequestHandling {
-  /// The `insertHeader` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
+  /// `insertHeader` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
   final pulumi.Input<List<RuleGroupRuleActionCountCustomRequestHandlingInsertHeader>> insertHeaders;
 
   /// Creates a new [RuleGroupRuleActionCountCustomRequestHandling].
-  /// [insertHeaders] The `insertHeader` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
+  /// [insertHeaders] `insertHeader` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
   const RuleGroupRuleActionCountCustomRequestHandling({
     required this.insertHeaders,
   });

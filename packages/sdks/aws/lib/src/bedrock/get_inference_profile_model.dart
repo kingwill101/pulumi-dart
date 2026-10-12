@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInferenceProfileModel {
-  /// The ARN of the model.
+  /// ARN of the model.
   final pulumi.Input<String> modelArn;
 
   /// Creates a new [GetInferenceProfileModel].
-  /// [modelArn] The ARN of the model.
+  /// [modelArn] ARN of the model.
   const GetInferenceProfileModel({
     required this.modelArn,
   });

@@ -5,14 +5,14 @@ import 'get_theme_configuration_sheet_tile.dart';
 import 'get_theme_configuration_sheet_tile_layout.dart';
 
 class GetThemeConfigurationSheet {
-  /// The layout options for tiles. See tile_layout.
+  /// Layout options for tiles. See tile_layout.
   final pulumi.Input<List<GetThemeConfigurationSheetTileLayout>> tileLayouts;
-  /// The display options for tiles. See tile.
+  /// Display options for tiles. See tile.
   final pulumi.Input<List<GetThemeConfigurationSheetTile>> tiles;
 
   /// Creates a new [GetThemeConfigurationSheet].
-  /// [tileLayouts] The layout options for tiles. See tile_layout.
-  /// [tiles] The display options for tiles. See tile.
+  /// [tileLayouts] Layout options for tiles. See tile_layout.
+  /// [tiles] Display options for tiles. See tile.
   const GetThemeConfigurationSheet({
     required this.tileLayouts,
     required this.tiles,

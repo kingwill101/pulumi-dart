@@ -126,7 +126,7 @@ class FileSystemState {
       kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lifecyclePolicies: (() { final guardedValue = map['lifecyclePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FileSystemLifecyclePolicy>(guardedValue, (value) => FileSystemLifecyclePolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numberOfMountTargets: (() { final guardedValue = map['numberOfMountTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numberOfMountTargets: (() { final guardedValue = map['numberOfMountTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ownerId: (() { final guardedValue = map['ownerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       performanceMode: (() { final guardedValue = map['performanceMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protection: (() { final guardedValue = map['protection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FileSystemProtection.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

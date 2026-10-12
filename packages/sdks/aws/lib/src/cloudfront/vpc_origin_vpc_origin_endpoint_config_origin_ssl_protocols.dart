@@ -24,7 +24,7 @@ class VpcOriginVpcOriginEndpointConfigOriginSslProtocols {
   factory VpcOriginVpcOriginEndpointConfigOriginSslProtocols.fromMap(Map<String, dynamic> map) {
     return VpcOriginVpcOriginEndpointConfigOriginSslProtocols(
       items: pulumi.Input.fromValue((map['items'] as List).cast<String>()),
-      quantity: pulumi.Input.fromValue((map['quantity'] as num).toInt()),
+      quantity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['quantity'])),
     );
   }
 }

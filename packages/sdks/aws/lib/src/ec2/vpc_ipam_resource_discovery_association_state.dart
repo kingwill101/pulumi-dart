@@ -8,37 +8,37 @@ class VpcIpamResourceDiscoveryAssociationState {
   final pulumi.Input<String?>? arn;
   /// ARN of the IPAM.
   final pulumi.Input<String?>? ipamArn;
-  /// The ID of the IPAM to associate.
+  /// ID of the IPAM to associate.
   final pulumi.Input<String?>? ipamId;
-  /// The home region of the IPAM.
+  /// Home region of the IPAM.
   final pulumi.Input<String?>? ipamRegion;
-  /// The ID of the Resource Discovery to associate.
+  /// ID of the Resource Discovery to associate.
   final pulumi.Input<String?>? ipamResourceDiscoveryId;
-  /// A boolean to identify if the Resource Discovery is the accounts default resource discovery.
+  /// Boolean to identify if the Resource Discovery is the accounts default resource discovery.
   final pulumi.Input<bool?>? isDefault;
-  /// The account ID for the account that manages the Resource Discovery
+  /// Account ID for the account that manages the Resource Discovery
   final pulumi.Input<String?>? ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The lifecycle state of the association when you associate or disassociate a resource discovery.
+  /// Lifecycle state of the association when you associate or disassociate a resource discovery.
   final pulumi.Input<String?>? state;
-  /// A map of tags to add to the IPAM resource discovery association resource.
+  /// Map of tags to add to the IPAM resource discovery association resource.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [VpcIpamResourceDiscoveryAssociationState].
   /// [arn] ARN of IPAM Resource Discovery Association.
   /// [ipamArn] ARN of the IPAM.
-  /// [ipamId] The ID of the IPAM to associate.
-  /// [ipamRegion] The home region of the IPAM.
-  /// [ipamResourceDiscoveryId] The ID of the Resource Discovery to associate.
-  /// [isDefault] A boolean to identify if the Resource Discovery is the accounts default resource discovery.
-  /// [ownerId] The account ID for the account that manages the Resource Discovery
+  /// [ipamId] ID of the IPAM to associate.
+  /// [ipamRegion] Home region of the IPAM.
+  /// [ipamResourceDiscoveryId] ID of the Resource Discovery to associate.
+  /// [isDefault] Boolean to identify if the Resource Discovery is the accounts default resource discovery.
+  /// [ownerId] Account ID for the account that manages the Resource Discovery
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [state] The lifecycle state of the association when you associate or disassociate a resource discovery.
-  /// [tags] A map of tags to add to the IPAM resource discovery association resource.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [state] Lifecycle state of the association when you associate or disassociate a resource discovery.
+  /// [tags] Map of tags to add to the IPAM resource discovery association resource.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const VpcIpamResourceDiscoveryAssociationState({
     this.arn,
     this.ipamArn,

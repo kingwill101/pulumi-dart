@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_code_interpreter_certificate_location.dart';
 
 class AgentcoreCodeInterpreterCertificate {
-  /// Location from which to retrieve the certificate. See `certificates.location` below.
+  /// Location from which to retrieve the certificate. See `certificate.location` below.
   final pulumi.Input<AgentcoreCodeInterpreterCertificateLocation> location;
 
   /// Creates a new [AgentcoreCodeInterpreterCertificate].
-  /// [location] Location from which to retrieve the certificate. See `certificates.location` below.
+  /// [location] Location from which to retrieve the certificate. See `certificate.location` below.
   const AgentcoreCodeInterpreterCertificate({
     required this.location,
   });

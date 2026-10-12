@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeSourceParametersActivemqBrokerParametersCredentials {
-  /// The ARN of the Secrets Manager secret containing the credentials.
+  /// ARN of the Secrets Manager secret containing the credentials.
   final pulumi.Input<String> basicAuth;
 
   /// Creates a new [PipeSourceParametersActivemqBrokerParametersCredentials].
-  /// [basicAuth] The ARN of the Secrets Manager secret containing the credentials.
+  /// [basicAuth] ARN of the Secrets Manager secret containing the credentials.
   const PipeSourceParametersActivemqBrokerParametersCredentials({
     required this.basicAuth,
   });

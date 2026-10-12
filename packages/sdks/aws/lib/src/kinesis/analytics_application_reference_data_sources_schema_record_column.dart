@@ -3,17 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsApplicationReferenceDataSourcesSchemaRecordColumn {
-  /// The Mapping reference to the data element.
   final pulumi.Input<String?>? mapping;
-  /// Name of the column.
+  /// Name of the Kinesis Analytics Application.
   final pulumi.Input<String> name;
-  /// The SQL Type of the column.
   final pulumi.Input<String> sqlType;
 
   /// Creates a new [AnalyticsApplicationReferenceDataSourcesSchemaRecordColumn].
-  /// [mapping] The Mapping reference to the data element.
-  /// [name] Name of the column.
-  /// [sqlType] The SQL Type of the column.
+  /// [mapping] Optional.
+  /// [name] Name of the Kinesis Analytics Application.
+  /// [sqlType] Required.
   const AnalyticsApplicationReferenceDataSourcesSchemaRecordColumn({
     this.mapping,
     required this.name,

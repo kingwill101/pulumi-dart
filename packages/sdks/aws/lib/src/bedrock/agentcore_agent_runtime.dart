@@ -1285,9 +1285,9 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
   /// Runtime session and resource lifecycle configuration for the agent runtime. See `lifecycleConfiguration` below.
   late final pulumi.Output<List<AgentcoreAgentRuntimeLifecycleConfiguration>> lifecycleConfigurations;
   /// Network configuration for the agent runtime. See `networkConfiguration` below.
-  ///
-  /// The following arguments are optional:
   late final pulumi.Output<AgentcoreAgentRuntimeNetworkConfiguration> networkConfiguration;
+  /// Platform version that controls how the agent runtime starts your agent. Valid values: `V1`, `V2`. When omitted, a new agent runtime uses `V1` and an existing agent runtime keeps its current platform version. `V2` restores each instance from a prepared snapshot, which keeps cold starts consistent regardless of image size. On `V2`, creates and updates take minutes rather than seconds, `environmentVariables` has a smaller total size limit, and availability is limited to a subset of Regions. See [Platform versions](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-how-it-works.html#runtime-platform-versions) for details.
+  late final pulumi.Output<String> platformVersion;
   /// Protocol configuration for the agent runtime. See `protocolConfiguration` below.
   late final pulumi.Output<AgentcoreAgentRuntimeProtocolConfiguration?> protocolConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -1295,10 +1295,12 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
   /// Configuration for HTTP request headers that will be passed through to the runtime. See `requestHeaderConfiguration` below.
   late final pulumi.Output<AgentcoreAgentRuntimeRequestHeaderConfiguration?> requestHeaderConfiguration;
   /// ARN of the IAM role that the agent runtime assumes to access AWS services.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> roleArn;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreAgentRuntimeTimeouts?> timeouts;
   /// Workload identity details for the agent runtime. See `workloadIdentityDetails` below.
@@ -1316,7 +1318,7 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
           'aws:bedrock/agentcoreAgentRuntime:AgentcoreAgentRuntime',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
     agentRuntimeArtifact = registerOutput<AgentcoreAgentRuntimeAgentRuntimeArtifact>('agentRuntimeArtifact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeAgentRuntimeArtifact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1329,6 +1331,7 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
     filesystemConfigurations = registerOutput<List<AgentcoreAgentRuntimeFilesystemConfiguration>?>('filesystemConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreAgentRuntimeFilesystemConfiguration>(guardedValue, (value) => AgentcoreAgentRuntimeFilesystemConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     lifecycleConfigurations = registerOutput<List<AgentcoreAgentRuntimeLifecycleConfiguration>>('lifecycleConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreAgentRuntimeLifecycleConfiguration>(guardedValue, (value) => AgentcoreAgentRuntimeLifecycleConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     networkConfiguration = registerOutput<AgentcoreAgentRuntimeNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    platformVersion = registerOutput<String>('platformVersion');
     protocolConfiguration = registerOutput<AgentcoreAgentRuntimeProtocolConfiguration?>('protocolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     requestHeaderConfiguration = registerOutput<AgentcoreAgentRuntimeRequestHeaderConfiguration?>('requestHeaderConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeRequestHeaderConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1374,6 +1377,7 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
     filesystemConfigurations = registerOutput<List<AgentcoreAgentRuntimeFilesystemConfiguration>?>('filesystemConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreAgentRuntimeFilesystemConfiguration>(guardedValue, (value) => AgentcoreAgentRuntimeFilesystemConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     lifecycleConfigurations = registerOutput<List<AgentcoreAgentRuntimeLifecycleConfiguration>>('lifecycleConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreAgentRuntimeLifecycleConfiguration>(guardedValue, (value) => AgentcoreAgentRuntimeLifecycleConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     networkConfiguration = registerOutput<AgentcoreAgentRuntimeNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    platformVersion = registerOutput<String>('platformVersion');
     protocolConfiguration = registerOutput<AgentcoreAgentRuntimeProtocolConfiguration?>('protocolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     requestHeaderConfiguration = registerOutput<AgentcoreAgentRuntimeRequestHeaderConfiguration?>('requestHeaderConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeRequestHeaderConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1404,6 +1408,7 @@ class AgentcoreAgentRuntime extends pulumi.CustomResource {
     filesystemConfigurations = registerOutput<List<AgentcoreAgentRuntimeFilesystemConfiguration>?>('filesystemConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreAgentRuntimeFilesystemConfiguration>(guardedValue, (value) => AgentcoreAgentRuntimeFilesystemConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     lifecycleConfigurations = registerOutput<List<AgentcoreAgentRuntimeLifecycleConfiguration>>('lifecycleConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreAgentRuntimeLifecycleConfiguration>(guardedValue, (value) => AgentcoreAgentRuntimeLifecycleConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     networkConfiguration = registerOutput<AgentcoreAgentRuntimeNetworkConfiguration>('networkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    platformVersion = registerOutput<String>('platformVersion');
     protocolConfiguration = registerOutput<AgentcoreAgentRuntimeProtocolConfiguration?>('protocolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     requestHeaderConfiguration = registerOutput<AgentcoreAgentRuntimeRequestHeaderConfiguration?>('requestHeaderConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreAgentRuntimeRequestHeaderConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -138,7 +138,7 @@ class GetTableResult {
       onDemandThroughputs: (() { final guardedValue = map['onDemandThroughputs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTableOnDemandThroughput>(guardedValue, (value) => GetTableOnDemandThroughput.fromMap((value as Map).cast<String, dynamic>())); })(),
       pointInTimeRecovery: (() { final guardedValue = map['pointInTimeRecovery']; if (guardedValue == null) return null; return GetTablePointInTimeRecovery.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       rangeKey: (() { final guardedValue = map['rangeKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      readCapacity: (() { final guardedValue = map['readCapacity']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      readCapacity: (() { final guardedValue = map['readCapacity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTableReplica>(guardedValue, (value) => GetTableReplica.fromMap((value as Map).cast<String, dynamic>())); })(),
       serverSideEncryption: (() { final guardedValue = map['serverSideEncryption']; if (guardedValue == null) return null; return GetTableServerSideEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
@@ -150,7 +150,7 @@ class GetTableResult {
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return GetTableTtl.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       warmThroughputs: (() { final guardedValue = map['warmThroughputs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTableWarmThroughput>(guardedValue, (value) => GetTableWarmThroughput.fromMap((value as Map).cast<String, dynamic>())); })(),
-      writeCapacity: (() { final guardedValue = map['writeCapacity']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      writeCapacity: (() { final guardedValue = map['writeCapacity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

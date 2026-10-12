@@ -9,9 +9,6 @@ import 'get_vpn_gateway_filter.dart';
 /// {@macro pulumi_ec2_get_vpn_gateway_get_vpn_gateway_args_doc}
 class GetVpnGatewayArgs {
   /// Autonomous System Number (ASN) for the Amazon side of the specific VPN Gateway to retrieve.
-  ///
-  /// The arguments of this data source act as filters for querying the available VPN gateways.
-  /// The given filters must match exactly one VPN gateway whose data will be exported as attributes.
   final pulumi.Input<String?>? amazonSideAsn;
   /// ID of a VPC attached to the specific VPN Gateway to retrieve.
   final pulumi.Input<String?>? attachedVpcId;
@@ -25,8 +22,7 @@ class GetVpnGatewayArgs {
   final pulumi.Input<String?>? region;
   /// State of the specific VPN Gateway to retrieve.
   final pulumi.Input<String?>? state;
-  /// Map of tags, each pair of which must exactly match
-  /// a pair on the desired VPN Gateway.
+  /// Map of tags, each pair of which must exactly match a pair on the desired VPN Gateway.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetVpnGatewayArgs].
@@ -37,7 +33,7 @@ class GetVpnGatewayArgs {
   /// [id] ID of the specific VPN Gateway to retrieve.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] State of the specific VPN Gateway to retrieve.
-  /// [tags] Map of tags, each pair of which must exactly match
+  /// [tags] Map of tags, each pair of which must exactly match a pair on the desired VPN Gateway.
   const GetVpnGatewayArgs({
     this.amazonSideAsn,
     this.attachedVpcId,

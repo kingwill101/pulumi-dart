@@ -26,7 +26,7 @@ class ConnectorWorkerConfiguration {
   factory ConnectorWorkerConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectorWorkerConfiguration(
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      revision: pulumi.Input.fromValue((map['revision'] as num).toInt()),
+      revision: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['revision'])),
     );
   }
 }

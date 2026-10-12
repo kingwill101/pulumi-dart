@@ -23,8 +23,8 @@ class GetContactsRotationRecurrenceWeeklySettingHandOffTime {
 
   factory GetContactsRotationRecurrenceWeeklySettingHandOffTime.fromMap(Map<String, dynamic> map) {
     return GetContactsRotationRecurrenceWeeklySettingHandOffTime(
-      hourOfDay: pulumi.Input.fromValue((map['hourOfDay'] as num).toInt()),
-      minuteOfHour: pulumi.Input.fromValue((map['minuteOfHour'] as num).toInt()),
+      hourOfDay: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hourOfDay'])),
+      minuteOfHour: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minuteOfHour'])),
     );
   }
 }

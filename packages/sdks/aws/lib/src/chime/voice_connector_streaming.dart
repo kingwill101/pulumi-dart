@@ -199,8 +199,10 @@ import 'voice_connector_streaming_state.dart';
 ///     assumeRolePolicy: assumeRole.then(assumeRole => assumeRole.json),
 /// });
 /// const exampleStream = new aws.kinesis.Stream("example", {
+///     streamModeDetails: {
+///         streamMode: "ON_DEMAND",
+///     },
 ///     name: "ExampleStream",
-///     shardCount: 2,
 /// });
 /// const example = new aws.chimesdkmediapipelines.MediaInsightsPipelineConfiguration("example", {
 ///     elements: [
@@ -250,8 +252,10 @@ import 'voice_connector_streaming_state.dart';
 ///     name="ExampleResourceAccessRole",
 ///     assume_role_policy=assume_role.json)
 /// example_stream = aws.kinesis.Stream("example",
-///     name="ExampleStream",
-///     shard_count=2)
+///     stream_mode_details={
+///         "stream_mode": "ON_DEMAND",
+///     },
+///     name="ExampleStream")
 /// example = aws.chimesdkmediapipelines.MediaInsightsPipelineConfiguration("example",
 ///     elements=[
 ///         {
@@ -327,8 +331,11 @@ import 'voice_connector_streaming_state.dart';
 ///
 ///     var exampleStream = new Aws.Kinesis.Stream("example", new()
 ///     {
+///         StreamModeDetails = new Aws.Kinesis.Inputs.StreamStreamModeDetailsArgs
+///         {
+///             StreamMode = "ON_DEMAND",
+///         },
 ///         Name = "ExampleStream",
-///         ShardCount = 2,
 ///     });
 ///
 ///     var example = new Aws.ChimeSDKMediaPipelines.MediaInsightsPipelineConfiguration("example", new()
@@ -423,8 +430,10 @@ import 'voice_connector_streaming_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleStream, err := kinesis.NewStream(ctx, "example", &kinesis.StreamArgs{
-/// 			Name:       pulumi.String("ExampleStream"),
-/// 			ShardCount: pulumi.Int(2),
+/// 			StreamModeDetails: &kinesis.StreamStreamModeDetailsArgs{
+/// 				StreamMode: pulumi.String("ON_DEMAND"),
+/// 			},
+/// 			Name: pulumi.String("ExampleStream"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -524,8 +533,10 @@ import 'voice_connector_streaming_state.dart';
 ///   assume_role_policy = data.aws_iam_getpolicydocument.assumeRole.json
 /// }
 /// resource "aws_kinesis_stream" "example" {
-///   name        = "ExampleStream"
-///   shard_count = 2
+///   stream_mode_details = {
+///     stream_mode = "ON_DEMAND"
+///   }
+///   name = "ExampleStream"
 /// }
 /// ```
 /// ```java
@@ -544,6 +555,7 @@ import 'voice_connector_streaming_state.dart';
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.kinesis.Stream;
 /// import com.pulumi.aws.kinesis.StreamArgs;
+/// import com.pulumi.aws.kinesis.inputs.StreamStreamModeDetailsArgs;
 /// import com.pulumi.aws.chimesdkmediapipelines.MediaInsightsPipelineConfiguration;
 /// import com.pulumi.aws.chimesdkmediapipelines.MediaInsightsPipelineConfigurationArgs;
 /// import com.pulumi.aws.chimesdkmediapipelines.inputs.MediaInsightsPipelineConfigurationElementArgs;
@@ -587,8 +599,10 @@ import 'voice_connector_streaming_state.dart';
 ///             .build());
 ///
 ///         var exampleStream = new Stream("exampleStream", StreamArgs.builder()
+///             .streamModeDetails(StreamStreamModeDetailsArgs.builder()
+///                 .streamMode("ON_DEMAND")
+///                 .build())
 ///             .name("ExampleStream")
-///             .shardCount(2)
 ///             .build());
 ///
 ///         var example = new MediaInsightsPipelineConfiguration("example", MediaInsightsPipelineConfigurationArgs.builder()
@@ -664,8 +678,9 @@ import 'voice_connector_streaming_state.dart';
 ///     type: aws:kinesis:Stream
 ///     name: example
 ///     properties:
+///       streamModeDetails:
+///         streamMode: ON_DEMAND
 ///       name: ExampleStream
-///       shardCount: 2
 /// variables:
 ///   assumeRole:
 ///     fn::invoke:
@@ -715,7 +730,7 @@ class VoiceConnectorStreaming extends pulumi.CustomResource {
           'aws:chime/voiceConnectorStreaming:VoiceConnectorStreaming',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     dataRetention = registerOutput<int>('dataRetention');
     disabled = registerOutput<bool?>('disabled');

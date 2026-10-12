@@ -115,17 +115,17 @@ import 'keyspace_state.dart';
 /// $ pulumi import aws:keyspaces/keyspace:Keyspace example my_keyspace
 /// ```
 class Keyspace extends pulumi.CustomResource {
-  /// The ARN of the keyspace.
+  /// ARN of the keyspace.
   late final pulumi.Output<String> arn;
-  /// The name of the keyspace to be created.
+  /// Name of the keyspace to be created.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The replication specification of the keyspace.
+  /// Replication specification of the keyspace. See below.
   late final pulumi.Output<KeyspaceReplicationSpecification> replicationSpecification;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Keyspace].
@@ -140,7 +140,7 @@ class Keyspace extends pulumi.CustomResource {
           'aws:keyspaces/keyspace:Keyspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

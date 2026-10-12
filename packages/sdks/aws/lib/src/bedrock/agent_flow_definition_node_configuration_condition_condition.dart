@@ -3,13 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeConfigurationConditionCondition {
+  /// Expression that formats the input for the node. For an explanation of how to create expressions, see [Expressions in Prompt flows in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-expressions.html).
   final pulumi.Input<String?>? expression;
-  /// A name for the flow.
+  /// Name for the flow.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> name;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationConditionCondition].
-  /// [expression] Optional.
-  /// [name] A name for the flow.
+  /// [expression] Expression that formats the input for the node. For an explanation of how to create expressions, see [Expressions in Prompt flows in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-expressions.html).
+  /// [name] Name for the flow.
   const AgentFlowDefinitionNodeConfigurationConditionCondition({
     this.expression,
     required this.name,

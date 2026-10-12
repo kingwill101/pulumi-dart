@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_interface_args.dart';
 import 'network_interface_attachment.dart';
+import 'network_interface_connection_tracking_specification.dart';
 import 'network_interface_ena_srd_specification.dart';
 import 'network_interface_state.dart';
 
@@ -210,6 +211,8 @@ class NetworkInterface extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Configuration block to define the attachment of the ENI. See Attachment below for more details!
   late final pulumi.Output<List<NetworkInterfaceAttachment>> attachments;
+  /// Configures the [connection tracking timeouts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-connection-tracking.html#connection-tracking-timeouts) for the network interface. See Connection Tracking Specification below for more details.
+  late final pulumi.Output<NetworkInterfaceConnectionTrackingSpecification> connectionTrackingSpecification;
   /// Description for the network interface.
   late final pulumi.Output<String?> description;
   /// Configures ENA Express for the network interface. The ENI must be attached to an instance to configure ENA Express. See ENA SRD Specification below for more details.
@@ -248,7 +251,7 @@ class NetworkInterface extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> privateIpLists;
   /// List of private IPs to assign to the ENI without regard to order.
   late final pulumi.Output<List<String>> privateIps;
-  /// Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + `privateIpsCount`, as a primary private IP will be assiged to an ENI by default.
+  /// Number of secondary private IPs to assign to the ENI. The total number of private IPs will be 1 + `privateIpsCount`, as a primary private IP will be assigned to an ENI by default.
   late final pulumi.Output<int> privateIpsCount;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -277,10 +280,11 @@ class NetworkInterface extends pulumi.CustomResource {
           'aws:ec2/networkInterface:NetworkInterface',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachments = registerOutput<List<NetworkInterfaceAttachment>>('attachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceAttachment>(guardedValue, (value) => NetworkInterfaceAttachment.fromMap((value as Map).cast<String, dynamic>())); });
+    connectionTrackingSpecification = registerOutput<NetworkInterfaceConnectionTrackingSpecification>('connectionTrackingSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfaceConnectionTrackingSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enaSrdSpecification = registerOutput<NetworkInterfaceEnaSrdSpecification?>('enaSrdSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfaceEnaSrdSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
@@ -336,6 +340,7 @@ class NetworkInterface extends pulumi.CustomResource {
         ) {
     arn = registerOutput<String>('arn');
     attachments = registerOutput<List<NetworkInterfaceAttachment>>('attachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceAttachment>(guardedValue, (value) => NetworkInterfaceAttachment.fromMap((value as Map).cast<String, dynamic>())); });
+    connectionTrackingSpecification = registerOutput<NetworkInterfaceConnectionTrackingSpecification>('connectionTrackingSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfaceConnectionTrackingSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enaSrdSpecification = registerOutput<NetworkInterfaceEnaSrdSpecification?>('enaSrdSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfaceEnaSrdSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');
@@ -376,6 +381,7 @@ class NetworkInterface extends pulumi.CustomResource {
       ) {
     arn = registerOutput<String>('arn');
     attachments = registerOutput<List<NetworkInterfaceAttachment>>('attachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceAttachment>(guardedValue, (value) => NetworkInterfaceAttachment.fromMap((value as Map).cast<String, dynamic>())); });
+    connectionTrackingSpecification = registerOutput<NetworkInterfaceConnectionTrackingSpecification>('connectionTrackingSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfaceConnectionTrackingSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     enaSrdSpecification = registerOutput<NetworkInterfaceEnaSrdSpecification?>('enaSrdSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfaceEnaSrdSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enablePrimaryIpv6 = registerOutput<bool>('enablePrimaryIpv6');

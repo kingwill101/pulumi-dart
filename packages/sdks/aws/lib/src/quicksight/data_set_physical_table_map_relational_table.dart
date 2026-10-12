@@ -8,7 +8,7 @@ class DataSetPhysicalTableMapRelationalTable {
   final pulumi.Input<String?>? catalog;
   /// ARN of the data source.
   final pulumi.Input<String> dataSourceArn;
-  /// Column schema of the table. See input_columns.
+  /// Column schema of the table. See `inputColumns` Block below.
   final pulumi.Input<List<DataSetPhysicalTableMapRelationalTableInputColumn>> inputColumns;
   /// Name of the relational table.
   final pulumi.Input<String> name;
@@ -18,7 +18,7 @@ class DataSetPhysicalTableMapRelationalTable {
   /// Creates a new [DataSetPhysicalTableMapRelationalTable].
   /// [catalog] Catalog associated with the table.
   /// [dataSourceArn] ARN of the data source.
-  /// [inputColumns] Column schema of the table. See input_columns.
+  /// [inputColumns] Column schema of the table. See `inputColumns` Block below.
   /// [name] Name of the relational table.
   /// [schema] Schema name. This name applies to certain relational database engines.
   const DataSetPhysicalTableMapRelationalTable({

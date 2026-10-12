@@ -9,8 +9,6 @@ import 'get_vpc_ipams_filter.dart';
 /// {@macro pulumi_ec2_get_vpc_ipams_get_vpc_ipams_args_doc}
 class GetVpcIpamsArgs {
   /// Custom filter block as described below.
-  ///
-  /// The arguments of this data source act as filters for querying the available IPAMs.
   final pulumi.Input<List<GetVpcIpamsFilter>?>? filters;
   /// IDs of the IPAM resources to query for.
   final pulumi.Input<List<String>?>? ipamIds;

@@ -12,14 +12,13 @@ class GetVpcsArgs {
   final pulumi.Input<List<GetVpcsFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Map of tags, each pair of which must exactly match
-  /// a pair on the desired vpcs.
+  /// Map of tags, each pair of which must exactly match a pair on the desired vpcs.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetVpcsArgs].
   /// [filters] Custom filter block as described below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Map of tags, each pair of which must exactly match
+  /// [tags] Map of tags, each pair of which must exactly match a pair on the desired vpcs.
   const GetVpcsArgs({
     this.filters,
     this.region,

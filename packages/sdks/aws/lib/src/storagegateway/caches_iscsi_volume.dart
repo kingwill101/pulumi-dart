@@ -10,7 +10,7 @@ import 'caches_iscsi_volume_state.dart';
 ///
 /// ## Example Usage
 ///
-/// &gt; **NOTE:** These examples are referencing the `aws.storagegateway.Cache` resource `gatewayArn` attribute to ensure this provider properly adds cache before creating the volume. If you are not using this method, you may need to declare an expicit dependency (e.g. via `dependsOn = [aws_storagegateway_cache.example]`) to ensure proper ordering.
+/// &gt; **NOTE:** These examples are referencing the `aws.storagegateway.Cache` resource `gatewayArn` attribute to ensure Terraform properly adds cache before creating the volume. If you are not using this method, you may need to declare an explicit dependency (e.g., via `dependsOn = [aws_storagegateway_cache.example]`) to ensure proper ordering.
 ///
 /// ### Create Empty Cached iSCSI Volume
 ///
@@ -444,7 +444,7 @@ class CachesIscsiVolume extends pulumi.CustomResource {
           'aws:storagegateway/cachesIscsiVolume:CachesIscsiVolume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     chapEnabled = registerOutput<bool>('chapEnabled');

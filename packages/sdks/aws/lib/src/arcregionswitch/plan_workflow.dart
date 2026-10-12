@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'plan_workflow_step.dart';
 
 class PlanWorkflow {
-  /// Steps in the workflow. See `step` Block for details.
+  /// Steps in the workflow. See `workflow.step` Block for details.
   final pulumi.Input<List<PlanWorkflowStep>?>? steps;
   /// Description of the workflow.
   final pulumi.Input<String?>? workflowDescription;
@@ -14,7 +14,7 @@ class PlanWorkflow {
   final pulumi.Input<String?>? workflowTargetRegion;
 
   /// Creates a new [PlanWorkflow].
-  /// [steps] Steps in the workflow. See `step` Block for details.
+  /// [steps] Steps in the workflow. See `workflow.step` Block for details.
   /// [workflowDescription] Description of the workflow.
   /// [workflowTargetAction] Action to perform. Valid values: `activate`, `deactivate`.
   /// [workflowTargetRegion] Target region for the workflow.

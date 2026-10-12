@@ -208,7 +208,7 @@ import 'kx_database_state.dart';
 class KxDatabase extends pulumi.CustomResource {
   /// ARN identifier of the KX database.
   late final pulumi.Output<String> arn;
-  /// Timestamp at which the databse is created in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
+  /// Timestamp at which the database is created in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
   late final pulumi.Output<String> createdTimestamp;
   /// Description of the KX database.
   late final pulumi.Output<String?> description;
@@ -239,7 +239,7 @@ class KxDatabase extends pulumi.CustomResource {
           'aws:finspace/kxDatabase:KxDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdTimestamp = registerOutput<String>('createdTimestamp');

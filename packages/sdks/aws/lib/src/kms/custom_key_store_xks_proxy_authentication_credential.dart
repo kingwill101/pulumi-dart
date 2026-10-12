@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomKeyStoreXksProxyAuthenticationCredential {
-  /// A unique identifier for the raw secret access key.
+  /// Unique identifier for the raw secret access key.
   final pulumi.Input<String> accessKeyId;
-  /// A secret string of 43-64 characters.
+  /// Secret string of 43-64 characters.
   final pulumi.Input<String> rawSecretAccessKey;
 
   /// Creates a new [CustomKeyStoreXksProxyAuthenticationCredential].
-  /// [accessKeyId] A unique identifier for the raw secret access key.
-  /// [rawSecretAccessKey] A secret string of 43-64 characters.
+  /// [accessKeyId] Unique identifier for the raw secret access key.
+  /// [rawSecretAccessKey] Secret string of 43-64 characters.
   const CustomKeyStoreXksProxyAuthenticationCredential({
     required this.accessKeyId,
     required this.rawSecretAccessKey,

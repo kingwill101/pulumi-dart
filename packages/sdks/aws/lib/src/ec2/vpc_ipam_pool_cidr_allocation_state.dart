@@ -4,24 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering VpcIpamPoolCidrAllocation resources.
 class VpcIpamPoolCidrAllocationState {
-  /// The CIDR you want to assign to the pool.
+  /// CIDR you want to assign to the pool.
   final pulumi.Input<String?>? cidr;
-  /// The description for the allocation.
+  /// Description for the allocation.
   final pulumi.Input<String?>? description;
   /// Exclude a particular CIDR range from being returned by the pool.
   final pulumi.Input<List<String>?>? disallowedCidrs;
+  /// ID of the allocation.
   final pulumi.Input<String?>? ipamPoolAllocationId;
-  /// The ID of the pool to which you want to assign a CIDR.
+  /// ID of the pool to which you want to assign a CIDR.
   final pulumi.Input<String?>? ipamPoolId;
-  /// The netmask length of the CIDR you would like to allocate to the IPAM pool. Valid Values: `0-128`.
+  /// Netmask length of the CIDR you would like to allocate to the IPAM pool. Valid Values: `0-128`.
   final pulumi.Input<int?>? netmaskLength;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The ID of the resource.
+  /// ID of the resource.
   final pulumi.Input<String?>? resourceId;
-  /// The owner of the resource.
+  /// Owner of the resource.
   final pulumi.Input<String?>? resourceOwner;
-  /// The type of the resource.
+  /// Type of the resource.
   final pulumi.Input<String?>? resourceType;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
@@ -29,16 +30,16 @@ class VpcIpamPoolCidrAllocationState {
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [VpcIpamPoolCidrAllocationState].
-  /// [cidr] The CIDR you want to assign to the pool.
-  /// [description] The description for the allocation.
+  /// [cidr] CIDR you want to assign to the pool.
+  /// [description] Description for the allocation.
   /// [disallowedCidrs] Exclude a particular CIDR range from being returned by the pool.
-  /// [ipamPoolAllocationId] Optional.
-  /// [ipamPoolId] The ID of the pool to which you want to assign a CIDR.
-  /// [netmaskLength] The netmask length of the CIDR you would like to allocate to the IPAM pool. Valid Values: `0-128`.
+  /// [ipamPoolAllocationId] ID of the allocation.
+  /// [ipamPoolId] ID of the pool to which you want to assign a CIDR.
+  /// [netmaskLength] Netmask length of the CIDR you would like to allocate to the IPAM pool. Valid Values: `0-128`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceId] The ID of the resource.
-  /// [resourceOwner] The owner of the resource.
-  /// [resourceType] The type of the resource.
+  /// [resourceId] ID of the resource.
+  /// [resourceOwner] Owner of the resource.
+  /// [resourceType] Type of the resource.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const VpcIpamPoolCidrAllocationState({
@@ -80,7 +81,7 @@ class VpcIpamPoolCidrAllocationState {
       disallowedCidrs: (() { final guardedValue = map['disallowedCidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipamPoolAllocationId: (() { final guardedValue = map['ipamPoolAllocationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipamPoolId: (() { final guardedValue = map['ipamPoolId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      netmaskLength: (() { final guardedValue = map['netmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      netmaskLength: (() { final guardedValue = map['netmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceOwner: (() { final guardedValue = map['resourceOwner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

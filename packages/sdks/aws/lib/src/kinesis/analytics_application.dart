@@ -25,8 +25,10 @@ import 'analytics_application_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const testStream = new aws.kinesis.Stream("test_stream", {
-///     name: "kinesis-test",
-///     shardCount: 1,
+///     streamModeDetails: {
+///         streamMode: "ON_DEMAND",
+///     },
+///     name: "pulumi-kinesis-test",
 /// });
 /// const testApplication = new aws.kinesis.AnalyticsApplication("test_application", {
 ///     inputs: {
@@ -62,8 +64,10 @@ import 'analytics_application_state.dart';
 /// import pulumi_aws as aws
 ///
 /// test_stream = aws.kinesis.Stream("test_stream",
-///     name="kinesis-test",
-///     shard_count=1)
+///     stream_mode_details={
+///         "stream_mode": "ON_DEMAND",
+///     },
+///     name="pulumi-kinesis-test")
 /// test_application = aws.kinesis.AnalyticsApplication("test_application",
 ///     inputs={
 ///         "kinesis_stream": {
@@ -102,8 +106,11 @@ import 'analytics_application_state.dart';
 /// {
 ///     var testStream = new Aws.Kinesis.Stream("test_stream", new()
 ///     {
-///         Name = "kinesis-test",
-///         ShardCount = 1,
+///         StreamModeDetails = new Aws.Kinesis.Inputs.StreamStreamModeDetailsArgs
+///         {
+///             StreamMode = "ON_DEMAND",
+///         },
+///         Name = "pulumi-kinesis-test",
 ///     });
 ///
 ///     var testApplication = new Aws.Kinesis.AnalyticsApplication("test_application", new()
@@ -160,8 +167,10 @@ import 'analytics_application_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		testStream, err := kinesis.NewStream(ctx, "test_stream", &kinesis.StreamArgs{
-/// 			Name:       pulumi.String("kinesis-test"),
-/// 			ShardCount: pulumi.Int(1),
+/// 			StreamModeDetails: &kinesis.StreamStreamModeDetailsArgs{
+/// 				StreamMode: pulumi.String("ON_DEMAND"),
+/// 			},
+/// 			Name: pulumi.String("pulumi-kinesis-test"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -213,8 +222,10 @@ import 'analytics_application_state.dart';
 /// }
 ///
 /// resource "aws_kinesis_stream" "test_stream" {
-///   name        = "kinesis-test"
-///   shard_count = 1
+///   stream_mode_details = {
+///     stream_mode = "ON_DEMAND"
+///   }
+///   name = "pulumi-kinesis-test"
 /// }
 /// resource "aws_kinesis_analyticsapplication" "test_application" {
 ///   inputs = {
@@ -253,6 +264,7 @@ import 'analytics_application_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kinesis.Stream;
 /// import com.pulumi.aws.kinesis.StreamArgs;
+/// import com.pulumi.aws.kinesis.inputs.StreamStreamModeDetailsArgs;
 /// import com.pulumi.aws.kinesis.AnalyticsApplication;
 /// import com.pulumi.aws.kinesis.AnalyticsApplicationArgs;
 /// import com.pulumi.aws.kinesis.inputs.AnalyticsApplicationInputsArgs;
@@ -277,8 +289,10 @@ import 'analytics_application_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testStream = new Stream("testStream", StreamArgs.builder()
-///             .name("kinesis-test")
-///             .shardCount(1)
+///             .streamModeDetails(StreamStreamModeDetailsArgs.builder()
+///                 .streamMode("ON_DEMAND")
+///                 .build())
+///             .name("pulumi-kinesis-test")
 ///             .build());
 ///
 ///         var testApplication = new AnalyticsApplication("testApplication", AnalyticsApplicationArgs.builder()
@@ -319,8 +333,9 @@ import 'analytics_application_state.dart';
 ///     type: aws:kinesis:Stream
 ///     name: test_stream
 ///     properties:
-///       name: kinesis-test
-///       shardCount: 1
+///       streamModeDetails:
+///         streamMode: ON_DEMAND
+///       name: pulumi-kinesis-test
 ///   testApplication:
 ///     type: aws:kinesis:AnalyticsApplication
 ///     name: test_application
@@ -359,8 +374,10 @@ import 'analytics_application_state.dart';
 ///     logGroupName: example.name,
 /// });
 /// const exampleStream = new aws.kinesis.Stream("example", {
+///     streamModeDetails: {
+///         streamMode: "ON_DEMAND",
+///     },
 ///     name: "example-kinesis-stream",
-///     shardCount: 1,
 /// });
 /// const exampleFirehoseDeliveryStream = new aws.kinesis.FirehoseDeliveryStream("example", {
 ///     extendedS3Configuration: {
@@ -422,8 +439,10 @@ import 'analytics_application_state.dart';
 ///     name="example-kinesis-application",
 ///     log_group_name=example.name)
 /// example_stream = aws.kinesis.Stream("example",
-///     name="example-kinesis-stream",
-///     shard_count=1)
+///     stream_mode_details={
+///         "stream_mode": "ON_DEMAND",
+///     },
+///     name="example-kinesis-stream")
 /// example_firehose_delivery_stream = aws.kinesis.FirehoseDeliveryStream("example",
 ///     extended_s3_configuration={
 ///         "bucket_arn": example_aws_s3_bucket["arn"],
@@ -494,8 +513,11 @@ import 'analytics_application_state.dart';
 ///
 ///     var exampleStream = new Aws.Kinesis.Stream("example", new()
 ///     {
+///         StreamModeDetails = new Aws.Kinesis.Inputs.StreamStreamModeDetailsArgs
+///         {
+///             StreamMode = "ON_DEMAND",
+///         },
 ///         Name = "example-kinesis-stream",
-///         ShardCount = 1,
 ///     });
 ///
 ///     var exampleFirehoseDeliveryStream = new Aws.Kinesis.FirehoseDeliveryStream("example", new()
@@ -601,8 +623,10 @@ import 'analytics_application_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleStream, err := kinesis.NewStream(ctx, "example", &kinesis.StreamArgs{
-/// 			Name:       pulumi.String("example-kinesis-stream"),
-/// 			ShardCount: pulumi.Int(1),
+/// 			StreamModeDetails: &kinesis.StreamStreamModeDetailsArgs{
+/// 				StreamMode: pulumi.String("ON_DEMAND"),
+/// 			},
+/// 			Name: pulumi.String("example-kinesis-stream"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -690,8 +714,10 @@ import 'analytics_application_state.dart';
 ///   log_group_name = aws_cloudwatch_loggroup.example.name
 /// }
 /// resource "aws_kinesis_stream" "example" {
-///   name        = "example-kinesis-stream"
-///   shard_count = 1
+///   stream_mode_details = {
+///     stream_mode = "ON_DEMAND"
+///   }
+///   name = "example-kinesis-stream"
 /// }
 /// resource "aws_kinesis_firehosedeliverystream" "example" {
 ///   extended_s3_configuration = {
@@ -756,6 +782,7 @@ import 'analytics_application_state.dart';
 /// import com.pulumi.aws.cloudwatch.LogStreamArgs;
 /// import com.pulumi.aws.kinesis.Stream;
 /// import com.pulumi.aws.kinesis.StreamArgs;
+/// import com.pulumi.aws.kinesis.inputs.StreamStreamModeDetailsArgs;
 /// import com.pulumi.aws.kinesis.FirehoseDeliveryStream;
 /// import com.pulumi.aws.kinesis.FirehoseDeliveryStreamArgs;
 /// import com.pulumi.aws.kinesis.inputs.FirehoseDeliveryStreamExtendedS3ConfigurationArgs;
@@ -796,8 +823,10 @@ import 'analytics_application_state.dart';
 ///             .build());
 ///
 ///         var exampleStream = new Stream("exampleStream", StreamArgs.builder()
+///             .streamModeDetails(StreamStreamModeDetailsArgs.builder()
+///                 .streamMode("ON_DEMAND")
+///                 .build())
 ///             .name("example-kinesis-stream")
-///             .shardCount(1)
 ///             .build());
 ///
 ///         var exampleFirehoseDeliveryStream = new FirehoseDeliveryStream("exampleFirehoseDeliveryStream", FirehoseDeliveryStreamArgs.builder()
@@ -871,8 +900,9 @@ import 'analytics_application_state.dart';
 ///     type: aws:kinesis:Stream
 ///     name: example
 ///     properties:
+///       streamModeDetails:
+///         streamMode: ON_DEMAND
 ///       name: example-kinesis-stream
-///       shardCount: 1
 ///   exampleFirehoseDeliveryStream:
 ///     type: aws:kinesis:FirehoseDeliveryStream
 ///     name: example
@@ -924,40 +954,37 @@ import 'analytics_application_state.dart';
 /// $ pulumi import aws:kinesis/analyticsApplication:AnalyticsApplication example arn:aws:kinesisanalytics:us-west-2:1234567890:application/example
 /// ```
 class AnalyticsApplication extends pulumi.CustomResource {
-  /// The ARN of the Kinesis Analytics Appliation.
+  /// ARN of the Kinesis Analytics Application.
   late final pulumi.Output<String> arn;
-  /// The CloudWatch log stream options to monitor application errors.
-  /// See CloudWatch Logging Options below for more details.
+  /// CloudWatch log stream options to monitor application errors. See `cloudwatchLoggingOptions` Block below for details.
   late final pulumi.Output<AnalyticsApplicationCloudwatchLoggingOptions?> cloudwatchLoggingOptions;
   /// SQL Code to transform input data, and generate output.
   late final pulumi.Output<String?> code;
-  /// The Timestamp when the application version was created.
+  /// Timestamp when the application version was created.
   late final pulumi.Output<String> createTimestamp;
   /// Description of the application.
   late final pulumi.Output<String?> description;
-  /// Input configuration of the application. See Inputs below for more details.
+  /// Input configuration of the application. See `inputs` Block below for details.
   late final pulumi.Output<AnalyticsApplicationInputs?> inputs;
-  /// The Timestamp when the application was last updated.
+  /// Timestamp when the application was last updated.
   late final pulumi.Output<String> lastUpdateTimestamp;
   /// Name of the Kinesis Analytics Application.
   late final pulumi.Output<String> name;
-  /// Output destination configuration of the application. See Outputs below for more details.
+  /// Output destination configuration of the application. See `outputs` Block below for details.
   late final pulumi.Output<List<AnalyticsApplicationOutput>?> outputs;
-  /// An S3 Reference Data Source for the application.
-  /// See Reference Data Sources below for more details.
+  /// S3 Reference Data Source for the application. See `referenceDataSources` Block below for details.
   late final pulumi.Output<AnalyticsApplicationReferenceDataSources?> referenceDataSources;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Whether to start or stop the Kinesis Analytics Application. To start an application, an input with a defined `startingPosition` must be configured.
-  /// To modify an application's starting position, first stop the application by setting `startApplication = false`, then update `startingPosition` and set `startApplication = true`.
+  /// Whether to start or stop the Kinesis Analytics Application. To start an application, an input with a defined `startingPosition` must be configured. To modify an application's starting position, first stop the application by setting `startApplication = false`, then update `startingPosition` and set `startApplication = true`.
   late final pulumi.Output<bool?> startApplication;
-  /// The Status of the application.
+  /// Status of the application.
   late final pulumi.Output<String> status;
-  /// Key-value map of tags for the Kinesis Analytics Application. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The Version of the application.
+  /// Version of the application.
   late final pulumi.Output<int> version;
 
   /// Creates a new [AnalyticsApplication].
@@ -972,7 +999,7 @@ class AnalyticsApplication extends pulumi.CustomResource {
           'aws:kinesis/analyticsApplication:AnalyticsApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cloudwatchLoggingOptions = registerOutput<AnalyticsApplicationCloudwatchLoggingOptions?>('cloudwatchLoggingOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsApplicationCloudwatchLoggingOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

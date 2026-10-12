@@ -3,28 +3,29 @@
 
 /// Result data returned by getCustomKeyStore.
 class GetCustomKeyStoreResult {
+  /// ID for the CloudHSM cluster that is associated with the custom key store.
   final String? cloudHsmClusterId;
-  /// Indicates whether the custom key store is connected to its CloudHSM cluster.
+  /// Whether the custom key store is connected to its CloudHSM cluster.
   final String? connectionState;
-  /// The date and time when the custom key store was created.
+  /// Date and time when the custom key store was created.
   final String? creationDate;
   final String? customKeyStoreId;
   final String? customKeyStoreName;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
   final String? region;
-  /// The trust anchor certificate of the associated CloudHSM cluster.
+  /// Trust anchor certificate of the associated CloudHSM cluster.
   final String? trustAnchorCertificate;
 
   /// Creates a new [GetCustomKeyStoreResult].
-  /// [cloudHsmClusterId] Optional.
-  /// [connectionState] Indicates whether the custom key store is connected to its CloudHSM cluster.
-  /// [creationDate] The date and time when the custom key store was created.
+  /// [cloudHsmClusterId] ID for the CloudHSM cluster that is associated with the custom key store.
+  /// [connectionState] Whether the custom key store is connected to its CloudHSM cluster.
+  /// [creationDate] Date and time when the custom key store was created.
   /// [customKeyStoreId] Optional.
   /// [customKeyStoreName] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Optional.
-  /// [trustAnchorCertificate] The trust anchor certificate of the associated CloudHSM cluster.
+  /// [trustAnchorCertificate] Trust anchor certificate of the associated CloudHSM cluster.
   const GetCustomKeyStoreResult({
     this.cloudHsmClusterId,
     this.connectionState,

@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableCapacitySpecification {
-  /// The throughput capacity specified for read operations defined in read capacity units (RCUs).
+  /// Throughput capacity specified for read operations defined in read capacity units (RCUs).
   final pulumi.Input<int?>? readCapacityUnits;
-  /// The read/write throughput capacity mode for a table. Valid values: `PAY_PER_REQUEST`, `PROVISIONED`. The default value is `PAY_PER_REQUEST`.
+  /// Read/write throughput capacity mode for a table. Valid values: `PAY_PER_REQUEST`, `PROVISIONED`. The default value is `PAY_PER_REQUEST`.
   final pulumi.Input<String?>? throughputMode;
-  /// The throughput capacity specified for write operations defined in write capacity units (WCUs).
+  /// Throughput capacity specified for write operations defined in write capacity units (WCUs).
   final pulumi.Input<int?>? writeCapacityUnits;
 
   /// Creates a new [TableCapacitySpecification].
-  /// [readCapacityUnits] The throughput capacity specified for read operations defined in read capacity units (RCUs).
-  /// [throughputMode] The read/write throughput capacity mode for a table. Valid values: `PAY_PER_REQUEST`, `PROVISIONED`. The default value is `PAY_PER_REQUEST`.
-  /// [writeCapacityUnits] The throughput capacity specified for write operations defined in write capacity units (WCUs).
+  /// [readCapacityUnits] Throughput capacity specified for read operations defined in read capacity units (RCUs).
+  /// [throughputMode] Read/write throughput capacity mode for a table. Valid values: `PAY_PER_REQUEST`, `PROVISIONED`. The default value is `PAY_PER_REQUEST`.
+  /// [writeCapacityUnits] Throughput capacity specified for write operations defined in write capacity units (WCUs).
   const TableCapacitySpecification({
     this.readCapacityUnits,
     this.throughputMode,
@@ -30,9 +30,9 @@ class TableCapacitySpecification {
 
   factory TableCapacitySpecification.fromMap(Map<String, dynamic> map) {
     return TableCapacitySpecification(
-      readCapacityUnits: (() { final guardedValue = map['readCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      readCapacityUnits: (() { final guardedValue = map['readCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       throughputMode: (() { final guardedValue = map['throughputMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      writeCapacityUnits: (() { final guardedValue = map['writeCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      writeCapacityUnits: (() { final guardedValue = map['writeCapacityUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

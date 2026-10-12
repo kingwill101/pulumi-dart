@@ -46,6 +46,8 @@ class TopicState {
   final pulumi.Input<String?>? lambdaSuccessFeedbackRoleArn;
   /// Percentage of success to sample
   final pulumi.Input<int?>? lambdaSuccessFeedbackSampleRate;
+  /// The maximum size, in bytes, of a message that can be published to the topic. Valid values are `1024` to `1048576` (1 MiB). The default is `262144` (256 KiB). A topic with a `maximumMessageSize` above 256 KiB must have 100 or fewer subscriptions, and each subscription must be an Amazon SQS, Amazon Data Firehose, or AWS Lambda subscription.
+  final pulumi.Input<int?>? maximumMessageSize;
   /// The name of the topic. Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long. For a FIFO (first-in-first-out) topic, the name must end with the `.fifo` suffix. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`
   final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`
@@ -93,6 +95,7 @@ class TopicState {
   /// [lambdaFailureFeedbackRoleArn] IAM role for failure feedback
   /// [lambdaSuccessFeedbackRoleArn] The IAM role permitted to receive success feedback for this topic
   /// [lambdaSuccessFeedbackSampleRate] Percentage of success to sample
+  /// [maximumMessageSize] The maximum size, in bytes, of a message that can be published to the topic. Valid values are `1024` to `1048576` (1 MiB). The default is `262144` (256 KiB). A topic with a `maximumMessageSize` above 256 KiB must have 100 or fewer subscriptions, and each subscription must be an Amazon SQS, Amazon Data Firehose, or AWS Lambda subscription.
   /// [name] The name of the topic. Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long. For a FIFO (first-in-first-out) topic, the name must end with the `.fifo` suffix. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`
   /// [owner] The AWS Account ID of the SNS topic owner
@@ -127,6 +130,7 @@ class TopicState {
     this.lambdaFailureFeedbackRoleArn,
     this.lambdaSuccessFeedbackRoleArn,
     this.lambdaSuccessFeedbackSampleRate,
+    this.maximumMessageSize,
     this.name,
     this.namePrefix,
     this.owner,
@@ -164,6 +168,7 @@ class TopicState {
       'lambdaFailureFeedbackRoleArn': ?lambdaFailureFeedbackRoleArn,
       'lambdaSuccessFeedbackRoleArn': ?lambdaSuccessFeedbackRoleArn,
       'lambdaSuccessFeedbackSampleRate': ?lambdaSuccessFeedbackSampleRate,
+      'maximumMessageSize': ?maximumMessageSize,
       'name': ?name,
       'namePrefix': ?namePrefix,
       'owner': ?owner,
@@ -183,7 +188,7 @@ class TopicState {
     return TopicState(
       applicationFailureFeedbackRoleArn: (() { final guardedValue = map['applicationFailureFeedbackRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       applicationSuccessFeedbackRoleArn: (() { final guardedValue = map['applicationSuccessFeedbackRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      applicationSuccessFeedbackSampleRate: (() { final guardedValue = map['applicationSuccessFeedbackSampleRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      applicationSuccessFeedbackSampleRate: (() { final guardedValue = map['applicationSuccessFeedbackSampleRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       archivePolicy: (() { final guardedValue = map['archivePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       beginningArchiveTime: (() { final guardedValue = map['beginningArchiveTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -194,23 +199,24 @@ class TopicState {
       fifoTopic: (() { final guardedValue = map['fifoTopic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       firehoseFailureFeedbackRoleArn: (() { final guardedValue = map['firehoseFailureFeedbackRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       firehoseSuccessFeedbackRoleArn: (() { final guardedValue = map['firehoseSuccessFeedbackRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      firehoseSuccessFeedbackSampleRate: (() { final guardedValue = map['firehoseSuccessFeedbackSampleRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      firehoseSuccessFeedbackSampleRate: (() { final guardedValue = map['firehoseSuccessFeedbackSampleRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       httpFailureFeedbackRoleArn: (() { final guardedValue = map['httpFailureFeedbackRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       httpSuccessFeedbackRoleArn: (() { final guardedValue = map['httpSuccessFeedbackRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      httpSuccessFeedbackSampleRate: (() { final guardedValue = map['httpSuccessFeedbackSampleRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      httpSuccessFeedbackSampleRate: (() { final guardedValue = map['httpSuccessFeedbackSampleRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       kmsMasterKeyId: (() { final guardedValue = map['kmsMasterKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lambdaFailureFeedbackRoleArn: (() { final guardedValue = map['lambdaFailureFeedbackRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lambdaSuccessFeedbackRoleArn: (() { final guardedValue = map['lambdaSuccessFeedbackRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      lambdaSuccessFeedbackSampleRate: (() { final guardedValue = map['lambdaSuccessFeedbackSampleRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      lambdaSuccessFeedbackSampleRate: (() { final guardedValue = map['lambdaSuccessFeedbackSampleRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maximumMessageSize: (() { final guardedValue = map['maximumMessageSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      signatureVersion: (() { final guardedValue = map['signatureVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      signatureVersion: (() { final guardedValue = map['signatureVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sqsFailureFeedbackRoleArn: (() { final guardedValue = map['sqsFailureFeedbackRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sqsSuccessFeedbackRoleArn: (() { final guardedValue = map['sqsSuccessFeedbackRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sqsSuccessFeedbackSampleRate: (() { final guardedValue = map['sqsSuccessFeedbackSampleRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      sqsSuccessFeedbackSampleRate: (() { final guardedValue = map['sqsSuccessFeedbackSampleRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tracingConfig: (() { final guardedValue = map['tracingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

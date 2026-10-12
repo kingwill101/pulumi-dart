@@ -47,10 +47,10 @@ class InstancePublicPortsPortInfo {
     return InstancePublicPortsPortInfo(
       cidrListAliases: (() { final guardedValue = map['cidrListAliases']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       cidrs: (() { final guardedValue = map['cidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      fromPort: pulumi.Input.fromValue((map['fromPort'] as num).toInt()),
+      fromPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['fromPort'])),
       ipv6Cidrs: (() { final guardedValue = map['ipv6Cidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      toPort: pulumi.Input.fromValue((map['toPort'] as num).toInt()),
+      toPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['toPort'])),
     );
   }
 }

@@ -280,27 +280,27 @@ import 'route_server_timeouts.dart';
 /// $ pulumi import aws:vpc/routeServer:RouteServer example rs-12345678
 /// ```
 class RouteServer extends pulumi.CustomResource {
-  /// The Border Gateway Protocol (BGP) Autonomous System Number (ASN) for the appliance. Valid values are from 1 to 4294967295.
+  /// Border Gateway Protocol (BGP) Autonomous System Number (ASN) for the appliance. Valid values are from 1 to 4294967295.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<int> amazonSideAsn;
-  /// The ARN of the route server.
+  /// ARN of the route server.
   late final pulumi.Output<String> arn;
-  /// Indicates whether routes should be persisted after all BGP sessions are terminated. Valid values are `enable`, `disable`, `reset`
+  /// Whether routes should be persisted after all BGP sessions are terminated. Valid values are `enable`, `disable`, `reset`
   late final pulumi.Output<String> persistRoutes;
-  /// The number of minutes a route server will wait after BGP is re-established to unpersist the routes in the FIB and RIB. Value must be in the range of 1-5. Required if `persistRoutes` is enabled.
+  /// Number of minutes a route server will wait after BGP is re-established to unpersist the routes in the FIB and RIB. Value must be in the range of 1-5. Required if `persistRoutes` is enabled.
   late final pulumi.Output<int?> persistRoutesDuration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The unique identifier of the route server.
+  /// Unique identifier of the route server.
   late final pulumi.Output<String> routeServerId;
-  /// Indicates whether SNS notifications should be enabled for route server events. Enabling SNS notifications persists BGP status changes to an SNS topic provisioned by AWS`.
+  /// Whether to enable SNS notifications for route server events. Enabling SNS notifications persists BGP status changes to an SNS topic provisioned by AWS.
   late final pulumi.Output<bool> snsNotificationsEnabled;
-  /// The ARN of the SNS topic where notifications are published.
+  /// ARN of the SNS topic where notifications are published.
   late final pulumi.Output<String> snsTopicArn;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<RouteServerTimeouts?> timeouts;
 
@@ -316,7 +316,7 @@ class RouteServer extends pulumi.CustomResource {
           'aws:vpc/routeServer:RouteServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     amazonSideAsn = registerOutput<int>('amazonSideAsn');
     arn = registerOutput<String>('arn');

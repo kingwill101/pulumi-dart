@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_autonomous_database_args.dart';
+import 'get_autonomous_database_result.dart';
 import 'get_cloud_autonomous_vm_cluster_args.dart';
 import 'get_cloud_autonomous_vm_cluster_result.dart';
 import 'get_cloud_autonomous_vm_clusters_args.dart';
@@ -33,6 +35,135 @@ import 'get_network_peering_connections_result.dart';
 import 'get_network_result.dart';
 import 'get_networks_args.dart';
 import 'get_networks_result.dart';
+
+/// Provides details about an Oracle Database@AWS Autonomous Database Serverless (ADB-S) instance by its unique identifier.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = aws.odb.getAutonomousDatabase({
+///     id: exampleAwsOdbAutonomousDatabase.id,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.odb.get_autonomous_database(id=example_aws_odb_autonomous_database["id"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Aws.Odb.GetAutonomousDatabase.Invoke(new()
+///     {
+///         Id = exampleAwsOdbAutonomousDatabase.Id,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/odb"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := odb.LookupAutonomousDatabase(ctx, &odb.LookupAutonomousDatabaseArgs{
+/// 			Id: exampleAwsOdbAutonomousDatabase.Id,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// data "aws_odb_getautonomousdatabase" "example" {
+///   id = exampleAwsOdbAutonomousDatabase.id
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.odb.OdbFunctions;
+/// import com.pulumi.aws.odb.inputs.GetAutonomousDatabaseArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = OdbFunctions.getAutonomousDatabase(GetAutonomousDatabaseArgs.builder()
+///             .id(exampleAwsOdbAutonomousDatabase.id())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: aws:odb:getAutonomousDatabase
+///       arguments:
+///         id: ${exampleAwsOdbAutonomousDatabase.id}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_odb_get_autonomous_database_get_autonomous_database_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAutonomousDatabaseResult> getAutonomousDatabase(
+  GetAutonomousDatabaseArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'aws:odb/getAutonomousDatabase:getAutonomousDatabase',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAutonomousDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetAutonomousDatabaseResult> getAutonomousDatabaseOutput(
+  GetAutonomousDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'aws:odb/getAutonomousDatabase:getAutonomousDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutonomousDatabaseResult.fromMap);
+}
 
 /// Data source for managing cloud autonomous vm cluster resource in AWS for Oracle Database@AWS.
 ///
@@ -802,7 +933,7 @@ pulumi.Output<GetCloudVmClustersResult> getCloudVmClustersOutput(
   ).apply(GetCloudVmClustersResult.fromMap);
 }
 
-/// Data source for manging db nodes linked to cloud vm cluster of Oracle Database@AWS.
+/// Data source for managing db nodes linked to cloud vm cluster of Oracle Database@AWS.
 ///
 /// You can find out more about Oracle Database@AWS from [User Guide](https://docs.aws.amazon.com/odb/latest/UserGuide/what-is-odb.html).
 ///
@@ -942,7 +1073,7 @@ pulumi.Output<GetDbNodeResult> getDbNodeOutput(
   ).apply(GetDbNodeResult.fromMap);
 }
 
-/// Data source for manging db nodes linked to cloud vm cluster of Oracle Database@AWS.
+/// Data source for managing db nodes linked to cloud vm cluster of Oracle Database@AWS.
 ///
 /// You can find out more about Oracle Database@AWS from [User Guide](https://docs.aws.amazon.com/odb/latest/UserGuide/what-is-odb.html).
 ///
@@ -1075,7 +1206,7 @@ pulumi.Output<GetDbNodesResult> getDbNodesOutput(
   ).apply(GetDbNodesResult.fromMap);
 }
 
-/// Data source for manging db server linked to exadata infrastructure of Oracle Database@AWS.
+/// Data source for managing db server linked to exadata infrastructure of Oracle Database@AWS.
 ///
 /// You can find out more about Oracle Database@AWS from [User Guide](https://docs.aws.amazon.com/odb/latest/UserGuide/what-is-odb.html).
 ///
@@ -1215,7 +1346,7 @@ pulumi.Output<GetDbServerResult> getDbServerOutput(
   ).apply(GetDbServerResult.fromMap);
 }
 
-/// Data source for manging db servers linked to exadata infrastructure of Oracle Database@AWS.
+/// Data source for managing db servers linked to exadata infrastructure of Oracle Database@AWS.
 ///
 /// You can find out more about Oracle Database@AWS from [User Guide](https://docs.aws.amazon.com/odb/latest/UserGuide/what-is-odb.html).
 ///

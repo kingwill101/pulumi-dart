@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExperienceEndpoint {
-  /// The endpoint of your Amazon Kendra experience.
+  /// Endpoint of your Amazon Kendra experience.
   final pulumi.Input<String?>? endpoint;
-  /// The type of endpoint for your Amazon Kendra experience.
+  /// Type of endpoint for your Amazon Kendra experience.
   final pulumi.Input<String?>? endpointType;
 
   /// Creates a new [ExperienceEndpoint].
-  /// [endpoint] The endpoint of your Amazon Kendra experience.
-  /// [endpointType] The type of endpoint for your Amazon Kendra experience.
+  /// [endpoint] Endpoint of your Amazon Kendra experience.
+  /// [endpointType] Type of endpoint for your Amazon Kendra experience.
   const ExperienceEndpoint({
     this.endpoint,
     this.endpointType,

@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EncryptionControlResourceExclusionsVirtualPrivateGateway {
-  /// The current state of the VPC Encryption Control.
+  /// Encryption enforcement state for peered VPCs.
   final pulumi.Input<String> state;
-  /// A message providing additional information about the state of the VPC Encryption Control.
+  /// Message providing additional information about the encryption enforcement state.
   final pulumi.Input<String> stateMessage;
 
   /// Creates a new [EncryptionControlResourceExclusionsVirtualPrivateGateway].
-  /// [state] The current state of the VPC Encryption Control.
-  /// [stateMessage] A message providing additional information about the state of the VPC Encryption Control.
+  /// [state] Encryption enforcement state for peered VPCs.
+  /// [stateMessage] Message providing additional information about the encryption enforcement state.
   const EncryptionControlResourceExclusionsVirtualPrivateGateway({
     required this.state,
     required this.stateMessage,

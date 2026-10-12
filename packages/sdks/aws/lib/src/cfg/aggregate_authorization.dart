@@ -126,10 +126,10 @@ class AggregateAuthorization extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   /// The ARN of the authorization
   late final pulumi.Output<String> arn;
-  /// The region authorized to collect aggregated data.
-  late final pulumi.Output<String?> authorizedAwsRegion;
-  /// The region authorized to collect aggregated data. Use `authorizedAwsRegion` instead.
-  late final pulumi.Output<String?> region;
+  /// The region authorized to collect aggregated data. Exactly one of `authorizedAwsRegion` or `region` is required.
+  late final pulumi.Output<String> authorizedAwsRegion;
+  /// The region authorized to collect aggregated data. Use `authorizedAwsRegion` instead. Exactly one of `authorizedAwsRegion` or `region` is required.
+  late final pulumi.Output<String> region;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -147,12 +147,12 @@ class AggregateAuthorization extends pulumi.CustomResource {
           'aws:cfg/aggregateAuthorization:AggregateAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
-    authorizedAwsRegion = registerOutput<String?>('authorizedAwsRegion');
-    region = registerOutput<String?>('region');
+    authorizedAwsRegion = registerOutput<String>('authorizedAwsRegion');
+    region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
@@ -183,8 +183,8 @@ class AggregateAuthorization extends pulumi.CustomResource {
         ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
-    authorizedAwsRegion = registerOutput<String?>('authorizedAwsRegion');
-    region = registerOutput<String?>('region');
+    authorizedAwsRegion = registerOutput<String>('authorizedAwsRegion');
+    region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
@@ -200,8 +200,8 @@ class AggregateAuthorization extends pulumi.CustomResource {
       ) {
     accountId = registerOutput<String>('accountId');
     arn = registerOutput<String>('arn');
-    authorizedAwsRegion = registerOutput<String?>('authorizedAwsRegion');
-    region = registerOutput<String?>('region');
+    authorizedAwsRegion = registerOutput<String>('authorizedAwsRegion');
+    region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }

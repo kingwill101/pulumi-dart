@@ -27,7 +27,7 @@ class AnalyzerConfigurationUnusedAccess {
   factory AnalyzerConfigurationUnusedAccess.fromMap(Map<String, dynamic> map) {
     return AnalyzerConfigurationUnusedAccess(
       analysisRule: (() { final guardedValue = map['analysisRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnalyzerConfigurationUnusedAccessAnalysisRule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      unusedAccessAge: (() { final guardedValue = map['unusedAccessAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      unusedAccessAge: (() { final guardedValue = map['unusedAccessAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

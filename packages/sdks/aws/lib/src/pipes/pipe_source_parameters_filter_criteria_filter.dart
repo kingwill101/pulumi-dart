@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeSourceParametersFilterCriteriaFilter {
-  /// The event pattern. At most 4096 characters.
+  /// Event pattern. At most 4096 characters.
   final pulumi.Input<String> pattern;
 
   /// Creates a new [PipeSourceParametersFilterCriteriaFilter].
-  /// [pattern] The event pattern. At most 4096 characters.
+  /// [pattern] Event pattern. At most 4096 characters.
   const PipeSourceParametersFilterCriteriaFilter({
     required this.pattern,
   });

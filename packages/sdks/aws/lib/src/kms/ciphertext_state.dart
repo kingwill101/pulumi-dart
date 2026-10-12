@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CiphertextState {
   /// Base64 encoded ciphertext
   final pulumi.Input<String?>? ciphertextBlob;
-  /// An optional mapping that makes up the encryption context.
+  /// Mapping that makes up the encryption context.
   final pulumi.Input<Map<String, String>?>? context;
   /// Globally unique key ID for the customer master key.
   final pulumi.Input<String?>? keyId;
@@ -15,18 +15,18 @@ class CiphertextState {
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Data to be encrypted. Note that this may show up in logs. It will not be stored in the state file.
   final pulumi.Input<String?>? plaintextWo;
-  /// Used together with `plaintextWo` to trigger a replacement. Modify this value when a replacement is required.
+  /// Triggers a replacement together with `plaintextWo`. Modify this value when a replacement is required.
   final pulumi.Input<String?>? plaintextWoVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [CiphertextState].
   /// [ciphertextBlob] Base64 encoded ciphertext
-  /// [context] An optional mapping that makes up the encryption context.
+  /// [context] Mapping that makes up the encryption context.
   /// [keyId] Globally unique key ID for the customer master key.
   /// [plaintext] Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
   /// [plaintextWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [plaintextWoVersion] Used together with `plaintextWo` to trigger a replacement. Modify this value when a replacement is required.
+  /// [plaintextWoVersion] Triggers a replacement together with `plaintextWo`. Modify this value when a replacement is required.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const CiphertextState({
     this.ciphertextBlob,

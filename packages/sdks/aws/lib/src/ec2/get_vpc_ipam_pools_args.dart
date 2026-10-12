@@ -9,8 +9,6 @@ import 'get_vpc_ipam_pools_filter.dart';
 /// {@macro pulumi_ec2_get_vpc_ipam_pools_get_vpc_ipam_pools_args_doc}
 class GetVpcIpamPoolsArgs {
   /// Custom filter block as described below.
-  ///
-  /// The arguments of this data source act as filters for querying the available IPAM Pools in the current region.
   final pulumi.Input<List<GetVpcIpamPoolsFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;

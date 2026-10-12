@@ -6,14 +6,14 @@ import 'agent_knowledge_base_storage_configuration_opensearch_serverless_configu
 class AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration {
   /// ARN of the OpenSearch Service vector store.
   final pulumi.Input<String> collectionArn;
-  /// The names of the fields to which to map information about the vector store. This block supports the following arguments:
+  /// Names of the fields to which to map information about the vector store. See `storage_configuration.opensearch_serverless_configuration.field_mapping` Block for details.
   final pulumi.Input<AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping> fieldMapping;
   /// Name of the vector store.
   final pulumi.Input<String> vectorIndexName;
 
   /// Creates a new [AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration].
   /// [collectionArn] ARN of the OpenSearch Service vector store.
-  /// [fieldMapping] The names of the fields to which to map information about the vector store. This block supports the following arguments:
+  /// [fieldMapping] Names of the fields to which to map information about the vector store. See `storage_configuration.opensearch_serverless_configuration.field_mapping` Block for details.
   /// [vectorIndexName] Name of the vector store.
   const AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration({
     required this.collectionArn,

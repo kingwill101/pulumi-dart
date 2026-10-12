@@ -23,8 +23,8 @@ class GetTableWarmThroughput {
 
   factory GetTableWarmThroughput.fromMap(Map<String, dynamic> map) {
     return GetTableWarmThroughput(
-      readUnitsPerSecond: pulumi.Input.fromValue((map['readUnitsPerSecond'] as num).toInt()),
-      writeUnitsPerSecond: pulumi.Input.fromValue((map['writeUnitsPerSecond'] as num).toInt()),
+      readUnitsPerSecond: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['readUnitsPerSecond'])),
+      writeUnitsPerSecond: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['writeUnitsPerSecond'])),
     );
   }
 }

@@ -6,15 +6,15 @@ import 'scheduled_query_recently_failed_run_execution_stat.dart';
 import 'scheduled_query_recently_failed_run_query_insights_response.dart';
 
 class ScheduledQueryRecentlyFailedRun {
-  /// S3 location for error report.
+  /// S3 location for error report. See `recently_failed_runs.error_report_location` Block for details.
   final pulumi.Input<List<ScheduledQueryRecentlyFailedRunErrorReportLocation>?>? errorReportLocations;
-  /// Statistics for a single scheduled query run.
+  /// Statistics for a single scheduled query run. See `recently_failed_runs.execution_stats` Block for details.
   final pulumi.Input<List<ScheduledQueryRecentlyFailedRunExecutionStat>?>? executionStats;
   /// Error message for the scheduled query in case of failure. You might have to look at the error report to get more detailed error reasons.
   final pulumi.Input<String?>? failureReason;
   /// InvocationTime for this run. This is the time at which the query is scheduled to run. Parameter `@scheduled_runtime` can be used in the query to get the value.
   final pulumi.Input<String?>? invocationTime;
-  /// Various insights and metrics related to the run summary of the scheduled query.
+  /// Various insights and metrics related to the run summary of the scheduled query. See `recently_failed_runs.query_insights_response` Block for details.
   final pulumi.Input<List<ScheduledQueryRecentlyFailedRunQueryInsightsResponse>?>? queryInsightsResponses;
   /// Status of a scheduled query run. Valid values: `AUTO_TRIGGER_SUCCESS`, `AUTO_TRIGGER_FAILURE`, `MANUAL_TRIGGER_SUCCESS`, `MANUAL_TRIGGER_FAILURE`.
   final pulumi.Input<String?>? runStatus;
@@ -22,11 +22,11 @@ class ScheduledQueryRecentlyFailedRun {
   final pulumi.Input<String?>? triggerTime;
 
   /// Creates a new [ScheduledQueryRecentlyFailedRun].
-  /// [errorReportLocations] S3 location for error report.
-  /// [executionStats] Statistics for a single scheduled query run.
+  /// [errorReportLocations] S3 location for error report. See `recently_failed_runs.error_report_location` Block for details.
+  /// [executionStats] Statistics for a single scheduled query run. See `recently_failed_runs.execution_stats` Block for details.
   /// [failureReason] Error message for the scheduled query in case of failure. You might have to look at the error report to get more detailed error reasons.
   /// [invocationTime] InvocationTime for this run. This is the time at which the query is scheduled to run. Parameter `@scheduled_runtime` can be used in the query to get the value.
-  /// [queryInsightsResponses] Various insights and metrics related to the run summary of the scheduled query.
+  /// [queryInsightsResponses] Various insights and metrics related to the run summary of the scheduled query. See `recently_failed_runs.query_insights_response` Block for details.
   /// [runStatus] Status of a scheduled query run. Valid values: `AUTO_TRIGGER_SUCCESS`, `AUTO_TRIGGER_FAILURE`, `MANUAL_TRIGGER_SUCCESS`, `MANUAL_TRIGGER_FAILURE`.
   /// [triggerTime] Actual time when the query was run.
   const ScheduledQueryRecentlyFailedRun({

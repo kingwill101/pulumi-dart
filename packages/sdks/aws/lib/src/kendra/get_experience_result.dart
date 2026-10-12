@@ -8,13 +8,13 @@ import 'get_experience_endpoint.dart';
 class GetExperienceResult {
   /// ARN of the Experience.
   final String? arn;
-  /// Block that specifies the configuration information for your Amazon Kendra Experience. This includes `contentSourceConfiguration`, which specifies the data source IDs and/or FAQ IDs, and `userIdentityConfiguration`, which specifies the user or group information to grant access to your Amazon Kendra Experience. Documented below.
+  /// Block that specifies the configuration information for your Amazon Kendra Experience. This includes `contentSourceConfiguration`, which specifies the data source IDs and/or FAQ IDs, and `userIdentityConfiguration`, which specifies the user or group information to grant access to your Amazon Kendra Experience.
   final List<GetExperienceConfiguration>? configurations;
   /// Unix datetime that the Experience was created.
   final String? createdAt;
   /// Description of the Experience.
   final String? description;
-  /// Shows the endpoint URLs for your Amazon Kendra Experiences. The URLs are unique and fully hosted by AWS. Documented below.
+  /// Shows the endpoint URLs for your Amazon Kendra Experiences. The URLs are unique and fully hosted by AWS.
   final List<GetExperienceEndpoint>? endpoints;
   /// Reason your Amazon Kendra Experience could not properly process.
   final String? errorMessage;
@@ -34,10 +34,10 @@ class GetExperienceResult {
 
   /// Creates a new [GetExperienceResult].
   /// [arn] ARN of the Experience.
-  /// [configurations] Block that specifies the configuration information for your Amazon Kendra Experience. This includes `contentSourceConfiguration`, which specifies the data source IDs and/or FAQ IDs, and `userIdentityConfiguration`, which specifies the user or group information to grant access to your Amazon Kendra Experience. Documented below.
+  /// [configurations] Block that specifies the configuration information for your Amazon Kendra Experience. This includes `contentSourceConfiguration`, which specifies the data source IDs and/or FAQ IDs, and `userIdentityConfiguration`, which specifies the user or group information to grant access to your Amazon Kendra Experience.
   /// [createdAt] Unix datetime that the Experience was created.
   /// [description] Description of the Experience.
-  /// [endpoints] Shows the endpoint URLs for your Amazon Kendra Experiences. The URLs are unique and fully hosted by AWS. Documented below.
+  /// [endpoints] Shows the endpoint URLs for your Amazon Kendra Experiences. The URLs are unique and fully hosted by AWS.
   /// [errorMessage] Reason your Amazon Kendra Experience could not properly process.
   /// [experienceId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.

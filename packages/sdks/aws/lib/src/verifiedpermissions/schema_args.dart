@@ -8,16 +8,16 @@ import 'schema_definition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_verifiedpermissions_schema_schema_args_doc}
 class SchemaArgs {
-  /// The definition of the schema.
+  /// Definition of the schema. See Definition below.
   final pulumi.Input<SchemaDefinition> definition;
-  /// The ID of the Policy Store.
+  /// ID of the Policy Store.
   final pulumi.Input<String> policyStoreId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [SchemaArgs].
-  /// [definition] The definition of the schema.
-  /// [policyStoreId] The ID of the Policy Store.
+  /// [definition] Definition of the schema. See Definition below.
+  /// [policyStoreId] ID of the Policy Store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const SchemaArgs({
     required this.definition,

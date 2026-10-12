@@ -144,11 +144,11 @@ import 'vpc_endpoint_service_allowed_principle_state.dart';
 ///       arguments: {}
 /// ```
 class VpcEndpointServiceAllowedPrinciple extends pulumi.CustomResource {
-  /// The ARN of the principal to allow permissions.
+  /// ARN of the principal to allow permissions.
   late final pulumi.Output<String> principalArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The ID of the VPC endpoint service to allow permission.
+  /// ID of the VPC endpoint service to allow permission.
   late final pulumi.Output<String> vpcEndpointServiceId;
 
   /// Creates a new [VpcEndpointServiceAllowedPrinciple].
@@ -163,7 +163,7 @@ class VpcEndpointServiceAllowedPrinciple extends pulumi.CustomResource {
           'aws:ec2/vpcEndpointServiceAllowedPrinciple:VpcEndpointServiceAllowedPrinciple',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     principalArn = registerOutput<String>('principalArn');
     region = registerOutput<String>('region');

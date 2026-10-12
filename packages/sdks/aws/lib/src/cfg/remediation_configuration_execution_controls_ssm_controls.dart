@@ -25,8 +25,8 @@ class RemediationConfigurationExecutionControlsSsmControls {
 
   factory RemediationConfigurationExecutionControlsSsmControls.fromMap(Map<String, dynamic> map) {
     return RemediationConfigurationExecutionControlsSsmControls(
-      concurrentExecutionRatePercentage: (() { final guardedValue = map['concurrentExecutionRatePercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      errorPercentage: (() { final guardedValue = map['errorPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      concurrentExecutionRatePercentage: (() { final guardedValue = map['concurrentExecutionRatePercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      errorPercentage: (() { final guardedValue = map['errorPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

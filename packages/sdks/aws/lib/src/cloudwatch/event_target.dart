@@ -47,8 +47,10 @@ import 'event_target_state.dart';
 ///     }),
 /// });
 /// const testStream = new aws.kinesis.Stream("test_stream", {
-///     name: "kinesis-test",
-///     shardCount: 1,
+///     streamModeDetails: {
+///         streamMode: "ON_DEMAND",
+///     },
+///     name: "pulumi-kinesis-test",
 /// });
 /// const yada = new aws.cloudwatch.EventTarget("yada", {
 ///     runCommandTargets: [
@@ -84,8 +86,10 @@ import 'event_target_state.dart';
 ///         ],
 ///     }))
 /// test_stream = aws.kinesis.Stream("test_stream",
-///     name="kinesis-test",
-///     shard_count=1)
+///     stream_mode_details={
+///         "stream_mode": "ON_DEMAND",
+///     },
+///     name="pulumi-kinesis-test")
 /// yada = aws.cloudwatch.EventTarget("yada",
 ///     run_command_targets=[
 ///         {
@@ -132,8 +136,11 @@ import 'event_target_state.dart';
 ///
 ///     var testStream = new Aws.Kinesis.Stream("test_stream", new()
 ///     {
-///         Name = "kinesis-test",
-///         ShardCount = 1,
+///         StreamModeDetails = new Aws.Kinesis.Inputs.StreamStreamModeDetailsArgs
+///         {
+///             StreamMode = "ON_DEMAND",
+///         },
+///         Name = "pulumi-kinesis-test",
 ///     });
 ///
 ///     var yada = new Aws.CloudWatch.EventTarget("yada", new()
@@ -201,8 +208,10 @@ import 'event_target_state.dart';
 /// 			return err
 /// 		}
 /// 		testStream, err := kinesis.NewStream(ctx, "test_stream", &kinesis.StreamArgs{
-/// 			Name:       pulumi.String("kinesis-test"),
-/// 			ShardCount: pulumi.Int(1),
+/// 			StreamModeDetails: &kinesis.StreamStreamModeDetailsArgs{
+/// 				StreamMode: pulumi.String("ON_DEMAND"),
+/// 			},
+/// 			Name: pulumi.String("pulumi-kinesis-test"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -264,8 +273,10 @@ import 'event_target_state.dart';
 ///   })
 /// }
 /// resource "aws_kinesis_stream" "test_stream" {
-///   name        = "kinesis-test"
-///   shard_count = 1
+///   stream_mode_details = {
+///     stream_mode = "ON_DEMAND"
+///   }
+///   name = "pulumi-kinesis-test"
 /// }
 /// ```
 /// ```java
@@ -278,6 +289,7 @@ import 'event_target_state.dart';
 /// import com.pulumi.aws.cloudwatch.EventRuleArgs;
 /// import com.pulumi.aws.kinesis.Stream;
 /// import com.pulumi.aws.kinesis.StreamArgs;
+/// import com.pulumi.aws.kinesis.inputs.StreamStreamModeDetailsArgs;
 /// import com.pulumi.aws.cloudwatch.EventTarget;
 /// import com.pulumi.aws.cloudwatch.EventTargetArgs;
 /// import com.pulumi.aws.cloudwatch.inputs.EventTargetRunCommandTargetArgs;
@@ -311,8 +323,10 @@ import 'event_target_state.dart';
 ///             .build());
 ///
 ///         var testStream = new Stream("testStream", StreamArgs.builder()
-///             .name("kinesis-test")
-///             .shardCount(1)
+///             .streamModeDetails(StreamStreamModeDetailsArgs.builder()
+///                 .streamMode("ON_DEMAND")
+///                 .build())
+///             .name("pulumi-kinesis-test")
 ///             .build());
 ///
 ///         var yada = new EventTarget("yada", EventTargetArgs.builder()
@@ -366,8 +380,9 @@ import 'event_target_state.dart';
 ///     type: aws:kinesis:Stream
 ///     name: test_stream
 ///     properties:
-///       name: kinesis-test
-///       shardCount: 1
+///       streamModeDetails:
+///         streamMode: ON_DEMAND
+///       name: pulumi-kinesis-test
 /// ```
 ///
 ///
@@ -1929,7 +1944,7 @@ import 'event_target_state.dart';
 ///         },
 ///     },
 ///     arn: pulumi.interpolate`${exampleStage.executionArn}/GET`,
-///     rule: exampleEventRule.id,
+///     rule: exampleEventRule.name,
 /// });
 /// ```
 /// ```python
@@ -1951,7 +1966,7 @@ import 'event_target_state.dart';
 ///         },
 ///     },
 ///     arn=example_stage.execution_arn.apply(lambda execution_arn: f"{execution_arn}/GET"),
-///     rule=example_event_rule.id)
+///     rule=example_event_rule.name)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -1988,7 +2003,7 @@ import 'event_target_state.dart';
 ///             },
 ///         },
 ///         Arn = exampleStage.ExecutionArn.Apply(executionArn => $"{executionArn}/GET"),
-///         Rule = exampleEventRule.Id,
+///         Rule = exampleEventRule.Name,
 ///     });
 ///
 /// });
@@ -2035,7 +2050,7 @@ import 'event_target_state.dart';
 /// 			Arn: exampleStage.ExecutionArn.ApplyT(func(executionArn string) (string, error) {
 /// 				return fmt.Sprintf("%v/GET", executionArn), nil
 /// 			}).(pulumi.StringOutput),
-/// 			Rule: exampleEventRule.ID().ToIDOutput().ToStringOutput(),
+/// 			Rule: exampleEventRule.Name,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2063,7 +2078,7 @@ import 'event_target_state.dart';
 ///     }
 ///   }
 ///   arn  ="${aws_apigateway_stage.example.execution_arn}/GET"
-///   rule = aws_cloudwatch_eventrule.example.id
+///   rule = aws_cloudwatch_eventrule.example.name
 /// }
 /// resource "aws_cloudwatch_eventrule" "example" {
 /// }
@@ -2119,7 +2134,7 @@ import 'event_target_state.dart';
 ///                 .headerParameters(Map.of("Env", "Test"))
 ///                 .build())
 ///             .arn(exampleStage.executionArn().applyValue(_executionArn -> String.format("%s/GET", _executionArn)))
-///             .rule(exampleEventRule.id())
+///             .rule(exampleEventRule.name())
 ///             .build());
 ///
 ///     }
@@ -2136,7 +2151,7 @@ import 'event_target_state.dart';
 ///         headerParameters:
 ///           Env: Test
 ///       arn: ${exampleStage.executionArn}/GET
-///       rule: ${exampleEventRule.id}
+///       rule: ${exampleEventRule.name}
 ///   exampleEventRule:
 ///     type: aws:cloudwatch:EventRule
 ///     name: example
@@ -2632,7 +2647,7 @@ import 'event_target_state.dart';
 /// `,
 ///     },
 ///     arn: exampleAwsLambdaFunction.arn,
-///     rule: exampleEventRule.id,
+///     rule: exampleEventRule.name,
 /// });
 /// ```
 /// ```python
@@ -2653,7 +2668,7 @@ import 'event_target_state.dart';
 /// """,
 ///     },
 ///     arn=example_aws_lambda_function["arn"],
-///     rule=example_event_rule.id)
+///     rule=example_event_rule.name)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2681,7 +2696,7 @@ import 'event_target_state.dart';
 /// ",
 ///         },
 ///         Arn = exampleAwsLambdaFunction.Arn,
-///         Rule = exampleEventRule.Id,
+///         Rule = exampleEventRule.Name,
 ///     });
 ///
 /// });
@@ -2709,7 +2724,7 @@ import 'event_target_state.dart';
 /// 				InputTemplate: pulumi.String("{\n  \\\"instance_id\\\": <instance>,\n  \\\"instance_status\\\": <status>\n}\n"),
 /// 			},
 /// 			Arn:  pulumi.Any(exampleAwsLambdaFunction.Arn),
-/// 			Rule: exampleEventRule.ID().ToIDOutput().ToStringOutput(),
+/// 			Rule: exampleEventRule.Name,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2736,7 +2751,7 @@ import 'event_target_state.dart';
 ///     input_template = "{\n  \\\"instance_id\\\": <instance>,\n  \\\"instance_status\\\": <status>\n}\n"
 ///   }
 ///   arn  = exampleAwsLambdaFunction.arn
-///   rule = aws_cloudwatch_eventrule.example.id
+///   rule = aws_cloudwatch_eventrule.example.name
 /// }
 /// resource "aws_cloudwatch_eventrule" "example" {
 /// }
@@ -2780,7 +2795,7 @@ import 'event_target_state.dart';
 ///                 """)
 ///                 .build())
 ///             .arn(exampleAwsLambdaFunction.arn())
-///             .rule(exampleEventRule.id())
+///             .rule(exampleEventRule.name())
 ///             .build());
 ///
 ///     }
@@ -2801,7 +2816,7 @@ import 'event_target_state.dart';
 ///             \"instance_status\": <status>
 ///           }
 ///       arn: ${exampleAwsLambdaFunction.arn}
-///       rule: ${exampleEventRule.id}
+///       rule: ${exampleEventRule.name}
 ///   exampleEventRule:
 ///     type: aws:cloudwatch:EventRule
 ///     name: example
@@ -2825,7 +2840,7 @@ import 'event_target_state.dart';
 ///         inputTemplate: "\"<instance> is in state <status>\"",
 ///     },
 ///     arn: exampleAwsLambdaFunction.arn,
-///     rule: exampleEventRule.id,
+///     rule: exampleEventRule.name,
 /// });
 /// ```
 /// ```python
@@ -2842,7 +2857,7 @@ import 'event_target_state.dart';
 ///         "input_template": "\"<instance> is in state <status>\"",
 ///     },
 ///     arn=example_aws_lambda_function["arn"],
-///     rule=example_event_rule.id)
+///     rule=example_event_rule.name)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2866,7 +2881,7 @@ import 'event_target_state.dart';
 ///             InputTemplate = "\"<instance> is in state <status>\"",
 ///         },
 ///         Arn = exampleAwsLambdaFunction.Arn,
-///         Rule = exampleEventRule.Id,
+///         Rule = exampleEventRule.Name,
 ///     });
 ///
 /// });
@@ -2894,7 +2909,7 @@ import 'event_target_state.dart';
 /// 				InputTemplate: pulumi.String("\"<instance> is in state <status>\""),
 /// 			},
 /// 			Arn:  pulumi.Any(exampleAwsLambdaFunction.Arn),
-/// 			Rule: exampleEventRule.ID().ToIDOutput().ToStringOutput(),
+/// 			Rule: exampleEventRule.Name,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2921,7 +2936,7 @@ import 'event_target_state.dart';
 ///     input_template = "\"<instance> is in state <status>\""
 ///   }
 ///   arn  = exampleAwsLambdaFunction.arn
-///   rule = aws_cloudwatch_eventrule.example.id
+///   rule = aws_cloudwatch_eventrule.example.name
 /// }
 /// resource "aws_cloudwatch_eventrule" "example" {
 /// }
@@ -2960,7 +2975,7 @@ import 'event_target_state.dart';
 ///                 .inputTemplate("\"<instance> is in state <status>\"")
 ///                 .build())
 ///             .arn(exampleAwsLambdaFunction.arn())
-///             .rule(exampleEventRule.id())
+///             .rule(exampleEventRule.name())
 ///             .build());
 ///
 ///     }
@@ -2977,7 +2992,7 @@ import 'event_target_state.dart';
 ///           status: $.detail.status
 ///         inputTemplate: '"<instance> is in state <status>"'
 ///       arn: ${exampleAwsLambdaFunction.arn}
-///       rule: ${exampleEventRule.id}
+///       rule: ${exampleEventRule.name}
 ///   exampleEventRule:
 ///     type: aws:cloudwatch:EventRule
 ///     name: example
@@ -3611,7 +3626,7 @@ import 'event_target_state.dart';
 ///         search: "apis",
 ///         replace: "endpoints/graphql-api",
 ///     }).result,
-///     rule: invokeAppsyncMutation.id,
+///     rule: invokeAppsyncMutation.name,
 ///     roleArn: appsyncMutationRole.arn,
 /// });
 /// const appsyncMutationRolePolicyDocument = aws.iam.getPolicyDocumentOutput({
@@ -3689,7 +3704,7 @@ import 'event_target_state.dart';
 ///     arn=std.replace_output(text=graphql_api.arn,
 ///         search="apis",
 ///         replace="endpoints/graphql-api").result,
-///     rule=invoke_appsync_mutation.id,
+///     rule=invoke_appsync_mutation.name,
 ///     role_arn=appsync_mutation_role.arn)
 /// appsync_mutation_role_policy_document = aws.iam.get_policy_document_output(statements=[{
 ///     "actions": ["appsync:GraphQL"],
@@ -3800,7 +3815,7 @@ import 'event_target_state.dart';
 ///             Search = "apis",
 ///             Replace = "endpoints/graphql-api",
 ///         }).Apply(invoke => invoke.Result),
-///         Rule = invokeAppsyncMutation.Id,
+///         Rule = invokeAppsyncMutation.Name,
 ///         RoleArn = appsyncMutationRole.Arn,
 ///     });
 ///
@@ -3928,7 +3943,7 @@ import 'event_target_state.dart';
 /// 				Search:  pulumi.String("apis"),
 /// 				Replace: pulumi.String("endpoints/graphql-api"),
 /// 			}, nil).Result(),
-/// 			Rule:    invokeAppsyncMutation.ID().ToIDOutput().ToStringOutput(),
+/// 			Rule:    invokeAppsyncMutation.Name,
 /// 			RoleArn: appsyncMutationRole.Arn,
 /// 		})
 /// 		if err != nil {
@@ -4010,7 +4025,7 @@ import 'event_target_state.dart';
 ///     graphql_operation = "mutation TestMutation($input:MutationInput!){testMutation(input: $input) {test}}"
 ///   }
 ///   arn      = replace(aws_appsync_graphqlapi.graphql-api.arn, "apis", "endpoints/graphql-api")
-///   rule     = aws_cloudwatch_eventrule.invoke_appsync_mutation.id
+///   rule     = aws_cloudwatch_eventrule.invoke_appsync_mutation.name
 ///   role_arn = aws_iam_role.appsync_mutation_role.arn
 /// }
 /// resource "aws_iam_role" "appsync_mutation_role" {
@@ -4135,7 +4150,7 @@ import 'event_target_state.dart';
 ///                 .search("apis")
 ///                 .replace("endpoints/graphql-api")
 ///                 .build()).applyValue(_invoke -> _invoke.result()))
-///             .rule(invokeAppsyncMutation.id())
+///             .rule(invokeAppsyncMutation.name())
 ///             .roleArn(appsyncMutationRole.arn())
 ///             .build());
 ///
@@ -4190,7 +4205,7 @@ import 'event_target_state.dart';
 ///             search: apis
 ///             replace: endpoints/graphql-api
 ///           return: result
-///       rule: ${invokeAppsyncMutation.id}
+///       rule: ${invokeAppsyncMutation.name}
 ///       roleArn: ${appsyncMutationRole.arn}
 ///   appsyncMutationRole:
 ///     type: aws:iam:Role
@@ -4341,7 +4356,7 @@ class EventTarget extends pulumi.CustomResource {
           'aws:cloudwatch/eventTarget:EventTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     appsyncTarget = registerOutput<EventTargetAppsyncTarget?>('appsyncTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventTargetAppsyncTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

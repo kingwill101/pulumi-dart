@@ -9,39 +9,35 @@ import 'analytics_application_inputs_schema.dart';
 import 'analytics_application_inputs_starting_position_configuration.dart';
 
 class AnalyticsApplicationInputs {
-  /// The ARN of the Kinesis Analytics Application.
+  /// ARN of the Kinesis Analytics Application.
   final pulumi.Input<String?>? id;
-  /// The Kinesis Firehose configuration for the streaming source. Conflicts with `kinesisStream`.
-  /// See Kinesis Firehose below for more details.
+  /// Kinesis Firehose configuration for the streaming source. Conflicts with `kinesisStream`. See `inputs.kinesis_firehose` Block below for details.
   final pulumi.Input<AnalyticsApplicationInputsKinesisFirehose?>? kinesisFirehose;
-  /// The Kinesis Stream configuration for the streaming source. Conflicts with `kinesisFirehose`.
-  /// See Kinesis Stream below for more details.
+  /// Kinesis Stream configuration for the streaming source. Conflicts with `kinesisFirehose`. See `inputs.kinesis_stream` Block below for details.
   final pulumi.Input<AnalyticsApplicationInputsKinesisStream?>? kinesisStream;
-  /// The Name Prefix to use when creating an in-application stream.
+  /// Name Prefix to use when creating an in-application stream.
   final pulumi.Input<String> namePrefix;
-  /// The number of Parallel in-application streams to create.
-  /// See Parallelism below for more details.
+  /// Number of Parallel in-application streams to create. See `inputs.parallelism` Block below for details.
   final pulumi.Input<AnalyticsApplicationInputsParallelism?>? parallelism;
-  /// The Processing Configuration to transform records as they are received from the stream.
-  /// See Processing Configuration below for more details.
+  /// Processing Configuration to transform records as they are received from the stream. See `inputs.processing_configuration` Block below for details.
   final pulumi.Input<AnalyticsApplicationInputsProcessingConfiguration?>? processingConfiguration;
-  /// The Schema format of the data in the streaming source. See Source Schema below for more details.
+  /// Schema format of the data in the streaming source. See `inputs.schema` Block below for details.
   final pulumi.Input<AnalyticsApplicationInputsSchema> schema;
-  /// The point at which the application starts processing records from the streaming source.
-  /// See Starting Position Configuration below for more details.
+  /// Point at which the application starts processing records from the streaming source. See `inputs.starting_position_configuration` Block below for details.
   final pulumi.Input<List<AnalyticsApplicationInputsStartingPositionConfiguration>?>? startingPositionConfigurations;
+  /// Names of the in-application streams created for the input.
   final pulumi.Input<List<String>?>? streamNames;
 
   /// Creates a new [AnalyticsApplicationInputs].
-  /// [id] The ARN of the Kinesis Analytics Application.
-  /// [kinesisFirehose] The Kinesis Firehose configuration for the streaming source. Conflicts with `kinesisStream`.
-  /// [kinesisStream] The Kinesis Stream configuration for the streaming source. Conflicts with `kinesisFirehose`.
-  /// [namePrefix] The Name Prefix to use when creating an in-application stream.
-  /// [parallelism] The number of Parallel in-application streams to create.
-  /// [processingConfiguration] The Processing Configuration to transform records as they are received from the stream.
-  /// [schema] The Schema format of the data in the streaming source. See Source Schema below for more details.
-  /// [startingPositionConfigurations] The point at which the application starts processing records from the streaming source.
-  /// [streamNames] Optional.
+  /// [id] ARN of the Kinesis Analytics Application.
+  /// [kinesisFirehose] Kinesis Firehose configuration for the streaming source. Conflicts with `kinesisStream`. See `inputs.kinesis_firehose` Block below for details.
+  /// [kinesisStream] Kinesis Stream configuration for the streaming source. Conflicts with `kinesisFirehose`. See `inputs.kinesis_stream` Block below for details.
+  /// [namePrefix] Name Prefix to use when creating an in-application stream.
+  /// [parallelism] Number of Parallel in-application streams to create. See `inputs.parallelism` Block below for details.
+  /// [processingConfiguration] Processing Configuration to transform records as they are received from the stream. See `inputs.processing_configuration` Block below for details.
+  /// [schema] Schema format of the data in the streaming source. See `inputs.schema` Block below for details.
+  /// [startingPositionConfigurations] Point at which the application starts processing records from the streaming source. See `inputs.starting_position_configuration` Block below for details.
+  /// [streamNames] Names of the in-application streams created for the input.
   const AnalyticsApplicationInputs({
     this.id,
     this.kinesisFirehose,

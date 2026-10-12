@@ -6,87 +6,60 @@ import 'encryption_control_timeouts.dart';
 
 /// Input properties used for looking up and filtering EncryptionControl resources.
 class EncryptionControlState {
-  /// Whether to exclude Egress-Only Internet Gateways from encryption enforcement.
-  /// Valid values are `disable` or `enable`.
-  /// Default is `disable`.
-  /// Only valid when `mode` is `enforce`.
+  /// Whether to exclude Egress-Only Internet Gateways from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   final pulumi.Input<String?>? egressOnlyInternetGatewayExclusion;
-  /// Whether to exclude Elastic File System (EFS) from encryption enforcement.
-  /// Valid values are `disable` or `enable`.
-  /// Default is `disable`.
-  /// Only valid when `mode` is `enforce`.
+  /// Whether to exclude Elastic File System (EFS) from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   final pulumi.Input<String?>? elasticFileSystemExclusion;
-  /// Whether to exclude Internet Gateways from encryption enforcement.
-  /// Valid values are `disable` or `enable`.
-  /// Default is `disable`.
-  /// Only valid when `mode` is `enforce`.
+  /// Whether to exclude Internet Gateways from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   final pulumi.Input<String?>? internetGatewayExclusion;
-  /// Whether to exclude Lambda Functions from encryption enforcement.
-  /// Valid values are `disable` or `enable`.
-  /// Default is `disable`.
-  /// Only valid when `mode` is `enforce`.
+  /// Whether to exclude Lambda Functions from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   final pulumi.Input<String?>? lambdaExclusion;
-  /// Mode to enable for VPC Encryption Control.
-  /// Valid values are `monitor` or `enforce`.
+  /// Mode to enable for VPC Encryption Control. Valid values are `monitor` or `enforce`.
   final pulumi.Input<String?>? mode;
-  /// Whether to exclude NAT Gateways from encryption enforcement.
-  /// Valid values are `disable` or `enable`.
-  /// Default is `disable`.
-  /// Only valid when `mode` is `enforce`.
+  /// Whether to exclude NAT Gateways from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   final pulumi.Input<String?>? natGatewayExclusion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// State of exclusions from encryption enforcement.
-  /// Will be `nil` if `mode` is `monitor`.
-  /// See `resourceExclusions` below
+  /// State of exclusions from encryption enforcement. Will be `nil` if `mode` is `monitor`. See `resourceExclusions` below.
   final pulumi.Input<EncryptionControlResourceExclusions?>? resourceExclusions;
-  /// The current state of the VPC Encryption Control.
+  /// Encryption enforcement state for peered VPCs.
   final pulumi.Input<String?>? state;
-  /// A message providing additional information about the state of the VPC Encryption Control.
+  /// Message providing additional information about the encryption enforcement state.
   final pulumi.Input<String?>? stateMessage;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
   final pulumi.Input<EncryptionControlTimeouts?>? timeouts;
-  /// Whether to exclude Virtual Private Gateways from encryption enforcement.
-  /// Valid values are `disable` or `enable`.
-  /// Default is `disable`.
-  /// Only valid when `mode` is `enforce`.
+  /// Whether to exclude Virtual Private Gateways from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   final pulumi.Input<String?>? virtualPrivateGatewayExclusion;
-  /// The ID of the VPC the VPC Encryption Control is linked to.
+  /// ID of the VPC the VPC Encryption Control is linked to.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String?>? vpcId;
-  /// Whether to exclude VPC Lattice from encryption enforcement.
-  /// Valid values are `disable` or `enable`.
-  /// Default is `disable`.
-  /// Only valid when `mode` is `enforce`.
+  /// Whether to exclude VPC Lattice from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   final pulumi.Input<String?>? vpcLatticeExclusion;
-  /// Whether to exclude peered VPCs from encryption enforcement.
-  /// Valid values are `disable` or `enable`.
-  /// Default is `disable`.
-  /// Only valid when `mode` is `enforce`.
+  /// Whether to exclude peered VPCs from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   final pulumi.Input<String?>? vpcPeeringExclusion;
 
   /// Creates a new [EncryptionControlState].
-  /// [egressOnlyInternetGatewayExclusion] Whether to exclude Egress-Only Internet Gateways from encryption enforcement.
-  /// [elasticFileSystemExclusion] Whether to exclude Elastic File System (EFS) from encryption enforcement.
-  /// [internetGatewayExclusion] Whether to exclude Internet Gateways from encryption enforcement.
-  /// [lambdaExclusion] Whether to exclude Lambda Functions from encryption enforcement.
-  /// [mode] Mode to enable for VPC Encryption Control.
-  /// [natGatewayExclusion] Whether to exclude NAT Gateways from encryption enforcement.
+  /// [egressOnlyInternetGatewayExclusion] Whether to exclude Egress-Only Internet Gateways from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
+  /// [elasticFileSystemExclusion] Whether to exclude Elastic File System (EFS) from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
+  /// [internetGatewayExclusion] Whether to exclude Internet Gateways from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
+  /// [lambdaExclusion] Whether to exclude Lambda Functions from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
+  /// [mode] Mode to enable for VPC Encryption Control. Valid values are `monitor` or `enforce`.
+  /// [natGatewayExclusion] Whether to exclude NAT Gateways from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceExclusions] State of exclusions from encryption enforcement.
-  /// [state] The current state of the VPC Encryption Control.
-  /// [stateMessage] A message providing additional information about the state of the VPC Encryption Control.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [resourceExclusions] State of exclusions from encryption enforcement. Will be `nil` if `mode` is `monitor`. See `resourceExclusions` below.
+  /// [state] Encryption enforcement state for peered VPCs.
+  /// [stateMessage] Message providing additional information about the encryption enforcement state.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
-  /// [virtualPrivateGatewayExclusion] Whether to exclude Virtual Private Gateways from encryption enforcement.
-  /// [vpcId] The ID of the VPC the VPC Encryption Control is linked to.
-  /// [vpcLatticeExclusion] Whether to exclude VPC Lattice from encryption enforcement.
-  /// [vpcPeeringExclusion] Whether to exclude peered VPCs from encryption enforcement.
+  /// [virtualPrivateGatewayExclusion] Whether to exclude Virtual Private Gateways from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
+  /// [vpcId] ID of the VPC the VPC Encryption Control is linked to.
+  /// [vpcLatticeExclusion] Whether to exclude VPC Lattice from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
+  /// [vpcPeeringExclusion] Whether to exclude peered VPCs from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   const EncryptionControlState({
     this.egressOnlyInternetGatewayExclusion,
     this.elasticFileSystemExclusion,

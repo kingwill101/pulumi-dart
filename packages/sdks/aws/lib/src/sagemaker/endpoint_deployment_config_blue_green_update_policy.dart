@@ -30,8 +30,8 @@ class EndpointDeploymentConfigBlueGreenUpdatePolicy {
 
   factory EndpointDeploymentConfigBlueGreenUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return EndpointDeploymentConfigBlueGreenUpdatePolicy(
-      maximumExecutionTimeoutInSeconds: (() { final guardedValue = map['maximumExecutionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      terminationWaitInSeconds: (() { final guardedValue = map['terminationWaitInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumExecutionTimeoutInSeconds: (() { final guardedValue = map['maximumExecutionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      terminationWaitInSeconds: (() { final guardedValue = map['terminationWaitInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       trafficRoutingConfiguration: pulumi.Input.fromValue(EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration.fromMap((map['trafficRoutingConfiguration']! as Map).cast<String, dynamic>())),
     );
   }

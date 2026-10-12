@@ -6,8 +6,6 @@ class GetVpcDhcpOptionsFilter {
   /// Name of the field to filter.
   final pulumi.Input<String> name;
   /// Set of values for filtering.
-  ///
-  /// For more information about filtering, see the [EC2 API documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeDhcpOptions.html).
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetVpcDhcpOptionsFilter].

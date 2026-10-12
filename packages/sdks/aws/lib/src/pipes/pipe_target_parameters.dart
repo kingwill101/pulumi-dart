@@ -14,44 +14,44 @@ import 'pipe_target_parameters_sqs_queue_parameters.dart';
 import 'pipe_target_parameters_step_function_state_machine_parameters.dart';
 
 class PipeTargetParameters {
-  /// The parameters for using an AWS Batch job as a target. Detailed below.
+  /// Parameters for using an AWS Batch job as a target. See `batchJobParameters` Block for details.
   final pulumi.Input<PipeTargetParametersBatchJobParameters?>? batchJobParameters;
-  /// The parameters for using an CloudWatch Logs log stream as a target. Detailed below.
+  /// Parameters for using a CloudWatch Logs log stream as a target. See `cloudwatchLogsParameters` Block for details.
   final pulumi.Input<PipeTargetParametersCloudwatchLogsParameters?>? cloudwatchLogsParameters;
-  /// The parameters for using an Amazon ECS task as a target. Detailed below.
+  /// Parameters for using an Amazon ECS task as a target. See `ecsTaskParameters` Block for details.
   final pulumi.Input<PipeTargetParametersEcsTaskParameters?>? ecsTaskParameters;
-  /// The parameters for using an EventBridge event bus as a target. Detailed below.
+  /// Parameters for using an EventBridge event bus as a target. See `eventbridgeEventBusParameters` Block for details.
   final pulumi.Input<PipeTargetParametersEventbridgeEventBusParameters?>? eventbridgeEventBusParameters;
-  /// These are custom parameter to be used when the target is an API Gateway REST APIs or EventBridge ApiDestinations. Detailed below.
+  /// Custom parameters used when the target is an API Gateway REST API or EventBridge ApiDestination. See `target_parameters.http_parameters` Block for details.
   final pulumi.Input<PipeTargetParametersHttpParameters?>? httpParameters;
   /// Valid JSON text passed to the target. In this case, nothing from the event itself is passed to the target. Maximum length of 8192 characters.
   final pulumi.Input<String?>? inputTemplate;
-  /// The parameters for using a Kinesis stream as a source. Detailed below.
+  /// Parameters for using a Kinesis stream as a target. See `target_parameters.kinesis_stream_parameters` Block for details.
   final pulumi.Input<PipeTargetParametersKinesisStreamParameters?>? kinesisStreamParameters;
-  /// The parameters for using a Lambda function as a target. Detailed below.
+  /// Parameters for using a Lambda function as a target. See `lambdaFunctionParameters` Block for details.
   final pulumi.Input<PipeTargetParametersLambdaFunctionParameters?>? lambdaFunctionParameters;
-  /// These are custom parameters to be used when the target is a Amazon Redshift cluster to invoke the Amazon Redshift Data API BatchExecuteStatement. Detailed below.
+  /// Custom parameters used when the target is an Amazon Redshift cluster to invoke the Amazon Redshift Data API BatchExecuteStatement. See `redshiftDataParameters` Block for details.
   final pulumi.Input<PipeTargetParametersRedshiftDataParameters?>? redshiftDataParameters;
-  /// The parameters for using a SageMaker AI pipeline as a target. Detailed below.
+  /// Parameters for using a SageMaker AI pipeline as a target. See `sagemakerPipelineParameters` Block for details.
   final pulumi.Input<PipeTargetParametersSagemakerPipelineParameters?>? sagemakerPipelineParameters;
-  /// The parameters for using a Amazon SQS stream as a target. Detailed below.
+  /// Parameters for using an Amazon SQS stream as a target. See `target_parameters.sqs_queue_parameters` Block for details.
   final pulumi.Input<PipeTargetParametersSqsQueueParameters?>? sqsQueueParameters;
-  /// The parameters for using a Step Functions state machine as a target. Detailed below.
+  /// Parameters for using a Step Functions state machine as a target. See `stepFunctionStateMachineParameters` Block for details.
   final pulumi.Input<PipeTargetParametersStepFunctionStateMachineParameters?>? stepFunctionStateMachineParameters;
 
   /// Creates a new [PipeTargetParameters].
-  /// [batchJobParameters] The parameters for using an AWS Batch job as a target. Detailed below.
-  /// [cloudwatchLogsParameters] The parameters for using an CloudWatch Logs log stream as a target. Detailed below.
-  /// [ecsTaskParameters] The parameters for using an Amazon ECS task as a target. Detailed below.
-  /// [eventbridgeEventBusParameters] The parameters for using an EventBridge event bus as a target. Detailed below.
-  /// [httpParameters] These are custom parameter to be used when the target is an API Gateway REST APIs or EventBridge ApiDestinations. Detailed below.
+  /// [batchJobParameters] Parameters for using an AWS Batch job as a target. See `batchJobParameters` Block for details.
+  /// [cloudwatchLogsParameters] Parameters for using a CloudWatch Logs log stream as a target. See `cloudwatchLogsParameters` Block for details.
+  /// [ecsTaskParameters] Parameters for using an Amazon ECS task as a target. See `ecsTaskParameters` Block for details.
+  /// [eventbridgeEventBusParameters] Parameters for using an EventBridge event bus as a target. See `eventbridgeEventBusParameters` Block for details.
+  /// [httpParameters] Custom parameters used when the target is an API Gateway REST API or EventBridge ApiDestination. See `target_parameters.http_parameters` Block for details.
   /// [inputTemplate] Valid JSON text passed to the target. In this case, nothing from the event itself is passed to the target. Maximum length of 8192 characters.
-  /// [kinesisStreamParameters] The parameters for using a Kinesis stream as a source. Detailed below.
-  /// [lambdaFunctionParameters] The parameters for using a Lambda function as a target. Detailed below.
-  /// [redshiftDataParameters] These are custom parameters to be used when the target is a Amazon Redshift cluster to invoke the Amazon Redshift Data API BatchExecuteStatement. Detailed below.
-  /// [sagemakerPipelineParameters] The parameters for using a SageMaker AI pipeline as a target. Detailed below.
-  /// [sqsQueueParameters] The parameters for using a Amazon SQS stream as a target. Detailed below.
-  /// [stepFunctionStateMachineParameters] The parameters for using a Step Functions state machine as a target. Detailed below.
+  /// [kinesisStreamParameters] Parameters for using a Kinesis stream as a target. See `target_parameters.kinesis_stream_parameters` Block for details.
+  /// [lambdaFunctionParameters] Parameters for using a Lambda function as a target. See `lambdaFunctionParameters` Block for details.
+  /// [redshiftDataParameters] Custom parameters used when the target is an Amazon Redshift cluster to invoke the Amazon Redshift Data API BatchExecuteStatement. See `redshiftDataParameters` Block for details.
+  /// [sagemakerPipelineParameters] Parameters for using a SageMaker AI pipeline as a target. See `sagemakerPipelineParameters` Block for details.
+  /// [sqsQueueParameters] Parameters for using an Amazon SQS stream as a target. See `target_parameters.sqs_queue_parameters` Block for details.
+  /// [stepFunctionStateMachineParameters] Parameters for using a Step Functions state machine as a target. See `stepFunctionStateMachineParameters` Block for details.
   const PipeTargetParameters({
     this.batchJobParameters,
     this.cloudwatchLogsParameters,

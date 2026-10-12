@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IndexUserTokenConfigurationsJsonTokenTypeConfiguration {
-  /// The group attribute field. Minimum length of 1. Maximum length of 2048.
+  /// Group attribute field. Minimum length of 1. Maximum length of 2048.
   final pulumi.Input<String> groupAttributeField;
-  /// The user name attribute field. Minimum length of 1. Maximum length of 2048.
+  /// User name attribute field. Minimum length of 1. Maximum length of 2048.
   final pulumi.Input<String> userNameAttributeField;
 
   /// Creates a new [IndexUserTokenConfigurationsJsonTokenTypeConfiguration].
-  /// [groupAttributeField] The group attribute field. Minimum length of 1. Maximum length of 2048.
-  /// [userNameAttributeField] The user name attribute field. Minimum length of 1. Maximum length of 2048.
+  /// [groupAttributeField] Group attribute field. Minimum length of 1. Maximum length of 2048.
+  /// [userNameAttributeField] User name attribute field. Minimum length of 1. Maximum length of 2048.
   const IndexUserTokenConfigurationsJsonTokenTypeConfiguration({
     required this.groupAttributeField,
     required this.userNameAttributeField,

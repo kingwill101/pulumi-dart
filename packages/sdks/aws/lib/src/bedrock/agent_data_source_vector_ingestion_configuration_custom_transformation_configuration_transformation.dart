@@ -6,12 +6,12 @@ import 'agent_data_source_vector_ingestion_configuration_custom_transformation_c
 class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation {
   /// When the service applies the transformation. Currently only `POST_CHUNKING` is supported.
   final pulumi.Input<String> stepToApply;
-  /// The lambda function that processes documents.
+  /// Lambda function that processes documents. See `transformationFunction` Block for details.
   final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction?>? transformationFunction;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation].
   /// [stepToApply] When the service applies the transformation. Currently only `POST_CHUNKING` is supported.
-  /// [transformationFunction] The lambda function that processes documents.
+  /// [transformationFunction] Lambda function that processes documents. See `transformationFunction` Block for details.
   const AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation({
     required this.stepToApply,
     this.transformationFunction,

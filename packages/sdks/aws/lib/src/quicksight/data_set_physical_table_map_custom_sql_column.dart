@@ -3,13 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetPhysicalTableMapCustomSqlColumn {
-  /// Name of this column in the underlying data source.
+  /// Display name for the dataset.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> name;
   /// Data type of the column.
   final pulumi.Input<String> type;
 
   /// Creates a new [DataSetPhysicalTableMapCustomSqlColumn].
-  /// [name] Name of this column in the underlying data source.
+  /// [name] Display name for the dataset.
   /// [type] Data type of the column.
   const DataSetPhysicalTableMapCustomSqlColumn({
     required this.name,

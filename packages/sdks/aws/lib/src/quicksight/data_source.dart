@@ -963,29 +963,29 @@ class DataSource extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
-  /// The credentials Amazon QuickSight uses to connect to your underlying source. See Credentials below for more details.
+  /// Credentials Amazon QuickSight uses to connect to your underlying source. See `credentials` Block below for more details.
   late final pulumi.Output<DataSourceCredentials?> credentials;
-  /// An identifier for the data source.
+  /// Identifier for the data source.
   late final pulumi.Output<String> dataSourceId;
-  /// A name for the data source, maximum of 128 characters.
+  /// Name for the data source, maximum of 128 characters.
   late final pulumi.Output<String> name;
-  /// The parameters used to connect to this data source (exactly one).
+  /// Parameters used to connect to this data source (exactly one). See `parameters` Block for details.
   late final pulumi.Output<DataSourceParameters> parameters;
-  /// A set of resource permissions on the data source. Maximum of 64 items. See Permission below for more details.
+  /// Set of resource permissions on the data source. Maximum of 64 items. See `permission` Block below for more details.
   late final pulumi.Output<List<DataSourcePermission>?> permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Secure Socket Layer (SSL) properties that apply when Amazon QuickSight connects to your underlying source. See SSL Properties below for more details.
+  /// Secure Socket Layer (SSL) properties that apply when Amazon QuickSight connects to your underlying source. See `sslProperties` Block below for more details.
   late final pulumi.Output<DataSourceSslProperties> sslProperties;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The type of the data source. See the [AWS Documentation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateDataSource.html#QS-CreateDataSource-request-Type) for the complete list of valid values.
+  /// Type of the data source. See the [AWS Documentation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateDataSource.html#QS-CreateDataSource-request-Type) for the complete list of valid values.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> type;
-  /// Use this parameter only when you want Amazon QuickSight to use a VPC connection when connecting to your underlying source. See VPC Connection Properties below for more details.
+  /// Use this parameter only when you want Amazon QuickSight to use a VPC connection when connecting to your underlying source. See `vpcConnectionProperties` Block below for more details.
   late final pulumi.Output<DataSourceVpcConnectionProperties?> vpcConnectionProperties;
 
   /// Creates a new [DataSource].
@@ -1000,7 +1000,7 @@ class DataSource extends pulumi.CustomResource {
           'aws:quicksight/dataSource:DataSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

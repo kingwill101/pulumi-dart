@@ -1498,17 +1498,17 @@ import 'pipe_target_parameters.dart';
 class Pipe extends pulumi.CustomResource {
   /// ARN of this pipe.
   late final pulumi.Output<String> arn;
-  /// A description of the pipe. At most 512 characters.
+  /// Description of the pipe. At most 512 characters.
   late final pulumi.Output<String?> description;
-  /// The state the pipe should be in. One of: `RUNNING`, `STOPPED`.
+  /// State the pipe should be in. One of: `RUNNING`, `STOPPED`.
   late final pulumi.Output<String?> desiredState;
   /// Enrichment resource of the pipe (typically an ARN). Read more about enrichment in the [User Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html#pipes-enrichment).
   late final pulumi.Output<String?> enrichment;
-  /// Parameters to configure enrichment for your pipe. Detailed below.
+  /// Parameters to configure enrichment for the pipe. See `enrichmentParameters` Block for details.
   late final pulumi.Output<PipeEnrichmentParameters?> enrichmentParameters;
   /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt pipe data. The identifier can be the key ARN, KeyId, key alias, or key alias ARN. If not set, EventBridge uses an AWS owned key to encrypt pipe data.
   late final pulumi.Output<String?> kmsKeyIdentifier;
-  /// Logging configuration settings for the pipe. Detailed below.
+  /// Logging configuration settings for the pipe. See `logConfiguration` Block for details.
   late final pulumi.Output<PipeLogConfiguration?> logConfiguration;
   /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
@@ -1520,9 +1520,9 @@ class Pipe extends pulumi.CustomResource {
   late final pulumi.Output<String> roleArn;
   /// Source resource of the pipe. This field typically requires an ARN. However, when using a self-managed Kafka cluster, you should use a different format. Instead of an ARN, use 'smk://' followed by the bootstrap server's address.
   late final pulumi.Output<String> source;
-  /// Parameters to configure a source for the pipe. Detailed below.
+  /// Parameters to configure a source for the pipe. See `sourceParameters` Block for details.
   late final pulumi.Output<PipeSourceParameters> sourceParameters;
-  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -1530,7 +1530,7 @@ class Pipe extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> target;
-  /// Parameters to configure a target for your pipe. Detailed below.
+  /// Parameters to configure a target for the pipe. See `targetParameters` Block for details.
   late final pulumi.Output<PipeTargetParameters?> targetParameters;
 
   /// Creates a new [Pipe].
@@ -1545,7 +1545,7 @@ class Pipe extends pulumi.CustomResource {
           'aws:pipes/pipe:Pipe',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

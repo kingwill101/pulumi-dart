@@ -666,13 +666,13 @@ import 'peering_connection_options_state.dart';
 /// $ pulumi import aws:ec2/peeringConnectionOptions:PeeringConnectionOptions foo pcx-111aaa111
 /// ```
 class PeeringConnectionOptions extends pulumi.CustomResource {
-  /// An optional configuration block that allows for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to be set for the VPC that accepts the peering connection (a maximum of one).
+  /// Configuration block for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to set for the VPC that accepts the peering connection (a maximum of one). See `accepter` Block below.
   late final pulumi.Output<PeeringConnectionOptionsAccepter> accepter;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A optional configuration block that allows for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to be set for the VPC that requests the peering connection (a maximum of one).
+  /// Configuration block for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to set for the VPC that requests the peering connection (a maximum of one). See `requester` Block below.
   late final pulumi.Output<PeeringConnectionOptionsRequester> requester;
-  /// The ID of the requester VPC peering connection.
+  /// ID of the requester VPC peering connection.
   late final pulumi.Output<String> vpcPeeringConnectionId;
 
   /// Creates a new [PeeringConnectionOptions].
@@ -687,7 +687,7 @@ class PeeringConnectionOptions extends pulumi.CustomResource {
           'aws:ec2/peeringConnectionOptions:PeeringConnectionOptions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     accepter = registerOutput<PeeringConnectionOptionsAccepter>('accepter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringConnectionOptionsAccepter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

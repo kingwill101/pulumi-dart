@@ -41,9 +41,9 @@ class ReplicationConfigurationTemplatePitPolicy {
   factory ReplicationConfigurationTemplatePitPolicy.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationTemplatePitPolicy(
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      interval: pulumi.Input.fromValue((map['interval'] as num).toInt()),
-      retentionDuration: pulumi.Input.fromValue((map['retentionDuration'] as num).toInt()),
-      ruleId: (() { final guardedValue = map['ruleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      interval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interval'])),
+      retentionDuration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionDuration'])),
+      ruleId: (() { final guardedValue = map['ruleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       units: pulumi.Input.fromValue(map['units'] as String),
     );
   }

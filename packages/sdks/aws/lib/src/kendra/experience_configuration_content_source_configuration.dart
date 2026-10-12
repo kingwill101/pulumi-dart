@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExperienceConfigurationContentSourceConfiguration {
-  /// The identifiers of the data sources you want to use for your Amazon Kendra experience. Maximum number of 100 items.
+  /// Identifiers of the data sources you want to use for your Amazon Kendra experience. Maximum number of 100 items.
   final pulumi.Input<List<String>?>? dataSourceIds;
   /// Whether to use documents you indexed directly using the `BatchPutDocument API`. Defaults to `false`.
   final pulumi.Input<bool?>? directPutContent;
-  /// The identifier of the FAQs that you want to use for your Amazon Kendra experience. Maximum number of 100 items.
+  /// Identifier of the FAQs that you want to use for your Amazon Kendra experience. Maximum number of 100 items.
   final pulumi.Input<List<String>?>? faqIds;
 
   /// Creates a new [ExperienceConfigurationContentSourceConfiguration].
-  /// [dataSourceIds] The identifiers of the data sources you want to use for your Amazon Kendra experience. Maximum number of 100 items.
+  /// [dataSourceIds] Identifiers of the data sources you want to use for your Amazon Kendra experience. Maximum number of 100 items.
   /// [directPutContent] Whether to use documents you indexed directly using the `BatchPutDocument API`. Defaults to `false`.
-  /// [faqIds] The identifier of the FAQs that you want to use for your Amazon Kendra experience. Maximum number of 100 items.
+  /// [faqIds] Identifier of the FAQs that you want to use for your Amazon Kendra experience. Maximum number of 100 items.
   const ExperienceConfigurationContentSourceConfiguration({
     this.dataSourceIds,
     this.directPutContent,

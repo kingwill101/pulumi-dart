@@ -6,50 +6,50 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityGroupEgressRuleState {
   /// ARN of the security group rule.
   final pulumi.Input<String?>? arn;
-  /// The destination IPv4 CIDR range.
+  /// Destination IPv4 CIDR range.
   final pulumi.Input<String?>? cidrIpv4;
-  /// The destination IPv6 CIDR range.
+  /// Destination IPv6 CIDR range.
   final pulumi.Input<String?>? cidrIpv6;
-  /// The security group rule description.
+  /// Security group rule description.
   final pulumi.Input<String?>? description;
-  /// The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type.
+  /// Start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type.
   final pulumi.Input<int?>? fromPort;
-  /// The IP protocol name or number. Use `-1` to specify all protocols. Note that if `ipProtocol` is set to `-1`, it translates to all protocols, all port ranges, and `fromPort` and `toPort` values should not be defined.
+  /// IP protocol name or number. Use `-1` to specify all protocols. Note that if `ipProtocol` is set to `-1`, it translates to all protocols, all port ranges, and `fromPort` and `toPort` values should not be defined.
   final pulumi.Input<String?>? ipProtocol;
-  /// The ID of the destination prefix list.
+  /// ID of the destination prefix list.
   final pulumi.Input<String?>? prefixListId;
-  /// The destination security group that is referenced in the rule.
+  /// Destination security group that is referenced in the rule.
   final pulumi.Input<String?>? referencedSecurityGroupId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The ID of the security group.
+  /// ID of the security group.
   final pulumi.Input<String?>? securityGroupId;
-  /// The ID of the security group rule.
+  /// ID of the security group rule.
   final pulumi.Input<String?>? securityGroupRuleId;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
-  /// The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code.
+  /// End of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code.
   ///
   /// &gt; **Note** Although `cidrIpv4`, `cidrIpv6`, `prefixListId`, and `referencedSecurityGroupId` are all marked as optional, you *must* provide one of them in order to configure the destination of the traffic. The `fromPort` and `toPort` arguments are required unless `ipProtocol` is set to `-1` or `icmpv6`.
   final pulumi.Input<int?>? toPort;
 
   /// Creates a new [SecurityGroupEgressRuleState].
   /// [arn] ARN of the security group rule.
-  /// [cidrIpv4] The destination IPv4 CIDR range.
-  /// [cidrIpv6] The destination IPv6 CIDR range.
-  /// [description] The security group rule description.
-  /// [fromPort] The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type.
-  /// [ipProtocol] The IP protocol name or number. Use `-1` to specify all protocols. Note that if `ipProtocol` is set to `-1`, it translates to all protocols, all port ranges, and `fromPort` and `toPort` values should not be defined.
-  /// [prefixListId] The ID of the destination prefix list.
-  /// [referencedSecurityGroupId] The destination security group that is referenced in the rule.
+  /// [cidrIpv4] Destination IPv4 CIDR range.
+  /// [cidrIpv6] Destination IPv6 CIDR range.
+  /// [description] Security group rule description.
+  /// [fromPort] Start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type.
+  /// [ipProtocol] IP protocol name or number. Use `-1` to specify all protocols. Note that if `ipProtocol` is set to `-1`, it translates to all protocols, all port ranges, and `fromPort` and `toPort` values should not be defined.
+  /// [prefixListId] ID of the destination prefix list.
+  /// [referencedSecurityGroupId] Destination security group that is referenced in the rule.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [securityGroupId] The ID of the security group.
-  /// [securityGroupRuleId] The ID of the security group rule.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [toPort] The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code.
+  /// [securityGroupId] ID of the security group.
+  /// [securityGroupRuleId] ID of the security group rule.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [toPort] End of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code.
   const SecurityGroupEgressRuleState({
     this.arn,
     this.cidrIpv4,
@@ -92,7 +92,7 @@ class SecurityGroupEgressRuleState {
       cidrIpv4: (() { final guardedValue = map['cidrIpv4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cidrIpv6: (() { final guardedValue = map['cidrIpv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipProtocol: (() { final guardedValue = map['ipProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       prefixListId: (() { final guardedValue = map['prefixListId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       referencedSecurityGroupId: (() { final guardedValue = map['referencedSecurityGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -101,7 +101,7 @@ class SecurityGroupEgressRuleState {
       securityGroupRuleId: (() { final guardedValue = map['securityGroupRuleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

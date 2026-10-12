@@ -5,14 +5,14 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 import 'agent_flow_definition_node_configuration_prompt_source_configuration_resource.dart';
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration {
-  /// Contains configurations for a prompt that is defined inline. See Prompt Inline Configuration for more information.
+  /// Configurations for a prompt that is defined inline. See `definition.node.configuration.prompt.source_configuration.inline` Block for details.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline?>? inline;
-  /// Contains configurations for a prompt from Prompt management. See Prompt Resource Configuration for more information.
+  /// Configurations for a prompt from Prompt management. See `definition.node.configuration.prompt.source_configuration.resource` Block for details.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource?>? resource;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration].
-  /// [inline] Contains configurations for a prompt that is defined inline. See Prompt Inline Configuration for more information.
-  /// [resource] Contains configurations for a prompt from Prompt management. See Prompt Resource Configuration for more information.
+  /// [inline] Configurations for a prompt that is defined inline. See `definition.node.configuration.prompt.source_configuration.inline` Block for details.
+  /// [resource] Configurations for a prompt from Prompt management. See `definition.node.configuration.prompt.source_configuration.resource` Block for details.
   const AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration({
     this.inline,
     this.resource,

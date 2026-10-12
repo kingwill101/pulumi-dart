@@ -74,8 +74,8 @@ class MultitenantDistributionOrigin {
 
   factory MultitenantDistributionOrigin.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionOrigin(
-      connectionAttempts: (() { final guardedValue = map['connectionAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      connectionTimeout: (() { final guardedValue = map['connectionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      connectionAttempts: (() { final guardedValue = map['connectionAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      connectionTimeout: (() { final guardedValue = map['connectionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       customHeaders: (() { final guardedValue = map['customHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MultitenantDistributionOriginCustomHeader>(guardedValue, (value) => MultitenantDistributionOriginCustomHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
       customOriginConfigs: (() { final guardedValue = map['customOriginConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MultitenantDistributionOriginCustomOriginConfig>(guardedValue, (value) => MultitenantDistributionOriginCustomOriginConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
@@ -83,7 +83,7 @@ class MultitenantDistributionOrigin {
       originAccessControlId: (() { final guardedValue = map['originAccessControlId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       originPath: (() { final guardedValue = map['originPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       originShields: (() { final guardedValue = map['originShields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MultitenantDistributionOriginOriginShield>(guardedValue, (value) => MultitenantDistributionOriginOriginShield.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      responseCompletionTimeout: (() { final guardedValue = map['responseCompletionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      responseCompletionTimeout: (() { final guardedValue = map['responseCompletionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       vpcOriginConfigs: (() { final guardedValue = map['vpcOriginConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MultitenantDistributionOriginVpcOriginConfig>(guardedValue, (value) => MultitenantDistributionOriginVpcOriginConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

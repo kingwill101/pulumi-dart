@@ -3,77 +3,77 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomPermissionsCapabilities {
-  /// The ability to add or run anomaly detection. Valid values: `DENY`.
+  /// Ability to add or run anomaly detection. Valid values: `DENY`.
   final pulumi.Input<String?>? addOrRunAnomalyDetectionForAnalyses;
-  /// The ability to create and update email reports. Valid values: `DENY`.
+  /// Ability to create and update email reports. Valid values: `DENY`.
   final pulumi.Input<String?>? createAndUpdateDashboardEmailReports;
-  /// The ability to create and update data sources. Valid values: `DENY`.
+  /// Ability to create and update data sources. Valid values: `DENY`.
   final pulumi.Input<String?>? createAndUpdateDataSources;
-  /// The ability to create and update datasets. Valid values: `DENY`.
+  /// Ability to create and update datasets. Valid values: `DENY`.
   final pulumi.Input<String?>? createAndUpdateDatasets;
-  /// The ability to export to create and update themes. Valid values: `DENY`.
+  /// Ability to create and update themes. Valid values: `DENY`.
   final pulumi.Input<String?>? createAndUpdateThemes;
-  /// The ability to create and update threshold alerts. Valid values: `DENY`.
+  /// Ability to create and update threshold alerts. Valid values: `DENY`.
   final pulumi.Input<String?>? createAndUpdateThresholdAlerts;
-  /// The ability to create shared folders. Valid values: `DENY`.
+  /// Ability to create shared folders. Valid values: `DENY`.
   final pulumi.Input<String?>? createSharedFolders;
-  /// The ability to create a SPICE dataset. Valid values: `DENY`.
+  /// Ability to create a SPICE dataset. Valid values: `DENY`.
   final pulumi.Input<String?>? createSpiceDataset;
-  /// The ability to export to CSV files from the UI. Valid values: `DENY`.
+  /// Ability to export to CSV files from the UI. Valid values: `DENY`.
   final pulumi.Input<String?>? exportToCsv;
-  /// The ability to export to CSV files in scheduled email reports. Valid values: `DENY`.
+  /// Ability to export to CSV files in scheduled email reports. Valid values: `DENY`.
   final pulumi.Input<String?>? exportToCsvInScheduledReports;
-  /// The ability to export to Excel files from the UI. Valid values: `DENY`.
+  /// Ability to export to Excel files from the UI. Valid values: `DENY`.
   final pulumi.Input<String?>? exportToExcel;
-  /// The ability to export to Excel files in scheduled email reports. Valid values: `DENY`.
+  /// Ability to export to Excel files in scheduled email reports. Valid values: `DENY`.
   final pulumi.Input<String?>? exportToExcelInScheduledReports;
-  /// The ability to export to PDF files from the UI. Valid values: `DENY`.
+  /// Ability to export to PDF files from the UI. Valid values: `DENY`.
   final pulumi.Input<String?>? exportToPdf;
-  /// The ability to export to PDF files in scheduled email reports. Valid values: `DENY`.
+  /// Ability to export to PDF files in scheduled email reports. Valid values: `DENY`.
   final pulumi.Input<String?>? exportToPdfInScheduledReports;
-  /// The ability to include content in scheduled email reports. Valid values: `DENY`.
+  /// Ability to include content in scheduled email reports. Valid values: `DENY`.
   final pulumi.Input<String?>? includeContentInScheduledReportsEmail;
-  /// The ability to print reports. Valid values: `DENY`.
+  /// Ability to print reports. Valid values: `DENY`.
   final pulumi.Input<String?>? printReports;
-  /// The ability to rename shared folders. Valid values: `DENY`.
+  /// Ability to rename shared folders. Valid values: `DENY`.
   final pulumi.Input<String?>? renameSharedFolders;
-  /// The ability to share analyses. Valid values: `DENY`.
+  /// Ability to share analyses. Valid values: `DENY`.
   final pulumi.Input<String?>? shareAnalyses;
-  /// The ability to share dashboards. Valid values: `DENY`.
+  /// Ability to share dashboards. Valid values: `DENY`.
   final pulumi.Input<String?>? shareDashboards;
-  /// The ability to share data sources. Valid values: `DENY`.
+  /// Ability to share data sources. Valid values: `DENY`.
   final pulumi.Input<String?>? shareDataSources;
-  /// The ability to share datasets. Valid values: `DENY`.
+  /// Ability to share datasets. Valid values: `DENY`.
   final pulumi.Input<String?>? shareDatasets;
-  /// The ability to subscribe to email reports. Valid values: `DENY`.
+  /// Ability to subscribe to email reports. Valid values: `DENY`.
   final pulumi.Input<String?>? subscribeDashboardEmailReports;
-  /// The ability to view account SPICE capacity. Valid values: `DENY`.
+  /// Ability to view account SPICE capacity. Valid values: `DENY`.
   final pulumi.Input<String?>? viewAccountSpiceCapacity;
 
   /// Creates a new [CustomPermissionsCapabilities].
-  /// [addOrRunAnomalyDetectionForAnalyses] The ability to add or run anomaly detection. Valid values: `DENY`.
-  /// [createAndUpdateDashboardEmailReports] The ability to create and update email reports. Valid values: `DENY`.
-  /// [createAndUpdateDataSources] The ability to create and update data sources. Valid values: `DENY`.
-  /// [createAndUpdateDatasets] The ability to create and update datasets. Valid values: `DENY`.
-  /// [createAndUpdateThemes] The ability to export to create and update themes. Valid values: `DENY`.
-  /// [createAndUpdateThresholdAlerts] The ability to create and update threshold alerts. Valid values: `DENY`.
-  /// [createSharedFolders] The ability to create shared folders. Valid values: `DENY`.
-  /// [createSpiceDataset] The ability to create a SPICE dataset. Valid values: `DENY`.
-  /// [exportToCsv] The ability to export to CSV files from the UI. Valid values: `DENY`.
-  /// [exportToCsvInScheduledReports] The ability to export to CSV files in scheduled email reports. Valid values: `DENY`.
-  /// [exportToExcel] The ability to export to Excel files from the UI. Valid values: `DENY`.
-  /// [exportToExcelInScheduledReports] The ability to export to Excel files in scheduled email reports. Valid values: `DENY`.
-  /// [exportToPdf] The ability to export to PDF files from the UI. Valid values: `DENY`.
-  /// [exportToPdfInScheduledReports] The ability to export to PDF files in scheduled email reports. Valid values: `DENY`.
-  /// [includeContentInScheduledReportsEmail] The ability to include content in scheduled email reports. Valid values: `DENY`.
-  /// [printReports] The ability to print reports. Valid values: `DENY`.
-  /// [renameSharedFolders] The ability to rename shared folders. Valid values: `DENY`.
-  /// [shareAnalyses] The ability to share analyses. Valid values: `DENY`.
-  /// [shareDashboards] The ability to share dashboards. Valid values: `DENY`.
-  /// [shareDataSources] The ability to share data sources. Valid values: `DENY`.
-  /// [shareDatasets] The ability to share datasets. Valid values: `DENY`.
-  /// [subscribeDashboardEmailReports] The ability to subscribe to email reports. Valid values: `DENY`.
-  /// [viewAccountSpiceCapacity] The ability to view account SPICE capacity. Valid values: `DENY`.
+  /// [addOrRunAnomalyDetectionForAnalyses] Ability to add or run anomaly detection. Valid values: `DENY`.
+  /// [createAndUpdateDashboardEmailReports] Ability to create and update email reports. Valid values: `DENY`.
+  /// [createAndUpdateDataSources] Ability to create and update data sources. Valid values: `DENY`.
+  /// [createAndUpdateDatasets] Ability to create and update datasets. Valid values: `DENY`.
+  /// [createAndUpdateThemes] Ability to create and update themes. Valid values: `DENY`.
+  /// [createAndUpdateThresholdAlerts] Ability to create and update threshold alerts. Valid values: `DENY`.
+  /// [createSharedFolders] Ability to create shared folders. Valid values: `DENY`.
+  /// [createSpiceDataset] Ability to create a SPICE dataset. Valid values: `DENY`.
+  /// [exportToCsv] Ability to export to CSV files from the UI. Valid values: `DENY`.
+  /// [exportToCsvInScheduledReports] Ability to export to CSV files in scheduled email reports. Valid values: `DENY`.
+  /// [exportToExcel] Ability to export to Excel files from the UI. Valid values: `DENY`.
+  /// [exportToExcelInScheduledReports] Ability to export to Excel files in scheduled email reports. Valid values: `DENY`.
+  /// [exportToPdf] Ability to export to PDF files from the UI. Valid values: `DENY`.
+  /// [exportToPdfInScheduledReports] Ability to export to PDF files in scheduled email reports. Valid values: `DENY`.
+  /// [includeContentInScheduledReportsEmail] Ability to include content in scheduled email reports. Valid values: `DENY`.
+  /// [printReports] Ability to print reports. Valid values: `DENY`.
+  /// [renameSharedFolders] Ability to rename shared folders. Valid values: `DENY`.
+  /// [shareAnalyses] Ability to share analyses. Valid values: `DENY`.
+  /// [shareDashboards] Ability to share dashboards. Valid values: `DENY`.
+  /// [shareDataSources] Ability to share data sources. Valid values: `DENY`.
+  /// [shareDatasets] Ability to share datasets. Valid values: `DENY`.
+  /// [subscribeDashboardEmailReports] Ability to subscribe to email reports. Valid values: `DENY`.
+  /// [viewAccountSpiceCapacity] Ability to view account SPICE capacity. Valid values: `DENY`.
   const CustomPermissionsCapabilities({
     this.addOrRunAnomalyDetectionForAnalyses,
     this.createAndUpdateDashboardEmailReports,

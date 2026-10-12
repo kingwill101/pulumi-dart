@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointSseSpecification {
+  /// Whether to encrypt the policy using a customer managed key.
   final pulumi.Input<bool?>? customerManagedKeyEnabled;
+  /// ARN of the KMS key.
   final pulumi.Input<String?>? kmsKeyArn;
 
   /// Creates a new [EndpointSseSpecification].
-  /// [customerManagedKeyEnabled] Optional.
-  /// [kmsKeyArn] Optional.
+  /// [customerManagedKeyEnabled] Whether to encrypt the policy using a customer managed key.
+  /// [kmsKeyArn] ARN of the KMS key.
   const EndpointSseSpecification({
     this.customerManagedKeyEnabled,
     this.kmsKeyArn,

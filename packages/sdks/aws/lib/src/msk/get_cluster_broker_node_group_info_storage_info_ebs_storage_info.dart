@@ -25,7 +25,7 @@ class GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo {
   factory GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo.fromMap(Map<String, dynamic> map) {
     return GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo(
       provisionedThroughputs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput>(map['provisionedThroughputs']!, (value) => GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput.fromMap((value as Map).cast<String, dynamic>()))),
-      volumeSize: pulumi.Input.fromValue((map['volumeSize'] as num).toInt()),
+      volumeSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['volumeSize'])),
     );
   }
 }

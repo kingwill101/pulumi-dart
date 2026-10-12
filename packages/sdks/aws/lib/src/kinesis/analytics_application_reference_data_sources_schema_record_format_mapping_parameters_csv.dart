@@ -3,14 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsv {
-  /// The Column Delimiter.
   final pulumi.Input<String> recordColumnDelimiter;
-  /// The Row Delimiter.
   final pulumi.Input<String> recordRowDelimiter;
 
   /// Creates a new [AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsv].
-  /// [recordColumnDelimiter] The Column Delimiter.
-  /// [recordRowDelimiter] The Row Delimiter.
+  /// [recordColumnDelimiter] Required.
+  /// [recordRowDelimiter] Required.
   const AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsv({
     required this.recordColumnDelimiter,
     required this.recordRowDelimiter,

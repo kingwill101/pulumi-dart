@@ -103,7 +103,7 @@ class LocationHdfsArgs {
     return LocationHdfsArgs(
       agentArns: pulumi.Input.fromValue((map['agentArns'] as List).cast<String>()),
       authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      blockSize: (() { final guardedValue = map['blockSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      blockSize: (() { final guardedValue = map['blockSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       kerberosKeytab: (() { final guardedValue = map['kerberosKeytab']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kerberosKeytabBase64: (() { final guardedValue = map['kerberosKeytabBase64']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kerberosKrb5Conf: (() { final guardedValue = map['kerberosKrb5Conf']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -113,7 +113,7 @@ class LocationHdfsArgs {
       nameNodes: pulumi.Input.fromValue(pulumi.Input.decodeList<LocationHdfsNameNode>(map['nameNodes']!, (value) => LocationHdfsNameNode.fromMap((value as Map).cast<String, dynamic>()))),
       qopConfiguration: (() { final guardedValue = map['qopConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LocationHdfsQopConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      replicationFactor: (() { final guardedValue = map['replicationFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      replicationFactor: (() { final guardedValue = map['replicationFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       simpleUser: (() { final guardedValue = map['simpleUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subdirectory: (() { final guardedValue = map['subdirectory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrustProviderSseSpecification {
+  /// Whether a customer managed key is in use.
   final pulumi.Input<bool?>? customerManagedKeyEnabled;
+  /// ARN of the KMS key.
   final pulumi.Input<String?>? kmsKeyArn;
 
   /// Creates a new [TrustProviderSseSpecification].
-  /// [customerManagedKeyEnabled] Optional.
-  /// [kmsKeyArn] Optional.
+  /// [customerManagedKeyEnabled] Whether a customer managed key is in use.
+  /// [kmsKeyArn] ARN of the KMS key.
   const TrustProviderSseSpecification({
     this.customerManagedKeyEnabled,
     this.kmsKeyArn,

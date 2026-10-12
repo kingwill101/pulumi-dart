@@ -8,7 +8,7 @@ import 'ca_certificate_validity.dart';
 class CaCertificateState {
   /// Boolean flag to indicate if the certificate should be active for device authentication.
   final pulumi.Input<bool?>? active;
-  /// Boolean flag to indicate if the certificate should be active for device regisration.
+  /// Boolean flag to indicate if the certificate should be active for device registration.
   final pulumi.Input<bool?>? allowAutoRegistration;
   /// The ARN of the created CA certificate.
   final pulumi.Input<String?>? arn;
@@ -36,7 +36,7 @@ class CaCertificateState {
 
   /// Creates a new [CaCertificateState].
   /// [active] Boolean flag to indicate if the certificate should be active for device authentication.
-  /// [allowAutoRegistration] Boolean flag to indicate if the certificate should be active for device regisration.
+  /// [allowAutoRegistration] Boolean flag to indicate if the certificate should be active for device registration.
   /// [arn] The ARN of the created CA certificate.
   /// [caCertificatePem] PEM encoded CA certificate.
   /// [certificateMode] The certificate mode in which the CA will be registered. Valid values: `DEFAULT` and `SNI_ONLY`. Default: `DEFAULT`.
@@ -89,7 +89,7 @@ class CaCertificateState {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       caCertificatePem: (() { final guardedValue = map['caCertificatePem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       certificateMode: (() { final guardedValue = map['certificateMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      customerVersion: (() { final guardedValue = map['customerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      customerVersion: (() { final guardedValue = map['customerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       generationId: (() { final guardedValue = map['generationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registrationConfig: (() { final guardedValue = map['registrationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CaCertificateRegistrationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

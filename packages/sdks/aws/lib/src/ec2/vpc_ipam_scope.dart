@@ -195,16 +195,17 @@ import 'vpc_ipam_scope_state.dart';
 class VpcIpamScope extends pulumi.CustomResource {
   /// ARN of the scope.
   late final pulumi.Output<String> arn;
-  /// A description for the scope you're creating.
+  /// Description for the scope you're creating.
   late final pulumi.Output<String?> description;
-  /// The ARN of the IPAM for which you're creating this scope.
+  /// ARN of the IPAM for which you're creating this scope.
   late final pulumi.Output<String> ipamArn;
-  /// The ID of the IPAM for which you're creating this scope.
+  /// ID of the IPAM for which you're creating this scope.
   late final pulumi.Output<String> ipamId;
+  /// Type of the scope.
   late final pulumi.Output<String> ipamScopeType;
-  /// Defines if the scope is the default scope or not.
+  /// Whether the scope is the default scope.
   late final pulumi.Output<bool> isDefault;
-  /// The number of pools in the scope.
+  /// Number of pools in the scope.
   late final pulumi.Output<int> poolCount;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -224,7 +225,7 @@ class VpcIpamScope extends pulumi.CustomResource {
           'aws:ec2/vpcIpamScope:VpcIpamScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

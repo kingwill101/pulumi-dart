@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ViewDataFilterExpressionDimensions {
-  /// Key of the dimension. Possible values are `LINKED_ACCOUNT`.
+  /// Key of the dimension. Valid values are `LINKED_ACCOUNT`.
   final pulumi.Input<String> key;
   /// List of metadata values that you can use to filter and group your results.
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [ViewDataFilterExpressionDimensions].
-  /// [key] Key of the dimension. Possible values are `LINKED_ACCOUNT`.
+  /// [key] Key of the dimension. Valid values are `LINKED_ACCOUNT`.
   /// [values] List of metadata values that you can use to filter and group your results.
   const ViewDataFilterExpressionDimensions({
     required this.key,

@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_harness_environment_actual_agentcore_runtime_environment_network_configuration_network_mode_config.dart';
 
 class AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironmentNetworkConfiguration {
-  /// Network mode. Valid values: `PUBLIC`, `VPC`.
+  /// Network mode.
   final pulumi.Input<String> networkMode;
-  /// VPC configuration. See `networkModeConfig` Block below.
+  /// VPC configuration. See `environment_actual.agentcore_runtime_environment.network_configuration.network_mode_config` Block below.
   final pulumi.Input<List<AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironmentNetworkConfigurationNetworkModeConfig>> networkModeConfigs;
 
   /// Creates a new [AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironmentNetworkConfiguration].
-  /// [networkMode] Network mode. Valid values: `PUBLIC`, `VPC`.
-  /// [networkModeConfigs] VPC configuration. See `networkModeConfig` Block below.
+  /// [networkMode] Network mode.
+  /// [networkModeConfigs] VPC configuration. See `environment_actual.agentcore_runtime_environment.network_configuration.network_mode_config` Block below.
   const AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironmentNetworkConfiguration({
     required this.networkMode,
     required this.networkModeConfigs,

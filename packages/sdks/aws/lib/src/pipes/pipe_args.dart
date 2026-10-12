@@ -11,17 +11,17 @@ import 'pipe_target_parameters.dart';
 /// {@endtemplate}
 /// {@macro pulumi_pipes_pipe_pipe_args_doc}
 class PipeArgs {
-  /// A description of the pipe. At most 512 characters.
+  /// Description of the pipe. At most 512 characters.
   final pulumi.Input<String?>? description;
-  /// The state the pipe should be in. One of: `RUNNING`, `STOPPED`.
+  /// State the pipe should be in. One of: `RUNNING`, `STOPPED`.
   final pulumi.Input<String?>? desiredState;
   /// Enrichment resource of the pipe (typically an ARN). Read more about enrichment in the [User Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html#pipes-enrichment).
   final pulumi.Input<String?>? enrichment;
-  /// Parameters to configure enrichment for your pipe. Detailed below.
+  /// Parameters to configure enrichment for the pipe. See `enrichmentParameters` Block for details.
   final pulumi.Input<PipeEnrichmentParameters?>? enrichmentParameters;
   /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt pipe data. The identifier can be the key ARN, KeyId, key alias, or key alias ARN. If not set, EventBridge uses an AWS owned key to encrypt pipe data.
   final pulumi.Input<String?>? kmsKeyIdentifier;
-  /// Logging configuration settings for the pipe. Detailed below.
+  /// Logging configuration settings for the pipe. See `logConfiguration` Block for details.
   final pulumi.Input<PipeLogConfiguration?>? logConfiguration;
   /// Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String?>? name;
@@ -33,33 +33,33 @@ class PipeArgs {
   final pulumi.Input<String> roleArn;
   /// Source resource of the pipe. This field typically requires an ARN. However, when using a self-managed Kafka cluster, you should use a different format. Instead of an ARN, use 'smk://' followed by the bootstrap server's address.
   final pulumi.Input<String> source;
-  /// Parameters to configure a source for the pipe. Detailed below.
+  /// Parameters to configure a source for the pipe. See `sourceParameters` Block for details.
   final pulumi.Input<PipeSourceParameters?>? sourceParameters;
-  /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   /// Target resource of the pipe (typically an ARN).
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> target;
-  /// Parameters to configure a target for your pipe. Detailed below.
+  /// Parameters to configure a target for the pipe. See `targetParameters` Block for details.
   final pulumi.Input<PipeTargetParameters?>? targetParameters;
 
   /// Creates a new [PipeArgs].
-  /// [description] A description of the pipe. At most 512 characters.
-  /// [desiredState] The state the pipe should be in. One of: `RUNNING`, `STOPPED`.
+  /// [description] Description of the pipe. At most 512 characters.
+  /// [desiredState] State the pipe should be in. One of: `RUNNING`, `STOPPED`.
   /// [enrichment] Enrichment resource of the pipe (typically an ARN). Read more about enrichment in the [User Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html#pipes-enrichment).
-  /// [enrichmentParameters] Parameters to configure enrichment for your pipe. Detailed below.
+  /// [enrichmentParameters] Parameters to configure enrichment for the pipe. See `enrichmentParameters` Block for details.
   /// [kmsKeyIdentifier] Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt pipe data. The identifier can be the key ARN, KeyId, key alias, or key alias ARN. If not set, EventBridge uses an AWS owned key to encrypt pipe data.
-  /// [logConfiguration] Logging configuration settings for the pipe. Detailed below.
+  /// [logConfiguration] Logging configuration settings for the pipe. See `logConfiguration` Block for details.
   /// [name] Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of the role that allows the pipe to send data to the target.
   /// [source] Source resource of the pipe. This field typically requires an ARN. However, when using a self-managed Kafka cluster, you should use a different format. Instead of an ARN, use 'smk://' followed by the bootstrap server's address.
-  /// [sourceParameters] Parameters to configure a source for the pipe. Detailed below.
-  /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [sourceParameters] Parameters to configure a source for the pipe. See `sourceParameters` Block for details.
+  /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [target] Target resource of the pipe (typically an ARN).
-  /// [targetParameters] Parameters to configure a target for your pipe. Detailed below.
+  /// [targetParameters] Parameters to configure a target for the pipe. See `targetParameters` Block for details.
   const PipeArgs({
     this.description,
     this.desiredState,

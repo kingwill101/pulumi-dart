@@ -118,23 +118,23 @@ import 'policy_template_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Verified Permissions Policy Store using the `policy_store_id:policy_template_id`. For example:
+/// Using `pulumi import`, import Verified Permissions Policy Template using the `policy_store_id:policy_template_id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:verifiedpermissions/policyTemplate:PolicyTemplate example policyStoreId:policyTemplateId
 /// ```
 class PolicyTemplate extends pulumi.CustomResource {
-  /// The date the Policy Store was created.
+  /// Date the policy template was created.
   late final pulumi.Output<String> createdDate;
   /// Provides a description for the policy template.
   late final pulumi.Output<String?> description;
-  /// The ID of the Policy Store.
+  /// ID of the Policy Store.
   late final pulumi.Output<String> policyStoreId;
-  /// The ID of the Policy Store.
+  /// ID of the policy template.
   late final pulumi.Output<String> policyTemplateId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Defines the content of the statement, written in Cedar policy language.
+  /// Content of the statement, written in Cedar policy language.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> statement;
@@ -151,7 +151,7 @@ class PolicyTemplate extends pulumi.CustomResource {
           'aws:verifiedpermissions/policyTemplate:PolicyTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');

@@ -80,14 +80,14 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Model name of the Exadata infrastructure. Changing this will force terraform to create new resource.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> shape;
   /// Current status of the Exadata infrastructure.
   late final pulumi.Output<String> status;
   /// Additional information about the status of the Exadata infrastructure.
   late final pulumi.Output<String> statusReason;
   /// Number of storage servers that are activated for the Exadata infrastructure. Changing this will force terraform to create new resource.
-  ///
-  /// The following arguments are optional:
   late final pulumi.Output<int> storageCount;
   /// Storage server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
   late final pulumi.Output<String?> storageServerType;
@@ -112,7 +112,7 @@ class CloudExadataInfrastructure extends pulumi.CustomResource {
           'aws:odb/cloudExadataInfrastructure:CloudExadataInfrastructure',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     activatedStorageCount = registerOutput<int>('activatedStorageCount');
     additionalStorageCount = registerOutput<int>('additionalStorageCount');

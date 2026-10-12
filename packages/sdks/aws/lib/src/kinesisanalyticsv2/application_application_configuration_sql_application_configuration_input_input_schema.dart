@@ -5,17 +5,17 @@ import 'application_application_configuration_sql_application_configuration_inpu
 import 'application_application_configuration_sql_application_configuration_input_input_schema_record_format.dart';
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema {
-  /// Describes the mapping of each data element in the streaming source to the corresponding column in the in-application stream.
+  /// Mapping of each data element in the streaming source to the corresponding column in the in-application stream. See `recordColumn` Block below.
   final pulumi.Input<List<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumn>> recordColumns;
-  /// Specifies the encoding of the records in the streaming source. For example, `UTF-8`.
+  /// Encoding of the records in the streaming source. For example, `UTF-8`.
   final pulumi.Input<String?>? recordEncoding;
-  /// Specifies the format of the records on the streaming source.
+  /// Format of the records on the streaming source. See `recordFormat` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat> recordFormat;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema].
-  /// [recordColumns] Describes the mapping of each data element in the streaming source to the corresponding column in the in-application stream.
-  /// [recordEncoding] Specifies the encoding of the records in the streaming source. For example, `UTF-8`.
-  /// [recordFormat] Specifies the format of the records on the streaming source.
+  /// [recordColumns] Mapping of each data element in the streaming source to the corresponding column in the in-application stream. See `recordColumn` Block below.
+  /// [recordEncoding] Encoding of the records in the streaming source. For example, `UTF-8`.
+  /// [recordFormat] Format of the records on the streaming source. See `recordFormat` Block below.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema({
     required this.recordColumns,
     this.recordEncoding,

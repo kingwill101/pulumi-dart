@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'link_aggregation_group_rate_limiter_status.dart';
 
 /// Input properties used for looking up and filtering LinkAggregationGroup resources.
 class LinkAggregationGroupState {
@@ -24,6 +25,8 @@ class LinkAggregationGroupState {
   final pulumi.Input<String?>? ownerAccountId;
   /// The name of the service provider associated with the LAG.
   final pulumi.Input<String?>? providerName;
+  /// Rate limiter status for the LAG. See `rateLimiterStatus` Block below.
+  final pulumi.Input<List<LinkAggregationGroupRateLimiterStatus>?>? rateLimiterStatuses;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -42,6 +45,7 @@ class LinkAggregationGroupState {
   /// [name] The name of the LAG.
   /// [ownerAccountId] The ID of the AWS account that owns the LAG.
   /// [providerName] The name of the service provider associated with the LAG.
+  /// [rateLimiterStatuses] Rate limiter status for the LAG. See `rateLimiterStatus` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
@@ -56,6 +60,7 @@ class LinkAggregationGroupState {
     this.name,
     this.ownerAccountId,
     this.providerName,
+    this.rateLimiterStatuses,
     this.region,
     this.tags,
     this.tagsAll,
@@ -73,6 +78,7 @@ class LinkAggregationGroupState {
       'name': ?name,
       'ownerAccountId': ?ownerAccountId,
       'providerName': ?providerName,
+      'rateLimiterStatuses': ?pulumi.Input.mapOptionalInputValue<List<LinkAggregationGroupRateLimiterStatus>, List<Map<String, dynamic>>>(rateLimiterStatuses, (value) => pulumi.Input.encodeList<LinkAggregationGroupRateLimiterStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
       'region': ?region,
       'tags': ?tags,
       'tagsAll': ?tagsAll,
@@ -91,6 +97,7 @@ class LinkAggregationGroupState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ownerAccountId: (() { final guardedValue = map['ownerAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       providerName: (() { final guardedValue = map['providerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rateLimiterStatuses: (() { final guardedValue = map['rateLimiterStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LinkAggregationGroupRateLimiterStatus>(guardedValue, (value) => LinkAggregationGroupRateLimiterStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

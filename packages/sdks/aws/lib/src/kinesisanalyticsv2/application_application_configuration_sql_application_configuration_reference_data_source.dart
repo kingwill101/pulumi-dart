@@ -5,19 +5,20 @@ import 'application_application_configuration_sql_application_configuration_refe
 import 'application_application_configuration_sql_application_configuration_reference_data_source_s3_reference_data_source.dart';
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource {
+  /// Identifier of the reference data source.
   final pulumi.Input<String?>? referenceId;
-  /// Describes the format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream.
+  /// Format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream. See `referenceSchema` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema> referenceSchema;
-  /// Identifies the S3 bucket and object that contains the reference data.
+  /// S3 bucket and object that contains the reference data. See `s3ReferenceDataSource` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource> s3ReferenceDataSource;
-  /// The name of the in-application table to create.
+  /// Name of the in-application table to create.
   final pulumi.Input<String> tableName;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource].
-  /// [referenceId] Optional.
-  /// [referenceSchema] Describes the format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream.
-  /// [s3ReferenceDataSource] Identifies the S3 bucket and object that contains the reference data.
-  /// [tableName] The name of the in-application table to create.
+  /// [referenceId] Identifier of the reference data source.
+  /// [referenceSchema] Format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream. See `referenceSchema` Block below.
+  /// [s3ReferenceDataSource] S3 bucket and object that contains the reference data. See `s3ReferenceDataSource` Block below.
+  /// [tableName] Name of the in-application table to create.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource({
     this.referenceId,
     required this.referenceSchema,

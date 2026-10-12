@@ -3,20 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetActionDefinitionIamActionDefinition {
-  /// A list of groups to be attached. There must be at least one group.
+  /// List of groups to be attached. There must be at least one group.
   final pulumi.Input<List<String>?>? groups;
   /// ARN of the policy to be attached.
   final pulumi.Input<String> policyArn;
-  /// A list of roles to be attached. There must be at least one role.
+  /// List of roles to be attached. There must be at least one role.
   final pulumi.Input<List<String>?>? roles;
-  /// A list of users to be attached. There must be at least one user.
+  /// List of users to be attached. There must be at least one user.
   final pulumi.Input<List<String>?>? users;
 
   /// Creates a new [BudgetActionDefinitionIamActionDefinition].
-  /// [groups] A list of groups to be attached. There must be at least one group.
+  /// [groups] List of groups to be attached. There must be at least one group.
   /// [policyArn] ARN of the policy to be attached.
-  /// [roles] A list of roles to be attached. There must be at least one role.
-  /// [users] A list of users to be attached. There must be at least one user.
+  /// [roles] List of roles to be attached. There must be at least one role.
+  /// [users] List of users to be attached. There must be at least one user.
   const BudgetActionDefinitionIamActionDefinition({
     this.groups,
     required this.policyArn,

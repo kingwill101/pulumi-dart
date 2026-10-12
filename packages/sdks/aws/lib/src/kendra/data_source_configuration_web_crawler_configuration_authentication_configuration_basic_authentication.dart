@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication {
   /// Your secret ARN, which you can create in AWS Secrets Manager. You use a secret if basic authentication credentials are required to connect to a website. The secret stores your credentials of user name and password.
   final pulumi.Input<String> credentials;
-  /// The name of the website host you want to connect to using authentication credentials. For example, the host name of `https://a.example.com/page1.html` is `"a.example.com"`.
+  /// Name of the website host you want to connect to using authentication credentials. For example, the host name of `https://a.example.com/page1.html` is `"a.example.com"`.
   final pulumi.Input<String> host;
-  /// The port number of the website host you want to connect to using authentication credentials. For example, the port for `https://a.example.com/page1.html` is `443`, the standard port for HTTPS.
+  /// Port number of the website host you want to connect to using authentication credentials. For example, the port for `https://a.example.com/page1.html` is `443`, the standard port for HTTPS.
   final pulumi.Input<int> port;
 
   /// Creates a new [DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication].
   /// [credentials] Your secret ARN, which you can create in AWS Secrets Manager. You use a secret if basic authentication credentials are required to connect to a website. The secret stores your credentials of user name and password.
-  /// [host] The name of the website host you want to connect to using authentication credentials. For example, the host name of `https://a.example.com/page1.html` is `"a.example.com"`.
-  /// [port] The port number of the website host you want to connect to using authentication credentials. For example, the port for `https://a.example.com/page1.html` is `443`, the standard port for HTTPS.
+  /// [host] Name of the website host you want to connect to using authentication credentials. For example, the host name of `https://a.example.com/page1.html` is `"a.example.com"`.
+  /// [port] Port number of the website host you want to connect to using authentication credentials. For example, the port for `https://a.example.com/page1.html` is `443`, the standard port for HTTPS.
   const DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication({
     required this.credentials,
     required this.host,
@@ -32,7 +32,7 @@ class DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationB
     return DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication(
       credentials: pulumi.Input.fromValue(map['credentials'] as String),
       host: pulumi.Input.fromValue(map['host'] as String),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
     );
   }
 }

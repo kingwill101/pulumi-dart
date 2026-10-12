@@ -117,7 +117,7 @@ class EndpointKafkaSettings {
       includeTableAlterOperations: (() { final guardedValue = map['includeTableAlterOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       includeTransactionDetails: (() { final guardedValue = map['includeTransactionDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       messageFormat: (() { final guardedValue = map['messageFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      messageMaxBytes: (() { final guardedValue = map['messageMaxBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      messageMaxBytes: (() { final guardedValue = map['messageMaxBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       noHexPrefix: (() { final guardedValue = map['noHexPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       partitionIncludeSchemaTable: (() { final guardedValue = map['partitionIncludeSchemaTable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       saslMechanism: (() { final guardedValue = map['saslMechanism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

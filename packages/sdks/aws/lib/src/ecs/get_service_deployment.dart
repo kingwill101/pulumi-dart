@@ -56,10 +56,10 @@ class GetServiceDeployment {
   factory GetServiceDeployment.fromMap(Map<String, dynamic> map) {
     return GetServiceDeployment(
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
-      desiredCount: pulumi.Input.fromValue((map['desiredCount'] as num).toInt()),
+      desiredCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['desiredCount'])),
       id: pulumi.Input.fromValue(map['id'] as String),
-      pendingCount: pulumi.Input.fromValue((map['pendingCount'] as num).toInt()),
-      runningCount: pulumi.Input.fromValue((map['runningCount'] as num).toInt()),
+      pendingCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['pendingCount'])),
+      runningCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['runningCount'])),
       status: pulumi.Input.fromValue(map['status'] as String),
       taskDefinition: pulumi.Input.fromValue(map['taskDefinition'] as String),
       updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),

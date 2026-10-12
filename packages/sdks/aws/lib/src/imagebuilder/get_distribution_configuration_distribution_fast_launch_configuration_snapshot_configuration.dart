@@ -20,7 +20,7 @@ class GetDistributionConfigurationDistributionFastLaunchConfigurationSnapshotCon
 
   factory GetDistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration.fromMap(Map<String, dynamic> map) {
     return GetDistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration(
-      targetResourceCount: pulumi.Input.fromValue((map['targetResourceCount'] as num).toInt()),
+      targetResourceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetResourceCount'])),
     );
   }
 }

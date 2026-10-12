@@ -10,14 +10,14 @@ import 'get_agent_agent_versions_agent_version_summary.dart';
 class GetAgentAgentVersionsArgs {
   /// Unique identifier of the agent.
   final pulumi.Input<String> agentId;
-  /// List of objects, each of which contains information about a version of the agent. See Agent Version Summaries
+  /// List of objects, each of which contains information about a version of the agent. See `agentVersionSummaries` Block
   final pulumi.Input<List<GetAgentAgentVersionsAgentVersionSummary>?>? agentVersionSummaries;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [GetAgentAgentVersionsArgs].
   /// [agentId] Unique identifier of the agent.
-  /// [agentVersionSummaries] List of objects, each of which contains information about a version of the agent. See Agent Version Summaries
+  /// [agentVersionSummaries] List of objects, each of which contains information about a version of the agent. See `agentVersionSummaries` Block
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetAgentAgentVersionsArgs({
     required this.agentId,

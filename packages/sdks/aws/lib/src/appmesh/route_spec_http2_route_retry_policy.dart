@@ -37,7 +37,7 @@ class RouteSpecHttp2RouteRetryPolicy {
   factory RouteSpecHttp2RouteRetryPolicy.fromMap(Map<String, dynamic> map) {
     return RouteSpecHttp2RouteRetryPolicy(
       httpRetryEvents: (() { final guardedValue = map['httpRetryEvents']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      maxRetries: pulumi.Input.fromValue((map['maxRetries'] as num).toInt()),
+      maxRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRetries'])),
       perRetryTimeout: pulumi.Input.fromValue(RouteSpecHttp2RouteRetryPolicyPerRetryTimeout.fromMap((map['perRetryTimeout']! as Map).cast<String, dynamic>())),
       tcpRetryEvents: (() { final guardedValue = map['tcpRetryEvents']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

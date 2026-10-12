@@ -30,7 +30,7 @@ class TopicRuleErrorActionRepublish {
 
   factory TopicRuleErrorActionRepublish.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionRepublish(
-      qos: (() { final guardedValue = map['qos']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      qos: (() { final guardedValue = map['qos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
       topic: pulumi.Input.fromValue(map['topic'] as String),
     );

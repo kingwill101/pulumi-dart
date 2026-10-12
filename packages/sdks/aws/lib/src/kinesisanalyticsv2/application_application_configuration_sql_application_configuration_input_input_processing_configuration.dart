@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_application_configuration_sql_application_configuration_input_input_processing_configuration_input_lambda_processor.dart';
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration {
-  /// Describes the Lambda function that is used to preprocess the records in the stream before being processed by your application code.
+  /// Lambda function used to preprocess the records in the stream before being processed by your application code. See `inputLambdaProcessor` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor> inputLambdaProcessor;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration].
-  /// [inputLambdaProcessor] Describes the Lambda function that is used to preprocess the records in the stream before being processed by your application code.
+  /// [inputLambdaProcessor] Lambda function used to preprocess the records in the stream before being processed by your application code. See `inputLambdaProcessor` Block below.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration({
     required this.inputLambdaProcessor,
   });

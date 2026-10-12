@@ -14107,6 +14107,8 @@ pulumi.Output<GetVpcIpamsResult> getVpcIpamsOutput(
 /// The VPC Peering Connection data source provides details about
 /// a specific VPC peering connection.
 ///
+/// The arguments of this data source act as filters for querying the available VPC peering connections. The given filters must match exactly one VPC peering connection whose data will be exported as attributes.
+///
 /// ## Example Usage
 ///
 ///
@@ -15009,6 +15011,8 @@ pulumi.Output<GetVpnConnectionResult> getVpnConnectionOutput(
 
 /// The VPN Gateway data source provides details about
 /// a specific VPN gateway.
+///
+/// The arguments of this data source act as filters for querying the available VPN gateways. The given filters must match exactly one VPN gateway whose data will be exported as attributes.
 ///
 /// ## Example Usage
 ///

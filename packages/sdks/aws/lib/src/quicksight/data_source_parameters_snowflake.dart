@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersSnowflake {
-  /// The database to which to connect.
+  /// Database to which to connect.
   final pulumi.Input<String> database;
-  /// The host to which to connect.
+  /// Host to which to connect.
   final pulumi.Input<String> host;
-  /// The warehouse to which to connect.
+  /// Warehouse to which to connect.
   final pulumi.Input<String> warehouse;
 
   /// Creates a new [DataSourceParametersSnowflake].
-  /// [database] The database to which to connect.
-  /// [host] The host to which to connect.
-  /// [warehouse] The warehouse to which to connect.
+  /// [database] Database to which to connect.
+  /// [host] Host to which to connect.
+  /// [warehouse] Warehouse to which to connect.
   const DataSourceParametersSnowflake({
     required this.database,
     required this.host,

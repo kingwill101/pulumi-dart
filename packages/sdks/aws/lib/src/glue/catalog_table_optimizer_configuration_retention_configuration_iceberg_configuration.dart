@@ -36,9 +36,9 @@ class CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfigurati
   factory CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration(
       cleanExpiredFiles: (() { final guardedValue = map['cleanExpiredFiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      numberOfSnapshotsToRetain: (() { final guardedValue = map['numberOfSnapshotsToRetain']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      runRateInHours: (() { final guardedValue = map['runRateInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      snapshotRetentionPeriodInDays: (() { final guardedValue = map['snapshotRetentionPeriodInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numberOfSnapshotsToRetain: (() { final guardedValue = map['numberOfSnapshotsToRetain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      runRateInHours: (() { final guardedValue = map['runRateInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      snapshotRetentionPeriodInDays: (() { final guardedValue = map['snapshotRetentionPeriodInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

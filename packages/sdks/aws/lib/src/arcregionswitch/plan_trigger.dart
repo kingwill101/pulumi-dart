@@ -44,7 +44,7 @@ class PlanTrigger {
       action: pulumi.Input.fromValue(map['action'] as String),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlanTriggerCondition>(guardedValue, (value) => PlanTriggerCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minDelayMinutesBetweenExecutions: pulumi.Input.fromValue((map['minDelayMinutesBetweenExecutions'] as num).toInt()),
+      minDelayMinutesBetweenExecutions: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minDelayMinutesBetweenExecutions'])),
       targetRegion: pulumi.Input.fromValue(map['targetRegion'] as String),
     );
   }

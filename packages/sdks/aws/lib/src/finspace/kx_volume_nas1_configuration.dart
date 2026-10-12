@@ -25,7 +25,7 @@ class KxVolumeNas1Configuration {
 
   factory KxVolumeNas1Configuration.fromMap(Map<String, dynamic> map) {
     return KxVolumeNas1Configuration(
-      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
+      size: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['size'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

@@ -70,7 +70,7 @@ class AnomalyDetectorArgs {
     return AnomalyDetectorArgs(
       alias: pulumi.Input.fromValue(map['alias'] as String),
       configuration: pulumi.Input.fromValue(AnomalyDetectorConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())),
-      evaluationIntervalInSeconds: (() { final guardedValue = map['evaluationIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      evaluationIntervalInSeconds: (() { final guardedValue = map['evaluationIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       missingDataAction: pulumi.Input.fromValue(AnomalyDetectorMissingDataAction.fromMap((map['missingDataAction']! as Map).cast<String, dynamic>())),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

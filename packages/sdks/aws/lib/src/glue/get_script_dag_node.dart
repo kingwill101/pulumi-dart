@@ -38,7 +38,7 @@ class GetScriptDagNode {
     return GetScriptDagNode(
       args: pulumi.Input.fromValue(pulumi.Input.decodeList<GetScriptDagNodeArg>(map['args']!, (value) => GetScriptDagNodeArg.fromMap((value as Map).cast<String, dynamic>()))),
       id: pulumi.Input.fromValue(map['id'] as String),
-      lineNumber: (() { final guardedValue = map['lineNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      lineNumber: (() { final guardedValue = map['lineNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nodeType: pulumi.Input.fromValue(map['nodeType'] as String),
     );
   }

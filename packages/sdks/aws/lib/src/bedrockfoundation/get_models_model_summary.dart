@@ -19,7 +19,7 @@ class GetModelsModelSummary {
   final pulumi.Input<List<String>> outputModalities;
   /// Model provider name.
   final pulumi.Input<String> providerName;
-  /// Indicates whether the model supports streaming.
+  /// Whether the model supports streaming.
   final pulumi.Input<bool> responseStreamingSupported;
 
   /// Creates a new [GetModelsModelSummary].
@@ -31,7 +31,7 @@ class GetModelsModelSummary {
   /// [modelName] Model name.
   /// [outputModalities] Output modalities that the model supports.
   /// [providerName] Model provider name.
-  /// [responseStreamingSupported] Indicates whether the model supports streaming.
+  /// [responseStreamingSupported] Whether the model supports streaming.
   const GetModelsModelSummary({
     required this.customizationsSupporteds,
     required this.inferenceTypesSupporteds,

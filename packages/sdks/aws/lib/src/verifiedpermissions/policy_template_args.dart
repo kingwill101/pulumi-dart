@@ -9,20 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyTemplateArgs {
   /// Provides a description for the policy template.
   final pulumi.Input<String?>? description;
-  /// The ID of the Policy Store.
+  /// ID of the Policy Store.
   final pulumi.Input<String> policyStoreId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Defines the content of the statement, written in Cedar policy language.
+  /// Content of the statement, written in Cedar policy language.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> statement;
 
   /// Creates a new [PolicyTemplateArgs].
   /// [description] Provides a description for the policy template.
-  /// [policyStoreId] The ID of the Policy Store.
+  /// [policyStoreId] ID of the Policy Store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [statement] Defines the content of the statement, written in Cedar policy language.
+  /// [statement] Content of the statement, written in Cedar policy language.
   const PolicyTemplateArgs({
     this.description,
     required this.policyStoreId,

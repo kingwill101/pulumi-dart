@@ -10,29 +10,29 @@ import 'data_set_logical_table_map_data_transform_tag_column_operation.dart';
 import 'data_set_logical_table_map_data_transform_untag_column_operation.dart';
 
 class DataSetLogicalTableMapDataTransform {
-  /// A transform operation that casts a column to a different type. See cast_column_type_operation.
+  /// Transform operation that casts a column to a different type. See `castColumnTypeOperation` Block below.
   final pulumi.Input<DataSetLogicalTableMapDataTransformCastColumnTypeOperation?>? castColumnTypeOperation;
-  /// An operation that creates calculated columns. Columns created in one such operation form a lexical closure. See create_columns_operation.
+  /// Operation that creates calculated columns. Columns created in one such operation form a lexical closure. See `createColumnsOperation` Block below.
   final pulumi.Input<DataSetLogicalTableMapDataTransformCreateColumnsOperation?>? createColumnsOperation;
-  /// An operation that filters rows based on some condition. See filter_operation.
+  /// Operation that filters rows based on some condition. See `filterOperation` Block below.
   final pulumi.Input<DataSetLogicalTableMapDataTransformFilterOperation?>? filterOperation;
-  /// An operation that projects columns. Operations that come after a projection can only refer to projected columns. See project_operation.
+  /// Operation that projects columns. Operations that come after a projection can only refer to projected columns. See `projectOperation` Block below.
   final pulumi.Input<DataSetLogicalTableMapDataTransformProjectOperation?>? projectOperation;
-  /// An operation that renames a column. See rename_column_operation.
+  /// Operation that renames a column. See `renameColumnOperation` Block below.
   final pulumi.Input<DataSetLogicalTableMapDataTransformRenameColumnOperation?>? renameColumnOperation;
-  /// An operation that tags a column with additional information. See tag_column_operation.
+  /// Operation that tags a column with additional information. See `tagColumnOperation` Block below.
   final pulumi.Input<DataSetLogicalTableMapDataTransformTagColumnOperation?>? tagColumnOperation;
-  /// A transform operation that removes tags associated with a column. See untag_column_operation.
+  /// Transform operation that removes tags associated with a column. See `untagColumnOperation` Block below.
   final pulumi.Input<DataSetLogicalTableMapDataTransformUntagColumnOperation?>? untagColumnOperation;
 
   /// Creates a new [DataSetLogicalTableMapDataTransform].
-  /// [castColumnTypeOperation] A transform operation that casts a column to a different type. See cast_column_type_operation.
-  /// [createColumnsOperation] An operation that creates calculated columns. Columns created in one such operation form a lexical closure. See create_columns_operation.
-  /// [filterOperation] An operation that filters rows based on some condition. See filter_operation.
-  /// [projectOperation] An operation that projects columns. Operations that come after a projection can only refer to projected columns. See project_operation.
-  /// [renameColumnOperation] An operation that renames a column. See rename_column_operation.
-  /// [tagColumnOperation] An operation that tags a column with additional information. See tag_column_operation.
-  /// [untagColumnOperation] A transform operation that removes tags associated with a column. See untag_column_operation.
+  /// [castColumnTypeOperation] Transform operation that casts a column to a different type. See `castColumnTypeOperation` Block below.
+  /// [createColumnsOperation] Operation that creates calculated columns. Columns created in one such operation form a lexical closure. See `createColumnsOperation` Block below.
+  /// [filterOperation] Operation that filters rows based on some condition. See `filterOperation` Block below.
+  /// [projectOperation] Operation that projects columns. Operations that come after a projection can only refer to projected columns. See `projectOperation` Block below.
+  /// [renameColumnOperation] Operation that renames a column. See `renameColumnOperation` Block below.
+  /// [tagColumnOperation] Operation that tags a column with additional information. See `tagColumnOperation` Block below.
+  /// [untagColumnOperation] Transform operation that removes tags associated with a column. See `untagColumnOperation` Block below.
   const DataSetLogicalTableMapDataTransform({
     this.castColumnTypeOperation,
     this.createColumnsOperation,

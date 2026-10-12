@@ -23,9 +23,9 @@ class GetConnectionResult {
   /// (ARN) of the Secrets Manager secret storing the pre-shared key(s) for the VPN connection.
   final String? preSharedKeyArn;
   final String? region;
-  /// List of static routes associated with the VPN connection.
+  /// List of static routes associated with the VPN connection. See below.
   final List<GetConnectionRoute>? routes;
-  /// Current state of the VPN connection.
+  /// Current state of the static route.
   final String? state;
   /// Tags associated to the VPN Connection.
   final Map<String, String>? tags;
@@ -33,7 +33,7 @@ class GetConnectionResult {
   final String? transitGatewayId;
   /// Type of VPN connection. Currently the only supported type is ipsec.1.
   final String? type;
-  /// List of objects containing information about the VPN tunnel.
+  /// List of objects containing information about the VPN tunnel. See below.
   final List<GetConnectionVgwTelemetry>? vgwTelemetries;
   /// ID of a VPN concentrator associated with the VPN connection.
   final String? vpnConcentratorId;
@@ -51,12 +51,12 @@ class GetConnectionResult {
   /// [gatewayAssociationState] Current state of the gateway association.
   /// [preSharedKeyArn] (ARN) of the Secrets Manager secret storing the pre-shared key(s) for the VPN connection.
   /// [region] Optional.
-  /// [routes] List of static routes associated with the VPN connection.
-  /// [state] Current state of the VPN connection.
+  /// [routes] List of static routes associated with the VPN connection. See below.
+  /// [state] Current state of the static route.
   /// [tags] Tags associated to the VPN Connection.
   /// [transitGatewayId] ID of a transit gateway associated with the VPN connection.
   /// [type] Type of VPN connection. Currently the only supported type is ipsec.1.
-  /// [vgwTelemetries] List of objects containing information about the VPN tunnel.
+  /// [vgwTelemetries] List of objects containing information about the VPN tunnel. See below.
   /// [vpnConcentratorId] ID of a VPN concentrator associated with the VPN connection.
   /// [vpnConnectionId] Optional.
   /// [vpnGatewayId] ID of a virtual private gateway associated with the VPN connection.

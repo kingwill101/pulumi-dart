@@ -8,73 +8,48 @@ import 'encryption_control_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ec2_encryption_control_encryption_control_args_doc}
 class EncryptionControlArgs {
-  /// Whether to exclude Egress-Only Internet Gateways from encryption enforcement.
-  /// Valid values are `disable` or `enable`.
-  /// Default is `disable`.
-  /// Only valid when `mode` is `enforce`.
+  /// Whether to exclude Egress-Only Internet Gateways from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   final pulumi.Input<String?>? egressOnlyInternetGatewayExclusion;
-  /// Whether to exclude Elastic File System (EFS) from encryption enforcement.
-  /// Valid values are `disable` or `enable`.
-  /// Default is `disable`.
-  /// Only valid when `mode` is `enforce`.
+  /// Whether to exclude Elastic File System (EFS) from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   final pulumi.Input<String?>? elasticFileSystemExclusion;
-  /// Whether to exclude Internet Gateways from encryption enforcement.
-  /// Valid values are `disable` or `enable`.
-  /// Default is `disable`.
-  /// Only valid when `mode` is `enforce`.
+  /// Whether to exclude Internet Gateways from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   final pulumi.Input<String?>? internetGatewayExclusion;
-  /// Whether to exclude Lambda Functions from encryption enforcement.
-  /// Valid values are `disable` or `enable`.
-  /// Default is `disable`.
-  /// Only valid when `mode` is `enforce`.
+  /// Whether to exclude Lambda Functions from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   final pulumi.Input<String?>? lambdaExclusion;
-  /// Mode to enable for VPC Encryption Control.
-  /// Valid values are `monitor` or `enforce`.
+  /// Mode to enable for VPC Encryption Control. Valid values are `monitor` or `enforce`.
   final pulumi.Input<String> mode;
-  /// Whether to exclude NAT Gateways from encryption enforcement.
-  /// Valid values are `disable` or `enable`.
-  /// Default is `disable`.
-  /// Only valid when `mode` is `enforce`.
+  /// Whether to exclude NAT Gateways from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   final pulumi.Input<String?>? natGatewayExclusion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   final pulumi.Input<EncryptionControlTimeouts?>? timeouts;
-  /// Whether to exclude Virtual Private Gateways from encryption enforcement.
-  /// Valid values are `disable` or `enable`.
-  /// Default is `disable`.
-  /// Only valid when `mode` is `enforce`.
+  /// Whether to exclude Virtual Private Gateways from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   final pulumi.Input<String?>? virtualPrivateGatewayExclusion;
-  /// The ID of the VPC the VPC Encryption Control is linked to.
+  /// ID of the VPC the VPC Encryption Control is linked to.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> vpcId;
-  /// Whether to exclude VPC Lattice from encryption enforcement.
-  /// Valid values are `disable` or `enable`.
-  /// Default is `disable`.
-  /// Only valid when `mode` is `enforce`.
+  /// Whether to exclude VPC Lattice from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   final pulumi.Input<String?>? vpcLatticeExclusion;
-  /// Whether to exclude peered VPCs from encryption enforcement.
-  /// Valid values are `disable` or `enable`.
-  /// Default is `disable`.
-  /// Only valid when `mode` is `enforce`.
+  /// Whether to exclude peered VPCs from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   final pulumi.Input<String?>? vpcPeeringExclusion;
 
   /// Creates a new [EncryptionControlArgs].
-  /// [egressOnlyInternetGatewayExclusion] Whether to exclude Egress-Only Internet Gateways from encryption enforcement.
-  /// [elasticFileSystemExclusion] Whether to exclude Elastic File System (EFS) from encryption enforcement.
-  /// [internetGatewayExclusion] Whether to exclude Internet Gateways from encryption enforcement.
-  /// [lambdaExclusion] Whether to exclude Lambda Functions from encryption enforcement.
-  /// [mode] Mode to enable for VPC Encryption Control.
-  /// [natGatewayExclusion] Whether to exclude NAT Gateways from encryption enforcement.
+  /// [egressOnlyInternetGatewayExclusion] Whether to exclude Egress-Only Internet Gateways from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
+  /// [elasticFileSystemExclusion] Whether to exclude Elastic File System (EFS) from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
+  /// [internetGatewayExclusion] Whether to exclude Internet Gateways from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
+  /// [lambdaExclusion] Whether to exclude Lambda Functions from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
+  /// [mode] Mode to enable for VPC Encryption Control. Valid values are `monitor` or `enforce`.
+  /// [natGatewayExclusion] Whether to exclude NAT Gateways from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  /// [virtualPrivateGatewayExclusion] Whether to exclude Virtual Private Gateways from encryption enforcement.
-  /// [vpcId] The ID of the VPC the VPC Encryption Control is linked to.
-  /// [vpcLatticeExclusion] Whether to exclude VPC Lattice from encryption enforcement.
-  /// [vpcPeeringExclusion] Whether to exclude peered VPCs from encryption enforcement.
+  /// [virtualPrivateGatewayExclusion] Whether to exclude Virtual Private Gateways from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
+  /// [vpcId] ID of the VPC the VPC Encryption Control is linked to.
+  /// [vpcLatticeExclusion] Whether to exclude VPC Lattice from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
+  /// [vpcPeeringExclusion] Whether to exclude peered VPCs from encryption enforcement. Valid values are `disable` or `enable`. Default is `disable`. Only valid when `mode` is `enforce`.
   const EncryptionControlArgs({
     this.egressOnlyInternetGatewayExclusion,
     this.elasticFileSystemExclusion,

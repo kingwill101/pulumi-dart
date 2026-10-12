@@ -5,22 +5,22 @@ import 'policy_definition.dart';
 
 /// Input properties used for looking up and filtering Policy resources.
 class PolicyState {
-  /// The date the policy was created.
+  /// Date the policy was created.
   final pulumi.Input<String?>? createdDate;
-  /// The definition of the policy. See Definition below.
+  /// Definition of the policy. See Definition below.
   final pulumi.Input<PolicyDefinition?>? definition;
-  /// The Policy ID of the policy.
+  /// Policy ID of the policy.
   final pulumi.Input<String?>? policyId;
-  /// The Policy Store ID of the policy store.
+  /// Policy Store ID of the policy store.
   final pulumi.Input<String?>? policyStoreId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [PolicyState].
-  /// [createdDate] The date the policy was created.
-  /// [definition] The definition of the policy. See Definition below.
-  /// [policyId] The Policy ID of the policy.
-  /// [policyStoreId] The Policy Store ID of the policy store.
+  /// [createdDate] Date the policy was created.
+  /// [definition] Definition of the policy. See Definition below.
+  /// [policyId] Policy ID of the policy.
+  /// [policyStoreId] Policy Store ID of the policy store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const PolicyState({
     this.createdDate,

@@ -13,13 +13,14 @@ class StreamConsumerArgs {
   final pulumi.Input<String?>? region;
   /// ARN of the data stream the consumer is registered with.
   final pulumi.Input<String> streamArn;
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [StreamConsumerArgs].
   /// [name] Name of the stream consumer.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [streamArn] ARN of the data stream the consumer is registered with.
-  /// [tags] Optional.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const StreamConsumerArgs({
     this.name,
     this.region,

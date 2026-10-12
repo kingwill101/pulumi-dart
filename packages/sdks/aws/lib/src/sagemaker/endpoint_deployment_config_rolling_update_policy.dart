@@ -38,9 +38,9 @@ class EndpointDeploymentConfigRollingUpdatePolicy {
   factory EndpointDeploymentConfigRollingUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return EndpointDeploymentConfigRollingUpdatePolicy(
       maximumBatchSize: pulumi.Input.fromValue(EndpointDeploymentConfigRollingUpdatePolicyMaximumBatchSize.fromMap((map['maximumBatchSize']! as Map).cast<String, dynamic>())),
-      maximumExecutionTimeoutInSeconds: (() { final guardedValue = map['maximumExecutionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumExecutionTimeoutInSeconds: (() { final guardedValue = map['maximumExecutionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rollbackMaximumBatchSize: (() { final guardedValue = map['rollbackMaximumBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointDeploymentConfigRollingUpdatePolicyRollbackMaximumBatchSize.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      waitIntervalInSeconds: pulumi.Input.fromValue((map['waitIntervalInSeconds'] as num).toInt()),
+      waitIntervalInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['waitIntervalInSeconds'])),
     );
   }
 }

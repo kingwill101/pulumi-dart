@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirehoseDeliveryStreamHttpEndpointConfigurationSecretsManagerConfiguration {
   /// Enables or disables the Secrets Manager configuration.
   final pulumi.Input<bool?>? enabled;
-  /// The ARN of the role the stream assumes.
+  /// ARN of the role the stream assumes.
   final pulumi.Input<String?>? roleArn;
-  /// The ARN of the Secrets Manager secret. This value is required if `enabled` is true.
+  /// ARN of the Secrets Manager secret. This value is required if `enabled` is true.
   final pulumi.Input<String?>? secretArn;
 
   /// Creates a new [FirehoseDeliveryStreamHttpEndpointConfigurationSecretsManagerConfiguration].
   /// [enabled] Enables or disables the Secrets Manager configuration.
-  /// [roleArn] The ARN of the role the stream assumes.
-  /// [secretArn] The ARN of the Secrets Manager secret. This value is required if `enabled` is true.
+  /// [roleArn] ARN of the role the stream assumes.
+  /// [secretArn] ARN of the Secrets Manager secret. This value is required if `enabled` is true.
   const FirehoseDeliveryStreamHttpEndpointConfigurationSecretsManagerConfiguration({
     this.enabled,
     this.roleArn,

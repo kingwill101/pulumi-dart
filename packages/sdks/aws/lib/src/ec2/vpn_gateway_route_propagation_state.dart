@@ -6,15 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpnGatewayRoutePropagationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The id of the `aws.ec2.RouteTable` to propagate routes into.
+  /// ID of the `aws.ec2.RouteTable` to propagate routes into.
   final pulumi.Input<String?>? routeTableId;
-  /// The id of the `aws.ec2.VpnGateway` to propagate routes from.
+  /// ID of the `aws.ec2.VpnGateway` to propagate routes from.
   final pulumi.Input<String?>? vpnGatewayId;
 
   /// Creates a new [VpnGatewayRoutePropagationState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [routeTableId] The id of the `aws.ec2.RouteTable` to propagate routes into.
-  /// [vpnGatewayId] The id of the `aws.ec2.VpnGateway` to propagate routes from.
+  /// [routeTableId] ID of the `aws.ec2.RouteTable` to propagate routes into.
+  /// [vpnGatewayId] ID of the `aws.ec2.VpnGateway` to propagate routes from.
   const VpnGatewayRoutePropagationState({
     this.region,
     this.routeTableId,

@@ -80,6 +80,8 @@ class Endpoints {
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? bedrockagentcore;
   /// Use this to override the default service endpoint URL
+  final pulumi.Input<String?>? bedrockruntime;
+  /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? billing;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? budgets;
@@ -127,6 +129,8 @@ class Endpoints {
   final pulumi.Input<String?>? cloudwatchlogs;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? cloudwatchobservabilityaccessmanager;
+  /// Use this to override the default service endpoint URL
+  final pulumi.Input<String?>? cloudwatchomni;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? cloudwatchrum;
   /// Use this to override the default service endpoint URL
@@ -270,6 +274,8 @@ class Endpoints {
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? eventbridge;
   /// Use this to override the default service endpoint URL
+  final pulumi.Input<String?>? eventbridgev2;
+  /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? events;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? evidently;
@@ -356,6 +362,8 @@ class Endpoints {
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? lambdamicrovms;
   /// Use this to override the default service endpoint URL
+  final pulumi.Input<String?>? lambdaweb;
+  /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? launchwizard;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? lex;
@@ -427,6 +435,8 @@ class Endpoints {
   final pulumi.Input<String?>? networkmanager;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? networkmonitor;
+  /// Use this to override the default service endpoint URL
+  final pulumi.Input<String?>? networksecuritymanager;
   /// Use this to override the default service endpoint URL
   final pulumi.Input<String?>? notifications;
   /// Use this to override the default service endpoint URL
@@ -683,6 +693,7 @@ class Endpoints {
   /// [bedrock] Use this to override the default service endpoint URL
   /// [bedrockagent] Use this to override the default service endpoint URL
   /// [bedrockagentcore] Use this to override the default service endpoint URL
+  /// [bedrockruntime] Use this to override the default service endpoint URL
   /// [billing] Use this to override the default service endpoint URL
   /// [budgets] Use this to override the default service endpoint URL
   /// [ce] Use this to override the default service endpoint URL
@@ -707,6 +718,7 @@ class Endpoints {
   /// [cloudwatchlog] Use this to override the default service endpoint URL
   /// [cloudwatchlogs] Use this to override the default service endpoint URL
   /// [cloudwatchobservabilityaccessmanager] Use this to override the default service endpoint URL
+  /// [cloudwatchomni] Use this to override the default service endpoint URL
   /// [cloudwatchrum] Use this to override the default service endpoint URL
   /// [codeartifact] Use this to override the default service endpoint URL
   /// [codebuild] Use this to override the default service endpoint URL
@@ -778,6 +790,7 @@ class Endpoints {
   /// [emrserverless] Use this to override the default service endpoint URL
   /// [es] Use this to override the default service endpoint URL
   /// [eventbridge] Use this to override the default service endpoint URL
+  /// [eventbridgev2] Use this to override the default service endpoint URL
   /// [events] Use this to override the default service endpoint URL
   /// [evidently] Use this to override the default service endpoint URL
   /// [evs] Use this to override the default service endpoint URL
@@ -821,6 +834,7 @@ class Endpoints {
   /// [lambda] Use this to override the default service endpoint URL
   /// [lambdacore] Use this to override the default service endpoint URL
   /// [lambdamicrovms] Use this to override the default service endpoint URL
+  /// [lambdaweb] Use this to override the default service endpoint URL
   /// [launchwizard] Use this to override the default service endpoint URL
   /// [lex] Use this to override the default service endpoint URL
   /// [lexmodelbuilding] Use this to override the default service endpoint URL
@@ -857,6 +871,7 @@ class Endpoints {
   /// [networkflowmonitor] Use this to override the default service endpoint URL
   /// [networkmanager] Use this to override the default service endpoint URL
   /// [networkmonitor] Use this to override the default service endpoint URL
+  /// [networksecuritymanager] Use this to override the default service endpoint URL
   /// [notifications] Use this to override the default service endpoint URL
   /// [notificationscontacts] Use this to override the default service endpoint URL
   /// [oam] Use this to override the default service endpoint URL
@@ -1004,6 +1019,7 @@ class Endpoints {
     this.bedrock,
     this.bedrockagent,
     this.bedrockagentcore,
+    this.bedrockruntime,
     this.billing,
     this.budgets,
     this.ce,
@@ -1028,6 +1044,7 @@ class Endpoints {
     this.cloudwatchlog,
     this.cloudwatchlogs,
     this.cloudwatchobservabilityaccessmanager,
+    this.cloudwatchomni,
     this.cloudwatchrum,
     this.codeartifact,
     this.codebuild,
@@ -1099,6 +1116,7 @@ class Endpoints {
     this.emrserverless,
     this.es,
     this.eventbridge,
+    this.eventbridgev2,
     this.events,
     this.evidently,
     this.evs,
@@ -1142,6 +1160,7 @@ class Endpoints {
     this.lambda,
     this.lambdacore,
     this.lambdamicrovms,
+    this.lambdaweb,
     this.launchwizard,
     this.lex,
     this.lexmodelbuilding,
@@ -1178,6 +1197,7 @@ class Endpoints {
     this.networkflowmonitor,
     this.networkmanager,
     this.networkmonitor,
+    this.networksecuritymanager,
     this.notifications,
     this.notificationscontacts,
     this.oam,
@@ -1328,6 +1348,7 @@ class Endpoints {
       'bedrock': ?bedrock,
       'bedrockagent': ?bedrockagent,
       'bedrockagentcore': ?bedrockagentcore,
+      'bedrockruntime': ?bedrockruntime,
       'billing': ?billing,
       'budgets': ?budgets,
       'ce': ?ce,
@@ -1352,6 +1373,7 @@ class Endpoints {
       'cloudwatchlog': ?cloudwatchlog,
       'cloudwatchlogs': ?cloudwatchlogs,
       'cloudwatchobservabilityaccessmanager': ?cloudwatchobservabilityaccessmanager,
+      'cloudwatchomni': ?cloudwatchomni,
       'cloudwatchrum': ?cloudwatchrum,
       'codeartifact': ?codeartifact,
       'codebuild': ?codebuild,
@@ -1423,6 +1445,7 @@ class Endpoints {
       'emrserverless': ?emrserverless,
       'es': ?es,
       'eventbridge': ?eventbridge,
+      'eventbridgev2': ?eventbridgev2,
       'events': ?events,
       'evidently': ?evidently,
       'evs': ?evs,
@@ -1466,6 +1489,7 @@ class Endpoints {
       'lambda': ?lambda,
       'lambdacore': ?lambdacore,
       'lambdamicrovms': ?lambdamicrovms,
+      'lambdaweb': ?lambdaweb,
       'launchwizard': ?launchwizard,
       'lex': ?lex,
       'lexmodelbuilding': ?lexmodelbuilding,
@@ -1502,6 +1526,7 @@ class Endpoints {
       'networkflowmonitor': ?networkflowmonitor,
       'networkmanager': ?networkmanager,
       'networkmonitor': ?networkmonitor,
+      'networksecuritymanager': ?networksecuritymanager,
       'notifications': ?notifications,
       'notificationscontacts': ?notificationscontacts,
       'oam': ?oam,
@@ -1653,6 +1678,7 @@ class Endpoints {
       bedrock: (() { final guardedValue = map['bedrock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bedrockagent: (() { final guardedValue = map['bedrockagent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bedrockagentcore: (() { final guardedValue = map['bedrockagentcore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bedrockruntime: (() { final guardedValue = map['bedrockruntime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       billing: (() { final guardedValue = map['billing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       budgets: (() { final guardedValue = map['budgets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ce: (() { final guardedValue = map['ce']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1677,6 +1703,7 @@ class Endpoints {
       cloudwatchlog: (() { final guardedValue = map['cloudwatchlog']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cloudwatchlogs: (() { final guardedValue = map['cloudwatchlogs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cloudwatchobservabilityaccessmanager: (() { final guardedValue = map['cloudwatchobservabilityaccessmanager']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cloudwatchomni: (() { final guardedValue = map['cloudwatchomni']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cloudwatchrum: (() { final guardedValue = map['cloudwatchrum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       codeartifact: (() { final guardedValue = map['codeartifact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       codebuild: (() { final guardedValue = map['codebuild']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1748,6 +1775,7 @@ class Endpoints {
       emrserverless: (() { final guardedValue = map['emrserverless']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       es: (() { final guardedValue = map['es']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       eventbridge: (() { final guardedValue = map['eventbridge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventbridgev2: (() { final guardedValue = map['eventbridgev2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       events: (() { final guardedValue = map['events']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       evidently: (() { final guardedValue = map['evidently']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       evs: (() { final guardedValue = map['evs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1791,6 +1819,7 @@ class Endpoints {
       lambda: (() { final guardedValue = map['lambda']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lambdacore: (() { final guardedValue = map['lambdacore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lambdamicrovms: (() { final guardedValue = map['lambdamicrovms']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      lambdaweb: (() { final guardedValue = map['lambdaweb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       launchwizard: (() { final guardedValue = map['launchwizard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lex: (() { final guardedValue = map['lex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lexmodelbuilding: (() { final guardedValue = map['lexmodelbuilding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1827,6 +1856,7 @@ class Endpoints {
       networkflowmonitor: (() { final guardedValue = map['networkflowmonitor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkmanager: (() { final guardedValue = map['networkmanager']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkmonitor: (() { final guardedValue = map['networkmonitor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networksecuritymanager: (() { final guardedValue = map['networksecuritymanager']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notifications: (() { final guardedValue = map['notifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notificationscontacts: (() { final guardedValue = map['notificationscontacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       oam: (() { final guardedValue = map['oam']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

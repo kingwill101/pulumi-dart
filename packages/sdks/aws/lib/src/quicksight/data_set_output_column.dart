@@ -3,19 +3,19 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetOutputColumn {
-  /// The description of the column.
+  /// Description of the column.
   final pulumi.Input<String?>? description;
   /// Display name for the dataset.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String?>? name;
-  /// The data type of the column.
+  /// Data type of the column.
   final pulumi.Input<String?>? type;
 
   /// Creates a new [DataSetOutputColumn].
-  /// [description] The description of the column.
+  /// [description] Description of the column.
   /// [name] Display name for the dataset.
-  /// [type] The data type of the column.
+  /// [type] Data type of the column.
   const DataSetOutputColumn({
     this.description,
     this.name,

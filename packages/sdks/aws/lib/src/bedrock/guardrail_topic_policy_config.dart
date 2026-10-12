@@ -5,14 +5,14 @@ import 'guardrail_topic_policy_config_tier_config.dart';
 import 'guardrail_topic_policy_config_topics_config.dart';
 
 class GuardrailTopicPolicyConfig {
-  /// Configuration block for the topic policy tier. See Tier Config for more information.
+  /// Configuration block for the topic policy tier. See `topic_policy_config.tier_config` Block for more information.
   final pulumi.Input<List<GuardrailTopicPolicyConfigTierConfig>?>? tierConfigs;
-  /// List of topic configs in topic policy. See Topics Config for more information.
+  /// List of topic configs in topic policy. See `topicsConfig` Block for more information.
   final pulumi.Input<List<GuardrailTopicPolicyConfigTopicsConfig>?>? topicsConfigs;
 
   /// Creates a new [GuardrailTopicPolicyConfig].
-  /// [tierConfigs] Configuration block for the topic policy tier. See Tier Config for more information.
-  /// [topicsConfigs] List of topic configs in topic policy. See Topics Config for more information.
+  /// [tierConfigs] Configuration block for the topic policy tier. See `topic_policy_config.tier_config` Block for more information.
+  /// [topicsConfigs] List of topic configs in topic policy. See `topicsConfig` Block for more information.
   const GuardrailTopicPolicyConfig({
     this.tierConfigs,
     this.topicsConfigs,

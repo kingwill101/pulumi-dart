@@ -9,10 +9,6 @@ import 'get_prefix_list_filter.dart';
 /// {@macro pulumi_ec2_get_prefix_list_get_prefix_list_args_doc}
 class GetPrefixListArgs {
   /// Configuration block(s) for filtering. Detailed below.
-  ///
-  /// The arguments of this data source act as filters for querying the available
-  /// prefix lists. The given filters must match exactly one prefix list
-  /// whose data will be exported as attributes.
   final pulumi.Input<List<GetPrefixListFilter>?>? filters;
   /// Name of the prefix list to select.
   final pulumi.Input<String?>? name;

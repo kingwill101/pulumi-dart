@@ -239,7 +239,7 @@ class RepositoryAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> associationId;
   /// ARN of an AWS CodeStar Connections connection.
   late final pulumi.Output<String> connectionArn;
-  /// An object describing the KMS key to asssociate. Block is documented below.
+  /// An object describing the KMS key to associate. Block is documented below.
   late final pulumi.Output<RepositoryAssociationKmsKeyDetails?> kmsKeyDetails;
   /// The name of the repository.
   late final pulumi.Output<String> name;
@@ -273,7 +273,7 @@ class RepositoryAssociation extends pulumi.CustomResource {
           'aws:codegurureviewer/repositoryAssociation:RepositoryAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     associationId = registerOutput<String>('associationId');

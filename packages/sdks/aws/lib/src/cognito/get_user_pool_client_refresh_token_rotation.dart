@@ -26,7 +26,7 @@ class GetUserPoolClientRefreshTokenRotation {
   factory GetUserPoolClientRefreshTokenRotation.fromMap(Map<String, dynamic> map) {
     return GetUserPoolClientRefreshTokenRotation(
       feature: pulumi.Input.fromValue(map['feature'] as String),
-      retryGracePeriodSeconds: pulumi.Input.fromValue((map['retryGracePeriodSeconds'] as num).toInt()),
+      retryGracePeriodSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retryGracePeriodSeconds'])),
     );
   }
 }

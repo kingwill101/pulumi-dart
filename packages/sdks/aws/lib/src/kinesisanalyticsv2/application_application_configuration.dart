@@ -11,32 +11,32 @@ import 'application_application_configuration_sql_application_configuration.dart
 import 'application_application_configuration_vpc_configuration.dart';
 
 class ApplicationApplicationConfiguration {
-  /// The code location and type parameters for the application.
+  /// Code location and type parameters for the application. See `applicationCodeConfiguration` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationApplicationCodeConfiguration> applicationCodeConfiguration;
-  /// The encryption configuration for the application. This can be used to encrypt data at rest in the application.
+  /// Encryption configuration for the application. Use this to encrypt data at rest in the application. See `applicationEncryptionConfiguration` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationApplicationEncryptionConfiguration?>? applicationEncryptionConfiguration;
-  /// Describes whether snapshots are enabled for a Flink-based application.
+  /// Snapshot configuration for a Flink-based application. See `applicationSnapshotConfiguration` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationApplicationSnapshotConfiguration?>? applicationSnapshotConfiguration;
-  /// Describes execution properties for a Flink-based application.
+  /// Execution properties for a Flink-based application. See `environmentProperties` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationEnvironmentProperties?>? environmentProperties;
-  /// The configuration of a Flink-based application.
+  /// Configuration of a Flink-based application. See `flinkApplicationConfiguration` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationFlinkApplicationConfiguration?>? flinkApplicationConfiguration;
-  /// Describes the starting properties for a Flink-based application.
+  /// Starting properties for a Flink-based application. See `runConfiguration` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationRunConfiguration?>? runConfiguration;
-  /// The configuration of a SQL-based application.
+  /// Configuration of a SQL-based application. See `sqlApplicationConfiguration` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfiguration?>? sqlApplicationConfiguration;
-  /// The VPC configuration of a Flink-based application.
+  /// VPC configuration of a Flink-based application. See `vpcConfiguration` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationVpcConfiguration?>? vpcConfiguration;
 
   /// Creates a new [ApplicationApplicationConfiguration].
-  /// [applicationCodeConfiguration] The code location and type parameters for the application.
-  /// [applicationEncryptionConfiguration] The encryption configuration for the application. This can be used to encrypt data at rest in the application.
-  /// [applicationSnapshotConfiguration] Describes whether snapshots are enabled for a Flink-based application.
-  /// [environmentProperties] Describes execution properties for a Flink-based application.
-  /// [flinkApplicationConfiguration] The configuration of a Flink-based application.
-  /// [runConfiguration] Describes the starting properties for a Flink-based application.
-  /// [sqlApplicationConfiguration] The configuration of a SQL-based application.
-  /// [vpcConfiguration] The VPC configuration of a Flink-based application.
+  /// [applicationCodeConfiguration] Code location and type parameters for the application. See `applicationCodeConfiguration` Block below.
+  /// [applicationEncryptionConfiguration] Encryption configuration for the application. Use this to encrypt data at rest in the application. See `applicationEncryptionConfiguration` Block below.
+  /// [applicationSnapshotConfiguration] Snapshot configuration for a Flink-based application. See `applicationSnapshotConfiguration` Block below.
+  /// [environmentProperties] Execution properties for a Flink-based application. See `environmentProperties` Block below.
+  /// [flinkApplicationConfiguration] Configuration of a Flink-based application. See `flinkApplicationConfiguration` Block below.
+  /// [runConfiguration] Starting properties for a Flink-based application. See `runConfiguration` Block below.
+  /// [sqlApplicationConfiguration] Configuration of a SQL-based application. See `sqlApplicationConfiguration` Block below.
+  /// [vpcConfiguration] VPC configuration of a Flink-based application. See `vpcConfiguration` Block below.
   const ApplicationApplicationConfiguration({
     required this.applicationCodeConfiguration,
     this.applicationEncryptionConfiguration,

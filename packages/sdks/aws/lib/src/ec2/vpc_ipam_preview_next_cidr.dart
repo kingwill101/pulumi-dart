@@ -296,13 +296,13 @@ import 'vpc_ipam_preview_next_cidr_state.dart';
 ///       arguments: {}
 /// ```
 class VpcIpamPreviewNextCidr extends pulumi.CustomResource {
-  /// The previewed CIDR from the pool.
+  /// Previewed CIDR from the pool.
   late final pulumi.Output<String> cidr;
   /// Exclude a particular CIDR range from being returned by the pool.
   late final pulumi.Output<List<String>?> disallowedCidrs;
-  /// The ID of the pool to which you want to assign a CIDR.
+  /// ID of the pool to which you want to assign a CIDR.
   late final pulumi.Output<String> ipamPoolId;
-  /// The netmask length of the CIDR you would like to preview from the IPAM pool.
+  /// Netmask length of the CIDR you would like to preview from the IPAM pool.
   late final pulumi.Output<int?> netmaskLength;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -319,7 +319,7 @@ class VpcIpamPreviewNextCidr extends pulumi.CustomResource {
           'aws:ec2/vpcIpamPreviewNextCidr:VpcIpamPreviewNextCidr',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     cidr = registerOutput<String>('cidr');
     disallowedCidrs = registerOutput<List<String>?>('disallowedCidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

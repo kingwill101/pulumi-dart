@@ -5,20 +5,20 @@ import 'data_set_logical_table_map_data_transform.dart';
 import 'data_set_logical_table_map_source.dart';
 
 class DataSetLogicalTableMap {
-  /// A display name for the logical table.
+  /// Display name for the logical table.
   final pulumi.Input<String> alias;
-  /// Transform operations that act on this logical table. For this structure to be valid, only one of the attributes can be non-null. See data_transforms.
+  /// Transform operations that act on this logical table. For this structure to be valid, only one of the attributes can be non-null. See `dataTransforms` Block below.
   final pulumi.Input<List<DataSetLogicalTableMapDataTransform>?>? dataTransforms;
   /// Key of the logical table map.
   final pulumi.Input<String> logicalTableMapId;
-  /// Source of this logical table. See source.
+  /// Source of this logical table. See `source` Block below.
   final pulumi.Input<DataSetLogicalTableMapSource> source;
 
   /// Creates a new [DataSetLogicalTableMap].
-  /// [alias] A display name for the logical table.
-  /// [dataTransforms] Transform operations that act on this logical table. For this structure to be valid, only one of the attributes can be non-null. See data_transforms.
+  /// [alias] Display name for the logical table.
+  /// [dataTransforms] Transform operations that act on this logical table. For this structure to be valid, only one of the attributes can be non-null. See `dataTransforms` Block below.
   /// [logicalTableMapId] Key of the logical table map.
-  /// [source] Source of this logical table. See source.
+  /// [source] Source of this logical table. See `source` Block below.
   const DataSetLogicalTableMap({
     required this.alias,
     this.dataTransforms,

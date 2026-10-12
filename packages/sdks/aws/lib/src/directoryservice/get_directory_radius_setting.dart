@@ -52,10 +52,10 @@ class GetDirectoryRadiusSetting {
     return GetDirectoryRadiusSetting(
       authenticationProtocol: pulumi.Input.fromValue(map['authenticationProtocol'] as String),
       displayLabel: pulumi.Input.fromValue(map['displayLabel'] as String),
-      radiusPort: pulumi.Input.fromValue((map['radiusPort'] as num).toInt()),
-      radiusRetries: pulumi.Input.fromValue((map['radiusRetries'] as num).toInt()),
+      radiusPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['radiusPort'])),
+      radiusRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['radiusRetries'])),
       radiusServers: pulumi.Input.fromValue((map['radiusServers'] as List).cast<String>()),
-      radiusTimeout: pulumi.Input.fromValue((map['radiusTimeout'] as num).toInt()),
+      radiusTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['radiusTimeout'])),
       useSameUsername: pulumi.Input.fromValue(map['useSameUsername'] as bool),
     );
   }

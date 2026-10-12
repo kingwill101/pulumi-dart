@@ -66,9 +66,9 @@ class GetTableGlobalSecondaryIndex {
       onDemandThroughputs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetTableGlobalSecondaryIndexOnDemandThroughput>(map['onDemandThroughputs']!, (value) => GetTableGlobalSecondaryIndexOnDemandThroughput.fromMap((value as Map).cast<String, dynamic>()))),
       projectionType: pulumi.Input.fromValue(map['projectionType'] as String),
       rangeKey: pulumi.Input.fromValue(map['rangeKey'] as String),
-      readCapacity: pulumi.Input.fromValue((map['readCapacity'] as num).toInt()),
+      readCapacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['readCapacity'])),
       warmThroughputs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetTableGlobalSecondaryIndexWarmThroughput>(map['warmThroughputs']!, (value) => GetTableGlobalSecondaryIndexWarmThroughput.fromMap((value as Map).cast<String, dynamic>()))),
-      writeCapacity: pulumi.Input.fromValue((map['writeCapacity'] as num).toInt()),
+      writeCapacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['writeCapacity'])),
     );
   }
 }

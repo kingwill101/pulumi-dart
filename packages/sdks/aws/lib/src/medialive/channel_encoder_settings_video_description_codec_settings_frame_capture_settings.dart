@@ -25,7 +25,7 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings {
 
   factory ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings(
-      captureInterval: (() { final guardedValue = map['captureInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      captureInterval: (() { final guardedValue = map['captureInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       captureIntervalUnits: (() { final guardedValue = map['captureIntervalUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

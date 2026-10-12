@@ -321,7 +321,7 @@ import 'ontap_storage_virtual_machine_state.dart';
 /// $ pulumi import aws:fsx/ontapStorageVirtualMachine:OntapStorageVirtualMachine example svm-12345678abcdef123
 /// ```
 ///
-/// Certain resource arguments, like `svmAdminPassword` and the `selfManagedActiveDirectory` configuation block `password`, do not have a FSx API method for reading the information after creation. If these arguments are set in the Pulumi program on an imported resource, Pulumi will always show a difference. To workaround this behavior, either omit the argument from the Pulumi program or use `ignoreChanges` to hide the difference. For example:
+/// Certain resource arguments, like `svmAdminPassword` and the `selfManagedActiveDirectory` configuration block `password`, do not have a FSx API method for reading the information after creation. If these arguments are set in the Pulumi program on an imported resource, Pulumi will always show a difference. To workaround this behavior, either omit the argument from the Pulumi program or use `ignoreChanges` to hide the difference. For example:
 ///
 ///
 /// ```typescript
@@ -477,7 +477,7 @@ class OntapStorageVirtualMachine extends pulumi.CustomResource {
           'aws:fsx/ontapStorageVirtualMachine:OntapStorageVirtualMachine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
           additionalSecretOutputs: const ['svmAdminPassword'],
         ) {
     activeDirectoryConfiguration = registerOutput<OntapStorageVirtualMachineActiveDirectoryConfiguration?>('activeDirectoryConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

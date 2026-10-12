@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableSchemaDefinitionClusteringKey {
-  /// The name of the clustering key column.
+  /// Name of the clustering key column.
   final pulumi.Input<String> name;
-  /// The order modifier. Valid values: `ASC`, `DESC`.
+  /// Order modifier. Valid values: `ASC`, `DESC`.
   final pulumi.Input<String> orderBy;
 
   /// Creates a new [TableSchemaDefinitionClusteringKey].
-  /// [name] The name of the clustering key column.
-  /// [orderBy] The order modifier. Valid values: `ASC`, `DESC`.
+  /// [name] Name of the clustering key column.
+  /// [orderBy] Order modifier. Valid values: `ASC`, `DESC`.
   const TableSchemaDefinitionClusteringKey({
     required this.name,
     required this.orderBy,

@@ -3,43 +3,40 @@
 
 /// Result data returned by getQuicksightUser.
 class GetQuicksightUserResult {
-  /// The active status of user. When you create an Amazon QuickSight user that’s not an IAM user or an Active Directory user, that user is inactive until they sign in and provide a password.
+  /// Active status of user. When you create an Amazon QuickSight user that’s not an IAM user or an Active Directory user, that user is inactive until they sign in and provide a password.
   final bool? active;
   /// ARN for the user.
   final String? arn;
   final String? awsAccountId;
-  /// The custom permissions profile associated with this user.
+  /// Custom permissions profile associated with this user.
   final String? customPermissionsName;
-  /// The user's email address.
+  /// User's email address.
   final String? email;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// The type of identity authentication used by the user.
+  /// Type of identity authentication used by the user.
   final String? identityType;
   final String? namespace;
-  /// The principal ID of the user.
+  /// Principal ID of the user.
   final String? principalId;
   final String? region;
   final String? userName;
-  /// The Amazon QuickSight role for the user. The user role can be one of the following:.
-  /// - `READER`: A user who has read-only access to dashboards.
-  /// - `AUTHOR`: A user who can create data sources, datasets, analyzes, and dashboards.
-  /// - `ADMIN`: A user who is an author, who can also manage Amazon QuickSight settings.
+  /// Amazon QuickSight role for the user. Valid values are `READER` (read-only access to dashboards), `AUTHOR` (can create data sources, datasets, analyses, and dashboards), and `ADMIN` (an author who can also manage Amazon QuickSight settings).
   final String? userRole;
 
   /// Creates a new [GetQuicksightUserResult].
-  /// [active] The active status of user. When you create an Amazon QuickSight user that’s not an IAM user or an Active Directory user, that user is inactive until they sign in and provide a password.
+  /// [active] Active status of user. When you create an Amazon QuickSight user that’s not an IAM user or an Active Directory user, that user is inactive until they sign in and provide a password.
   /// [arn] ARN for the user.
   /// [awsAccountId] Optional.
-  /// [customPermissionsName] The custom permissions profile associated with this user.
-  /// [email] The user's email address.
+  /// [customPermissionsName] Custom permissions profile associated with this user.
+  /// [email] User's email address.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [identityType] The type of identity authentication used by the user.
+  /// [identityType] Type of identity authentication used by the user.
   /// [namespace] Optional.
-  /// [principalId] The principal ID of the user.
+  /// [principalId] Principal ID of the user.
   /// [region] Optional.
   /// [userName] Optional.
-  /// [userRole] The Amazon QuickSight role for the user. The user role can be one of the following:.
+  /// [userRole] Amazon QuickSight role for the user. Valid values are `READER` (read-only access to dashboards), `AUTHOR` (can create data sources, datasets, analyses, and dashboards), and `ADMIN` (an author who can also manage Amazon QuickSight settings).
   const GetQuicksightUserResult({
     this.active,
     this.arn,

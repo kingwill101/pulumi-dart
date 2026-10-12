@@ -20,7 +20,7 @@ class FilesSynchronizationConfigurationExpirationDataRule {
 
   factory FilesSynchronizationConfigurationExpirationDataRule.fromMap(Map<String, dynamic> map) {
     return FilesSynchronizationConfigurationExpirationDataRule(
-      daysAfterLastAccess: pulumi.Input.fromValue((map['daysAfterLastAccess'] as num).toInt()),
+      daysAfterLastAccess: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['daysAfterLastAccess'])),
     );
   }
 }

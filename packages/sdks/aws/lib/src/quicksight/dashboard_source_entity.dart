@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dashboard_source_entity_source_template.dart';
 
 class DashboardSourceEntity {
-  /// The source template. See source_template.
+  /// Source template. See `sourceTemplate`.
   final pulumi.Input<DashboardSourceEntitySourceTemplate?>? sourceTemplate;
 
   /// Creates a new [DashboardSourceEntity].
-  /// [sourceTemplate] The source template. See source_template.
+  /// [sourceTemplate] Source template. See `sourceTemplate`.
   const DashboardSourceEntity({
     this.sourceTemplate,
   });

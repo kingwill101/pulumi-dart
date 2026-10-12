@@ -13,8 +13,8 @@ class GetAgentAgentVersionsAgentVersionSummary {
   /// Time at which the version was created.
   final pulumi.Input<String> createdAt;
   /// Description of the version of the agent.
-  /// * `GuardrailConfiguration` - Details aout the guardrail associated with the agent. See Guardrail Configuration
   final pulumi.Input<String> description;
+  /// Details about the guardrail associated with the agent. See `guardrailConfiguration` Block
   final pulumi.Input<List<GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration>?>? guardrailConfigurations;
   /// Time at which the version was last updated.
   final pulumi.Input<String> updatedAt;
@@ -25,7 +25,7 @@ class GetAgentAgentVersionsAgentVersionSummary {
   /// [agentVersion] Version of the agent.
   /// [createdAt] Time at which the version was created.
   /// [description] Description of the version of the agent.
-  /// [guardrailConfigurations] Optional.
+  /// [guardrailConfigurations] Details about the guardrail associated with the agent. See `guardrailConfiguration` Block
   /// [updatedAt] Time at which the version was last updated.
   const GetAgentAgentVersionsAgentVersionSummary({
     required this.agentName,

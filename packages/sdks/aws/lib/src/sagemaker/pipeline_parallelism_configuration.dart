@@ -20,7 +20,7 @@ class PipelineParallelismConfiguration {
 
   factory PipelineParallelismConfiguration.fromMap(Map<String, dynamic> map) {
     return PipelineParallelismConfiguration(
-      maxParallelExecutionSteps: pulumi.Input.fromValue((map['maxParallelExecutionSteps'] as num).toInt()),
+      maxParallelExecutionSteps: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxParallelExecutionSteps'])),
     );
   }
 }

@@ -47,7 +47,7 @@ class RouteSpec {
       grpcRoute: (() { final guardedValue = map['grpcRoute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouteSpecGrpcRoute.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       http2Route: (() { final guardedValue = map['http2Route']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouteSpecHttp2Route.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       httpRoute: (() { final guardedValue = map['httpRoute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouteSpecHttpRoute.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tcpRoute: (() { final guardedValue = map['tcpRoute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouteSpecTcpRoute.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

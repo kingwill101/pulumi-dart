@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_agent_memory_configuration_session_summary_configuration.dart';
 
 class AgentAgentMemoryConfiguration {
-  /// The type of memory being stored by the agent. See [AWS API documentation](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_MemoryConfiguration.html) for possible values.
+  /// Type of memory being stored by the agent. See [AWS API documentation](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_MemoryConfiguration.html) for possible values.
   final pulumi.Input<List<String>> enabledMemoryTypes;
   /// Configuration block for `SESSION_SUMMARY` memory type enabled for the agent. See `sessionSummaryConfiguration` Block for details.
   final pulumi.Input<List<AgentAgentMemoryConfigurationSessionSummaryConfiguration>> sessionSummaryConfigurations;
-  /// The number of days the agent is configured to retain the conversational context. Minimum value of 0, maximum value of 30.
+  /// Number of days the agent is configured to retain the conversational context. Minimum value of 0, maximum value of 30.
   final pulumi.Input<int> storageDays;
 
   /// Creates a new [AgentAgentMemoryConfiguration].
-  /// [enabledMemoryTypes] The type of memory being stored by the agent. See [AWS API documentation](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_MemoryConfiguration.html) for possible values.
+  /// [enabledMemoryTypes] Type of memory being stored by the agent. See [AWS API documentation](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_MemoryConfiguration.html) for possible values.
   /// [sessionSummaryConfigurations] Configuration block for `SESSION_SUMMARY` memory type enabled for the agent. See `sessionSummaryConfiguration` Block for details.
-  /// [storageDays] The number of days the agent is configured to retain the conversational context. Minimum value of 0, maximum value of 30.
+  /// [storageDays] Number of days the agent is configured to retain the conversational context. Minimum value of 0, maximum value of 30.
   const AgentAgentMemoryConfiguration({
     required this.enabledMemoryTypes,
     required this.sessionSummaryConfigurations,
@@ -33,7 +33,7 @@ class AgentAgentMemoryConfiguration {
     return AgentAgentMemoryConfiguration(
       enabledMemoryTypes: pulumi.Input.fromValue((map['enabledMemoryTypes'] as List).cast<String>()),
       sessionSummaryConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<AgentAgentMemoryConfigurationSessionSummaryConfiguration>(map['sessionSummaryConfigurations']!, (value) => AgentAgentMemoryConfigurationSessionSummaryConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
-      storageDays: pulumi.Input.fromValue((map['storageDays'] as num).toInt()),
+      storageDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['storageDays'])),
     );
   }
 }

@@ -227,7 +227,7 @@ class DevEnvironment extends pulumi.CustomResource {
   late final pulumi.Output<DevEnvironmentIdes> ides;
   /// The amount of time the Dev Environment will run without any activity detected before stopping, in minutes. Only whole integers are allowed. Dev Environments consume compute minutes when running.
   late final pulumi.Output<int?> inactivityTimeoutMinutes;
-  /// The Amazon EC2 instace type to use for the Dev Environment. Valid values include dev.standard1.small,dev.standard1.medium,dev.standard1.large,dev.standard1.xlarge
+  /// The Amazon EC2 instance type to use for the Dev Environment. Valid values include dev.standard1.small,dev.standard1.medium,dev.standard1.large,dev.standard1.xlarge
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> instanceType;
@@ -254,7 +254,7 @@ class DevEnvironment extends pulumi.CustomResource {
           'aws:codecatalyst/devEnvironment:DevEnvironment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     alias = registerOutput<String?>('alias');
     ides = registerOutput<DevEnvironmentIdes>('ides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DevEnvironmentIdes.fromMap((guardedValue as Map).cast<String, dynamic>()); });

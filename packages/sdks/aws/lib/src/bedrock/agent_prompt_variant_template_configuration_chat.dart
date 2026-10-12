@@ -7,19 +7,20 @@ import 'agent_prompt_variant_template_configuration_chat_system.dart';
 import 'agent_prompt_variant_template_configuration_chat_tool_configuration.dart';
 
 class AgentPromptVariantTemplateConfigurationChat {
+  /// List of variables in the prompt template. See `inputVariable` Block for more information.
   final pulumi.Input<List<AgentPromptVariantTemplateConfigurationChatInputVariable>?>? inputVariables;
-  /// A list of messages in the chat for the prompt. See Message for more information.
+  /// List of messages in the chat for the prompt. See `message` Block for more information.
   final pulumi.Input<List<AgentPromptVariantTemplateConfigurationChatMessage>> messages;
-  /// A list of system prompts to provide context to the model or to describe how it should behave. See System for more information.
+  /// List of system prompts to provide context to the model or to describe how it should behave. See `system` Block for more information.
   final pulumi.Input<List<AgentPromptVariantTemplateConfigurationChatSystem>?>? systems;
-  /// Configuration information for the tools that the model can use when generating a response. See Tool Configuration for more information.
+  /// Configuration information for the tools that the model can use when generating a response. See `toolConfiguration` Block for more information.
   final pulumi.Input<AgentPromptVariantTemplateConfigurationChatToolConfiguration?>? toolConfiguration;
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChat].
-  /// [inputVariables] Optional.
-  /// [messages] A list of messages in the chat for the prompt. See Message for more information.
-  /// [systems] A list of system prompts to provide context to the model or to describe how it should behave. See System for more information.
-  /// [toolConfiguration] Configuration information for the tools that the model can use when generating a response. See Tool Configuration for more information.
+  /// [inputVariables] List of variables in the prompt template. See `inputVariable` Block for more information.
+  /// [messages] List of messages in the chat for the prompt. See `message` Block for more information.
+  /// [systems] List of system prompts to provide context to the model or to describe how it should behave. See `system` Block for more information.
+  /// [toolConfiguration] Configuration information for the tools that the model can use when generating a response. See `toolConfiguration` Block for more information.
   const AgentPromptVariantTemplateConfigurationChat({
     this.inputVariables,
     required this.messages,

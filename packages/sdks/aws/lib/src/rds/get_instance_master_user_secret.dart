@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInstanceMasterUserSecret {
-  /// The Amazon Web Services KMS key identifier that is used to encrypt the secret.
+  /// Amazon Web Services KMS key identifier that is used to encrypt the secret.
   final pulumi.Input<String> kmsKeyId;
   /// ARN of the secret.
   final pulumi.Input<String> secretArn;
-  /// The status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
+  /// Status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
   final pulumi.Input<String> secretStatus;
 
   /// Creates a new [GetInstanceMasterUserSecret].
-  /// [kmsKeyId] The Amazon Web Services KMS key identifier that is used to encrypt the secret.
+  /// [kmsKeyId] Amazon Web Services KMS key identifier that is used to encrypt the secret.
   /// [secretArn] ARN of the secret.
-  /// [secretStatus] The status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
+  /// [secretStatus] Status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
   const GetInstanceMasterUserSecret({
     required this.kmsKeyId,
     required this.secretArn,

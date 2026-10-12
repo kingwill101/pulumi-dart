@@ -9,47 +9,47 @@ class GetThemeResult {
   /// ARN of the theme.
   final String? arn;
   final String? awsAccountId;
-  /// The ID of the theme that a custom theme will inherit from. All themes inherit from one of the starting themes defined by Amazon QuickSight.
+  /// ID of the theme that a custom theme will inherit from. All themes inherit from one of the starting themes defined by Amazon QuickSight.
   final String? baseThemeId;
-  /// The theme configuration, which contains the theme display properties. See configuration.
+  /// Theme configuration, which contains the theme display properties. See configuration.
   final List<GetThemeConfiguration>? configurations;
-  /// The time that the theme was created.
+  /// Time that the theme was created.
   final String? createdTime;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// The time that the theme was last updated.
+  /// Time that the theme was last updated.
   final String? lastUpdatedTime;
   /// Display name of the theme.
   final String? name;
-  /// A set of resource permissions on the theme. See permissions.
+  /// Set of resource permissions on the theme. See permissions.
   final List<GetThemePermission>? permissions;
   final String? region;
-  /// The theme creation status.
+  /// Theme creation status.
   final String? status;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final Map<String, String>? tags;
   final String? themeId;
-  /// A description of the current theme version being created/updated.
+  /// Description of the current theme version being created/updated.
   final String? versionDescription;
-  /// The version number of the theme version.
+  /// Version number of the theme version.
   final int? versionNumber;
 
   /// Creates a new [GetThemeResult].
   /// [arn] ARN of the theme.
   /// [awsAccountId] Optional.
-  /// [baseThemeId] The ID of the theme that a custom theme will inherit from. All themes inherit from one of the starting themes defined by Amazon QuickSight.
-  /// [configurations] The theme configuration, which contains the theme display properties. See configuration.
-  /// [createdTime] The time that the theme was created.
+  /// [baseThemeId] ID of the theme that a custom theme will inherit from. All themes inherit from one of the starting themes defined by Amazon QuickSight.
+  /// [configurations] Theme configuration, which contains the theme display properties. See configuration.
+  /// [createdTime] Time that the theme was created.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [lastUpdatedTime] The time that the theme was last updated.
+  /// [lastUpdatedTime] Time that the theme was last updated.
   /// [name] Display name of the theme.
-  /// [permissions] A set of resource permissions on the theme. See permissions.
+  /// [permissions] Set of resource permissions on the theme. See permissions.
   /// [region] Optional.
-  /// [status] The theme creation status.
-  /// [tags] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [status] Theme creation status.
+  /// [tags] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [themeId] Optional.
-  /// [versionDescription] A description of the current theme version being created/updated.
-  /// [versionNumber] The version number of the theme version.
+  /// [versionDescription] Description of the current theme version being created/updated.
+  /// [versionNumber] Version number of the theme version.
   const GetThemeResult({
     this.arn,
     this.awsAccountId,
@@ -104,7 +104,7 @@ class GetThemeResult {
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       themeId: (() { final guardedValue = map['themeId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       versionDescription: (() { final guardedValue = map['versionDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      versionNumber: (() { final guardedValue = map['versionNumber']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      versionNumber: (() { final guardedValue = map['versionNumber']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

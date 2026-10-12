@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersRds {
-  /// The database to which to connect.
+  /// Database to which to connect.
   final pulumi.Input<String> database;
-  /// The instance ID to which to connect.
+  /// Instance ID to which to connect.
   final pulumi.Input<String> instanceId;
 
   /// Creates a new [DataSourceParametersRds].
-  /// [database] The database to which to connect.
-  /// [instanceId] The instance ID to which to connect.
+  /// [database] Database to which to connect.
+  /// [instanceId] Instance ID to which to connect.
   const DataSourceParametersRds({
     required this.database,
     required this.instanceId,

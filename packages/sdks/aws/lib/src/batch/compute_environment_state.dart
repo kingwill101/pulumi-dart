@@ -15,7 +15,7 @@ class ComputeEnvironmentState {
   final pulumi.Input<String?>? ecsClusterArn;
   /// Details for the Amazon EKS cluster that supports the compute environment. See details below.
   final pulumi.Input<ComputeEnvironmentEksConfiguration?>? eksConfiguration;
-  /// The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed. If omitted, the provider will assign a random, unique name.
+  /// Name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed. If omitted, the provider will assign a random, unique name.
   final pulumi.Input<String?>? name;
   /// Creates a unique compute environment name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String?>? namePrefix;
@@ -23,19 +23,19 @@ class ComputeEnvironmentState {
   final pulumi.Input<String?>? region;
   /// Full ARN of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
   final pulumi.Input<String?>? serviceRole;
-  /// The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
+  /// State of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
   final pulumi.Input<String?>? state;
-  /// The current status of the compute environment (for example, CREATING or VALID).
+  /// Current status of the compute environment (for example, CREATING or VALID).
   final pulumi.Input<String?>? status;
-  /// A short, human-readable string to provide additional details about the current status of the compute environment.
+  /// Short, human-readable string to provide additional details about the current status of the compute environment.
   final pulumi.Input<String?>? statusReason;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
-  /// The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
+  /// Type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
   final pulumi.Input<String?>? type;
-  /// Specifies the infrastructure update policy for the compute environment. See details below.
+  /// Infrastructure update policy for the compute environment. See details below.
   final pulumi.Input<ComputeEnvironmentUpdatePolicy?>? updatePolicy;
 
   /// Creates a new [ComputeEnvironmentState].
@@ -43,17 +43,17 @@ class ComputeEnvironmentState {
   /// [computeResources] Details of the compute resources managed by the compute environment. This parameter is required for managed compute environments. See details below.
   /// [ecsClusterArn] ARN of the underlying Amazon ECS cluster used by the compute environment.
   /// [eksConfiguration] Details for the Amazon EKS cluster that supports the compute environment. See details below.
-  /// [name] The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed. If omitted, the provider will assign a random, unique name.
+  /// [name] Name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed. If omitted, the provider will assign a random, unique name.
   /// [namePrefix] Creates a unique compute environment name beginning with the specified prefix. Conflicts with `name`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceRole] Full ARN of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf.
-  /// [state] The state of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
-  /// [status] The current status of the compute environment (for example, CREATING or VALID).
-  /// [statusReason] A short, human-readable string to provide additional details about the current status of the compute environment.
+  /// [state] State of the compute environment. If the state is `ENABLED`, then the compute environment accepts jobs from a queue and can scale out automatically based on queues. Valid items are `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
+  /// [status] Current status of the compute environment (for example, CREATING or VALID).
+  /// [statusReason] Short, human-readable string to provide additional details about the current status of the compute environment.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [type] The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
-  /// [updatePolicy] Specifies the infrastructure update policy for the compute environment. See details below.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [type] Type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
+  /// [updatePolicy] Infrastructure update policy for the compute environment. See details below.
   const ComputeEnvironmentState({
     this.arn,
     this.computeResources,

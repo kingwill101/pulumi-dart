@@ -7,17 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_kinesisanalyticsv2_application_snapshot_application_snapshot_args_doc}
 class ApplicationSnapshotArgs {
-  /// The name of an existing  Kinesis Analytics v2 Application. Note that the application must be running for a snapshot to be created.
+  /// Name of an existing Kinesis Analytics v2 Application. Note that the application must be running for a snapshot to be created.
   final pulumi.Input<String> applicationName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The name of the application snapshot.
+  /// Name of the application snapshot.
   final pulumi.Input<String> snapshotName;
 
   /// Creates a new [ApplicationSnapshotArgs].
-  /// [applicationName] The name of an existing  Kinesis Analytics v2 Application. Note that the application must be running for a snapshot to be created.
+  /// [applicationName] Name of an existing Kinesis Analytics v2 Application. Note that the application must be running for a snapshot to be created.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [snapshotName] The name of the application snapshot.
+  /// [snapshotName] Name of the application snapshot.
   const ApplicationSnapshotArgs({
     required this.applicationName,
     this.region,

@@ -11,7 +11,7 @@ class GetThemeConfiguration {
   final pulumi.Input<List<GetThemeConfigurationDataColorPalette>> dataColorPalettes;
   /// Display options related to sheets. See sheet.
   final pulumi.Input<List<GetThemeConfigurationSheet>> sheets;
-  /// Determines the typography options. See typography.
+  /// Typography options. See typography.
   final pulumi.Input<List<GetThemeConfigurationTypography>> typographies;
   /// Color properties that apply to the UI and to charts, excluding the colors that apply to data. See ui_color_palette.
   final pulumi.Input<List<GetThemeConfigurationUiColorPalette>> uiColorPalettes;
@@ -19,7 +19,7 @@ class GetThemeConfiguration {
   /// Creates a new [GetThemeConfiguration].
   /// [dataColorPalettes] Color properties that apply to chart data colors. See data_color_palette.
   /// [sheets] Display options related to sheets. See sheet.
-  /// [typographies] Determines the typography options. See typography.
+  /// [typographies] Typography options. See typography.
   /// [uiColorPalettes] Color properties that apply to the UI and to charts, excluding the colors that apply to data. See ui_color_palette.
   const GetThemeConfiguration({
     required this.dataColorPalettes,

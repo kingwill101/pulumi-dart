@@ -10,51 +10,51 @@ class TemplateState {
   final pulumi.Input<String?>? arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String?>? awsAccountId;
-  /// The time that the template was created.
+  /// Time that the template was created.
   final pulumi.Input<String?>? createdTime;
-  /// The time that the template was last updated.
+  /// Time that the template was last updated.
   final pulumi.Input<String?>? lastUpdatedTime;
   /// Display name for the template.
   final pulumi.Input<String?>? name;
-  /// A set of resource permissions on the template. Maximum of 64 items. See permissions.
+  /// Set of resource permissions on the template. Maximum of 64 items. See `permissions` Block.
   final pulumi.Input<List<TemplatePermission>?>? permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `sourceEntity` should be configured. See source_entity.
+  /// Entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `sourceEntity` should be configured. See `sourceEntity` Block.
   final pulumi.Input<TemplateSourceEntity?>? sourceEntity;
   /// ARN of an analysis or template that was used to create this template.
   final pulumi.Input<String?>? sourceEntityArn;
-  /// The template creation status.
+  /// Template creation status.
   final pulumi.Input<String?>? status;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Identifier for the template.
   final pulumi.Input<String?>? templateId;
-  /// A description of the current template version being created/updated.
+  /// Description of the current template version being created/updated.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String?>? versionDescription;
-  /// The version number of the template version.
+  /// Version number of the template version.
   final pulumi.Input<int?>? versionNumber;
 
   /// Creates a new [TemplateState].
   /// [arn] ARN of the template.
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  /// [createdTime] The time that the template was created.
-  /// [lastUpdatedTime] The time that the template was last updated.
+  /// [createdTime] Time that the template was created.
+  /// [lastUpdatedTime] Time that the template was last updated.
   /// [name] Display name for the template.
-  /// [permissions] A set of resource permissions on the template. Maximum of 64 items. See permissions.
+  /// [permissions] Set of resource permissions on the template. Maximum of 64 items. See `permissions` Block.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [sourceEntity] The entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `sourceEntity` should be configured. See source_entity.
+  /// [sourceEntity] Entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `sourceEntity` should be configured. See `sourceEntity` Block.
   /// [sourceEntityArn] ARN of an analysis or template that was used to create this template.
-  /// [status] The template creation status.
+  /// [status] Template creation status.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [templateId] Identifier for the template.
-  /// [versionDescription] A description of the current template version being created/updated.
-  /// [versionNumber] The version number of the template version.
+  /// [versionDescription] Description of the current template version being created/updated.
+  /// [versionNumber] Version number of the template version.
   const TemplateState({
     this.arn,
     this.awsAccountId,
@@ -109,7 +109,7 @@ class TemplateState {
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       templateId: (() { final guardedValue = map['templateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       versionDescription: (() { final guardedValue = map['versionDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      versionNumber: (() { final guardedValue = map['versionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      versionNumber: (() { final guardedValue = map['versionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

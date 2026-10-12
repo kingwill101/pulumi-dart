@@ -77,7 +77,7 @@ class ProjectSource {
       auth: (() { final guardedValue = map['auth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProjectSourceAuth.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       buildStatusConfig: (() { final guardedValue = map['buildStatusConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProjectSourceBuildStatusConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       buildspec: (() { final guardedValue = map['buildspec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      gitCloneDepth: (() { final guardedValue = map['gitCloneDepth']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      gitCloneDepth: (() { final guardedValue = map['gitCloneDepth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       gitSubmodulesConfig: (() { final guardedValue = map['gitSubmodulesConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProjectSourceGitSubmodulesConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       insecureSsl: (() { final guardedValue = map['insecureSsl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

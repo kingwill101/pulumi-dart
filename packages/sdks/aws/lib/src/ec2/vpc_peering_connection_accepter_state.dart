@@ -6,46 +6,44 @@ import 'vpc_peering_connection_accepter_requester.dart';
 
 /// Input properties used for looking up and filtering VpcPeeringConnectionAccepter resources.
 class VpcPeeringConnectionAccepterState {
-  /// The status of the VPC Peering Connection request.
+  /// Status of the VPC Peering Connection request.
   final pulumi.Input<String?>? acceptStatus;
-  /// A configuration block that describes [VPC Peering Connection]
-  /// (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the accepter VPC.
+  /// Configuration block for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to set for the VPC that accepts the peering connection (a maximum of one). See `accepter` Block below.
   final pulumi.Input<VpcPeeringConnectionAccepterAccepter?>? accepter;
   /// Whether or not to accept the peering request. Defaults to `false`.
   final pulumi.Input<bool?>? autoAccept;
-  /// The AWS account ID of the owner of the requester VPC.
+  /// AWS account ID of the owner of the requester VPC.
   final pulumi.Input<String?>? peerOwnerId;
-  /// The region of the accepter VPC.
+  /// Region of the accepter VPC.
   final pulumi.Input<String?>? peerRegion;
-  /// The ID of the requester VPC.
+  /// ID of the requester VPC.
   final pulumi.Input<String?>? peerVpcId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A configuration block that describes [VPC Peering Connection]
-  /// (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the requester VPC.
+  /// Configuration block for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to set for the VPC that requests the peering connection (a maximum of one). See `requester` Block below.
   final pulumi.Input<VpcPeeringConnectionAccepterRequester?>? requester;
-  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
-  /// The ID of the accepter VPC.
+  /// ID of the accepter VPC.
   final pulumi.Input<String?>? vpcId;
-  /// The VPC Peering Connection ID to manage.
+  /// VPC Peering Connection ID to manage.
   final pulumi.Input<String?>? vpcPeeringConnectionId;
 
   /// Creates a new [VpcPeeringConnectionAccepterState].
-  /// [acceptStatus] The status of the VPC Peering Connection request.
-  /// [accepter] A configuration block that describes [VPC Peering Connection]
+  /// [acceptStatus] Status of the VPC Peering Connection request.
+  /// [accepter] Configuration block for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to set for the VPC that accepts the peering connection (a maximum of one). See `accepter` Block below.
   /// [autoAccept] Whether or not to accept the peering request. Defaults to `false`.
-  /// [peerOwnerId] The AWS account ID of the owner of the requester VPC.
-  /// [peerRegion] The region of the accepter VPC.
-  /// [peerVpcId] The ID of the requester VPC.
+  /// [peerOwnerId] AWS account ID of the owner of the requester VPC.
+  /// [peerRegion] Region of the accepter VPC.
+  /// [peerVpcId] ID of the requester VPC.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [requester] A configuration block that describes [VPC Peering Connection]
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [vpcId] The ID of the accepter VPC.
-  /// [vpcPeeringConnectionId] The VPC Peering Connection ID to manage.
+  /// [requester] Configuration block for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to set for the VPC that requests the peering connection (a maximum of one). See `requester` Block below.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [vpcId] ID of the accepter VPC.
+  /// [vpcPeeringConnectionId] VPC Peering Connection ID to manage.
   const VpcPeeringConnectionAccepterState({
     this.acceptStatus,
     this.accepter,

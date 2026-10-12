@@ -58,7 +58,7 @@ class EventApiDestinationArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       httpMethod: pulumi.Input.fromValue(map['httpMethod'] as String),
       invocationEndpoint: pulumi.Input.fromValue(map['invocationEndpoint'] as String),
-      invocationRateLimitPerSecond: (() { final guardedValue = map['invocationRateLimitPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      invocationRateLimitPerSecond: (() { final guardedValue = map['invocationRateLimitPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

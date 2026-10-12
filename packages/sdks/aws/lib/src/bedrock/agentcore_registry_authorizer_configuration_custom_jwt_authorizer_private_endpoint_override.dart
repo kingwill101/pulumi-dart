@@ -4,12 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_registry_authorizer_configuration_custom_jwt_authorizer_private_endpoint_override_private_endpoint.dart';
 
 class AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverride {
+  /// Domain the override applies to.
   final pulumi.Input<String> domain;
+  /// Private endpoint configuration. See `privateEndpoint` below.
   final pulumi.Input<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpoint> privateEndpoint;
 
   /// Creates a new [AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverride].
-  /// [domain] Required.
-  /// [privateEndpoint] Required.
+  /// [domain] Domain the override applies to.
+  /// [privateEndpoint] Private endpoint configuration. See `privateEndpoint` below.
   const AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverride({
     required this.domain,
     required this.privateEndpoint,

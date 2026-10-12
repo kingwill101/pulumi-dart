@@ -39,7 +39,7 @@ class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification {
     return V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification(
       active: pulumi.Input.fromValue(map['active'] as bool),
       startResponse: (() { final guardedValue = map['startResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       updateResponse: (() { final guardedValue = map['updateResponse']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationUpdateResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

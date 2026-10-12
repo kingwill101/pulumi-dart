@@ -99,7 +99,7 @@ class WorkspaceSamlConfigurationArgs {
       idpMetadataUrl: (() { final guardedValue = map['idpMetadataUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       idpMetadataXml: (() { final guardedValue = map['idpMetadataXml']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loginAssertion: (() { final guardedValue = map['loginAssertion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      loginValidityDuration: (() { final guardedValue = map['loginValidityDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      loginValidityDuration: (() { final guardedValue = map['loginValidityDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nameAssertion: (() { final guardedValue = map['nameAssertion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       orgAssertion: (() { final guardedValue = map['orgAssertion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

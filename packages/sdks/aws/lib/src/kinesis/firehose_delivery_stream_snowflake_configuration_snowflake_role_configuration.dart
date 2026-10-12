@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration {
   /// Whether the Snowflake role is enabled.
   final pulumi.Input<bool?>? enabled;
-  /// The Snowflake role.
+  /// Snowflake role.
   final pulumi.Input<String?>? snowflakeRole;
 
   /// Creates a new [FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration].
   /// [enabled] Whether the Snowflake role is enabled.
-  /// [snowflakeRole] The Snowflake role.
+  /// [snowflakeRole] Snowflake role.
   const FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration({
     this.enabled,
     this.snowflakeRole,

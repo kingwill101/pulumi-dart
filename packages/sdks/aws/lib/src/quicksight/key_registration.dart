@@ -169,7 +169,7 @@ import 'key_registration_state.dart';
 class KeyRegistration extends pulumi.CustomResource {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
-  /// Registered keys. See key_registration.
+  /// Registered keys. See `keyRegistration` Block.
   late final pulumi.Output<List<KeyRegistrationKeyRegistration>> keyRegistrations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -186,7 +186,7 @@ class KeyRegistration extends pulumi.CustomResource {
           'aws:quicksight/keyRegistration:KeyRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     keyRegistrations = registerOutput<List<KeyRegistrationKeyRegistration>>('keyRegistrations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyRegistrationKeyRegistration>(guardedValue, (value) => KeyRegistrationKeyRegistration.fromMap((value as Map).cast<String, dynamic>())); });

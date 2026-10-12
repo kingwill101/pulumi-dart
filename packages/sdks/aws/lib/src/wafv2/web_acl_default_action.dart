@@ -5,14 +5,14 @@ import 'web_acl_default_action_allow.dart';
 import 'web_acl_default_action_block.dart';
 
 class WebAclDefaultAction {
-  /// Specifies that AWS WAF should allow requests by default. See `allow` below for details.
+  /// Allows requests by default. See `allow` below for details.
   final pulumi.Input<WebAclDefaultActionAllow?>? allow;
-  /// Specifies that AWS WAF should block requests by default. See `block` below for details.
+  /// Blocks requests by default. See `block` below for details.
   final pulumi.Input<WebAclDefaultActionBlock?>? block;
 
   /// Creates a new [WebAclDefaultAction].
-  /// [allow] Specifies that AWS WAF should allow requests by default. See `allow` below for details.
-  /// [block] Specifies that AWS WAF should block requests by default. See `block` below for details.
+  /// [allow] Allows requests by default. See `allow` below for details.
+  /// [block] Blocks requests by default. See `block` below for details.
   const WebAclDefaultAction({
     this.allow,
     this.block,

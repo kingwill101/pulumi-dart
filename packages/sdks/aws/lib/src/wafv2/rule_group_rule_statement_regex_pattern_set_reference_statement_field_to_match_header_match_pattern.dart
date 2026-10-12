@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderMatchPattern {
-  /// An empty configuration block that is used for inspecting all headers.
+  /// Empty configuration block that is used for inspecting all headers.
   final pulumi.Input<Map<String, dynamic>?>? all;
-  /// An array of strings that will be used for inspecting headers that do not have a key that matches one of the provided values.
+  /// Array of strings that will be used for inspecting headers that do not have a key that matches one of the provided values.
   final pulumi.Input<List<String>?>? excludedHeaders;
-  /// An array of strings that will be used for inspecting headers that have a key that matches one of the provided values.
+  /// Array of strings that will be used for inspecting headers that have a key that matches one of the provided values.
   final pulumi.Input<List<String>?>? includedHeaders;
 
   /// Creates a new [RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderMatchPattern].
-  /// [all] An empty configuration block that is used for inspecting all headers.
-  /// [excludedHeaders] An array of strings that will be used for inspecting headers that do not have a key that matches one of the provided values.
-  /// [includedHeaders] An array of strings that will be used for inspecting headers that have a key that matches one of the provided values.
+  /// [all] Empty configuration block that is used for inspecting all headers.
+  /// [excludedHeaders] Array of strings that will be used for inspecting headers that do not have a key that matches one of the provided values.
+  /// [includedHeaders] Array of strings that will be used for inspecting headers that have a key that matches one of the provided values.
   const RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderMatchPattern({
     this.all,
     this.excludedHeaders,

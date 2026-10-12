@@ -68,7 +68,7 @@ class LayerVersionPermissionArgs {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       skipDestroy: (() { final guardedValue = map['skipDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       statementId: pulumi.Input.fromValue(map['statementId'] as String),
-      versionNumber: pulumi.Input.fromValue((map['versionNumber'] as num).toInt()),
+      versionNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['versionNumber'])),
     );
   }
 }
