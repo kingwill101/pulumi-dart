@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_placement_groups_get_placement_groups_args_doc}
 class GetPlacementGroupsArgs {
   /// Sorts list by date.
-  final pulumi.Input<bool>? mostRecent;
+  final pulumi.Input<bool?>? mostRecent;
   /// [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  final pulumi.Input<String>? withSelector;
+  final pulumi.Input<String?>? withSelector;
 
   /// Creates a new [GetPlacementGroupsArgs].
   /// [mostRecent] Sorts list by date.

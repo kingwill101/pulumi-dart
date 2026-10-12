@@ -10,11 +10,13 @@ class GetLoadBalancersLoadBalancer {
   final pulumi.Input<bool> deleteProtection;
   final pulumi.Input<int> id;
   final pulumi.Input<String> ipv4;
+  final pulumi.Input<int> ipv4Id;
   final pulumi.Input<String> ipv6;
+  final pulumi.Input<int> ipv6Id;
   final pulumi.Input<Map<String, String>> labels;
   final pulumi.Input<String> loadBalancerType;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<int> networkId;
   final pulumi.Input<String> networkIp;
   final pulumi.Input<String> networkZone;
@@ -26,7 +28,9 @@ class GetLoadBalancersLoadBalancer {
   /// [deleteProtection] Required.
   /// [id] Required.
   /// [ipv4] Required.
+  /// [ipv4Id] Required.
   /// [ipv6] Required.
+  /// [ipv6Id] Required.
   /// [labels] Required.
   /// [loadBalancerType] Required.
   /// [location] Required.
@@ -41,7 +45,9 @@ class GetLoadBalancersLoadBalancer {
     required this.deleteProtection,
     required this.id,
     required this.ipv4,
+    required this.ipv4Id,
     required this.ipv6,
+    required this.ipv6Id,
     required this.labels,
     required this.loadBalancerType,
     required this.location,
@@ -59,7 +65,9 @@ class GetLoadBalancersLoadBalancer {
       'deleteProtection': deleteProtection,
       'id': id,
       'ipv4': ipv4,
+      'ipv4Id': ipv4Id,
       'ipv6': ipv6,
+      'ipv6Id': ipv6Id,
       'labels': labels,
       'loadBalancerType': loadBalancerType,
       'location': location,
@@ -76,14 +84,16 @@ class GetLoadBalancersLoadBalancer {
     return GetLoadBalancersLoadBalancer(
       algorithms: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLoadBalancersLoadBalancerAlgorithm>(map['algorithms']!, (value) => GetLoadBalancersLoadBalancerAlgorithm.fromMap((value as Map).cast<String, dynamic>()))),
       deleteProtection: pulumi.Input.fromValue(map['deleteProtection'] as bool),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       ipv4: pulumi.Input.fromValue(map['ipv4'] as String),
+      ipv4Id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ipv4Id'])),
       ipv6: pulumi.Input.fromValue(map['ipv6'] as String),
+      ipv6Id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ipv6Id'])),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       loadBalancerType: pulumi.Input.fromValue(map['loadBalancerType'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkId: pulumi.Input.fromValue(map['networkId'] as int),
+      networkId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['networkId'])),
       networkIp: pulumi.Input.fromValue(map['networkIp'] as String),
       networkZone: pulumi.Input.fromValue(map['networkZone'] as String),
       services: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLoadBalancersLoadBalancerService>(map['services']!, (value) => GetLoadBalancersLoadBalancerService.fromMap((value as Map).cast<String, dynamic>()))),

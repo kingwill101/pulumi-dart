@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageBoxSubaccountAccessSettings {
   /// Whether access from outside the Hetzner network is allowed.
-  final pulumi.Input<bool>? reachableExternally;
+  final pulumi.Input<bool?>? reachableExternally;
   /// Whether the Subaccount is read-only.
-  final pulumi.Input<bool>? readonly;
+  final pulumi.Input<bool?>? readonly;
   /// Whether the Samba subsystem is enabled.
-  final pulumi.Input<bool>? sambaEnabled;
+  final pulumi.Input<bool?>? sambaEnabled;
   /// Whether the SSH subsystem is enabled.
-  final pulumi.Input<bool>? sshEnabled;
+  final pulumi.Input<bool?>? sshEnabled;
   /// Whether the WebDAV subsystem is enabled.
-  final pulumi.Input<bool>? webdavEnabled;
+  final pulumi.Input<bool?>? webdavEnabled;
 
   /// Creates a new [StorageBoxSubaccountAccessSettings].
   /// [reachableExternally] Whether access from outside the Hetzner network is allowed.

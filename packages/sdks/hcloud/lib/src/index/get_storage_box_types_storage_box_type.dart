@@ -65,15 +65,15 @@ class GetStorageBoxTypesStorageBoxType {
 
   factory GetStorageBoxTypesStorageBoxType.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxTypesStorageBoxType(
-      automaticSnapshotLimit: pulumi.Input.fromValue(map['automaticSnapshotLimit'] as int),
+      automaticSnapshotLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['automaticSnapshotLimit'])),
       deprecationAnnounced: pulumi.Input.fromValue(map['deprecationAnnounced'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       isDeprecated: pulumi.Input.fromValue(map['isDeprecated'] as bool),
       name: pulumi.Input.fromValue(map['name'] as String),
-      size: pulumi.Input.fromValue(map['size'] as int),
-      snapshotLimit: pulumi.Input.fromValue(map['snapshotLimit'] as int),
-      subaccountsLimit: pulumi.Input.fromValue(map['subaccountsLimit'] as int),
+      size: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['size'])),
+      snapshotLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['snapshotLimit'])),
+      subaccountsLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['subaccountsLimit'])),
       unavailableAfter: pulumi.Input.fromValue(map['unavailableAfter'] as String),
     );
   }
