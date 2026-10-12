@@ -25,7 +25,7 @@ class HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstancePlacemen
 
   factory HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstancePlacementConfigPlacementSpecification.fromMap(Map<String, dynamic> map) {
     return HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstancePlacementConfigPlacementSpecification(
-      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toInt()),
+      instanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instanceCount'])),
       ultraServerId: (() { final guardedValue = map['ultraServerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

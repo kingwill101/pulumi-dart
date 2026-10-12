@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeConfigurationInlineCode {
-  /// The code that's executed in your inline code node.
+  /// Code that's executed in your inline code node.
   final pulumi.Input<String> code;
-  /// The programming language used by your inline code node.
+  /// Programming language used by your inline code node.
   final pulumi.Input<String> language;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationInlineCode].
-  /// [code] The code that's executed in your inline code node.
-  /// [language] The programming language used by your inline code node.
+  /// [code] Code that's executed in your inline code node.
+  /// [language] Programming language used by your inline code node.
   const AgentFlowDefinitionNodeConfigurationInlineCode({
     required this.code,
     required this.language,

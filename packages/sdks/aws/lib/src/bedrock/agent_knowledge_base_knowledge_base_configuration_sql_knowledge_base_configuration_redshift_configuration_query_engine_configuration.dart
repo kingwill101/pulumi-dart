@@ -5,16 +5,16 @@ import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_con
 import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_query_engine_configuration_serverless_configuration.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfiguration {
-  /// Configurations for a provisioned Amazon Redshift query engine. See `provisionedConfiguration` block for details.
+  /// Configurations for a provisioned Amazon Redshift query engine. See `provisionedConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfiguration?>? provisionedConfiguration;
-  /// Configurations for a serverless Amazon Redshift query engine. See `serverlessConfiguration` block for details.
+  /// Configurations for a serverless Amazon Redshift query engine. See `serverlessConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationServerlessConfiguration?>? serverlessConfiguration;
   /// Type of query engine. Valid values: `SERVERLESS`, `PROVISIONED`.
   final pulumi.Input<String> type;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfiguration].
-  /// [provisionedConfiguration] Configurations for a provisioned Amazon Redshift query engine. See `provisionedConfiguration` block for details.
-  /// [serverlessConfiguration] Configurations for a serverless Amazon Redshift query engine. See `serverlessConfiguration` block for details.
+  /// [provisionedConfiguration] Configurations for a provisioned Amazon Redshift query engine. See `provisionedConfiguration` Block for details.
+  /// [serverlessConfiguration] Configurations for a serverless Amazon Redshift query engine. See `serverlessConfiguration` Block for details.
   /// [type] Type of query engine. Valid values: `SERVERLESS`, `PROVISIONED`.
   const AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfiguration({
     this.provisionedConfiguration,

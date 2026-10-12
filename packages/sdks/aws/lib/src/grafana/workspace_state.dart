@@ -20,7 +20,7 @@ class WorkspaceState {
   final pulumi.Input<String?>? description;
   /// The endpoint of the Grafana workspace.
   final pulumi.Input<String?>? endpoint;
-  /// Specifies the version of Grafana to support in the new workspace. Supported values are `9.4`, `10.4` and `12.4`. If not specified, defaults to the latest version.
+  /// Specifies the version of Grafana to support in the new workspace. Supported values are `9.4`, `10.4`, `12.4` and `13.2`. If not specified, defaults to the latest version.
   final pulumi.Input<String?>? grafanaVersion;
   /// The ARN of the AWS KMS key for encrypting workspace data.
   final pulumi.Input<String?>? kmsKeyId;
@@ -60,7 +60,7 @@ class WorkspaceState {
   /// [dataSources] The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `ATHENA`, `CLOUDWATCH`, `PROMETHEUS`, `REDSHIFT`, `SITEWISE`, `TIMESTREAM`, `TWINMAKER`, `XRAY`
   /// [description] The workspace description.
   /// [endpoint] The endpoint of the Grafana workspace.
-  /// [grafanaVersion] Specifies the version of Grafana to support in the new workspace. Supported values are `9.4`, `10.4` and `12.4`. If not specified, defaults to the latest version.
+  /// [grafanaVersion] Specifies the version of Grafana to support in the new workspace. Supported values are `9.4`, `10.4`, `12.4` and `13.2`. If not specified, defaults to the latest version.
   /// [kmsKeyId] The ARN of the AWS KMS key for encrypting workspace data.
   /// [name] The Grafana workspace name.
   /// [networkAccessControl] Configuration for network access to your workspace.See Network Access Control below.

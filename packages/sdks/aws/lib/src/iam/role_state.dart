@@ -103,7 +103,7 @@ class RoleState {
       forceDetachPolicies: (() { final guardedValue = map['forceDetachPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       inlinePolicies: (() { final guardedValue = map['inlinePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RoleInlinePolicy>(guardedValue, (value) => RoleInlinePolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       managedPolicyArns: (() { final guardedValue = map['managedPolicyArns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      maxSessionDuration: (() { final guardedValue = map['maxSessionDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxSessionDuration: (() { final guardedValue = map['maxSessionDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -9,7 +9,7 @@ class ExportState {
   /// ARN for this export.
   /// * `export[0].export_arn` - ARN for this export.
   final pulumi.Input<String?>? arn;
-  /// The details of the export, including data query, name, description, and destination configuration.  See the `export` argument reference below.
+  /// Details of the export, including data query, name, description, and destination configuration. See the `export` block below.
   final pulumi.Input<ExportExport?>? export;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
@@ -18,7 +18,7 @@ class ExportState {
 
   /// Creates a new [ExportState].
   /// [arn] ARN for this export.
-  /// [export] The details of the export, including data query, name, description, and destination configuration.  See the `export` argument reference below.
+  /// [export] Details of the export, including data query, name, description, and destination configuration. See the `export` block below.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [timeouts] Optional.

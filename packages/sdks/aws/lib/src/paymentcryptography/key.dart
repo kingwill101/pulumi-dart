@@ -217,6 +217,7 @@ import 'key_timeouts.dart';
 class Key extends pulumi.CustomResource {
   /// ARN of the key.
   late final pulumi.Output<String> arn;
+  /// Number of days between 3 and 180 to wait after the resource is deleted before the key is deleted.
   late final pulumi.Output<int> deletionWindowInDays;
   /// Whether to enable the key.
   late final pulumi.Output<bool> enabled;
@@ -236,7 +237,7 @@ class Key extends pulumi.CustomResource {
   late final pulumi.Output<String> keyState;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Map of tags assigned to the WorkSpaces Connection Alias. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the key. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -254,7 +255,7 @@ class Key extends pulumi.CustomResource {
           'aws:paymentcryptography/key:Key',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionWindowInDays = registerOutput<int>('deletionWindowInDays');

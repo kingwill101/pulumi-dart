@@ -5,13 +5,13 @@ import 'data_set_logical_table_map_source_join_instruction_left_join_key_propert
 import 'data_set_logical_table_map_source_join_instruction_right_join_key_properties.dart';
 
 class DataSetLogicalTableMapSourceJoinInstruction {
-  /// Join key properties of the left operand. See left_join_key_properties.
+  /// Join key properties of the left operand. See `leftJoinKeyProperties` Block below.
   final pulumi.Input<DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties?>? leftJoinKeyProperties;
   /// Operand on the left side of a join.
   final pulumi.Input<String> leftOperand;
   /// Join instructions provided in the ON clause of a join.
   final pulumi.Input<String> onClause;
-  /// Join key properties of the right operand. See right_join_key_properties.
+  /// Join key properties of the right operand. See `rightJoinKeyProperties` Block below.
   final pulumi.Input<DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties?>? rightJoinKeyProperties;
   /// Operand on the right side of a join.
   final pulumi.Input<String> rightOperand;
@@ -19,10 +19,10 @@ class DataSetLogicalTableMapSourceJoinInstruction {
   final pulumi.Input<String> type;
 
   /// Creates a new [DataSetLogicalTableMapSourceJoinInstruction].
-  /// [leftJoinKeyProperties] Join key properties of the left operand. See left_join_key_properties.
+  /// [leftJoinKeyProperties] Join key properties of the left operand. See `leftJoinKeyProperties` Block below.
   /// [leftOperand] Operand on the left side of a join.
   /// [onClause] Join instructions provided in the ON clause of a join.
-  /// [rightJoinKeyProperties] Join key properties of the right operand. See right_join_key_properties.
+  /// [rightJoinKeyProperties] Join key properties of the right operand. See `rightJoinKeyProperties` Block below.
   /// [rightOperand] Operand on the right side of a join.
   /// [type] Type of join. Valid values are `INNER`, `OUTER`, `LEFT`, and `RIGHT`.
   const DataSetLogicalTableMapSourceJoinInstruction({

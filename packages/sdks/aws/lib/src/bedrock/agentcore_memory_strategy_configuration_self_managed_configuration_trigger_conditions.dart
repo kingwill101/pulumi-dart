@@ -6,17 +6,17 @@ import 'agentcore_memory_strategy_configuration_self_managed_configuration_trigg
 import 'agentcore_memory_strategy_configuration_self_managed_configuration_trigger_conditions_token_based_trigger.dart';
 
 class AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditions {
-  /// Message-based condition. See `messageBasedTrigger` Block below.
+  /// Message-based condition. See `configuration.self_managed_configuration.trigger_conditions.message_based_trigger` Block below.
   final pulumi.Input<AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditionsMessageBasedTrigger?>? messageBasedTrigger;
-  /// Idle-time condition. See `timeBasedTrigger` Block below.
+  /// Idle-time condition. See `configuration.self_managed_configuration.trigger_conditions.time_based_trigger` Block below.
   final pulumi.Input<AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditionsTimeBasedTrigger?>? timeBasedTrigger;
-  /// Token-based condition. See `tokenBasedTrigger` Block below.
+  /// Token-based condition. See `configuration.self_managed_configuration.trigger_conditions.token_based_trigger` Block below.
   final pulumi.Input<AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditionsTokenBasedTrigger?>? tokenBasedTrigger;
 
   /// Creates a new [AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditions].
-  /// [messageBasedTrigger] Message-based condition. See `messageBasedTrigger` Block below.
-  /// [timeBasedTrigger] Idle-time condition. See `timeBasedTrigger` Block below.
-  /// [tokenBasedTrigger] Token-based condition. See `tokenBasedTrigger` Block below.
+  /// [messageBasedTrigger] Message-based condition. See `configuration.self_managed_configuration.trigger_conditions.message_based_trigger` Block below.
+  /// [timeBasedTrigger] Idle-time condition. See `configuration.self_managed_configuration.trigger_conditions.time_based_trigger` Block below.
+  /// [tokenBasedTrigger] Token-based condition. See `configuration.self_managed_configuration.trigger_conditions.token_based_trigger` Block below.
   const AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditions({
     this.messageBasedTrigger,
     this.timeBasedTrigger,

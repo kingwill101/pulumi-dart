@@ -12,7 +12,7 @@ import 'agentcore_gateway_workload_identity_detail.dart';
 class AgentcoreGatewayState {
   /// Configuration for request authorization. Required when `authorizerType` is set to `CUSTOM_JWT`. See `authorizerConfiguration` below.
   final pulumi.Input<AgentcoreGatewayAuthorizerConfiguration?>? authorizerConfiguration;
-  /// Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, `authorizerConfiguration` block is required.
+  /// Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`, `NONE`, `AUTHENTICATE_ONLY`. When set to `CUSTOM_JWT`, `authorizerConfiguration` block is required.
   final pulumi.Input<String?>? authorizerType;
   /// Description of the gateway.
   final pulumi.Input<String?>? description;
@@ -44,7 +44,7 @@ class AgentcoreGatewayState {
   final pulumi.Input<String?>? roleArn;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
   final pulumi.Input<AgentcoreGatewayTimeouts?>? timeouts;
   /// Workload identity details for the gateway. See `workloadIdentityDetails` below.
@@ -52,7 +52,7 @@ class AgentcoreGatewayState {
 
   /// Creates a new [AgentcoreGatewayState].
   /// [authorizerConfiguration] Configuration for request authorization. Required when `authorizerType` is set to `CUSTOM_JWT`. See `authorizerConfiguration` below.
-  /// [authorizerType] Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, `authorizerConfiguration` block is required.
+  /// [authorizerType] Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`, `NONE`, `AUTHENTICATE_ONLY`. When set to `CUSTOM_JWT`, `authorizerConfiguration` block is required.
   /// [description] Description of the gateway.
   /// [exceptionLevel] Exception level for the gateway. Valid values: `DEBUG`.
   /// [gatewayArn] ARN of the Gateway.
@@ -67,7 +67,7 @@ class AgentcoreGatewayState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of the IAM role that the gateway assumes to access AWS services.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   /// [workloadIdentityDetails] Workload identity details for the gateway. See `workloadIdentityDetails` below.
   const AgentcoreGatewayState({

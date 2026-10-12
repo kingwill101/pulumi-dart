@@ -5,13 +5,13 @@ import 'policy_store_validation_settings.dart';
 
 /// Input properties used for looking up and filtering PolicyStore resources.
 class PolicyStoreState {
-  /// The ARN of the Policy Store.
+  /// ARN of the Policy Store.
   final pulumi.Input<String?>? arn;
-  /// Specifies whether the policy store can be deleted. If enabled, the policy store can't be deleted. Valid Values: `ENABLED`, `DISABLED`. Default value: `DISABLED`.
+  /// Whether the policy store can be deleted. If enabled, the policy store can't be deleted. Valid Values: `ENABLED`, `DISABLED`. Default value: `DISABLED`.
   final pulumi.Input<String?>? deletionProtection;
-  /// A description of the Policy Store.
+  /// Description of the Policy Store.
   final pulumi.Input<String?>? description;
-  /// The ID of the Policy Store.
+  /// ID of the Policy Store.
   final pulumi.Input<String?>? policyStoreId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -19,18 +19,20 @@ class PolicyStoreState {
   final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
-  /// Validation settings for the policy store.
+  /// Validation settings for the policy store. See Validation Settings below.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<PolicyStoreValidationSettings?>? validationSettings;
 
   /// Creates a new [PolicyStoreState].
-  /// [arn] The ARN of the Policy Store.
-  /// [deletionProtection] Specifies whether the policy store can be deleted. If enabled, the policy store can't be deleted. Valid Values: `ENABLED`, `DISABLED`. Default value: `DISABLED`.
-  /// [description] A description of the Policy Store.
-  /// [policyStoreId] The ID of the Policy Store.
+  /// [arn] ARN of the Policy Store.
+  /// [deletionProtection] Whether the policy store can be deleted. If enabled, the policy store can't be deleted. Valid Values: `ENABLED`, `DISABLED`. Default value: `DISABLED`.
+  /// [description] Description of the Policy Store.
+  /// [policyStoreId] ID of the Policy Store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [validationSettings] Validation settings for the policy store.
+  /// [validationSettings] Validation settings for the policy store. See Validation Settings below.
   const PolicyStoreState({
     this.arn,
     this.deletionProtection,

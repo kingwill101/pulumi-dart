@@ -7,15 +7,15 @@ import 'data_set_physical_table_map_s3_source_upload_settings.dart';
 class DataSetPhysicalTableMapS3Source {
   /// ARN of the data source.
   final pulumi.Input<String> dataSourceArn;
-  /// Column schema of the table. See input_columns.
+  /// Column schema of the table. See `inputColumns` Block below.
   final pulumi.Input<List<DataSetPhysicalTableMapS3SourceInputColumn>> inputColumns;
-  /// Information about the format for the S3 source file or files. See upload_settings.
+  /// Information about the format for the S3 source file or files. See `uploadSettings` Block below.
   final pulumi.Input<DataSetPhysicalTableMapS3SourceUploadSettings> uploadSettings;
 
   /// Creates a new [DataSetPhysicalTableMapS3Source].
   /// [dataSourceArn] ARN of the data source.
-  /// [inputColumns] Column schema of the table. See input_columns.
-  /// [uploadSettings] Information about the format for the S3 source file or files. See upload_settings.
+  /// [inputColumns] Column schema of the table. See `inputColumns` Block below.
+  /// [uploadSettings] Information about the format for the S3 source file or files. See `uploadSettings` Block below.
   const DataSetPhysicalTableMapS3Source({
     required this.dataSourceArn,
     required this.inputColumns,

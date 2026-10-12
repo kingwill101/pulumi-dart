@@ -22,11 +22,9 @@ import 'composite_alarm_state.dart';
 ///     },
 ///     alarmDescription: "This is a composite alarm!",
 ///     alarmName: "example-composite-alarm",
-///     alarmActions: exampleAwsSnsTopic.arn,
-///     okActions: exampleAwsSnsTopic.arn,
-///     alarmRule: `ALARM(${alpha.alarmName}) OR
-/// ALARM(${bravo.alarmName})
-/// `,
+///     alarmActions: [exampleAwsSnsTopic.arn],
+///     okActions: [exampleAwsSnsTopic.arn],
+///     alarmRule: `ALARM(${alpha.alarmName}) OR ALARM(${bravo.alarmName})`,
 /// });
 /// ```
 /// ```python
@@ -41,11 +39,9 @@ import 'composite_alarm_state.dart';
 ///     },
 ///     alarm_description="This is a composite alarm!",
 ///     alarm_name="example-composite-alarm",
-///     alarm_actions=example_aws_sns_topic["arn"],
-///     ok_actions=example_aws_sns_topic["arn"],
-///     alarm_rule=f"""ALARM({alpha["alarmName"]}) OR
-/// ALARM({bravo["alarmName"]})
-/// """)
+///     alarm_actions=[example_aws_sns_topic["arn"]],
+///     ok_actions=[example_aws_sns_topic["arn"]],
+///     alarm_rule=f"ALARM({alpha['alarmName']}) OR ALARM({bravo['alarmName']})")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -65,11 +61,15 @@ import 'composite_alarm_state.dart';
 ///         },
 ///         AlarmDescription = "This is a composite alarm!",
 ///         AlarmName = "example-composite-alarm",
-///         AlarmActions = exampleAwsSnsTopic.Arn,
-///         OkActions = exampleAwsSnsTopic.Arn,
-///         AlarmRule = @$"ALARM({alpha.AlarmName}) OR
-/// ALARM({bravo.AlarmName})
-/// ",
+///         AlarmActions = new[]
+///         {
+///             exampleAwsSnsTopic.Arn,
+///         },
+///         OkActions = new[]
+///         {
+///             exampleAwsSnsTopic.Arn,
+///         },
+///         AlarmRule = $"ALARM({alpha.AlarmName}) OR ALARM({bravo.AlarmName})",
 ///     });
 ///
 /// });
@@ -92,9 +92,13 @@ import 'composite_alarm_state.dart';
 /// 			},
 /// 			AlarmDescription: pulumi.String("This is a composite alarm!"),
 /// 			AlarmName:        pulumi.String("example-composite-alarm"),
-/// 			AlarmActions:     pulumi.Any(exampleAwsSnsTopic.Arn),
-/// 			OkActions:        pulumi.Any(exampleAwsSnsTopic.Arn),
-/// 			AlarmRule:        pulumi.Sprintf("ALARM(%v) OR\nALARM(%v)\n", alpha.AlarmName, bravo.AlarmName),
+/// 			AlarmActions: pulumi.StringArray{
+/// 				exampleAwsSnsTopic.Arn,
+/// 			},
+/// 			OkActions: pulumi.StringArray{
+/// 				exampleAwsSnsTopic.Arn,
+/// 			},
+/// 			AlarmRule: pulumi.Sprintf("ALARM(%v) OR ALARM(%v)", alpha.AlarmName, bravo.AlarmName),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -120,11 +124,9 @@ import 'composite_alarm_state.dart';
 ///   }
 ///   alarm_description = "This is a composite alarm!"
 ///   alarm_name        = "example-composite-alarm"
-///   alarm_actions     = exampleAwsSnsTopic.arn
-///   ok_actions        = exampleAwsSnsTopic.arn
-///   alarm_rule        ="ALARM(${alpha.alarmName}) OR
-/// ALARM(${bravo.alarmName})
-/// "
+///   alarm_actions     = [exampleAwsSnsTopic.arn]
+///   ok_actions        = [exampleAwsSnsTopic.arn]
+///   alarm_rule        ="ALARM(${alpha.alarmName}) OR ALARM(${bravo.alarmName})"
 /// }
 /// ```
 /// ```java
@@ -159,10 +161,7 @@ import 'composite_alarm_state.dart';
 ///             .alarmName("example-composite-alarm")
 ///             .alarmActions(exampleAwsSnsTopic.arn())
 ///             .okActions(exampleAwsSnsTopic.arn())
-///             .alarmRule("""
-/// ALARM(%s) OR
-/// ALARM(%s)
-/// ", alpha.alarmName(),bravo.alarmName()))
+///             .alarmRule(String.format("ALARM(%s) OR ALARM(%s)", alpha.alarmName(),bravo.alarmName()))
 ///             .build());
 ///
 ///     }
@@ -179,11 +178,11 @@ import 'composite_alarm_state.dart';
 ///         waitPeriod: 20
 ///       alarmDescription: This is a composite alarm!
 ///       alarmName: example-composite-alarm
-///       alarmActions: ${exampleAwsSnsTopic.arn}
-///       okActions: ${exampleAwsSnsTopic.arn}
-///       alarmRule: |
-///         ALARM(${alpha.alarmName}) OR
-///         ALARM(${bravo.alarmName})
+///       alarmActions:
+///         - ${exampleAwsSnsTopic.arn}
+///       okActions:
+///         - ${exampleAwsSnsTopic.arn}
+///       alarmRule: ALARM(${alpha.alarmName}) OR ALARM(${bravo.alarmName})
 /// ```
 ///
 ///
@@ -217,7 +216,7 @@ class CompositeAlarm extends pulumi.CustomResource {
   late final pulumi.Output<String?> alarmDescription;
   /// The name for the composite alarm. This name must be unique within the region.
   late final pulumi.Output<String> alarmName;
-  /// An expression that specifies which other alarms are to be evaluated to determine this composite alarm's state. For syntax, see [Creating a Composite Alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Composite_Alarm.html). The maximum length is 10240 characters.
+  /// Expression that specifies which other alarms are to be evaluated to determine this composite alarm's state. For syntax, see [Creating a Composite Alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Composite_Alarm.html). The maximum length is 10240 characters. Leading and trailing whitespace are not allowed.
   late final pulumi.Output<String> alarmRule;
   /// The ARN of the composite alarm.
   late final pulumi.Output<String> arn;
@@ -244,7 +243,7 @@ class CompositeAlarm extends pulumi.CustomResource {
           'aws:cloudwatch/compositeAlarm:CompositeAlarm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     actionsEnabled = registerOutput<bool?>('actionsEnabled');
     actionsSuppressor = registerOutput<CompositeAlarmActionsSuppressor?>('actionsSuppressor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CompositeAlarmActionsSuppressor.fromMap((guardedValue as Map).cast<String, dynamic>()); });

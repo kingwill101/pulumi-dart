@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsApplicationCloudwatchLoggingOptions {
-  /// The ARN of the Kinesis Analytics Application.
+  /// ARN of the Kinesis Analytics Application.
   final pulumi.Input<String?>? id;
-  /// The ARN of the CloudWatch Log Stream.
+  /// ARN of the CloudWatch Log Stream.
   final pulumi.Input<String> logStreamArn;
-  /// The ARN of the IAM Role used to send application messages.
+  /// ARN of the IAM Role used to send application messages.
   final pulumi.Input<String> roleArn;
 
   /// Creates a new [AnalyticsApplicationCloudwatchLoggingOptions].
-  /// [id] The ARN of the Kinesis Analytics Application.
-  /// [logStreamArn] The ARN of the CloudWatch Log Stream.
-  /// [roleArn] The ARN of the IAM Role used to send application messages.
+  /// [id] ARN of the Kinesis Analytics Application.
+  /// [logStreamArn] ARN of the CloudWatch Log Stream.
+  /// [roleArn] ARN of the IAM Role used to send application messages.
   const AnalyticsApplicationCloudwatchLoggingOptions({
     this.id,
     required this.logStreamArn,

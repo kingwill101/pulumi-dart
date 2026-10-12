@@ -232,7 +232,7 @@ class UserPoolState {
       emailVerificationMessage: (() { final guardedValue = map['emailVerificationMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       emailVerificationSubject: (() { final guardedValue = map['emailVerificationSubject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      estimatedNumberOfUsers: (() { final guardedValue = map['estimatedNumberOfUsers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      estimatedNumberOfUsers: (() { final guardedValue = map['estimatedNumberOfUsers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       lambdaConfig: (() { final guardedValue = map['lambdaConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserPoolLambdaConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       lastModifiedDate: (() { final guardedValue = map['lastModifiedDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mfaConfiguration: (() { final guardedValue = map['mfaConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -5,14 +5,14 @@ import 'agent_flow_definition_connection.dart';
 import 'agent_flow_definition_node.dart';
 
 class AgentFlowDefinition {
-  /// A list of connection definitions in the flow. See Connection for more information.
+  /// List of connection definitions in the flow. See `definition.connection` Block for details.
   final pulumi.Input<List<AgentFlowDefinitionConnection>?>? connections;
-  /// A list of node definitions in the flow. See Node for more information.
+  /// List of node definitions in the flow. See `definition.node` Block for details.
   final pulumi.Input<List<AgentFlowDefinitionNode>?>? nodes;
 
   /// Creates a new [AgentFlowDefinition].
-  /// [connections] A list of connection definitions in the flow. See Connection for more information.
-  /// [nodes] A list of node definitions in the flow. See Node for more information.
+  /// [connections] List of connection definitions in the flow. See `definition.connection` Block for details.
+  /// [nodes] List of node definitions in the flow. See `definition.node` Block for details.
   const AgentFlowDefinition({
     this.connections,
     this.nodes,

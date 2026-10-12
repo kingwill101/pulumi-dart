@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsApplicationInputsStartingPositionConfiguration {
-  /// The starting position on the stream. Valid values: `LAST_STOPPED_POINT`, `NOW`, `TRIM_HORIZON`.
+  /// Starting position on the stream. Valid values: `LAST_STOPPED_POINT`, `NOW`, `TRIM_HORIZON`.
   final pulumi.Input<String?>? startingPosition;
 
   /// Creates a new [AnalyticsApplicationInputsStartingPositionConfiguration].
-  /// [startingPosition] The starting position on the stream. Valid values: `LAST_STOPPED_POINT`, `NOW`, `TRIM_HORIZON`.
+  /// [startingPosition] Starting position on the stream. Valid values: `LAST_STOPPED_POINT`, `NOW`, `TRIM_HORIZON`.
   const AnalyticsApplicationInputsStartingPositionConfiguration({
     this.startingPosition,
   });

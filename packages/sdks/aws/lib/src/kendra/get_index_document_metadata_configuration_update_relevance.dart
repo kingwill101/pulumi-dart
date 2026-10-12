@@ -9,17 +9,17 @@ class GetIndexDocumentMetadataConfigurationUpdateRelevance {
   final pulumi.Input<bool> freshness;
   /// Relative importance of the field in the search. Larger numbers provide more of a boost than smaller numbers. Minimum value of 1. Maximum value of 10.
   final pulumi.Input<int> importance;
-  /// Determines how values should be interpreted. For more information, refer to [RankOrder](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Relevance.html#Kendra-Type-Relevance-RankOrder).
+  /// How values should be interpreted. For more information, refer to [RankOrder](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Relevance.html#Kendra-Type-Relevance-RankOrder).
   final pulumi.Input<String> rankOrder;
-  /// A list of values that should be given a different boost when they appear in the result list. For more information, refer to [ValueImportanceMap](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Relevance.html#Kendra-Type-Relevance-ValueImportanceMap).
+  /// List of values that should be given a different boost when they appear in the result list. For more information, refer to [ValueImportanceMap](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Relevance.html#Kendra-Type-Relevance-ValueImportanceMap).
   final pulumi.Input<Map<String, int>> valuesImportanceMap;
 
   /// Creates a new [GetIndexDocumentMetadataConfigurationUpdateRelevance].
   /// [duration] Time period that the boost applies to. For more information, refer to [Duration](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Relevance.html#Kendra-Type-Relevance-Duration).
   /// [freshness] How "fresh" a document is. For more information, refer to [Freshness](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Relevance.html#Kendra-Type-Relevance-Freshness).
   /// [importance] Relative importance of the field in the search. Larger numbers provide more of a boost than smaller numbers. Minimum value of 1. Maximum value of 10.
-  /// [rankOrder] Determines how values should be interpreted. For more information, refer to [RankOrder](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Relevance.html#Kendra-Type-Relevance-RankOrder).
-  /// [valuesImportanceMap] A list of values that should be given a different boost when they appear in the result list. For more information, refer to [ValueImportanceMap](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Relevance.html#Kendra-Type-Relevance-ValueImportanceMap).
+  /// [rankOrder] How values should be interpreted. For more information, refer to [RankOrder](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Relevance.html#Kendra-Type-Relevance-RankOrder).
+  /// [valuesImportanceMap] List of values that should be given a different boost when they appear in the result list. For more information, refer to [ValueImportanceMap](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Relevance.html#Kendra-Type-Relevance-ValueImportanceMap).
   const GetIndexDocumentMetadataConfigurationUpdateRelevance({
     required this.duration,
     required this.freshness,
@@ -42,7 +42,7 @@ class GetIndexDocumentMetadataConfigurationUpdateRelevance {
     return GetIndexDocumentMetadataConfigurationUpdateRelevance(
       duration: pulumi.Input.fromValue(map['duration'] as String),
       freshness: pulumi.Input.fromValue(map['freshness'] as bool),
-      importance: pulumi.Input.fromValue((map['importance'] as num).toInt()),
+      importance: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['importance'])),
       rankOrder: pulumi.Input.fromValue(map['rankOrder'] as String),
       valuesImportanceMap: pulumi.Input.fromValue((map['valuesImportanceMap'] as Map).cast<String, int>()),
     );

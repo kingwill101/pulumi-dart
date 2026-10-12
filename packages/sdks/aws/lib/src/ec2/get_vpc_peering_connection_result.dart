@@ -9,22 +9,21 @@ import 'get_vpc_peering_connection_peer_ipv6_cidr_block_set.dart';
 
 /// Result data returned by getVpcPeeringConnection.
 class GetVpcPeeringConnectionResult {
-  /// Configuration block that describes [VPC Peering Connection]
-  /// (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the accepter VPC.
+  /// Configuration block that describes [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the accepter VPC. The map contains `allowRemoteVpcDnsResolution`, which is whether a local VPC can resolve public DNS hostnames to private IP addresses when queried from instances in a peer VPC.
   final Map<String, bool>? accepter;
   /// CIDR block associated to the VPC of the specific VPC Peering Connection.
   final String? cidrBlock;
-  /// List of objects with IPv4 CIDR blocks of the requester VPC.
+  /// List of objects with IPv4 CIDR blocks of the requester VPC. See `cidrBlockSet` Block below.
   final List<GetVpcPeeringConnectionCidrBlockSet>? cidrBlockSets;
   final List<GetVpcPeeringConnectionFilter>? filters;
   final String? id;
-  /// List of objects with IPv6 CIDR blocks of the requester VPC.
+  /// List of objects with IPv6 CIDR blocks of the requester VPC. See `ipv6CidrBlockSet` Block below.
   final List<GetVpcPeeringConnectionIpv6CidrBlockSet>? ipv6CidrBlockSets;
   final String? ownerId;
   final String? peerCidrBlock;
-  /// List of objects with IPv4 CIDR blocks of the accepter VPC.
+  /// List of objects with IPv4 CIDR blocks of the accepter VPC. See `peerCidrBlockSet` Block below.
   final List<GetVpcPeeringConnectionPeerCidrBlockSet>? peerCidrBlockSets;
-  /// List of objects with IPv6 CIDR blocks of the accepter VPC.
+  /// List of objects with IPv6 CIDR blocks of the accepter VPC. See `peerIpv6CidrBlockSet` Block below.
   final List<GetVpcPeeringConnectionPeerIpv6CidrBlockSet>? peerIpv6CidrBlockSets;
   final String? peerOwnerId;
   /// Region of the accepter VPC.
@@ -32,8 +31,7 @@ class GetVpcPeeringConnectionResult {
   final String? peerVpcId;
   /// (**Deprecated**) Region of the requester VPC. Use `requesterRegion` instead.
   final String? region;
-  /// Configuration block that describes [VPC Peering Connection]
-  /// (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the requester VPC.
+  /// Configuration block that describes [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the requester VPC. The map contains `allowRemoteVpcDnsResolution`, which is whether a local VPC can resolve public DNS hostnames to private IP addresses when queried from instances in a peer VPC.
   final Map<String, bool>? requester;
   /// Region of the requester VPC.
   final String? requesterRegion;
@@ -42,21 +40,21 @@ class GetVpcPeeringConnectionResult {
   final String? vpcId;
 
   /// Creates a new [GetVpcPeeringConnectionResult].
-  /// [accepter] Configuration block that describes [VPC Peering Connection]
+  /// [accepter] Configuration block that describes [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the accepter VPC. The map contains `allowRemoteVpcDnsResolution`, which is whether a local VPC can resolve public DNS hostnames to private IP addresses when queried from instances in a peer VPC.
   /// [cidrBlock] CIDR block associated to the VPC of the specific VPC Peering Connection.
-  /// [cidrBlockSets] List of objects with IPv4 CIDR blocks of the requester VPC.
+  /// [cidrBlockSets] List of objects with IPv4 CIDR blocks of the requester VPC. See `cidrBlockSet` Block below.
   /// [filters] Optional.
   /// [id] Optional.
-  /// [ipv6CidrBlockSets] List of objects with IPv6 CIDR blocks of the requester VPC.
+  /// [ipv6CidrBlockSets] List of objects with IPv6 CIDR blocks of the requester VPC. See `ipv6CidrBlockSet` Block below.
   /// [ownerId] Optional.
   /// [peerCidrBlock] Optional.
-  /// [peerCidrBlockSets] List of objects with IPv4 CIDR blocks of the accepter VPC.
-  /// [peerIpv6CidrBlockSets] List of objects with IPv6 CIDR blocks of the accepter VPC.
+  /// [peerCidrBlockSets] List of objects with IPv4 CIDR blocks of the accepter VPC. See `peerCidrBlockSet` Block below.
+  /// [peerIpv6CidrBlockSets] List of objects with IPv6 CIDR blocks of the accepter VPC. See `peerIpv6CidrBlockSet` Block below.
   /// [peerOwnerId] Optional.
   /// [peerRegion] Region of the accepter VPC.
   /// [peerVpcId] Optional.
   /// [region] (**Deprecated**) Region of the requester VPC. Use `requesterRegion` instead.
-  /// [requester] Configuration block that describes [VPC Peering Connection]
+  /// [requester] Configuration block that describes [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the requester VPC. The map contains `allowRemoteVpcDnsResolution`, which is whether a local VPC can resolve public DNS hostnames to private IP addresses when queried from instances in a peer VPC.
   /// [requesterRegion] Region of the requester VPC.
   /// [status] Optional.
   /// [tags] Optional.

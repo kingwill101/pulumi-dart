@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_data_source_data_source_configuration_web_configuration_crawler_configuration_crawler_limits.dart';
 
 class AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration {
-  /// Configuration of crawl limits for the web URLs. See `crawlerLimits` block for details.
+  /// Configuration of crawl limits for the web URLs. See `crawlerLimits` Block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfigurationCrawlerLimits?>? crawlerLimits;
-  /// List of one or more exclusion regular expression patterns to exclude certain object types that adhere to the pattern.
+  /// List of one or more exclusion regular expression patterns to exclude object types that match the pattern.
   final pulumi.Input<List<String>?>? exclusionFilters;
-  /// List of one or more inclusion regular expression patterns to include certain object types that adhere to the pattern.
+  /// List of one or more inclusion regular expression patterns to include object types that match the pattern.
   final pulumi.Input<List<String>?>? inclusionFilters;
   /// Scope of what is crawled for your URLs.
   final pulumi.Input<String?>? scope;
-  /// String used for identifying the crawler or a bot when it accesses a web server. Default value is `bedrockbot_UUID`.
+  /// String used to identify the crawler or bot when it accesses a web server. Default value is `bedrockbot_UUID`.
   final pulumi.Input<String?>? userAgent;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration].
-  /// [crawlerLimits] Configuration of crawl limits for the web URLs. See `crawlerLimits` block for details.
-  /// [exclusionFilters] List of one or more exclusion regular expression patterns to exclude certain object types that adhere to the pattern.
-  /// [inclusionFilters] List of one or more inclusion regular expression patterns to include certain object types that adhere to the pattern.
+  /// [crawlerLimits] Configuration of crawl limits for the web URLs. See `crawlerLimits` Block for details.
+  /// [exclusionFilters] List of one or more exclusion regular expression patterns to exclude object types that match the pattern.
+  /// [inclusionFilters] List of one or more inclusion regular expression patterns to include object types that match the pattern.
   /// [scope] Scope of what is crawled for your URLs.
-  /// [userAgent] String used for identifying the crawler or a bot when it accesses a web server. Default value is `bedrockbot_UUID`.
+  /// [userAgent] String used to identify the crawler or bot when it accesses a web server. Default value is `bedrockbot_UUID`.
   const AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration({
     this.crawlerLimits,
     this.exclusionFilters,

@@ -189,23 +189,23 @@ import 'vpc_ipam_resource_discovery_state.dart';
 class VpcIpamResourceDiscovery extends pulumi.CustomResource {
   /// ARN of IPAM Resource Discovery
   late final pulumi.Output<String> arn;
-  /// A description for the IPAM Resource Discovery.
+  /// Description for the IPAM Resource Discovery.
   late final pulumi.Output<String?> description;
-  /// The home region of the Resource Discovery
+  /// Home region of the Resource Discovery
   late final pulumi.Output<String> ipamResourceDiscoveryRegion;
-  /// A boolean to identify if the Resource Discovery is the accounts default resource discovery
+  /// Boolean to identify if the Resource Discovery is the accounts default resource discovery
   late final pulumi.Output<bool> isDefault;
-  /// Determines which regions the Resource Discovery will enable IPAM features for usage and monitoring. Locale is the Region where you want to make an IPAM pool available for allocations. You can only create pools with locales that match the operating Regions of the IPAM Resource Discovery. You can only create VPCs from a pool whose locale matches the VPC's Region. You specify a region using the regionName parameter. **You must set your provider block region as an operating_region.**
+  /// Regions the Resource Discovery will enable IPAM features for usage and monitoring. Locale is the Region where you want to make an IPAM pool available for allocations. You can only create pools with locales that match the operating Regions of the IPAM Resource Discovery. You can only create VPCs from a pool whose locale matches the VPC's Region. You specify a region using the regionName parameter. **You must set your provider block region as an operating_region.**
   late final pulumi.Output<List<VpcIpamResourceDiscoveryOperatingRegion>> operatingRegions;
   /// Add an Organizational Unit (OU) exclusion to IPAM. If IPAM is integrated with AWS Organizations and OU exclusion is added, IPAM will not manage the IP addresses in accounts in the OU exclusion. Refer to [IPAM Quotas](https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html) for the limit of exclusions that can be created.
   late final pulumi.Output<List<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>?> organizationalUnitExclusions;
-  /// The account ID for the account that manages the Resource Discovery
+  /// Account ID for the account that manages the Resource Discovery
   late final pulumi.Output<String> ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [VpcIpamResourceDiscovery].
@@ -220,7 +220,7 @@ class VpcIpamResourceDiscovery extends pulumi.CustomResource {
           'aws:ec2/vpcIpamResourceDiscovery:VpcIpamResourceDiscovery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

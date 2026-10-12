@@ -30,7 +30,7 @@ class GetConfigurationSetDeliveryOption {
 
   factory GetConfigurationSetDeliveryOption.fromMap(Map<String, dynamic> map) {
     return GetConfigurationSetDeliveryOption(
-      maxDeliverySeconds: pulumi.Input.fromValue((map['maxDeliverySeconds'] as num).toInt()),
+      maxDeliverySeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxDeliverySeconds'])),
       sendingPoolName: pulumi.Input.fromValue(map['sendingPoolName'] as String),
       tlsPolicy: pulumi.Input.fromValue(map['tlsPolicy'] as String),
     );

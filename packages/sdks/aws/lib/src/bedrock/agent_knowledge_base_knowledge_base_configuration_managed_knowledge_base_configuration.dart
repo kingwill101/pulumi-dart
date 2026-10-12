@@ -7,18 +7,18 @@ import 'agent_knowledge_base_knowledge_base_configuration_managed_knowledge_base
 class AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfiguration {
   /// ARN of the embedding model. Required when `embeddingModelType` is `CUSTOM`.
   final pulumi.Input<String?>? embeddingModelArn;
-  /// Configuration for the embedding model. Required when `embeddingModelType` is `CUSTOM`. See `embeddingModelConfiguration` block for details.
+  /// Configuration for the embedding model. Required when `embeddingModelType` is `CUSTOM`. See `embeddingModelConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationEmbeddingModelConfiguration?>? embeddingModelConfiguration;
   /// Type of embedding model. Valid values: `MANAGED`, `CUSTOM`. When `MANAGED`, no model selection or configuration is required. When `CUSTOM`, `embeddingModelArn` and `embeddingModelConfiguration` are required. Defaults to `MANAGED`.
   final pulumi.Input<String?>? embeddingModelType;
-  /// Server-side encryption configuration for the managed knowledge base. See `serverSideEncryptionConfiguration` block for details.
+  /// Server-side encryption configuration for the managed knowledge base. See `serverSideEncryptionConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfigurationServerSideEncryptionConfiguration?>? serverSideEncryptionConfiguration;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfiguration].
   /// [embeddingModelArn] ARN of the embedding model. Required when `embeddingModelType` is `CUSTOM`.
-  /// [embeddingModelConfiguration] Configuration for the embedding model. Required when `embeddingModelType` is `CUSTOM`. See `embeddingModelConfiguration` block for details.
+  /// [embeddingModelConfiguration] Configuration for the embedding model. Required when `embeddingModelType` is `CUSTOM`. See `embeddingModelConfiguration` Block for details.
   /// [embeddingModelType] Type of embedding model. Valid values: `MANAGED`, `CUSTOM`. When `MANAGED`, no model selection or configuration is required. When `CUSTOM`, `embeddingModelArn` and `embeddingModelConfiguration` are required. Defaults to `MANAGED`.
-  /// [serverSideEncryptionConfiguration] Server-side encryption configuration for the managed knowledge base. See `serverSideEncryptionConfiguration` block for details.
+  /// [serverSideEncryptionConfiguration] Server-side encryption configuration for the managed knowledge base. See `serverSideEncryptionConfiguration` Block for details.
   const AgentKnowledgeBaseKnowledgeBaseConfigurationManagedKnowledgeBaseConfiguration({
     this.embeddingModelArn,
     this.embeddingModelConfiguration,

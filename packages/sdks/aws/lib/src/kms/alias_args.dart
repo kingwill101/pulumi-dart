@@ -7,10 +7,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_kms_alias_alias_args_doc}
 class AliasArgs {
-  /// The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/)
+  /// Display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/).
   final pulumi.Input<String?>? name;
-  /// Creates an unique alias beginning with the specified prefix.
-  /// The name must start with the word "alias" followed by a forward slash (alias/).  Conflicts with `name`.
+  /// Creates a unique alias beginning with the specified prefix. The name must start with the word "alias" followed by a forward slash (alias/). Conflicts with `name`.
   final pulumi.Input<String?>? namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -18,8 +17,8 @@ class AliasArgs {
   final pulumi.Input<String> targetKeyId;
 
   /// Creates a new [AliasArgs].
-  /// [name] The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/)
-  /// [namePrefix] Creates an unique alias beginning with the specified prefix.
+  /// [name] Display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/).
+  /// [namePrefix] Creates a unique alias beginning with the specified prefix. The name must start with the word "alias" followed by a forward slash (alias/). Conflicts with `name`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetKeyId] Identifier for the key for which the alias is for, can be either an ARN or key_id.
   const AliasArgs({

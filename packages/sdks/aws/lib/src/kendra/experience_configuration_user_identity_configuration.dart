@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExperienceConfigurationUserIdentityConfiguration {
-  /// The AWS SSO field name that contains the identifiers of your users, such as their emails.
+  /// AWS SSO field name that contains the identifiers of your users, such as their emails.
   final pulumi.Input<String> identityAttributeName;
 
   /// Creates a new [ExperienceConfigurationUserIdentityConfiguration].
-  /// [identityAttributeName] The AWS SSO field name that contains the identifiers of your users, such as their emails.
+  /// [identityAttributeName] AWS SSO field name that contains the identifiers of your users, such as their emails.
   const ExperienceConfigurationUserIdentityConfiguration({
     required this.identityAttributeName,
   });

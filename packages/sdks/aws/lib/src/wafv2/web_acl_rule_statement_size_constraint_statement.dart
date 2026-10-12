@@ -39,7 +39,7 @@ class WebAclRuleStatementSizeConstraintStatement {
     return WebAclRuleStatementSizeConstraintStatement(
       comparisonOperator: pulumi.Input.fromValue(map['comparisonOperator'] as String),
       fieldToMatch: (() { final guardedValue = map['fieldToMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleStatementSizeConstraintStatementFieldToMatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
+      size: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['size'])),
       textTransformations: (() { final guardedValue = map['textTransformations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleStatementSizeConstraintStatementTextTransformation>(guardedValue, (value) => WebAclRuleStatementSizeConstraintStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

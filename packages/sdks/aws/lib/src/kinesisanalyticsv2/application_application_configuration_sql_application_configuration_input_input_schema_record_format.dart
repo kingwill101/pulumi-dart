@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_application_configuration_sql_application_configuration_input_input_schema_record_format_mapping_parameters.dart';
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat {
-  /// Provides additional mapping information specific to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the streaming source.
+  /// Additional mapping information specific to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the streaming source. See `mappingParameters` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters> mappingParameters;
-  /// The type of record format. Valid values: `CSV`, `JSON`.
+  /// Type of record format. Valid values: `CSV`, `JSON`.
   final pulumi.Input<String> recordFormatType;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat].
-  /// [mappingParameters] Provides additional mapping information specific to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the streaming source.
-  /// [recordFormatType] The type of record format. Valid values: `CSV`, `JSON`.
+  /// [mappingParameters] Additional mapping information specific to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the streaming source. See `mappingParameters` Block below.
+  /// [recordFormatType] Type of record format. Valid values: `CSV`, `JSON`.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat({
     required this.mappingParameters,
     required this.recordFormatType,

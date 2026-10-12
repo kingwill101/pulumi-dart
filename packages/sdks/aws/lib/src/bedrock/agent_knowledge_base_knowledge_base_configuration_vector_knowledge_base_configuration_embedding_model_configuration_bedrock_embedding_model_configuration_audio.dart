@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_knowledge_base_knowledge_base_configuration_vector_knowledge_base_configuration_embedding_model_configuration_bedrock_embedding_model_configuration_audio_segmentation_configuration.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudio {
-  /// Configuration for segmenting audio content during processing. See `segmentationConfiguration` block for details.
+  /// Configuration for segmenting audio content during processing. See `segmentationConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudioSegmentationConfiguration> segmentationConfiguration;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudio].
-  /// [segmentationConfiguration] Configuration for segmenting audio content during processing. See `segmentationConfiguration` block for details.
+  /// [segmentationConfiguration] Configuration for segmenting audio content during processing. See `segmentationConfiguration` Block for details.
   const AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfigurationAudio({
     required this.segmentationConfiguration,
   });

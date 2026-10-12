@@ -13,6 +13,8 @@ class RouteTablePropagationState {
   /// Identifier of EC2 Transit Gateway Attachment.
   final pulumi.Input<String?>? transitGatewayAttachmentId;
   /// Identifier of EC2 Transit Gateway Route Table.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String?>? transitGatewayRouteTableId;
 
   /// Creates a new [RouteTablePropagationState].

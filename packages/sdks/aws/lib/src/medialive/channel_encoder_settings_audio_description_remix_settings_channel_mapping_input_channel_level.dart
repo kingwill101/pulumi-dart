@@ -23,8 +23,8 @@ class ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChan
 
   factory ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel(
-      gain: pulumi.Input.fromValue((map['gain'] as num).toInt()),
-      inputChannel: pulumi.Input.fromValue((map['inputChannel'] as num).toInt()),
+      gain: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['gain'])),
+      inputChannel: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['inputChannel'])),
     );
   }
 }

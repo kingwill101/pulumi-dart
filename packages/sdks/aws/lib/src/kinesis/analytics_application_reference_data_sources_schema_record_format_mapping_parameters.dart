@@ -5,16 +5,12 @@ import 'analytics_application_reference_data_sources_schema_record_format_mappin
 import 'analytics_application_reference_data_sources_schema_record_format_mapping_parameters_json.dart';
 
 class AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters {
-  /// Mapping information when the record format uses delimiters.
-  /// See CSV Mapping Parameters below for more details.
   final pulumi.Input<AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsv?>? csv;
-  /// Mapping information when JSON is the record format on the streaming source.
-  /// See JSON Mapping Parameters below for more details.
   final pulumi.Input<AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJson?>? json;
 
   /// Creates a new [AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters].
-  /// [csv] Mapping information when the record format uses delimiters.
-  /// [json] Mapping information when JSON is the record format on the streaming source.
+  /// [csv] Optional.
+  /// [json] Optional.
   const AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters({
     this.csv,
     this.json,

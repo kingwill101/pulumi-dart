@@ -50,7 +50,7 @@ class GetReservedInstanceOfferingArgs {
   factory GetReservedInstanceOfferingArgs.fromMap(Map<String, dynamic> map) {
     return GetReservedInstanceOfferingArgs(
       dbInstanceClass: pulumi.Input.fromValue(map['dbInstanceClass'] as String),
-      duration: pulumi.Input.fromValue((map['duration'] as num).toInt()),
+      duration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['duration'])),
       multiAz: pulumi.Input.fromValue(map['multiAz'] as bool),
       offeringType: pulumi.Input.fromValue(map['offeringType'] as String),
       productDescription: pulumi.Input.fromValue(map['productDescription'] as String),

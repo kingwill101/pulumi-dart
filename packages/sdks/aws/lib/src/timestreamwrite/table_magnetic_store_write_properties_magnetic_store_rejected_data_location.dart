@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_magnetic_store_write_properties_magnetic_store_rejected_data_location_s3_configuration.dart';
 
 class TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation {
-  /// Configuration of an S3 location to write error reports for records rejected, asynchronously, during magnetic store writes. See S3 Configuration below for more details.
+  /// Configuration of an S3 location to write error reports for records rejected, asynchronously, during magnetic store writes. See `s3Configuration` Block below for more details.
   final pulumi.Input<TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration?>? s3Configuration;
 
   /// Creates a new [TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation].
-  /// [s3Configuration] Configuration of an S3 location to write error reports for records rejected, asynchronously, during magnetic store writes. See S3 Configuration below for more details.
+  /// [s3Configuration] Configuration of an S3 location to write error reports for records rejected, asynchronously, during magnetic store writes. See `s3Configuration` Block below for more details.
   const TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation({
     this.s3Configuration,
   });

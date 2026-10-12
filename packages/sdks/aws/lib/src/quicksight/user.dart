@@ -406,7 +406,7 @@ class User extends pulumi.CustomResource {
   late final pulumi.Output<String?> iamArn;
   /// Identity type that your Amazon QuickSight account uses to manage the identity of users. Valid values: `IAM`, `QUICKSIGHT`, `IAM_IDENTITY_CENTER`.
   late final pulumi.Output<String> identityType;
-  /// The Amazon Quicksight namespace to create the user in. Defaults to `default`.
+  /// Amazon Quicksight namespace to create the user in. Defaults to `default`.
   late final pulumi.Output<String?> namespace;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -433,7 +433,7 @@ class User extends pulumi.CustomResource {
           'aws:quicksight/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

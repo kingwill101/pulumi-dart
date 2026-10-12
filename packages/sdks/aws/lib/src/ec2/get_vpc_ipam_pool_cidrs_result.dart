@@ -9,7 +9,7 @@ class GetVpcIpamPoolCidrsResult {
   final List<GetVpcIpamPoolCidrsFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// The CIDRs provisioned into the IPAM pool, described below.
+  /// CIDRs provisioned into the IPAM pool, described below.
   final List<GetVpcIpamPoolCidrsIpamPoolCidr>? ipamPoolCidrs;
   final String? ipamPoolId;
   final String? region;
@@ -17,7 +17,7 @@ class GetVpcIpamPoolCidrsResult {
   /// Creates a new [GetVpcIpamPoolCidrsResult].
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ipamPoolCidrs] The CIDRs provisioned into the IPAM pool, described below.
+  /// [ipamPoolCidrs] CIDRs provisioned into the IPAM pool, described below.
   /// [ipamPoolId] Optional.
   /// [region] Optional.
   const GetVpcIpamPoolCidrsResult({

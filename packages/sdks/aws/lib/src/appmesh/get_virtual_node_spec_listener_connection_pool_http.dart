@@ -25,8 +25,8 @@ class GetVirtualNodeSpecListenerConnectionPoolHttp {
 
   factory GetVirtualNodeSpecListenerConnectionPoolHttp.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerConnectionPoolHttp(
-      maxConnections: pulumi.Input.fromValue((map['maxConnections'] as num).toInt()),
-      maxPendingRequests: pulumi.Input.fromValue((map['maxPendingRequests'] as num).toInt()),
+      maxConnections: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConnections'])),
+      maxPendingRequests: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPendingRequests'])),
     );
   }
 }

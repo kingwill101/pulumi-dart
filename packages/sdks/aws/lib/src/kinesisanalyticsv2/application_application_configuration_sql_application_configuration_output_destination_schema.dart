@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema {
-  /// Specifies the format of the records on the output stream. Valid values: `CSV`, `JSON`.
+  /// Format of the records on the output stream. Valid values: `CSV`, `JSON`.
   final pulumi.Input<String> recordFormatType;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema].
-  /// [recordFormatType] Specifies the format of the records on the output stream. Valid values: `CSV`, `JSON`.
+  /// [recordFormatType] Format of the records on the output stream. Valid values: `CSV`, `JSON`.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema({
     required this.recordFormatType,
   });

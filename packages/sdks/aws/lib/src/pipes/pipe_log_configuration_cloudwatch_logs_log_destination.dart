@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeLogConfigurationCloudwatchLogsLogDestination {
-  /// Amazon Web Services Resource Name (ARN) for the CloudWatch log group to which EventBridge sends the log records.
+  /// ARN for the CloudWatch log group to which EventBridge sends the log records.
   final pulumi.Input<String> logGroupArn;
 
   /// Creates a new [PipeLogConfigurationCloudwatchLogsLogDestination].
-  /// [logGroupArn] Amazon Web Services Resource Name (ARN) for the CloudWatch log group to which EventBridge sends the log records.
+  /// [logGroupArn] ARN for the CloudWatch log group to which EventBridge sends the log records.
   const PipeLogConfigurationCloudwatchLogsLogDestination({
     required this.logGroupArn,
   });

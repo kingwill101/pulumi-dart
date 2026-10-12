@@ -12,6 +12,7 @@ class GetInputResult {
   final String? arn;
   /// Channels attached to Input.
   final List<String>? attachedChannels;
+  /// Destination settings for PUSH type inputs.
   final List<GetInputDestination>? destinations;
   final String? id;
   /// The input class.
@@ -43,7 +44,7 @@ class GetInputResult {
   /// Creates a new [GetInputResult].
   /// [arn] ARN of the Input.
   /// [attachedChannels] Channels attached to Input.
-  /// [destinations] Optional.
+  /// [destinations] Destination settings for PUSH type inputs.
   /// [id] Optional.
   /// [inputClass] The input class.
   /// [inputDevices] Settings for the devices.

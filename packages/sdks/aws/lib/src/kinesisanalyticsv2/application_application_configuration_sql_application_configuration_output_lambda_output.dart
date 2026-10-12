@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput {
-  /// The ARN of the destination Lambda function to write to.
+  /// ARN of the destination Lambda function to write to.
   final pulumi.Input<String> resourceArn;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput].
-  /// [resourceArn] The ARN of the destination Lambda function to write to.
+  /// [resourceArn] ARN of the destination Lambda function to write to.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput({
     required this.resourceArn,
   });

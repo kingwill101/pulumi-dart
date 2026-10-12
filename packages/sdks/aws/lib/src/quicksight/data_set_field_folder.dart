@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetFieldFolder {
-  /// An array of column names to add to the folder. A column can only be in one folder.
+  /// Array of column names to add to the folder. A column can only be in one folder.
   final pulumi.Input<List<String>?>? columns;
   /// Field folder description.
   final pulumi.Input<String?>? description;
@@ -11,7 +11,7 @@ class DataSetFieldFolder {
   final pulumi.Input<String> fieldFoldersId;
 
   /// Creates a new [DataSetFieldFolder].
-  /// [columns] An array of column names to add to the folder. A column can only be in one folder.
+  /// [columns] Array of column names to add to the folder. A column can only be in one folder.
   /// [description] Field folder description.
   /// [fieldFoldersId] Key of the field folder map.
   const DataSetFieldFolder({

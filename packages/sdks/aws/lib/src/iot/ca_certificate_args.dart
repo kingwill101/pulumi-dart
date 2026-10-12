@@ -10,7 +10,7 @@ import 'ca_certificate_registration_config.dart';
 class CaCertificateArgs {
   /// Boolean flag to indicate if the certificate should be active for device authentication.
   final pulumi.Input<bool> active;
-  /// Boolean flag to indicate if the certificate should be active for device regisration.
+  /// Boolean flag to indicate if the certificate should be active for device registration.
   final pulumi.Input<bool> allowAutoRegistration;
   /// PEM encoded CA certificate.
   final pulumi.Input<String> caCertificatePem;
@@ -28,7 +28,7 @@ class CaCertificateArgs {
 
   /// Creates a new [CaCertificateArgs].
   /// [active] Boolean flag to indicate if the certificate should be active for device authentication.
-  /// [allowAutoRegistration] Boolean flag to indicate if the certificate should be active for device regisration.
+  /// [allowAutoRegistration] Boolean flag to indicate if the certificate should be active for device registration.
   /// [caCertificatePem] PEM encoded CA certificate.
   /// [certificateMode] The certificate mode in which the CA will be registered. Valid values: `DEFAULT` and `SNI_ONLY`. Default: `DEFAULT`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

@@ -882,7 +882,7 @@ import 'state_machine_tracing_configuration.dart';
 ///
 /// ### Encryption
 ///
-/// &gt; *NOTE:* See the section [Data at rest encyption](https://docs.aws.amazon.com/step-functions/latest/dg/encryption-at-rest.html) in the [AWS Step Functions Developer Guide](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html) for more information about enabling encryption of data using a customer-managed key for Step Functions State Machines data.
+/// &gt; *NOTE:* See the section [Data at rest encryption](https://docs.aws.amazon.com/step-functions/latest/dg/encryption-at-rest.html) in the [AWS Step Functions Developer Guide](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html) for more information about enabling encryption of data using a customer-managed key for Step Functions State Machines data.
 ///
 ///
 /// ```typescript
@@ -1184,7 +1184,7 @@ class StateMachine extends pulumi.CustomResource {
           'aws:sfn/stateMachine:StateMachine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationDate = registerOutput<String>('creationDate');

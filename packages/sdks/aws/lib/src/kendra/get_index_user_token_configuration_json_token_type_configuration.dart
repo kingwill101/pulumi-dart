@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIndexUserTokenConfigurationJsonTokenTypeConfiguration {
-  /// The group attribute field.
+  /// Group attribute field.
   final pulumi.Input<String> groupAttributeField;
-  /// The user name attribute field.
+  /// User name attribute field.
   final pulumi.Input<String> userNameAttributeField;
 
   /// Creates a new [GetIndexUserTokenConfigurationJsonTokenTypeConfiguration].
-  /// [groupAttributeField] The group attribute field.
-  /// [userNameAttributeField] The user name attribute field.
+  /// [groupAttributeField] Group attribute field.
+  /// [userNameAttributeField] User name attribute field.
   const GetIndexUserTokenConfigurationJsonTokenTypeConfiguration({
     required this.groupAttributeField,
     required this.userNameAttributeField,

@@ -7,9 +7,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_ec2_vpc_ipam_scope_vpc_ipam_scope_args_doc}
 class VpcIpamScopeArgs {
-  /// A description for the scope you're creating.
+  /// Description for the scope you're creating.
   final pulumi.Input<String?>? description;
-  /// The ID of the IPAM for which you're creating this scope.
+  /// ID of the IPAM for which you're creating this scope.
   final pulumi.Input<String> ipamId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -17,8 +17,8 @@ class VpcIpamScopeArgs {
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [VpcIpamScopeArgs].
-  /// [description] A description for the scope you're creating.
-  /// [ipamId] The ID of the IPAM for which you're creating this scope.
+  /// [description] Description for the scope you're creating.
+  /// [ipamId] ID of the IPAM for which you're creating this scope.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const VpcIpamScopeArgs({

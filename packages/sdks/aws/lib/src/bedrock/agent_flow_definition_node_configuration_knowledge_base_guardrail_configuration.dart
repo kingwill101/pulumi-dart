@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration {
-  /// The unique identifier of the guardrail.
+  /// Unique identifier of the guardrail.
   final pulumi.Input<String> guardrailIdentifier;
-  /// The version of the guardrail.
+  /// Version of the guardrail.
   final pulumi.Input<String> guardrailVersion;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration].
-  /// [guardrailIdentifier] The unique identifier of the guardrail.
-  /// [guardrailVersion] The version of the guardrail.
+  /// [guardrailIdentifier] Unique identifier of the guardrail.
+  /// [guardrailVersion] Version of the guardrail.
   const AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration({
     required this.guardrailIdentifier,
     required this.guardrailVersion,

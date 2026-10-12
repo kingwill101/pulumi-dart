@@ -18,7 +18,7 @@ class ClusterInstanceArgs {
   final pulumi.Input<String> clusterIdentifier;
   /// The name of the database engine to be used for the neptune instance. Defaults to `neptune`. Valid Values: `neptune`.
   final pulumi.Input<String?>? engine;
-  /// The neptune engine version. Currently configuring this argumnet has no effect.
+  /// The neptune engine version. Currently configuring this argument has no effect.
   final pulumi.Input<String?>? engineVersion;
   /// The identifier for the neptune instance, if omitted, this provider will assign a random, unique identifier.
   final pulumi.Input<String?>? identifier;
@@ -54,7 +54,7 @@ class ClusterInstanceArgs {
   /// [availabilityZone] The EC2 Availability Zone that the neptune instance is created in.
   /// [clusterIdentifier] The identifier of the `aws.neptune.Cluster` in which to launch this instance.
   /// [engine] The name of the database engine to be used for the neptune instance. Defaults to `neptune`. Valid Values: `neptune`.
-  /// [engineVersion] The neptune engine version. Currently configuring this argumnet has no effect.
+  /// [engineVersion] The neptune engine version. Currently configuring this argument has no effect.
   /// [identifier] The identifier for the neptune instance, if omitted, this provider will assign a random, unique identifier.
   /// [identifierPrefix] Creates a unique identifier beginning with the specified prefix. Conflicts with `identifier`.
   /// [instanceClass] The instance class to use.
@@ -127,10 +127,10 @@ class ClusterInstanceArgs {
       instanceClass: pulumi.Input.fromValue(map['instanceClass'] as String),
       neptuneParameterGroupName: (() { final guardedValue = map['neptuneParameterGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       neptuneSubnetGroupName: (() { final guardedValue = map['neptuneSubnetGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       preferredBackupWindow: (() { final guardedValue = map['preferredBackupWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       preferredMaintenanceWindow: (() { final guardedValue = map['preferredMaintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      promotionTier: (() { final guardedValue = map['promotionTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      promotionTier: (() { final guardedValue = map['promotionTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       publiclyAccessible: (() { final guardedValue = map['publiclyAccessible']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       skipFinalSnapshot: (() { final guardedValue = map['skipFinalSnapshot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

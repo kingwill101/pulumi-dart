@@ -41,10 +41,10 @@ class GetClusterVersionsClusterVersionControlPlaneScalingTier {
 
   factory GetClusterVersionsClusterVersionControlPlaneScalingTier.fromMap(Map<String, dynamic> map) {
     return GetClusterVersionsClusterVersionControlPlaneScalingTier(
-      apiRequestConcurrency: pulumi.Input.fromValue((map['apiRequestConcurrency'] as num).toInt()),
-      clusterDatabaseSizeGb: pulumi.Input.fromValue((map['clusterDatabaseSizeGb'] as num).toInt()),
+      apiRequestConcurrency: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['apiRequestConcurrency'])),
+      clusterDatabaseSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['clusterDatabaseSizeGb'])),
       controlPlaneComponentConfigOverrides: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterVersionsClusterVersionControlPlaneScalingTierControlPlaneComponentConfigOverride>(map['controlPlaneComponentConfigOverrides']!, (value) => GetClusterVersionsClusterVersionControlPlaneScalingTierControlPlaneComponentConfigOverride.fromMap((value as Map).cast<String, dynamic>()))),
-      podSchedulingRatePerSecond: pulumi.Input.fromValue((map['podSchedulingRatePerSecond'] as num).toInt()),
+      podSchedulingRatePerSecond: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['podSchedulingRatePerSecond'])),
       tierName: pulumi.Input.fromValue(map['tierName'] as String),
     );
   }

@@ -31,7 +31,7 @@ class FilesSynchronizationConfigurationImportDataRule {
   factory FilesSynchronizationConfigurationImportDataRule.fromMap(Map<String, dynamic> map) {
     return FilesSynchronizationConfigurationImportDataRule(
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
-      sizeLessThan: pulumi.Input.fromValue((map['sizeLessThan'] as num).toInt()),
+      sizeLessThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeLessThan'])),
       trigger: pulumi.Input.fromValue(map['trigger'] as String),
     );
   }

@@ -35,9 +35,9 @@ class CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpec
 
   factory CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpecField.fromMap(Map<String, dynamic> map) {
     return CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpecField(
-      fieldId: (() { final guardedValue = map['fieldId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      fieldId: (() { final guardedValue = map['fieldId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      sourceId: pulumi.Input.fromValue((map['sourceId'] as num).toInt()),
+      sourceId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sourceId'])),
       transform: pulumi.Input.fromValue(map['transform'] as String),
     );
   }

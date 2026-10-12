@@ -6,22 +6,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProxyEndpointState {
   /// ARN for the proxy endpoint.
   final pulumi.Input<String?>? arn;
-  /// The identifier for the proxy endpoint. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
+  /// Identifier for the proxy endpoint. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
   final pulumi.Input<String?>? dbProxyEndpointName;
-  /// The name of the DB proxy associated with the DB proxy endpoint that you create.
+  /// Name of the DB proxy associated with the DB proxy endpoint that you create.
   final pulumi.Input<String?>? dbProxyName;
-  /// The endpoint that you can use to connect to the proxy. You include the endpoint value in the connection string for a database client application.
+  /// Endpoint that you can use to connect to the proxy. You include the endpoint value in the connection string for a database client application.
   final pulumi.Input<String?>? endpoint;
-  /// Indicates whether this endpoint is the default endpoint for the associated DB proxy.
+  /// Whether this endpoint is the default endpoint for the associated DB proxy.
   final pulumi.Input<bool?>? isDefault;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A mapping of tags to assign to the resource.
+  /// Map of tags to assign to the resource.
   final pulumi.Input<Map<String, String>?>? tags;
   final pulumi.Input<Map<String, String>?>? tagsAll;
-  /// Indicates whether the DB proxy endpoint can be used for read/write or read-only operations. The default is `READ_WRITE`. Valid values are `READ_WRITE` and `READ_ONLY`.
+  /// Whether the DB proxy endpoint can be used for read/write or read-only operations. The default is `READ_WRITE`. Valid values are `READ_WRITE` and `READ_ONLY`.
   final pulumi.Input<String?>? targetRole;
-  /// The VPC ID of the DB proxy endpoint.
+  /// VPC ID of the DB proxy endpoint.
   final pulumi.Input<String?>? vpcId;
   /// One or more VPC security group IDs to associate with the new proxy.
   final pulumi.Input<List<String>?>? vpcSecurityGroupIds;
@@ -30,15 +30,15 @@ class ProxyEndpointState {
 
   /// Creates a new [ProxyEndpointState].
   /// [arn] ARN for the proxy endpoint.
-  /// [dbProxyEndpointName] The identifier for the proxy endpoint. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
-  /// [dbProxyName] The name of the DB proxy associated with the DB proxy endpoint that you create.
-  /// [endpoint] The endpoint that you can use to connect to the proxy. You include the endpoint value in the connection string for a database client application.
-  /// [isDefault] Indicates whether this endpoint is the default endpoint for the associated DB proxy.
+  /// [dbProxyEndpointName] Identifier for the proxy endpoint. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it can't end with a hyphen or contain two consecutive hyphens.
+  /// [dbProxyName] Name of the DB proxy associated with the DB proxy endpoint that you create.
+  /// [endpoint] Endpoint that you can use to connect to the proxy. You include the endpoint value in the connection string for a database client application.
+  /// [isDefault] Whether this endpoint is the default endpoint for the associated DB proxy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A mapping of tags to assign to the resource.
+  /// [tags] Map of tags to assign to the resource.
   /// [tagsAll] Optional.
-  /// [targetRole] Indicates whether the DB proxy endpoint can be used for read/write or read-only operations. The default is `READ_WRITE`. Valid values are `READ_WRITE` and `READ_ONLY`.
-  /// [vpcId] The VPC ID of the DB proxy endpoint.
+  /// [targetRole] Whether the DB proxy endpoint can be used for read/write or read-only operations. The default is `READ_WRITE`. Valid values are `READ_WRITE` and `READ_ONLY`.
+  /// [vpcId] VPC ID of the DB proxy endpoint.
   /// [vpcSecurityGroupIds] One or more VPC security group IDs to associate with the new proxy.
   /// [vpcSubnetIds] One or more VPC subnet IDs to associate with the new proxy.
   const ProxyEndpointState({

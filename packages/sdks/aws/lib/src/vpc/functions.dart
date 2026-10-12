@@ -139,6 +139,8 @@ pulumi.Output<GetEndpointAssociationsResult> getEndpointAssociationsOutput(
 
 /// `aws.vpc.getSecurityGroupRule` provides details about a specific security group rule.
 ///
+/// The arguments of this data source act as filters for querying the available security group rules. The given filters must match exactly one security group rule whose data will be exported as attributes.
+///
 /// ## Example Usage
 ///
 ///

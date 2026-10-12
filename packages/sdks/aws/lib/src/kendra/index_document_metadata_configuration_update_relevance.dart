@@ -3,23 +3,23 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IndexDocumentMetadataConfigurationUpdateRelevance {
-  /// Specifies the time period that the boost applies to. For more information, refer to [Duration](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-Duration).
+  /// Time period that the boost applies to. Required if `type` is `DATE_VALUE`. For more information, refer to [Duration](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-Duration).
   final pulumi.Input<String?>? duration;
-  /// Indicates that this field determines how "fresh" a document is. For more information, refer to [Freshness](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-Freshness).
+  /// Whether this field determines how "fresh" a document is. Required if `type` is `DATE_VALUE`. For more information, refer to [Freshness](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-Freshness).
   final pulumi.Input<bool?>? freshness;
-  /// The relative importance of the field in the search. Larger numbers provide more of a boost than smaller numbers. Minimum value of 1. Maximum value of 10.
+  /// Relative importance of the field in the search. Required for all types. Larger numbers provide more of a boost than smaller numbers. Minimum value of 1. Maximum value of 10.
   final pulumi.Input<int?>? importance;
-  /// Determines how values should be interpreted. For more information, refer to [RankOrder](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-RankOrder).
+  /// How values should be interpreted. Required if `type` is `DATE_VALUE` or `LONG_VALUE`. For more information, refer to [RankOrder](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-RankOrder).
   final pulumi.Input<String?>? rankOrder;
-  /// A list of values that should be given a different boost when they appear in the result list. For more information, refer to [ValueImportanceMap](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-ValueImportanceMap).
+  /// List of values that should be given a different boost when they appear in the result list. Required if `type` is `STRING_VALUE`. For more information, refer to [ValueImportanceMap](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-ValueImportanceMap).
   final pulumi.Input<Map<String, int>?>? valuesImportanceMap;
 
   /// Creates a new [IndexDocumentMetadataConfigurationUpdateRelevance].
-  /// [duration] Specifies the time period that the boost applies to. For more information, refer to [Duration](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-Duration).
-  /// [freshness] Indicates that this field determines how "fresh" a document is. For more information, refer to [Freshness](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-Freshness).
-  /// [importance] The relative importance of the field in the search. Larger numbers provide more of a boost than smaller numbers. Minimum value of 1. Maximum value of 10.
-  /// [rankOrder] Determines how values should be interpreted. For more information, refer to [RankOrder](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-RankOrder).
-  /// [valuesImportanceMap] A list of values that should be given a different boost when they appear in the result list. For more information, refer to [ValueImportanceMap](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-ValueImportanceMap).
+  /// [duration] Time period that the boost applies to. Required if `type` is `DATE_VALUE`. For more information, refer to [Duration](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-Duration).
+  /// [freshness] Whether this field determines how "fresh" a document is. Required if `type` is `DATE_VALUE`. For more information, refer to [Freshness](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-Freshness).
+  /// [importance] Relative importance of the field in the search. Required for all types. Larger numbers provide more of a boost than smaller numbers. Minimum value of 1. Maximum value of 10.
+  /// [rankOrder] How values should be interpreted. Required if `type` is `DATE_VALUE` or `LONG_VALUE`. For more information, refer to [RankOrder](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-RankOrder).
+  /// [valuesImportanceMap] List of values that should be given a different boost when they appear in the result list. Required if `type` is `STRING_VALUE`. For more information, refer to [ValueImportanceMap](https://docs.aws.amazon.com/kendra/latest/dg/API_Relevance.html#Kendra-Type-Relevance-ValueImportanceMap).
   const IndexDocumentMetadataConfigurationUpdateRelevance({
     this.duration,
     this.freshness,
@@ -42,7 +42,7 @@ class IndexDocumentMetadataConfigurationUpdateRelevance {
     return IndexDocumentMetadataConfigurationUpdateRelevance(
       duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       freshness: (() { final guardedValue = map['freshness']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      importance: (() { final guardedValue = map['importance']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      importance: (() { final guardedValue = map['importance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rankOrder: (() { final guardedValue = map['rankOrder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       valuesImportanceMap: (() { final guardedValue = map['valuesImportanceMap']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, int>()); })(),
     );

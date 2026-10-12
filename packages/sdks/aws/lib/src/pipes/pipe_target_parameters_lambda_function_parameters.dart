@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeTargetParametersLambdaFunctionParameters {
-  /// Specify whether to invoke the function synchronously or asynchronously. Valid Values: REQUEST_RESPONSE, FIRE_AND_FORGET.
+  /// Whether to invoke the function synchronously or asynchronously. Valid Values: REQUEST_RESPONSE, FIRE_AND_FORGET.
   final pulumi.Input<String> invocationType;
 
   /// Creates a new [PipeTargetParametersLambdaFunctionParameters].
-  /// [invocationType] Specify whether to invoke the function synchronously or asynchronously. Valid Values: REQUEST_RESPONSE, FIRE_AND_FORGET.
+  /// [invocationType] Whether to invoke the function synchronously or asynchronously. Valid Values: REQUEST_RESPONSE, FIRE_AND_FORGET.
   const PipeTargetParametersLambdaFunctionParameters({
     required this.invocationType,
   });

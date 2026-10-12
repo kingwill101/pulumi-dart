@@ -10,26 +10,26 @@ import 'group_sse_configuration.dart';
 class GroupArgs {
   /// Description of the verified access group.
   final pulumi.Input<String?>? description;
-  /// The policy document that is associated with this resource.
+  /// Policy document that is associated with this resource.
   final pulumi.Input<String?>? policyDocument;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Configuration block to use KMS keys for server-side encryption.
+  /// Configuration block to use KMS keys for server-side encryption. See below.
   final pulumi.Input<GroupSseConfiguration?>? sseConfiguration;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// The id of the verified access instance this group is associated with.
+  /// ID of the verified access instance this group is associated with.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> verifiedaccessInstanceId;
 
   /// Creates a new [GroupArgs].
   /// [description] Description of the verified access group.
-  /// [policyDocument] The policy document that is associated with this resource.
+  /// [policyDocument] Policy document that is associated with this resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [sseConfiguration] Configuration block to use KMS keys for server-side encryption.
+  /// [sseConfiguration] Configuration block to use KMS keys for server-side encryption. See below.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [verifiedaccessInstanceId] The id of the verified access instance this group is associated with.
+  /// [verifiedaccessInstanceId] ID of the verified access instance this group is associated with.
   const GroupArgs({
     this.description,
     this.policyDocument,

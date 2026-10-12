@@ -3,12 +3,12 @@
 
 /// Result data returned by getDefaultScraperConfiguration.
 class GetDefaultScraperConfigurationResult {
-  /// The configuration file.
+  /// Configuration file.
   final String? configuration;
   final String? region;
 
   /// Creates a new [GetDefaultScraperConfigurationResult].
-  /// [configuration] The configuration file.
+  /// [configuration] Configuration file.
   /// [region] Optional.
   const GetDefaultScraperConfigurationResult({
     this.configuration,

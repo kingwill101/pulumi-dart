@@ -1652,7 +1652,7 @@ class Job extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The job timeout in minutes. The default is 2880 minutes (48 hours) for `glueetl` and `pythonshell` jobs, and 0 (unlimited) for `gluestreaming` jobs. Leave this attribute argumnet unconfigured for `glueray` jobs.
+  /// The job timeout in minutes. The default is 2880 minutes (48 hours) for `glueetl` and `pythonshell` jobs, and 0 (unlimited) for `gluestreaming` jobs. Leave this attribute argument unconfigured for `glueray` jobs.
   late final pulumi.Output<int> timeout;
   /// The type of predefined worker that is allocated when a job runs. Valid values: `Standard`, `G.1X`, `G.2X`, `G.025X`, `G.4X`, `G.8X`, `G.12X`, `G.16X`, `R.1X`, `R.2X`, `R.4X`, `R.8X`, `Z.2X` (Ray jobs). See the [AWS documentation](https://docs.aws.amazon.com/glue/latest/dg/worker-types.html) for details.
   late final pulumi.Output<String> workerType;
@@ -1669,7 +1669,7 @@ class Job extends pulumi.CustomResource {
           'aws:glue/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     command = registerOutput<JobCommand>('command', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobCommand.fromMap((guardedValue as Map).cast<String, dynamic>()); });

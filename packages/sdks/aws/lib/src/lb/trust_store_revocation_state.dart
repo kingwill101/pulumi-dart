@@ -47,7 +47,7 @@ class TrustStoreRevocationState {
   factory TrustStoreRevocationState.fromMap(Map<String, dynamic> map) {
     return TrustStoreRevocationState(
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      revocationId: (() { final guardedValue = map['revocationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      revocationId: (() { final guardedValue = map['revocationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       revocationsS3Bucket: (() { final guardedValue = map['revocationsS3Bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       revocationsS3Key: (() { final guardedValue = map['revocationsS3Key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       revocationsS3ObjectVersion: (() { final guardedValue = map['revocationsS3ObjectVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

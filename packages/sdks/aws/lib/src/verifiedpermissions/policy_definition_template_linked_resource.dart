@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyDefinitionTemplateLinkedResource {
-  /// The entity ID of the resource.
+  /// Entity ID of the resource.
   final pulumi.Input<String> entityId;
-  /// The entity type of the resource.
+  /// Entity type of the resource.
   final pulumi.Input<String> entityType;
 
   /// Creates a new [PolicyDefinitionTemplateLinkedResource].
-  /// [entityId] The entity ID of the resource.
-  /// [entityType] The entity type of the resource.
+  /// [entityId] Entity ID of the resource.
+  /// [entityType] Entity type of the resource.
   const PolicyDefinitionTemplateLinkedResource({
     required this.entityId,
     required this.entityType,

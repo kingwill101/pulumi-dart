@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'repository_permissions_policy_args.dart';
 import 'repository_permissions_policy_state.dart';
 
-/// Provides a CodeArtifact Repostory Permissions Policy Resource.
+/// Provides a CodeArtifact Repository Permissions Policy Resource.
 ///
 /// ## Example Usage
 ///
@@ -381,7 +381,7 @@ class RepositoryPermissionsPolicy extends pulumi.CustomResource {
           'aws:codeartifact/repositoryPermissionsPolicy:RepositoryPermissionsPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     domain = registerOutput<String>('domain');
     domainOwner = registerOutput<String>('domainOwner');

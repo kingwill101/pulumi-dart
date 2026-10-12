@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPlanRuleScanAction {
+  /// Malware scanner used for the scan setting.
   final pulumi.Input<String> malwareScanner;
+  /// Mode of the malware scan.
   final pulumi.Input<String> scanMode;
 
   /// Creates a new [GetPlanRuleScanAction].
-  /// [malwareScanner] Required.
-  /// [scanMode] Required.
+  /// [malwareScanner] Malware scanner used for the scan setting.
+  /// [scanMode] Mode of the malware scan.
   const GetPlanRuleScanAction({
     required this.malwareScanner,
     required this.scanMode,

@@ -7,9 +7,9 @@ import 'get_vpc_ipam_operating_region.dart';
 class GetVpcIpamResult {
   /// ARN of the IPAM.
   final String? arn;
-  /// The default resource discovery association ID.
+  /// Default resource discovery association ID.
   final String? defaultResourceDiscoveryAssociationId;
-  /// The default resource discovery ID.
+  /// Default resource discovery ID.
   final String? defaultResourceDiscoveryId;
   /// Description for the IPAM.
   final String? description;
@@ -45,8 +45,8 @@ class GetVpcIpamResult {
 
   /// Creates a new [GetVpcIpamResult].
   /// [arn] ARN of the IPAM.
-  /// [defaultResourceDiscoveryAssociationId] The default resource discovery association ID.
-  /// [defaultResourceDiscoveryId] The default resource discovery ID.
+  /// [defaultResourceDiscoveryAssociationId] Default resource discovery association ID.
+  /// [defaultResourceDiscoveryId] Default resource discovery ID.
   /// [description] Description for the IPAM.
   /// [enablePrivateGua] If private GUA is enabled.
   /// [id] ID of the IPAM resource.
@@ -124,8 +124,8 @@ class GetVpcIpamResult {
       privateDefaultScopeId: (() { final guardedValue = map['privateDefaultScopeId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publicDefaultScopeId: (() { final guardedValue = map['publicDefaultScopeId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      resourceDiscoveryAssociationCount: (() { final guardedValue = map['resourceDiscoveryAssociationCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      scopeCount: (() { final guardedValue = map['scopeCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      resourceDiscoveryAssociationCount: (() { final guardedValue = map['resourceDiscoveryAssociationCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      scopeCount: (() { final guardedValue = map['scopeCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
       stateMessage: (() { final guardedValue = map['stateMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),

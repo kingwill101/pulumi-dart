@@ -5,14 +5,14 @@ import 'data_source_configuration_web_crawler_configuration_urls_seed_url_config
 import 'data_source_configuration_web_crawler_configuration_urls_site_maps_configuration.dart';
 
 class DataSourceConfigurationWebCrawlerConfigurationUrls {
-  /// A block that specifies the configuration of the seed or starting point URLs of the websites you want to crawl. You can choose to crawl only the website host names, or the website host names with subdomains, or the website host names with subdomains and other domains that the webpages link to. You can list up to `100` seed URLs. Detailed below.
+  /// Block that specifies the configuration of the seed or starting point URLs of the websites you want to crawl. You can choose to crawl only the website host names, or the website host names with subdomains, or the website host names with subdomains and other domains that the webpages link to. You can list up to `100` seed URLs. Detailed below.
   final pulumi.Input<DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration?>? seedUrlConfiguration;
-  /// A block that specifies the configuration of the sitemap URLs of the websites you want to crawl. Only URLs belonging to the same website host names are crawled. You can list up to `3` sitemap URLs. Detailed below.
+  /// Block that specifies the configuration of the sitemap URLs of the websites you want to crawl. Only URLs belonging to the same website host names are crawled. You can list up to `3` sitemap URLs. Detailed below.
   final pulumi.Input<DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration?>? siteMapsConfiguration;
 
   /// Creates a new [DataSourceConfigurationWebCrawlerConfigurationUrls].
-  /// [seedUrlConfiguration] A block that specifies the configuration of the seed or starting point URLs of the websites you want to crawl. You can choose to crawl only the website host names, or the website host names with subdomains, or the website host names with subdomains and other domains that the webpages link to. You can list up to `100` seed URLs. Detailed below.
-  /// [siteMapsConfiguration] A block that specifies the configuration of the sitemap URLs of the websites you want to crawl. Only URLs belonging to the same website host names are crawled. You can list up to `3` sitemap URLs. Detailed below.
+  /// [seedUrlConfiguration] Block that specifies the configuration of the seed or starting point URLs of the websites you want to crawl. You can choose to crawl only the website host names, or the website host names with subdomains, or the website host names with subdomains and other domains that the webpages link to. You can list up to `100` seed URLs. Detailed below.
+  /// [siteMapsConfiguration] Block that specifies the configuration of the sitemap URLs of the websites you want to crawl. Only URLs belonging to the same website host names are crawled. You can list up to `3` sitemap URLs. Detailed below.
   const DataSourceConfigurationWebCrawlerConfigurationUrls({
     this.seedUrlConfiguration,
     this.siteMapsConfiguration,

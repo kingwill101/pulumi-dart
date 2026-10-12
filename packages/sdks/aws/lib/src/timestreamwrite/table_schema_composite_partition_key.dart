@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableSchemaCompositePartitionKey {
-  /// The level of enforcement for the specification of a dimension key in ingested records. Valid values: `REQUIRED`, `OPTIONAL`.
+  /// Level of enforcement for the specification of a dimension key in ingested records. Valid values: `REQUIRED`, `OPTIONAL`.
   final pulumi.Input<String?>? enforcementInRecord;
-  /// The name of the attribute used for a dimension key.
+  /// Name of the attribute used for a dimension key.
   final pulumi.Input<String?>? name;
-  /// The type of the partition key. Valid values: `DIMENSION`, `MEASURE`.
+  /// Type of the partition key. Valid values: `DIMENSION`, `MEASURE`.
   final pulumi.Input<String> type;
 
   /// Creates a new [TableSchemaCompositePartitionKey].
-  /// [enforcementInRecord] The level of enforcement for the specification of a dimension key in ingested records. Valid values: `REQUIRED`, `OPTIONAL`.
-  /// [name] The name of the attribute used for a dimension key.
-  /// [type] The type of the partition key. Valid values: `DIMENSION`, `MEASURE`.
+  /// [enforcementInRecord] Level of enforcement for the specification of a dimension key in ingested records. Valid values: `REQUIRED`, `OPTIONAL`.
+  /// [name] Name of the attribute used for a dimension key.
+  /// [type] Type of the partition key. Valid values: `DIMENSION`, `MEASURE`.
   const TableSchemaCompositePartitionKey({
     this.enforcementInRecord,
     this.name,

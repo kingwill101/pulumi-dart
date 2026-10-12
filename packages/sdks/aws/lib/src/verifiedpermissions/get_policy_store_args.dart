@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_verifiedpermissions_get_policy_store_get_policy_store_args_doc}
 class GetPolicyStoreArgs {
-  /// The ID of the Policy Store.
+  /// ID of the Policy Store.
   final pulumi.Input<String> id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [GetPolicyStoreArgs].
-  /// [id] The ID of the Policy Store.
+  /// [id] ID of the Policy Store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetPolicyStoreArgs({
     required this.id,

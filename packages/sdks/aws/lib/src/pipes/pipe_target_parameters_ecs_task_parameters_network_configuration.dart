@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipe_target_parameters_ecs_task_parameters_network_configuration_aws_vpc_configuration.dart';
 
 class PipeTargetParametersEcsTaskParametersNetworkConfiguration {
-  /// Use this structure to specify the VPC subnets and security groups for the task, and whether a public IP address is to be used. This structure is relevant only for ECS tasks that use the awsvpc network mode. Detailed below.
+  /// Use this structure to specify the VPC subnets and security groups for the task, and whether a public IP address is to be used. This structure is relevant only for ECS tasks that use the awsvpc network mode. See `awsVpcConfiguration` Block for details.
   final pulumi.Input<PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration?>? awsVpcConfiguration;
 
   /// Creates a new [PipeTargetParametersEcsTaskParametersNetworkConfiguration].
-  /// [awsVpcConfiguration] Use this structure to specify the VPC subnets and security groups for the task, and whether a public IP address is to be used. This structure is relevant only for ECS tasks that use the awsvpc network mode. Detailed below.
+  /// [awsVpcConfiguration] Use this structure to specify the VPC subnets and security groups for the task, and whether a public IP address is to be used. This structure is relevant only for ECS tasks that use the awsvpc network mode. See `awsVpcConfiguration` Block for details.
   const PipeTargetParametersEcsTaskParametersNetworkConfiguration({
     this.awsVpcConfiguration,
   });

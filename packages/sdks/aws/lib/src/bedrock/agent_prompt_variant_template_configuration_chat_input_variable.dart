@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentPromptVariantTemplateConfigurationChatInputVariable {
-  /// The name of the variable.
+  /// Name of the variable.
   final pulumi.Input<String> name;
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatInputVariable].
-  /// [name] The name of the variable.
+  /// [name] Name of the variable.
   const AgentPromptVariantTemplateConfigurationChatInputVariable({
     required this.name,
   });

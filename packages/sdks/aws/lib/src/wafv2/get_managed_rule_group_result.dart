@@ -7,11 +7,11 @@ import 'get_managed_rule_group_rule.dart';
 
 /// Result data returned by getManagedRuleGroup.
 class GetManagedRuleGroupResult {
-  /// Labels that one or more rules in this rule group add to matching web requests. See Labels below for details.
+  /// Labels that one or more rules in this rule group add to matching web requests. See `availableLabels` Block below for details.
   final List<GetManagedRuleGroupAvailableLabel>? availableLabels;
   /// WCUs required for this rule group.
   final int? capacity;
-  /// Labels that one or more rules in this rule group match against in label match statements. See Labels below for details.
+  /// Labels that one or more rules in this rule group match against in label match statements. See `consumedLabels` Block below for details.
   final List<GetManagedRuleGroupConsumedLabel>? consumedLabels;
   /// Label namespace prefix for this rule group. All labels added by rules in this rule group have this prefix.
   final String? labelNamespace;
@@ -27,9 +27,9 @@ class GetManagedRuleGroupResult {
   final String? versionName;
 
   /// Creates a new [GetManagedRuleGroupResult].
-  /// [availableLabels] Labels that one or more rules in this rule group add to matching web requests. See Labels below for details.
+  /// [availableLabels] Labels that one or more rules in this rule group add to matching web requests. See `availableLabels` Block below for details.
   /// [capacity] WCUs required for this rule group.
-  /// [consumedLabels] Labels that one or more rules in this rule group match against in label match statements. See Labels below for details.
+  /// [consumedLabels] Labels that one or more rules in this rule group match against in label match statements. See `consumedLabels` Block below for details.
   /// [labelNamespace] Label namespace prefix for this rule group. All labels added by rules in this rule group have this prefix.
   /// [name] Name of the header.
   /// [region] Optional.
@@ -71,7 +71,7 @@ class GetManagedRuleGroupResult {
   factory GetManagedRuleGroupResult.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupResult(
       availableLabels: (() { final guardedValue = map['availableLabels']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetManagedRuleGroupAvailableLabel>(guardedValue, (value) => GetManagedRuleGroupAvailableLabel.fromMap((value as Map).cast<String, dynamic>())); })(),
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       consumedLabels: (() { final guardedValue = map['consumedLabels']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetManagedRuleGroupConsumedLabel>(guardedValue, (value) => GetManagedRuleGroupConsumedLabel.fromMap((value as Map).cast<String, dynamic>())); })(),
       labelNamespace: (() { final guardedValue = map['labelNamespace']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),

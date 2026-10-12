@@ -5,20 +5,20 @@ import 'pipe_target_parameters_batch_job_parameters_container_overrides_environm
 import 'pipe_target_parameters_batch_job_parameters_container_overrides_resource_requirement.dart';
 
 class PipeTargetParametersBatchJobParametersContainerOverrides {
-  /// List of commands to send to the container that overrides the default command from the Docker image or the task definition. You must also specify a container name.
+  /// List of commands to send to the container that overrides the default command from the Docker image or the task definition.
   final pulumi.Input<List<String>?>? commands;
-  /// The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the task definition. You must also specify a container name. Detailed below.
+  /// Environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the task definition. Environment variables cannot start with " AWS Batch ". This naming convention is reserved for variables that AWS Batch sets. See `target_parameters.batch_job_parameters.container_overrides.environment` Block for details.
   final pulumi.Input<List<PipeTargetParametersBatchJobParametersContainerOverridesEnvironment>?>? environments;
-  /// The instance type to use for a multi-node parallel job. This parameter isn't applicable to single-node container jobs or jobs that run on Fargate resources, and shouldn't be provided.
+  /// Instance type to use for a multi-node parallel job. This parameter isn't applicable to single-node container jobs or jobs that run on Fargate resources, and shouldn't be provided.
   final pulumi.Input<String?>? instanceType;
-  /// The type and amount of a resource to assign to a container, instead of the default value from the task definition. The only supported resource is a GPU. Detailed below.
+  /// Type and amount of resources to assign to a container. This overrides the settings in the job definition. The supported resources include GPU, MEMORY, and VCPU. See `target_parameters.batch_job_parameters.container_overrides.resource_requirement` Block for details.
   final pulumi.Input<List<PipeTargetParametersBatchJobParametersContainerOverridesResourceRequirement>?>? resourceRequirements;
 
   /// Creates a new [PipeTargetParametersBatchJobParametersContainerOverrides].
-  /// [commands] List of commands to send to the container that overrides the default command from the Docker image or the task definition. You must also specify a container name.
-  /// [environments] The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the task definition. You must also specify a container name. Detailed below.
-  /// [instanceType] The instance type to use for a multi-node parallel job. This parameter isn't applicable to single-node container jobs or jobs that run on Fargate resources, and shouldn't be provided.
-  /// [resourceRequirements] The type and amount of a resource to assign to a container, instead of the default value from the task definition. The only supported resource is a GPU. Detailed below.
+  /// [commands] List of commands to send to the container that overrides the default command from the Docker image or the task definition.
+  /// [environments] Environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the task definition. Environment variables cannot start with " AWS Batch ". This naming convention is reserved for variables that AWS Batch sets. See `target_parameters.batch_job_parameters.container_overrides.environment` Block for details.
+  /// [instanceType] Instance type to use for a multi-node parallel job. This parameter isn't applicable to single-node container jobs or jobs that run on Fargate resources, and shouldn't be provided.
+  /// [resourceRequirements] Type and amount of resources to assign to a container. This overrides the settings in the job definition. The supported resources include GPU, MEMORY, and VCPU. See `target_parameters.batch_job_parameters.container_overrides.resource_requirement` Block for details.
   const PipeTargetParametersBatchJobParametersContainerOverrides({
     this.commands,
     this.environments,

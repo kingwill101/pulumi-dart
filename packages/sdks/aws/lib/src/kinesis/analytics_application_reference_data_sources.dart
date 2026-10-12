@@ -5,20 +5,20 @@ import 'analytics_application_reference_data_sources_s3.dart';
 import 'analytics_application_reference_data_sources_schema.dart';
 
 class AnalyticsApplicationReferenceDataSources {
-  /// The ARN of the Kinesis Analytics Application.
+  /// ARN of the Kinesis Analytics Application.
   final pulumi.Input<String?>? id;
-  /// The S3 configuration for the reference data source. See S3 Reference below for more details.
+  /// S3 configuration for the reference data source. See `reference_data_sources.s3` Block below for details.
   final pulumi.Input<AnalyticsApplicationReferenceDataSourcesS3> s3;
-  /// The Schema format of the data in the streaming source. See Source Schema below for more details.
+  /// Schema format of the data in the streaming source. See `reference_data_sources.schema` Block below for details.
   final pulumi.Input<AnalyticsApplicationReferenceDataSourcesSchema> schema;
-  /// The in-application Table Name.
+  /// In-application Table Name.
   final pulumi.Input<String> tableName;
 
   /// Creates a new [AnalyticsApplicationReferenceDataSources].
-  /// [id] The ARN of the Kinesis Analytics Application.
-  /// [s3] The S3 configuration for the reference data source. See S3 Reference below for more details.
-  /// [schema] The Schema format of the data in the streaming source. See Source Schema below for more details.
-  /// [tableName] The in-application Table Name.
+  /// [id] ARN of the Kinesis Analytics Application.
+  /// [s3] S3 configuration for the reference data source. See `reference_data_sources.s3` Block below for details.
+  /// [schema] Schema format of the data in the streaming source. See `reference_data_sources.schema` Block below for details.
+  /// [tableName] In-application Table Name.
   const AnalyticsApplicationReferenceDataSources({
     this.id,
     required this.s3,

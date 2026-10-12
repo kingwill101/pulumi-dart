@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_ses_get_domain_identity_get_domain_identity_args_doc}
 class GetDomainIdentityArgs {
-  /// Name of the domain
+  /// Name of the domain.
   final pulumi.Input<String> domain;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [GetDomainIdentityArgs].
-  /// [domain] Name of the domain
+  /// [domain] Name of the domain.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetDomainIdentityArgs({
     required this.domain,

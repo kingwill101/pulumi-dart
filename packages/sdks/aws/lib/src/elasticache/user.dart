@@ -152,8 +152,8 @@ import 'user_state.dart';
 ///     authenticationMode: {
 ///         type: "iam",
 ///     },
-///     userId: "testUserId",
-///     userName: "testUserName",
+///     userId: "testuserid",
+///     userName: "testuserid",
 ///     accessString: "on ~* +@all",
 ///     engine: "redis",
 /// });
@@ -166,8 +166,8 @@ import 'user_state.dart';
 ///     authentication_mode={
 ///         "type": "iam",
 ///     },
-///     user_id="testUserId",
-///     user_name="testUserName",
+///     user_id="testuserid",
+///     user_name="testuserid",
 ///     access_string="on ~* +@all",
 ///     engine="redis")
 /// ```
@@ -185,8 +185,8 @@ import 'user_state.dart';
 ///         {
 ///             Type = "iam",
 ///         },
-///         UserId = "testUserId",
-///         UserName = "testUserName",
+///         UserId = "testuserid",
+///         UserName = "testuserid",
 ///         AccessString = "on ~* +@all",
 ///         Engine = "redis",
 ///     });
@@ -207,8 +207,8 @@ import 'user_state.dart';
 /// 			AuthenticationMode: &elasticache.UserAuthenticationModeArgs{
 /// 				Type: pulumi.String("iam"),
 /// 			},
-/// 			UserId:       pulumi.String("testUserId"),
-/// 			UserName:     pulumi.String("testUserName"),
+/// 			UserId:       pulumi.String("testuserid"),
+/// 			UserName:     pulumi.String("testuserid"),
 /// 			AccessString: pulumi.String("on ~* +@all"),
 /// 			Engine:       pulumi.String("redis"),
 /// 		})
@@ -232,8 +232,8 @@ import 'user_state.dart';
 ///   authentication_mode = {
 ///     type = "iam"
 ///   }
-///   user_id       = "testUserId"
-///   user_name     = "testUserName"
+///   user_id       = "testuserid"
+///   user_name     = "testuserid"
 ///   access_string = "on ~* +@all"
 ///   engine        = "redis"
 /// }
@@ -264,8 +264,8 @@ import 'user_state.dart';
 ///             .authenticationMode(UserAuthenticationModeArgs.builder()
 ///                 .type("iam")
 ///                 .build())
-///             .userId("testUserId")
-///             .userName("testUserName")
+///             .userId("testuserid")
+///             .userName("testuserid")
 ///             .accessString("on ~* +@all")
 ///             .engine("redis")
 ///             .build());
@@ -280,8 +280,8 @@ import 'user_state.dart';
 ///     properties:
 ///       authenticationMode:
 ///         type: iam
-///       userId: testUserId
-///       userName: testUserName
+///       userId: testuserid
+///       userName: testuserid
 ///       accessString: on ~* +@all
 ///       engine: redis
 /// ```
@@ -543,7 +543,7 @@ import 'user_state.dart';
 ///   access_string        = "on ~* +@all"
 ///   engine               = "redis"
 ///   passwords_wo         = elasticachePassword
-///   passwords_wo_version = 1 # Increment to trigger password update
+///   passwords_wo_version = 1
 /// }
 /// ```
 /// ```java
@@ -589,7 +589,7 @@ import 'user_state.dart';
 ///       accessString: on ~* +@all
 ///       engine: redis
 ///       passwordsWo: ${elasticachePassword}
-///       passwordsWoVersion: 1 # Increment to trigger password update
+///       passwordsWoVersion: 1
 /// ```
 ///
 ///
@@ -614,9 +614,9 @@ class User extends pulumi.CustomResource {
   /// Passwords used for this user. You can create up to two passwords for each user.
   late final pulumi.Output<List<String>?> passwords;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Write-only password for this user. This argument is not stored in state. Conflicts with `passwords` and `authenticationMode`. See Write-Only Arguments for more information. Requires Terraform 1.11+.
+  /// Write-only password for this user. This argument is not stored in state. Conflicts with `passwords` and `authenticationMode`. If set, requires `passwordsWoVersion` to be set.
   late final pulumi.Output<String?> passwordsWo;
-  /// Version number for `passwordsWo`. Increment this value to trigger a password update. Required when using `passwordsWo`.
+  /// Required when `passwordsWo` is set. Changing this value triggers an update to `passwordsWo`.
   late final pulumi.Output<int?> passwordsWoVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -625,7 +625,7 @@ class User extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// The ID of the user.
   late final pulumi.Output<String> userId;
-  /// The username of the user.
+  /// The username of the user. For IAM authentication, this value must match `userId`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> userName;
@@ -642,7 +642,7 @@ class User extends pulumi.CustomResource {
           'aws:elasticache/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
           additionalSecretOutputs: const ['passwords', 'passwordsWo'],
         ) {
     accessString = registerOutput<String>('accessString');

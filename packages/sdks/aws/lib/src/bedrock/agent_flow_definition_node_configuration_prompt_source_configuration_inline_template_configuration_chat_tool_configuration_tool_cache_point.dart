@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolCachePoint {
-  /// Indicates that the CachePointBlock is of the default type. Valid values: `default`.
+  /// Data type of the output. If the output doesn't match this type at runtime, a validation error is thrown.
   final pulumi.Input<String> type;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolCachePoint].
-  /// [type] Indicates that the CachePointBlock is of the default type. Valid values: `default`.
+  /// [type] Data type of the output. If the output doesn't match this type at runtime, a validation error is thrown.
   const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolCachePoint({
     required this.type,
   });

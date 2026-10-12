@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_application_configuration_environment_properties_property_group.dart';
 
 class ApplicationApplicationConfigurationEnvironmentProperties {
-  /// Describes the execution property groups.
+  /// Execution property groups. See `propertyGroup` Block below.
   final pulumi.Input<List<ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup>> propertyGroups;
 
   /// Creates a new [ApplicationApplicationConfigurationEnvironmentProperties].
-  /// [propertyGroups] Describes the execution property groups.
+  /// [propertyGroups] Execution property groups. See `propertyGroup` Block below.
   const ApplicationApplicationConfigurationEnvironmentProperties({
     required this.propertyGroups,
   });

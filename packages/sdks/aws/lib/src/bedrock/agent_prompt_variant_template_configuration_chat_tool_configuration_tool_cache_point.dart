@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolCachePoint {
-  /// Indicates that the CachePointBlock is of the default type. Valid values: `default`.
+  /// Cache point type. Valid values: `default`.
   final pulumi.Input<String> type;
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatToolConfigurationToolCachePoint].
-  /// [type] Indicates that the CachePointBlock is of the default type. Valid values: `default`.
+  /// [type] Cache point type. Valid values: `default`.
   const AgentPromptVariantTemplateConfigurationChatToolConfigurationToolCachePoint({
     required this.type,
   });

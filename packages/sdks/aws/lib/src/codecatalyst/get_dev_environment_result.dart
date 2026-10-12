@@ -18,7 +18,7 @@ class GetDevEnvironmentResult {
   final List<GetDevEnvironmentIde>? ides;
   /// The amount of time the Dev Environment will run without any activity detected before stopping, in minutes. Only whole integers are allowed. Dev Environments consume compute minutes when running.
   final int? inactivityTimeoutMinutes;
-  /// The Amazon EC2 instace type to use for the Dev Environment.
+  /// The Amazon EC2 instance type to use for the Dev Environment.
   final String? instanceType;
   /// The time when the Dev Environment was last updated, in coordinated universal time (UTC) timestamp format as specified in [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339#section-5.6).
   final String? lastUpdatedTime;
@@ -42,7 +42,7 @@ class GetDevEnvironmentResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ides] Information about the integrated development environment (IDE) configured for a Dev Environment.
   /// [inactivityTimeoutMinutes] The amount of time the Dev Environment will run without any activity detected before stopping, in minutes. Only whole integers are allowed. Dev Environments consume compute minutes when running.
-  /// [instanceType] The Amazon EC2 instace type to use for the Dev Environment.
+  /// [instanceType] The Amazon EC2 instance type to use for the Dev Environment.
   /// [lastUpdatedTime] The time when the Dev Environment was last updated, in coordinated universal time (UTC) timestamp format as specified in [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339#section-5.6).
   /// [persistentStorages] Information about the amount of storage allocated to the Dev Environment.
   /// [projectName] Optional.
@@ -99,7 +99,7 @@ class GetDevEnvironmentResult {
       envId: (() { final guardedValue = map['envId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ides: (() { final guardedValue = map['ides']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDevEnvironmentIde>(guardedValue, (value) => GetDevEnvironmentIde.fromMap((value as Map).cast<String, dynamic>())); })(),
-      inactivityTimeoutMinutes: (() { final guardedValue = map['inactivityTimeoutMinutes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      inactivityTimeoutMinutes: (() { final guardedValue = map['inactivityTimeoutMinutes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastUpdatedTime: (() { final guardedValue = map['lastUpdatedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       persistentStorages: (() { final guardedValue = map['persistentStorages']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDevEnvironmentPersistentStorage>(guardedValue, (value) => GetDevEnvironmentPersistentStorage.fromMap((value as Map).cast<String, dynamic>())); })(),

@@ -133,29 +133,30 @@ import 'trust_provider_state.dart';
 /// $ pulumi import aws:verifiedaccess/trustProvider:TrustProvider example vatp-8012925589
 /// ```
 class TrustProvider extends pulumi.CustomResource {
-  /// A description for the AWS Verified Access trust provider.
+  /// Description for the AWS Verified Access trust provider.
   late final pulumi.Output<String?> description;
-  /// A block of options for device identity based trust providers.
+  /// Block of options for device identity based trust providers. See below.
   late final pulumi.Output<TrustProviderDeviceOptions?> deviceOptions;
-  /// The type of device-based trust provider.
+  /// Type of device-based trust provider.
   late final pulumi.Output<String?> deviceTrustProviderType;
-  /// The OpenID Connect details for an Native Application OIDC, user-identity based trust provider.
+  /// OpenID Connect details for a Native Application OIDC, user-identity based trust provider. See below.
   late final pulumi.Output<TrustProviderNativeApplicationOidcOptions?> nativeApplicationOidcOptions;
-  /// The OpenID Connect details for an oidc-type, user-identity based trust provider.
+  /// OpenID Connect details for an oidc-type, user-identity based trust provider. See below.
   late final pulumi.Output<TrustProviderOidcOptions?> oidcOptions;
-  /// The identifier to be used when working with policy rules.
+  /// Identifier to be used when working with policy rules.
   late final pulumi.Output<String> policyReferenceName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+  /// Block of options in use for server side encryption. See below.
   late final pulumi.Output<TrustProviderSseSpecification> sseSpecification;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The type of trust provider can be either user or device-based.
+  /// Type of trust provider can be either user or device-based.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> trustProviderType;
-  /// The type of user-based trust provider.
+  /// Type of user-based trust provider.
   late final pulumi.Output<String?> userTrustProviderType;
 
   /// Creates a new [TrustProvider].
@@ -170,7 +171,7 @@ class TrustProvider extends pulumi.CustomResource {
           'aws:verifiedaccess/trustProvider:TrustProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     deviceOptions = registerOutput<TrustProviderDeviceOptions?>('deviceOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrustProviderDeviceOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

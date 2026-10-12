@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_data_source_vector_ingestion_configuration_custom_transformation_configuration_transformation_transformation_function_transformation_lambda_configuration.dart';
 
 class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction {
-  /// The configuration of the lambda function.
+  /// Configuration of the Lambda function. See `transformationLambdaConfiguration` Block for details.
   final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration?>? transformationLambdaConfiguration;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction].
-  /// [transformationLambdaConfiguration] The configuration of the lambda function.
+  /// [transformationLambdaConfiguration] Configuration of the Lambda function. See `transformationLambdaConfiguration` Block for details.
   const AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction({
     this.transformationLambdaConfiguration,
   });

@@ -31,8 +31,8 @@ class CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergCo
   factory CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration(
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      orphanFileRetentionPeriodInDays: (() { final guardedValue = map['orphanFileRetentionPeriodInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      runRateInHours: (() { final guardedValue = map['runRateInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      orphanFileRetentionPeriodInDays: (() { final guardedValue = map['orphanFileRetentionPeriodInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      runRateInHours: (() { final guardedValue = map['runRateInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

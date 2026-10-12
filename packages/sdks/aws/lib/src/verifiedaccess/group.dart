@@ -269,20 +269,20 @@ class Group extends pulumi.CustomResource {
   late final pulumi.Output<String> lastUpdatedTime;
   /// AWS account number owning this resource.
   late final pulumi.Output<String> owner;
-  /// The policy document that is associated with this resource.
+  /// Policy document that is associated with this resource.
   late final pulumi.Output<String?> policyDocument;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Configuration block to use KMS keys for server-side encryption.
+  /// Configuration block to use KMS keys for server-side encryption. See below.
   late final pulumi.Output<GroupSseConfiguration> sseConfiguration;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// ARN of this verified acess group.
+  /// ARN of this verified access group.
   late final pulumi.Output<String> verifiedaccessGroupArn;
   /// ID of this verified access group.
   late final pulumi.Output<String> verifiedaccessGroupId;
-  /// The id of the verified access instance this group is associated with.
+  /// ID of the verified access instance this group is associated with.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> verifiedaccessInstanceId;
@@ -299,7 +299,7 @@ class Group extends pulumi.CustomResource {
           'aws:verifiedaccess/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     deletionTime = registerOutput<String>('deletionTime');

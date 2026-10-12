@@ -5,14 +5,14 @@ import 'get_theme_configuration_sheet_tile_layout_gutter.dart';
 import 'get_theme_configuration_sheet_tile_layout_margin.dart';
 
 class GetThemeConfigurationSheetTileLayout {
-  /// The gutter settings that apply between tiles. See gutter.
+  /// Gutter settings that apply between tiles. See gutter.
   final pulumi.Input<List<GetThemeConfigurationSheetTileLayoutGutter>> gutters;
-  /// The margin settings that apply around the outside edge of sheets. See margin.
+  /// Margin settings that apply around the outside edge of sheets. See margin.
   final pulumi.Input<List<GetThemeConfigurationSheetTileLayoutMargin>> margins;
 
   /// Creates a new [GetThemeConfigurationSheetTileLayout].
-  /// [gutters] The gutter settings that apply between tiles. See gutter.
-  /// [margins] The margin settings that apply around the outside edge of sheets. See margin.
+  /// [gutters] Gutter settings that apply between tiles. See gutter.
+  /// [margins] Margin settings that apply around the outside edge of sheets. See margin.
   const GetThemeConfigurationSheetTileLayout({
     required this.gutters,
     required this.margins,

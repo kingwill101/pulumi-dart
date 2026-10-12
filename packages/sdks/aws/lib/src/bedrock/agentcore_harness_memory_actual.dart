@@ -5,17 +5,17 @@ import 'agentcore_harness_memory_actual_agentcore_memory_configuration.dart';
 import 'agentcore_harness_memory_actual_managed_memory_configuration.dart';
 
 class AgentcoreHarnessMemoryActual {
-  /// AgentCore memory configuration. Use this to connect to an existing AgentCore memory resource. See `agentcoreMemoryConfiguration` Block below.
+  /// AgentCore memory configuration. See `memory_actual.agentcore_memory_configuration` Block below.
   final pulumi.Input<List<AgentcoreHarnessMemoryActualAgentcoreMemoryConfiguration>> agentcoreMemoryConfigurations;
-  /// Explicitly disable memory for this harness. See `disabled` Block below.
+  /// Present when memory is explicitly disabled. See `memory_actual.disabled` Block below.
   final pulumi.Input<List<Map<String, dynamic>>> disableds;
-  /// Managed memory configuration. Creates and manages a memory resource automatically. See `managedMemoryConfiguration` Block below.
+  /// Managed memory configuration. See `memory_actual.managed_memory_configuration` Block below.
   final pulumi.Input<List<AgentcoreHarnessMemoryActualManagedMemoryConfiguration>> managedMemoryConfigurations;
 
   /// Creates a new [AgentcoreHarnessMemoryActual].
-  /// [agentcoreMemoryConfigurations] AgentCore memory configuration. Use this to connect to an existing AgentCore memory resource. See `agentcoreMemoryConfiguration` Block below.
-  /// [disableds] Explicitly disable memory for this harness. See `disabled` Block below.
-  /// [managedMemoryConfigurations] Managed memory configuration. Creates and manages a memory resource automatically. See `managedMemoryConfiguration` Block below.
+  /// [agentcoreMemoryConfigurations] AgentCore memory configuration. See `memory_actual.agentcore_memory_configuration` Block below.
+  /// [disableds] Present when memory is explicitly disabled. See `memory_actual.disabled` Block below.
+  /// [managedMemoryConfigurations] Managed memory configuration. See `memory_actual.managed_memory_configuration` Block below.
   const AgentcoreHarnessMemoryActual({
     required this.agentcoreMemoryConfigurations,
     required this.disableds,

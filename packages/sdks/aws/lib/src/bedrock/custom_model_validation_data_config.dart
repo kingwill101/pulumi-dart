@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_model_validation_data_config_validator.dart';
 
 class CustomModelValidationDataConfig {
-  /// Information about the validators.
+  /// Information about the validators. See `validator` below.
   final pulumi.Input<List<CustomModelValidationDataConfigValidator>> validators;
 
   /// Creates a new [CustomModelValidationDataConfig].
-  /// [validators] Information about the validators.
+  /// [validators] Information about the validators. See `validator` below.
   const CustomModelValidationDataConfig({
     required this.validators,
   });

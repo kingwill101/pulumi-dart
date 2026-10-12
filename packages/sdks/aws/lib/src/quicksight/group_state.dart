@@ -8,11 +8,11 @@ class GroupState {
   final pulumi.Input<String?>? arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String?>? awsAccountId;
-  /// A description for the group.
+  /// Description for the group.
   final pulumi.Input<String?>? description;
-  /// A name for the group.
+  /// Name for the group.
   final pulumi.Input<String?>? groupName;
-  /// The namespace. Currently, you should set this to `default`.
+  /// Namespace. Currently, you should set this to `default`.
   final pulumi.Input<String?>? namespace;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -20,9 +20,9 @@ class GroupState {
   /// Creates a new [GroupState].
   /// [arn] ARN of group
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  /// [description] A description for the group.
-  /// [groupName] A name for the group.
-  /// [namespace] The namespace. Currently, you should set this to `default`.
+  /// [description] Description for the group.
+  /// [groupName] Name for the group.
+  /// [namespace] Namespace. Currently, you should set this to `default`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GroupState({
     this.arn,

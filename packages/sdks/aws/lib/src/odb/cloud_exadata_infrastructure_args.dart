@@ -27,10 +27,10 @@ class CloudExadataInfrastructureArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// Model name of the Exadata infrastructure. Changing this will force terraform to create new resource.
-  final pulumi.Input<String> shape;
-  /// Number of storage servers that are activated for the Exadata infrastructure. Changing this will force terraform to create new resource.
   ///
   /// The following arguments are optional:
+  final pulumi.Input<String> shape;
+  /// Number of storage servers that are activated for the Exadata infrastructure. Changing this will force terraform to create new resource.
   final pulumi.Input<int?>? storageCount;
   /// Storage server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
   final pulumi.Input<String?>? storageServerType;
@@ -90,14 +90,14 @@ class CloudExadataInfrastructureArgs {
     return CloudExadataInfrastructureArgs(
       availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       availabilityZoneId: pulumi.Input.fromValue(map['availabilityZoneId'] as String),
-      computeCount: (() { final guardedValue = map['computeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      computeCount: (() { final guardedValue = map['computeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       customerContactsToSendToOcis: (() { final guardedValue = map['customerContactsToSendToOcis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CloudExadataInfrastructureCustomerContactsToSendToOci>(guardedValue, (value) => CloudExadataInfrastructureCustomerContactsToSendToOci.fromMap((value as Map).cast<String, dynamic>()))); })(),
       databaseServerType: (() { final guardedValue = map['databaseServerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       maintenanceWindow: pulumi.Input.fromValue(CloudExadataInfrastructureMaintenanceWindow.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>())),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       shape: pulumi.Input.fromValue(map['shape'] as String),
-      storageCount: (() { final guardedValue = map['storageCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      storageCount: (() { final guardedValue = map['storageCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       storageServerType: (() { final guardedValue = map['storageServerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CloudExadataInfrastructureTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

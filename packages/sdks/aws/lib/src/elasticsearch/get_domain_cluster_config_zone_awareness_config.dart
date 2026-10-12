@@ -20,7 +20,7 @@ class GetDomainClusterConfigZoneAwarenessConfig {
 
   factory GetDomainClusterConfigZoneAwarenessConfig.fromMap(Map<String, dynamic> map) {
     return GetDomainClusterConfigZoneAwarenessConfig(
-      availabilityZoneCount: pulumi.Input.fromValue((map['availabilityZoneCount'] as num).toInt()),
+      availabilityZoneCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['availabilityZoneCount'])),
     );
   }
 }

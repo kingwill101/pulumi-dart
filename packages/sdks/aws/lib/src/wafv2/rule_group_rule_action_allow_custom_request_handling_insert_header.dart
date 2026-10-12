@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleActionAllowCustomRequestHandlingInsertHeader {
-  /// A friendly name of the rule group.
+  /// Friendly name of the rule group.
   final pulumi.Input<String> name;
-  /// The value of the custom header.
+  /// Value of the custom header.
   final pulumi.Input<String> value;
 
   /// Creates a new [RuleGroupRuleActionAllowCustomRequestHandlingInsertHeader].
-  /// [name] A friendly name of the rule group.
-  /// [value] The value of the custom header.
+  /// [name] Friendly name of the rule group.
+  /// [value] Value of the custom header.
   const RuleGroupRuleActionAllowCustomRequestHandlingInsertHeader({
     required this.name,
     required this.value,

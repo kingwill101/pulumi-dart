@@ -10,7 +10,7 @@ import 'cluster_snapshot_copy_timeouts.dart';
 class ClusterSnapshotCopyArgs {
   /// Whether to copy existing tags. Defaults to `false`.
   final pulumi.Input<bool?>? copyTags;
-  /// The Destination region to place snapshot copy.
+  /// Destination region to place the snapshot copy.
   final pulumi.Input<String?>? destinationRegion;
   /// KMS key ID.
   final pulumi.Input<String?>? kmsKeyId;
@@ -32,7 +32,7 @@ class ClusterSnapshotCopyArgs {
 
   /// Creates a new [ClusterSnapshotCopyArgs].
   /// [copyTags] Whether to copy existing tags. Defaults to `false`.
-  /// [destinationRegion] The Destination region to place snapshot copy.
+  /// [destinationRegion] Destination region to place the snapshot copy.
   /// [kmsKeyId] KMS key ID.
   /// [presignedUrl] URL that contains a Signature Version 4 signed request.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

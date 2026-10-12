@@ -3,20 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeSourceParametersSelfManagedKafkaParametersCredentials {
-  /// The ARN of the Secrets Manager secret containing the credentials.
+  /// ARN of the Secrets Manager secret containing the credentials.
   final pulumi.Input<String?>? basicAuth;
-  /// The ARN of the Secrets Manager secret containing the credentials.
+  /// ARN of the Secrets Manager secret containing the credentials.
   final pulumi.Input<String?>? clientCertificateTlsAuth;
-  /// The ARN of the Secrets Manager secret containing the credentials.
+  /// ARN of the Secrets Manager secret containing the credentials.
   final pulumi.Input<String?>? saslScram256Auth;
-  /// The ARN of the Secrets Manager secret containing the credentials.
+  /// ARN of the Secrets Manager secret containing the credentials.
   final pulumi.Input<String?>? saslScram512Auth;
 
   /// Creates a new [PipeSourceParametersSelfManagedKafkaParametersCredentials].
-  /// [basicAuth] The ARN of the Secrets Manager secret containing the credentials.
-  /// [clientCertificateTlsAuth] The ARN of the Secrets Manager secret containing the credentials.
-  /// [saslScram256Auth] The ARN of the Secrets Manager secret containing the credentials.
-  /// [saslScram512Auth] The ARN of the Secrets Manager secret containing the credentials.
+  /// [basicAuth] ARN of the Secrets Manager secret containing the credentials.
+  /// [clientCertificateTlsAuth] ARN of the Secrets Manager secret containing the credentials.
+  /// [saslScram256Auth] ARN of the Secrets Manager secret containing the credentials.
+  /// [saslScram512Auth] ARN of the Secrets Manager secret containing the credentials.
   const PipeSourceParametersSelfManagedKafkaParametersCredentials({
     this.basicAuth,
     this.clientCertificateTlsAuth,

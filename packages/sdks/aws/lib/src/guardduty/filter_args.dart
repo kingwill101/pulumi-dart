@@ -65,7 +65,7 @@ class FilterArgs {
       detectorId: pulumi.Input.fromValue(map['detectorId'] as String),
       findingCriteria: pulumi.Input.fromValue(FilterFindingCriteria.fromMap((map['findingCriteria']! as Map).cast<String, dynamic>())),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rank: pulumi.Input.fromValue((map['rank'] as num).toInt()),
+      rank: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rank'])),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

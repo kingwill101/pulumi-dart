@@ -116,11 +116,11 @@ class Group extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
-  /// A description for the group.
+  /// Description for the group.
   late final pulumi.Output<String?> description;
-  /// A name for the group.
+  /// Name for the group.
   late final pulumi.Output<String> groupName;
-  /// The namespace. Currently, you should set this to `default`.
+  /// Namespace. Currently, you should set this to `default`.
   late final pulumi.Output<String?> namespace;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -137,7 +137,7 @@ class Group extends pulumi.CustomResource {
           'aws:quicksight/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

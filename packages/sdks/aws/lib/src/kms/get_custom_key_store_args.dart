@@ -7,16 +7,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_kms_get_custom_key_store_get_custom_key_store_args_doc}
 class GetCustomKeyStoreArgs {
-  /// The ID for the custom key store.
+  /// ID for the custom key store.
   final pulumi.Input<String?>? customKeyStoreId;
-  /// The user-specified friendly name for the custom key store.
+  /// User-specified friendly name for the custom key store.
   final pulumi.Input<String?>? customKeyStoreName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [GetCustomKeyStoreArgs].
-  /// [customKeyStoreId] The ID for the custom key store.
-  /// [customKeyStoreName] The user-specified friendly name for the custom key store.
+  /// [customKeyStoreId] ID for the custom key store.
+  /// [customKeyStoreName] User-specified friendly name for the custom key store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetCustomKeyStoreArgs({
     this.customKeyStoreId,

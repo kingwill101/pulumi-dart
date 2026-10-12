@@ -38,7 +38,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecification {
   factory V2modelsSlotValueElicitationSettingPromptSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingPromptSpecification(
       allowInterrupt: (() { final guardedValue = map['allowInterrupt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxRetries: pulumi.Input.fromValue((map['maxRetries'] as num).toInt()),
+      maxRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRetries'])),
       messageGroups: (() { final guardedValue = map['messageGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup>(guardedValue, (value) => V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
       messageSelectionStrategy: (() { final guardedValue = map['messageSelectionStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       promptAttemptsSpecifications: (() { final guardedValue = map['promptAttemptsSpecifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification>(guardedValue, (value) => V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),

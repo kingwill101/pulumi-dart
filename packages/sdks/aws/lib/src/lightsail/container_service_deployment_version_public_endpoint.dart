@@ -32,7 +32,7 @@ class ContainerServiceDeploymentVersionPublicEndpoint {
   factory ContainerServiceDeploymentVersionPublicEndpoint.fromMap(Map<String, dynamic> map) {
     return ContainerServiceDeploymentVersionPublicEndpoint(
       containerName: pulumi.Input.fromValue(map['containerName'] as String),
-      containerPort: pulumi.Input.fromValue((map['containerPort'] as num).toInt()),
+      containerPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['containerPort'])),
       healthCheck: pulumi.Input.fromValue(ContainerServiceDeploymentVersionPublicEndpointHealthCheck.fromMap((map['healthCheck']! as Map).cast<String, dynamic>())),
     );
   }

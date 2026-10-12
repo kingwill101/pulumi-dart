@@ -8,7 +8,7 @@ import 'ami_from_instance_state.dart';
 /// Image (AMI) modeled after an existing EBS-backed EC2 instance.
 ///
 /// The created AMI will refer to implicitly-created snapshots of the instance's
-/// EBS volumes and mimick its assigned block device configuration at the time
+/// EBS volumes and mimic its assigned block device configuration at the time
 /// the resource is created.
 ///
 /// This resource is best applied to an instance that is stopped when this instance
@@ -212,7 +212,7 @@ class AmiFromInstance extends pulumi.CustomResource {
           'aws:ec2/amiFromInstance:AmiFromInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     architecture = registerOutput<String>('architecture');
     arn = registerOutput<String>('arn');

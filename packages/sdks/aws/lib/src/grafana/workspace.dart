@@ -486,7 +486,7 @@ class Workspace extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The endpoint of the Grafana workspace.
   late final pulumi.Output<String> endpoint;
-  /// Specifies the version of Grafana to support in the new workspace. Supported values are `9.4`, `10.4` and `12.4`. If not specified, defaults to the latest version.
+  /// Specifies the version of Grafana to support in the new workspace. Supported values are `9.4`, `10.4`, `12.4` and `13.2`. If not specified, defaults to the latest version.
   late final pulumi.Output<String> grafanaVersion;
   /// The ARN of the AWS KMS key for encrypting workspace data.
   late final pulumi.Output<String> kmsKeyId;
@@ -530,7 +530,7 @@ class Workspace extends pulumi.CustomResource {
           'aws:grafana/workspace:Workspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     accountAccessType = registerOutput<String>('accountAccessType');
     arn = registerOutput<String>('arn');

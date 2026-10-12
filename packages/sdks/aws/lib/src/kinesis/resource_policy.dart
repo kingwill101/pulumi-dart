@@ -257,7 +257,7 @@ import 'resource_policy_state.dart';
 /// $ pulumi import aws:kinesis/resourcePolicy:ResourcePolicy example arn:aws:kinesis:us-west-2:123456789012:stream/example
 /// ```
 class ResourcePolicy extends pulumi.CustomResource {
-  /// The policy document.
+  /// Policy document.
   late final pulumi.Output<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -276,7 +276,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:kinesis/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

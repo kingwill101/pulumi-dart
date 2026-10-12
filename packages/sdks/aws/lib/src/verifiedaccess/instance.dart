@@ -337,23 +337,24 @@ import 'instance_verified_access_trust_provider.dart';
 /// $ pulumi import aws:verifiedaccess/instance:Instance example vai-1234567890abcdef0
 /// ```
 class Instance extends pulumi.CustomResource {
-  /// The custom subdomain for the CIDR endpoints.
+  /// Custom subdomain for the CIDR endpoints.
   late final pulumi.Output<String?> cidrEndpointsCustomSubdomain;
-  /// The time that the Verified Access Instance was created.
+  /// Time that the Verified Access Instance was created.
   late final pulumi.Output<String> creationTime;
-  /// A description for the AWS Verified Access Instance.
+  /// Description for the AWS Verified Access Instance.
   late final pulumi.Output<String?> description;
-  /// Enable or disable support for Federal Information Processing Standards (FIPS) on the AWS Verified Access Instance.
+  /// Whether to enable support for Federal Information Processing Standards (FIPS) on the AWS Verified Access Instance.
   late final pulumi.Output<bool?> fipsEnabled;
-  /// The time that the Verified Access Instance was last updated.
+  /// Time that the Verified Access Instance was last updated.
   late final pulumi.Output<String> lastUpdatedTime;
+  /// List of DNS names servers that clients can use to connect to the Verified Access Instance.
   late final pulumi.Output<List<String>> nameServers;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// One or more blocks of providing information about the AWS Verified Access Trust Providers. See verifiedAccessTrustProviders below for details.One or more blocks
+  /// One or more blocks providing information about the AWS Verified Access Trust Providers. See verifiedAccessTrustProviders below for details.
   late final pulumi.Output<List<InstanceVerifiedAccessTrustProvider>> verifiedAccessTrustProviders;
 
   /// Creates a new [Instance].
@@ -368,7 +369,7 @@ class Instance extends pulumi.CustomResource {
           'aws:verifiedaccess/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     cidrEndpointsCustomSubdomain = registerOutput<String?>('cidrEndpointsCustomSubdomain');
     creationTime = registerOutput<String>('creationTime');

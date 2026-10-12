@@ -30,9 +30,9 @@ class GetServiceCapacityProviderStrategy {
 
   factory GetServiceCapacityProviderStrategy.fromMap(Map<String, dynamic> map) {
     return GetServiceCapacityProviderStrategy(
-      base: pulumi.Input.fromValue((map['base'] as num).toInt()),
+      base: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['base'])),
       capacityProvider: pulumi.Input.fromValue(map['capacityProvider'] as String),
-      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
+      weight: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['weight'])),
     );
   }
 }

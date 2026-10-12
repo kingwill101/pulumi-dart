@@ -15,8 +15,10 @@ import 'user_access_logging_settings_association_state.dart';
 ///
 /// const example = new aws.workspacesweb.Portal("example", {displayName: "example"});
 /// const exampleStream = new aws.kinesis.Stream("example", {
+///     streamModeDetails: {
+///         streamMode: "ON_DEMAND",
+///     },
 ///     name: "amazon-workspaces-web-example",
-///     shardCount: 1,
 /// });
 /// const exampleUserAccessLoggingSettings = new aws.workspacesweb.UserAccessLoggingSettings("example", {kinesisStreamArn: exampleStream.arn});
 /// const exampleUserAccessLoggingSettingsAssociation = new aws.workspacesweb.UserAccessLoggingSettingsAssociation("example", {
@@ -30,8 +32,10 @@ import 'user_access_logging_settings_association_state.dart';
 ///
 /// example = aws.workspacesweb.Portal("example", display_name="example")
 /// example_stream = aws.kinesis.Stream("example",
-///     name="amazon-workspaces-web-example",
-///     shard_count=1)
+///     stream_mode_details={
+///         "stream_mode": "ON_DEMAND",
+///     },
+///     name="amazon-workspaces-web-example")
 /// example_user_access_logging_settings = aws.workspacesweb.UserAccessLoggingSettings("example", kinesis_stream_arn=example_stream.arn)
 /// example_user_access_logging_settings_association = aws.workspacesweb.UserAccessLoggingSettingsAssociation("example",
 ///     user_access_logging_settings_arn=example_user_access_logging_settings.user_access_logging_settings_arn,
@@ -52,8 +56,11 @@ import 'user_access_logging_settings_association_state.dart';
 ///
 ///     var exampleStream = new Aws.Kinesis.Stream("example", new()
 ///     {
+///         StreamModeDetails = new Aws.Kinesis.Inputs.StreamStreamModeDetailsArgs
+///         {
+///             StreamMode = "ON_DEMAND",
+///         },
 ///         Name = "amazon-workspaces-web-example",
-///         ShardCount = 1,
 ///     });
 ///
 ///     var exampleUserAccessLoggingSettings = new Aws.WorkSpacesWeb.UserAccessLoggingSettings("example", new()
@@ -87,8 +94,10 @@ import 'user_access_logging_settings_association_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleStream, err := kinesis.NewStream(ctx, "example", &kinesis.StreamArgs{
-/// 			Name:       pulumi.String("amazon-workspaces-web-example"),
-/// 			ShardCount: pulumi.Int(1),
+/// 			StreamModeDetails: &kinesis.StreamStreamModeDetailsArgs{
+/// 				StreamMode: pulumi.String("ON_DEMAND"),
+/// 			},
+/// 			Name: pulumi.String("amazon-workspaces-web-example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -123,8 +132,10 @@ import 'user_access_logging_settings_association_state.dart';
 ///   display_name = "example"
 /// }
 /// resource "aws_kinesis_stream" "example" {
-///   name        = "amazon-workspaces-web-example"
-///   shard_count = 1
+///   stream_mode_details = {
+///     stream_mode = "ON_DEMAND"
+///   }
+///   name = "amazon-workspaces-web-example"
 /// }
 /// resource "aws_workspacesweb_useraccessloggingsettings" "example" {
 ///   kinesis_stream_arn = aws_kinesis_stream.example.arn
@@ -144,6 +155,7 @@ import 'user_access_logging_settings_association_state.dart';
 /// import com.pulumi.aws.workspacesweb.PortalArgs;
 /// import com.pulumi.aws.kinesis.Stream;
 /// import com.pulumi.aws.kinesis.StreamArgs;
+/// import com.pulumi.aws.kinesis.inputs.StreamStreamModeDetailsArgs;
 /// import com.pulumi.aws.workspacesweb.UserAccessLoggingSettings;
 /// import com.pulumi.aws.workspacesweb.UserAccessLoggingSettingsArgs;
 /// import com.pulumi.aws.workspacesweb.UserAccessLoggingSettingsAssociation;
@@ -166,8 +178,10 @@ import 'user_access_logging_settings_association_state.dart';
 ///             .build());
 ///
 ///         var exampleStream = new Stream("exampleStream", StreamArgs.builder()
+///             .streamModeDetails(StreamStreamModeDetailsArgs.builder()
+///                 .streamMode("ON_DEMAND")
+///                 .build())
 ///             .name("amazon-workspaces-web-example")
-///             .shardCount(1)
 ///             .build());
 ///
 ///         var exampleUserAccessLoggingSettings = new UserAccessLoggingSettings("exampleUserAccessLoggingSettings", UserAccessLoggingSettingsArgs.builder()
@@ -192,8 +206,9 @@ import 'user_access_logging_settings_association_state.dart';
 ///     type: aws:kinesis:Stream
 ///     name: example
 ///     properties:
+///       streamModeDetails:
+///         streamMode: ON_DEMAND
 ///       name: amazon-workspaces-web-example
-///       shardCount: 1
 ///   exampleUserAccessLoggingSettings:
 ///     type: aws:workspacesweb:UserAccessLoggingSettings
 ///     name: example
@@ -228,7 +243,7 @@ class UserAccessLoggingSettingsAssociation extends pulumi.CustomResource {
           'aws:workspacesweb/userAccessLoggingSettingsAssociation:UserAccessLoggingSettingsAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     portalArn = registerOutput<String>('portalArn');
     region = registerOutput<String>('region');

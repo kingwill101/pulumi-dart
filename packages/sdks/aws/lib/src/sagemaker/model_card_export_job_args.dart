@@ -51,7 +51,7 @@ class ModelCardExportJobArgs {
     return ModelCardExportJobArgs(
       modelCardExportJobName: pulumi.Input.fromValue(map['modelCardExportJobName'] as String),
       modelCardName: pulumi.Input.fromValue(map['modelCardName'] as String),
-      modelCardVersion: (() { final guardedValue = map['modelCardVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      modelCardVersion: (() { final guardedValue = map['modelCardVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       outputConfig: pulumi.Input.fromValue(ModelCardExportJobOutputConfig.fromMap((map['outputConfig']! as Map).cast<String, dynamic>())),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ModelCardExportJobTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

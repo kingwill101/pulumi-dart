@@ -17,6 +17,7 @@ class GetVpcEndpointResult {
   final List<GetVpcEndpointDnsOption>? dnsOptions;
   final List<GetVpcEndpointFilter>? filters;
   final String? id;
+  /// IP address type for the VPC Endpoint.
   final String? ipAddressType;
   /// One or more network interfaces for the VPC Endpoint. Applicable for endpoints of type `Interface`.
   final List<String>? networkInterfaceIds;
@@ -51,7 +52,7 @@ class GetVpcEndpointResult {
   /// [dnsOptions] DNS options for the VPC Endpoint. DNS options blocks are documented below.
   /// [filters] Optional.
   /// [id] Optional.
-  /// [ipAddressType] Optional.
+  /// [ipAddressType] IP address type for the VPC Endpoint.
   /// [networkInterfaceIds] One or more network interfaces for the VPC Endpoint. Applicable for endpoints of type `Interface`.
   /// [ownerId] ID of the AWS account that owns the VPC endpoint.
   /// [policy] Policy document associated with the VPC Endpoint. Applicable for endpoints of type `Gateway`.

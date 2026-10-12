@@ -920,11 +920,11 @@ import 'instance_logging_configuration_state.dart';
 /// $ pulumi import aws:verifiedaccess/instanceLoggingConfiguration:InstanceLoggingConfiguration example vai-1234567890abcdef0
 /// ```
 class InstanceLoggingConfiguration extends pulumi.CustomResource {
-  /// A block that specifies the configuration options for Verified Access instances. Detailed below.
+  /// Block that specifies the configuration options for Verified Access instances. Detailed below.
   late final pulumi.Output<InstanceLoggingConfigurationAccessLogs> accessLogs;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The ID of the Verified Access instance.
+  /// ID of the Verified Access instance.
   late final pulumi.Output<String> verifiedaccessInstanceId;
 
   /// Creates a new [InstanceLoggingConfiguration].
@@ -939,7 +939,7 @@ class InstanceLoggingConfiguration extends pulumi.CustomResource {
           'aws:verifiedaccess/instanceLoggingConfiguration:InstanceLoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     accessLogs = registerOutput<InstanceLoggingConfigurationAccessLogs>('accessLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceLoggingConfigurationAccessLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

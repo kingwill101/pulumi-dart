@@ -11,7 +11,7 @@ class GetVpcEndpointServiceResult {
   final String? arn;
   /// Availability Zones in which the service is available. Not available for endpoint services in other regions.
   final List<String>? availabilityZones;
-  /// The DNS names for the service.
+  /// DNS names for the service.
   final List<String>? baseEndpointDnsNames;
   final List<GetVpcEndpointServiceFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
@@ -34,7 +34,7 @@ class GetVpcEndpointServiceResult {
   final String? serviceRegion;
   final List<String>? serviceRegions;
   final String? serviceType;
-  /// The supported IP address types.
+  /// Supported IP address types.
   final List<String>? supportedIpAddressTypes;
   /// Map of tags assigned to the resource.
   final Map<String, String>? tags;
@@ -45,7 +45,7 @@ class GetVpcEndpointServiceResult {
   /// [acceptanceRequired] Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
   /// [arn] ARN of the VPC endpoint service.
   /// [availabilityZones] Availability Zones in which the service is available. Not available for endpoint services in other regions.
-  /// [baseEndpointDnsNames] The DNS names for the service.
+  /// [baseEndpointDnsNames] DNS names for the service.
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [managesVpcEndpoints] Whether or not the service manages its VPC endpoints - `true` or `false`.
@@ -59,7 +59,7 @@ class GetVpcEndpointServiceResult {
   /// [serviceRegion] Region of the endpoint service.
   /// [serviceRegions] Optional.
   /// [serviceType] Optional.
-  /// [supportedIpAddressTypes] The supported IP address types.
+  /// [supportedIpAddressTypes] Supported IP address types.
   /// [tags] Map of tags assigned to the resource.
   /// [vpcEndpointPolicySupported] Whether or not the service supports endpoint policies - `true` or `false`.
   const GetVpcEndpointServiceResult({

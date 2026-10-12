@@ -4,11 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'analytics_application_inputs_processing_configuration_lambda.dart';
 
 class AnalyticsApplicationInputsProcessingConfiguration {
-  /// The Lambda function configuration. See Lambda below for more details.
   final pulumi.Input<AnalyticsApplicationInputsProcessingConfigurationLambda> lambda;
 
   /// Creates a new [AnalyticsApplicationInputsProcessingConfiguration].
-  /// [lambda] The Lambda function configuration. See Lambda below for more details.
+  /// [lambda] Required.
   const AnalyticsApplicationInputsProcessingConfiguration({
     required this.lambda,
   });

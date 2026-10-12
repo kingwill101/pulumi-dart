@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipe_source_parameters_filter_criteria_filter.dart';
 
 class PipeSourceParametersFilterCriteria {
-  /// An array of up to 5 event patterns. Detailed below.
+  /// Array of up to 5 event patterns. See `filter` Block for details.
   final pulumi.Input<List<PipeSourceParametersFilterCriteriaFilter>?>? filters;
 
   /// Creates a new [PipeSourceParametersFilterCriteria].
-  /// [filters] An array of up to 5 event patterns. Detailed below.
+  /// [filters] Array of up to 5 event patterns. See `filter` Block for details.
   const PipeSourceParametersFilterCriteria({
     this.filters,
   });

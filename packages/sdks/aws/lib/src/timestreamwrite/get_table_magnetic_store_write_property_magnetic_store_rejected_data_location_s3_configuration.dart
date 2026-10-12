@@ -5,17 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration {
   /// Name of S3 bucket.
   final pulumi.Input<String> bucketName;
+  /// Encryption option for S3 location.
   final pulumi.Input<String> encryptionOption;
-  /// AWS KMS key ID for S3 location with AWS maanged key.
+  /// AWS KMS key ID for S3 location with AWS managed key.
   final pulumi.Input<String> kmsKeyId;
-  /// Object key preview for S3 location.
+  /// Object key prefix for S3 location.
   final pulumi.Input<String> objectKeyPrefix;
 
   /// Creates a new [GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration].
   /// [bucketName] Name of S3 bucket.
-  /// [encryptionOption] Required.
-  /// [kmsKeyId] AWS KMS key ID for S3 location with AWS maanged key.
-  /// [objectKeyPrefix] Object key preview for S3 location.
+  /// [encryptionOption] Encryption option for S3 location.
+  /// [kmsKeyId] AWS KMS key ID for S3 location with AWS managed key.
+  /// [objectKeyPrefix] Object key prefix for S3 location.
   const GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration({
     required this.bucketName,
     required this.encryptionOption,

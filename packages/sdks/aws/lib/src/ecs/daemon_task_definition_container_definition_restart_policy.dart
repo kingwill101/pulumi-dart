@@ -32,7 +32,7 @@ class DaemonTaskDefinitionContainerDefinitionRestartPolicy {
     return DaemonTaskDefinitionContainerDefinitionRestartPolicy(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       ignoredExitCodes: (() { final guardedValue = map['ignoredExitCodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
-      restartAttemptPeriod: (() { final guardedValue = map['restartAttemptPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      restartAttemptPeriod: (() { final guardedValue = map['restartAttemptPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

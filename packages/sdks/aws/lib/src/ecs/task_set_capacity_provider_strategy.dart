@@ -30,9 +30,9 @@ class TaskSetCapacityProviderStrategy {
 
   factory TaskSetCapacityProviderStrategy.fromMap(Map<String, dynamic> map) {
     return TaskSetCapacityProviderStrategy(
-      base: (() { final guardedValue = map['base']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      base: (() { final guardedValue = map['base']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       capacityProvider: pulumi.Input.fromValue(map['capacityProvider'] as String),
-      weight: pulumi.Input.fromValue((map['weight'] as num).toInt()),
+      weight: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['weight'])),
     );
   }
 }

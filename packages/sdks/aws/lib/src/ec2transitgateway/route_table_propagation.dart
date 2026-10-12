@@ -669,6 +669,19 @@ import 'route_table_propagation_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `transitGatewayAttachmentId` (String) EC2 Transit Gateway Attachment identifier.
+/// * `transitGatewayRouteTableId` (String) EC2 Transit Gateway Route Table identifier.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import `aws.ec2transitgateway.RouteTablePropagation` using the EC2 Transit Gateway Route Table identifier, an underscore, and the EC2 Transit Gateway Attachment identifier. For example:
 ///
 /// ```sh
@@ -684,6 +697,8 @@ class RouteTablePropagation extends pulumi.CustomResource {
   /// Identifier of EC2 Transit Gateway Attachment.
   late final pulumi.Output<String> transitGatewayAttachmentId;
   /// Identifier of EC2 Transit Gateway Route Table.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> transitGatewayRouteTableId;
 
   /// Creates a new [RouteTablePropagation].
@@ -698,7 +713,7 @@ class RouteTablePropagation extends pulumi.CustomResource {
           'aws:ec2transitgateway/routeTablePropagation:RouteTablePropagation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceId = registerOutput<String>('resourceId');

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceCollectionCloudformation {
-  /// Array of the names of the AWS CloudFormation stacks. If `type` is `AWS_SERVICE` (all acccount resources) this array should be a single item containing a wildcard (`"*"`).
+  /// Array of the names of the AWS CloudFormation stacks. If `type` is `AWS_SERVICE` (all account resources) this array should be a single item containing a wildcard (`"*"`).
   final pulumi.Input<List<String>> stackNames;
 
   /// Creates a new [ResourceCollectionCloudformation].
-  /// [stackNames] Array of the names of the AWS CloudFormation stacks. If `type` is `AWS_SERVICE` (all acccount resources) this array should be a single item containing a wildcard (`"*"`).
+  /// [stackNames] Array of the names of the AWS CloudFormation stacks. If `type` is `AWS_SERVICE` (all account resources) this array should be a single item containing a wildcard (`"*"`).
   const ResourceCollectionCloudformation({
     required this.stackNames,
   });

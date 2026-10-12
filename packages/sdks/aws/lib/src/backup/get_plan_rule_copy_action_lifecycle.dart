@@ -3,14 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPlanRuleCopyActionLifecycle {
+  /// Number of days after creation that a recovery point is moved to cold storage.
   final pulumi.Input<int> coldStorageAfter;
+  /// Number of days after creation that a recovery point is deleted.
   final pulumi.Input<int> deleteAfter;
+  /// Whether the recovery point is transitioned to cold storage for supported resource types.
   final pulumi.Input<bool> optInToArchiveForSupportedResources;
 
   /// Creates a new [GetPlanRuleCopyActionLifecycle].
-  /// [coldStorageAfter] Required.
-  /// [deleteAfter] Required.
-  /// [optInToArchiveForSupportedResources] Required.
+  /// [coldStorageAfter] Number of days after creation that a recovery point is moved to cold storage.
+  /// [deleteAfter] Number of days after creation that a recovery point is deleted.
+  /// [optInToArchiveForSupportedResources] Whether the recovery point is transitioned to cold storage for supported resource types.
   const GetPlanRuleCopyActionLifecycle({
     required this.coldStorageAfter,
     required this.deleteAfter,
@@ -27,8 +30,8 @@ class GetPlanRuleCopyActionLifecycle {
 
   factory GetPlanRuleCopyActionLifecycle.fromMap(Map<String, dynamic> map) {
     return GetPlanRuleCopyActionLifecycle(
-      coldStorageAfter: pulumi.Input.fromValue((map['coldStorageAfter'] as num).toInt()),
-      deleteAfter: pulumi.Input.fromValue((map['deleteAfter'] as num).toInt()),
+      coldStorageAfter: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['coldStorageAfter'])),
+      deleteAfter: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['deleteAfter'])),
       optInToArchiveForSupportedResources: pulumi.Input.fromValue(map['optInToArchiveForSupportedResources'] as bool),
     );
   }

@@ -41,9 +41,9 @@ class KxClusterScalingGroupConfiguration {
   factory KxClusterScalingGroupConfiguration.fromMap(Map<String, dynamic> map) {
     return KxClusterScalingGroupConfiguration(
       cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
-      memoryLimit: (() { final guardedValue = map['memoryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      memoryReservation: pulumi.Input.fromValue((map['memoryReservation'] as num).toInt()),
-      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
+      memoryLimit: (() { final guardedValue = map['memoryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      memoryReservation: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memoryReservation'])),
+      nodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodeCount'])),
       scalingGroupName: pulumi.Input.fromValue(map['scalingGroupName'] as String),
     );
   }

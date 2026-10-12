@@ -6,12 +6,12 @@ import 'dashboard_source_entity_source_template_data_set_reference.dart';
 class DashboardSourceEntitySourceTemplate {
   /// ARN of the resource.
   final pulumi.Input<String> arn;
-  /// List of dataset references. See data_set_references.
+  /// List of dataset references. See `dataSetReferences`.
   final pulumi.Input<List<DashboardSourceEntitySourceTemplateDataSetReference>> dataSetReferences;
 
   /// Creates a new [DashboardSourceEntitySourceTemplate].
   /// [arn] ARN of the resource.
-  /// [dataSetReferences] List of dataset references. See data_set_references.
+  /// [dataSetReferences] List of dataset references. See `dataSetReferences`.
   const DashboardSourceEntitySourceTemplate({
     required this.arn,
     required this.dataSetReferences,

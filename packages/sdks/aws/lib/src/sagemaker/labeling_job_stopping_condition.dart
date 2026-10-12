@@ -25,8 +25,8 @@ class LabelingJobStoppingCondition {
 
   factory LabelingJobStoppingCondition.fromMap(Map<String, dynamic> map) {
     return LabelingJobStoppingCondition(
-      maxHumanLabeledObjectCount: pulumi.Input.fromValue((map['maxHumanLabeledObjectCount'] as num).toInt()),
-      maxPercentageOfInputDatasetLabeled: pulumi.Input.fromValue((map['maxPercentageOfInputDatasetLabeled'] as num).toInt()),
+      maxHumanLabeledObjectCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxHumanLabeledObjectCount'])),
+      maxPercentageOfInputDatasetLabeled: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPercentageOfInputDatasetLabeled'])),
     );
   }
 }

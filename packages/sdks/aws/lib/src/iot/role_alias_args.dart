@@ -45,7 +45,7 @@ class RoleAliasArgs {
   factory RoleAliasArgs.fromMap(Map<String, dynamic> map) {
     return RoleAliasArgs(
       alias: pulumi.Input.fromValue(map['alias'] as String),
-      credentialDuration: (() { final guardedValue = map['credentialDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      credentialDuration: (() { final guardedValue = map['credentialDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

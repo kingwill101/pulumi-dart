@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firehose_delivery_stream_iceberg_configuration_processing_configuration_processor_parameter.dart';
 
 class FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessor {
-  /// Specifies the processor parameters as multiple blocks. See `parameters` block below for details.
+  /// Processor parameters as multiple blocks. See `parameters` block below for details.
   final pulumi.Input<List<FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessorParameter>?>? parameters;
-  /// The type of processor. Valid Values: `RecordDeAggregation`, `Lambda`, `MetadataExtraction`, `AppendDelimiterToRecord`, `Decompression`, `CloudWatchLogProcessing`. Validation is done against [AWS SDK constants](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/firehose/types#ProcessorType); so values not explicitly listed may also work.
+  /// Type of processor. Valid Values: `RecordDeAggregation`, `Lambda`, `MetadataExtraction`, `AppendDelimiterToRecord`, `Decompression`, `CloudWatchLogProcessing`. Validation is done against [AWS SDK constants](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/firehose/types#ProcessorType); so values not explicitly listed may also work.
   final pulumi.Input<String> type;
 
   /// Creates a new [FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessor].
-  /// [parameters] Specifies the processor parameters as multiple blocks. See `parameters` block below for details.
-  /// [type] The type of processor. Valid Values: `RecordDeAggregation`, `Lambda`, `MetadataExtraction`, `AppendDelimiterToRecord`, `Decompression`, `CloudWatchLogProcessing`. Validation is done against [AWS SDK constants](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/firehose/types#ProcessorType); so values not explicitly listed may also work.
+  /// [parameters] Processor parameters as multiple blocks. See `parameters` block below for details.
+  /// [type] Type of processor. Valid Values: `RecordDeAggregation`, `Lambda`, `MetadataExtraction`, `AppendDelimiterToRecord`, `Decompression`, `CloudWatchLogProcessing`. Validation is done against [AWS SDK constants](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/firehose/types#ProcessorType); so values not explicitly listed may also work.
   const FirehoseDeliveryStreamIcebergConfigurationProcessingConfigurationProcessor({
     this.parameters,
     required this.type,

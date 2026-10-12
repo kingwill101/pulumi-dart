@@ -5,14 +5,14 @@ import 'agent_data_source_vector_ingestion_configuration_custom_transformation_c
 import 'agent_data_source_vector_ingestion_configuration_custom_transformation_configuration_transformation.dart';
 
 class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration {
-  /// The intermediate storage for custom transformation.
+  /// Intermediate storage for custom transformation. See `intermediateStorage` Block for details.
   final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage?>? intermediateStorage;
-  /// A custom processing step for documents moving through the data source ingestion pipeline.
+  /// Custom processing step for documents moving through the data source ingestion pipeline. See `transformation` Block for details.
   final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation?>? transformation;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration].
-  /// [intermediateStorage] The intermediate storage for custom transformation.
-  /// [transformation] A custom processing step for documents moving through the data source ingestion pipeline.
+  /// [intermediateStorage] Intermediate storage for custom transformation. See `intermediateStorage` Block for details.
+  /// [transformation] Custom processing step for documents moving through the data source ingestion pipeline. See `transformation` Block for details.
   const AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration({
     this.intermediateStorage,
     this.transformation,

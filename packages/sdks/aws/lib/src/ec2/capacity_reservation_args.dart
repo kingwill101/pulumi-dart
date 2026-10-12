@@ -94,7 +94,7 @@ class CapacityReservationArgs {
       endDate: (() { final guardedValue = map['endDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endDateType: (() { final guardedValue = map['endDateType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ephemeralStorage: (() { final guardedValue = map['ephemeralStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toInt()),
+      instanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instanceCount'])),
       instanceMatchCriteria: (() { final guardedValue = map['instanceMatchCriteria']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instancePlatform: pulumi.Input.fromValue(map['instancePlatform']),
       instanceType: pulumi.Input.fromValue(map['instanceType']),

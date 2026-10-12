@@ -25,7 +25,7 @@ class GetCustomModelResult {
   /// ARN associated with this model.
   final String? modelArn;
   final String? modelId;
-  /// The custom model is encrypted at rest using this key.
+  /// Key used to encrypt the custom model at rest.
   final String? modelKmsKeyArn;
   /// Model name associated with this model.
   final String? modelName;
@@ -40,7 +40,7 @@ class GetCustomModelResult {
   final List<GetCustomModelTrainingMetric>? trainingMetrics;
   /// Information about the validation dataset.
   final List<GetCustomModelValidationDataConfig>? validationDataConfigs;
-  /// The loss metric for each validator that you provided.
+  /// Loss metric for each validator that you provided.
   final List<GetCustomModelValidationMetric>? validationMetrics;
 
   /// Creates a new [GetCustomModelResult].
@@ -53,7 +53,7 @@ class GetCustomModelResult {
   /// [jobTags] Key-value mapping of tags for the fine-tuning job.
   /// [modelArn] ARN associated with this model.
   /// [modelId] Optional.
-  /// [modelKmsKeyArn] The custom model is encrypted at rest using this key.
+  /// [modelKmsKeyArn] Key used to encrypt the custom model at rest.
   /// [modelName] Model name associated with this model.
   /// [modelTags] Key-value mapping of tags for the model.
   /// [outputDataConfigs] Output data configuration associated with this custom model.
@@ -61,7 +61,7 @@ class GetCustomModelResult {
   /// [trainingDataConfigs] Information about the training dataset.
   /// [trainingMetrics] Metrics associated with the customization job.
   /// [validationDataConfigs] Information about the validation dataset.
-  /// [validationMetrics] The loss metric for each validator that you provided.
+  /// [validationMetrics] Loss metric for each validator that you provided.
   const GetCustomModelResult({
     this.baseModelArn,
     this.creationTime,

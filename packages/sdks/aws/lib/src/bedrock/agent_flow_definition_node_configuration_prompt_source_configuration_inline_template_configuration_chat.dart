@@ -7,19 +7,20 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 import 'agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_chat_tool_configuration.dart';
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChat {
+  /// Variables in the prompt template. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.text.input_variable` Block for details.
   final pulumi.Input<List<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatInputVariable>?>? inputVariables;
-  /// A list of messages in the chat for the prompt. See Message for more information.
+  /// Messages in the chat for the prompt. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.chat.message` Block for details.
   final pulumi.Input<List<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessage>> messages;
-  /// A list of system prompts to provide context to the model or to describe how it should behave. See System for more information.
+  /// System prompts that provide context to the model or describe how it should behave. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.chat.system` Block for details.
   final pulumi.Input<List<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystem>?>? systems;
-  /// Configuration information for the tools that the model can use when generating a response. See Tool Configuration for more information.
+  /// Configuration information for the tools that the model can use when generating a response. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.chat.tool_configuration` Block for details.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfiguration?>? toolConfiguration;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChat].
-  /// [inputVariables] Optional.
-  /// [messages] A list of messages in the chat for the prompt. See Message for more information.
-  /// [systems] A list of system prompts to provide context to the model or to describe how it should behave. See System for more information.
-  /// [toolConfiguration] Configuration information for the tools that the model can use when generating a response. See Tool Configuration for more information.
+  /// [inputVariables] Variables in the prompt template. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.text.input_variable` Block for details.
+  /// [messages] Messages in the chat for the prompt. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.chat.message` Block for details.
+  /// [systems] System prompts that provide context to the model or describe how it should behave. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.chat.system` Block for details.
+  /// [toolConfiguration] Configuration information for the tools that the model can use when generating a response. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.chat.tool_configuration` Block for details.
   const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChat({
     this.inputVariables,
     required this.messages,

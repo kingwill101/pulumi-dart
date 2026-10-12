@@ -12,60 +12,62 @@ import 'get_budget_planned_limit.dart';
 /// Result data returned by getBudget.
 class GetBudgetResult {
   final String? accountId;
+  /// ARN of the budget.
   final String? arn;
-  /// Object containing [AutoAdjustData] which determines the budget amount for an auto-adjusting budget.
+  /// Object that determines the budget amount for an auto-adjusting budget. See `autoAdjustData` Block for details.
   final List<GetBudgetAutoAdjustData>? autoAdjustDatas;
   /// ARN of the billing view.
   final String? billingViewArn;
-  /// Boolean indicating whether this budget has been exceeded.
+  /// Whether the budget has been exceeded.
   final bool? budgetExceeded;
-  /// The total amount of cost, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans coverage that you want to track with your budget. Contains object Spend.
+  /// Amount of cost, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans coverage tracked by the budget. See `budgetLimit` Block for details.
   final List<GetBudgetBudgetLimit>? budgetLimits;
-  /// Whether this budget tracks monetary cost or usage.
+  /// Whether the budget tracks monetary cost or usage.
   final String? budgetType;
-  /// The spend objects that are associated with this budget. The actualSpend tracks how much you've used, cost, usage, RI units, or Savings Plans units and the forecastedSpend tracks how much that you're predicted to spend based on your historical usage profile.
+  /// Spend objects associated with the budget. See `calculatedSpend` Block for details.
   final List<GetBudgetCalculatedSpend>? calculatedSpends;
-  /// A list of CostFilter name/values pair to apply to budget.
+  /// Cost filters applied to the budget. See `costFilter` Block for details.
   final List<GetBudgetCostFilter>? costFilters;
-  /// Object containing CostTypes The types of cost included in a budget, such as tax and subscriptions.
+  /// Types of cost included in the budget. See `costTypes` Block for details.
   final List<GetBudgetCostType>? costTypes;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
+  /// Name of the cost filter.
   final String? name;
   final String? namePrefix;
-  /// Object containing Budget Notifications. Can be used multiple times to define more than one budget notification.
+  /// Notifications associated with the budget. See `notification` Block for details.
   final List<GetBudgetNotification>? notifications;
-  /// Object containing Planned Budget Limits. Can be used multiple times to plan more than one budget limit. See [PlannedBudgetLimits](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_Budget.html#awscostmanagement-Type-budgets_Budget-PlannedBudgetLimits) documentation.
+  /// Budget limits planned for future periods. See `plannedLimit` Block for details.
   final List<GetBudgetPlannedLimit>? plannedLimits;
   /// Map of tags assigned to the resource.
   final Map<String, String>? tags;
-  /// The end of the time period covered by the budget. There are no restrictions on the end date. Format: `2017-01-01_12:00`.
+  /// End of the time period covered by the budget. Format: `2017-01-01_12:00`.
   final String? timePeriodEnd;
-  /// The start of the time period covered by the budget. If you don't specify a start date, AWS defaults to the start of your chosen time period. The start date must come before the end date. Format: `2017-01-01_12:00`.
+  /// Start of the time period covered by the budget. Format: `2017-01-01_12:00`.
   final String? timePeriodStart;
-  /// The length of time until a budget resets the actual and forecasted spend. Valid values: `MONTHLY`, `QUARTERLY`, `ANNUALLY`, and `DAILY`.
+  /// Length of time until the budget resets the actual and forecasted spend. Valid values: `MONTHLY`, `QUARTERLY`, `ANNUALLY`, and `DAILY`.
   final String? timeUnit;
 
   /// Creates a new [GetBudgetResult].
   /// [accountId] Optional.
-  /// [arn] Optional.
-  /// [autoAdjustDatas] Object containing [AutoAdjustData] which determines the budget amount for an auto-adjusting budget.
+  /// [arn] ARN of the budget.
+  /// [autoAdjustDatas] Object that determines the budget amount for an auto-adjusting budget. See `autoAdjustData` Block for details.
   /// [billingViewArn] ARN of the billing view.
-  /// [budgetExceeded] Boolean indicating whether this budget has been exceeded.
-  /// [budgetLimits] The total amount of cost, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans coverage that you want to track with your budget. Contains object Spend.
-  /// [budgetType] Whether this budget tracks monetary cost or usage.
-  /// [calculatedSpends] The spend objects that are associated with this budget. The actualSpend tracks how much you've used, cost, usage, RI units, or Savings Plans units and the forecastedSpend tracks how much that you're predicted to spend based on your historical usage profile.
-  /// [costFilters] A list of CostFilter name/values pair to apply to budget.
-  /// [costTypes] Object containing CostTypes The types of cost included in a budget, such as tax and subscriptions.
+  /// [budgetExceeded] Whether the budget has been exceeded.
+  /// [budgetLimits] Amount of cost, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans coverage tracked by the budget. See `budgetLimit` Block for details.
+  /// [budgetType] Whether the budget tracks monetary cost or usage.
+  /// [calculatedSpends] Spend objects associated with the budget. See `calculatedSpend` Block for details.
+  /// [costFilters] Cost filters applied to the budget. See `costFilter` Block for details.
+  /// [costTypes] Types of cost included in the budget. See `costTypes` Block for details.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Optional.
+  /// [name] Name of the cost filter.
   /// [namePrefix] Optional.
-  /// [notifications] Object containing Budget Notifications. Can be used multiple times to define more than one budget notification.
-  /// [plannedLimits] Object containing Planned Budget Limits. Can be used multiple times to plan more than one budget limit. See [PlannedBudgetLimits](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_Budget.html#awscostmanagement-Type-budgets_Budget-PlannedBudgetLimits) documentation.
+  /// [notifications] Notifications associated with the budget. See `notification` Block for details.
+  /// [plannedLimits] Budget limits planned for future periods. See `plannedLimit` Block for details.
   /// [tags] Map of tags assigned to the resource.
-  /// [timePeriodEnd] The end of the time period covered by the budget. There are no restrictions on the end date. Format: `2017-01-01_12:00`.
-  /// [timePeriodStart] The start of the time period covered by the budget. If you don't specify a start date, AWS defaults to the start of your chosen time period. The start date must come before the end date. Format: `2017-01-01_12:00`.
-  /// [timeUnit] The length of time until a budget resets the actual and forecasted spend. Valid values: `MONTHLY`, `QUARTERLY`, `ANNUALLY`, and `DAILY`.
+  /// [timePeriodEnd] End of the time period covered by the budget. Format: `2017-01-01_12:00`.
+  /// [timePeriodStart] Start of the time period covered by the budget. Format: `2017-01-01_12:00`.
+  /// [timeUnit] Length of time until the budget resets the actual and forecasted spend. Valid values: `MONTHLY`, `QUARTERLY`, `ANNUALLY`, and `DAILY`.
   const GetBudgetResult({
     this.accountId,
     this.arn,

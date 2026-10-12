@@ -5,14 +5,14 @@ import 'template_source_entity_source_analysis.dart';
 import 'template_source_entity_source_template.dart';
 
 class TemplateSourceEntity {
-  /// The source analysis, if it is based on an analysis.. Only one of `sourceAnalysis` or `sourceTemplate` should be configured. See source_analysis.
+  /// Source analysis, if it is based on an analysis. Only one of `sourceAnalysis` or `sourceTemplate` should be configured. See `sourceAnalysis` Block.
   final pulumi.Input<TemplateSourceEntitySourceAnalysis?>? sourceAnalysis;
-  /// The source template, if it is based on an template.. Only one of `sourceAnalysis` or `sourceTemplate` should be configured. See source_template.
+  /// Source template, if it is based on a template. Only one of `sourceAnalysis` or `sourceTemplate` should be configured. See `sourceTemplate` Block.
   final pulumi.Input<TemplateSourceEntitySourceTemplate?>? sourceTemplate;
 
   /// Creates a new [TemplateSourceEntity].
-  /// [sourceAnalysis] The source analysis, if it is based on an analysis.. Only one of `sourceAnalysis` or `sourceTemplate` should be configured. See source_analysis.
-  /// [sourceTemplate] The source template, if it is based on an template.. Only one of `sourceAnalysis` or `sourceTemplate` should be configured. See source_template.
+  /// [sourceAnalysis] Source analysis, if it is based on an analysis. Only one of `sourceAnalysis` or `sourceTemplate` should be configured. See `sourceAnalysis` Block.
+  /// [sourceTemplate] Source template, if it is based on a template. Only one of `sourceAnalysis` or `sourceTemplate` should be configured. See `sourceTemplate` Block.
   const TemplateSourceEntity({
     this.sourceAnalysis,
     this.sourceTemplate,

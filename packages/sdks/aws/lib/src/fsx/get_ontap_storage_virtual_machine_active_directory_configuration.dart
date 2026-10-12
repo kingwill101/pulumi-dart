@@ -6,11 +6,12 @@ import 'get_ontap_storage_virtual_machine_active_directory_configuration_self_ma
 class GetOntapStorageVirtualMachineActiveDirectoryConfiguration {
   /// NetBIOS name of the AD computer object to which the SVM is joined.
   final pulumi.Input<String> netbiosName;
+  /// Configuration of the self-managed Microsoft Active Directory (AD) directory to which the SVM is joined. See `selfManagedActiveDirectoryConfiguration` Block below.
   final pulumi.Input<List<GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration>> selfManagedActiveDirectoryConfigurations;
 
   /// Creates a new [GetOntapStorageVirtualMachineActiveDirectoryConfiguration].
   /// [netbiosName] NetBIOS name of the AD computer object to which the SVM is joined.
-  /// [selfManagedActiveDirectoryConfigurations] Required.
+  /// [selfManagedActiveDirectoryConfigurations] Configuration of the self-managed Microsoft Active Directory (AD) directory to which the SVM is joined. See `selfManagedActiveDirectoryConfiguration` Block below.
   const GetOntapStorageVirtualMachineActiveDirectoryConfiguration({
     required this.netbiosName,
     required this.selfManagedActiveDirectoryConfigurations,

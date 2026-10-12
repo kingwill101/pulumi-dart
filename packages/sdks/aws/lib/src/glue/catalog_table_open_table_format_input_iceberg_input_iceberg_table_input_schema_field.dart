@@ -53,7 +53,7 @@ class CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaField {
   factory CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaField.fromMap(Map<String, dynamic> map) {
     return CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaField(
       doc: (() { final guardedValue = map['doc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      id: pulumi.Input.fromValue((map['id'] as num).toInt()),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       initialDefault: (() { final guardedValue = map['initialDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       required: pulumi.Input.fromValue(map['required'] as bool),

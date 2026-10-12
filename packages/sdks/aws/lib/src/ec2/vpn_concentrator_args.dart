@@ -12,10 +12,10 @@ class VpnConcentratorArgs {
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   /// ID of the transit gateway to attach the VPN concentrator to.
-  ///
-  /// The following arguments are optional:
   final pulumi.Input<String> transitGatewayId;
   /// Type of VPN concentrator. Valid value: `ipsec.1`.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> type;
 
   /// Creates a new [VpnConcentratorArgs].

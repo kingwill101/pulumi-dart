@@ -53,10 +53,10 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsRtmpGroupSettings {
       adMarkers: (() { final guardedValue = map['adMarkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       authenticationScheme: (() { final guardedValue = map['authenticationScheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cacheFullBehavior: (() { final guardedValue = map['cacheFullBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cacheLength: (() { final guardedValue = map['cacheLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cacheLength: (() { final guardedValue = map['cacheLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       captionData: (() { final guardedValue = map['captionData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       inputLossAction: (() { final guardedValue = map['inputLossAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      restartDelay: (() { final guardedValue = map['restartDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      restartDelay: (() { final guardedValue = map['restartDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -11,7 +11,7 @@ class ClusterIamRolesArgs {
   final pulumi.Input<String> clusterIdentifier;
   /// ARN for the IAM role that was set as default for the cluster when the cluster was created.
   final pulumi.Input<String?>? defaultIamRoleArn;
-  /// A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
+  /// A list of IAM Role ARNs to associate with the cluster. A maximum of 50 (or 10 in ISO regions) can be associated with the cluster at any time.
   final pulumi.Input<List<String>?>? iamRoleArns;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -19,7 +19,7 @@ class ClusterIamRolesArgs {
   /// Creates a new [ClusterIamRolesArgs].
   /// [clusterIdentifier] The name of the Redshift Cluster IAM Roles.
   /// [defaultIamRoleArn] ARN for the IAM role that was set as default for the cluster when the cluster was created.
-  /// [iamRoleArns] A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
+  /// [iamRoleArns] A list of IAM Role ARNs to associate with the cluster. A maximum of 50 (or 10 in ISO regions) can be associated with the cluster at any time.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const ClusterIamRolesArgs({
     required this.clusterIdentifier,

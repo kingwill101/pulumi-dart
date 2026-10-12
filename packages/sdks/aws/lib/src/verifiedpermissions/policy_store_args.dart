@@ -8,23 +8,25 @@ import 'policy_store_validation_settings.dart';
 /// {@endtemplate}
 /// {@macro pulumi_verifiedpermissions_policy_store_policy_store_args_doc}
 class PolicyStoreArgs {
-  /// Specifies whether the policy store can be deleted. If enabled, the policy store can't be deleted. Valid Values: `ENABLED`, `DISABLED`. Default value: `DISABLED`.
+  /// Whether the policy store can be deleted. If enabled, the policy store can't be deleted. Valid Values: `ENABLED`, `DISABLED`. Default value: `DISABLED`.
   final pulumi.Input<String?>? deletionProtection;
-  /// A description of the Policy Store.
+  /// Description of the Policy Store.
   final pulumi.Input<String?>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// Validation settings for the policy store.
+  /// Validation settings for the policy store. See Validation Settings below.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<PolicyStoreValidationSettings> validationSettings;
 
   /// Creates a new [PolicyStoreArgs].
-  /// [deletionProtection] Specifies whether the policy store can be deleted. If enabled, the policy store can't be deleted. Valid Values: `ENABLED`, `DISABLED`. Default value: `DISABLED`.
-  /// [description] A description of the Policy Store.
+  /// [deletionProtection] Whether the policy store can be deleted. If enabled, the policy store can't be deleted. Valid Values: `ENABLED`, `DISABLED`. Default value: `DISABLED`.
+  /// [description] Description of the Policy Store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [validationSettings] Validation settings for the policy store.
+  /// [validationSettings] Validation settings for the policy store. See Validation Settings below.
   const PolicyStoreArgs({
     this.deletionProtection,
     this.description,

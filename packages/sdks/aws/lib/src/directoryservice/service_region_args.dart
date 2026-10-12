@@ -50,7 +50,7 @@ class ServiceRegionArgs {
 
   factory ServiceRegionArgs.fromMap(Map<String, dynamic> map) {
     return ServiceRegionArgs(
-      desiredNumberOfDomainControllers: (() { final guardedValue = map['desiredNumberOfDomainControllers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      desiredNumberOfDomainControllers: (() { final guardedValue = map['desiredNumberOfDomainControllers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       directoryId: pulumi.Input.fromValue(map['directoryId'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       regionName: pulumi.Input.fromValue(map['regionName'] as String),

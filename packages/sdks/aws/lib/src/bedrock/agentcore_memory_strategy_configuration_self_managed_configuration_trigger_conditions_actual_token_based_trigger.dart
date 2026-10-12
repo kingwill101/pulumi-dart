@@ -20,7 +20,7 @@ class AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditi
 
   factory AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditionsActualTokenBasedTrigger.fromMap(Map<String, dynamic> map) {
     return AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditionsActualTokenBasedTrigger(
-      tokenCount: pulumi.Input.fromValue((map['tokenCount'] as num).toInt()),
+      tokenCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tokenCount'])),
     );
   }
 }

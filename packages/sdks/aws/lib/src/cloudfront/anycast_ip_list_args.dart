@@ -41,7 +41,7 @@ class AnycastIpListArgs {
 
   factory AnycastIpListArgs.fromMap(Map<String, dynamic> map) {
     return AnycastIpListArgs(
-      ipCount: pulumi.Input.fromValue((map['ipCount'] as num).toInt()),
+      ipCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ipCount'])),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnycastIpListTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

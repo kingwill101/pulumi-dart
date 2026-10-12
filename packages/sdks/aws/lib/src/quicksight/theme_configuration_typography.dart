@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'theme_configuration_typography_font_family.dart';
 
 class ThemeConfigurationTypography {
-  /// Determines the list of font families. Maximum number of 5 items. See font_families.
+  /// List of font families. Maximum number of 5 items. See font_families.
   final pulumi.Input<List<ThemeConfigurationTypographyFontFamily>?>? fontFamilies;
 
   /// Creates a new [ThemeConfigurationTypography].
-  /// [fontFamilies] Determines the list of font families. Maximum number of 5 items. See font_families.
+  /// [fontFamilies] List of font families. Maximum number of 5 items. See font_families.
   const ThemeConfigurationTypography({
     this.fontFamilies,
   });

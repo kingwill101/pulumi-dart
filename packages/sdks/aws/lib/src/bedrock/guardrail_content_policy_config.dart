@@ -5,15 +5,14 @@ import 'guardrail_content_policy_config_filters_config.dart';
 import 'guardrail_content_policy_config_tier_config.dart';
 
 class GuardrailContentPolicyConfig {
-  /// Set of content filter configs in content policy.
-  /// See Filters Config for more information.
+  /// Set of content filter configs in content policy. See `content_policy_config.filters_config` Block for more information.
   final pulumi.Input<List<GuardrailContentPolicyConfigFiltersConfig>?>? filtersConfigs;
-  /// Configuration block for the content policy tier. See Tier Config for more information.
+  /// Configuration block for the content policy tier. See `content_policy_config.tier_config` Block for more information.
   final pulumi.Input<List<GuardrailContentPolicyConfigTierConfig>?>? tierConfigs;
 
   /// Creates a new [GuardrailContentPolicyConfig].
-  /// [filtersConfigs] Set of content filter configs in content policy.
-  /// [tierConfigs] Configuration block for the content policy tier. See Tier Config for more information.
+  /// [filtersConfigs] Set of content filter configs in content policy. See `content_policy_config.filters_config` Block for more information.
+  /// [tierConfigs] Configuration block for the content policy tier. See `content_policy_config.tier_config` Block for more information.
   const GuardrailContentPolicyConfig({
     this.filtersConfigs,
     this.tierConfigs,

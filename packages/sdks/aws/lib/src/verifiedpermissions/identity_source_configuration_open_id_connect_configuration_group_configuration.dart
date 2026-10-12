@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfiguration {
-  /// The token claim that you want Verified Permissions to interpret as group membership. For example, `groups`.
+  /// Token claim that you want Verified Permissions to interpret as group membership. For example, `groups`.
   final pulumi.Input<String> groupClaim;
-  /// The name of the schema entity type that's mapped to the user pool group. Defaults to `AWS::CognitoGroup`.
+  /// Policy store entity type that you want to map your users' group claim to. For example, `MyCorp::UserGroup`. A group entity type is an entity that can have a user entity type as a member.
   final pulumi.Input<String> groupEntityType;
 
   /// Creates a new [IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfiguration].
-  /// [groupClaim] The token claim that you want Verified Permissions to interpret as group membership. For example, `groups`.
-  /// [groupEntityType] The name of the schema entity type that's mapped to the user pool group. Defaults to `AWS::CognitoGroup`.
+  /// [groupClaim] Token claim that you want Verified Permissions to interpret as group membership. For example, `groups`.
+  /// [groupEntityType] Policy store entity type that you want to map your users' group claim to. For example, `MyCorp::UserGroup`. A group entity type is an entity that can have a user entity type as a member.
   const IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfiguration({
     required this.groupClaim,
     required this.groupEntityType,

@@ -7,9 +7,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_apprunner_custom_domain_association_custom_domain_association_args_doc}
 class CustomDomainAssociationArgs {
-  /// Custom domain endpoint to association. Specify a base domain e.g., `example.com` or a subdomain e.g., `subdomain.example.com`.
+  /// Custom domain endpoint to association. Specify a base domain e.g., `example.com` or a subdomain e.g., `subdomain.example.com`. Must not end with a trailing period. `enableWwwSubdomain` must be set to `false` when using a wildcard domain.
   final pulumi.Input<String> domainName;
-  /// Whether to associate the subdomain with the App Runner service in addition to the base domain. Defaults to `true`.
+  /// Whether to associate the subdomain with the App Runner service in addition to the base domain. Defaults to `true`. Must be set to `false` when `domainName` is a wildcard domain.
   final pulumi.Input<bool?>? enableWwwSubdomain;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -17,8 +17,8 @@ class CustomDomainAssociationArgs {
   final pulumi.Input<String> serviceArn;
 
   /// Creates a new [CustomDomainAssociationArgs].
-  /// [domainName] Custom domain endpoint to association. Specify a base domain e.g., `example.com` or a subdomain e.g., `subdomain.example.com`.
-  /// [enableWwwSubdomain] Whether to associate the subdomain with the App Runner service in addition to the base domain. Defaults to `true`.
+  /// [domainName] Custom domain endpoint to association. Specify a base domain e.g., `example.com` or a subdomain e.g., `subdomain.example.com`. Must not end with a trailing period. `enableWwwSubdomain` must be set to `false` when using a wildcard domain.
+  /// [enableWwwSubdomain] Whether to associate the subdomain with the App Runner service in addition to the base domain. Defaults to `true`. Must be set to `false` when `domainName` is a wildcard domain.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceArn] ARN of the App Runner service.
   const CustomDomainAssociationArgs({

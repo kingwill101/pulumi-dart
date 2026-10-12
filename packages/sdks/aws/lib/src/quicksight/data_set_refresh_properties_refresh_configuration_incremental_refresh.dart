@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_set_refresh_properties_refresh_configuration_incremental_refresh_lookback_window.dart';
 
 class DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh {
-  /// The lookback window setup for an incremental refresh configuration. See lookback_window.
+  /// Lookback window setup for an incremental refresh configuration. See `lookbackWindow` Block below.
   final pulumi.Input<DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWindow> lookbackWindow;
 
   /// Creates a new [DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh].
-  /// [lookbackWindow] The lookback window setup for an incremental refresh configuration. See lookback_window.
+  /// [lookbackWindow] Lookback window setup for an incremental refresh configuration. See `lookbackWindow` Block below.
   const DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh({
     required this.lookbackWindow,
   });

@@ -5,14 +5,14 @@ import 'query_logging_configuration_destination_cloudwatch_logs.dart';
 import 'query_logging_configuration_destination_filters.dart';
 
 class QueryLoggingConfigurationDestination {
-  /// Configuration block for CloudWatch Logs destination. See `cloudwatchLogs`.
+  /// Configuration block for CloudWatch Logs destination. See `cloudwatchLogs` Block.
   final pulumi.Input<QueryLoggingConfigurationDestinationCloudwatchLogs> cloudwatchLogs;
-  /// A list of filter configurations that specify which logs should be sent to the destination. See `filters`.
+  /// List of filter configurations that specify which logs should be sent to the destination. See `filters` Block.
   final pulumi.Input<QueryLoggingConfigurationDestinationFilters> filters;
 
   /// Creates a new [QueryLoggingConfigurationDestination].
-  /// [cloudwatchLogs] Configuration block for CloudWatch Logs destination. See `cloudwatchLogs`.
-  /// [filters] A list of filter configurations that specify which logs should be sent to the destination. See `filters`.
+  /// [cloudwatchLogs] Configuration block for CloudWatch Logs destination. See `cloudwatchLogs` Block.
+  /// [filters] List of filter configurations that specify which logs should be sent to the destination. See `filters` Block.
   const QueryLoggingConfigurationDestination({
     required this.cloudwatchLogs,
     required this.filters,

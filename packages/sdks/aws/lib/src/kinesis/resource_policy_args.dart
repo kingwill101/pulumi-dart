@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_kinesis_resource_policy_resource_policy_args_doc}
 class ResourcePolicyArgs {
-  /// The policy document.
+  /// Policy document.
   final pulumi.Input<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -15,7 +15,7 @@ class ResourcePolicyArgs {
   final pulumi.Input<String> resourceArn;
 
   /// Creates a new [ResourcePolicyArgs].
-  /// [policy] The policy document.
+  /// [policy] Policy document.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] ARN of the data stream or consumer.
   const ResourcePolicyArgs({

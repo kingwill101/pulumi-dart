@@ -267,11 +267,9 @@ import 'proxy_protocol_policy_state.dart';
 ///         - '587'
 /// ```
 class ProxyProtocolPolicy extends pulumi.CustomResource {
-  /// List of instance ports to which the policy
-  /// should be applied. This can be specified if the protocol is SSL or TCP.
+  /// List of instance ports to which the policy should be applied. This can be specified if the protocol is SSL or TCP.
   late final pulumi.Output<List<String>> instancePorts;
-  /// The load balancer to which the policy
-  /// should be attached.
+  /// Load balancer to which the policy should be attached.
   late final pulumi.Output<String> loadBalancer;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -288,7 +286,7 @@ class ProxyProtocolPolicy extends pulumi.CustomResource {
           'aws:ec2/proxyProtocolPolicy:ProxyProtocolPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     instancePorts = registerOutput<List<String>>('instancePorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loadBalancer = registerOutput<String>('loadBalancer');

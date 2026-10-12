@@ -7,20 +7,20 @@ import 'table_schema_definition_partition_key.dart';
 import 'table_schema_definition_static_column.dart';
 
 class TableSchemaDefinition {
-  /// The columns that are part of the clustering key of the table.
+  /// Columns that are part of the clustering key of the table. See `clusteringKey` below.
   final pulumi.Input<List<TableSchemaDefinitionClusteringKey>?>? clusteringKeys;
-  /// The regular columns of the table.
+  /// Regular columns of the table. See `column` below.
   final pulumi.Input<List<TableSchemaDefinitionColumn>> columns;
-  /// The columns that are part of the partition key of the table .
+  /// Columns that are part of the partition key of the table. See `partitionKey` below.
   final pulumi.Input<List<TableSchemaDefinitionPartitionKey>> partitionKeys;
-  /// The columns that have been defined as `STATIC`. Static columns store values that are shared by all rows in the same partition.
+  /// Columns that have been defined as `STATIC`. Static columns store values that are shared by all rows in the same partition. See `staticColumn` below.
   final pulumi.Input<List<TableSchemaDefinitionStaticColumn>?>? staticColumns;
 
   /// Creates a new [TableSchemaDefinition].
-  /// [clusteringKeys] The columns that are part of the clustering key of the table.
-  /// [columns] The regular columns of the table.
-  /// [partitionKeys] The columns that are part of the partition key of the table .
-  /// [staticColumns] The columns that have been defined as `STATIC`. Static columns store values that are shared by all rows in the same partition.
+  /// [clusteringKeys] Columns that are part of the clustering key of the table. See `clusteringKey` below.
+  /// [columns] Regular columns of the table. See `column` below.
+  /// [partitionKeys] Columns that are part of the partition key of the table. See `partitionKey` below.
+  /// [staticColumns] Columns that have been defined as `STATIC`. Static columns store values that are shared by all rows in the same partition. See `staticColumn` below.
   const TableSchemaDefinition({
     this.clusteringKeys,
     required this.columns,

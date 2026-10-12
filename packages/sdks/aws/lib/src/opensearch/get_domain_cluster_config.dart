@@ -84,14 +84,14 @@ class GetDomainClusterConfig {
   factory GetDomainClusterConfig.fromMap(Map<String, dynamic> map) {
     return GetDomainClusterConfig(
       coldStorageOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDomainClusterConfigColdStorageOption>(map['coldStorageOptions']!, (value) => GetDomainClusterConfigColdStorageOption.fromMap((value as Map).cast<String, dynamic>()))),
-      dedicatedMasterCount: pulumi.Input.fromValue((map['dedicatedMasterCount'] as num).toInt()),
+      dedicatedMasterCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dedicatedMasterCount'])),
       dedicatedMasterEnabled: pulumi.Input.fromValue(map['dedicatedMasterEnabled'] as bool),
       dedicatedMasterType: pulumi.Input.fromValue(map['dedicatedMasterType'] as String),
-      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toInt()),
+      instanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instanceCount'])),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       multiAzWithStandbyEnabled: pulumi.Input.fromValue(map['multiAzWithStandbyEnabled'] as bool),
       nodeOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDomainClusterConfigNodeOption>(map['nodeOptions']!, (value) => GetDomainClusterConfigNodeOption.fromMap((value as Map).cast<String, dynamic>()))),
-      warmCount: pulumi.Input.fromValue((map['warmCount'] as num).toInt()),
+      warmCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['warmCount'])),
       warmEnabled: (() { final guardedValue = map['warmEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       warmType: pulumi.Input.fromValue(map['warmType'] as String),
       zoneAwarenessConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDomainClusterConfigZoneAwarenessConfig>(map['zoneAwarenessConfigs']!, (value) => GetDomainClusterConfigZoneAwarenessConfig.fromMap((value as Map).cast<String, dynamic>()))),

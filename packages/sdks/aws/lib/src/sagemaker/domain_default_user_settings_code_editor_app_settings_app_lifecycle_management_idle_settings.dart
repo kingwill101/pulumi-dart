@@ -35,10 +35,10 @@ class DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSe
 
   factory DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings(
-      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       lifecycleManagement: (() { final guardedValue = map['lifecycleManagement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxIdleTimeoutInMinutes: (() { final guardedValue = map['maxIdleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minIdleTimeoutInMinutes: (() { final guardedValue = map['minIdleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxIdleTimeoutInMinutes: (() { final guardedValue = map['maxIdleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minIdleTimeoutInMinutes: (() { final guardedValue = map['minIdleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

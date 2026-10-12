@@ -3,14 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeSourceParametersSqsQueueParameters {
-  /// The maximum number of records to include in each batch. Maximum value of 10000.
   final pulumi.Input<int?>? batchSize;
-  /// The maximum length of a time to wait for events. Maximum value of 300.
   final pulumi.Input<int?>? maximumBatchingWindowInSeconds;
 
   /// Creates a new [PipeSourceParametersSqsQueueParameters].
-  /// [batchSize] The maximum number of records to include in each batch. Maximum value of 10000.
-  /// [maximumBatchingWindowInSeconds] The maximum length of a time to wait for events. Maximum value of 300.
+  /// [batchSize] Optional.
+  /// [maximumBatchingWindowInSeconds] Optional.
   const PipeSourceParametersSqsQueueParameters({
     this.batchSize,
     this.maximumBatchingWindowInSeconds,
@@ -25,8 +23,8 @@ class PipeSourceParametersSqsQueueParameters {
 
   factory PipeSourceParametersSqsQueueParameters.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersSqsQueueParameters(
-      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maximumBatchingWindowInSeconds: (() { final guardedValue = map['maximumBatchingWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maximumBatchingWindowInSeconds: (() { final guardedValue = map['maximumBatchingWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

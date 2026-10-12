@@ -27,7 +27,7 @@ class GetDedicatedHostAvailableCapacity {
   factory GetDedicatedHostAvailableCapacity.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostAvailableCapacity(
       availableInstanceCapacities: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDedicatedHostAvailableCapacityAvailableInstanceCapacity>(map['availableInstanceCapacities']!, (value) => GetDedicatedHostAvailableCapacityAvailableInstanceCapacity.fromMap((value as Map).cast<String, dynamic>()))),
-      availableVcpus: pulumi.Input.fromValue((map['availableVcpus'] as num).toInt()),
+      availableVcpus: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['availableVcpus'])),
     );
   }
 }

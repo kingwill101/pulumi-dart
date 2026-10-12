@@ -118,6 +118,19 @@ import 'resource_association_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `resourceShareArn` (String) ARN of the RAM Resource Share.
+/// * `resourceArn` (String) ARN of the resource associated with the RAM Resource Share.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import RAM Resource Associations using their Resource Share ARN and Resource ARN separated by a comma. For example:
 ///
 /// ```sh
@@ -143,7 +156,7 @@ class ResourceAssociation extends pulumi.CustomResource {
           'aws:ram/resourceAssociation:ResourceAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

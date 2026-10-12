@@ -11,13 +11,13 @@ class GetClusterArgs {
   final pulumi.Input<String> clusterIdentifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A map of tags assigned to the resource.
+  /// Map of tags assigned to the resource.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetClusterArgs].
   /// [clusterIdentifier] Cluster identifier of the RDS cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags assigned to the resource.
+  /// [tags] Map of tags assigned to the resource.
   const GetClusterArgs({
     required this.clusterIdentifier,
     this.region,

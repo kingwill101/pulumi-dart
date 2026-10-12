@@ -73,7 +73,7 @@ class DomainState {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deadLetterQueueUrl: (() { final guardedValue = map['deadLetterQueueUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultEncryptionKey: (() { final guardedValue = map['defaultEncryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      defaultExpirationDays: (() { final guardedValue = map['defaultExpirationDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultExpirationDays: (() { final guardedValue = map['defaultExpirationDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       matching: (() { final guardedValue = map['matching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainMatching.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -66,7 +66,7 @@ class UsageLimitState {
 
   factory UsageLimitState.fromMap(Map<String, dynamic> map) {
     return UsageLimitState(
-      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       breachAction: (() { final guardedValue = map['breachAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clusterIdentifier: (() { final guardedValue = map['clusterIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

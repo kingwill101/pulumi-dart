@@ -12,57 +12,58 @@ import 'endpoint_sse_specification.dart';
 /// {@endtemplate}
 /// {@macro pulumi_verifiedaccess_endpoint_endpoint_args_doc}
 class EndpointArgs {
-  /// The DNS name for users to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
+  /// DNS name for users to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
   final pulumi.Input<String?>? applicationDomain;
-  /// The type of attachment. Currently, only `vpc` is supported.
+  /// Type of attachment. Currently, only `vpc` is supported.
   final pulumi.Input<String> attachmentType;
-  /// The CIDR block details. This parameter is required if the endpoint type is `cidr`.
+  /// CIDR block details. This parameter is required if the endpoint type is `cidr`. See below.
   final pulumi.Input<EndpointCidrOptions?>? cidrOptions;
-  /// A description for the Verified Access endpoint.
+  /// Description for the Verified Access endpoint.
   final pulumi.Input<String?>? description;
-  /// The ARN of the public TLS/SSL certificate in AWS Certificate Manager to associate with the endpoint. The CN in the certificate must match the DNS name your end users will use to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
+  /// ARN of the public TLS/SSL certificate in AWS Certificate Manager to associate with the endpoint. The CN in the certificate must match the DNS name your end users will use to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
   final pulumi.Input<String?>? domainCertificateArn;
-  /// A custom identifier that is prepended to the DNS name that is generated for the endpoint.
+  /// Custom identifier that is prepended to the DNS name that is generated for the endpoint.
   final pulumi.Input<String?>? endpointDomainPrefix;
-  /// The type of Verified Access endpoint to create. Currently `load-balancer` or `network-interface` are supported.
+  /// Type of Verified Access endpoint to create. Valid values are `load-balancer`, `network-interface`, `cidr`, and `rds`.
   final pulumi.Input<String> endpointType;
-  /// The load balancer details. This parameter is required if the endpoint type is `load-balancer`.
+  /// Load balancer details. This parameter is required if the endpoint type is `load-balancer`. See below.
   final pulumi.Input<EndpointLoadBalancerOptions?>? loadBalancerOptions;
-  /// The network interface details. This parameter is required if the endpoint type is `network-interface`.
+  /// Network interface details. This parameter is required if the endpoint type is `network-interface`. See below.
   final pulumi.Input<EndpointNetworkInterfaceOptions?>? networkInterfaceOptions;
-  /// The policy document that is associated with this resource.
+  /// Policy document that is associated with this resource.
   final pulumi.Input<String?>? policyDocument;
+  /// RDS details. This parameter is required if the endpoint type is `rds`. See below.
   final pulumi.Input<EndpointRdsOptions?>? rdsOptions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// List of the the security groups IDs to associate with the Verified Access endpoint.
+  /// List of the security groups IDs to associate with the Verified Access endpoint.
   final pulumi.Input<List<String>?>? securityGroupIds;
-  /// The options in use for server side encryption.
+  /// Options in use for server side encryption. See below.
   final pulumi.Input<EndpointSseSpecification?>? sseSpecification;
   /// Key-value tags for the Verified Access Endpoint. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// The ID of the Verified Access group to associate the endpoint with.
+  /// ID of the Verified Access group to associate the endpoint with.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> verifiedAccessGroupId;
 
   /// Creates a new [EndpointArgs].
-  /// [applicationDomain] The DNS name for users to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
-  /// [attachmentType] The type of attachment. Currently, only `vpc` is supported.
-  /// [cidrOptions] The CIDR block details. This parameter is required if the endpoint type is `cidr`.
-  /// [description] A description for the Verified Access endpoint.
-  /// [domainCertificateArn] The ARN of the public TLS/SSL certificate in AWS Certificate Manager to associate with the endpoint. The CN in the certificate must match the DNS name your end users will use to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
-  /// [endpointDomainPrefix] A custom identifier that is prepended to the DNS name that is generated for the endpoint.
-  /// [endpointType] The type of Verified Access endpoint to create. Currently `load-balancer` or `network-interface` are supported.
-  /// [loadBalancerOptions] The load balancer details. This parameter is required if the endpoint type is `load-balancer`.
-  /// [networkInterfaceOptions] The network interface details. This parameter is required if the endpoint type is `network-interface`.
-  /// [policyDocument] The policy document that is associated with this resource.
-  /// [rdsOptions] Optional.
+  /// [applicationDomain] DNS name for users to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
+  /// [attachmentType] Type of attachment. Currently, only `vpc` is supported.
+  /// [cidrOptions] CIDR block details. This parameter is required if the endpoint type is `cidr`. See below.
+  /// [description] Description for the Verified Access endpoint.
+  /// [domainCertificateArn] ARN of the public TLS/SSL certificate in AWS Certificate Manager to associate with the endpoint. The CN in the certificate must match the DNS name your end users will use to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
+  /// [endpointDomainPrefix] Custom identifier that is prepended to the DNS name that is generated for the endpoint.
+  /// [endpointType] Type of Verified Access endpoint to create. Valid values are `load-balancer`, `network-interface`, `cidr`, and `rds`.
+  /// [loadBalancerOptions] Load balancer details. This parameter is required if the endpoint type is `load-balancer`. See below.
+  /// [networkInterfaceOptions] Network interface details. This parameter is required if the endpoint type is `network-interface`. See below.
+  /// [policyDocument] Policy document that is associated with this resource.
+  /// [rdsOptions] RDS details. This parameter is required if the endpoint type is `rds`. See below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [securityGroupIds] List of the the security groups IDs to associate with the Verified Access endpoint.
-  /// [sseSpecification] The options in use for server side encryption.
+  /// [securityGroupIds] List of the security groups IDs to associate with the Verified Access endpoint.
+  /// [sseSpecification] Options in use for server side encryption. See below.
   /// [tags] Key-value tags for the Verified Access Endpoint. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [verifiedAccessGroupId] The ID of the Verified Access group to associate the endpoint with.
+  /// [verifiedAccessGroupId] ID of the Verified Access group to associate the endpoint with.
   const EndpointArgs({
     this.applicationDomain,
     required this.attachmentType,

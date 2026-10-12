@@ -8,27 +8,31 @@ import 'thesaurus_source_s3_path.dart';
 /// {@endtemplate}
 /// {@macro pulumi_kendra_thesaurus_thesaurus_args_doc}
 class ThesaurusArgs {
+  /// Description for a thesaurus.
   final pulumi.Input<String?>? description;
-  /// The identifier of the index for a thesaurus.
+  /// Identifier of the index for a thesaurus.
   final pulumi.Input<String> indexId;
-  /// The name for the thesaurus.
+  /// Name for the thesaurus.
   final pulumi.Input<String?>? name;
-  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The IAM (Identity and Access Management) role used to access the thesaurus file in S3.
+  /// IAM (Identity and Access Management) role used to access the thesaurus file in S3.
   final pulumi.Input<String> roleArn;
-  /// The S3 path where your thesaurus file sits in S3. Detailed below.
+  /// S3 path where your thesaurus file sits in S3. Detailed below.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<ThesaurusSourceS3Path> sourceS3Path;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ThesaurusArgs].
-  /// [description] Optional.
-  /// [indexId] The identifier of the index for a thesaurus.
-  /// [name] The name for the thesaurus.
-  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  /// [roleArn] The IAM (Identity and Access Management) role used to access the thesaurus file in S3.
-  /// [sourceS3Path] The S3 path where your thesaurus file sits in S3. Detailed below.
-  /// [tags] Optional.
+  /// [description] Description for a thesaurus.
+  /// [indexId] Identifier of the index for a thesaurus.
+  /// [name] Name for the thesaurus.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [roleArn] IAM (Identity and Access Management) role used to access the thesaurus file in S3.
+  /// [sourceS3Path] S3 path where your thesaurus file sits in S3. Detailed below.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ThesaurusArgs({
     this.description,
     required this.indexId,

@@ -34,7 +34,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting(
       archiveCdnSettings: (() { final guardedValue = map['archiveCdnSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       destination: pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())),
-      rolloverInterval: (() { final guardedValue = map['rolloverInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      rolloverInterval: (() { final guardedValue = map['rolloverInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

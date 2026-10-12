@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_source_configuration_cognito_user_pool_configuration_group_configuration.dart';
 
 class IdentitySourceConfigurationCognitoUserPoolConfiguration {
-  /// The unique application client IDs that are associated with the specified Amazon Cognito user pool.
+  /// Unique application client IDs that are associated with the specified Amazon Cognito user pool.
   final pulumi.Input<List<String>?>? clientIds;
-  /// The type of entity that a policy store maps to groups from an Amazon Cognito user pool identity source. See Group Configuration below.
+  /// Type of entity that a policy store maps to groups from an Amazon Cognito user pool identity source. See Group Configuration below.
   final pulumi.Input<IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration?>? groupConfiguration;
   /// ARN of the Amazon Cognito user pool that contains the identities to be authorized.
   final pulumi.Input<String> userPoolArn;
 
   /// Creates a new [IdentitySourceConfigurationCognitoUserPoolConfiguration].
-  /// [clientIds] The unique application client IDs that are associated with the specified Amazon Cognito user pool.
-  /// [groupConfiguration] The type of entity that a policy store maps to groups from an Amazon Cognito user pool identity source. See Group Configuration below.
+  /// [clientIds] Unique application client IDs that are associated with the specified Amazon Cognito user pool.
+  /// [groupConfiguration] Type of entity that a policy store maps to groups from an Amazon Cognito user pool identity source. See Group Configuration below.
   /// [userPoolArn] ARN of the Amazon Cognito user pool that contains the identities to be authorized.
   const IdentitySourceConfigurationCognitoUserPoolConfiguration({
     this.clientIds,

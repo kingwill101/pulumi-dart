@@ -7,39 +7,41 @@ import 'firehose_delivery_stream_iceberg_configuration_processing_configuration.
 import 'firehose_delivery_stream_iceberg_configuration_s3_configuration.dart';
 
 class FirehoseDeliveryStreamIcebergConfiguration {
+  /// Whether to enable append only operations. When set, Firehose only performs insert operations on the destination Apache Iceberg Tables.
   final pulumi.Input<bool?>? appendOnly;
   /// Buffer incoming data for the specified period of time, in seconds between 0 and 900, before delivering it to the destination. The default value is 300.
   final pulumi.Input<int?>? bufferingInterval;
   /// Buffer incoming data to the specified size, in MBs between 1 and 128, before delivering it to the destination. The default value is 5.
   final pulumi.Input<int?>? bufferingSize;
-  /// Glue catalog ARN identifier of the destination Apache Iceberg Tables. You must specify the ARN in the format `arn:aws:glue:region:account-id:catalog`
+  /// Glue catalog ARN identifier of the destination Apache Iceberg Tables. You must specify the ARN in the format `arn:aws:glue:region:account-id:catalog`.
   final pulumi.Input<String> catalogArn;
-  /// The CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
+  /// CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamIcebergConfigurationCloudwatchLoggingOptions?>? cloudwatchLoggingOptions;
   /// Destination table configurations which Firehose uses to deliver data to Apache Iceberg Tables. Firehose will write data with insert if table specific configuration is not provided. See `destinationTableConfiguration` block below for details.
   final pulumi.Input<List<FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration>?>? destinationTableConfigurations;
-  /// The data processing configuration.  See `processingConfiguration` block below for details.
+  /// Data processing configuration.  See `processingConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamIcebergConfigurationProcessingConfiguration?>? processingConfiguration;
-  /// The period of time, in seconds between 0 to 7200, during which Firehose retries to deliver data to the specified destination.
+  /// Period of time, in seconds between 0 to 7200, during which Firehose retries to deliver data to the specified destination.
   final pulumi.Input<int?>? retryDuration;
-  /// The ARN of the IAM role to be assumed by Firehose for calling Apache Iceberg Tables.
+  /// ARN of the IAM role to be assumed by Firehose for calling Apache Iceberg Tables.
   final pulumi.Input<String> roleArn;
+  /// Amazon S3 backup mode. Valid values are `FailedDataOnly` and `AllData`. Default value is `FailedDataOnly`.
   final pulumi.Input<String?>? s3BackupMode;
-  /// The S3 Configuration. See `s3Configuration` block below for details.
+  /// S3 Configuration. See `s3Configuration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamIcebergConfigurationS3Configuration> s3Configuration;
 
   /// Creates a new [FirehoseDeliveryStreamIcebergConfiguration].
-  /// [appendOnly] Optional.
+  /// [appendOnly] Whether to enable append only operations. When set, Firehose only performs insert operations on the destination Apache Iceberg Tables.
   /// [bufferingInterval] Buffer incoming data for the specified period of time, in seconds between 0 and 900, before delivering it to the destination. The default value is 300.
   /// [bufferingSize] Buffer incoming data to the specified size, in MBs between 1 and 128, before delivering it to the destination. The default value is 5.
-  /// [catalogArn] Glue catalog ARN identifier of the destination Apache Iceberg Tables. You must specify the ARN in the format `arn:aws:glue:region:account-id:catalog`
-  /// [cloudwatchLoggingOptions] The CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
+  /// [catalogArn] Glue catalog ARN identifier of the destination Apache Iceberg Tables. You must specify the ARN in the format `arn:aws:glue:region:account-id:catalog`.
+  /// [cloudwatchLoggingOptions] CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
   /// [destinationTableConfigurations] Destination table configurations which Firehose uses to deliver data to Apache Iceberg Tables. Firehose will write data with insert if table specific configuration is not provided. See `destinationTableConfiguration` block below for details.
-  /// [processingConfiguration] The data processing configuration.  See `processingConfiguration` block below for details.
-  /// [retryDuration] The period of time, in seconds between 0 to 7200, during which Firehose retries to deliver data to the specified destination.
-  /// [roleArn] The ARN of the IAM role to be assumed by Firehose for calling Apache Iceberg Tables.
-  /// [s3BackupMode] Optional.
-  /// [s3Configuration] The S3 Configuration. See `s3Configuration` block below for details.
+  /// [processingConfiguration] Data processing configuration.  See `processingConfiguration` block below for details.
+  /// [retryDuration] Period of time, in seconds between 0 to 7200, during which Firehose retries to deliver data to the specified destination.
+  /// [roleArn] ARN of the IAM role to be assumed by Firehose for calling Apache Iceberg Tables.
+  /// [s3BackupMode] Amazon S3 backup mode. Valid values are `FailedDataOnly` and `AllData`. Default value is `FailedDataOnly`.
+  /// [s3Configuration] S3 Configuration. See `s3Configuration` block below for details.
   const FirehoseDeliveryStreamIcebergConfiguration({
     this.appendOnly,
     this.bufferingInterval,
@@ -73,13 +75,13 @@ class FirehoseDeliveryStreamIcebergConfiguration {
   factory FirehoseDeliveryStreamIcebergConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamIcebergConfiguration(
       appendOnly: (() { final guardedValue = map['appendOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      bufferingInterval: (() { final guardedValue = map['bufferingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      bufferingSize: (() { final guardedValue = map['bufferingSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bufferingInterval: (() { final guardedValue = map['bufferingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      bufferingSize: (() { final guardedValue = map['bufferingSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       catalogArn: pulumi.Input.fromValue(map['catalogArn'] as String),
       cloudwatchLoggingOptions: (() { final guardedValue = map['cloudwatchLoggingOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirehoseDeliveryStreamIcebergConfigurationCloudwatchLoggingOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       destinationTableConfigurations: (() { final guardedValue = map['destinationTableConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration>(guardedValue, (value) => FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       processingConfiguration: (() { final guardedValue = map['processingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirehoseDeliveryStreamIcebergConfigurationProcessingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      retryDuration: (() { final guardedValue = map['retryDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retryDuration: (() { final guardedValue = map['retryDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       roleArn: pulumi.Input.fromValue(map['roleArn'] as String),
       s3BackupMode: (() { final guardedValue = map['s3BackupMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3Configuration: pulumi.Input.fromValue(FirehoseDeliveryStreamIcebergConfigurationS3Configuration.fromMap((map['s3Configuration']! as Map).cast<String, dynamic>())),

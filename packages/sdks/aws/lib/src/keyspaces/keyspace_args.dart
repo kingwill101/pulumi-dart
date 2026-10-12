@@ -8,20 +8,20 @@ import 'keyspace_replication_specification.dart';
 /// {@endtemplate}
 /// {@macro pulumi_keyspaces_keyspace_keyspace_args_doc}
 class KeyspaceArgs {
-  /// The name of the keyspace to be created.
+  /// Name of the keyspace to be created.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The replication specification of the keyspace.
+  /// Replication specification of the keyspace. See below.
   final pulumi.Input<KeyspaceReplicationSpecification?>? replicationSpecification;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [KeyspaceArgs].
-  /// [name] The name of the keyspace to be created.
+  /// [name] Name of the keyspace to be created.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [replicationSpecification] The replication specification of the keyspace.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [replicationSpecification] Replication specification of the keyspace. See below.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const KeyspaceArgs({
     this.name,
     this.region,

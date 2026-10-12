@@ -93,7 +93,7 @@ class WebAclRuleArgs {
       challengeConfig: (() { final guardedValue = map['challengeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleChallengeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       overrideAction: (() { final guardedValue = map['overrideAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleOverrideAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleLabels: (() { final guardedValue = map['ruleLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclRuleRuleLabel>(guardedValue, (value) => WebAclRuleRuleLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
       statement: (() { final guardedValue = map['statement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WebAclRuleStatement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

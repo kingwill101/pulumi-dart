@@ -1539,7 +1539,7 @@ import 'instance_state.dart';
 /// $ pulumi import aws:ec2/instance:Instance web i-12345678
 /// ```
 class Instance extends pulumi.CustomResource {
-  /// AMI to use for the instance. Required unless `launchTemplate` is specified and the Launch Template specifes an AMI. If an AMI is specified in the Launch Template, setting `ami` will override the AMI specified in the Launch Template.
+  /// AMI to use for the instance. Required unless `launchTemplate` is specified and the Launch Template specifies an AMI. If an AMI is specified in the Launch Template, setting `ami` will override the AMI specified in the Launch Template.
   late final pulumi.Output<String> ami;
   /// ARN of the instance.
   late final pulumi.Output<String> arn;
@@ -1678,7 +1678,7 @@ class Instance extends pulumi.CustomResource {
           'aws:ec2/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     ami = registerOutput<String>('ami');
     arn = registerOutput<String>('arn');

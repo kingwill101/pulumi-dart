@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_budget_calculated_spend_actual_spend.dart';
 
 class GetBudgetCalculatedSpend {
+  /// Amount of cost, usage, RI units, or Savings Plans units used. See `actualSpend` Block for details.
   final pulumi.Input<List<GetBudgetCalculatedSpendActualSpend>> actualSpends;
 
   /// Creates a new [GetBudgetCalculatedSpend].
-  /// [actualSpends] Required.
+  /// [actualSpends] Amount of cost, usage, RI units, or Savings Plans units used. See `actualSpend` Block for details.
   const GetBudgetCalculatedSpend({
     required this.actualSpends,
   });

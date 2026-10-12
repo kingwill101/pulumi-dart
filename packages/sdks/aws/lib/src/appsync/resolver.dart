@@ -824,7 +824,7 @@ import 'resolver_sync_config.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.appsync.Resolver` using the `apiId`, a hyphen, `type`, a hypen and `field`. For example:
+/// Using `pulumi import`, import `aws.appsync.Resolver` using the `apiId`, a hyphen, `type`, a hyphen and `field`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appsync/resolver:Resolver example abcdef123456-exampleType-exampleField
@@ -873,7 +873,7 @@ class Resolver extends pulumi.CustomResource {
           'aws:appsync/resolver:Resolver',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');

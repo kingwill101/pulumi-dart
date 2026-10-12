@@ -8,24 +8,24 @@ import 'resource_policy_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_amp_resource_policy_resource_policy_args_doc}
 class ResourcePolicyArgs {
-  /// The JSON policy document to use as the resource-based policy. This policy defines the permissions that other AWS accounts or services have to access your workspace.
-  ///
-  /// The following arguments are optional:
+  /// JSON policy document to use as the resource-based policy. This policy defines the permissions that other AWS accounts or services have to access your workspace.
   final pulumi.Input<String> policyDocument;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The revision ID of the current resource-based policy.
+  /// Revision ID of the current resource-based policy.
   final pulumi.Input<String?>? revisionId;
   final pulumi.Input<ResourcePolicyTimeouts?>? timeouts;
-  /// The ID of the workspace to attach the resource-based policy to.
+  /// ID of the workspace to attach the resource-based policy to.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> workspaceId;
 
   /// Creates a new [ResourcePolicyArgs].
-  /// [policyDocument] The JSON policy document to use as the resource-based policy. This policy defines the permissions that other AWS accounts or services have to access your workspace.
+  /// [policyDocument] JSON policy document to use as the resource-based policy. This policy defines the permissions that other AWS accounts or services have to access your workspace.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [revisionId] The revision ID of the current resource-based policy.
+  /// [revisionId] Revision ID of the current resource-based policy.
   /// [timeouts] Optional.
-  /// [workspaceId] The ID of the workspace to attach the resource-based policy to.
+  /// [workspaceId] ID of the workspace to attach the resource-based policy to.
   const ResourcePolicyArgs({
     required this.policyDocument,
     this.region,

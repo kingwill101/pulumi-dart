@@ -2953,13 +2953,15 @@ import 'web_acl_rule_visibility_config.dart';
 ///                     .build())
 ///                 .build())
 ///             .statement(WebAclRuleStatementArgs.builder()
-///                 .notStatement(Map.of("statement", WebAclRuleStatementArgs.builder()
-///                     .geoMatchStatement(WebAclRuleStatementGeoMatchStatementArgs.builder()
-///                         .countryCodes(
-///                             "US",
-///                             "CA")
+///                 .notStatement(WebAclRuleStatementNotStatementArgs.builder()
+///                     .statement(WebAclRuleStatementArgs.builder()
+///                         .geoMatchStatement(WebAclRuleStatementGeoMatchStatementArgs.builder()
+///                             .countryCodes(
+///                                 "US",
+///                                 "CA")
+///                             .build())
 ///                         .build())
-///                     .build()))
+///                     .build())
 ///                 .build())
 ///             .visibilityConfig(WebAclRuleVisibilityConfigArgs.builder()
 ///                 .cloudwatchMetricsEnabled(true)
@@ -3058,7 +3060,7 @@ class WebAclRuleWafv2 extends pulumi.CustomResource {
           'aws:wafv2/webAclRule:WebAclRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     action = registerOutput<WebAclRuleAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     captchaConfig = registerOutput<WebAclRuleCaptchaConfig?>('captchaConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclRuleCaptchaConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

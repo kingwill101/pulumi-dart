@@ -3,29 +3,29 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IndexUserTokenConfigurationsJwtTokenTypeConfiguration {
-  /// The regular expression that identifies the claim. Minimum length of 1. Maximum length of 100.
+  /// Regular expression that identifies the claim. Minimum length of 1. Maximum length of 100.
   final pulumi.Input<String?>? claimRegex;
-  /// The group attribute field. Minimum length of 1. Maximum length of 100.
+  /// Group attribute field. Minimum length of 1. Maximum length of 100.
   final pulumi.Input<String?>? groupAttributeField;
-  /// The issuer of the token. Minimum length of 1. Maximum length of 65.
+  /// Issuer of the token. Minimum length of 1. Maximum length of 65.
   final pulumi.Input<String?>? issuer;
-  /// The location of the key. Valid values are `URL` or `SECRET_MANAGER`
+  /// Location of the key. Valid values are `URL` or `SECRET_MANAGER`.
   final pulumi.Input<String> keyLocation;
   /// ARN of the secret.
   final pulumi.Input<String?>? secretsManagerArn;
-  /// The signing key URL. Valid pattern is `^(https?|ftp|file):\/\/([^\s]*)`
+  /// Signing key URL. Valid pattern is `^(https?|ftp|file):\/\/([^\s]*)`.
   final pulumi.Input<String?>? url;
-  /// The user name attribute field. Minimum length of 1. Maximum length of 100.
+  /// User name attribute field. Minimum length of 1. Maximum length of 100.
   final pulumi.Input<String?>? userNameAttributeField;
 
   /// Creates a new [IndexUserTokenConfigurationsJwtTokenTypeConfiguration].
-  /// [claimRegex] The regular expression that identifies the claim. Minimum length of 1. Maximum length of 100.
-  /// [groupAttributeField] The group attribute field. Minimum length of 1. Maximum length of 100.
-  /// [issuer] The issuer of the token. Minimum length of 1. Maximum length of 65.
-  /// [keyLocation] The location of the key. Valid values are `URL` or `SECRET_MANAGER`
+  /// [claimRegex] Regular expression that identifies the claim. Minimum length of 1. Maximum length of 100.
+  /// [groupAttributeField] Group attribute field. Minimum length of 1. Maximum length of 100.
+  /// [issuer] Issuer of the token. Minimum length of 1. Maximum length of 65.
+  /// [keyLocation] Location of the key. Valid values are `URL` or `SECRET_MANAGER`.
   /// [secretsManagerArn] ARN of the secret.
-  /// [url] The signing key URL. Valid pattern is `^(https?|ftp|file):\/\/([^\s]*)`
-  /// [userNameAttributeField] The user name attribute field. Minimum length of 1. Maximum length of 100.
+  /// [url] Signing key URL. Valid pattern is `^(https?|ftp|file):\/\/([^\s]*)`.
+  /// [userNameAttributeField] User name attribute field. Minimum length of 1. Maximum length of 100.
   const IndexUserTokenConfigurationsJwtTokenTypeConfiguration({
     this.claimRegex,
     this.groupAttributeField,

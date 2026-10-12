@@ -30,7 +30,7 @@ class HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstanceGroup {
 
   factory HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstanceGroup.fromMap(Map<String, dynamic> map) {
     return HyperParameterTuningJobTrainingJobDefinitionResourceConfigInstanceGroup(
-      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toInt()),
+      instanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instanceCount'])),
       instanceGroupName: pulumi.Input.fromValue(map['instanceGroupName'] as String),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
     );

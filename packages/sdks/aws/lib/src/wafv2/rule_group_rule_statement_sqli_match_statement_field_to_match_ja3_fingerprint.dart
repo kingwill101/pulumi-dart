@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleStatementSqliMatchStatementFieldToMatchJa3Fingerprint {
-  /// The match status to assign to the web request if the request doesn't have a JA3 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
+  /// Match status to assign to the web request if there is insufficient TLS Client Hello information to compute the JA3 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
   final pulumi.Input<String> fallbackBehavior;
 
   /// Creates a new [RuleGroupRuleStatementSqliMatchStatementFieldToMatchJa3Fingerprint].
-  /// [fallbackBehavior] The match status to assign to the web request if the request doesn't have a JA3 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
+  /// [fallbackBehavior] Match status to assign to the web request if there is insufficient TLS Client Hello information to compute the JA3 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
   const RuleGroupRuleStatementSqliMatchStatementFieldToMatchJa3Fingerprint({
     required this.fallbackBehavior,
   });

@@ -7,13 +7,13 @@ class DataSetColumnGroupGeoSpatialColumnGroup {
   final pulumi.Input<List<String>> columns;
   /// Country code. Valid values are `US`.
   final pulumi.Input<String> countryCode;
-  /// A display name for the hierarchy.
+  /// Display name for the hierarchy.
   final pulumi.Input<String> name;
 
   /// Creates a new [DataSetColumnGroupGeoSpatialColumnGroup].
   /// [columns] Columns in this hierarchy.
   /// [countryCode] Country code. Valid values are `US`.
-  /// [name] A display name for the hierarchy.
+  /// [name] Display name for the hierarchy.
   const DataSetColumnGroupGeoSpatialColumnGroup({
     required this.columns,
     required this.countryCode,

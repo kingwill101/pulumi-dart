@@ -3,25 +3,30 @@
 
 /// Result data returned by getLedger.
 class GetLedgerResult {
+  /// ARN of the QLDB Ledger.
   final String? arn;
+  /// Deletion protection setting of the QLDB Ledger.
   final bool? deletionProtection;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
+  /// KMS key used for encryption of data at rest in the ledger.
   final String? kmsKey;
   final String? name;
+  /// Permissions mode of the QLDB Ledger.
   final String? permissionsMode;
   final String? region;
+  /// Map of tags assigned to the resource.
   final Map<String, String>? tags;
 
   /// Creates a new [GetLedgerResult].
-  /// [arn] Optional.
-  /// [deletionProtection] Optional.
+  /// [arn] ARN of the QLDB Ledger.
+  /// [deletionProtection] Deletion protection setting of the QLDB Ledger.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [kmsKey] Optional.
+  /// [kmsKey] KMS key used for encryption of data at rest in the ledger.
   /// [name] Optional.
-  /// [permissionsMode] Optional.
+  /// [permissionsMode] Permissions mode of the QLDB Ledger.
   /// [region] Optional.
-  /// [tags] Optional.
+  /// [tags] Map of tags assigned to the resource.
   const GetLedgerResult({
     this.arn,
     this.deletionProtection,

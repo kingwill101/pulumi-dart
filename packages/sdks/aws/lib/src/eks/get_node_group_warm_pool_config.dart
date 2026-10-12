@@ -35,8 +35,8 @@ class GetNodeGroupWarmPoolConfig {
 
   factory GetNodeGroupWarmPoolConfig.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupWarmPoolConfig(
-      maxGroupPreparedCapacity: pulumi.Input.fromValue((map['maxGroupPreparedCapacity'] as num).toInt()),
-      minSize: pulumi.Input.fromValue((map['minSize'] as num).toInt()),
+      maxGroupPreparedCapacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxGroupPreparedCapacity'])),
+      minSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minSize'])),
       poolState: pulumi.Input.fromValue(map['poolState'] as String),
       reuseOnScaleIn: pulumi.Input.fromValue(map['reuseOnScaleIn'] as bool),
     );

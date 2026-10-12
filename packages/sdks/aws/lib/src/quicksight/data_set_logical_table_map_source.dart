@@ -6,14 +6,14 @@ import 'data_set_logical_table_map_source_join_instruction.dart';
 class DataSetLogicalTableMapSource {
   /// ARN of the parent data set.
   final pulumi.Input<String?>? dataSetArn;
-  /// Specifies the result of a join of two logical tables. See join_instruction.
+  /// Result of a join of two logical tables. See `joinInstruction` Block below.
   final pulumi.Input<DataSetLogicalTableMapSourceJoinInstruction?>? joinInstruction;
   /// Physical table ID.
   final pulumi.Input<String?>? physicalTableId;
 
   /// Creates a new [DataSetLogicalTableMapSource].
   /// [dataSetArn] ARN of the parent data set.
-  /// [joinInstruction] Specifies the result of a join of two logical tables. See join_instruction.
+  /// [joinInstruction] Result of a join of two logical tables. See `joinInstruction` Block below.
   /// [physicalTableId] Physical table ID.
   const DataSetLogicalTableMapSource({
     this.dataSetArn,

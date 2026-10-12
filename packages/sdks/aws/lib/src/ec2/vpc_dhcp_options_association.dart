@@ -123,13 +123,13 @@ import 'vpc_dhcp_options_association_state.dart';
 /// $ pulumi import aws:ec2/vpcDhcpOptionsAssociation:VpcDhcpOptionsAssociation imported vpc-0f001273ec18911b1
 /// ```
 class VpcDhcpOptionsAssociation extends pulumi.CustomResource {
-  /// The ID of the DHCP Options Set to associate to the VPC.
-  ///
-  /// &gt; **Note:** Only one DHCP Options Set can be associated to a given VPC. Removing the association automatically sets AWS's `default` DHCP Options Set to the VPC.
+  /// ID of the DHCP Options Set to associate to the VPC.
   late final pulumi.Output<String> dhcpOptionsId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The ID of the VPC to which we would like to associate a DHCP Options Set.
+  /// ID of the VPC to which we would like to associate a DHCP Options Set.
+  ///
+  /// &gt; **Note:** Only one DHCP Options Set can be associated to a given VPC. Removing the association automatically sets AWS's `default` DHCP Options Set to the VPC.
   late final pulumi.Output<String> vpcId;
 
   /// Creates a new [VpcDhcpOptionsAssociation].
@@ -144,7 +144,7 @@ class VpcDhcpOptionsAssociation extends pulumi.CustomResource {
           'aws:ec2/vpcDhcpOptionsAssociation:VpcDhcpOptionsAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     dhcpOptionsId = registerOutput<String>('dhcpOptionsId');
     region = registerOutput<String>('region');

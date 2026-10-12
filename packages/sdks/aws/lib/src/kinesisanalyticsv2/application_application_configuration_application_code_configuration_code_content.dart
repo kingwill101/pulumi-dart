@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_application_configuration_application_code_configuration_code_content_s3_content_location.dart';
 
 class ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent {
-  /// Information about the Amazon S3 bucket containing the application code.
+  /// Information about the Amazon S3 bucket containing the application code. See `s3ContentLocation` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation?>? s3ContentLocation;
-  /// The text-format code for the application.
+  /// Text-format code for the application.
   final pulumi.Input<String?>? textContent;
 
   /// Creates a new [ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent].
-  /// [s3ContentLocation] Information about the Amazon S3 bucket containing the application code.
-  /// [textContent] The text-format code for the application.
+  /// [s3ContentLocation] Information about the Amazon S3 bucket containing the application code. See `s3ContentLocation` Block below.
+  /// [textContent] Text-format code for the application.
   const ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent({
     this.s3ContentLocation,
     this.textContent,

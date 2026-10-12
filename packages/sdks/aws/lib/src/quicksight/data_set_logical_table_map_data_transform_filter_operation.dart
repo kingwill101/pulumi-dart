@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetLogicalTableMapDataTransformFilterOperation {
-  /// An expression that must evaluate to a Boolean value. Rows for which the expression evaluates to true are kept in the dataset.
+  /// Expression that must evaluate to a Boolean value. Rows for which the expression evaluates to true are kept in the dataset.
   final pulumi.Input<String> conditionExpression;
 
   /// Creates a new [DataSetLogicalTableMapDataTransformFilterOperation].
-  /// [conditionExpression] An expression that must evaluate to a Boolean value. Rows for which the expression evaluates to true are kept in the dataset.
+  /// [conditionExpression] Expression that must evaluate to a Boolean value. Rows for which the expression evaluates to true are kept in the dataset.
   const DataSetLogicalTableMapDataTransformFilterOperation({
     required this.conditionExpression,
   });

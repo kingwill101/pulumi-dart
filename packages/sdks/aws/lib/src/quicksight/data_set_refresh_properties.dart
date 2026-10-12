@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_set_refresh_properties_refresh_configuration.dart';
 
 class DataSetRefreshProperties {
-  /// The refresh configuration for the data set. See refresh_configuration.
+  /// Refresh configuration for the data set. See `refreshConfiguration` Block below.
   final pulumi.Input<DataSetRefreshPropertiesRefreshConfiguration> refreshConfiguration;
 
   /// Creates a new [DataSetRefreshProperties].
-  /// [refreshConfiguration] The refresh configuration for the data set. See refresh_configuration.
+  /// [refreshConfiguration] Refresh configuration for the data set. See `refreshConfiguration` Block below.
   const DataSetRefreshProperties({
     required this.refreshConfiguration,
   });

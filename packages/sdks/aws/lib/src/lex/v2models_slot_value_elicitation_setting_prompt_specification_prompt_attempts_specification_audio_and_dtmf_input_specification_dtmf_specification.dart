@@ -33,8 +33,8 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecif
     return V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification(
       deletionCharacter: pulumi.Input.fromValue(map['deletionCharacter'] as String),
       endCharacter: pulumi.Input.fromValue(map['endCharacter'] as String),
-      endTimeoutMs: pulumi.Input.fromValue((map['endTimeoutMs'] as num).toInt()),
-      maxLength: pulumi.Input.fromValue((map['maxLength'] as num).toInt()),
+      endTimeoutMs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['endTimeoutMs'])),
+      maxLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxLength'])),
     );
   }
 }

@@ -181,7 +181,7 @@ class EndpointArgs {
       oracleSettings: (() { final guardedValue = map['oracleSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointOracleSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pauseReplicationTasks: (() { final guardedValue = map['pauseReplicationTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       postgresSettings: (() { final guardedValue = map['postgresSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointPostgresSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       redisSettings: (() { final guardedValue = map['redisSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointRedisSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       redshiftSettings: (() { final guardedValue = map['redshiftSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointRedshiftSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

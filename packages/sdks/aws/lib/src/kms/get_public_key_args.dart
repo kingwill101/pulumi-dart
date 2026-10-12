@@ -7,20 +7,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_kms_get_public_key_get_public_key_args_doc}
 class GetPublicKeyArgs {
-  /// List of grant tokens
+  /// List of grant tokens.
   final pulumi.Input<List<String>?>? grantTokens;
-  /// Key identifier which can be one of the following format:
-  /// * Key ID. E.g - `1234abcd-12ab-34cd-56ef-1234567890ab`
-  /// * Key ARN. E.g. - `arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
-  /// * Alias name. E.g. - `alias/my-key`
-  /// * Alias ARN - E.g. - `arn:aws:kms:us-east-1:111122223333:alias/my-key`
+  /// Key identifier which can be one of the following formats: key ID (e.g., `1234abcd-12ab-34cd-56ef-1234567890ab`), key ARN (e.g., `arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`), alias name (e.g., `alias/my-key`), or alias ARN (e.g., `arn:aws:kms:us-east-1:111122223333:alias/my-key`).
   final pulumi.Input<String> keyId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [GetPublicKeyArgs].
-  /// [grantTokens] List of grant tokens
-  /// [keyId] Key identifier which can be one of the following format:
+  /// [grantTokens] List of grant tokens.
+  /// [keyId] Key identifier which can be one of the following formats: key ID (e.g., `1234abcd-12ab-34cd-56ef-1234567890ab`), key ARN (e.g., `arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`), alias name (e.g., `alias/my-key`), or alias ARN (e.g., `arn:aws:kms:us-east-1:111122223333:alias/my-key`).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetPublicKeyArgs({
     this.grantTokens,

@@ -1671,39 +1671,41 @@ import 'application_state.dart';
 /// $ pulumi import aws:kinesisanalyticsv2/application:Application example arn:aws:kinesisanalytics:us-west-2:123456789012:application/example-sql-application
 /// ```
 class Application extends pulumi.CustomResource {
-  /// The application's configuration
+  /// Application configuration. See `applicationConfiguration` Block below.
   late final pulumi.Output<ApplicationApplicationConfiguration> applicationConfiguration;
-  /// The application's mode. Valid values are `STREAMING`, `INTERACTIVE`.
+  /// Application's mode. Valid values are `STREAMING`, `INTERACTIVE`.
   late final pulumi.Output<String> applicationMode;
-  /// The ARN of the application.
+  /// ARN of the application.
   late final pulumi.Output<String> arn;
-  /// A CloudWatch log stream to monitor application configuration errors.
+  /// CloudWatch log stream to monitor application configuration errors. See `cloudwatchLoggingOptions` Block below.
   late final pulumi.Output<ApplicationCloudwatchLoggingOptions?> cloudwatchLoggingOptions;
-  /// The current timestamp when the application was created.
+  /// Current timestamp when the application was created.
   late final pulumi.Output<String> createTimestamp;
-  /// A summary description of the application.
+  /// Summary description of the application.
   late final pulumi.Output<String?> description;
   /// Whether to force stop an unresponsive Flink-based application.
   late final pulumi.Output<bool?> forceStop;
-  /// The current timestamp when the application was last updated.
+  /// Current timestamp when the application was last updated.
   late final pulumi.Output<String> lastUpdateTimestamp;
-  /// The name of the application.
+  /// Name of the application.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The runtime environment for the application. Valid values: `SQL-1_0`, `FLINK-1_6`, `FLINK-1_8`, `FLINK-1_11`, `FLINK-1_13`, `FLINK-1_15`, `FLINK-1_18`, `FLINK-1_19`, `FLINK-1_20`, `FLINK-2_2`.
+  /// Runtime environment for the application. Valid values: `SQL-1_0`, `FLINK-1_6`, `FLINK-1_8`, `FLINK-1_11`, `FLINK-1_13`, `FLINK-1_15`, `FLINK-1_18`, `FLINK-1_19`, `FLINK-1_20`, `FLINK-2_2`, `FLINK-2_3`.
   late final pulumi.Output<String> runtimeEnvironment;
-  /// The ARN of the IAM role used by the application to access Kinesis data streams, Kinesis Data Firehose delivery streams, Amazon S3 objects, and other external resources.
+  /// ARN of the IAM role used by the application to access Kinesis data streams, Kinesis Data Firehose delivery streams, Amazon S3 objects, and other external resources.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> serviceExecutionRole;
   /// Whether to start or stop the application.
   late final pulumi.Output<bool?> startApplication;
-  /// The status of the application.
+  /// Status of the application.
   late final pulumi.Output<String> status;
-  /// A map of tags to assign to the application. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
+  /// Map of tags to assign to the application. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The current application version. Kinesis Data Analytics updates the `versionId` each time the application is updated.
+  /// Current application version. Kinesis Data Analytics updates the `versionId` each time the application is updated.
   late final pulumi.Output<int> versionId;
 
   /// Creates a new [Application].
@@ -1718,7 +1720,7 @@ class Application extends pulumi.CustomResource {
           'aws:kinesisanalyticsv2/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     applicationConfiguration = registerOutput<ApplicationApplicationConfiguration>('applicationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationApplicationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     applicationMode = registerOutput<String>('applicationMode');

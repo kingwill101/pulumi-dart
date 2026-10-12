@@ -509,7 +509,7 @@ import 'connection_state.dart';
 ///     connectionType: "CUSTOM",
 ///     connectionProperties: {
 ///         CONNECTOR_CLASS_NAME: "net.snowflake.client.jdbc.SnowflakeDriver",
-///         CONNECTION_TYPE: "Jdbc",
+///         CONNECTOR_TYPE: "Jdbc",
 ///         CONNECTOR_URL: "s3://example/snowflake-jdbc.jar",
 ///         JDBC_CONNECTION_URL: "[[\"default=jdbc:snowflake://example.com/?user=${user}&password=${password}\"],\",\"]",
 ///     },
@@ -521,7 +521,7 @@ import 'connection_state.dart';
 ///     connectionType: "CUSTOM",
 ///     connectionProperties: {
 ///         CONNECTOR_CLASS_NAME: "net.snowflake.client.jdbc.SnowflakeDriver",
-///         CONNECTION_TYPE: "Jdbc",
+///         CONNECTOR_TYPE: "Jdbc",
 ///         CONNECTOR_URL: "s3://example/snowflake-jdbc.jar",
 ///         JDBC_CONNECTION_URL: "jdbc:snowflake://example.com/?user=${user}&password=${password}",
 ///         SECRET_ID: example.then(example => example.name),
@@ -544,7 +544,7 @@ import 'connection_state.dart';
 ///     connection_type="CUSTOM",
 ///     connection_properties={
 ///         "CONNECTOR_CLASS_NAME": "net.snowflake.client.jdbc.SnowflakeDriver",
-///         "CONNECTION_TYPE": "Jdbc",
+///         "CONNECTOR_TYPE": "Jdbc",
 ///         "CONNECTOR_URL": "s3://example/snowflake-jdbc.jar",
 ///         "JDBC_CONNECTION_URL": "[[\"default=jdbc:snowflake://example.com/?user=${user}&password=${password}\"],\",\"]",
 ///     },
@@ -555,7 +555,7 @@ import 'connection_state.dart';
 ///     connection_type="CUSTOM",
 ///     connection_properties={
 ///         "CONNECTOR_CLASS_NAME": "net.snowflake.client.jdbc.SnowflakeDriver",
-///         "CONNECTION_TYPE": "Jdbc",
+///         "CONNECTOR_TYPE": "Jdbc",
 ///         "CONNECTOR_URL": "s3://example/snowflake-jdbc.jar",
 ///         "JDBC_CONNECTION_URL": "jdbc:snowflake://example.com/?user=${user}&password=${password}",
 ///         "SECRET_ID": example.name,
@@ -587,7 +587,7 @@ import 'connection_state.dart';
 ///         ConnectionProperties =
 ///         {
 ///             { "CONNECTOR_CLASS_NAME", "net.snowflake.client.jdbc.SnowflakeDriver" },
-///             { "CONNECTION_TYPE", "Jdbc" },
+///             { "CONNECTOR_TYPE", "Jdbc" },
 ///             { "CONNECTOR_URL", "s3://example/snowflake-jdbc.jar" },
 ///             { "JDBC_CONNECTION_URL", "[[\"default=jdbc:snowflake://example.com/?user=${user}&password=${password}\"],\",\"]" },
 ///         },
@@ -605,7 +605,7 @@ import 'connection_state.dart';
 ///         ConnectionProperties =
 ///         {
 ///             { "CONNECTOR_CLASS_NAME", "net.snowflake.client.jdbc.SnowflakeDriver" },
-///             { "CONNECTION_TYPE", "Jdbc" },
+///             { "CONNECTOR_TYPE", "Jdbc" },
 ///             { "CONNECTOR_URL", "s3://example/snowflake-jdbc.jar" },
 ///             { "JDBC_CONNECTION_URL", "jdbc:snowflake://example.com/?user=${user}&password=${password}" },
 ///             { "SECRET_ID", example.Apply(getSecretResult => getSecretResult.Name) },
@@ -643,7 +643,7 @@ import 'connection_state.dart';
 /// 			ConnectionType: pulumi.String("CUSTOM"),
 /// 			ConnectionProperties: pulumi.StringMap{
 /// 				"CONNECTOR_CLASS_NAME": pulumi.String("net.snowflake.client.jdbc.SnowflakeDriver"),
-/// 				"CONNECTION_TYPE":      pulumi.String("Jdbc"),
+/// 				"CONNECTOR_TYPE":       pulumi.String("Jdbc"),
 /// 				"CONNECTOR_URL":        pulumi.String("s3://example/snowflake-jdbc.jar"),
 /// 				"JDBC_CONNECTION_URL":  pulumi.String("[[\"default=jdbc:snowflake://example.com/?user=${user}&password=${password}\"],\",\"]"),
 /// 			},
@@ -660,7 +660,7 @@ import 'connection_state.dart';
 /// 			ConnectionType: pulumi.String("CUSTOM"),
 /// 			ConnectionProperties: pulumi.StringMap{
 /// 				"CONNECTOR_CLASS_NAME": pulumi.String("net.snowflake.client.jdbc.SnowflakeDriver"),
-/// 				"CONNECTION_TYPE":      pulumi.String("Jdbc"),
+/// 				"CONNECTOR_TYPE":       pulumi.String("Jdbc"),
 /// 				"CONNECTOR_URL":        pulumi.String("s3://example/snowflake-jdbc.jar"),
 /// 				"JDBC_CONNECTION_URL":  pulumi.String("jdbc:snowflake://example.com/?user=${user}&password=${password}"),
 /// 				"SECRET_ID":            pulumi.String(example.Name),
@@ -695,7 +695,7 @@ import 'connection_state.dart';
 ///   connection_type = "CUSTOM"
 ///   connection_properties = {
 ///     "CONNECTOR_CLASS_NAME" = "net.snowflake.client.jdbc.SnowflakeDriver"
-///     "CONNECTION_TYPE"      = "Jdbc"
+///     "CONNECTOR_TYPE"       = "Jdbc"
 ///     "CONNECTOR_URL"        = "s3://example/snowflake-jdbc.jar"
 ///     "JDBC_CONNECTION_URL"  = "[[\"default=jdbc:snowflake://example.com/?user=$${user}&password=$${password}\"],\",\"]"
 ///   }
@@ -707,7 +707,7 @@ import 'connection_state.dart';
 ///   connection_type = "CUSTOM"
 ///   connection_properties = {
 ///     "CONNECTOR_CLASS_NAME" = "net.snowflake.client.jdbc.SnowflakeDriver"
-///     "CONNECTION_TYPE"      = "Jdbc"
+///     "CONNECTOR_TYPE"       = "Jdbc"
 ///     "CONNECTOR_URL"        = "s3://example/snowflake-jdbc.jar"
 ///     "JDBC_CONNECTION_URL"  = "jdbc:snowflake://example.com/?user=$${user}&password=$${password}"
 ///     "SECRET_ID"            = data.aws_secretsmanager_getsecret.example.name
@@ -751,7 +751,7 @@ import 'connection_state.dart';
 ///             .connectionType("CUSTOM")
 ///             .connectionProperties(Map.ofEntries(
 ///                 Map.entry("CONNECTOR_CLASS_NAME", "net.snowflake.client.jdbc.SnowflakeDriver"),
-///                 Map.entry("CONNECTION_TYPE", "Jdbc"),
+///                 Map.entry("CONNECTOR_TYPE", "Jdbc"),
 ///                 Map.entry("CONNECTOR_URL", "s3://example/snowflake-jdbc.jar"),
 ///                 Map.entry("JDBC_CONNECTION_URL", "[[\"default=jdbc:snowflake://example.com/?user=${user}&password=${password}\"],\",\"]")
 ///             ))
@@ -764,7 +764,7 @@ import 'connection_state.dart';
 ///             .connectionType("CUSTOM")
 ///             .connectionProperties(Map.ofEntries(
 ///                 Map.entry("CONNECTOR_CLASS_NAME", "net.snowflake.client.jdbc.SnowflakeDriver"),
-///                 Map.entry("CONNECTION_TYPE", "Jdbc"),
+///                 Map.entry("CONNECTOR_TYPE", "Jdbc"),
 ///                 Map.entry("CONNECTOR_URL", "s3://example/snowflake-jdbc.jar"),
 ///                 Map.entry("JDBC_CONNECTION_URL", "jdbc:snowflake://example.com/?user=${user}&password=${password}"),
 ///                 Map.entry("SECRET_ID", example.name())
@@ -786,7 +786,7 @@ import 'connection_state.dart';
 ///       connectionType: CUSTOM
 ///       connectionProperties:
 ///         CONNECTOR_CLASS_NAME: net.snowflake.client.jdbc.SnowflakeDriver
-///         CONNECTION_TYPE: Jdbc
+///         CONNECTOR_TYPE: Jdbc
 ///         CONNECTOR_URL: s3://example/snowflake-jdbc.jar
 ///         JDBC_CONNECTION_URL: '[["default=jdbc:snowflake://example.com/?user=$${user}&password=$${password}"],","]'
 ///       matchCriterias:
@@ -799,7 +799,7 @@ import 'connection_state.dart';
 ///       connectionType: CUSTOM
 ///       connectionProperties:
 ///         CONNECTOR_CLASS_NAME: net.snowflake.client.jdbc.SnowflakeDriver
-///         CONNECTION_TYPE: Jdbc
+///         CONNECTOR_TYPE: Jdbc
 ///         CONNECTOR_URL: s3://example/snowflake-jdbc.jar
 ///         JDBC_CONNECTION_URL: jdbc:snowflake://example.com/?user=$${user}&password=$${password}
 ///         SECRET_ID: ${example.name}
@@ -2690,7 +2690,7 @@ class Connection extends pulumi.CustomResource {
           'aws:glue/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
           additionalSecretOutputs: const ['athenaProperties', 'connectionProperties'],
         ) {
     arn = registerOutput<String>('arn');

@@ -176,7 +176,7 @@ import 'ciphertext_state.dart';
 class Ciphertext extends pulumi.CustomResource {
   /// Base64 encoded ciphertext
   late final pulumi.Output<String> ciphertextBlob;
-  /// An optional mapping that makes up the encryption context.
+  /// Mapping that makes up the encryption context.
   late final pulumi.Output<Map<String, String>?> context;
   /// Globally unique key ID for the customer master key.
   late final pulumi.Output<String> keyId;
@@ -185,7 +185,7 @@ class Ciphertext extends pulumi.CustomResource {
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Data to be encrypted. Note that this may show up in logs. It will not be stored in the state file.
   late final pulumi.Output<String?> plaintextWo;
-  /// Used together with `plaintextWo` to trigger a replacement. Modify this value when a replacement is required.
+  /// Triggers a replacement together with `plaintextWo`. Modify this value when a replacement is required.
   late final pulumi.Output<String?> plaintextWoVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -202,7 +202,7 @@ class Ciphertext extends pulumi.CustomResource {
           'aws:kms/ciphertext:Ciphertext',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
           additionalSecretOutputs: const ['plaintext', 'plaintextWo'],
         ) {
     ciphertextBlob = registerOutput<String>('ciphertextBlob');

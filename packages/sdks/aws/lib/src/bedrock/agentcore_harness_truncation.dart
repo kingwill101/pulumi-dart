@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_harness_truncation_config.dart';
 
 class AgentcoreHarnessTruncation {
-  /// Strategy-specific configuration. See `truncation config` below.
+  /// Strategy-specific configuration. See `truncation.config` Block below.
   final pulumi.Input<List<AgentcoreHarnessTruncationConfig>> configs;
   /// Truncation strategy. Valid values: `slidingWindow`, `summarization`, `none`.
   final pulumi.Input<String> strategy;
 
   /// Creates a new [AgentcoreHarnessTruncation].
-  /// [configs] Strategy-specific configuration. See `truncation config` below.
+  /// [configs] Strategy-specific configuration. See `truncation.config` Block below.
   /// [strategy] Truncation strategy. Valid values: `slidingWindow`, `summarization`, `none`.
   const AgentcoreHarnessTruncation({
     required this.configs,

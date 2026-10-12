@@ -40,11 +40,11 @@ class LabelingJobLabelCounter {
 
   factory LabelingJobLabelCounter.fromMap(Map<String, dynamic> map) {
     return LabelingJobLabelCounter(
-      failedNonRetryableError: pulumi.Input.fromValue((map['failedNonRetryableError'] as num).toInt()),
-      humanLabeled: pulumi.Input.fromValue((map['humanLabeled'] as num).toInt()),
-      machineLabeled: pulumi.Input.fromValue((map['machineLabeled'] as num).toInt()),
-      totalLabeled: pulumi.Input.fromValue((map['totalLabeled'] as num).toInt()),
-      unlabeled: pulumi.Input.fromValue((map['unlabeled'] as num).toInt()),
+      failedNonRetryableError: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['failedNonRetryableError'])),
+      humanLabeled: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['humanLabeled'])),
+      machineLabeled: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['machineLabeled'])),
+      totalLabeled: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalLabeled'])),
+      unlabeled: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['unlabeled'])),
     );
   }
 }

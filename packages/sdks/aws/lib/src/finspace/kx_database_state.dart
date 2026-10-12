@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KxDatabaseState {
   /// ARN identifier of the KX database.
   final pulumi.Input<String?>? arn;
-  /// Timestamp at which the databse is created in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
+  /// Timestamp at which the database is created in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
   final pulumi.Input<String?>? createdTimestamp;
   /// Description of the KX database.
   final pulumi.Input<String?>? description;
@@ -27,7 +27,7 @@ class KxDatabaseState {
 
   /// Creates a new [KxDatabaseState].
   /// [arn] ARN identifier of the KX database.
-  /// [createdTimestamp] Timestamp at which the databse is created in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
+  /// [createdTimestamp] Timestamp at which the database is created in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
   /// [description] Description of the KX database.
   /// [environmentId] Unique identifier for the KX environment.
   /// [lastModifiedTimestamp] Last timestamp at which the database was updated in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.

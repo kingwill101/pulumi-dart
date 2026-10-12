@@ -30,8 +30,8 @@ class CatalogTableOptimizerConfigurationCompactionConfigurationIcebergConfigurat
 
   factory CatalogTableOptimizerConfigurationCompactionConfigurationIcebergConfiguration.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerConfigurationCompactionConfigurationIcebergConfiguration(
-      deleteFileThreshold: (() { final guardedValue = map['deleteFileThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minInputFiles: (() { final guardedValue = map['minInputFiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      deleteFileThreshold: (() { final guardedValue = map['deleteFileThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minInputFiles: (() { final guardedValue = map['minInputFiles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       strategy: (() { final guardedValue = map['strategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

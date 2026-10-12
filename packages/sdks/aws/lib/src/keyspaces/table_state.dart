@@ -11,52 +11,52 @@ import 'table_ttl.dart';
 
 /// Input properties used for looking up and filtering Table resources.
 class TableState {
-  /// The ARN of the table.
+  /// ARN of the table.
   final pulumi.Input<String?>? arn;
-  /// Specifies the read/write throughput capacity mode for the table.
+  /// Read/write throughput capacity mode for the table. See `capacitySpecification` below.
   final pulumi.Input<TableCapacitySpecification?>? capacitySpecification;
-  /// Enables client-side timestamps for the table. By default, the setting is disabled.
+  /// Enables client-side timestamps for the table. By default, the setting is disabled. See `clientSideTimestamps` below.
   final pulumi.Input<TableClientSideTimestamps?>? clientSideTimestamps;
-  /// A description of the table.
+  /// Description of the table. See `comment` below.
   final pulumi.Input<TableComment?>? comment;
-  /// The default Time to Live setting in seconds for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL-how-it-works.html#ttl-howitworks_default_ttl).
+  /// Default Time to Live setting in seconds for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL-how-it-works.html#ttl-howitworks_default_ttl).
   final pulumi.Input<int?>? defaultTimeToLive;
-  /// Specifies how the encryption key for encryption at rest is managed for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/EncryptionAtRest.html).
+  /// Encryption key management for encryption at rest for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/EncryptionAtRest.html). See `encryptionSpecification` below.
   final pulumi.Input<TableEncryptionSpecification?>? encryptionSpecification;
-  /// The name of the keyspace that the table is going to be created in.
+  /// Name of the keyspace that the table is going to be created in.
   final pulumi.Input<String?>? keyspaceName;
-  /// Specifies if point-in-time recovery is enabled or disabled for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery.html).
+  /// Enables or disables point-in-time recovery for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery.html). See `pointInTimeRecovery` below.
   final pulumi.Input<TablePointInTimeRecovery?>? pointInTimeRecovery;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Describes the schema of the table.
+  /// Schema of the table. See `schemaDefinition` below.
   final pulumi.Input<TableSchemaDefinition?>? schemaDefinition;
-  /// The name of the table.
+  /// Name of the table.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String?>? tableName;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
-  /// Enables Time to Live custom settings for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL.html).
+  /// Enables Time to Live custom settings for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL.html). See `ttl` below.
   final pulumi.Input<TableTtl?>? ttl;
 
   /// Creates a new [TableState].
-  /// [arn] The ARN of the table.
-  /// [capacitySpecification] Specifies the read/write throughput capacity mode for the table.
-  /// [clientSideTimestamps] Enables client-side timestamps for the table. By default, the setting is disabled.
-  /// [comment] A description of the table.
-  /// [defaultTimeToLive] The default Time to Live setting in seconds for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL-how-it-works.html#ttl-howitworks_default_ttl).
-  /// [encryptionSpecification] Specifies how the encryption key for encryption at rest is managed for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/EncryptionAtRest.html).
-  /// [keyspaceName] The name of the keyspace that the table is going to be created in.
-  /// [pointInTimeRecovery] Specifies if point-in-time recovery is enabled or disabled for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery.html).
+  /// [arn] ARN of the table.
+  /// [capacitySpecification] Read/write throughput capacity mode for the table. See `capacitySpecification` below.
+  /// [clientSideTimestamps] Enables client-side timestamps for the table. By default, the setting is disabled. See `clientSideTimestamps` below.
+  /// [comment] Description of the table. See `comment` below.
+  /// [defaultTimeToLive] Default Time to Live setting in seconds for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL-how-it-works.html#ttl-howitworks_default_ttl).
+  /// [encryptionSpecification] Encryption key management for encryption at rest for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/EncryptionAtRest.html). See `encryptionSpecification` below.
+  /// [keyspaceName] Name of the keyspace that the table is going to be created in.
+  /// [pointInTimeRecovery] Enables or disables point-in-time recovery for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery.html). See `pointInTimeRecovery` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [schemaDefinition] Describes the schema of the table.
-  /// [tableName] The name of the table.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [ttl] Enables Time to Live custom settings for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL.html).
+  /// [schemaDefinition] Schema of the table. See `schemaDefinition` below.
+  /// [tableName] Name of the table.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [ttl] Enables Time to Live custom settings for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL.html). See `ttl` below.
   const TableState({
     this.arn,
     this.capacitySpecification,
@@ -99,7 +99,7 @@ class TableState {
       capacitySpecification: (() { final guardedValue = map['capacitySpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableCapacitySpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clientSideTimestamps: (() { final guardedValue = map['clientSideTimestamps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableClientSideTimestamps.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableComment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      defaultTimeToLive: (() { final guardedValue = map['defaultTimeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultTimeToLive: (() { final guardedValue = map['defaultTimeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       encryptionSpecification: (() { final guardedValue = map['encryptionSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableEncryptionSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keyspaceName: (() { final guardedValue = map['keyspaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pointInTimeRecovery: (() { final guardedValue = map['pointInTimeRecovery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TablePointInTimeRecovery.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

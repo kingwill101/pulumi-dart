@@ -4,12 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_registry_authorizer_configuration_custom_jwt_authorizer_custom_claim_authorizing_claim_match_value_claim_match_value.dart';
 
 class AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerCustomClaimAuthorizingClaimMatchValue {
+  /// Relationship between the claim field value and the value or values to match for. Valid values are `EQUALS`, `CONTAINS`, and `CONTAINS_ANY`. `EQUALS` can be used only when `inboundTokenClaimValueType` is `STRING`. `CONTAINS` or `CONTAINS_ANY` can be used only when `inboundTokenClaimValueType` is `STRING_ARRAY`.
   final pulumi.Input<String> claimMatchOperator;
+  /// Value or values to match for. See `claimMatchValue` below.
   final pulumi.Input<AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerCustomClaimAuthorizingClaimMatchValueClaimMatchValue> claimMatchValue;
 
   /// Creates a new [AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerCustomClaimAuthorizingClaimMatchValue].
-  /// [claimMatchOperator] Required.
-  /// [claimMatchValue] Required.
+  /// [claimMatchOperator] Relationship between the claim field value and the value or values to match for. Valid values are `EQUALS`, `CONTAINS`, and `CONTAINS_ANY`. `EQUALS` can be used only when `inboundTokenClaimValueType` is `STRING`. `CONTAINS` or `CONTAINS_ANY` can be used only when `inboundTokenClaimValueType` is `STRING_ARRAY`.
+  /// [claimMatchValue] Value or values to match for. See `claimMatchValue` below.
   const AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerCustomClaimAuthorizingClaimMatchValue({
     required this.claimMatchOperator,
     required this.claimMatchValue,

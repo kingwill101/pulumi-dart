@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_set_refresh_properties_refresh_configuration_incremental_refresh.dart';
 
 class DataSetRefreshPropertiesRefreshConfiguration {
-  /// The incremental refresh for the data set. See incremental_refresh.
+  /// Incremental refresh for the data set. See `incrementalRefresh` Block below.
   final pulumi.Input<DataSetRefreshPropertiesRefreshConfigurationIncrementalRefresh> incrementalRefresh;
 
   /// Creates a new [DataSetRefreshPropertiesRefreshConfiguration].
-  /// [incrementalRefresh] The incremental refresh for the data set. See incremental_refresh.
+  /// [incrementalRefresh] Incremental refresh for the data set. See `incrementalRefresh` Block below.
   const DataSetRefreshPropertiesRefreshConfiguration({
     required this.incrementalRefresh,
   });

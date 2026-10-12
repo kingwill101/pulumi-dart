@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_statement.dart';
 
 class RuleGroupRuleStatementOrStatement {
-  /// The statements to combine with `OR` logic. You can use any statements that can be nested. See Statement above for details.
+  /// Statements to combine with `OR` logic. You can use any statements that can be nested. See Statement above for details.
   final pulumi.Input<List<RuleGroupRuleStatement>> statements;
 
   /// Creates a new [RuleGroupRuleStatementOrStatement].
-  /// [statements] The statements to combine with `OR` logic. You can use any statements that can be nested. See Statement above for details.
+  /// [statements] Statements to combine with `OR` logic. You can use any statements that can be nested. See Statement above for details.
   const RuleGroupRuleStatementOrStatement({
     required this.statements,
   });

@@ -136,14 +136,14 @@ import 'vpc_ipam_organization_admin_account_state.dart';
 /// $ pulumi import aws:ec2/vpcIpamOrganizationAdminAccount:VpcIpamOrganizationAdminAccount example 12345678901
 /// ```
 class VpcIpamOrganizationAdminAccount extends pulumi.CustomResource {
-  /// The Organizations ARN for the delegate account.
+  /// Organizations ARN for the delegate account.
   late final pulumi.Output<String> arn;
   late final pulumi.Output<String> delegatedAdminAccountId;
-  /// The Organizations email for the delegate account.
+  /// Organizations email for the delegate account.
   late final pulumi.Output<String> email;
-  /// The Organizations name for the delegate account.
+  /// Organizations name for the delegate account.
   late final pulumi.Output<String> name;
-  /// The AWS service principal.
+  /// AWS service principal.
   late final pulumi.Output<String> servicePrincipal;
 
   /// Creates a new [VpcIpamOrganizationAdminAccount].
@@ -158,7 +158,7 @@ class VpcIpamOrganizationAdminAccount extends pulumi.CustomResource {
           'aws:ec2/vpcIpamOrganizationAdminAccount:VpcIpamOrganizationAdminAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.50.0').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     delegatedAdminAccountId = registerOutput<String>('delegatedAdminAccountId');

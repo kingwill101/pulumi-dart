@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKeyMultiRegionConfigurationPrimaryKey {
-  /// The key ARN of a primary or replica key of a multi-Region key.
+  /// Key ARN of a primary or replica key of a multi-Region key.
   final pulumi.Input<String> arn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String> region;
 
   /// Creates a new [GetKeyMultiRegionConfigurationPrimaryKey].
-  /// [arn] The key ARN of a primary or replica key of a multi-Region key.
+  /// [arn] Key ARN of a primary or replica key of a multi-Region key.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetKeyMultiRegionConfigurationPrimaryKey({
     required this.arn,

@@ -42,7 +42,7 @@ class GetRouteSpec {
       grpcRoutes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRouteSpecGrpcRoute>(map['grpcRoutes']!, (value) => GetRouteSpecGrpcRoute.fromMap((value as Map).cast<String, dynamic>()))),
       http2Routes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRouteSpecHttp2Route>(map['http2Routes']!, (value) => GetRouteSpecHttp2Route.fromMap((value as Map).cast<String, dynamic>()))),
       httpRoutes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRouteSpecHttpRoute>(map['httpRoutes']!, (value) => GetRouteSpecHttpRoute.fromMap((value as Map).cast<String, dynamic>()))),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       tcpRoutes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRouteSpecTcpRoute>(map['tcpRoutes']!, (value) => GetRouteSpecTcpRoute.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

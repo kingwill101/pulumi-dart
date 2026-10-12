@@ -5,14 +5,14 @@ import 'get_experience_configuration_content_source_configuration.dart';
 import 'get_experience_configuration_user_identity_configuration.dart';
 
 class GetExperienceConfiguration {
-  /// The identifiers of your data sources and FAQs. This is the content you want to use for your Amazon Kendra Experience. Documented below.
+  /// Identifiers of your data sources and FAQs. This is the content you want to use for your Amazon Kendra Experience.
   final pulumi.Input<List<GetExperienceConfigurationContentSourceConfiguration>> contentSourceConfigurations;
-  /// The AWS SSO field name that contains the identifiers of your users, such as their emails. Documented below.
+  /// AWS SSO field name that contains the identifiers of your users, such as their emails.
   final pulumi.Input<List<GetExperienceConfigurationUserIdentityConfiguration>> userIdentityConfigurations;
 
   /// Creates a new [GetExperienceConfiguration].
-  /// [contentSourceConfigurations] The identifiers of your data sources and FAQs. This is the content you want to use for your Amazon Kendra Experience. Documented below.
-  /// [userIdentityConfigurations] The AWS SSO field name that contains the identifiers of your users, such as their emails. Documented below.
+  /// [contentSourceConfigurations] Identifiers of your data sources and FAQs. This is the content you want to use for your Amazon Kendra Experience.
+  /// [userIdentityConfigurations] AWS SSO field name that contains the identifiers of your users, such as their emails.
   const GetExperienceConfiguration({
     required this.contentSourceConfigurations,
     required this.userIdentityConfigurations,

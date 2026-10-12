@@ -19,7 +19,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
 
   factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification(
-      startTimeoutMs: pulumi.Input.fromValue((map['startTimeoutMs'] as num).toInt()),
+      startTimeoutMs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startTimeoutMs'])),
     );
   }
 }

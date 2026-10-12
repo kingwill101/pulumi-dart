@@ -3,11 +3,11 @@
 
 /// Result data returned by getDatabase.
 class GetDatabaseResult {
-  /// The ARN that uniquely identifies this database.
+  /// ARN that uniquely identifies this database.
   final String? arn;
   /// Creation time of database.
   final String? createdTime;
-  /// The ARN of the KMS key used to encrypt the data stored in the database.
+  /// ARN of the KMS key used to encrypt the data stored in the database.
   final String? kmsKeyId;
   /// Last time database was updated.
   final String? lastUpdatedTime;
@@ -17,9 +17,9 @@ class GetDatabaseResult {
   final int? tableCount;
 
   /// Creates a new [GetDatabaseResult].
-  /// [arn] The ARN that uniquely identifies this database.
+  /// [arn] ARN that uniquely identifies this database.
   /// [createdTime] Creation time of database.
-  /// [kmsKeyId] The ARN of the KMS key used to encrypt the data stored in the database.
+  /// [kmsKeyId] ARN of the KMS key used to encrypt the data stored in the database.
   /// [lastUpdatedTime] Last time database was updated.
   /// [name] Optional.
   /// [region] Optional.
@@ -54,7 +54,7 @@ class GetDatabaseResult {
       lastUpdatedTime: (() { final guardedValue = map['lastUpdatedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      tableCount: (() { final guardedValue = map['tableCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      tableCount: (() { final guardedValue = map['tableCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

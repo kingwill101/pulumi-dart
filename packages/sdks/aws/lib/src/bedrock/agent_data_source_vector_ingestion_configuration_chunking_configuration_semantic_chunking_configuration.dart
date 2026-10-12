@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration {
-  /// The dissimilarity threshold for splitting chunks.
+  /// Dissimilarity threshold for splitting chunks.
   final pulumi.Input<int> breakpointPercentileThreshold;
-  /// The buffer size.
+  /// Buffer size.
   final pulumi.Input<int> bufferSize;
-  /// The maximum number of tokens a chunk can contain.
+  /// Maximum number of tokens a chunk can contain.
   final pulumi.Input<int> maxToken;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration].
-  /// [breakpointPercentileThreshold] The dissimilarity threshold for splitting chunks.
-  /// [bufferSize] The buffer size.
-  /// [maxToken] The maximum number of tokens a chunk can contain.
+  /// [breakpointPercentileThreshold] Dissimilarity threshold for splitting chunks.
+  /// [bufferSize] Buffer size.
+  /// [maxToken] Maximum number of tokens a chunk can contain.
   const AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration({
     required this.breakpointPercentileThreshold,
     required this.bufferSize,
@@ -30,9 +30,9 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticCh
 
   factory AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration(
-      breakpointPercentileThreshold: pulumi.Input.fromValue((map['breakpointPercentileThreshold'] as num).toInt()),
-      bufferSize: pulumi.Input.fromValue((map['bufferSize'] as num).toInt()),
-      maxToken: pulumi.Input.fromValue((map['maxToken'] as num).toInt()),
+      breakpointPercentileThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['breakpointPercentileThreshold'])),
+      bufferSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bufferSize'])),
+      maxToken: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxToken'])),
     );
   }
 }

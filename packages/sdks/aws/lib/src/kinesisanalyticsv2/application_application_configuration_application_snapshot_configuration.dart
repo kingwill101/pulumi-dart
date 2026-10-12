@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationApplicationSnapshotConfiguration {
-  /// Describes whether snapshots are enabled for a Flink-based Kinesis Data Analytics application.
+  /// Whether snapshots are enabled for a Flink-based application.
   final pulumi.Input<bool> snapshotsEnabled;
 
   /// Creates a new [ApplicationApplicationConfigurationApplicationSnapshotConfiguration].
-  /// [snapshotsEnabled] Describes whether snapshots are enabled for a Flink-based Kinesis Data Analytics application.
+  /// [snapshotsEnabled] Whether snapshots are enabled for a Flink-based application.
   const ApplicationApplicationConfigurationApplicationSnapshotConfiguration({
     required this.snapshotsEnabled,
   });

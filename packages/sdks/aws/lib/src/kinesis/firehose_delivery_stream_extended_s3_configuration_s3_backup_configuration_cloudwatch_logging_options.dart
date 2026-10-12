@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions {
   /// Enables or disables the logging. Defaults to `false`.
   final pulumi.Input<bool?>? enabled;
-  /// The CloudWatch group name for logging. This value is required if `enabled` is true.
+  /// CloudWatch group name for logging. This value is required if `enabled` is true.
   final pulumi.Input<String?>? logGroupName;
-  /// The CloudWatch log stream name for logging. This value is required if `enabled` is true.
+  /// CloudWatch log stream name for logging. This value is required if `enabled` is true.
   final pulumi.Input<String?>? logStreamName;
 
   /// Creates a new [FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions].
   /// [enabled] Enables or disables the logging. Defaults to `false`.
-  /// [logGroupName] The CloudWatch group name for logging. This value is required if `enabled` is true.
-  /// [logStreamName] The CloudWatch log stream name for logging. This value is required if `enabled` is true.
+  /// [logGroupName] CloudWatch group name for logging. This value is required if `enabled` is true.
+  /// [logStreamName] CloudWatch log stream name for logging. This value is required if `enabled` is true.
   const FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions({
     this.enabled,
     this.logGroupName,

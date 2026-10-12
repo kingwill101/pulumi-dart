@@ -32,7 +32,7 @@ class UserProfileUserSettingsJupyterLabAppSettingsCustomImage {
     return UserProfileUserSettingsJupyterLabAppSettingsCustomImage(
       appImageConfigName: pulumi.Input.fromValue(map['appImageConfigName'] as String),
       imageName: pulumi.Input.fromValue(map['imageName'] as String),
-      imageVersionNumber: (() { final guardedValue = map['imageVersionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      imageVersionNumber: (() { final guardedValue = map['imageVersionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

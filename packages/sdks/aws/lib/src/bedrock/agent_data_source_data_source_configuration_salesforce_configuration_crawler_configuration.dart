@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_data_source_data_source_configuration_salesforce_configuration_crawler_configuration_filter_configuration.dart';
 
 class AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration {
-  /// The Salesforce standard object configuration. See `filterConfiguration` block for details.
+  /// Object configuration used to filter crawled content. See `data_source_configuration.share_point_configuration.crawler_configuration.filter_configuration` Block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfiguration?>? filterConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration].
-  /// [filterConfiguration] The Salesforce standard object configuration. See `filterConfiguration` block for details.
+  /// [filterConfiguration] Object configuration used to filter crawled content. See `data_source_configuration.share_point_configuration.crawler_configuration.filter_configuration` Block for details.
   const AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration({
     this.filterConfiguration,
   });

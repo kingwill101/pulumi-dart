@@ -3,38 +3,38 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe {
-  /// The Hadoop Distributed File System (HDFS) block size. This is useful if you intend to copy the data from Amazon S3 to HDFS before querying. The default is 256 MiB and the minimum is 64 MiB. Kinesis Data Firehose uses this value for padding calculations.
+  /// Hadoop Distributed File System (HDFS) block size. This is useful if you intend to copy the data from Amazon S3 to HDFS before querying. The default is 256 MiB and the minimum is 64 MiB. Kinesis Data Firehose uses this value for padding calculations.
   final pulumi.Input<int?>? blockSizeBytes;
-  /// A list of column names for which you want Kinesis Data Firehose to create bloom filters.
+  /// List of column names for which you want Kinesis Data Firehose to create bloom filters.
   final pulumi.Input<List<String>?>? bloomFilterColumns;
-  /// The Bloom filter false positive probability (FPP). The lower the FPP, the bigger the Bloom filter. The default value is `0.05`, the minimum is `0`, and the maximum is `1`.
+  /// Bloom filter false positive probability (FPP). The lower the FPP, the bigger the Bloom filter. The default value is `0.05`, the minimum is `0`, and the maximum is `1`.
   final pulumi.Input<double?>? bloomFilterFalsePositiveProbability;
-  /// The compression code to use over data blocks. The default is `SNAPPY`.
+  /// Compression code to use over data blocks. The default is `SNAPPY`.
   final pulumi.Input<String?>? compression;
-  /// A float that represents the fraction of the total number of non-null rows. To turn off dictionary encoding, set this fraction to a number that is less than the number of distinct keys in a dictionary. To always use dictionary encoding, set this threshold to `1`.
+  /// Float that represents the fraction of the total number of non-null rows. To turn off dictionary encoding, set this fraction to a number that is less than the number of distinct keys in a dictionary. To always use dictionary encoding, set this threshold to `1`.
   final pulumi.Input<double?>? dictionaryKeyThreshold;
   /// Set this to `true` to indicate that you want stripes to be padded to the HDFS block boundaries. This is useful if you intend to copy the data from Amazon S3 to HDFS before querying. The default is `false`.
   final pulumi.Input<bool?>? enablePadding;
-  /// The version of the file to write. The possible values are `V0_11` and `V0_12`. The default is `V0_12`.
+  /// Version of the file to write. The possible values are `V0_11` and `V0_12`. The default is `V0_12`.
   final pulumi.Input<String?>? formatVersion;
-  /// A float between 0 and 1 that defines the tolerance for block padding as a decimal fraction of stripe size. The default value is `0.05`, which means 5 percent of stripe size. For the default values of 64 MiB ORC stripes and 256 MiB HDFS blocks, the default block padding tolerance of 5 percent reserves a maximum of 3.2 MiB for padding within the 256 MiB block. In such a case, if the available size within the block is more than 3.2 MiB, a new, smaller stripe is inserted to fit within that space. This ensures that no stripe crosses block boundaries and causes remote reads within a node-local task. Kinesis Data Firehose ignores this parameter when `enablePadding` is `false`.
+  /// Float between 0 and 1 that defines the tolerance for block padding as a decimal fraction of stripe size. The default value is `0.05`, which means 5 percent of stripe size. For the default values of 64 MiB ORC stripes and 256 MiB HDFS blocks, the default block padding tolerance of 5 percent reserves a maximum of 3.2 MiB for padding within the 256 MiB block. In such a case, if the available size within the block is more than 3.2 MiB, a new, smaller stripe is inserted to fit within that space. This ensures that no stripe crosses block boundaries and causes remote reads within a node-local task. Kinesis Data Firehose ignores this parameter when `enablePadding` is `false`.
   final pulumi.Input<double?>? paddingTolerance;
-  /// The number of rows between index entries. The default is `10000` and the minimum is `1000`.
+  /// Number of rows between index entries. The default is `10000` and the minimum is `1000`.
   final pulumi.Input<int?>? rowIndexStride;
-  /// The number of bytes in each stripe. The default is 64 MiB and the minimum is 8 MiB.
+  /// Number of bytes in each stripe. The default is 64 MiB and the minimum is 8 MiB.
   final pulumi.Input<int?>? stripeSizeBytes;
 
   /// Creates a new [FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe].
-  /// [blockSizeBytes] The Hadoop Distributed File System (HDFS) block size. This is useful if you intend to copy the data from Amazon S3 to HDFS before querying. The default is 256 MiB and the minimum is 64 MiB. Kinesis Data Firehose uses this value for padding calculations.
-  /// [bloomFilterColumns] A list of column names for which you want Kinesis Data Firehose to create bloom filters.
-  /// [bloomFilterFalsePositiveProbability] The Bloom filter false positive probability (FPP). The lower the FPP, the bigger the Bloom filter. The default value is `0.05`, the minimum is `0`, and the maximum is `1`.
-  /// [compression] The compression code to use over data blocks. The default is `SNAPPY`.
-  /// [dictionaryKeyThreshold] A float that represents the fraction of the total number of non-null rows. To turn off dictionary encoding, set this fraction to a number that is less than the number of distinct keys in a dictionary. To always use dictionary encoding, set this threshold to `1`.
+  /// [blockSizeBytes] Hadoop Distributed File System (HDFS) block size. This is useful if you intend to copy the data from Amazon S3 to HDFS before querying. The default is 256 MiB and the minimum is 64 MiB. Kinesis Data Firehose uses this value for padding calculations.
+  /// [bloomFilterColumns] List of column names for which you want Kinesis Data Firehose to create bloom filters.
+  /// [bloomFilterFalsePositiveProbability] Bloom filter false positive probability (FPP). The lower the FPP, the bigger the Bloom filter. The default value is `0.05`, the minimum is `0`, and the maximum is `1`.
+  /// [compression] Compression code to use over data blocks. The default is `SNAPPY`.
+  /// [dictionaryKeyThreshold] Float that represents the fraction of the total number of non-null rows. To turn off dictionary encoding, set this fraction to a number that is less than the number of distinct keys in a dictionary. To always use dictionary encoding, set this threshold to `1`.
   /// [enablePadding] Set this to `true` to indicate that you want stripes to be padded to the HDFS block boundaries. This is useful if you intend to copy the data from Amazon S3 to HDFS before querying. The default is `false`.
-  /// [formatVersion] The version of the file to write. The possible values are `V0_11` and `V0_12`. The default is `V0_12`.
-  /// [paddingTolerance] A float between 0 and 1 that defines the tolerance for block padding as a decimal fraction of stripe size. The default value is `0.05`, which means 5 percent of stripe size. For the default values of 64 MiB ORC stripes and 256 MiB HDFS blocks, the default block padding tolerance of 5 percent reserves a maximum of 3.2 MiB for padding within the 256 MiB block. In such a case, if the available size within the block is more than 3.2 MiB, a new, smaller stripe is inserted to fit within that space. This ensures that no stripe crosses block boundaries and causes remote reads within a node-local task. Kinesis Data Firehose ignores this parameter when `enablePadding` is `false`.
-  /// [rowIndexStride] The number of rows between index entries. The default is `10000` and the minimum is `1000`.
-  /// [stripeSizeBytes] The number of bytes in each stripe. The default is 64 MiB and the minimum is 8 MiB.
+  /// [formatVersion] Version of the file to write. The possible values are `V0_11` and `V0_12`. The default is `V0_12`.
+  /// [paddingTolerance] Float between 0 and 1 that defines the tolerance for block padding as a decimal fraction of stripe size. The default value is `0.05`, which means 5 percent of stripe size. For the default values of 64 MiB ORC stripes and 256 MiB HDFS blocks, the default block padding tolerance of 5 percent reserves a maximum of 3.2 MiB for padding within the 256 MiB block. In such a case, if the available size within the block is more than 3.2 MiB, a new, smaller stripe is inserted to fit within that space. This ensures that no stripe crosses block boundaries and causes remote reads within a node-local task. Kinesis Data Firehose ignores this parameter when `enablePadding` is `false`.
+  /// [rowIndexStride] Number of rows between index entries. The default is `10000` and the minimum is `1000`.
+  /// [stripeSizeBytes] Number of bytes in each stripe. The default is 64 MiB and the minimum is 8 MiB.
   const FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe({
     this.blockSizeBytes,
     this.bloomFilterColumns,
@@ -65,7 +65,7 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
 
   factory FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe(
-      blockSizeBytes: (() { final guardedValue = map['blockSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      blockSizeBytes: (() { final guardedValue = map['blockSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       bloomFilterColumns: (() { final guardedValue = map['bloomFilterColumns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       bloomFilterFalsePositiveProbability: (() { final guardedValue = map['bloomFilterFalsePositiveProbability']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -73,8 +73,8 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
       enablePadding: (() { final guardedValue = map['enablePadding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       formatVersion: (() { final guardedValue = map['formatVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       paddingTolerance: (() { final guardedValue = map['paddingTolerance']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
-      rowIndexStride: (() { final guardedValue = map['rowIndexStride']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      stripeSizeBytes: (() { final guardedValue = map['stripeSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      rowIndexStride: (() { final guardedValue = map['rowIndexStride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      stripeSizeBytes: (() { final guardedValue = map['stripeSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

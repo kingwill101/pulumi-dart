@@ -25,8 +25,8 @@ class TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings 
 
   factory TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings.fromMap(Map<String, dynamic> map) {
     return TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings(
-      nonCurrentDays: pulumi.Input.fromValue((map['nonCurrentDays'] as num).toInt()),
-      unreferencedDays: pulumi.Input.fromValue((map['unreferencedDays'] as num).toInt()),
+      nonCurrentDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nonCurrentDays'])),
+      unreferencedDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['unreferencedDays'])),
     );
   }
 }

@@ -89,18 +89,18 @@ class KeySigningKeyState {
   factory KeySigningKeyState.fromMap(Map<String, dynamic> map) {
     return KeySigningKeyState(
       digestAlgorithmMnemonic: (() { final guardedValue = map['digestAlgorithmMnemonic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      digestAlgorithmType: (() { final guardedValue = map['digestAlgorithmType']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      digestAlgorithmType: (() { final guardedValue = map['digestAlgorithmType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       digestValue: (() { final guardedValue = map['digestValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dnskeyRecord: (() { final guardedValue = map['dnskeyRecord']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dsRecord: (() { final guardedValue = map['dsRecord']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      flag: (() { final guardedValue = map['flag']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      flag: (() { final guardedValue = map['flag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       hostedZoneId: (() { final guardedValue = map['hostedZoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyManagementServiceArn: (() { final guardedValue = map['keyManagementServiceArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      keyTag: (() { final guardedValue = map['keyTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      keyTag: (() { final guardedValue = map['keyTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publicKey: (() { final guardedValue = map['publicKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       signingAlgorithmMnemonic: (() { final guardedValue = map['signingAlgorithmMnemonic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      signingAlgorithmType: (() { final guardedValue = map['signingAlgorithmType']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      signingAlgorithmType: (() { final guardedValue = map['signingAlgorithmType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -6,13 +6,13 @@ import 'get_agent_agent_versions_agent_version_summary.dart';
 /// Result data returned by getAgentAgentVersions.
 class GetAgentAgentVersionsResult {
   final String? agentId;
-  /// List of objects, each of which contains information about a version of the agent. See Agent Version Summaries
+  /// List of objects, each of which contains information about a version of the agent. See `agentVersionSummaries` Block
   final List<GetAgentAgentVersionsAgentVersionSummary>? agentVersionSummaries;
   final String? region;
 
   /// Creates a new [GetAgentAgentVersionsResult].
   /// [agentId] Optional.
-  /// [agentVersionSummaries] List of objects, each of which contains information about a version of the agent. See Agent Version Summaries
+  /// [agentVersionSummaries] List of objects, each of which contains information about a version of the agent. See `agentVersionSummaries` Block
   /// [region] Optional.
   const GetAgentAgentVersionsResult({
     this.agentId,

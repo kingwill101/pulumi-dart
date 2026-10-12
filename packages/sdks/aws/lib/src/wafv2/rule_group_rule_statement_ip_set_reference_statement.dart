@@ -6,12 +6,12 @@ import 'rule_group_rule_statement_ip_set_reference_statement_ip_set_forwarded_ip
 class RuleGroupRuleStatementIpSetReferenceStatement {
   /// ARN of the IP Set that this statement references.
   final pulumi.Input<String> arn;
-  /// The configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See IPSet Forwarded IP Config below for more details.
+  /// Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See IPSet Forwarded IP Config below for more details.
   final pulumi.Input<RuleGroupRuleStatementIpSetReferenceStatementIpSetForwardedIpConfig?>? ipSetForwardedIpConfig;
 
   /// Creates a new [RuleGroupRuleStatementIpSetReferenceStatement].
   /// [arn] ARN of the IP Set that this statement references.
-  /// [ipSetForwardedIpConfig] The configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See IPSet Forwarded IP Config below for more details.
+  /// [ipSetForwardedIpConfig] Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See IPSet Forwarded IP Config below for more details.
   const RuleGroupRuleStatementIpSetReferenceStatement({
     required this.arn,
     this.ipSetForwardedIpConfig,

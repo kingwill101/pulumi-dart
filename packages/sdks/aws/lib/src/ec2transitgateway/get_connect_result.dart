@@ -16,7 +16,7 @@ class GetConnectResult {
   final String? transitGatewayConnectId;
   /// EC2 Transit Gateway identifier
   final String? transitGatewayId;
-  /// The underlaying VPC attachment
+  /// The underlying VPC attachment
   final String? transportAttachmentId;
 
   /// Creates a new [GetConnectResult].
@@ -27,7 +27,7 @@ class GetConnectResult {
   /// [tags] Key-value tags for the EC2 Transit Gateway Connect
   /// [transitGatewayConnectId] Optional.
   /// [transitGatewayId] EC2 Transit Gateway identifier
-  /// [transportAttachmentId] The underlaying VPC attachment
+  /// [transportAttachmentId] The underlying VPC attachment
   const GetConnectResult({
     this.filters,
     this.id,
