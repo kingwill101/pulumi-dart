@@ -24,7 +24,7 @@ class Trail extends pulumi.ComponentResource {
           'awsx:cloudtrail:Trail',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.ComponentResourceOptions(version: '3.9.0').merge(options),
+          pulumi.ComponentResourceOptions(version: '3.11.0').merge(options),
           remote: true,
         ) {
     bucket = registerOutput<pulumi_aws_s3.Bucket?>('bucket');
