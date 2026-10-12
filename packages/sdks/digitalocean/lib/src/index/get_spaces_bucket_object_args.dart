@@ -11,11 +11,11 @@ class GetSpacesBucketObjectArgs {
   final pulumi.Input<String> bucket;
   /// The full path to the object inside the bucket
   final pulumi.Input<String> key;
-  final pulumi.Input<String>? range;
+  final pulumi.Input<String?>? range;
   /// The slug of the region where the bucket is stored.
   final pulumi.Input<String> region;
   /// Specific version ID of the object returned (defaults to latest version)
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<String?>? versionId;
 
   /// Creates a new [GetSpacesBucketObjectArgs].
   /// [bucket] The name of the bucket to read the object from.

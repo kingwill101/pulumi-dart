@@ -10,12 +10,12 @@ class GradientaiAgentRouteArgs {
   /// The UUID of the child agent.
   final pulumi.Input<String> childAgentUuid;
   /// if-case condition for the route.
-  final pulumi.Input<String>? ifCase;
+  final pulumi.Input<String?>? ifCase;
   /// The UUID of the parent agent.
   final pulumi.Input<String> parentAgentUuid;
-  final pulumi.Input<bool>? rollback;
+  final pulumi.Input<bool?>? rollback;
   /// A name for the route.
-  final pulumi.Input<String>? routeName;
+  final pulumi.Input<String?>? routeName;
 
   /// Creates a new [GradientaiAgentRouteArgs].
   /// [childAgentUuid] The UUID of the child agent.

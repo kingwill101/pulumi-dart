@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcNatGatewayVpc {
   /// Boolean flag indicating if this should be the default gateway in this VPC
-  final pulumi.Input<bool>? defaultGateway;
+  final pulumi.Input<bool?>? defaultGateway;
   /// The private IP of the VPC NAT Gateway
-  final pulumi.Input<String>? gatewayIp;
+  final pulumi.Input<String?>? gatewayIp;
   /// The ID of the ingress subnet in the VPC
-  final pulumi.Input<String>? subnetUuid;
+  final pulumi.Input<String?>? subnetUuid;
   /// The ID of the ingress VPC
   final pulumi.Input<String> vpcUuid;
 

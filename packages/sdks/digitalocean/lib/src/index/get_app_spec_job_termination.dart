@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecJobTermination {
   /// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
-  final pulumi.Input<int>? gracePeriodSeconds;
+  final pulumi.Input<int?>? gracePeriodSeconds;
 
   /// Creates a new [GetAppSpecJobTermination].
   /// [gracePeriodSeconds] The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
@@ -20,7 +20,7 @@ class GetAppSpecJobTermination {
 
   factory GetAppSpecJobTermination.fromMap(Map<String, dynamic> map) {
     return GetAppSpecJobTermination(
-      gracePeriodSeconds: (() { final guardedValue = map['gracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      gracePeriodSeconds: (() { final guardedValue = map['gracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

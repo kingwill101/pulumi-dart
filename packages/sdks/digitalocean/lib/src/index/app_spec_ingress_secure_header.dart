@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecIngressSecureHeader {
   /// The name of the environment variable.
-  final pulumi.Input<String>? key;
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? key;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AppSpecIngressSecureHeader].
   /// [key] The name of the environment variable.

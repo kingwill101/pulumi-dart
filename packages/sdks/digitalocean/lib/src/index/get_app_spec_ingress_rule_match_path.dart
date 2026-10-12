@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecIngressRuleMatchPath {
   /// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [GetAppSpecIngressRuleMatchPath].
   /// [prefix] The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.

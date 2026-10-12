@@ -1,5 +1,37 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_account_result.dart';
+import 'get_agent_platform_agent_args.dart';
+import 'get_agent_platform_agent_result.dart';
+import 'get_agent_platform_agent_versions_args.dart';
+import 'get_agent_platform_agent_versions_result.dart';
+import 'get_agent_platform_agents_args.dart';
+import 'get_agent_platform_agents_by_openai_api_key_args.dart';
+import 'get_agent_platform_agents_by_openai_api_key_result.dart';
+import 'get_agent_platform_agents_result.dart';
+import 'get_agent_platform_custom_model_args.dart';
+import 'get_agent_platform_custom_model_result.dart';
+import 'get_agent_platform_custom_models_args.dart';
+import 'get_agent_platform_custom_models_result.dart';
+import 'get_agent_platform_indexing_job_args.dart';
+import 'get_agent_platform_indexing_job_data_sources_args.dart';
+import 'get_agent_platform_indexing_job_data_sources_result.dart';
+import 'get_agent_platform_indexing_job_result.dart';
+import 'get_agent_platform_knowledge_base_args.dart';
+import 'get_agent_platform_knowledge_base_data_sources_args.dart';
+import 'get_agent_platform_knowledge_base_data_sources_result.dart';
+import 'get_agent_platform_knowledge_base_indexing_jobs_args.dart';
+import 'get_agent_platform_knowledge_base_indexing_jobs_result.dart';
+import 'get_agent_platform_knowledge_base_result.dart';
+import 'get_agent_platform_knowledge_bases_args.dart';
+import 'get_agent_platform_knowledge_bases_result.dart';
+import 'get_agent_platform_models_args.dart';
+import 'get_agent_platform_models_result.dart';
+import 'get_agent_platform_openai_api_key_args.dart';
+import 'get_agent_platform_openai_api_key_result.dart';
+import 'get_agent_platform_openai_api_keys_args.dart';
+import 'get_agent_platform_openai_api_keys_result.dart';
+import 'get_agent_platform_regions_args.dart';
+import 'get_agent_platform_regions_result.dart';
 import 'get_app_args.dart';
 import 'get_app_result.dart';
 import 'get_byoip_prefix_args.dart';
@@ -49,34 +81,6 @@ import 'get_firewall_args.dart';
 import 'get_firewall_result.dart';
 import 'get_floating_ip_args.dart';
 import 'get_floating_ip_result.dart';
-import 'get_genai_agent_args.dart';
-import 'get_genai_agent_result.dart';
-import 'get_genai_agent_versions_args.dart';
-import 'get_genai_agent_versions_result.dart';
-import 'get_genai_agents_args.dart';
-import 'get_genai_agents_by_openai_api_key_args.dart';
-import 'get_genai_agents_by_openai_api_key_result.dart';
-import 'get_genai_agents_result.dart';
-import 'get_genai_indexing_job_args.dart';
-import 'get_genai_indexing_job_data_sources_args.dart';
-import 'get_genai_indexing_job_data_sources_result.dart';
-import 'get_genai_indexing_job_result.dart';
-import 'get_genai_knowledge_base_args.dart';
-import 'get_genai_knowledge_base_data_sources_args.dart';
-import 'get_genai_knowledge_base_data_sources_result.dart';
-import 'get_genai_knowledge_base_indexing_jobs_args.dart';
-import 'get_genai_knowledge_base_indexing_jobs_result.dart';
-import 'get_genai_knowledge_base_result.dart';
-import 'get_genai_knowledge_bases_args.dart';
-import 'get_genai_knowledge_bases_result.dart';
-import 'get_genai_models_args.dart';
-import 'get_genai_models_result.dart';
-import 'get_genai_openai_api_key_args.dart';
-import 'get_genai_openai_api_key_result.dart';
-import 'get_genai_openai_api_keys_args.dart';
-import 'get_genai_openai_api_keys_result.dart';
-import 'get_genai_regions_args.dart';
-import 'get_genai_regions_result.dart';
 import 'get_gradientai_agent_args.dart';
 import 'get_gradientai_agent_result.dart';
 import 'get_gradientai_agent_versions_args.dart';
@@ -85,10 +89,6 @@ import 'get_gradientai_agents_args.dart';
 import 'get_gradientai_agents_by_openai_api_key_args.dart';
 import 'get_gradientai_agents_by_openai_api_key_result.dart';
 import 'get_gradientai_agents_result.dart';
-import 'get_gradientai_custom_model_args.dart';
-import 'get_gradientai_custom_model_result.dart';
-import 'get_gradientai_custom_models_args.dart';
-import 'get_gradientai_custom_models_result.dart';
 import 'get_gradientai_indexing_job_args.dart';
 import 'get_gradientai_indexing_job_data_sources_args.dart';
 import 'get_gradientai_indexing_job_data_sources_result.dart';
@@ -119,6 +119,12 @@ import 'get_kubernetes_versions_args.dart';
 import 'get_kubernetes_versions_result.dart';
 import 'get_load_balancer_args.dart';
 import 'get_load_balancer_result.dart';
+import 'get_microvm_args.dart';
+import 'get_microvm_checkpoints_args.dart';
+import 'get_microvm_checkpoints_result.dart';
+import 'get_microvm_result.dart';
+import 'get_microvms_args.dart';
+import 'get_microvms_result.dart';
 import 'get_nfs_access_point_args.dart';
 import 'get_nfs_access_point_result.dart';
 import 'get_nfs_args.dart';
@@ -285,6 +291,433 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAccount:getAccount',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_agent_platform_agent_get_agent_platform_agent_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentPlatformAgentResult> getAgentPlatformAgent(
+  GetAgentPlatformAgentArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformAgent:getAgentPlatformAgent',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentPlatformAgentResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPlatformAgentResult> getAgentPlatformAgentOutput(
+  GetAgentPlatformAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformAgent:getAgentPlatformAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPlatformAgentResult.fromMap);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_agent_platform_agent_versions_get_agent_platform_agent_versions_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentPlatformAgentVersionsResult> getAgentPlatformAgentVersions(
+  GetAgentPlatformAgentVersionsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformAgentVersions:getAgentPlatformAgentVersions',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentPlatformAgentVersionsResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPlatformAgentVersionsResult> getAgentPlatformAgentVersionsOutput(
+  GetAgentPlatformAgentVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformAgentVersions:getAgentPlatformAgentVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPlatformAgentVersionsResult.fromMap);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_agent_platform_agents_get_agent_platform_agents_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentPlatformAgentsResult> getAgentPlatformAgents(
+  GetAgentPlatformAgentsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformAgents:getAgentPlatformAgents',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentPlatformAgentsResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPlatformAgentsResult> getAgentPlatformAgentsOutput(
+  GetAgentPlatformAgentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformAgents:getAgentPlatformAgents',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPlatformAgentsResult.fromMap);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_agent_platform_agents_by_openai_api_key_get_agent_platform_agents_by_openai_api_key_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentPlatformAgentsByOpenaiApiKeyResult> getAgentPlatformAgentsByOpenaiApiKey(
+  GetAgentPlatformAgentsByOpenaiApiKeyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformAgentsByOpenaiApiKey:getAgentPlatformAgentsByOpenaiApiKey',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentPlatformAgentsByOpenaiApiKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPlatformAgentsByOpenaiApiKeyResult> getAgentPlatformAgentsByOpenaiApiKeyOutput(
+  GetAgentPlatformAgentsByOpenaiApiKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformAgentsByOpenaiApiKey:getAgentPlatformAgentsByOpenaiApiKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPlatformAgentsByOpenaiApiKeyResult.fromMap);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_agent_platform_custom_model_get_agent_platform_custom_model_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentPlatformCustomModelResult> getAgentPlatformCustomModel(
+  GetAgentPlatformCustomModelArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformCustomModel:getAgentPlatformCustomModel',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentPlatformCustomModelResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPlatformCustomModelResult> getAgentPlatformCustomModelOutput(
+  GetAgentPlatformCustomModelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformCustomModel:getAgentPlatformCustomModel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPlatformCustomModelResult.fromMap);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_agent_platform_custom_models_get_agent_platform_custom_models_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentPlatformCustomModelsResult> getAgentPlatformCustomModels(
+  GetAgentPlatformCustomModelsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformCustomModels:getAgentPlatformCustomModels',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentPlatformCustomModelsResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPlatformCustomModelsResult> getAgentPlatformCustomModelsOutput(
+  GetAgentPlatformCustomModelsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformCustomModels:getAgentPlatformCustomModels',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPlatformCustomModelsResult.fromMap);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_agent_platform_indexing_job_get_agent_platform_indexing_job_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentPlatformIndexingJobResult> getAgentPlatformIndexingJob(
+  GetAgentPlatformIndexingJobArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformIndexingJob:getAgentPlatformIndexingJob',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentPlatformIndexingJobResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPlatformIndexingJobResult> getAgentPlatformIndexingJobOutput(
+  GetAgentPlatformIndexingJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformIndexingJob:getAgentPlatformIndexingJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPlatformIndexingJobResult.fromMap);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_agent_platform_indexing_job_data_sources_get_agent_platform_indexing_job_data_sources_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentPlatformIndexingJobDataSourcesResult> getAgentPlatformIndexingJobDataSources(
+  GetAgentPlatformIndexingJobDataSourcesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformIndexingJobDataSources:getAgentPlatformIndexingJobDataSources',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentPlatformIndexingJobDataSourcesResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPlatformIndexingJobDataSourcesResult> getAgentPlatformIndexingJobDataSourcesOutput(
+  GetAgentPlatformIndexingJobDataSourcesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformIndexingJobDataSources:getAgentPlatformIndexingJobDataSources',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPlatformIndexingJobDataSourcesResult.fromMap);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_agent_platform_knowledge_base_get_agent_platform_knowledge_base_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentPlatformKnowledgeBaseResult> getAgentPlatformKnowledgeBase(
+  GetAgentPlatformKnowledgeBaseArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformKnowledgeBase:getAgentPlatformKnowledgeBase',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentPlatformKnowledgeBaseResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPlatformKnowledgeBaseResult> getAgentPlatformKnowledgeBaseOutput(
+  GetAgentPlatformKnowledgeBaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformKnowledgeBase:getAgentPlatformKnowledgeBase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPlatformKnowledgeBaseResult.fromMap);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_agent_platform_knowledge_base_data_sources_get_agent_platform_knowledge_base_data_sources_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentPlatformKnowledgeBaseDataSourcesResult> getAgentPlatformKnowledgeBaseDataSources(
+  GetAgentPlatformKnowledgeBaseDataSourcesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformKnowledgeBaseDataSources:getAgentPlatformKnowledgeBaseDataSources',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentPlatformKnowledgeBaseDataSourcesResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPlatformKnowledgeBaseDataSourcesResult> getAgentPlatformKnowledgeBaseDataSourcesOutput(
+  GetAgentPlatformKnowledgeBaseDataSourcesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformKnowledgeBaseDataSources:getAgentPlatformKnowledgeBaseDataSources',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPlatformKnowledgeBaseDataSourcesResult.fromMap);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_agent_platform_knowledge_base_indexing_jobs_get_agent_platform_knowledge_base_indexing_jobs_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentPlatformKnowledgeBaseIndexingJobsResult> getAgentPlatformKnowledgeBaseIndexingJobs(
+  GetAgentPlatformKnowledgeBaseIndexingJobsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformKnowledgeBaseIndexingJobs:getAgentPlatformKnowledgeBaseIndexingJobs',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentPlatformKnowledgeBaseIndexingJobsResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPlatformKnowledgeBaseIndexingJobsResult> getAgentPlatformKnowledgeBaseIndexingJobsOutput(
+  GetAgentPlatformKnowledgeBaseIndexingJobsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformKnowledgeBaseIndexingJobs:getAgentPlatformKnowledgeBaseIndexingJobs',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPlatformKnowledgeBaseIndexingJobsResult.fromMap);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_agent_platform_knowledge_bases_get_agent_platform_knowledge_bases_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentPlatformKnowledgeBasesResult> getAgentPlatformKnowledgeBases(
+  GetAgentPlatformKnowledgeBasesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformKnowledgeBases:getAgentPlatformKnowledgeBases',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentPlatformKnowledgeBasesResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPlatformKnowledgeBasesResult> getAgentPlatformKnowledgeBasesOutput(
+  GetAgentPlatformKnowledgeBasesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformKnowledgeBases:getAgentPlatformKnowledgeBases',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPlatformKnowledgeBasesResult.fromMap);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_agent_platform_models_get_agent_platform_models_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentPlatformModelsResult> getAgentPlatformModels(
+  GetAgentPlatformModelsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformModels:getAgentPlatformModels',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentPlatformModelsResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPlatformModelsResult> getAgentPlatformModelsOutput(
+  GetAgentPlatformModelsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformModels:getAgentPlatformModels',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPlatformModelsResult.fromMap);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_agent_platform_openai_api_key_get_agent_platform_openai_api_key_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentPlatformOpenaiApiKeyResult> getAgentPlatformOpenaiApiKey(
+  GetAgentPlatformOpenaiApiKeyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformOpenaiApiKey:getAgentPlatformOpenaiApiKey',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentPlatformOpenaiApiKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPlatformOpenaiApiKeyResult> getAgentPlatformOpenaiApiKeyOutput(
+  GetAgentPlatformOpenaiApiKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformOpenaiApiKey:getAgentPlatformOpenaiApiKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPlatformOpenaiApiKeyResult.fromMap);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_agent_platform_openai_api_keys_get_agent_platform_openai_api_keys_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentPlatformOpenaiApiKeysResult> getAgentPlatformOpenaiApiKeys(
+  GetAgentPlatformOpenaiApiKeysArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformOpenaiApiKeys:getAgentPlatformOpenaiApiKeys',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentPlatformOpenaiApiKeysResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPlatformOpenaiApiKeysResult> getAgentPlatformOpenaiApiKeysOutput(
+  GetAgentPlatformOpenaiApiKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformOpenaiApiKeys:getAgentPlatformOpenaiApiKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPlatformOpenaiApiKeysResult.fromMap);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_agent_platform_regions_get_agent_platform_regions_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAgentPlatformRegionsResult> getAgentPlatformRegions(
+  GetAgentPlatformRegionsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformRegions:getAgentPlatformRegions',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAgentPlatformRegionsResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPlatformRegionsResult> getAgentPlatformRegionsOutput(
+  GetAgentPlatformRegionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getAgentPlatformRegions:getAgentPlatformRegions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPlatformRegionsResult.fromMap);
+}
+
 /// Get information on a DigitalOcean App.
 ///
 /// ## Example Usage
@@ -417,6 +850,17 @@ Future<GetAppResult> getApp(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAppResult.fromMap(result);
+}
+
+pulumi.Output<GetAppResult> getAppOutput(
+  GetAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getApp:getApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppResult.fromMap);
 }
 
 /// Get information on a BYOIP (Bring Your Own IP) prefix. This data source provides the
@@ -728,6 +1172,17 @@ Future<GetByoipPrefixResult> getByoipPrefix(
   return GetByoipPrefixResult.fromMap(result);
 }
 
+pulumi.Output<GetByoipPrefixResult> getByoipPrefixOutput(
+  GetByoipPrefixArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getByoipPrefix:getByoipPrefix',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetByoipPrefixResult.fromMap);
+}
+
 /// Get information about IP addresses that have been **already assigned** from a
 /// BYOIP (Bring Your Own IP) prefix. This data source provides a list of all IP addresses
 /// that are currently assigned to resources from a specific BYOIP prefix.
@@ -838,6 +1293,17 @@ Future<GetByoipPrefixResourcesResult> getByoipPrefixResources(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetByoipPrefixResourcesResult.fromMap(result);
+}
+
+pulumi.Output<GetByoipPrefixResourcesResult> getByoipPrefixResourcesOutput(
+  GetByoipPrefixResourcesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getByoipPrefixResources:getByoipPrefixResources',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetByoipPrefixResourcesResult.fromMap);
 }
 
 /// Get information on a certificate. This data source provides the name, type, state,
@@ -965,6 +1431,17 @@ Future<GetCertificateResult> getCertificate(
   return GetCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getCertificate:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
+}
+
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_container_registries_get_container_registries_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetContainerRegistriesResult> getContainerRegistries(
@@ -978,6 +1455,17 @@ Future<GetContainerRegistriesResult> getContainerRegistries(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetContainerRegistriesResult.fromMap(result);
+}
+
+pulumi.Output<GetContainerRegistriesResult> getContainerRegistriesOutput(
+  GetContainerRegistriesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getContainerRegistries:getContainerRegistries',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContainerRegistriesResult.fromMap);
 }
 
 /// Get information on a container registry. This data source provides the name as
@@ -1105,6 +1593,17 @@ Future<GetContainerRegistryResult> getContainerRegistry(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetContainerRegistryResult.fromMap(result);
+}
+
+pulumi.Output<GetContainerRegistryResult> getContainerRegistryOutput(
+  GetContainerRegistryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getContainerRegistry:getContainerRegistry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContainerRegistryResult.fromMap);
 }
 
 /// Provides the CA certificate for a DigitalOcean database.
@@ -1239,6 +1738,17 @@ Future<GetDatabaseCaResult> getDatabaseCa(
   return GetDatabaseCaResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseCaResult> getDatabaseCaOutput(
+  GetDatabaseCaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDatabaseCa:getDatabaseCa',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseCaResult.fromMap);
+}
+
 /// Provides information on a DigitalOcean database cluster resource.
 ///
 /// ## Example Usage
@@ -1369,6 +1879,17 @@ Future<GetDatabaseClusterResult> getDatabaseCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseClusterResult> getDatabaseClusterOutput(
+  GetDatabaseClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDatabaseCluster:getDatabaseCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseClusterResult.fromMap);
 }
 
 /// Provides information on a DigitalOcean PostgreSQL database connection pool.
@@ -1538,6 +2059,17 @@ Future<GetDatabaseConnectionPoolResult> getDatabaseConnectionPool(
   return GetDatabaseConnectionPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseConnectionPoolResult> getDatabaseConnectionPoolOutput(
+  GetDatabaseConnectionPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseConnectionPoolResult.fromMap);
+}
+
 /// Provides access to the metrics credentials for DigitalOcean database clusters. These credentials are account-wide and can be used to access metrics for any database cluster in the account.
 ///
 /// ## Example Usage
@@ -1664,6 +2196,17 @@ Future<GetDatabaseMetricsCredentialsResult> getDatabaseMetricsCredentials(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseMetricsCredentialsResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseMetricsCredentialsResult> getDatabaseMetricsCredentialsOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDatabaseMetricsCredentials:getDatabaseMetricsCredentials',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetDatabaseMetricsCredentialsResult.fromMap);
 }
 
 /// Provides information on a DigitalOcean database replica.
@@ -1833,6 +2376,17 @@ Future<GetDatabaseReplicaResult> getDatabaseReplica(
   return GetDatabaseReplicaResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseReplicaResult> getDatabaseReplicaOutput(
+  GetDatabaseReplicaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDatabaseReplica:getDatabaseReplica',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseReplicaResult.fromMap);
+}
+
 /// Provides information on a DigitalOcean database user resource.
 ///
 /// ## Example Usage
@@ -2000,6 +2554,17 @@ Future<GetDatabaseUserResult> getDatabaseUser(
   return GetDatabaseUserResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseUserResult> getDatabaseUserOutput(
+  GetDatabaseUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDatabaseUser:getDatabaseUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseUserResult.fromMap);
+}
+
 /// Get information on a dedicated inference endpoint for use in other resources. This
 /// data source provides all of the endpoint's properties as configured on your
 /// DigitalOcean account.
@@ -2132,6 +2697,17 @@ Future<GetDedicatedInferenceResult> getDedicatedInference(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDedicatedInferenceResult.fromMap(result);
+}
+
+pulumi.Output<GetDedicatedInferenceResult> getDedicatedInferenceOutput(
+  GetDedicatedInferenceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDedicatedInference:getDedicatedInference',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDedicatedInferenceResult.fromMap);
 }
 
 /// Returns a list of accelerators (GPUs) attached to a dedicated inference endpoint,
@@ -2410,6 +2986,17 @@ Future<GetDedicatedInferenceAcceleratorsResult> getDedicatedInferenceAccelerator
   return GetDedicatedInferenceAcceleratorsResult.fromMap(result);
 }
 
+pulumi.Output<GetDedicatedInferenceAcceleratorsResult> getDedicatedInferenceAcceleratorsOutput(
+  GetDedicatedInferenceAcceleratorsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDedicatedInferenceAccelerators:getDedicatedInferenceAccelerators',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDedicatedInferenceAcceleratorsResult.fromMap);
+}
+
 /// Returns the supported GPU and model compatibility matrix for dedicated inference
 /// endpoints. Use this data source to discover which models can be deployed on which
 /// GPU types.
@@ -2529,6 +3116,17 @@ Future<GetDedicatedInferenceGpuModelConfigResult> getDedicatedInferenceGpuModelC
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDedicatedInferenceGpuModelConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetDedicatedInferenceGpuModelConfigResult> getDedicatedInferenceGpuModelConfigOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDedicatedInferenceGpuModelConfig:getDedicatedInferenceGpuModelConfig',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetDedicatedInferenceGpuModelConfigResult.fromMap);
 }
 
 /// Returns the available GPU sizes and their configurations for dedicated inference
@@ -2658,6 +3256,17 @@ Future<GetDedicatedInferenceSizesResult> getDedicatedInferenceSizes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDedicatedInferenceSizesResult.fromMap(result);
+}
+
+pulumi.Output<GetDedicatedInferenceSizesResult> getDedicatedInferenceSizesOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDedicatedInferenceSizes:getDedicatedInferenceSizes',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetDedicatedInferenceSizesResult.fromMap);
 }
 
 /// Returns a list of API tokens for a dedicated inference endpoint, with the ability
@@ -2937,6 +3546,17 @@ Future<GetDedicatedInferenceTokensResult> getDedicatedInferenceTokens(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDedicatedInferenceTokensResult.fromMap(result);
+}
+
+pulumi.Output<GetDedicatedInferenceTokensResult> getDedicatedInferenceTokensOutput(
+  GetDedicatedInferenceTokensArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDedicatedInferenceTokens:getDedicatedInferenceTokens',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDedicatedInferenceTokensResult.fromMap);
 }
 
 /// Returns a list of dedicated inference endpoints in your DigitalOcean account,
@@ -3369,6 +3989,17 @@ Future<GetDedicatedInferencesResult> getDedicatedInferences(
   return GetDedicatedInferencesResult.fromMap(result);
 }
 
+pulumi.Output<GetDedicatedInferencesResult> getDedicatedInferencesOutput(
+  GetDedicatedInferencesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDedicatedInferences:getDedicatedInferences',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDedicatedInferencesResult.fromMap);
+}
+
 /// Get information on a domain. This data source provides the name, TTL, and zone
 /// file as configured on your DigitalOcean account. This is useful if the domain
 /// name in question is not managed by Terraform or you need to utilize TTL or zone
@@ -3528,6 +4159,17 @@ Future<GetDomainResult> getDomain(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainResult.fromMap(result);
+}
+
+pulumi.Output<GetDomainResult> getDomainOutput(
+  GetDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDomain:getDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainResult.fromMap);
 }
 
 /// Get information on domains for use in other resources, with the ability to filter and sort the results.
@@ -3696,6 +4338,17 @@ Future<GetDomainsResult> getDomains(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainsResult.fromMap(result);
+}
+
+pulumi.Output<GetDomainsResult> getDomainsOutput(
+  GetDomainsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDomains:getDomains',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainsResult.fromMap);
 }
 
 /// Get information on a Droplet for use in other resources. This data source provides
@@ -4044,6 +4697,17 @@ Future<GetDropletResult> getDroplet(
   return GetDropletResult.fromMap(result);
 }
 
+pulumi.Output<GetDropletResult> getDropletOutput(
+  GetDropletArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDroplet:getDroplet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDropletResult.fromMap);
+}
+
 /// Get information on a Droplet Autoscale pool for use with other managed resources. This datasource provides all the
 /// Droplet Autoscale pool properties as configured on the DigitalOcean account. This is useful if the Droplet Autoscale
 /// pool in question is not managed by Terraform, or any of the relevant data would need to referenced in other managed
@@ -4268,6 +4932,17 @@ Future<GetDropletAutoscaleResult> getDropletAutoscale(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDropletAutoscaleResult.fromMap(result);
+}
+
+pulumi.Output<GetDropletAutoscaleResult> getDropletAutoscaleOutput(
+  GetDropletAutoscaleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDropletAutoscale:getDropletAutoscale',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDropletAutoscaleResult.fromMap);
 }
 
 /// Droplet snapshots are saved instances of a Droplet. Use this data
@@ -4573,6 +5248,17 @@ Future<GetDropletSnapshotResult> getDropletSnapshot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDropletSnapshotResult.fromMap(result);
+}
+
+pulumi.Output<GetDropletSnapshotResult> getDropletSnapshotOutput(
+  GetDropletSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDropletSnapshot:getDropletSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDropletSnapshotResult.fromMap);
 }
 
 /// Get information on Droplets for use in other resources, with the ability to filter and sort the results.
@@ -4948,6 +5634,17 @@ Future<GetDropletsResult> getDroplets(
   return GetDropletsResult.fromMap(result);
 }
 
+pulumi.Output<GetDropletsResult> getDropletsOutput(
+  GetDropletsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getDroplets:getDroplets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDropletsResult.fromMap);
+}
+
 /// Get information on a DigitalOcean Firewall.
 ///
 /// ## Example Usage
@@ -5080,6 +5777,17 @@ Future<GetFirewallResult> getFirewall(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFirewallResult.fromMap(result);
+}
+
+pulumi.Output<GetFirewallResult> getFirewallOutput(
+  GetFirewallArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getFirewall:getFirewall',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallResult.fromMap);
 }
 
 /// &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
@@ -5240,214 +5948,15 @@ Future<GetFloatingIpResult> getFloatingIp(
   return GetFloatingIpResult.fromMap(result);
 }
 
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_genai_agent_get_genai_agent_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetGenaiAgentResult> getGenaiAgent(
-  GetGenaiAgentArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'digitalocean:index/getGenaiAgent:getGenaiAgent',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetGenaiAgentResult.fromMap(result);
-}
-
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_genai_agent_versions_get_genai_agent_versions_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetGenaiAgentVersionsResult> getGenaiAgentVersions(
-  GetGenaiAgentVersionsArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetGenaiAgentVersionsResult.fromMap(result);
-}
-
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_genai_agents_get_genai_agents_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetGenaiAgentsResult> getGenaiAgents(
-  GetGenaiAgentsArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'digitalocean:index/getGenaiAgents:getGenaiAgents',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetGenaiAgentsResult.fromMap(result);
-}
-
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_genai_agents_by_openai_api_key_get_genai_agents_by_openai_api_key_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKey(
-  GetGenaiAgentsByOpenaiApiKeyArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'digitalocean:index/getGenaiAgentsByOpenaiApiKey:getGenaiAgentsByOpenaiApiKey',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetGenaiAgentsByOpenaiApiKeyResult.fromMap(result);
-}
-
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_genai_indexing_job_get_genai_indexing_job_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetGenaiIndexingJobResult> getGenaiIndexingJob(
-  GetGenaiIndexingJobArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'digitalocean:index/getGenaiIndexingJob:getGenaiIndexingJob',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetGenaiIndexingJobResult.fromMap(result);
-}
-
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_genai_indexing_job_data_sources_get_genai_indexing_job_data_sources_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetGenaiIndexingJobDataSourcesResult> getGenaiIndexingJobDataSources(
-  GetGenaiIndexingJobDataSourcesArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'digitalocean:index/getGenaiIndexingJobDataSources:getGenaiIndexingJobDataSources',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetGenaiIndexingJobDataSourcesResult.fromMap(result);
-}
-
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_genai_knowledge_base_get_genai_knowledge_base_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase(
-  GetGenaiKnowledgeBaseArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetGenaiKnowledgeBaseResult.fromMap(result);
-}
-
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_genai_knowledge_base_data_sources_get_genai_knowledge_base_data_sources_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSources(
-  GetGenaiKnowledgeBaseDataSourcesArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetGenaiKnowledgeBaseDataSourcesResult.fromMap(result);
-}
-
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_genai_knowledge_base_indexing_jobs_get_genai_knowledge_base_indexing_jobs_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobs(
-  GetGenaiKnowledgeBaseIndexingJobsArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'digitalocean:index/getGenaiKnowledgeBaseIndexingJobs:getGenaiKnowledgeBaseIndexingJobs',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetGenaiKnowledgeBaseIndexingJobsResult.fromMap(result);
-}
-
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_genai_knowledge_bases_get_genai_knowledge_bases_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases(
-  GetGenaiKnowledgeBasesArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetGenaiKnowledgeBasesResult.fromMap(result);
-}
-
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_genai_models_get_genai_models_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetGenaiModelsResult> getGenaiModels(
-  GetGenaiModelsArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'digitalocean:index/getGenaiModels:getGenaiModels',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetGenaiModelsResult.fromMap(result);
-}
-
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_genai_openai_api_key_get_genai_openai_api_key_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKey(
-  GetGenaiOpenaiApiKeyArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'digitalocean:index/getGenaiOpenaiApiKey:getGenaiOpenaiApiKey',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetGenaiOpenaiApiKeyResult.fromMap(result);
-}
-
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_genai_openai_api_keys_get_genai_openai_api_keys_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeys(
-  GetGenaiOpenaiApiKeysArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'digitalocean:index/getGenaiOpenaiApiKeys:getGenaiOpenaiApiKeys',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetGenaiOpenaiApiKeysResult.fromMap(result);
-}
-
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_genai_regions_get_genai_regions_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetGenaiRegionsResult> getGenaiRegions(
-  GetGenaiRegionsArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'digitalocean:index/getGenaiRegions:getGenaiRegions',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetGenaiRegionsResult.fromMap(result);
+pulumi.Output<GetFloatingIpResult> getFloatingIpOutput(
+  GetFloatingIpArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getFloatingIp:getFloatingIp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFloatingIpResult.fromMap);
 }
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_agent_get_gradientai_agent_args_doc}
@@ -5465,6 +5974,17 @@ Future<GetGradientaiAgentResult> getGradientaiAgent(
   return GetGradientaiAgentResult.fromMap(result);
 }
 
+pulumi.Output<GetGradientaiAgentResult> getGradientaiAgentOutput(
+  GetGradientaiAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getGradientaiAgent:getGradientaiAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGradientaiAgentResult.fromMap);
+}
+
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_agent_versions_get_gradientai_agent_versions_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGradientaiAgentVersionsResult> getGradientaiAgentVersions(
@@ -5478,6 +5998,17 @@ Future<GetGradientaiAgentVersionsResult> getGradientaiAgentVersions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGradientaiAgentVersionsResult.fromMap(result);
+}
+
+pulumi.Output<GetGradientaiAgentVersionsResult> getGradientaiAgentVersionsOutput(
+  GetGradientaiAgentVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getGradientaiAgentVersions:getGradientaiAgentVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGradientaiAgentVersionsResult.fromMap);
 }
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_agents_get_gradientai_agents_args_doc}
@@ -5495,6 +6026,17 @@ Future<GetGradientaiAgentsResult> getGradientaiAgents(
   return GetGradientaiAgentsResult.fromMap(result);
 }
 
+pulumi.Output<GetGradientaiAgentsResult> getGradientaiAgentsOutput(
+  GetGradientaiAgentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getGradientaiAgents:getGradientaiAgents',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGradientaiAgentsResult.fromMap);
+}
+
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_agents_by_openai_api_key_get_gradientai_agents_by_openai_api_key_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKey(
@@ -5510,34 +6052,15 @@ Future<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKe
   return GetGradientaiAgentsByOpenaiApiKeyResult.fromMap(result);
 }
 
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_custom_model_get_gradientai_custom_model_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetGradientaiCustomModelResult> getGradientaiCustomModel(
-  GetGradientaiCustomModelArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'digitalocean:index/getGradientaiCustomModel:getGradientaiCustomModel',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetGradientaiCustomModelResult.fromMap(result);
-}
-
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_custom_models_get_gradientai_custom_models_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetGradientaiCustomModelsResult> getGradientaiCustomModels(
-  GetGradientaiCustomModelsArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'digitalocean:index/getGradientaiCustomModels:getGradientaiCustomModels',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetGradientaiCustomModelsResult.fromMap(result);
+pulumi.Output<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKeyOutput(
+  GetGradientaiAgentsByOpenaiApiKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getGradientaiAgentsByOpenaiApiKey:getGradientaiAgentsByOpenaiApiKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGradientaiAgentsByOpenaiApiKeyResult.fromMap);
 }
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_indexing_job_get_gradientai_indexing_job_args_doc}
@@ -5555,6 +6078,17 @@ Future<GetGradientaiIndexingJobResult> getGradientaiIndexingJob(
   return GetGradientaiIndexingJobResult.fromMap(result);
 }
 
+pulumi.Output<GetGradientaiIndexingJobResult> getGradientaiIndexingJobOutput(
+  GetGradientaiIndexingJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getGradientaiIndexingJob:getGradientaiIndexingJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGradientaiIndexingJobResult.fromMap);
+}
+
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_indexing_job_data_sources_get_gradientai_indexing_job_data_sources_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGradientaiIndexingJobDataSourcesResult> getGradientaiIndexingJobDataSources(
@@ -5568,6 +6102,17 @@ Future<GetGradientaiIndexingJobDataSourcesResult> getGradientaiIndexingJobDataSo
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGradientaiIndexingJobDataSourcesResult.fromMap(result);
+}
+
+pulumi.Output<GetGradientaiIndexingJobDataSourcesResult> getGradientaiIndexingJobDataSourcesOutput(
+  GetGradientaiIndexingJobDataSourcesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getGradientaiIndexingJobDataSources:getGradientaiIndexingJobDataSources',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGradientaiIndexingJobDataSourcesResult.fromMap);
 }
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_knowledge_base_get_gradientai_knowledge_base_args_doc}
@@ -5585,6 +6130,17 @@ Future<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBase(
   return GetGradientaiKnowledgeBaseResult.fromMap(result);
 }
 
+pulumi.Output<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBaseOutput(
+  GetGradientaiKnowledgeBaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getGradientaiKnowledgeBase:getGradientaiKnowledgeBase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGradientaiKnowledgeBaseResult.fromMap);
+}
+
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_knowledge_base_data_sources_get_gradientai_knowledge_base_data_sources_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGradientaiKnowledgeBaseDataSourcesResult> getGradientaiKnowledgeBaseDataSources(
@@ -5598,6 +6154,17 @@ Future<GetGradientaiKnowledgeBaseDataSourcesResult> getGradientaiKnowledgeBaseDa
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGradientaiKnowledgeBaseDataSourcesResult.fromMap(result);
+}
+
+pulumi.Output<GetGradientaiKnowledgeBaseDataSourcesResult> getGradientaiKnowledgeBaseDataSourcesOutput(
+  GetGradientaiKnowledgeBaseDataSourcesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getGradientaiKnowledgeBaseDataSources:getGradientaiKnowledgeBaseDataSources',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGradientaiKnowledgeBaseDataSourcesResult.fromMap);
 }
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_knowledge_base_indexing_jobs_get_gradientai_knowledge_base_indexing_jobs_args_doc}
@@ -5615,6 +6182,17 @@ Future<GetGradientaiKnowledgeBaseIndexingJobsResult> getGradientaiKnowledgeBaseI
   return GetGradientaiKnowledgeBaseIndexingJobsResult.fromMap(result);
 }
 
+pulumi.Output<GetGradientaiKnowledgeBaseIndexingJobsResult> getGradientaiKnowledgeBaseIndexingJobsOutput(
+  GetGradientaiKnowledgeBaseIndexingJobsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getGradientaiKnowledgeBaseIndexingJobs:getGradientaiKnowledgeBaseIndexingJobs',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGradientaiKnowledgeBaseIndexingJobsResult.fromMap);
+}
+
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_knowledge_bases_get_gradientai_knowledge_bases_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBases(
@@ -5628,6 +6206,17 @@ Future<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBases(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGradientaiKnowledgeBasesResult.fromMap(result);
+}
+
+pulumi.Output<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBasesOutput(
+  GetGradientaiKnowledgeBasesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getGradientaiKnowledgeBases:getGradientaiKnowledgeBases',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGradientaiKnowledgeBasesResult.fromMap);
 }
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_models_get_gradientai_models_args_doc}
@@ -5645,6 +6234,17 @@ Future<GetGradientaiModelsResult> getGradientaiModels(
   return GetGradientaiModelsResult.fromMap(result);
 }
 
+pulumi.Output<GetGradientaiModelsResult> getGradientaiModelsOutput(
+  GetGradientaiModelsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getGradientaiModels:getGradientaiModels',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGradientaiModelsResult.fromMap);
+}
+
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_openai_api_key_get_gradientai_openai_api_key_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGradientaiOpenaiApiKeyResult> getGradientaiOpenaiApiKey(
@@ -5658,6 +6258,17 @@ Future<GetGradientaiOpenaiApiKeyResult> getGradientaiOpenaiApiKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGradientaiOpenaiApiKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetGradientaiOpenaiApiKeyResult> getGradientaiOpenaiApiKeyOutput(
+  GetGradientaiOpenaiApiKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getGradientaiOpenaiApiKey:getGradientaiOpenaiApiKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGradientaiOpenaiApiKeyResult.fromMap);
 }
 
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_openai_api_keys_get_gradientai_openai_api_keys_args_doc}
@@ -5675,6 +6286,17 @@ Future<GetGradientaiOpenaiApiKeysResult> getGradientaiOpenaiApiKeys(
   return GetGradientaiOpenaiApiKeysResult.fromMap(result);
 }
 
+pulumi.Output<GetGradientaiOpenaiApiKeysResult> getGradientaiOpenaiApiKeysOutput(
+  GetGradientaiOpenaiApiKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getGradientaiOpenaiApiKeys:getGradientaiOpenaiApiKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGradientaiOpenaiApiKeysResult.fromMap);
+}
+
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_regions_get_gradientai_regions_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGradientaiRegionsResult> getGradientaiRegions(
@@ -5688,6 +6310,17 @@ Future<GetGradientaiRegionsResult> getGradientaiRegions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGradientaiRegionsResult.fromMap(result);
+}
+
+pulumi.Output<GetGradientaiRegionsResult> getGradientaiRegionsOutput(
+  GetGradientaiRegionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getGradientaiRegions:getGradientaiRegions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGradientaiRegionsResult.fromMap);
 }
 
 /// Get information on an image for use in other resources (e.g. creating a Droplet
@@ -6074,6 +6707,17 @@ Future<GetImageResult> getImage(
   return GetImageResult.fromMap(result);
 }
 
+pulumi.Output<GetImageResult> getImageOutput(
+  GetImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getImage:getImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageResult.fromMap);
+}
+
 /// Get information on images for use in other resources (e.g. creating a Droplet
 /// based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
 /// all images will be returned.
@@ -6445,6 +7089,17 @@ Future<GetImagesResult> getImages(
   return GetImagesResult.fromMap(result);
 }
 
+pulumi.Output<GetImagesResult> getImagesOutput(
+  GetImagesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getImages:getImages',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImagesResult.fromMap);
+}
+
 /// Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by Terraform.
 ///
 /// ## Example Usage
@@ -6561,6 +7216,17 @@ Future<GetKubernetesClusterResult> getKubernetesCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKubernetesClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetKubernetesClusterResult> getKubernetesClusterOutput(
+  GetKubernetesClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getKubernetesCluster:getKubernetesCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKubernetesClusterResult.fromMap);
 }
 
 /// Provides access to the available DigitalOcean Kubernetes Service versions.
@@ -7049,6 +7715,17 @@ Future<GetKubernetesVersionsResult> getKubernetesVersions(
   return GetKubernetesVersionsResult.fromMap(result);
 }
 
+pulumi.Output<GetKubernetesVersionsResult> getKubernetesVersionsOutput(
+  GetKubernetesVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getKubernetesVersions:getKubernetesVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKubernetesVersionsResult.fromMap);
+}
+
 /// Get information on a load balancer for use in other resources. This data source
 /// provides all of the load balancers properties as configured on your DigitalOcean
 /// account. This is useful if the load balancer in question is not managed by
@@ -7291,6 +7968,854 @@ Future<GetLoadBalancerResult> getLoadBalancer(
   return GetLoadBalancerResult.fromMap(result);
 }
 
+pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
+  GetLoadBalancerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getLoadBalancer:getLoadBalancer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadBalancerResult.fromMap);
+}
+
+/// Get information on a MicroVM for use in other resources. This is useful if the
+/// MicroVM is not managed by Terraform or you need to use any of its data.
+///
+/// **Note:** This data source returns a single MicroVM. When looking up by `name`,
+/// an error is triggered if more than one MicroVM has that name.
+///
+/// &gt; **Note:** MicroVMs are in public preview.
+///
+/// ## Example Usage
+///
+/// Get the MicroVM by name:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const example = digitalocean.getMicrovm({
+///     name: "example-microvm",
+/// });
+/// export const hostname = example.then(example => example.urls?.[0]?.hostname);
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// example = digitalocean.get_microvm(name="example-microvm")
+/// pulumi.export("hostname", example.urls[0].hostname)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = DigitalOcean.GetMicrovm.Invoke(new()
+///     {
+///         Name = "example-microvm",
+///     });
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["hostname"] = example.Apply(getMicrovmResult => getMicrovmResult.Urls[0]?.Hostname),
+///     };
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := digitalocean.GetMicrovm(ctx, &digitalocean.LookupMicrovmArgs{
+/// 			Name: pulumi.StringRef("example-microvm"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ctx.Export("hostname", example.Urls[0].Hostname)
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getmicrovm" "example" {
+///   name = "example-microvm"
+/// }
+///
+/// output "hostname" {
+///   value = data.digitalocean_getmicrovm.example.urls[0].hostname
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()
+///             .name("example-microvm")
+///             .build());
+///
+///         ctx.export("hostname", example.urls()[0].hostname());
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: digitalocean:getMicrovm
+///       arguments:
+///         name: example-microvm
+/// outputs:
+///   hostname: ${example.urls[0].hostname}
+/// ```
+///
+///
+/// Get the MicroVM by ID:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const example = digitalocean.getMicrovm({
+///     id: "506f78a4-e098-11e5-ad9f-000f53306ae1",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// example = digitalocean.get_microvm(id="506f78a4-e098-11e5-ad9f-000f53306ae1")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = DigitalOcean.GetMicrovm.Invoke(new()
+///     {
+///         Id = "506f78a4-e098-11e5-ad9f-000f53306ae1",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := digitalocean.GetMicrovm(ctx, &digitalocean.LookupMicrovmArgs{
+/// 			Id: pulumi.StringRef("506f78a4-e098-11e5-ad9f-000f53306ae1"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getmicrovm" "example" {
+///   id = "506f78a4-e098-11e5-ad9f-000f53306ae1"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()
+///             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: digitalocean:getMicrovm
+///       arguments:
+///         id: 506f78a4-e098-11e5-ad9f-000f53306ae1
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_microvm_get_microvm_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetMicrovmResult> getMicrovm(
+  GetMicrovmArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getMicrovm:getMicrovm',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetMicrovmResult.fromMap(result);
+}
+
+pulumi.Output<GetMicrovmResult> getMicrovmOutput(
+  GetMicrovmArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getMicrovm:getMicrovm',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMicrovmResult.fromMap);
+}
+
+/// Get information on MicroVM checkpoints for use in other resources, with the
+/// ability to filter and sort the results. If no arguments are specified, all
+/// checkpoints on the account are returned.
+///
+/// &gt; **Note:** MicroVMs are in public preview.
+///
+/// ## Example Usage
+///
+/// Get the checkpoints captured from a MicroVM and restore the newest one:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const web = digitalocean.getMicrovmCheckpoints({
+///     microvmId: webDigitaloceanMicrovm.id,
+///     filters: [{
+///         key: "status",
+///         values: ["CHECKPOINT_AVAILABLE"],
+///     }],
+///     sorts: [{
+///         key: "created_at",
+///         direction: "desc",
+///     }],
+/// });
+/// const restored = new digitalocean.Microvm("restored", {
+///     name: "example-restored",
+///     source: {
+///         checkpointId: web.then(web => web.checkpoints?.[0]?.id),
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// web = digitalocean.get_microvm_checkpoints(microvm_id=web_digitalocean_microvm["id"],
+///     filters=[{
+///         "key": "status",
+///         "values": ["CHECKPOINT_AVAILABLE"],
+///     }],
+///     sorts=[{
+///         "key": "created_at",
+///         "direction": "desc",
+///     }])
+/// restored = digitalocean.Microvm("restored",
+///     name="example-restored",
+///     source={
+///         "checkpoint_id": web.checkpoints[0].id,
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var web = DigitalOcean.GetMicrovmCheckpoints.Invoke(new()
+///     {
+///         MicrovmId = webDigitaloceanMicrovm.Id,
+///         Filters = new[]
+///         {
+///             new DigitalOcean.Inputs.GetMicrovmCheckpointsFilterInputArgs
+///             {
+///                 Key = "status",
+///                 Values = new[]
+///                 {
+///                     "CHECKPOINT_AVAILABLE",
+///                 },
+///             },
+///         },
+///         Sorts = new[]
+///         {
+///             new DigitalOcean.Inputs.GetMicrovmCheckpointsSortInputArgs
+///             {
+///                 Key = "created_at",
+///                 Direction = "desc",
+///             },
+///         },
+///     });
+///
+///     var restored = new DigitalOcean.Microvm("restored", new()
+///     {
+///         Name = "example-restored",
+///         Source = new DigitalOcean.Inputs.MicrovmSourceArgs
+///         {
+///             CheckpointId = web.Apply(getMicrovmCheckpointsResult => getMicrovmCheckpointsResult.Checkpoints[0]?.Id),
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		web, err := digitalocean.GetMicrovmCheckpoints(ctx, &digitalocean.GetMicrovmCheckpointsArgs{
+/// 			MicrovmId: pulumi.StringRef(webDigitaloceanMicrovm.Id),
+/// 			Filters: []digitalocean.GetMicrovmCheckpointsFilter{
+/// 				{
+/// 					Key: "status",
+/// 					Values: []string{
+/// 						"CHECKPOINT_AVAILABLE",
+/// 					},
+/// 				},
+/// 			},
+/// 			Sorts: []digitalocean.GetMicrovmCheckpointsSort{
+/// 				{
+/// 					Key:       "created_at",
+/// 					Direction: pulumi.StringRef("desc"),
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = digitalocean.NewMicrovm(ctx, "restored", &digitalocean.MicrovmArgs{
+/// 			Name: pulumi.String("example-restored"),
+/// 			Source: &digitalocean.MicrovmSourceArgs{
+/// 				CheckpointId: pulumi.String(web.Checkpoints[0].Id),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getmicrovmcheckpoints" "web" {
+///   microvm_id = webDigitaloceanMicrovm.id
+///   filters {
+///     key    = "status"
+///     values = ["CHECKPOINT_AVAILABLE"]
+///   }
+///   sorts {
+///     key       = "created_at"
+///     direction = "desc"
+///   }
+/// }
+///
+/// resource "digitalocean_microvm" "restored" {
+///   name = "example-restored"
+///   source = {
+///     checkpoint_id = data.digitalocean_getmicrovmcheckpoints.web.checkpoints[0].id
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsArgs;
+/// import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsFilterArgs;
+/// import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsSortArgs;
+/// import com.pulumi.digitalocean.Microvm;
+/// import com.pulumi.digitalocean.MicrovmArgs;
+/// import com.pulumi.digitalocean.inputs.MicrovmSourceArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var web = DigitaloceanFunctions.getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.builder()
+///             .microvmId(webDigitaloceanMicrovm.id())
+///             .filters(GetMicrovmCheckpointsFilterArgs.builder()
+///                 .key("status")
+///                 .values("CHECKPOINT_AVAILABLE")
+///                 .build())
+///             .sorts(GetMicrovmCheckpointsSortArgs.builder()
+///                 .key("created_at")
+///                 .direction("desc")
+///                 .build())
+///             .build());
+///
+///         var restored = new Microvm("restored", MicrovmArgs.builder()
+///             .name("example-restored")
+///             .source(MicrovmSourceArgs.builder()
+///                 .checkpointId(web.checkpoints()[0].id())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   restored:
+///     type: digitalocean:Microvm
+///     properties:
+///       name: example-restored
+///       source:
+///         checkpointId: ${web.checkpoints[0].id}
+/// variables:
+///   web:
+///     fn::invoke:
+///       function: digitalocean:getMicrovmCheckpoints
+///       arguments:
+///         microvmId: ${webDigitaloceanMicrovm.id}
+///         filters:
+///           - key: status
+///             values:
+///               - CHECKPOINT_AVAILABLE
+///         sorts:
+///           - key: created_at
+///             direction: desc
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_microvm_checkpoints_get_microvm_checkpoints_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetMicrovmCheckpointsResult> getMicrovmCheckpoints(
+  GetMicrovmCheckpointsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getMicrovmCheckpoints:getMicrovmCheckpoints',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetMicrovmCheckpointsResult.fromMap(result);
+}
+
+pulumi.Output<GetMicrovmCheckpointsResult> getMicrovmCheckpointsOutput(
+  GetMicrovmCheckpointsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getMicrovmCheckpoints:getMicrovmCheckpoints',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMicrovmCheckpointsResult.fromMap);
+}
+
+/// Get information on MicroVMs for use in other resources, with the ability to
+/// filter and sort the results. If no filters are specified, all MicroVMs are
+/// returned.
+///
+/// The `region`, `name`, and `tagName` arguments are applied by the API and
+/// combine with logical AND. The `filter` and `sort` blocks are applied to the
+/// results afterwards.
+///
+/// Note: You can use the `digitalocean.Microvm` data source to obtain
+/// metadata about a single MicroVM if you already know its `id` or unique `name`.
+///
+/// &gt; **Note:** MicroVMs are in public preview.
+///
+/// ## Example Usage
+///
+/// Get all MicroVMs in a region that carry a tag:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const web = digitalocean.getMicrovms({
+///     region: "nyc3",
+///     tagName: "web",
+/// });
+/// export const names = web.then(web => web.microVms.map(__item => __item.name));
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// web = digitalocean.get_microvms(region="nyc3",
+///     tag_name="web")
+/// pulumi.export("names", [__item.name for __item in web.micro_vms])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var web = DigitalOcean.GetMicrovms.Invoke(new()
+///     {
+///         Region = "nyc3",
+///         TagName = "web",
+///     });
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["names"] = web.Apply(getMicrovmsResult => getMicrovmsResult.MicroVms).Select(__item => __item.Name).ToList(),
+///     };
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// web, err := digitalocean.GetMicrovms(ctx, &digitalocean.GetMicrovmsArgs{
+/// Region: pulumi.StringRef("nyc3"),
+/// TagName: pulumi.StringRef("web"),
+/// }, nil);
+/// if err != nil {
+/// return err
+/// }
+/// ctx.Export("names", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:6,11-31)))
+/// return nil
+/// })
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getmicrovms" "web" {
+///   region   = "nyc3"
+///   tag_name = "web"
+/// }
+///
+/// output "names" {
+///   value = data.digitalocean_getmicrovms.web.micro_vms[*].name
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var web = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()
+///             .region("nyc3")
+///             .tagName("web")
+///             .build());
+///
+///         ctx.export("names", web.microVms().stream().map(element -> element.name()).collect(toList()));
+///     }
+/// }
+/// ```
+///
+///
+/// Get all running MicroVMs, sorted by creation time:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const running = digitalocean.getMicrovms({
+///     filters: [{
+///         key: "current_state",
+///         values: ["running"],
+///     }],
+///     sorts: [{
+///         key: "created_at",
+///         direction: "desc",
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// running = digitalocean.get_microvms(filters=[{
+///         "key": "current_state",
+///         "values": ["running"],
+///     }],
+///     sorts=[{
+///         "key": "created_at",
+///         "direction": "desc",
+///     }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var running = DigitalOcean.GetMicrovms.Invoke(new()
+///     {
+///         Filters = new[]
+///         {
+///             new DigitalOcean.Inputs.GetMicrovmsFilterInputArgs
+///             {
+///                 Key = "current_state",
+///                 Values = new[]
+///                 {
+///                     "running",
+///                 },
+///             },
+///         },
+///         Sorts = new[]
+///         {
+///             new DigitalOcean.Inputs.GetMicrovmsSortInputArgs
+///             {
+///                 Key = "created_at",
+///                 Direction = "desc",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := digitalocean.GetMicrovms(ctx, &digitalocean.GetMicrovmsArgs{
+/// 			Filters: []digitalocean.GetMicrovmsFilter{
+/// 				{
+/// 					Key: "current_state",
+/// 					Values: []string{
+/// 						"running",
+/// 					},
+/// 				},
+/// 			},
+/// 			Sorts: []digitalocean.GetMicrovmsSort{
+/// 				{
+/// 					Key:       "created_at",
+/// 					Direction: pulumi.StringRef("desc"),
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getmicrovms" "running" {
+///   filters {
+///     key    = "current_state"
+///     values = ["running"]
+///   }
+///   sorts {
+///     key       = "created_at"
+///     direction = "desc"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+/// import com.pulumi.digitalocean.inputs.GetMicrovmsFilterArgs;
+/// import com.pulumi.digitalocean.inputs.GetMicrovmsSortArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var running = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()
+///             .filters(GetMicrovmsFilterArgs.builder()
+///                 .key("current_state")
+///                 .values("running")
+///                 .build())
+///             .sorts(GetMicrovmsSortArgs.builder()
+///                 .key("created_at")
+///                 .direction("desc")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   running:
+///     fn::invoke:
+///       function: digitalocean:getMicrovms
+///       arguments:
+///         filters:
+///           - key: current_state
+///             values:
+///               - running
+///         sorts:
+///           - key: created_at
+///             direction: desc
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_microvms_get_microvms_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetMicrovmsResult> getMicrovms(
+  GetMicrovmsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getMicrovms:getMicrovms',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetMicrovmsResult.fromMap(result);
+}
+
+pulumi.Output<GetMicrovmsResult> getMicrovmsOutput(
+  GetMicrovmsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getMicrovms:getMicrovms',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMicrovmsResult.fromMap);
+}
+
 /// Get information about a DigitalOcean NFS share.
 ///
 /// ## Example Usage
@@ -7416,6 +8941,17 @@ Future<GetNfsResult> getNfs(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNfsResult.fromMap(result);
+}
+
+pulumi.Output<GetNfsResult> getNfsOutput(
+  GetNfsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getNfs:getNfs',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNfsResult.fromMap);
 }
 
 /// Get information about a DigitalOcean NFS access point.
@@ -7655,6 +9191,17 @@ Future<GetNfsAccessPointResult> getNfsAccessPoint(
   return GetNfsAccessPointResult.fromMap(result);
 }
 
+pulumi.Output<GetNfsAccessPointResult> getNfsAccessPointOutput(
+  GetNfsAccessPointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getNfsAccessPoint:getNfsAccessPoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNfsAccessPointResult.fromMap);
+}
+
 /// Get information about a DigitalOcean NFS snapshot.
 ///
 /// ## Example Usage
@@ -7698,6 +9245,17 @@ Future<GetNfsSnapshotResult> getNfsSnapshot(
   return GetNfsSnapshotResult.fromMap(result);
 }
 
+pulumi.Output<GetNfsSnapshotResult> getNfsSnapshotOutput(
+  GetNfsSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getNfsSnapshot:getNfsSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNfsSnapshotResult.fromMap);
+}
+
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_partner_attachment_get_partner_attachment_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPartnerAttachmentResult> getPartnerAttachment(
@@ -7713,6 +9271,17 @@ Future<GetPartnerAttachmentResult> getPartnerAttachment(
   return GetPartnerAttachmentResult.fromMap(result);
 }
 
+pulumi.Output<GetPartnerAttachmentResult> getPartnerAttachmentOutput(
+  GetPartnerAttachmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getPartnerAttachment:getPartnerAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPartnerAttachmentResult.fromMap);
+}
+
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_partner_attachment_service_key_get_partner_attachment_service_key_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetPartnerAttachmentServiceKeyResult> getPartnerAttachmentServiceKey(
@@ -7726,6 +9295,17 @@ Future<GetPartnerAttachmentServiceKeyResult> getPartnerAttachmentServiceKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPartnerAttachmentServiceKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetPartnerAttachmentServiceKeyResult> getPartnerAttachmentServiceKeyOutput(
+  GetPartnerAttachmentServiceKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getPartnerAttachmentServiceKey:getPartnerAttachmentServiceKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPartnerAttachmentServiceKeyResult.fromMap);
 }
 
 /// Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
@@ -7862,6 +9442,17 @@ Future<GetProjectResult> getProject(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProjectResult.fromMap(result);
+}
+
+pulumi.Output<GetProjectResult> getProjectOutput(
+  GetProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getProject:getProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectResult.fromMap);
 }
 
 /// Retrieve information about all DigitalOcean projects associated with an account, with
@@ -8233,6 +9824,17 @@ Future<GetProjectsResult> getProjects(
   return GetProjectsResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectsResult> getProjectsOutput(
+  GetProjectsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getProjects:getProjects',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectsResult.fromMap);
+}
+
 /// Get information on a DNS record. This data source provides the name, TTL, and zone
 /// file as configured on your DigitalOcean account. This is useful if the record
 /// in question is not managed by Terraform.
@@ -8400,6 +10002,17 @@ Future<GetRecordResult> getRecord(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRecordResult.fromMap(result);
+}
+
+pulumi.Output<GetRecordResult> getRecordOutput(
+  GetRecordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getRecord:getRecord',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRecordResult.fromMap);
 }
 
 /// Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
@@ -8585,6 +10198,17 @@ Future<GetRecordsResult> getRecords(
   return GetRecordsResult.fromMap(result);
 }
 
+pulumi.Output<GetRecordsResult> getRecordsOutput(
+  GetRecordsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getRecords:getRecords',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRecordsResult.fromMap);
+}
+
 /// Get information on a single DigitalOcean region. This is useful to find out
 /// what Droplet sizes and features are supported within a region.
 ///
@@ -8716,6 +10340,17 @@ Future<GetRegionResult> getRegion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionResult> getRegionOutput(
+  GetRegionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getRegion:getRegion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionResult.fromMap);
 }
 
 /// Retrieve information about all supported DigitalOcean regions, with the ability to
@@ -9085,6 +10720,17 @@ Future<GetRegionsResult> getRegions(
   return GetRegionsResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionsResult> getRegionsOutput(
+  GetRegionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getRegions:getRegions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionsResult.fromMap);
+}
+
 /// Get information on a reserved IP. This data source provides the region and Droplet id
 /// as configured on your DigitalOcean account. This is useful if the reserved IP
 /// in question is not managed by Terraform or you need to find the Droplet the IP is
@@ -9241,6 +10887,17 @@ Future<GetReservedIpResult> getReservedIp(
   return GetReservedIpResult.fromMap(result);
 }
 
+pulumi.Output<GetReservedIpResult> getReservedIpOutput(
+  GetReservedIpArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getReservedIp:getReservedIp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReservedIpResult.fromMap);
+}
+
 /// Get information on a reserved IPv6. This data source provides the regionSlug and droplet id as configured on your DigitalOcean account. This is useful if the reserved IPv6 in question is not managed by Terraform or you need to find the Droplet the IP is
 /// attached to.
 ///
@@ -9387,6 +11044,17 @@ Future<GetReservedIpv6Result> getReservedIpv6(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReservedIpv6Result.fromMap(result);
+}
+
+pulumi.Output<GetReservedIpv6Result> getReservedIpv6Output(
+  GetReservedIpv6Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getReservedIpv6:getReservedIpv6',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReservedIpv6Result.fromMap);
 }
 
 /// Retrieves information about the Droplet sizes that DigitalOcean supports, with
@@ -9984,6 +11652,17 @@ Future<GetSizesResult> getSizes(
   return GetSizesResult.fromMap(result);
 }
 
+pulumi.Output<GetSizesResult> getSizesOutput(
+  GetSizesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getSizes:getSizes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSizesResult.fromMap);
+}
+
 /// Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
 /// is not managed by Terraform or you need to utilize any of the bucket's data.
 ///
@@ -10124,6 +11803,17 @@ Future<GetSpacesBucketResult> getSpacesBucket(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSpacesBucketResult.fromMap(result);
+}
+
+pulumi.Output<GetSpacesBucketResult> getSpacesBucketOutput(
+  GetSpacesBucketArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getSpacesBucket:getSpacesBucket',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpacesBucketResult.fromMap);
 }
 
 /// The Spaces object data source allows access to the metadata and
@@ -10325,6 +12015,17 @@ Future<GetSpacesBucketObjectResult> getSpacesBucketObject(
   return GetSpacesBucketObjectResult.fromMap(result);
 }
 
+pulumi.Output<GetSpacesBucketObjectResult> getSpacesBucketObjectOutput(
+  GetSpacesBucketObjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getSpacesBucketObject:getSpacesBucketObject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpacesBucketObjectResult.fromMap);
+}
+
 /// &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect Terraform's performance.
 ///
 /// The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
@@ -10341,6 +12042,17 @@ Future<GetSpacesBucketObjectsResult> getSpacesBucketObjects(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSpacesBucketObjectsResult.fromMap(result);
+}
+
+pulumi.Output<GetSpacesBucketObjectsResult> getSpacesBucketObjectsOutput(
+  GetSpacesBucketObjectsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpacesBucketObjectsResult.fromMap);
 }
 
 /// Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.
@@ -10671,6 +12383,17 @@ Future<GetSpacesBucketsResult> getSpacesBuckets(
   return GetSpacesBucketsResult.fromMap(result);
 }
 
+pulumi.Output<GetSpacesBucketsResult> getSpacesBucketsOutput(
+  GetSpacesBucketsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getSpacesBuckets:getSpacesBuckets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpacesBucketsResult.fromMap);
+}
+
 /// Get information on a Spaces key for use in other resources. This is useful if the Spaces key in question
 /// is not managed by Terraform or you need to utilize any of the key's data.
 ///
@@ -10804,6 +12527,17 @@ Future<GetSpacesKeyResult> getSpacesKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSpacesKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetSpacesKeyResult> getSpacesKeyOutput(
+  GetSpacesKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getSpacesKey:getSpacesKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpacesKeyResult.fromMap);
 }
 
 /// Get information on a ssh key. This data source provides the name, public key,
@@ -10995,6 +12729,17 @@ Future<GetSshKeyResult> getSshKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSshKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetSshKeyResult> getSshKeyOutput(
+  GetSshKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getSshKey:getSshKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSshKeyResult.fromMap);
 }
 
 /// Get information on SSH Keys for use in other resources.
@@ -11297,6 +13042,17 @@ Future<GetSshKeysResult> getSshKeys(
   return GetSshKeysResult.fromMap(result);
 }
 
+pulumi.Output<GetSshKeysResult> getSshKeysOutput(
+  GetSshKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getSshKeys:getSshKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSshKeysResult.fromMap);
+}
+
 /// Get information on a tag. This data source provides the name as configured on
 /// your DigitalOcean account. This is useful if the tag name in question is not
 /// managed by Terraform or you need validate if the tag exists in the account.
@@ -11487,6 +13243,17 @@ Future<GetTagResult> getTag(
   return GetTagResult.fromMap(result);
 }
 
+pulumi.Output<GetTagResult> getTagOutput(
+  GetTagArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getTag:getTag',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTagResult.fromMap);
+}
+
 /// Returns a list of tags in your DigitalOcean account, with the ability to
 /// filter and sort the results. If no filters are specified, all tags will be
 /// returned.
@@ -11646,6 +13413,17 @@ Future<GetTagsResult> getTags(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTagsResult.fromMap(result);
+}
+
+pulumi.Output<GetTagsResult> getTagsOutput(
+  GetTagsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getTags:getTags',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTagsResult.fromMap);
 }
 
 /// Provides information on a DigitalOcean vector database resource.
@@ -11881,6 +13659,17 @@ Future<GetVectorDatabaseResult> getVectorDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVectorDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetVectorDatabaseResult> getVectorDatabaseOutput(
+  GetVectorDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getVectorDatabase:getVectorDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVectorDatabaseResult.fromMap);
 }
 
 /// Get information on a volume for use in other resources. This data source provides
@@ -12216,6 +14005,17 @@ Future<GetVolumeResult> getVolume(
   return GetVolumeResult.fromMap(result);
 }
 
+pulumi.Output<GetVolumeResult> getVolumeOutput(
+  GetVolumeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getVolume:getVolume',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeResult.fromMap);
+}
+
 /// Volume snapshots are saved instances of a block storage volume. Use this data
 /// source to retrieve the ID of a DigitalOcean volume snapshot for use in other
 /// resources.
@@ -12521,6 +14321,17 @@ Future<GetVolumeSnapshotResult> getVolumeSnapshot(
   return GetVolumeSnapshotResult.fromMap(result);
 }
 
+pulumi.Output<GetVolumeSnapshotResult> getVolumeSnapshotOutput(
+  GetVolumeSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getVolumeSnapshot:getVolumeSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeSnapshotResult.fromMap);
+}
+
 /// Retrieve information about a VPC for use in other resources.
 ///
 /// This data source provides all of the VPC's properties as configured on your
@@ -12811,6 +14622,17 @@ Future<GetVpcResult> getVpc(
   return GetVpcResult.fromMap(result);
 }
 
+pulumi.Output<GetVpcResult> getVpcOutput(
+  GetVpcArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getVpc:getVpc',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpcResult.fromMap);
+}
+
 /// Get information on a VPC NAT Gateway for use with other managed resources  This datasource provides all the VPC
 /// NAT Gateway properties as configured on the DigitalOcean account. This is useful if the VPC NAT Gateway in question
 /// is not managed by Terraform, or any of the relevant data would need to be referenced in other managed resources.
@@ -13036,6 +14858,17 @@ Future<GetVpcNatGatewayResult> getVpcNatGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpcNatGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetVpcNatGatewayResult> getVpcNatGatewayOutput(
+  GetVpcNatGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getVpcNatGateway:getVpcNatGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpcNatGatewayResult.fromMap);
 }
 
 /// Retrieve information about a VPC Peering for use in other resources.
@@ -13591,4 +15424,15 @@ Future<GetVpcPeeringResult> getVpcPeering(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpcPeeringResult.fromMap(result);
+}
+
+pulumi.Output<GetVpcPeeringResult> getVpcPeeringOutput(
+  GetVpcPeeringArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'digitalocean:index/getVpcPeering:getVpcPeering',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpcPeeringResult.fromMap);
 }

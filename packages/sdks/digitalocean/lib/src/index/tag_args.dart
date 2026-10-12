@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_tag_tag_args_doc}
 class TagArgs {
   /// The name of the tag
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [TagArgs].
   /// [name] The name of the tag

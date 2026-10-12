@@ -12,13 +12,13 @@ class GetDropletSnapshotArgs {
   /// &gt; **NOTE:** If more or less than a single match is returned by the search,
   /// Terraform will fail. Ensure that your search is specific enough to return
   /// a single Droplet snapshot ID only, or use `mostRecent` to choose the most recent one.
-  final pulumi.Input<bool>? mostRecent;
+  final pulumi.Input<bool?>? mostRecent;
   /// The name of the Droplet snapshot.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A regex string to apply to the Droplet snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
-  final pulumi.Input<String>? nameRegex;
+  final pulumi.Input<String?>? nameRegex;
   /// A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only Droplet snapshots available in the region will be returned.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetDropletSnapshotArgs].
   /// [mostRecent] If more than one result is returned, use the most recent Droplet snapshot.

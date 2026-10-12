@@ -50,13 +50,13 @@ class GetTagsTag {
 
   factory GetTagsTag.fromMap(Map<String, dynamic> map) {
     return GetTagsTag(
-      databasesCount: pulumi.Input.fromValue(map['databasesCount'] as int),
-      dropletsCount: pulumi.Input.fromValue(map['dropletsCount'] as int),
-      imagesCount: pulumi.Input.fromValue(map['imagesCount'] as int),
+      databasesCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['databasesCount'])),
+      dropletsCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dropletsCount'])),
+      imagesCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['imagesCount'])),
       name: pulumi.Input.fromValue(map['name'] as String),
-      totalResourceCount: pulumi.Input.fromValue(map['totalResourceCount'] as int),
-      volumeSnapshotsCount: pulumi.Input.fromValue(map['volumeSnapshotsCount'] as int),
-      volumesCount: pulumi.Input.fromValue(map['volumesCount'] as int),
+      totalResourceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalResourceCount'])),
+      volumeSnapshotsCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['volumeSnapshotsCount'])),
+      volumesCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['volumesCount'])),
     );
   }
 }
