@@ -127,6 +127,7 @@ import 'observatory_scheduled_test_test.dart';
 /// ```
 class ObservatoryScheduledTest extends pulumi.CustomResource {
   /// The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.
+  /// Available values: "DAILY", "WEEKLY".
   late final pulumi.Output<String> frequency;
   /// A test region.
   /// Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
@@ -151,7 +152,7 @@ class ObservatoryScheduledTest extends pulumi.CustomResource {
           'cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     frequency = registerOutput<String>('frequency');
     region = registerOutput<String>('region');

@@ -144,7 +144,7 @@ class GetPagesProjectDeploymentConfigsProduction {
       alwaysUseLatestCompatibilityDate: pulumi.Input.fromValue(map['alwaysUseLatestCompatibilityDate'] as bool),
       analyticsEngineDatasets: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets>(map['analyticsEngineDatasets']!, (value) => GetPagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets.fromMap((value as Map).cast<String, dynamic>()))),
       browsers: pulumi.Input.fromValue((map['browsers'] as Map).cast<String, Map<String, dynamic>>()),
-      buildImageMajorVersion: pulumi.Input.fromValue((map['buildImageMajorVersion'] as num).toInt()),
+      buildImageMajorVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['buildImageMajorVersion'])),
       compatibilityDate: pulumi.Input.fromValue(map['compatibilityDate'] as String),
       compatibilityFlags: pulumi.Input.fromValue((map['compatibilityFlags'] as List).cast<String>()),
       d1Databases: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<GetPagesProjectDeploymentConfigsProductionD1Databases>(map['d1Databases']!, (value) => GetPagesProjectDeploymentConfigsProductionD1Databases.fromMap((value as Map).cast<String, dynamic>()))),

@@ -3,31 +3,31 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegistrarDomainsResultTransferIn {
-  /// Form of authorization has been accepted by the registrant.
+  /// Status of the registrant authorization step.
   /// Available values: "needed", "ok".
   final pulumi.Input<String> acceptFoa;
-  /// Shows transfer status with the registry.
+  /// Status of the registry transfer-approval step.
   /// Available values: "needed", "ok", "pending", "trying", "rejected", "unknown".
   final pulumi.Input<String> approveTransfer;
   /// Indicates if cancellation is still possible.
   final pulumi.Input<bool> canCancelTransfer;
-  /// Privacy guards are disabled at the foreign registrar.
+  /// Status of the privacy-guard disabling step at the foreign registrar.
   /// Available values: "needed", "ok", "unknown".
   final pulumi.Input<String> disablePrivacy;
-  /// Auth code has been entered and verified.
+  /// Status of the auth-code entry and verification step.
   /// Available values: "needed", "ok", "pending", "trying", "rejected".
   final pulumi.Input<String> enterAuthCode;
-  /// Domain is unlocked at the foreign registrar.
+  /// Status of the domain-unlock step at the foreign registrar.
   /// Available values: "needed", "ok", "pending", "trying", "unknown".
   final pulumi.Input<String> unlockDomain;
 
   /// Creates a new [GetRegistrarDomainsResultTransferIn].
-  /// [acceptFoa] Form of authorization has been accepted by the registrant.
-  /// [approveTransfer] Shows transfer status with the registry.
+  /// [acceptFoa] Status of the registrant authorization step.
+  /// [approveTransfer] Status of the registry transfer-approval step.
   /// [canCancelTransfer] Indicates if cancellation is still possible.
-  /// [disablePrivacy] Privacy guards are disabled at the foreign registrar.
-  /// [enterAuthCode] Auth code has been entered and verified.
-  /// [unlockDomain] Domain is unlocked at the foreign registrar.
+  /// [disablePrivacy] Status of the privacy-guard disabling step at the foreign registrar.
+  /// [enterAuthCode] Status of the auth-code entry and verification step.
+  /// [unlockDomain] Status of the domain-unlock step at the foreign registrar.
   const GetRegistrarDomainsResultTransferIn({
     required this.acceptFoa,
     required this.approveTransfer,

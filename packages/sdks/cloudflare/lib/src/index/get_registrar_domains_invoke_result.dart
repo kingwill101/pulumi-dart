@@ -5,7 +5,7 @@ import 'get_registrar_domains_result.dart';
 
 /// Result data returned by getRegistrarDomains.
 class GetRegistrarDomainsInvokeResult {
-  /// Identifier
+  /// Identifier.
   final String? accountId;
   /// Max items to fetch, default: 1000
   final int? maxItems;
@@ -13,7 +13,7 @@ class GetRegistrarDomainsInvokeResult {
   final List<GetRegistrarDomainsResult>? results;
 
   /// Creates a new [GetRegistrarDomainsInvokeResult].
-  /// [accountId] Identifier
+  /// [accountId] Identifier.
   /// [maxItems] Max items to fetch, default: 1000
   /// [results] The items returned by the data source
   const GetRegistrarDomainsInvokeResult({
@@ -33,7 +33,7 @@ class GetRegistrarDomainsInvokeResult {
   factory GetRegistrarDomainsInvokeResult.fromMap(Map<String, dynamic> map) {
     return GetRegistrarDomainsInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegistrarDomainsResult>(guardedValue, (value) => GetRegistrarDomainsResult.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }

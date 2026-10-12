@@ -49,7 +49,7 @@ class PageRuleArgs {
   factory PageRuleArgs.fromMap(Map<String, dynamic> map) {
     return PageRuleArgs(
       actions: pulumi.Input.fromValue(PageRuleActions.fromMap((map['actions']! as Map).cast<String, dynamic>())),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       target: pulumi.Input.fromValue(map['target'] as String),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),

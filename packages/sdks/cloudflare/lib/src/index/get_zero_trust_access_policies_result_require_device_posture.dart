@@ -3,23 +3,29 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetZeroTrustAccessPoliciesResultRequireDevicePosture {
+  /// The ID of the account that owns the device posture integration.
+  final pulumi.Input<String> accountId;
   /// The ID of a device posture integration.
   final pulumi.Input<String> integrationUid;
 
   /// Creates a new [GetZeroTrustAccessPoliciesResultRequireDevicePosture].
+  /// [accountId] The ID of the account that owns the device posture integration.
   /// [integrationUid] The ID of a device posture integration.
   const GetZeroTrustAccessPoliciesResultRequireDevicePosture({
+    required this.accountId,
     required this.integrationUid,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'accountId': accountId,
       'integrationUid': integrationUid,
     };
   }
 
   factory GetZeroTrustAccessPoliciesResultRequireDevicePosture.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustAccessPoliciesResultRequireDevicePosture(
+      accountId: pulumi.Input.fromValue(map['accountId'] as String),
       integrationUid: pulumi.Input.fromValue(map['integrationUid'] as String),
     );
   }

@@ -30,7 +30,7 @@ import 'ai_gateway_dynamic_routing_version.dart';
 ///         },
 ///         type: "start",
 ///     }],
-///     name: "name",
+///     name: "x",
 /// });
 /// ```
 /// ```python
@@ -49,7 +49,7 @@ import 'ai_gateway_dynamic_routing_version.dart';
 ///         },
 ///         "type": "start",
 ///     }],
-///     name="name")
+///     name="x")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -78,7 +78,7 @@ import 'ai_gateway_dynamic_routing_version.dart';
 ///                 Type = "start",
 ///             },
 ///         },
-///         Name = "name",
+///         Name = "x",
 ///     });
 ///
 /// });
@@ -107,7 +107,7 @@ import 'ai_gateway_dynamic_routing_version.dart';
 /// 					Type: pulumi.String("start"),
 /// 				},
 /// 			},
-/// 			Name: pulumi.String("name"),
+/// 			Name: pulumi.String("x"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -137,7 +137,7 @@ import 'ai_gateway_dynamic_routing_version.dart';
 ///     }
 ///     type = "start"
 ///   }
-///   name = "name"
+///   name = "x"
 /// }
 /// ```
 /// ```java
@@ -176,7 +176,7 @@ import 'ai_gateway_dynamic_routing_version.dart';
 ///                     .build())
 ///                 .type("start")
 ///                 .build())
-///             .name("name")
+///             .name("x")
 ///             .build());
 ///
 ///     }
@@ -196,7 +196,7 @@ import 'ai_gateway_dynamic_routing_version.dart';
 ///             next:
 ///               elementId: elementId
 ///           type: start
-///       name: name
+///       name: x
 /// ```
 ///
 ///
@@ -229,7 +229,7 @@ class AiGatewayDynamicRouting extends pulumi.CustomResource {
           'cloudflare:index/aiGatewayDynamicRouting:AiGatewayDynamicRouting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');

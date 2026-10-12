@@ -155,7 +155,9 @@ import 'access_mutual_tls_hostname_settings_state.dart';
 ///
 /// ## Import
 ///
-/// &gt; This resource does not currently support `pulumi import`.
+/// ```sh
+/// $ pulumi import cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings example '<{accounts|zones}/{account_id|zone_id}>'
+/// ```
 class AccessMutualTlsHostnameSettings extends pulumi.CustomResource {
   /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
   late final pulumi.Output<String?> accountId;
@@ -181,7 +183,7 @@ class AccessMutualTlsHostnameSettings extends pulumi.CustomResource {
           'cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     chinaNetwork = registerOutput<bool>('chinaNetwork');

@@ -14,6 +14,8 @@ class StreamArgs {
   final pulumi.Input<List<String>?>? allowedOrigins;
   /// A user-defined identifier for the media creator.
   final pulumi.Input<String?>? creator;
+  /// Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+  final pulumi.Input<bool?>? directUser;
   /// A Cloudflare-generated unique identifier for a media item.
   final pulumi.Input<String?>? identifier;
   /// The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
@@ -37,6 +39,7 @@ class StreamArgs {
   /// [accountId] The account identifier tag.
   /// [allowedOrigins] Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
   /// [creator] A user-defined identifier for the media creator.
+  /// [directUser] Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
   /// [identifier] A Cloudflare-generated unique identifier for a media item.
   /// [maxDurationSeconds] The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
   /// [meta] A user modifiable key-value store used to reference other systems of record for managing videos.
@@ -50,6 +53,7 @@ class StreamArgs {
     required this.accountId,
     this.allowedOrigins,
     this.creator,
+    this.directUser,
     this.identifier,
     this.maxDurationSeconds,
     this.meta,
@@ -66,6 +70,7 @@ class StreamArgs {
       'accountId': accountId,
       'allowedOrigins': ?allowedOrigins,
       'creator': ?creator,
+      'directUser': ?directUser,
       'identifier': ?identifier,
       'maxDurationSeconds': ?maxDurationSeconds,
       'meta': ?meta,
@@ -83,8 +88,9 @@ class StreamArgs {
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       allowedOrigins: (() { final guardedValue = map['allowedOrigins']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       creator: (() { final guardedValue = map['creator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      directUser: (() { final guardedValue = map['directUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       identifier: (() { final guardedValue = map['identifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxDurationSeconds: (() { final guardedValue = map['maxDurationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxDurationSeconds: (() { final guardedValue = map['maxDurationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       meta: (() { final guardedValue = map['meta']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publicDetails: (() { final guardedValue = map['publicDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamPublicDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       requireSignedUrls: (() { final guardedValue = map['requireSignedUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

@@ -42,7 +42,7 @@ class GetSchemaValidationSchemasListInvokeResult {
 
   factory GetSchemaValidationSchemasListInvokeResult.fromMap(Map<String, dynamic> map) {
     return GetSchemaValidationSchemasListInvokeResult(
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       omitSource: (() { final guardedValue = map['omitSource']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSchemaValidationSchemasListResult>(guardedValue, (value) => GetSchemaValidationSchemasListResult.fromMap((value as Map).cast<String, dynamic>())); })(),
       validationEnabled: (() { final guardedValue = map['validationEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),

@@ -145,7 +145,7 @@ class CustomPages extends pulumi.CustomResource {
   late final pulumi.Output<String?> accountId;
   late final pulumi.Output<String> createdOn;
   late final pulumi.Output<String> description;
-  /// Error Page Types
+  /// Custom page type.
   /// Available values: "1000*errors", "500*errors", "basic*challenge", "country*challenge", "ip*block", "managed*challenge", "ratelimit*block", "under*attack", "waf*block", "waf*challenge".
   late final pulumi.Output<String> identifier;
   late final pulumi.Output<String> modifiedOn;
@@ -171,7 +171,7 @@ class CustomPages extends pulumi.CustomResource {
           'cloudflare:index/customPages:CustomPages',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     createdOn = registerOutput<String>('createdOn');

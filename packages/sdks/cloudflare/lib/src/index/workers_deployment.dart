@@ -23,7 +23,7 @@ import 'workers_deployment_version.dart';
 ///     strategy: "percentage",
 ///     versions: [{
 ///         percentage: 100,
-///         versionId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+///         versionId: "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f",
 ///     }],
 ///     annotations: {
 ///         workersMessage: "Deploy bug fix.",
@@ -40,7 +40,7 @@ import 'workers_deployment_version.dart';
 ///     strategy="percentage",
 ///     versions=[{
 ///         "percentage": float(100),
-///         "version_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+///         "version_id": "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f",
 ///     }],
 ///     annotations={
 ///         "workers_message": "Deploy bug fix.",
@@ -64,7 +64,7 @@ import 'workers_deployment_version.dart';
 ///             new Cloudflare.Inputs.WorkersDeploymentVersionArgs
 ///             {
 ///                 Percentage = 100,
-///                 VersionId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+///                 VersionId = "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f",
 ///             },
 ///         },
 ///         Annotations = new Cloudflare.Inputs.WorkersDeploymentAnnotationsArgs
@@ -92,7 +92,7 @@ import 'workers_deployment_version.dart';
 /// 			Versions: cloudflare.WorkersDeploymentVersionArray{
 /// 				&cloudflare.WorkersDeploymentVersionArgs{
 /// 					Percentage: pulumi.Float64(100),
-/// 					VersionId:  pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+/// 					VersionId:  pulumi.String("023e105f-2a42-4f8b-a1c1-73f6a2a30c0f"),
 /// 				},
 /// 			},
 /// 			Annotations: &cloudflare.WorkersDeploymentAnnotationsArgs{
@@ -121,7 +121,7 @@ import 'workers_deployment_version.dart';
 ///   strategy    = "percentage"
 ///   versions {
 ///     percentage = 100
-///     version_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+///     version_id = "023e105f-2a42-4f8b-a1c1-73f6a2a30c0f"
 ///   }
 ///   annotations = {
 ///     workers_message = "Deploy bug fix."
@@ -157,7 +157,7 @@ import 'workers_deployment_version.dart';
 ///             .strategy("percentage")
 ///             .versions(WorkersDeploymentVersionArgs.builder()
 ///                 .percentage(100.0)
-///                 .versionId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+///                 .versionId("023e105f-2a42-4f8b-a1c1-73f6a2a30c0f")
 ///                 .build())
 ///             .annotations(WorkersDeploymentAnnotationsArgs.builder()
 ///                 .workersMessage("Deploy bug fix.")
@@ -178,7 +178,7 @@ import 'workers_deployment_version.dart';
 ///       strategy: percentage
 ///       versions:
 ///         - percentage: 100
-///           versionId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e
+///           versionId: 023e105f-2a42-4f8b-a1c1-73f6a2a30c0f
 ///       annotations:
 ///         workersMessage: Deploy bug fix.
 /// ```
@@ -195,11 +195,14 @@ class WorkersDeployment extends pulumi.CustomResource {
   late final pulumi.Output<WorkersDeploymentAnnotations> annotations;
   late final pulumi.Output<String> authorEmail;
   late final pulumi.Output<String> createdOn;
-  /// Name of the script, used in URLs and route configuration.
+  /// If set to true, the deployment will be created even if normally blocked by something such rolling back to an older version when a secret has changed.
+  late final pulumi.Output<bool?> force;
+  /// Name of the script.
   late final pulumi.Output<String> scriptName;
   late final pulumi.Output<String> source;
   /// Available values: "percentage".
   late final pulumi.Output<String> strategy;
+  /// Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
   late final pulumi.Output<List<WorkersDeploymentVersion>> versions;
 
   /// Creates a new [WorkersDeployment].
@@ -214,12 +217,13 @@ class WorkersDeployment extends pulumi.CustomResource {
           'cloudflare:index/workersDeployment:WorkersDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     annotations = registerOutput<WorkersDeploymentAnnotations>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkersDeploymentAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorEmail = registerOutput<String>('authorEmail');
     createdOn = registerOutput<String>('createdOn');
+    force = registerOutput<bool?>('force');
     scriptName = registerOutput<String>('scriptName');
     source = registerOutput<String>('source');
     strategy = registerOutput<String>('strategy');
@@ -254,6 +258,7 @@ class WorkersDeployment extends pulumi.CustomResource {
     annotations = registerOutput<WorkersDeploymentAnnotations>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkersDeploymentAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorEmail = registerOutput<String>('authorEmail');
     createdOn = registerOutput<String>('createdOn');
+    force = registerOutput<bool?>('force');
     scriptName = registerOutput<String>('scriptName');
     source = registerOutput<String>('source');
     strategy = registerOutput<String>('strategy');
@@ -273,6 +278,7 @@ class WorkersDeployment extends pulumi.CustomResource {
     annotations = registerOutput<WorkersDeploymentAnnotations>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkersDeploymentAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorEmail = registerOutput<String>('authorEmail');
     createdOn = registerOutput<String>('createdOn');
+    force = registerOutput<bool?>('force');
     scriptName = registerOutput<String>('scriptName');
     source = registerOutput<String>('source');
     strategy = registerOutput<String>('strategy');

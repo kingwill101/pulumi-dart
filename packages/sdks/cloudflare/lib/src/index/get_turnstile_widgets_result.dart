@@ -21,7 +21,7 @@ class GetTurnstileWidgetsResult {
   final pulumi.Input<List<String>> domains;
   /// Return the Ephemeral ID in /siteverify (ENT only).
   final pulumi.Input<bool> ephemeralId;
-  /// Widget item identifier tag.
+  /// Unique identifier for a Turnstile widget.
   final pulumi.Input<String> id;
   /// Origin of the most recent mutation (create, update, delete, or
   /// secret rotation). Server-derived; not client-settable. Omitted for
@@ -42,7 +42,7 @@ class GetTurnstileWidgetsResult {
   /// Region where this widget can be used. This cannot be changed after creation.
   /// Available values: "world", "china".
   final pulumi.Input<String> region;
-  /// Widget item identifier tag.
+  /// Unique identifier for a Turnstile widget.
   final pulumi.Input<String> sitekey;
 
   /// Creates a new [GetTurnstileWidgetsResult].
@@ -52,14 +52,14 @@ class GetTurnstileWidgetsResult {
   /// [deployedVia] Origin that created this widget, recorded at creation time and
   /// [domains] Required.
   /// [ephemeralId] Return the Ephemeral ID in /siteverify (ENT only).
-  /// [id] Widget item identifier tag.
+  /// [id] Unique identifier for a Turnstile widget.
   /// [lastModifiedVia] Origin of the most recent mutation (create, update, delete, or
   /// [mode] Widget Mode
   /// [modifiedOn] When the widget was modified.
   /// [name] Human readable widget name. Not unique. Cloudflare suggests that you
   /// [offlabel] Do not show any Cloudflare branding on the widget (ENT only).
   /// [region] Region where this widget can be used. This cannot be changed after creation.
-  /// [sitekey] Widget item identifier tag.
+  /// [sitekey] Unique identifier for a Turnstile widget.
   const GetTurnstileWidgetsResult({
     required this.botFightMode,
     required this.clearanceLevel,

@@ -8,7 +8,7 @@ import 'spectrum_application_origin_dns.dart';
 /// Input properties used for looking up and filtering SpectrumApplication resources.
 class SpectrumApplicationState {
   /// Enables Argo Smart Routing for this application.
-  /// Notes: Only available for TCP applications with trafficType set to "direct".
+  /// Notes: Only available for TCP or UDP applications with trafficType set to "direct".
   final pulumi.Input<bool?>? argoSmartRouting;
   /// When the Application was created.
   final pulumi.Input<String?>? createdOn;
@@ -28,6 +28,8 @@ class SpectrumApplicationState {
   /// The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
   /// Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
   final pulumi.Input<dynamic>? originPort;
+  /// Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic*type "worker"; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be "off" or "flexible".
+  final pulumi.Input<String?>? originWorkerId;
   /// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
   final pulumi.Input<String?>? protocol;
   /// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
@@ -36,8 +38,8 @@ class SpectrumApplicationState {
   /// The type of TLS termination associated with the application.
   /// Available values: "off", "flexible", "full", "strict".
   final pulumi.Input<String?>? tls;
-  /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
-  /// Available values: "direct", "http", "https".
+  /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to "worker", traffic is sent to the Worker specified by `originWorkerId`.
+  /// Available values: "direct", "http", "https", "worker".
   final pulumi.Input<String?>? trafficType;
   /// Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
   final pulumi.Input<String?>? virtualNetworkId;
@@ -54,10 +56,11 @@ class SpectrumApplicationState {
   /// [originDirects] List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
   /// [originDns] The name and type of DNS record for the Spectrum application.
   /// [originPort] The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
+  /// [originWorkerId] Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic*type "worker"; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be "off" or "flexible".
   /// [protocol] The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
   /// [proxyProtocol] Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
   /// [tls] The type of TLS termination associated with the application.
-  /// [trafficType] Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+  /// [trafficType] Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to "worker", traffic is sent to the Worker specified by `originWorkerId`.
   /// [virtualNetworkId] Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
   /// [zoneId] Zone identifier.
   const SpectrumApplicationState({
@@ -70,6 +73,7 @@ class SpectrumApplicationState {
     this.originDirects,
     this.originDns,
     this.originPort,
+    this.originWorkerId,
     this.protocol,
     this.proxyProtocol,
     this.tls,
@@ -89,6 +93,7 @@ class SpectrumApplicationState {
       'originDirects': ?originDirects,
       'originDns': ?pulumi.Input.mapOptionalInputValue<SpectrumApplicationOriginDns, Map<String, dynamic>>(originDns, (value) => value.toMap()),
       'originPort': ?originPort,
+      'originWorkerId': ?originWorkerId,
       'protocol': ?protocol,
       'proxyProtocol': ?proxyProtocol,
       'tls': ?tls,
@@ -109,6 +114,7 @@ class SpectrumApplicationState {
       originDirects: (() { final guardedValue = map['originDirects']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       originDns: (() { final guardedValue = map['originDns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SpectrumApplicationOriginDns.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       originPort: (() { final guardedValue = map['originPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      originWorkerId: (() { final guardedValue = map['originWorkerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       proxyProtocol: (() { final guardedValue = map['proxyProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tls: (() { final guardedValue = map['tls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

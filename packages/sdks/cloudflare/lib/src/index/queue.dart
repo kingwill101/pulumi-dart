@@ -22,6 +22,7 @@ import 'queue_state.dart';
 /// const exampleQueue = new cloudflare.Queue("example_queue", {
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     queueName: "example-queue",
+///     jurisdiction: "eu",
 /// });
 /// ```
 /// ```python
@@ -30,7 +31,8 @@ import 'queue_state.dart';
 ///
 /// example_queue = cloudflare.Queue("example_queue",
 ///     account_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     queue_name="example-queue")
+///     queue_name="example-queue",
+///     jurisdiction="eu")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -44,6 +46,7 @@ import 'queue_state.dart';
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///         QueueName = "example-queue",
+///         Jurisdiction = "eu",
 ///     });
 ///
 /// });
@@ -59,8 +62,9 @@ import 'queue_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.NewQueue(ctx, "example_queue", &cloudflare.QueueArgs{
-/// 			AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			QueueName: pulumi.String("example-queue"),
+/// 			AccountId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			QueueName:    pulumi.String("example-queue"),
+/// 			Jurisdiction: pulumi.String("eu"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -79,8 +83,9 @@ import 'queue_state.dart';
 /// }
 ///
 /// resource "cloudflare_queue" "example_queue" {
-///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
-///   queue_name = "example-queue"
+///   account_id   = "023e105f4ecef8ad9ca31a8372d0c353"
+///   queue_name   = "example-queue"
+///   jurisdiction = "eu"
 /// }
 /// ```
 /// ```java
@@ -107,6 +112,7 @@ import 'queue_state.dart';
 ///         var exampleQueue = new Queue("exampleQueue", QueueArgs.builder()
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .queueName("example-queue")
+///             .jurisdiction("eu")
 ///             .build());
 ///
 ///     }
@@ -120,6 +126,7 @@ import 'queue_state.dart';
 ///     properties:
 ///       accountId: 023e105f4ecef8ad9ca31a8372d0c353
 ///       queueName: example-queue
+///       jurisdiction: eu
 /// ```
 ///
 ///
@@ -134,6 +141,8 @@ class Queue extends pulumi.CustomResource {
   late final pulumi.Output<List<QueueConsumer>> consumers;
   late final pulumi.Output<double> consumersTotalCount;
   late final pulumi.Output<String> createdOn;
+  /// Available values: "eu", "us", "fedramp".
+  late final pulumi.Output<String?> jurisdiction;
   late final pulumi.Output<String> modifiedOn;
   late final pulumi.Output<List<QueueProducer>> producers;
   late final pulumi.Output<double> producersTotalCount;
@@ -153,12 +162,13 @@ class Queue extends pulumi.CustomResource {
           'cloudflare:index/queue:Queue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     consumers = registerOutput<List<QueueConsumer>>('consumers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QueueConsumer>(guardedValue, (value) => QueueConsumer.fromMap((value as Map).cast<String, dynamic>())); });
     consumersTotalCount = registerOutput<double>('consumersTotalCount');
     createdOn = registerOutput<String>('createdOn');
+    jurisdiction = registerOutput<String?>('jurisdiction');
     modifiedOn = registerOutput<String>('modifiedOn');
     producers = registerOutput<List<QueueProducer>>('producers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QueueProducer>(guardedValue, (value) => QueueProducer.fromMap((value as Map).cast<String, dynamic>())); });
     producersTotalCount = registerOutput<double>('producersTotalCount');
@@ -195,6 +205,7 @@ class Queue extends pulumi.CustomResource {
     consumers = registerOutput<List<QueueConsumer>>('consumers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QueueConsumer>(guardedValue, (value) => QueueConsumer.fromMap((value as Map).cast<String, dynamic>())); });
     consumersTotalCount = registerOutput<double>('consumersTotalCount');
     createdOn = registerOutput<String>('createdOn');
+    jurisdiction = registerOutput<String?>('jurisdiction');
     modifiedOn = registerOutput<String>('modifiedOn');
     producers = registerOutput<List<QueueProducer>>('producers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QueueProducer>(guardedValue, (value) => QueueProducer.fromMap((value as Map).cast<String, dynamic>())); });
     producersTotalCount = registerOutput<double>('producersTotalCount');
@@ -216,6 +227,7 @@ class Queue extends pulumi.CustomResource {
     consumers = registerOutput<List<QueueConsumer>>('consumers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QueueConsumer>(guardedValue, (value) => QueueConsumer.fromMap((value as Map).cast<String, dynamic>())); });
     consumersTotalCount = registerOutput<double>('consumersTotalCount');
     createdOn = registerOutput<String>('createdOn');
+    jurisdiction = registerOutput<String?>('jurisdiction');
     modifiedOn = registerOutput<String>('modifiedOn');
     producers = registerOutput<List<QueueProducer>>('producers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QueueProducer>(guardedValue, (value) => QueueProducer.fromMap((value as Map).cast<String, dynamic>())); });
     producersTotalCount = registerOutput<double>('producersTotalCount');

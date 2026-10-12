@@ -120,7 +120,9 @@ import 'calls_turn_app_state.dart';
 ///
 /// ## Import
 ///
-/// &gt; This resource does not currently support `pulumi import`.
+/// ```sh
+/// $ pulumi import cloudflare:index/callsTurnApp:CallsTurnApp example '<account_id>/<key_id>'
+/// ```
 class CallsTurnApp extends pulumi.CustomResource {
   /// The account identifier tag.
   late final pulumi.Output<String> accountId;
@@ -129,7 +131,7 @@ class CallsTurnApp extends pulumi.CustomResource {
   /// Bearer token
   late final pulumi.Output<String> key;
   /// A Cloudflare-generated unique identifier for a item.
-  late final pulumi.Output<String?> keyId;
+  late final pulumi.Output<String> keyId;
   /// The date and time the item was last modified.
   late final pulumi.Output<String> modified;
   /// A short description of a TURN key, not shown to end users.
@@ -149,13 +151,13 @@ class CallsTurnApp extends pulumi.CustomResource {
           'cloudflare:index/callsTurnApp:CallsTurnApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
           additionalSecretOutputs: const ['key'],
         ) {
     accountId = registerOutput<String>('accountId');
     created = registerOutput<String>('created');
     key = registerOutput<String>('key', isSecret: true);
-    keyId = registerOutput<String?>('keyId');
+    keyId = registerOutput<String>('keyId');
     modified = registerOutput<String>('modified');
     this.name = registerOutput<String>('name');
     uid = registerOutput<String>('uid');
@@ -188,7 +190,7 @@ class CallsTurnApp extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     created = registerOutput<String>('created');
     key = registerOutput<String>('key', isSecret: true);
-    keyId = registerOutput<String?>('keyId');
+    keyId = registerOutput<String>('keyId');
     modified = registerOutput<String>('modified');
     this.name = registerOutput<String>('name');
     uid = registerOutput<String>('uid');
@@ -207,7 +209,7 @@ class CallsTurnApp extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     created = registerOutput<String>('created');
     key = registerOutput<String>('key', isSecret: true);
-    keyId = registerOutput<String?>('keyId');
+    keyId = registerOutput<String>('keyId');
     modified = registerOutput<String>('modified');
     this.name = registerOutput<String>('name');
     uid = registerOutput<String>('uid');

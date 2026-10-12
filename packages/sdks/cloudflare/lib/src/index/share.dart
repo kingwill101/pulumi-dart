@@ -19,7 +19,7 @@ import 'share_state.dart';
 ///         recipientAccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     }],
 ///     resources: [{
-///         meta: {},
+///         meta: JSON.stringify({}),
 ///         resourceAccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///         resourceId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///         resourceType: "custom-ruleset",
@@ -28,6 +28,7 @@ import 'share_state.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// import json
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_share = cloudflare.Share("example_share",
@@ -38,7 +39,7 @@ import 'share_state.dart';
 ///         "recipient_account_id": "023e105f4ecef8ad9ca31a8372d0c353",
 ///     }],
 ///     resources=[{
-///         "meta": {},
+///         "meta": json.dumps({}),
 ///         "resource_account_id": "023e105f4ecef8ad9ca31a8372d0c353",
 ///         "resource_id": "023e105f4ecef8ad9ca31a8372d0c353",
 ///         "resource_type": "custom-ruleset",
@@ -47,6 +48,7 @@ import 'share_state.dart';
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
+/// using System.Text.Json;
 /// using Pulumi;
 /// using Cloudflare = Pulumi.Cloudflare;
 ///
@@ -68,7 +70,9 @@ import 'share_state.dart';
 ///         {
 ///             new Cloudflare.Inputs.ShareResourceArgs
 ///             {
-///                 Meta = null,
+///                 Meta = JsonSerializer.Serialize(new Dictionary<string, object?>
+///                 {
+///                 }),
 ///                 ResourceAccountId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///                 ResourceId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///                 ResourceType = "custom-ruleset",
@@ -82,13 +86,20 @@ import 'share_state.dart';
 /// package main
 ///
 /// import (
+/// 	"encoding/json"
+///
 /// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := cloudflare.NewShare(ctx, "example_share", &cloudflare.ShareArgs{
+/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		_, err = cloudflare.NewShare(ctx, "example_share", &cloudflare.ShareArgs{
 /// 			AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 			Name:      pulumi.String("My Shared WAF Managed Rule"),
 /// 			Recipients: cloudflare.ShareRecipientTypeArray{
@@ -99,7 +110,7 @@ import 'share_state.dart';
 /// 			},
 /// 			Resources: cloudflare.ShareResourceTypeArray{
 /// 				&cloudflare.ShareResourceTypeArgs{
-/// 					Meta:              pulumi.String{},
+/// 					Meta:              pulumi.String(json0),
 /// 					ResourceAccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 					ResourceId:        pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 					ResourceType:      pulumi.String("custom-ruleset"),
@@ -130,7 +141,7 @@ import 'share_state.dart';
 ///     recipient_account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   }
 ///   resources {
-///     meta                = {}
+///     meta                = jsonencode({})
 ///     resource_account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///     resource_id         = "023e105f4ecef8ad9ca31a8372d0c353"
 ///     resource_type       = "custom-ruleset"
@@ -147,6 +158,7 @@ import 'share_state.dart';
 /// import com.pulumi.cloudflare.ShareArgs;
 /// import com.pulumi.cloudflare.inputs.ShareRecipientArgs;
 /// import com.pulumi.cloudflare.inputs.ShareResourceArgs;
+/// import static com.pulumi.codegen.internal.Serialization.*;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -168,8 +180,10 @@ import 'share_state.dart';
 ///                 .recipientAccountId("023e105f4ecef8ad9ca31a8372d0c353")
 ///                 .build())
 ///             .resources(ShareResourceArgs.builder()
-///                 .meta(Map.ofEntries(
-///                 ))
+///                 .meta(serializeJson(
+///                     jsonObject(
+///
+///                     )))
 ///                 .resourceAccountId("023e105f4ecef8ad9ca31a8372d0c353")
 ///                 .resourceId("023e105f4ecef8ad9ca31a8372d0c353")
 ///                 .resourceType("custom-ruleset")
@@ -191,7 +205,8 @@ import 'share_state.dart';
 ///         - organizationId: 023e105f4ecef8ad9ca31a8372d0c353
 ///           recipientAccountId: 023e105f4ecef8ad9ca31a8372d0c353
 ///       resources:
-///         - meta: {}
+///         - meta:
+///             fn::toJSON: {}
 ///           resourceAccountId: 023e105f4ecef8ad9ca31a8372d0c353
 ///           resourceId: 023e105f4ecef8ad9ca31a8372d0c353
 ///           resourceType: custom-ruleset
@@ -218,6 +233,10 @@ class Share extends pulumi.CustomResource {
   late final pulumi.Output<int> disassociatedRecipientCount;
   /// The number of recipients in the 'disassociating' state. This field is only included when requested via the 'include*recipient*counts' parameter.
   late final pulumi.Output<int> disassociatingRecipientCount;
+  /// Include recipient counts in the response.
+  late final pulumi.Output<bool?> includeRecipientCounts;
+  /// Include resources in the response.
+  late final pulumi.Output<bool?> includeResources;
   /// Available values: "sent", "received".
   late final pulumi.Output<String> kind;
   /// When the share was modified.
@@ -245,7 +264,7 @@ class Share extends pulumi.CustomResource {
           'cloudflare:index/share:Share',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     accountName = registerOutput<String>('accountName');
@@ -254,6 +273,8 @@ class Share extends pulumi.CustomResource {
     created = registerOutput<String>('created');
     disassociatedRecipientCount = registerOutput<int>('disassociatedRecipientCount');
     disassociatingRecipientCount = registerOutput<int>('disassociatingRecipientCount');
+    includeRecipientCounts = registerOutput<bool?>('includeRecipientCounts');
+    includeResources = registerOutput<bool?>('includeResources');
     kind = registerOutput<String>('kind');
     modified = registerOutput<String>('modified');
     this.name = registerOutput<String>('name');
@@ -295,6 +316,8 @@ class Share extends pulumi.CustomResource {
     created = registerOutput<String>('created');
     disassociatedRecipientCount = registerOutput<int>('disassociatedRecipientCount');
     disassociatingRecipientCount = registerOutput<int>('disassociatingRecipientCount');
+    includeRecipientCounts = registerOutput<bool?>('includeRecipientCounts');
+    includeResources = registerOutput<bool?>('includeResources');
     kind = registerOutput<String>('kind');
     modified = registerOutput<String>('modified');
     this.name = registerOutput<String>('name');
@@ -321,6 +344,8 @@ class Share extends pulumi.CustomResource {
     created = registerOutput<String>('created');
     disassociatedRecipientCount = registerOutput<int>('disassociatedRecipientCount');
     disassociatingRecipientCount = registerOutput<int>('disassociatingRecipientCount');
+    includeRecipientCounts = registerOutput<bool?>('includeRecipientCounts');
+    includeResources = registerOutput<bool?>('includeResources');
     kind = registerOutput<String>('kind');
     modified = registerOutput<String>('modified');
     this.name = registerOutput<String>('name');

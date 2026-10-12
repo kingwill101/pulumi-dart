@@ -3,6 +3,117 @@ import 'moq_relay_args.dart';
 import 'moq_relay_config.dart';
 import 'moq_relay_state.dart';
 
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleMoqRelay = new cloudflare.MoqRelay("example_moq_relay", {
+///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     name: "Production Live Stream",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_moq_relay = cloudflare.MoqRelay("example_moq_relay",
+///     account_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     name="Production Live Stream")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleMoqRelay = new Cloudflare.MoqRelay("example_moq_relay", new()
+///     {
+///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         Name = "Production Live Stream",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.NewMoqRelay(ctx, "example_moq_relay", &cloudflare.MoqRelayArgs{
+/// 			AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			Name:      pulumi.String("Production Live Stream"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// resource "cloudflare_moqrelay" "example_moq_relay" {
+///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
+///   name       = "Production Live Stream"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.MoqRelay;
+/// import com.pulumi.cloudflare.MoqRelayArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var exampleMoqRelay = new MoqRelay("exampleMoqRelay", MoqRelayArgs.builder()
+///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .name("Production Live Stream")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   exampleMoqRelay:
+///     type: cloudflare:MoqRelay
+///     name: example_moq_relay
+///     properties:
+///       accountId: 023e105f4ecef8ad9ca31a8372d0c353
+///       name: Production Live Stream
+/// ```
+///
+///
 /// ## Import
 ///
 /// ```sh
@@ -39,7 +150,7 @@ class MoqRelay extends pulumi.CustomResource {
           'cloudflare:index/moqRelay:MoqRelay',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
           additionalSecretOutputs: const ['tokenPublishSubscribe', 'tokenSubscribe'],
         ) {
     accountId = registerOutput<String>('accountId');

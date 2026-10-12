@@ -27,7 +27,7 @@ class GetZeroTrustDnsLocationsResultMaxTtl {
   factory GetZeroTrustDnsLocationsResultMaxTtl.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustDnsLocationsResultMaxTtl(
       mode: pulumi.Input.fromValue(map['mode'] as String),
-      ttlSecs: pulumi.Input.fromValue((map['ttlSecs'] as num).toInt()),
+      ttlSecs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ttlSecs'])),
     );
   }
 }

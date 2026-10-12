@@ -23,6 +23,9 @@ import 'zero_trust_access_infrastructure_target_state.dart';
 ///             virtualNetworkId: "c77b744e-acc8-428f-9257-6878c046ed55",
 ///         },
 ///     },
+///     tags: {
+///         foo: "string",
+///     },
 /// });
 /// ```
 /// ```python
@@ -41,6 +44,9 @@ import 'zero_trust_access_infrastructure_target_state.dart';
 ///             "ip_addr": "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0",
 ///             "virtual_network_id": "c77b744e-acc8-428f-9257-6878c046ed55",
 ///         },
+///     },
+///     tags={
+///         "foo": "string",
 ///     })
 /// ```
 /// ```csharp
@@ -68,6 +74,10 @@ import 'zero_trust_access_infrastructure_target_state.dart';
 ///                 VirtualNetworkId = "c77b744e-acc8-428f-9257-6878c046ed55",
 ///             },
 ///         },
+///         Tags =
+///         {
+///             { "foo", "string" },
+///         },
 ///     });
 ///
 /// });
@@ -94,6 +104,9 @@ import 'zero_trust_access_infrastructure_target_state.dart';
 /// 					IpAddr:           pulumi.String("64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0"),
 /// 					VirtualNetworkId: pulumi.String("c77b744e-acc8-428f-9257-6878c046ed55"),
 /// 				},
+/// 			},
+/// 			Tags: pulumi.StringMap{
+/// 				"foo": pulumi.String("string"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -124,6 +137,9 @@ import 'zero_trust_access_infrastructure_target_state.dart';
 ///       ip_addr            = "64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0"
 ///       virtual_network_id = "c77b744e-acc8-428f-9257-6878c046ed55"
 ///     }
+///   }
+///   tags = {
+///     "foo" = "string"
 ///   }
 /// }
 /// ```
@@ -164,6 +180,7 @@ import 'zero_trust_access_infrastructure_target_state.dart';
 ///                     .virtualNetworkId("c77b744e-acc8-428f-9257-6878c046ed55")
 ///                     .build())
 ///                 .build())
+///             .tags(Map.of("foo", "string"))
 ///             .build());
 ///
 ///     }
@@ -184,6 +201,8 @@ import 'zero_trust_access_infrastructure_target_state.dart';
 ///         ipv6:
 ///           ipAddr: 64c0:64e8:f0b4:8dbf:7104:72b0:ec8f:f5e0
 ///           virtualNetworkId: c77b744e-acc8-428f-9257-6878c046ed55
+///       tags:
+///         foo: string
 /// ```
 ///
 ///
@@ -206,6 +225,9 @@ class ZeroTrustAccessInfrastructureTarget extends pulumi.CustomResource {
   late final pulumi.Output<ZeroTrustAccessInfrastructureTargetIp> ip;
   /// Date and time at which the target was modified
   late final pulumi.Output<String> modifiedAt;
+  /// Optional tags to associate with the target. Keys and values are
+  /// user-defined strings.
+  late final pulumi.Output<Map<String, String>> tags;
 
   /// Creates a new [ZeroTrustAccessInfrastructureTarget].
   /// [name] The Pulumi resource name.
@@ -219,13 +241,14 @@ class ZeroTrustAccessInfrastructureTarget extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');
     hostname = registerOutput<String>('hostname');
     ip = registerOutput<ZeroTrustAccessInfrastructureTargetIp>('ip', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustAccessInfrastructureTargetIp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     modifiedAt = registerOutput<String>('modifiedAt');
+    tags = registerOutput<Map<String, String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ZeroTrustAccessInfrastructureTarget] resource's state with the given [name] and [id].
@@ -257,6 +280,7 @@ class ZeroTrustAccessInfrastructureTarget extends pulumi.CustomResource {
     hostname = registerOutput<String>('hostname');
     ip = registerOutput<ZeroTrustAccessInfrastructureTargetIp>('ip', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustAccessInfrastructureTargetIp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     modifiedAt = registerOutput<String>('modifiedAt');
+    tags = registerOutput<Map<String, String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Creates a typed reference to an existing [ZeroTrustAccessInfrastructureTarget] resource.
@@ -273,5 +297,6 @@ class ZeroTrustAccessInfrastructureTarget extends pulumi.CustomResource {
     hostname = registerOutput<String>('hostname');
     ip = registerOutput<ZeroTrustAccessInfrastructureTargetIp>('ip', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustAccessInfrastructureTargetIp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     modifiedAt = registerOutput<String>('modifiedAt');
+    tags = registerOutput<Map<String, String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

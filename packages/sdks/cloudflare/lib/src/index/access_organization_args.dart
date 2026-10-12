@@ -5,6 +5,7 @@ import 'access_organization_custom_pages.dart';
 import 'access_organization_login_design.dart';
 import 'access_organization_mfa_config.dart';
 import 'access_organization_mfa_ssh_piv_key_requirements.dart';
+import 'access_organization_service_token_inactivity.dart';
 
 /// {@template pulumi_index_access_organization_access_organization_args_doc}
 /// The set of arguments for AccessOrganization.
@@ -37,8 +38,12 @@ class AccessOrganizationArgs {
   final pulumi.Input<AccessOrganizationMfaSshPivKeyRequirements?>? mfaSshPivKeyRequirements;
   /// The name of your Zero Trust organization.
   final pulumi.Input<String?>? name;
+  /// Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
+  final pulumi.Input<AccessOrganizationServiceTokenInactivity?>? serviceTokenInactivity;
   /// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
   final pulumi.Input<String?>? sessionDuration;
+  /// Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
+  final pulumi.Input<bool?>? strictServiceTokenAuth;
   /// A description of the reason why the UI read only field is being toggled.
   final pulumi.Input<String?>? uiReadOnlyToggleReason;
   /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
@@ -65,7 +70,9 @@ class AccessOrganizationArgs {
   /// [mfaRequiredForAllApps] Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed*authenticators' cannot contain only the infrastructure SSH authenticators ('piv*key' and 'ssh*fido2*key') if the organization has any non-infrastructure applications.
   /// [mfaSshPivKeyRequirements] Configures SSH PIV key requirements for MFA using hardware security keys.
   /// [name] The name of your Zero Trust organization.
+  /// [serviceTokenInactivity] Configures automatic enforcement for inactive service tokens. A service token is inactive if no policy references it, and it has not successfully authenticated with an Access application during the selected inactivity period. This setting applies to every service token in your Zero Trust account.
   /// [sessionDuration] The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+  /// [strictServiceTokenAuth] Enables new behaviors for requests made with Access service tokens. Unauthorized requests emit audit logs, and return a 401 or 403 status code in the response instead of redirecting to the login page. Successful requests no longer receive a CF_Authorization cookie in the response. Zero Trust organizations created on or after October 5, 2026 will have this setting enabled by default, and cannot disable it.
   /// [uiReadOnlyToggleReason] A description of the reason why the UI read only field is being toggled.
   /// [userSeatExpirationInactiveTime] The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
   /// [warpAuthNonBrowser401] When enabled, unsuccessful WARP authentication requests with a non-HTML Accept header return a 401 response instead of redirecting to the login page.
@@ -86,7 +93,9 @@ class AccessOrganizationArgs {
     this.mfaRequiredForAllApps,
     this.mfaSshPivKeyRequirements,
     this.name,
+    this.serviceTokenInactivity,
     this.sessionDuration,
+    this.strictServiceTokenAuth,
     this.uiReadOnlyToggleReason,
     this.userSeatExpirationInactiveTime,
     this.warpAuthNonBrowser401,
@@ -110,7 +119,9 @@ class AccessOrganizationArgs {
       'mfaRequiredForAllApps': ?mfaRequiredForAllApps,
       'mfaSshPivKeyRequirements': ?pulumi.Input.mapOptionalInputValue<AccessOrganizationMfaSshPivKeyRequirements, Map<String, dynamic>>(mfaSshPivKeyRequirements, (value) => value.toMap()),
       'name': ?name,
+      'serviceTokenInactivity': ?pulumi.Input.mapOptionalInputValue<AccessOrganizationServiceTokenInactivity, Map<String, dynamic>>(serviceTokenInactivity, (value) => value.toMap()),
       'sessionDuration': ?sessionDuration,
+      'strictServiceTokenAuth': ?strictServiceTokenAuth,
       'uiReadOnlyToggleReason': ?uiReadOnlyToggleReason,
       'userSeatExpirationInactiveTime': ?userSeatExpirationInactiveTime,
       'warpAuthNonBrowser401': ?warpAuthNonBrowser401,
@@ -135,7 +146,9 @@ class AccessOrganizationArgs {
       mfaRequiredForAllApps: (() { final guardedValue = map['mfaRequiredForAllApps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       mfaSshPivKeyRequirements: (() { final guardedValue = map['mfaSshPivKeyRequirements']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessOrganizationMfaSshPivKeyRequirements.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceTokenInactivity: (() { final guardedValue = map['serviceTokenInactivity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessOrganizationServiceTokenInactivity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sessionDuration: (() { final guardedValue = map['sessionDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      strictServiceTokenAuth: (() { final guardedValue = map['strictServiceTokenAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       uiReadOnlyToggleReason: (() { final guardedValue = map['uiReadOnlyToggleReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userSeatExpirationInactiveTime: (() { final guardedValue = map['userSeatExpirationInactiveTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       warpAuthNonBrowser401: (() { final guardedValue = map['warpAuthNonBrowser401']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

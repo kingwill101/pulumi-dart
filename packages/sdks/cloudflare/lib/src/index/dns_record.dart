@@ -220,6 +220,8 @@ class DnsRecord extends pulumi.CustomResource {
   late final pulumi.Output<String> createdOn;
   /// Components of a MX record.
   late final pulumi.Output<DnsRecordData?> data;
+  /// Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+  late final pulumi.Output<bool> includeShadowMetadata;
   /// Extra Cloudflare-specific information about the record.
   late final pulumi.Output<String> meta;
   /// When the record was last modified.
@@ -260,13 +262,14 @@ class DnsRecord extends pulumi.CustomResource {
           'cloudflare:index/dnsRecord:DnsRecord',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     comment = registerOutput<String?>('comment');
     commentModifiedOn = registerOutput<String>('commentModifiedOn');
     content = registerOutput<String>('content');
     createdOn = registerOutput<String>('createdOn');
     data = registerOutput<DnsRecordData?>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsRecordData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    includeShadowMetadata = registerOutput<bool>('includeShadowMetadata');
     meta = registerOutput<String>('meta');
     modifiedOn = registerOutput<String>('modifiedOn');
     this.name = registerOutput<String>('name');
@@ -311,6 +314,7 @@ class DnsRecord extends pulumi.CustomResource {
     content = registerOutput<String>('content');
     createdOn = registerOutput<String>('createdOn');
     data = registerOutput<DnsRecordData?>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsRecordData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    includeShadowMetadata = registerOutput<bool>('includeShadowMetadata');
     meta = registerOutput<String>('meta');
     modifiedOn = registerOutput<String>('modifiedOn');
     this.name = registerOutput<String>('name');
@@ -340,6 +344,7 @@ class DnsRecord extends pulumi.CustomResource {
     content = registerOutput<String>('content');
     createdOn = registerOutput<String>('createdOn');
     data = registerOutput<DnsRecordData?>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsRecordData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    includeShadowMetadata = registerOutput<bool>('includeShadowMetadata');
     meta = registerOutput<String>('meta');
     modifiedOn = registerOutput<String>('modifiedOn');
     this.name = registerOutput<String>('name');

@@ -4,7 +4,9 @@ import 'ai_search_token_state.dart';
 
 /// ## Import
 ///
-/// &gt; This resource does not currently support `pulumi import`.
+/// ```sh
+/// $ pulumi import cloudflare:index/aiSearchToken:AiSearchToken example '<account_id>/<id>'
+/// ```
 class AiSearchToken extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   late final pulumi.Output<String> cfApiId;
@@ -29,7 +31,7 @@ class AiSearchToken extends pulumi.CustomResource {
           'cloudflare:index/aiSearchToken:AiSearchToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
           additionalSecretOutputs: const ['cfApiKey'],
         ) {
     accountId = registerOutput<String>('accountId');

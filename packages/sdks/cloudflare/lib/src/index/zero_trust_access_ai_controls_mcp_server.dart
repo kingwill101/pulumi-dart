@@ -18,99 +18,99 @@ import 'zero_trust_access_ai_controls_mcp_server_updated_tool.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as cloudflare from "@pulumi/cloudflare";
 ///
+/// const config = new pulumi.Config();
+/// const cloudflareAccountId = config.require("cloudflareAccountId");
+/// const mcpOauthClientId = config.require("mcpOauthClientId");
+/// const mcpOauthClientSecret = config.require("mcpOauthClientSecret");
 /// const exampleZeroTrustAccessAiControlsMcpServer = new cloudflare.ZeroTrustAccessAiControlsMcpServer("example_zero_trust_access_ai_controls_mcp_server", {
-///     accountId: "a86a8f5c339544d7bdc89926de14fb8c",
-///     zeroTrustAccessAiControlsMcpServerId: "my-mcp-server",
-///     authType: "unauthenticated",
-///     hostname: "https://example.com/mcp",
-///     name: "My MCP Server",
-///     authCredentials: "sk-my-bearer-token",
-///     clientSecret: "client_secret",
-///     description: "This is one remote MCP server",
+///     accountId: cloudflareAccountId,
+///     zeroTrustAccessAiControlsMcpServerId: "github",
+///     authType: "oauth",
+///     hostname: "https://github-mcp.example.com/mcp",
+///     name: "GitHub MCP Server",
+///     authCredentials: JSON.stringify({
+///         auth_mode: "manual",
+///         config: {
+///             authorization_endpoint: "https://github.com/login/oauth/authorize",
+///             token_endpoint: "https://github.com/login/oauth/access_token",
+///         },
+///         registration_info: {
+///             client_id: mcpOauthClientId,
+///             token_endpoint_auth_method: "client_secret_basic",
+///             scope: "repo read:user",
+///         },
+///     }),
+///     clientSecret: mcpOauthClientSecret,
 ///     isSharedOauthCallbackEnabled: true,
-///     secureWebGateway: false,
-///     updatedPrompts: [{
-///         name: "name",
-///         alias: "my-custom-alias",
-///         description: "description",
-///         enabled: true,
-///     }],
-///     updatedTools: [{
-///         name: "name",
-///         alias: "my-custom-alias",
-///         description: "description",
-///         enabled: true,
-///     }],
 /// });
 /// ```
 /// ```python
 /// import pulumi
+/// import json
 /// import pulumi_cloudflare as cloudflare
 ///
+/// config = pulumi.Config()
+/// cloudflare_account_id = config.require("cloudflareAccountId")
+/// mcp_oauth_client_id = config.require("mcpOauthClientId")
+/// mcp_oauth_client_secret = config.require("mcpOauthClientSecret")
 /// example_zero_trust_access_ai_controls_mcp_server = cloudflare.ZeroTrustAccessAiControlsMcpServer("example_zero_trust_access_ai_controls_mcp_server",
-///     account_id="a86a8f5c339544d7bdc89926de14fb8c",
-///     zero_trust_access_ai_controls_mcp_server_id="my-mcp-server",
-///     auth_type="unauthenticated",
-///     hostname="https://example.com/mcp",
-///     name="My MCP Server",
-///     auth_credentials="sk-my-bearer-token",
-///     client_secret="client_secret",
-///     description="This is one remote MCP server",
-///     is_shared_oauth_callback_enabled=True,
-///     secure_web_gateway=False,
-///     updated_prompts=[{
-///         "name": "name",
-///         "alias": "my-custom-alias",
-///         "description": "description",
-///         "enabled": True,
-///     }],
-///     updated_tools=[{
-///         "name": "name",
-///         "alias": "my-custom-alias",
-///         "description": "description",
-///         "enabled": True,
-///     }])
+///     account_id=cloudflare_account_id,
+///     zero_trust_access_ai_controls_mcp_server_id="github",
+///     auth_type="oauth",
+///     hostname="https://github-mcp.example.com/mcp",
+///     name="GitHub MCP Server",
+///     auth_credentials=json.dumps({
+///         "auth_mode": "manual",
+///         "config": {
+///             "authorization_endpoint": "https://github.com/login/oauth/authorize",
+///             "token_endpoint": "https://github.com/login/oauth/access_token",
+///         },
+///         "registration_info": {
+///             "client_id": mcp_oauth_client_id,
+///             "token_endpoint_auth_method": "client_secret_basic",
+///             "scope": "repo read:user",
+///         },
+///     }),
+///     client_secret=mcp_oauth_client_secret,
+///     is_shared_oauth_callback_enabled=True)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
+/// using System.Text.Json;
 /// using Pulumi;
 /// using Cloudflare = Pulumi.Cloudflare;
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
+///     var config = new Config();
+///     var cloudflareAccountId = config.Require("cloudflareAccountId");
+///     var mcpOauthClientId = config.Require("mcpOauthClientId");
+///     var mcpOauthClientSecret = config.Require("mcpOauthClientSecret");
 ///     var exampleZeroTrustAccessAiControlsMcpServer = new Cloudflare.ZeroTrustAccessAiControlsMcpServer("example_zero_trust_access_ai_controls_mcp_server", new()
 ///     {
-///         AccountId = "a86a8f5c339544d7bdc89926de14fb8c",
-///         ZeroTrustAccessAiControlsMcpServerId = "my-mcp-server",
-///         AuthType = "unauthenticated",
-///         Hostname = "https://example.com/mcp",
-///         Name = "My MCP Server",
-///         AuthCredentials = "sk-my-bearer-token",
-///         ClientSecret = "client_secret",
-///         Description = "This is one remote MCP server",
+///         AccountId = cloudflareAccountId,
+///         ZeroTrustAccessAiControlsMcpServerId = "github",
+///         AuthType = "oauth",
+///         Hostname = "https://github-mcp.example.com/mcp",
+///         Name = "GitHub MCP Server",
+///         AuthCredentials = JsonSerializer.Serialize(new Dictionary<string, object?>
+///         {
+///             ["auth_mode"] = "manual",
+///             ["config"] = new Dictionary<string, object?>
+///             {
+///                 ["authorization_endpoint"] = "https://github.com/login/oauth/authorize",
+///                 ["token_endpoint"] = "https://github.com/login/oauth/access_token",
+///             },
+///             ["registration_info"] = new Dictionary<string, object?>
+///             {
+///                 ["client_id"] = mcpOauthClientId,
+///                 ["token_endpoint_auth_method"] = "client_secret_basic",
+///                 ["scope"] = "repo read:user",
+///             },
+///         }),
+///         ClientSecret = mcpOauthClientSecret,
 ///         IsSharedOauthCallbackEnabled = true,
-///         SecureWebGateway = false,
-///         UpdatedPrompts = new[]
-///         {
-///             new Cloudflare.Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs
-///             {
-///                 Name = "name",
-///                 Alias = "my-custom-alias",
-///                 Description = "description",
-///                 Enabled = true,
-///             },
-///         },
-///         UpdatedTools = new[]
-///         {
-///             new Cloudflare.Inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs
-///             {
-///                 Name = "name",
-///                 Alias = "my-custom-alias",
-///                 Description = "description",
-///                 Enabled = true,
-///             },
-///         },
 ///     });
 ///
 /// });
@@ -119,39 +119,44 @@ import 'zero_trust_access_ai_controls_mcp_server_updated_tool.dart';
 /// package main
 ///
 /// import (
+/// 	"encoding/json"
+///
 /// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := cloudflare.NewZeroTrustAccessAiControlsMcpServer(ctx, "example_zero_trust_access_ai_controls_mcp_server", &cloudflare.ZeroTrustAccessAiControlsMcpServerArgs{
-/// 			AccountId:                            pulumi.String("a86a8f5c339544d7bdc89926de14fb8c"),
-/// 			ZeroTrustAccessAiControlsMcpServerId: pulumi.String("my-mcp-server"),
-/// 			AuthType:                             pulumi.String("unauthenticated"),
-/// 			Hostname:                             pulumi.String("https://example.com/mcp"),
-/// 			Name:                                 pulumi.String("My MCP Server"),
-/// 			AuthCredentials:                      pulumi.String("sk-my-bearer-token"),
-/// 			ClientSecret:                         pulumi.String("client_secret"),
-/// 			Description:                          pulumi.String("This is one remote MCP server"),
+/// 		cfg := config.New(ctx, "")
+/// 		cloudflareAccountId := cfg.Require("cloudflareAccountId")
+/// 		mcpOauthClientId := cfg.Require("mcpOauthClientId")
+/// 		mcpOauthClientSecret := cfg.Require("mcpOauthClientSecret")
+/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 			"auth_mode": "manual",
+/// 			"config": map[string]string{
+/// 				"authorization_endpoint": "https://github.com/login/oauth/authorize",
+/// 				"token_endpoint":         "https://github.com/login/oauth/access_token",
+/// 			},
+/// 			"registration_info": map[string]string{
+/// 				"client_id":                  mcpOauthClientId,
+/// 				"token_endpoint_auth_method": "client_secret_basic",
+/// 				"scope":                      "repo read:user",
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		_, err = cloudflare.NewZeroTrustAccessAiControlsMcpServer(ctx, "example_zero_trust_access_ai_controls_mcp_server", &cloudflare.ZeroTrustAccessAiControlsMcpServerArgs{
+/// 			AccountId:                            pulumi.String(cloudflareAccountId),
+/// 			ZeroTrustAccessAiControlsMcpServerId: pulumi.String("github"),
+/// 			AuthType:                             pulumi.String("oauth"),
+/// 			Hostname:                             pulumi.String("https://github-mcp.example.com/mcp"),
+/// 			Name:                                 pulumi.String("GitHub MCP Server"),
+/// 			AuthCredentials:                      pulumi.String(json0),
+/// 			ClientSecret:                         pulumi.String(mcpOauthClientSecret),
 /// 			IsSharedOauthCallbackEnabled:         pulumi.Bool(true),
-/// 			SecureWebGateway:                     pulumi.Bool(false),
-/// 			UpdatedPrompts: cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArray{
-/// 				&cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs{
-/// 					Name:        pulumi.String("name"),
-/// 					Alias:       pulumi.String("my-custom-alias"),
-/// 					Description: pulumi.String("description"),
-/// 					Enabled:     pulumi.Bool(true),
-/// 				},
-/// 			},
-/// 			UpdatedTools: cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedToolArray{
-/// 				&cloudflare.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs{
-/// 					Name:        pulumi.String("name"),
-/// 					Alias:       pulumi.String("my-custom-alias"),
-/// 					Description: pulumi.String("description"),
-/// 					Enabled:     pulumi.Bool(true),
-/// 				},
-/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -170,28 +175,34 @@ import 'zero_trust_access_ai_controls_mcp_server_updated_tool.dart';
 /// }
 ///
 /// resource "cloudflare_zerotrustaccessaicontrolsmcpserver" "example_zero_trust_access_ai_controls_mcp_server" {
-///   account_id                                  = "a86a8f5c339544d7bdc89926de14fb8c"
-///   zero_trust_access_ai_controls_mcp_server_id = "my-mcp-server"
-///   auth_type                                   = "unauthenticated"
-///   hostname                                    = "https://example.com/mcp"
-///   name                                        = "My MCP Server"
-///   auth_credentials                            = "sk-my-bearer-token"
-///   client_secret                               = "client_secret"
-///   description                                 = "This is one remote MCP server"
-///   is_shared_oauth_callback_enabled            = true
-///   secure_web_gateway                          = false
-///   updated_prompts {
-///     name        = "name"
-///     alias       = "my-custom-alias"
-///     description = "description"
-///     enabled     = true
-///   }
-///   updated_tools {
-///     name        = "name"
-///     alias       = "my-custom-alias"
-///     description = "description"
-///     enabled     = true
-///   }
+///   account_id                                  = var.cloudflareAccountId
+///   zero_trust_access_ai_controls_mcp_server_id = "github"
+///   auth_type                                   = "oauth"
+///   hostname                                    = "https://github-mcp.example.com/mcp"
+///   name                                        = "GitHub MCP Server"
+///   auth_credentials = jsonencode({
+///     "auth_mode" = "manual"
+///     "config" = {
+///       "authorization_endpoint" = "https://github.com/login/oauth/authorize"
+///       "token_endpoint"         = "https://github.com/login/oauth/access_token"
+///     }
+///     "registration_info" = {
+///       "client_id"                  = var.mcpOauthClientId
+///       "token_endpoint_auth_method" = "client_secret_basic"
+///       "scope"                      = "repo read:user"
+///     }
+///   })
+///   client_secret                    = var.mcpOauthClientSecret
+///   is_shared_oauth_callback_enabled = true
+/// }
+/// variable "cloudflareAccountId" {
+///   type = string
+/// }
+/// variable "mcpOauthClientId" {
+///   type = string
+/// }
+/// variable "mcpOauthClientSecret" {
+///   type = string
 /// }
 /// ```
 /// ```java
@@ -202,8 +213,7 @@ import 'zero_trust_access_ai_controls_mcp_server_updated_tool.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.cloudflare.ZeroTrustAccessAiControlsMcpServer;
 /// import com.pulumi.cloudflare.ZeroTrustAccessAiControlsMcpServerArgs;
-/// import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs;
-/// import com.pulumi.cloudflare.inputs.ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs;
+/// import static com.pulumi.codegen.internal.Serialization.*;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -217,62 +227,70 @@ import 'zero_trust_access_ai_controls_mcp_server_updated_tool.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
+///         final var config = ctx.config();
+///         final var cloudflareAccountId = config.require("cloudflareAccountId");
+///         final var mcpOauthClientId = config.require("mcpOauthClientId");
+///         final var mcpOauthClientSecret = config.require("mcpOauthClientSecret");
 ///         var exampleZeroTrustAccessAiControlsMcpServer = new ZeroTrustAccessAiControlsMcpServer("exampleZeroTrustAccessAiControlsMcpServer", ZeroTrustAccessAiControlsMcpServerArgs.builder()
-///             .accountId("a86a8f5c339544d7bdc89926de14fb8c")
-///             .zeroTrustAccessAiControlsMcpServerId("my-mcp-server")
-///             .authType("unauthenticated")
-///             .hostname("https://example.com/mcp")
-///             .name("My MCP Server")
-///             .authCredentials("sk-my-bearer-token")
-///             .clientSecret("client_secret")
-///             .description("This is one remote MCP server")
+///             .accountId(cloudflareAccountId)
+///             .zeroTrustAccessAiControlsMcpServerId("github")
+///             .authType("oauth")
+///             .hostname("https://github-mcp.example.com/mcp")
+///             .name("GitHub MCP Server")
+///             .authCredentials(serializeJson(
+///                 jsonObject(
+///                     jsonProperty("auth_mode", "manual"),
+///                     jsonProperty("config", jsonObject(
+///                         jsonProperty("authorization_endpoint", "https://github.com/login/oauth/authorize"),
+///                         jsonProperty("token_endpoint", "https://github.com/login/oauth/access_token")
+///                     )),
+///                     jsonProperty("registration_info", jsonObject(
+///                         jsonProperty("client_id", mcpOauthClientId),
+///                         jsonProperty("token_endpoint_auth_method", "client_secret_basic"),
+///                         jsonProperty("scope", "repo read:user")
+///                     ))
+///                 )))
+///             .clientSecret(mcpOauthClientSecret)
 ///             .isSharedOauthCallbackEnabled(true)
-///             .secureWebGateway(false)
-///             .updatedPrompts(ZeroTrustAccessAiControlsMcpServerUpdatedPromptArgs.builder()
-///                 .name("name")
-///                 .alias("my-custom-alias")
-///                 .description("description")
-///                 .enabled(true)
-///                 .build())
-///             .updatedTools(ZeroTrustAccessAiControlsMcpServerUpdatedToolArgs.builder()
-///                 .name("name")
-///                 .alias("my-custom-alias")
-///                 .description("description")
-///                 .enabled(true)
-///                 .build())
 ///             .build());
 ///
 ///     }
 /// }
 /// ```
 /// ```yaml
+/// configuration:
+///   cloudflareAccountId:
+///     type: string
+///   mcpOauthClientId:
+///     type: string
+///   mcpOauthClientSecret:
+///     type: string
 /// resources:
 ///   exampleZeroTrustAccessAiControlsMcpServer:
 ///     type: cloudflare:ZeroTrustAccessAiControlsMcpServer
 ///     name: example_zero_trust_access_ai_controls_mcp_server
 ///     properties:
-///       accountId: a86a8f5c339544d7bdc89926de14fb8c
-///       zeroTrustAccessAiControlsMcpServerId: my-mcp-server
-///       authType: unauthenticated
-///       hostname: https://example.com/mcp
-///       name: My MCP Server
-///       authCredentials: sk-my-bearer-token
-///       clientSecret: client_secret
-///       description: This is one remote MCP server
+///       accountId: ${cloudflareAccountId}
+///       zeroTrustAccessAiControlsMcpServerId: github
+///       authType: oauth
+///       hostname: https://github-mcp.example.com/mcp
+///       name: GitHub MCP Server
+///       authCredentials:
+///         fn::toJSON:
+///           auth_mode: manual
+///           config:
+///             authorization_endpoint: https://github.com/login/oauth/authorize
+///             token_endpoint: https://github.com/login/oauth/access_token
+///           registration_info:
+///             client_id: ${mcpOauthClientId}
+///             token_endpoint_auth_method: client_secret_basic
+///             scope: repo read:user
+///       clientSecret: ${mcpOauthClientSecret}
 ///       isSharedOauthCallbackEnabled: true
-///       secureWebGateway: false
-///       updatedPrompts:
-///         - name: name
-///           alias: my-custom-alias
-///           description: description
-///           enabled: true
-///       updatedTools:
-///         - name: name
-///           alias: my-custom-alias
-///           description: description
-///           enabled: true
 /// ```
 ///
+///
+/// `authCredentials` and `clientSecret` are write-only and cannot be recovered by import. Omitting either value on update preserves the existing credential. Because the API does not return `authCredentials`, Terraform cannot automatically detect and restore out-of-band OAuth metadata changes; inspect the computed `authConfigSummary` for the current non-secret metadata. Terraform's `sensitive` marker hides credential values from normal output but still stores them in state, so use a protected state backend with restricted access.
 ///
 /// ## Import
 ///
@@ -333,7 +351,7 @@ class ZeroTrustAccessAiControlsMcpServer extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessAiControlsMcpServer:ZeroTrustAccessAiControlsMcpServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
           additionalSecretOutputs: const ['authCredentials', 'clientSecret'],
         ) {
     accountId = registerOutput<String>('accountId');

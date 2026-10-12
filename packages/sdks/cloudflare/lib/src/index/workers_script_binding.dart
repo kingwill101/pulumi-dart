@@ -79,12 +79,14 @@ class WorkersScriptBinding {
   final pulumi.Input<WorkersScriptBindingSimple?>? simple;
   /// ID of the store containing the secret.
   final pulumi.Input<String?>? storeId;
+  /// ID of a K2 stream owned by the account deploying the Worker.
+  final pulumi.Input<String?>? stream;
   /// The text value to use.
   final pulumi.Input<String?>? text;
   /// UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
   final pulumi.Input<String?>? tunnelId;
   /// The kind of resource that the binding provides.
-  /// Available values: "ai", "ai*search", "ai*search*namespace", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
+  /// Available values: "ai", "ai*search", "ai*search*namespace", "messaging", "analytics*engine", "artifacts", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "media", "mtls*certificate", "plain*text", "pipelines", "k2", "queue", "ratelimit", "r2*bucket", "secret*text", "send*email", "service", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "flagship", "secret*key", "workflow", "wasm*module", "vpc*service", "vpc*network".
   final pulumi.Input<String> type;
   /// Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
   final pulumi.Input<List<String>?>? usages;
@@ -130,6 +132,7 @@ class WorkersScriptBinding {
   /// [serviceId] Identifier of the VPC service to bind to.
   /// [simple] A simple rate limit.
   /// [storeId] ID of the store containing the secret.
+  /// [stream] ID of a K2 stream owned by the account deploying the Worker.
   /// [text] The text value to use.
   /// [tunnelId] UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
   /// [type] The kind of resource that the binding provides.
@@ -173,6 +176,7 @@ class WorkersScriptBinding {
     this.serviceId,
     this.simple,
     this.storeId,
+    this.stream,
     this.text,
     this.tunnelId,
     required this.type,
@@ -219,6 +223,7 @@ class WorkersScriptBinding {
       'serviceId': ?serviceId,
       'simple': ?pulumi.Input.mapOptionalInputValue<WorkersScriptBindingSimple, Map<String, dynamic>>(simple, (value) => value.toMap()),
       'storeId': ?storeId,
+      'stream': ?stream,
       'text': ?text,
       'tunnelId': ?tunnelId,
       'type': type,
@@ -266,6 +271,7 @@ class WorkersScriptBinding {
       serviceId: (() { final guardedValue = map['serviceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       simple: (() { final guardedValue = map['simple']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkersScriptBindingSimple.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       storeId: (() { final guardedValue = map['storeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      stream: (() { final guardedValue = map['stream']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tunnelId: (() { final guardedValue = map['tunnelId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),

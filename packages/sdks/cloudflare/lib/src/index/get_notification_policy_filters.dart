@@ -77,6 +77,8 @@ class GetNotificationPolicyFilters {
   final pulumi.Input<List<String>> targetIps;
   /// Used for configuring advanced*ddos*attack*l7*alert
   final pulumi.Input<List<String>> targetZoneNames;
+  /// Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
+  final pulumi.Input<List<String>> tokenIds;
   /// Used for configuring traffic*anomalies*alert
   final pulumi.Input<List<String>> trafficExclusions;
   /// Used for configuring tunnel*health*event
@@ -128,6 +130,7 @@ class GetNotificationPolicyFilters {
   /// [targetHostnames] Used for configuring advanced*ddos*attack*l7*alert
   /// [targetIps] Used for configuring advanced*ddos*attack*l4*alert
   /// [targetZoneNames] Used for configuring advanced*ddos*attack*l7*alert
+  /// [tokenIds] Access service token IDs to include for expiring*service*token_alert. Omit this property to include all current and future service tokens.
   /// [trafficExclusions] Used for configuring traffic*anomalies*alert
   /// [tunnelIds] Used for configuring tunnel*health*event
   /// [tunnelNames] Usage depends on specific alert type
@@ -172,6 +175,7 @@ class GetNotificationPolicyFilters {
     required this.targetHostnames,
     required this.targetIps,
     required this.targetZoneNames,
+    required this.tokenIds,
     required this.trafficExclusions,
     required this.tunnelIds,
     required this.tunnelNames,
@@ -219,6 +223,7 @@ class GetNotificationPolicyFilters {
       'targetHostnames': targetHostnames,
       'targetIps': targetIps,
       'targetZoneNames': targetZoneNames,
+      'tokenIds': tokenIds,
       'trafficExclusions': trafficExclusions,
       'tunnelIds': tunnelIds,
       'tunnelNames': tunnelNames,
@@ -267,6 +272,7 @@ class GetNotificationPolicyFilters {
       targetHostnames: pulumi.Input.fromValue((map['targetHostnames'] as List).cast<String>()),
       targetIps: pulumi.Input.fromValue((map['targetIps'] as List).cast<String>()),
       targetZoneNames: pulumi.Input.fromValue((map['targetZoneNames'] as List).cast<String>()),
+      tokenIds: pulumi.Input.fromValue((map['tokenIds'] as List).cast<String>()),
       trafficExclusions: pulumi.Input.fromValue((map['trafficExclusions'] as List).cast<String>()),
       tunnelIds: pulumi.Input.fromValue((map['tunnelIds'] as List).cast<String>()),
       tunnelNames: pulumi.Input.fromValue((map['tunnelNames'] as List).cast<String>()),

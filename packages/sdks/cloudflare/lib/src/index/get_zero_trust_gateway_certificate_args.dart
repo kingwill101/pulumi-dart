@@ -7,12 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_zero_trust_gateway_certificate_get_zero_trust_gateway_certificate_args_doc}
 class GetZeroTrustGatewayCertificateArgs {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String?>? accountId;
   /// Identify the certificate with a UUID.
   final pulumi.Input<String> certificateId;
 
   /// Creates a new [GetZeroTrustGatewayCertificateArgs].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [certificateId] Identify the certificate with a UUID.
   const GetZeroTrustGatewayCertificateArgs({
     this.accountId,

@@ -10,6 +10,7 @@ class MagicTransitSiteWanState {
   /// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
   /// Available values: "low", "mid", "high".
   final pulumi.Input<String?>? healthCheckRate;
+  final pulumi.Input<bool?>? loadBalanceInnerFlows;
   final pulumi.Input<String?>? name;
   final pulumi.Input<int?>? physport;
   final pulumi.Input<int?>? priority;
@@ -23,6 +24,7 @@ class MagicTransitSiteWanState {
   /// Creates a new [MagicTransitSiteWanState].
   /// [accountId] Identifier
   /// [healthCheckRate] Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+  /// [loadBalanceInnerFlows] Optional.
   /// [name] Optional.
   /// [physport] Optional.
   /// [priority] Optional.
@@ -32,6 +34,7 @@ class MagicTransitSiteWanState {
   const MagicTransitSiteWanState({
     this.accountId,
     this.healthCheckRate,
+    this.loadBalanceInnerFlows,
     this.name,
     this.physport,
     this.priority,
@@ -44,6 +47,7 @@ class MagicTransitSiteWanState {
     return <String, dynamic>{
       'accountId': ?accountId,
       'healthCheckRate': ?healthCheckRate,
+      'loadBalanceInnerFlows': ?loadBalanceInnerFlows,
       'name': ?name,
       'physport': ?physport,
       'priority': ?priority,
@@ -57,12 +61,13 @@ class MagicTransitSiteWanState {
     return MagicTransitSiteWanState(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       healthCheckRate: (() { final guardedValue = map['healthCheckRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loadBalanceInnerFlows: (() { final guardedValue = map['loadBalanceInnerFlows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      physport: (() { final guardedValue = map['physport']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      physport: (() { final guardedValue = map['physport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       siteId: (() { final guardedValue = map['siteId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       staticAddressing: (() { final guardedValue = map['staticAddressing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MagicTransitSiteWanStaticAddressing.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      vlanTag: (() { final guardedValue = map['vlanTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      vlanTag: (() { final guardedValue = map['vlanTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

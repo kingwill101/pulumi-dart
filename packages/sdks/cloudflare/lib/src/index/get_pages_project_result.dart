@@ -24,11 +24,11 @@ class GetPagesProjectResult {
   final String? framework;
   /// Version of the framework the project is using.
   final String? frameworkVersion;
-  /// Name of the project.
+  /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final String? id;
   /// Most recent deployment of the project.
   final GetPagesProjectLatestDeployment? latestDeployment;
-  /// Name of the project.
+  /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final String? name;
   /// Name of the preview script.
   final String? previewScriptName;
@@ -36,7 +36,7 @@ class GetPagesProjectResult {
   final String? productionBranch;
   /// Name of the production script.
   final String? productionScriptName;
-  /// Name of the project.
+  /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final String? projectName;
   /// Configs for the project source control.
   final GetPagesProjectSource? source;
@@ -54,13 +54,13 @@ class GetPagesProjectResult {
   /// [domains] A list of associated custom domains for the project.
   /// [framework] Framework the project is using.
   /// [frameworkVersion] Version of the framework the project is using.
-  /// [id] Name of the project.
+  /// [id] Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   /// [latestDeployment] Most recent deployment of the project.
-  /// [name] Name of the project.
+  /// [name] Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   /// [previewScriptName] Name of the preview script.
   /// [productionBranch] Production branch of the project. Used to identify production deployments.
   /// [productionScriptName] Name of the production script.
-  /// [projectName] Name of the project.
+  /// [projectName] Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   /// [source] Configs for the project source control.
   /// [subdomain] The Cloudflare subdomain associated with the project.
   /// [usesFunctions] Whether the project uses functions.

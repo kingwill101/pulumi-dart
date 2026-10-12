@@ -1057,6 +1057,7 @@ import 'teams_rule_state.dart';
 /// $ pulumi import cloudflare:index/teamsRule:TeamsRule example '<account_id>/<rule_id>'
 /// ```
 class TeamsRule extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
   /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -1110,7 +1111,7 @@ class TeamsRule extends pulumi.CustomResource {
           'cloudflare:index/teamsRule:TeamsRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     action = registerOutput<String>('action');

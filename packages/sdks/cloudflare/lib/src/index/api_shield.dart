@@ -161,6 +161,8 @@ import 'api_shield_state.dart';
 /// ```
 class ApiShield extends pulumi.CustomResource {
   late final pulumi.Output<List<ApiShieldAuthIdCharacteristic>> authIdCharacteristics;
+  /// Ensures that the configuration is written or retrieved in normalized fashion
+  late final pulumi.Output<bool?> normalize;
   /// Identifier.
   late final pulumi.Output<String> zoneId;
 
@@ -176,9 +178,10 @@ class ApiShield extends pulumi.CustomResource {
           'cloudflare:index/apiShield:ApiShield',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     authIdCharacteristics = registerOutput<List<ApiShieldAuthIdCharacteristic>>('authIdCharacteristics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiShieldAuthIdCharacteristic>(guardedValue, (value) => ApiShieldAuthIdCharacteristic.fromMap((value as Map).cast<String, dynamic>())); });
+    normalize = registerOutput<bool?>('normalize');
     zoneId = registerOutput<String>('zoneId');
   }
 
@@ -207,6 +210,7 @@ class ApiShield extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     authIdCharacteristics = registerOutput<List<ApiShieldAuthIdCharacteristic>>('authIdCharacteristics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiShieldAuthIdCharacteristic>(guardedValue, (value) => ApiShieldAuthIdCharacteristic.fromMap((value as Map).cast<String, dynamic>())); });
+    normalize = registerOutput<bool?>('normalize');
     zoneId = registerOutput<String>('zoneId');
   }
 
@@ -220,6 +224,7 @@ class ApiShield extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     authIdCharacteristics = registerOutput<List<ApiShieldAuthIdCharacteristic>>('authIdCharacteristics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiShieldAuthIdCharacteristic>(guardedValue, (value) => ApiShieldAuthIdCharacteristic.fromMap((value as Map).cast<String, dynamic>())); });
+    normalize = registerOutput<bool?>('normalize');
     zoneId = registerOutput<String>('zoneId');
   }
 }

@@ -13,7 +13,7 @@ class GetLogpushJobsResultOutputOptions {
   final pulumi.Input<String> fieldDelimiter;
   /// List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
   final pulumi.Input<List<String>> fieldNames;
-  /// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+  /// If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
   final pulumi.Input<bool> mergeSubrequests;
   /// Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
   /// Available values: "ndjson", "csv".
@@ -26,7 +26,7 @@ class GetLogpushJobsResultOutputOptions {
   final pulumi.Input<String> recordSuffix;
   /// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
   final pulumi.Input<String> recordTemplate;
-  /// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+  /// Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
   final pulumi.Input<double> sampleRate;
   /// String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
   /// Available values: "unixnano", "unix", "rfc3339", "rfc3339ms", "rfc3339ns".
@@ -38,13 +38,13 @@ class GetLogpushJobsResultOutputOptions {
   /// [cve202144228] If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
   /// [fieldDelimiter] String to join fields. This field be ignored when `recordTemplate` is set.
   /// [fieldNames] List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
-  /// [mergeSubrequests] If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset.
+  /// [mergeSubrequests] If set to true, subrequests will be merged into the parent request. Only supported for the `httpRequests` dataset. Not supported for account-scoped jobs.
   /// [outputType] Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
   /// [recordDelimiter] String to be inserted in-between the records as separator.
   /// [recordPrefix] String to be prepended before each record.
   /// [recordSuffix] String to be appended after each record.
   /// [recordTemplate] String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
-  /// [sampleRate] Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
+  /// [sampleRate] Specifies the sampling rate as a floating number greater than 0 and at most 1. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
   /// [timestampFormat] String to specify the format for timestamps, such as `unixnano`, `unix`, `rfc3339`, `rfc3339ms` or `rfc3339ns`.
   const GetLogpushJobsResultOutputOptions({
     required this.batchPrefix,

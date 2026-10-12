@@ -14,6 +14,8 @@ class ShareRecipientState {
   final pulumi.Input<String?>? associationStatus;
   /// When the share was created.
   final pulumi.Input<String?>? created;
+  /// Include resources in the response.
+  final pulumi.Input<bool?>? includeResources;
   /// When the share was modified.
   final pulumi.Input<String?>? modified;
   /// Organization identifier.
@@ -28,6 +30,7 @@ class ShareRecipientState {
   /// [accountId] Account identifier.
   /// [associationStatus] The current state of the recipient relative to the share. The
   /// [created] When the share was created.
+  /// [includeResources] Include resources in the response.
   /// [modified] When the share was modified.
   /// [organizationId] Organization identifier.
   /// [recipientAccountId] The account that will receive the share.
@@ -37,6 +40,7 @@ class ShareRecipientState {
     this.accountId,
     this.associationStatus,
     this.created,
+    this.includeResources,
     this.modified,
     this.organizationId,
     this.recipientAccountId,
@@ -49,6 +53,7 @@ class ShareRecipientState {
       'accountId': ?accountId,
       'associationStatus': ?associationStatus,
       'created': ?created,
+      'includeResources': ?includeResources,
       'modified': ?modified,
       'organizationId': ?organizationId,
       'recipientAccountId': ?recipientAccountId,
@@ -62,6 +67,7 @@ class ShareRecipientState {
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       associationStatus: (() { final guardedValue = map['associationStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       created: (() { final guardedValue = map['created']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      includeResources: (() { final guardedValue = map['includeResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       modified: (() { final guardedValue = map['modified']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       organizationId: (() { final guardedValue = map['organizationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recipientAccountId: (() { final guardedValue = map['recipientAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

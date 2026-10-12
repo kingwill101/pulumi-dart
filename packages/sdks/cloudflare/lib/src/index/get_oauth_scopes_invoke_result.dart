@@ -27,7 +27,7 @@ class GetOauthScopesInvokeResult {
 
   factory GetOauthScopesInvokeResult.fromMap(Map<String, dynamic> map) {
     return GetOauthScopesInvokeResult(
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetOauthScopesResult>(guardedValue, (value) => GetOauthScopesResult.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }

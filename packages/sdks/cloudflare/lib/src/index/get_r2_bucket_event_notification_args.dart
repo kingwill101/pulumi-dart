@@ -7,17 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_r2_bucket_event_notification_get_r2_bucket_event_notification_args_doc}
 class GetR2BucketEventNotificationArgs {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final pulumi.Input<String> accountId;
   /// Name of the bucket.
   final pulumi.Input<String> bucketName;
-  /// Queue ID.
+  /// ID of the Cloudflare Queue that receives notifications for matching R2 object events.
   final pulumi.Input<String> queueId;
 
   /// Creates a new [GetR2BucketEventNotificationArgs].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [bucketName] Name of the bucket.
-  /// [queueId] Queue ID.
+  /// [queueId] ID of the Cloudflare Queue that receives notifications for matching R2 object events.
   const GetR2BucketEventNotificationArgs({
     required this.accountId,
     required this.bucketName,

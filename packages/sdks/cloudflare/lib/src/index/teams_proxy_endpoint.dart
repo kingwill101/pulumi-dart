@@ -126,6 +126,7 @@ import 'teams_proxy_endpoint_state.dart';
 /// $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint example '<account_id>/<proxy_endpoint_id>'
 /// ```
 class TeamsProxyEndpoint extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   late final pulumi.Output<String> createdAt;
   /// Specify the list of CIDRs to restrict ingress connections.
@@ -151,7 +152,7 @@ class TeamsProxyEndpoint extends pulumi.CustomResource {
           'cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');

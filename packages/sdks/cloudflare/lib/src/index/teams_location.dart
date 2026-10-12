@@ -396,6 +396,7 @@ import 'teams_location_state.dart';
 /// $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example '<account_id>/<location_id>'
 /// ```
 class TeamsLocation extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   /// Indicate whether this location is the default location.
   late final pulumi.Output<bool> clientDefault;
@@ -436,7 +437,7 @@ class TeamsLocation extends pulumi.CustomResource {
           'cloudflare:index/teamsLocation:TeamsLocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     clientDefault = registerOutput<bool>('clientDefault');

@@ -27,7 +27,7 @@ class PagesProjectState {
   final pulumi.Input<String?>? frameworkVersion;
   /// Most recent deployment of the project.
   final pulumi.Input<PagesProjectLatestDeployment?>? latestDeployment;
-  /// Name of the project.
+  /// Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final pulumi.Input<String?>? name;
   /// Name of the preview script.
   final pulumi.Input<String?>? previewScriptName;
@@ -52,7 +52,7 @@ class PagesProjectState {
   /// [framework] Framework the project is using.
   /// [frameworkVersion] Version of the framework the project is using.
   /// [latestDeployment] Most recent deployment of the project.
-  /// [name] Name of the project.
+  /// [name] Name for the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   /// [previewScriptName] Name of the preview script.
   /// [productionBranch] Production branch of the project. Used to identify production deployments.
   /// [productionScriptName] Name of the production script.
