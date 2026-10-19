@@ -6,15 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceTrustProviderAttachmentState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The ID of the Verified Access instance to attach the Trust Provider to.
+  /// ID of the Verified Access instance to attach the Trust Provider to.
   final pulumi.Input<String?>? verifiedaccessInstanceId;
-  /// The ID of the Verified Access trust provider.
+  /// ID of the Verified Access trust provider.
   final pulumi.Input<String?>? verifiedaccessTrustProviderId;
 
   /// Creates a new [InstanceTrustProviderAttachmentState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [verifiedaccessInstanceId] The ID of the Verified Access instance to attach the Trust Provider to.
-  /// [verifiedaccessTrustProviderId] The ID of the Verified Access trust provider.
+  /// [verifiedaccessInstanceId] ID of the Verified Access instance to attach the Trust Provider to.
+  /// [verifiedaccessTrustProviderId] ID of the Verified Access trust provider.
   const InstanceTrustProviderAttachmentState({
     this.region,
     this.verifiedaccessInstanceId,

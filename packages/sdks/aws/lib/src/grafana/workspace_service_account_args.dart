@@ -7,20 +7,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_grafana_workspace_service_account_workspace_service_account_args_doc}
 class WorkspaceServiceAccountArgs {
-  /// The permission level to use for this service account. For more information about the roles and the permissions each has, see the [User roles](https://docs.aws.amazon.com/grafana/latest/userguide/Grafana-user-roles.html) documentation.
+  /// Permission level to use for this service account. For more information about the roles and the permissions each has, see the [User roles](https://docs.aws.amazon.com/grafana/latest/userguide/Grafana-user-roles.html) documentation.
   final pulumi.Input<String> grafanaRole;
-  /// A name for the service account. The name must be unique within the workspace, as it determines the ID associated with the service account.
+  /// Name for the service account. The name must be unique within the workspace, as it determines the ID associated with the service account.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The Grafana workspace with which the service account is associated.
+  /// Grafana workspace with which the service account is associated.
   final pulumi.Input<String> workspaceId;
 
   /// Creates a new [WorkspaceServiceAccountArgs].
-  /// [grafanaRole] The permission level to use for this service account. For more information about the roles and the permissions each has, see the [User roles](https://docs.aws.amazon.com/grafana/latest/userguide/Grafana-user-roles.html) documentation.
-  /// [name] A name for the service account. The name must be unique within the workspace, as it determines the ID associated with the service account.
+  /// [grafanaRole] Permission level to use for this service account. For more information about the roles and the permissions each has, see the [User roles](https://docs.aws.amazon.com/grafana/latest/userguide/Grafana-user-roles.html) documentation.
+  /// [name] Name for the service account. The name must be unique within the workspace, as it determines the ID associated with the service account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [workspaceId] The Grafana workspace with which the service account is associated.
+  /// [workspaceId] Grafana workspace with which the service account is associated.
   const WorkspaceServiceAccountArgs({
     required this.grafanaRole,
     this.name,

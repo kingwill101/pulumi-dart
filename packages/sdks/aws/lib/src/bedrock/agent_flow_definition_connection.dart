@@ -4,23 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_flow_definition_connection_configuration.dart';
 
 class AgentFlowDefinitionConnection {
-  /// Configuration of the connection. See Connection Configuration for more information.
+  /// Configurations for the node. See `definition.node.configuration` Block for details.
   final pulumi.Input<AgentFlowDefinitionConnectionConfiguration?>? configuration;
-  /// A name for the connection that you can reference.
+  /// Name for the flow.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> name;
-  /// The node that the connection starts at.
+  /// Node that the connection starts at.
   final pulumi.Input<String> source;
-  /// The node that the connection ends at.
+  /// Node that the connection ends at.
   final pulumi.Input<String> target;
-  /// Whether the source node that the connection begins from is a condition node `Conditional` or not `Data`.
+  /// Data type of the output. If the output doesn't match this type at runtime, a validation error is thrown.
   final pulumi.Input<String> type;
 
   /// Creates a new [AgentFlowDefinitionConnection].
-  /// [configuration] Configuration of the connection. See Connection Configuration for more information.
-  /// [name] A name for the connection that you can reference.
-  /// [source] The node that the connection starts at.
-  /// [target] The node that the connection ends at.
-  /// [type] Whether the source node that the connection begins from is a condition node `Conditional` or not `Data`.
+  /// [configuration] Configurations for the node. See `definition.node.configuration` Block for details.
+  /// [name] Name for the flow.
+  /// [source] Node that the connection starts at.
+  /// [target] Node that the connection ends at.
+  /// [type] Data type of the output. If the output doesn't match this type at runtime, a validation error is thrown.
   const AgentFlowDefinitionConnection({
     this.configuration,
     required this.name,

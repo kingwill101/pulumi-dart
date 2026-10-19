@@ -5,20 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreHarnessMemoryManagedMemoryConfiguration {
   /// ARN of the managed memory resource.
   final pulumi.Input<String?>? arn;
-  /// ARN of a customer-managed KMS key used to encrypt the memory. Defaults to an AWS-owned key. Cannot be changed after creation.
+  /// ARN of the customer-managed KMS key used to encrypt the memory.
   final pulumi.Input<String?>? encryptionKeyArn;
-  /// Event retention in days. Defaults to `30`.
+  /// Event retention in days.
   final pulumi.Input<int?>? eventExpiryDuration;
-  /// Set of strategy types to enable. Valid values are `SEMANTIC`, `SUMMARIZATION`, and `USER_PREFERENCE`. Defaults to `["SEMANTIC", "SUMMARIZATION"]`.
-  ///
-  /// In addition, the following attribute is exported:
+  /// Set of strategy types enabled.
   final pulumi.Input<List<String>?>? strategies;
 
   /// Creates a new [AgentcoreHarnessMemoryManagedMemoryConfiguration].
   /// [arn] ARN of the managed memory resource.
-  /// [encryptionKeyArn] ARN of a customer-managed KMS key used to encrypt the memory. Defaults to an AWS-owned key. Cannot be changed after creation.
-  /// [eventExpiryDuration] Event retention in days. Defaults to `30`.
-  /// [strategies] Set of strategy types to enable. Valid values are `SEMANTIC`, `SUMMARIZATION`, and `USER_PREFERENCE`. Defaults to `["SEMANTIC", "SUMMARIZATION"]`.
+  /// [encryptionKeyArn] ARN of the customer-managed KMS key used to encrypt the memory.
+  /// [eventExpiryDuration] Event retention in days.
+  /// [strategies] Set of strategy types enabled.
   const AgentcoreHarnessMemoryManagedMemoryConfiguration({
     this.arn,
     this.encryptionKeyArn,
@@ -39,7 +37,7 @@ class AgentcoreHarnessMemoryManagedMemoryConfiguration {
     return AgentcoreHarnessMemoryManagedMemoryConfiguration(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptionKeyArn: (() { final guardedValue = map['encryptionKeyArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      eventExpiryDuration: (() { final guardedValue = map['eventExpiryDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      eventExpiryDuration: (() { final guardedValue = map['eventExpiryDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       strategies: (() { final guardedValue = map['strategies']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

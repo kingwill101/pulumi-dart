@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_knowledge_base_storage_configuration_neptune_analytics_configuration_field_mapping.dart';
 
 class AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration {
-  /// The names of the fields to which to map information about the vector store. This block supports the following arguments:
+  /// Names of the fields to which to map information about the vector store. See `storage_configuration.neptune_analytics_configuration.field_mapping` Block for details.
   final pulumi.Input<AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationFieldMapping> fieldMapping;
   /// ARN of the Neptune Analytics vector store.
   final pulumi.Input<String> graphArn;
 
   /// Creates a new [AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration].
-  /// [fieldMapping] The names of the fields to which to map information about the vector store. This block supports the following arguments:
+  /// [fieldMapping] Names of the fields to which to map information about the vector store. See `storage_configuration.neptune_analytics_configuration.field_mapping` Block for details.
   /// [graphArn] ARN of the Neptune Analytics vector store.
   const AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration({
     required this.fieldMapping,

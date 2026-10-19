@@ -3,32 +3,32 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobSourceControlDetails {
-  /// The type of authentication, which can be an authentication token stored in Amazon Web Services Secrets Manager, or a personal access token. Valid values are: `PERSONAL_ACCESS_TOKEN` and `AWS_SECRETS_MANAGER`.
+  /// Type of authentication, which can be an authentication token stored in Amazon Web Services Secrets Manager, or a personal access token. Valid values are: `PERSONAL_ACCESS_TOKEN` and `AWS_SECRETS_MANAGER`.
   final pulumi.Input<String?>? authStrategy;
-  /// The value of an authorization token.
+  /// Value of an authorization token.
   final pulumi.Input<String?>? authToken;
-  /// A branch in the remote repository.
+  /// Branch in the remote repository.
   final pulumi.Input<String?>? branch;
-  /// A folder in the remote repository.
+  /// Folder in the remote repository.
   final pulumi.Input<String?>? folder;
-  /// The last commit ID for a commit in the remote repository.
+  /// Last commit ID for a commit in the remote repository.
   final pulumi.Input<String?>? lastCommitId;
-  /// The owner of the remote repository that contains the job artifacts.
+  /// Owner of the remote repository that contains the job artifacts.
   final pulumi.Input<String?>? owner;
-  /// The provider for the remote repository. Valid values are: `GITHUB`, `GITLAB`, `BITBUCKET`, and `AWS_CODE_COMMIT`.
+  /// Provider for the remote repository. Valid values are: `GITHUB`, `GITLAB`, `BITBUCKET`, and `AWS_CODE_COMMIT`.
   final pulumi.Input<String?>? provider;
-  /// The name of the remote repository that contains the job artifacts.
+  /// Name of the remote repository that contains the job artifacts.
   final pulumi.Input<String?>? repository;
 
   /// Creates a new [JobSourceControlDetails].
-  /// [authStrategy] The type of authentication, which can be an authentication token stored in Amazon Web Services Secrets Manager, or a personal access token. Valid values are: `PERSONAL_ACCESS_TOKEN` and `AWS_SECRETS_MANAGER`.
-  /// [authToken] The value of an authorization token.
-  /// [branch] A branch in the remote repository.
-  /// [folder] A folder in the remote repository.
-  /// [lastCommitId] The last commit ID for a commit in the remote repository.
-  /// [owner] The owner of the remote repository that contains the job artifacts.
-  /// [provider] The provider for the remote repository. Valid values are: `GITHUB`, `GITLAB`, `BITBUCKET`, and `AWS_CODE_COMMIT`.
-  /// [repository] The name of the remote repository that contains the job artifacts.
+  /// [authStrategy] Type of authentication, which can be an authentication token stored in Amazon Web Services Secrets Manager, or a personal access token. Valid values are: `PERSONAL_ACCESS_TOKEN` and `AWS_SECRETS_MANAGER`.
+  /// [authToken] Value of an authorization token.
+  /// [branch] Branch in the remote repository.
+  /// [folder] Folder in the remote repository.
+  /// [lastCommitId] Last commit ID for a commit in the remote repository.
+  /// [owner] Owner of the remote repository that contains the job artifacts.
+  /// [provider] Provider for the remote repository. Valid values are: `GITHUB`, `GITLAB`, `BITBUCKET`, and `AWS_CODE_COMMIT`.
+  /// [repository] Name of the remote repository that contains the job artifacts.
   const JobSourceControlDetails({
     this.authStrategy,
     this.authToken,

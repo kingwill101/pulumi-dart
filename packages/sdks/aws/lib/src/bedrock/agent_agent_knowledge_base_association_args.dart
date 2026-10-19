@@ -10,7 +10,7 @@ import 'agent_agent_knowledge_base_association_timeouts.dart';
 class AgentAgentKnowledgeBaseAssociationArgs {
   /// Unique identifier of the agent with which you want to associate the knowledge base.
   final pulumi.Input<String> agentId;
-  /// Version of the agent with which you want to associate the knowledge base. Valid values: `DRAFT`.
+  /// Version of the agent with which you want to associate the knowledge base. Valid values: `DRAFT`. Defaults to `DRAFT`.
   final pulumi.Input<String?>? agentVersion;
   /// Description of what the agent should use the knowledge base for.
   final pulumi.Input<String> description;
@@ -26,7 +26,7 @@ class AgentAgentKnowledgeBaseAssociationArgs {
 
   /// Creates a new [AgentAgentKnowledgeBaseAssociationArgs].
   /// [agentId] Unique identifier of the agent with which you want to associate the knowledge base.
-  /// [agentVersion] Version of the agent with which you want to associate the knowledge base. Valid values: `DRAFT`.
+  /// [agentVersion] Version of the agent with which you want to associate the knowledge base. Valid values: `DRAFT`. Defaults to `DRAFT`.
   /// [description] Description of what the agent should use the knowledge base for.
   /// [knowledgeBaseId] Unique identifier of the knowledge base to associate with the agent.
   /// [knowledgeBaseState] Whether to use the knowledge base when sending an [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html) request. Valid values: `ENABLED`, `DISABLED`.

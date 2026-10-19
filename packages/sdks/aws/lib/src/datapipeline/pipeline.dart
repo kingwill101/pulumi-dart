@@ -106,7 +106,7 @@ import 'pipeline_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.datapipeline.Pipeline` using the id (Pipeline ID). For example:
+/// Using `pulumi import`, import `aws.datapipeline.Pipeline` using the ID (Pipeline ID). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datapipeline/pipeline:Pipeline default df-1234567890
@@ -135,7 +135,7 @@ class Pipeline extends pulumi.CustomResource {
           'aws:datapipeline/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

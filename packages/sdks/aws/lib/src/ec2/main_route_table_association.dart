@@ -116,14 +116,13 @@ import 'main_route_table_association_state.dart';
 ///       routeTableId: ${bar.id}
 /// ```
 class MainRouteTableAssociation extends pulumi.CustomResource {
-  /// Used internally, see **Notes** below
+  /// Original route table ID, used internally; see __Notes__ below
   late final pulumi.Output<String> originalRouteTableId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The ID of the Route Table to set as the new
-  /// main route table for the target VPC
+  /// ID of the Route Table to set as the new main route table for the target VPC
   late final pulumi.Output<String> routeTableId;
-  /// The ID of the VPC whose main route table should be set
+  /// ID of the VPC whose main route table should be set
   late final pulumi.Output<String> vpcId;
 
   /// Creates a new [MainRouteTableAssociation].
@@ -138,7 +137,7 @@ class MainRouteTableAssociation extends pulumi.CustomResource {
           'aws:ec2/mainRouteTableAssociation:MainRouteTableAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     originalRouteTableId = registerOutput<String>('originalRouteTableId');
     region = registerOutput<String>('region');

@@ -3,7 +3,7 @@ import 'target_args.dart';
 import 'target_state.dart';
 import 'target_suspended_state.dart';
 
-/// Provides an Application AutoScaling ScalableTarget resource. To manage policies which get attached to the target, see the `aws.appautoscaling.Policy` resource.
+/// Provides an Application Auto Scaling ScalableTarget resource. To manage policies which get attached to the target, see the `aws.appautoscaling.Policy` resource.
 ///
 /// &gt; **NOTE:** Scalable targets created before 2023-03-20 may not have an assigned `arn`. These resource cannot use `tags` or participate in `defaultTags`. To prevent `pulumi preview` showing differences that can never be reconciled, use the `lifecycle.ignore_changes` meta-argument. See the example below.
 ///
@@ -11,7 +11,7 @@ import 'target_suspended_state.dart';
 ///
 /// ## Example Usage
 ///
-/// ### DynamoDB Table Autoscaling
+/// ### DynamoDB Table AutoScaling
 ///
 ///
 /// ```typescript
@@ -143,7 +143,7 @@ import 'target_suspended_state.dart';
 /// ```
 ///
 ///
-/// ### DynamoDB Index Autoscaling
+/// ### DynamoDB Index AutoScaling
 ///
 ///
 /// ```typescript
@@ -275,7 +275,7 @@ import 'target_suspended_state.dart';
 /// ```
 ///
 ///
-/// ### ECS Service Autoscaling
+/// ### ECS Service AutoScaling
 ///
 ///
 /// ```typescript
@@ -407,7 +407,7 @@ import 'target_suspended_state.dart';
 /// ```
 ///
 ///
-/// ### Aurora Read Replica Autoscaling
+/// ### Aurora Read Replica AutoScaling
 ///
 ///
 /// ```typescript
@@ -838,7 +838,7 @@ import 'target_suspended_state.dart';
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import Application AutoScaling Target using the `service-namespace` , `resource-id` and `scalable-dimension` separated by `/`. For example:
+/// Using `pulumi import`, import Application Auto Scaling Target using the `service-namespace` , `resource-id` and `scalable-dimension` separated by `/`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appautoscaling/target:Target test-target service-namespace/resource-id/scalable-dimension
@@ -854,7 +854,7 @@ class Target extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Resource type and unique identifier string for the resource associated with the scaling policy. Documentation can be found in the `ResourceId` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
   late final pulumi.Output<String> resourceId;
-  /// ARN of the IAM role that allows Application AutoScaling to modify your scalable target on your behalf. This defaults to an IAM Service-Linked Role for most services and custom IAM Roles are ignored by the API for those namespaces. See the [AWS Application Auto Scaling documentation](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) for more information about how this service interacts with IAM.
+  /// ARN of the IAM role that allows Application Auto Scaling to modify your scalable target on your behalf. This defaults to an IAM Service-Linked Role for most services and custom IAM Roles are ignored by the API for those namespaces. See the [AWS Application Auto Scaling documentation](https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles) for more information about how this service interacts with IAM.
   late final pulumi.Output<String> roleArn;
   /// Scalable dimension of the scalable target. Documentation can be found in the `ScalableDimension` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
   late final pulumi.Output<String> scalableDimension;
@@ -879,7 +879,7 @@ class Target extends pulumi.CustomResource {
           'aws:appautoscaling/target:Target',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     maxCapacity = registerOutput<int>('maxCapacity');

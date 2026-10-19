@@ -5,14 +5,14 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 import 'agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_text.dart';
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration {
-  /// Contains configurations to use the prompt in a conversational format. See Chat Template Configuration for more information.
+  /// Configurations to use the prompt in a conversational format. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.chat` Block for details.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChat?>? chat;
-  /// Contains configurations for the text in a message for a prompt. See Text Template Configuration for more information.
+  /// Message for the prompt.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationText?>? text;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration].
-  /// [chat] Contains configurations to use the prompt in a conversational format. See Chat Template Configuration for more information.
-  /// [text] Contains configurations for the text in a message for a prompt. See Text Template Configuration for more information.
+  /// [chat] Configurations to use the prompt in a conversational format. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.chat` Block for details.
+  /// [text] Message for the prompt.
   const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration({
     this.chat,
     this.text,

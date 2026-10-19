@@ -181,7 +181,7 @@ import 'byte_match_set_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import WAF Byte Match Set using the id. For example:
+/// Using `pulumi import`, import WAF Byte Match Set using the ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:waf/byteMatchSet:ByteMatchSet byte_set a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
@@ -208,7 +208,7 @@ class ByteMatchSet extends pulumi.CustomResource {
           'aws:waf/byteMatchSet:ByteMatchSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     byteMatchTuples = registerOutput<List<ByteMatchSetByteMatchTuple>?>('byteMatchTuples', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ByteMatchSetByteMatchTuple>(guardedValue, (value) => ByteMatchSetByteMatchTuple.fromMap((value as Map).cast<String, dynamic>())); });

@@ -7,20 +7,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_grafana_license_association_license_association_args_doc}
 class LicenseAssociationArgs {
-  /// A token from Grafana Labs that ties your AWS account with a Grafana Labs account.
+  /// Token from Grafana Labs that ties your AWS account with a Grafana Labs account.
   final pulumi.Input<String?>? grafanaToken;
-  /// The type of license for the workspace license association. Valid values are `ENTERPRISE` and `ENTERPRISE_FREE_TRIAL`.
+  /// Type of license for the workspace license association. Valid values are `ENTERPRISE` and `ENTERPRISE_FREE_TRIAL`.
   final pulumi.Input<String> licenseType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The workspace id.
+  /// Workspace ID.
   final pulumi.Input<String> workspaceId;
 
   /// Creates a new [LicenseAssociationArgs].
-  /// [grafanaToken] A token from Grafana Labs that ties your AWS account with a Grafana Labs account.
-  /// [licenseType] The type of license for the workspace license association. Valid values are `ENTERPRISE` and `ENTERPRISE_FREE_TRIAL`.
+  /// [grafanaToken] Token from Grafana Labs that ties your AWS account with a Grafana Labs account.
+  /// [licenseType] Type of license for the workspace license association. Valid values are `ENTERPRISE` and `ENTERPRISE_FREE_TRIAL`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [workspaceId] The workspace id.
+  /// [workspaceId] Workspace ID.
   const LicenseAssociationArgs({
     this.grafanaToken,
     required this.licenseType,

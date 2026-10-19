@@ -3,20 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CrawlerJdbcTarget {
-  /// The name of the connection to use to connect to the JDBC target.
+  /// Name of the connection to use to connect to the JDBC target.
   final pulumi.Input<String> connectionName;
   /// Specify a value of `RAWTYPES` or `COMMENTS` to enable additional metadata intable responses. `RAWTYPES` provides the native-level datatype. `COMMENTS` provides comments associated with a column or table in the database.
   final pulumi.Input<List<String>?>? enableAdditionalMetadatas;
-  /// A list of glob patterns used to exclude from the crawl.
+  /// List of glob patterns used to exclude from the crawl.
   final pulumi.Input<List<String>?>? exclusions;
-  /// The path of the JDBC target.
+  /// Path of the JDBC target.
   final pulumi.Input<String> path;
 
   /// Creates a new [CrawlerJdbcTarget].
-  /// [connectionName] The name of the connection to use to connect to the JDBC target.
+  /// [connectionName] Name of the connection to use to connect to the JDBC target.
   /// [enableAdditionalMetadatas] Specify a value of `RAWTYPES` or `COMMENTS` to enable additional metadata intable responses. `RAWTYPES` provides the native-level datatype. `COMMENTS` provides comments associated with a column or table in the database.
-  /// [exclusions] A list of glob patterns used to exclude from the crawl.
-  /// [path] The path of the JDBC target.
+  /// [exclusions] List of glob patterns used to exclude from the crawl.
+  /// [path] Path of the JDBC target.
   const CrawlerJdbcTarget({
     required this.connectionName,
     this.enableAdditionalMetadatas,

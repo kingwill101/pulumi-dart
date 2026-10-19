@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsApplicationOutputSchema {
-  /// The Format Type of the records on the output stream. Can be `CSV` or `JSON`.
+  /// Format Type of the records on the output stream. Can be `CSV` or `JSON`.
   final pulumi.Input<String> recordFormatType;
 
   /// Creates a new [AnalyticsApplicationOutputSchema].
-  /// [recordFormatType] The Format Type of the records on the output stream. Can be `CSV` or `JSON`.
+  /// [recordFormatType] Format Type of the records on the output stream. Can be `CSV` or `JSON`.
   const AnalyticsApplicationOutputSchema({
     required this.recordFormatType,
   });

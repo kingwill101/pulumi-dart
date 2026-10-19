@@ -251,7 +251,7 @@ import 'workforce_workforce_vpc_config.dart';
 /// ```
 ///
 ///
-/// ### Oidc Usage
+/// ### OIDC Usage
 ///
 ///
 /// ```typescript
@@ -441,7 +441,7 @@ class Workforce extends pulumi.CustomResource {
   late final pulumi.Output<WorkforceOidcConfig?> oidcConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A list of IP address ranges Used to create an allow list of IP addresses for a private workforce. By default, a workforce isn't restricted to specific IP addresses. see Source Ip Config details below.
+  /// A list of IP address ranges Used to create an allow list of IP addresses for a private workforce. By default, a workforce isn't restricted to specific IP addresses. see Source IP Config details below.
   late final pulumi.Output<WorkforceSourceIpConfig> sourceIpConfig;
   /// The subdomain for your OIDC Identity Provider.
   late final pulumi.Output<String> subdomain;
@@ -462,7 +462,7 @@ class Workforce extends pulumi.CustomResource {
           'aws:sagemaker/workforce:Workforce',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cognitoConfig = registerOutput<WorkforceCognitoConfig?>('cognitoConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforceCognitoConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

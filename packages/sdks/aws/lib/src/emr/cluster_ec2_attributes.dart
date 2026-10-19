@@ -13,11 +13,11 @@ class ClusterEc2Attributes {
   final pulumi.Input<String?>? emrManagedSlaveSecurityGroup;
   /// Instance Profile for EC2 instances of the cluster assume this role.
   final pulumi.Input<String> instanceProfile;
-  /// Amazon EC2 key pair that can be used to ssh to the master node as the user called `hadoop`.
+  /// Amazon EC2 key pair that can be used to SSH to the master node as the user called `hadoop`.
   final pulumi.Input<String?>? keyName;
   /// Identifier of the Amazon EC2 service-access security group - required when the cluster runs on a private subnet.
   final pulumi.Input<String?>? serviceAccessSecurityGroup;
-  /// VPC subnet id where you want the job flow to launch. Cannot specify the `cc1.4xlarge` instance type for nodes of a job flow launched in an Amazon VPC.
+  /// VPC subnet ID where you want the job flow to launch. Cannot specify the `cc1.4xlarge` instance type for nodes of a job flow launched in an Amazon VPC.
   final pulumi.Input<String?>? subnetId;
   /// List of VPC subnet id-s where you want the job flow to launch.  Amazon EMR identifies the best Availability Zone to launch instances according to your fleet specifications.
   ///
@@ -30,9 +30,9 @@ class ClusterEc2Attributes {
   /// [emrManagedMasterSecurityGroup] Identifier of the Amazon EC2 EMR-Managed security group for the master node.
   /// [emrManagedSlaveSecurityGroup] Identifier of the Amazon EC2 EMR-Managed security group for the slave nodes.
   /// [instanceProfile] Instance Profile for EC2 instances of the cluster assume this role.
-  /// [keyName] Amazon EC2 key pair that can be used to ssh to the master node as the user called `hadoop`.
+  /// [keyName] Amazon EC2 key pair that can be used to SSH to the master node as the user called `hadoop`.
   /// [serviceAccessSecurityGroup] Identifier of the Amazon EC2 service-access security group - required when the cluster runs on a private subnet.
-  /// [subnetId] VPC subnet id where you want the job flow to launch. Cannot specify the `cc1.4xlarge` instance type for nodes of a job flow launched in an Amazon VPC.
+  /// [subnetId] VPC subnet ID where you want the job flow to launch. Cannot specify the `cc1.4xlarge` instance type for nodes of a job flow launched in an Amazon VPC.
   /// [subnetIds] List of VPC subnet id-s where you want the job flow to launch.  Amazon EMR identifies the best Availability Zone to launch instances according to your fleet specifications.
   const ClusterEc2Attributes({
     this.additionalMasterSecurityGroups,

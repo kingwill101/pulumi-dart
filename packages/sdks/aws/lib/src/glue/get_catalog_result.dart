@@ -15,17 +15,17 @@ class GetCatalogResult {
   final String? arn;
   /// ID of the parent catalog.
   final String? catalogId;
-  /// Catalog properties. See `catalogProperties` below.
+  /// Catalog properties. See `catalogProperties` Block below.
   final List<GetCatalogCatalogProperty>? catalogProperties;
-  /// Default permissions on databases for principals. See `createDatabaseDefaultPermissions` below.
+  /// Default permissions on databases for principals. See `createDatabaseDefaultPermissions` Block below.
   final List<GetCatalogCreateDatabaseDefaultPermission>? createDatabaseDefaultPermissions;
-  /// Default permissions on tables for principals. See `createTableDefaultPermissions` below.
+  /// Default permissions on tables for principals. See `createTableDefaultPermissions` Block below.
   final List<GetCatalogCreateTableDefaultPermission>? createTableDefaultPermissions;
   /// Time at which the catalog was created.
   final String? createTime;
   /// Description of the catalog.
   final String? description;
-  /// Federated catalog configuration. See `federatedCatalog` below.
+  /// Federated catalog configuration. See `federatedCatalog` Block below.
   final List<GetCatalogFederatedCatalog>? federatedCatalogs;
   final String? name;
   /// Map of key-value pairs that define parameters and properties of the catalog.
@@ -33,7 +33,7 @@ class GetCatalogResult {
   final String? region;
   /// Key-value map of resource tags.
   final Map<String, String>? tags;
-  /// Target Redshift catalog configuration. See `targetRedshiftCatalog` below.
+  /// Target Redshift catalog configuration. See `targetRedshiftCatalog` Block below.
   final List<GetCatalogTargetRedshiftCatalog>? targetRedshiftCatalogs;
   /// Time at which the catalog was last updated.
   final String? updateTime;
@@ -42,17 +42,17 @@ class GetCatalogResult {
   /// [allowFullTableExternalDataAccess] Whether third-party engines can access data in Amazon S3 locations that are registered with Lake Formation.
   /// [arn] ARN of the Glue Catalog.
   /// [catalogId] ID of the parent catalog.
-  /// [catalogProperties] Catalog properties. See `catalogProperties` below.
-  /// [createDatabaseDefaultPermissions] Default permissions on databases for principals. See `createDatabaseDefaultPermissions` below.
-  /// [createTableDefaultPermissions] Default permissions on tables for principals. See `createTableDefaultPermissions` below.
+  /// [catalogProperties] Catalog properties. See `catalogProperties` Block below.
+  /// [createDatabaseDefaultPermissions] Default permissions on databases for principals. See `createDatabaseDefaultPermissions` Block below.
+  /// [createTableDefaultPermissions] Default permissions on tables for principals. See `createTableDefaultPermissions` Block below.
   /// [createTime] Time at which the catalog was created.
   /// [description] Description of the catalog.
-  /// [federatedCatalogs] Federated catalog configuration. See `federatedCatalog` below.
+  /// [federatedCatalogs] Federated catalog configuration. See `federatedCatalog` Block below.
   /// [name] Optional.
   /// [parameters] Map of key-value pairs that define parameters and properties of the catalog.
   /// [region] Optional.
   /// [tags] Key-value map of resource tags.
-  /// [targetRedshiftCatalogs] Target Redshift catalog configuration. See `targetRedshiftCatalog` below.
+  /// [targetRedshiftCatalogs] Target Redshift catalog configuration. See `targetRedshiftCatalog` Block below.
   /// [updateTime] Time at which the catalog was last updated.
   const GetCatalogResult({
     this.allowFullTableExternalDataAccess,

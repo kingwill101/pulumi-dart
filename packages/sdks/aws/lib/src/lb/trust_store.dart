@@ -238,7 +238,7 @@ class TrustStore extends pulumi.CustomResource {
   late final pulumi.Output<String> caCertificatesBundleS3Bucket;
   /// S3 object key holding the client certificate CA bundle.
   late final pulumi.Output<String> caCertificatesBundleS3Key;
-  /// Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
+  /// Version ID of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
   late final pulumi.Output<String?> caCertificatesBundleS3ObjectVersion;
   /// Name of the Trust Store. If omitted, the provider will assign a random, unique name. This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
   late final pulumi.Output<String> name;
@@ -263,7 +263,7 @@ class TrustStore extends pulumi.CustomResource {
           'aws:lb/trustStore:TrustStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     arnSuffix = registerOutput<String>('arnSuffix');

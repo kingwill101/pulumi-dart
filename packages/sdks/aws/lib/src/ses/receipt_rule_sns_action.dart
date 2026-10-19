@@ -31,7 +31,7 @@ class ReceiptRuleSnsAction {
   factory ReceiptRuleSnsAction.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleSnsAction(
       encoding: (() { final guardedValue = map['encoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      position: pulumi.Input.fromValue((map['position'] as num).toInt()),
+      position: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['position'])),
       topicArn: pulumi.Input.fromValue(map['topicArn'] as String),
     );
   }

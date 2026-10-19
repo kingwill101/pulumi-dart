@@ -42,9 +42,9 @@ class PolicyStepScalingPolicyConfiguration {
   factory PolicyStepScalingPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return PolicyStepScalingPolicyConfiguration(
       adjustmentType: (() { final guardedValue = map['adjustmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cooldown: (() { final guardedValue = map['cooldown']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cooldown: (() { final guardedValue = map['cooldown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       metricAggregationType: (() { final guardedValue = map['metricAggregationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minAdjustmentMagnitude: (() { final guardedValue = map['minAdjustmentMagnitude']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minAdjustmentMagnitude: (() { final guardedValue = map['minAdjustmentMagnitude']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       stepAdjustments: (() { final guardedValue = map['stepAdjustments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyStepScalingPolicyConfigurationStepAdjustment>(guardedValue, (value) => PolicyStepScalingPolicyConfigurationStepAdjustment.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

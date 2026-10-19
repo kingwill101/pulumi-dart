@@ -6,20 +6,17 @@ import 'detector_datasources_malware_protection.dart';
 import 'detector_datasources_s3_logs.dart';
 
 class DetectorDatasources {
-  /// Configures [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
-  /// See Kubernetes and Kubernetes Audit Logs below for more details.
+  /// Configures [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html). See `kubernetes` below for more details.
   final pulumi.Input<DetectorDatasourcesKubernetes?>? kubernetes;
-  /// Configures [Malware Protection](https://docs.aws.amazon.com/guardduty/latest/ug/malware-protection.html).
-  /// See Malware Protection, Scan EC2 instance with findings and EBS volumes below for more details.
+  /// Configures [Malware Protection](https://docs.aws.amazon.com/guardduty/latest/ug/malware-protection.html). See `malwareProtection` below for more details.
   final pulumi.Input<DetectorDatasourcesMalwareProtection?>? malwareProtection;
-  /// Configures [S3 protection](https://docs.aws.amazon.com/guardduty/latest/ug/s3-protection.html).
-  /// See S3 Logs below for more details.
+  /// Configures [S3 protection](https://docs.aws.amazon.com/guardduty/latest/ug/s3-protection.html). See `s3Logs` below for more details.
   final pulumi.Input<DetectorDatasourcesS3Logs?>? s3Logs;
 
   /// Creates a new [DetectorDatasources].
-  /// [kubernetes] Configures [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
-  /// [malwareProtection] Configures [Malware Protection](https://docs.aws.amazon.com/guardduty/latest/ug/malware-protection.html).
-  /// [s3Logs] Configures [S3 protection](https://docs.aws.amazon.com/guardduty/latest/ug/s3-protection.html).
+  /// [kubernetes] Configures [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html). See `kubernetes` below for more details.
+  /// [malwareProtection] Configures [Malware Protection](https://docs.aws.amazon.com/guardduty/latest/ug/malware-protection.html). See `malwareProtection` below for more details.
+  /// [s3Logs] Configures [S3 protection](https://docs.aws.amazon.com/guardduty/latest/ug/s3-protection.html). See `s3Logs` below for more details.
   const DetectorDatasources({
     this.kubernetes,
     this.malwareProtection,

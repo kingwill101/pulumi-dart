@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_hls_ingest_ingest_endpoint.dart';
 
 class ChannelHlsIngest {
-  /// A list of the ingest endpoints
+  /// List of the ingest endpoints
   final pulumi.Input<List<ChannelHlsIngestIngestEndpoint>?>? ingestEndpoints;
 
   /// Creates a new [ChannelHlsIngest].
-  /// [ingestEndpoints] A list of the ingest endpoints
+  /// [ingestEndpoints] List of the ingest endpoints
   const ChannelHlsIngest({
     this.ingestEndpoints,
   });

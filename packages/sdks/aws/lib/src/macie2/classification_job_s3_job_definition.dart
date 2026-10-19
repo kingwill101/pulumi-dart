@@ -6,17 +6,17 @@ import 'classification_job_s3_job_definition_bucket_definition.dart';
 import 'classification_job_s3_job_definition_scoping.dart';
 
 class ClassificationJobS3JobDefinition {
-  /// The property- and tag-based conditions that determine which S3 buckets to include or exclude from the analysis. Conflicts with `bucketDefinitions`. (documented below)
+  /// Property- and tag-based conditions that determine which S3 buckets to include or exclude from the analysis. Conflicts with `bucketDefinitions`. See `bucketCriteria` Block for details.
   final pulumi.Input<ClassificationJobS3JobDefinitionBucketCriteria?>? bucketCriteria;
-  /// An array of objects, one for each AWS account that owns buckets to analyze. Each object specifies the account ID for an account and one or more buckets to analyze for the account. Conflicts with `bucketCriteria`. (documented below)
+  /// Array of objects, one for each AWS account that owns buckets to analyze. Each object specifies the account ID for an account and one or more buckets to analyze for the account. Conflicts with `bucketCriteria`. See `bucketDefinitions` Block for details.
   final pulumi.Input<List<ClassificationJobS3JobDefinitionBucketDefinition>?>? bucketDefinitions;
-  /// The property- and tag-based conditions that determine which objects to include or exclude from the analysis. (documented below)
+  /// Property- and tag-based conditions that determine which objects to include or exclude from the analysis. See `scoping` Block for details.
   final pulumi.Input<ClassificationJobS3JobDefinitionScoping?>? scoping;
 
   /// Creates a new [ClassificationJobS3JobDefinition].
-  /// [bucketCriteria] The property- and tag-based conditions that determine which S3 buckets to include or exclude from the analysis. Conflicts with `bucketDefinitions`. (documented below)
-  /// [bucketDefinitions] An array of objects, one for each AWS account that owns buckets to analyze. Each object specifies the account ID for an account and one or more buckets to analyze for the account. Conflicts with `bucketCriteria`. (documented below)
-  /// [scoping] The property- and tag-based conditions that determine which objects to include or exclude from the analysis. (documented below)
+  /// [bucketCriteria] Property- and tag-based conditions that determine which S3 buckets to include or exclude from the analysis. Conflicts with `bucketDefinitions`. See `bucketCriteria` Block for details.
+  /// [bucketDefinitions] Array of objects, one for each AWS account that owns buckets to analyze. Each object specifies the account ID for an account and one or more buckets to analyze for the account. Conflicts with `bucketCriteria`. See `bucketDefinitions` Block for details.
+  /// [scoping] Property- and tag-based conditions that determine which objects to include or exclude from the analysis. See `scoping` Block for details.
   const ClassificationJobS3JobDefinition({
     this.bucketCriteria,
     this.bucketDefinitions,

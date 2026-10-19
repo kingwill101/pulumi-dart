@@ -861,16 +861,16 @@ import 'resource_policy_timeouts.dart';
 /// $ pulumi import aws:amp/resourcePolicy:ResourcePolicy example ws-12345678-90ab-cdef-1234-567890abcdef
 /// ```
 class ResourcePolicy extends pulumi.CustomResource {
-  /// The JSON policy document to use as the resource-based policy. This policy defines the permissions that other AWS accounts or services have to access your workspace.
-  ///
-  /// The following arguments are optional:
+  /// JSON policy document to use as the resource-based policy. This policy defines the permissions that other AWS accounts or services have to access your workspace.
   late final pulumi.Output<String> policyDocument;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The revision ID of the current resource-based policy.
+  /// Revision ID of the current resource-based policy.
   late final pulumi.Output<String> revisionId;
   late final pulumi.Output<ResourcePolicyTimeouts?> timeouts;
-  /// The ID of the workspace to attach the resource-based policy to.
+  /// ID of the workspace to attach the resource-based policy to.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> workspaceId;
 
   /// Creates a new [ResourcePolicy].
@@ -885,7 +885,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'aws:amp/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     policyDocument = registerOutput<String>('policyDocument');
     region = registerOutput<String>('region');

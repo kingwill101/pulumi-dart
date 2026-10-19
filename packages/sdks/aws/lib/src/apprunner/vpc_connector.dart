@@ -164,7 +164,7 @@ import 'vpc_connector_state.dart';
 /// - `arn` (String) ARN of the App Runner VPC connector.
 ///
 ///
-/// Using `pulumi import`, import App Runner vpc connector using the `arn`. For example:
+/// Using `pulumi import`, import App Runner VPC connector using the `arn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:apprunner/vpcConnector:VpcConnector example arn:aws:apprunner:us-east-1:1234567890:vpcconnector/example/1/0a03292a89764e5882c41d8f991c82fe
@@ -201,7 +201,7 @@ class VpcConnector extends pulumi.CustomResource {
           'aws:apprunner/vpcConnector:VpcConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');

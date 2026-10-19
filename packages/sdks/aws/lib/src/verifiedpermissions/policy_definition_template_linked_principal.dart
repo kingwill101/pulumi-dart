@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyDefinitionTemplateLinkedPrincipal {
-  /// The entity ID of the principal.
+  /// Entity ID of the principal.
   final pulumi.Input<String> entityId;
-  /// The entity type of the principal.
+  /// Entity type of the principal.
   final pulumi.Input<String> entityType;
 
   /// Creates a new [PolicyDefinitionTemplateLinkedPrincipal].
-  /// [entityId] The entity ID of the principal.
-  /// [entityType] The entity type of the principal.
+  /// [entityId] Entity ID of the principal.
+  /// [entityType] Entity type of the principal.
   const PolicyDefinitionTemplateLinkedPrincipal({
     required this.entityId,
     required this.entityType,

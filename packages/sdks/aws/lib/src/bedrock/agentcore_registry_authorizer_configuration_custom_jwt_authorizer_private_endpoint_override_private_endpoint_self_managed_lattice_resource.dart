@@ -3,23 +3,24 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointSelfManagedLatticeResource {
-  final pulumi.Input<String> resourceConfigurationIdentifier;
+  /// Identifier of the VPC Lattice resource configuration.
+  final pulumi.Input<String?>? resourceConfigurationIdentifier;
 
   /// Creates a new [AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointSelfManagedLatticeResource].
-  /// [resourceConfigurationIdentifier] Required.
+  /// [resourceConfigurationIdentifier] Identifier of the VPC Lattice resource configuration.
   const AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointSelfManagedLatticeResource({
-    required this.resourceConfigurationIdentifier,
+    this.resourceConfigurationIdentifier,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'resourceConfigurationIdentifier': resourceConfigurationIdentifier,
+      'resourceConfigurationIdentifier': ?resourceConfigurationIdentifier,
     };
   }
 
   factory AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointSelfManagedLatticeResource.fromMap(Map<String, dynamic> map) {
     return AgentcoreRegistryAuthorizerConfigurationCustomJwtAuthorizerPrivateEndpointOverridePrivateEndpointSelfManagedLatticeResource(
-      resourceConfigurationIdentifier: pulumi.Input.fromValue(map['resourceConfigurationIdentifier'] as String),
+      resourceConfigurationIdentifier: (() { final guardedValue = map['resourceConfigurationIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

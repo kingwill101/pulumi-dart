@@ -182,7 +182,7 @@ import 'workteam_worker_access_configuration.dart';
 /// ```
 ///
 ///
-/// ### Oidc Usage
+/// ### OIDC Usage
 ///
 ///
 /// ```typescript
@@ -390,7 +390,7 @@ class Workteam extends pulumi.CustomResource {
           'aws:sagemaker/workteam:Workteam',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');

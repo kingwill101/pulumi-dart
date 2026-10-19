@@ -3,14 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsGlobalConfigurationInputLossBehaviorInputLossImageSlate {
+  /// Key used to extract the password from EC2 Parameter store.
   final pulumi.Input<String?>? passwordParam;
+  /// Path to a file accessible to the live stream.
   final pulumi.Input<String> uri;
+  /// Username for the server.
   final pulumi.Input<String?>? username;
 
   /// Creates a new [ChannelEncoderSettingsGlobalConfigurationInputLossBehaviorInputLossImageSlate].
-  /// [passwordParam] Optional.
-  /// [uri] Required.
-  /// [username] Optional.
+  /// [passwordParam] Key used to extract the password from EC2 Parameter store.
+  /// [uri] Path to a file accessible to the live stream.
+  /// [username] Username for the server.
   const ChannelEncoderSettingsGlobalConfigurationInputLossBehaviorInputLossImageSlate({
     this.passwordParam,
     required this.uri,

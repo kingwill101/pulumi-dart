@@ -9,7 +9,7 @@ import 'application_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_m2_application_application_args_doc}
 class ApplicationArgs {
-  /// The application definition for this application. You can specify either inline JSON or an S3 bucket location.
+  /// Application definition for this application. You can specify either inline JSON or an S3 bucket location.
   final pulumi.Input<ApplicationDefinition> definition;
   /// Description of the application.
   final pulumi.Input<String?>? description;
@@ -30,7 +30,7 @@ class ApplicationArgs {
   final pulumi.Input<ApplicationTimeouts?>? timeouts;
 
   /// Creates a new [ApplicationArgs].
-  /// [definition] The application definition for this application. You can specify either inline JSON or an S3 bucket location.
+  /// [definition] Application definition for this application. You can specify either inline JSON or an S3 bucket location.
   /// [description] Description of the application.
   /// [engineType] Engine type must be `microfocus | bluage`.
   /// [kmsKeyId] KMS Key to use for the Application.

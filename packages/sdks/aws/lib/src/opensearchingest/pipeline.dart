@@ -571,7 +571,7 @@ class Pipeline extends pulumi.CustomResource {
   late final pulumi.Output<int> minUnits;
   /// ARN of the pipeline.
   late final pulumi.Output<String> pipelineArn;
-  /// The pipeline configuration in YAML format. This argument accepts the pipeline configuration as a string or within a .yaml file. If you provide the configuration as a string, each new line must be escaped with `\n`.
+  /// The pipeline configuration in YAML format. This argument accepts the pipeline configuration as a string or within a `.yaml` file. If you provide the configuration as a string, each new line must be escaped with `\n`.
   late final pulumi.Output<String> pipelineConfigurationBody;
   /// Name of the pipeline. Pipeline names are unique across the pipelines owned by an account within an AWS Region.
   ///
@@ -600,7 +600,7 @@ class Pipeline extends pulumi.CustomResource {
           'aws:opensearchingest/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     bufferOptions = registerOutput<PipelineBufferOptions?>('bufferOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineBufferOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     encryptionAtRestOptions = registerOutput<PipelineEncryptionAtRestOptions?>('encryptionAtRestOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineEncryptionAtRestOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

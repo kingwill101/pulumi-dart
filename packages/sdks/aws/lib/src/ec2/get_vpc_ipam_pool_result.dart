@@ -8,11 +8,11 @@ import 'get_vpc_ipam_pool_source_resource.dart';
 class GetVpcIpamPoolResult {
   /// IP protocol assigned to this pool.
   final String? addressFamily;
-  /// A default netmask length for allocations added to this pool. If, for example, the CIDR assigned to this pool is `10.0.0.0/8` and you enter 16 here, new allocations will default to `10.0.0.0/16`.
+  /// Default netmask length for allocations added to this pool. If, for example, the CIDR assigned to this pool is `10.0.0.0/8` and you enter 16 here, new allocations will default to `10.0.0.0/16`.
   final int? allocationDefaultNetmaskLength;
-  /// The maximum netmask length that will be required for CIDR allocations in this pool.
+  /// Maximum netmask length that will be required for CIDR allocations in this pool.
   final int? allocationMaxNetmaskLength;
-  /// The minimum netmask length that will be required for CIDR allocations in this pool.
+  /// Minimum netmask length that will be required for CIDR allocations in this pool.
   final int? allocationMinNetmaskLength;
   /// Tags that are required to create resources in using this pool.
   final Map<String, String>? allocationResourceTags;
@@ -30,26 +30,29 @@ class GetVpcIpamPoolResult {
   final String? ipamPoolId;
   /// ID of the scope the pool belongs to.
   final String? ipamScopeId;
+  /// Type of the scope the pool belongs to.
   final String? ipamScopeType;
   /// Locale is the Region where your pool is available for allocations. You can only create pools with locales that match the operating Regions of the IPAM. You can only create VPCs from a pool whose locale matches the VPC's Region.
   final String? locale;
+  /// Depth of pools in your IPAM pool.
   final int? poolDepth;
-  /// Defines whether or not IPv6 pool space is publicly advertisable over the internet.
+  /// Whether IPv6 pool space is publicly advertisable over the internet.
   final bool? publiclyAdvertisable;
   final String? region;
   /// ID of the source IPAM pool.
   final String? sourceIpamPoolId;
   /// Resource used to create the resource planning pool.
   final List<GetVpcIpamPoolSourceResource>? sourceResources;
+  /// State of the IPAM pool.
   final String? state;
   /// Map of tags to assigned to the resource.
   final Map<String, String>? tags;
 
   /// Creates a new [GetVpcIpamPoolResult].
   /// [addressFamily] IP protocol assigned to this pool.
-  /// [allocationDefaultNetmaskLength] A default netmask length for allocations added to this pool. If, for example, the CIDR assigned to this pool is `10.0.0.0/8` and you enter 16 here, new allocations will default to `10.0.0.0/16`.
-  /// [allocationMaxNetmaskLength] The maximum netmask length that will be required for CIDR allocations in this pool.
-  /// [allocationMinNetmaskLength] The minimum netmask length that will be required for CIDR allocations in this pool.
+  /// [allocationDefaultNetmaskLength] Default netmask length for allocations added to this pool. If, for example, the CIDR assigned to this pool is `10.0.0.0/8` and you enter 16 here, new allocations will default to `10.0.0.0/16`.
+  /// [allocationMaxNetmaskLength] Maximum netmask length that will be required for CIDR allocations in this pool.
+  /// [allocationMinNetmaskLength] Minimum netmask length that will be required for CIDR allocations in this pool.
   /// [allocationResourceTags] Tags that are required to create resources in using this pool.
   /// [arn] ARN of the pool
   /// [autoImport] If enabled, IPAM will continuously look for resources within the CIDR range of this pool and automatically import them as allocations into your IPAM.
@@ -59,14 +62,14 @@ class GetVpcIpamPoolResult {
   /// [id] ID of the IPAM pool.
   /// [ipamPoolId] Optional.
   /// [ipamScopeId] ID of the scope the pool belongs to.
-  /// [ipamScopeType] Optional.
+  /// [ipamScopeType] Type of the scope the pool belongs to.
   /// [locale] Locale is the Region where your pool is available for allocations. You can only create pools with locales that match the operating Regions of the IPAM. You can only create VPCs from a pool whose locale matches the VPC's Region.
-  /// [poolDepth] Optional.
-  /// [publiclyAdvertisable] Defines whether or not IPv6 pool space is publicly advertisable over the internet.
+  /// [poolDepth] Depth of pools in your IPAM pool.
+  /// [publiclyAdvertisable] Whether IPv6 pool space is publicly advertisable over the internet.
   /// [region] Optional.
   /// [sourceIpamPoolId] ID of the source IPAM pool.
   /// [sourceResources] Resource used to create the resource planning pool.
-  /// [state] Optional.
+  /// [state] State of the IPAM pool.
   /// [tags] Map of tags to assigned to the resource.
   const GetVpcIpamPoolResult({
     this.addressFamily,
@@ -123,9 +126,9 @@ class GetVpcIpamPoolResult {
   factory GetVpcIpamPoolResult.fromMap(Map<String, dynamic> map) {
     return GetVpcIpamPoolResult(
       addressFamily: (() { final guardedValue = map['addressFamily']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      allocationDefaultNetmaskLength: (() { final guardedValue = map['allocationDefaultNetmaskLength']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      allocationMaxNetmaskLength: (() { final guardedValue = map['allocationMaxNetmaskLength']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      allocationMinNetmaskLength: (() { final guardedValue = map['allocationMinNetmaskLength']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      allocationDefaultNetmaskLength: (() { final guardedValue = map['allocationDefaultNetmaskLength']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      allocationMaxNetmaskLength: (() { final guardedValue = map['allocationMaxNetmaskLength']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      allocationMinNetmaskLength: (() { final guardedValue = map['allocationMinNetmaskLength']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       allocationResourceTags: (() { final guardedValue = map['allocationResourceTags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       autoImport: (() { final guardedValue = map['autoImport']; if (guardedValue == null) return null; return guardedValue as bool; })(),
@@ -137,7 +140,7 @@ class GetVpcIpamPoolResult {
       ipamScopeId: (() { final guardedValue = map['ipamScopeId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipamScopeType: (() { final guardedValue = map['ipamScopeType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       locale: (() { final guardedValue = map['locale']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      poolDepth: (() { final guardedValue = map['poolDepth']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      poolDepth: (() { final guardedValue = map['poolDepth']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       publiclyAdvertisable: (() { final guardedValue = map['publiclyAdvertisable']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceIpamPoolId: (() { final guardedValue = map['sourceIpamPoolId']; if (guardedValue == null) return null; return guardedValue as String; })(),

@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableSchemaDefinitionColumn {
-  /// The name of the column.
+  /// Name of the column.
   final pulumi.Input<String> name;
-  /// The data type of the column. See the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/cql.elements.html#cql.data-types) for a list of available data types.
+  /// Data type of the column. See the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/cql.elements.html#cql.data-types) for a list of available data types.
   final pulumi.Input<String> type;
 
   /// Creates a new [TableSchemaDefinitionColumn].
-  /// [name] The name of the column.
-  /// [type] The data type of the column. See the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/cql.elements.html#cql.data-types) for a list of available data types.
+  /// [name] Name of the column.
+  /// [type] Data type of the column. See the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/cql.elements.html#cql.data-types) for a list of available data types.
   const TableSchemaDefinitionColumn({
     required this.name,
     required this.type,

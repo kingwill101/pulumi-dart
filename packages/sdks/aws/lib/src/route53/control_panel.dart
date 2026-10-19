@@ -116,7 +116,7 @@ import 'control_panel_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Route53 Recovery Control Config Control Panel using the control panel arn. For example:
+/// Using `pulumi import`, import Route53 Recovery Control Config Control Panel using the control panel ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:route53recoverycontrol/controlPanel:ControlPanel mypanel arn:aws:route53-recovery-control::313517334327:controlpanel/1bfba17df8684f5dab0467b71424f7e8
@@ -153,7 +153,7 @@ class ControlPanel extends pulumi.CustomResource {
           'aws:route53recoverycontrol/controlPanel:ControlPanel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterArn = registerOutput<String>('clusterArn');

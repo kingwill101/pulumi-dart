@@ -5,35 +5,35 @@ import 'pipe_source_parameters_self_managed_kafka_parameters_credentials.dart';
 import 'pipe_source_parameters_self_managed_kafka_parameters_vpc.dart';
 
 class PipeSourceParametersSelfManagedKafkaParameters {
-  /// An array of server URLs. Maximum number of 2 items, each of maximum length 300.
+  /// Array of server URLs. Maximum number of 2 items, each of maximum length 300.
   final pulumi.Input<List<String>?>? additionalBootstrapServers;
-  /// The maximum number of records to include in each batch. Maximum value of 10000.
+  /// Maximum number of records to include in each batch. Maximum value of 10000.
   final pulumi.Input<int?>? batchSize;
-  /// The name of the destination queue to consume. Maximum value of 200.
+  /// Name of the destination queue to consume. Maximum value of 200.
   final pulumi.Input<String?>? consumerGroupId;
-  /// The credentials needed to access the resource. Detailed below.
+  /// Credentials needed to access the resource. See `source_parameters.self_managed_kafka_parameters.credentials` Block for details.
   final pulumi.Input<PipeSourceParametersSelfManagedKafkaParametersCredentials?>? credentials;
-  /// The maximum length of a time to wait for events. Maximum value of 300.
+  /// Maximum length of a time to wait for events. Maximum value of 300.
   final pulumi.Input<int?>? maximumBatchingWindowInSeconds;
-  /// The ARN of the Secrets Manager secret used for certification.
+  /// ARN of the Secrets Manager secret used for certification.
   final pulumi.Input<String?>? serverRootCaCertificate;
-  /// The position in a stream from which to start reading. Valid values: TRIM_HORIZON, LATEST.
+  /// Position in a stream from which to start reading. Valid values: TRIM_HORIZON, LATEST.
   final pulumi.Input<String?>? startingPosition;
-  /// The name of the topic that the pipe will read from. Maximum length of 249.
+  /// Name of the topic that the pipe will read from. Maximum length of 249.
   final pulumi.Input<String> topicName;
-  /// This structure specifies the VPC subnets and security groups for the stream, and whether a public IP address is to be used. Detailed below.
+  /// VPC subnets and security groups for the stream, and whether a public IP address is to be used. See `vpc` Block for details.
   final pulumi.Input<PipeSourceParametersSelfManagedKafkaParametersVpc?>? vpc;
 
   /// Creates a new [PipeSourceParametersSelfManagedKafkaParameters].
-  /// [additionalBootstrapServers] An array of server URLs. Maximum number of 2 items, each of maximum length 300.
-  /// [batchSize] The maximum number of records to include in each batch. Maximum value of 10000.
-  /// [consumerGroupId] The name of the destination queue to consume. Maximum value of 200.
-  /// [credentials] The credentials needed to access the resource. Detailed below.
-  /// [maximumBatchingWindowInSeconds] The maximum length of a time to wait for events. Maximum value of 300.
-  /// [serverRootCaCertificate] The ARN of the Secrets Manager secret used for certification.
-  /// [startingPosition] The position in a stream from which to start reading. Valid values: TRIM_HORIZON, LATEST.
-  /// [topicName] The name of the topic that the pipe will read from. Maximum length of 249.
-  /// [vpc] This structure specifies the VPC subnets and security groups for the stream, and whether a public IP address is to be used. Detailed below.
+  /// [additionalBootstrapServers] Array of server URLs. Maximum number of 2 items, each of maximum length 300.
+  /// [batchSize] Maximum number of records to include in each batch. Maximum value of 10000.
+  /// [consumerGroupId] Name of the destination queue to consume. Maximum value of 200.
+  /// [credentials] Credentials needed to access the resource. See `source_parameters.self_managed_kafka_parameters.credentials` Block for details.
+  /// [maximumBatchingWindowInSeconds] Maximum length of a time to wait for events. Maximum value of 300.
+  /// [serverRootCaCertificate] ARN of the Secrets Manager secret used for certification.
+  /// [startingPosition] Position in a stream from which to start reading. Valid values: TRIM_HORIZON, LATEST.
+  /// [topicName] Name of the topic that the pipe will read from. Maximum length of 249.
+  /// [vpc] VPC subnets and security groups for the stream, and whether a public IP address is to be used. See `vpc` Block for details.
   const PipeSourceParametersSelfManagedKafkaParameters({
     this.additionalBootstrapServers,
     this.batchSize,
@@ -63,10 +63,10 @@ class PipeSourceParametersSelfManagedKafkaParameters {
   factory PipeSourceParametersSelfManagedKafkaParameters.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersSelfManagedKafkaParameters(
       additionalBootstrapServers: (() { final guardedValue = map['additionalBootstrapServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       consumerGroupId: (() { final guardedValue = map['consumerGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipeSourceParametersSelfManagedKafkaParametersCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maximumBatchingWindowInSeconds: (() { final guardedValue = map['maximumBatchingWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumBatchingWindowInSeconds: (() { final guardedValue = map['maximumBatchingWindowInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       serverRootCaCertificate: (() { final guardedValue = map['serverRootCaCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startingPosition: (() { final guardedValue = map['startingPosition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       topicName: pulumi.Input.fromValue(map['topicName'] as String),

@@ -16,9 +16,9 @@ import 'crawler_schema_change_policy.dart';
 
 /// Input properties used for looking up and filtering Crawler resources.
 class CrawlerState {
-  /// The ARN of the crawler
+  /// ARN of the crawler
   final pulumi.Input<String?>? arn;
-  /// List of nested AWS Glue Data Catalog target arguments. See Catalog Target below.
+  /// List of nested AWS Glue Data Catalog target arguments. See `catalogTarget` below.
   final pulumi.Input<List<CrawlerCatalogTarget>?>? catalogTargets;
   /// List of custom classifiers. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
   final pulumi.Input<List<String>?>? classifiers;
@@ -26,75 +26,75 @@ class CrawlerState {
   final pulumi.Input<String?>? configuration;
   /// Glue database where results are written.
   final pulumi.Input<String?>? databaseName;
-  /// List of nested Delta Lake target arguments. See Delta Target below.
+  /// List of nested Delta Lake target arguments. See `deltaTarget` below.
   final pulumi.Input<List<CrawlerDeltaTarget>?>? deltaTargets;
   /// Description of the crawler.
   final pulumi.Input<String?>? description;
-  /// List of nested DynamoDB target arguments. See Dynamodb Target below.
+  /// List of nested DynamoDB target arguments. See `dynamodbTarget` below.
   final pulumi.Input<List<CrawlerDynamodbTarget>?>? dynamodbTargets;
-  /// List of nested Hudi target arguments. See Iceberg Target below.
+  /// List of nested Hudi target arguments. See `hudiTarget` below.
   final pulumi.Input<List<CrawlerHudiTarget>?>? hudiTargets;
-  /// List of nested Iceberg target arguments. See Iceberg Target below.
+  /// List of nested Iceberg target arguments. See `icebergTarget` below.
   final pulumi.Input<List<CrawlerIcebergTarget>?>? icebergTargets;
-  /// List of nested JDBC target arguments. See JDBC Target below.
+  /// List of nested JDBC target arguments. See `jdbcTarget` below.
   final pulumi.Input<List<CrawlerJdbcTarget>?>? jdbcTargets;
-  /// Specifies Lake Formation configuration settings for the crawler. See Lake Formation Configuration below.
+  /// Lake Formation configuration settings for the crawler. See `lakeFormationConfiguration` below.
   final pulumi.Input<CrawlerLakeFormationConfiguration?>? lakeFormationConfiguration;
-  /// Specifies data lineage configuration settings for the crawler. See Lineage Configuration below.
+  /// Data lineage configuration settings for the crawler. See `lineageConfiguration` below.
   final pulumi.Input<CrawlerLineageConfiguration?>? lineageConfiguration;
-  /// List of nested MongoDB target arguments. See MongoDB Target below.
+  /// List of nested MongoDB target arguments. See `mongodbTarget` below.
   final pulumi.Input<List<CrawlerMongodbTarget>?>? mongodbTargets;
   /// Name of the crawler.
   final pulumi.Input<String?>? name;
-  /// A policy that specifies whether to crawl the entire dataset again, or to crawl only folders that were added since the last crawler run.. See Recrawl Policy below.
+  /// Policy that specifies whether to crawl the entire dataset again, or to crawl only folders that were added since the last crawler run. See `recrawlPolicy` below.
   final pulumi.Input<CrawlerRecrawlPolicy?>? recrawlPolicy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources.
+  /// IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources.
   final pulumi.Input<String?>? role;
-  /// List of nested Amazon S3 target arguments. See S3 Target below.
+  /// List of nested Amazon S3 target arguments. See `s3Target` below.
   final pulumi.Input<List<CrawlerS3Target>?>? s3Targets;
-  /// A cron expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
+  /// Cron expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
   final pulumi.Input<String?>? schedule;
-  /// Policy for the crawler's update and deletion behavior. See Schema Change Policy below.
+  /// Policy for the crawler's update and deletion behavior. See `schemaChangePolicy` below.
   final pulumi.Input<CrawlerSchemaChangePolicy?>? schemaChangePolicy;
-  /// The name of Security Configuration to be used by the crawler
+  /// Name of Security Configuration to be used by the crawler.
   final pulumi.Input<String?>? securityConfiguration;
-  /// The table prefix used for catalog tables that are created.
+  /// Table prefix used for catalog tables that are created.
   final pulumi.Input<String?>? tablePrefix;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// &gt; **NOTE:** Must specify at least one of `dynamodbTarget`, `jdbcTarget`, `s3Target`, `mongodbTarget` or `catalogTarget`.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [CrawlerState].
-  /// [arn] The ARN of the crawler
-  /// [catalogTargets] List of nested AWS Glue Data Catalog target arguments. See Catalog Target below.
+  /// [arn] ARN of the crawler
+  /// [catalogTargets] List of nested AWS Glue Data Catalog target arguments. See `catalogTarget` below.
   /// [classifiers] List of custom classifiers. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
   /// [configuration] JSON string of configuration information. For more details see [Setting Crawler Configuration Options](https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
   /// [databaseName] Glue database where results are written.
-  /// [deltaTargets] List of nested Delta Lake target arguments. See Delta Target below.
+  /// [deltaTargets] List of nested Delta Lake target arguments. See `deltaTarget` below.
   /// [description] Description of the crawler.
-  /// [dynamodbTargets] List of nested DynamoDB target arguments. See Dynamodb Target below.
-  /// [hudiTargets] List of nested Hudi target arguments. See Iceberg Target below.
-  /// [icebergTargets] List of nested Iceberg target arguments. See Iceberg Target below.
-  /// [jdbcTargets] List of nested JDBC target arguments. See JDBC Target below.
-  /// [lakeFormationConfiguration] Specifies Lake Formation configuration settings for the crawler. See Lake Formation Configuration below.
-  /// [lineageConfiguration] Specifies data lineage configuration settings for the crawler. See Lineage Configuration below.
-  /// [mongodbTargets] List of nested MongoDB target arguments. See MongoDB Target below.
+  /// [dynamodbTargets] List of nested DynamoDB target arguments. See `dynamodbTarget` below.
+  /// [hudiTargets] List of nested Hudi target arguments. See `hudiTarget` below.
+  /// [icebergTargets] List of nested Iceberg target arguments. See `icebergTarget` below.
+  /// [jdbcTargets] List of nested JDBC target arguments. See `jdbcTarget` below.
+  /// [lakeFormationConfiguration] Lake Formation configuration settings for the crawler. See `lakeFormationConfiguration` below.
+  /// [lineageConfiguration] Data lineage configuration settings for the crawler. See `lineageConfiguration` below.
+  /// [mongodbTargets] List of nested MongoDB target arguments. See `mongodbTarget` below.
   /// [name] Name of the crawler.
-  /// [recrawlPolicy] A policy that specifies whether to crawl the entire dataset again, or to crawl only folders that were added since the last crawler run.. See Recrawl Policy below.
+  /// [recrawlPolicy] Policy that specifies whether to crawl the entire dataset again, or to crawl only folders that were added since the last crawler run. See `recrawlPolicy` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [role] The IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources.
-  /// [s3Targets] List of nested Amazon S3 target arguments. See S3 Target below.
-  /// [schedule] A cron expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
-  /// [schemaChangePolicy] Policy for the crawler's update and deletion behavior. See Schema Change Policy below.
-  /// [securityConfiguration] The name of Security Configuration to be used by the crawler
-  /// [tablePrefix] The table prefix used for catalog tables that are created.
+  /// [role] IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources.
+  /// [s3Targets] List of nested Amazon S3 target arguments. See `s3Target` below.
+  /// [schedule] Cron expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
+  /// [schemaChangePolicy] Policy for the crawler's update and deletion behavior. See `schemaChangePolicy` below.
+  /// [securityConfiguration] Name of Security Configuration to be used by the crawler.
+  /// [tablePrefix] Table prefix used for catalog tables that are created.
   /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const CrawlerState({
     this.arn,
     this.catalogTargets,

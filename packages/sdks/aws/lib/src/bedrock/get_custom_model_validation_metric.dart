@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetCustomModelValidationMetric {
-  /// The validation loss associated with the validator.
+  /// Validation loss associated with the validator.
   final pulumi.Input<double> validationLoss;
 
   /// Creates a new [GetCustomModelValidationMetric].
-  /// [validationLoss] The validation loss associated with the validator.
+  /// [validationLoss] Validation loss associated with the validator.
   const GetCustomModelValidationMetric({
     required this.validationLoss,
   });

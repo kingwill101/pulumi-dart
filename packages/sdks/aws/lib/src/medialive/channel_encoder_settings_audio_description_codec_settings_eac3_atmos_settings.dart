@@ -9,9 +9,9 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings {
   final pulumi.Input<String?>? codingMode;
   /// Sets the dialnorm for the output.
   final pulumi.Input<double?>? dialnorm;
-  /// Sets the Dolby dynamic range compression profile.
+  /// Dolby dynamic range compression profile.
   final pulumi.Input<String?>? drcLine;
-  /// Sets the profile for heavy Dolby dynamic range compression.
+  /// Profile for heavy Dolby dynamic range compression.
   final pulumi.Input<String?>? drcRf;
   /// Height dimensional trim.
   final pulumi.Input<double?>? heightTrim;
@@ -22,8 +22,8 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings {
   /// [bitrate] Average bitrate in bits/second.
   /// [codingMode] Dolby Digital Plus with Dolby Atmos coding mode.
   /// [dialnorm] Sets the dialnorm for the output.
-  /// [drcLine] Sets the Dolby dynamic range compression profile.
-  /// [drcRf] Sets the profile for heavy Dolby dynamic range compression.
+  /// [drcLine] Dolby dynamic range compression profile.
+  /// [drcRf] Profile for heavy Dolby dynamic range compression.
   /// [heightTrim] Height dimensional trim.
   /// [surroundTrim] Surround dimensional trim.
   const ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings({

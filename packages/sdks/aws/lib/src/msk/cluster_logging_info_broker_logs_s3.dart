@@ -5,13 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterLoggingInfoBrokerLogsS3 {
   /// Name of the S3 bucket to deliver logs to.
   final pulumi.Input<String?>? bucket;
+  /// Whether to enable or disable streaming broker logs to S3.
   final pulumi.Input<bool> enabled;
   /// Prefix to append to the folder name.
   final pulumi.Input<String?>? prefix;
 
   /// Creates a new [ClusterLoggingInfoBrokerLogsS3].
   /// [bucket] Name of the S3 bucket to deliver logs to.
-  /// [enabled] Required.
+  /// [enabled] Whether to enable or disable streaming broker logs to S3.
   /// [prefix] Prefix to append to the folder name.
   const ClusterLoggingInfoBrokerLogsS3({
     this.bucket,

@@ -25,11 +25,11 @@ class GetBootstrapBrokersResult {
   final String? bootstrapBrokersTls;
   /// One or more IPv6 DNS names (or IP addresses) and TLS port pairs for clusters configured with DUAL network type.
   final String? bootstrapBrokersTlsIpv6;
-  /// A string containing one or more DNS names (or IP addresses) and SASL IAM port pairs for VPC connectivity.
+  /// One or more DNS names (or IP addresses) and SASL IAM port pairs for VPC connectivity.
   final String? bootstrapBrokersVpcConnectivitySaslIam;
-  /// A string containing one or more DNS names (or IP addresses) and SASL SCRAM port pairs for VPC connectivity.
+  /// One or more DNS names (or IP addresses) and SASL SCRAM port pairs for VPC connectivity.
   final String? bootstrapBrokersVpcConnectivitySaslScram;
-  /// A string containing one or more DNS names (or IP addresses) and TLS port pairs for VPC connectivity.
+  /// One or more DNS names (or IP addresses) and TLS port pairs for VPC connectivity.
   final String? bootstrapBrokersVpcConnectivityTls;
   final String? clusterArn;
   /// The provider-assigned unique ID for this managed resource.
@@ -48,9 +48,9 @@ class GetBootstrapBrokersResult {
   /// [bootstrapBrokersSaslScramIpv6] One or more IPv6 DNS names (or IP addresses) and SASL SCRAM port pairs for clusters configured with DUAL network type.
   /// [bootstrapBrokersTls] One or more DNS names (or IP addresses) and TLS port pairs.
   /// [bootstrapBrokersTlsIpv6] One or more IPv6 DNS names (or IP addresses) and TLS port pairs for clusters configured with DUAL network type.
-  /// [bootstrapBrokersVpcConnectivitySaslIam] A string containing one or more DNS names (or IP addresses) and SASL IAM port pairs for VPC connectivity.
-  /// [bootstrapBrokersVpcConnectivitySaslScram] A string containing one or more DNS names (or IP addresses) and SASL SCRAM port pairs for VPC connectivity.
-  /// [bootstrapBrokersVpcConnectivityTls] A string containing one or more DNS names (or IP addresses) and TLS port pairs for VPC connectivity.
+  /// [bootstrapBrokersVpcConnectivitySaslIam] One or more DNS names (or IP addresses) and SASL IAM port pairs for VPC connectivity.
+  /// [bootstrapBrokersVpcConnectivitySaslScram] One or more DNS names (or IP addresses) and SASL SCRAM port pairs for VPC connectivity.
+  /// [bootstrapBrokersVpcConnectivityTls] One or more DNS names (or IP addresses) and TLS port pairs for VPC connectivity.
   /// [clusterArn] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Optional.

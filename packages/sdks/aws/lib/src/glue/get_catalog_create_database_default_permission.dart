@@ -6,12 +6,12 @@ import 'get_catalog_create_database_default_permission_principal.dart';
 class GetCatalogCreateDatabaseDefaultPermission {
   /// Permissions that are granted to the principal.
   final pulumi.Input<List<String>> permissions;
-  /// Principal who is granted permissions. See `principal` below.
+  /// Principal who is granted permissions. See `principal` Block below.
   final pulumi.Input<List<GetCatalogCreateDatabaseDefaultPermissionPrincipal>> principals;
 
   /// Creates a new [GetCatalogCreateDatabaseDefaultPermission].
   /// [permissions] Permissions that are granted to the principal.
-  /// [principals] Principal who is granted permissions. See `principal` below.
+  /// [principals] Principal who is granted permissions. See `principal` Block below.
   const GetCatalogCreateDatabaseDefaultPermission({
     required this.permissions,
     required this.principals,

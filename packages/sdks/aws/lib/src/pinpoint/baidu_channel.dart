@@ -4,7 +4,7 @@ import 'baidu_channel_state.dart';
 
 /// Provides an End User Messaging Baidu Channel resource.
 ///
-/// &gt; **Note:** All arguments including the Api Key and Secret Key will be stored in the raw state as plain-text.
+/// &gt; **Note:** All arguments including the API Key and Secret Key will be stored in the raw state as plain-text.
 /// ## Example Usage
 ///
 ///
@@ -168,7 +168,7 @@ class BaiduChannel extends pulumi.CustomResource {
           'aws:pinpoint/baiduChannel:BaiduChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
           additionalSecretOutputs: const ['apiKey', 'secretKey'],
         ) {
     apiKey = registerOutput<String>('apiKey', isSecret: true);

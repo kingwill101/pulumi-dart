@@ -144,7 +144,7 @@ import 'serverless_vpc_endpoint_timeouts.dart';
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import OpenSearchServerless Vpc Endpoint using the `id`. For example:
+/// Using `pulumi import`, import OpenSearchServerless VPC Endpoint using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:opensearch/serverlessVpcEndpoint:ServerlessVpcEndpoint example vpce-8012925589
@@ -176,7 +176,7 @@ class ServerlessVpcEndpoint extends pulumi.CustomResource {
           'aws:opensearch/serverlessVpcEndpoint:ServerlessVpcEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');

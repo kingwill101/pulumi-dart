@@ -8,7 +8,7 @@ class GetManagedPrefixListsResult {
   final List<GetManagedPrefixListsFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// List of all the managed prefix list ids found.
+  /// List of all the managed prefix list IDs found.
   final List<String>? ids;
   final String? region;
   final Map<String, String>? tags;
@@ -16,7 +16,7 @@ class GetManagedPrefixListsResult {
   /// Creates a new [GetManagedPrefixListsResult].
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ids] List of all the managed prefix list ids found.
+  /// [ids] List of all the managed prefix list IDs found.
   /// [region] Optional.
   /// [tags] Optional.
   const GetManagedPrefixListsResult({

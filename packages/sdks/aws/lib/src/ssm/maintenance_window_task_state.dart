@@ -24,7 +24,7 @@ class MaintenanceWindowTaskState {
   final pulumi.Input<String?>? region;
   /// The role that should be assumed when executing the task. If a role is not provided, Systems Manager uses your account's service-linked role. If no service-linked role for Systems Manager exists in your account, it is created for you.
   final pulumi.Input<String?>? serviceRoleArn;
-  /// The targets (either instances or window target ids). Instances are specified using Key=InstanceIds,Values=instanceid1,instanceid2. Window target ids are specified using Key=WindowTargetIds,Values=window target id1, window target id2.
+  /// The targets (either instances or window target IDs). Instances are specified using Key=InstanceIds,Values=instanceid1,instanceid2. Window target IDs are specified using Key=WindowTargetIds,Values=window target id1, window target id2.
   final pulumi.Input<List<MaintenanceWindowTaskTarget>?>? targets;
   /// The ARN of the task to execute.
   final pulumi.Input<String?>? taskArn;
@@ -32,7 +32,7 @@ class MaintenanceWindowTaskState {
   final pulumi.Input<MaintenanceWindowTaskTaskInvocationParameters?>? taskInvocationParameters;
   /// The type of task being registered. Valid values: `AUTOMATION`, `LAMBDA`, `RUN_COMMAND` or `STEP_FUNCTIONS`.
   final pulumi.Input<String?>? taskType;
-  /// The Id of the maintenance window to register the task with.
+  /// The ID of the maintenance window to register the task with.
   final pulumi.Input<String?>? windowId;
   /// The ID of the maintenance window task.
   final pulumi.Input<String?>? windowTaskId;
@@ -47,11 +47,11 @@ class MaintenanceWindowTaskState {
   /// [priority] The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceRoleArn] The role that should be assumed when executing the task. If a role is not provided, Systems Manager uses your account's service-linked role. If no service-linked role for Systems Manager exists in your account, it is created for you.
-  /// [targets] The targets (either instances or window target ids). Instances are specified using Key=InstanceIds,Values=instanceid1,instanceid2. Window target ids are specified using Key=WindowTargetIds,Values=window target id1, window target id2.
+  /// [targets] The targets (either instances or window target IDs). Instances are specified using Key=InstanceIds,Values=instanceid1,instanceid2. Window target IDs are specified using Key=WindowTargetIds,Values=window target id1, window target id2.
   /// [taskArn] The ARN of the task to execute.
   /// [taskInvocationParameters] Configuration block with parameters for task execution.
   /// [taskType] The type of task being registered. Valid values: `AUTOMATION`, `LAMBDA`, `RUN_COMMAND` or `STEP_FUNCTIONS`.
-  /// [windowId] The Id of the maintenance window to register the task with.
+  /// [windowId] The ID of the maintenance window to register the task with.
   /// [windowTaskId] The ID of the maintenance window task.
   const MaintenanceWindowTaskState({
     this.arn,
@@ -99,7 +99,7 @@ class MaintenanceWindowTaskState {
       maxConcurrency: (() { final guardedValue = map['maxConcurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maxErrors: (() { final guardedValue = map['maxErrors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceRoleArn: (() { final guardedValue = map['serviceRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targets: (() { final guardedValue = map['targets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MaintenanceWindowTaskTarget>(guardedValue, (value) => MaintenanceWindowTaskTarget.fromMap((value as Map).cast<String, dynamic>()))); })(),

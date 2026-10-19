@@ -3,26 +3,26 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpnConnectionTunnel2LogOptionsCloudwatchLogOptions {
-  /// Enable or disable BGP logging feature. The default is `false`.
+  /// Whether to enable the BGP logging feature. The default is `false`.
   final pulumi.Input<bool?>? bgpLogEnabled;
   /// ARN of the CloudWatch log group to send BGP logs to.
   final pulumi.Input<String?>? bgpLogGroupArn;
-  /// Set BGP log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
+  /// Set BGP log format. Default format is JSON. Possible values are: `json` and `text`. The default is `json`.
   final pulumi.Input<String?>? bgpLogOutputFormat;
-  /// Enable or disable VPN tunnel logging feature. The default is `false`.
+  /// Whether to enable the VPN tunnel logging feature. The default is `false`.
   final pulumi.Input<bool?>? logEnabled;
   /// ARN of the CloudWatch log group to send logs to.
   final pulumi.Input<String?>? logGroupArn;
-  /// Set log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
+  /// Set log format. Default format is JSON. Possible values are: `json` and `text`. The default is `json`.
   final pulumi.Input<String?>? logOutputFormat;
 
   /// Creates a new [VpnConnectionTunnel2LogOptionsCloudwatchLogOptions].
-  /// [bgpLogEnabled] Enable or disable BGP logging feature. The default is `false`.
+  /// [bgpLogEnabled] Whether to enable the BGP logging feature. The default is `false`.
   /// [bgpLogGroupArn] ARN of the CloudWatch log group to send BGP logs to.
-  /// [bgpLogOutputFormat] Set BGP log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
-  /// [logEnabled] Enable or disable VPN tunnel logging feature. The default is `false`.
+  /// [bgpLogOutputFormat] Set BGP log format. Default format is JSON. Possible values are: `json` and `text`. The default is `json`.
+  /// [logEnabled] Whether to enable the VPN tunnel logging feature. The default is `false`.
   /// [logGroupArn] ARN of the CloudWatch log group to send logs to.
-  /// [logOutputFormat] Set log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
+  /// [logOutputFormat] Set log format. Default format is JSON. Possible values are: `json` and `text`. The default is `json`.
   const VpnConnectionTunnel2LogOptionsCloudwatchLogOptions({
     this.bgpLogEnabled,
     this.bgpLogGroupArn,

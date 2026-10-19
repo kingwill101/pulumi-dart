@@ -2082,7 +2082,7 @@ class JobDefinition extends pulumi.CustomResource {
   late final pulumi.Output<bool?> deregisterOnNewRevision;
   /// Valid [ECS properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) provided as a single valid JSON document. This parameter is only valid if the `type` parameter is `container`.
   late final pulumi.Output<String?> ecsProperties;
-  /// Valid eks properties. This parameter is only valid if the `type` parameter is `container`.
+  /// Valid EKS properties. This parameter is only valid if the `type` parameter is `container`.
   late final pulumi.Output<JobDefinitionEksProperties?> eksProperties;
   /// Name of the job definition.
   late final pulumi.Output<String> name;
@@ -2125,7 +2125,7 @@ class JobDefinition extends pulumi.CustomResource {
           'aws:batch/jobDefinition:JobDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     arnPrefix = registerOutput<String>('arnPrefix');

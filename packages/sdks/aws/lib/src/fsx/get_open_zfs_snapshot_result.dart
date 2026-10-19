@@ -13,7 +13,6 @@ class GetOpenZfsSnapshotResult {
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
   final bool? mostRecent;
-  /// Name of the snapshot.
   final String? name;
   final String? region;
   /// ID of the snapshot.
@@ -30,7 +29,7 @@ class GetOpenZfsSnapshotResult {
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [mostRecent] Optional.
-  /// [name] Name of the snapshot.
+  /// [name] Optional.
   /// [region] Optional.
   /// [snapshotId] ID of the snapshot.
   /// [snapshotIds] Optional.

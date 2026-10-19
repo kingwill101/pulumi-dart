@@ -4,32 +4,35 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firehose_delivery_stream_extended_s3_configuration_s3_backup_configuration_cloudwatch_logging_options.dart';
 
 class FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration {
-  /// The ARN of the S3 bucket
+  /// ARN of the S3 bucket.
   final pulumi.Input<String> bucketArn;
+  /// Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. The default value is 300.
   final pulumi.Input<int?>? bufferingInterval;
+  /// Buffer incoming data to the specified size, in MBs, before delivering it to the destination. The default value is 5.
   final pulumi.Input<int?>? bufferingSize;
+  /// CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions?>? cloudwatchLoggingOptions;
-  /// The compression format. If no value is specified, the default is `UNCOMPRESSED`. Other supported values are `GZIP`, `ZIP`, `Snappy`, & `HADOOP_SNAPPY`.
+  /// Compression format. If no value is specified, the default is `UNCOMPRESSED`. Other supported values are `GZIP`, `ZIP`, `Snappy`, & `HADOOP_SNAPPY`.
   final pulumi.Input<String?>? compressionFormat;
-  /// Prefix added to failed records before writing them to S3. Not currently supported for `redshift` destination. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see [Custom Prefixes for Amazon S3 Objects](https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html).
+  /// Prefix added to failed records before writing them to S3. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see [Custom Prefixes for Amazon S3 Objects](https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html).
   final pulumi.Input<String?>? errorOutputPrefix;
-  /// Specifies the KMS key ARN the stream will use to encrypt data. If not set, no encryption will
-  /// be used.
+  /// KMS key ARN the stream will use to encrypt data. If not set, no encryption will be used.
   final pulumi.Input<String?>? kmsKeyArn;
-  /// The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket
+  /// Extra prefix added in front of the "YYYY/MM/DD/HH" time format prefix that is automatically used for delivered S3 files. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket.
   final pulumi.Input<String?>? prefix;
+  /// ARN of the AWS credentials.
   final pulumi.Input<String> roleArn;
 
   /// Creates a new [FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration].
-  /// [bucketArn] The ARN of the S3 bucket
-  /// [bufferingInterval] Optional.
-  /// [bufferingSize] Optional.
-  /// [cloudwatchLoggingOptions] Optional.
-  /// [compressionFormat] The compression format. If no value is specified, the default is `UNCOMPRESSED`. Other supported values are `GZIP`, `ZIP`, `Snappy`, & `HADOOP_SNAPPY`.
-  /// [errorOutputPrefix] Prefix added to failed records before writing them to S3. Not currently supported for `redshift` destination. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see [Custom Prefixes for Amazon S3 Objects](https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html).
-  /// [kmsKeyArn] Specifies the KMS key ARN the stream will use to encrypt data. If not set, no encryption will
-  /// [prefix] The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket
-  /// [roleArn] Required.
+  /// [bucketArn] ARN of the S3 bucket.
+  /// [bufferingInterval] Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. The default value is 300.
+  /// [bufferingSize] Buffer incoming data to the specified size, in MBs, before delivering it to the destination. The default value is 5.
+  /// [cloudwatchLoggingOptions] CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
+  /// [compressionFormat] Compression format. If no value is specified, the default is `UNCOMPRESSED`. Other supported values are `GZIP`, `ZIP`, `Snappy`, & `HADOOP_SNAPPY`.
+  /// [errorOutputPrefix] Prefix added to failed records before writing them to S3. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see [Custom Prefixes for Amazon S3 Objects](https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html).
+  /// [kmsKeyArn] KMS key ARN the stream will use to encrypt data. If not set, no encryption will be used.
+  /// [prefix] Extra prefix added in front of the "YYYY/MM/DD/HH" time format prefix that is automatically used for delivered S3 files. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket.
+  /// [roleArn] ARN of the AWS credentials.
   const FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration({
     required this.bucketArn,
     this.bufferingInterval,
@@ -59,8 +62,8 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration {
   factory FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration(
       bucketArn: pulumi.Input.fromValue(map['bucketArn'] as String),
-      bufferingInterval: (() { final guardedValue = map['bufferingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      bufferingSize: (() { final guardedValue = map['bufferingSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bufferingInterval: (() { final guardedValue = map['bufferingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      bufferingSize: (() { final guardedValue = map['bufferingSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       cloudwatchLoggingOptions: (() { final guardedValue = map['cloudwatchLoggingOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       compressionFormat: (() { final guardedValue = map['compressionFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       errorOutputPrefix: (() { final guardedValue = map['errorOutputPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

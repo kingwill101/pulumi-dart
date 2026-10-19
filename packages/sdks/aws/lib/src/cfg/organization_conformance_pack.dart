@@ -652,7 +652,7 @@ class OrganizationConformancePack extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// A string containing full conformance pack template body. Maximum length of 51200. Drift detection is not possible with this argument.
   late final pulumi.Output<String?> templateBody;
-  /// Location of file, e.g., `s3://bucketname/prefix`, containing the template body. The uri must point to the conformance pack template that is located in an Amazon S3 bucket in the same region as the conformance pack. Maximum length of 1024. Drift detection is not possible with this argument.
+  /// Location of file, e.g., `s3://bucketname/prefix`, containing the template body. The URI must point to the conformance pack template that is located in an Amazon S3 bucket in the same region as the conformance pack. Maximum length of 1024. Drift detection is not possible with this argument.
   late final pulumi.Output<String?> templateS3Uri;
 
   /// Creates a new [OrganizationConformancePack].
@@ -667,7 +667,7 @@ class OrganizationConformancePack extends pulumi.CustomResource {
           'aws:cfg/organizationConformancePack:OrganizationConformancePack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deliveryS3Bucket = registerOutput<String?>('deliveryS3Bucket');

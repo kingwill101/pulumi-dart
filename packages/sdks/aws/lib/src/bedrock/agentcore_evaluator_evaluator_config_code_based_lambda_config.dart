@@ -26,7 +26,7 @@ class AgentcoreEvaluatorEvaluatorConfigCodeBasedLambdaConfig {
   factory AgentcoreEvaluatorEvaluatorConfigCodeBasedLambdaConfig.fromMap(Map<String, dynamic> map) {
     return AgentcoreEvaluatorEvaluatorConfigCodeBasedLambdaConfig(
       lambdaArn: pulumi.Input.fromValue(map['lambdaArn'] as String),
-      lambdaTimeoutInSeconds: (() { final guardedValue = map['lambdaTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      lambdaTimeoutInSeconds: (() { final guardedValue = map['lambdaTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

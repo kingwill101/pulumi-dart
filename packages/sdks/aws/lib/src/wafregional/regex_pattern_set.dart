@@ -133,7 +133,7 @@ import 'regex_pattern_set_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import WAF Regional Regex Pattern Set using the id. For example:
+/// Using `pulumi import`, import WAF Regional Regex Pattern Set using the ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:wafregional/regexPatternSet:RegexPatternSet example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
@@ -158,7 +158,7 @@ class RegexPatternSet extends pulumi.CustomResource {
           'aws:wafregional/regexPatternSet:RegexPatternSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     regexPatternStrings = registerOutput<List<String>?>('regexPatternStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -5,14 +5,14 @@ import 'classification_job_s3_job_definition_scoping_excludes_and_simple_scope_t
 import 'classification_job_s3_job_definition_scoping_excludes_and_tag_scope_term.dart';
 
 class ClassificationJobS3JobDefinitionScopingExcludesAnd {
-  /// A property-based condition that defines a property, operator, and one or more values for including or excluding an object from the job. (documented below)
+  /// Property-based condition that defines a property, operator, and one or more values for including or excluding an object from the job. See `includes.simple_scope_term` Block for details.
   final pulumi.Input<ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm?>? simpleScopeTerm;
-  /// A tag-based condition that defines the operator and tag keys or tag key and value pairs for including or excluding an object from the job. (documented below)
+  /// Tag-based condition that defines the operator and tag keys or tag key and value pairs for including or excluding an object from the job. See `includes.tag_scope_term` Block for details.
   final pulumi.Input<ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTerm?>? tagScopeTerm;
 
   /// Creates a new [ClassificationJobS3JobDefinitionScopingExcludesAnd].
-  /// [simpleScopeTerm] A property-based condition that defines a property, operator, and one or more values for including or excluding an object from the job. (documented below)
-  /// [tagScopeTerm] A tag-based condition that defines the operator and tag keys or tag key and value pairs for including or excluding an object from the job. (documented below)
+  /// [simpleScopeTerm] Property-based condition that defines a property, operator, and one or more values for including or excluding an object from the job. See `includes.simple_scope_term` Block for details.
+  /// [tagScopeTerm] Tag-based condition that defines the operator and tag keys or tag key and value pairs for including or excluding an object from the job. See `includes.tag_scope_term` Block for details.
   const ClassificationJobS3JobDefinitionScopingExcludesAnd({
     this.simpleScopeTerm,
     this.tagScopeTerm,

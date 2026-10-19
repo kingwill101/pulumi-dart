@@ -644,7 +644,7 @@ class DeploymentConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// The compute platform can be `Server`, `Lambda`, or `ECS`. Default is `Server`.
   late final pulumi.Output<String?> computePlatform;
-  /// The AWS Assigned deployment config id
+  /// The AWS Assigned deployment config ID
   late final pulumi.Output<String> deploymentConfigId;
   /// The name of the deployment config.
   late final pulumi.Output<String> deploymentConfigName;
@@ -669,7 +669,7 @@ class DeploymentConfig extends pulumi.CustomResource {
           'aws:codedeploy/deploymentConfig:DeploymentConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     computePlatform = registerOutput<String?>('computePlatform');

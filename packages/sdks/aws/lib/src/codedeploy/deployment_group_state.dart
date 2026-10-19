@@ -22,7 +22,7 @@ class DeploymentGroupState {
   final pulumi.Input<String?>? arn;
   /// Configuration block of the automatic rollback configuration associated with the deployment group (documented below).
   final pulumi.Input<DeploymentGroupAutoRollbackConfiguration?>? autoRollbackConfiguration;
-  /// Autoscaling groups associated with the deployment group.
+  /// Auto Scaling groups associated with the deployment group.
   final pulumi.Input<List<String>?>? autoscalingGroups;
   /// Configuration block of the blue/green deployment options for a deployment group (documented below).
   final pulumi.Input<DeploymentGroupBlueGreenDeploymentConfig?>? blueGreenDeploymentConfig;
@@ -66,7 +66,7 @@ class DeploymentGroupState {
   /// [appName] The name of the application.
   /// [arn] The ARN of the CodeDeploy deployment group.
   /// [autoRollbackConfiguration] Configuration block of the automatic rollback configuration associated with the deployment group (documented below).
-  /// [autoscalingGroups] Autoscaling groups associated with the deployment group.
+  /// [autoscalingGroups] Auto Scaling groups associated with the deployment group.
   /// [blueGreenDeploymentConfig] Configuration block of the blue/green deployment options for a deployment group (documented below).
   /// [computePlatform] The destination platform type for the deployment.
   /// [deploymentConfigName] The name of the group's deployment config. The default is "CodeDeployDefault.OneAtATime".

@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_cluster_broker_node_group_info_connectivity_info_vpc_connectivity_client_authentication.dart';
 
 class GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity {
+  /// Client authentication configuration for VPC connectivity. See `clientAuthentication` Block for details.
   final pulumi.Input<List<GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication>> clientAuthentications;
 
   /// Creates a new [GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity].
-  /// [clientAuthentications] Required.
+  /// [clientAuthentications] Client authentication configuration for VPC connectivity. See `clientAuthentication` Block for details.
   const GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity({
     required this.clientAuthentications,
   });

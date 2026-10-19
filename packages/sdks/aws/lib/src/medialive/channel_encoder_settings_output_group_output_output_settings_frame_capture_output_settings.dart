@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings {
-  /// String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
+  /// String concatenated to the end of the destination filename.
   final pulumi.Input<String?>? nameModifier;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings].
-  /// [nameModifier] String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
+  /// [nameModifier] String concatenated to the end of the destination filename.
   const ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings({
     this.nameModifier,
   });

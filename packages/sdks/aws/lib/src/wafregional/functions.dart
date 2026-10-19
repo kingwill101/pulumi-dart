@@ -10,7 +10,7 @@ import 'get_subscribed_rule_group_result.dart';
 import 'get_web_acl_args.dart';
 import 'get_web_acl_result.dart';
 
-/// `aws.wafregional.IpSet` Retrieves a WAF Regional IP Set Resource Id.
+/// `aws.wafregional.IpSet` Retrieves a WAF Regional IP Set Resource ID.
 ///
 /// ## Example Usage
 ///
@@ -139,7 +139,7 @@ pulumi.Output<GetIpsetResult> getIpsetOutput(
   ).apply(GetIpsetResult.fromMap);
 }
 
-/// `aws.wafregional.RateBasedRule` Retrieves a WAF Regional Rate Based Rule Resource Id.
+/// `aws.wafregional.RateBasedRule` Retrieves a WAF Regional Rate Based Rule Resource ID.
 ///
 /// ## Example Usage
 ///
@@ -268,7 +268,7 @@ pulumi.Output<GetRateBasedModResult> getRateBasedModOutput(
   ).apply(GetRateBasedModResult.fromMap);
 }
 
-/// `aws.wafregional.Rule` Retrieves a WAF Regional Rule Resource Id.
+/// `aws.wafregional.Rule` Retrieves a WAF Regional Rule Resource ID.
 ///
 /// ## Example Usage
 ///
@@ -654,7 +654,7 @@ pulumi.Output<GetSubscribedRuleGroupResult> getSubscribedRuleGroupOutput(
   ).apply(GetSubscribedRuleGroupResult.fromMap);
 }
 
-/// `aws.wafregional.WebAcl` Retrieves a WAF Regional Web ACL Resource Id.
+/// `aws.wafregional.WebAcl` Retrieves a WAF Regional Web ACL Resource ID.
 ///
 /// ## Example Usage
 ///

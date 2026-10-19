@@ -9,7 +9,7 @@ import 'capacity_provider_managed_instances_provider.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ecs_capacity_provider_capacity_provider_args_doc}
 class CapacityProviderArgs {
-  /// Configuration block for the provider for the ECS auto scaling group. Detailed below. Exactly one of `autoScalingGroupProvider` or `managedInstancesProvider` must be specified.
+  /// Configuration block for the provider for the ECS Auto Scaling group. Detailed below. Exactly one of `autoScalingGroupProvider` or `managedInstancesProvider` must be specified.
   final pulumi.Input<CapacityProviderAutoScalingGroupProvider?>? autoScalingGroupProvider;
   /// Name of the ECS cluster. Required when using `managedInstancesProvider`. Must not be set when using `autoScalingGroupProvider`.
   final pulumi.Input<String?>? cluster;
@@ -23,7 +23,7 @@ class CapacityProviderArgs {
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CapacityProviderArgs].
-  /// [autoScalingGroupProvider] Configuration block for the provider for the ECS auto scaling group. Detailed below. Exactly one of `autoScalingGroupProvider` or `managedInstancesProvider` must be specified.
+  /// [autoScalingGroupProvider] Configuration block for the provider for the ECS Auto Scaling group. Detailed below. Exactly one of `autoScalingGroupProvider` or `managedInstancesProvider` must be specified.
   /// [cluster] Name of the ECS cluster. Required when using `managedInstancesProvider`. Must not be set when using `autoScalingGroupProvider`.
   /// [managedInstancesProvider] Configuration block for the managed instances provider. Detailed below. Exactly one of `autoScalingGroupProvider` or `managedInstancesProvider` must be specified.
   /// [name] Name of the capacity provider.

@@ -3,16 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings {
-  /// Specifies behavior of last resort when input video os lost.
+  /// Behavior of last resort when input video is lost.
   final pulumi.Input<String?>? inputLossAction;
-  /// Indicates ID3 frame that has the timecode.
+  /// ID3 frame that has the timecode.
   final pulumi.Input<String?>? timedMetadataId3Frame;
+  /// Timed metadata interval, in seconds.
   final pulumi.Input<int?>? timedMetadataId3Period;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings].
-  /// [inputLossAction] Specifies behavior of last resort when input video os lost.
-  /// [timedMetadataId3Frame] Indicates ID3 frame that has the timecode.
-  /// [timedMetadataId3Period] Optional.
+  /// [inputLossAction] Behavior of last resort when input video is lost.
+  /// [timedMetadataId3Frame] ID3 frame that has the timecode.
+  /// [timedMetadataId3Period] Timed metadata interval, in seconds.
   const ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings({
     this.inputLossAction,
     this.timedMetadataId3Frame,
@@ -31,7 +32,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings(
       inputLossAction: (() { final guardedValue = map['inputLossAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timedMetadataId3Frame: (() { final guardedValue = map['timedMetadataId3Frame']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timedMetadataId3Period: (() { final guardedValue = map['timedMetadataId3Period']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timedMetadataId3Period: (() { final guardedValue = map['timedMetadataId3Period']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

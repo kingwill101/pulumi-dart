@@ -10,7 +10,7 @@ import 'get_local_gateway_filter.dart';
 class GetLocalGatewayArgs {
   /// Custom filter block as described below.
   final pulumi.Input<List<GetLocalGatewayFilter>?>? filters;
-  /// Id of the specific Local Gateway to retrieve.
+  /// ID of the specific Local Gateway to retrieve.
   final pulumi.Input<String?>? id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -27,7 +27,7 @@ class GetLocalGatewayArgs {
 
   /// Creates a new [GetLocalGatewayArgs].
   /// [filters] Custom filter block as described below.
-  /// [id] Id of the specific Local Gateway to retrieve.
+  /// [id] ID of the specific Local Gateway to retrieve.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] Current state of the desired Local Gateway.
   /// [tags] Mapping of tags, each pair of which must exactly match

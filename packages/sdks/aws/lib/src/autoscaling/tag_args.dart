@@ -8,7 +8,7 @@ import 'tag_tag.dart';
 /// {@endtemplate}
 /// {@macro pulumi_autoscaling_tag_tag_args_doc}
 class TagArgs {
-  /// Name of the Autoscaling Group to apply the tag to.
+  /// Name of the Auto Scaling group to apply the tag to.
   final pulumi.Input<String> autoscalingGroupName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -16,7 +16,7 @@ class TagArgs {
   final pulumi.Input<TagTag> tag;
 
   /// Creates a new [TagArgs].
-  /// [autoscalingGroupName] Name of the Autoscaling Group to apply the tag to.
+  /// [autoscalingGroupName] Name of the Auto Scaling group to apply the tag to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tag] Tag to create. The `tag` block is documented below.
   const TagArgs({

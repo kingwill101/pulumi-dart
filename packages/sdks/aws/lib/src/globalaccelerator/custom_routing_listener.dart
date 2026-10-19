@@ -239,8 +239,9 @@ import 'custom_routing_listener_state.dart';
 class CustomRoutingListener extends pulumi.CustomResource {
   /// ARN of a custom routing accelerator.
   late final pulumi.Output<String> acceleratorArn;
+  /// ARN of the custom routing listener.
   late final pulumi.Output<String> arn;
-  /// The list of port ranges for the connections from clients to the accelerator. Fields documented below.
+  /// Port ranges for the connections from clients to the accelerator. See `portRange` below.
   late final pulumi.Output<List<CustomRoutingListenerPortRange>> portRanges;
 
   /// Creates a new [CustomRoutingListener].
@@ -255,7 +256,7 @@ class CustomRoutingListener extends pulumi.CustomResource {
           'aws:globalaccelerator/customRoutingListener:CustomRoutingListener',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     acceleratorArn = registerOutput<String>('acceleratorArn');
     arn = registerOutput<String>('arn');

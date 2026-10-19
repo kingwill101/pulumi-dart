@@ -3,20 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersRedshift {
-  /// The ID of the cluster to which to connect.
+  /// ID of the cluster to which to connect.
   final pulumi.Input<String?>? clusterId;
-  /// The database to which to connect.
+  /// Database to which to connect.
   final pulumi.Input<String> database;
-  /// The host to which to connect.
+  /// Host to which to connect.
   final pulumi.Input<String?>? host;
-  /// The port to which to connect.
+  /// Port to which to connect.
   final pulumi.Input<int?>? port;
 
   /// Creates a new [DataSourceParametersRedshift].
-  /// [clusterId] The ID of the cluster to which to connect.
-  /// [database] The database to which to connect.
-  /// [host] The host to which to connect.
-  /// [port] The port to which to connect.
+  /// [clusterId] ID of the cluster to which to connect.
+  /// [database] Database to which to connect.
+  /// [host] Host to which to connect.
+  /// [port] Port to which to connect.
   const DataSourceParametersRedshift({
     this.clusterId,
     required this.database,
@@ -38,7 +38,7 @@ class DataSourceParametersRedshift {
       clusterId: (() { final guardedValue = map['clusterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       database: pulumi.Input.fromValue(map['database'] as String),
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

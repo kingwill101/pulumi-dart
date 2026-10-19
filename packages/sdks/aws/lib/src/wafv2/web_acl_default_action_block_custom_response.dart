@@ -6,15 +6,15 @@ import 'web_acl_default_action_block_custom_response_response_header.dart';
 class WebAclDefaultActionBlockCustomResponse {
   /// References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `customResponseBody` block of this resource.
   final pulumi.Input<String?>? customResponseBodyKey;
-  /// The HTTP status code to return to the client.
+  /// HTTP status code to return to the client.
   final pulumi.Input<int> responseCode;
-  /// The `responseHeader` blocks used to define the HTTP response headers added to the response. See `responseHeader` below for details.
+  /// `responseHeader` blocks used to define the HTTP response headers added to the response. See `responseHeader` below for details.
   final pulumi.Input<List<WebAclDefaultActionBlockCustomResponseResponseHeader>?>? responseHeaders;
 
   /// Creates a new [WebAclDefaultActionBlockCustomResponse].
   /// [customResponseBodyKey] References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `customResponseBody` block of this resource.
-  /// [responseCode] The HTTP status code to return to the client.
-  /// [responseHeaders] The `responseHeader` blocks used to define the HTTP response headers added to the response. See `responseHeader` below for details.
+  /// [responseCode] HTTP status code to return to the client.
+  /// [responseHeaders] `responseHeader` blocks used to define the HTTP response headers added to the response. See `responseHeader` below for details.
   const WebAclDefaultActionBlockCustomResponse({
     this.customResponseBodyKey,
     required this.responseCode,
@@ -32,7 +32,7 @@ class WebAclDefaultActionBlockCustomResponse {
   factory WebAclDefaultActionBlockCustomResponse.fromMap(Map<String, dynamic> map) {
     return WebAclDefaultActionBlockCustomResponse(
       customResponseBodyKey: (() { final guardedValue = map['customResponseBodyKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      responseCode: pulumi.Input.fromValue((map['responseCode'] as num).toInt()),
+      responseCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['responseCode'])),
       responseHeaders: (() { final guardedValue = map['responseHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebAclDefaultActionBlockCustomResponseResponseHeader>(guardedValue, (value) => WebAclDefaultActionBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

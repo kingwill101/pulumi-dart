@@ -6,11 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkerConfigurationState {
   /// the ARN of the worker configuration.
   final pulumi.Input<String?>? arn;
-  /// A summary description of the worker configuration.
+  /// Summary description of the worker configuration.
   final pulumi.Input<String?>? description;
   /// an ID of the latest successfully created revision of the worker configuration.
   final pulumi.Input<int?>? latestRevision;
-  /// The name of the worker configuration.
+  /// Name of the worker configuration.
   final pulumi.Input<String?>? name;
   /// Contents of connect-distributed.properties file. The value can be either base64 encoded or in raw format.
   ///
@@ -18,20 +18,20 @@ class WorkerConfigurationState {
   final pulumi.Input<String?>? propertiesFileContent;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [WorkerConfigurationState].
   /// [arn] the ARN of the worker configuration.
-  /// [description] A summary description of the worker configuration.
+  /// [description] Summary description of the worker configuration.
   /// [latestRevision] an ID of the latest successfully created revision of the worker configuration.
-  /// [name] The name of the worker configuration.
+  /// [name] Name of the worker configuration.
   /// [propertiesFileContent] Contents of connect-distributed.properties file. The value can be either base64 encoded or in raw format.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const WorkerConfigurationState({
     this.arn,
     this.description,
@@ -60,7 +60,7 @@ class WorkerConfigurationState {
     return WorkerConfigurationState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      latestRevision: (() { final guardedValue = map['latestRevision']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      latestRevision: (() { final guardedValue = map['latestRevision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       propertiesFileContent: (() { final guardedValue = map['propertiesFileContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

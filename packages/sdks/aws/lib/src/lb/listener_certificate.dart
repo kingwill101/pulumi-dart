@@ -169,7 +169,7 @@ import 'listener_certificate_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Listener Certificates using the listener arn and certificate arn, separated by an underscore (`_`). For example:
+/// Using `pulumi import`, import Listener Certificates using the listener ARN and certificate ARN, separated by an underscore (`_`). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:lb/listenerCertificate:ListenerCertificate example arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/test/8e4497da625e2d8a/9ab28ade35828f96/67b3d2d36dd7c26b_arn:aws:iam::123456789012:server-certificate/tf-acc-test-6453083910015726063
@@ -194,7 +194,7 @@ class ListenerCertificate extends pulumi.CustomResource {
           'aws:lb/listenerCertificate:ListenerCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     certificateArn = registerOutput<String>('certificateArn');
     listenerArn = registerOutput<String>('listenerArn');

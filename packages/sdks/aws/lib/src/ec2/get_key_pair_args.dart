@@ -9,10 +9,6 @@ import 'get_key_pair_filter.dart';
 /// {@macro pulumi_ec2_get_key_pair_get_key_pair_args_doc}
 class GetKeyPairArgs {
   /// Custom filter block as described below.
-  ///
-  /// The arguments of this data source act as filters for querying the available
-  /// Key Pairs. The given filters must match exactly one Key Pair
-  /// whose data will be exported as attributes.
   final pulumi.Input<List<GetKeyPairFilter>?>? filters;
   /// Whether to include the public key material in the response.
   final pulumi.Input<bool?>? includePublicKey;

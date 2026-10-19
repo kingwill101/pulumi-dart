@@ -512,11 +512,11 @@ import 'data_quality_ruleset_target_table.dart';
 class DataQualityRuleset extends pulumi.CustomResource {
   /// ARN of the Glue Data Quality Ruleset.
   late final pulumi.Output<String> arn;
-  /// The time and date that this data quality ruleset was created.
+  /// Time and date that this data quality ruleset was created.
   late final pulumi.Output<String> createdOn;
   /// Description of the data quality ruleset.
   late final pulumi.Output<String?> description;
-  /// The time and date that this data quality ruleset was created.
+  /// Time and date that this data quality ruleset was created.
   late final pulumi.Output<String> lastModifiedOn;
   /// Name of the data quality ruleset.
   late final pulumi.Output<String> name;
@@ -524,13 +524,13 @@ class DataQualityRuleset extends pulumi.CustomResource {
   late final pulumi.Output<String> recommendationRunId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A Data Quality Definition Language (DQDL) ruleset. For more information, see the AWS Glue developer guide.
+  /// Data Quality Definition Language (DQDL) ruleset. For more information, see the AWS Glue developer guide.
   late final pulumi.Output<String> ruleset;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// A Configuration block specifying a target table associated with the data quality ruleset. See `targetTable` below.
+  /// Configuration block specifying a target table associated with the data quality ruleset. See `targetTable` Block below.
   late final pulumi.Output<DataQualityRulesetTargetTable?> targetTable;
 
   /// Creates a new [DataQualityRuleset].
@@ -545,7 +545,7 @@ class DataQualityRuleset extends pulumi.CustomResource {
           'aws:glue/dataQualityRuleset:DataQualityRuleset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdOn = registerOutput<String>('createdOn');

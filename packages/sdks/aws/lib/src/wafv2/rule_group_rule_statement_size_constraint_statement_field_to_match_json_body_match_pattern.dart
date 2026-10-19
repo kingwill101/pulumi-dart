@@ -3,12 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern {
-  /// An empty configuration block that is used for inspecting all headers.
+  /// Empty configuration block that is used for inspecting all headers.
   final pulumi.Input<Map<String, dynamic>?>? all;
   final pulumi.Input<List<String>?>? includedPaths;
 
   /// Creates a new [RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern].
-  /// [all] An empty configuration block that is used for inspecting all headers.
+  /// [all] Empty configuration block that is used for inspecting all headers.
   /// [includedPaths] Optional.
   const RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern({
     this.all,

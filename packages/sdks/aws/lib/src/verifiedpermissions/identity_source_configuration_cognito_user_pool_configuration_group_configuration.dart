@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration {
-  /// The name of the schema entity type that's mapped to the user pool group. Defaults to `AWS::CognitoGroup`.
+  /// Policy store entity type that you want to map your users' group claim to. For example, `MyCorp::UserGroup`. A group entity type is an entity that can have a user entity type as a member.
   final pulumi.Input<String> groupEntityType;
 
   /// Creates a new [IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration].
-  /// [groupEntityType] The name of the schema entity type that's mapped to the user pool group. Defaults to `AWS::CognitoGroup`.
+  /// [groupEntityType] Policy store entity type that you want to map your users' group claim to. For example, `MyCorp::UserGroup`. A group entity type is an entity that can have a user entity type as a member.
   const IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration({
     required this.groupEntityType,
   });

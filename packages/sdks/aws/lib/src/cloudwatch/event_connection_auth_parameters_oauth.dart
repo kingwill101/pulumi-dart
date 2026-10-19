@@ -11,14 +11,14 @@ class EventConnectionAuthParametersOauth {
   final pulumi.Input<EventConnectionAuthParametersOauthClientParameters?>? clientParameters;
   /// A password for the authorization. Created and stored in AWS Secrets Manager.
   final pulumi.Input<String> httpMethod;
-  /// OAuth Http Parameters are additional credentials used to sign the request to the authorization endpoint to exchange the OAuth Client information for an access token. Secret values are stored and managed by AWS Secrets Manager. A maximum of 1 are allowed. Documented below.
+  /// OAuth HTTP Parameters are additional credentials used to sign the request to the authorization endpoint to exchange the OAuth Client information for an access token. Secret values are stored and managed by AWS Secrets Manager. A maximum of 1 are allowed. Documented below.
   final pulumi.Input<EventConnectionAuthParametersOauthOauthHttpParameters> oauthHttpParameters;
 
   /// Creates a new [EventConnectionAuthParametersOauth].
   /// [authorizationEndpoint] The URL to the authorization endpoint.
   /// [clientParameters] Contains the client parameters for OAuth authorization. Contains the following two parameters.
   /// [httpMethod] A password for the authorization. Created and stored in AWS Secrets Manager.
-  /// [oauthHttpParameters] OAuth Http Parameters are additional credentials used to sign the request to the authorization endpoint to exchange the OAuth Client information for an access token. Secret values are stored and managed by AWS Secrets Manager. A maximum of 1 are allowed. Documented below.
+  /// [oauthHttpParameters] OAuth HTTP Parameters are additional credentials used to sign the request to the authorization endpoint to exchange the OAuth Client information for an access token. Secret values are stored and managed by AWS Secrets Manager. A maximum of 1 are allowed. Documented below.
   const EventConnectionAuthParametersOauth({
     required this.authorizationEndpoint,
     this.clientParameters,

@@ -17,11 +17,11 @@ class CrossAccountAttachmentState {
   final pulumi.Input<String?>? name;
   /// List of AWS account IDs that are allowed to associate resources with the accelerator.
   final pulumi.Input<List<String>?>? principals;
-  /// List of resources to be associated with the accelerator.
+  /// List of resources to be associated with the accelerator. See `resource` below.
   final pulumi.Input<List<CrossAccountAttachmentResource>?>? resources;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [CrossAccountAttachmentState].
@@ -30,9 +30,9 @@ class CrossAccountAttachmentState {
   /// [lastModifiedTime] Last modified time of the Cross Account Attachment.
   /// [name] Name of the Cross Account Attachment.
   /// [principals] List of AWS account IDs that are allowed to associate resources with the accelerator.
-  /// [resources] List of resources to be associated with the accelerator.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [resources] List of resources to be associated with the accelerator. See `resource` below.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const CrossAccountAttachmentState({
     this.arn,
     this.createdTime,

@@ -5,14 +5,14 @@ import 'policy_definition_static.dart';
 import 'policy_definition_template_linked.dart';
 
 class PolicyDefinition {
-  /// The static policy statement. See Static below.
+  /// Static policy statement. See Static below.
   final pulumi.Input<PolicyDefinitionStatic?>? static;
-  /// The template linked policy. See Template Linked below.
+  /// Template linked policy. See Template Linked below.
   final pulumi.Input<PolicyDefinitionTemplateLinked?>? templateLinked;
 
   /// Creates a new [PolicyDefinition].
-  /// [static] The static policy statement. See Static below.
-  /// [templateLinked] The template linked policy. See Template Linked below.
+  /// [static] Static policy statement. See Static below.
+  /// [templateLinked] Template linked policy. See Template Linked below.
   const PolicyDefinition({
     this.static,
     this.templateLinked,

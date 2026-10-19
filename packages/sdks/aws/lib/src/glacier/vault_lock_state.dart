@@ -12,7 +12,7 @@ class VaultLockState {
   final pulumi.Input<String?>? policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The name of the Glacier Vault.
+  /// Name of the Glacier Vault.
   final pulumi.Input<String?>? vaultName;
 
   /// Creates a new [VaultLockState].
@@ -20,7 +20,7 @@ class VaultLockState {
   /// [ignoreDeletionError] Allow this provider to ignore the error returned when attempting to delete the Glacier Lock Policy. This can be used to delete or recreate the Glacier Vault via this provider, for example, if the Glacier Vault Lock policy permits that action. This should only be used in conjunction with `completeLock` being set to `true`.
   /// [policy] JSON string containing the IAM policy to apply as the Glacier Vault Lock policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [vaultName] The name of the Glacier Vault.
+  /// [vaultName] Name of the Glacier Vault.
   const VaultLockState({
     this.completeLock,
     this.ignoreDeletionError,

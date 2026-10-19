@@ -15,7 +15,7 @@ class GetSecurityProfileArgs {
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Returns information on a specific Security Profile by Security Profile id
+  /// Returns information on a specific Security Profile by Security Profile ID
   final pulumi.Input<String?>? securityProfileId;
   /// Map of tags to assign to the Security Profile.
   final pulumi.Input<Map<String, String>?>? tags;
@@ -24,7 +24,7 @@ class GetSecurityProfileArgs {
   /// [instanceId] Reference to the hosting Amazon Connect Instance
   /// [name] Returns information on a specific Security Profile by name
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [securityProfileId] Returns information on a specific Security Profile by Security Profile id
+  /// [securityProfileId] Returns information on a specific Security Profile by Security Profile ID
   /// [tags] Map of tags to assign to the Security Profile.
   const GetSecurityProfileArgs({
     required this.instanceId,

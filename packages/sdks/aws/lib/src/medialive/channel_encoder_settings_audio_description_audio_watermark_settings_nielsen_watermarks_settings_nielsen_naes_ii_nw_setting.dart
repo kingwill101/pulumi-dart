@@ -3,13 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting {
+  /// Check digit string for the watermark.
   final pulumi.Input<String> checkDigitString;
-  /// The Nielsen Source ID to include in the watermark.
+  /// Nielsen source ID to include in the watermark.
   final pulumi.Input<double> sid;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting].
-  /// [checkDigitString] Required.
-  /// [sid] The Nielsen Source ID to include in the watermark.
+  /// [checkDigitString] Check digit string for the watermark.
+  /// [sid] Nielsen source ID to include in the watermark.
   const ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting({
     required this.checkDigitString,
     required this.sid,

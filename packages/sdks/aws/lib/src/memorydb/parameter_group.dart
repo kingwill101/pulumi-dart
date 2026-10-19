@@ -159,11 +159,11 @@ import 'parameter_group_state.dart';
 /// $ pulumi import aws:memorydb/parameterGroup:ParameterGroup example my-parameter-group
 /// ```
 class ParameterGroup extends pulumi.CustomResource {
-  /// The ARN of the parameter group.
+  /// ARN of the parameter group.
   late final pulumi.Output<String> arn;
   /// Description for the parameter group. Defaults to `"Managed by Pulumi"`.
   late final pulumi.Output<String?> description;
-  /// The engine version that the parameter group can be used with.
+  /// Engine version that the parameter group can be used with.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> family;
@@ -175,9 +175,9 @@ class ParameterGroup extends pulumi.CustomResource {
   late final pulumi.Output<List<ParameterGroupParameter>?> parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [ParameterGroup].
@@ -192,7 +192,7 @@ class ParameterGroup extends pulumi.CustomResource {
           'aws:memorydb/parameterGroup:ParameterGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

@@ -11,7 +11,7 @@ class ImageBuilderState {
   final pulumi.Input<List<ImageBuilderAccessEndpoint>?>? accessEndpoints;
   /// Version of the AppStream 2.0 agent to use for this image builder.
   final pulumi.Input<String?>? appstreamAgentVersion;
-  /// ARN of the appstream image builder.
+  /// ARN of the AppStream image builder.
   final pulumi.Input<String?>? arn;
   /// Date and time, in UTC and extended RFC 3339 format, when the image builder was created.
   final pulumi.Input<String?>? createdTime;
@@ -49,7 +49,7 @@ class ImageBuilderState {
   /// Creates a new [ImageBuilderState].
   /// [accessEndpoints] Set of interface VPC endpoint (interface endpoint) objects. Maximum of 4. See below.
   /// [appstreamAgentVersion] Version of the AppStream 2.0 agent to use for this image builder.
-  /// [arn] ARN of the appstream image builder.
+  /// [arn] ARN of the AppStream image builder.
   /// [createdTime] Date and time, in UTC and extended RFC 3339 format, when the image builder was created.
   /// [description] Description to display.
   /// [displayName] Human-readable friendly name for the AppStream image builder.

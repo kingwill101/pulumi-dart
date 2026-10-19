@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_table_schema_composite_partition_key.dart';
 
 class GetTableSchema {
+  /// Object containing the attributes to describe a composite partition key for the table.
   final pulumi.Input<List<GetTableSchemaCompositePartitionKey>> compositePartitionKeys;
 
   /// Creates a new [GetTableSchema].
-  /// [compositePartitionKeys] Required.
+  /// [compositePartitionKeys] Object containing the attributes to describe a composite partition key for the table.
   const GetTableSchema({
     required this.compositePartitionKeys,
   });

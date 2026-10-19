@@ -36,9 +36,9 @@ class DomainState {
   final pulumi.Input<DomainClusterConfig?>? clusterConfig;
   /// Configuration block for authenticating dashboard with Cognito. Detailed below.
   final pulumi.Input<DomainCognitoOptions?>? cognitoOptions;
-  /// Domain-specific endpoint for Dashboard without https scheme.
+  /// Domain-specific endpoint for Dashboard without HTTPS scheme.
   final pulumi.Input<String?>? dashboardEndpoint;
-  /// V2 domain endpoint for Dashboard that works with both IPv4 and IPv6 addresses, without https scheme.
+  /// V2 domain endpoint for Dashboard that works with both IPv4 and IPv6 addresses, without HTTPS scheme.
   final pulumi.Input<String?>? dashboardEndpointV2;
   /// Configuration block for the deployment strategy options of the domain. Detailed below.
   final pulumi.Input<DomainDeploymentStrategyOptions?>? deploymentStrategyOptions;
@@ -96,8 +96,8 @@ class DomainState {
   /// [autoTuneOptions] Configuration block for the Auto-Tune options of the domain. Detailed below.
   /// [clusterConfig] Configuration block for the cluster of the domain. Detailed below.
   /// [cognitoOptions] Configuration block for authenticating dashboard with Cognito. Detailed below.
-  /// [dashboardEndpoint] Domain-specific endpoint for Dashboard without https scheme.
-  /// [dashboardEndpointV2] V2 domain endpoint for Dashboard that works with both IPv4 and IPv6 addresses, without https scheme.
+  /// [dashboardEndpoint] Domain-specific endpoint for Dashboard without HTTPS scheme.
+  /// [dashboardEndpointV2] V2 domain endpoint for Dashboard that works with both IPv4 and IPv6 addresses, without HTTPS scheme.
   /// [deploymentStrategyOptions] Configuration block for the deployment strategy options of the domain. Detailed below.
   /// [domainEndpointOptions] Configuration block for domain endpoint HTTP(S) related options. Detailed below.
   /// [domainEndpointV2HostedZoneId] Dual stack hosted zone ID for the domain.

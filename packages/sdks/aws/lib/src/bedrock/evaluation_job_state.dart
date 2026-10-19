@@ -44,6 +44,7 @@ class EvaluationJobState {
   final pulumi.Input<String?>? status;
   /// Map of tags to assign to the evaluation job. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
   final pulumi.Input<EvaluationJobTimeouts?>? timeouts;
 
@@ -65,7 +66,7 @@ class EvaluationJobState {
   /// [skipDestroy] Whether to leave the evaluation job in its current state when destroying the resource, instead of stopping it.
   /// [status] Current status of the evaluation job.
   /// [tags] Map of tags to assign to the evaluation job. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] Optional.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   const EvaluationJobState({
     this.applicationType,

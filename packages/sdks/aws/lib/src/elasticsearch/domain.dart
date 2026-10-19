@@ -1477,7 +1477,7 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<DomainEncryptAtRest> encryptAtRest;
   /// Domain-specific endpoint used to submit index, search, and data upload requests.
   late final pulumi.Output<String> endpoint;
-  /// Domain-specific endpoint for kibana without https scheme.
+  /// Domain-specific endpoint for kibana without HTTPS scheme.
   late final pulumi.Output<String> kibanaEndpoint;
   /// Configuration block for publishing slow and application logs to CloudWatch Logs. This block can be declared multiple times, for each log_type, within the same resource. Detailed below.
   late final pulumi.Output<List<DomainLogPublishingOption>?> logPublishingOptions;
@@ -1506,7 +1506,7 @@ class Domain extends pulumi.CustomResource {
           'aws:elasticsearch/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     accessPolicies = registerOutput<String>('accessPolicies');
     advancedOptions = registerOutput<Map<String, String>>('advancedOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

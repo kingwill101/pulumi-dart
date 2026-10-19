@@ -221,7 +221,7 @@ import 'invite_accepter_state.dart';
 /// $ pulumi import aws:guardduty/inviteAccepter:InviteAccepter member 00b00fd5aecc0ab60a708659477e9617
 /// ```
 class InviteAccepter extends pulumi.CustomResource {
-  /// The detector ID of the member GuardDuty account.
+  /// Detector ID of the member GuardDuty account.
   late final pulumi.Output<String> detectorId;
   /// AWS account ID for primary account.
   late final pulumi.Output<String> masterAccountId;
@@ -240,7 +240,7 @@ class InviteAccepter extends pulumi.CustomResource {
           'aws:guardduty/inviteAccepter:InviteAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     detectorId = registerOutput<String>('detectorId');
     masterAccountId = registerOutput<String>('masterAccountId');

@@ -9,7 +9,7 @@ class GetExportResult {
   final String? id;
   final String? name;
   final String? region;
-  /// Value from Cloudformation export identified by the export name found from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
+  /// Value from CloudFormation export identified by the export name found from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
   final String? value;
 
   /// Creates a new [GetExportResult].
@@ -17,7 +17,7 @@ class GetExportResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Optional.
   /// [region] Optional.
-  /// [value] Value from Cloudformation export identified by the export name found from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
+  /// [value] Value from CloudFormation export identified by the export name found from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
   const GetExportResult({
     this.exportingStackId,
     this.id,

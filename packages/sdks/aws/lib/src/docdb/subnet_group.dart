@@ -158,11 +158,11 @@ import 'subnet_group_state.dart';
 /// $ pulumi import aws:docdb/subnetGroup:SubnetGroup default production-subnet-group
 /// ```
 class SubnetGroup extends pulumi.CustomResource {
-  /// The ARN of the docDB subnet group.
+  /// The ARN of the DocDB subnet group.
   late final pulumi.Output<String> arn;
-  /// The description of the docDB subnet group. Defaults to "Managed by Pulumi".
+  /// The description of the DocDB subnet group. Defaults to "Managed by Pulumi".
   late final pulumi.Output<String> description;
-  /// The name of the docDB subnet group. If omitted, this provider will assign a random, unique name.
+  /// The name of the DocDB subnet group. If omitted, the provider will assign a random, unique name.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
@@ -170,7 +170,7 @@ class SubnetGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// A list of VPC subnet IDs.
   late final pulumi.Output<List<String>> subnetIds;
-  /// The network type of the docDB subnet group (`IPV4` or `DUAL`).
+  /// The network type of the DocDB subnet group (`IPV4` or `DUAL`).
   late final pulumi.Output<List<String>> supportedNetworkTypes;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -189,7 +189,7 @@ class SubnetGroup extends pulumi.CustomResource {
           'aws:docdb/subnetGroup:SubnetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String>('description');

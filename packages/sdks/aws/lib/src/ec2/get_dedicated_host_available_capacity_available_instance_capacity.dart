@@ -30,9 +30,9 @@ class GetDedicatedHostAvailableCapacityAvailableInstanceCapacity {
 
   factory GetDedicatedHostAvailableCapacityAvailableInstanceCapacity.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostAvailableCapacityAvailableInstanceCapacity(
-      availableCapacity: pulumi.Input.fromValue((map['availableCapacity'] as num).toInt()),
+      availableCapacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['availableCapacity'])),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      totalCapacity: pulumi.Input.fromValue((map['totalCapacity'] as num).toInt()),
+      totalCapacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalCapacity'])),
     );
   }
 }

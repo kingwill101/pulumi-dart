@@ -257,6 +257,18 @@ import 'agentcore_workload_identity_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) Name of the workload identity.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Bedrock AgentCore Workload Identity using the workload identity name. For example:
 ///
 /// ```sh
@@ -271,6 +283,10 @@ class AgentcoreWorkloadIdentity extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  late final pulumi.Output<Map<String, String>> tagsAll;
   /// ARN of the Workload Identity.
   late final pulumi.Output<String> workloadIdentityArn;
 
@@ -286,11 +302,13 @@ class AgentcoreWorkloadIdentity extends pulumi.CustomResource {
           'aws:bedrock/agentcoreWorkloadIdentity:AgentcoreWorkloadIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     allowedResourceOauth2ReturnUrls = registerOutput<List<String>?>('allowedResourceOauth2ReturnUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workloadIdentityArn = registerOutput<String>('workloadIdentityArn');
   }
 
@@ -321,6 +339,8 @@ class AgentcoreWorkloadIdentity extends pulumi.CustomResource {
     allowedResourceOauth2ReturnUrls = registerOutput<List<String>?>('allowedResourceOauth2ReturnUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workloadIdentityArn = registerOutput<String>('workloadIdentityArn');
   }
 
@@ -336,6 +356,8 @@ class AgentcoreWorkloadIdentity extends pulumi.CustomResource {
     allowedResourceOauth2ReturnUrls = registerOutput<List<String>?>('allowedResourceOauth2ReturnUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     region = registerOutput<String>('region');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workloadIdentityArn = registerOutput<String>('workloadIdentityArn');
   }
 }

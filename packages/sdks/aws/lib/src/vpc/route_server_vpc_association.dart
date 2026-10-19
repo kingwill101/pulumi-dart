@@ -119,7 +119,7 @@ import 'route_server_vpc_association_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, to  to import VPC Route Server Association using the associated resource ID and VPC Id separated by a comma (,). For example:
+/// Using `pulumi import`, to  to import VPC Route Server Association using the associated resource ID and VPC ID separated by a comma (,). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:vpc/routeServerVpcAssociation:RouteServerVpcAssociation example rs-12345678,vpc-0f001273ec18911b1
@@ -127,10 +127,10 @@ import 'route_server_vpc_association_timeouts.dart';
 class RouteServerVpcAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The unique identifier for the route server to be associated.
+  /// Unique identifier for the route server to be associated.
   late final pulumi.Output<String> routeServerId;
   late final pulumi.Output<RouteServerVpcAssociationTimeouts?> timeouts;
-  /// The ID of the VPC to associate with the route server.
+  /// ID of the VPC to associate with the route server.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> vpcId;
@@ -147,7 +147,7 @@ class RouteServerVpcAssociation extends pulumi.CustomResource {
           'aws:vpc/routeServerVpcAssociation:RouteServerVpcAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     routeServerId = registerOutput<String>('routeServerId');

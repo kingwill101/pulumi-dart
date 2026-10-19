@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsS3Settings {
-  /// Specify the canned ACL to apply to each S3 request.
+  /// Canned ACL to apply to each S3 request.
   final pulumi.Input<String?>? cannedAcl;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsS3Settings].
-  /// [cannedAcl] Specify the canned ACL to apply to each S3 request.
+  /// [cannedAcl] Canned ACL to apply to each S3 request.
   const ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsS3Settings({
     this.cannedAcl,
   });

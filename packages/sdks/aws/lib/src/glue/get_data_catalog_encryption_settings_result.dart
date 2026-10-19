@@ -6,7 +6,7 @@ import 'get_data_catalog_encryption_settings_data_catalog_encryption_setting.dar
 /// Result data returned by getDataCatalogEncryptionSettings.
 class GetDataCatalogEncryptionSettingsResult {
   final String? catalogId;
-  /// The security configuration to set. see Data Catalog Encryption Settings.
+  /// Security configuration to set. see `dataCatalogEncryptionSettings` Block.
   final List<GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting>? dataCatalogEncryptionSettings;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
@@ -14,7 +14,7 @@ class GetDataCatalogEncryptionSettingsResult {
 
   /// Creates a new [GetDataCatalogEncryptionSettingsResult].
   /// [catalogId] Optional.
-  /// [dataCatalogEncryptionSettings] The security configuration to set. see Data Catalog Encryption Settings.
+  /// [dataCatalogEncryptionSettings] Security configuration to set. see `dataCatalogEncryptionSettings` Block.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Optional.
   const GetDataCatalogEncryptionSettingsResult({

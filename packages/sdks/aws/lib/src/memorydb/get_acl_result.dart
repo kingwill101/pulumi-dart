@@ -7,7 +7,7 @@ class GetAclResult {
   final String? arn;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// The minimum engine version supported by the ACL.
+  /// Minimum engine version supported by the ACL.
   final String? minimumEngineVersion;
   final String? name;
   final String? region;
@@ -19,7 +19,7 @@ class GetAclResult {
   /// Creates a new [GetAclResult].
   /// [arn] ARN of the ACL.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [minimumEngineVersion] The minimum engine version supported by the ACL.
+  /// [minimumEngineVersion] Minimum engine version supported by the ACL.
   /// [name] Optional.
   /// [region] Optional.
   /// [tags] Map of tags assigned to the ACL.

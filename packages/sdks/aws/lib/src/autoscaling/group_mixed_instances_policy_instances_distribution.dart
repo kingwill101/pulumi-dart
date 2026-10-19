@@ -46,10 +46,10 @@ class GroupMixedInstancesPolicyInstancesDistribution {
   factory GroupMixedInstancesPolicyInstancesDistribution.fromMap(Map<String, dynamic> map) {
     return GroupMixedInstancesPolicyInstancesDistribution(
       onDemandAllocationStrategy: (() { final guardedValue = map['onDemandAllocationStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      onDemandBaseCapacity: (() { final guardedValue = map['onDemandBaseCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      onDemandPercentageAboveBaseCapacity: (() { final guardedValue = map['onDemandPercentageAboveBaseCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      onDemandBaseCapacity: (() { final guardedValue = map['onDemandBaseCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      onDemandPercentageAboveBaseCapacity: (() { final guardedValue = map['onDemandPercentageAboveBaseCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       spotAllocationStrategy: (() { final guardedValue = map['spotAllocationStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      spotInstancePools: (() { final guardedValue = map['spotInstancePools']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      spotInstancePools: (() { final guardedValue = map['spotInstancePools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       spotMaxPrice: (() { final guardedValue = map['spotMaxPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

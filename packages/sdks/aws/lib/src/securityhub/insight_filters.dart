@@ -154,9 +154,9 @@ class InsightFilters {
   final pulumi.Input<List<InsightFiltersMalwareType>?>? malwareTypes;
   /// The destination domain of network-related information about a finding. See String Filter below for more details.
   final pulumi.Input<List<InsightFiltersNetworkDestinationDomain>?>? networkDestinationDomains;
-  /// The destination IPv4 address of network-related information about a finding. See Ip Filter below for more details.
+  /// The destination IPv4 address of network-related information about a finding. See IP Filter below for more details.
   final pulumi.Input<List<InsightFiltersNetworkDestinationIpv4>?>? networkDestinationIpv4s;
-  /// The destination IPv6 address of network-related information about a finding. See Ip Filter below for more details.
+  /// The destination IPv6 address of network-related information about a finding. See IP Filter below for more details.
   final pulumi.Input<List<InsightFiltersNetworkDestinationIpv6>?>? networkDestinationIpv6s;
   /// The destination port of network-related information about a finding. See Number Filter below for more details.
   final pulumi.Input<List<InsightFiltersNetworkDestinationPort>?>? networkDestinationPorts;
@@ -166,9 +166,9 @@ class InsightFilters {
   final pulumi.Input<List<InsightFiltersNetworkProtocol>?>? networkProtocols;
   /// The source domain of network-related information about a finding. See String Filter below for more details.
   final pulumi.Input<List<InsightFiltersNetworkSourceDomain>?>? networkSourceDomains;
-  /// The source IPv4 address of network-related information about a finding. See Ip Filter below for more details.
+  /// The source IPv4 address of network-related information about a finding. See IP Filter below for more details.
   final pulumi.Input<List<InsightFiltersNetworkSourceIpv4>?>? networkSourceIpv4s;
-  /// The source IPv6 address of network-related information about a finding. See Ip Filter below for more details.
+  /// The source IPv6 address of network-related information about a finding. See IP Filter below for more details.
   final pulumi.Input<List<InsightFiltersNetworkSourceIpv6>?>? networkSourceIpv6s;
   /// The source media access control (MAC) address of network-related information about a finding. See String Filter below for more details.
   final pulumi.Input<List<InsightFiltersNetworkSourceMac>?>? networkSourceMacs;
@@ -210,9 +210,9 @@ class InsightFilters {
   final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn>?>? resourceAwsEc2InstanceIamInstanceProfileArns;
   /// AMI ID of the instance. See String Filter below for more details.
   final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceImageId>?>? resourceAwsEc2InstanceImageIds;
-  /// The IPv4 addresses associated with the instance. See Ip Filter below for more details.
+  /// The IPv4 addresses associated with the instance. See IP Filter below for more details.
   final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceIpv4Address>?>? resourceAwsEc2InstanceIpv4Addresses;
-  /// The IPv6 addresses associated with the instance. See Ip Filter below for more details.
+  /// The IPv6 addresses associated with the instance. See IP Filter below for more details.
   final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceIpv6Address>?>? resourceAwsEc2InstanceIpv6Addresses;
   /// The key name associated with the instance. See String Filter below for more details.
   final pulumi.Input<List<InsightFiltersResourceAwsEc2InstanceKeyName>?>? resourceAwsEc2InstanceKeyNames;
@@ -313,14 +313,14 @@ class InsightFilters {
   /// [malwareStates] The state of the malware that was observed. See String Filter below for more details.
   /// [malwareTypes] The type of the malware that was observed. See String Filter below for more details.
   /// [networkDestinationDomains] The destination domain of network-related information about a finding. See String Filter below for more details.
-  /// [networkDestinationIpv4s] The destination IPv4 address of network-related information about a finding. See Ip Filter below for more details.
-  /// [networkDestinationIpv6s] The destination IPv6 address of network-related information about a finding. See Ip Filter below for more details.
+  /// [networkDestinationIpv4s] The destination IPv4 address of network-related information about a finding. See IP Filter below for more details.
+  /// [networkDestinationIpv6s] The destination IPv6 address of network-related information about a finding. See IP Filter below for more details.
   /// [networkDestinationPorts] The destination port of network-related information about a finding. See Number Filter below for more details.
   /// [networkDirections] Indicates the direction of network traffic associated with a finding. See String Filter below for more details.
   /// [networkProtocols] The protocol of network-related information about a finding. See String Filter below for more details.
   /// [networkSourceDomains] The source domain of network-related information about a finding. See String Filter below for more details.
-  /// [networkSourceIpv4s] The source IPv4 address of network-related information about a finding. See Ip Filter below for more details.
-  /// [networkSourceIpv6s] The source IPv6 address of network-related information about a finding. See Ip Filter below for more details.
+  /// [networkSourceIpv4s] The source IPv4 address of network-related information about a finding. See IP Filter below for more details.
+  /// [networkSourceIpv6s] The source IPv6 address of network-related information about a finding. See IP Filter below for more details.
   /// [networkSourceMacs] The source media access control (MAC) address of network-related information about a finding. See String Filter below for more details.
   /// [networkSourcePorts] The source port of network-related information about a finding. See Number Filter below for more details.
   /// [noteTexts] The text of a note. See String Filter below for more details.
@@ -341,8 +341,8 @@ class InsightFilters {
   /// [relatedFindingsProductArns] The ARN of the solution that generated a related finding. See String Filter below for more details.
   /// [resourceAwsEc2InstanceIamInstanceProfileArns] The IAM profile ARN of the instance. See String Filter below for more details.
   /// [resourceAwsEc2InstanceImageIds] AMI ID of the instance. See String Filter below for more details.
-  /// [resourceAwsEc2InstanceIpv4Addresses] The IPv4 addresses associated with the instance. See Ip Filter below for more details.
-  /// [resourceAwsEc2InstanceIpv6Addresses] The IPv6 addresses associated with the instance. See Ip Filter below for more details.
+  /// [resourceAwsEc2InstanceIpv4Addresses] The IPv4 addresses associated with the instance. See IP Filter below for more details.
+  /// [resourceAwsEc2InstanceIpv6Addresses] The IPv6 addresses associated with the instance. See IP Filter below for more details.
   /// [resourceAwsEc2InstanceKeyNames] The key name associated with the instance. See String Filter below for more details.
   /// [resourceAwsEc2InstanceLaunchedAts] The date and time the instance was launched. See Date Filter below for more details.
   /// [resourceAwsEc2InstanceSubnetIds] The identifier of the subnet that the instance was launched in. See String Filter below for more details.

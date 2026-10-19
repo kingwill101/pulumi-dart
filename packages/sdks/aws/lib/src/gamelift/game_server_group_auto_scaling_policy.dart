@@ -4,15 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'game_server_group_auto_scaling_policy_target_tracking_configuration.dart';
 
 class GameServerGroupAutoScalingPolicy {
-  /// Length of time, in seconds, it takes for a new instance to start
-  /// new game server processes and register with GameLift FleetIQ.
-  /// Specifying a warm-up time can be useful, particularly with game servers that take a long time to start up,
-  /// because it avoids prematurely starting new instances. Defaults to `60`.
+  /// Length of time, in seconds, it takes for a new instance to start new game server processes and register with GameLift FleetIQ. Specifying a warm-up time can be useful, particularly with game servers that take a long time to start up, because it avoids prematurely starting new instances. Defaults to `60`.
   final pulumi.Input<int?>? estimatedInstanceWarmup;
   final pulumi.Input<GameServerGroupAutoScalingPolicyTargetTrackingConfiguration> targetTrackingConfiguration;
 
   /// Creates a new [GameServerGroupAutoScalingPolicy].
-  /// [estimatedInstanceWarmup] Length of time, in seconds, it takes for a new instance to start
+  /// [estimatedInstanceWarmup] Length of time, in seconds, it takes for a new instance to start new game server processes and register with GameLift FleetIQ. Specifying a warm-up time can be useful, particularly with game servers that take a long time to start up, because it avoids prematurely starting new instances. Defaults to `60`.
   /// [targetTrackingConfiguration] Required.
   const GameServerGroupAutoScalingPolicy({
     this.estimatedInstanceWarmup,
@@ -28,7 +25,7 @@ class GameServerGroupAutoScalingPolicy {
 
   factory GameServerGroupAutoScalingPolicy.fromMap(Map<String, dynamic> map) {
     return GameServerGroupAutoScalingPolicy(
-      estimatedInstanceWarmup: (() { final guardedValue = map['estimatedInstanceWarmup']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      estimatedInstanceWarmup: (() { final guardedValue = map['estimatedInstanceWarmup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetTrackingConfiguration: pulumi.Input.fromValue(GameServerGroupAutoScalingPolicyTargetTrackingConfiguration.fromMap((map['targetTrackingConfiguration']! as Map).cast<String, dynamic>())),
     );
   }

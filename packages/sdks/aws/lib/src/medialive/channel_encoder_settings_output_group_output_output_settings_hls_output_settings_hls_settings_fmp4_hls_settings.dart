@@ -3,14 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings {
+  /// List of audio rendition sets, separated by commas.
   final pulumi.Input<String?>? audioRenditionSets;
+  /// When set to `passthrough`, passes through Nielsen ID3.
   final pulumi.Input<String?>? nielsenId3Behavior;
+  /// When set to `passthrough`, passes through timed metadata.
   final pulumi.Input<String?>? timedMetadataBehavior;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings].
-  /// [audioRenditionSets] Optional.
-  /// [nielsenId3Behavior] Optional.
-  /// [timedMetadataBehavior] Optional.
+  /// [audioRenditionSets] List of audio rendition sets, separated by commas.
+  /// [nielsenId3Behavior] When set to `passthrough`, passes through Nielsen ID3.
+  /// [timedMetadataBehavior] When set to `passthrough`, passes through timed metadata.
   const ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings({
     this.audioRenditionSets,
     this.nielsenId3Behavior,

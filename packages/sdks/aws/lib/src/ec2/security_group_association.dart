@@ -135,9 +135,9 @@ class SecurityGroupAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Whether this association should replace the association with the VPC's default security group that is created when no security groups are specified during VPC endpoint creation. At most 1 association per-VPC endpoint should be configured with `replaceDefaultAssociation = true`. `false` should be used when importing resources.
   late final pulumi.Output<bool?> replaceDefaultAssociation;
-  /// The ID of the security group to be associated with the VPC endpoint.
+  /// ID of the security group to be associated with the VPC endpoint.
   late final pulumi.Output<String> securityGroupId;
-  /// The ID of the VPC endpoint with which the security group will be associated.
+  /// ID of the VPC endpoint with which the security group will be associated.
   late final pulumi.Output<String> vpcEndpointId;
 
   /// Creates a new [SecurityGroupAssociation].
@@ -152,7 +152,7 @@ class SecurityGroupAssociation extends pulumi.CustomResource {
           'aws:ec2/securityGroupAssociation:SecurityGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     replaceDefaultAssociation = registerOutput<bool?>('replaceDefaultAssociation');

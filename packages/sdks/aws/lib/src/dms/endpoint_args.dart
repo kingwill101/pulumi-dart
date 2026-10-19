@@ -65,7 +65,7 @@ class EndpointArgs {
   final pulumi.Input<String?>? secretsManagerArn;
   /// Host name of the server.
   final pulumi.Input<String?>? serverName;
-  /// ARN used by the service access IAM role for dynamodb endpoints.
+  /// ARN used by the service access IAM role for DynamoDB endpoints.
   final pulumi.Input<String?>? serviceAccessRole;
   /// SSL mode to use for the connection. Valid values are `none`, `require`, `verify-ca`, `verify-full`
   final pulumi.Input<String?>? sslMode;
@@ -98,7 +98,7 @@ class EndpointArgs {
   /// [secretsManagerAccessRoleArn] ARN of the IAM role that specifies AWS DMS as the trusted entity and has the required permissions to access the value in the Secrets Manager secret referred to by `secretsManagerArn`. The role must allow the `iam:PassRole` action.
   /// [secretsManagerArn] Full ARN, partial ARN, or friendly name of the Secrets Manager secret that contains the endpoint connection details. Supported only when `engineName` is `aurora`, `aurora-postgresql`, `mariadb`, `mongodb`, `mysql`, `oracle`, `postgres`, `redshift`, or `sqlserver`.
   /// [serverName] Host name of the server.
-  /// [serviceAccessRole] ARN used by the service access IAM role for dynamodb endpoints.
+  /// [serviceAccessRole] ARN used by the service access IAM role for DynamoDB endpoints.
   /// [sslMode] SSL mode to use for the connection. Valid values are `none`, `require`, `verify-ca`, `verify-full`
   /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [username] User name to be used to login to the endpoint database.
@@ -181,7 +181,7 @@ class EndpointArgs {
       oracleSettings: (() { final guardedValue = map['oracleSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointOracleSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pauseReplicationTasks: (() { final guardedValue = map['pauseReplicationTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       postgresSettings: (() { final guardedValue = map['postgresSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointPostgresSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       redisSettings: (() { final guardedValue = map['redisSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointRedisSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       redshiftSettings: (() { final guardedValue = map['redshiftSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointRedshiftSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

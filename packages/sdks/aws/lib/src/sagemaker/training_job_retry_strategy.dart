@@ -20,7 +20,7 @@ class TrainingJobRetryStrategy {
 
   factory TrainingJobRetryStrategy.fromMap(Map<String, dynamic> map) {
     return TrainingJobRetryStrategy(
-      maximumRetryAttempts: pulumi.Input.fromValue((map['maximumRetryAttempts'] as num).toInt()),
+      maximumRetryAttempts: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maximumRetryAttempts'])),
     );
   }
 }

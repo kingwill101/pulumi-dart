@@ -766,8 +766,10 @@ import 'stream_processor_timeouts.dart';
 ///     mediaType: "video/h264",
 /// });
 /// const exampleStream = new aws.kinesis.Stream("example", {
+///     streamModeDetails: {
+///         streamMode: "ON_DEMAND",
+///     },
 ///     name: "pulumi-kinesis-example",
-///     shardCount: 1,
 /// });
 /// const exampleRole = new aws.iam.Role("example", {
 ///     inlinePolicies: [{
@@ -854,8 +856,10 @@ import 'stream_processor_timeouts.dart';
 ///     device_name="kinesis-video-device-name",
 ///     media_type="video/h264")
 /// example_stream = aws.kinesis.Stream("example",
-///     name="pulumi-kinesis-example",
-///     shard_count=1)
+///     stream_mode_details={
+///         "stream_mode": "ON_DEMAND",
+///     },
+///     name="pulumi-kinesis-example")
 /// example_role = aws.iam.Role("example",
 ///     inline_policies=[{
 ///         "name": "Rekognition-Access",
@@ -947,8 +951,11 @@ import 'stream_processor_timeouts.dart';
 ///
 ///     var exampleStream = new Aws.Kinesis.Stream("example", new()
 ///     {
+///         StreamModeDetails = new Aws.Kinesis.Inputs.StreamStreamModeDetailsArgs
+///         {
+///             StreamMode = "ON_DEMAND",
+///         },
 ///         Name = "pulumi-kinesis-example",
-///         ShardCount = 1,
 ///     });
 ///
 ///     var exampleRole = new Aws.Iam.Role("example", new()
@@ -1097,8 +1104,10 @@ import 'stream_processor_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		exampleStream, err := kinesis.NewStream(ctx, "example", &kinesis.StreamArgs{
-/// 			Name:       pulumi.String("pulumi-kinesis-example"),
-/// 			ShardCount: pulumi.Int(1),
+/// 			StreamModeDetails: &kinesis.StreamStreamModeDetailsArgs{
+/// 				StreamMode: pulumi.String("ON_DEMAND"),
+/// 			},
+/// 			Name: pulumi.String("pulumi-kinesis-example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1234,8 +1243,10 @@ import 'stream_processor_timeouts.dart';
 ///   media_type              = "video/h264"
 /// }
 /// resource "aws_kinesis_stream" "example" {
-///   name        = "pulumi-kinesis-example"
-///   shard_count = 1
+///   stream_mode_details = {
+///     stream_mode = "ON_DEMAND"
+///   }
+///   name = "pulumi-kinesis-example"
 /// }
 /// resource "aws_iam_role" "example" {
 ///   inline_policies {
@@ -1315,6 +1326,7 @@ import 'stream_processor_timeouts.dart';
 /// import com.pulumi.aws.kinesis.VideoStreamArgs;
 /// import com.pulumi.aws.kinesis.Stream;
 /// import com.pulumi.aws.kinesis.StreamArgs;
+/// import com.pulumi.aws.kinesis.inputs.StreamStreamModeDetailsArgs;
 /// import com.pulumi.aws.iam.Role;
 /// import com.pulumi.aws.iam.RoleArgs;
 /// import com.pulumi.aws.iam.inputs.RoleInlinePolicyArgs;
@@ -1353,8 +1365,10 @@ import 'stream_processor_timeouts.dart';
 ///             .build());
 ///
 ///         var exampleStream = new Stream("exampleStream", StreamArgs.builder()
+///             .streamModeDetails(StreamStreamModeDetailsArgs.builder()
+///                 .streamMode("ON_DEMAND")
+///                 .build())
 ///             .name("pulumi-kinesis-example")
-///             .shardCount(1)
 ///             .build());
 ///
 ///         var exampleRole = new Role("exampleRole", RoleArgs.builder()
@@ -1456,8 +1470,9 @@ import 'stream_processor_timeouts.dart';
 ///     type: aws:kinesis:Stream
 ///     name: example
 ///     properties:
+///       streamModeDetails:
+///         streamMode: ON_DEMAND
 ///       name: pulumi-kinesis-example
-///       shardCount: 1
 ///   exampleRole:
 ///     type: aws:iam:Role
 ///     name: example
@@ -1585,7 +1600,7 @@ class StreamProcessor extends pulumi.CustomResource {
           'aws:rekognition/streamProcessor:StreamProcessor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     dataSharingPreference = registerOutput<StreamProcessorDataSharingPreference?>('dataSharingPreference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamProcessorDataSharingPreference.fromMap((guardedValue as Map).cast<String, dynamic>()); });

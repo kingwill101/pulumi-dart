@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatJson {
-  /// Indicates if the file should be read as a json object per line.
+  /// Indicates if the file should be read as a JSON object per line.
   final pulumi.Input<bool?>? line;
 
   /// Creates a new [DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatJson].
-  /// [line] Indicates if the file should be read as a json object per line.
+  /// [line] Indicates if the file should be read as a JSON object per line.
   const DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatJson({
     this.line,
   });

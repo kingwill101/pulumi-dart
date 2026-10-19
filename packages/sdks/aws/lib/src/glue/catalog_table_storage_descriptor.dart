@@ -96,7 +96,7 @@ class CatalogTableStorageDescriptor {
       compressed: (() { final guardedValue = map['compressed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       inputFormat: (() { final guardedValue = map['inputFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numberOfBuckets: (() { final guardedValue = map['numberOfBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numberOfBuckets: (() { final guardedValue = map['numberOfBuckets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       outputFormat: (() { final guardedValue = map['outputFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       schemaReference: (() { final guardedValue = map['schemaReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CatalogTableStorageDescriptorSchemaReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

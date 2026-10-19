@@ -3,14 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAcceleratorAttribute {
+  /// Whether flow logs are enabled.
   final pulumi.Input<bool> flowLogsEnabled;
+  /// Name of the Amazon S3 bucket for the flow logs.
   final pulumi.Input<String> flowLogsS3Bucket;
+  /// Prefix for the location in the Amazon S3 bucket for the flow logs.
   final pulumi.Input<String> flowLogsS3Prefix;
 
   /// Creates a new [GetAcceleratorAttribute].
-  /// [flowLogsEnabled] Required.
-  /// [flowLogsS3Bucket] Required.
-  /// [flowLogsS3Prefix] Required.
+  /// [flowLogsEnabled] Whether flow logs are enabled.
+  /// [flowLogsS3Bucket] Name of the Amazon S3 bucket for the flow logs.
+  /// [flowLogsS3Prefix] Prefix for the location in the Amazon S3 bucket for the flow logs.
   const GetAcceleratorAttribute({
     required this.flowLogsEnabled,
     required this.flowLogsS3Bucket,

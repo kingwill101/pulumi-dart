@@ -6,17 +6,17 @@ import 'application_application_configuration_flink_application_configuration_mo
 import 'application_application_configuration_flink_application_configuration_parallelism_configuration.dart';
 
 class ApplicationApplicationConfigurationFlinkApplicationConfiguration {
-  /// Describes an application's checkpointing configuration.
+  /// Application's checkpointing configuration. See `checkpointConfiguration` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration?>? checkpointConfiguration;
-  /// Describes configuration parameters for CloudWatch logging for an application.
+  /// Configuration parameters for CloudWatch logging for an application. See `monitoringConfiguration` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration?>? monitoringConfiguration;
-  /// Describes parameters for how an application executes multiple tasks simultaneously.
+  /// Parameters for how an application executes multiple tasks simultaneously. See `parallelismConfiguration` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration?>? parallelismConfiguration;
 
   /// Creates a new [ApplicationApplicationConfigurationFlinkApplicationConfiguration].
-  /// [checkpointConfiguration] Describes an application's checkpointing configuration.
-  /// [monitoringConfiguration] Describes configuration parameters for CloudWatch logging for an application.
-  /// [parallelismConfiguration] Describes parameters for how an application executes multiple tasks simultaneously.
+  /// [checkpointConfiguration] Application's checkpointing configuration. See `checkpointConfiguration` Block below.
+  /// [monitoringConfiguration] Configuration parameters for CloudWatch logging for an application. See `monitoringConfiguration` Block below.
+  /// [parallelismConfiguration] Parameters for how an application executes multiple tasks simultaneously. See `parallelismConfiguration` Block below.
   const ApplicationApplicationConfigurationFlinkApplicationConfiguration({
     this.checkpointConfiguration,
     this.monitoringConfiguration,

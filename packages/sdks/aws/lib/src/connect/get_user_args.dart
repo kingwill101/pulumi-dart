@@ -15,7 +15,7 @@ class GetUserArgs {
   final pulumi.Input<String?>? region;
   /// A map of tags to assign to the User.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// Returns information on a specific User by User id
+  /// Returns information on a specific User by User ID
   ///
   /// &gt; **NOTE:** `instanceId` and one of either `name` or `userId` is required.
   final pulumi.Input<String?>? userId;
@@ -25,7 +25,7 @@ class GetUserArgs {
   /// [name] Returns information on a specific User by name
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the User.
-  /// [userId] Returns information on a specific User by User id
+  /// [userId] Returns information on a specific User by User ID
   const GetUserArgs({
     required this.instanceId,
     this.name,

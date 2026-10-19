@@ -8,47 +8,47 @@ import 'channel_encoder_settings_caption_description_destination_settings_ttml_d
 import 'channel_encoder_settings_caption_description_destination_settings_webvtt_destination_settings.dart';
 
 class ChannelEncoderSettingsCaptionDescriptionDestinationSettings {
-  /// ARIB Destination Settings.
+  /// ARIB destination settings. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? aribDestinationSettings;
-  /// Burn In Destination Settings. See Burn In Destination Settings for more details.
+  /// Burn-in destination settings. See `burnInDestinationSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsBurnInDestinationSettings?>? burnInDestinationSettings;
-  /// DVB Sub Destination Settings. See DVB Sub Destination Settings for more details.
+  /// DVB Sub destination settings. See `dvbSubDestinationSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettings?>? dvbSubDestinationSettings;
-  /// EBU TT D Destination Settings. See EBU TT D Destination Settings for more details.
+  /// EBU TT D destination settings. See `ebuTtDDestinationSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsEbuTtDDestinationSettings?>? ebuTtDDestinationSettings;
-  /// Embedded Destination Settings.
+  /// Embedded destination settings. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? embeddedDestinationSettings;
-  /// Embedded Plus SCTE20 Destination Settings.
+  /// Embedded Plus SCTE-20 destination settings. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? embeddedPlusScte20DestinationSettings;
-  /// RTMP Caption Info Destination Settings.
+  /// RTMP caption info destination settings. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? rtmpCaptionInfoDestinationSettings;
-  /// SCTE20 Plus Embedded Destination Settings.
+  /// SCTE-20 Plus Embedded destination settings. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? scte20PlusEmbeddedDestinationSettings;
-  /// SCTE27 Destination Settings.
+  /// SCTE-27 destination settings. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? scte27DestinationSettings;
-  /// SMPTE TT Destination Settings.
+  /// SMPTE TT destination settings. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? smpteTtDestinationSettings;
-  /// Teletext Destination Settings.
+  /// Teletext destination settings. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? teletextDestinationSettings;
-  /// TTML Destination Settings. See TTML Destination Settings for more details.
+  /// TTML destination settings. See `ttmlDestinationSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings?>? ttmlDestinationSettings;
-  /// WebVTT Destination Settings. See WebVTT Destination Settings for more details.
+  /// WebVTT destination settings. See `webvttDestinationSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsCaptionDescriptionDestinationSettingsWebvttDestinationSettings?>? webvttDestinationSettings;
 
   /// Creates a new [ChannelEncoderSettingsCaptionDescriptionDestinationSettings].
-  /// [aribDestinationSettings] ARIB Destination Settings.
-  /// [burnInDestinationSettings] Burn In Destination Settings. See Burn In Destination Settings for more details.
-  /// [dvbSubDestinationSettings] DVB Sub Destination Settings. See DVB Sub Destination Settings for more details.
-  /// [ebuTtDDestinationSettings] EBU TT D Destination Settings. See EBU TT D Destination Settings for more details.
-  /// [embeddedDestinationSettings] Embedded Destination Settings.
-  /// [embeddedPlusScte20DestinationSettings] Embedded Plus SCTE20 Destination Settings.
-  /// [rtmpCaptionInfoDestinationSettings] RTMP Caption Info Destination Settings.
-  /// [scte20PlusEmbeddedDestinationSettings] SCTE20 Plus Embedded Destination Settings.
-  /// [scte27DestinationSettings] SCTE27 Destination Settings.
-  /// [smpteTtDestinationSettings] SMPTE TT Destination Settings.
-  /// [teletextDestinationSettings] Teletext Destination Settings.
-  /// [ttmlDestinationSettings] TTML Destination Settings. See TTML Destination Settings for more details.
-  /// [webvttDestinationSettings] WebVTT Destination Settings. See WebVTT Destination Settings for more details.
+  /// [aribDestinationSettings] ARIB destination settings. Can be set as an empty block.
+  /// [burnInDestinationSettings] Burn-in destination settings. See `burnInDestinationSettings` Block for details.
+  /// [dvbSubDestinationSettings] DVB Sub destination settings. See `dvbSubDestinationSettings` Block for details.
+  /// [ebuTtDDestinationSettings] EBU TT D destination settings. See `ebuTtDDestinationSettings` Block for details.
+  /// [embeddedDestinationSettings] Embedded destination settings. Can be set as an empty block.
+  /// [embeddedPlusScte20DestinationSettings] Embedded Plus SCTE-20 destination settings. Can be set as an empty block.
+  /// [rtmpCaptionInfoDestinationSettings] RTMP caption info destination settings. Can be set as an empty block.
+  /// [scte20PlusEmbeddedDestinationSettings] SCTE-20 Plus Embedded destination settings. Can be set as an empty block.
+  /// [scte27DestinationSettings] SCTE-27 destination settings. Can be set as an empty block.
+  /// [smpteTtDestinationSettings] SMPTE TT destination settings. Can be set as an empty block.
+  /// [teletextDestinationSettings] Teletext destination settings. Can be set as an empty block.
+  /// [ttmlDestinationSettings] TTML destination settings. See `ttmlDestinationSettings` Block for details.
+  /// [webvttDestinationSettings] WebVTT destination settings. See `webvttDestinationSettings` Block for details.
   const ChannelEncoderSettingsCaptionDescriptionDestinationSettings({
     this.aribDestinationSettings,
     this.burnInDestinationSettings,

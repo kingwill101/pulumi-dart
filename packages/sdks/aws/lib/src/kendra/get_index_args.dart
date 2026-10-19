@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_kendra_get_index_get_index_args_doc}
 class GetIndexArgs {
-  /// Returns information on a specific Index by id.
+  /// Returns information on a specific Index by ID.
   final pulumi.Input<String> id;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -15,7 +15,7 @@ class GetIndexArgs {
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetIndexArgs].
-  /// [id] Returns information on a specific Index by id.
+  /// [id] Returns information on a specific Index by ID.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Metadata that helps organize the Indices you create.
   const GetIndexArgs({

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuardrailTopicPolicyConfigTierConfig {
-  /// The name of the content policy tier. Valid values include STANDARD or CLASSIC.
+  /// Name of the topic policy tier. Valid values: `CLASSIC`, `STANDARD`. `STANDARD` requires `crossRegionConfig`.
   final pulumi.Input<String> tierName;
 
   /// Creates a new [GuardrailTopicPolicyConfigTierConfig].
-  /// [tierName] The name of the content policy tier. Valid values include STANDARD or CLASSIC.
+  /// [tierName] Name of the topic policy tier. Valid values: `CLASSIC`, `STANDARD`. `STANDARD` requires `crossRegionConfig`.
   const GuardrailTopicPolicyConfigTierConfig({
     required this.tierName,
   });

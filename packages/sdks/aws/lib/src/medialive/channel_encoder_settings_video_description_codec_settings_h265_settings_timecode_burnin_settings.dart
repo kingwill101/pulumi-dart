@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings {
-  /// Set a prefix on the burned in timecode.
+  /// Prefix on the burned-in timecode.
   final pulumi.Input<String?>? prefix;
-  /// Sets the size of the burned in timecode.
+  /// Size of the burned-in timecode.
   final pulumi.Input<String?>? timecodeBurninFontSize;
-  /// Sets the position of the burned in timecode.
+  /// Position of the burned-in timecode.
   final pulumi.Input<String?>? timecodeBurninPosition;
 
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings].
-  /// [prefix] Set a prefix on the burned in timecode.
-  /// [timecodeBurninFontSize] Sets the size of the burned in timecode.
-  /// [timecodeBurninPosition] Sets the position of the burned in timecode.
+  /// [prefix] Prefix on the burned-in timecode.
+  /// [timecodeBurninFontSize] Size of the burned-in timecode.
+  /// [timecodeBurninPosition] Position of the burned-in timecode.
   const ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings({
     this.prefix,
     this.timecodeBurninFontSize,

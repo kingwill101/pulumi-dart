@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup {
-  /// The key of the application execution property key-value map.
+  /// Key of the application execution property key-value map.
   final pulumi.Input<String> propertyGroupId;
   /// Application execution property key-value map.
   final pulumi.Input<Map<String, String>> propertyMap;
 
   /// Creates a new [ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup].
-  /// [propertyGroupId] The key of the application execution property key-value map.
+  /// [propertyGroupId] Key of the application execution property key-value map.
   /// [propertyMap] Application execution property key-value map.
   const ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup({
     required this.propertyGroupId,

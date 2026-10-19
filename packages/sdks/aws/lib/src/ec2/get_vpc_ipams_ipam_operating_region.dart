@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcIpamsIpamOperatingRegion {
+  /// Name of the Region.
   final pulumi.Input<String> regionName;
 
   /// Creates a new [GetVpcIpamsIpamOperatingRegion].
-  /// [regionName] Required.
+  /// [regionName] Name of the Region.
   const GetVpcIpamsIpamOperatingRegion({
     required this.regionName,
   });

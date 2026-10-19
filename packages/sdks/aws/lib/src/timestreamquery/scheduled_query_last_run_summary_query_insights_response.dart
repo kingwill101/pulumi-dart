@@ -9,19 +9,19 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponse {
   final pulumi.Input<int?>? outputBytes;
   /// Total number of rows returned as part of the query result set. You can use this data to validate if the number of rows in the result set have changed as part of the query tuning exercise.
   final pulumi.Input<int?>? outputRows;
-  /// Insights into the spatial coverage of the query, including the table with sub-optimal (max) spatial pruning. This information can help you identify areas for improvement in your partitioning strategy to enhance spatial pruning.
+  /// Insights into the spatial coverage of the query, including the table with sub-optimal (max) spatial pruning. This information can help you identify areas for improvement in your partitioning strategy to enhance spatial pruning. See `recently_failed_runs.query_insights_response.query_spatial_coverage` Block for details.
   final pulumi.Input<List<ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage>?>? querySpatialCoverages;
   /// Number of tables in the query.
   final pulumi.Input<int?>? queryTableCount;
-  /// Insights into the temporal range of the query, including the table with the largest (max) time range. Following are some of the potential options for optimizing time-based pruning: add missing time-predicates, remove functions around the time predicates, add time predicates to all the sub-queries.
+  /// Insights into the temporal range of the query, including the table with the largest (max) time range. Following are some of the potential options for optimizing time-based pruning: add missing time-predicates, remove functions around the time predicates, add time predicates to all the sub-queries. See `recently_failed_runs.query_insights_response.query_temporal_range` Block for details.
   final pulumi.Input<List<ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange>?>? queryTemporalRanges;
 
   /// Creates a new [ScheduledQueryLastRunSummaryQueryInsightsResponse].
   /// [outputBytes] Size of query result set in bytes. You can use this data to validate if the result set has changed as part of the query tuning exercise.
   /// [outputRows] Total number of rows returned as part of the query result set. You can use this data to validate if the number of rows in the result set have changed as part of the query tuning exercise.
-  /// [querySpatialCoverages] Insights into the spatial coverage of the query, including the table with sub-optimal (max) spatial pruning. This information can help you identify areas for improvement in your partitioning strategy to enhance spatial pruning.
+  /// [querySpatialCoverages] Insights into the spatial coverage of the query, including the table with sub-optimal (max) spatial pruning. This information can help you identify areas for improvement in your partitioning strategy to enhance spatial pruning. See `recently_failed_runs.query_insights_response.query_spatial_coverage` Block for details.
   /// [queryTableCount] Number of tables in the query.
-  /// [queryTemporalRanges] Insights into the temporal range of the query, including the table with the largest (max) time range. Following are some of the potential options for optimizing time-based pruning: add missing time-predicates, remove functions around the time predicates, add time predicates to all the sub-queries.
+  /// [queryTemporalRanges] Insights into the temporal range of the query, including the table with the largest (max) time range. Following are some of the potential options for optimizing time-based pruning: add missing time-predicates, remove functions around the time predicates, add time predicates to all the sub-queries. See `recently_failed_runs.query_insights_response.query_temporal_range` Block for details.
   const ScheduledQueryLastRunSummaryQueryInsightsResponse({
     this.outputBytes,
     this.outputRows,
@@ -42,10 +42,10 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponse {
 
   factory ScheduledQueryLastRunSummaryQueryInsightsResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummaryQueryInsightsResponse(
-      outputBytes: (() { final guardedValue = map['outputBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      outputRows: (() { final guardedValue = map['outputRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      outputBytes: (() { final guardedValue = map['outputBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      outputRows: (() { final guardedValue = map['outputRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       querySpatialCoverages: (() { final guardedValue = map['querySpatialCoverages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage>(guardedValue, (value) => ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      queryTableCount: (() { final guardedValue = map['queryTableCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      queryTableCount: (() { final guardedValue = map['queryTableCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       queryTemporalRanges: (() { final guardedValue = map['queryTemporalRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange>(guardedValue, (value) => ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

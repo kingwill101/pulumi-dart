@@ -247,7 +247,7 @@ class IdentityProvider extends pulumi.CustomResource {
   late final pulumi.Output<String> providerType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The user pool id
+  /// The user pool ID
   late final pulumi.Output<String> userPoolId;
 
   /// Creates a new [IdentityProvider].
@@ -262,7 +262,7 @@ class IdentityProvider extends pulumi.CustomResource {
           'aws:cognito/identityProvider:IdentityProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     attributeMapping = registerOutput<Map<String, String>>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     idpIdentifiers = registerOutput<List<String>?>('idpIdentifiers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

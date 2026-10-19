@@ -3,14 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsAudioDescriptionCodecSettingsMp2Settings {
+  /// Average bitrate in bits/second.
   final pulumi.Input<double?>? bitrate;
+  /// MPEG-2 coding mode.
   final pulumi.Input<String?>? codingMode;
   /// Sample rate in Hz.
   final pulumi.Input<double?>? sampleRate;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionCodecSettingsMp2Settings].
-  /// [bitrate] Optional.
-  /// [codingMode] Optional.
+  /// [bitrate] Average bitrate in bits/second.
+  /// [codingMode] MPEG-2 coding mode.
   /// [sampleRate] Sample rate in Hz.
   const ChannelEncoderSettingsAudioDescriptionCodecSettingsMp2Settings({
     this.bitrate,

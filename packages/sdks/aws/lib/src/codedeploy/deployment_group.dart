@@ -1339,7 +1339,7 @@ class DeploymentGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Configuration block of the automatic rollback configuration associated with the deployment group (documented below).
   late final pulumi.Output<DeploymentGroupAutoRollbackConfiguration?> autoRollbackConfiguration;
-  /// Autoscaling groups associated with the deployment group.
+  /// Auto Scaling groups associated with the deployment group.
   late final pulumi.Output<List<String>?> autoscalingGroups;
   /// Configuration block of the blue/green deployment options for a deployment group (documented below).
   late final pulumi.Output<DeploymentGroupBlueGreenDeploymentConfig> blueGreenDeploymentConfig;
@@ -1390,7 +1390,7 @@ class DeploymentGroup extends pulumi.CustomResource {
           'aws:codedeploy/deploymentGroup:DeploymentGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     alarmConfiguration = registerOutput<DeploymentGroupAlarmConfiguration?>('alarmConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentGroupAlarmConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     appName = registerOutput<String>('appName');

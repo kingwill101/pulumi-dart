@@ -7,9 +7,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_docdb_subnet_group_subnet_group_args_doc}
 class SubnetGroupArgs {
-  /// The description of the docDB subnet group. Defaults to "Managed by Pulumi".
+  /// The description of the DocDB subnet group. Defaults to "Managed by Pulumi".
   final pulumi.Input<String?>? description;
-  /// The name of the docDB subnet group. If omitted, this provider will assign a random, unique name.
+  /// The name of the DocDB subnet group. If omitted, the provider will assign a random, unique name.
   final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String?>? namePrefix;
@@ -21,8 +21,8 @@ class SubnetGroupArgs {
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SubnetGroupArgs].
-  /// [description] The description of the docDB subnet group. Defaults to "Managed by Pulumi".
-  /// [name] The name of the docDB subnet group. If omitted, this provider will assign a random, unique name.
+  /// [description] The description of the DocDB subnet group. Defaults to "Managed by Pulumi".
+  /// [name] The name of the DocDB subnet group. If omitted, the provider will assign a random, unique name.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subnetIds] A list of VPC subnet IDs.

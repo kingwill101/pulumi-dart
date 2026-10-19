@@ -9,7 +9,7 @@ class GetUserResult {
   final String? accessString;
   /// ARN of the user.
   final String? arn;
-  /// Denotes the user's authentication properties.
+  /// Authentication properties for the user.
   final List<GetUserAuthenticationMode>? authenticationModes;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
@@ -23,7 +23,7 @@ class GetUserResult {
   /// Creates a new [GetUserResult].
   /// [accessString] Access permissions string used for this user.
   /// [arn] ARN of the user.
-  /// [authenticationModes] Denotes the user's authentication properties.
+  /// [authenticationModes] Authentication properties for the user.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [minimumEngineVersion] Minimum engine version supported for the user.
   /// [region] Optional.

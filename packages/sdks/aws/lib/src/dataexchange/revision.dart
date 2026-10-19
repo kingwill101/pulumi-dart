@@ -116,11 +116,11 @@ class Revision extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// An optional comment about the revision.
   late final pulumi.Output<String?> comment;
-  /// The dataset id.
+  /// The dataset ID.
   late final pulumi.Output<String> dataSetId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Id of the revision.
+  /// The ID of the revision.
   late final pulumi.Output<String> revisionId;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -139,7 +139,7 @@ class Revision extends pulumi.CustomResource {
           'aws:dataexchange/revision:Revision',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');

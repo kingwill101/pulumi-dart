@@ -5,14 +5,14 @@ import 'classification_job_s3_job_definition_bucket_criteria_includes_and_simple
 import 'classification_job_s3_job_definition_bucket_criteria_includes_and_tag_criterion.dart';
 
 class ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd {
-  /// A property-based condition that defines a property, operator, and one or more values for including or excluding an S3 buckets from the job. (documented below)
+  /// Property-based condition that defines a property, operator, and one or more values for including or excluding an S3 bucket from the job. See `includes.simple_criterion` Block for details.
   final pulumi.Input<ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndSimpleCriterion?>? simpleCriterion;
-  /// A tag-based condition that defines the operator and tag keys or tag key and value pairs for including or excluding an S3 buckets from the job. (documented below)
+  /// Tag-based condition that defines the operator and tag keys or tag key and value pairs for including or excluding an S3 bucket from the job. See `includes.tag_criterion` Block for details.
   final pulumi.Input<ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion?>? tagCriterion;
 
   /// Creates a new [ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd].
-  /// [simpleCriterion] A property-based condition that defines a property, operator, and one or more values for including or excluding an S3 buckets from the job. (documented below)
-  /// [tagCriterion] A tag-based condition that defines the operator and tag keys or tag key and value pairs for including or excluding an S3 buckets from the job. (documented below)
+  /// [simpleCriterion] Property-based condition that defines a property, operator, and one or more values for including or excluding an S3 bucket from the job. See `includes.simple_criterion` Block for details.
+  /// [tagCriterion] Tag-based condition that defines the operator and tag keys or tag key and value pairs for including or excluding an S3 bucket from the job. See `includes.tag_criterion` Block for details.
   const ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd({
     this.simpleCriterion,
     this.tagCriterion,

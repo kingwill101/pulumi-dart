@@ -171,14 +171,14 @@ import 'input_security_group_whitelist_rule.dart';
 class InputSecurityGroup extends pulumi.CustomResource {
   /// ARN of the InputSecurityGroup.
   late final pulumi.Output<String> arn;
-  /// The list of inputs currently using this InputSecurityGroup.
+  /// List of inputs currently using this InputSecurityGroup.
   late final pulumi.Output<List<String>> inputs;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Whitelist rules. See Whitelist Rules for more details.
+  /// Whitelist rules. See `whitelistRules` Block for more details.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<InputSecurityGroupWhitelistRule>> whitelistRules;
@@ -195,7 +195,7 @@ class InputSecurityGroup extends pulumi.CustomResource {
           'aws:medialive/inputSecurityGroup:InputSecurityGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     inputs = registerOutput<List<String>>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

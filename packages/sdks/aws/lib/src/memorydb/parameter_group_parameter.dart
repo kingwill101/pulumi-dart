@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ParameterGroupParameter {
-  /// The name of the parameter.
+  /// Name of the parameter.
   final pulumi.Input<String> name;
-  /// The value of the parameter.
+  /// Value of the parameter.
   final pulumi.Input<String> value;
 
   /// Creates a new [ParameterGroupParameter].
-  /// [name] The name of the parameter.
-  /// [value] The value of the parameter.
+  /// [name] Name of the parameter.
+  /// [value] Value of the parameter.
   const ParameterGroupParameter({
     required this.name,
     required this.value,

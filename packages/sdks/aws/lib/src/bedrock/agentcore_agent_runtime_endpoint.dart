@@ -15,7 +15,7 @@ import 'agentcore_agent_runtime_endpoint_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.bedrock.AgentcoreAgentRuntimeEndpoint("example", {
-///     name: "example-endpoint",
+///     name: "example_endpoint",
 ///     agentRuntimeId: exampleAwsBedrockagentcoreAgentRuntime.agentRuntimeId,
 ///     description: "Endpoint for agent runtime communication",
 /// });
@@ -25,7 +25,7 @@ import 'agentcore_agent_runtime_endpoint_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.bedrock.AgentcoreAgentRuntimeEndpoint("example",
-///     name="example-endpoint",
+///     name="example_endpoint",
 ///     agent_runtime_id=example_aws_bedrockagentcore_agent_runtime["agentRuntimeId"],
 ///     description="Endpoint for agent runtime communication")
 /// ```
@@ -39,7 +39,7 @@ import 'agentcore_agent_runtime_endpoint_timeouts.dart';
 /// {
 ///     var example = new Aws.Bedrock.AgentcoreAgentRuntimeEndpoint("example", new()
 ///     {
-///         Name = "example-endpoint",
+///         Name = "example_endpoint",
 ///         AgentRuntimeId = exampleAwsBedrockagentcoreAgentRuntime.AgentRuntimeId,
 ///         Description = "Endpoint for agent runtime communication",
 ///     });
@@ -57,7 +57,7 @@ import 'agentcore_agent_runtime_endpoint_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreAgentRuntimeEndpoint(ctx, "example", &bedrock.AgentcoreAgentRuntimeEndpointArgs{
-/// 			Name:           pulumi.String("example-endpoint"),
+/// 			Name:           pulumi.String("example_endpoint"),
 /// 			AgentRuntimeId: pulumi.Any(exampleAwsBedrockagentcoreAgentRuntime.AgentRuntimeId),
 /// 			Description:    pulumi.String("Endpoint for agent runtime communication"),
 /// 		})
@@ -78,7 +78,7 @@ import 'agentcore_agent_runtime_endpoint_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcoreagentruntimeendpoint" "example" {
-///   name             = "example-endpoint"
+///   name             = "example_endpoint"
 ///   agent_runtime_id = exampleAwsBedrockagentcoreAgentRuntime.agentRuntimeId
 ///   description      = "Endpoint for agent runtime communication"
 /// }
@@ -105,7 +105,7 @@ import 'agentcore_agent_runtime_endpoint_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new AgentcoreAgentRuntimeEndpoint("example", AgentcoreAgentRuntimeEndpointArgs.builder()
-///             .name("example-endpoint")
+///             .name("example_endpoint")
 ///             .agentRuntimeId(exampleAwsBedrockagentcoreAgentRuntime.agentRuntimeId())
 ///             .description("Endpoint for agent runtime communication")
 ///             .build());
@@ -118,7 +118,7 @@ import 'agentcore_agent_runtime_endpoint_timeouts.dart';
 ///   example:
 ///     type: aws:bedrock:AgentcoreAgentRuntimeEndpoint
 ///     properties:
-///       name: example-endpoint
+///       name: example_endpoint
 ///       agentRuntimeId: ${exampleAwsBedrockagentcoreAgentRuntime.agentRuntimeId}
 ///       description: Endpoint for agent runtime communication
 /// ```
@@ -129,7 +129,7 @@ import 'agentcore_agent_runtime_endpoint_timeouts.dart';
 /// Using `pulumi import`, import Bedrock AgentCore Agent Runtime Endpoint using the `agentRuntimeId` and `name` separated by a comma. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:bedrock/agentcoreAgentRuntimeEndpoint:AgentcoreAgentRuntimeEndpoint example AGENTRUNTIME1234567890,example-endpoint
+/// $ pulumi import aws:bedrock/agentcoreAgentRuntimeEndpoint:AgentcoreAgentRuntimeEndpoint example AGENTRUNTIME1234567890,example_endpoint
 /// ```
 class AgentcoreAgentRuntimeEndpoint extends pulumi.CustomResource {
   /// ARN of the associated Agent Runtime.
@@ -137,20 +137,20 @@ class AgentcoreAgentRuntimeEndpoint extends pulumi.CustomResource {
   /// ARN of the Agent Runtime Endpoint.
   late final pulumi.Output<String> agentRuntimeEndpointArn;
   /// ID of the agent runtime this endpoint belongs to.
-  ///
-  /// The following arguments are optional:
   late final pulumi.Output<String> agentRuntimeId;
   /// Version of the agent runtime to use for this endpoint.
   late final pulumi.Output<String> agentRuntimeVersion;
   /// Description of the agent runtime endpoint.
   late final pulumi.Output<String?> description;
   /// Name of the agent runtime endpoint.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreAgentRuntimeEndpointTimeouts?> timeouts;
 
@@ -166,7 +166,7 @@ class AgentcoreAgentRuntimeEndpoint extends pulumi.CustomResource {
           'aws:bedrock/agentcoreAgentRuntimeEndpoint:AgentcoreAgentRuntimeEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
     agentRuntimeEndpointArn = registerOutput<String>('agentRuntimeEndpointArn');

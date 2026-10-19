@@ -3,17 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsApplicationReferenceDataSourcesS3 {
-  /// The S3 Bucket ARN.
+  /// S3 Bucket ARN.
   final pulumi.Input<String> bucketArn;
-  /// The File Key name containing reference data.
+  /// File Key name containing reference data.
   final pulumi.Input<String> fileKey;
-  /// The IAM Role ARN to read the data.
   final pulumi.Input<String> roleArn;
 
   /// Creates a new [AnalyticsApplicationReferenceDataSourcesS3].
-  /// [bucketArn] The S3 Bucket ARN.
-  /// [fileKey] The File Key name containing reference data.
-  /// [roleArn] The IAM Role ARN to read the data.
+  /// [bucketArn] S3 Bucket ARN.
+  /// [fileKey] File Key name containing reference data.
+  /// [roleArn] Required.
   const AnalyticsApplicationReferenceDataSourcesS3({
     required this.bucketArn,
     required this.fileKey,

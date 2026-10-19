@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentLastUpdatedError {
+  /// Error code of the last update error.
   final pulumi.Input<String?>? errorCode;
+  /// Error message of the last update error.
   final pulumi.Input<String?>? errorMessage;
 
   /// Creates a new [EnvironmentLastUpdatedError].
-  /// [errorCode] Optional.
-  /// [errorMessage] Optional.
+  /// [errorCode] Error code of the last update error.
+  /// [errorMessage] Error message of the last update error.
   const EnvironmentLastUpdatedError({
     this.errorCode,
     this.errorMessage,

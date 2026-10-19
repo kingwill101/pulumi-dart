@@ -137,7 +137,7 @@ import 'traffic_policy_instance_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Route53 traffic policy instance using its id. For example:
+/// Using `pulumi import`, import Route53 traffic policy instance using its ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:route53/trafficPolicyInstance:TrafficPolicyInstance test df579d9a-6396-410e-ac22-e7ad60cf9e7e
@@ -168,7 +168,7 @@ class TrafficPolicyInstance extends pulumi.CustomResource {
           'aws:route53/trafficPolicyInstance:TrafficPolicyInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     hostedZoneId = registerOutput<String>('hostedZoneId');

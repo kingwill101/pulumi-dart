@@ -8,9 +8,9 @@ import 'group_insights_configuration.dart';
 /// {@endtemplate}
 /// {@macro pulumi_xray_group_group_args_doc}
 class GroupArgs {
-  /// The filter expression defining criteria by which to group traces. more info can be found in official [docs](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html).
+  /// Filter expression defining criteria by which to group traces. More info can be found in official [docs](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html).
   final pulumi.Input<String> filterExpression;
-  /// The name of the group.
+  /// Name of the group.
   final pulumi.Input<String> groupName;
   /// Configuration options for enabling insights.
   final pulumi.Input<GroupInsightsConfiguration?>? insightsConfiguration;
@@ -20,8 +20,8 @@ class GroupArgs {
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GroupArgs].
-  /// [filterExpression] The filter expression defining criteria by which to group traces. more info can be found in official [docs](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html).
-  /// [groupName] The name of the group.
+  /// [filterExpression] Filter expression defining criteria by which to group traces. More info can be found in official [docs](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html).
+  /// [groupName] Name of the group.
   /// [insightsConfiguration] Configuration options for enabling insights.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level

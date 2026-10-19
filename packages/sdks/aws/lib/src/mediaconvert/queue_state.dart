@@ -5,38 +5,38 @@ import 'queue_reservation_plan_settings.dart';
 
 /// Input properties used for looking up and filtering Queue resources.
 class QueueState {
-  /// The Arn of the queue
+  /// ARN of the queue
   final pulumi.Input<String?>? arn;
-  /// The maximum number of jobs your queue can process concurrently. For on-demand queues, the value you enter is constrained by your service quotas for Maximum concurrent jobs, per on-demand queue and Maximum concurrent jobs, per account. For reserved queues, specify the number of jobs you can process concurrently in your reservation plan instead.
+  /// Maximum number of jobs your queue can process concurrently. For on-demand queues, the value you enter is constrained by your service quotas for Maximum concurrent jobs, per on-demand queue and Maximum concurrent jobs, per account. For reserved queues, specify the number of jobs you can process concurrently in your reservation plan instead.
   final pulumi.Input<int?>? concurrentJobs;
-  /// A description of the queue
+  /// Description of the queue
   final pulumi.Input<String?>? description;
-  /// A unique identifier describing the queue
+  /// Unique identifier describing the queue
   final pulumi.Input<String?>? name;
-  /// Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
+  /// Whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
   final pulumi.Input<String?>? pricingPlan;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A detail pricing plan of the  reserved queue. See below.
+  /// Detail pricing plan of the reserved queue. See below.
   final pulumi.Input<QueueReservationPlanSettings?>? reservationPlanSettings;
-  /// A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
+  /// Status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
   final pulumi.Input<String?>? status;
-  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [QueueState].
-  /// [arn] The Arn of the queue
-  /// [concurrentJobs] The maximum number of jobs your queue can process concurrently. For on-demand queues, the value you enter is constrained by your service quotas for Maximum concurrent jobs, per on-demand queue and Maximum concurrent jobs, per account. For reserved queues, specify the number of jobs you can process concurrently in your reservation plan instead.
-  /// [description] A description of the queue
-  /// [name] A unique identifier describing the queue
-  /// [pricingPlan] Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
+  /// [arn] ARN of the queue
+  /// [concurrentJobs] Maximum number of jobs your queue can process concurrently. For on-demand queues, the value you enter is constrained by your service quotas for Maximum concurrent jobs, per on-demand queue and Maximum concurrent jobs, per account. For reserved queues, specify the number of jobs you can process concurrently in your reservation plan instead.
+  /// [description] Description of the queue
+  /// [name] Unique identifier describing the queue
+  /// [pricingPlan] Whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [reservationPlanSettings] A detail pricing plan of the  reserved queue. See below.
-  /// [status] A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [reservationPlanSettings] Detail pricing plan of the reserved queue. See below.
+  /// [status] Status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const QueueState({
     this.arn,
     this.concurrentJobs,
@@ -68,7 +68,7 @@ class QueueState {
   factory QueueState.fromMap(Map<String, dynamic> map) {
     return QueueState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      concurrentJobs: (() { final guardedValue = map['concurrentJobs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      concurrentJobs: (() { final guardedValue = map['concurrentJobs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pricingPlan: (() { final guardedValue = map['pricingPlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

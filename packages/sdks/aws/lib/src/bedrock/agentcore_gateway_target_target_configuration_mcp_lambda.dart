@@ -6,12 +6,12 @@ import 'agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema.dar
 class AgentcoreGatewayTargetTargetConfigurationMcpLambda {
   /// ARN of the Lambda function to invoke.
   final pulumi.Input<String> lambdaArn;
-  /// Schema definition for the tool. See `toolSchema` below.
+  /// Schema definition for the tool. See `toolSchema` Block below.
   final pulumi.Input<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema> toolSchema;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpLambda].
   /// [lambdaArn] ARN of the Lambda function to invoke.
-  /// [toolSchema] Schema definition for the tool. See `toolSchema` below.
+  /// [toolSchema] Schema definition for the tool. See `toolSchema` Block below.
   const AgentcoreGatewayTargetTargetConfigurationMcpLambda({
     required this.lambdaArn,
     required this.toolSchema,

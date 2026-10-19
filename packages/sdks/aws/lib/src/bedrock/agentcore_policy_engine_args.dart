@@ -10,7 +10,7 @@ import 'agentcore_policy_engine_timeouts.dart';
 class AgentcorePolicyEngineArgs {
   /// Description of the policy engine.
   final pulumi.Input<String?>? description;
-  /// ARN of the KMS key used to encrypt the policy engine. If not set, AWS uses an AWS managed key.
+  /// ARN of the KMS key used to encrypt the policy engine. If not set, the policy engine is encrypted with an AWS owned key.
   final pulumi.Input<String?>? encryptionKeyArn;
   /// Name of the policy engine. Must start with a letter and contain only letters, numbers, and underscores. Maximum length of 48 characters.
   ///
@@ -24,7 +24,7 @@ class AgentcorePolicyEngineArgs {
 
   /// Creates a new [AgentcorePolicyEngineArgs].
   /// [description] Description of the policy engine.
-  /// [encryptionKeyArn] ARN of the KMS key used to encrypt the policy engine. If not set, AWS uses an AWS managed key.
+  /// [encryptionKeyArn] ARN of the KMS key used to encrypt the policy engine. If not set, the policy engine is encrypted with an AWS owned key.
   /// [name] Name of the policy engine. Must start with a letter and contain only letters, numbers, and underscores. Maximum length of 48 characters.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

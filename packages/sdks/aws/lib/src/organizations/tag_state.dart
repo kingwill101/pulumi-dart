@@ -6,14 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagState {
   /// Tag name.
   final pulumi.Input<String?>? key;
-  /// Id of the Organizations resource to tag.
+  /// ID of the Organizations resource to tag.
   final pulumi.Input<String?>? resourceId;
   /// Tag value.
   final pulumi.Input<String?>? value;
 
   /// Creates a new [TagState].
   /// [key] Tag name.
-  /// [resourceId] Id of the Organizations resource to tag.
+  /// [resourceId] ID of the Organizations resource to tag.
   /// [value] Tag value.
   const TagState({
     this.key,

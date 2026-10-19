@@ -469,7 +469,7 @@ class MaintenanceWindowTarget extends pulumi.CustomResource {
   /// The targets to register with the maintenance window. In other words, the instances to run commands on when the maintenance window runs. You can specify targets using instance IDs, resource group names, or tags that have been applied to instances. For more information about these examples formats see
   /// (https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-targets-examples.html)
   late final pulumi.Output<List<MaintenanceWindowTargetTarget>> targets;
-  /// The Id of the maintenance window to register the target with.
+  /// The ID of the maintenance window to register the target with.
   late final pulumi.Output<String> windowId;
 
   /// Creates a new [MaintenanceWindowTarget].
@@ -484,7 +484,7 @@ class MaintenanceWindowTarget extends pulumi.CustomResource {
           'aws:ssm/maintenanceWindowTarget:MaintenanceWindowTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

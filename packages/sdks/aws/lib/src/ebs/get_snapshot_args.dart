@@ -12,7 +12,7 @@ class GetSnapshotArgs {
   final pulumi.Input<List<GetSnapshotFilter>?>? filters;
   /// If more than one result is returned, use the most recent snapshot.
   final pulumi.Input<bool?>? mostRecent;
-  /// Returns the snapshots owned by the specified owner id. Multiple owners can be specified.
+  /// Returns the snapshots owned by the specified owner ID. Multiple owners can be specified.
   final pulumi.Input<List<String>?>? owners;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -26,7 +26,7 @@ class GetSnapshotArgs {
   /// Creates a new [GetSnapshotArgs].
   /// [filters] One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-snapshots in the AWS CLI reference](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-snapshots.html).
   /// [mostRecent] If more than one result is returned, use the most recent snapshot.
-  /// [owners] Returns the snapshots owned by the specified owner id. Multiple owners can be specified.
+  /// [owners] Returns the snapshots owned by the specified owner ID. Multiple owners can be specified.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restorableByUserIds] One or more AWS accounts IDs that can create volumes from the snapshot.
   /// [snapshotIds] Returns information on a specific snapshot_id.

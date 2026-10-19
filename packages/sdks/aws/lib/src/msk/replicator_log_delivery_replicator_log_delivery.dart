@@ -6,17 +6,17 @@ import 'replicator_log_delivery_replicator_log_delivery_firehose.dart';
 import 'replicator_log_delivery_replicator_log_delivery_s3.dart';
 
 class ReplicatorLogDeliveryReplicatorLogDelivery {
-  /// Configuration block for replicator log delivery to Amazon CloudWatch Logs. Detailed below.
+  /// Configuration block for replicator log delivery to Amazon CloudWatch Logs. See `cloudwatchLogs` Block below.
   final pulumi.Input<ReplicatorLogDeliveryReplicatorLogDeliveryCloudwatchLogs?>? cloudwatchLogs;
-  /// Configuration block for replicator log delivery to Amazon Data Firehose. Detailed below.
+  /// Configuration block for replicator log delivery to Amazon Data Firehose. See `firehose` Block below.
   final pulumi.Input<ReplicatorLogDeliveryReplicatorLogDeliveryFirehose?>? firehose;
-  /// Configuration block for replicator log delivery to Amazon S3. Detailed below.
+  /// Configuration block for replicator log delivery to Amazon S3. See `s3` Block below.
   final pulumi.Input<ReplicatorLogDeliveryReplicatorLogDeliveryS3?>? s3;
 
   /// Creates a new [ReplicatorLogDeliveryReplicatorLogDelivery].
-  /// [cloudwatchLogs] Configuration block for replicator log delivery to Amazon CloudWatch Logs. Detailed below.
-  /// [firehose] Configuration block for replicator log delivery to Amazon Data Firehose. Detailed below.
-  /// [s3] Configuration block for replicator log delivery to Amazon S3. Detailed below.
+  /// [cloudwatchLogs] Configuration block for replicator log delivery to Amazon CloudWatch Logs. See `cloudwatchLogs` Block below.
+  /// [firehose] Configuration block for replicator log delivery to Amazon Data Firehose. See `firehose` Block below.
+  /// [s3] Configuration block for replicator log delivery to Amazon S3. See `s3` Block below.
   const ReplicatorLogDeliveryReplicatorLogDelivery({
     this.cloudwatchLogs,
     this.firehose,

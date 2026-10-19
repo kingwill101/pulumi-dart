@@ -18,7 +18,7 @@ import 'spot_instance_request_secondary_network_interface.dart';
 
 /// Input properties used for looking up and filtering SpotInstanceRequest resources.
 class SpotInstanceRequestState {
-  /// AMI to use for the instance. Required unless `launchTemplate` is specified and the Launch Template specifes an AMI. If an AMI is specified in the Launch Template, setting `ami` will override the AMI specified in the Launch Template.
+  /// AMI to use for the instance. Required unless `launchTemplate` is specified and the Launch Template specifies an AMI. If an AMI is specified in the Launch Template, setting `ami` will override the AMI specified in the Launch Template.
   final pulumi.Input<String?>? ami;
   final pulumi.Input<String?>? arn;
   /// Whether to associate a public IP address with an instance in a VPC.
@@ -167,7 +167,7 @@ class SpotInstanceRequestState {
   final pulumi.Input<bool?>? waitForFulfillment;
 
   /// Creates a new [SpotInstanceRequestState].
-  /// [ami] AMI to use for the instance. Required unless `launchTemplate` is specified and the Launch Template specifes an AMI. If an AMI is specified in the Launch Template, setting `ami` will override the AMI specified in the Launch Template.
+  /// [ami] AMI to use for the instance. Required unless `launchTemplate` is specified and the Launch Template specifies an AMI. If an AMI is specified in the Launch Template, setting `ami` will override the AMI specified in the Launch Template.
   /// [arn] Optional.
   /// [associatePublicIpAddress] Whether to associate a public IP address with an instance in a VPC.
   /// [availabilityZone] AZ to start the instance in.
@@ -405,7 +405,7 @@ class SpotInstanceRequestState {
       instanceInterruptionBehavior: (() { final guardedValue = map['instanceInterruptionBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceState: (() { final guardedValue = map['instanceState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ipv6AddressCount: (() { final guardedValue = map['ipv6AddressCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ipv6AddressCount: (() { final guardedValue = map['ipv6AddressCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipv6Addresses: (() { final guardedValue = map['ipv6Addresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       launchGroup: (() { final guardedValue = map['launchGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -418,7 +418,7 @@ class SpotInstanceRequestState {
       passwordData: (() { final guardedValue = map['passwordData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       placementGroup: (() { final guardedValue = map['placementGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       placementGroupId: (() { final guardedValue = map['placementGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      placementPartitionNumber: (() { final guardedValue = map['placementPartitionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      placementPartitionNumber: (() { final guardedValue = map['placementPartitionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       primaryNetworkInterfaceId: (() { final guardedValue = map['primaryNetworkInterfaceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       primaryNetworkInterfaces: (() { final guardedValue = map['primaryNetworkInterfaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SpotInstanceRequestPrimaryNetworkInterface>(guardedValue, (value) => SpotInstanceRequestPrimaryNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))); })(),
       privateDns: (() { final guardedValue = map['privateDns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

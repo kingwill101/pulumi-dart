@@ -185,11 +185,11 @@ import 'account_settings_timeouts.dart';
 class AccountSettings extends pulumi.CustomResource {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
-  /// The default namespace for this Amazon Web Services account. Currently, the default is `default`.
+  /// Default namespace for this Amazon Web Services account. Currently, the default is `default`.
   late final pulumi.Output<String> defaultNamespace;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A boolean value that determines whether or not an Amazon QuickSight account can be deleted. If `true`, it does not allow the account to be deleted and results in an error message if a user tries to make a DeleteAccountSubscription request. If `false`, it will allow the account to be deleted.
+  /// Whether to prevent the Amazon QuickSight account from being deleted. If `true`, it does not allow the account to be deleted and results in an error message if a user tries to make a DeleteAccountSubscription request. If `false`, it will allow the account to be deleted.
   late final pulumi.Output<bool> terminationProtectionEnabled;
   late final pulumi.Output<AccountSettingsTimeouts?> timeouts;
 
@@ -205,7 +205,7 @@ class AccountSettings extends pulumi.CustomResource {
           'aws:quicksight/accountSettings:AccountSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     defaultNamespace = registerOutput<String>('defaultNamespace');

@@ -6,28 +6,28 @@ import 'pipe_target_parameters_ecs_task_parameters_overrides_ephemeral_storage.d
 import 'pipe_target_parameters_ecs_task_parameters_overrides_inference_accelerator_override.dart';
 
 class PipeTargetParametersEcsTaskParametersOverrides {
-  /// One or more container overrides that are sent to a task. Detailed below.
+  /// One or more container overrides that are sent to a task. See `containerOverride` Block for details.
   final pulumi.Input<List<PipeTargetParametersEcsTaskParametersOverridesContainerOverride>?>? containerOverrides;
-  /// The number of cpu units reserved for the container, instead of the default value from the task definition. You must also specify a container name.
+  /// CPU override for the task.
   final pulumi.Input<String?>? cpu;
-  /// The ephemeral storage setting override for the task.  Detailed below.
+  /// Ephemeral storage setting override for the task. See `ephemeralStorage` Block for details.
   final pulumi.Input<PipeTargetParametersEcsTaskParametersOverridesEphemeralStorage?>? ephemeralStorage;
   /// ARN of the task execution IAM role override for the task.
   final pulumi.Input<String?>? executionRoleArn;
-  /// List of Elastic Inference accelerator overrides for the task. Detailed below.
+  /// List of Elastic Inference accelerator overrides for the task. See `inferenceAcceleratorOverride` Block for details.
   final pulumi.Input<List<PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride>?>? inferenceAcceleratorOverrides;
-  /// The hard limit (in MiB) of memory to present to the container, instead of the default value from the task definition. If your container attempts to exceed the memory specified here, the container is killed. You must also specify a container name.
+  /// Memory override for the task.
   final pulumi.Input<String?>? memory;
   /// ARN of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role.
   final pulumi.Input<String?>? taskRoleArn;
 
   /// Creates a new [PipeTargetParametersEcsTaskParametersOverrides].
-  /// [containerOverrides] One or more container overrides that are sent to a task. Detailed below.
-  /// [cpu] The number of cpu units reserved for the container, instead of the default value from the task definition. You must also specify a container name.
-  /// [ephemeralStorage] The ephemeral storage setting override for the task.  Detailed below.
+  /// [containerOverrides] One or more container overrides that are sent to a task. See `containerOverride` Block for details.
+  /// [cpu] CPU override for the task.
+  /// [ephemeralStorage] Ephemeral storage setting override for the task. See `ephemeralStorage` Block for details.
   /// [executionRoleArn] ARN of the task execution IAM role override for the task.
-  /// [inferenceAcceleratorOverrides] List of Elastic Inference accelerator overrides for the task. Detailed below.
-  /// [memory] The hard limit (in MiB) of memory to present to the container, instead of the default value from the task definition. If your container attempts to exceed the memory specified here, the container is killed. You must also specify a container name.
+  /// [inferenceAcceleratorOverrides] List of Elastic Inference accelerator overrides for the task. See `inferenceAcceleratorOverride` Block for details.
+  /// [memory] Memory override for the task.
   /// [taskRoleArn] ARN of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role.
   const PipeTargetParametersEcsTaskParametersOverrides({
     this.containerOverrides,

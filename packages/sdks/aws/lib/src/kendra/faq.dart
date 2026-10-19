@@ -488,31 +488,37 @@ import 'faq_state.dart';
 class Faq extends pulumi.CustomResource {
   /// ARN of the FAQ.
   late final pulumi.Output<String> arn;
-  /// The Unix datetime that the FAQ was created.
+  /// Unix datetime that the FAQ was created.
   late final pulumi.Output<String> createdAt;
+  /// Description for a FAQ.
   late final pulumi.Output<String?> description;
   /// When the Status field value is `FAILED`, this contains a message that explains why.
   late final pulumi.Output<String> errorMessage;
-  /// The identifier of the FAQ.
+  /// Identifier of the FAQ.
   late final pulumi.Output<String> faqId;
+  /// File format used by the input files for the FAQ. Valid Values are `CSV`, `CSV_WITH_HEADER`, `JSON`.
   late final pulumi.Output<String?> fileFormat;
-  /// The identifier of the index for a FAQ.
+  /// Identifier of the index for a FAQ.
   late final pulumi.Output<String> indexId;
+  /// Code for a language. This shows a supported language for the FAQ document. English is supported by default. For more information on supported languages, including their codes, see [Adding documents in languages other than English](https://docs.aws.amazon.com/kendra/latest/dg/in-adding-languages.html).
   late final pulumi.Output<String> languageCode;
-  /// The name that should be associated with the FAQ.
+  /// Name that should be associated with the FAQ.
   late final pulumi.Output<String> name;
-  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// ARN of a role with permission to access the S3 bucket that contains the FAQs. For more information, see [IAM Roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
   late final pulumi.Output<String> roleArn;
-  /// The S3 location of the FAQ input data. Detailed below.
+  /// S3 location of the FAQ input data. Detailed below.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<FaqS3Path> s3Path;
-  /// The status of the FAQ. It is ready to use when the status is ACTIVE.
+  /// Status of the FAQ. It is ready to use when the status is ACTIVE.
   late final pulumi.Output<String> status;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The date and time that the FAQ was last updated.
+  /// Date and time that the FAQ was last updated.
   late final pulumi.Output<String> updatedAt;
 
   /// Creates a new [Faq].
@@ -527,7 +533,7 @@ class Faq extends pulumi.CustomResource {
           'aws:kendra/faq:Faq',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

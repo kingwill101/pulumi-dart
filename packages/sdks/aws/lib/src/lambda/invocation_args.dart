@@ -19,7 +19,7 @@ class InvocationArgs {
   final pulumi.Input<String?>? qualifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Tenant Id to serve invocations from specified tenant.
+  /// Tenant ID to serve invocations from specified tenant.
   final pulumi.Input<String?>? tenantId;
   final pulumi.Input<String?>? terraformKey;
   /// Map of arbitrary keys and values that, when changed, will trigger a re-invocation.
@@ -31,7 +31,7 @@ class InvocationArgs {
   /// [lifecycleScope] Lifecycle scope of the resource to manage. Valid values are `CREATE_ONLY` and `CRUD`. Defaults to `CREATE_ONLY`. `CREATE_ONLY` will invoke the function only on creation or replacement. `CRUD` will invoke the function on each lifecycle event, and augment the input JSON payload with additional lifecycle information.
   /// [qualifier] Qualifier (i.e., version) of the Lambda function. Defaults to `$LATEST`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tenantId] Tenant Id to serve invocations from specified tenant.
+  /// [tenantId] Tenant ID to serve invocations from specified tenant.
   /// [terraformKey] Optional.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a re-invocation.
   const InvocationArgs({

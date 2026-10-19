@@ -318,35 +318,35 @@ import 'workspace_saml_configuration_state.dart';
 /// $ pulumi import aws:grafana/workspaceSamlConfiguration:WorkspaceSamlConfiguration example g-2054c75a02
 /// ```
 class WorkspaceSamlConfiguration extends pulumi.CustomResource {
-  /// The admin role values.
+  /// Admin role values.
   late final pulumi.Output<List<String>?> adminRoleValues;
-  /// The allowed organizations.
+  /// Allowed organizations.
   late final pulumi.Output<List<String>?> allowedOrganizations;
-  /// The editor role values.
+  /// Editor role values.
   late final pulumi.Output<List<String>> editorRoleValues;
-  /// The email assertion.
+  /// Email assertion.
   late final pulumi.Output<String> emailAssertion;
-  /// The groups assertion.
+  /// Groups assertion.
   late final pulumi.Output<String?> groupsAssertion;
-  /// The IDP Metadata URL. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
+  /// IDP Metadata URL. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
   late final pulumi.Output<String?> idpMetadataUrl;
-  /// The IDP Metadata XML. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
+  /// IDP Metadata XML. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
   late final pulumi.Output<String?> idpMetadataXml;
-  /// The login assertion.
+  /// Login assertion.
   late final pulumi.Output<String> loginAssertion;
-  /// The login validity duration.
+  /// Login validity duration.
   late final pulumi.Output<int> loginValidityDuration;
-  /// The name assertion.
+  /// Name assertion.
   late final pulumi.Output<String> nameAssertion;
-  /// The org assertion.
+  /// Org assertion.
   late final pulumi.Output<String?> orgAssertion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The role assertion.
+  /// Role assertion.
   late final pulumi.Output<String?> roleAssertion;
-  /// The status of the SAML configuration.
+  /// Status of the SAML configuration.
   late final pulumi.Output<String> status;
-  /// The workspace id.
+  /// Workspace ID.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> workspaceId;
@@ -363,7 +363,7 @@ class WorkspaceSamlConfiguration extends pulumi.CustomResource {
           'aws:grafana/workspaceSamlConfiguration:WorkspaceSamlConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     adminRoleValues = registerOutput<List<String>?>('adminRoleValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allowedOrganizations = registerOutput<List<String>?>('allowedOrganizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -2060,7 +2060,7 @@ class ScheduledQuery extends pulumi.CustomResource {
   late final pulumi.Output<String> executionRoleArn;
   /// Amazon KMS key used to encrypt the scheduled query resource, at-rest. If not specified, the scheduled query resource will be encrypted with a Timestream owned Amazon KMS key. To specify a KMS key, use the key ID, key ARN, alias name, or alias ARN. When using an alias name, prefix the name with "alias/". If `errorReportConfiguration` uses `SSE_KMS` as the encryption type, the same `kmsKeyId` is used to encrypt the error report at rest.
   late final pulumi.Output<String?> kmsKeyId;
-  /// Runtime summary for the last scheduled query run.
+  /// Runtime summary for the last scheduled query run. See `lastRunSummary` Block for details.
   late final pulumi.Output<List<ScheduledQueryLastRunSummary>?> lastRunSummaries;
   /// Name of the scheduled query.
   late final pulumi.Output<String> name;
@@ -2070,9 +2070,9 @@ class ScheduledQuery extends pulumi.CustomResource {
   late final pulumi.Output<ScheduledQueryNotificationConfiguration> notificationConfiguration;
   /// Last time the scheduled query was run.
   late final pulumi.Output<String> previousInvocationTime;
-  /// Query string to run. Parameter names can be specified in the query string using the `@` character followed by an identifier. The named parameter `@scheduled_runtime` is reserved and can be used in the query to get the time at which the query is scheduled to run. The timestamp calculated according to the `scheduleConfiguration` parameter, will be the value of `@scheduled_runtime` paramater for each query run. For example, consider an instance of a scheduled query executing on 2021-12-01 00:00:00. For this instance, the `@scheduled_runtime` parameter is initialized to the timestamp 2021-12-01 00:00:00 when invoking the query.
+  /// Query string to run. Parameter names can be specified in the query string using the `@` character followed by an identifier. The named parameter `@scheduled_runtime` is reserved and can be used in the query to get the time at which the query is scheduled to run. The timestamp calculated according to the `scheduleConfiguration` parameter, will be the value of `@scheduled_runtime` parameter for each query run. For example, consider an instance of a scheduled query executing on 2021-12-01 00:00:00. For this instance, the `@scheduled_runtime` parameter is initialized to the timestamp 2021-12-01 00:00:00 when invoking the query.
   late final pulumi.Output<String> queryString;
-  /// Runtime summary for the last five failed scheduled query runs.
+  /// Runtime summary for the last five failed scheduled query runs. See `recentlyFailedRuns` Block for details.
   late final pulumi.Output<List<ScheduledQueryRecentlyFailedRun>?> recentlyFailedRuns;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -2102,7 +2102,7 @@ class ScheduledQuery extends pulumi.CustomResource {
           'aws:timestreamquery/scheduledQuery:ScheduledQuery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTime = registerOutput<String>('creationTime');

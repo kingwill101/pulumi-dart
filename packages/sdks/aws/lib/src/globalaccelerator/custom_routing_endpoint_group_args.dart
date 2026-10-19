@@ -9,19 +9,19 @@ import 'custom_routing_endpoint_group_endpoint_configuration.dart';
 /// {@endtemplate}
 /// {@macro pulumi_globalaccelerator_custom_routing_endpoint_group_custom_routing_endpoint_group_args_doc}
 class CustomRoutingEndpointGroupArgs {
-  /// The port ranges and protocols for all endpoints in a custom routing endpoint group to accept client traffic on. Fields documented below.
+  /// Port ranges and protocols for all endpoints in a custom routing endpoint group to accept client traffic on. See `destinationConfiguration` below.
   final pulumi.Input<List<CustomRoutingEndpointGroupDestinationConfiguration>> destinationConfigurations;
-  /// The list of endpoint objects. Fields documented below.
+  /// Endpoint objects. See `endpointConfiguration` below.
   final pulumi.Input<List<CustomRoutingEndpointGroupEndpointConfiguration>?>? endpointConfigurations;
-  /// The name of the AWS Region where the custom routing endpoint group is located.
+  /// AWS Region where the custom routing endpoint group is located.
   final pulumi.Input<String?>? endpointGroupRegion;
   /// ARN of the custom routing listener.
   final pulumi.Input<String> listenerArn;
 
   /// Creates a new [CustomRoutingEndpointGroupArgs].
-  /// [destinationConfigurations] The port ranges and protocols for all endpoints in a custom routing endpoint group to accept client traffic on. Fields documented below.
-  /// [endpointConfigurations] The list of endpoint objects. Fields documented below.
-  /// [endpointGroupRegion] The name of the AWS Region where the custom routing endpoint group is located.
+  /// [destinationConfigurations] Port ranges and protocols for all endpoints in a custom routing endpoint group to accept client traffic on. See `destinationConfiguration` below.
+  /// [endpointConfigurations] Endpoint objects. See `endpointConfiguration` below.
+  /// [endpointGroupRegion] AWS Region where the custom routing endpoint group is located.
   /// [listenerArn] ARN of the custom routing listener.
   const CustomRoutingEndpointGroupArgs({
     required this.destinationConfigurations,

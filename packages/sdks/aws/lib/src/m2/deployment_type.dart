@@ -143,9 +143,11 @@ class DeploymentType extends pulumi.CustomResource {
   late final pulumi.Output<String> applicationId;
   /// Version to application to deploy
   late final pulumi.Output<int> applicationVersion;
+  /// Unique identifier of the deployment.
   late final pulumi.Output<String> deploymentId;
   /// Environment to deploy application to.
   late final pulumi.Output<String> environmentId;
+  /// Stop the application during deployment, even if it is running.
   late final pulumi.Output<bool?> forceStop;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -165,7 +167,7 @@ class DeploymentType extends pulumi.CustomResource {
           'aws:m2/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     applicationVersion = registerOutput<int>('applicationVersion');

@@ -4,10 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_cluster_broker_node_group_info_storage_info_ebs_storage_info.dart';
 
 class GetClusterBrokerNodeGroupInfoStorageInfo {
+  /// EBS storage information. See `ebsStorageInfo` Block for details.
   final pulumi.Input<List<GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo>> ebsStorageInfos;
 
   /// Creates a new [GetClusterBrokerNodeGroupInfoStorageInfo].
-  /// [ebsStorageInfos] Required.
+  /// [ebsStorageInfos] EBS storage information. See `ebsStorageInfo` Block for details.
   const GetClusterBrokerNodeGroupInfoStorageInfo({
     required this.ebsStorageInfos,
   });

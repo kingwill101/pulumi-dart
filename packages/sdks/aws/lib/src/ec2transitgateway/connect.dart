@@ -185,7 +185,7 @@ class Connect extends pulumi.CustomResource {
   late final pulumi.Output<bool?> transitGatewayDefaultRouteTablePropagation;
   /// Identifier of EC2 Transit Gateway.
   late final pulumi.Output<String> transitGatewayId;
-  /// The underlaying VPC attachment
+  /// The underlying VPC attachment
   late final pulumi.Output<String> transportAttachmentId;
 
   /// Creates a new [Connect].
@@ -200,7 +200,7 @@ class Connect extends pulumi.CustomResource {
           'aws:ec2transitgateway/connect:Connect',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     protocol = registerOutput<String?>('protocol');
     region = registerOutput<String>('region');

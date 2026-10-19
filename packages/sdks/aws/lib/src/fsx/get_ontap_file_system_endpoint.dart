@@ -5,14 +5,14 @@ import 'get_ontap_file_system_endpoint_intercluster.dart';
 import 'get_ontap_file_system_endpoint_management.dart';
 
 class GetOntapFileSystemEndpoint {
-  /// FileSystemEndpoint for managing your file system by setting up NetApp SnapMirror with other ONTAP systems. See FileSystemEndpoint below.
+  /// FileSystemEndpoint for managing your file system by setting up NetApp SnapMirror with other ONTAP systems. See `endpoints.intercluster` below.
   final pulumi.Input<List<GetOntapFileSystemEndpointIntercluster>> interclusters;
-  /// FileSystemEndpoint for managing your file system using the NetApp ONTAP CLI and NetApp ONTAP API. See FileSystemEndpoint below.
+  /// FileSystemEndpoint for managing your file system using the NetApp ONTAP CLI and NetApp ONTAP API. See `endpoints.management` below.
   final pulumi.Input<List<GetOntapFileSystemEndpointManagement>> managements;
 
   /// Creates a new [GetOntapFileSystemEndpoint].
-  /// [interclusters] FileSystemEndpoint for managing your file system by setting up NetApp SnapMirror with other ONTAP systems. See FileSystemEndpoint below.
-  /// [managements] FileSystemEndpoint for managing your file system using the NetApp ONTAP CLI and NetApp ONTAP API. See FileSystemEndpoint below.
+  /// [interclusters] FileSystemEndpoint for managing your file system by setting up NetApp SnapMirror with other ONTAP systems. See `endpoints.intercluster` below.
+  /// [managements] FileSystemEndpoint for managing your file system using the NetApp ONTAP CLI and NetApp ONTAP API. See `endpoints.management` below.
   const GetOntapFileSystemEndpoint({
     required this.interclusters,
     required this.managements,

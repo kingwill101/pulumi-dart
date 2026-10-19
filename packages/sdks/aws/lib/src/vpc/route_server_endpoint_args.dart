@@ -10,21 +10,21 @@ import 'route_server_endpoint_timeouts.dart';
 class RouteServerEndpointArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The ID of the route server for which to create an endpoint.
+  /// ID of the route server for which to create an endpoint.
   final pulumi.Input<String> routeServerId;
-  /// The ID of the subnet in which to create the route server endpoint.
+  /// ID of the subnet in which to create the route server endpoint.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> subnetId;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   final pulumi.Input<RouteServerEndpointTimeouts?>? timeouts;
 
   /// Creates a new [RouteServerEndpointArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [routeServerId] The ID of the route server for which to create an endpoint.
-  /// [subnetId] The ID of the subnet in which to create the route server endpoint.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [routeServerId] ID of the route server for which to create an endpoint.
+  /// [subnetId] ID of the subnet in which to create the route server endpoint.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const RouteServerEndpointArgs({
     this.region,

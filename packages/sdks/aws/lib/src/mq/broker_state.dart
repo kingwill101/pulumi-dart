@@ -40,7 +40,7 @@ class BrokerState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String?>? hostInstanceType;
-  /// List of information about allocated brokers (both active & standby).
+  /// List of information about allocated brokers (both active & standby). See `instances` Block for details.
   final pulumi.Input<List<BrokerInstance>?>? instances;
   /// Configuration block for the LDAP server used to authenticate and authorize connections. Not supported for `engineType` `RabbitMQ`. Detailed below.
   final pulumi.Input<BrokerLdapServerMetadata?>? ldapServerMetadata;
@@ -58,7 +58,7 @@ class BrokerState {
   final pulumi.Input<List<String>?>? resourceShareArns;
   /// List of security group IDs assigned to the broker.
   final pulumi.Input<List<String>?>? securityGroups;
-  /// List of resources shared with the broker via `resourceShareArns`. Only populated for `engineType` of `RabbitMQ`.
+  /// List of resources shared with the broker via `resourceShareArns`. Only populated for `engineType` of `RabbitMQ`. See `sharedResources` Block for details.
   final pulumi.Input<List<BrokerSharedResource>?>? sharedResources;
   /// Storage type of the broker. For `engineType` `ActiveMQ`, valid values are `efs` and `ebs` (AWS-default is `efs`). For `engineType` `RabbitMQ`, only `ebs` is supported. When using `ebs`, only the `mq.m5` broker instance type family is supported.
   final pulumi.Input<String?>? storageType;
@@ -85,7 +85,7 @@ class BrokerState {
   /// [engineType] Type of broker engine. Valid values are `ActiveMQ` and `RabbitMQ`.
   /// [engineVersion] Version of the broker engine.
   /// [hostInstanceType] Broker's instance type. For example, `mq.t3.micro`, `mq.m5.large`.
-  /// [instances] List of information about allocated brokers (both active & standby).
+  /// [instances] List of information about allocated brokers (both active & standby). See `instances` Block for details.
   /// [ldapServerMetadata] Configuration block for the LDAP server used to authenticate and authorize connections. Not supported for `engineType` `RabbitMQ`. Detailed below.
   /// [logs] Configuration block for the logging configuration. Detailed below.
   /// [maintenanceWindowStartTime] Configuration block for the maintenance window start time. Detailed below.
@@ -94,7 +94,7 @@ class BrokerState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceShareArns] Set of [AWS RAM](https://docs.aws.amazon.com/ram/latest/userguide/what-is.html) resource share ARNs that grant the broker access to shared resources for [private networking](https://aws.amazon.com/blogs/big-data/introducing-private-networking-for-amazon-mq-for-rabbitmq/). Applies to `engineType` of `RabbitMQ` only. Because Amazon MQ applies resource shares during a reboot, set `applyImmediately` to `true` for changes to take effect without waiting for the next maintenance window.
   /// [securityGroups] List of security group IDs assigned to the broker.
-  /// [sharedResources] List of resources shared with the broker via `resourceShareArns`. Only populated for `engineType` of `RabbitMQ`.
+  /// [sharedResources] List of resources shared with the broker via `resourceShareArns`. Only populated for `engineType` of `RabbitMQ`. See `sharedResources` Block for details.
   /// [storageType] Storage type of the broker. For `engineType` `ActiveMQ`, valid values are `efs` and `ebs` (AWS-default is `efs`). For `engineType` `RabbitMQ`, only `ebs` is supported. When using `ebs`, only the `mq.m5` broker instance type family is supported.
   /// [subnetIds] List of subnet IDs in which to launch the broker. A `SINGLE_INSTANCE` deployment requires one subnet. An `ACTIVE_STANDBY_MULTI_AZ` deployment requires multiple subnets.
   /// [tags] Map of tags to assign to the broker. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

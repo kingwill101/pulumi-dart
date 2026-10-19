@@ -5,32 +5,33 @@ import 'get_policy_store_validation_setting.dart';
 
 /// Result data returned by getPolicyStore.
 class GetPolicyStoreResult {
-  /// The ARN of the Policy Store.
+  /// ARN of the Policy Store.
   final String? arn;
-  /// The date the Policy Store was created.
+  /// Date the Policy Store was created.
   final String? createdDate;
   /// Whether the policy store can be deleted.
   final String? deletionProtection;
+  /// Description of the Policy Store.
   final String? description;
   final String? id;
-  /// The date the Policy Store was last updated.
+  /// Date the Policy Store was last updated.
   final String? lastUpdatedDate;
   final String? region;
   /// Map of key-value pairs associated with the policy store.
   final Map<String, String>? tags;
-  /// Validation settings for the policy store.
+  /// Validation settings for the policy store. See Validation Settings below.
   final List<GetPolicyStoreValidationSetting>? validationSettings;
 
   /// Creates a new [GetPolicyStoreResult].
-  /// [arn] The ARN of the Policy Store.
-  /// [createdDate] The date the Policy Store was created.
+  /// [arn] ARN of the Policy Store.
+  /// [createdDate] Date the Policy Store was created.
   /// [deletionProtection] Whether the policy store can be deleted.
-  /// [description] Optional.
+  /// [description] Description of the Policy Store.
   /// [id] Optional.
-  /// [lastUpdatedDate] The date the Policy Store was last updated.
+  /// [lastUpdatedDate] Date the Policy Store was last updated.
   /// [region] Optional.
   /// [tags] Map of key-value pairs associated with the policy store.
-  /// [validationSettings] Validation settings for the policy store.
+  /// [validationSettings] Validation settings for the policy store. See Validation Settings below.
   const GetPolicyStoreResult({
     this.arn,
     this.createdDate,

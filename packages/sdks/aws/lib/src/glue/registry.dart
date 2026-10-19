@@ -121,15 +121,15 @@ import 'registry_state.dart';
 class Registry extends pulumi.CustomResource {
   /// ARN of Glue Registry.
   late final pulumi.Output<String> arn;
-  /// A description of the registry.
+  /// Description of the registry.
   late final pulumi.Output<String?> description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The Name of the registry.
+  /// Name of the registry.
   late final pulumi.Output<String> registryName;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Registry].
@@ -144,7 +144,7 @@ class Registry extends pulumi.CustomResource {
           'aws:glue/registry:Registry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

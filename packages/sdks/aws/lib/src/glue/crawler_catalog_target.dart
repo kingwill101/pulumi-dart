@@ -3,27 +3,27 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CrawlerCatalogTarget {
-  /// The name of the connection for an Amazon S3-backed Data Catalog table to be a target of the crawl when using a Catalog connection type paired with a `NETWORK` Connection type.
+  /// Name of the connection for an Amazon S3-backed Data Catalog table to be a target of the crawl when using a Catalog connection type paired with a `NETWORK` Connection type.
   final pulumi.Input<String?>? connectionName;
-  /// The name of the Glue database to be synchronized.
+  /// Name of the Glue database to be synchronized.
   final pulumi.Input<String> databaseName;
-  /// A valid Amazon SQS ARN.
+  /// Valid Amazon SQS ARN.
+  final pulumi.Input<String?>? dlqEventQueueArn;
+  /// Valid Amazon SQS ARN.
+  final pulumi.Input<String?>? eventQueueArn;
+  /// List of catalog tables to be synchronized.
   ///
   /// &gt; **Note:** `deletionBehavior` of catalog target doesn't support `DEPRECATE_IN_DATABASE`.
   ///
   /// &gt; **Note:** `configuration` for catalog target crawlers will have `{ ... "Grouping": { "TableGroupingPolicy": "CombineCompatibleSchemas"} }` by default.
-  final pulumi.Input<String?>? dlqEventQueueArn;
-  /// A valid Amazon SQS ARN.
-  final pulumi.Input<String?>? eventQueueArn;
-  /// A list of catalog tables to be synchronized.
   final pulumi.Input<List<String>> tables;
 
   /// Creates a new [CrawlerCatalogTarget].
-  /// [connectionName] The name of the connection for an Amazon S3-backed Data Catalog table to be a target of the crawl when using a Catalog connection type paired with a `NETWORK` Connection type.
-  /// [databaseName] The name of the Glue database to be synchronized.
-  /// [dlqEventQueueArn] A valid Amazon SQS ARN.
-  /// [eventQueueArn] A valid Amazon SQS ARN.
-  /// [tables] A list of catalog tables to be synchronized.
+  /// [connectionName] Name of the connection for an Amazon S3-backed Data Catalog table to be a target of the crawl when using a Catalog connection type paired with a `NETWORK` Connection type.
+  /// [databaseName] Name of the Glue database to be synchronized.
+  /// [dlqEventQueueArn] Valid Amazon SQS ARN.
+  /// [eventQueueArn] Valid Amazon SQS ARN.
+  /// [tables] List of catalog tables to be synchronized.
   const CrawlerCatalogTarget({
     this.connectionName,
     required this.databaseName,

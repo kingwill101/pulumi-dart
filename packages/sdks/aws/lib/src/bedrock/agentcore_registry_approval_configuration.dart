@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreRegistryApprovalConfiguration {
+  /// Whether to auto-approve registry records. When set to `true`, records are automatically approved upon creation. When set to `false` (the default), records require explicit approval.
   final pulumi.Input<bool> autoApproval;
 
   /// Creates a new [AgentcoreRegistryApprovalConfiguration].
-  /// [autoApproval] Required.
+  /// [autoApproval] Whether to auto-approve registry records. When set to `true`, records are automatically approved upon creation. When set to `false` (the default), records require explicit approval.
   const AgentcoreRegistryApprovalConfiguration({
     required this.autoApproval,
   });

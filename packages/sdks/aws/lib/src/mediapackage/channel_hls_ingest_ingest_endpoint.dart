@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelHlsIngestIngestEndpoint {
-  /// The password
+  /// Password
   final pulumi.Input<String?>? password;
-  /// The URL
+  /// URL
   final pulumi.Input<String?>? url;
-  /// The username
+  /// Username
   final pulumi.Input<String?>? username;
 
   /// Creates a new [ChannelHlsIngestIngestEndpoint].
-  /// [password] The password
-  /// [url] The URL
-  /// [username] The username
+  /// [password] Password
+  /// [url] URL
+  /// [username] Username
   const ChannelHlsIngestIngestEndpoint({
     this.password,
     this.url,

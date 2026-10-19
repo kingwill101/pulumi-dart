@@ -9,7 +9,7 @@ import 'repository_association_repository.dart';
 /// {@endtemplate}
 /// {@macro pulumi_codegurureviewer_repository_association_repository_association_args_doc}
 class RepositoryAssociationArgs {
-  /// An object describing the KMS key to asssociate. Block is documented below.
+  /// An object describing the KMS key to associate. Block is documented below.
   final pulumi.Input<RepositoryAssociationKmsKeyDetails?>? kmsKeyDetails;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -20,7 +20,7 @@ class RepositoryAssociationArgs {
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RepositoryAssociationArgs].
-  /// [kmsKeyDetails] An object describing the KMS key to asssociate. Block is documented below.
+  /// [kmsKeyDetails] An object describing the KMS key to associate. Block is documented below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [repository] An object describing the repository to associate. Valid values: `bitbucket`, `codecommit`, `githubEnterpriseServer`, or `s3Bucket`. Block is documented below. Note: for repositories that leverage CodeStar connections (ex. `bitbucket`, `githubEnterpriseServer`) the connection must be in `Available` status prior to creating this resource.
   /// [tags] Optional.

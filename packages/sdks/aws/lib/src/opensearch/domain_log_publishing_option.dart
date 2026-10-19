@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainLogPublishingOption {
-  /// ARN of the Cloudwatch log group to which log needs to be published.
+  /// ARN of the CloudWatch log group to which log needs to be published.
   final pulumi.Input<String> cloudwatchLogGroupArn;
   /// Whether given log publishing option is enabled or not.
   final pulumi.Input<bool?>? enabled;
@@ -11,7 +11,7 @@ class DomainLogPublishingOption {
   final pulumi.Input<String> logType;
 
   /// Creates a new [DomainLogPublishingOption].
-  /// [cloudwatchLogGroupArn] ARN of the Cloudwatch log group to which log needs to be published.
+  /// [cloudwatchLogGroupArn] ARN of the CloudWatch log group to which log needs to be published.
   /// [enabled] Whether given log publishing option is enabled or not.
   /// [logType] Type of OpenSearch log. Valid values: `INDEX_SLOW_LOGS`, `SEARCH_SLOW_LOGS`, `ES_APPLICATION_LOGS`, `AUDIT_LOGS`.
   const DomainLogPublishingOption({

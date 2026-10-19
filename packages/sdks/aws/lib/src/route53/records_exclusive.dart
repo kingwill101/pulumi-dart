@@ -25,7 +25,7 @@ import 'records_exclusive_timeouts.dart';
 ///     name: "example.com",
 ///     forceDestroy: true,
 /// });
-/// const test = new aws.route53.RecordsExclusive("test", {
+/// const exampleRecordsExclusive = new aws.route53.RecordsExclusive("example", {
 ///     resourceRecordSets: [{
 ///         resourceRecords: [
 ///             {
@@ -39,7 +39,7 @@ import 'records_exclusive_timeouts.dart';
 ///         type: "A",
 ///         ttl: 30,
 ///     }],
-///     zoneId: testAwsRoute53Zone.zoneId,
+///     zoneId: example.zoneId,
 /// });
 /// ```
 /// ```python
@@ -49,7 +49,7 @@ import 'records_exclusive_timeouts.dart';
 /// example = aws.route53.Zone("example",
 ///     name="example.com",
 ///     force_destroy=True)
-/// test = aws.route53.RecordsExclusive("test",
+/// example_records_exclusive = aws.route53.RecordsExclusive("example",
 ///     resource_record_sets=[{
 ///         "resource_records": [
 ///             {
@@ -63,7 +63,7 @@ import 'records_exclusive_timeouts.dart';
 ///         "type": "A",
 ///         "ttl": 30,
 ///     }],
-///     zone_id=test_aws_route53_zone["zoneId"])
+///     zone_id=example.zone_id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -79,7 +79,7 @@ import 'records_exclusive_timeouts.dart';
 ///         ForceDestroy = true,
 ///     });
 ///
-///     var test = new Aws.Route53.RecordsExclusive("test", new()
+///     var exampleRecordsExclusive = new Aws.Route53.RecordsExclusive("example", new()
 ///     {
 ///         ResourceRecordSets = new[]
 ///         {
@@ -101,7 +101,7 @@ import 'records_exclusive_timeouts.dart';
 ///                 Ttl = 30,
 ///             },
 ///         },
-///         ZoneId = testAwsRoute53Zone.ZoneId,
+///         ZoneId = example.ZoneId,
 ///     });
 ///
 /// });
@@ -116,14 +116,14 @@ import 'records_exclusive_timeouts.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := route53.NewZone(ctx, "example", &route53.ZoneArgs{
+/// 		example, err := route53.NewZone(ctx, "example", &route53.ZoneArgs{
 /// 			Name:         pulumi.String("example.com"),
 /// 			ForceDestroy: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = route53.NewRecordsExclusive(ctx, "test", &route53.RecordsExclusiveArgs{
+/// 		_, err = route53.NewRecordsExclusive(ctx, "example", &route53.RecordsExclusiveArgs{
 /// 			ResourceRecordSets: route53.RecordsExclusiveResourceRecordSetArray{
 /// 				&route53.RecordsExclusiveResourceRecordSetArgs{
 /// 					ResourceRecords: route53.RecordsExclusiveResourceRecordSetResourceRecordArray{
@@ -139,7 +139,7 @@ import 'records_exclusive_timeouts.dart';
 /// 					Ttl:  pulumi.Int(30),
 /// 				},
 /// 			},
-/// 			ZoneId: pulumi.Any(testAwsRoute53Zone.ZoneId),
+/// 			ZoneId: example.ZoneId,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -161,7 +161,7 @@ import 'records_exclusive_timeouts.dart';
 ///   name          = "example.com"
 ///   force_destroy = true
 /// }
-/// resource "aws_route53_recordsexclusive" "test" {
+/// resource "aws_route53_recordsexclusive" "example" {
 ///   resource_record_sets {
 ///     resource_records {
 ///       value = "127.0.0.1"
@@ -173,7 +173,7 @@ import 'records_exclusive_timeouts.dart';
 ///     type = "A"
 ///     ttl  = "30"
 ///   }
-///   zone_id = testAwsRoute53Zone.zoneId
+///   zone_id = aws_route53_zone.example.zone_id
 /// }
 /// ```
 /// ```java
@@ -206,7 +206,7 @@ import 'records_exclusive_timeouts.dart';
 ///             .forceDestroy(true)
 ///             .build());
 ///
-///         var test = new RecordsExclusive("test", RecordsExclusiveArgs.builder()
+///         var exampleRecordsExclusive = new RecordsExclusive("exampleRecordsExclusive", RecordsExclusiveArgs.builder()
 ///             .resourceRecordSets(RecordsExclusiveResourceRecordSetArgs.builder()
 ///                 .resourceRecords(
 ///                     RecordsExclusiveResourceRecordSetResourceRecordArgs.builder()
@@ -219,7 +219,7 @@ import 'records_exclusive_timeouts.dart';
 ///                 .type("A")
 ///                 .ttl(30)
 ///                 .build())
-///             .zoneId(testAwsRoute53Zone.zoneId())
+///             .zoneId(example.zoneId())
 ///             .build());
 ///
 ///     }
@@ -232,8 +232,9 @@ import 'records_exclusive_timeouts.dart';
 ///     properties:
 ///       name: example.com
 ///       forceDestroy: true
-///   test:
+///   exampleRecordsExclusive:
 ///     type: aws:route53:RecordsExclusive
+///     name: example
 ///     properties:
 ///       resourceRecordSets:
 ///         - resourceRecords:
@@ -242,7 +243,7 @@ import 'records_exclusive_timeouts.dart';
 ///           name: subdomain.example.com
 ///           type: A
 ///           ttl: '30'
-///       zoneId: ${testAwsRoute53Zone.zoneId}
+///       zoneId: ${example.zoneId}
 /// ```
 ///
 ///
@@ -257,13 +258,13 @@ import 'records_exclusive_timeouts.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const test = new aws.route53.RecordsExclusive("test", {zoneId: testAwsRoute53Zone.zoneId});
+/// const example = new aws.route53.RecordsExclusive("example", {zoneId: exampleAwsRoute53Zone.zoneId});
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.route53.RecordsExclusive("test", zone_id=test_aws_route53_zone["zoneId"])
+/// example = aws.route53.RecordsExclusive("example", zone_id=example_aws_route53_zone["zoneId"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -273,9 +274,9 @@ import 'records_exclusive_timeouts.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var test = new Aws.Route53.RecordsExclusive("test", new()
+///     var example = new Aws.Route53.RecordsExclusive("example", new()
 ///     {
-///         ZoneId = testAwsRoute53Zone.ZoneId,
+///         ZoneId = exampleAwsRoute53Zone.ZoneId,
 ///     });
 ///
 /// });
@@ -290,8 +291,8 @@ import 'records_exclusive_timeouts.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := route53.NewRecordsExclusive(ctx, "test", &route53.RecordsExclusiveArgs{
-/// 			ZoneId: pulumi.Any(testAwsRoute53Zone.ZoneId),
+/// 		_, err := route53.NewRecordsExclusive(ctx, "example", &route53.RecordsExclusiveArgs{
+/// 			ZoneId: pulumi.Any(exampleAwsRoute53Zone.ZoneId),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -309,8 +310,8 @@ import 'records_exclusive_timeouts.dart';
 ///   }
 /// }
 ///
-/// resource "aws_route53_recordsexclusive" "test" {
-///   zone_id = testAwsRoute53Zone.zoneId
+/// resource "aws_route53_recordsexclusive" "example" {
+///   zone_id = exampleAwsRoute53Zone.zoneId
 /// }
 /// ```
 /// ```java
@@ -334,8 +335,8 @@ import 'records_exclusive_timeouts.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var test = new RecordsExclusive("test", RecordsExclusiveArgs.builder()
-///             .zoneId(testAwsRoute53Zone.zoneId())
+///         var example = new RecordsExclusive("example", RecordsExclusiveArgs.builder()
+///             .zoneId(exampleAwsRoute53Zone.zoneId())
 ///             .build());
 ///
 ///     }
@@ -343,10 +344,10 @@ import 'records_exclusive_timeouts.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   test:
+///   example:
 ///     type: aws:route53:RecordsExclusive
 ///     properties:
-///       zoneId: ${testAwsRoute53Zone.zoneId}
+///       zoneId: ${exampleAwsRoute53Zone.zoneId}
 /// ```
 ///
 ///
@@ -379,7 +380,7 @@ class RecordsExclusive extends pulumi.CustomResource {
           'aws:route53/recordsExclusive:RecordsExclusive',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     resourceRecordSets = registerOutput<List<RecordsExclusiveResourceRecordSet>?>('resourceRecordSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordsExclusiveResourceRecordSet>(guardedValue, (value) => RecordsExclusiveResourceRecordSet.fromMap((value as Map).cast<String, dynamic>())); });
     timeouts = registerOutput<RecordsExclusiveTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecordsExclusiveTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });

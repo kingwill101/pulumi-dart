@@ -261,7 +261,7 @@ import 'schedule_state.dart';
 /// $ pulumi import aws:autoscaling/schedule:Schedule example example-asg/example-action
 /// ```
 class Schedule extends pulumi.CustomResource {
-  /// ARN assigned by AWS to the autoscaling schedule.
+  /// ARN assigned by AWS to the Auto Scaling schedule.
   late final pulumi.Output<String> arn;
   /// The name of the Auto Scaling group.
   late final pulumi.Output<String> autoscalingGroupName;
@@ -300,7 +300,7 @@ class Schedule extends pulumi.CustomResource {
           'aws:autoscaling/schedule:Schedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');

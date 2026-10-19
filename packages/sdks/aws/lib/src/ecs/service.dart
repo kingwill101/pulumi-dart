@@ -281,7 +281,7 @@ import 'service_vpc_lattice_configuration.dart';
 ///
 /// ### Ignoring Changes to Desired Count
 ///
-/// You can use [`ignoreChanges`](https://www.pulumi.com/docs/intro/concepts/programming-model/#ignorechanges) to create an ECS service with an initial count of running instances, then ignore any changes to that count caused externally (e.g. Application Autoscaling).
+/// You can utilize the generic Terraform resource lifecycle configuration block with `ignoreChanges` to create an ECS service with an initial count of running instances, then ignore any changes to that count caused externally (e.g., Application Auto Scaling).
 ///
 ///
 /// ```typescript
@@ -1781,7 +1781,7 @@ import 'service_vpc_lattice_configuration.dart';
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import ECS services using the `name` together with ecs cluster `name`. For example:
+/// Using `pulumi import`, import ECS services using the `name` together with ECS cluster `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ecs/service:Service imported cluster-name/service-name
@@ -1877,7 +1877,7 @@ class Service extends pulumi.CustomResource {
           'aws:ecs/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     alarms = registerOutput<ServiceAlarms?>('alarms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAlarms.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

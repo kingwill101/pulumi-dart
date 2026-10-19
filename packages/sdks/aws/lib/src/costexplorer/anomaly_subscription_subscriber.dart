@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnomalySubscriptionSubscriber {
-  /// The address of the subscriber. If type is `SNS`, this will be the arn of the sns topic. If type is `EMAIL`, this will be the destination email address.
+  /// The address of the subscriber. If type is `SNS`, this will be the ARN of the SNS topic. If type is `EMAIL`, this will be the destination email address.
   final pulumi.Input<String> address;
   /// The type of subscription. Valid Values: `SNS` | `EMAIL`.
   final pulumi.Input<String> type;
 
   /// Creates a new [AnomalySubscriptionSubscriber].
-  /// [address] The address of the subscriber. If type is `SNS`, this will be the arn of the sns topic. If type is `EMAIL`, this will be the destination email address.
+  /// [address] The address of the subscriber. If type is `SNS`, this will be the ARN of the SNS topic. If type is `EMAIL`, this will be the destination email address.
   /// [type] The type of subscription. Valid Values: `SNS` | `EMAIL`.
   const AnomalySubscriptionSubscriber({
     required this.address,

@@ -522,7 +522,7 @@ import 'protection_group_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Shield protection group resources using their protection group id. For example:
+/// Using `pulumi import`, import Shield protection group resources using their protection group ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:shield/protectionGroup:ProtectionGroup example example
@@ -557,7 +557,7 @@ class ProtectionGroup extends pulumi.CustomResource {
           'aws:shield/protectionGroup:ProtectionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     aggregation = registerOutput<String>('aggregation');
     members = registerOutput<List<String>?>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

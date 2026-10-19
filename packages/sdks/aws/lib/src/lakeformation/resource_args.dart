@@ -11,7 +11,7 @@ class ResourceArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> arn;
-  /// Flag to enable AWS LakeFormation hybrid access permission mode.
+  /// Flag to enable AWS Lake Formation hybrid access permission mode.
   final pulumi.Input<bool?>? hybridAccessEnabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -28,7 +28,7 @@ class ResourceArgs {
 
   /// Creates a new [ResourceArgs].
   /// [arn] ARN of the resource.
-  /// [hybridAccessEnabled] Flag to enable AWS LakeFormation hybrid access permission mode.
+  /// [hybridAccessEnabled] Flag to enable AWS Lake Formation hybrid access permission mode.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] Role that has read/write access to the resource.
   /// [useServiceLinkedRole] Designates an AWS Identity and Access Management (IAM) service-linked role by registering this role with the Data Catalog.

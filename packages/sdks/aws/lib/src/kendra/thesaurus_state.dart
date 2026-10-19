@@ -7,36 +7,41 @@ import 'thesaurus_source_s3_path.dart';
 class ThesaurusState {
   /// ARN of the thesaurus.
   final pulumi.Input<String?>? arn;
+  /// Description for a thesaurus.
   final pulumi.Input<String?>? description;
-  /// The identifier of the index for a thesaurus.
+  /// Identifier of the index for a thesaurus.
   final pulumi.Input<String?>? indexId;
-  /// The name for the thesaurus.
+  /// Name for the thesaurus.
   final pulumi.Input<String?>? name;
-  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The IAM (Identity and Access Management) role used to access the thesaurus file in S3.
+  /// IAM (Identity and Access Management) role used to access the thesaurus file in S3.
   final pulumi.Input<String?>? roleArn;
-  /// The S3 path where your thesaurus file sits in S3. Detailed below.
+  /// S3 path where your thesaurus file sits in S3. Detailed below.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<ThesaurusSourceS3Path?>? sourceS3Path;
-  /// The current status of the thesaurus.
+  /// Current status of the thesaurus.
   final pulumi.Input<String?>? status;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
+  /// Unique identifier of the thesaurus.
   final pulumi.Input<String?>? thesaurusId;
 
   /// Creates a new [ThesaurusState].
   /// [arn] ARN of the thesaurus.
-  /// [description] Optional.
-  /// [indexId] The identifier of the index for a thesaurus.
-  /// [name] The name for the thesaurus.
-  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  /// [roleArn] The IAM (Identity and Access Management) role used to access the thesaurus file in S3.
-  /// [sourceS3Path] The S3 path where your thesaurus file sits in S3. Detailed below.
-  /// [status] The current status of the thesaurus.
-  /// [tags] Optional.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [thesaurusId] Optional.
+  /// [description] Description for a thesaurus.
+  /// [indexId] Identifier of the index for a thesaurus.
+  /// [name] Name for the thesaurus.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [roleArn] IAM (Identity and Access Management) role used to access the thesaurus file in S3.
+  /// [sourceS3Path] S3 path where your thesaurus file sits in S3. Detailed below.
+  /// [status] Current status of the thesaurus.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [thesaurusId] Unique identifier of the thesaurus.
   const ThesaurusState({
     this.arn,
     this.description,

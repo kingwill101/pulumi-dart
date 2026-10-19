@@ -5,14 +5,14 @@ import 'cluster_open_monitoring_prometheus_jmx_exporter.dart';
 import 'cluster_open_monitoring_prometheus_node_exporter.dart';
 
 class ClusterOpenMonitoringPrometheus {
-  /// Configuration block for JMX Exporter. See openMonitoring prometheus jmxExporter Argument Reference below.
+  /// Configuration block for JMX Exporter. See `jmxExporter` Block below.
   final pulumi.Input<ClusterOpenMonitoringPrometheusJmxExporter?>? jmxExporter;
-  /// Configuration block for Node Exporter. See openMonitoring prometheus nodeExporter Argument Reference below.
+  /// Configuration block for Node Exporter. See `nodeExporter` Block below.
   final pulumi.Input<ClusterOpenMonitoringPrometheusNodeExporter?>? nodeExporter;
 
   /// Creates a new [ClusterOpenMonitoringPrometheus].
-  /// [jmxExporter] Configuration block for JMX Exporter. See openMonitoring prometheus jmxExporter Argument Reference below.
-  /// [nodeExporter] Configuration block for Node Exporter. See openMonitoring prometheus nodeExporter Argument Reference below.
+  /// [jmxExporter] Configuration block for JMX Exporter. See `jmxExporter` Block below.
+  /// [nodeExporter] Configuration block for Node Exporter. See `nodeExporter` Block below.
   const ClusterOpenMonitoringPrometheus({
     this.jmxExporter,
     this.nodeExporter,

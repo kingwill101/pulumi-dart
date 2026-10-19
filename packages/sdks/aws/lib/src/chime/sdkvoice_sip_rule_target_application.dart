@@ -31,7 +31,7 @@ class SdkvoiceSipRuleTargetApplication {
   factory SdkvoiceSipRuleTargetApplication.fromMap(Map<String, dynamic> map) {
     return SdkvoiceSipRuleTargetApplication(
       awsRegion: pulumi.Input.fromValue(map['awsRegion'] as String),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       sipMediaApplicationId: pulumi.Input.fromValue(map['sipMediaApplicationId'] as String),
     );
   }

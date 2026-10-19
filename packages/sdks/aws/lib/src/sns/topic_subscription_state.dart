@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicSubscriptionState {
   /// ARN of the subscription.
   final pulumi.Input<String?>? arn;
-  /// Integer indicating number of minutes to wait in retrying mode for fetching subscription arn before marking it as failure. Only applicable for http and https protocols. Default is `1`.
+  /// Integer indicating number of minutes to wait in retrying mode for fetching subscription ARN before marking it as failure. Only applicable for HTTP and HTTPS protocols. Default is `1`.
   final pulumi.Input<int?>? confirmationTimeoutInMinutes;
   /// Whether the subscription confirmation request was authenticated.
   final pulumi.Input<bool?>? confirmationWasAuthenticated;
@@ -43,7 +43,7 @@ class TopicSubscriptionState {
 
   /// Creates a new [TopicSubscriptionState].
   /// [arn] ARN of the subscription.
-  /// [confirmationTimeoutInMinutes] Integer indicating number of minutes to wait in retrying mode for fetching subscription arn before marking it as failure. Only applicable for http and https protocols. Default is `1`.
+  /// [confirmationTimeoutInMinutes] Integer indicating number of minutes to wait in retrying mode for fetching subscription ARN before marking it as failure. Only applicable for HTTP and HTTPS protocols. Default is `1`.
   /// [confirmationWasAuthenticated] Whether the subscription confirmation request was authenticated.
   /// [deliveryPolicy] JSON String with the delivery policy (retries, backoff, etc.) that will be used in the subscription - this only applies to HTTP/S subscriptions. Refer to the [SNS docs](https://docs.aws.amazon.com/sns/latest/dg/DeliveryPolicies.html) for more details.
   /// [endpoint] Endpoint to send data to. The contents vary with the protocol. See details below.
@@ -104,7 +104,7 @@ class TopicSubscriptionState {
   factory TopicSubscriptionState.fromMap(Map<String, dynamic> map) {
     return TopicSubscriptionState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      confirmationTimeoutInMinutes: (() { final guardedValue = map['confirmationTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      confirmationTimeoutInMinutes: (() { final guardedValue = map['confirmationTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       confirmationWasAuthenticated: (() { final guardedValue = map['confirmationWasAuthenticated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deliveryPolicy: (() { final guardedValue = map['deliveryPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

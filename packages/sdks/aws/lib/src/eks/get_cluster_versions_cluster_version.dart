@@ -14,7 +14,7 @@ class GetClusterVersionsClusterVersion {
   final pulumi.Input<List<GetClusterVersionsClusterVersionControlPlaneComponentConfig>> controlPlaneComponentConfigs;
   /// Available provisioned control plane scaling tiers and their capabilities.
   final pulumi.Input<List<GetClusterVersionsClusterVersionControlPlaneScalingTier>> controlPlaneScalingTiers;
-  /// Default eks platform version for the cluster version.
+  /// Default EKS platform version for the cluster version.
   final pulumi.Input<String> defaultPlatformVersion;
   /// Default Kubernetes version for the cluster version.
   final pulumi.Input<bool> defaultVersion;
@@ -35,7 +35,7 @@ class GetClusterVersionsClusterVersion {
   /// [clusterVersion] Kubernetes version supported by EKS.
   /// [controlPlaneComponentConfigs] Default control plane component configuration and constraints for this version.
   /// [controlPlaneScalingTiers] Available provisioned control plane scaling tiers and their capabilities.
-  /// [defaultPlatformVersion] Default eks platform version for the cluster version.
+  /// [defaultPlatformVersion] Default EKS platform version for the cluster version.
   /// [defaultVersion] Default Kubernetes version for the cluster version.
   /// [endOfExtendedSupportDate] End of extended support date for the cluster version.
   /// [endOfStandardSupportDate] End of standard support date for the cluster version.

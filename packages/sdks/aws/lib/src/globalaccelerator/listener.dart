@@ -257,9 +257,9 @@ class Listener extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Direct all requests from a user to the same endpoint. Valid values are `NONE`, `SOURCE_IP`. Default: `NONE`. If `NONE`, Global Accelerator uses the "five-tuple" properties of source IP address, source port, destination IP address, destination port, and protocol to select the hash value. If `SOURCE_IP`, Global Accelerator uses the "two-tuple" properties of source (client) IP address and destination IP address to select the hash value.
   late final pulumi.Output<String?> clientAffinity;
-  /// The list of port ranges for the connections from clients to the accelerator. Fields documented below.
+  /// Port ranges for the connections from clients to the accelerator. See `portRange` below.
   late final pulumi.Output<List<ListenerPortRange>> portRanges;
-  /// The protocol for the connections from clients to the accelerator. Valid values are `TCP`, `UDP`.
+  /// Protocol for the connections from clients to the accelerator. Valid values are `TCP`, `UDP`.
   late final pulumi.Output<String> protocol;
 
   /// Creates a new [Listener].
@@ -274,7 +274,7 @@ class Listener extends pulumi.CustomResource {
           'aws:globalaccelerator/listener:Listener',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     acceleratorArn = registerOutput<String>('acceleratorArn');
     arn = registerOutput<String>('arn');

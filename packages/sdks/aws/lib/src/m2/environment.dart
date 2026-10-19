@@ -537,7 +537,7 @@ import 'environment_timeouts.dart';
 /// ```
 ///
 ///
-/// ### FSX Filesystem
+/// ### FSx Filesystem
 ///
 ///
 /// ```typescript
@@ -743,28 +743,30 @@ import 'environment_timeouts.dart';
 /// $ pulumi import aws:m2/environment:Environment example 01234567890abcdef012345678
 /// ```
 class Environment extends pulumi.CustomResource {
+  /// Whether to apply configuration changes during the preferred maintenance window instead of immediately.
   late final pulumi.Output<bool?> applyChangesDuringMaintenanceWindow;
   /// ARN of the Environment.
   late final pulumi.Output<String> arn;
+  /// Description of the runtime environment.
   late final pulumi.Output<String?> description;
   /// Engine type must be `microfocus` or `bluage`.
   late final pulumi.Output<String> engineType;
-  /// The specific version of the engine for the Environment.
+  /// Specific version of the engine for the Environment.
   late final pulumi.Output<String> engineVersion;
-  /// The id of the Environment.
+  /// ID of the Environment.
   late final pulumi.Output<String> environmentId;
   /// Force update the environment even if applications are running.
   late final pulumi.Output<bool?> forceUpdate;
   late final pulumi.Output<EnvironmentHighAvailabilityConfig?> highAvailabilityConfig;
   /// M2 Instance Type.
-  ///
-  /// The following arguments are optional:
   late final pulumi.Output<String> instanceType;
   /// ARN of the KMS key to use for the Environment.
   late final pulumi.Output<String?> kmsKeyId;
   /// ARN of the load balancer created by the Environment.
   late final pulumi.Output<String> loadBalancerArn;
   /// Name of the runtime environment. Must be unique within the account.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> name;
   /// Configures the maintenance window that you want for the runtime environment. The maintenance window must have the format `ddd:hh24:mi-ddd:hh24:mi` and must be less than 24 hours. If not provided a random value will be used.
   late final pulumi.Output<String> preferredMaintenanceWindow;
@@ -772,10 +774,10 @@ class Environment extends pulumi.CustomResource {
   late final pulumi.Output<bool> publiclyAccessible;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// List of security group ids.
+  /// List of security group IDs.
   late final pulumi.Output<List<String>> securityGroupIds;
   late final pulumi.Output<EnvironmentStorageConfiguration?> storageConfiguration;
-  /// List of subnet ids to deploy environment to.
+  /// List of subnet IDs to deploy environment to.
   late final pulumi.Output<List<String>> subnetIds;
   /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -794,7 +796,7 @@ class Environment extends pulumi.CustomResource {
           'aws:m2/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     applyChangesDuringMaintenanceWindow = registerOutput<bool?>('applyChangesDuringMaintenanceWindow');
     arn = registerOutput<String>('arn');

@@ -199,7 +199,7 @@ class Tag extends pulumi.CustomResource {
           'aws:ecs/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     key = registerOutput<String>('key');
     region = registerOutput<String>('region');

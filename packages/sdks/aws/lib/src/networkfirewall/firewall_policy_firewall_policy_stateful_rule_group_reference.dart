@@ -40,7 +40,7 @@ class FirewallPolicyFirewallPolicyStatefulRuleGroupReference {
     return FirewallPolicyFirewallPolicyStatefulRuleGroupReference(
       deepThreatInspection: (() { final guardedValue = map['deepThreatInspection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       override: (() { final guardedValue = map['override']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceArn: pulumi.Input.fromValue(map['resourceArn'] as String),
     );
   }

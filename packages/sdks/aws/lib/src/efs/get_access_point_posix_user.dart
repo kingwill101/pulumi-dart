@@ -7,13 +7,13 @@ class GetAccessPointPosixUser {
   final pulumi.Input<int> gid;
   /// Secondary group IDs
   final pulumi.Input<List<int>> secondaryGids;
-  /// User Id
+  /// User ID
   final pulumi.Input<int> uid;
 
   /// Creates a new [GetAccessPointPosixUser].
   /// [gid] Group ID
   /// [secondaryGids] Secondary group IDs
-  /// [uid] User Id
+  /// [uid] User ID
   const GetAccessPointPosixUser({
     required this.gid,
     required this.secondaryGids,
@@ -30,9 +30,9 @@ class GetAccessPointPosixUser {
 
   factory GetAccessPointPosixUser.fromMap(Map<String, dynamic> map) {
     return GetAccessPointPosixUser(
-      gid: pulumi.Input.fromValue((map['gid'] as num).toInt()),
+      gid: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['gid'])),
       secondaryGids: pulumi.Input.fromValue((map['secondaryGids'] as List).cast<int>()),
-      uid: pulumi.Input.fromValue((map['uid'] as num).toInt()),
+      uid: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['uid'])),
     );
   }
 }

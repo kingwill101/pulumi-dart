@@ -6,12 +6,12 @@ import 'firehose_delivery_stream_http_endpoint_configuration_processing_configur
 class FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration {
   /// Enables or disables data processing.
   final pulumi.Input<bool?>? enabled;
-  /// Specifies the data processors as multiple blocks. See `processors` block below for details.
+  /// Data processors as multiple blocks. See `processors` block below for details.
   final pulumi.Input<List<FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessor>?>? processors;
 
   /// Creates a new [FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.
-  /// [processors] Specifies the data processors as multiple blocks. See `processors` block below for details.
+  /// [processors] Data processors as multiple blocks. See `processors` block below for details.
   const FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration({
     this.enabled,
     this.processors,

@@ -15,7 +15,7 @@ class GetWorkerConfigurationResult {
   /// contents of connect-distributed.properties file.
   final String? propertiesFileContent;
   final String? region;
-  /// A map of tags assigned to the resource.
+  /// Map of tags assigned to the resource.
   final Map<String, String>? tags;
 
   /// Creates a new [GetWorkerConfigurationResult].
@@ -26,7 +26,7 @@ class GetWorkerConfigurationResult {
   /// [name] Optional.
   /// [propertiesFileContent] contents of connect-distributed.properties file.
   /// [region] Optional.
-  /// [tags] A map of tags assigned to the resource.
+  /// [tags] Map of tags assigned to the resource.
   const GetWorkerConfigurationResult({
     this.arn,
     this.description,
@@ -56,7 +56,7 @@ class GetWorkerConfigurationResult {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      latestRevision: (() { final guardedValue = map['latestRevision']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      latestRevision: (() { final guardedValue = map['latestRevision']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       propertiesFileContent: (() { final guardedValue = map['propertiesFileContent']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),

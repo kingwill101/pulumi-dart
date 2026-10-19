@@ -3,18 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationVpcConfiguration {
-  /// The Security Group IDs used by the VPC configuration.
+  /// Security Group IDs used by the VPC configuration.
   final pulumi.Input<List<String>> securityGroupIds;
-  /// The Subnet IDs used by the VPC configuration.
+  /// Subnet IDs used by the VPC configuration.
   final pulumi.Input<List<String>> subnetIds;
+  /// Identifier of the VPC configuration.
   final pulumi.Input<String?>? vpcConfigurationId;
+  /// Identifier of the VPC.
   final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [ApplicationApplicationConfigurationVpcConfiguration].
-  /// [securityGroupIds] The Security Group IDs used by the VPC configuration.
-  /// [subnetIds] The Subnet IDs used by the VPC configuration.
-  /// [vpcConfigurationId] Optional.
-  /// [vpcId] Optional.
+  /// [securityGroupIds] Security Group IDs used by the VPC configuration.
+  /// [subnetIds] Subnet IDs used by the VPC configuration.
+  /// [vpcConfigurationId] Identifier of the VPC configuration.
+  /// [vpcId] Identifier of the VPC.
   const ApplicationApplicationConfigurationVpcConfiguration({
     required this.securityGroupIds,
     required this.subnetIds,

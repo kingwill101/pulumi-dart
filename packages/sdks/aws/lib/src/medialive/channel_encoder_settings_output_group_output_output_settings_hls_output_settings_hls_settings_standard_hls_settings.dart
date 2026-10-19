@@ -4,12 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_output_group_output_output_settings_hls_output_settings_hls_settings_standard_hls_settings_m3u8_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings {
+  /// List of audio rendition sets, separated by commas.
   final pulumi.Input<String?>? audioRenditionSets;
+  /// Settings for the M3U8 container. See `m3u8Settings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings> m3u8Settings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings].
-  /// [audioRenditionSets] Optional.
-  /// [m3u8Settings] Required.
+  /// [audioRenditionSets] List of audio rendition sets, separated by commas.
+  /// [m3u8Settings] Settings for the M3U8 container. See `m3u8Settings` Block for details.
   const ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings({
     this.audioRenditionSets,
     required this.m3u8Settings,

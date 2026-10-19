@@ -5,14 +5,14 @@ import 'restore_testing_selection_protected_resource_conditions_string_equal.dar
 import 'restore_testing_selection_protected_resource_conditions_string_not_equal.dart';
 
 class RestoreTestingSelectionProtectedResourceConditions {
-  /// The list of string equals conditions for resource tags. Filters the values of your tagged resources for only those resources that you tagged with the same value. Also called "exact matching.". See the structure for details
+  /// List of string equals conditions for resource tags. Filters the values of your tagged resources for only those resources that you tagged with the same value. Also called "exact matching.". See `stringEquals` below.
   final pulumi.Input<List<RestoreTestingSelectionProtectedResourceConditionsStringEqual>?>? stringEquals;
-  /// The list of string not equals conditions for resource tags. Filters the values of your tagged resources for only those resources that you tagged that do not have the same value. Also called "negated matching.". See the structure for details
+  /// List of string not equals conditions for resource tags. Filters the values of your tagged resources for only those resources that you tagged that do not have the same value. Also called "negated matching.". See `stringNotEquals` below.
   final pulumi.Input<List<RestoreTestingSelectionProtectedResourceConditionsStringNotEqual>?>? stringNotEquals;
 
   /// Creates a new [RestoreTestingSelectionProtectedResourceConditions].
-  /// [stringEquals] The list of string equals conditions for resource tags. Filters the values of your tagged resources for only those resources that you tagged with the same value. Also called "exact matching.". See the structure for details
-  /// [stringNotEquals] The list of string not equals conditions for resource tags. Filters the values of your tagged resources for only those resources that you tagged that do not have the same value. Also called "negated matching.". See the structure for details
+  /// [stringEquals] List of string equals conditions for resource tags. Filters the values of your tagged resources for only those resources that you tagged with the same value. Also called "exact matching.". See `stringEquals` below.
+  /// [stringNotEquals] List of string not equals conditions for resource tags. Filters the values of your tagged resources for only those resources that you tagged that do not have the same value. Also called "negated matching.". See `stringNotEquals` below.
   const RestoreTestingSelectionProtectedResourceConditions({
     this.stringEquals,
     this.stringNotEquals,

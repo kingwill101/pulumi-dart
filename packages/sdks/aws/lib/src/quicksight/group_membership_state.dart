@@ -4,24 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering GroupMembership resources.
 class GroupMembershipState {
+  /// ARN of the group membership.
   final pulumi.Input<String?>? arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String?>? awsAccountId;
-  /// The name of the group in which the member will be added.
+  /// Name of the group in which the member will be added.
   final pulumi.Input<String?>? groupName;
-  /// The name of the member to add to the group.
+  /// Name of the member to add to the group.
   final pulumi.Input<String?>? memberName;
-  /// The namespace that you want the user to be a part of. Defaults to `default`.
+  /// Namespace that you want the user to be a part of. Defaults to `default`.
   final pulumi.Input<String?>? namespace;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [GroupMembershipState].
-  /// [arn] Optional.
+  /// [arn] ARN of the group membership.
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  /// [groupName] The name of the group in which the member will be added.
-  /// [memberName] The name of the member to add to the group.
-  /// [namespace] The namespace that you want the user to be a part of. Defaults to `default`.
+  /// [groupName] Name of the group in which the member will be added.
+  /// [memberName] Name of the member to add to the group.
+  /// [namespace] Namespace that you want the user to be a part of. Defaults to `default`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GroupMembershipState({
     this.arn,

@@ -195,11 +195,11 @@ import 'schema_state.dart';
 /// $ pulumi import aws:verifiedpermissions/schema:Schema example DxQg2j8xvXJQ1tQCYNWj9T
 /// ```
 class Schema extends pulumi.CustomResource {
-  /// The definition of the schema.
+  /// Definition of the schema. See Definition below.
   late final pulumi.Output<SchemaDefinition> definition;
-  /// (Optional) Identifies the namespaces of the entities referenced by this schema.
+  /// Namespaces of the entities referenced by this schema.
   late final pulumi.Output<List<String>> namespaces;
-  /// The ID of the Policy Store.
+  /// ID of the Policy Store.
   late final pulumi.Output<String> policyStoreId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -216,7 +216,7 @@ class Schema extends pulumi.CustomResource {
           'aws:verifiedpermissions/schema:Schema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     definition = registerOutput<SchemaDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchemaDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     namespaces = registerOutput<List<String>>('namespaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

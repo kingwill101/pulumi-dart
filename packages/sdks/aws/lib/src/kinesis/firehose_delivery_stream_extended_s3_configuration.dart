@@ -8,53 +8,56 @@ import 'firehose_delivery_stream_extended_s3_configuration_processing_configurat
 import 'firehose_delivery_stream_extended_s3_configuration_s3_backup_configuration.dart';
 
 class FirehoseDeliveryStreamExtendedS3Configuration {
-  /// The ARN of the S3 bucket
+  /// ARN of the S3 bucket.
   final pulumi.Input<String> bucketArn;
+  /// Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. The default value is 300.
   final pulumi.Input<int?>? bufferingInterval;
+  /// Buffer incoming data to the specified size, in MBs, before delivering it to the destination. The default value is 5. We recommend setting this value greater than the amount of data you typically ingest into the delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, set this value to 10 MB or higher.
   final pulumi.Input<int?>? bufferingSize;
+  /// CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptions?>? cloudwatchLoggingOptions;
-  /// The compression format. If no value is specified, the default is `UNCOMPRESSED`. Other supported values are `GZIP`, `ZIP`, `Snappy`, & `HADOOP_SNAPPY`.
+  /// Compression format. If no value is specified, the default is `UNCOMPRESSED`. Other supported values are `GZIP`, `ZIP`, `Snappy`, & `HADOOP_SNAPPY`.
   final pulumi.Input<String?>? compressionFormat;
-  /// The time zone you prefer. Valid values are `UTC` or a non-3-letter IANA time zones (for example, `America/Los_Angeles`). Default value is `UTC`.
+  /// Time zone you prefer. Valid values are `UTC` or a non-3-letter IANA time zones (for example, `America/Los_Angeles`). Default value is `UTC`.
   final pulumi.Input<String?>? customTimeZone;
   /// Nested argument for the serializer, deserializer, and schema for converting data from the JSON format to the Parquet or ORC format before writing it to Amazon S3. See `dataFormatConversionConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration?>? dataFormatConversionConfiguration;
-  /// The configuration for dynamic partitioning. Required when using [dynamic partitioning](https://docs.aws.amazon.com/firehose/latest/dev/dynamic-partitioning.html). See `dynamicPartitioningConfiguration` block below for details.
+  /// Configuration for dynamic partitioning. Required when using [dynamic partitioning](https://docs.aws.amazon.com/firehose/latest/dev/dynamic-partitioning.html). See `dynamicPartitioningConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfiguration?>? dynamicPartitioningConfiguration;
   /// Prefix added to failed records before writing them to S3. Not currently supported for `redshift` destination. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see [Custom Prefixes for Amazon S3 Objects](https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html).
   final pulumi.Input<String?>? errorOutputPrefix;
-  /// The file extension to override the default file extension (for example, `.json`).
+  /// File extension to override the default file extension (for example, `.json`).
   final pulumi.Input<String?>? fileExtension;
-  /// Specifies the KMS key ARN the stream will use to encrypt data. If not set, no encryption will
-  /// be used.
+  /// KMS key ARN the stream will use to encrypt data. If not set, no encryption will be used.
   final pulumi.Input<String?>? kmsKeyArn;
-  /// The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket
+  /// Extra prefix added in front of the "YYYY/MM/DD/HH" time format prefix that is automatically used for delivered S3 files. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket.
   final pulumi.Input<String?>? prefix;
-  /// The data processing configuration.  See `processingConfiguration` block below for details.
+  /// Data processing configuration. See `processingConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration?>? processingConfiguration;
+  /// ARN of the AWS credentials.
   final pulumi.Input<String> roleArn;
-  /// The configuration for backup in Amazon S3. Required if `s3BackupMode` is `Enabled`. Supports the same fields as `s3Configuration` object.
+  /// Configuration for backup in Amazon S3. Required if `s3BackupMode` is `Enabled`. See `s3BackupConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration?>? s3BackupConfiguration;
-  /// The Amazon S3 backup mode.  Valid values are `Disabled` and `Enabled`.  Default value is `Disabled`.
+  /// Amazon S3 backup mode. Valid values are `Disabled` and `Enabled`. Default value is `Disabled`.
   final pulumi.Input<String?>? s3BackupMode;
 
   /// Creates a new [FirehoseDeliveryStreamExtendedS3Configuration].
-  /// [bucketArn] The ARN of the S3 bucket
-  /// [bufferingInterval] Optional.
-  /// [bufferingSize] Optional.
-  /// [cloudwatchLoggingOptions] Optional.
-  /// [compressionFormat] The compression format. If no value is specified, the default is `UNCOMPRESSED`. Other supported values are `GZIP`, `ZIP`, `Snappy`, & `HADOOP_SNAPPY`.
-  /// [customTimeZone] The time zone you prefer. Valid values are `UTC` or a non-3-letter IANA time zones (for example, `America/Los_Angeles`). Default value is `UTC`.
+  /// [bucketArn] ARN of the S3 bucket.
+  /// [bufferingInterval] Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. The default value is 300.
+  /// [bufferingSize] Buffer incoming data to the specified size, in MBs, before delivering it to the destination. The default value is 5. We recommend setting this value greater than the amount of data you typically ingest into the delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, set this value to 10 MB or higher.
+  /// [cloudwatchLoggingOptions] CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
+  /// [compressionFormat] Compression format. If no value is specified, the default is `UNCOMPRESSED`. Other supported values are `GZIP`, `ZIP`, `Snappy`, & `HADOOP_SNAPPY`.
+  /// [customTimeZone] Time zone you prefer. Valid values are `UTC` or a non-3-letter IANA time zones (for example, `America/Los_Angeles`). Default value is `UTC`.
   /// [dataFormatConversionConfiguration] Nested argument for the serializer, deserializer, and schema for converting data from the JSON format to the Parquet or ORC format before writing it to Amazon S3. See `dataFormatConversionConfiguration` block below for details.
-  /// [dynamicPartitioningConfiguration] The configuration for dynamic partitioning. Required when using [dynamic partitioning](https://docs.aws.amazon.com/firehose/latest/dev/dynamic-partitioning.html). See `dynamicPartitioningConfiguration` block below for details.
+  /// [dynamicPartitioningConfiguration] Configuration for dynamic partitioning. Required when using [dynamic partitioning](https://docs.aws.amazon.com/firehose/latest/dev/dynamic-partitioning.html). See `dynamicPartitioningConfiguration` block below for details.
   /// [errorOutputPrefix] Prefix added to failed records before writing them to S3. Not currently supported for `redshift` destination. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see [Custom Prefixes for Amazon S3 Objects](https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html).
-  /// [fileExtension] The file extension to override the default file extension (for example, `.json`).
-  /// [kmsKeyArn] Specifies the KMS key ARN the stream will use to encrypt data. If not set, no encryption will
-  /// [prefix] The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket
-  /// [processingConfiguration] The data processing configuration.  See `processingConfiguration` block below for details.
-  /// [roleArn] Required.
-  /// [s3BackupConfiguration] The configuration for backup in Amazon S3. Required if `s3BackupMode` is `Enabled`. Supports the same fields as `s3Configuration` object.
-  /// [s3BackupMode] The Amazon S3 backup mode.  Valid values are `Disabled` and `Enabled`.  Default value is `Disabled`.
+  /// [fileExtension] File extension to override the default file extension (for example, `.json`).
+  /// [kmsKeyArn] KMS key ARN the stream will use to encrypt data. If not set, no encryption will be used.
+  /// [prefix] Extra prefix added in front of the "YYYY/MM/DD/HH" time format prefix that is automatically used for delivered S3 files. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket.
+  /// [processingConfiguration] Data processing configuration. See `processingConfiguration` block below for details.
+  /// [roleArn] ARN of the AWS credentials.
+  /// [s3BackupConfiguration] Configuration for backup in Amazon S3. Required if `s3BackupMode` is `Enabled`. See `s3BackupConfiguration` block below for details.
+  /// [s3BackupMode] Amazon S3 backup mode. Valid values are `Disabled` and `Enabled`. Default value is `Disabled`.
   const FirehoseDeliveryStreamExtendedS3Configuration({
     required this.bucketArn,
     this.bufferingInterval,
@@ -98,8 +101,8 @@ class FirehoseDeliveryStreamExtendedS3Configuration {
   factory FirehoseDeliveryStreamExtendedS3Configuration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamExtendedS3Configuration(
       bucketArn: pulumi.Input.fromValue(map['bucketArn'] as String),
-      bufferingInterval: (() { final guardedValue = map['bufferingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      bufferingSize: (() { final guardedValue = map['bufferingSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bufferingInterval: (() { final guardedValue = map['bufferingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      bufferingSize: (() { final guardedValue = map['bufferingSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       cloudwatchLoggingOptions: (() { final guardedValue = map['cloudwatchLoggingOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       compressionFormat: (() { final guardedValue = map['compressionFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customTimeZone: (() { final guardedValue = map['customTimeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

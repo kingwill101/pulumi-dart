@@ -4,55 +4,55 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering WorkspaceSamlConfiguration resources.
 class WorkspaceSamlConfigurationState {
-  /// The admin role values.
+  /// Admin role values.
   final pulumi.Input<List<String>?>? adminRoleValues;
-  /// The allowed organizations.
+  /// Allowed organizations.
   final pulumi.Input<List<String>?>? allowedOrganizations;
-  /// The editor role values.
+  /// Editor role values.
   final pulumi.Input<List<String>?>? editorRoleValues;
-  /// The email assertion.
+  /// Email assertion.
   final pulumi.Input<String?>? emailAssertion;
-  /// The groups assertion.
+  /// Groups assertion.
   final pulumi.Input<String?>? groupsAssertion;
-  /// The IDP Metadata URL. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
+  /// IDP Metadata URL. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
   final pulumi.Input<String?>? idpMetadataUrl;
-  /// The IDP Metadata XML. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
+  /// IDP Metadata XML. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
   final pulumi.Input<String?>? idpMetadataXml;
-  /// The login assertion.
+  /// Login assertion.
   final pulumi.Input<String?>? loginAssertion;
-  /// The login validity duration.
+  /// Login validity duration.
   final pulumi.Input<int?>? loginValidityDuration;
-  /// The name assertion.
+  /// Name assertion.
   final pulumi.Input<String?>? nameAssertion;
-  /// The org assertion.
+  /// Org assertion.
   final pulumi.Input<String?>? orgAssertion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The role assertion.
+  /// Role assertion.
   final pulumi.Input<String?>? roleAssertion;
-  /// The status of the SAML configuration.
+  /// Status of the SAML configuration.
   final pulumi.Input<String?>? status;
-  /// The workspace id.
+  /// Workspace ID.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [WorkspaceSamlConfigurationState].
-  /// [adminRoleValues] The admin role values.
-  /// [allowedOrganizations] The allowed organizations.
-  /// [editorRoleValues] The editor role values.
-  /// [emailAssertion] The email assertion.
-  /// [groupsAssertion] The groups assertion.
-  /// [idpMetadataUrl] The IDP Metadata URL. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
-  /// [idpMetadataXml] The IDP Metadata XML. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
-  /// [loginAssertion] The login assertion.
-  /// [loginValidityDuration] The login validity duration.
-  /// [nameAssertion] The name assertion.
-  /// [orgAssertion] The org assertion.
+  /// [adminRoleValues] Admin role values.
+  /// [allowedOrganizations] Allowed organizations.
+  /// [editorRoleValues] Editor role values.
+  /// [emailAssertion] Email assertion.
+  /// [groupsAssertion] Groups assertion.
+  /// [idpMetadataUrl] IDP Metadata URL. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
+  /// [idpMetadataXml] IDP Metadata XML. Note that either `idpMetadataUrl` or `idpMetadataXml` (but not both) must be specified.
+  /// [loginAssertion] Login assertion.
+  /// [loginValidityDuration] Login validity duration.
+  /// [nameAssertion] Name assertion.
+  /// [orgAssertion] Org assertion.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [roleAssertion] The role assertion.
-  /// [status] The status of the SAML configuration.
-  /// [workspaceId] The workspace id.
+  /// [roleAssertion] Role assertion.
+  /// [status] Status of the SAML configuration.
+  /// [workspaceId] Workspace ID.
   const WorkspaceSamlConfigurationState({
     this.adminRoleValues,
     this.allowedOrganizations,
@@ -101,7 +101,7 @@ class WorkspaceSamlConfigurationState {
       idpMetadataUrl: (() { final guardedValue = map['idpMetadataUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       idpMetadataXml: (() { final guardedValue = map['idpMetadataXml']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loginAssertion: (() { final guardedValue = map['loginAssertion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      loginValidityDuration: (() { final guardedValue = map['loginValidityDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      loginValidityDuration: (() { final guardedValue = map['loginValidityDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nameAssertion: (() { final guardedValue = map['nameAssertion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       orgAssertion: (() { final guardedValue = map['orgAssertion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

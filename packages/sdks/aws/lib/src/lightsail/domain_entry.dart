@@ -4,7 +4,7 @@ import 'domain_entry_state.dart';
 
 /// Manages a Lightsail domain entry (DNS record). Use this resource to define how DNS queries for your domain are handled.
 ///
-/// &gt; **NOTE on `id`:** In an effort to simplify imports, this resource `id` field has been updated to the standard resource id separator, a comma (`,`). For backward compatibility, the previous separator (underscore `_`) can still be used to read and import existing resources. When state is refreshed, the `id` will be updated to use the new standard separator. The previous separator will be deprecated in a future major release.
+/// &gt; **NOTE on `id`:** In an effort to simplify imports, this resource `id` field has been updated to the standard resource ID separator, a comma (`,`). For backward compatibility, the previous separator (underscore `_`) can still be used to read and import existing resources. When state is refreshed, the `id` will be updated to use the new standard separator. The previous separator will be deprecated in a future major release.
 ///
 /// ## Example Usage
 ///
@@ -159,7 +159,7 @@ import 'domain_entry_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Lightsail Domain Entry using the id attribute. For example:
+/// Using `pulumi import`, import Lightsail Domain Entry using the `id` attribute. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:lightsail/domainEntry:DomainEntry example www,example.com,A,127.0.0.1
@@ -192,7 +192,7 @@ class DomainEntry extends pulumi.CustomResource {
           'aws:lightsail/domainEntry:DomainEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     domainName = registerOutput<String>('domainName');
     isAlias = registerOutput<bool?>('isAlias');

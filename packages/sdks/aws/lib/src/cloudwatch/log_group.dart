@@ -149,7 +149,7 @@ import 'log_group_state.dart';
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import Cloudwatch Log Groups using the `name`. For example:
+/// Using `pulumi import`, import CloudWatch Log Groups using the `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudwatch/logGroup:LogGroup example yada
@@ -194,7 +194,7 @@ class LogGroup extends pulumi.CustomResource {
           'aws:cloudwatch/logGroup:LogGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtectionEnabled = registerOutput<bool>('deletionProtectionEnabled');

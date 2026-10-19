@@ -106,7 +106,7 @@ import 'client_certificate_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import API Gateway Client Certificates using the id. For example:
+/// Using `pulumi import`, import API Gateway Client Certificates using the ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:apigateway/clientCertificate:ClientCertificate demo ab1cqe
@@ -141,7 +141,7 @@ class ClientCertificate extends pulumi.CustomResource {
           'aws:apigateway/clientCertificate:ClientCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdDate = registerOutput<String>('createdDate');

@@ -126,7 +126,7 @@ class HttpNamespace extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The name of an HTTP namespace.
   late final pulumi.Output<String> httpName;
-  /// The name of the http namespace.
+  /// The name of the HTTP namespace.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -147,7 +147,7 @@ class HttpNamespace extends pulumi.CustomResource {
           'aws:servicediscovery/httpNamespace:HttpNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

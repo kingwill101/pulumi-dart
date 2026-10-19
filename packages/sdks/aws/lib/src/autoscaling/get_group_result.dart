@@ -44,7 +44,7 @@ class GetGroupResult {
   final int? minSize;
   /// List of mixed instances policy objects for the group.
   final List<GetGroupMixedInstancesPolicy>? mixedInstancesPolicies;
-  /// Name of the Auto Scaling Group.
+  /// Name of the Auto Scaling group.
   final String? name;
   /// Whether newly launched instances are protected from termination by Amazon EC2 Auto Scaling when scaling in.
   final bool? newInstancesProtectedFromScaleIn;
@@ -57,7 +57,7 @@ class GetGroupResult {
   final String? serviceLinkedRoleArn;
   /// Current state of the group when DeleteAutoScalingGroup is in progress.
   final String? status;
-  /// List of processes suspended processes for the Auto Scaling Group.
+  /// List of processes suspended processes for the Auto Scaling group.
   final List<String>? suspendedProcesses;
   /// List of tags for the group.
   final List<GetGroupTag>? tags;
@@ -92,14 +92,14 @@ class GetGroupResult {
   /// [maxSize] Maximum size of the group.
   /// [minSize] Minimum number of instances to maintain in the warm pool.
   /// [mixedInstancesPolicies] List of mixed instances policy objects for the group.
-  /// [name] Name of the Auto Scaling Group.
+  /// [name] Name of the Auto Scaling group.
   /// [newInstancesProtectedFromScaleIn] Whether newly launched instances are protected from termination by Amazon EC2 Auto Scaling when scaling in.
   /// [placementGroup] Name of the placement group into which to launch your instances, if any. For more information, see Placement Groups (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in the EC2 User Guide.
   /// [predictedCapacity] Predicted capacity of the group.
   /// [region] Optional.
   /// [serviceLinkedRoleArn] ARN of the service-linked role that the Auto Scaling group uses to call other AWS services on your behalf.
   /// [status] Current state of the group when DeleteAutoScalingGroup is in progress.
-  /// [suspendedProcesses] List of processes suspended processes for the Auto Scaling Group.
+  /// [suspendedProcesses] List of processes suspended processes for the Auto Scaling group.
   /// [tags] List of tags for the group.
   /// [targetGroupArns] ARNs of the target groups for your load balancer.
   /// [terminationPolicies] Termination policies for the group.
@@ -183,25 +183,25 @@ class GetGroupResult {
     return GetGroupResult(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       availabilityZones: (() { final guardedValue = map['availabilityZones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      defaultCooldown: (() { final guardedValue = map['defaultCooldown']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      desiredCapacity: (() { final guardedValue = map['desiredCapacity']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      defaultCooldown: (() { final guardedValue = map['defaultCooldown']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      desiredCapacity: (() { final guardedValue = map['desiredCapacity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       desiredCapacityType: (() { final guardedValue = map['desiredCapacityType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enabledMetrics: (() { final guardedValue = map['enabledMetrics']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      healthCheckGracePeriod: (() { final guardedValue = map['healthCheckGracePeriod']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      healthCheckGracePeriod: (() { final guardedValue = map['healthCheckGracePeriod']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       healthCheckType: (() { final guardedValue = map['healthCheckType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       instanceMaintenancePolicies: (() { final guardedValue = map['instanceMaintenancePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGroupInstanceMaintenancePolicy>(guardedValue, (value) => GetGroupInstanceMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
       launchConfiguration: (() { final guardedValue = map['launchConfiguration']; if (guardedValue == null) return null; return guardedValue as String; })(),
       launchTemplates: (() { final guardedValue = map['launchTemplates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGroupLaunchTemplate>(guardedValue, (value) => GetGroupLaunchTemplate.fromMap((value as Map).cast<String, dynamic>())); })(),
       loadBalancers: (() { final guardedValue = map['loadBalancers']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      maxInstanceLifetime: (() { final guardedValue = map['maxInstanceLifetime']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxInstanceLifetime: (() { final guardedValue = map['maxInstanceLifetime']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       mixedInstancesPolicies: (() { final guardedValue = map['mixedInstancesPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGroupMixedInstancesPolicy>(guardedValue, (value) => GetGroupMixedInstancesPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       newInstancesProtectedFromScaleIn: (() { final guardedValue = map['newInstancesProtectedFromScaleIn']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       placementGroup: (() { final guardedValue = map['placementGroup']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      predictedCapacity: (() { final guardedValue = map['predictedCapacity']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      predictedCapacity: (() { final guardedValue = map['predictedCapacity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serviceLinkedRoleArn: (() { final guardedValue = map['serviceLinkedRoleArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -211,7 +211,7 @@ class GetGroupResult {
       terminationPolicies: (() { final guardedValue = map['terminationPolicies']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       trafficSources: (() { final guardedValue = map['trafficSources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGroupTrafficSource>(guardedValue, (value) => GetGroupTrafficSource.fromMap((value as Map).cast<String, dynamic>())); })(),
       vpcZoneIdentifier: (() { final guardedValue = map['vpcZoneIdentifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      warmPoolSize: (() { final guardedValue = map['warmPoolSize']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      warmPoolSize: (() { final guardedValue = map['warmPoolSize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       warmPools: (() { final guardedValue = map['warmPools']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetGroupWarmPool>(guardedValue, (value) => GetGroupWarmPool.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }

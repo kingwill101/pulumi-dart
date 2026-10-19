@@ -4,20 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'web_acl_data_protection_config_data_protection_field.dart';
 
 class WebAclDataProtectionConfigDataProtection {
-  /// Specifies how to protect the field. Valid values are `SUBSTITUTION` or `HASH`.
+  /// Protection behavior to apply to the field. Valid values are `SUBSTITUTION` or `HASH`.
   final pulumi.Input<String> action;
   /// Boolean to specify whether to also exclude any rate-based rule details from the data protection you have enabled for a given field.
   final pulumi.Input<bool?>? excludeRateBasedDetails;
   /// Boolean to specify whether to also exclude any rule match details from the data protection you have enabled for a given field. AWS WAF logs these details for non-terminating matching rules and for the terminating matching rule.
   final pulumi.Input<bool?>? excludeRuleMatchDetails;
-  /// Specifies the field type and optional keys to apply the protection behavior to. See `field` block below for details.
+  /// Field type and optional keys to apply the protection behavior to. See `field` block below for details.
   final pulumi.Input<WebAclDataProtectionConfigDataProtectionField> field;
 
   /// Creates a new [WebAclDataProtectionConfigDataProtection].
-  /// [action] Specifies how to protect the field. Valid values are `SUBSTITUTION` or `HASH`.
+  /// [action] Protection behavior to apply to the field. Valid values are `SUBSTITUTION` or `HASH`.
   /// [excludeRateBasedDetails] Boolean to specify whether to also exclude any rate-based rule details from the data protection you have enabled for a given field.
   /// [excludeRuleMatchDetails] Boolean to specify whether to also exclude any rule match details from the data protection you have enabled for a given field. AWS WAF logs these details for non-terminating matching rules and for the terminating matching rule.
-  /// [field] Specifies the field type and optional keys to apply the protection behavior to. See `field` block below for details.
+  /// [field] Field type and optional keys to apply the protection behavior to. See `field` block below for details.
   const WebAclDataProtectionConfigDataProtection({
     required this.action,
     this.excludeRateBasedDetails,

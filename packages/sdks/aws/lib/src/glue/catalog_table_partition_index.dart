@@ -5,13 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CatalogTablePartitionIndex {
   /// Name of the partition index.
   final pulumi.Input<String> indexName;
+  /// Status of the partition index.
   final pulumi.Input<String?>? indexStatus;
   /// Keys for the partition index.
   final pulumi.Input<List<String>> keys;
 
   /// Creates a new [CatalogTablePartitionIndex].
   /// [indexName] Name of the partition index.
-  /// [indexStatus] Optional.
+  /// [indexStatus] Status of the partition index.
   /// [keys] Keys for the partition index.
   const CatalogTablePartitionIndex({
     required this.indexName,

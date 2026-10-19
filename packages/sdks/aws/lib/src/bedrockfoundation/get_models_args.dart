@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_bedrockfoundation_get_models_get_models_args_doc}
 class GetModelsArgs {
-  /// Customization type to filter on. Valid values are `FINE_TUNING`.
+  /// Customization type to filter on. Valid values are `FINE_TUNING`, `CONTINUED_PRE_TRAINING`, and `DISTILLATION`.
   final pulumi.Input<String?>? byCustomizationType;
   /// Inference type to filter on. Valid values are `ON_DEMAND` and `PROVISIONED`.
   final pulumi.Input<String?>? byInferenceType;
@@ -19,7 +19,7 @@ class GetModelsArgs {
   final pulumi.Input<String?>? region;
 
   /// Creates a new [GetModelsArgs].
-  /// [byCustomizationType] Customization type to filter on. Valid values are `FINE_TUNING`.
+  /// [byCustomizationType] Customization type to filter on. Valid values are `FINE_TUNING`, `CONTINUED_PRE_TRAINING`, and `DISTILLATION`.
   /// [byInferenceType] Inference type to filter on. Valid values are `ON_DEMAND` and `PROVISIONED`.
   /// [byOutputModality] Output modality to filter on. Valid values are `TEXT`, `IMAGE`, and `EMBEDDING`.
   /// [byProvider] Model provider to filter on.

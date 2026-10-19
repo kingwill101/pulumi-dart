@@ -11,9 +11,9 @@ class AccountSubscriptionArgs {
   final pulumi.Input<String> accountName;
   /// Name of your Active Directory. This field is required if `ACTIVE_DIRECTORY` is the selected authentication method of the new Amazon QuickSight account.
   final pulumi.Input<String?>? activeDirectoryName;
-  /// Admin group associated with your Active Directory or IAM Identity Center account. This field is required if `ACTIVE_DIRECTORY` or `IAM_IDENTITY_CENTER` is the selected authentication method of the new Amazon QuickSight account.
+  /// Admin group associated with your Active Directory or IAM Identity Center account. Either this field or `adminProGroup` is required if `ACTIVE_DIRECTORY` or `IAM_IDENTITY_CENTER` is the selected authentication method of the new Amazon QuickSight account.
   final pulumi.Input<List<String>?>? adminGroups;
-  /// Admin PRO group associated with your Active Directory or IAM Identity Center account.
+  /// Admin PRO group associated with your Active Directory or IAM Identity Center account. Either this field or `adminGroup` is required if `ACTIVE_DIRECTORY` or `IAM_IDENTITY_CENTER` is the selected authentication method of the new Amazon QuickSight account.
   final pulumi.Input<List<String>?>? adminProGroups;
   /// Method that you want to use to authenticate your Amazon QuickSight account. Currently, the valid values for this parameter are `IAM_AND_QUICKSIGHT`, `IAM_ONLY`, `IAM_IDENTITY_CENTER`, and `ACTIVE_DIRECTORY`.
   final pulumi.Input<String> authenticationMethod;
@@ -23,7 +23,7 @@ class AccountSubscriptionArgs {
   final pulumi.Input<List<String>?>? authorProGroups;
   /// AWS account ID. Defaults to automatically determined account ID of the Pulumi AWS provider.
   final pulumi.Input<String?>? awsAccountId;
-  /// A 10-digit phone number for the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
+  /// 10-digit phone number for the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   final pulumi.Input<String?>? contactNumber;
   /// Active Directory ID that is associated with your Amazon QuickSight account.
   final pulumi.Input<String?>? directoryId;
@@ -45,7 +45,7 @@ class AccountSubscriptionArgs {
   final pulumi.Input<List<String>?>? readerGroups;
   /// Reader PRO group associated with your Active Directory or IAM Identity Center account.
   final pulumi.Input<List<String>?>? readerProGroups;
-  /// Realm of the Active Directory that is associated with your Amazon QuickSight account.
+  /// Realm of the Active Directory that is associated with your Amazon QuickSight account. This field is required if `ACTIVE_DIRECTORY` is the selected authentication method of the new Amazon QuickSight account.
   final pulumi.Input<String?>? realm;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -53,13 +53,13 @@ class AccountSubscriptionArgs {
   /// Creates a new [AccountSubscriptionArgs].
   /// [accountName] Name of your Amazon QuickSight account. This name is unique over all of AWS, and it appears only when users sign in.
   /// [activeDirectoryName] Name of your Active Directory. This field is required if `ACTIVE_DIRECTORY` is the selected authentication method of the new Amazon QuickSight account.
-  /// [adminGroups] Admin group associated with your Active Directory or IAM Identity Center account. This field is required if `ACTIVE_DIRECTORY` or `IAM_IDENTITY_CENTER` is the selected authentication method of the new Amazon QuickSight account.
-  /// [adminProGroups] Admin PRO group associated with your Active Directory or IAM Identity Center account.
+  /// [adminGroups] Admin group associated with your Active Directory or IAM Identity Center account. Either this field or `adminProGroup` is required if `ACTIVE_DIRECTORY` or `IAM_IDENTITY_CENTER` is the selected authentication method of the new Amazon QuickSight account.
+  /// [adminProGroups] Admin PRO group associated with your Active Directory or IAM Identity Center account. Either this field or `adminGroup` is required if `ACTIVE_DIRECTORY` or `IAM_IDENTITY_CENTER` is the selected authentication method of the new Amazon QuickSight account.
   /// [authenticationMethod] Method that you want to use to authenticate your Amazon QuickSight account. Currently, the valid values for this parameter are `IAM_AND_QUICKSIGHT`, `IAM_ONLY`, `IAM_IDENTITY_CENTER`, and `ACTIVE_DIRECTORY`.
   /// [authorGroups] Author group associated with your Active Directory or IAM Identity Center account.
   /// [authorProGroups] Author PRO group associated with your Active Directory or IAM Identity Center account.
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Pulumi AWS provider.
-  /// [contactNumber] A 10-digit phone number for the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
+  /// [contactNumber] 10-digit phone number for the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
   /// [directoryId] Active Directory ID that is associated with your Amazon QuickSight account.
   /// [edition] Edition of Amazon QuickSight that you want your account to have. Currently, you can choose from `STANDARD`, `ENTERPRISE` or `ENTERPRISE_AND_Q`.
   /// [emailAddress] Email address of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
@@ -69,7 +69,7 @@ class AccountSubscriptionArgs {
   /// [notificationEmail] Email address that you want Amazon QuickSight to send notifications to regarding your Amazon QuickSight account or Amazon QuickSight subscription.
   /// [readerGroups] Reader group associated with your Active Directory or IAM Identity Center account.
   /// [readerProGroups] Reader PRO group associated with your Active Directory or IAM Identity Center account.
-  /// [realm] Realm of the Active Directory that is associated with your Amazon QuickSight account.
+  /// [realm] Realm of the Active Directory that is associated with your Amazon QuickSight account. This field is required if `ACTIVE_DIRECTORY` is the selected authentication method of the new Amazon QuickSight account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const AccountSubscriptionArgs({
     required this.accountName,

@@ -27,7 +27,7 @@ class ApplicationInitialCapacityInitialCapacityConfig {
   factory ApplicationInitialCapacityInitialCapacityConfig.fromMap(Map<String, dynamic> map) {
     return ApplicationInitialCapacityInitialCapacityConfig(
       workerConfiguration: (() { final guardedValue = map['workerConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      workerCount: pulumi.Input.fromValue((map['workerCount'] as num).toInt()),
+      workerCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['workerCount'])),
     );
   }
 }

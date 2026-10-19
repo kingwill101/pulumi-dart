@@ -42,7 +42,6 @@ class AmiCopyState {
   final pulumi.Input<String?>? kernelId;
   /// Full ARN of the KMS Key to use when encrypting the snapshots of an image during a copy operation. If not specified, then the default AWS KMS Key will be used
   final pulumi.Input<String?>? kmsKeyId;
-  /// Date and time, in ISO 8601 date-time format , when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported. For more information, see the following [AWS document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-last-launched-time.html).
   final pulumi.Input<String?>? lastLaunchedTime;
   final pulumi.Input<bool?>? manageEbsSnapshots;
   /// Region-unique name for the AMI.
@@ -59,7 +58,7 @@ class AmiCopyState {
   /// Name of the root device (for example, `/dev/sda1`, or `/dev/xvda`).
   final pulumi.Input<String?>? rootDeviceName;
   final pulumi.Input<String?>? rootSnapshotId;
-  /// Id of the AMI to copy. This id must be valid in the region
+  /// ID of the AMI to copy. This ID must be valid in the region
   /// given by `sourceAmiRegion`.
   final pulumi.Input<String?>? sourceAmiId;
   /// Region from which the AMI will be copied. This may be the
@@ -99,7 +98,7 @@ class AmiCopyState {
   /// [imdsSupport] If EC2 instances started from this image should require the use of the Instance Metadata Service V2 (IMDSv2), set this argument to `v2.0`. For more information, see [Configure instance metadata options for new instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-IMDS-new-instances.html#configure-IMDS-new-instances-ami-configuration).
   /// [kernelId] ID of the kernel image (AKI) that will be used as the paravirtual
   /// [kmsKeyId] Full ARN of the KMS Key to use when encrypting the snapshots of an image during a copy operation. If not specified, then the default AWS KMS Key will be used
-  /// [lastLaunchedTime] Date and time, in ISO 8601 date-time format , when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported. For more information, see the following [AWS document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-last-launched-time.html).
+  /// [lastLaunchedTime] Optional.
   /// [manageEbsSnapshots] Optional.
   /// [name] Region-unique name for the AMI.
   /// [ownerId] Optional.
@@ -110,7 +109,7 @@ class AmiCopyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rootDeviceName] Name of the root device (for example, `/dev/sda1`, or `/dev/xvda`).
   /// [rootSnapshotId] Optional.
-  /// [sourceAmiId] Id of the AMI to copy. This id must be valid in the region
+  /// [sourceAmiId] ID of the AMI to copy. This ID must be valid in the region
   /// [sourceAmiRegion] Region from which the AMI will be copied. This may be the
   /// [sriovNetSupport] When set to "simple" (the default), enables enhanced networking
   /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

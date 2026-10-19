@@ -8,13 +8,14 @@ class GetBrokerNodesResult {
   final String? clusterArn;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
+  /// List of MSK Broker Nodes, sorted by broker ID in ascending order. See `nodeInfoList` Block for details.
   final List<GetBrokerNodesNodeInfoList>? nodeInfoLists;
   final String? region;
 
   /// Creates a new [GetBrokerNodesResult].
   /// [clusterArn] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [nodeInfoLists] Optional.
+  /// [nodeInfoLists] List of MSK Broker Nodes, sorted by broker ID in ascending order. See `nodeInfoList` Block for details.
   /// [region] Optional.
   const GetBrokerNodesResult({
     this.clusterArn,

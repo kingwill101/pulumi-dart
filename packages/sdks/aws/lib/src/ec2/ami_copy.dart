@@ -187,7 +187,6 @@ class AmiCopy extends pulumi.CustomResource {
   late final pulumi.Output<String> kernelId;
   /// Full ARN of the KMS Key to use when encrypting the snapshots of an image during a copy operation. If not specified, then the default AWS KMS Key will be used
   late final pulumi.Output<String> kmsKeyId;
-  /// Date and time, in ISO 8601 date-time format , when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported. For more information, see the following [AWS document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-last-launched-time.html).
   late final pulumi.Output<String> lastLaunchedTime;
   late final pulumi.Output<bool> manageEbsSnapshots;
   /// Region-unique name for the AMI.
@@ -204,7 +203,7 @@ class AmiCopy extends pulumi.CustomResource {
   /// Name of the root device (for example, `/dev/sda1`, or `/dev/xvda`).
   late final pulumi.Output<String> rootDeviceName;
   late final pulumi.Output<String> rootSnapshotId;
-  /// Id of the AMI to copy. This id must be valid in the region
+  /// ID of the AMI to copy. This ID must be valid in the region
   /// given by `sourceAmiRegion`.
   late final pulumi.Output<String> sourceAmiId;
   /// Region from which the AMI will be copied. This may be the
@@ -238,7 +237,7 @@ class AmiCopy extends pulumi.CustomResource {
           'aws:ec2/amiCopy:AmiCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     architecture = registerOutput<String>('architecture');
     arn = registerOutput<String>('arn');

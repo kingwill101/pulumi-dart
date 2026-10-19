@@ -238,13 +238,13 @@ import 'fleet_vpc_config.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.appstream.Fleet` using the id. For example:
+/// Using `pulumi import`, import `aws.appstream.Fleet` using the ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appstream/fleet:Fleet example fleetNameExample
 /// ```
 class Fleet extends pulumi.CustomResource {
-  /// ARN of the appstream fleet.
+  /// ARN of the AppStream fleet.
   late final pulumi.Output<String> arn;
   /// Configuration block for the desired capacity of the fleet. See below.
   late final pulumi.Output<FleetComputeCapacity> computeCapacity;
@@ -304,7 +304,7 @@ class Fleet extends pulumi.CustomResource {
           'aws:appstream/fleet:Fleet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     computeCapacity = registerOutput<FleetComputeCapacity>('computeCapacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetComputeCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });

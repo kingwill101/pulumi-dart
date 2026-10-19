@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'refresh_schedule_schedule_schedule_frequency.dart';
 
 class RefreshScheduleSchedule {
-  /// The type of refresh that the dataset undergoes. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
+  /// Type of refresh that the dataset undergoes. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
   final pulumi.Input<String> refreshType;
-  /// The configuration of the [schedule frequency](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshFrequency.html). See schedule_frequency.
+  /// Configuration of the [schedule frequency](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshFrequency.html). See `scheduleFrequency` Block.
   final pulumi.Input<RefreshScheduleScheduleScheduleFrequency> scheduleFrequency;
   /// Time after which the refresh schedule can be started, expressed in `YYYY-MM-DDTHH:MM:SS` format.
   final pulumi.Input<String?>? startAfterDateTime;
 
   /// Creates a new [RefreshScheduleSchedule].
-  /// [refreshType] The type of refresh that the dataset undergoes. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
-  /// [scheduleFrequency] The configuration of the [schedule frequency](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshFrequency.html). See schedule_frequency.
+  /// [refreshType] Type of refresh that the dataset undergoes. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
+  /// [scheduleFrequency] Configuration of the [schedule frequency](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshFrequency.html). See `scheduleFrequency` Block.
   /// [startAfterDateTime] Time after which the refresh schedule can be started, expressed in `YYYY-MM-DDTHH:MM:SS` format.
   const RefreshScheduleSchedule({
     required this.refreshType,

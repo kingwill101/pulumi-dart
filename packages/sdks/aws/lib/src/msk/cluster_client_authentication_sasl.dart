@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClientAuthenticationSasl {
+  /// Whether to enable IAM client authentication. Defaults to `false`.
   final pulumi.Input<bool?>? iam;
+  /// Whether to enable SCRAM client authentication via AWS Secrets Manager. Defaults to `false`.
   final pulumi.Input<bool?>? scram;
 
   /// Creates a new [ClusterClientAuthenticationSasl].
-  /// [iam] Optional.
-  /// [scram] Optional.
+  /// [iam] Whether to enable IAM client authentication. Defaults to `false`.
+  /// [scram] Whether to enable SCRAM client authentication via AWS Secrets Manager. Defaults to `false`.
   const ClusterClientAuthenticationSasl({
     this.iam,
     this.scram,

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scheduled_query_last_run_summary_error_report_location_s3_report_location.dart';
 
 class ScheduledQueryLastRunSummaryErrorReportLocation {
-  /// S3 location where error reports are written.
+  /// S3 location where error reports are written. See `recently_failed_runs.error_report_location.s3_report_location` Block for details.
   final pulumi.Input<List<ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation>?>? s3ReportLocations;
 
   /// Creates a new [ScheduledQueryLastRunSummaryErrorReportLocation].
-  /// [s3ReportLocations] S3 location where error reports are written.
+  /// [s3ReportLocations] S3 location where error reports are written. See `recently_failed_runs.error_report_location.s3_report_location` Block for details.
   const ScheduledQueryLastRunSummaryErrorReportLocation({
     this.s3ReportLocations,
   });

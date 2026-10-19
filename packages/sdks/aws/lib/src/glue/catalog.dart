@@ -811,17 +811,17 @@ class Catalog extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// ID of the parent catalog.
   late final pulumi.Output<String> catalogId;
-  /// Configuration block of properties for the catalog. See `catalogProperties` below.
+  /// Configuration block of properties for the catalog. See `catalogProperties` Block below.
   late final pulumi.Output<CatalogCatalogProperties?> catalogProperties;
-  /// List of default permissions on databases for principals. See `createDatabaseDefaultPermissions` below.
+  /// List of default permissions on databases for principals. See `createDatabaseDefaultPermissions` Block below.
   late final pulumi.Output<List<CatalogCreateDatabaseDefaultPermission>?> createDatabaseDefaultPermissions;
-  /// List of default permissions on tables for principals. See `createTableDefaultPermissions` below.
+  /// List of default permissions on tables for principals. See `createTableDefaultPermissions` Block below.
   late final pulumi.Output<List<CatalogCreateTableDefaultPermission>?> createTableDefaultPermissions;
   /// Time at which the catalog was created.
   late final pulumi.Output<String> createTime;
   /// Description of the catalog.
   late final pulumi.Output<String?> description;
-  /// Configuration block for a federated catalog. See `federatedCatalog` below.
+  /// Configuration block for a federated catalog. See `federatedCatalog` Block below.
   late final pulumi.Output<CatalogFederatedCatalog?> federatedCatalog;
   /// Name of the catalog.
   late final pulumi.Output<String> name;
@@ -835,7 +835,7 @@ class Catalog extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Configuration block for a target Redshift catalog. See `targetRedshiftCatalog` below.
+  /// Configuration block for a target Redshift catalog. See `targetRedshiftCatalog` Block below.
   late final pulumi.Output<CatalogTargetRedshiftCatalog?> targetRedshiftCatalog;
   late final pulumi.Output<CatalogTimeouts?> timeouts;
   /// Time at which the catalog was last updated.
@@ -853,7 +853,7 @@ class Catalog extends pulumi.CustomResource {
           'aws:glue/catalog:Catalog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     allowFullTableExternalDataAccess = registerOutput<String>('allowFullTableExternalDataAccess');
     arn = registerOutput<String>('arn');

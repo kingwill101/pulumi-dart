@@ -19,7 +19,7 @@ class ConnectArgs {
   final pulumi.Input<bool?>? transitGatewayDefaultRouteTablePropagation;
   /// Identifier of EC2 Transit Gateway.
   final pulumi.Input<String> transitGatewayId;
-  /// The underlaying VPC attachment
+  /// The underlying VPC attachment
   final pulumi.Input<String> transportAttachmentId;
 
   /// Creates a new [ConnectArgs].
@@ -29,7 +29,7 @@ class ConnectArgs {
   /// [transitGatewayDefaultRouteTableAssociation] Boolean whether the Connect should be associated with the EC2 Transit Gateway association default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: `true`.
   /// [transitGatewayDefaultRouteTablePropagation] Boolean whether the Connect should propagate routes with the EC2 Transit Gateway propagation default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: `true`.
   /// [transitGatewayId] Identifier of EC2 Transit Gateway.
-  /// [transportAttachmentId] The underlaying VPC attachment
+  /// [transportAttachmentId] The underlying VPC attachment
   const ConnectArgs({
     this.protocol,
     this.region,

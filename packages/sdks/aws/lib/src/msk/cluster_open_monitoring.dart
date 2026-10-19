@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_open_monitoring_prometheus.dart';
 
 class ClusterOpenMonitoring {
-  /// Configuration block for Prometheus settings for open monitoring. See openMonitoring prometheus Argument Reference below.
+  /// Configuration block for Prometheus settings for open monitoring. See `prometheus` Block below.
   final pulumi.Input<ClusterOpenMonitoringPrometheus> prometheus;
 
   /// Creates a new [ClusterOpenMonitoring].
-  /// [prometheus] Configuration block for Prometheus settings for open monitoring. See openMonitoring prometheus Argument Reference below.
+  /// [prometheus] Configuration block for Prometheus settings for open monitoring. See `prometheus` Block below.
   const ClusterOpenMonitoring({
     required this.prometheus,
   });

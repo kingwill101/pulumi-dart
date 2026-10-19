@@ -25,8 +25,8 @@ class HyperParameterTuningJobConfigStrategyConfigHyperbandStrategyConfig {
 
   factory HyperParameterTuningJobConfigStrategyConfigHyperbandStrategyConfig.fromMap(Map<String, dynamic> map) {
     return HyperParameterTuningJobConfigStrategyConfigHyperbandStrategyConfig(
-      maxResource: (() { final guardedValue = map['maxResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minResource: (() { final guardedValue = map['minResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxResource: (() { final guardedValue = map['maxResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minResource: (() { final guardedValue = map['minResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

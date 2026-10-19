@@ -4,37 +4,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering ThreatIntelSet resources.
 class ThreatIntelSetState {
-  /// Specifies whether GuardDuty is to start using the uploaded ThreatIntelSet.
+  /// Whether to start using the uploaded ThreatIntelSet.
   final pulumi.Input<bool?>? activate;
   /// ARN of the GuardDuty ThreatIntelSet.
   final pulumi.Input<String?>? arn;
-  /// The detector ID of the GuardDuty.
+  /// Detector ID of the GuardDuty.
   final pulumi.Input<String?>? detectorId;
-  /// The format of the file that contains the ThreatIntelSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
+  /// Format of the file that contains the ThreatIntelSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
   final pulumi.Input<String?>? format;
-  /// The URI of the file that contains the ThreatIntelSet.
+  /// URI of the file that contains the ThreatIntelSet.
   final pulumi.Input<String?>? location;
-  /// The friendly name to identify the ThreatIntelSet.
+  /// Friendly name to identify the ThreatIntelSet.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
   /// ID of the GuardDuty ThreatIntelSet.
   final pulumi.Input<String?>? threatIntelSetId;
 
   /// Creates a new [ThreatIntelSetState].
-  /// [activate] Specifies whether GuardDuty is to start using the uploaded ThreatIntelSet.
+  /// [activate] Whether to start using the uploaded ThreatIntelSet.
   /// [arn] ARN of the GuardDuty ThreatIntelSet.
-  /// [detectorId] The detector ID of the GuardDuty.
-  /// [format] The format of the file that contains the ThreatIntelSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
-  /// [location] The URI of the file that contains the ThreatIntelSet.
-  /// [name] The friendly name to identify the ThreatIntelSet.
+  /// [detectorId] Detector ID of the GuardDuty.
+  /// [format] Format of the file that contains the ThreatIntelSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
+  /// [location] URI of the file that contains the ThreatIntelSet.
+  /// [name] Friendly name to identify the ThreatIntelSet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [threatIntelSetId] ID of the GuardDuty ThreatIntelSet.
   const ThreatIntelSetState({
     this.activate,

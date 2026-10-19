@@ -9,43 +9,43 @@ import 'input_vpc.dart';
 
 /// The set of arguments for Input.
 class InputArgsType {
-  /// Destination settings for PUSH type inputs. See Destinations for more details.
+  /// Destination settings for PUSH type inputs. See `destinations` Block for more details.
   final pulumi.Input<List<InputDestination>?>? destinations;
-  /// Settings for the devices. See Input Devices for more details.
+  /// Settings for the devices. See `inputDevices` Block for more details.
   final pulumi.Input<List<InputInputDevice>?>? inputDevices;
   /// List of input security groups.
   final pulumi.Input<List<String>?>? inputSecurityGroups;
-  /// A list of the MediaConnect Flows. See Media Connect Flows for more details.
+  /// MediaConnect Flows. See `mediaConnectFlows` Block for more details.
   final pulumi.Input<List<InputMediaConnectFlow>?>? mediaConnectFlows;
   /// Name of the input.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The ARN of the role this input assumes during and after creation.
+  /// ARN of the role this input assumes during and after creation.
   final pulumi.Input<String?>? roleArn;
-  /// The source URLs for a PULL-type input. See Sources for more details.
+  /// Source URLs for a PULL-type input. See `sources` Block for more details.
   final pulumi.Input<List<InputSource>?>? sources;
-  /// A map of tags to assign to the Input. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the Input. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// The different types of inputs that AWS Elemental MediaLive supports.
+  /// Type of input that AWS Elemental MediaLive supports.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> type;
-  /// Settings for a private VPC Input. See VPC for more details.
+  /// Settings for a private VPC Input. See `vpc` Block for more details.
   final pulumi.Input<InputVpc?>? vpc;
 
   /// Creates a new [InputArgsType].
-  /// [destinations] Destination settings for PUSH type inputs. See Destinations for more details.
-  /// [inputDevices] Settings for the devices. See Input Devices for more details.
+  /// [destinations] Destination settings for PUSH type inputs. See `destinations` Block for more details.
+  /// [inputDevices] Settings for the devices. See `inputDevices` Block for more details.
   /// [inputSecurityGroups] List of input security groups.
-  /// [mediaConnectFlows] A list of the MediaConnect Flows. See Media Connect Flows for more details.
+  /// [mediaConnectFlows] MediaConnect Flows. See `mediaConnectFlows` Block for more details.
   /// [name] Name of the input.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [roleArn] The ARN of the role this input assumes during and after creation.
-  /// [sources] The source URLs for a PULL-type input. See Sources for more details.
-  /// [tags] A map of tags to assign to the Input. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [type] The different types of inputs that AWS Elemental MediaLive supports.
-  /// [vpc] Settings for a private VPC Input. See VPC for more details.
+  /// [roleArn] ARN of the role this input assumes during and after creation.
+  /// [sources] Source URLs for a PULL-type input. See `sources` Block for more details.
+  /// [tags] Map of tags to assign to the Input. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [type] Type of input that AWS Elemental MediaLive supports.
+  /// [vpc] Settings for a private VPC Input. See `vpc` Block for more details.
   const InputArgsType({
     this.destinations,
     this.inputDevices,

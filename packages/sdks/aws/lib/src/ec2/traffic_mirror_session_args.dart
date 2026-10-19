@@ -23,7 +23,7 @@ class TrafficMirrorSessionArgs {
   final pulumi.Input<String> trafficMirrorFilterId;
   /// ID of the traffic mirror target to be used
   final pulumi.Input<String> trafficMirrorTargetId;
-  /// The VXLAN ID for the Traffic Mirror session. For more information about the VXLAN protocol, see RFC 7348. If you do not specify a VirtualNetworkId, an account-wide unique id is chosen at random.
+  /// The VXLAN ID for the Traffic Mirror session. For more information about the VXLAN protocol, see RFC 7348. If you do not specify a VirtualNetworkId, an account-wide unique ID is chosen at random.
   final pulumi.Input<int?>? virtualNetworkId;
 
   /// Creates a new [TrafficMirrorSessionArgs].
@@ -35,7 +35,7 @@ class TrafficMirrorSessionArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [trafficMirrorFilterId] ID of the traffic mirror filter to be used
   /// [trafficMirrorTargetId] ID of the traffic mirror target to be used
-  /// [virtualNetworkId] The VXLAN ID for the Traffic Mirror session. For more information about the VXLAN protocol, see RFC 7348. If you do not specify a VirtualNetworkId, an account-wide unique id is chosen at random.
+  /// [virtualNetworkId] The VXLAN ID for the Traffic Mirror session. For more information about the VXLAN protocol, see RFC 7348. If you do not specify a VirtualNetworkId, an account-wide unique ID is chosen at random.
   const TrafficMirrorSessionArgs({
     this.description,
     required this.networkInterfaceId,
@@ -66,13 +66,13 @@ class TrafficMirrorSessionArgs {
     return TrafficMirrorSessionArgs(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkInterfaceId: pulumi.Input.fromValue(map['networkInterfaceId'] as String),
-      packetLength: (() { final guardedValue = map['packetLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      packetLength: (() { final guardedValue = map['packetLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sessionNumber: pulumi.Input.fromValue((map['sessionNumber'] as num).toInt()),
+      sessionNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sessionNumber'])),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       trafficMirrorFilterId: pulumi.Input.fromValue(map['trafficMirrorFilterId'] as String),
       trafficMirrorTargetId: pulumi.Input.fromValue(map['trafficMirrorTargetId'] as String),
-      virtualNetworkId: (() { final guardedValue = map['virtualNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      virtualNetworkId: (() { final guardedValue = map['virtualNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

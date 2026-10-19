@@ -26,7 +26,7 @@ class TargetGroupTargetHealthState {
   factory TargetGroupTargetHealthState.fromMap(Map<String, dynamic> map) {
     return TargetGroupTargetHealthState(
       enableUnhealthyConnectionTermination: pulumi.Input.fromValue(map['enableUnhealthyConnectionTermination'] as bool),
-      unhealthyDrainingInterval: (() { final guardedValue = map['unhealthyDrainingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      unhealthyDrainingInterval: (() { final guardedValue = map['unhealthyDrainingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

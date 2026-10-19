@@ -115,9 +115,9 @@ import 'vpc_block_public_access_options_timeouts.dart';
 /// $ pulumi import aws:ec2/vpcBlockPublicAccessOptions:VpcBlockPublicAccessOptions example us-east-1
 /// ```
 class VpcBlockPublicAccessOptions extends pulumi.CustomResource {
-  /// The AWS account id to which these options apply.
+  /// AWS account ID to which these options apply.
   late final pulumi.Output<String> awsAccountId;
-  /// The AWS region to which these options apply.
+  /// AWS region to which these options apply.
   late final pulumi.Output<String> awsRegion;
   /// Block mode. Needs to be one of `block-bidirectional`, `block-ingress`, `off`. If this resource is deleted, then this value will be set to `off` in the AWS account and region.
   late final pulumi.Output<String> internetGatewayBlockMode;
@@ -137,7 +137,7 @@ class VpcBlockPublicAccessOptions extends pulumi.CustomResource {
           'aws:ec2/vpcBlockPublicAccessOptions:VpcBlockPublicAccessOptions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     awsRegion = registerOutput<String>('awsRegion');

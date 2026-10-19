@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_macie2_organization_admin_account_organization_admin_account_args_doc}
 class OrganizationAdminAccountArgs {
-  /// The AWS account ID for the account to designate as the delegated Amazon Macie administrator account for the organization.
+  /// AWS account ID for the account to designate as the delegated Amazon Macie administrator account for the organization.
   final pulumi.Input<String> adminAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [OrganizationAdminAccountArgs].
-  /// [adminAccountId] The AWS account ID for the account to designate as the delegated Amazon Macie administrator account for the organization.
+  /// [adminAccountId] AWS account ID for the account to designate as the delegated Amazon Macie administrator account for the organization.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const OrganizationAdminAccountArgs({
     required this.adminAccountId,

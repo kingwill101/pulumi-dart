@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InputVpc {
-  /// A list of up to 5 EC2 VPC security group IDs to attach to the Input.
+  /// List of up to 5 EC2 VPC security group IDs to attach to the Input.
   final pulumi.Input<List<String>?>? securityGroupIds;
-  /// A list of 2 VPC subnet IDs from the same VPC.
+  /// List of 2 VPC subnet IDs from the same VPC.
   final pulumi.Input<List<String>> subnetIds;
 
   /// Creates a new [InputVpc].
-  /// [securityGroupIds] A list of up to 5 EC2 VPC security group IDs to attach to the Input.
-  /// [subnetIds] A list of 2 VPC subnet IDs from the same VPC.
+  /// [securityGroupIds] List of up to 5 EC2 VPC security group IDs to attach to the Input.
+  /// [subnetIds] List of 2 VPC subnet IDs from the same VPC.
   const InputVpc({
     this.securityGroupIds,
     required this.subnetIds,

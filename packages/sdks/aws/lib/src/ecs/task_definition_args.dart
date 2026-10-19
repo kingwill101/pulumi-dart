@@ -14,7 +14,7 @@ import 'task_definition_volume.dart';
 class TaskDefinitionArgs {
   /// List of valid [container definitions](http://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html) provided as a single valid JSON document. Please note that you should only provide values that are part of the container definition document. For a detailed description of what parameters are available, see the [Task Definition Parameters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html) section from the official [Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide).
   final pulumi.Input<String> containerDefinitions;
-  /// Number of cpu units used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
+  /// Number of CPU units used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
   final pulumi.Input<String?>? cpu;
   /// Enables fault injection and allows for fault injection requests to be accepted from the task's containers. Default is `false`.
   final pulumi.Input<bool?>? enableFaultInjection;
@@ -61,7 +61,7 @@ class TaskDefinitionArgs {
 
   /// Creates a new [TaskDefinitionArgs].
   /// [containerDefinitions] List of valid [container definitions](http://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html) provided as a single valid JSON document. Please note that you should only provide values that are part of the container definition document. For a detailed description of what parameters are available, see the [Task Definition Parameters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html) section from the official [Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide).
-  /// [cpu] Number of cpu units used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
+  /// [cpu] Number of CPU units used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
   /// [enableFaultInjection] Enables fault injection and allows for fault injection requests to be accepted from the task's containers. Default is `false`.
   /// [ephemeralStorage] Amount of ephemeral storage to allocate for the task. This parameter is used to expand the total amount of ephemeral storage available, beyond the default amount, for tasks hosted on AWS Fargate. See Ephemeral Storage.
   /// [executionRoleArn] ARN of the task execution role that the Amazon ECS container agent and the Docker daemon can assume.

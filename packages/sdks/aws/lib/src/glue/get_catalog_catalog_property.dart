@@ -7,15 +7,15 @@ import 'get_catalog_catalog_property_iceberg_optimization_property.dart';
 class GetCatalogCatalogProperty {
   /// Map of custom key-value pairs for the catalog properties.
   final pulumi.Input<Map<String, String>> customProperties;
-  /// Data lake access properties. See `dataLakeAccessProperties` below.
+  /// Data lake access properties. See `dataLakeAccessProperties` Block below.
   final pulumi.Input<List<GetCatalogCatalogPropertyDataLakeAccessProperty>> dataLakeAccessProperties;
-  /// Iceberg optimization properties. See `icebergOptimizationProperties` below.
+  /// Iceberg optimization properties. See `icebergOptimizationProperties` Block below.
   final pulumi.Input<List<GetCatalogCatalogPropertyIcebergOptimizationProperty>> icebergOptimizationProperties;
 
   /// Creates a new [GetCatalogCatalogProperty].
   /// [customProperties] Map of custom key-value pairs for the catalog properties.
-  /// [dataLakeAccessProperties] Data lake access properties. See `dataLakeAccessProperties` below.
-  /// [icebergOptimizationProperties] Iceberg optimization properties. See `icebergOptimizationProperties` below.
+  /// [dataLakeAccessProperties] Data lake access properties. See `dataLakeAccessProperties` Block below.
+  /// [icebergOptimizationProperties] Iceberg optimization properties. See `icebergOptimizationProperties` Block below.
   const GetCatalogCatalogProperty({
     required this.customProperties,
     required this.dataLakeAccessProperties,

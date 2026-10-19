@@ -3,15 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping {
+  /// Caption channel to install in the output.
   final pulumi.Input<int> captionChannel;
+  /// Three-character ISO 639-2 language code.
   final pulumi.Input<String> languageCode;
-  /// Human readable information to indicate captions available for players (eg. English, or Spanish).
+  /// Textual description of the language.
   final pulumi.Input<String> languageDescription;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping].
-  /// [captionChannel] Required.
-  /// [languageCode] Required.
-  /// [languageDescription] Human readable information to indicate captions available for players (eg. English, or Spanish).
+  /// [captionChannel] Caption channel to install in the output.
+  /// [languageCode] Three-character ISO 639-2 language code.
+  /// [languageDescription] Textual description of the language.
   const ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping({
     required this.captionChannel,
     required this.languageCode,
@@ -28,7 +30,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptio
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping(
-      captionChannel: pulumi.Input.fromValue((map['captionChannel'] as num).toInt()),
+      captionChannel: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['captionChannel'])),
       languageCode: pulumi.Input.fromValue(map['languageCode'] as String),
       languageDescription: pulumi.Input.fromValue(map['languageDescription'] as String),
     );

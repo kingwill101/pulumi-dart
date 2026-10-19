@@ -277,11 +277,11 @@ class CatalogDatabase extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
   late final pulumi.Output<String> catalogId;
-  /// Creates a set of default permissions on the table for principals. See `createTableDefaultPermission` below.
+  /// Creates a set of default permissions on the table for principals. See `createTableDefaultPermission` Block below.
   late final pulumi.Output<List<CatalogDatabaseCreateTableDefaultPermission>> createTableDefaultPermissions;
   /// Description of the database.
   late final pulumi.Output<String?> description;
-  /// Configuration block that references an entity outside the AWS Glue Data Catalog. See `federatedDatabase` below.
+  /// Configuration block that references an entity outside the AWS Glue Data Catalog. See `federatedDatabase` Block below.
   late final pulumi.Output<CatalogDatabaseFederatedDatabase?> federatedDatabase;
   /// Location of the database (for example, an HDFS path).
   late final pulumi.Output<String> locationUri;
@@ -293,9 +293,9 @@ class CatalogDatabase extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Configuration block for a target database for resource linking. See `targetDatabase` below.
+  /// Configuration block for a target database for resource linking. See `targetDatabase` Block below.
   late final pulumi.Output<CatalogDatabaseTargetDatabase?> targetDatabase;
 
   /// Creates a new [CatalogDatabase].
@@ -310,7 +310,7 @@ class CatalogDatabase extends pulumi.CustomResource {
           'aws:glue/catalogDatabase:CatalogDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     catalogId = registerOutput<String>('catalogId');

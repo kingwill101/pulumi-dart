@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersTwitter {
-  /// The maximum number of rows to query.
+  /// Maximum number of rows to query.
   final pulumi.Input<int> maxRows;
-  /// The Twitter query to retrieve the data.
+  /// Twitter query to retrieve the data.
   final pulumi.Input<String> query;
 
   /// Creates a new [DataSourceParametersTwitter].
-  /// [maxRows] The maximum number of rows to query.
-  /// [query] The Twitter query to retrieve the data.
+  /// [maxRows] Maximum number of rows to query.
+  /// [query] Twitter query to retrieve the data.
   const DataSourceParametersTwitter({
     required this.maxRows,
     required this.query,
@@ -25,7 +25,7 @@ class DataSourceParametersTwitter {
 
   factory DataSourceParametersTwitter.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersTwitter(
-      maxRows: pulumi.Input.fromValue((map['maxRows'] as num).toInt()),
+      maxRows: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRows'])),
       query: pulumi.Input.fromValue(map['query'] as String),
     );
   }

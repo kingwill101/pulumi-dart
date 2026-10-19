@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_action_allow_custom_request_handling_insert_header.dart';
 
 class RuleGroupRuleActionAllowCustomRequestHandling {
-  /// The `insertHeader` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
+  /// `insertHeader` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
   final pulumi.Input<List<RuleGroupRuleActionAllowCustomRequestHandlingInsertHeader>> insertHeaders;
 
   /// Creates a new [RuleGroupRuleActionAllowCustomRequestHandling].
-  /// [insertHeaders] The `insertHeader` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
+  /// [insertHeaders] `insertHeader` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
   const RuleGroupRuleActionAllowCustomRequestHandling({
     required this.insertHeaders,
   });

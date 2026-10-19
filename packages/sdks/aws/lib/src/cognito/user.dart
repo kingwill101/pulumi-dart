@@ -472,7 +472,7 @@ class User extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// current user status.
   late final pulumi.Output<String> status;
-  /// unique user id that is never reassignable to another user.
+  /// unique user ID that is never reassignable to another user.
   late final pulumi.Output<String> sub;
   /// The user's temporary password. Conflicts with `password`.
   late final pulumi.Output<String?> temporaryPassword;
@@ -499,7 +499,7 @@ class User extends pulumi.CustomResource {
           'aws:cognito/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
           additionalSecretOutputs: const ['password', 'temporaryPassword'],
         ) {
     attributes = registerOutput<Map<String, String>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

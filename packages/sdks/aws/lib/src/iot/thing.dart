@@ -128,7 +128,7 @@ import 'thing_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import IOT Things using the name. For example:
+/// Using `pulumi import`, import IoT Things using the name. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:iot/thing:Thing example example
@@ -161,7 +161,7 @@ class Thing extends pulumi.CustomResource {
           'aws:iot/thing:Thing',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attributes = registerOutput<Map<String, String>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

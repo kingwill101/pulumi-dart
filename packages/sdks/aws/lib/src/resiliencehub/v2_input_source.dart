@@ -425,6 +425,227 @@ import 'v2_input_source_state.dart';
 /// ```
 ///
 ///
+/// ### EKS Cluster Scoped by Labels
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.resiliencehub.V2InputSource("example", {
+///     resourceConfiguration: {
+///         eks: {
+///             labelSelector: {
+///                 matchExpressions: [{
+///                     key: "deprecated",
+///                     operator: "DOES_NOT_EXIST",
+///                 }],
+///                 matchLabels: {
+///                     app: "payments",
+///                 },
+///             },
+///             clusterArn: "arn:aws:eks:us-west-2:123456789012:cluster/my-cluster",
+///             namespaces: ["default"],
+///         },
+///     },
+///     serviceArn: exampleAwsResiliencehubv2Service.arn,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.resiliencehub.V2InputSource("example",
+///     resource_configuration={
+///         "eks": {
+///             "label_selector": {
+///                 "match_expressions": [{
+///                     "key": "deprecated",
+///                     "operator": "DOES_NOT_EXIST",
+///                 }],
+///                 "match_labels": {
+///                     "app": "payments",
+///                 },
+///             },
+///             "cluster_arn": "arn:aws:eks:us-west-2:123456789012:cluster/my-cluster",
+///             "namespaces": ["default"],
+///         },
+///     },
+///     service_arn=example_aws_resiliencehubv2_service["arn"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.ResilienceHub.V2InputSource("example", new()
+///     {
+///         ResourceConfiguration = new Aws.ResilienceHub.Inputs.V2InputSourceResourceConfigurationArgs
+///         {
+///             Eks = new Aws.ResilienceHub.Inputs.V2InputSourceResourceConfigurationEksArgs
+///             {
+///                 LabelSelector = new Aws.ResilienceHub.Inputs.V2InputSourceResourceConfigurationEksLabelSelectorArgs
+///                 {
+///                     MatchExpressions = new[]
+///                     {
+///                         new Aws.ResilienceHub.Inputs.V2InputSourceResourceConfigurationEksLabelSelectorMatchExpressionArgs
+///                         {
+///                             Key = "deprecated",
+///                             Operator = "DOES_NOT_EXIST",
+///                         },
+///                     },
+///                     MatchLabels =
+///                     {
+///                         { "app", "payments" },
+///                     },
+///                 },
+///                 ClusterArn = "arn:aws:eks:us-west-2:123456789012:cluster/my-cluster",
+///                 Namespaces = new[]
+///                 {
+///                     "default",
+///                 },
+///             },
+///         },
+///         ServiceArn = exampleAwsResiliencehubv2Service.Arn,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/resiliencehub"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := resiliencehub.NewV2InputSource(ctx, "example", &resiliencehub.V2InputSourceArgs{
+/// 			ResourceConfiguration: &resiliencehub.V2InputSourceResourceConfigurationArgs{
+/// 				Eks: &resiliencehub.V2InputSourceResourceConfigurationEksArgs{
+/// 					LabelSelector: &resiliencehub.V2InputSourceResourceConfigurationEksLabelSelectorArgs{
+/// 						MatchExpressions: resiliencehub.V2InputSourceResourceConfigurationEksLabelSelectorMatchExpressionArray{
+/// 							&resiliencehub.V2InputSourceResourceConfigurationEksLabelSelectorMatchExpressionArgs{
+/// 								Key:      pulumi.String("deprecated"),
+/// 								Operator: pulumi.String("DOES_NOT_EXIST"),
+/// 							},
+/// 						},
+/// 						MatchLabels: pulumi.StringMap{
+/// 							"app": pulumi.String("payments"),
+/// 						},
+/// 					},
+/// 					ClusterArn: pulumi.String("arn:aws:eks:us-west-2:123456789012:cluster/my-cluster"),
+/// 					Namespaces: pulumi.StringArray{
+/// 						pulumi.String("default"),
+/// 					},
+/// 				},
+/// 			},
+/// 			ServiceArn: pulumi.Any(exampleAwsResiliencehubv2Service.Arn),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_resiliencehub_v2inputsource" "example" {
+///   resource_configuration = {
+///     eks = {
+///       label_selector = {
+///         match_expressions = [{
+///           "key"      = "deprecated"
+///           "operator" = "DOES_NOT_EXIST"
+///         }]
+///         match_labels = {
+///           "app" = "payments"
+///         }
+///       }
+///       cluster_arn = "arn:aws:eks:us-west-2:123456789012:cluster/my-cluster"
+///       namespaces  = ["default"]
+///     }
+///   }
+///   service_arn = exampleAwsResiliencehubv2Service.arn
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.resiliencehub.V2InputSource;
+/// import com.pulumi.aws.resiliencehub.V2InputSourceArgs;
+/// import com.pulumi.aws.resiliencehub.inputs.V2InputSourceResourceConfigurationArgs;
+/// import com.pulumi.aws.resiliencehub.inputs.V2InputSourceResourceConfigurationEksArgs;
+/// import com.pulumi.aws.resiliencehub.inputs.V2InputSourceResourceConfigurationEksLabelSelectorArgs;
+/// import com.pulumi.aws.resiliencehub.inputs.V2InputSourceResourceConfigurationEksLabelSelectorMatchExpressionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new V2InputSource("example", V2InputSourceArgs.builder()
+///             .resourceConfiguration(V2InputSourceResourceConfigurationArgs.builder()
+///                 .eks(V2InputSourceResourceConfigurationEksArgs.builder()
+///                     .labelSelector(V2InputSourceResourceConfigurationEksLabelSelectorArgs.builder()
+///                         .matchExpressions(V2InputSourceResourceConfigurationEksLabelSelectorMatchExpressionArgs.builder()
+///                             .key("deprecated")
+///                             .operator("DOES_NOT_EXIST")
+///                             .build())
+///                         .matchLabels(Map.of("app", "payments"))
+///                         .build())
+///                     .clusterArn("arn:aws:eks:us-west-2:123456789012:cluster/my-cluster")
+///                     .namespaces("default")
+///                     .build())
+///                 .build())
+///             .serviceArn(exampleAwsResiliencehubv2Service.arn())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:resiliencehub:V2InputSource
+///     properties:
+///       resourceConfiguration:
+///         eks:
+///           labelSelector:
+///             matchExpressions:
+///               - key: deprecated
+///                 operator: DOES_NOT_EXIST
+///             matchLabels:
+///               app: payments
+///           clusterArn: arn:aws:eks:us-west-2:123456789012:cluster/my-cluster
+///           namespaces:
+///             - default
+///       serviceArn: ${exampleAwsResiliencehubv2Service.arn}
+/// ```
+///
+///
 /// ## Import
 ///
 /// ### Identity Schema
@@ -469,7 +690,7 @@ class V2InputSource extends pulumi.CustomResource {
           'aws:resiliencehub/v2InputSource:V2InputSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     inputSourceId = registerOutput<String>('inputSourceId');
     region = registerOutput<String>('region');

@@ -8,33 +8,42 @@ import 'platform_application_state.dart';
 ///
 /// ### Apple Push Notification Service (APNS) using certificate-based authentication
 ///
+/// &gt; **NOTE:** For certificate-based APNS, both `platformCredential` (private key) and `platformPrincipal` (certificate) must be PEM-encoded strings. Terraform string values must be valid UTF-8, so do not pass a binary Apple `.p12` via `base64decode()` — that fails with `the result of decoding the provided string is not valid UTF-8`. Convert the `.p12` to PEM (for example with `openssl`) and load the PEM files instead.
+///
 ///
 /// ```typescript
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
+/// import * as std from "@pulumi/std";
 ///
 /// const apnsApplication = new aws.sns.PlatformApplication("apns_application", {
 ///     name: "apns_application",
 ///     platform: "APNS",
-///     platformCredential: "<APNS PRIVATE KEY>",
-///     platformPrincipal: "<APNS CERTIFICATE>",
+///     platformCredential: std.file({
+///         input: "apns-private-key.pem",
+///     }).then(invoke => invoke.result),
+///     platformPrincipal: std.file({
+///         input: "apns-certificate.pem",
+///     }).then(invoke => invoke.result),
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
+/// import pulumi_std as std
 ///
 /// apns_application = aws.sns.PlatformApplication("apns_application",
 ///     name="apns_application",
 ///     platform="APNS",
-///     platform_credential="<APNS PRIVATE KEY>",
-///     platform_principal="<APNS CERTIFICATE>")
+///     platform_credential=std.file(input="apns-private-key.pem").result,
+///     platform_principal=std.file(input="apns-certificate.pem").result)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
 /// using Pulumi;
 /// using Aws = Pulumi.Aws;
+/// using Std = Pulumi.Std;
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
@@ -42,8 +51,14 @@ import 'platform_application_state.dart';
 ///     {
 ///         Name = "apns_application",
 ///         Platform = "APNS",
-///         PlatformCredential = "<APNS PRIVATE KEY>",
-///         PlatformPrincipal = "<APNS CERTIFICATE>",
+///         PlatformCredential = Std.File.Invoke(new()
+///         {
+///             Input = "apns-private-key.pem",
+///         }).Apply(invoke => invoke.Result),
+///         PlatformPrincipal = Std.File.Invoke(new()
+///         {
+///             Input = "apns-certificate.pem",
+///         }).Apply(invoke => invoke.Result),
 ///     });
 ///
 /// });
@@ -53,16 +68,29 @@ import 'platform_application_state.dart';
 ///
 /// import (
 /// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/sns"
+/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := sns.NewPlatformApplication(ctx, "apns_application", &sns.PlatformApplicationArgs{
+/// 		invokeFile, err := std.File(ctx, &std.FileArgs{
+/// 			Input: "apns-private-key.pem",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeFile1, err := std.File(ctx, &std.FileArgs{
+/// 			Input: "apns-certificate.pem",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = sns.NewPlatformApplication(ctx, "apns_application", &sns.PlatformApplicationArgs{
 /// 			Name:               pulumi.String("apns_application"),
 /// 			Platform:           pulumi.String("APNS"),
-/// 			PlatformCredential: pulumi.String("<APNS PRIVATE KEY>"),
-/// 			PlatformPrincipal:  pulumi.String("<APNS CERTIFICATE>"),
+/// 			PlatformCredential: pulumi.String(invokeFile.Result),
+/// 			PlatformPrincipal:  pulumi.String(invokeFile1.Result),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -77,14 +105,17 @@ import 'platform_application_state.dart';
 ///     aws = {
 ///       source = "pulumi/aws"
 ///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
 ///   }
 /// }
 ///
 /// resource "aws_sns_platformapplication" "apns_application" {
 ///   name                = "apns_application"
 ///   platform            = "APNS"
-///   platform_credential = "<APNS PRIVATE KEY>"
-///   platform_principal  = "<APNS CERTIFICATE>"
+///   platform_credential = file("apns-private-key.pem")
+///   platform_principal  = file("apns-certificate.pem")
 /// }
 /// ```
 /// ```java
@@ -95,6 +126,8 @@ import 'platform_application_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.sns.PlatformApplication;
 /// import com.pulumi.aws.sns.PlatformApplicationArgs;
+/// import com.pulumi.std.StdFunctions;
+/// import com.pulumi.std.inputs.FileArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -111,8 +144,12 @@ import 'platform_application_state.dart';
 ///         var apnsApplication = new PlatformApplication("apnsApplication", PlatformApplicationArgs.builder()
 ///             .name("apns_application")
 ///             .platform("APNS")
-///             .platformCredential("<APNS PRIVATE KEY>")
-///             .platformPrincipal("<APNS CERTIFICATE>")
+///             .platformCredential(StdFunctions.file(FileArgs.builder()
+///                 .input("apns-private-key.pem")
+///                 .build()).result())
+///             .platformPrincipal(StdFunctions.file(FileArgs.builder()
+///                 .input("apns-certificate.pem")
+///                 .build()).result())
 ///             .build());
 ///
 ///     }
@@ -126,8 +163,18 @@ import 'platform_application_state.dart';
 ///     properties:
 ///       name: apns_application
 ///       platform: APNS
-///       platformCredential: <APNS PRIVATE KEY>
-///       platformPrincipal: <APNS CERTIFICATE>
+///       platformCredential:
+///         fn::invoke:
+///           function: std:file
+///           arguments:
+///             input: apns-private-key.pem
+///           return: result
+///       platformPrincipal:
+///         fn::invoke:
+///           function: std:file
+///           arguments:
+///             input: apns-certificate.pem
+///           return: result
 /// ```
 ///
 ///
@@ -441,7 +488,7 @@ class PlatformApplication extends pulumi.CustomResource {
           'aws:sns/platformApplication:PlatformApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
           additionalSecretOutputs: const ['platformCredential', 'platformPrincipal'],
         ) {
     applePlatformBundleId = registerOutput<String?>('applePlatformBundleId');

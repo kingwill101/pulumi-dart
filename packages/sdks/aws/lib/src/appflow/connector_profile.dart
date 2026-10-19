@@ -524,7 +524,7 @@ import 'connector_profile_state.dart';
 ///
 /// #### Required
 ///
-/// * `name` (String) Name of the Appflow connector profile.
+/// * `name` (String) Name of the AppFlow connector profile.
 ///
 /// #### Optional
 ///
@@ -569,7 +569,7 @@ class ConnectorProfile extends pulumi.CustomResource {
           'aws:appflow/connectorProfile:ConnectorProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionMode = registerOutput<String>('connectionMode');

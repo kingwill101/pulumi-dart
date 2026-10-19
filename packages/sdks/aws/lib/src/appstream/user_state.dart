@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering User resources.
 class UserState {
-  /// ARN of the appstream user.
+  /// ARN of the AppStream user.
   final pulumi.Input<String?>? arn;
   /// Authentication type for the user. You must specify USERPOOL. Valid values: `API`, `SAML`, `USERPOOL`
   final pulumi.Input<String?>? authenticationType;
@@ -26,7 +26,7 @@ class UserState {
   final pulumi.Input<String?>? userName;
 
   /// Creates a new [UserState].
-  /// [arn] ARN of the appstream user.
+  /// [arn] ARN of the AppStream user.
   /// [authenticationType] Authentication type for the user. You must specify USERPOOL. Valid values: `API`, `SAML`, `USERPOOL`
   /// [createdTime] Date and time, in UTC and extended RFC 3339 format, when the user was created.
   /// [enabled] Whether the user in the user pool is enabled.

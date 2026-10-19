@@ -13,7 +13,7 @@ class StackState {
   final pulumi.Input<List<StackAccessEndpoint>?>? accessEndpoints;
   /// Settings for application settings persistence. See `applicationSettings` below.
   final pulumi.Input<StackApplicationSettings?>? applicationSettings;
-  /// ARN of the appstream stack.
+  /// ARN of the AppStream stack.
   final pulumi.Input<String?>? arn;
   /// Date and time, in UTC and extended RFC 3339 format, when the stack was created.
   final pulumi.Input<String?>? createdTime;
@@ -46,7 +46,7 @@ class StackState {
   /// Creates a new [StackState].
   /// [accessEndpoints] Set of configuration blocks defining the interface VPC endpoints. Users of the stack can connect to AppStream 2.0 only through the specified endpoints. See `accessEndpoints` below.
   /// [applicationSettings] Settings for application settings persistence. See `applicationSettings` below.
-  /// [arn] ARN of the appstream stack.
+  /// [arn] ARN of the AppStream stack.
   /// [createdTime] Date and time, in UTC and extended RFC 3339 format, when the stack was created.
   /// [description] Description for the AppStream stack.
   /// [displayName] Stack name to display.

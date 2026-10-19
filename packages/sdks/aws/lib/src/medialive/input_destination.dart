@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InputDestination {
-  /// A unique name for the location the RTMP stream is being pushed to.
+  /// Unique name for the location the RTMP stream is being pushed to.
   final pulumi.Input<String> streamName;
 
   /// Creates a new [InputDestination].
-  /// [streamName] A unique name for the location the RTMP stream is being pushed to.
+  /// [streamName] Unique name for the location the RTMP stream is being pushed to.
   const InputDestination({
     required this.streamName,
   });

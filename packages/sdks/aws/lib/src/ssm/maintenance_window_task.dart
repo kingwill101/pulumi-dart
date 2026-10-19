@@ -1091,7 +1091,7 @@ class MaintenanceWindowTask extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The role that should be assumed when executing the task. If a role is not provided, Systems Manager uses your account's service-linked role. If no service-linked role for Systems Manager exists in your account, it is created for you.
   late final pulumi.Output<String> serviceRoleArn;
-  /// The targets (either instances or window target ids). Instances are specified using Key=InstanceIds,Values=instanceid1,instanceid2. Window target ids are specified using Key=WindowTargetIds,Values=window target id1, window target id2.
+  /// The targets (either instances or window target IDs). Instances are specified using Key=InstanceIds,Values=instanceid1,instanceid2. Window target IDs are specified using Key=WindowTargetIds,Values=window target id1, window target id2.
   late final pulumi.Output<List<MaintenanceWindowTaskTarget>?> targets;
   /// The ARN of the task to execute.
   late final pulumi.Output<String> taskArn;
@@ -1099,7 +1099,7 @@ class MaintenanceWindowTask extends pulumi.CustomResource {
   late final pulumi.Output<MaintenanceWindowTaskTaskInvocationParameters?> taskInvocationParameters;
   /// The type of task being registered. Valid values: `AUTOMATION`, `LAMBDA`, `RUN_COMMAND` or `STEP_FUNCTIONS`.
   late final pulumi.Output<String> taskType;
-  /// The Id of the maintenance window to register the task with.
+  /// The ID of the maintenance window to register the task with.
   late final pulumi.Output<String> windowId;
   /// The ID of the maintenance window task.
   late final pulumi.Output<String> windowTaskId;
@@ -1116,7 +1116,7 @@ class MaintenanceWindowTask extends pulumi.CustomResource {
           'aws:ssm/maintenanceWindowTask:MaintenanceWindowTask',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cutoffBehavior = registerOutput<String?>('cutoffBehavior');

@@ -109,7 +109,7 @@ class ReplicationConfigurationTemplateArgs {
     return ReplicationConfigurationTemplateArgs(
       associateDefaultSecurityGroup: pulumi.Input.fromValue(map['associateDefaultSecurityGroup'] as bool),
       autoReplicateNewDisks: (() { final guardedValue = map['autoReplicateNewDisks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      bandwidthThrottling: pulumi.Input.fromValue((map['bandwidthThrottling'] as num).toInt()),
+      bandwidthThrottling: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bandwidthThrottling'])),
       createPublicIp: pulumi.Input.fromValue(map['createPublicIp'] as bool),
       dataPlaneRouting: pulumi.Input.fromValue(map['dataPlaneRouting'] as String),
       defaultLargeStagingDiskType: pulumi.Input.fromValue(map['defaultLargeStagingDiskType'] as String),

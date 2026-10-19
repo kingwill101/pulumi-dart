@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomRoutingListenerPortRange {
-  /// The first port in the range of ports, inclusive.
+  /// First port in the range of ports, inclusive.
   final pulumi.Input<int?>? fromPort;
-  /// The last port in the range of ports, inclusive.
+  /// Last port in the range of ports, inclusive.
   final pulumi.Input<int?>? toPort;
 
   /// Creates a new [CustomRoutingListenerPortRange].
-  /// [fromPort] The first port in the range of ports, inclusive.
-  /// [toPort] The last port in the range of ports, inclusive.
+  /// [fromPort] First port in the range of ports, inclusive.
+  /// [toPort] Last port in the range of ports, inclusive.
   const CustomRoutingListenerPortRange({
     this.fromPort,
     this.toPort,
@@ -25,8 +25,8 @@ class CustomRoutingListenerPortRange {
 
   factory CustomRoutingListenerPortRange.fromMap(Map<String, dynamic> map) {
     return CustomRoutingListenerPortRange(
-      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

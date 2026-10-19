@@ -6,12 +6,12 @@ import 'firehose_delivery_stream_splunk_configuration_processing_configuration_p
 class FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration {
   /// Enables or disables data processing.
   final pulumi.Input<bool?>? enabled;
-  /// Specifies the data processors as multiple blocks. See `processors` block below for details.
+  /// Data processors as multiple blocks. See `processors` block below for details.
   final pulumi.Input<List<FirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessor>?>? processors;
 
   /// Creates a new [FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.
-  /// [processors] Specifies the data processors as multiple blocks. See `processors` block below for details.
+  /// [processors] Data processors as multiple blocks. See `processors` block below for details.
   const FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration({
     this.enabled,
     this.processors,

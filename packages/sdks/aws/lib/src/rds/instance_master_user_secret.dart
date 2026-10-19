@@ -3,18 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceMasterUserSecret {
-  /// The ARN for the KMS encryption key. If creating an
-  /// encrypted replica, set this to the destination KMS ARN.
+  /// ARN for the KMS encryption key. If creating an encrypted replica, set this to the destination KMS ARN.
   final pulumi.Input<String?>? kmsKeyId;
   /// ARN of the secret.
   final pulumi.Input<String?>? secretArn;
-  /// The status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
+  /// Status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
   final pulumi.Input<String?>? secretStatus;
 
   /// Creates a new [InstanceMasterUserSecret].
-  /// [kmsKeyId] The ARN for the KMS encryption key. If creating an
+  /// [kmsKeyId] ARN for the KMS encryption key. If creating an encrypted replica, set this to the destination KMS ARN.
   /// [secretArn] ARN of the secret.
-  /// [secretStatus] The status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
+  /// [secretStatus] Status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
   const InstanceMasterUserSecret({
     this.kmsKeyId,
     this.secretArn,

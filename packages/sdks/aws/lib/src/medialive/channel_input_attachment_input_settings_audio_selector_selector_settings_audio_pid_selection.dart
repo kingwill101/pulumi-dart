@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection {
-  /// Selects a specific PID from within a source.
+  /// PID from within a source.
   final pulumi.Input<int> pid;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection].
-  /// [pid] Selects a specific PID from within a source.
+  /// [pid] PID from within a source.
   const ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection({
     required this.pid,
   });
@@ -20,7 +20,7 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSe
 
   factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection(
-      pid: pulumi.Input.fromValue((map['pid'] as num).toInt()),
+      pid: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['pid'])),
     );
   }
 }

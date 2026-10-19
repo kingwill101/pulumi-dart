@@ -4,7 +4,7 @@ import 'default_domain_state.dart';
 
 /// Manages the default mail domain for an AWS WorkMail organization.
 ///
-/// &gt; **NOTE:** This does not register a domain for workmail. This resource requires a verified domain name to be used as default domain for workmail organization.
+/// &gt; **NOTE:** This does not register a domain for WorkMail. This resource requires a verified domain name to be used as default domain for WorkMail organization.
 ///
 /// ## Example Usage
 ///
@@ -184,7 +184,7 @@ class DefaultDomain extends pulumi.CustomResource {
           'aws:workmail/defaultDomain:DefaultDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     domainName = registerOutput<String>('domainName');
     organizationId = registerOutput<String>('organizationId');

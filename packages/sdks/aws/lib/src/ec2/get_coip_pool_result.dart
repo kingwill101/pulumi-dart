@@ -5,7 +5,7 @@ import 'get_coip_pool_filter.dart';
 
 /// Result data returned by getCoipPool.
 class GetCoipPoolResult {
-  /// ARN of the COIP pool
+  /// ARN of the CoIP pool
   final String? arn;
   final List<GetCoipPoolFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
@@ -18,7 +18,7 @@ class GetCoipPoolResult {
   final Map<String, String>? tags;
 
   /// Creates a new [GetCoipPoolResult].
-  /// [arn] ARN of the COIP pool
+  /// [arn] ARN of the CoIP pool
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [localGatewayRouteTableId] Optional.

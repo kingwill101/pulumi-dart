@@ -4,12 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'detector_datasources_kubernetes_audit_logs.dart';
 
 class DetectorDatasourcesKubernetes {
-  /// Configures Kubernetes audit logs as a data source for [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
-  /// See Kubernetes Audit Logs below for more details.
+  /// Configures Kubernetes audit logs as a data source for [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html). See `auditLogs` below for more details.
   final pulumi.Input<DetectorDatasourcesKubernetesAuditLogs> auditLogs;
 
   /// Creates a new [DetectorDatasourcesKubernetes].
-  /// [auditLogs] Configures Kubernetes audit logs as a data source for [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
+  /// [auditLogs] Configures Kubernetes audit logs as a data source for [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html). See `auditLogs` below for more details.
   const DetectorDatasourcesKubernetes({
     required this.auditLogs,
   });

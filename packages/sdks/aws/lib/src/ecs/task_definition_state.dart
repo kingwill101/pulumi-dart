@@ -15,7 +15,7 @@ class TaskDefinitionState {
   final pulumi.Input<String?>? arnWithoutRevision;
   /// List of valid [container definitions](http://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html) provided as a single valid JSON document. Please note that you should only provide values that are part of the container definition document. For a detailed description of what parameters are available, see the [Task Definition Parameters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html) section from the official [Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide).
   final pulumi.Input<String?>? containerDefinitions;
-  /// Number of cpu units used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
+  /// Number of CPU units used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
   final pulumi.Input<String?>? cpu;
   /// Enables fault injection and allows for fault injection requests to be accepted from the task's containers. Default is `false`.
   final pulumi.Input<bool?>? enableFaultInjection;
@@ -68,7 +68,7 @@ class TaskDefinitionState {
   /// [arn] Full ARN of the Task Definition (including both `family` and `revision`).
   /// [arnWithoutRevision] ARN of the Task Definition with the trailing `revision` removed. This may be useful for situations where the latest task definition is always desired. If a revision isn't specified, the latest ACTIVE revision is used. See the [AWS documentation](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_StartTask.html#ECS-StartTask-request-taskDefinition) for details.
   /// [containerDefinitions] List of valid [container definitions](http://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html) provided as a single valid JSON document. Please note that you should only provide values that are part of the container definition document. For a detailed description of what parameters are available, see the [Task Definition Parameters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html) section from the official [Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide).
-  /// [cpu] Number of cpu units used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
+  /// [cpu] Number of CPU units used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
   /// [enableFaultInjection] Enables fault injection and allows for fault injection requests to be accepted from the task's containers. Default is `false`.
   /// [ephemeralStorage] Amount of ephemeral storage to allocate for the task. This parameter is used to expand the total amount of ephemeral storage available, beyond the default amount, for tasks hosted on AWS Fargate. See Ephemeral Storage.
   /// [executionRoleArn] ARN of the task execution role that the Amazon ECS container agent and the Docker daemon can assume.
@@ -163,7 +163,7 @@ class TaskDefinitionState {
       proxyConfiguration: (() { final guardedValue = map['proxyConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TaskDefinitionProxyConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requiresCompatibilities: (() { final guardedValue = map['requiresCompatibilities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       runtimePlatform: (() { final guardedValue = map['runtimePlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TaskDefinitionRuntimePlatform.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       skipDestroy: (() { final guardedValue = map['skipDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

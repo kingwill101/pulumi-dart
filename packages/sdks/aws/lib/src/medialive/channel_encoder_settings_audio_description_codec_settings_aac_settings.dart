@@ -5,33 +5,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings {
   /// Average bitrate in bits/second.
   final pulumi.Input<double?>? bitrate;
-  /// Mono, Stereo, or 5.1 channel layout.
+  /// Mono, stereo, or 5.1 channel layout.
   final pulumi.Input<String?>? codingMode;
-  /// Set to "broadcasterMixedAd" when input contains pre-mixed main audio + AD (narration) as a stereo pair.
+  /// Set to `broadcasterMixedAd` when input contains pre-mixed main audio and AD (narration) as a stereo pair.
   final pulumi.Input<String?>? inputType;
   /// AAC profile.
   final pulumi.Input<String?>? profile;
-  /// The rate control mode.
+  /// Rate control mode.
   final pulumi.Input<String?>? rateControlMode;
   /// Sets LATM/LOAS AAC output for raw containers.
   final pulumi.Input<String?>? rawFormat;
   /// Sample rate in Hz.
   final pulumi.Input<double?>? sampleRate;
-  /// Use MPEG-2 AAC audio instead of MPEG-4 AAC audio for raw or MPEG-2 Transport Stream containers.
+  /// Whether to use MPEG-2 AAC audio instead of MPEG-4 AAC audio for raw or MPEG-2 Transport Stream containers.
   final pulumi.Input<String?>? spec;
-  /// VBR Quality Level - Only used if rateControlMode is VBR.
+  /// VBR quality level. Only used if `rateControlMode` is `VBR`.
   final pulumi.Input<String?>? vbrQuality;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings].
   /// [bitrate] Average bitrate in bits/second.
-  /// [codingMode] Mono, Stereo, or 5.1 channel layout.
-  /// [inputType] Set to "broadcasterMixedAd" when input contains pre-mixed main audio + AD (narration) as a stereo pair.
+  /// [codingMode] Mono, stereo, or 5.1 channel layout.
+  /// [inputType] Set to `broadcasterMixedAd` when input contains pre-mixed main audio and AD (narration) as a stereo pair.
   /// [profile] AAC profile.
-  /// [rateControlMode] The rate control mode.
+  /// [rateControlMode] Rate control mode.
   /// [rawFormat] Sets LATM/LOAS AAC output for raw containers.
   /// [sampleRate] Sample rate in Hz.
-  /// [spec] Use MPEG-2 AAC audio instead of MPEG-4 AAC audio for raw or MPEG-2 Transport Stream containers.
-  /// [vbrQuality] VBR Quality Level - Only used if rateControlMode is VBR.
+  /// [spec] Whether to use MPEG-2 AAC audio instead of MPEG-4 AAC audio for raw or MPEG-2 Transport Stream containers.
+  /// [vbrQuality] VBR quality level. Only used if `rateControlMode` is `VBR`.
   const ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings({
     this.bitrate,
     this.codingMode,

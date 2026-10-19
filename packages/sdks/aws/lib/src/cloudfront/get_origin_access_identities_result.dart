@@ -8,7 +8,7 @@ class GetOriginAccessIdentitiesResult {
   final List<String>? iamArns;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// Set of ids of the matched origin access identities.
+  /// Set of IDs of the matched origin access identities.
   final List<String>? ids;
   /// Set of S3 canonical user IDs of the matched origin access identities.
   final List<String>? s3CanonicalUserIds;
@@ -17,7 +17,7 @@ class GetOriginAccessIdentitiesResult {
   /// [comments] Optional.
   /// [iamArns] Set of ARNs of the matched origin access identities.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ids] Set of ids of the matched origin access identities.
+  /// [ids] Set of IDs of the matched origin access identities.
   /// [s3CanonicalUserIds] Set of S3 canonical user IDs of the matched origin access identities.
   const GetOriginAccessIdentitiesResult({
     this.comments,

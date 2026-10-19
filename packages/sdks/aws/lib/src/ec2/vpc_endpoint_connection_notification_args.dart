@@ -8,24 +8,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_ec2_vpc_endpoint_connection_notification_vpc_endpoint_connection_notification_args_doc}
 class VpcEndpointConnectionNotificationArgs {
   /// One or more endpoint [events](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcEndpointConnectionNotification.html#API_CreateVpcEndpointConnectionNotification_RequestParameters) for which to receive notifications.
-  ///
-  /// &gt; **NOTE:** One of `vpcEndpointServiceId` or `vpcEndpointId` must be specified.
   final pulumi.Input<List<String>> connectionEvents;
-  /// The ARN of the SNS topic for the notifications.
+  /// ARN of the SNS topic for the notifications.
   final pulumi.Input<String> connectionNotificationArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The ID of the VPC Endpoint to receive notifications for.
+  /// ID of the VPC Endpoint to receive notifications for.
   final pulumi.Input<String?>? vpcEndpointId;
-  /// The ID of the VPC Endpoint Service to receive notifications for.
+  /// ID of the VPC Endpoint Service to receive notifications for.
+  ///
+  /// &gt; **NOTE:** One of `vpcEndpointServiceId` or `vpcEndpointId` must be specified.
   final pulumi.Input<String?>? vpcEndpointServiceId;
 
   /// Creates a new [VpcEndpointConnectionNotificationArgs].
   /// [connectionEvents] One or more endpoint [events](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcEndpointConnectionNotification.html#API_CreateVpcEndpointConnectionNotification_RequestParameters) for which to receive notifications.
-  /// [connectionNotificationArn] The ARN of the SNS topic for the notifications.
+  /// [connectionNotificationArn] ARN of the SNS topic for the notifications.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [vpcEndpointId] The ID of the VPC Endpoint to receive notifications for.
-  /// [vpcEndpointServiceId] The ID of the VPC Endpoint Service to receive notifications for.
+  /// [vpcEndpointId] ID of the VPC Endpoint to receive notifications for.
+  /// [vpcEndpointServiceId] ID of the VPC Endpoint Service to receive notifications for.
   const VpcEndpointConnectionNotificationArgs({
     required this.connectionEvents,
     required this.connectionNotificationArn,

@@ -145,7 +145,7 @@ class ResourceType extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> arn;
-  /// Flag to enable AWS LakeFormation hybrid access permission mode.
+  /// Flag to enable AWS Lake Formation hybrid access permission mode.
   late final pulumi.Output<bool> hybridAccessEnabled;
   /// Date and time the resource was last modified in [RFC 3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   late final pulumi.Output<String> lastModified;
@@ -174,7 +174,7 @@ class ResourceType extends pulumi.CustomResource {
           'aws:lakeformation/resource:Resource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     hybridAccessEnabled = registerOutput<bool>('hybridAccessEnabled');

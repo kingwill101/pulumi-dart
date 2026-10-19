@@ -182,6 +182,7 @@ import 'query_suggestions_block_list_state.dart';
 class QuerySuggestionsBlockList extends pulumi.CustomResource {
   /// ARN of the block list.
   late final pulumi.Output<String> arn;
+  /// Description for a block list.
   late final pulumi.Output<String?> description;
   /// Identifier of the index for a block list.
   late final pulumi.Output<String> indexId;
@@ -189,13 +190,17 @@ class QuerySuggestionsBlockList extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Unique identifier of the block list.
   late final pulumi.Output<String> querySuggestionsBlockListId;
-  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// IAM (Identity and Access Management) role used to access the block list text file in S3.
   late final pulumi.Output<String> roleArn;
-  /// S3 path where your block list text file is located. See details below.
+  /// S3 path where your block list text file is located. See `sourceS3Path` Block for details.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<QuerySuggestionsBlockListSourceS3Path> sourceS3Path;
+  /// Current status of the block list.
   late final pulumi.Output<String> status;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider's defaultTags configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -212,7 +217,7 @@ class QuerySuggestionsBlockList extends pulumi.CustomResource {
           'aws:kendra/querySuggestionsBlockList:QuerySuggestionsBlockList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

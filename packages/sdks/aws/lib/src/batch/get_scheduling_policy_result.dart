@@ -6,6 +6,7 @@ import 'get_scheduling_policy_fair_share_policy.dart';
 /// Result data returned by getSchedulingPolicy.
 class GetSchedulingPolicyResult {
   final String? arn;
+  /// Fair share policy block of the scheduling policy. The `fairSharePolicy` block is documented below.
   final List<GetSchedulingPolicyFairSharePolicy>? fairSharePolicies;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
@@ -17,7 +18,7 @@ class GetSchedulingPolicyResult {
 
   /// Creates a new [GetSchedulingPolicyResult].
   /// [arn] Optional.
-  /// [fairSharePolicies] Optional.
+  /// [fairSharePolicies] Fair share policy block of the scheduling policy. The `fairSharePolicy` block is documented below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Name of the scheduling policy.
   /// [region] Optional.

@@ -14,7 +14,7 @@ class EventConnectionAuthParameters {
   final pulumi.Input<EventConnectionAuthParametersBasic?>? basic;
   /// Parameters used for `oauth` with private API. Documented below.
   final pulumi.Input<EventConnectionAuthParametersConnectivityParameters?>? connectivityParameters;
-  /// Invocation Http Parameters are additional credentials used to sign each Invocation of the ApiDestination created from this Connection. If the ApiDestination Rule Target has additional HttpParameters, the values will be merged together, with the Connection Invocation Http Parameters taking precedence. Secret values are stored and managed by AWS Secrets Manager. A maximum of 1 are allowed. Documented below.
+  /// Invocation HTTP Parameters are additional credentials used to sign each Invocation of the ApiDestination created from this Connection. If the ApiDestination Rule Target has additional HttpParameters, the values will be merged together, with the Connection Invocation HTTP Parameters taking precedence. Secret values are stored and managed by AWS Secrets Manager. A maximum of 1 are allowed. Documented below.
   final pulumi.Input<EventConnectionAuthParametersInvocationHttpParameters?>? invocationHttpParameters;
   /// Parameters used for OAUTH_CLIENT_CREDENTIALS authorization. A maximum of 1 are allowed. Conflicts with `basic` and `apiKey`. Documented below.
   final pulumi.Input<EventConnectionAuthParametersOauth?>? oauth;
@@ -23,7 +23,7 @@ class EventConnectionAuthParameters {
   /// [apiKey] Parameters used for API_KEY authorization. An API key to include in the header for each authentication request. A maximum of 1 are allowed. Conflicts with `basic` and `oauth`. Documented below.
   /// [basic] Parameters used for BASIC authorization. A maximum of 1 are allowed. Conflicts with `apiKey` and `oauth`. Documented below.
   /// [connectivityParameters] Parameters used for `oauth` with private API. Documented below.
-  /// [invocationHttpParameters] Invocation Http Parameters are additional credentials used to sign each Invocation of the ApiDestination created from this Connection. If the ApiDestination Rule Target has additional HttpParameters, the values will be merged together, with the Connection Invocation Http Parameters taking precedence. Secret values are stored and managed by AWS Secrets Manager. A maximum of 1 are allowed. Documented below.
+  /// [invocationHttpParameters] Invocation HTTP Parameters are additional credentials used to sign each Invocation of the ApiDestination created from this Connection. If the ApiDestination Rule Target has additional HttpParameters, the values will be merged together, with the Connection Invocation HTTP Parameters taking precedence. Secret values are stored and managed by AWS Secrets Manager. A maximum of 1 are allowed. Documented below.
   /// [oauth] Parameters used for OAUTH_CLIENT_CREDENTIALS authorization. A maximum of 1 are allowed. Conflicts with `basic` and `apiKey`. Documented below.
   const EventConnectionAuthParameters({
     this.apiKey,

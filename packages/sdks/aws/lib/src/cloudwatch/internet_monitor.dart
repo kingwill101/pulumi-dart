@@ -13,13 +13,13 @@ import 'internet_monitor_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = new aws.cloudwatch.InternetMonitor("example", {monitorName: "exmple"});
+/// const example = new aws.cloudwatch.InternetMonitor("example", {monitorName: "example"});
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.cloudwatch.InternetMonitor("example", monitor_name="exmple")
+/// example = aws.cloudwatch.InternetMonitor("example", monitor_name="example")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -31,7 +31,7 @@ import 'internet_monitor_state.dart';
 /// {
 ///     var example = new Aws.CloudWatch.InternetMonitor("example", new()
 ///     {
-///         MonitorName = "exmple",
+///         MonitorName = "example",
 ///     });
 ///
 /// });
@@ -47,7 +47,7 @@ import 'internet_monitor_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudwatch.NewInternetMonitor(ctx, "example", &cloudwatch.InternetMonitorArgs{
-/// 			MonitorName: pulumi.String("exmple"),
+/// 			MonitorName: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -66,7 +66,7 @@ import 'internet_monitor_state.dart';
 /// }
 ///
 /// resource "aws_cloudwatch_internetmonitor" "example" {
-///   monitor_name = "exmple"
+///   monitor_name = "example"
 /// }
 /// ```
 /// ```java
@@ -91,7 +91,7 @@ import 'internet_monitor_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new InternetMonitor("example", InternetMonitorArgs.builder()
-///             .monitorName("exmple")
+///             .monitorName("example")
 ///             .build());
 ///
 ///     }
@@ -102,7 +102,7 @@ import 'internet_monitor_state.dart';
 ///   example:
 ///     type: aws:cloudwatch:InternetMonitor
 ///     properties:
-///       monitorName: exmple
+///       monitorName: example
 /// ```
 ///
 ///
@@ -151,7 +151,7 @@ class InternetMonitor extends pulumi.CustomResource {
           'aws:cloudwatch/internetMonitor:InternetMonitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     healthEventsConfig = registerOutput<InternetMonitorHealthEventsConfig?>('healthEventsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternetMonitorHealthEventsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

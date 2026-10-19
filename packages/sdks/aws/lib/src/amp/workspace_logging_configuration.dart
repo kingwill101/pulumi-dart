@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceLoggingConfiguration {
-  /// The ARN of the CloudWatch log group to which the vended log data will be published. This log group must exist. The ARN must end with `:*`
+  /// ARN of the CloudWatch log group to which the vended log data will be published. This log group must exist. The ARN must end with `:*`
   final pulumi.Input<String> logGroupArn;
 
   /// Creates a new [WorkspaceLoggingConfiguration].
-  /// [logGroupArn] The ARN of the CloudWatch log group to which the vended log data will be published. This log group must exist. The ARN must end with `:*`
+  /// [logGroupArn] ARN of the CloudWatch log group to which the vended log data will be published. This log group must exist. The ARN must end with `:*`
   const WorkspaceLoggingConfiguration({
     required this.logGroupArn,
   });

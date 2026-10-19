@@ -25,7 +25,7 @@ class GetOntapFileSystemDiskIopsConfiguration {
 
   factory GetOntapFileSystemDiskIopsConfiguration.fromMap(Map<String, dynamic> map) {
     return GetOntapFileSystemDiskIopsConfiguration(
-      iops: pulumi.Input.fromValue((map['iops'] as num).toInt()),
+      iops: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['iops'])),
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }

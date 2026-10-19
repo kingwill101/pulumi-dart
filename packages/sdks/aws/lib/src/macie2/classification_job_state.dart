@@ -7,57 +7,59 @@ import 'classification_job_user_paused_detail.dart';
 
 /// Input properties used for looking up and filtering ClassificationJob resources.
 class ClassificationJobState {
-  /// The date and time, in UTC and extended RFC 3339 format, when the job was created.
+  /// Date and time, in UTC and extended RFC 3339 format, when the job was created.
   final pulumi.Input<String?>? createdAt;
-  /// The custom data identifiers to use for data analysis and classification.
+  /// Custom data identifiers to use for data analysis and classification.
   final pulumi.Input<List<String>?>? customDataIdentifierIds;
-  /// A custom description of the job. The description can contain as many as 200 characters.
+  /// Custom description of the job. Can contain as many as 200 characters.
   final pulumi.Input<String?>? description;
-  /// Specifies whether to analyze all existing, eligible objects immediately after the job is created.
+  /// Whether to analyze all existing, eligible objects immediately after the job is created.
   final pulumi.Input<bool?>? initialRun;
+  /// ARN of the classification job.
   final pulumi.Input<String?>? jobArn;
+  /// Unique identifier (ID) of the classification job.
   final pulumi.Input<String?>? jobId;
-  /// The status for the job. Valid values are: `CANCELLED`, `RUNNING` and `USER_PAUSED`
+  /// Status for the job. Valid values are `CANCELLED`, `RUNNING` and `USER_PAUSED`.
   final pulumi.Input<String?>? jobStatus;
-  /// The schedule for running the job. Valid values are: `ONE_TIME` - Run the job only once. If you specify this value, don't specify a value for the `scheduleFrequency` property. `SCHEDULED` - Run the job on a daily, weekly, or monthly basis. If you specify this value, use the `scheduleFrequency` property to define the recurrence pattern for the job.
+  /// Schedule for running the job. Valid values are `ONE_TIME`, to run the job only once, and `SCHEDULED`, to run the job on a daily, weekly, or monthly basis. When set to `SCHEDULED`, use `scheduleFrequency` to define the recurrence pattern for the job.
   final pulumi.Input<String?>? jobType;
-  /// A custom name for the job. The name can contain as many as 500 characters. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
+  /// Custom name for the job. Can contain as many as 500 characters. If omitted, Terraform assigns a random, unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String?>? namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The S3 buckets that contain the objects to analyze, and the scope of that analysis. (documented below)
+  /// S3 buckets that contain the objects to analyze, and the scope of that analysis. See `s3JobDefinition` Block for details.
   final pulumi.Input<ClassificationJobS3JobDefinition?>? s3JobDefinition;
-  /// The sampling depth, as a percentage, to apply when processing objects. This value determines the percentage of eligible objects that the job analyzes. If this value is less than 100, Amazon Macie selects the objects to analyze at random, up to the specified percentage, and analyzes all the data in those objects.
+  /// Sampling depth, as a percentage, to apply when processing objects. This value determines the percentage of eligible objects that the job analyzes. If this value is less than 100, Amazon Macie selects the objects to analyze at random, up to the specified percentage, and analyzes all the data in those objects.
   final pulumi.Input<int?>? samplingPercentage;
-  /// The recurrence pattern for running the job. To run the job only once, don't specify a value for this property and set the value for the `jobType` property to `ONE_TIME`. (documented below)
+  /// Recurrence pattern for running the job. To run the job only once, omit this argument and set `jobType` to `ONE_TIME`. See `scheduleFrequency` Block for details.
   final pulumi.Input<ClassificationJobScheduleFrequency?>? scheduleFrequency;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
-  /// If the current status of the job is `USER_PAUSED`, specifies when the job was paused and when the job or job run will expire and be canceled if it isn't resumed. This value is present only if the value for `job-status` is `USER_PAUSED`.
+  /// If the current status of the job is `USER_PAUSED`, information about when the job was paused and when the job or job run will expire and be cancelled if it isn't resumed. This value is present only if `jobStatus` is `USER_PAUSED`. See `userPausedDetails` Block for details.
   final pulumi.Input<List<ClassificationJobUserPausedDetail>?>? userPausedDetails;
 
   /// Creates a new [ClassificationJobState].
-  /// [createdAt] The date and time, in UTC and extended RFC 3339 format, when the job was created.
-  /// [customDataIdentifierIds] The custom data identifiers to use for data analysis and classification.
-  /// [description] A custom description of the job. The description can contain as many as 200 characters.
-  /// [initialRun] Specifies whether to analyze all existing, eligible objects immediately after the job is created.
-  /// [jobArn] Optional.
-  /// [jobId] Optional.
-  /// [jobStatus] The status for the job. Valid values are: `CANCELLED`, `RUNNING` and `USER_PAUSED`
-  /// [jobType] The schedule for running the job. Valid values are: `ONE_TIME` - Run the job only once. If you specify this value, don't specify a value for the `scheduleFrequency` property. `SCHEDULED` - Run the job on a daily, weekly, or monthly basis. If you specify this value, use the `scheduleFrequency` property to define the recurrence pattern for the job.
-  /// [name] A custom name for the job. The name can contain as many as 500 characters. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
+  /// [createdAt] Date and time, in UTC and extended RFC 3339 format, when the job was created.
+  /// [customDataIdentifierIds] Custom data identifiers to use for data analysis and classification.
+  /// [description] Custom description of the job. Can contain as many as 200 characters.
+  /// [initialRun] Whether to analyze all existing, eligible objects immediately after the job is created.
+  /// [jobArn] ARN of the classification job.
+  /// [jobId] Unique identifier (ID) of the classification job.
+  /// [jobStatus] Status for the job. Valid values are `CANCELLED`, `RUNNING` and `USER_PAUSED`.
+  /// [jobType] Schedule for running the job. Valid values are `ONE_TIME`, to run the job only once, and `SCHEDULED`, to run the job on a daily, weekly, or monthly basis. When set to `SCHEDULED`, use `scheduleFrequency` to define the recurrence pattern for the job.
+  /// [name] Custom name for the job. Can contain as many as 500 characters. If omitted, Terraform assigns a random, unique name. Conflicts with `namePrefix`.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [s3JobDefinition] The S3 buckets that contain the objects to analyze, and the scope of that analysis. (documented below)
-  /// [samplingPercentage] The sampling depth, as a percentage, to apply when processing objects. This value determines the percentage of eligible objects that the job analyzes. If this value is less than 100, Amazon Macie selects the objects to analyze at random, up to the specified percentage, and analyzes all the data in those objects.
-  /// [scheduleFrequency] The recurrence pattern for running the job. To run the job only once, don't specify a value for this property and set the value for the `jobType` property to `ONE_TIME`. (documented below)
+  /// [s3JobDefinition] S3 buckets that contain the objects to analyze, and the scope of that analysis. See `s3JobDefinition` Block for details.
+  /// [samplingPercentage] Sampling depth, as a percentage, to apply when processing objects. This value determines the percentage of eligible objects that the job analyzes. If this value is less than 100, Amazon Macie selects the objects to analyze at random, up to the specified percentage, and analyzes all the data in those objects.
+  /// [scheduleFrequency] Recurrence pattern for running the job. To run the job only once, omit this argument and set `jobType` to `ONE_TIME`. See `scheduleFrequency` Block for details.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [userPausedDetails] If the current status of the job is `USER_PAUSED`, specifies when the job was paused and when the job or job run will expire and be canceled if it isn't resumed. This value is present only if the value for `job-status` is `USER_PAUSED`.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [userPausedDetails] If the current status of the job is `USER_PAUSED`, information about when the job was paused and when the job or job run will expire and be cancelled if it isn't resumed. This value is present only if `jobStatus` is `USER_PAUSED`. See `userPausedDetails` Block for details.
   const ClassificationJobState({
     this.createdAt,
     this.customDataIdentifierIds,
@@ -114,7 +116,7 @@ class ClassificationJobState {
       namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3JobDefinition: (() { final guardedValue = map['s3JobDefinition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClassificationJobS3JobDefinition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      samplingPercentage: (() { final guardedValue = map['samplingPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      samplingPercentage: (() { final guardedValue = map['samplingPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       scheduleFrequency: (() { final guardedValue = map['scheduleFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClassificationJobScheduleFrequency.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

@@ -8,7 +8,7 @@ import 'ami_from_instance_state.dart';
 /// Image (AMI) modeled after an existing EBS-backed EC2 instance.
 ///
 /// The created AMI will refer to implicitly-created snapshots of the instance's
-/// EBS volumes and mimick its assigned block device configuration at the time
+/// EBS volumes and mimic its assigned block device configuration at the time
 /// the resource is created.
 ///
 /// This resource is best applied to an instance that is stopped when this instance
@@ -160,7 +160,6 @@ class AmiFromInstance extends pulumi.CustomResource {
   /// ID of the kernel image (AKI) that will be used as the paravirtual
   /// kernel in created instances.
   late final pulumi.Output<String> kernelId;
-  /// Date and time, in ISO 8601 date-time format , when the AMI was last used to launch an EC2 instance. When the AMI is used to launch an instance, there is a 24-hour delay before that usage is reported. For more information, see the following [AWS document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-last-launched-time.html).
   late final pulumi.Output<String> lastLaunchedTime;
   late final pulumi.Output<bool> manageEbsSnapshots;
   /// Region-unique name for the AMI.
@@ -212,7 +211,7 @@ class AmiFromInstance extends pulumi.CustomResource {
           'aws:ec2/amiFromInstance:AmiFromInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     architecture = registerOutput<String>('architecture');
     arn = registerOutput<String>('arn');

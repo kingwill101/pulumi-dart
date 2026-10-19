@@ -5,20 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentcoreGatewayTargetCredentialProviderConfigurationOauth {
   /// Map of custom parameters to include in OAuth requests.
   final pulumi.Input<Map<String, String>?>? customParameters;
-  /// The URL where the end user's browser is redirected after obtaining the authorization code. Required when `grantType` is `AUTHORIZATION_CODE`.
+  /// URL where the end user's browser is redirected after obtaining the authorization code. Required when `grantType` is `AUTHORIZATION_CODE`.
   final pulumi.Input<String?>? defaultReturnUrl;
-  /// The OAuth grant type. Valid values: `CLIENT_CREDENTIALS` (machine-to-machine authentication), `AUTHORIZATION_CODE` (user-delegated access).
+  /// OAuth grant type. Valid values: `CLIENT_CREDENTIALS` (machine-to-machine authentication), `AUTHORIZATION_CODE` (user-delegated access), `TOKEN_EXCHANGE` (on-behalf-of token exchange).
   final pulumi.Input<String?>? grantType;
-  /// ARN of the Oauth credential provider for OAuth authentication.
+  /// ARN of the OAuth credential provider.
   final pulumi.Input<String> providerArn;
   /// Set of OAuth scopes to request.
   final pulumi.Input<List<String>> scopes;
 
   /// Creates a new [AgentcoreGatewayTargetCredentialProviderConfigurationOauth].
   /// [customParameters] Map of custom parameters to include in OAuth requests.
-  /// [defaultReturnUrl] The URL where the end user's browser is redirected after obtaining the authorization code. Required when `grantType` is `AUTHORIZATION_CODE`.
-  /// [grantType] The OAuth grant type. Valid values: `CLIENT_CREDENTIALS` (machine-to-machine authentication), `AUTHORIZATION_CODE` (user-delegated access).
-  /// [providerArn] ARN of the Oauth credential provider for OAuth authentication.
+  /// [defaultReturnUrl] URL where the end user's browser is redirected after obtaining the authorization code. Required when `grantType` is `AUTHORIZATION_CODE`.
+  /// [grantType] OAuth grant type. Valid values: `CLIENT_CREDENTIALS` (machine-to-machine authentication), `AUTHORIZATION_CODE` (user-delegated access), `TOKEN_EXCHANGE` (on-behalf-of token exchange).
+  /// [providerArn] ARN of the OAuth credential provider.
   /// [scopes] Set of OAuth scopes to request.
   const AgentcoreGatewayTargetCredentialProviderConfigurationOauth({
     this.customParameters,

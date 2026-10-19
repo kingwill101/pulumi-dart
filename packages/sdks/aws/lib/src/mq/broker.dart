@@ -819,7 +819,7 @@ import 'broker_user.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import MQ Brokers using their broker id. For example:
+/// Using `pulumi import`, import MQ Brokers using their broker ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:mq/broker:Broker example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
@@ -853,7 +853,7 @@ class Broker extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> hostInstanceType;
-  /// List of information about allocated brokers (both active & standby).
+  /// List of information about allocated brokers (both active & standby). See `instances` Block for details.
   late final pulumi.Output<List<BrokerInstance>> instances;
   /// Configuration block for the LDAP server used to authenticate and authorize connections. Not supported for `engineType` `RabbitMQ`. Detailed below.
   late final pulumi.Output<BrokerLdapServerMetadata?> ldapServerMetadata;
@@ -871,7 +871,7 @@ class Broker extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> resourceShareArns;
   /// List of security group IDs assigned to the broker.
   late final pulumi.Output<List<String>?> securityGroups;
-  /// List of resources shared with the broker via `resourceShareArns`. Only populated for `engineType` of `RabbitMQ`.
+  /// List of resources shared with the broker via `resourceShareArns`. Only populated for `engineType` of `RabbitMQ`. See `sharedResources` Block for details.
   late final pulumi.Output<List<BrokerSharedResource>> sharedResources;
   /// Storage type of the broker. For `engineType` `ActiveMQ`, valid values are `efs` and `ebs` (AWS-default is `efs`). For `engineType` `RabbitMQ`, only `ebs` is supported. When using `ebs`, only the `mq.m5` broker instance type family is supported.
   late final pulumi.Output<String> storageType;
@@ -896,7 +896,7 @@ class Broker extends pulumi.CustomResource {
           'aws:mq/broker:Broker',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     applyImmediately = registerOutput<bool?>('applyImmediately');
     arn = registerOutput<String>('arn');

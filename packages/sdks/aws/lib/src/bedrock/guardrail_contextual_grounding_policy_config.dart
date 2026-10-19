@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'guardrail_contextual_grounding_policy_config_filters_config.dart';
 
 class GuardrailContextualGroundingPolicyConfig {
-  /// One or more blocks defining contextual grounding filter configs. See Contextual Grounding Filters Config for more information.
+  /// One or more blocks defining contextual grounding filter configs. See `contextual_grounding_policy_config.filters_config` Block for more information.
   final pulumi.Input<List<GuardrailContextualGroundingPolicyConfigFiltersConfig>?>? filtersConfigs;
 
   /// Creates a new [GuardrailContextualGroundingPolicyConfig].
-  /// [filtersConfigs] One or more blocks defining contextual grounding filter configs. See Contextual Grounding Filters Config for more information.
+  /// [filtersConfigs] One or more blocks defining contextual grounding filter configs. See `contextual_grounding_policy_config.filters_config` Block for more information.
   const GuardrailContextualGroundingPolicyConfig({
     this.filtersConfigs,
   });

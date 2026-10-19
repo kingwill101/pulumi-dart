@@ -18,8 +18,9 @@ import 'firehose_delivery_stream_splunk_configuration.dart';
 class FirehoseDeliveryStreamState {
   /// ARN specifying the Stream
   final pulumi.Input<String?>? arn;
-  /// This is the destination to where the data is delivered. The only options are `s3` (Deprecated, use `extendedS3` instead), `extendedS3`, `redshift`, `elasticsearch`, `splunk`, `httpEndpoint`, `opensearch`, `opensearchserverless` and `snowflake`.
+  /// Destination where the data is delivered. The only options are `s3` (Deprecated, use `extendedS3` instead), `extendedS3`, `redshift`, `elasticsearch`, `splunk`, `httpEndpoint`, `opensearch`, `opensearchserverless` and `snowflake`.
   final pulumi.Input<String?>? destination;
+  /// Identifier of the destination for the delivery stream.
   final pulumi.Input<String?>? destinationId;
   /// Configuration options when `destination` is `elasticsearch`. See `elasticsearchConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamElasticsearchConfiguration?>? elasticsearchConfiguration;
@@ -31,9 +32,9 @@ class FirehoseDeliveryStreamState {
   final pulumi.Input<FirehoseDeliveryStreamIcebergConfiguration?>? icebergConfiguration;
   /// Stream and role ARNs for a Kinesis data stream used as the source for a delivery stream. See `kinesisSourceConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamKinesisSourceConfiguration?>? kinesisSourceConfiguration;
-  /// The configuration for the Amazon MSK cluster to be used as the source for a delivery stream. See `mskSourceConfiguration` block below for details.
+  /// Configuration for the Amazon MSK cluster to be used as the source for a delivery stream. See `mskSourceConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamMskSourceConfiguration?>? mskSourceConfiguration;
-  /// A name to identify the stream. This is unique to the AWS account and region the Stream is created in. When using for WAF logging, name must be prefixed with `aws-waf-logs-`. See [AWS Documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-policies.html#waf-policies-logging-config) for more details.
+  /// Name to identify the stream. This is unique to the AWS account and region the Stream is created in. When using for WAF logging, name must be prefixed with `aws-waf-logs-`. See [AWS Documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-policies.html#waf-policies-logging-config) for more details.
   final pulumi.Input<String?>? name;
   /// Configuration options when `destination` is `opensearch`. See `opensearchConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamOpensearchConfiguration?>? opensearchConfiguration;
@@ -48,26 +49,27 @@ class FirehoseDeliveryStreamState {
   /// Configuration options when `destination` is `snowflake`. See `snowflakeConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamSnowflakeConfiguration?>? snowflakeConfiguration;
   /// Configuration options when `destination` is `splunk`. See `splunkConfiguration` block below for details.
-  ///
-  /// **NOTE:** Server-side encryption should not be enabled when a kinesis stream is configured as the source of the firehose delivery stream.
   final pulumi.Input<FirehoseDeliveryStreamSplunkConfiguration?>? splunkConfiguration;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
+  /// Version identifier of the delivery stream.
+  ///
+  /// &gt; **NOTE:** Server-side encryption should not be enabled when a kinesis stream is configured as the source of the firehose delivery stream.
   final pulumi.Input<String?>? versionId;
 
   /// Creates a new [FirehoseDeliveryStreamState].
   /// [arn] ARN specifying the Stream
-  /// [destination] This is the destination to where the data is delivered. The only options are `s3` (Deprecated, use `extendedS3` instead), `extendedS3`, `redshift`, `elasticsearch`, `splunk`, `httpEndpoint`, `opensearch`, `opensearchserverless` and `snowflake`.
-  /// [destinationId] Optional.
+  /// [destination] Destination where the data is delivered. The only options are `s3` (Deprecated, use `extendedS3` instead), `extendedS3`, `redshift`, `elasticsearch`, `splunk`, `httpEndpoint`, `opensearch`, `opensearchserverless` and `snowflake`.
+  /// [destinationId] Identifier of the destination for the delivery stream.
   /// [elasticsearchConfiguration] Configuration options when `destination` is `elasticsearch`. See `elasticsearchConfiguration` block below for details.
   /// [extendedS3Configuration] Enhanced configuration options for the s3 destination. See `extendedS3Configuration` block below for details.
   /// [httpEndpointConfiguration] Configuration options when `destination` is `httpEndpoint`. Requires the user to also specify an `s3Configuration` block.  See `httpEndpointConfiguration` block below for details.
   /// [icebergConfiguration] Configuration options when `destination` is `iceberg`. See `icebergConfiguration` block below for details.
   /// [kinesisSourceConfiguration] Stream and role ARNs for a Kinesis data stream used as the source for a delivery stream. See `kinesisSourceConfiguration` block below for details.
-  /// [mskSourceConfiguration] The configuration for the Amazon MSK cluster to be used as the source for a delivery stream. See `mskSourceConfiguration` block below for details.
-  /// [name] A name to identify the stream. This is unique to the AWS account and region the Stream is created in. When using for WAF logging, name must be prefixed with `aws-waf-logs-`. See [AWS Documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-policies.html#waf-policies-logging-config) for more details.
+  /// [mskSourceConfiguration] Configuration for the Amazon MSK cluster to be used as the source for a delivery stream. See `mskSourceConfiguration` block below for details.
+  /// [name] Name to identify the stream. This is unique to the AWS account and region the Stream is created in. When using for WAF logging, name must be prefixed with `aws-waf-logs-`. See [AWS Documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-policies.html#waf-policies-logging-config) for more details.
   /// [opensearchConfiguration] Configuration options when `destination` is `opensearch`. See `opensearchConfiguration` block below for details.
   /// [opensearchserverlessConfiguration] Configuration options when `destination` is `opensearchserverless`. See `opensearchserverlessConfiguration` block below for details.
   /// [redshiftConfiguration] Configuration options when `destination` is `redshift`. Requires the user to also specify an `s3Configuration` block. See `redshiftConfiguration` block below for details.
@@ -75,9 +77,9 @@ class FirehoseDeliveryStreamState {
   /// [serverSideEncryption] Encrypt at rest options. See `serverSideEncryption` block below for details.
   /// [snowflakeConfiguration] Configuration options when `destination` is `snowflake`. See `snowflakeConfiguration` block below for details.
   /// [splunkConfiguration] Configuration options when `destination` is `splunk`. See `splunkConfiguration` block below for details.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [versionId] Optional.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [versionId] Version identifier of the delivery stream.
   const FirehoseDeliveryStreamState({
     this.arn,
     this.destination,

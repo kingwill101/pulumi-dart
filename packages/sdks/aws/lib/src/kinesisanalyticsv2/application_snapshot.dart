@@ -123,15 +123,15 @@ import 'application_snapshot_state.dart';
 /// $ pulumi import aws:kinesisanalyticsv2/applicationSnapshot:ApplicationSnapshot example example-application/example-snapshot
 /// ```
 class ApplicationSnapshot extends pulumi.CustomResource {
-  /// The name of an existing  Kinesis Analytics v2 Application. Note that the application must be running for a snapshot to be created.
+  /// Name of an existing Kinesis Analytics v2 Application. Note that the application must be running for a snapshot to be created.
   late final pulumi.Output<String> applicationName;
-  /// The current application version ID when the snapshot was created.
+  /// Current application version ID when the snapshot was created.
   late final pulumi.Output<int> applicationVersionId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The timestamp of the application snapshot.
+  /// Timestamp of the application snapshot.
   late final pulumi.Output<String> snapshotCreationTimestamp;
-  /// The name of the application snapshot.
+  /// Name of the application snapshot.
   late final pulumi.Output<String> snapshotName;
 
   /// Creates a new [ApplicationSnapshot].
@@ -146,7 +146,7 @@ class ApplicationSnapshot extends pulumi.CustomResource {
           'aws:kinesisanalyticsv2/applicationSnapshot:ApplicationSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     applicationName = registerOutput<String>('applicationName');
     applicationVersionId = registerOutput<int>('applicationVersionId');

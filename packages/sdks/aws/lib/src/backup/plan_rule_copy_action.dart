@@ -6,12 +6,12 @@ import 'plan_rule_copy_action_lifecycle.dart';
 class PlanRuleCopyAction {
   /// ARN that uniquely identifies the destination backup vault for the copied backup.
   final pulumi.Input<String> destinationVaultArn;
-  /// The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
+  /// Lifecycle that defines when a protected resource is copied over to a backup vault and when it expires. Detailed below.
   final pulumi.Input<PlanRuleCopyActionLifecycle?>? lifecycle;
 
   /// Creates a new [PlanRuleCopyAction].
   /// [destinationVaultArn] ARN that uniquely identifies the destination backup vault for the copied backup.
-  /// [lifecycle] The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
+  /// [lifecycle] Lifecycle that defines when a protected resource is copied over to a backup vault and when it expires. Detailed below.
   const PlanRuleCopyAction({
     required this.destinationVaultArn,
     this.lifecycle,

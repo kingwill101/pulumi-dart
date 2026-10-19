@@ -382,7 +382,7 @@ import 'cost_category_state.dart';
 /// - `arn` (String) ARN of the Cost Explorer cost category.
 ///
 ///
-/// Using `pulumi import`, import `aws.costexplorer.CostCategory` using the id. For example:
+/// Using `pulumi import`, import `aws.costexplorer.CostCategory` using the ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:costexplorer/costCategory:CostCategory example costCategoryARN
@@ -423,7 +423,7 @@ class CostCategory extends pulumi.CustomResource {
           'aws:costexplorer/costCategory:CostCategory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultValue = registerOutput<String?>('defaultValue');

@@ -6,6 +6,7 @@ import 'get_vpn_gateway_filter.dart';
 /// Result data returned by getVpnGateway.
 class GetVpnGatewayResult {
   final String? amazonSideAsn;
+  /// ARN of the VPN Gateway.
   final String? arn;
   final String? attachedVpcId;
   final String? availabilityZone;
@@ -17,7 +18,7 @@ class GetVpnGatewayResult {
 
   /// Creates a new [GetVpnGatewayResult].
   /// [amazonSideAsn] Optional.
-  /// [arn] Optional.
+  /// [arn] ARN of the VPN Gateway.
   /// [attachedVpcId] Optional.
   /// [availabilityZone] Optional.
   /// [filters] Optional.

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomPluginLocationS3 {
   /// ARN of an S3 bucket.
   final pulumi.Input<String> bucketArn;
-  /// The file key for an object in an S3 bucket.
+  /// File key for an object in an S3 bucket.
   final pulumi.Input<String> fileKey;
-  /// The version of an object in an S3 bucket.
+  /// Version of an object in an S3 bucket.
   final pulumi.Input<String?>? objectVersion;
 
   /// Creates a new [CustomPluginLocationS3].
   /// [bucketArn] ARN of an S3 bucket.
-  /// [fileKey] The file key for an object in an S3 bucket.
-  /// [objectVersion] The version of an object in an S3 bucket.
+  /// [fileKey] File key for an object in an S3 bucket.
+  /// [objectVersion] Version of an object in an S3 bucket.
   const CustomPluginLocationS3({
     required this.bucketArn,
     required this.fileKey,

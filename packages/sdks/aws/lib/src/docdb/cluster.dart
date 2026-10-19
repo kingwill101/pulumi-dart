@@ -181,6 +181,8 @@ class Cluster extends pulumi.CustomResource {
   /// A list of EC2 Availability Zones that instances in the DB cluster can be created in.
   /// DocumentDB automatically assigns 3 AZs if less than 3 AZs are configured, which will show as a difference requiring resource recreation next pulumi up.
   /// We recommend specifying 3 AZs or using the `lifecycle` configuration block `ignoreChanges` argument if necessary.
+  /// At most 3 AZs can be configured.
+  /// **Note:** Do not set `availabilityZones` to the output of a data source such as `aws.getAvailabilityZones`, as this may be subject to change (for example, when a new AZ is added to a Region). Because changing `availabilityZones` forces replacement, any change to the set of values will plan to destroy and recreate the cluster. Always use an explicit, static list of AZs.
   late final pulumi.Output<List<String>> availabilityZones;
   /// The days to retain backups for. Default `1`
   late final pulumi.Output<int?> backupRetentionPeriod;
@@ -198,7 +200,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> dbSubnetGroupName;
   /// A boolean value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when deletion protection is enabled. Defaults to `false`.
   late final pulumi.Output<bool?> deletionProtection;
-  /// List of log types to export to cloudwatch. If omitted, no logs will be exported.
+  /// List of log types to export to CloudWatch. If omitted, no logs will be exported.
   /// The following log types are supported: `audit`, `profiler`.
   late final pulumi.Output<List<String>?> enabledCloudwatchLogsExports;
   /// The DNS address of the DocumentDB instance
@@ -207,9 +209,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String?> engine;
   /// The database engine version. Updating this argument results in an outage.
   late final pulumi.Output<String> engineVersion;
-  /// The name of your final DB snapshot
-  /// when this DB cluster is deleted. If omitted, no final snapshot will be
-  /// made.
+  /// The name of your final DB snapshot when this DB cluster is deleted. If omitted, no final snapshot will be made.
   late final pulumi.Output<String?> finalSnapshotIdentifier;
   /// The global cluster identifier specified on `aws.docdb.GlobalCluster`.
   late final pulumi.Output<String?> globalClusterIdentifier;
@@ -219,14 +219,12 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> kmsKeyId;
   /// Set to `true` to allow Amazon DocumentDB to manage the master user password in AWS Secrets Manager. Cannot be set if `masterPassword` or `masterPasswordWo` is provided.
   late final pulumi.Output<bool?> manageMasterUserPassword;
-  /// Password for the master DB user. Note that this may
-  /// show up in logs, and it will be stored in the state file. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPasswordWo` and `manageMasterUserPassword`.
+  /// Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPasswordWo` and `manageMasterUserPassword`.
   late final pulumi.Output<String?> masterPassword;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Password for the master DB user. Note that this may
-  /// show up in logs. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPassword` and `manageMasterUserPassword`.
+  /// Password for the master DB user. Note that this will show up in logs. Please refer to the DocumentDB Naming Constraints. Conflicts with `masterPassword` and `manageMasterUserPassword`. If set, requires `masterPasswordWoVersion` to be set.
   late final pulumi.Output<String?> masterPasswordWo;
-  /// Used together with `masterPasswordWo` to trigger an update. Increment this value when an update to the `masterPasswordWo` is required.
+  /// Required when `masterPasswordWo` is set. Changing this value triggers an update to `masterPasswordWo`.
   late final pulumi.Output<int?> masterPasswordWoVersion;
   late final pulumi.Output<List<ClusterMasterUserSecret>> masterUserSecrets;
   /// Username for the master DB user.
@@ -279,7 +277,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:docdb/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
           additionalSecretOutputs: const ['masterPassword', 'masterPasswordWo'],
         ) {
     allowMajorVersionUpgrade = registerOutput<bool?>('allowMajorVersionUpgrade');

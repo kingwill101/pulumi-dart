@@ -23,7 +23,7 @@ import 'agentcore_browser_timeouts.dart';
 ///     networkConfiguration: {
 ///         networkMode: "PUBLIC",
 ///     },
-///     name: "example-browser",
+///     name: "example_browser",
 ///     description: "Browser for web data extraction",
 /// });
 /// ```
@@ -35,7 +35,7 @@ import 'agentcore_browser_timeouts.dart';
 ///     network_configuration={
 ///         "network_mode": "PUBLIC",
 ///     },
-///     name="example-browser",
+///     name="example_browser",
 ///     description="Browser for web data extraction")
 /// ```
 /// ```csharp
@@ -52,7 +52,7 @@ import 'agentcore_browser_timeouts.dart';
 ///         {
 ///             NetworkMode = "PUBLIC",
 ///         },
-///         Name = "example-browser",
+///         Name = "example_browser",
 ///         Description = "Browser for web data extraction",
 ///     });
 ///
@@ -72,7 +72,7 @@ import 'agentcore_browser_timeouts.dart';
 /// 			NetworkConfiguration: &bedrock.AgentcoreBrowserNetworkConfigurationArgs{
 /// 				NetworkMode: pulumi.String("PUBLIC"),
 /// 			},
-/// 			Name:        pulumi.String("example-browser"),
+/// 			Name:        pulumi.String("example_browser"),
 /// 			Description: pulumi.String("Browser for web data extraction"),
 /// 		})
 /// 		if err != nil {
@@ -95,7 +95,7 @@ import 'agentcore_browser_timeouts.dart';
 ///   network_configuration = {
 ///     network_mode = "PUBLIC"
 ///   }
-///   name        = "example-browser"
+///   name        = "example_browser"
 ///   description = "Browser for web data extraction"
 /// }
 /// ```
@@ -125,7 +125,7 @@ import 'agentcore_browser_timeouts.dart';
 ///             .networkConfiguration(AgentcoreBrowserNetworkConfigurationArgs.builder()
 ///                 .networkMode("PUBLIC")
 ///                 .build())
-///             .name("example-browser")
+///             .name("example_browser")
 ///             .description("Browser for web data extraction")
 ///             .build());
 ///
@@ -139,7 +139,7 @@ import 'agentcore_browser_timeouts.dart';
 ///     properties:
 ///       networkConfiguration:
 ///         networkMode: PUBLIC
-///       name: example-browser
+///       name: example_browser
 ///       description: Browser for web data extraction
 /// ```
 ///
@@ -162,7 +162,7 @@ import 'agentcore_browser_timeouts.dart';
 ///         },
 ///         networkMode: "VPC",
 ///     },
-///     name: "vpc-browser",
+///     name: "vpc_browser",
 ///     description: "Browser with VPC configuration",
 /// });
 /// ```
@@ -181,7 +181,7 @@ import 'agentcore_browser_timeouts.dart';
 ///         },
 ///         "network_mode": "VPC",
 ///     },
-///     name="vpc-browser",
+///     name="vpc_browser",
 ///     description="Browser with VPC configuration")
 /// ```
 /// ```csharp
@@ -210,7 +210,7 @@ import 'agentcore_browser_timeouts.dart';
 ///             },
 ///             NetworkMode = "VPC",
 ///         },
-///         Name = "vpc-browser",
+///         Name = "vpc_browser",
 ///         Description = "Browser with VPC configuration",
 ///     });
 ///
@@ -239,7 +239,7 @@ import 'agentcore_browser_timeouts.dart';
 /// 				},
 /// 				NetworkMode: pulumi.String("VPC"),
 /// 			},
-/// 			Name:        pulumi.String("vpc-browser"),
+/// 			Name:        pulumi.String("vpc_browser"),
 /// 			Description: pulumi.String("Browser with VPC configuration"),
 /// 		})
 /// 		if err != nil {
@@ -266,7 +266,7 @@ import 'agentcore_browser_timeouts.dart';
 ///     }
 ///     network_mode = "VPC"
 ///   }
-///   name        = "vpc-browser"
+///   name        = "vpc_browser"
 ///   description = "Browser with VPC configuration"
 /// }
 /// ```
@@ -303,7 +303,7 @@ import 'agentcore_browser_timeouts.dart';
 ///                     .build())
 ///                 .networkMode("VPC")
 ///                 .build())
-///             .name("vpc-browser")
+///             .name("vpc_browser")
 ///             .description("Browser with VPC configuration")
 ///             .build());
 ///
@@ -324,7 +324,7 @@ import 'agentcore_browser_timeouts.dart';
 ///             - subnet-12345678
 ///             - subnet-87654321
 ///         networkMode: VPC
-///       name: vpc-browser
+///       name: vpc_browser
 ///       description: Browser with VPC configuration
 /// ```
 ///
@@ -362,7 +362,7 @@ import 'agentcore_browser_timeouts.dart';
 ///         },
 ///         enabled: true,
 ///     },
-///     name: "example-browser",
+///     name: "example_browser",
 ///     description: "Browser with recording enabled",
 ///     executionRoleArn: example.arn,
 /// });
@@ -394,7 +394,7 @@ import 'agentcore_browser_timeouts.dart';
 ///         },
 ///         "enabled": True,
 ///     },
-///     name="example-browser",
+///     name="example_browser",
 ///     description="Browser with recording enabled",
 ///     execution_role_arn=example.arn)
 /// ```
@@ -458,7 +458,7 @@ import 'agentcore_browser_timeouts.dart';
 ///             },
 ///             Enabled = true,
 ///         },
-///         Name = "example-browser",
+///         Name = "example_browser",
 ///         Description = "Browser with recording enabled",
 ///         ExecutionRoleArn = example.Arn,
 ///     });
@@ -522,7 +522,7 @@ import 'agentcore_browser_timeouts.dart';
 /// 				},
 /// 				Enabled: pulumi.Bool(true),
 /// 			},
-/// 			Name:             pulumi.String("example-browser"),
+/// 			Name:             pulumi.String("example_browser"),
 /// 			Description:      pulumi.String("Browser with recording enabled"),
 /// 			ExecutionRoleArn: example.Arn,
 /// 		})
@@ -571,7 +571,7 @@ import 'agentcore_browser_timeouts.dart';
 ///     }
 ///     enabled = true
 ///   }
-///   name               = "example-browser"
+///   name               = "example_browser"
 ///   description        = "Browser with recording enabled"
 ///   execution_role_arn = aws_iam_role.example.arn
 /// }
@@ -639,7 +639,7 @@ import 'agentcore_browser_timeouts.dart';
 ///                     .build())
 ///                 .enabled(true)
 ///                 .build())
-///             .name("example-browser")
+///             .name("example_browser")
 ///             .description("Browser with recording enabled")
 ///             .executionRoleArn(example.arn())
 ///             .build());
@@ -669,7 +669,7 @@ import 'agentcore_browser_timeouts.dart';
 ///           bucket: ${recording.bucket}
 ///           prefix: browser-sessions/
 ///         enabled: true
-///       name: example-browser
+///       name: example_browser
 ///       description: Browser with recording enabled
 ///       executionRoleArn: ${example.arn}
 /// variables:
@@ -722,7 +722,7 @@ class AgentcoreBrowser extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreBrowserTimeouts?> timeouts;
 
@@ -738,7 +738,7 @@ class AgentcoreBrowser extends pulumi.CustomResource {
           'aws:bedrock/agentcoreBrowser:AgentcoreBrowser',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     browserArn = registerOutput<String>('browserArn');
     browserId = registerOutput<String>('browserId');

@@ -269,7 +269,7 @@ import 'origin_request_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Cloudfront Origin Request Policies using the `id`. For example:
+/// Using `pulumi import`, import CloudFront Origin Request Policies using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudfront/originRequestPolicy:OriginRequestPolicy policy ccca32ef-dce3-4df3-80df-1bd3000bc4d3
@@ -302,7 +302,7 @@ class OriginRequestPolicy extends pulumi.CustomResource {
           'aws:cloudfront/originRequestPolicy:OriginRequestPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     comment = registerOutput<String?>('comment');

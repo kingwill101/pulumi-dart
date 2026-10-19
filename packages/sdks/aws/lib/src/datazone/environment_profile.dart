@@ -806,7 +806,7 @@ import 'environment_profile_user_parameter.dart';
 /// $ pulumi import aws:datazone/environmentProfile:EnvironmentProfile example environment_profile-id-12345678,domain-id-12345678
 /// ```
 class EnvironmentProfile extends pulumi.CustomResource {
-  /// Id of the AWS account being used.
+  /// ID of the AWS account being used.
   late final pulumi.Output<String> awsAccountId;
   /// Desired region for environment profile.
   late final pulumi.Output<String> awsAccountRegion;
@@ -843,7 +843,7 @@ class EnvironmentProfile extends pulumi.CustomResource {
           'aws:datazone/environmentProfile:EnvironmentProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     awsAccountId = registerOutput<String>('awsAccountId');
     awsAccountRegion = registerOutput<String>('awsAccountRegion');

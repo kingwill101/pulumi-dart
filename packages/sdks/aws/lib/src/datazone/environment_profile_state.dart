@@ -5,7 +5,7 @@ import 'environment_profile_user_parameter.dart';
 
 /// Input properties used for looking up and filtering EnvironmentProfile resources.
 class EnvironmentProfileState {
-  /// Id of the AWS account being used.
+  /// ID of the AWS account being used.
   final pulumi.Input<String?>? awsAccountId;
   /// Desired region for environment profile.
   final pulumi.Input<String?>? awsAccountRegion;
@@ -31,7 +31,7 @@ class EnvironmentProfileState {
   final pulumi.Input<List<EnvironmentProfileUserParameter>?>? userParameters;
 
   /// Creates a new [EnvironmentProfileState].
-  /// [awsAccountId] Id of the AWS account being used.
+  /// [awsAccountId] ID of the AWS account being used.
   /// [awsAccountRegion] Desired region for environment profile.
   /// [createdAt] Creation time of environment profile.
   /// [createdBy] Creator of environment profile.

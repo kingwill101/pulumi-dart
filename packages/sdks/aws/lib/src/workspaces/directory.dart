@@ -1934,7 +1934,7 @@ import 'directory_workspace_creation_properties.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Workspaces directory using the directory ID. For example:
+/// Using `pulumi import`, import WorkSpaces directory using the directory ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:workspaces/directory:Directory main d-4444444444
@@ -2005,7 +2005,7 @@ class Directory extends pulumi.CustomResource {
           'aws:workspaces/directory:Directory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     activeDirectoryConfig = registerOutput<DirectoryActiveDirectoryConfig?>('activeDirectoryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryActiveDirectoryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     alias = registerOutput<String>('alias');

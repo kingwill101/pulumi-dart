@@ -6,14 +6,14 @@ class GetPoliciesForTargetResult {
   final String? filter;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// List of all the policy ids found.
+  /// List of all the policy IDs found.
   final List<String>? ids;
   final String? targetId;
 
   /// Creates a new [GetPoliciesForTargetResult].
   /// [filter] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ids] List of all the policy ids found.
+  /// [ids] List of all the policy IDs found.
   /// [targetId] Optional.
   const GetPoliciesForTargetResult({
     this.filter,

@@ -347,11 +347,11 @@ import 'multiplex_program_timeouts.dart';
 class MultiplexProgram extends pulumi.CustomResource {
   /// Multiplex ID.
   late final pulumi.Output<String> multiplexId;
-  /// MultiplexProgram settings. See Multiplex Program Settings for more details.
-  ///
-  /// The following arguments are optional:
+  /// MultiplexProgram settings. See `multiplexProgramSettings` Block for more details.
   late final pulumi.Output<MultiplexProgramMultiplexProgramSettings?> multiplexProgramSettings;
   /// Unique program name.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> programName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -369,7 +369,7 @@ class MultiplexProgram extends pulumi.CustomResource {
           'aws:medialive/multiplexProgram:MultiplexProgram',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     multiplexId = registerOutput<String>('multiplexId');
     multiplexProgramSettings = registerOutput<MultiplexProgramMultiplexProgramSettings?>('multiplexProgramSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiplexProgramMultiplexProgramSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

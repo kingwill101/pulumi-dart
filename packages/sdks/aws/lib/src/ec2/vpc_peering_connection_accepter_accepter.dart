@@ -3,12 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcPeeringConnectionAccepterAccepter {
-  /// Indicates whether a local VPC can resolve public DNS hostnames to
-  /// private IP addresses when queried from instances in a peer VPC.
+  /// Whether to allow a local VPC to resolve public DNS hostnames to private IP addresses when queried from instances in a peer VPC.
   final pulumi.Input<bool?>? allowRemoteVpcDnsResolution;
 
   /// Creates a new [VpcPeeringConnectionAccepterAccepter].
-  /// [allowRemoteVpcDnsResolution] Indicates whether a local VPC can resolve public DNS hostnames to
+  /// [allowRemoteVpcDnsResolution] Whether to allow a local VPC to resolve public DNS hostnames to private IP addresses when queried from instances in a peer VPC.
   const VpcPeeringConnectionAccepterAccepter({
     this.allowRemoteVpcDnsResolution,
   });

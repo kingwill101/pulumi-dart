@@ -27,7 +27,7 @@ class PlanWorkflowStepParallelConfigStep {
   final pulumi.Input<List<PlanWorkflowStepParallelConfigStepAuroraServerlessScalingConfig>?>? auroraServerlessScalingConfigs;
   /// Configuration for Lambda function execution. See `customActionLambdaConfig` Block for details.
   final pulumi.Input<List<PlanWorkflowStepParallelConfigStepCustomActionLambdaConfig>?>? customActionLambdaConfigs;
-  /// Description of the step.
+  /// Description of the plan.
   final pulumi.Input<String?>? description;
   /// Configuration for DocumentDB global cluster operations. See `documentDbConfig` Block for details.
   final pulumi.Input<List<PlanWorkflowStepParallelConfigStepDocumentDbConfig>?>? documentDbConfigs;
@@ -45,7 +45,7 @@ class PlanWorkflowStepParallelConfigStep {
   final pulumi.Input<List<PlanWorkflowStepParallelConfigStepGlobalAuroraConfig>?>? globalAuroraConfigs;
   /// Configuration for Lambda event source mapping operations. See `lambdaEventSourceMappingConfig` Block for details.
   final pulumi.Input<List<PlanWorkflowStepParallelConfigStepLambdaEventSourceMappingConfig>?>? lambdaEventSourceMappingConfigs;
-  /// Name of the step.
+  /// Name of the plan. Must be unique within the account.
   final pulumi.Input<String> name;
   /// Configuration for Neptune global database operations. See `neptuneGlobalDatabaseConfig` Block for details.
   final pulumi.Input<List<PlanWorkflowStepParallelConfigStepNeptuneGlobalDatabaseConfig>?>? neptuneGlobalDatabaseConfigs;
@@ -63,7 +63,7 @@ class PlanWorkflowStepParallelConfigStep {
   /// [auroraProvisionedScalingConfigs] Configuration for Aurora provisioned scaling. See `auroraProvisionedScalingConfig` Block for details.
   /// [auroraServerlessScalingConfigs] Configuration for Aurora Serverless scaling. See `auroraServerlessScalingConfig` Block for details.
   /// [customActionLambdaConfigs] Configuration for Lambda function execution. See `customActionLambdaConfig` Block for details.
-  /// [description] Description of the step.
+  /// [description] Description of the plan.
   /// [documentDbConfigs] Configuration for DocumentDB global cluster operations. See `documentDbConfig` Block for details.
   /// [ec2AsgCapacityIncreaseConfigs] Configuration for EC2 Auto Scaling group capacity increase. See `ec2AsgCapacityIncreaseConfig` Block for details.
   /// [ecsCapacityIncreaseConfigs] Configuration for ECS service capacity increase. See `ecsCapacityIncreaseConfig` Block for details.
@@ -72,7 +72,7 @@ class PlanWorkflowStepParallelConfigStep {
   /// [executionBlockType] Type of execution block. Valid values: `ARCRegionSwitchPlan`, `ARCRoutingControl`, `AuroraGlobalDatabase`, `CustomActionLambda`, `DocumentDb`, `EC2AutoScaling`, `ECSServiceScaling`, `EKSResourceScaling`, `ManualApproval`, `Parallel`, `RdsCreateCrossRegionReplica`, `RdsPromoteReadReplica`, `Route53HealthCheck`.
   /// [globalAuroraConfigs] Configuration for Aurora Global Database operations. See `globalAuroraConfig` Block for details.
   /// [lambdaEventSourceMappingConfigs] Configuration for Lambda event source mapping operations. See `lambdaEventSourceMappingConfig` Block for details.
-  /// [name] Name of the step.
+  /// [name] Name of the plan. Must be unique within the account.
   /// [neptuneGlobalDatabaseConfigs] Configuration for Neptune global database operations. See `neptuneGlobalDatabaseConfig` Block for details.
   /// [rdsCreateCrossRegionReadReplicaConfigs] Configuration for creating cross-region RDS read replicas. See `rdsCreateCrossRegionReadReplicaConfig` Block for details.
   /// [rdsPromoteReadReplicaConfigs] Configuration for promoting RDS read replicas. See `rdsPromoteReadReplicaConfig` Block for details.

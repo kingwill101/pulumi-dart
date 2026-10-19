@@ -54,7 +54,7 @@ class ReservedCacheNodeArgs {
 
   factory ReservedCacheNodeArgs.fromMap(Map<String, dynamic> map) {
     return ReservedCacheNodeArgs(
-      cacheNodeCount: (() { final guardedValue = map['cacheNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cacheNodeCount: (() { final guardedValue = map['cacheNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       elasticacheReservedCacheNodeId: (() { final guardedValue = map['elasticacheReservedCacheNodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reservedCacheNodesOfferingId: pulumi.Input.fromValue(map['reservedCacheNodesOfferingId'] as String),

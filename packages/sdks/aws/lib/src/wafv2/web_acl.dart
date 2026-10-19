@@ -6,6 +6,7 @@ import 'web_acl_challenge_config.dart';
 import 'web_acl_custom_response_body.dart';
 import 'web_acl_data_protection_config.dart';
 import 'web_acl_default_action.dart';
+import 'web_acl_monetization_config.dart';
 import 'web_acl_rule.dart';
 import 'web_acl_state.dart';
 import 'web_acl_visibility_config.dart';
@@ -24,27 +25,29 @@ import 'web_acl_visibility_config.dart';
 /// $ pulumi import aws:wafv2/webAcl:WebAcl example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc/example/REGIONAL
 /// ```
 class WebAcl extends pulumi.CustomResource {
-  /// The URL to use in SDK integrations with managed rule groups.
+  /// URL to use in SDK integrations with managed rule groups.
   late final pulumi.Output<String> applicationIntegrationUrl;
-  /// The ARN of the WAF WebACL.
+  /// ARN of the WAF WebACL.
   late final pulumi.Output<String> arn;
-  /// Specifies custom configurations for the associations between the web ACL and protected resources. See `associationConfig` below for details.
+  /// Custom configurations for the associations between the web ACL and protected resources. See `associationConfig` below for details.
   late final pulumi.Output<WebAclAssociationConfig?> associationConfig;
   /// Web ACL capacity units (WCUs) currently being used by this web ACL.
   late final pulumi.Output<int> capacity;
-  /// Specifies how AWS WAF should handle CAPTCHA evaluations on the ACL level (used by [AWS Bot Control](https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-bot.html)). See `captchaConfig` below for details.
+  /// Configuration for how AWS WAF handles CAPTCHA evaluations at the web ACL level (used by [AWS Bot Control](https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-bot.html)). See `captchaConfig` below for details.
   late final pulumi.Output<WebAclCaptchaConfig?> captchaConfig;
-  /// Specifies how AWS WAF should handle Challenge evaluations on the ACL level (used by [AWS Bot Control](https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-bot.html)). See `challengeConfig` below for details.
+  /// Configuration for how AWS WAF handles Challenge evaluations at the web ACL level (used by [AWS Bot Control](https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-bot.html)). See `challengeConfig` below for details.
   late final pulumi.Output<WebAclChallengeConfig?> challengeConfig;
-  /// Defines custom response bodies that can be referenced by `customResponse` actions. See `customResponseBody` below for details.
+  /// Custom response bodies that can be referenced by `customResponse` actions. See `customResponseBody` below for details.
   late final pulumi.Output<List<WebAclCustomResponseBody>?> customResponseBodies;
-  /// Specifies data protection to apply to the web request data for the web ACL. This is a web ACL level data protection option. See `dataProtectionConfig` below for details.
+  /// Data protection to apply to the web request data for the web ACL. This is a web ACL level data protection option. See `dataProtectionConfig` below for details.
   late final pulumi.Output<WebAclDataProtectionConfig?> dataProtectionConfig;
   /// Action to perform if none of the `rules` contained in the WebACL match. See `defaultAction` below for details.
   late final pulumi.Output<WebAclDefaultAction> defaultAction;
   /// Friendly description of the WebACL.
   late final pulumi.Output<String?> description;
   late final pulumi.Output<String> lockToken;
+  /// Monetization configuration for the web ACL. Provide this when any rule in the web ACL uses the `monetize` action. See `monetizationConfig` below for details.
+  late final pulumi.Output<WebAclMonetizationConfig?> monetizationConfig;
   /// Friendly name of the WebACL. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
@@ -55,15 +58,15 @@ class WebAcl extends pulumi.CustomResource {
   late final pulumi.Output<String?> ruleJson;
   /// **`rule` blocks in this resource have several known limitations.** Consider using `aws.wafv2.WebAclRule` to manage rules as separate resources instead. Rule blocks used to identify the web requests that you want to `allow`, `block`, or `count`. See `rule` below for details.
   late final pulumi.Output<List<WebAclRule>?> rules;
-  /// Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
+  /// Scope of the web ACL, either an AWS CloudFront distribution or a regional application. Valid values are `CLOUDFRONT` or `REGIONAL`. To work with CloudFront, you must also specify the region `us-east-1` (N. Virginia) on the AWS provider.
   late final pulumi.Output<String> scope;
   /// Map of key-value pairs to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Specifies the domains that AWS WAF should accept in a web request token. This enables the use of tokens across multiple protected websites. When AWS WAF provides a token, it uses the domain of the AWS resource that the web ACL is protecting. If you don't specify a list of token domains, AWS WAF accepts tokens only for the domain of the protected resource. With a token domain list, AWS WAF accepts the resource's host domain plus all domains in the token domain list, including their prefixed subdomains.
+  /// Domains that AWS WAF should accept in a web request token. This enables the use of tokens across multiple protected websites. When AWS WAF provides a token, it uses the domain of the AWS resource that the web ACL is protecting. If you don't specify a list of token domains, AWS WAF accepts tokens only for the domain of the protected resource. With a token domain list, AWS WAF accepts the resource's host domain plus all domains in the token domain list, including their prefixed subdomains.
   late final pulumi.Output<List<String>?> tokenDomains;
-  /// Defines and enables Amazon CloudWatch metrics and web request sample collection. See `visibilityConfig` below for details.
+  /// Amazon CloudWatch metrics and web request sample collection configuration. See `visibilityConfig` below for details.
   late final pulumi.Output<WebAclVisibilityConfig> visibilityConfig;
 
   /// Creates a new [WebAcl].
@@ -78,7 +81,7 @@ class WebAcl extends pulumi.CustomResource {
           'aws:wafv2/webAcl:WebAcl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     applicationIntegrationUrl = registerOutput<String>('applicationIntegrationUrl');
     arn = registerOutput<String>('arn');
@@ -91,6 +94,7 @@ class WebAcl extends pulumi.CustomResource {
     defaultAction = registerOutput<WebAclDefaultAction>('defaultAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclDefaultAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     lockToken = registerOutput<String>('lockToken');
+    monetizationConfig = registerOutput<WebAclMonetizationConfig?>('monetizationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclMonetizationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
@@ -138,6 +142,7 @@ class WebAcl extends pulumi.CustomResource {
     defaultAction = registerOutput<WebAclDefaultAction>('defaultAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclDefaultAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     lockToken = registerOutput<String>('lockToken');
+    monetizationConfig = registerOutput<WebAclMonetizationConfig?>('monetizationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclMonetizationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');
@@ -170,6 +175,7 @@ class WebAcl extends pulumi.CustomResource {
     defaultAction = registerOutput<WebAclDefaultAction>('defaultAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclDefaultAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     lockToken = registerOutput<String>('lockToken');
+    monetizationConfig = registerOutput<WebAclMonetizationConfig?>('monetizationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclMonetizationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     region = registerOutput<String>('region');

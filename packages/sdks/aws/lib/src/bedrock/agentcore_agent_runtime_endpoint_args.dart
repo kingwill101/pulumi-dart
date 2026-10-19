@@ -9,14 +9,14 @@ import 'agentcore_agent_runtime_endpoint_timeouts.dart';
 /// {@macro pulumi_bedrock_agentcore_agent_runtime_endpoint_agentcore_agent_runtime_endpoint_args_doc}
 class AgentcoreAgentRuntimeEndpointArgs {
   /// ID of the agent runtime this endpoint belongs to.
-  ///
-  /// The following arguments are optional:
   final pulumi.Input<String> agentRuntimeId;
   /// Version of the agent runtime to use for this endpoint.
   final pulumi.Input<String?>? agentRuntimeVersion;
   /// Description of the agent runtime endpoint.
   final pulumi.Input<String?>? description;
   /// Name of the agent runtime endpoint.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;

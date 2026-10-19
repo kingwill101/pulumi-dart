@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupLaunchTemplate {
   /// ID of the launch template.
   final pulumi.Input<String> id;
-  /// Specify the exact name of the desired autoscaling group.
+  /// Specify the exact name of the desired Auto Scaling group.
   final pulumi.Input<String> name;
   /// Template version.
   final pulumi.Input<String> version;
 
   /// Creates a new [GetGroupLaunchTemplate].
   /// [id] ID of the launch template.
-  /// [name] Specify the exact name of the desired autoscaling group.
+  /// [name] Specify the exact name of the desired Auto Scaling group.
   /// [version] Template version.
   const GetGroupLaunchTemplate({
     required this.id,

@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirehoseDeliveryStreamMskSourceConfigurationAuthenticationConfiguration {
-  /// The type of connectivity used to access the Amazon MSK cluster. Valid values: `PUBLIC`, `PRIVATE`.
+  /// Type of connectivity used to access the Amazon MSK cluster. Valid values: `PUBLIC`, `PRIVATE`.
   final pulumi.Input<String> connectivity;
-  /// The ARN of the role used to access the Amazon MSK cluster.
+  /// ARN of the role used to access the Amazon MSK cluster.
   final pulumi.Input<String> roleArn;
 
   /// Creates a new [FirehoseDeliveryStreamMskSourceConfigurationAuthenticationConfiguration].
-  /// [connectivity] The type of connectivity used to access the Amazon MSK cluster. Valid values: `PUBLIC`, `PRIVATE`.
-  /// [roleArn] The ARN of the role used to access the Amazon MSK cluster.
+  /// [connectivity] Type of connectivity used to access the Amazon MSK cluster. Valid values: `PUBLIC`, `PRIVATE`.
+  /// [roleArn] ARN of the role used to access the Amazon MSK cluster.
   const FirehoseDeliveryStreamMskSourceConfigurationAuthenticationConfiguration({
     required this.connectivity,
     required this.roleArn,

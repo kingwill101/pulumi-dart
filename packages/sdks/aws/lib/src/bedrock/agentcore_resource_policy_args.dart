@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_bedrock_agentcore_resource_policy_agentcore_resource_policy_args_doc}
 class AgentcoreResourcePolicyArgs {
-  /// Resource policy definition
+  /// Resource policy document in JSON format.
   final pulumi.Input<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -17,7 +17,7 @@ class AgentcoreResourcePolicyArgs {
   final pulumi.Input<String> resourceArn;
 
   /// Creates a new [AgentcoreResourcePolicyArgs].
-  /// [policy] Resource policy definition
+  /// [policy] Resource policy document in JSON format.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] ARN of the resource for which to create or update the resource policy.
   const AgentcoreResourcePolicyArgs({

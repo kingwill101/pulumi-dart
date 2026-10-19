@@ -14,7 +14,7 @@ class GetElasticIpResult {
   final String? customerOwnedIp;
   /// The ID of a Customer Owned IP Pool. For more on customer owned IP addressed check out [Customer-owned IP addresses guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
   final String? customerOwnedIpv4Pool;
-  /// Whether the address is for use in EC2-Classic (standard) or in a VPC (vpc).
+  /// Whether the address is for use in EC2-Classic (`standard`) or in a VPC (`vpc`).
   final String? domain;
   final List<GetElasticIpFilter>? filters;
   /// If VPC Elastic IP, the allocation identifier. If EC2-Classic Elastic IP, the public IP address.
@@ -49,7 +49,7 @@ class GetElasticIpResult {
   /// [carrierIp] Carrier IP address.
   /// [customerOwnedIp] Customer Owned IP.
   /// [customerOwnedIpv4Pool] The ID of a Customer Owned IP Pool. For more on customer owned IP addressed check out [Customer-owned IP addresses guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
-  /// [domain] Whether the address is for use in EC2-Classic (standard) or in a VPC (vpc).
+  /// [domain] Whether the address is for use in EC2-Classic (`standard`) or in a VPC (`vpc`).
   /// [filters] Optional.
   /// [id] If VPC Elastic IP, the allocation identifier. If EC2-Classic Elastic IP, the public IP address.
   /// [instanceId] ID of the instance that the address is associated with (if any).

@@ -189,7 +189,7 @@ import 'lb_certificate_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.lightsail.LbCertificate` using the id attribute. For example:
+/// Using `pulumi import`, import `aws.lightsail.LbCertificate` using the `id` attribute. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:lightsail/lbCertificate:LbCertificate example example-load-balancer,example-load-balancer-certificate
@@ -228,7 +228,7 @@ class LbCertificate extends pulumi.CustomResource {
           'aws:lightsail/lbCertificate:LbCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

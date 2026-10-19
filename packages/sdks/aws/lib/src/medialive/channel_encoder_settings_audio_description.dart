@@ -7,38 +7,41 @@ import 'channel_encoder_settings_audio_description_codec_settings.dart';
 import 'channel_encoder_settings_audio_description_remix_settings.dart';
 
 class ChannelEncoderSettingsAudioDescription {
-  /// Advanced audio normalization settings. See Audio Normalization Settings for more details.
+  /// Advanced audio normalization settings. See `audioNormalizationSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsAudioDescriptionAudioNormalizationSettings?>? audioNormalizationSettings;
-  /// The name of the audio selector used as the source for this AudioDescription.
+  /// Name of the audio selector used as the source for this audio description.
   final pulumi.Input<String> audioSelectorName;
-  /// Applies only if audioTypeControl is useConfigured. The values for audioType are defined in ISO-IEC 13818-1.
+  /// Applies only if `audioTypeControl` is `useConfigured`. Values for `audioType` are defined in ISO-IEC 13818-1.
   final pulumi.Input<String?>? audioType;
-  /// Determined how audio type is determined.
+  /// How audio type is determined.
   final pulumi.Input<String?>? audioTypeControl;
-  /// Settings to configure one or more solutions that insert audio watermarks in the audio encode. See Audio Watermark Settings for more details.
+  /// Settings to configure one or more solutions that insert audio watermarks in the audio encode. See `audioWatermarkSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings?>? audioWatermarkSettings;
-  /// Audio codec settings. See Audio Codec Settings for more details.
+  /// Audio codec settings. See `audio_descriptions.codec_settings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsAudioDescriptionCodecSettings?>? codecSettings;
+  /// ISO 639-2 three-digit code for the language of this audio description.
   final pulumi.Input<String?>? languageCode;
+  /// How to handle the audio language code.
   final pulumi.Input<String?>? languageCodeControl;
-  /// The name of this audio description.
+  /// Name of this audio description.
   final pulumi.Input<String> name;
+  /// Settings to remix the audio. See `remixSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsAudioDescriptionRemixSettings?>? remixSettings;
-  /// Stream name RTMP destinations (URLs of type rtmp://)
+  /// Stream name used to identify the audio description.
   final pulumi.Input<String?>? streamName;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescription].
-  /// [audioNormalizationSettings] Advanced audio normalization settings. See Audio Normalization Settings for more details.
-  /// [audioSelectorName] The name of the audio selector used as the source for this AudioDescription.
-  /// [audioType] Applies only if audioTypeControl is useConfigured. The values for audioType are defined in ISO-IEC 13818-1.
-  /// [audioTypeControl] Determined how audio type is determined.
-  /// [audioWatermarkSettings] Settings to configure one or more solutions that insert audio watermarks in the audio encode. See Audio Watermark Settings for more details.
-  /// [codecSettings] Audio codec settings. See Audio Codec Settings for more details.
-  /// [languageCode] Optional.
-  /// [languageCodeControl] Optional.
-  /// [name] The name of this audio description.
-  /// [remixSettings] Optional.
-  /// [streamName] Stream name RTMP destinations (URLs of type rtmp://)
+  /// [audioNormalizationSettings] Advanced audio normalization settings. See `audioNormalizationSettings` Block for details.
+  /// [audioSelectorName] Name of the audio selector used as the source for this audio description.
+  /// [audioType] Applies only if `audioTypeControl` is `useConfigured`. Values for `audioType` are defined in ISO-IEC 13818-1.
+  /// [audioTypeControl] How audio type is determined.
+  /// [audioWatermarkSettings] Settings to configure one or more solutions that insert audio watermarks in the audio encode. See `audioWatermarkSettings` Block for details.
+  /// [codecSettings] Audio codec settings. See `audio_descriptions.codec_settings` Block for details.
+  /// [languageCode] ISO 639-2 three-digit code for the language of this audio description.
+  /// [languageCodeControl] How to handle the audio language code.
+  /// [name] Name of this audio description.
+  /// [remixSettings] Settings to remix the audio. See `remixSettings` Block for details.
+  /// [streamName] Stream name used to identify the audio description.
   const ChannelEncoderSettingsAudioDescription({
     this.audioNormalizationSettings,
     required this.audioSelectorName,

@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetIndexUserTokenConfigurationJwtTokenTypeConfiguration {
   /// Regular expression that identifies the claim.
   final pulumi.Input<String> claimRegex;
-  /// The group attribute field.
+  /// Group attribute field.
   final pulumi.Input<String> groupAttributeField;
   /// Issuer of the token.
   final pulumi.Input<String> issuer;
-  /// Location of the key. Valid values are `URL` or `SECRET_MANAGER`
+  /// Location of the key. Valid values are `URL` or `SECRET_MANAGER`.
   final pulumi.Input<String> keyLocation;
   /// ARN of the secret.
   final pulumi.Input<String> secretsManagerArn;
   /// Signing key URL.
   final pulumi.Input<String> url;
-  /// The user name attribute field.
+  /// User name attribute field.
   final pulumi.Input<String> userNameAttributeField;
 
   /// Creates a new [GetIndexUserTokenConfigurationJwtTokenTypeConfiguration].
   /// [claimRegex] Regular expression that identifies the claim.
-  /// [groupAttributeField] The group attribute field.
+  /// [groupAttributeField] Group attribute field.
   /// [issuer] Issuer of the token.
-  /// [keyLocation] Location of the key. Valid values are `URL` or `SECRET_MANAGER`
+  /// [keyLocation] Location of the key. Valid values are `URL` or `SECRET_MANAGER`.
   /// [secretsManagerArn] ARN of the secret.
   /// [url] Signing key URL.
-  /// [userNameAttributeField] The user name attribute field.
+  /// [userNameAttributeField] User name attribute field.
   const GetIndexUserTokenConfigurationJwtTokenTypeConfiguration({
     required this.claimRegex,
     required this.groupAttributeField,

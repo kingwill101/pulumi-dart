@@ -13,7 +13,7 @@ class GuardrailVersionState {
   final pulumi.Input<String?>? guardrailArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Whether to retain the old version of a previously deployed Guardrail. Default is `false`
+  /// Whether to retain the old version of a previously deployed Guardrail. Default is `false`.
   final pulumi.Input<bool?>? skipDestroy;
   final pulumi.Input<GuardrailVersionTimeouts?>? timeouts;
   /// Guardrail version.
@@ -23,7 +23,7 @@ class GuardrailVersionState {
   /// [description] Description of the Guardrail version.
   /// [guardrailArn] Guardrail ARN.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [skipDestroy] Whether to retain the old version of a previously deployed Guardrail. Default is `false`
+  /// [skipDestroy] Whether to retain the old version of a previously deployed Guardrail. Default is `false`.
   /// [timeouts] Optional.
   /// [version] Guardrail version.
   const GuardrailVersionState({

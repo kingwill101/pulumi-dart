@@ -22,7 +22,7 @@ class PipelineArgs {
   final pulumi.Input<int> maxUnits;
   /// The minimum pipeline capacity, in Ingestion Compute Units (ICUs).
   final pulumi.Input<int> minUnits;
-  /// The pipeline configuration in YAML format. This argument accepts the pipeline configuration as a string or within a .yaml file. If you provide the configuration as a string, each new line must be escaped with `\n`.
+  /// The pipeline configuration in YAML format. This argument accepts the pipeline configuration as a string or within a `.yaml` file. If you provide the configuration as a string, each new line must be escaped with `\n`.
   final pulumi.Input<String> pipelineConfigurationBody;
   /// Name of the pipeline. Pipeline names are unique across the pipelines owned by an account within an AWS Region.
   ///
@@ -44,7 +44,7 @@ class PipelineArgs {
   /// [logPublishingOptions] Key-value pairs to configure log publishing. See `logPublishingOptions` below.
   /// [maxUnits] The maximum pipeline capacity, in Ingestion Compute Units (ICUs).
   /// [minUnits] The minimum pipeline capacity, in Ingestion Compute Units (ICUs).
-  /// [pipelineConfigurationBody] The pipeline configuration in YAML format. This argument accepts the pipeline configuration as a string or within a .yaml file. If you provide the configuration as a string, each new line must be escaped with `\n`.
+  /// [pipelineConfigurationBody] The pipeline configuration in YAML format. This argument accepts the pipeline configuration as a string or within a `.yaml` file. If you provide the configuration as a string, each new line must be escaped with `\n`.
   /// [pipelineName] Name of the pipeline. Pipeline names are unique across the pipelines owned by an account within an AWS Region.
   /// [pipelineRoleArn] ARN of the IAM role that grants the pipeline permission to access AWS resources.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -88,8 +88,8 @@ class PipelineArgs {
       bufferOptions: (() { final guardedValue = map['bufferOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineBufferOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       encryptionAtRestOptions: (() { final guardedValue = map['encryptionAtRestOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineEncryptionAtRestOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       logPublishingOptions: (() { final guardedValue = map['logPublishingOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineLogPublishingOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxUnits: pulumi.Input.fromValue((map['maxUnits'] as num).toInt()),
-      minUnits: pulumi.Input.fromValue((map['minUnits'] as num).toInt()),
+      maxUnits: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxUnits'])),
+      minUnits: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minUnits'])),
       pipelineConfigurationBody: pulumi.Input.fromValue(map['pipelineConfigurationBody'] as String),
       pipelineName: pulumi.Input.fromValue(map['pipelineName'] as String),
       pipelineRoleArn: (() { final guardedValue = map['pipelineRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

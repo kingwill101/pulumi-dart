@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier {
-  /// Name of the custom data idenfitier
+  /// Name of the custom data identifier
   final pulumi.Input<String> name;
   /// Regular expression to match sensitive data
   final pulumi.Input<String> regex;
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier].
-  /// [name] Name of the custom data idenfitier
+  /// [name] Name of the custom data identifier
   /// [regex] Regular expression to match sensitive data
   const GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier({
     required this.name,

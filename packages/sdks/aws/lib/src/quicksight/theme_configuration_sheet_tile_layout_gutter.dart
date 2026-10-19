@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThemeConfigurationSheetTileLayoutGutter {
-  /// This Boolean value controls whether to display a gutter space between sheet tiles.
+  /// Whether to display a gutter space between sheet tiles.
   final pulumi.Input<bool?>? show;
 
   /// Creates a new [ThemeConfigurationSheetTileLayoutGutter].
-  /// [show] This Boolean value controls whether to display a gutter space between sheet tiles.
+  /// [show] Whether to display a gutter space between sheet tiles.
   const ThemeConfigurationSheetTileLayoutGutter({
     this.show,
   });

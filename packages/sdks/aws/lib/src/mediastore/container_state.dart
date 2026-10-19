@@ -4,26 +4,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering Container resources.
 class ContainerState {
-  /// The ARN of the container.
+  /// ARN of the container.
   final pulumi.Input<String?>? arn;
-  /// The DNS endpoint of the container.
+  /// DNS endpoint of the container.
   final pulumi.Input<String?>? endpoint;
-  /// The name of the container. Must contain alphanumeric characters or underscores.
+  /// Name of the container. Must contain alphanumeric characters or underscores.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ContainerState].
-  /// [arn] The ARN of the container.
-  /// [endpoint] The DNS endpoint of the container.
-  /// [name] The name of the container. Must contain alphanumeric characters or underscores.
+  /// [arn] ARN of the container.
+  /// [endpoint] DNS endpoint of the container.
+  /// [name] Name of the container. Must contain alphanumeric characters or underscores.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const ContainerState({
     this.arn,
     this.endpoint,

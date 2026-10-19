@@ -113,25 +113,25 @@ import 'queue_state.dart';
 /// $ pulumi import aws:mediaconvert/queue:Queue test tf-test-queue
 /// ```
 class Queue extends pulumi.CustomResource {
-  /// The Arn of the queue
+  /// ARN of the queue
   late final pulumi.Output<String> arn;
-  /// The maximum number of jobs your queue can process concurrently. For on-demand queues, the value you enter is constrained by your service quotas for Maximum concurrent jobs, per on-demand queue and Maximum concurrent jobs, per account. For reserved queues, specify the number of jobs you can process concurrently in your reservation plan instead.
+  /// Maximum number of jobs your queue can process concurrently. For on-demand queues, the value you enter is constrained by your service quotas for Maximum concurrent jobs, per on-demand queue and Maximum concurrent jobs, per account. For reserved queues, specify the number of jobs you can process concurrently in your reservation plan instead.
   late final pulumi.Output<int> concurrentJobs;
-  /// A description of the queue
+  /// Description of the queue
   late final pulumi.Output<String?> description;
-  /// A unique identifier describing the queue
+  /// Unique identifier describing the queue
   late final pulumi.Output<String> name;
-  /// Specifies whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
+  /// Whether the pricing plan for the queue is on-demand or reserved. Valid values are `ON_DEMAND` or `RESERVED`. Default to `ON_DEMAND`.
   late final pulumi.Output<String?> pricingPlan;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A detail pricing plan of the  reserved queue. See below.
+  /// Detail pricing plan of the reserved queue. See below.
   late final pulumi.Output<QueueReservationPlanSettings> reservationPlanSettings;
-  /// A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
+  /// Status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
   late final pulumi.Output<String?> status;
-  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Queue].
@@ -146,7 +146,7 @@ class Queue extends pulumi.CustomResource {
           'aws:mediaconvert/queue:Queue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     concurrentJobs = registerOutput<int>('concurrentJobs');

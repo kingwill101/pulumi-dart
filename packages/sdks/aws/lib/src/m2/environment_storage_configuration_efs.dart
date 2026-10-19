@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentStorageConfigurationEfs {
-  /// Id of the EFS filesystem to mount.
+  /// ID of the EFS filesystem to mount.
   final pulumi.Input<String> fileSystemId;
   /// Path to mount the filesystem on, must start with `/m2/mount/`.
   final pulumi.Input<String> mountPoint;
 
   /// Creates a new [EnvironmentStorageConfigurationEfs].
-  /// [fileSystemId] Id of the EFS filesystem to mount.
+  /// [fileSystemId] ID of the EFS filesystem to mount.
   /// [mountPoint] Path to mount the filesystem on, must start with `/m2/mount/`.
   const EnvironmentStorageConfigurationEfs({
     required this.fileSystemId,

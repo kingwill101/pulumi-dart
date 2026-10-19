@@ -11,7 +11,7 @@ class GetLocalGatewayRouteTableArgs {
   final pulumi.Input<List<GetLocalGatewayRouteTableFilter>?>? filters;
   /// ID of the specific local gateway route table to retrieve.
   final pulumi.Input<String?>? localGatewayId;
-  /// Local Gateway Route Table Id assigned to desired local gateway route table
+  /// Local Gateway Route Table ID assigned to desired local gateway route table
   final pulumi.Input<String?>? localGatewayRouteTableId;
   /// ARN of the Outpost the local gateway route table is associated with.
   final pulumi.Input<String?>? outpostArn;
@@ -30,7 +30,7 @@ class GetLocalGatewayRouteTableArgs {
   /// Creates a new [GetLocalGatewayRouteTableArgs].
   /// [filters] Optional.
   /// [localGatewayId] ID of the specific local gateway route table to retrieve.
-  /// [localGatewayRouteTableId] Local Gateway Route Table Id assigned to desired local gateway route table
+  /// [localGatewayRouteTableId] Local Gateway Route Table ID assigned to desired local gateway route table
   /// [outpostArn] ARN of the Outpost the local gateway route table is associated with.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] State of the local gateway route table.

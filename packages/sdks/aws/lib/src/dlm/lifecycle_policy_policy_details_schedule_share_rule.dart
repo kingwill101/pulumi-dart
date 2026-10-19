@@ -31,7 +31,7 @@ class LifecyclePolicyPolicyDetailsScheduleShareRule {
   factory LifecyclePolicyPolicyDetailsScheduleShareRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleShareRule(
       targetAccounts: pulumi.Input.fromValue((map['targetAccounts'] as List).cast<String>()),
-      unshareInterval: (() { final guardedValue = map['unshareInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      unshareInterval: (() { final guardedValue = map['unshareInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       unshareIntervalUnit: (() { final guardedValue = map['unshareIntervalUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -5,9 +5,9 @@ import 'connection_timeouts.dart';
 
 /// Input properties used for looking up and filtering Connection resources.
 class ConnectionState {
-  /// The codeconnections connection ARN.
+  /// The CodeConnections connection ARN.
   final pulumi.Input<String?>? arn;
-  /// The codeconnections connection status. Possible values are `PENDING`, `AVAILABLE` and `ERROR`.
+  /// The CodeConnections connection status. Possible values are `PENDING`, `AVAILABLE` and `ERROR`.
   final pulumi.Input<String?>? connectionStatus;
   /// ARN of the host associated with the connection. Conflicts with `providerType`
   final pulumi.Input<String?>? hostArn;
@@ -25,8 +25,8 @@ class ConnectionState {
   final pulumi.Input<ConnectionTimeouts?>? timeouts;
 
   /// Creates a new [ConnectionState].
-  /// [arn] The codeconnections connection ARN.
-  /// [connectionStatus] The codeconnections connection status. Possible values are `PENDING`, `AVAILABLE` and `ERROR`.
+  /// [arn] The CodeConnections connection ARN.
+  /// [connectionStatus] The CodeConnections connection status. Possible values are `PENDING`, `AVAILABLE` and `ERROR`.
   /// [hostArn] ARN of the host associated with the connection. Conflicts with `providerType`
   /// [name] The name of the connection to be created. The name must be unique in the calling AWS account. Changing `name` will create a new resource.
   /// [ownerAccountId] Optional.

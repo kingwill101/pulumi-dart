@@ -312,7 +312,6 @@ import 'agentcore_memory_timeouts.dart';
 ///     eventExpiryDuration: 60,
 ///     encryptionKeyArn: example.arn,
 ///     memoryExecutionRoleArn: exampleAwsIamRole.arn,
-///     clientToken: "unique-client-token",
 /// });
 /// ```
 /// ```python
@@ -325,8 +324,7 @@ import 'agentcore_memory_timeouts.dart';
 ///     description="Memory for customer service agent",
 ///     event_expiry_duration=60,
 ///     encryption_key_arn=example.arn,
-///     memory_execution_role_arn=example_aws_iam_role["arn"],
-///     client_token="unique-client-token")
+///     memory_execution_role_arn=example_aws_iam_role["arn"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -348,7 +346,6 @@ import 'agentcore_memory_timeouts.dart';
 ///         EventExpiryDuration = 60,
 ///         EncryptionKeyArn = example.Arn,
 ///         MemoryExecutionRoleArn = exampleAwsIamRole.Arn,
-///         ClientToken = "unique-client-token",
 ///     });
 ///
 /// });
@@ -376,7 +373,6 @@ import 'agentcore_memory_timeouts.dart';
 /// 			EventExpiryDuration:    pulumi.Int(60),
 /// 			EncryptionKeyArn:       example.Arn,
 /// 			MemoryExecutionRoleArn: pulumi.Any(exampleAwsIamRole.Arn),
-/// 			ClientToken:            "unique-client-token",
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -403,7 +399,6 @@ import 'agentcore_memory_timeouts.dart';
 ///   event_expiry_duration     = 60
 ///   encryption_key_arn        = aws_kms_key.example.arn
 ///   memory_execution_role_arn = exampleAwsIamRole.arn
-///   client_token              = "unique-client-token"
 /// }
 /// ```
 /// ```java
@@ -439,7 +434,6 @@ import 'agentcore_memory_timeouts.dart';
 ///             .eventExpiryDuration(60)
 ///             .encryptionKeyArn(example.arn())
 ///             .memoryExecutionRoleArn(exampleAwsIamRole.arn())
-///             .clientToken("unique-client-token")
 ///             .build());
 ///
 ///     }
@@ -460,7 +454,6 @@ import 'agentcore_memory_timeouts.dart';
 ///       eventExpiryDuration: 60
 ///       encryptionKeyArn: ${example.arn}
 ///       memoryExecutionRoleArn: ${exampleAwsIamRole.arn}
-///       clientToken: unique-client-token
 /// ```
 ///
 ///
@@ -474,7 +467,7 @@ import 'agentcore_memory_timeouts.dart';
 ///
 /// #### Optional
 ///
-/// * `accountId` (String) Account ID where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -522,7 +515,7 @@ class AgentcoreMemory extends pulumi.CustomResource {
           'aws:bedrock/agentcoreMemory:AgentcoreMemory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

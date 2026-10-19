@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering HsmClientCertificate resources.
 class HsmClientCertificateState {
-  /// ARN of the Hsm Client Certificate.
+  /// ARN of the HSM Client Certificate.
   final pulumi.Input<String?>? arn;
   /// The identifier of the HSM client certificate.
   final pulumi.Input<String?>? hsmClientCertificateIdentifier;
@@ -18,7 +18,7 @@ class HsmClientCertificateState {
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [HsmClientCertificateState].
-  /// [arn] ARN of the Hsm Client Certificate.
+  /// [arn] ARN of the HSM Client Certificate.
   /// [hsmClientCertificateIdentifier] The identifier of the HSM client certificate.
   /// [hsmClientCertificatePublicKey] The public key that the Amazon Redshift cluster will use to connect to the HSM. You must register the public key in the HSM.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

@@ -50,7 +50,7 @@ class TemplateAliasArgs {
       awsAccountId: (() { final guardedValue = map['awsAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       templateId: pulumi.Input.fromValue(map['templateId'] as String),
-      templateVersionNumber: pulumi.Input.fromValue((map['templateVersionNumber'] as num).toInt()),
+      templateVersionNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['templateVersionNumber'])),
     );
   }
 }

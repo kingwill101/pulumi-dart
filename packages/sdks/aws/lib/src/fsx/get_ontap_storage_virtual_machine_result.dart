@@ -8,13 +8,13 @@ import 'get_ontap_storage_virtual_machine_lifecycle_transition_reason.dart';
 
 /// Result data returned by getOntapStorageVirtualMachine.
 class GetOntapStorageVirtualMachineResult {
-  /// Microsoft Active Directory configuration to which the SVM is joined, if applicable. See Active Directory Configuration below.
+  /// Microsoft Active Directory configuration to which the SVM is joined, if applicable. See `activeDirectoryConfiguration` Block below.
   final List<GetOntapStorageVirtualMachineActiveDirectoryConfiguration>? activeDirectoryConfigurations;
   /// ARN of the SVM.
   final String? arn;
   /// Time that the SVM was created.
   final String? creationTime;
-  /// Endpoints that are used to access data or to manage the SVM using the NetApp ONTAP CLI, REST API, or NetApp CloudManager. They are the Iscsi, Management, Nfs, and Smb endpoints. See SVM Endpoints below.
+  /// Endpoints that are used to access data or to manage the SVM using the NetApp ONTAP CLI, REST API, or NetApp CloudManager. See `endpoints` Block below.
   final List<GetOntapStorageVirtualMachineEndpoint>? endpoints;
   /// Identifier of the file system (e.g. `fs-12345678`).
   final String? fileSystemId;
@@ -23,7 +23,7 @@ class GetOntapStorageVirtualMachineResult {
   final String? id;
   /// SVM's lifecycle status.
   final String? lifecycleStatus;
-  /// Reason why the SVM lifecycle state changed. See Lifecycle Transition Reason below.
+  /// Reason why the SVM lifecycle state changed. See `lifecycleTransitionReason` Block below.
   final List<GetOntapStorageVirtualMachineLifecycleTransitionReason>? lifecycleTransitionReasons;
   /// Name of the SVM, if provisioned.
   final String? name;
@@ -36,15 +36,15 @@ class GetOntapStorageVirtualMachineResult {
   final String? uuid;
 
   /// Creates a new [GetOntapStorageVirtualMachineResult].
-  /// [activeDirectoryConfigurations] Microsoft Active Directory configuration to which the SVM is joined, if applicable. See Active Directory Configuration below.
+  /// [activeDirectoryConfigurations] Microsoft Active Directory configuration to which the SVM is joined, if applicable. See `activeDirectoryConfiguration` Block below.
   /// [arn] ARN of the SVM.
   /// [creationTime] Time that the SVM was created.
-  /// [endpoints] Endpoints that are used to access data or to manage the SVM using the NetApp ONTAP CLI, REST API, or NetApp CloudManager. They are the Iscsi, Management, Nfs, and Smb endpoints. See SVM Endpoints below.
+  /// [endpoints] Endpoints that are used to access data or to manage the SVM using the NetApp ONTAP CLI, REST API, or NetApp CloudManager. See `endpoints` Block below.
   /// [fileSystemId] Identifier of the file system (e.g. `fs-12345678`).
   /// [filters] Optional.
   /// [id] SVM's system generated unique ID.
   /// [lifecycleStatus] SVM's lifecycle status.
-  /// [lifecycleTransitionReasons] Reason why the SVM lifecycle state changed. See Lifecycle Transition Reason below.
+  /// [lifecycleTransitionReasons] Reason why the SVM lifecycle state changed. See `lifecycleTransitionReason` Block below.
   /// [name] Name of the SVM, if provisioned.
   /// [region] Optional.
   /// [subtype] SVM's subtype.

@@ -11,41 +11,38 @@ import 'analytics_application_reference_data_sources.dart';
 /// {@endtemplate}
 /// {@macro pulumi_kinesis_analytics_application_analytics_application_args_doc}
 class AnalyticsApplicationArgs {
-  /// The CloudWatch log stream options to monitor application errors.
-  /// See CloudWatch Logging Options below for more details.
+  /// CloudWatch log stream options to monitor application errors. See `cloudwatchLoggingOptions` Block below for details.
   final pulumi.Input<AnalyticsApplicationCloudwatchLoggingOptions?>? cloudwatchLoggingOptions;
   /// SQL Code to transform input data, and generate output.
   final pulumi.Input<String?>? code;
   /// Description of the application.
   final pulumi.Input<String?>? description;
-  /// Input configuration of the application. See Inputs below for more details.
+  /// Input configuration of the application. See `inputs` Block below for details.
   final pulumi.Input<AnalyticsApplicationInputs?>? inputs;
   /// Name of the Kinesis Analytics Application.
   final pulumi.Input<String?>? name;
-  /// Output destination configuration of the application. See Outputs below for more details.
+  /// Output destination configuration of the application. See `outputs` Block below for details.
   final pulumi.Input<List<AnalyticsApplicationOutput>?>? outputs;
-  /// An S3 Reference Data Source for the application.
-  /// See Reference Data Sources below for more details.
+  /// S3 Reference Data Source for the application. See `referenceDataSources` Block below for details.
   final pulumi.Input<AnalyticsApplicationReferenceDataSources?>? referenceDataSources;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Whether to start or stop the Kinesis Analytics Application. To start an application, an input with a defined `startingPosition` must be configured.
-  /// To modify an application's starting position, first stop the application by setting `startApplication = false`, then update `startingPosition` and set `startApplication = true`.
+  /// Whether to start or stop the Kinesis Analytics Application. To start an application, an input with a defined `startingPosition` must be configured. To modify an application's starting position, first stop the application by setting `startApplication = false`, then update `startingPosition` and set `startApplication = true`.
   final pulumi.Input<bool?>? startApplication;
-  /// Key-value map of tags for the Kinesis Analytics Application. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AnalyticsApplicationArgs].
-  /// [cloudwatchLoggingOptions] The CloudWatch log stream options to monitor application errors.
+  /// [cloudwatchLoggingOptions] CloudWatch log stream options to monitor application errors. See `cloudwatchLoggingOptions` Block below for details.
   /// [code] SQL Code to transform input data, and generate output.
   /// [description] Description of the application.
-  /// [inputs] Input configuration of the application. See Inputs below for more details.
+  /// [inputs] Input configuration of the application. See `inputs` Block below for details.
   /// [name] Name of the Kinesis Analytics Application.
-  /// [outputs] Output destination configuration of the application. See Outputs below for more details.
-  /// [referenceDataSources] An S3 Reference Data Source for the application.
+  /// [outputs] Output destination configuration of the application. See `outputs` Block below for details.
+  /// [referenceDataSources] S3 Reference Data Source for the application. See `referenceDataSources` Block below for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [startApplication] Whether to start or stop the Kinesis Analytics Application. To start an application, an input with a defined `startingPosition` must be configured.
-  /// [tags] Key-value map of tags for the Kinesis Analytics Application. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [startApplication] Whether to start or stop the Kinesis Analytics Application. To start an application, an input with a defined `startingPosition` must be configured. To modify an application's starting position, first stop the application by setting `startApplication = false`, then update `startingPosition` and set `startApplication = true`.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const AnalyticsApplicationArgs({
     this.cloudwatchLoggingOptions,
     this.code,

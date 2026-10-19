@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_cloudwatch_get_log_group_get_log_group_args_doc}
 class GetLogGroupArgs {
-  /// Name of the Cloudwatch log group
+  /// Name of the CloudWatch log group
   final pulumi.Input<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -15,7 +15,7 @@ class GetLogGroupArgs {
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetLogGroupArgs].
-  /// [name] Name of the Cloudwatch log group
+  /// [name] Name of the CloudWatch log group
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the resource.
   const GetLogGroupArgs({

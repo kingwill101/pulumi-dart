@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicatorReplicationInfoListTopicReplicationStartingPosition {
-  /// The type of replication starting position. Supports `LATEST` and `EARLIEST`.
+  /// Type of replication starting position. Supports `LATEST` and `EARLIEST`.
   final pulumi.Input<String?>? type;
 
   /// Creates a new [ReplicatorReplicationInfoListTopicReplicationStartingPosition].
-  /// [type] The type of replication starting position. Supports `LATEST` and `EARLIEST`.
+  /// [type] Type of replication starting position. Supports `LATEST` and `EARLIEST`.
   const ReplicatorReplicationInfoListTopicReplicationStartingPosition({
     this.type,
   });

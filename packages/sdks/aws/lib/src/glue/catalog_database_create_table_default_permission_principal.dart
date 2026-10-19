@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CatalogDatabaseCreateTableDefaultPermissionPrincipal {
-  /// An identifier for the Lake Formation principal.
+  /// Identifier for the Lake Formation principal.
   final pulumi.Input<String?>? dataLakePrincipalIdentifier;
 
   /// Creates a new [CatalogDatabaseCreateTableDefaultPermissionPrincipal].
-  /// [dataLakePrincipalIdentifier] An identifier for the Lake Formation principal.
+  /// [dataLakePrincipalIdentifier] Identifier for the Lake Formation principal.
   const CatalogDatabaseCreateTableDefaultPermissionPrincipal({
     this.dataLakePrincipalIdentifier,
   });

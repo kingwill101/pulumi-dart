@@ -8,6 +8,7 @@ import 'key_timeouts.dart';
 class KeyState {
   /// ARN of the key.
   final pulumi.Input<String?>? arn;
+  /// Number of days between 3 and 180 to wait after the resource is deleted before the key is deleted.
   final pulumi.Input<int?>? deletionWindowInDays;
   /// Whether to enable the key.
   final pulumi.Input<bool?>? enabled;
@@ -27,7 +28,7 @@ class KeyState {
   final pulumi.Input<String?>? keyState;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Map of tags assigned to the WorkSpaces Connection Alias. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags assigned to the key. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
@@ -35,7 +36,7 @@ class KeyState {
 
   /// Creates a new [KeyState].
   /// [arn] ARN of the key.
-  /// [deletionWindowInDays] Optional.
+  /// [deletionWindowInDays] Number of days between 3 and 180 to wait after the resource is deleted before the key is deleted.
   /// [enabled] Whether to enable the key.
   /// [exportable] Whether the key is exportable from the service.
   /// [keyAttributes] Role of the key, the algorithm it supports, and the cryptographic operations allowed with the key.
@@ -44,7 +45,7 @@ class KeyState {
   /// [keyOrigin] Source of the key material.
   /// [keyState] State of key that is being created or deleted.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Map of tags assigned to the WorkSpaces Connection Alias. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags assigned to the key. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   const KeyState({
@@ -84,7 +85,7 @@ class KeyState {
   factory KeyState.fromMap(Map<String, dynamic> map) {
     return KeyState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      deletionWindowInDays: (() { final guardedValue = map['deletionWindowInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      deletionWindowInDays: (() { final guardedValue = map['deletionWindowInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       exportable: (() { final guardedValue = map['exportable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       keyAttributes: (() { final guardedValue = map['keyAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KeyKeyAttribute>(guardedValue, (value) => KeyKeyAttribute.fromMap((value as Map).cast<String, dynamic>()))); })(),

@@ -7,27 +7,27 @@ import 'custom_domain_association_certificate_validation_record.dart';
 class CustomDomainAssociationState {
   /// Set of certificate CNAME records used for this domain name. See `certificateValidationRecords` Block below for more details.
   final pulumi.Input<List<CustomDomainAssociationCertificateValidationRecord>?>? certificateValidationRecords;
-  /// App Runner subdomain of the App Runner service. The custom domain name is mapped to this target name. Attribute only available if resource created (not imported) with this provider.
+  /// App Runner subdomain of the App Runner service. The custom domain name is mapped to this target name.
   final pulumi.Input<String?>? dnsTarget;
-  /// Custom domain endpoint to association. Specify a base domain e.g., `example.com` or a subdomain e.g., `subdomain.example.com`.
+  /// Custom domain endpoint to association. Specify a base domain e.g., `example.com` or a subdomain e.g., `subdomain.example.com`. Must not end with a trailing period. `enableWwwSubdomain` must be set to `false` when using a wildcard domain.
   final pulumi.Input<String?>? domainName;
-  /// Whether to associate the subdomain with the App Runner service in addition to the base domain. Defaults to `true`.
+  /// Whether to associate the subdomain with the App Runner service in addition to the base domain. Defaults to `true`. Must be set to `false` when `domainName` is a wildcard domain.
   final pulumi.Input<bool?>? enableWwwSubdomain;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// ARN of the App Runner service.
   final pulumi.Input<String?>? serviceArn;
-  /// Current state of the certificate CNAME record validation. It should change to `SUCCESS` after App Runner completes validation with your DNS.
+  /// Current state of the certificate `CNAME` record validation. It should change to `SUCCESS` after App Runner completes validation with your DNS.
   final pulumi.Input<String?>? status;
 
   /// Creates a new [CustomDomainAssociationState].
   /// [certificateValidationRecords] Set of certificate CNAME records used for this domain name. See `certificateValidationRecords` Block below for more details.
-  /// [dnsTarget] App Runner subdomain of the App Runner service. The custom domain name is mapped to this target name. Attribute only available if resource created (not imported) with this provider.
-  /// [domainName] Custom domain endpoint to association. Specify a base domain e.g., `example.com` or a subdomain e.g., `subdomain.example.com`.
-  /// [enableWwwSubdomain] Whether to associate the subdomain with the App Runner service in addition to the base domain. Defaults to `true`.
+  /// [dnsTarget] App Runner subdomain of the App Runner service. The custom domain name is mapped to this target name.
+  /// [domainName] Custom domain endpoint to association. Specify a base domain e.g., `example.com` or a subdomain e.g., `subdomain.example.com`. Must not end with a trailing period. `enableWwwSubdomain` must be set to `false` when using a wildcard domain.
+  /// [enableWwwSubdomain] Whether to associate the subdomain with the App Runner service in addition to the base domain. Defaults to `true`. Must be set to `false` when `domainName` is a wildcard domain.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceArn] ARN of the App Runner service.
-  /// [status] Current state of the certificate CNAME record validation. It should change to `SUCCESS` after App Runner completes validation with your DNS.
+  /// [status] Current state of the certificate `CNAME` record validation. It should change to `SUCCESS` after App Runner completes validation with your DNS.
   const CustomDomainAssociationState({
     this.certificateValidationRecords,
     this.dnsTarget,

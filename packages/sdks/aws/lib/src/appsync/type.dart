@@ -197,7 +197,7 @@ import 'type_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Appsync Types using the `id`. For example:
+/// Using `pulumi import`, import AppSync Types using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appsync/type:Type example api-id:format:name
@@ -230,7 +230,7 @@ class Type extends pulumi.CustomResource {
           'aws:appsync/type:Type',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     arn = registerOutput<String>('arn');

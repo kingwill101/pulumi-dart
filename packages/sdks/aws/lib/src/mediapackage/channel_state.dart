@@ -5,29 +5,29 @@ import 'channel_hls_ingest.dart';
 
 /// Input properties used for looking up and filtering Channel resources.
 class ChannelState {
-  /// The ARN of the channel
+  /// ARN of the channel
   final pulumi.Input<String?>? arn;
-  /// A unique identifier describing the channel
+  /// Unique identifier describing the channel
   final pulumi.Input<String?>? channelId;
-  /// A description of the channel
+  /// Description of the channel
   final pulumi.Input<String?>? description;
-  /// A single item list of HLS ingest information
+  /// Single item list of HLS ingest information
   final pulumi.Input<List<ChannelHlsIngest>?>? hlsIngests;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ChannelState].
-  /// [arn] The ARN of the channel
-  /// [channelId] A unique identifier describing the channel
-  /// [description] A description of the channel
-  /// [hlsIngests] A single item list of HLS ingest information
+  /// [arn] ARN of the channel
+  /// [channelId] Unique identifier describing the channel
+  /// [description] Description of the channel
+  /// [hlsIngests] Single item list of HLS ingest information
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   ChannelState({
     this.arn,
     this.channelId,

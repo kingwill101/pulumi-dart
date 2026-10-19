@@ -9,26 +9,26 @@ import 'route_server_peer_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_vpc_route_server_peer_route_server_peer_args_doc}
 class RouteServerPeerArgs {
-  /// The BGP options for the peer, including ASN (Autonomous System Number) and BFD (Bidrectional Forwarding Detection) settings. Configuration block with BGP Options configuration Detailed below
+  /// BGP options for the peer, including ASN (Autonomous System Number) and BFD (Bidrectional Forwarding Detection) settings. Configuration block with BGP Options configuration Detailed below
   final pulumi.Input<RouteServerPeerBgpOptions> bgpOptions;
-  /// The IPv4 address of the peer device.
+  /// IPv4 address of the peer device.
   final pulumi.Input<String> peerAddress;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The ID of the route server endpoint for which to create a peer.
+  /// ID of the route server endpoint for which to create a peer.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> routeServerEndpointId;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   final pulumi.Input<RouteServerPeerTimeouts?>? timeouts;
 
   /// Creates a new [RouteServerPeerArgs].
-  /// [bgpOptions] The BGP options for the peer, including ASN (Autonomous System Number) and BFD (Bidrectional Forwarding Detection) settings. Configuration block with BGP Options configuration Detailed below
-  /// [peerAddress] The IPv4 address of the peer device.
+  /// [bgpOptions] BGP options for the peer, including ASN (Autonomous System Number) and BFD (Bidrectional Forwarding Detection) settings. Configuration block with BGP Options configuration Detailed below
+  /// [peerAddress] IPv4 address of the peer device.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [routeServerEndpointId] The ID of the route server endpoint for which to create a peer.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [routeServerEndpointId] ID of the route server endpoint for which to create a peer.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   const RouteServerPeerArgs({
     required this.bgpOptions,

@@ -113,17 +113,17 @@ import 'vpc_network_performance_metric_subscription_state.dart';
 ///       destination: us-west-1
 /// ```
 class VpcNetworkPerformanceMetricSubscription extends pulumi.CustomResource {
-  /// The target Region or Availability Zone that the metric subscription is enabled for. For example, `eu-west-1`.
+  /// Target Region or Availability Zone that the metric subscription is enabled for. For example, `eu-west-1`.
   late final pulumi.Output<String> destination;
-  /// The metric used for the enabled subscription. Valid values: `aggregate-latency`. Default: `aggregate-latency`.
+  /// Metric used for the enabled subscription. Valid values: `aggregate-latency`. Default: `aggregate-latency`.
   late final pulumi.Output<String?> metric;
-  /// The data aggregation time for the subscription.
+  /// Data aggregation time for the subscription.
   late final pulumi.Output<String> period;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The source Region or Availability Zone that the metric subscription is enabled for. For example, `us-east-1`.
+  /// Source Region or Availability Zone that the metric subscription is enabled for. For example, `us-east-1`.
   late final pulumi.Output<String> source;
-  /// The statistic used for the enabled subscription. Valid values: `p50`. Default: `p50`.
+  /// Statistic used for the enabled subscription. Valid values: `p50`. Default: `p50`.
   late final pulumi.Output<String?> statistic;
 
   /// Creates a new [VpcNetworkPerformanceMetricSubscription].
@@ -138,7 +138,7 @@ class VpcNetworkPerformanceMetricSubscription extends pulumi.CustomResource {
           'aws:ec2/vpcNetworkPerformanceMetricSubscription:VpcNetworkPerformanceMetricSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     destination = registerOutput<String>('destination');
     metric = registerOutput<String?>('metric');

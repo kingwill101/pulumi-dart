@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AcceleratorIpSet {
-  /// The IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
+  /// IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
   final pulumi.Input<List<String>?>? ipAddresses;
-  /// The type of IP addresses included in this IP set.
+  /// Type of IP addresses included in this IP set.
   final pulumi.Input<String?>? ipFamily;
 
   /// Creates a new [AcceleratorIpSet].
-  /// [ipAddresses] The IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
-  /// [ipFamily] The type of IP addresses included in this IP set.
+  /// [ipAddresses] IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
+  /// [ipFamily] Type of IP addresses included in this IP set.
   const AcceleratorIpSet({
     this.ipAddresses,
     this.ipFamily,

@@ -220,31 +220,31 @@ import 'findings_filter_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.macie.FindingsFilter` using the id. For example:
+/// Using `pulumi import`, import `aws.macie.FindingsFilter` using the ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:macie/findingsFilter:FindingsFilter example abcd1
 /// ```
 class FindingsFilter extends pulumi.CustomResource {
-  /// The action to perform on findings that meet the filter criteria (`findingCriteria`). Valid values are: `ARCHIVE`, suppress (automatically archive) the findings; and, `NOOP`, don't perform any action on the findings.
+  /// Action to perform on findings that meet the filter criteria (`findingCriteria`). Valid values are `ARCHIVE`, to suppress (automatically archive) the findings, and `NOOP`, to not perform any action on the findings.
   late final pulumi.Output<String> action;
   /// ARN of the Findings Filter.
   late final pulumi.Output<String> arn;
-  /// A custom description of the filter. The description can contain as many as 512 characters.
+  /// Custom description of the filter. Can contain as many as 512 characters.
   late final pulumi.Output<String?> description;
-  /// The criteria to use to filter findings.
+  /// Criteria to use to filter findings. See `findingCriteria` Block for details.
   late final pulumi.Output<FindingsFilterFindingCriteria> findingCriteria;
-  /// A custom name for the filter. The name must contain at least 3 characters and can contain as many as 64 characters. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
+  /// Custom name for the filter. Must contain at least 3 characters and can contain as many as 64 characters. If omitted, Terraform assigns a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
-  /// The position of the filter in the list of saved filters on the Amazon Macie console. This value also determines the order in which the filter is applied to findings, relative to other filters that are also applied to the findings.
+  /// Position of the filter in the list of saved filters on the Amazon Macie console. This value also determines the order in which the filter is applied to findings, relative to other filters that are also applied to the findings.
   late final pulumi.Output<int> position;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [FindingsFilter].
@@ -259,7 +259,7 @@ class FindingsFilter extends pulumi.CustomResource {
           'aws:macie/findingsFilter:FindingsFilter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     arn = registerOutput<String>('arn');

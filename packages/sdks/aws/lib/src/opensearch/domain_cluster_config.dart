@@ -26,7 +26,7 @@ class DomainClusterConfig {
   final pulumi.Input<int?>? warmCount;
   /// Whether to enable warm storage.
   final pulumi.Input<bool?>? warmEnabled;
-  /// Instance type for the OpenSearch cluster's warm nodes. Valid values are `ultrawarm1.medium.search`, `ultrawarm1.large.search` and `ultrawarm1.xlarge.search`. `warmType` can be only and must be set when `warmEnabled` is set to `true`.
+  /// Instance type for the OpenSearch cluster's warm nodes. `warmType` can be only and must be set when `warmEnabled` is set to `true`.
   final pulumi.Input<String?>? warmType;
   /// Configuration block containing zone awareness settings. Detailed below.
   final pulumi.Input<DomainClusterConfigZoneAwarenessConfig?>? zoneAwarenessConfig;
@@ -44,7 +44,7 @@ class DomainClusterConfig {
   /// [nodeOptions] List of node options for the domain.
   /// [warmCount] Number of warm nodes in the cluster. Valid values are between `2` and `150`. `warmCount` can be only and must be set when `warmEnabled` is set to `true`.
   /// [warmEnabled] Whether to enable warm storage.
-  /// [warmType] Instance type for the OpenSearch cluster's warm nodes. Valid values are `ultrawarm1.medium.search`, `ultrawarm1.large.search` and `ultrawarm1.xlarge.search`. `warmType` can be only and must be set when `warmEnabled` is set to `true`.
+  /// [warmType] Instance type for the OpenSearch cluster's warm nodes. `warmType` can be only and must be set when `warmEnabled` is set to `true`.
   /// [zoneAwarenessConfig] Configuration block containing zone awareness settings. Detailed below.
   /// [zoneAwarenessEnabled] Whether zone awareness is enabled, set to `true` for multi-az deployment. To enable awareness with three Availability Zones, the `availabilityZoneCount` within the `zoneAwarenessConfig` must be set to `3`.
   const DomainClusterConfig({
@@ -84,14 +84,14 @@ class DomainClusterConfig {
   factory DomainClusterConfig.fromMap(Map<String, dynamic> map) {
     return DomainClusterConfig(
       coldStorageOptions: (() { final guardedValue = map['coldStorageOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainClusterConfigColdStorageOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      dedicatedMasterCount: (() { final guardedValue = map['dedicatedMasterCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dedicatedMasterCount: (() { final guardedValue = map['dedicatedMasterCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dedicatedMasterEnabled: (() { final guardedValue = map['dedicatedMasterEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dedicatedMasterType: (() { final guardedValue = map['dedicatedMasterType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       multiAzWithStandbyEnabled: (() { final guardedValue = map['multiAzWithStandbyEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       nodeOptions: (() { final guardedValue = map['nodeOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DomainClusterConfigNodeOption>(guardedValue, (value) => DomainClusterConfigNodeOption.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      warmCount: (() { final guardedValue = map['warmCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      warmCount: (() { final guardedValue = map['warmCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       warmEnabled: (() { final guardedValue = map['warmEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       warmType: (() { final guardedValue = map['warmType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zoneAwarenessConfig: (() { final guardedValue = map['zoneAwarenessConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DomainClusterConfigZoneAwarenessConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

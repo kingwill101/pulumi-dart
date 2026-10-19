@@ -13,7 +13,7 @@ class CloudAutonomousVmClusterArgs {
   final pulumi.Input<double> autonomousDataStorageSizeInTbs;
   /// Exadata infrastructure ARN. Changing this will force Terraform to create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
   final pulumi.Input<String?>? cloudExadataInfrastructureArn;
-  /// Exadata infrastructure id. Changing this will force Terraform to create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
+  /// Exadata infrastructure ID. Changing this will force Terraform to create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
   final pulumi.Input<String?>? cloudExadataInfrastructureId;
   /// Number of CPU cores enabled per node in the Autonomous VM cluster. Changing this will force terraform to create new resource.
   final pulumi.Input<int> cpuCoreCountPerNode;
@@ -54,7 +54,7 @@ class CloudAutonomousVmClusterArgs {
   /// Creates a new [CloudAutonomousVmClusterArgs].
   /// [autonomousDataStorageSizeInTbs] Data storage size allocated for Autonomous Databases in the Autonomous VM cluster, in TB. Changing this will force terraform to create new resource.
   /// [cloudExadataInfrastructureArn] Exadata infrastructure ARN. Changing this will force Terraform to create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
-  /// [cloudExadataInfrastructureId] Exadata infrastructure id. Changing this will force Terraform to create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
+  /// [cloudExadataInfrastructureId] Exadata infrastructure ID. Changing this will force Terraform to create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
   /// [cpuCoreCountPerNode] Number of CPU cores enabled per node in the Autonomous VM cluster. Changing this will force terraform to create new resource.
   /// [dbServers] Database servers in the Autonomous VM cluster. Changing this will force terraform to create new resource.
   /// [description] Description of the Autonomous VM cluster.
@@ -125,23 +125,23 @@ class CloudAutonomousVmClusterArgs {
       autonomousDataStorageSizeInTbs: pulumi.Input.fromValue((map['autonomousDataStorageSizeInTbs'] as num).toDouble()),
       cloudExadataInfrastructureArn: (() { final guardedValue = map['cloudExadataInfrastructureArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cloudExadataInfrastructureId: (() { final guardedValue = map['cloudExadataInfrastructureId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cpuCoreCountPerNode: pulumi.Input.fromValue((map['cpuCoreCountPerNode'] as num).toInt()),
+      cpuCoreCountPerNode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpuCoreCountPerNode'])),
       dbServers: pulumi.Input.fromValue((map['dbServers'] as List).cast<String>()),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       isMtlsEnabledVmCluster: (() { final guardedValue = map['isMtlsEnabledVmCluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       licenseModel: (() { final guardedValue = map['licenseModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maintenanceWindow: pulumi.Input.fromValue(CloudAutonomousVmClusterMaintenanceWindow.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>())),
-      memoryPerOracleComputeUnitInGbs: pulumi.Input.fromValue((map['memoryPerOracleComputeUnitInGbs'] as num).toInt()),
+      memoryPerOracleComputeUnitInGbs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memoryPerOracleComputeUnitInGbs'])),
       odbNetworkArn: (() { final guardedValue = map['odbNetworkArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       odbNetworkId: (() { final guardedValue = map['odbNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scanListenerPortNonTls: pulumi.Input.fromValue((map['scanListenerPortNonTls'] as num).toInt()),
-      scanListenerPortTls: pulumi.Input.fromValue((map['scanListenerPortTls'] as num).toInt()),
+      scanListenerPortNonTls: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scanListenerPortNonTls'])),
+      scanListenerPortTls: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scanListenerPortTls'])),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CloudAutonomousVmClusterTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      totalContainerDatabases: pulumi.Input.fromValue((map['totalContainerDatabases'] as num).toInt()),
+      totalContainerDatabases: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalContainerDatabases'])),
     );
   }
 }

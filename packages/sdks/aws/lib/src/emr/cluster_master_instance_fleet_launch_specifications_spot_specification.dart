@@ -36,9 +36,9 @@ class ClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification {
   factory ClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification.fromMap(Map<String, dynamic> map) {
     return ClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification(
       allocationStrategy: pulumi.Input.fromValue(map['allocationStrategy'] as String),
-      blockDurationMinutes: (() { final guardedValue = map['blockDurationMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      blockDurationMinutes: (() { final guardedValue = map['blockDurationMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       timeoutAction: pulumi.Input.fromValue(map['timeoutAction'] as String),
-      timeoutDurationMinutes: pulumi.Input.fromValue((map['timeoutDurationMinutes'] as num).toInt()),
+      timeoutDurationMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeoutDurationMinutes'])),
     );
   }
 }

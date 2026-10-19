@@ -7,13 +7,13 @@ import 'vpc_endpoint_service_private_dns_name_configuration.dart';
 class VpcEndpointServiceState {
   /// Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
   final pulumi.Input<bool?>? acceptanceRequired;
-  /// The ARNs of one or more principals allowed to discover the endpoint service.
+  /// ARNs of one or more principals allowed to discover the endpoint service.
   final pulumi.Input<List<String>?>? allowedPrincipals;
   /// ARN of the VPC endpoint service.
   final pulumi.Input<String?>? arn;
-  /// A set of Availability Zones in which the service is available.
+  /// Set of Availability Zones in which the service is available.
   final pulumi.Input<List<String>?>? availabilityZones;
-  /// A set of DNS names for the service.
+  /// Set of DNS names for the service.
   final pulumi.Input<List<String>?>? baseEndpointDnsNames;
   /// ARNs of one or more Gateway Load Balancers for the endpoint service.
   final pulumi.Input<List<String>?>? gatewayLoadBalancerArns;
@@ -21,46 +21,46 @@ class VpcEndpointServiceState {
   final pulumi.Input<bool?>? managesVpcEndpoints;
   /// ARNs of one or more Network Load Balancers for the endpoint service.
   final pulumi.Input<List<String>?>? networkLoadBalancerArns;
-  /// The private DNS name for the service.
+  /// Private DNS name for the service.
   final pulumi.Input<String?>? privateDnsName;
   /// List of objects containing information about the endpoint service private DNS name configuration.
   final pulumi.Input<List<VpcEndpointServicePrivateDnsNameConfiguration>?>? privateDnsNameConfigurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The service name.
+  /// Service name.
   final pulumi.Input<String?>? serviceName;
-  /// The service type, `Gateway` or `Interface`.
+  /// Service type, `Gateway` or `Interface`.
   final pulumi.Input<String?>? serviceType;
-  /// Verification state of the VPC endpoint service. Consumers of the endpoint service can use the private name only when the state is `verified`.
+  /// State of the VPC endpoint service.
   final pulumi.Input<String?>? state;
-  /// The supported IP address types. The possible values are `ipv4` and `ipv6`.
+  /// Supported IP address types. The possible values are `ipv4` and `ipv6`.
   final pulumi.Input<List<String>?>? supportedIpAddressTypes;
-  /// The set of regions from which service consumers can access the service.
+  /// Set of regions from which service consumers can access the service.
   final pulumi.Input<List<String>?>? supportedRegions;
-  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [VpcEndpointServiceState].
   /// [acceptanceRequired] Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
-  /// [allowedPrincipals] The ARNs of one or more principals allowed to discover the endpoint service.
+  /// [allowedPrincipals] ARNs of one or more principals allowed to discover the endpoint service.
   /// [arn] ARN of the VPC endpoint service.
-  /// [availabilityZones] A set of Availability Zones in which the service is available.
-  /// [baseEndpointDnsNames] A set of DNS names for the service.
+  /// [availabilityZones] Set of Availability Zones in which the service is available.
+  /// [baseEndpointDnsNames] Set of DNS names for the service.
   /// [gatewayLoadBalancerArns] ARNs of one or more Gateway Load Balancers for the endpoint service.
   /// [managesVpcEndpoints] Whether or not the service manages its VPC endpoints - `true` or `false`.
   /// [networkLoadBalancerArns] ARNs of one or more Network Load Balancers for the endpoint service.
-  /// [privateDnsName] The private DNS name for the service.
+  /// [privateDnsName] Private DNS name for the service.
   /// [privateDnsNameConfigurations] List of objects containing information about the endpoint service private DNS name configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [serviceName] The service name.
-  /// [serviceType] The service type, `Gateway` or `Interface`.
-  /// [state] Verification state of the VPC endpoint service. Consumers of the endpoint service can use the private name only when the state is `verified`.
-  /// [supportedIpAddressTypes] The supported IP address types. The possible values are `ipv4` and `ipv6`.
-  /// [supportedRegions] The set of regions from which service consumers can access the service.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [serviceName] Service name.
+  /// [serviceType] Service type, `Gateway` or `Interface`.
+  /// [state] State of the VPC endpoint service.
+  /// [supportedIpAddressTypes] Supported IP address types. The possible values are `ipv4` and `ipv6`.
+  /// [supportedRegions] Set of regions from which service consumers can access the service.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const VpcEndpointServiceState({
     this.acceptanceRequired,
     this.allowedPrincipals,

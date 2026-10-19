@@ -26,7 +26,7 @@ class UserState {
   final pulumi.Input<String?>? region;
   /// current user status.
   final pulumi.Input<String?>? status;
-  /// unique user id that is never reassignable to another user.
+  /// unique user ID that is never reassignable to another user.
   final pulumi.Input<String?>? sub;
   /// The user's temporary password. Conflicts with `password`.
   final pulumi.Input<String?>? temporaryPassword;
@@ -55,7 +55,7 @@ class UserState {
   /// [preferredMfaSetting] Optional.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] current user status.
-  /// [sub] unique user id that is never reassignable to another user.
+  /// [sub] unique user ID that is never reassignable to another user.
   /// [temporaryPassword] The user's temporary password. Conflicts with `password`.
   /// [userPoolId] The user pool ID for the user pool where the user will be created.
   /// [username] The username for the user. Must be unique within the user pool. Must be a UTF-8 string between 1 and 128 characters. After the user is created, the username cannot be changed.

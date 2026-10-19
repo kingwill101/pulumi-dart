@@ -454,7 +454,7 @@ import 'ca_certificate_validity.dart';
 class CaCertificate extends pulumi.CustomResource {
   /// Boolean flag to indicate if the certificate should be active for device authentication.
   late final pulumi.Output<bool> active;
-  /// Boolean flag to indicate if the certificate should be active for device regisration.
+  /// Boolean flag to indicate if the certificate should be active for device registration.
   late final pulumi.Output<bool> allowAutoRegistration;
   /// The ARN of the created CA certificate.
   late final pulumi.Output<String> arn;
@@ -492,7 +492,7 @@ class CaCertificate extends pulumi.CustomResource {
           'aws:iot/caCertificate:CaCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
           additionalSecretOutputs: const ['caCertificatePem', 'verificationCertificatePem'],
         ) {
     active = registerOutput<bool>('active');

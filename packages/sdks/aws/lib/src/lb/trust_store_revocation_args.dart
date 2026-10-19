@@ -13,7 +13,7 @@ class TrustStoreRevocationArgs {
   final pulumi.Input<String> revocationsS3Bucket;
   /// S3 object key holding the client certificate CA bundle.
   final pulumi.Input<String> revocationsS3Key;
-  /// Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
+  /// Version ID of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
   final pulumi.Input<String?>? revocationsS3ObjectVersion;
   /// Trust Store ARN.
   final pulumi.Input<String> trustStoreArn;
@@ -22,7 +22,7 @@ class TrustStoreRevocationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [revocationsS3Bucket] S3 Bucket name holding the client certificate CA bundle.
   /// [revocationsS3Key] S3 object key holding the client certificate CA bundle.
-  /// [revocationsS3ObjectVersion] Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
+  /// [revocationsS3ObjectVersion] Version ID of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
   /// [trustStoreArn] Trust Store ARN.
   const TrustStoreRevocationArgs({
     this.region,

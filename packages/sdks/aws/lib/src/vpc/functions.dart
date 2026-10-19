@@ -6,7 +6,7 @@ import 'get_security_group_rule_result.dart';
 import 'get_security_group_rules_args.dart';
 import 'get_security_group_rules_result.dart';
 
-/// Data source for managing an AWS EC2 Vpc Endpoint Associations.
+/// Data source for managing an AWS EC2 VPC Endpoint Associations.
 ///
 /// ## Example Usage
 ///
@@ -138,6 +138,8 @@ pulumi.Output<GetEndpointAssociationsResult> getEndpointAssociationsOutput(
 }
 
 /// `aws.vpc.getSecurityGroupRule` provides details about a specific security group rule.
+///
+/// The arguments of this data source act as filters for querying the available security group rules. The given filters must match exactly one security group rule whose data will be exported as attributes.
 ///
 /// ## Example Usage
 ///

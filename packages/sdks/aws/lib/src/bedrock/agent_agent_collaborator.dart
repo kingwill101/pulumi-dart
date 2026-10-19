@@ -4,7 +4,7 @@ import 'agent_agent_collaborator_args.dart';
 import 'agent_agent_collaborator_state.dart';
 import 'agent_agent_collaborator_timeouts.dart';
 
-/// Resource for managing an AWS Bedrock Agents Agent Collaborator.
+/// Manages an AWS Bedrock Agents Agent Collaborator.
 ///
 /// ## Example Usage
 ///
@@ -51,8 +51,8 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///                 "bedrock:InvokeAgent",
 ///             ],
 ///             resources: [
-///                 `arn:${currentAgent.partition}:bedrock:${currentGetRegion.region}:${current.accountId}:agent/*`,
-///                 `arn:${currentAgent.partition}:bedrock:${currentGetRegion.region}:${current.accountId}:agent-alias/*`,
+///                 `arn:${currentGetPartition.partition}:bedrock:${currentGetRegion.region}:${current.accountId}:agent/*`,
+///                 `arn:${currentGetPartition.partition}:bedrock:${currentGetRegion.region}:${current.accountId}:agent-alias/*`,
 ///             ],
 ///         },
 ///     ],
@@ -70,7 +70,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///     agentResourceRoleArn: example.arn,
 ///     idleSessionTtlInSeconds: 500,
 ///     foundationModel: "anthropic.claude-3-5-sonnet-20241022-v2:0",
-///     instruction: "do what the supervisor tells you to do",
+///     instruction: "You are a collaborator agent. Do what the supervisor tells you to do.",
 /// });
 /// const exampleSupervisor = new aws.bedrock.AgentAgent("example_supervisor", {
 ///     agentName: "my-agent-supervisor",
@@ -78,7 +78,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///     agentCollaboration: "SUPERVISOR",
 ///     idleSessionTtlInSeconds: 500,
 ///     foundationModel: "anthropic.claude-3-5-sonnet-20241022-v2:0",
-///     instruction: "tell the sub agent what to do",
+///     instruction: "You are a supervisor agent. Tell the sub agent what to do.",
 ///     prepareAgent: false,
 /// });
 /// const exampleAgentAgentAlias = new aws.bedrock.AgentAgentAlias("example", {
@@ -133,8 +133,8 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///             "bedrock:InvokeAgent",
 ///         ],
 ///         "resources": [
-///             f"arn:{current_agent['partition']}:bedrock:{current_get_region.region}:{current.account_id}:agent/*",
-///             f"arn:{current_agent['partition']}:bedrock:{current_get_region.region}:{current.account_id}:agent-alias/*",
+///             f"arn:{current_get_partition.partition}:bedrock:{current_get_region.region}:{current.account_id}:agent/*",
+///             f"arn:{current_get_partition.partition}:bedrock:{current_get_region.region}:{current.account_id}:agent-alias/*",
 ///         ],
 ///     },
 /// ])
@@ -149,14 +149,14 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///     agent_resource_role_arn=example.arn,
 ///     idle_session_ttl_in_seconds=500,
 ///     foundation_model="anthropic.claude-3-5-sonnet-20241022-v2:0",
-///     instruction="do what the supervisor tells you to do")
+///     instruction="You are a collaborator agent. Do what the supervisor tells you to do.")
 /// example_supervisor = aws.bedrock.AgentAgent("example_supervisor",
 ///     agent_name="my-agent-supervisor",
 ///     agent_resource_role_arn=example.arn,
 ///     agent_collaboration="SUPERVISOR",
 ///     idle_session_ttl_in_seconds=500,
 ///     foundation_model="anthropic.claude-3-5-sonnet-20241022-v2:0",
-///     instruction="tell the sub agent what to do",
+///     instruction="You are a supervisor agent. Tell the sub agent what to do.",
 ///     prepare_agent=False)
 /// example_agent_agent_alias = aws.bedrock.AgentAgentAlias("example",
 ///     agent_alias_name="my-agent-alias",
@@ -255,8 +255,8 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///                 },
 ///                 Resources = new[]
 ///                 {
-///                     $"arn:{currentAgent.Partition}:bedrock:{currentGetRegion.Apply(getRegionResult => getRegionResult.Region)}:{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:agent/*",
-///                     $"arn:{currentAgent.Partition}:bedrock:{currentGetRegion.Apply(getRegionResult => getRegionResult.Region)}:{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:agent-alias/*",
+///                     $"arn:{currentGetPartition.Apply(getPartitionResult => getPartitionResult.Partition)}:bedrock:{currentGetRegion.Apply(getRegionResult => getRegionResult.Region)}:{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:agent/*",
+///                     $"arn:{currentGetPartition.Apply(getPartitionResult => getPartitionResult.Partition)}:bedrock:{currentGetRegion.Apply(getRegionResult => getRegionResult.Region)}:{current.Apply(getCallerIdentityResult => getCallerIdentityResult.AccountId)}:agent-alias/*",
 ///                 },
 ///             },
 ///         },
@@ -280,7 +280,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///         AgentResourceRoleArn = example.Arn,
 ///         IdleSessionTtlInSeconds = 500,
 ///         FoundationModel = "anthropic.claude-3-5-sonnet-20241022-v2:0",
-///         Instruction = "do what the supervisor tells you to do",
+///         Instruction = "You are a collaborator agent. Do what the supervisor tells you to do.",
 ///     });
 ///
 ///     var exampleSupervisor = new Aws.Bedrock.AgentAgent("example_supervisor", new()
@@ -290,7 +290,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///         AgentCollaboration = "SUPERVISOR",
 ///         IdleSessionTtlInSeconds = 500,
 ///         FoundationModel = "anthropic.claude-3-5-sonnet-20241022-v2:0",
-///         Instruction = "tell the sub agent what to do",
+///         Instruction = "You are a supervisor agent. Tell the sub agent what to do.",
 ///         PrepareAgent = false,
 ///     });
 ///
@@ -393,8 +393,8 @@ import 'agent_agent_collaborator_timeouts.dart';
 /// 						"bedrock:InvokeAgent",
 /// 					},
 /// 					Resources: []string{
-/// 						fmt.Sprintf("arn:%v:bedrock:%v:%v:agent/*", currentAgent.Partition, currentGetRegion.Region, current.AccountId),
-/// 						fmt.Sprintf("arn:%v:bedrock:%v:%v:agent-alias/*", currentAgent.Partition, currentGetRegion.Region, current.AccountId),
+/// 						fmt.Sprintf("arn:%v:bedrock:%v:%v:agent/*", currentGetPartition.Partition, currentGetRegion.Region, current.AccountId),
+/// 						fmt.Sprintf("arn:%v:bedrock:%v:%v:agent-alias/*", currentGetPartition.Partition, currentGetRegion.Region, current.AccountId),
 /// 					},
 /// 				},
 /// 			},
@@ -421,7 +421,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 /// 			AgentResourceRoleArn:    example.Arn,
 /// 			IdleSessionTtlInSeconds: pulumi.Int(500),
 /// 			FoundationModel:         pulumi.String("anthropic.claude-3-5-sonnet-20241022-v2:0"),
-/// 			Instruction:             pulumi.String("do what the supervisor tells you to do"),
+/// 			Instruction:             pulumi.String("You are a collaborator agent. Do what the supervisor tells you to do."),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -432,7 +432,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 /// 			AgentCollaboration:      pulumi.String("SUPERVISOR"),
 /// 			IdleSessionTtlInSeconds: pulumi.Int(500),
 /// 			FoundationModel:         pulumi.String("anthropic.claude-3-5-sonnet-20241022-v2:0"),
-/// 			Instruction:             pulumi.String("tell the sub agent what to do"),
+/// 			Instruction:             pulumi.String("You are a supervisor agent. Tell the sub agent what to do."),
 /// 			PrepareAgent:            pulumi.Bool(false),
 /// 		})
 /// 		if err != nil {
@@ -503,7 +503,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///   }
 ///   statements {
 ///     actions   = ["bedrock:GetAgentAlias", "bedrock:InvokeAgent"]
-///     resources = ["arn:${currentAgent.partition}:bedrock:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:agent/*", "arn:${currentAgent.partition}:bedrock:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:agent-alias/*"]
+///     resources = ["arn:${data.aws_getpartition.currentGetPartition.partition}:bedrock:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:agent/*", "arn:${data.aws_getpartition.currentGetPartition.partition}:bedrock:${data.aws_getregion.currentGetRegion.region}:${data.aws_getcalleridentity.current.account_id}:agent-alias/*"]
 ///   }
 /// }
 ///
@@ -520,7 +520,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///   agent_resource_role_arn     = aws_iam_role.example.arn
 ///   idle_session_ttl_in_seconds = 500
 ///   foundation_model            = "anthropic.claude-3-5-sonnet-20241022-v2:0"
-///   instruction                 = "do what the supervisor tells you to do"
+///   instruction                 = "You are a collaborator agent. Do what the supervisor tells you to do."
 /// }
 /// resource "aws_bedrock_agentagent" "example_supervisor" {
 ///   agent_name                  = "my-agent-supervisor"
@@ -528,7 +528,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///   agent_collaboration         = "SUPERVISOR"
 ///   idle_session_ttl_in_seconds = 500
 ///   foundation_model            = "anthropic.claude-3-5-sonnet-20241022-v2:0"
-///   instruction                 = "tell the sub agent what to do"
+///   instruction                 = "You are a supervisor agent. Tell the sub agent what to do."
 ///   prepare_agent               = false
 /// }
 /// resource "aws_bedrock_agentagentalias" "example" {
@@ -626,8 +626,8 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///                         "bedrock:GetAgentAlias",
 ///                         "bedrock:InvokeAgent")
 ///                     .resources(
-///                         String.format("arn:%s:bedrock:%s:%s:agent/*", currentAgent.partition(),currentGetRegion.region(),current.accountId()),
-///                         String.format("arn:%s:bedrock:%s:%s:agent-alias/*", currentAgent.partition(),currentGetRegion.region(),current.accountId()))
+///                         String.format("arn:%s:bedrock:%s:%s:agent/*", currentGetPartition.partition(),currentGetRegion.region(),current.accountId()),
+///                         String.format("arn:%s:bedrock:%s:%s:agent-alias/*", currentGetPartition.partition(),currentGetRegion.region(),current.accountId()))
 ///                     .build())
 ///             .build());
 ///
@@ -646,7 +646,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///             .agentResourceRoleArn(example.arn())
 ///             .idleSessionTtlInSeconds(500)
 ///             .foundationModel("anthropic.claude-3-5-sonnet-20241022-v2:0")
-///             .instruction("do what the supervisor tells you to do")
+///             .instruction("You are a collaborator agent. Do what the supervisor tells you to do.")
 ///             .build());
 ///
 ///         var exampleSupervisor = new AgentAgent("exampleSupervisor", AgentAgentArgs.builder()
@@ -655,7 +655,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///             .agentCollaboration("SUPERVISOR")
 ///             .idleSessionTtlInSeconds(500)
 ///             .foundationModel("anthropic.claude-3-5-sonnet-20241022-v2:0")
-///             .instruction("tell the sub agent what to do")
+///             .instruction("You are a supervisor agent. Tell the sub agent what to do.")
 ///             .prepareAgent(false)
 ///             .build());
 ///
@@ -699,7 +699,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///       agentResourceRoleArn: ${example.arn}
 ///       idleSessionTtlInSeconds: 500
 ///       foundationModel: anthropic.claude-3-5-sonnet-20241022-v2:0
-///       instruction: do what the supervisor tells you to do
+///       instruction: You are a collaborator agent. Do what the supervisor tells you to do.
 ///   exampleSupervisor:
 ///     type: aws:bedrock:AgentAgent
 ///     name: example_supervisor
@@ -709,7 +709,7 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///       agentCollaboration: SUPERVISOR
 ///       idleSessionTtlInSeconds: 500
 ///       foundationModel: anthropic.claude-3-5-sonnet-20241022-v2:0
-///       instruction: tell the sub agent what to do
+///       instruction: You are a supervisor agent. Tell the sub agent what to do.
 ///       prepareAgent: false
 ///   exampleAgentAgentAlias:
 ///     type: aws:bedrock:AgentAgentAlias
@@ -774,8 +774,8 @@ import 'agent_agent_collaborator_timeouts.dart';
 ///               - bedrock:GetAgentAlias
 ///               - bedrock:InvokeAgent
 ///             resources:
-///               - arn:${currentAgent.partition}:bedrock:${currentGetRegion.region}:${current.accountId}:agent/*
-///               - arn:${currentAgent.partition}:bedrock:${currentGetRegion.region}:${current.accountId}:agent-alias/*
+///               - arn:${currentGetPartition.partition}:bedrock:${currentGetRegion.region}:${current.accountId}:agent/*
+///               - arn:${currentGetPartition.partition}:bedrock:${currentGetRegion.region}:${current.accountId}:agent-alias/*
 /// ```
 ///
 ///
@@ -787,9 +787,11 @@ import 'agent_agent_collaborator_timeouts.dart';
 /// $ pulumi import aws:bedrock/agentAgentCollaborator:AgentAgentCollaborator example 9LSJO0BFI8,DRAFT,AG3TN4RQIY
 /// ```
 class AgentAgentCollaborator extends pulumi.CustomResource {
+  /// Agent descriptor for the agent collaborator. See `agentDescriptor` Block for details.
   late final pulumi.Output<AgentAgentCollaboratorAgentDescriptor> agentDescriptor;
-  /// ID if the agent to associate the collaborator.
+  /// ID of the agent to associate the collaborator with.
   late final pulumi.Output<String> agentId;
+  /// Version of the agent to associate the collaborator with. Defaults to `DRAFT`.
   late final pulumi.Output<String> agentVersion;
   /// Instruction to give the collaborator.
   late final pulumi.Output<String> collaborationInstruction;
@@ -819,7 +821,7 @@ class AgentAgentCollaborator extends pulumi.CustomResource {
           'aws:bedrock/agentAgentCollaborator:AgentAgentCollaborator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     agentDescriptor = registerOutput<AgentAgentCollaboratorAgentDescriptor>('agentDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentAgentCollaboratorAgentDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     agentId = registerOutput<String>('agentId');

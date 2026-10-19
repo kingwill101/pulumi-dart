@@ -378,12 +378,12 @@ import 'agentcore_policy_engine_timeouts.dart';
 ///
 /// #### Required
 ///
-/// - `policyEngineId` (String) Policy engine ID.
+/// * `policyEngineId` (String) Policy engine ID.
 ///
 /// #### Optional
 ///
-/// * `accountId` (String) AWS account ID for this resource.
-/// * `region` (String) AWS Region for this resource.
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
 ///
 ///
 /// Using `pulumi import`, import a Bedrock AgentCore Policy Engine by policy engine ID. For example:
@@ -394,7 +394,7 @@ import 'agentcore_policy_engine_timeouts.dart';
 class AgentcorePolicyEngine extends pulumi.CustomResource {
   /// Description of the policy engine.
   late final pulumi.Output<String?> description;
-  /// ARN of the KMS key used to encrypt the policy engine. If not set, AWS uses an AWS managed key.
+  /// ARN of the KMS key used to encrypt the policy engine. If not set, the policy engine is encrypted with an AWS owned key.
   late final pulumi.Output<String?> encryptionKeyArn;
   /// Name of the policy engine. Must start with a letter and contain only letters, numbers, and underscores. Maximum length of 48 characters.
   ///
@@ -424,7 +424,7 @@ class AgentcorePolicyEngine extends pulumi.CustomResource {
           'aws:bedrock/agentcorePolicyEngine:AgentcorePolicyEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     encryptionKeyArn = registerOutput<String?>('encryptionKeyArn');

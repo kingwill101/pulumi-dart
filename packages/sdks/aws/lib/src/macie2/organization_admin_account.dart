@@ -140,13 +140,13 @@ import 'organization_admin_account_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.macie2.OrganizationAdminAccount` using the id. For example:
+/// Using `pulumi import`, import `aws.macie2.OrganizationAdminAccount` using the ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:macie2/organizationAdminAccount:OrganizationAdminAccount example abcd1
 /// ```
 class OrganizationAdminAccount extends pulumi.CustomResource {
-  /// The AWS account ID for the account to designate as the delegated Amazon Macie administrator account for the organization.
+  /// AWS account ID for the account to designate as the delegated Amazon Macie administrator account for the organization.
   late final pulumi.Output<String> adminAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -163,7 +163,7 @@ class OrganizationAdminAccount extends pulumi.CustomResource {
           'aws:macie2/organizationAdminAccount:OrganizationAdminAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     adminAccountId = registerOutput<String>('adminAccountId');
     region = registerOutput<String>('region');

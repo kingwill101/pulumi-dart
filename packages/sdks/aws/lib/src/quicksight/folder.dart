@@ -477,29 +477,29 @@ class Folder extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
-  /// The time that the folder was created.
+  /// Time that the folder was created.
   late final pulumi.Output<String> createdTime;
   /// Identifier for the folder.
-  late final pulumi.Output<String> folderId;
-  /// An array of ancestor ARN strings for the folder. Empty for root-level folders.
-  late final pulumi.Output<List<String>> folderPaths;
-  /// The type of folder. By default, it is `SHARED`. Valid values are: `SHARED`.
-  late final pulumi.Output<String?> folderType;
-  /// The time that the folder was last updated.
-  late final pulumi.Output<String> lastUpdatedTime;
-  /// Display name for the folder.
   ///
   /// The following arguments are optional:
+  late final pulumi.Output<String> folderId;
+  /// Array of ancestor ARN strings for the folder. Empty for root-level folders.
+  late final pulumi.Output<List<String>> folderPaths;
+  /// Type of folder. By default, it is `SHARED`. Valid values are: `SHARED`.
+  late final pulumi.Output<String?> folderType;
+  /// Time that the folder was last updated.
+  late final pulumi.Output<String> lastUpdatedTime;
+  /// Display name for the folder.
   late final pulumi.Output<String> name;
   /// ARN for the parent folder. If not set, creates a root-level folder.
   late final pulumi.Output<String?> parentFolderArn;
-  /// A set of resource permissions on the folder. Maximum of 64 items. See permissions.
+  /// Set of resource permissions on the folder. Maximum of 64 items. See `permissions` Block.
   late final pulumi.Output<List<FolderPermission>?> permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Folder].
@@ -514,7 +514,7 @@ class Folder extends pulumi.CustomResource {
           'aws:quicksight/folder:Folder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

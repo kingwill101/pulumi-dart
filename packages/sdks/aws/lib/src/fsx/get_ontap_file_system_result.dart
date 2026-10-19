@@ -14,13 +14,13 @@ class GetOntapFileSystemResult {
   final String? dailyAutomaticBackupStartTime;
   /// File system deployment type.
   final String? deploymentType;
-  /// SSD IOPS configuration for the Amazon FSx for NetApp ONTAP file system, specifying the number of provisioned IOPS and the provision mode. See Disk IOPS Below.
+  /// SSD IOPS configuration for the Amazon FSx for NetApp ONTAP file system, specifying the number of provisioned IOPS and the provision mode. See `diskIopsConfiguration` below.
   final List<GetOntapFileSystemDiskIopsConfiguration>? diskIopsConfigurations;
-  /// DNS name for the file system.
+  /// File system's DNS name. You can mount your file system using its DNS name.
   final String? dnsName;
   /// (Multi-AZ only) IP address range in which the endpoints to access your file system exist.
   final String? endpointIpAddressRange;
-  /// Management and Intercluster FileSystemEndpoints that are used to access data or to manage the file system using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See FileSystemEndpoints below.
+  /// Management and Intercluster FileSystemEndpoints that are used to access data or to manage the file system using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See `endpoints` below.
   final List<GetOntapFileSystemEndpoint>? endpoints;
   /// Number of HA pairs for the file system.
   final int? haPairs;
@@ -61,10 +61,10 @@ class GetOntapFileSystemResult {
   /// [automaticBackupRetentionDays] Number of days to retain automatic backups.
   /// [dailyAutomaticBackupStartTime] Preferred time (in `HH:MM` format) to take daily automatic backups, in the UTC time zone.
   /// [deploymentType] File system deployment type.
-  /// [diskIopsConfigurations] SSD IOPS configuration for the Amazon FSx for NetApp ONTAP file system, specifying the number of provisioned IOPS and the provision mode. See Disk IOPS Below.
-  /// [dnsName] DNS name for the file system.
+  /// [diskIopsConfigurations] SSD IOPS configuration for the Amazon FSx for NetApp ONTAP file system, specifying the number of provisioned IOPS and the provision mode. See `diskIopsConfiguration` below.
+  /// [dnsName] File system's DNS name. You can mount your file system using its DNS name.
   /// [endpointIpAddressRange] (Multi-AZ only) IP address range in which the endpoints to access your file system exist.
-  /// [endpoints] Management and Intercluster FileSystemEndpoints that are used to access data or to manage the file system using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See FileSystemEndpoints below.
+  /// [endpoints] Management and Intercluster FileSystemEndpoints that are used to access data or to manage the file system using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See `endpoints` below.
   /// [haPairs] Number of HA pairs for the file system.
   /// [id] Identifier of the file system (e.g. `fs-12345678`).
   /// [kmsKeyId] ARN for the KMS Key to encrypt the file system at rest.
@@ -143,14 +143,14 @@ class GetOntapFileSystemResult {
   factory GetOntapFileSystemResult.fromMap(Map<String, dynamic> map) {
     return GetOntapFileSystemResult(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      automaticBackupRetentionDays: (() { final guardedValue = map['automaticBackupRetentionDays']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      automaticBackupRetentionDays: (() { final guardedValue = map['automaticBackupRetentionDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       dailyAutomaticBackupStartTime: (() { final guardedValue = map['dailyAutomaticBackupStartTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deploymentType: (() { final guardedValue = map['deploymentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       diskIopsConfigurations: (() { final guardedValue = map['diskIopsConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetOntapFileSystemDiskIopsConfiguration>(guardedValue, (value) => GetOntapFileSystemDiskIopsConfiguration.fromMap((value as Map).cast<String, dynamic>())); })(),
       dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       endpointIpAddressRange: (() { final guardedValue = map['endpointIpAddressRange']; if (guardedValue == null) return null; return guardedValue as String; })(),
       endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetOntapFileSystemEndpoint>(guardedValue, (value) => GetOntapFileSystemEndpoint.fromMap((value as Map).cast<String, dynamic>())); })(),
-      haPairs: (() { final guardedValue = map['haPairs']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      haPairs: (() { final guardedValue = map['haPairs']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkInterfaceIds: (() { final guardedValue = map['networkInterfaceIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
@@ -159,12 +159,12 @@ class GetOntapFileSystemResult {
       preferredSubnetId: (() { final guardedValue = map['preferredSubnetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       routeTableIds: (() { final guardedValue = map['routeTableIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      storageCapacity: (() { final guardedValue = map['storageCapacity']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      storageCapacity: (() { final guardedValue = map['storageCapacity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       subnetIds: (() { final guardedValue = map['subnetIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      throughputCapacity: (() { final guardedValue = map['throughputCapacity']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      throughputCapacityPerHaPair: (() { final guardedValue = map['throughputCapacityPerHaPair']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      throughputCapacity: (() { final guardedValue = map['throughputCapacity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      throughputCapacityPerHaPair: (() { final guardedValue = map['throughputCapacityPerHaPair']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       weeklyMaintenanceStartTime: (() { final guardedValue = map['weeklyMaintenanceStartTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

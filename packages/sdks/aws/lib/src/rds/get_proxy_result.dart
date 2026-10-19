@@ -7,7 +7,7 @@ import 'get_proxy_auth.dart';
 class GetProxyResult {
   /// ARN of the DB Proxy.
   final String? arn;
-  /// Configuration(s) with authorization mechanisms to connect to the associated instance or cluster.
+  /// Configuration(s) with authorization mechanisms to connect to the associated instance or cluster. See the `auth` block below.
   final List<GetProxyAuth>? auths;
   /// Whether the proxy includes detailed information about SQL statements in its logs.
   final bool? debugLogging;
@@ -40,7 +40,7 @@ class GetProxyResult {
 
   /// Creates a new [GetProxyResult].
   /// [arn] ARN of the DB Proxy.
-  /// [auths] Configuration(s) with authorization mechanisms to connect to the associated instance or cluster.
+  /// [auths] Configuration(s) with authorization mechanisms to connect to the associated instance or cluster. See the `auth` block below.
   /// [debugLogging] Whether the proxy includes detailed information about SQL statements in its logs.
   /// [defaultAuthScheme] Default authentication scheme that the proxy uses for client connections to the proxy and connections from the proxy to the underlying database.
   /// [endpoint] Endpoint that you can use to connect to the DB proxy.
@@ -108,7 +108,7 @@ class GetProxyResult {
       endpointNetworkType: (() { final guardedValue = map['endpointNetworkType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       engineFamily: (() { final guardedValue = map['engineFamily']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      idleClientTimeout: (() { final guardedValue = map['idleClientTimeout']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      idleClientTimeout: (() { final guardedValue = map['idleClientTimeout']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       requireTls: (() { final guardedValue = map['requireTls']; if (guardedValue == null) return null; return guardedValue as bool; })(),

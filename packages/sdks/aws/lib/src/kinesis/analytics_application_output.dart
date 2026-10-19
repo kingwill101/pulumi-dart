@@ -7,28 +7,26 @@ import 'analytics_application_output_lambda.dart';
 import 'analytics_application_output_schema.dart';
 
 class AnalyticsApplicationOutput {
-  /// The ARN of the Kinesis Analytics Application.
+  /// ARN of the Kinesis Analytics Application.
   final pulumi.Input<String?>? id;
-  /// The Kinesis Firehose configuration for the destination stream. Conflicts with `kinesisStream`.
-  /// See Kinesis Firehose below for more details.
+  /// Kinesis Firehose configuration for the destination stream. Conflicts with `kinesisStream`. See `outputs.kinesis_firehose` Block below for details.
   final pulumi.Input<AnalyticsApplicationOutputKinesisFirehose?>? kinesisFirehose;
-  /// The Kinesis Stream configuration for the destination stream. Conflicts with `kinesisFirehose`.
-  /// See Kinesis Stream below for more details.
+  /// Kinesis Stream configuration for the destination stream. Conflicts with `kinesisFirehose`. See `outputs.kinesis_stream` Block below for details.
   final pulumi.Input<AnalyticsApplicationOutputKinesisStream?>? kinesisStream;
-  /// The Lambda function destination. See Lambda below for more details.
+  /// Lambda function destination. See `outputs.lambda` Block below for details.
   final pulumi.Input<AnalyticsApplicationOutputLambda?>? lambda;
-  /// The Name of the in-application stream.
+  /// Name of the in-application stream.
   final pulumi.Input<String> name;
-  /// The Schema format of the data written to the destination. See Destination Schema below for more details.
+  /// Schema format of the data written to the destination. See `outputs.schema` Block below for details.
   final pulumi.Input<AnalyticsApplicationOutputSchema> schema;
 
   /// Creates a new [AnalyticsApplicationOutput].
-  /// [id] The ARN of the Kinesis Analytics Application.
-  /// [kinesisFirehose] The Kinesis Firehose configuration for the destination stream. Conflicts with `kinesisStream`.
-  /// [kinesisStream] The Kinesis Stream configuration for the destination stream. Conflicts with `kinesisFirehose`.
-  /// [lambda] The Lambda function destination. See Lambda below for more details.
-  /// [name] The Name of the in-application stream.
-  /// [schema] The Schema format of the data written to the destination. See Destination Schema below for more details.
+  /// [id] ARN of the Kinesis Analytics Application.
+  /// [kinesisFirehose] Kinesis Firehose configuration for the destination stream. Conflicts with `kinesisStream`. See `outputs.kinesis_firehose` Block below for details.
+  /// [kinesisStream] Kinesis Stream configuration for the destination stream. Conflicts with `kinesisFirehose`. See `outputs.kinesis_stream` Block below for details.
+  /// [lambda] Lambda function destination. See `outputs.lambda` Block below for details.
+  /// [name] Name of the in-application stream.
+  /// [schema] Schema format of the data written to the destination. See `outputs.schema` Block below for details.
   const AnalyticsApplicationOutput({
     this.id,
     this.kinesisFirehose,

@@ -3,7 +3,7 @@ import 'vpc_endpoint_args.dart';
 import 'vpc_endpoint_state.dart';
 import 'vpc_endpoint_vpc_options.dart';
 
-/// Manages an [AWS Elasticsearch VPC Endpoint](https://docs.aws.amazon.com/elasticsearch-service/latest/APIReference/API_CreateVpcEndpoint.html). Creates an Amazon elasticsearch Service-managed VPC endpoint.
+/// Manages an [AWS Elasticsearch VPC Endpoint](https://docs.aws.amazon.com/elasticsearch-service/latest/APIReference/API_CreateVpcEndpoint.html). Creates an Amazon Elasticsearch Service-managed VPC endpoint.
 ///
 /// ## Example Usage
 ///
@@ -175,7 +175,7 @@ import 'vpc_endpoint_vpc_options.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import elasticsearch VPC endpoints using the `id`. For example:
+/// Using `pulumi import`, import Elasticsearch VPC endpoints using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:elasticsearch/vpcEndpoint:VpcEndpoint example endpoint-id
@@ -202,7 +202,7 @@ class VpcEndpoint extends pulumi.CustomResource {
           'aws:elasticsearch/vpcEndpoint:VpcEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     domainArn = registerOutput<String>('domainArn');
     endpoint = registerOutput<String>('endpoint');

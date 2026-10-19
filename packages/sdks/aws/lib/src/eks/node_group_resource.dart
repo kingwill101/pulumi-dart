@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'node_group_resource_autoscaling_group.dart';
 
 class NodeGroupResource {
-  /// List of objects containing information about AutoScaling Groups.
+  /// List of objects containing information about Auto Scaling groups.
   final pulumi.Input<List<NodeGroupResourceAutoscalingGroup>?>? autoscalingGroups;
   /// Identifier of the remote access EC2 Security Group.
   final pulumi.Input<String?>? remoteAccessSecurityGroupId;
 
   /// Creates a new [NodeGroupResource].
-  /// [autoscalingGroups] List of objects containing information about AutoScaling Groups.
+  /// [autoscalingGroups] List of objects containing information about Auto Scaling groups.
   /// [remoteAccessSecurityGroupId] Identifier of the remote access EC2 Security Group.
   const NodeGroupResource({
     this.autoscalingGroups,

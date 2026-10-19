@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDbNodeArgs {
   /// Unique identifier of the cloud vm cluster.
   final pulumi.Input<String> cloudVmClusterId;
-  /// Unique identifier of db node associated with vm cluster.
+  /// Unique identifier of DB node associated with vm cluster.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> id;
@@ -18,7 +18,7 @@ class GetDbNodeArgs {
 
   /// Creates a new [GetDbNodeArgs].
   /// [cloudVmClusterId] Unique identifier of the cloud vm cluster.
-  /// [id] Unique identifier of db node associated with vm cluster.
+  /// [id] Unique identifier of DB node associated with vm cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetDbNodeArgs({
     required this.cloudVmClusterId,

@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcEndpointDnsEntry {
-  /// The DNS name.
+  /// DNS name.
   final pulumi.Input<String?>? dnsName;
-  /// The ID of the private hosted zone.
+  /// ID of the private hosted zone.
   final pulumi.Input<String?>? hostedZoneId;
 
   /// Creates a new [VpcEndpointDnsEntry].
-  /// [dnsName] The DNS name.
-  /// [hostedZoneId] The ID of the private hosted zone.
+  /// [dnsName] DNS name.
+  /// [hostedZoneId] ID of the private hosted zone.
   const VpcEndpointDnsEntry({
     this.dnsName,
     this.hostedZoneId,

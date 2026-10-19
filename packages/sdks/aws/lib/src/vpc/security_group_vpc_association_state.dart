@@ -7,20 +7,20 @@ import 'security_group_vpc_association_timeouts.dart';
 class SecurityGroupVpcAssociationState {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The ID of the security group.
+  /// ID of the security group.
   final pulumi.Input<String?>? securityGroupId;
   /// State of the VPC association. See the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecurityGroupVpcAssociation.html) for possible values.
   final pulumi.Input<String?>? state;
   final pulumi.Input<SecurityGroupVpcAssociationTimeouts?>? timeouts;
-  /// The ID of the VPC to make the association with.
+  /// ID of the VPC to make the association with.
   final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [SecurityGroupVpcAssociationState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [securityGroupId] The ID of the security group.
+  /// [securityGroupId] ID of the security group.
   /// [state] State of the VPC association. See the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecurityGroupVpcAssociation.html) for possible values.
   /// [timeouts] Optional.
-  /// [vpcId] The ID of the VPC to make the association with.
+  /// [vpcId] ID of the VPC to make the association with.
   const SecurityGroupVpcAssociationState({
     this.region,
     this.securityGroupId,

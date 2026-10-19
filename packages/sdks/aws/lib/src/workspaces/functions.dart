@@ -378,7 +378,7 @@ pulumi.Output<GetDirectoryResult> getDirectoryOutput(
   ).apply(GetDirectoryResult.fromMap);
 }
 
-/// Use this data source to get information about a Workspaces image.
+/// Use this data source to get information about a WorkSpaces image.
 ///
 /// ## Example Usage
 ///
@@ -507,7 +507,7 @@ pulumi.Output<GetImageResult> getImageOutput(
   ).apply(GetImageResult.fromMap);
 }
 
-/// Use this data source to get information about a workspace in [AWS Workspaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces.html) Service.
+/// Use this data source to get information about a workspace in [AWS WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces.html) Service.
 ///
 /// ## Example Usage
 ///

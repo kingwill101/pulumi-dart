@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection {
-  /// Specifies the GROUP-ID in the #EXT-X-MEDIA tag of the target HLS audio rendition.
+  /// GROUP-ID in the `#EXT-X-MEDIA` tag of the target HLS audio rendition.
   final pulumi.Input<String> groupId;
-  /// Specifies the NAME in the #EXT-X-MEDIA tag of the target HLS audio rendition.
+  /// NAME in the `#EXT-X-MEDIA` tag of the target HLS audio rendition.
   final pulumi.Input<String> name;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection].
-  /// [groupId] Specifies the GROUP-ID in the #EXT-X-MEDIA tag of the target HLS audio rendition.
-  /// [name] Specifies the NAME in the #EXT-X-MEDIA tag of the target HLS audio rendition.
+  /// [groupId] GROUP-ID in the `#EXT-X-MEDIA` tag of the target HLS audio rendition.
+  /// [name] NAME in the `#EXT-X-MEDIA` tag of the target HLS audio rendition.
   const ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection({
     required this.groupId,
     required this.name,

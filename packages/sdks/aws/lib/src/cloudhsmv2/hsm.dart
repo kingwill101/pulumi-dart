@@ -160,9 +160,9 @@ class Hsm extends pulumi.CustomResource {
   late final pulumi.Output<String> availabilityZone;
   /// The ID of Cloud HSM v2 cluster to which HSM will be added.
   late final pulumi.Output<String> clusterId;
-  /// The id of the ENI interface allocated for HSM module.
+  /// The ID of the ENI interface allocated for HSM module.
   late final pulumi.Output<String> hsmEniId;
-  /// The id of the HSM module.
+  /// The ID of the HSM module.
   late final pulumi.Output<String> hsmId;
   /// The state of the HSM module.
   late final pulumi.Output<String> hsmState;
@@ -187,7 +187,7 @@ class Hsm extends pulumi.CustomResource {
           'aws:cloudhsmv2/hsm:Hsm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     availabilityZone = registerOutput<String>('availabilityZone');
     clusterId = registerOutput<String>('clusterId');

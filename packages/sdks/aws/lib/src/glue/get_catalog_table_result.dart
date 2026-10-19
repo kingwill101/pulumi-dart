@@ -8,7 +8,7 @@ import 'get_catalog_table_target_table.dart';
 
 /// Result data returned by getCatalogTable.
 class GetCatalogTableResult {
-  /// The ARN of the Glue Table.
+  /// ARN of the Glue Table.
   final String? arn;
   /// ID of the Data Catalog in which the table resides.
   final String? catalogId;
@@ -46,7 +46,7 @@ class GetCatalogTableResult {
   final String? viewOriginalText;
 
   /// Creates a new [GetCatalogTableResult].
-  /// [arn] The ARN of the Glue Table.
+  /// [arn] ARN of the Glue Table.
   /// [catalogId] ID of the Data Catalog in which the table resides.
   /// [databaseName] Name of the catalog database that contains the target table.
   /// [description] Description of the table.
@@ -125,11 +125,11 @@ class GetCatalogTableResult {
       partitionKeys: (() { final guardedValue = map['partitionKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCatalogTablePartitionKey>(guardedValue, (value) => GetCatalogTablePartitionKey.fromMap((value as Map).cast<String, dynamic>())); })(),
       queryAsOfTime: (() { final guardedValue = map['queryAsOfTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      retention: (() { final guardedValue = map['retention']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      retention: (() { final guardedValue = map['retention']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       storageDescriptors: (() { final guardedValue = map['storageDescriptors']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCatalogTableStorageDescriptor>(guardedValue, (value) => GetCatalogTableStorageDescriptor.fromMap((value as Map).cast<String, dynamic>())); })(),
       tableType: (() { final guardedValue = map['tableType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       targetTables: (() { final guardedValue = map['targetTables']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCatalogTableTargetTable>(guardedValue, (value) => GetCatalogTableTargetTable.fromMap((value as Map).cast<String, dynamic>())); })(),
-      transactionId: (() { final guardedValue = map['transactionId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      transactionId: (() { final guardedValue = map['transactionId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       viewExpandedText: (() { final guardedValue = map['viewExpandedText']; if (guardedValue == null) return null; return guardedValue as String; })(),
       viewOriginalText: (() { final guardedValue = map['viewOriginalText']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

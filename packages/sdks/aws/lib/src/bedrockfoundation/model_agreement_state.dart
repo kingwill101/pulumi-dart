@@ -11,14 +11,14 @@ class ModelAgreementState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String?>? offerToken;
-  /// Region where this action should be [run](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   final pulumi.Input<ModelAgreementTimeouts?>? timeouts;
 
   /// Creates a new [ModelAgreementState].
   /// [modelId] Model ID for the access request.
   /// [offerToken] Offer token encapsulates information for an offer.
-  /// [region] Region where this action should be [run](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   const ModelAgreementState({
     this.modelId,

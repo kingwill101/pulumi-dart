@@ -36,10 +36,10 @@ class GetInstanceTypeNeuronDevice {
 
   factory GetInstanceTypeNeuronDevice.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeNeuronDevice(
-      coreCount: pulumi.Input.fromValue((map['coreCount'] as num).toInt()),
-      coreVersion: pulumi.Input.fromValue((map['coreVersion'] as num).toInt()),
-      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
-      memorySize: pulumi.Input.fromValue((map['memorySize'] as num).toInt()),
+      coreCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['coreCount'])),
+      coreVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['coreVersion'])),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
+      memorySize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['memorySize'])),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

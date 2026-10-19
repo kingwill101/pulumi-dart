@@ -16,8 +16,10 @@ import 'stream_consumer_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kinesis.Stream("example", {
+///     streamModeDetails: {
+///         streamMode: "ON_DEMAND",
+///     },
 ///     name: "example-stream",
-///     shardCount: 1,
 /// });
 /// const exampleStreamConsumer = new aws.kinesis.StreamConsumer("example", {
 ///     name: "example-consumer",
@@ -29,8 +31,10 @@ import 'stream_consumer_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kinesis.Stream("example",
-///     name="example-stream",
-///     shard_count=1)
+///     stream_mode_details={
+///         "stream_mode": "ON_DEMAND",
+///     },
+///     name="example-stream")
 /// example_stream_consumer = aws.kinesis.StreamConsumer("example",
 ///     name="example-consumer",
 ///     stream_arn=example.arn)
@@ -45,8 +49,11 @@ import 'stream_consumer_state.dart';
 /// {
 ///     var example = new Aws.Kinesis.Stream("example", new()
 ///     {
+///         StreamModeDetails = new Aws.Kinesis.Inputs.StreamStreamModeDetailsArgs
+///         {
+///             StreamMode = "ON_DEMAND",
+///         },
 ///         Name = "example-stream",
-///         ShardCount = 1,
 ///     });
 ///
 ///     var exampleStreamConsumer = new Aws.Kinesis.StreamConsumer("example", new()
@@ -68,8 +75,10 @@ import 'stream_consumer_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := kinesis.NewStream(ctx, "example", &kinesis.StreamArgs{
-/// 			Name:       pulumi.String("example-stream"),
-/// 			ShardCount: pulumi.Int(1),
+/// 			StreamModeDetails: &kinesis.StreamStreamModeDetailsArgs{
+/// 				StreamMode: pulumi.String("ON_DEMAND"),
+/// 			},
+/// 			Name: pulumi.String("example-stream"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -95,8 +104,10 @@ import 'stream_consumer_state.dart';
 /// }
 ///
 /// resource "aws_kinesis_stream" "example" {
-///   name        = "example-stream"
-///   shard_count = 1
+///   stream_mode_details = {
+///     stream_mode = "ON_DEMAND"
+///   }
+///   name = "example-stream"
 /// }
 /// resource "aws_kinesis_streamconsumer" "example" {
 ///   name       = "example-consumer"
@@ -111,6 +122,7 @@ import 'stream_consumer_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kinesis.Stream;
 /// import com.pulumi.aws.kinesis.StreamArgs;
+/// import com.pulumi.aws.kinesis.inputs.StreamStreamModeDetailsArgs;
 /// import com.pulumi.aws.kinesis.StreamConsumer;
 /// import com.pulumi.aws.kinesis.StreamConsumerArgs;
 /// import java.util.ArrayList;
@@ -127,8 +139,10 @@ import 'stream_consumer_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Stream("example", StreamArgs.builder()
+///             .streamModeDetails(StreamStreamModeDetailsArgs.builder()
+///                 .streamMode("ON_DEMAND")
+///                 .build())
 ///             .name("example-stream")
-///             .shardCount(1)
 ///             .build());
 ///
 ///         var exampleStreamConsumer = new StreamConsumer("exampleStreamConsumer", StreamConsumerArgs.builder()
@@ -144,8 +158,9 @@ import 'stream_consumer_state.dart';
 ///   example:
 ///     type: aws:kinesis:Stream
 ///     properties:
+///       streamModeDetails:
+///         streamMode: ON_DEMAND
 ///       name: example-stream
-///       shardCount: 1
 ///   exampleStreamConsumer:
 ///     type: aws:kinesis:StreamConsumer
 ///     name: example
@@ -180,7 +195,9 @@ class StreamConsumer extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// ARN of the data stream the consumer is registered with.
   late final pulumi.Output<String> streamArn;
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [StreamConsumer].
@@ -195,7 +212,7 @@ class StreamConsumer extends pulumi.CustomResource {
           'aws:kinesis/streamConsumer:StreamConsumer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationTimestamp = registerOutput<String>('creationTimestamp');

@@ -7,28 +7,35 @@ import 'get_custom_routing_accelerator_ip_set.dart';
 /// Result data returned by getCustomRoutingAccelerator.
 class GetCustomRoutingAcceleratorResult {
   final String? arn;
+  /// Attributes of the accelerator. See `attributes` below.
   final List<GetCustomRoutingAcceleratorAttribute>? attributes;
+  /// DNS name of the accelerator. For example, `a5d53ff5ee6bca4ce.awsglobalaccelerator.com`.
   final String? dnsName;
+  /// Whether the accelerator is enabled.
   final bool? enabled;
+  /// Global Accelerator Route 53 zone ID used to route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the accelerator.
   final String? hostedZoneId;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
+  /// Value for the address type.
   final String? ipAddressType;
+  /// IP address set associated with the accelerator. See `ipSets` below.
   final List<GetCustomRoutingAcceleratorIpSet>? ipSets;
   final String? name;
+  /// Map of tags assigned to the resource.
   final Map<String, String>? tags;
 
   /// Creates a new [GetCustomRoutingAcceleratorResult].
   /// [arn] Optional.
-  /// [attributes] Optional.
-  /// [dnsName] Optional.
-  /// [enabled] Optional.
-  /// [hostedZoneId] Optional.
+  /// [attributes] Attributes of the accelerator. See `attributes` below.
+  /// [dnsName] DNS name of the accelerator. For example, `a5d53ff5ee6bca4ce.awsglobalaccelerator.com`.
+  /// [enabled] Whether the accelerator is enabled.
+  /// [hostedZoneId] Global Accelerator Route 53 zone ID used to route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the accelerator.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ipAddressType] Optional.
-  /// [ipSets] Optional.
+  /// [ipAddressType] Value for the address type.
+  /// [ipSets] IP address set associated with the accelerator. See `ipSets` below.
   /// [name] Optional.
-  /// [tags] Optional.
+  /// [tags] Map of tags assigned to the resource.
   const GetCustomRoutingAcceleratorResult({
     this.arn,
     this.attributes,

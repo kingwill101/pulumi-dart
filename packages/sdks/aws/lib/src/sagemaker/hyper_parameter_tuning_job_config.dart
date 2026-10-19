@@ -62,7 +62,7 @@ class HyperParameterTuningJobConfig {
     return HyperParameterTuningJobConfig(
       objective: (() { final guardedValue = map['objective']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HyperParameterTuningJobConfigObjective.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       parameterRanges: (() { final guardedValue = map['parameterRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HyperParameterTuningJobConfigParameterRanges.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      randomSeed: (() { final guardedValue = map['randomSeed']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      randomSeed: (() { final guardedValue = map['randomSeed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceLimits: pulumi.Input.fromValue(HyperParameterTuningJobConfigResourceLimits.fromMap((map['resourceLimits']! as Map).cast<String, dynamic>())),
       strategy: pulumi.Input.fromValue(map['strategy'] as String),
       strategyConfig: (() { final guardedValue = map['strategyConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HyperParameterTuningJobConfigStrategyConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

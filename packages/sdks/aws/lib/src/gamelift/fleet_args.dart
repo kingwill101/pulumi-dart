@@ -27,7 +27,7 @@ class FleetArgs {
   final pulumi.Input<String?>? instanceRoleArn;
   /// List of names of metric groups to add this fleet to. A metric group tracks metrics across all fleets in the group. Defaults to `default`.
   final pulumi.Input<List<String>?>? metricGroups;
-  /// The name of the fleet.
+  /// Name of the fleet.
   final pulumi.Input<String?>? name;
   /// Game session protection policy to apply to all instances in this fleetE.g., `FullProtection`. Defaults to `NoProtection`.
   final pulumi.Input<String?>? newGameSessionProtectionPolicy;
@@ -51,7 +51,7 @@ class FleetArgs {
   /// [fleetType] Type of fleet. This value must be `ON_DEMAND` or `SPOT`. Defaults to `ON_DEMAND`.
   /// [instanceRoleArn] ARN of an IAM role that instances in the fleet can assume.
   /// [metricGroups] List of names of metric groups to add this fleet to. A metric group tracks metrics across all fleets in the group. Defaults to `default`.
-  /// [name] The name of the fleet.
+  /// [name] Name of the fleet.
   /// [newGameSessionProtectionPolicy] Game session protection policy to apply to all instances in this fleetE.g., `FullProtection`. Defaults to `NoProtection`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceCreationLimitPolicy] Policy that limits the number of game sessions an individual player can create over a span of time for this fleet. See below.

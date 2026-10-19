@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_autoscaling_get_group_get_group_args_doc}
 class GetGroupArgs {
-  /// Specify the exact name of the desired autoscaling group.
+  /// Specify the exact name of the desired Auto Scaling group.
   final pulumi.Input<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [GetGroupArgs].
-  /// [name] Specify the exact name of the desired autoscaling group.
+  /// [name] Specify the exact name of the desired Auto Scaling group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetGroupArgs({
     required this.name,

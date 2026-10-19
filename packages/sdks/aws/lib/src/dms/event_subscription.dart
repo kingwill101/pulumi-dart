@@ -202,9 +202,9 @@ class EventSubscription extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// SNS topic arn to send events on.
+  /// SNS topic ARN to send events on.
   late final pulumi.Output<String> snsTopicArn;
-  /// Ids of sources to listen to. If you don't specify a value, notifications are provided for all sources.
+  /// IDs of sources to listen to. If you don't specify a value, notifications are provided for all sources.
   late final pulumi.Output<List<String>?> sourceIds;
   /// Type of source for events. Valid values: `replication-instance` or `replication-task`
   late final pulumi.Output<String> sourceType;
@@ -225,7 +225,7 @@ class EventSubscription extends pulumi.CustomResource {
           'aws:dms/eventSubscription:EventSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     enabled = registerOutput<bool?>('enabled');

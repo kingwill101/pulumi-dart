@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleGroupRuleRuleLabel {
-  /// The label string.
+  /// Label string.
   final pulumi.Input<String> name;
 
   /// Creates a new [RuleGroupRuleRuleLabel].
-  /// [name] The label string.
+  /// [name] Label string.
   const RuleGroupRuleRuleLabel({
     required this.name,
   });

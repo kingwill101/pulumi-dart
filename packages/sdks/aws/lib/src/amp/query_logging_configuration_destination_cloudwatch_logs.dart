@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QueryLoggingConfigurationDestinationCloudwatchLogs {
-  /// The ARN of the CloudWatch log group to which query logs will be sent. The ARN must end with `:*`
+  /// ARN of the CloudWatch log group to which query logs will be sent. The ARN must end with `:*`
   final pulumi.Input<String> logGroupArn;
 
   /// Creates a new [QueryLoggingConfigurationDestinationCloudwatchLogs].
-  /// [logGroupArn] The ARN of the CloudWatch log group to which query logs will be sent. The ARN must end with `:*`
+  /// [logGroupArn] ARN of the CloudWatch log group to which query logs will be sent. The ARN must end with `:*`
   const QueryLoggingConfigurationDestinationCloudwatchLogs({
     required this.logGroupArn,
   });

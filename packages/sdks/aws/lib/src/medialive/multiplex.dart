@@ -257,9 +257,9 @@ import 'multiplex_state.dart';
 class Multiplex extends pulumi.CustomResource {
   /// ARN of the Multiplex.
   late final pulumi.Output<String> arn;
-  /// A list of availability zones. You must specify exactly two.
+  /// List of availability zones. You must specify exactly two.
   late final pulumi.Output<List<String>> availabilityZones;
-  /// Multiplex settings. See Multiplex Settings for more details.
+  /// Multiplex settings. See `multiplexSettings` Block for more details.
   late final pulumi.Output<MultiplexMultiplexSettings?> multiplexSettings;
   /// name of Multiplex.
   ///
@@ -269,7 +269,7 @@ class Multiplex extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Whether to start the Multiplex. Defaults to `false`.
   late final pulumi.Output<bool?> startMultiplex;
-  /// A map of tags to assign to the Multiplex. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the Multiplex. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -285,7 +285,7 @@ class Multiplex extends pulumi.CustomResource {
           'aws:medialive/multiplex:Multiplex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZones = registerOutput<List<String>>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

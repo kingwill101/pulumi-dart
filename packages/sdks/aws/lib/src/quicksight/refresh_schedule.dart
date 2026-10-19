@@ -553,15 +553,15 @@ class RefreshSchedule extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
-  /// The ID of the dataset.
+  /// ID of the dataset.
   late final pulumi.Output<String> dataSetId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The [refresh schedule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshSchedule.html). See schedule
+  /// [Refresh schedule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshSchedule.html) configuration. See `schedule` Block.
+  late final pulumi.Output<RefreshScheduleSchedule> schedule;
+  /// ID of the refresh schedule.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<RefreshScheduleSchedule> schedule;
-  /// The ID of the refresh schedule.
   late final pulumi.Output<String> scheduleId;
 
   /// Creates a new [RefreshSchedule].
@@ -576,7 +576,7 @@ class RefreshSchedule extends pulumi.CustomResource {
           'aws:quicksight/refreshSchedule:RefreshSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

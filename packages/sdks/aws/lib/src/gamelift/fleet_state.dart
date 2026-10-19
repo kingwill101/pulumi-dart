@@ -26,10 +26,11 @@ class FleetState {
   final pulumi.Input<String?>? fleetType;
   /// ARN of an IAM role that instances in the fleet can assume.
   final pulumi.Input<String?>? instanceRoleArn;
+  /// List of paths from which the fleet captures logs.
   final pulumi.Input<List<String>?>? logPaths;
   /// List of names of metric groups to add this fleet to. A metric group tracks metrics across all fleets in the group. Defaults to `default`.
   final pulumi.Input<List<String>?>? metricGroups;
-  /// The name of the fleet.
+  /// Name of the fleet.
   final pulumi.Input<String?>? name;
   /// Game session protection policy to apply to all instances in this fleetE.g., `FullProtection`. Defaults to `NoProtection`.
   final pulumi.Input<String?>? newGameSessionProtectionPolicy;
@@ -47,7 +48,7 @@ class FleetState {
   final pulumi.Input<String?>? scriptId;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [FleetState].
@@ -60,9 +61,9 @@ class FleetState {
   /// [ec2InstanceType] Name of an EC2 instance typeE.g., `t2.micro`
   /// [fleetType] Type of fleet. This value must be `ON_DEMAND` or `SPOT`. Defaults to `ON_DEMAND`.
   /// [instanceRoleArn] ARN of an IAM role that instances in the fleet can assume.
-  /// [logPaths] Optional.
+  /// [logPaths] List of paths from which the fleet captures logs.
   /// [metricGroups] List of names of metric groups to add this fleet to. A metric group tracks metrics across all fleets in the group. Defaults to `default`.
-  /// [name] The name of the fleet.
+  /// [name] Name of the fleet.
   /// [newGameSessionProtectionPolicy] Game session protection policy to apply to all instances in this fleetE.g., `FullProtection`. Defaults to `NoProtection`.
   /// [operatingSystem] Operating system of the fleet's computing resources.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -71,7 +72,7 @@ class FleetState {
   /// [scriptArn] Script ARN.
   /// [scriptId] ID of the GameLift Script to be deployed on the fleet. Conflicts with `buildId`.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const FleetState({
     this.arn,
     this.buildArn,

@@ -6,9 +6,11 @@ import 'agent_agent_collaborator_timeouts.dart';
 
 /// Input properties used for looking up and filtering AgentAgentCollaborator resources.
 class AgentAgentCollaboratorState {
+  /// Agent descriptor for the agent collaborator. See `agentDescriptor` Block for details.
   final pulumi.Input<AgentAgentCollaboratorAgentDescriptor?>? agentDescriptor;
-  /// ID if the agent to associate the collaborator.
+  /// ID of the agent to associate the collaborator with.
   final pulumi.Input<String?>? agentId;
+  /// Version of the agent to associate the collaborator with. Defaults to `DRAFT`.
   final pulumi.Input<String?>? agentVersion;
   /// Instruction to give the collaborator.
   final pulumi.Input<String?>? collaborationInstruction;
@@ -27,9 +29,9 @@ class AgentAgentCollaboratorState {
   final pulumi.Input<AgentAgentCollaboratorTimeouts?>? timeouts;
 
   /// Creates a new [AgentAgentCollaboratorState].
-  /// [agentDescriptor] Optional.
-  /// [agentId] ID if the agent to associate the collaborator.
-  /// [agentVersion] Optional.
+  /// [agentDescriptor] Agent descriptor for the agent collaborator. See `agentDescriptor` Block for details.
+  /// [agentId] ID of the agent to associate the collaborator with.
+  /// [agentVersion] Version of the agent to associate the collaborator with. Defaults to `DRAFT`.
   /// [collaborationInstruction] Instruction to give the collaborator.
   /// [collaboratorId] ID of the Agent Collaborator.
   /// [collaboratorName] Name of this collaborator.

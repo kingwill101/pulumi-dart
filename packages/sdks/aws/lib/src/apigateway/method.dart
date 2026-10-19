@@ -566,7 +566,7 @@ class Method extends pulumi.CustomResource {
   late final pulumi.Output<String> authorization;
   /// Authorization scopes used when the authorization is `COGNITO_USER_POOLS`
   late final pulumi.Output<List<String>?> authorizationScopes;
-  /// Authorizer id to be used when the authorization is `CUSTOM` or `COGNITO_USER_POOLS`
+  /// Authorizer ID to be used when the authorization is `CUSTOM` or `COGNITO_USER_POOLS`
   late final pulumi.Output<String?> authorizerId;
   /// HTTP Method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`)
   late final pulumi.Output<String> httpMethod;
@@ -597,7 +597,7 @@ class Method extends pulumi.CustomResource {
           'aws:apigateway/method:Method',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     apiKeyRequired = registerOutput<bool?>('apiKeyRequired');
     authorization = registerOutput<String>('authorization');

@@ -7,25 +7,26 @@ import 'application_application_configuration_sql_application_configuration_outp
 import 'application_application_configuration_sql_application_configuration_output_lambda_output.dart';
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationOutput {
-  /// Describes the data format when records are written to the destination.
+  /// Data format when records are written to the destination. See `destinationSchema` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputDestinationSchema> destinationSchema;
-  /// Identifies a Kinesis Data Firehose delivery stream as the destination.
+  /// Destination Kinesis Data Firehose delivery stream. See `kinesisFirehoseOutput` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput?>? kinesisFirehoseOutput;
-  /// Identifies a Kinesis data stream as the destination.
+  /// Destination Kinesis data stream. See `kinesisStreamsOutput` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput?>? kinesisStreamsOutput;
-  /// Identifies a Lambda function as the destination.
+  /// Destination Lambda function. See `lambdaOutput` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput?>? lambdaOutput;
-  /// The name of the in-application stream.
+  /// Name of the in-application stream.
   final pulumi.Input<String> name;
+  /// Identifier of the output configuration.
   final pulumi.Input<String?>? outputId;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationOutput].
-  /// [destinationSchema] Describes the data format when records are written to the destination.
-  /// [kinesisFirehoseOutput] Identifies a Kinesis Data Firehose delivery stream as the destination.
-  /// [kinesisStreamsOutput] Identifies a Kinesis data stream as the destination.
-  /// [lambdaOutput] Identifies a Lambda function as the destination.
-  /// [name] The name of the in-application stream.
-  /// [outputId] Optional.
+  /// [destinationSchema] Data format when records are written to the destination. See `destinationSchema` Block below.
+  /// [kinesisFirehoseOutput] Destination Kinesis Data Firehose delivery stream. See `kinesisFirehoseOutput` Block below.
+  /// [kinesisStreamsOutput] Destination Kinesis data stream. See `kinesisStreamsOutput` Block below.
+  /// [lambdaOutput] Destination Lambda function. See `lambdaOutput` Block below.
+  /// [name] Name of the in-application stream.
+  /// [outputId] Identifier of the output configuration.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationOutput({
     required this.destinationSchema,
     this.kinesisFirehoseOutput,

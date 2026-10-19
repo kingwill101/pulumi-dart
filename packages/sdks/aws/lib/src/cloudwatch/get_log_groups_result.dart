@@ -3,20 +3,20 @@
 
 /// Result data returned by getLogGroups.
 class GetLogGroupsResult {
-  /// Set of ARNs of the Cloudwatch log groups
+  /// Set of ARNs of the CloudWatch log groups
   final List<String>? arns;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
   final String? logGroupNamePrefix;
-  /// Set of names of the Cloudwatch log groups
+  /// Set of names of the CloudWatch log groups
   final List<String>? logGroupNames;
   final String? region;
 
   /// Creates a new [GetLogGroupsResult].
-  /// [arns] Set of ARNs of the Cloudwatch log groups
+  /// [arns] Set of ARNs of the CloudWatch log groups
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [logGroupNamePrefix] Optional.
-  /// [logGroupNames] Set of names of the Cloudwatch log groups
+  /// [logGroupNames] Set of names of the CloudWatch log groups
   /// [region] Optional.
   const GetLogGroupsResult({
     this.arns,

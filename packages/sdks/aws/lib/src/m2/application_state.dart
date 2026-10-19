@@ -6,13 +6,13 @@ import 'application_timeouts.dart';
 
 /// Input properties used for looking up and filtering Application resources.
 class ApplicationState {
-  /// Id of the Application.
+  /// ID of the Application.
   final pulumi.Input<String?>? applicationId;
   /// ARN of the Application.
   final pulumi.Input<String?>? arn;
   /// Current version of the application deployed.
   final pulumi.Input<int?>? currentVersion;
-  /// The application definition for this application. You can specify either inline JSON or an S3 bucket location.
+  /// Application definition for this application. You can specify either inline JSON or an S3 bucket location.
   final pulumi.Input<ApplicationDefinition?>? definition;
   /// Description of the application.
   final pulumi.Input<String?>? description;
@@ -30,15 +30,15 @@ class ApplicationState {
   final pulumi.Input<String?>? roleArn;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
   final pulumi.Input<ApplicationTimeouts?>? timeouts;
 
   /// Creates a new [ApplicationState].
-  /// [applicationId] Id of the Application.
+  /// [applicationId] ID of the Application.
   /// [arn] ARN of the Application.
   /// [currentVersion] Current version of the application deployed.
-  /// [definition] The application definition for this application. You can specify either inline JSON or an S3 bucket location.
+  /// [definition] Application definition for this application. You can specify either inline JSON or an S3 bucket location.
   /// [description] Description of the application.
   /// [engineType] Engine type must be `microfocus | bluage`.
   /// [kmsKeyId] KMS Key to use for the Application.
@@ -46,7 +46,7 @@ class ApplicationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of role for application to use to access AWS resources.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
   const ApplicationState({
     this.applicationId,
@@ -86,7 +86,7 @@ class ApplicationState {
     return ApplicationState(
       applicationId: (() { final guardedValue = map['applicationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      currentVersion: (() { final guardedValue = map['currentVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      currentVersion: (() { final guardedValue = map['currentVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       definition: (() { final guardedValue = map['definition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationDefinition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       engineType: (() { final guardedValue = map['engineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

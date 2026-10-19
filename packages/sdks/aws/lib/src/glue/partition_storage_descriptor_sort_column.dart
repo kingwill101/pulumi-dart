@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PartitionStorageDescriptorSortColumn {
-  /// The name of the column.
+  /// Name of the column.
   final pulumi.Input<String> column;
-  /// Indicates that the column is sorted in ascending order (== 1), or in descending order (==0).
+  /// Order the column is sorted in: ascending (`1`) or descending (`0`).
   final pulumi.Input<int> sortOrder;
 
   /// Creates a new [PartitionStorageDescriptorSortColumn].
-  /// [column] The name of the column.
-  /// [sortOrder] Indicates that the column is sorted in ascending order (== 1), or in descending order (==0).
+  /// [column] Name of the column.
+  /// [sortOrder] Order the column is sorted in: ascending (`1`) or descending (`0`).
   const PartitionStorageDescriptorSortColumn({
     required this.column,
     required this.sortOrder,
@@ -26,7 +26,7 @@ class PartitionStorageDescriptorSortColumn {
   factory PartitionStorageDescriptorSortColumn.fromMap(Map<String, dynamic> map) {
     return PartitionStorageDescriptorSortColumn(
       column: pulumi.Input.fromValue(map['column'] as String),
-      sortOrder: pulumi.Input.fromValue((map['sortOrder'] as num).toInt()),
+      sortOrder: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sortOrder'])),
     );
   }
 }

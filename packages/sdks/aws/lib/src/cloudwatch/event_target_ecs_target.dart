@@ -27,7 +27,7 @@ class EventTargetEcsTarget {
   final pulumi.Input<String?>? platformVersion;
   /// Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags are not propagated. Tags can only be propagated to the task during task creation. The only valid value is: `TASK_DEFINITION`.
   final pulumi.Input<String?>? propagateTags;
-  /// A map of tags to assign to ecs resources.
+  /// A map of tags to assign to ECS resources.
   final pulumi.Input<Map<String, String>?>? tags;
   /// The number of tasks to create based on the TaskDefinition. Defaults to `1`.
   final pulumi.Input<int?>? taskCount;
@@ -45,7 +45,7 @@ class EventTargetEcsTarget {
   /// [placementConstraints] An array of placement constraint objects to use for the task. You can specify up to 10 constraints per task (including constraints in the task definition and those specified at runtime). See Below.
   /// [platformVersion] Specifies the platform version for the task. Specify only the numeric portion of the platform version, such as `1.1.0`. This is used only if LaunchType is FARGATE. For more information about valid platform versions, see [AWS Fargate Platform Versions](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
   /// [propagateTags] Specifies whether to propagate the tags from the task definition to the task. If no value is specified, the tags are not propagated. Tags can only be propagated to the task during task creation. The only valid value is: `TASK_DEFINITION`.
-  /// [tags] A map of tags to assign to ecs resources.
+  /// [tags] A map of tags to assign to ECS resources.
   /// [taskCount] The number of tasks to create based on the TaskDefinition. Defaults to `1`.
   /// [taskDefinitionArn] The ARN of the task definition to use if the event target is an Amazon ECS cluster.
   const EventTargetEcsTarget({
@@ -95,7 +95,7 @@ class EventTargetEcsTarget {
       platformVersion: (() { final guardedValue = map['platformVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       propagateTags: (() { final guardedValue = map['propagateTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      taskCount: (() { final guardedValue = map['taskCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      taskCount: (() { final guardedValue = map['taskCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       taskDefinitionArn: pulumi.Input.fromValue(map['taskDefinitionArn'] as String),
     );
   }

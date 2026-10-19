@@ -26,6 +26,8 @@ export 'workspaces/get_directory_result.dart';
 export 'workspaces/get_directory_saml_property.dart';
 export 'workspaces/get_directory_self_service_permission.dart';
 export 'workspaces/get_directory_workspace_access_property.dart';
+export 'workspaces/get_directory_workspace_access_property_access_endpoint_config.dart';
+export 'workspaces/get_directory_workspace_access_property_access_endpoint_config_access_endpoint.dart';
 export 'workspaces/get_directory_workspace_creation_property.dart';
 export 'workspaces/get_image_args.dart';
 export 'workspaces/get_image_result.dart';

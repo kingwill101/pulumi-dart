@@ -8,7 +8,7 @@ import 'peering_attachment_options.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ec2transitgateway_peering_attachment_peering_attachment_args_doc}
 class PeeringAttachmentArgs {
-  /// Describes whether dynamic routing is enabled or disabled for the transit gateway peering request. See options below for more details!
+  /// Block describing whether dynamic routing is enabled or disabled for the transit gateway peering request. If not configured, the value is populated from the API. See options below for more details!
   final pulumi.Input<PeeringAttachmentOptions?>? options;
   /// Account ID of EC2 Transit Gateway to peer with. Defaults to the account ID the AWS provider is currently connected to.
   final pulumi.Input<String?>? peerAccountId;
@@ -24,7 +24,7 @@ class PeeringAttachmentArgs {
   final pulumi.Input<String> transitGatewayId;
 
   /// Creates a new [PeeringAttachmentArgs].
-  /// [options] Describes whether dynamic routing is enabled or disabled for the transit gateway peering request. See options below for more details!
+  /// [options] Block describing whether dynamic routing is enabled or disabled for the transit gateway peering request. If not configured, the value is populated from the API. See options below for more details!
   /// [peerAccountId] Account ID of EC2 Transit Gateway to peer with. Defaults to the account ID the AWS provider is currently connected to.
   /// [peerRegion] Region of EC2 Transit Gateway to peer with.
   /// [peerTransitGatewayId] Identifier of EC2 Transit Gateway to peer with.

@@ -13,7 +13,7 @@ class GetQueueArgs {
   ///
   /// &gt; **NOTE:** `instanceId` and one of either `name` or `queueId` is required.
   final pulumi.Input<String?>? name;
-  /// Returns information on a specific Queue by Queue id
+  /// Returns information on a specific Queue by Queue ID
   final pulumi.Input<String?>? queueId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -23,7 +23,7 @@ class GetQueueArgs {
   /// Creates a new [GetQueueArgs].
   /// [instanceId] Reference to the hosting Amazon Connect Instance
   /// [name] Returns information on a specific Queue by name
-  /// [queueId] Returns information on a specific Queue by Queue id
+  /// [queueId] Returns information on a specific Queue by Queue ID
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags assigned to the Queue.
   const GetQueueArgs({

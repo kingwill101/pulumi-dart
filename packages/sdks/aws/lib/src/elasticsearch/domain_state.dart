@@ -45,7 +45,7 @@ class DomainState {
   final pulumi.Input<DomainEncryptAtRest?>? encryptAtRest;
   /// Domain-specific endpoint used to submit index, search, and data upload requests.
   final pulumi.Input<String?>? endpoint;
-  /// Domain-specific endpoint for kibana without https scheme.
+  /// Domain-specific endpoint for kibana without HTTPS scheme.
   final pulumi.Input<String?>? kibanaEndpoint;
   /// Configuration block for publishing slow and application logs to CloudWatch Logs. This block can be declared multiple times, for each log_type, within the same resource. Detailed below.
   final pulumi.Input<List<DomainLogPublishingOption>?>? logPublishingOptions;
@@ -77,7 +77,7 @@ class DomainState {
   /// [elasticsearchVersion] Version of Elasticsearch to deploy. Defaults to `1.5`.
   /// [encryptAtRest] Configuration block for encrypt at rest options. Only available for [certain instance types](http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/aes-supported-instance-types.html). Detailed below.
   /// [endpoint] Domain-specific endpoint used to submit index, search, and data upload requests.
-  /// [kibanaEndpoint] Domain-specific endpoint for kibana without https scheme.
+  /// [kibanaEndpoint] Domain-specific endpoint for kibana without HTTPS scheme.
   /// [logPublishingOptions] Configuration block for publishing slow and application logs to CloudWatch Logs. This block can be declared multiple times, for each log_type, within the same resource. Detailed below.
   /// [nodeToNodeEncryption] Configuration block for node-to-node encryption options. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

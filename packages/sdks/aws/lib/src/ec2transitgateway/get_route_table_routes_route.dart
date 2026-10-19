@@ -9,7 +9,7 @@ class GetRouteTableRoutesRoute {
   final pulumi.Input<String> prefixListId;
   /// The current state of the route, can be `active`, `deleted`, `pending`, `blackhole`, `deleting`.
   final pulumi.Input<String> state;
-  /// The id of the transit gateway route table announcement, most of the time it is an empty string.
+  /// The ID of the transit gateway route table announcement, most of the time it is an empty string.
   final pulumi.Input<String> transitGatewayRouteTableAnnouncementId;
   /// The type of the route, can be `propagated` or `static`.
   final pulumi.Input<String> type;
@@ -18,7 +18,7 @@ class GetRouteTableRoutesRoute {
   /// [destinationCidrBlock] The CIDR used for route destination matches.
   /// [prefixListId] The ID of the prefix list used for destination matches.
   /// [state] The current state of the route, can be `active`, `deleted`, `pending`, `blackhole`, `deleting`.
-  /// [transitGatewayRouteTableAnnouncementId] The id of the transit gateway route table announcement, most of the time it is an empty string.
+  /// [transitGatewayRouteTableAnnouncementId] The ID of the transit gateway route table announcement, most of the time it is an empty string.
   /// [type] The type of the route, can be `propagated` or `static`.
   const GetRouteTableRoutesRoute({
     required this.destinationCidrBlock,

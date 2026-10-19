@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcIpamPoolCidrsIpamPoolCidr {
-  /// A network CIDR.
+  /// Network CIDR.
   final pulumi.Input<String> cidr;
-  /// The provisioning state of that CIDR.
+  /// Provisioning state of that CIDR.
   final pulumi.Input<String> state;
 
   /// Creates a new [GetVpcIpamPoolCidrsIpamPoolCidr].
-  /// [cidr] A network CIDR.
-  /// [state] The provisioning state of that CIDR.
+  /// [cidr] Network CIDR.
+  /// [state] Provisioning state of that CIDR.
   const GetVpcIpamPoolCidrsIpamPoolCidr({
     required this.cidr,
     required this.state,

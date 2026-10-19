@@ -3,11 +3,11 @@ import 'scheduled_action_args.dart';
 import 'scheduled_action_scalable_target_action.dart';
 import 'scheduled_action_state.dart';
 
-/// Provides an Application AutoScaling ScheduledAction resource.
+/// Provides an Application Auto Scaling ScheduledAction resource.
 ///
 /// ## Example Usage
 ///
-/// ### DynamoDB Table Autoscaling
+/// ### DynamoDB Table AutoScaling
 ///
 ///
 /// ```typescript
@@ -225,7 +225,7 @@ import 'scheduled_action_state.dart';
 /// ```
 ///
 ///
-/// ### ECS Service Autoscaling
+/// ### ECS Service AutoScaling
 ///
 ///
 /// ```typescript
@@ -458,7 +458,7 @@ class ScheduledAction extends pulumi.CustomResource {
   late final pulumi.Output<ScheduledActionScalableTargetAction> scalableTargetAction;
   /// Schedule for this action. The following formats are supported: At expressions - at(yyyy-mm-ddThh:mm:ss), Rate expressions - rate(valueunit), Cron expressions - cron(fields). Times for at expressions and cron expressions are evaluated using the time zone configured in `timezone`. Documentation can be found in the `Timezone` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScheduledAction.html)
   late final pulumi.Output<String> schedule;
-  /// Namespace of the AWS service. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScheduledAction.html) Example: ecs
+  /// Namespace of the AWS service. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScheduledAction.html) Example: `ecs`
   late final pulumi.Output<String> serviceNamespace;
   /// Date and time for the scheduled action to start in RFC 3339 format. The timezone is not affected by the setting of `timezone`.
   late final pulumi.Output<String?> startTime;
@@ -477,7 +477,7 @@ class ScheduledAction extends pulumi.CustomResource {
           'aws:appautoscaling/scheduledAction:ScheduledAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     endTime = registerOutput<String?>('endTime');

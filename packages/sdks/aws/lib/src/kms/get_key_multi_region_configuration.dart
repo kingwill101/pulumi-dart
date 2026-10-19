@@ -5,17 +5,17 @@ import 'get_key_multi_region_configuration_primary_key.dart';
 import 'get_key_multi_region_configuration_replica_key.dart';
 
 class GetKeyMultiRegionConfiguration {
-  /// Indicates whether the KMS key is a `PRIMARY` or `REPLICA` key.
+  /// Whether the KMS key is a `PRIMARY` or `REPLICA` key.
   final pulumi.Input<String> multiRegionKeyType;
-  /// The key ARN and Region of the primary key. This is the current KMS key if it is the primary key.
+  /// Key ARN and Region of the primary key. This is the current KMS key if it is the primary key. See `multi_region_configuration.primary_key` Block below.
   final pulumi.Input<List<GetKeyMultiRegionConfigurationPrimaryKey>> primaryKeys;
-  /// The key ARNs and Regions of all replica keys. Includes the current KMS key if it is a replica key.
+  /// Key ARNs and Regions of all replica keys. Includes the current KMS key if it is a replica key. See `multi_region_configuration.replica_keys` Block below.
   final pulumi.Input<List<GetKeyMultiRegionConfigurationReplicaKey>> replicaKeys;
 
   /// Creates a new [GetKeyMultiRegionConfiguration].
-  /// [multiRegionKeyType] Indicates whether the KMS key is a `PRIMARY` or `REPLICA` key.
-  /// [primaryKeys] The key ARN and Region of the primary key. This is the current KMS key if it is the primary key.
-  /// [replicaKeys] The key ARNs and Regions of all replica keys. Includes the current KMS key if it is a replica key.
+  /// [multiRegionKeyType] Whether the KMS key is a `PRIMARY` or `REPLICA` key.
+  /// [primaryKeys] Key ARN and Region of the primary key. This is the current KMS key if it is the primary key. See `multi_region_configuration.primary_key` Block below.
+  /// [replicaKeys] Key ARNs and Regions of all replica keys. Includes the current KMS key if it is a replica key. See `multi_region_configuration.replica_keys` Block below.
   const GetKeyMultiRegionConfiguration({
     required this.multiRegionKeyType,
     required this.primaryKeys,

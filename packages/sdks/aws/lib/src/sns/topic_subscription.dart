@@ -1500,7 +1500,7 @@ import 'topic_subscription_state.dart';
 class TopicSubscription extends pulumi.CustomResource {
   /// ARN of the subscription.
   late final pulumi.Output<String> arn;
-  /// Integer indicating number of minutes to wait in retrying mode for fetching subscription arn before marking it as failure. Only applicable for http and https protocols. Default is `1`.
+  /// Integer indicating number of minutes to wait in retrying mode for fetching subscription ARN before marking it as failure. Only applicable for HTTP and HTTPS protocols. Default is `1`.
   late final pulumi.Output<int?> confirmationTimeoutInMinutes;
   /// Whether the subscription confirmation request was authenticated.
   late final pulumi.Output<bool> confirmationWasAuthenticated;
@@ -1547,7 +1547,7 @@ class TopicSubscription extends pulumi.CustomResource {
           'aws:sns/topicSubscription:TopicSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     confirmationTimeoutInMinutes = registerOutput<int?>('confirmationTimeoutInMinutes');

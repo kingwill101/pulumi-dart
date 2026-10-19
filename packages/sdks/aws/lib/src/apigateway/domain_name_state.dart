@@ -20,7 +20,7 @@ class DomainNameState {
   final pulumi.Input<String?>? certificatePrivateKey;
   /// Upload date associated with the domain certificate.
   final pulumi.Input<String?>? certificateUploadDate;
-  /// Hostname created by Cloudfront to represent the distribution that implements this domain name mapping.
+  /// Hostname created by CloudFront to represent the distribution that implements this domain name mapping.
   final pulumi.Input<String?>? cloudfrontDomainName;
   /// For convenience, the hosted zone ID (`Z2FDTNDATAQYW2`) that can be used to create a Route53 alias record for the distribution.
   final pulumi.Input<String?>? cloudfrontZoneId;
@@ -65,7 +65,7 @@ class DomainNameState {
   /// [certificateName] Unique name to use when registering this certificate as an IAM server certificate. Conflicts with `certificateArn`, `regionalCertificateArn`, and `regionalCertificateName`. Required if `certificateArn` is not set.
   /// [certificatePrivateKey] Private key associated with the domain certificate given in `certificateBody`. Only valid for `EDGE` endpoint configuration type. Conflicts with `certificateArn`, `regionalCertificateArn`, and `regionalCertificateName`.
   /// [certificateUploadDate] Upload date associated with the domain certificate.
-  /// [cloudfrontDomainName] Hostname created by Cloudfront to represent the distribution that implements this domain name mapping.
+  /// [cloudfrontDomainName] Hostname created by CloudFront to represent the distribution that implements this domain name mapping.
   /// [cloudfrontZoneId] For convenience, the hosted zone ID (`Z2FDTNDATAQYW2`) that can be used to create a Route53 alias record for the distribution.
   /// [domainName] Fully-qualified domain name to register.
   /// [domainNameId] Identifier for the domain name resource. Supported only for private custom domain names.

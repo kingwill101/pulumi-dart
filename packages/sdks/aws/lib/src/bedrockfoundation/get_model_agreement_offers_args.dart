@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_bedrockfoundation_get_model_agreement_offers_get_model_agreement_offers_args_doc}
 class GetModelAgreementOffersArgs {
-  /// Model ID of the foundation model
+  /// Model ID of the foundation model.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> modelId;
@@ -17,7 +17,7 @@ class GetModelAgreementOffersArgs {
   final pulumi.Input<String?>? region;
 
   /// Creates a new [GetModelAgreementOffersArgs].
-  /// [modelId] Model ID of the foundation model
+  /// [modelId] Model ID of the foundation model.
   /// [offerType] Type of offer associated with the model. Valid values are `ALL` and `PUBLIC`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const GetModelAgreementOffersArgs({

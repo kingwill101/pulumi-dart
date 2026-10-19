@@ -14,22 +14,23 @@ class PartitionArgs {
   final pulumi.Input<String> databaseName;
   /// Properties associated with this table, as a list of key-value pairs.
   final pulumi.Input<Map<String, String>?>? parameters;
-  /// The values that define the partition.
+  /// Values that define the partition.
   final pulumi.Input<List<String>> partitionValues;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A storage descriptor object containing information about the physical storage of this table. You can refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor) for a full explanation of this object.
+  /// Storage descriptor object containing information about the physical storage of this table. You can refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor) for a full explanation of this object.
   final pulumi.Input<PartitionStorageDescriptor?>? storageDescriptor;
+  /// Name of the table. For Hive compatibility, this must be entirely lowercase.
   final pulumi.Input<String> tableName;
 
   /// Creates a new [PartitionArgs].
   /// [catalogId] ID of the Glue Catalog and database to create the table in. If omitted, this defaults to the AWS Account ID plus the database name.
   /// [databaseName] Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
   /// [parameters] Properties associated with this table, as a list of key-value pairs.
-  /// [partitionValues] The values that define the partition.
+  /// [partitionValues] Values that define the partition.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [storageDescriptor] A storage descriptor object containing information about the physical storage of this table. You can refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor) for a full explanation of this object.
-  /// [tableName] Required.
+  /// [storageDescriptor] Storage descriptor object containing information about the physical storage of this table. You can refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor) for a full explanation of this object.
+  /// [tableName] Name of the table. For Hive compatibility, this must be entirely lowercase.
   const PartitionArgs({
     this.catalogId,
     required this.databaseName,

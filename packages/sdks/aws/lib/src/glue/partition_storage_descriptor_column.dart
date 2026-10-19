@@ -5,14 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PartitionStorageDescriptorColumn {
   /// Free-form text comment.
   final pulumi.Input<String?>? comment;
+  /// Name of the Column.
   final pulumi.Input<String> name;
-  /// The datatype of data in the Column.
+  /// Datatype of data in the Column.
   final pulumi.Input<String?>? type;
 
   /// Creates a new [PartitionStorageDescriptorColumn].
   /// [comment] Free-form text comment.
-  /// [name] Required.
-  /// [type] The datatype of data in the Column.
+  /// [name] Name of the Column.
+  /// [type] Datatype of data in the Column.
   const PartitionStorageDescriptorColumn({
     this.comment,
     required this.name,

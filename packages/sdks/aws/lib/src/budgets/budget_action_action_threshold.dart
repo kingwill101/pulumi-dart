@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BudgetActionActionThreshold {
-  /// The type of threshold for a notification. Valid values are `PERCENTAGE` or `ABSOLUTE_VALUE`.
+  /// Type of threshold for a notification. Valid values are `PERCENTAGE` or `ABSOLUTE_VALUE`.
   final pulumi.Input<String> actionThresholdType;
-  /// The threshold of a notification.
+  /// Threshold of a notification.
   final pulumi.Input<double> actionThresholdValue;
 
   /// Creates a new [BudgetActionActionThreshold].
-  /// [actionThresholdType] The type of threshold for a notification. Valid values are `PERCENTAGE` or `ABSOLUTE_VALUE`.
-  /// [actionThresholdValue] The threshold of a notification.
+  /// [actionThresholdType] Type of threshold for a notification. Valid values are `PERCENTAGE` or `ABSOLUTE_VALUE`.
+  /// [actionThresholdValue] Threshold of a notification.
   const BudgetActionActionThreshold({
     required this.actionThresholdType,
     required this.actionThresholdValue,

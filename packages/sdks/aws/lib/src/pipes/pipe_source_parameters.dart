@@ -11,32 +11,32 @@ import 'pipe_source_parameters_self_managed_kafka_parameters.dart';
 import 'pipe_source_parameters_sqs_queue_parameters.dart';
 
 class PipeSourceParameters {
-  /// The parameters for using an Active MQ broker as a source. Detailed below.
+  /// Parameters for using an Active MQ broker as a source. See `activemqBrokerParameters` Block for details.
   final pulumi.Input<PipeSourceParametersActivemqBrokerParameters?>? activemqBrokerParameters;
-  /// The parameters for using a DynamoDB stream as a source.  Detailed below.
+  /// Parameters for using a DynamoDB stream as a source. See `dynamodbStreamParameters` Block for details.
   final pulumi.Input<PipeSourceParametersDynamodbStreamParameters?>? dynamodbStreamParameters;
-  /// The collection of event patterns used to [filter events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes-event-filtering.html). Detailed below.
+  /// Collection of event patterns used to [filter events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes-event-filtering.html). See `filterCriteria` Block for details.
   final pulumi.Input<PipeSourceParametersFilterCriteria?>? filterCriteria;
-  /// The parameters for using a Kinesis stream as a source. Detailed below.
+  /// Parameters for using a Kinesis stream as a source. See `source_parameters.kinesis_stream_parameters` Block for details.
   final pulumi.Input<PipeSourceParametersKinesisStreamParameters?>? kinesisStreamParameters;
-  /// The parameters for using an MSK stream as a source. Detailed below.
+  /// Parameters for using an MSK stream as a source. See `managedStreamingKafkaParameters` Block for details.
   final pulumi.Input<PipeSourceParametersManagedStreamingKafkaParameters?>? managedStreamingKafkaParameters;
-  /// The parameters for using a Rabbit MQ broker as a source. Detailed below.
+  /// Parameters for using a Rabbit MQ broker as a source. See `rabbitmqBrokerParameters` Block for details.
   final pulumi.Input<PipeSourceParametersRabbitmqBrokerParameters?>? rabbitmqBrokerParameters;
-  /// The parameters for using a self-managed Apache Kafka stream as a source. Detailed below.
+  /// Parameters for using a self-managed Apache Kafka stream as a source. See `selfManagedKafkaParameters` Block for details.
   final pulumi.Input<PipeSourceParametersSelfManagedKafkaParameters?>? selfManagedKafkaParameters;
-  /// The parameters for using a Amazon SQS stream as a source. Detailed below.
+  /// Parameters for using an Amazon SQS stream as a source. See `source_parameters.sqs_queue_parameters` Block for details.
   final pulumi.Input<PipeSourceParametersSqsQueueParameters?>? sqsQueueParameters;
 
   /// Creates a new [PipeSourceParameters].
-  /// [activemqBrokerParameters] The parameters for using an Active MQ broker as a source. Detailed below.
-  /// [dynamodbStreamParameters] The parameters for using a DynamoDB stream as a source.  Detailed below.
-  /// [filterCriteria] The collection of event patterns used to [filter events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes-event-filtering.html). Detailed below.
-  /// [kinesisStreamParameters] The parameters for using a Kinesis stream as a source. Detailed below.
-  /// [managedStreamingKafkaParameters] The parameters for using an MSK stream as a source. Detailed below.
-  /// [rabbitmqBrokerParameters] The parameters for using a Rabbit MQ broker as a source. Detailed below.
-  /// [selfManagedKafkaParameters] The parameters for using a self-managed Apache Kafka stream as a source. Detailed below.
-  /// [sqsQueueParameters] The parameters for using a Amazon SQS stream as a source. Detailed below.
+  /// [activemqBrokerParameters] Parameters for using an Active MQ broker as a source. See `activemqBrokerParameters` Block for details.
+  /// [dynamodbStreamParameters] Parameters for using a DynamoDB stream as a source. See `dynamodbStreamParameters` Block for details.
+  /// [filterCriteria] Collection of event patterns used to [filter events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes-event-filtering.html). See `filterCriteria` Block for details.
+  /// [kinesisStreamParameters] Parameters for using a Kinesis stream as a source. See `source_parameters.kinesis_stream_parameters` Block for details.
+  /// [managedStreamingKafkaParameters] Parameters for using an MSK stream as a source. See `managedStreamingKafkaParameters` Block for details.
+  /// [rabbitmqBrokerParameters] Parameters for using a Rabbit MQ broker as a source. See `rabbitmqBrokerParameters` Block for details.
+  /// [selfManagedKafkaParameters] Parameters for using a self-managed Apache Kafka stream as a source. See `selfManagedKafkaParameters` Block for details.
+  /// [sqsQueueParameters] Parameters for using an Amazon SQS stream as a source. See `source_parameters.sqs_queue_parameters` Block for details.
   const PipeSourceParameters({
     this.activemqBrokerParameters,
     this.dynamodbStreamParameters,

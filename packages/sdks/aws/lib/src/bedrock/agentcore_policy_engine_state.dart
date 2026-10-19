@@ -7,7 +7,7 @@ import 'agentcore_policy_engine_timeouts.dart';
 class AgentcorePolicyEngineState {
   /// Description of the policy engine.
   final pulumi.Input<String?>? description;
-  /// ARN of the KMS key used to encrypt the policy engine. If not set, AWS uses an AWS managed key.
+  /// ARN of the KMS key used to encrypt the policy engine. If not set, the policy engine is encrypted with an AWS owned key.
   final pulumi.Input<String?>? encryptionKeyArn;
   /// Name of the policy engine. Must start with a letter and contain only letters, numbers, and underscores. Maximum length of 48 characters.
   ///
@@ -27,7 +27,7 @@ class AgentcorePolicyEngineState {
 
   /// Creates a new [AgentcorePolicyEngineState].
   /// [description] Description of the policy engine.
-  /// [encryptionKeyArn] ARN of the KMS key used to encrypt the policy engine. If not set, AWS uses an AWS managed key.
+  /// [encryptionKeyArn] ARN of the KMS key used to encrypt the policy engine. If not set, the policy engine is encrypted with an AWS owned key.
   /// [name] Name of the policy engine. Must start with a letter and contain only letters, numbers, and underscores. Maximum length of 48 characters.
   /// [policyEngineArn] ARN of the Policy Engine.
   /// [policyEngineId] Unique identifier of the Policy Engine.

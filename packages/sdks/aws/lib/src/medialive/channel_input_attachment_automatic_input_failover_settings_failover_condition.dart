@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_input_attachment_automatic_input_failover_settings_failover_condition_failover_condition_settings.dart';
 
 class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition {
-  /// Failover condition type-specific settings. See Failover Condition Settings for more details.
+  /// Failover condition type-specific settings. See `failoverConditionSettings` Block for details.
   final pulumi.Input<ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettings?>? failoverConditionSettings;
 
   /// Creates a new [ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition].
-  /// [failoverConditionSettings] Failover condition type-specific settings. See Failover Condition Settings for more details.
+  /// [failoverConditionSettings] Failover condition type-specific settings. See `failoverConditionSettings` Block for details.
   const ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition({
     this.failoverConditionSettings,
   });

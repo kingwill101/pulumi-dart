@@ -5,14 +5,14 @@ import 'classification_job_s3_job_definition_bucket_criteria_excludes.dart';
 import 'classification_job_s3_job_definition_bucket_criteria_includes.dart';
 
 class ClassificationJobS3JobDefinitionBucketCriteria {
-  /// The property- or tag-based conditions that determine which S3 buckets to exclude from the analysis. (documented below)
+  /// Property- or tag-based conditions that determine which S3 buckets to exclude from the analysis. See `bucket_criteria.excludes` Block for details.
   final pulumi.Input<ClassificationJobS3JobDefinitionBucketCriteriaExcludes?>? excludes;
-  /// The property- or tag-based conditions that determine which S3 buckets to include in the analysis. (documented below)
+  /// Property- or tag-based conditions that determine which S3 buckets to include in the analysis. See `bucket_criteria.includes` Block for details.
   final pulumi.Input<ClassificationJobS3JobDefinitionBucketCriteriaIncludes?>? includes;
 
   /// Creates a new [ClassificationJobS3JobDefinitionBucketCriteria].
-  /// [excludes] The property- or tag-based conditions that determine which S3 buckets to exclude from the analysis. (documented below)
-  /// [includes] The property- or tag-based conditions that determine which S3 buckets to include in the analysis. (documented below)
+  /// [excludes] Property- or tag-based conditions that determine which S3 buckets to exclude from the analysis. See `bucket_criteria.excludes` Block for details.
+  /// [includes] Property- or tag-based conditions that determine which S3 buckets to include in the analysis. See `bucket_criteria.includes` Block for details.
   const ClassificationJobS3JobDefinitionBucketCriteria({
     this.excludes,
     this.includes,

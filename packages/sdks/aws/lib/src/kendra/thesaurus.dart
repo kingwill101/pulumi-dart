@@ -180,22 +180,27 @@ import 'thesaurus_state.dart';
 class Thesaurus extends pulumi.CustomResource {
   /// ARN of the thesaurus.
   late final pulumi.Output<String> arn;
+  /// Description for a thesaurus.
   late final pulumi.Output<String?> description;
-  /// The identifier of the index for a thesaurus.
+  /// Identifier of the index for a thesaurus.
   late final pulumi.Output<String> indexId;
-  /// The name for the thesaurus.
+  /// Name for the thesaurus.
   late final pulumi.Output<String> name;
-  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The IAM (Identity and Access Management) role used to access the thesaurus file in S3.
+  /// IAM (Identity and Access Management) role used to access the thesaurus file in S3.
   late final pulumi.Output<String> roleArn;
-  /// The S3 path where your thesaurus file sits in S3. Detailed below.
+  /// S3 path where your thesaurus file sits in S3. Detailed below.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<ThesaurusSourceS3Path> sourceS3Path;
-  /// The current status of the thesaurus.
+  /// Current status of the thesaurus.
   late final pulumi.Output<String> status;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+  /// Unique identifier of the thesaurus.
   late final pulumi.Output<String> thesaurusId;
 
   /// Creates a new [Thesaurus].
@@ -210,7 +215,7 @@ class Thesaurus extends pulumi.CustomResource {
           'aws:kendra/thesaurus:Thesaurus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

@@ -583,24 +583,25 @@ import 'vpc_ipam_pool_cidr_allocation_state.dart';
 /// $ pulumi import aws:ec2/vpcIpamPoolCidrAllocation:VpcIpamPoolCidrAllocation example ipam-pool-alloc-0dc6d196509c049ba8b549ff99f639736_ipam-pool-07cfb559e0921fcbe
 /// ```
 class VpcIpamPoolCidrAllocation extends pulumi.CustomResource {
-  /// The CIDR you want to assign to the pool.
+  /// CIDR you want to assign to the pool.
   late final pulumi.Output<String> cidr;
-  /// The description for the allocation.
+  /// Description for the allocation.
   late final pulumi.Output<String?> description;
   /// Exclude a particular CIDR range from being returned by the pool.
   late final pulumi.Output<List<String>?> disallowedCidrs;
+  /// ID of the allocation.
   late final pulumi.Output<String> ipamPoolAllocationId;
-  /// The ID of the pool to which you want to assign a CIDR.
+  /// ID of the pool to which you want to assign a CIDR.
   late final pulumi.Output<String> ipamPoolId;
-  /// The netmask length of the CIDR you would like to allocate to the IPAM pool. Valid Values: `0-128`.
+  /// Netmask length of the CIDR you would like to allocate to the IPAM pool. Valid Values: `0-128`.
   late final pulumi.Output<int> netmaskLength;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The ID of the resource.
+  /// ID of the resource.
   late final pulumi.Output<String> resourceId;
-  /// The owner of the resource.
+  /// Owner of the resource.
   late final pulumi.Output<String> resourceOwner;
-  /// The type of the resource.
+  /// Type of the resource.
   late final pulumi.Output<String> resourceType;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -619,7 +620,7 @@ class VpcIpamPoolCidrAllocation extends pulumi.CustomResource {
           'aws:ec2/vpcIpamPoolCidrAllocation:VpcIpamPoolCidrAllocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     cidr = registerOutput<String>('cidr');
     description = registerOutput<String?>('description');

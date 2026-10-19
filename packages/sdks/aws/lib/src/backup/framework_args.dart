@@ -10,9 +10,9 @@ import 'framework_control.dart';
 class FrameworkArgs {
   /// One or more control blocks that make up the framework. Each control in the list has a name, input parameters, and scope. Detailed below.
   final pulumi.Input<List<FrameworkControl>> controls;
-  /// The description of the framework with a maximum of 1,024 characters
+  /// Description of the framework with a maximum of 1,024 characters
   final pulumi.Input<String?>? description;
-  /// The unique name of the framework. The name must be between 1 and 256 characters, starting with a letter, and consisting of letters, numbers, and underscores.
+  /// Unique name of the framework. The name must be between 1 and 256 characters, starting with a letter, and consisting of letters, numbers, and underscores.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -21,8 +21,8 @@ class FrameworkArgs {
 
   /// Creates a new [FrameworkArgs].
   /// [controls] One or more control blocks that make up the framework. Each control in the list has a name, input parameters, and scope. Detailed below.
-  /// [description] The description of the framework with a maximum of 1,024 characters
-  /// [name] The unique name of the framework. The name must be between 1 and 256 characters, starting with a letter, and consisting of letters, numbers, and underscores.
+  /// [description] Description of the framework with a maximum of 1,024 characters
+  /// [name] Unique name of the framework. The name must be between 1 and 256 characters, starting with a letter, and consisting of letters, numbers, and underscores.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Metadata that you can assign to help organize the frameworks you create. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const FrameworkArgs({

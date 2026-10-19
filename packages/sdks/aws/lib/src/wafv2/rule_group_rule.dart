@@ -8,29 +8,29 @@ import 'rule_group_rule_statement.dart';
 import 'rule_group_rule_visibility_config.dart';
 
 class RuleGroupRule {
-  /// The action that AWS WAF should take on a web request when it matches the rule's statement. Settings at the `aws.wafv2.WebAcl` level can override the rule action setting. See Action below for details.
+  /// Action that AWS WAF should take on a web request when it matches the rule's statement. Settings at the `aws.wafv2.WebAcl` level can override the rule action setting. See Action below for details.
   final pulumi.Input<RuleGroupRuleAction> action;
-  /// Specifies how AWS WAF should handle CAPTCHA evaluations. See Captcha Configuration below for details.
+  /// Configuration for how AWS WAF handles CAPTCHA evaluations. See Captcha Configuration below for details.
   final pulumi.Input<RuleGroupRuleCaptchaConfig?>? captchaConfig;
-  /// A friendly name of the rule.
+  /// Friendly name of the rule.
   final pulumi.Input<String> name;
   /// If you define more than one Rule in a WebACL, AWS WAF evaluates each request against the `rules` in order based on the value of `priority`. AWS WAF processes rules with lower priority first.
   final pulumi.Input<int> priority;
   /// Labels to apply to web requests that match the rule match statement. See Rule Label below for details.
   final pulumi.Input<List<RuleGroupRuleRuleLabel>?>? ruleLabels;
-  /// The AWS WAF processing statement for the rule, for example `byteMatchStatement` or `geoMatchStatement`. See Statement below for details.
+  /// AWS WAF processing statement for the rule, for example `byteMatchStatement` or `geoMatchStatement`. See Statement below for details.
   final pulumi.Input<RuleGroupRuleStatement> statement;
-  /// Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
+  /// Amazon CloudWatch metrics and web request sample collection configuration. See Visibility Configuration below for details.
   final pulumi.Input<RuleGroupRuleVisibilityConfig> visibilityConfig;
 
   /// Creates a new [RuleGroupRule].
-  /// [action] The action that AWS WAF should take on a web request when it matches the rule's statement. Settings at the `aws.wafv2.WebAcl` level can override the rule action setting. See Action below for details.
-  /// [captchaConfig] Specifies how AWS WAF should handle CAPTCHA evaluations. See Captcha Configuration below for details.
-  /// [name] A friendly name of the rule.
+  /// [action] Action that AWS WAF should take on a web request when it matches the rule's statement. Settings at the `aws.wafv2.WebAcl` level can override the rule action setting. See Action below for details.
+  /// [captchaConfig] Configuration for how AWS WAF handles CAPTCHA evaluations. See Captcha Configuration below for details.
+  /// [name] Friendly name of the rule.
   /// [priority] If you define more than one Rule in a WebACL, AWS WAF evaluates each request against the `rules` in order based on the value of `priority`. AWS WAF processes rules with lower priority first.
   /// [ruleLabels] Labels to apply to web requests that match the rule match statement. See Rule Label below for details.
-  /// [statement] The AWS WAF processing statement for the rule, for example `byteMatchStatement` or `geoMatchStatement`. See Statement below for details.
-  /// [visibilityConfig] Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
+  /// [statement] AWS WAF processing statement for the rule, for example `byteMatchStatement` or `geoMatchStatement`. See Statement below for details.
+  /// [visibilityConfig] Amazon CloudWatch metrics and web request sample collection configuration. See Visibility Configuration below for details.
   const RuleGroupRule({
     required this.action,
     this.captchaConfig,
@@ -58,7 +58,7 @@ class RuleGroupRule {
       action: pulumi.Input.fromValue(RuleGroupRuleAction.fromMap((map['action']! as Map).cast<String, dynamic>())),
       captchaConfig: (() { final guardedValue = map['captchaConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleGroupRuleCaptchaConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       ruleLabels: (() { final guardedValue = map['ruleLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RuleGroupRuleRuleLabel>(guardedValue, (value) => RuleGroupRuleRuleLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
       statement: pulumi.Input.fromValue(RuleGroupRuleStatement.fromMap((map['statement']! as Map).cast<String, dynamic>())),
       visibilityConfig: pulumi.Input.fromValue(RuleGroupRuleVisibilityConfig.fromMap((map['visibilityConfig']! as Map).cast<String, dynamic>())),

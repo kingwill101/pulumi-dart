@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentFlowDefinitionNodeConfigurationLex {
   /// ARN of the Amazon Lex bot alias to invoke.
   final pulumi.Input<String> botAliasArn;
-  /// The Region to invoke the Amazon Lex bot in
+  /// Locale to use when invoking the Amazon Lex bot, such as `en_US`.
   final pulumi.Input<String> localeId;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationLex].
   /// [botAliasArn] ARN of the Amazon Lex bot alias to invoke.
-  /// [localeId] The Region to invoke the Amazon Lex bot in
+  /// [localeId] Locale to use when invoking the Amazon Lex bot, such as `en_US`.
   const AgentFlowDefinitionNodeConfigurationLex({
     required this.botAliasArn,
     required this.localeId,

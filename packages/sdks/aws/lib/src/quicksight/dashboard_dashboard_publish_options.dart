@@ -13,38 +13,38 @@ import 'dashboard_dashboard_publish_options_visual_axis_sort_option.dart';
 import 'dashboard_dashboard_publish_options_visual_menu_option.dart';
 
 class DashboardDashboardPublishOptions {
-  /// Ad hoc (one-time) filtering option. See ad_hoc_filtering_option.
+  /// Ad hoc (one-time) filtering option. See `adHocFilteringOption`.
   final pulumi.Input<DashboardDashboardPublishOptionsAdHocFilteringOption?>? adHocFilteringOption;
-  /// The drill-down options of data points in a dashboard. See data_point_drill_up_down_option.
+  /// Drill-down options of data points in a dashboard. See `dataPointDrillUpDownOption`.
   final pulumi.Input<DashboardDashboardPublishOptionsDataPointDrillUpDownOption?>? dataPointDrillUpDownOption;
-  /// The data point menu label options of a dashboard. See data_point_menu_label_option.
+  /// Data point menu label options of a dashboard. See `dataPointMenuLabelOption`.
   final pulumi.Input<DashboardDashboardPublishOptionsDataPointMenuLabelOption?>? dataPointMenuLabelOption;
-  /// The data point tool tip options of a dashboard. See data_point_tooltip_option.
+  /// Data point tool tip options of a dashboard. See `dataPointTooltipOption`.
   final pulumi.Input<DashboardDashboardPublishOptionsDataPointTooltipOption?>? dataPointTooltipOption;
-  /// Export to .csv option. See export_to_csv_option.
+  /// Export to `.csv` option. See `exportToCsvOption`.
   final pulumi.Input<DashboardDashboardPublishOptionsExportToCsvOption?>? exportToCsvOption;
-  /// Determines if hidden fields are exported with a dashboard. See export_with_hidden_fields_option.
+  /// Whether hidden fields are exported with a dashboard. See `exportWithHiddenFieldsOption`.
   final pulumi.Input<DashboardDashboardPublishOptionsExportWithHiddenFieldsOption?>? exportWithHiddenFieldsOption;
-  /// Sheet controls option. See sheet_controls_option.
+  /// Sheet controls option. See `sheetControlsOption`.
   final pulumi.Input<DashboardDashboardPublishOptionsSheetControlsOption?>? sheetControlsOption;
-  /// The sheet layout maximization options of a dashboard. See sheet_layout_element_maximization_option.
+  /// Sheet layout maximization options of a dashboard. See `sheetLayoutElementMaximizationOption`.
   final pulumi.Input<DashboardDashboardPublishOptionsSheetLayoutElementMaximizationOption?>? sheetLayoutElementMaximizationOption;
-  /// The axis sort options of a dashboard. See visual_axis_sort_option.
+  /// Axis sort options of a dashboard. See `visualAxisSortOption`.
   final pulumi.Input<DashboardDashboardPublishOptionsVisualAxisSortOption?>? visualAxisSortOption;
-  /// The menu options of a visual in a dashboard. See visual_menu_option.
+  /// Menu options of a visual in a dashboard. See `visualMenuOption`.
   final pulumi.Input<DashboardDashboardPublishOptionsVisualMenuOption?>? visualMenuOption;
 
   /// Creates a new [DashboardDashboardPublishOptions].
-  /// [adHocFilteringOption] Ad hoc (one-time) filtering option. See ad_hoc_filtering_option.
-  /// [dataPointDrillUpDownOption] The drill-down options of data points in a dashboard. See data_point_drill_up_down_option.
-  /// [dataPointMenuLabelOption] The data point menu label options of a dashboard. See data_point_menu_label_option.
-  /// [dataPointTooltipOption] The data point tool tip options of a dashboard. See data_point_tooltip_option.
-  /// [exportToCsvOption] Export to .csv option. See export_to_csv_option.
-  /// [exportWithHiddenFieldsOption] Determines if hidden fields are exported with a dashboard. See export_with_hidden_fields_option.
-  /// [sheetControlsOption] Sheet controls option. See sheet_controls_option.
-  /// [sheetLayoutElementMaximizationOption] The sheet layout maximization options of a dashboard. See sheet_layout_element_maximization_option.
-  /// [visualAxisSortOption] The axis sort options of a dashboard. See visual_axis_sort_option.
-  /// [visualMenuOption] The menu options of a visual in a dashboard. See visual_menu_option.
+  /// [adHocFilteringOption] Ad hoc (one-time) filtering option. See `adHocFilteringOption`.
+  /// [dataPointDrillUpDownOption] Drill-down options of data points in a dashboard. See `dataPointDrillUpDownOption`.
+  /// [dataPointMenuLabelOption] Data point menu label options of a dashboard. See `dataPointMenuLabelOption`.
+  /// [dataPointTooltipOption] Data point tool tip options of a dashboard. See `dataPointTooltipOption`.
+  /// [exportToCsvOption] Export to `.csv` option. See `exportToCsvOption`.
+  /// [exportWithHiddenFieldsOption] Whether hidden fields are exported with a dashboard. See `exportWithHiddenFieldsOption`.
+  /// [sheetControlsOption] Sheet controls option. See `sheetControlsOption`.
+  /// [sheetLayoutElementMaximizationOption] Sheet layout maximization options of a dashboard. See `sheetLayoutElementMaximizationOption`.
+  /// [visualAxisSortOption] Axis sort options of a dashboard. See `visualAxisSortOption`.
+  /// [visualMenuOption] Menu options of a visual in a dashboard. See `visualMenuOption`.
   const DashboardDashboardPublishOptions({
     this.adHocFilteringOption,
     this.dataPointDrillUpDownOption,

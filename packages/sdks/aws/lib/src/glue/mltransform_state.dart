@@ -11,55 +11,55 @@ class MLTransformState {
   final pulumi.Input<String?>? arn;
   /// Description of the ML Transform.
   final pulumi.Input<String?>? description;
-  /// The version of glue to use, for example "1.0". For information about available versions, see the [AWS Glue Release Notes](https://docs.aws.amazon.com/glue/latest/dg/release-notes.html).
+  /// Version of glue to use, for example "1.0". For information about available versions, see the [AWS Glue Release Notes](https://docs.aws.amazon.com/glue/latest/dg/release-notes.html).
   final pulumi.Input<String?>? glueVersion;
-  /// A list of AWS Glue table definitions used by the transform. see Input Record Tables.
+  /// List of AWS Glue table definitions used by the transform. See `inputRecordTables`.
   final pulumi.Input<List<MLTransformInputRecordTable>?>? inputRecordTables;
-  /// The number of labels available for this transform.
+  /// Number of labels available for this transform.
   final pulumi.Input<int?>? labelCount;
-  /// The number of AWS Glue data processing units (DPUs) that are allocated to task runs for this transform. You can allocate from `2` to `100` DPUs; the default is `10`. `maxCapacity` is a mutually exclusive option with `numberOfWorkers` and `workerType`.
+  /// Number of AWS Glue data processing units (DPUs) that are allocated to task runs for this transform. You can allocate from `2` to `100` DPUs; the default is `10`. `maxCapacity` is a mutually exclusive option with `numberOfWorkers` and `workerType`.
   final pulumi.Input<double?>? maxCapacity;
-  /// The maximum number of times to retry this ML Transform if it fails.
+  /// Maximum number of times to retry this ML Transform if it fails.
   final pulumi.Input<int?>? maxRetries;
-  /// The name you assign to this ML Transform. It must be unique in your account.
+  /// Name you assign to this ML Transform. It must be unique in your account.
   final pulumi.Input<String?>? name;
-  /// The number of workers of a defined `workerType` that are allocated when an ML Transform runs. Required with `workerType`.
+  /// Number of workers of a defined `workerType` that are allocated when an ML Transform runs. Required with `workerType`.
   final pulumi.Input<int?>? numberOfWorkers;
-  /// The algorithmic parameters that are specific to the transform type used. Conditionally dependent on the transform type. see Parameters.
+  /// Algorithmic parameters that are specific to the transform type used. Conditionally dependent on the transform type. See `parameters`.
   final pulumi.Input<MLTransformParameters?>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The ARN of the IAM role associated with this ML Transform.
+  /// ARN of the IAM role associated with this ML Transform.
   final pulumi.Input<String?>? roleArn;
-  /// The object that represents the schema that this transform accepts. see Schema.
+  /// Object that represents the schema that this transform accepts. See `schema`.
   final pulumi.Input<List<MLTransformSchema>?>? schemas;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
-  /// The ML Transform timeout in minutes. The default is 2880 minutes (48 hours).
+  /// ML Transform timeout in minutes. The default is 2880 minutes (48 hours).
   final pulumi.Input<int?>? timeout;
-  /// The type of predefined worker that is allocated when an ML Transform runs. Accepts a value of `Standard`, `G.1X`, or `G.2X`. Required with `numberOfWorkers`.
+  /// Type of predefined worker that is allocated when an ML Transform runs. Accepts a value of `Standard`, `G.1X`, or `G.2X`. Required with `numberOfWorkers`.
   final pulumi.Input<String?>? workerType;
 
   /// Creates a new [MLTransformState].
   /// [arn] ARN of Glue ML Transform.
   /// [description] Description of the ML Transform.
-  /// [glueVersion] The version of glue to use, for example "1.0". For information about available versions, see the [AWS Glue Release Notes](https://docs.aws.amazon.com/glue/latest/dg/release-notes.html).
-  /// [inputRecordTables] A list of AWS Glue table definitions used by the transform. see Input Record Tables.
-  /// [labelCount] The number of labels available for this transform.
-  /// [maxCapacity] The number of AWS Glue data processing units (DPUs) that are allocated to task runs for this transform. You can allocate from `2` to `100` DPUs; the default is `10`. `maxCapacity` is a mutually exclusive option with `numberOfWorkers` and `workerType`.
-  /// [maxRetries] The maximum number of times to retry this ML Transform if it fails.
-  /// [name] The name you assign to this ML Transform. It must be unique in your account.
-  /// [numberOfWorkers] The number of workers of a defined `workerType` that are allocated when an ML Transform runs. Required with `workerType`.
-  /// [parameters] The algorithmic parameters that are specific to the transform type used. Conditionally dependent on the transform type. see Parameters.
+  /// [glueVersion] Version of glue to use, for example "1.0". For information about available versions, see the [AWS Glue Release Notes](https://docs.aws.amazon.com/glue/latest/dg/release-notes.html).
+  /// [inputRecordTables] List of AWS Glue table definitions used by the transform. See `inputRecordTables`.
+  /// [labelCount] Number of labels available for this transform.
+  /// [maxCapacity] Number of AWS Glue data processing units (DPUs) that are allocated to task runs for this transform. You can allocate from `2` to `100` DPUs; the default is `10`. `maxCapacity` is a mutually exclusive option with `numberOfWorkers` and `workerType`.
+  /// [maxRetries] Maximum number of times to retry this ML Transform if it fails.
+  /// [name] Name you assign to this ML Transform. It must be unique in your account.
+  /// [numberOfWorkers] Number of workers of a defined `workerType` that are allocated when an ML Transform runs. Required with `workerType`.
+  /// [parameters] Algorithmic parameters that are specific to the transform type used. Conditionally dependent on the transform type. See `parameters`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [roleArn] The ARN of the IAM role associated with this ML Transform.
-  /// [schemas] The object that represents the schema that this transform accepts. see Schema.
+  /// [roleArn] ARN of the IAM role associated with this ML Transform.
+  /// [schemas] Object that represents the schema that this transform accepts. See `schema`.
   /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [timeout] The ML Transform timeout in minutes. The default is 2880 minutes (48 hours).
-  /// [workerType] The type of predefined worker that is allocated when an ML Transform runs. Accepts a value of `Standard`, `G.1X`, or `G.2X`. Required with `numberOfWorkers`.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [timeout] ML Transform timeout in minutes. The default is 2880 minutes (48 hours).
+  /// [workerType] Type of predefined worker that is allocated when an ML Transform runs. Accepts a value of `Standard`, `G.1X`, or `G.2X`. Required with `numberOfWorkers`.
   const MLTransformState({
     this.arn,
     this.description,
@@ -108,18 +108,18 @@ class MLTransformState {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       glueVersion: (() { final guardedValue = map['glueVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       inputRecordTables: (() { final guardedValue = map['inputRecordTables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MLTransformInputRecordTable>(guardedValue, (value) => MLTransformInputRecordTable.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      labelCount: (() { final guardedValue = map['labelCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      labelCount: (() { final guardedValue = map['labelCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       maxCapacity: (() { final guardedValue = map['maxCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
-      maxRetries: (() { final guardedValue = map['maxRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxRetries: (() { final guardedValue = map['maxRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numberOfWorkers: (() { final guardedValue = map['numberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numberOfWorkers: (() { final guardedValue = map['numberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MLTransformParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       roleArn: (() { final guardedValue = map['roleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schemas: (() { final guardedValue = map['schemas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MLTransformSchema>(guardedValue, (value) => MLTransformSchema.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       workerType: (() { final guardedValue = map['workerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -140,7 +140,7 @@ import 'conditional_forwarder_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import conditional forwarders using the directory id and remote_domain_name. For example:
+/// Using `pulumi import`, import conditional forwarders using the directory ID and remote_domain_name. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:directoryservice/conditionalForwarder:ConditionalForwarder example d-1234567890:example.com
@@ -167,7 +167,7 @@ class ConditionalForwarder extends pulumi.CustomResource {
           'aws:directoryservice/conditionalForwarder:ConditionalForwarder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     directoryId = registerOutput<String>('directoryId');
     dnsIps = registerOutput<List<String>>('dnsIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

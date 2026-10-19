@@ -4,14 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_audio_description_remix_settings_channel_mapping.dart';
 
 class ChannelEncoderSettingsAudioDescriptionRemixSettings {
+  /// Mapping of input channels to output channels. See `channelMappings` Block for details.
   final pulumi.Input<List<ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping>> channelMappings;
+  /// Number of input channels to be used.
   final pulumi.Input<int?>? channelsIn;
+  /// Number of output channels to be produced.
   final pulumi.Input<int?>? channelsOut;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionRemixSettings].
-  /// [channelMappings] Required.
-  /// [channelsIn] Optional.
-  /// [channelsOut] Optional.
+  /// [channelMappings] Mapping of input channels to output channels. See `channelMappings` Block for details.
+  /// [channelsIn] Number of input channels to be used.
+  /// [channelsOut] Number of output channels to be produced.
   const ChannelEncoderSettingsAudioDescriptionRemixSettings({
     required this.channelMappings,
     this.channelsIn,
@@ -29,8 +32,8 @@ class ChannelEncoderSettingsAudioDescriptionRemixSettings {
   factory ChannelEncoderSettingsAudioDescriptionRemixSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionRemixSettings(
       channelMappings: pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping>(map['channelMappings']!, (value) => ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      channelsIn: (() { final guardedValue = map['channelsIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      channelsOut: (() { final guardedValue = map['channelsOut']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      channelsIn: (() { final guardedValue = map['channelsIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      channelsOut: (() { final guardedValue = map['channelsOut']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

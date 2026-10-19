@@ -158,7 +158,7 @@ class GetDedicatedHostResult {
       availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
       availabilityZoneId: (() { final guardedValue = map['availabilityZoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       availableCapacities: (() { final guardedValue = map['availableCapacities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDedicatedHostAvailableCapacity>(guardedValue, (value) => GetDedicatedHostAvailableCapacity.fromMap((value as Map).cast<String, dynamic>())); })(),
-      cores: (() { final guardedValue = map['cores']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      cores: (() { final guardedValue = map['cores']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDedicatedHostFilter>(guardedValue, (value) => GetDedicatedHostFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       hostId: (() { final guardedValue = map['hostId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hostMaintenance: (() { final guardedValue = map['hostMaintenance']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -173,10 +173,10 @@ class GetDedicatedHostResult {
       ownerId: (() { final guardedValue = map['ownerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       releaseTime: (() { final guardedValue = map['releaseTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      sockets: (() { final guardedValue = map['sockets']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      sockets: (() { final guardedValue = map['sockets']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      totalVcpus: (() { final guardedValue = map['totalVcpus']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      totalVcpus: (() { final guardedValue = map['totalVcpus']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

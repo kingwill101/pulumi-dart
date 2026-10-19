@@ -5,14 +5,14 @@
 class GetRegistryResult {
   /// ARN of Glue Registry.
   final String? arn;
-  /// A description of the registry.
+  /// Description of the registry.
   final String? description;
   final String? name;
   final String? region;
 
   /// Creates a new [GetRegistryResult].
   /// [arn] ARN of Glue Registry.
-  /// [description] A description of the registry.
+  /// [description] Description of the registry.
   /// [name] Optional.
   /// [region] Optional.
   const GetRegistryResult({

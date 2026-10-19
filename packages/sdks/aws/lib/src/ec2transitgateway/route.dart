@@ -242,6 +242,19 @@ import 'route_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `destinationCidrBlock` (String) IPv4 or IPv6 CIDR block used for destination matches.
+/// * `transitGatewayRouteTableId` (String) Identifier of EC2 Transit Gateway Route Table.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import `aws.ec2transitgateway.Route` using the EC2 Transit Gateway Route Table, an underscore, and the destination. For example:
 ///
 /// ```sh
@@ -271,7 +284,7 @@ class Route extends pulumi.CustomResource {
           'aws:ec2transitgateway/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     blackhole = registerOutput<bool?>('blackhole');
     destinationCidrBlock = registerOutput<String>('destinationCidrBlock');

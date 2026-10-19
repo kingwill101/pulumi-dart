@@ -8,7 +8,7 @@ import 'lifecycle_hook_state.dart';
 /// the `initialLifecycleHook` attribute from the
 /// `aws.autoscaling.Group`
 /// resource, or via this one. Hooks added via this resource will not be added
-/// until the autoscaling group has been created, and depending on your
+/// until the Auto Scaling group has been created, and depending on your
 /// capacity
 /// settings, after the initial instances have been launched, creating unintended
 /// behavior. If you need hooks to run on all instances, add them with
@@ -350,7 +350,7 @@ class LifecycleHook extends pulumi.CustomResource {
           'aws:autoscaling/lifecycleHook:LifecycleHook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     defaultResult = registerOutput<String>('defaultResult');

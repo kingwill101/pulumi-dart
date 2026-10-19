@@ -3,6 +3,7 @@ import 'agentcore_oauth2_credential_provider_args.dart';
 import 'agentcore_oauth2_credential_provider_client_secret_arn.dart';
 import 'agentcore_oauth2_credential_provider_oauth2_provider_config.dart';
 import 'agentcore_oauth2_credential_provider_state.dart';
+import 'agentcore_oauth2_credential_provider_timeouts.dart';
 
 /// Manages an AWS Bedrock AgentCore OAuth2 Credential Provider. OAuth2 credential providers enable secure authentication with external OAuth2/OpenID Connect identity providers for agent runtimes.
 ///
@@ -172,16 +173,16 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const auth0 = new aws.bedrock.AgentcoreOauth2CredentialProvider("auth0", {
-///     customOauth2ProviderConfig: [{
-///         custom: [{
-///             oauthDiscovery: [{
+///     oauth2ProviderConfig: {
+///         customOauth2ProviderConfig: {
+///             oauthDiscovery: {
 ///                 discoveryUrl: "https://dev-company.auth0.com/.well-known/openid-configuration",
-///             }],
+///             },
 ///             clientIdWo: "auth0-client-id",
 ///             clientSecretWo: "auth0-client-secret",
 ///             clientCredentialsWoVersion: 1,
-///         }],
-///     }],
+///         },
+///     },
 ///     name: "auth0-oauth-provider",
 ///     credentialProviderVendor: "CustomOauth2",
 /// });
@@ -191,16 +192,16 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 /// import pulumi_aws as aws
 ///
 /// auth0 = aws.bedrock.AgentcoreOauth2CredentialProvider("auth0",
-///     custom_oauth2_provider_config=[{
-///         "custom": [{
-///             "oauthDiscovery": [{
-///                 "discoveryUrl": "https://dev-company.auth0.com/.well-known/openid-configuration",
-///             }],
-///             "clientIdWo": "auth0-client-id",
-///             "clientSecretWo": "auth0-client-secret",
-///             "clientCredentialsWoVersion": 1,
-///         }],
-///     }],
+///     oauth2_provider_config={
+///         "custom_oauth2_provider_config": {
+///             "oauth_discovery": {
+///                 "discovery_url": "https://dev-company.auth0.com/.well-known/openid-configuration",
+///             },
+///             "client_id_wo": "auth0-client-id",
+///             "client_secret_wo": "auth0-client-secret",
+///             "client_credentials_wo_version": 1,
+///         },
+///     },
 ///     name="auth0-oauth-provider",
 ///     credential_provider_vendor="CustomOauth2")
 /// ```
@@ -214,26 +215,17 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 /// {
 ///     var auth0 = new Aws.Bedrock.AgentcoreOauth2CredentialProvider("auth0", new()
 ///     {
-///         CustomOauth2ProviderConfig = new[]
+///         Oauth2ProviderConfig = new Aws.Bedrock.Inputs.AgentcoreOauth2CredentialProviderOauth2ProviderConfigArgs
 ///         {
-///
+///             CustomOauth2ProviderConfig = new Aws.Bedrock.Inputs.AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigArgs
 ///             {
-///                 { "custom", new[]
+///                 OauthDiscovery = new Aws.Bedrock.Inputs.AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscoveryArgs
 ///                 {
-///
-///                     {
-///                         { "oauthDiscovery", new[]
-///                         {
-///
-///                             {
-///                                 { "discoveryUrl", "https://dev-company.auth0.com/.well-known/openid-configuration" },
-///                             },
-///                         } },
-///                         { "clientIdWo", "auth0-client-id" },
-///                         { "clientSecretWo", "auth0-client-secret" },
-///                         { "clientCredentialsWoVersion", 1 },
-///                     },
-///                 } },
+///                     DiscoveryUrl = "https://dev-company.auth0.com/.well-known/openid-configuration",
+///                 },
+///                 ClientIdWo = "auth0-client-id",
+///                 ClientSecretWo = "auth0-client-secret",
+///                 ClientCredentialsWoVersion = 1,
 ///             },
 ///         },
 ///         Name = "auth0-oauth-provider",
@@ -253,20 +245,14 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreOauth2CredentialProvider(ctx, "auth0", &bedrock.AgentcoreOauth2CredentialProviderArgs{
-/// 			CustomOauth2ProviderConfig: []map[string][]map[string]interface{}{
-/// 				map[string][]map[string]interface{}{
-/// 					"custom": []map[string]interface{}{
-/// 						map[string]interface{}{
-/// 							"oauthDiscovery": []map[string]string{
-/// 								{
-/// 									"discoveryUrl": "https://dev-company.auth0.com/.well-known/openid-configuration",
-/// 								},
-/// 							},
-/// 							"clientIdWo":                 "auth0-client-id",
-/// 							"clientSecretWo":             "auth0-client-secret",
-/// 							"clientCredentialsWoVersion": 1,
-/// 						},
+/// 			Oauth2ProviderConfig: &bedrock.AgentcoreOauth2CredentialProviderOauth2ProviderConfigArgs{
+/// 				CustomOauth2ProviderConfig: &bedrock.AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigArgs{
+/// 					OauthDiscovery: &bedrock.AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscoveryArgs{
+/// 						DiscoveryUrl: pulumi.String("https://dev-company.auth0.com/.well-known/openid-configuration"),
 /// 					},
+/// 					ClientIdWo:                 pulumi.String("auth0-client-id"),
+/// 					ClientSecretWo:             pulumi.String("auth0-client-secret"),
+/// 					ClientCredentialsWoVersion: pulumi.Int(1),
 /// 				},
 /// 			},
 /// 			Name:                     pulumi.String("auth0-oauth-provider"),
@@ -289,16 +275,16 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcoreoauth2credentialprovider" "auth0" {
-///   custom_oauth2_provider_config = [{
-///     "custom" = [{
-///       "oauthDiscovery" = [{
-///         "discoveryUrl" = "https://dev-company.auth0.com/.well-known/openid-configuration"
-///       }]
-///       "clientIdWo"                 = "auth0-client-id"
-///       "clientSecretWo"             = "auth0-client-secret"
-///       "clientCredentialsWoVersion" = 1
-///     }]
-///   }]
+///   oauth2_provider_config = {
+///     custom_oauth2_provider_config = {
+///       oauth_discovery = {
+///         discovery_url = "https://dev-company.auth0.com/.well-known/openid-configuration"
+///       }
+///       client_id_wo                  = "auth0-client-id"
+///       client_secret_wo              = "auth0-client-secret"
+///       client_credentials_wo_version = 1
+///     }
+///   }
 ///   name                       = "auth0-oauth-provider"
 ///   credential_provider_vendor = "CustomOauth2"
 /// }
@@ -311,6 +297,9 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrock.AgentcoreOauth2CredentialProvider;
 /// import com.pulumi.aws.bedrock.AgentcoreOauth2CredentialProviderArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreOauth2CredentialProviderOauth2ProviderConfigArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscoveryArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -325,12 +314,16 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var auth0 = new AgentcoreOauth2CredentialProvider("auth0", AgentcoreOauth2CredentialProviderArgs.builder()
-///             .customOauth2ProviderConfig(Arrays.asList(Map.of("custom", Arrays.asList(Map.ofEntries(
-///                 Map.entry("oauthDiscovery", Arrays.asList(Map.of("discoveryUrl", "https://dev-company.auth0.com/.well-known/openid-configuration"))),
-///                 Map.entry("clientIdWo", "auth0-client-id"),
-///                 Map.entry("clientSecretWo", "auth0-client-secret"),
-///                 Map.entry("clientCredentialsWoVersion", 1)
-///             )))))
+///             .oauth2ProviderConfig(AgentcoreOauth2CredentialProviderOauth2ProviderConfigArgs.builder()
+///                 .customOauth2ProviderConfig(AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigArgs.builder()
+///                     .oauthDiscovery(AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscoveryArgs.builder()
+///                         .discoveryUrl("https://dev-company.auth0.com/.well-known/openid-configuration")
+///                         .build())
+///                     .clientIdWo("auth0-client-id")
+///                     .clientSecretWo("auth0-client-secret")
+///                     .clientCredentialsWoVersion(1)
+///                     .build())
+///                 .build())
 ///             .name("auth0-oauth-provider")
 ///             .credentialProviderVendor("CustomOauth2")
 ///             .build());
@@ -343,13 +336,13 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 ///   auth0:
 ///     type: aws:bedrock:AgentcoreOauth2CredentialProvider
 ///     properties:
-///       customOauth2ProviderConfig:
-///         - custom:
-///             - oauthDiscovery:
-///                 - discoveryUrl: https://dev-company.auth0.com/.well-known/openid-configuration
-///               clientIdWo: auth0-client-id
-///               clientSecretWo: auth0-client-secret
-///               clientCredentialsWoVersion: 1
+///       oauth2ProviderConfig:
+///         customOauth2ProviderConfig:
+///           oauthDiscovery:
+///             discoveryUrl: https://dev-company.auth0.com/.well-known/openid-configuration
+///           clientIdWo: auth0-client-id
+///           clientSecretWo: auth0-client-secret
+///           clientCredentialsWoVersion: 1
 ///       name: auth0-oauth-provider
 ///       credentialProviderVendor: CustomOauth2
 /// ```
@@ -374,6 +367,7 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 ///                         "code",
 ///                         "id_token",
 ///                     ],
+///                     tokenEndpointAuthMethods: ["client_secret_basic"],
 ///                 },
 ///             },
 ///             clientIdWo: "keycloak-client-id",
@@ -401,6 +395,7 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 ///                         "code",
 ///                         "id_token",
 ///                     ],
+///                     "token_endpoint_auth_methods": ["client_secret_basic"],
 ///                 },
 ///             },
 ///             "client_id_wo": "keycloak-client-id",
@@ -437,6 +432,10 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 ///                             "code",
 ///                             "id_token",
 ///                         },
+///                         TokenEndpointAuthMethods = new[]
+///                         {
+///                             "client_secret_basic",
+///                         },
 ///                     },
 ///                 },
 ///                 ClientIdWo = "keycloak-client-id",
@@ -472,6 +471,9 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 /// 								pulumi.String("code"),
 /// 								pulumi.String("id_token"),
 /// 							},
+/// 							TokenEndpointAuthMethods: pulumi.StringArray{
+/// 								pulumi.String("client_secret_basic"),
+/// 							},
 /// 						},
 /// 					},
 /// 					ClientIdWo:                 pulumi.String("keycloak-client-id"),
@@ -503,10 +505,11 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 ///     custom_oauth2_provider_config = {
 ///       oauth_discovery = {
 ///         authorization_server_metadata = {
-///           issuer                 = "https://auth.company.com/realms/production"
-///           authorization_endpoint = "https://auth.company.com/realms/production/protocol/openid-connect/auth"
-///           token_endpoint         = "https://auth.company.com/realms/production/protocol/openid-connect/token"
-///           response_types         = ["code", "id_token"]
+///           issuer                      = "https://auth.company.com/realms/production"
+///           authorization_endpoint      = "https://auth.company.com/realms/production/protocol/openid-connect/auth"
+///           token_endpoint              = "https://auth.company.com/realms/production/protocol/openid-connect/token"
+///           response_types              = ["code", "id_token"]
+///           token_endpoint_auth_methods = ["client_secret_basic"]
 ///         }
 ///       }
 ///       client_id_wo                  = "keycloak-client-id"
@@ -554,6 +557,7 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 ///                             .responseTypes(
 ///                                 "code",
 ///                                 "id_token")
+///                             .tokenEndpointAuthMethods("client_secret_basic")
 ///                             .build())
 ///                         .build())
 ///                     .clientIdWo("keycloak-client-id")
@@ -583,6 +587,8 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 ///               responseTypes:
 ///                 - code
 ///                 - id_token
+///               tokenEndpointAuthMethods:
+///                 - client_secret_basic
 ///           clientIdWo: keycloak-client-id
 ///           clientSecretWo: keycloak-client-secret
 ///           clientCredentialsWoVersion: 1
@@ -593,30 +599,48 @@ import 'agentcore_oauth2_credential_provider_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Bedrock AgentCore OAuth2 Credential Provider using the provider name. For example:
+/// &gt; **Note:** This resource does not read OAuth2 client credentials back from the AgentCore API. On import, `clientId`, `clientSecret`, `clientSecretSource`, `clientSecretConfig`, `clientCredentialsWoVersion`, and the Microsoft `tenantId` and `tenantIdWoVersion` arguments are not populated, so the first `pulumi preview` after import shows them as additions. Run `pulumi up` once to reconcile state from your configuration; subsequent plans are clean.
+///
+///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `name` (String) OAuth2 credential provider name.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
+/// Using `pulumi import`, import Bedrock AgentCore OAuth2 Credential Provider using `name`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:bedrock/agentcoreOauth2CredentialProvider:AgentcoreOauth2CredentialProvider example oauth2-provider-name
+/// $ pulumi import aws:bedrock/agentcoreOauth2CredentialProvider:AgentcoreOauth2CredentialProvider example example-oauth2-provider
 /// ```
 class AgentcoreOauth2CredentialProvider extends pulumi.CustomResource {
-  /// ARN of the AWS Secrets Manager secret containing the client secret.
+  /// Callback URL to register on the OAuth2 credential provider as an allowed callback URL. This URL is where the OAuth2 authorization server redirects users after they complete the authorization flow.
+  late final pulumi.Output<String> callbackUrl;
+  /// ARN of the AWS Secrets Manager secret containing the client secret. See `clientSecretArn` Block below.
   late final pulumi.Output<List<AgentcoreOauth2CredentialProviderClientSecretArn>> clientSecretArns;
   /// ARN of the OAuth2 credential provider.
   late final pulumi.Output<String> credentialProviderArn;
-  /// Vendor of the OAuth2 credential provider. Valid values: `CustomOauth2`, `GithubOauth2`, `GoogleOauth2`, `Microsoft`, `SalesforceOauth2`, `SlackOauth2`.
+  /// Vendor of the OAuth2 credential provider. Valid values include `CustomOauth2`, `GithubOauth2`, `GoogleOauth2`, `MicrosoftOauth2`, `SalesforceOauth2`, `SlackOauth2`, `AtlassianOauth2`, `LinkedinOauth2`, and a number of additional supported vendors (e.g. `XOauth2`, `FacebookOauth2`, `SpotifyOauth2`) configured via `includedOauth2ProviderConfig`. Refer to the AWS API for the full, current list.
   late final pulumi.Output<String> credentialProviderVendor;
   /// Name of the OAuth2 credential provider.
   late final pulumi.Output<String> name;
-  /// OAuth2 provider configuration. Must contain exactly one provider type. See `oauth2ProviderConfig` below.
+  /// OAuth2 provider configuration. Must contain exactly one provider type. See `oauth2ProviderConfig` Block below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?> oauth2ProviderConfig;
+  late final pulumi.Output<AgentcoreOauth2CredentialProviderOauth2ProviderConfig> oauth2ProviderConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<AgentcoreOauth2CredentialProviderTimeouts?> timeouts;
 
   /// Creates a new [AgentcoreOauth2CredentialProvider].
   /// [name] The Pulumi resource name.
@@ -630,16 +654,18 @@ class AgentcoreOauth2CredentialProvider extends pulumi.CustomResource {
           'aws:bedrock/agentcoreOauth2CredentialProvider:AgentcoreOauth2CredentialProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
+    callbackUrl = registerOutput<String>('callbackUrl');
     clientSecretArns = registerOutput<List<AgentcoreOauth2CredentialProviderClientSecretArn>>('clientSecretArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreOauth2CredentialProviderClientSecretArn>(guardedValue, (value) => AgentcoreOauth2CredentialProviderClientSecretArn.fromMap((value as Map).cast<String, dynamic>())); });
     credentialProviderArn = registerOutput<String>('credentialProviderArn');
     credentialProviderVendor = registerOutput<String>('credentialProviderVendor');
     this.name = registerOutput<String>('name');
-    oauth2ProviderConfig = registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?>('oauth2ProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    oauth2ProviderConfig = registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig>('oauth2ProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentcoreOauth2CredentialProviderTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AgentcoreOauth2CredentialProvider] resource's state with the given [name] and [id].
@@ -666,14 +692,16 @@ class AgentcoreOauth2CredentialProvider extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    callbackUrl = registerOutput<String>('callbackUrl');
     clientSecretArns = registerOutput<List<AgentcoreOauth2CredentialProviderClientSecretArn>>('clientSecretArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreOauth2CredentialProviderClientSecretArn>(guardedValue, (value) => AgentcoreOauth2CredentialProviderClientSecretArn.fromMap((value as Map).cast<String, dynamic>())); });
     credentialProviderArn = registerOutput<String>('credentialProviderArn');
     credentialProviderVendor = registerOutput<String>('credentialProviderVendor');
     this.name = registerOutput<String>('name');
-    oauth2ProviderConfig = registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?>('oauth2ProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    oauth2ProviderConfig = registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig>('oauth2ProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentcoreOauth2CredentialProviderTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Creates a typed reference to an existing [AgentcoreOauth2CredentialProvider] resource.
@@ -685,13 +713,15 @@ class AgentcoreOauth2CredentialProvider extends pulumi.CustomResource {
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
         isResourceReference: true,
       ) {
+    callbackUrl = registerOutput<String>('callbackUrl');
     clientSecretArns = registerOutput<List<AgentcoreOauth2CredentialProviderClientSecretArn>>('clientSecretArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreOauth2CredentialProviderClientSecretArn>(guardedValue, (value) => AgentcoreOauth2CredentialProviderClientSecretArn.fromMap((value as Map).cast<String, dynamic>())); });
     credentialProviderArn = registerOutput<String>('credentialProviderArn');
     credentialProviderVendor = registerOutput<String>('credentialProviderVendor');
     this.name = registerOutput<String>('name');
-    oauth2ProviderConfig = registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig?>('oauth2ProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    oauth2ProviderConfig = registerOutput<AgentcoreOauth2CredentialProviderOauth2ProviderConfig>('oauth2ProviderConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tagsAll = registerOutput<Map<String, String>>('tagsAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeouts = registerOutput<AgentcoreOauth2CredentialProviderTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreOauth2CredentialProviderTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

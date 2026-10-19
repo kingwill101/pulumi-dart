@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcPeeringConnectionIpv6CidrBlockSet {
+  /// IPv6 CIDR block associated to the VPC of the specific VPC Peering Connection.
   final pulumi.Input<String> ipv6CidrBlock;
 
   /// Creates a new [GetVpcPeeringConnectionIpv6CidrBlockSet].
-  /// [ipv6CidrBlock] Required.
+  /// [ipv6CidrBlock] IPv6 CIDR block associated to the VPC of the specific VPC Peering Connection.
   const GetVpcPeeringConnectionIpv6CidrBlockSet({
     required this.ipv6CidrBlock,
   });

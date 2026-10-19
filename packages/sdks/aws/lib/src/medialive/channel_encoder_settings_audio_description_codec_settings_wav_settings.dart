@@ -3,14 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings {
+  /// Bits per sample.
   final pulumi.Input<double?>? bitDepth;
+  /// WAV coding mode.
   final pulumi.Input<String?>? codingMode;
   /// Sample rate in Hz.
   final pulumi.Input<double?>? sampleRate;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings].
-  /// [bitDepth] Optional.
-  /// [codingMode] Optional.
+  /// [bitDepth] Bits per sample.
+  /// [codingMode] WAV coding mode.
   /// [sampleRate] Sample rate in Hz.
   const ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings({
     this.bitDepth,

@@ -1152,7 +1152,7 @@ import 'pipeline_variable.dart';
 /// $ pulumi import aws:codepipeline/pipeline:Pipeline example example-pipeline
 /// ```
 class Pipeline extends pulumi.CustomResource {
-  /// Codepipeline ARN.
+  /// CodePipeline ARN.
   late final pulumi.Output<String> arn;
   /// One or more artifactStore blocks. Artifact stores are documented below.
   late final pulumi.Output<List<PipelineArtifactStore>> artifactStores;
@@ -1193,7 +1193,7 @@ class Pipeline extends pulumi.CustomResource {
           'aws:codepipeline/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     artifactStores = registerOutput<List<PipelineArtifactStore>>('artifactStores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PipelineArtifactStore>(guardedValue, (value) => PipelineArtifactStore.fromMap((value as Map).cast<String, dynamic>())); });

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersAwsIotAnalytics {
-  /// The name of the data set to which to connect.
+  /// Name of the data set to which to connect.
   final pulumi.Input<String> dataSetName;
 
   /// Creates a new [DataSourceParametersAwsIotAnalytics].
-  /// [dataSetName] The name of the data set to which to connect.
+  /// [dataSetName] Name of the data set to which to connect.
   const DataSourceParametersAwsIotAnalytics({
     required this.dataSetName,
   });

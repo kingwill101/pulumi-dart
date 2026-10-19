@@ -445,7 +445,7 @@ import 'stack_user_setting.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.appstream.Stack` using the id. For example:
+/// Using `pulumi import`, import `aws.appstream.Stack` using the ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appstream/stack:Stack example stackID
@@ -455,7 +455,7 @@ class Stack extends pulumi.CustomResource {
   late final pulumi.Output<List<StackAccessEndpoint>> accessEndpoints;
   /// Settings for application settings persistence. See `applicationSettings` below.
   late final pulumi.Output<StackApplicationSettings> applicationSettings;
-  /// ARN of the appstream stack.
+  /// ARN of the AppStream stack.
   late final pulumi.Output<String> arn;
   /// Date and time, in UTC and extended RFC 3339 format, when the stack was created.
   late final pulumi.Output<String> createdTime;
@@ -497,7 +497,7 @@ class Stack extends pulumi.CustomResource {
           'aws:appstream/stack:Stack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     accessEndpoints = registerOutput<List<StackAccessEndpoint>>('accessEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StackAccessEndpoint>(guardedValue, (value) => StackAccessEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     applicationSettings = registerOutput<StackApplicationSettings>('applicationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StackApplicationSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

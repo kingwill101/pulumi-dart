@@ -7,13 +7,13 @@ class ChannelEncoderSettingsCaptionDescriptionDestinationSettingsBurnInDestinati
   final pulumi.Input<String?>? passwordParam;
   /// Path to a file accessible to the live stream.
   final pulumi.Input<String> uri;
-  /// Username to be used.
+  /// Username for the server.
   final pulumi.Input<String?>? username;
 
   /// Creates a new [ChannelEncoderSettingsCaptionDescriptionDestinationSettingsBurnInDestinationSettingsFont].
   /// [passwordParam] Key used to extract the password from EC2 Parameter store.
   /// [uri] Path to a file accessible to the live stream.
-  /// [username] Username to be used.
+  /// [username] Username for the server.
   const ChannelEncoderSettingsCaptionDescriptionDestinationSettingsBurnInDestinationSettingsFont({
     this.passwordParam,
     required this.uri,

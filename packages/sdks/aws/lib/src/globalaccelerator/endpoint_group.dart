@@ -160,26 +160,25 @@ import 'endpoint_group_state.dart';
 class EndpointGroup extends pulumi.CustomResource {
   /// ARN of the endpoint group.
   late final pulumi.Output<String> arn;
-  /// The list of endpoint objects. Fields documented below.
+  /// Endpoint objects. See `endpointConfiguration` below.
   late final pulumi.Output<List<EndpointGroupEndpointConfiguration>?> endpointConfigurations;
-  /// The name of the AWS Region where the endpoint group is located.
+  /// AWS Region where the endpoint group is located.
   late final pulumi.Output<String> endpointGroupRegion;
-  /// The time—10 seconds or 30 seconds—between each health check for an endpoint. The default value is 30.
+  /// Time—10 seconds or 30 seconds—between each health check for an endpoint. The default value is 30.
   late final pulumi.Output<int?> healthCheckIntervalSeconds;
   /// If the protocol is HTTP/S, then this specifies the path that is the destination for health check targets. The default value is slash (`/`). the provider will only perform drift detection of its value when present in a configuration.
   late final pulumi.Output<String> healthCheckPath;
-  /// The port that AWS Global Accelerator uses to check the health of endpoints that are part of this endpoint group. The default port is the listener port that this endpoint group is associated with. If listener port is a list of ports, Global Accelerator uses the first port in the list.
-  /// the provider will only perform drift detection of its value when present in a configuration.
+  /// Port that AWS Global Accelerator uses to check the health of endpoints that are part of this endpoint group. The default port is the listener port that this endpoint group is associated with. If listener port is a list of ports, Global Accelerator uses the first port in the list.   the provider will only perform drift detection of its value when present in a configuration.
   late final pulumi.Output<int> healthCheckPort;
-  /// The protocol that AWS Global Accelerator uses to check the health of endpoints that are part of this endpoint group. The default value is TCP.
+  /// Protocol that AWS Global Accelerator uses to check the health of endpoints that are part of this endpoint group. The default value is TCP.
   late final pulumi.Output<String?> healthCheckProtocol;
   /// ARN of the listener.
   late final pulumi.Output<String> listenerArn;
-  /// Override specific listener ports used to route traffic to endpoints that are part of this endpoint group. Fields documented below.
+  /// Override specific listener ports used to route traffic to endpoints that are part of this endpoint group. See `portOverride` below.
   late final pulumi.Output<List<EndpointGroupPortOverride>?> portOverrides;
-  /// The number of consecutive health checks required to set the state of a healthy endpoint to unhealthy, or to set an unhealthy endpoint to healthy. The default value is 3.
+  /// Number of consecutive health checks required to set the state of a healthy endpoint to unhealthy, or to set an unhealthy endpoint to healthy. The default value is 3.
   late final pulumi.Output<int?> thresholdCount;
-  /// The percentage of traffic to send to an AWS Region. Additional traffic is distributed to other endpoint groups for this listener. The default value is 100.
+  /// Percentage of traffic to send to an AWS Region. Additional traffic is distributed to other endpoint groups for this listener. The default value is 100.
   late final pulumi.Output<double?> trafficDialPercentage;
 
   /// Creates a new [EndpointGroup].
@@ -194,7 +193,7 @@ class EndpointGroup extends pulumi.CustomResource {
           'aws:globalaccelerator/endpointGroup:EndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     endpointConfigurations = registerOutput<List<EndpointGroupEndpointConfiguration>?>('endpointConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointGroupEndpointConfiguration>(guardedValue, (value) => EndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>())); });

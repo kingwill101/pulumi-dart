@@ -125,24 +125,21 @@ import 'placement_group_state.dart';
 class PlacementGroup extends pulumi.CustomResource {
   /// ARN of the placement group.
   late final pulumi.Output<String> arn;
-  /// The name of the placement group.
+  /// Name of the placement group.
   late final pulumi.Output<String> name;
-  /// The number of partitions to create in the
-  /// placement group.  Can only be specified when the `strategy` is set to
-  /// `partition`.  Must be at least `1`. (default is `2`).
+  /// Number of partitions to create in the placement group. Can only be specified when the `strategy` is set to `partition`. Must be at least `1`. (default is `2`).
   late final pulumi.Output<int> partitionCount;
-  /// The ID of the placement group.
+  /// ID of the placement group.
   late final pulumi.Output<String> placementGroupId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Determines how placement groups spread instances. Can only be used
-  /// when the `strategy` is set to `spread`. Can be `host` or `rack`. `host` can only be used for Outpost placement groups. Defaults to `rack`.
+  /// How placement groups spread instances. Can only be used when the `strategy` is set to `spread`. Can be `host` or `rack`. `host` can only be used for Outpost placement groups. Defaults to `rack`.
   late final pulumi.Output<String> spreadLevel;
-  /// The placement strategy. Can be `cluster`, `partition` or `spread`.
+  /// Placement strategy. Can be `cluster`, `partition` or `spread`.
   late final pulumi.Output<String> strategy;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [PlacementGroup].
@@ -157,7 +154,7 @@ class PlacementGroup extends pulumi.CustomResource {
           'aws:ec2/placementGroup:PlacementGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

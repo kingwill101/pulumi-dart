@@ -253,7 +253,7 @@ import 'rate_based_rule_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import WAF Regional Rate Based Rule using the id. For example:
+/// Using `pulumi import`, import WAF Regional Rate Based Rule using the ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:wafregional/rateBasedRule:RateBasedRule wafrule a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
@@ -290,7 +290,7 @@ class RateBasedRule extends pulumi.CustomResource {
           'aws:wafregional/rateBasedRule:RateBasedRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     metricName = registerOutput<String>('metricName');

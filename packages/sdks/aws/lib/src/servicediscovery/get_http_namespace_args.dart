@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_servicediscovery_get_http_namespace_get_http_namespace_args_doc}
 class GetHttpNamespaceArgs {
-  /// Name of the http namespace.
+  /// Name of the HTTP namespace.
   final pulumi.Input<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -15,7 +15,7 @@ class GetHttpNamespaceArgs {
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetHttpNamespaceArgs].
-  /// [name] Name of the http namespace.
+  /// [name] Name of the HTTP namespace.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags for the resource.
   const GetHttpNamespaceArgs({

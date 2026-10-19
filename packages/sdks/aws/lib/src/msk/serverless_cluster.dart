@@ -202,23 +202,23 @@ import 'serverless_cluster_vpc_config.dart';
 /// $ pulumi import aws:msk/serverlessCluster:ServerlessCluster example arn:aws:kafka:us-west-2:123456789012:cluster/example/279c0212-d057-4dba-9aa9-1c4e5a25bfc7-3
 /// ```
 class ServerlessCluster extends pulumi.CustomResource {
-  /// The ARN of the serverless cluster.
+  /// ARN of the serverless cluster.
   late final pulumi.Output<String> arn;
   /// One or more DNS names (or IP addresses) and SASL IAM port pairs. For example, `boot-abcdefg.c2.kafka-serverless.eu-central-1.amazonaws.com:9098`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersSaslIam;
-  /// Specifies client authentication information for the serverless cluster. See below.
+  /// Client authentication information for the serverless cluster. See `clientAuthentication` Block below.
   late final pulumi.Output<ServerlessClusterClientAuthentication> clientAuthentication;
-  /// The name of the serverless cluster.
+  /// Name of the serverless cluster.
   late final pulumi.Output<String> clusterName;
   /// UUID of the serverless cluster, for use in IAM policies.
   late final pulumi.Output<String> clusterUuid;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// VPC configuration information. See below.
+  /// VPC configuration information. See `vpcConfig` Block below.
   late final pulumi.Output<List<ServerlessClusterVpcConfig>> vpcConfigs;
 
   /// Creates a new [ServerlessCluster].
@@ -233,7 +233,7 @@ class ServerlessCluster extends pulumi.CustomResource {
           'aws:msk/serverlessCluster:ServerlessCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bootstrapBrokersSaslIam = registerOutput<String>('bootstrapBrokersSaslIam');

@@ -8,7 +8,7 @@ class GetSubnetsResult {
   final List<GetSubnetsFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// List of all the subnet ids found.
+  /// List of all the subnet IDs found.
   final List<String>? ids;
   final String? region;
   final Map<String, String>? tags;
@@ -16,7 +16,7 @@ class GetSubnetsResult {
   /// Creates a new [GetSubnetsResult].
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ids] List of all the subnet ids found.
+  /// [ids] List of all the subnet IDs found.
   /// [region] Optional.
   /// [tags] Optional.
   const GetSubnetsResult({

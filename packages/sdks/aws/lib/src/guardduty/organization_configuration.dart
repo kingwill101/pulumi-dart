@@ -278,16 +278,15 @@ import 'organization_configuration_state.dart';
 /// $ pulumi import aws:guardduty/organizationConfiguration:OrganizationConfiguration example 00b00fd5aecc0ab60a708659477e9617
 /// ```
 class OrganizationConfiguration extends pulumi.CustomResource {
-  /// Indicates the auto-enablement configuration of GuardDuty for the member accounts in the organization.
-  /// Valid values are `ALL`, `NEW`, `NONE`.
+  /// Auto-enablement configuration of GuardDuty for the member accounts in the organization. Valid values are `ALL`, `NEW`, `NONE`.
   late final pulumi.Output<String> autoEnableOrganizationMembers;
-  /// Configuration for the collected datasources. [Deprecated](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-feature-object-api-changes-march2023.html) in favor of `aws.guardduty.OrganizationConfigurationFeature` resources.
-  ///
-  /// &gt; **NOTE:** One of `autoEnable` or `autoEnableOrganizationMembers` must be specified.
+  /// Configuration for the collected datasources. See `datasources` below. [Deprecated](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-feature-object-api-changes-march2023.html) in favor of `aws.guardduty.OrganizationConfigurationFeature` resources.
   late final pulumi.Output<OrganizationConfigurationDatasources> datasources;
-  /// The detector ID of the GuardDuty account.
+  /// Detector ID of the GuardDuty account.
   late final pulumi.Output<String> detectorId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  ///
+  /// &gt; **NOTE:** One of `autoEnable` or `autoEnableOrganizationMembers` must be specified.
   late final pulumi.Output<String> region;
 
   /// Creates a new [OrganizationConfiguration].
@@ -302,7 +301,7 @@ class OrganizationConfiguration extends pulumi.CustomResource {
           'aws:guardduty/organizationConfiguration:OrganizationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     autoEnableOrganizationMembers = registerOutput<String>('autoEnableOrganizationMembers');
     datasources = registerOutput<OrganizationConfigurationDatasources>('datasources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationConfigurationDatasources.fromMap((guardedValue as Map).cast<String, dynamic>()); });

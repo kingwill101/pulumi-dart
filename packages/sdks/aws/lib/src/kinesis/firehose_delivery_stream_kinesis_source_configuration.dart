@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirehoseDeliveryStreamKinesisSourceConfiguration {
-  /// The kinesis stream used as the source of the firehose delivery stream.
+  /// Kinesis stream used as the source of the firehose delivery stream.
   final pulumi.Input<String> kinesisStreamArn;
-  /// The ARN of the role that provides access to the source Kinesis stream.
+  /// ARN of the role that provides access to the source Kinesis stream.
   final pulumi.Input<String> roleArn;
 
   /// Creates a new [FirehoseDeliveryStreamKinesisSourceConfiguration].
-  /// [kinesisStreamArn] The kinesis stream used as the source of the firehose delivery stream.
-  /// [roleArn] The ARN of the role that provides access to the source Kinesis stream.
+  /// [kinesisStreamArn] Kinesis stream used as the source of the firehose delivery stream.
+  /// [roleArn] ARN of the role that provides access to the source Kinesis stream.
   const FirehoseDeliveryStreamKinesisSourceConfiguration({
     required this.kinesisStreamArn,
     required this.roleArn,

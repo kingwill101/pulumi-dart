@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainSamlOptionsSamlOptionsIdp {
   /// Unique Entity ID of the application in SAML Identity Provider.
   final pulumi.Input<String> entityId;
-  /// Metadata of the SAML application in xml format.
+  /// Metadata of the SAML application in XML format.
   final pulumi.Input<String> metadataContent;
 
   /// Creates a new [DomainSamlOptionsSamlOptionsIdp].
   /// [entityId] Unique Entity ID of the application in SAML Identity Provider.
-  /// [metadataContent] Metadata of the SAML application in xml format.
+  /// [metadataContent] Metadata of the SAML application in XML format.
   const DomainSamlOptionsSamlOptionsIdp({
     required this.entityId,
     required this.metadataContent,

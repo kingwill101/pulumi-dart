@@ -30,7 +30,7 @@ class StateMachineEncryptionConfiguration {
 
   factory StateMachineEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return StateMachineEncryptionConfiguration(
-      kmsDataKeyReusePeriodSeconds: (() { final guardedValue = map['kmsDataKeyReusePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      kmsDataKeyReusePeriodSeconds: (() { final guardedValue = map['kmsDataKeyReusePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       kmsKeyId: (() { final guardedValue = map['kmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

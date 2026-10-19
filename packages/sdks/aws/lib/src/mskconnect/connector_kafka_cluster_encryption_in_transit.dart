@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorKafkaClusterEncryptionInTransit {
-  /// The type of encryption in transit to the Apache Kafka cluster. Valid values: `PLAINTEXT`, `TLS`. The default values is `PLAINTEXT`.
+  /// Type of encryption in transit to the Apache Kafka cluster. Valid values: `PLAINTEXT`, `TLS`. The default values is `PLAINTEXT`.
   final pulumi.Input<String?>? encryptionType;
 
   /// Creates a new [ConnectorKafkaClusterEncryptionInTransit].
-  /// [encryptionType] The type of encryption in transit to the Apache Kafka cluster. Valid values: `PLAINTEXT`, `TLS`. The default values is `PLAINTEXT`.
+  /// [encryptionType] Type of encryption in transit to the Apache Kafka cluster. Valid values: `PLAINTEXT`, `TLS`. The default values is `PLAINTEXT`.
   const ConnectorKafkaClusterEncryptionInTransit({
     this.encryptionType,
   });

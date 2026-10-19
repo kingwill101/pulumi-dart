@@ -7,17 +7,17 @@ import 'get_index_document_metadata_configuration_update_search.dart';
 class GetIndexDocumentMetadataConfigurationUpdate {
   /// Name of the index field. Minimum length of 1. Maximum length of 30.
   final pulumi.Input<String> name;
-  /// Block that provides manual tuning parameters to determine how the field affects the search results. Documented below.
+  /// Block that provides manual tuning parameters to determine how the field affects the search results. Detailed below.
   final pulumi.Input<List<GetIndexDocumentMetadataConfigurationUpdateRelevance>> relevances;
-  /// Block that provides information about how the field is used during a search. Documented below.
+  /// Block that provides information about how the field is used during a search. Detailed below.
   final pulumi.Input<List<GetIndexDocumentMetadataConfigurationUpdateSearch>> searches;
   /// Data type of the index field. Valid values are `STRING_VALUE`, `STRING_LIST_VALUE`, `LONG_VALUE`, `DATE_VALUE`.
   final pulumi.Input<String> type;
 
   /// Creates a new [GetIndexDocumentMetadataConfigurationUpdate].
   /// [name] Name of the index field. Minimum length of 1. Maximum length of 30.
-  /// [relevances] Block that provides manual tuning parameters to determine how the field affects the search results. Documented below.
-  /// [searches] Block that provides information about how the field is used during a search. Documented below.
+  /// [relevances] Block that provides manual tuning parameters to determine how the field affects the search results. Detailed below.
+  /// [searches] Block that provides information about how the field is used during a search. Detailed below.
   /// [type] Data type of the index field. Valid values are `STRING_VALUE`, `STRING_LIST_VALUE`, `LONG_VALUE`, `DATE_VALUE`.
   const GetIndexDocumentMetadataConfigurationUpdate({
     required this.name,

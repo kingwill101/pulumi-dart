@@ -210,7 +210,7 @@ import 'rule_group_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import WAF Rule Group using the id. For example:
+/// Using `pulumi import`, import WAF Rule Group using the ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:waf/ruleGroup:RuleGroup example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
@@ -241,7 +241,7 @@ class RuleGroup extends pulumi.CustomResource {
           'aws:waf/ruleGroup:RuleGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     activatedRules = registerOutput<List<RuleGroupActivatedRule>?>('activatedRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleGroupActivatedRule>(guardedValue, (value) => RuleGroupActivatedRule.fromMap((value as Map).cast<String, dynamic>())); });
     arn = registerOutput<String>('arn');

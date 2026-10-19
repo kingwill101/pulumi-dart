@@ -228,9 +228,9 @@ import 'invitation_accepter_state.dart';
 /// $ pulumi import aws:macie2/invitationAccepter:InvitationAccepter example 123456789012
 /// ```
 class InvitationAccepter extends pulumi.CustomResource {
-  /// The AWS account ID for the account that sent the invitation.
+  /// AWS account ID for the account that sent the invitation.
   late final pulumi.Output<String> administratorAccountId;
-  /// The unique identifier for the invitation.
+  /// Unique identifier for the invitation.
   late final pulumi.Output<String> invitationId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -247,7 +247,7 @@ class InvitationAccepter extends pulumi.CustomResource {
           'aws:macie2/invitationAccepter:InvitationAccepter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     administratorAccountId = registerOutput<String>('administratorAccountId');
     invitationId = registerOutput<String>('invitationId');

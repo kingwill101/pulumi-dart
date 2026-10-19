@@ -586,17 +586,17 @@ import 'classifier_xml_classifier.dart';
 /// $ pulumi import aws:glue/classifier:Classifier MyClassifier MyClassifier
 /// ```
 class Classifier extends pulumi.CustomResource {
-  /// A classifier for CSV content. Defined below.
+  /// Classifier for CSV content. Defined below.
   late final pulumi.Output<ClassifierCsvClassifier?> csvClassifier;
-  /// A classifier that uses grok patterns. Defined below.
+  /// Classifier that uses grok patterns. Defined below.
   late final pulumi.Output<ClassifierGrokClassifier?> grokClassifier;
-  /// A classifier for JSON content. Defined below.
+  /// Classifier for JSON content. Defined below.
   late final pulumi.Output<ClassifierJsonClassifier?> jsonClassifier;
-  /// The name of the classifier.
+  /// Name of the classifier.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A classifier for XML content. Defined below.
+  /// Classifier for XML content. Defined below.
   late final pulumi.Output<ClassifierXmlClassifier?> xmlClassifier;
 
   /// Creates a new [Classifier].
@@ -611,7 +611,7 @@ class Classifier extends pulumi.CustomResource {
           'aws:glue/classifier:Classifier',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     csvClassifier = registerOutput<ClassifierCsvClassifier?>('csvClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierCsvClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     grokClassifier = registerOutput<ClassifierGrokClassifier?>('grokClassifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClassifierGrokClassifier.fromMap((guardedValue as Map).cast<String, dynamic>()); });

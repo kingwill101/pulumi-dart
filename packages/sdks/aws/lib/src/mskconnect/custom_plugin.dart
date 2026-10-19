@@ -245,23 +245,23 @@ import 'custom_plugin_state.dart';
 class CustomPlugin extends pulumi.CustomResource {
   /// the ARN of the custom plugin.
   late final pulumi.Output<String> arn;
-  /// The type of the plugin file. Allowed values are `ZIP` and `JAR`.
+  /// Type of the plugin file. Allowed values are `ZIP` and `JAR`.
   late final pulumi.Output<String> contentType;
-  /// A summary description of the custom plugin.
+  /// Summary description of the custom plugin.
   late final pulumi.Output<String?> description;
   /// an ID of the latest successfully created revision of the custom plugin.
   late final pulumi.Output<int> latestRevision;
   /// Information about the location of a custom plugin. See `location` Block for details.
   late final pulumi.Output<CustomPluginLocation> location;
-  /// The name of the custom plugin..
+  /// Name of the custom plugin.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// the state of the custom plugin.
   late final pulumi.Output<String> state;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [CustomPlugin].
@@ -276,7 +276,7 @@ class CustomPlugin extends pulumi.CustomResource {
           'aws:mskconnect/customPlugin:CustomPlugin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     contentType = registerOutput<String>('contentType');

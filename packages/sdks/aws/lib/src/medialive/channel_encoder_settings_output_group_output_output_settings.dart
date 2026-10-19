@@ -10,29 +10,32 @@ import 'channel_encoder_settings_output_group_output_output_settings_rtmp_output
 import 'channel_encoder_settings_output_group_output_output_settings_udp_output_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettings {
-  /// Archive output settings. See Archive Output Settings for more details.
+  /// Archive output settings. See `archiveOutputSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings?>? archiveOutputSettings;
+  /// Frame capture output settings. See `frameCaptureOutputSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings?>? frameCaptureOutputSettings;
+  /// HLS output settings. See `hlsOutputSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettings?>? hlsOutputSettings;
-  /// Media package output settings. This can be set as an empty block.
+  /// Media package output settings. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? mediaPackageOutputSettings;
+  /// Microsoft Smooth output settings. See `msSmoothOutputSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings?>? msSmoothOutputSettings;
-  /// Multiplex output settings. See Multiplex Output Settings for more details.
+  /// Multiplex output settings. See `multiplexOutputSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettings?>? multiplexOutputSettings;
-  /// RTMP output settings. See RTMP Output Settings for more details.
+  /// RTMP output settings. See `rtmpOutputSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettings?>? rtmpOutputSettings;
-  /// UDP output settings. See UDP Output Settings for more details.
+  /// UDP output settings. See `udpOutputSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings?>? udpOutputSettings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettings].
-  /// [archiveOutputSettings] Archive output settings. See Archive Output Settings for more details.
-  /// [frameCaptureOutputSettings] Optional.
-  /// [hlsOutputSettings] Optional.
-  /// [mediaPackageOutputSettings] Media package output settings. This can be set as an empty block.
-  /// [msSmoothOutputSettings] Optional.
-  /// [multiplexOutputSettings] Multiplex output settings. See Multiplex Output Settings for more details.
-  /// [rtmpOutputSettings] RTMP output settings. See RTMP Output Settings for more details.
-  /// [udpOutputSettings] UDP output settings. See UDP Output Settings for more details.
+  /// [archiveOutputSettings] Archive output settings. See `archiveOutputSettings` Block for details.
+  /// [frameCaptureOutputSettings] Frame capture output settings. See `frameCaptureOutputSettings` Block for details.
+  /// [hlsOutputSettings] HLS output settings. See `hlsOutputSettings` Block for details.
+  /// [mediaPackageOutputSettings] Media package output settings. Can be set as an empty block.
+  /// [msSmoothOutputSettings] Microsoft Smooth output settings. See `msSmoothOutputSettings` Block for details.
+  /// [multiplexOutputSettings] Multiplex output settings. See `multiplexOutputSettings` Block for details.
+  /// [rtmpOutputSettings] RTMP output settings. See `rtmpOutputSettings` Block for details.
+  /// [udpOutputSettings] UDP output settings. See `udpOutputSettings` Block for details.
   const ChannelEncoderSettingsOutputGroupOutputOutputSettings({
     this.archiveOutputSettings,
     this.frameCaptureOutputSettings,

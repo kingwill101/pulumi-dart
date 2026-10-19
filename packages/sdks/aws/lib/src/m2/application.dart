@@ -324,13 +324,13 @@ import 'application_timeouts.dart';
 /// $ pulumi import aws:m2/application:Application example 01234567890abcdef012345678
 /// ```
 class Application extends pulumi.CustomResource {
-  /// Id of the Application.
+  /// ID of the Application.
   late final pulumi.Output<String> applicationId;
   /// ARN of the Application.
   late final pulumi.Output<String> arn;
   /// Current version of the application deployed.
   late final pulumi.Output<int> currentVersion;
-  /// The application definition for this application. You can specify either inline JSON or an S3 bucket location.
+  /// Application definition for this application. You can specify either inline JSON or an S3 bucket location.
   late final pulumi.Output<ApplicationDefinition> definition;
   /// Description of the application.
   late final pulumi.Output<String?> description;
@@ -348,7 +348,7 @@ class Application extends pulumi.CustomResource {
   late final pulumi.Output<String?> roleArn;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<ApplicationTimeouts?> timeouts;
 
@@ -364,7 +364,7 @@ class Application extends pulumi.CustomResource {
           'aws:m2/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     arn = registerOutput<String>('arn');

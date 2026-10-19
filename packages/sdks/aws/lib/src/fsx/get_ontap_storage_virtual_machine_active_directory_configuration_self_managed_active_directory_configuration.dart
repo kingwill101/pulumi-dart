@@ -9,7 +9,7 @@ class GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActive
   final pulumi.Input<String> domainName;
   /// Name of the domain group whose members have administrative privileges for the FSx file system.
   final pulumi.Input<String> fileSystemAdministratorsGroup;
-  /// Fully qualified distinguished name of the organizational unit within the self-managed AD directory to which the Windows File Server or ONTAP storage virtual machine (SVM) instance is joined.
+  /// Fully qualified distinguished name of the organizational unit within the self-managed AD directory to which the SVM is joined.
   final pulumi.Input<String> organizationalUnitDistinguishedName;
   /// User name for the service account on your self-managed AD domain that FSx uses to join to your AD domain.
   final pulumi.Input<String> username;
@@ -18,7 +18,7 @@ class GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActive
   /// [dnsIps] List of up to three IP addresses of DNS servers or domain controllers in the self-managed AD directory.
   /// [domainName] Fully qualified domain name of the self-managed AD directory.
   /// [fileSystemAdministratorsGroup] Name of the domain group whose members have administrative privileges for the FSx file system.
-  /// [organizationalUnitDistinguishedName] Fully qualified distinguished name of the organizational unit within the self-managed AD directory to which the Windows File Server or ONTAP storage virtual machine (SVM) instance is joined.
+  /// [organizationalUnitDistinguishedName] Fully qualified distinguished name of the organizational unit within the self-managed AD directory to which the SVM is joined.
   /// [username] User name for the service account on your self-managed AD domain that FSx uses to join to your AD domain.
   const GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration({
     required this.dnsIps,

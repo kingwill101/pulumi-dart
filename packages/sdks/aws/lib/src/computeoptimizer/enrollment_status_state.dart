@@ -42,7 +42,7 @@ class EnrollmentStatusState {
   factory EnrollmentStatusState.fromMap(Map<String, dynamic> map) {
     return EnrollmentStatusState(
       includeMemberAccounts: (() { final guardedValue = map['includeMemberAccounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      numberOfMemberAccountsOptedIn: (() { final guardedValue = map['numberOfMemberAccountsOptedIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numberOfMemberAccountsOptedIn: (() { final guardedValue = map['numberOfMemberAccountsOptedIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnrollmentStatusTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

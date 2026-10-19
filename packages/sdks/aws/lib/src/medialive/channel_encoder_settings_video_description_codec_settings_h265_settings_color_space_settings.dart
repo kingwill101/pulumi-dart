@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_video_description_codec_settings_h265_settings_color_space_settings_hdr10_settings.dart';
 
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings {
-  /// Sets the colorspace metadata to be passed through.
+  /// Sets the colorspace metadata to be passed through. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? colorSpacePassthroughSettings;
-  /// Set the colorspace to Dolby Vision81.
+  /// Sets the colorspace to Dolby Vision81. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? dolbyVision81Settings;
-  /// Set the colorspace to be HDR10. See H265 HDR10 Settings for more details.
+  /// Sets the colorspace to be HDR10. See `hdr10Settings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettingsHdr10Settings?>? hdr10Settings;
-  /// Set the colorspace to Rec. 601.
+  /// Sets the colorspace to Rec. 601. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? rec601Settings;
-  /// Set the colorspace to Rec. 709.
+  /// Sets the colorspace to Rec. 709. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? rec709Settings;
 
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings].
-  /// [colorSpacePassthroughSettings] Sets the colorspace metadata to be passed through.
-  /// [dolbyVision81Settings] Set the colorspace to Dolby Vision81.
-  /// [hdr10Settings] Set the colorspace to be HDR10. See H265 HDR10 Settings for more details.
-  /// [rec601Settings] Set the colorspace to Rec. 601.
-  /// [rec709Settings] Set the colorspace to Rec. 709.
+  /// [colorSpacePassthroughSettings] Sets the colorspace metadata to be passed through. Can be set as an empty block.
+  /// [dolbyVision81Settings] Sets the colorspace to Dolby Vision81. Can be set as an empty block.
+  /// [hdr10Settings] Sets the colorspace to be HDR10. See `hdr10Settings` Block for details.
+  /// [rec601Settings] Sets the colorspace to Rec. 601. Can be set as an empty block.
+  /// [rec709Settings] Sets the colorspace to Rec. 709. Can be set as an empty block.
   const ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings({
     this.colorSpacePassthroughSettings,
     this.dolbyVision81Settings,

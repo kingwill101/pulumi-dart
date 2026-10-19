@@ -18,7 +18,7 @@ class InvocationState {
   final pulumi.Input<String?>? region;
   /// String result of the Lambda function invocation.
   final pulumi.Input<String?>? result;
-  /// Tenant Id to serve invocations from specified tenant.
+  /// Tenant ID to serve invocations from specified tenant.
   final pulumi.Input<String?>? tenantId;
   final pulumi.Input<String?>? terraformKey;
   /// Map of arbitrary keys and values that, when changed, will trigger a re-invocation.
@@ -31,7 +31,7 @@ class InvocationState {
   /// [qualifier] Qualifier (i.e., version) of the Lambda function. Defaults to `$LATEST`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [result] String result of the Lambda function invocation.
-  /// [tenantId] Tenant Id to serve invocations from specified tenant.
+  /// [tenantId] Tenant ID to serve invocations from specified tenant.
   /// [terraformKey] Optional.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a re-invocation.
   const InvocationState({

@@ -12,7 +12,7 @@ class TrustStoreRevocationState {
   final pulumi.Input<String?>? revocationsS3Bucket;
   /// S3 object key holding the client certificate CA bundle.
   final pulumi.Input<String?>? revocationsS3Key;
-  /// Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
+  /// Version ID of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
   final pulumi.Input<String?>? revocationsS3ObjectVersion;
   /// Trust Store ARN.
   final pulumi.Input<String?>? trustStoreArn;
@@ -22,7 +22,7 @@ class TrustStoreRevocationState {
   /// [revocationId] AWS assigned RevocationId, (number).
   /// [revocationsS3Bucket] S3 Bucket name holding the client certificate CA bundle.
   /// [revocationsS3Key] S3 object key holding the client certificate CA bundle.
-  /// [revocationsS3ObjectVersion] Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
+  /// [revocationsS3ObjectVersion] Version ID of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
   /// [trustStoreArn] Trust Store ARN.
   const TrustStoreRevocationState({
     this.region,
@@ -47,7 +47,7 @@ class TrustStoreRevocationState {
   factory TrustStoreRevocationState.fromMap(Map<String, dynamic> map) {
     return TrustStoreRevocationState(
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      revocationId: (() { final guardedValue = map['revocationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      revocationId: (() { final guardedValue = map['revocationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       revocationsS3Bucket: (() { final guardedValue = map['revocationsS3Bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       revocationsS3Key: (() { final guardedValue = map['revocationsS3Key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       revocationsS3ObjectVersion: (() { final guardedValue = map['revocationsS3ObjectVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

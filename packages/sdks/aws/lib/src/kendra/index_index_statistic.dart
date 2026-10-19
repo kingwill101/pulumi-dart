@@ -5,14 +5,14 @@ import 'index_index_statistic_faq_statistic.dart';
 import 'index_index_statistic_text_document_statistic.dart';
 
 class IndexIndexStatistic {
-  /// A block that specifies the number of question and answer topics in the index. Detailed below.
+  /// Block that specifies the number of question and answer topics in the index. Detailed below.
   final pulumi.Input<List<IndexIndexStatisticFaqStatistic>?>? faqStatistics;
-  /// A block that specifies the number of text documents indexed. Detailed below.
+  /// Block that specifies the number of text documents indexed. Detailed below.
   final pulumi.Input<List<IndexIndexStatisticTextDocumentStatistic>?>? textDocumentStatistics;
 
   /// Creates a new [IndexIndexStatistic].
-  /// [faqStatistics] A block that specifies the number of question and answer topics in the index. Detailed below.
-  /// [textDocumentStatistics] A block that specifies the number of text documents indexed. Detailed below.
+  /// [faqStatistics] Block that specifies the number of question and answer topics in the index. Detailed below.
+  /// [textDocumentStatistics] Block that specifies the number of text documents indexed. Detailed below.
   const IndexIndexStatistic({
     this.faqStatistics,
     this.textDocumentStatistics,

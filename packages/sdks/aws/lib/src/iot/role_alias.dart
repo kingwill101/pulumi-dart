@@ -63,7 +63,7 @@ import 'role_alias_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import IOT Role Alias using the alias. For example:
+/// Using `pulumi import`, import IoT Role Alias using the alias. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:iot/roleAlias:RoleAlias example myalias
@@ -96,7 +96,7 @@ class RoleAlias extends pulumi.CustomResource {
           'aws:iot/roleAlias:RoleAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     alias = registerOutput<String>('alias');
     arn = registerOutput<String>('arn');

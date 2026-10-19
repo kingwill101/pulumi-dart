@@ -191,7 +191,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<bool?> copyTagsToSnapshot;
   /// Value that indicates whether the DB cluster has deletion protection enabled.The database can't be deleted when deletion protection is enabled. By default, deletion protection is disabled.
   late final pulumi.Output<bool?> deletionProtection;
-  /// List of the log types this DB cluster is configured to export to Cloudwatch Logs. Currently only supports `audit` and `slowquery`.
+  /// List of the log types this DB cluster is configured to export to CloudWatch Logs. Currently only supports `audit` and `slowquery`.
   late final pulumi.Output<List<String>?> enableCloudwatchLogsExports;
   /// DNS address of the Neptune instance
   late final pulumi.Output<String> endpoint;
@@ -258,7 +258,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:neptune/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     allowMajorVersionUpgrade = registerOutput<bool>('allowMajorVersionUpgrade');
     applyImmediately = registerOutput<bool>('applyImmediately');

@@ -8,22 +8,21 @@ import 'organization_configuration_datasources.dart';
 /// {@endtemplate}
 /// {@macro pulumi_guardduty_organization_configuration_organization_configuration_args_doc}
 class OrganizationConfigurationArgs {
-  /// Indicates the auto-enablement configuration of GuardDuty for the member accounts in the organization.
-  /// Valid values are `ALL`, `NEW`, `NONE`.
+  /// Auto-enablement configuration of GuardDuty for the member accounts in the organization. Valid values are `ALL`, `NEW`, `NONE`.
   final pulumi.Input<String> autoEnableOrganizationMembers;
-  /// Configuration for the collected datasources. [Deprecated](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-feature-object-api-changes-march2023.html) in favor of `aws.guardduty.OrganizationConfigurationFeature` resources.
-  ///
-  /// &gt; **NOTE:** One of `autoEnable` or `autoEnableOrganizationMembers` must be specified.
+  /// Configuration for the collected datasources. See `datasources` below. [Deprecated](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-feature-object-api-changes-march2023.html) in favor of `aws.guardduty.OrganizationConfigurationFeature` resources.
   final pulumi.Input<OrganizationConfigurationDatasources?>? datasources;
-  /// The detector ID of the GuardDuty account.
+  /// Detector ID of the GuardDuty account.
   final pulumi.Input<String> detectorId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  ///
+  /// &gt; **NOTE:** One of `autoEnable` or `autoEnableOrganizationMembers` must be specified.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [OrganizationConfigurationArgs].
-  /// [autoEnableOrganizationMembers] Indicates the auto-enablement configuration of GuardDuty for the member accounts in the organization.
-  /// [datasources] Configuration for the collected datasources. [Deprecated](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-feature-object-api-changes-march2023.html) in favor of `aws.guardduty.OrganizationConfigurationFeature` resources.
-  /// [detectorId] The detector ID of the GuardDuty account.
+  /// [autoEnableOrganizationMembers] Auto-enablement configuration of GuardDuty for the member accounts in the organization. Valid values are `ALL`, `NEW`, `NONE`.
+  /// [datasources] Configuration for the collected datasources. See `datasources` below. [Deprecated](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-feature-object-api-changes-march2023.html) in favor of `aws.guardduty.OrganizationConfigurationFeature` resources.
+  /// [detectorId] Detector ID of the GuardDuty account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const OrganizationConfigurationArgs({
     required this.autoEnableOrganizationMembers,

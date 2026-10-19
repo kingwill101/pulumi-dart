@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelDestinationSetting {
   /// Key used to extract the password from EC2 Parameter store.
   final pulumi.Input<String?>? passwordParam;
-  /// Stream name RTMP destinations (URLs of type rtmp://)
+  /// Stream name for RTMP destinations (URLs of type `rtmp://`).
   final pulumi.Input<String?>? streamName;
-  /// A URL specifying a destination.
+  /// URL for the destination.
   final pulumi.Input<String?>? url;
-  /// Username for destination.
+  /// Username for the destination.
   final pulumi.Input<String?>? username;
 
   /// Creates a new [ChannelDestinationSetting].
   /// [passwordParam] Key used to extract the password from EC2 Parameter store.
-  /// [streamName] Stream name RTMP destinations (URLs of type rtmp://)
-  /// [url] A URL specifying a destination.
-  /// [username] Username for destination.
+  /// [streamName] Stream name for RTMP destinations (URLs of type `rtmp://`).
+  /// [url] URL for the destination.
+  /// [username] Username for the destination.
   const ChannelDestinationSetting({
     this.passwordParam,
     this.streamName,

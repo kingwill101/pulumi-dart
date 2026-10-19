@@ -16,9 +16,9 @@ class SecretVersionArgs {
   /// Text data that you want to encrypt and store in this version of the secret. This is required if `secretBinary` or `secretStringWo` is not set.
   final pulumi.Input<String?>? secretString;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Text data that you want to encrypt and store in this version of the secret. This is required if `secretBinary` or `secretString` is not set.
+  /// Text data that you want to encrypt and store in this version of the secret. This is required if `secretBinary` or `secretString` is not set. If set, requires `secretStringWoVersion` to be set.
   final pulumi.Input<String?>? secretStringWo;
-  /// Version identifier that works together with `secretStringWo` to trigger an update. Increment this value when an update to `secretStringWo` is required.
+  /// Required when `secretStringWo` is set. Changing this value triggers an update to `secretStringWo`.
   final pulumi.Input<int?>? secretStringWoVersion;
   /// List of staging labels that are attached to this version of the secret. A staging label must be unique to a single version of the secret. If you specify a staging label that's already associated with a different version of the same secret then that staging label is automatically removed from the other version and attached to this version. If you do not specify a value, then AWS Secrets Manager automatically moves the staging label `AWSCURRENT` to this new version on creation.
   ///
@@ -31,7 +31,7 @@ class SecretVersionArgs {
   /// [secretId] Secret to which you want to add a new version. You can specify either the ARN or the friendly name of the secret. The secret must already exist.
   /// [secretString] Text data that you want to encrypt and store in this version of the secret. This is required if `secretBinary` or `secretStringWo` is not set.
   /// [secretStringWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [secretStringWoVersion] Version identifier that works together with `secretStringWo` to trigger an update. Increment this value when an update to `secretStringWo` is required.
+  /// [secretStringWoVersion] Required when `secretStringWo` is set. Changing this value triggers an update to `secretStringWo`.
   /// [versionStages] List of staging labels that are attached to this version of the secret. A staging label must be unique to a single version of the secret. If you specify a staging label that's already associated with a different version of the same secret then that staging label is automatically removed from the other version and attached to this version. If you do not specify a value, then AWS Secrets Manager automatically moves the staging label `AWSCURRENT` to this new version on creation.
   const SecretVersionArgs({
     this.region,
@@ -62,7 +62,7 @@ class SecretVersionArgs {
       secretId: pulumi.Input.fromValue(map['secretId'] as String),
       secretString: (() { final guardedValue = map['secretString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secretStringWo: (() { final guardedValue = map['secretStringWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      secretStringWoVersion: (() { final guardedValue = map['secretStringWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      secretStringWoVersion: (() { final guardedValue = map['secretStringWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       versionStages: (() { final guardedValue = map['versionStages']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

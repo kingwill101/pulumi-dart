@@ -112,7 +112,7 @@ class CertificateAuthorityState {
       keyStorageSecurityStandard: (() { final guardedValue = map['keyStorageSecurityStandard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notAfter: (() { final guardedValue = map['notAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notBefore: (() { final guardedValue = map['notBefore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      permanentDeletionTimeInDays: (() { final guardedValue = map['permanentDeletionTimeInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      permanentDeletionTimeInDays: (() { final guardedValue = map['permanentDeletionTimeInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       revocationConfiguration: (() { final guardedValue = map['revocationConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CertificateAuthorityRevocationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serial: (() { final guardedValue = map['serial']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

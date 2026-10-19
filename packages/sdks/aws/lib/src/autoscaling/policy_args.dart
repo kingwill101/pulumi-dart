@@ -12,7 +12,7 @@ import 'policy_target_tracking_configuration.dart';
 class PolicyArgs {
   /// Whether the adjustment is an absolute number or a percentage of the current capacity. Valid values are `ChangeInCapacity`, `ExactCapacity`, and `PercentChangeInCapacity`.
   final pulumi.Input<String?>? adjustmentType;
-  /// Name of the autoscaling group.
+  /// Name of the Auto Scaling group.
   final pulumi.Input<String> autoscalingGroupName;
   /// Amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
   final pulumi.Input<int?>? cooldown;
@@ -358,7 +358,7 @@ class PolicyArgs {
 
   /// Creates a new [PolicyArgs].
   /// [adjustmentType] Whether the adjustment is an absolute number or a percentage of the current capacity. Valid values are `ChangeInCapacity`, `ExactCapacity`, and `PercentChangeInCapacity`.
-  /// [autoscalingGroupName] Name of the autoscaling group.
+  /// [autoscalingGroupName] Name of the Auto Scaling group.
   /// [cooldown] Amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
   /// [enabled] Whether the scaling policy is enabled or disabled. Default: `true`.
   /// [estimatedInstanceWarmup] Estimated time, in seconds, until a newly launched instance will contribute CloudWatch metrics. Without a value, AWS will default to the group's specified cooldown period.
@@ -411,16 +411,16 @@ class PolicyArgs {
     return PolicyArgs(
       adjustmentType: (() { final guardedValue = map['adjustmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       autoscalingGroupName: pulumi.Input.fromValue(map['autoscalingGroupName'] as String),
-      cooldown: (() { final guardedValue = map['cooldown']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cooldown: (() { final guardedValue = map['cooldown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      estimatedInstanceWarmup: (() { final guardedValue = map['estimatedInstanceWarmup']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      estimatedInstanceWarmup: (() { final guardedValue = map['estimatedInstanceWarmup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       metricAggregationType: (() { final guardedValue = map['metricAggregationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minAdjustmentMagnitude: (() { final guardedValue = map['minAdjustmentMagnitude']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minAdjustmentMagnitude: (() { final guardedValue = map['minAdjustmentMagnitude']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       predictiveScalingConfiguration: (() { final guardedValue = map['predictiveScalingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyPredictiveScalingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scalingAdjustment: (() { final guardedValue = map['scalingAdjustment']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      scalingAdjustment: (() { final guardedValue = map['scalingAdjustment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       stepAdjustments: (() { final guardedValue = map['stepAdjustments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyStepAdjustment>(guardedValue, (value) => PolicyStepAdjustment.fromMap((value as Map).cast<String, dynamic>()))); })(),
       targetTrackingConfiguration: (() { final guardedValue = map['targetTrackingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyTargetTrackingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

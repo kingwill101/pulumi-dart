@@ -13,7 +13,7 @@ class MethodArgs {
   final pulumi.Input<String> authorization;
   /// Authorization scopes used when the authorization is `COGNITO_USER_POOLS`
   final pulumi.Input<List<String>?>? authorizationScopes;
-  /// Authorizer id to be used when the authorization is `CUSTOM` or `COGNITO_USER_POOLS`
+  /// Authorizer ID to be used when the authorization is `CUSTOM` or `COGNITO_USER_POOLS`
   final pulumi.Input<String?>? authorizerId;
   /// HTTP Method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`)
   final pulumi.Input<String> httpMethod;
@@ -36,7 +36,7 @@ class MethodArgs {
   /// [apiKeyRequired] Specify if the method requires an API key
   /// [authorization] Type of authorization used for the method (`NONE`, `CUSTOM`, `AWS_IAM`, `COGNITO_USER_POOLS`)
   /// [authorizationScopes] Authorization scopes used when the authorization is `COGNITO_USER_POOLS`
-  /// [authorizerId] Authorizer id to be used when the authorization is `CUSTOM` or `COGNITO_USER_POOLS`
+  /// [authorizerId] Authorizer ID to be used when the authorization is `CUSTOM` or `COGNITO_USER_POOLS`
   /// [httpMethod] HTTP Method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`)
   /// [operationName] Function name that will be given to the method when generating an SDK through API Gateway. If omitted, API Gateway will generate a function name based on the resource path and HTTP verb.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

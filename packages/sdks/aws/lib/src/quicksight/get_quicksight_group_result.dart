@@ -6,24 +6,24 @@ class GetQuicksightGroupResult {
   /// ARN for the group.
   final String? arn;
   final String? awsAccountId;
-  /// The group description.
+  /// Group description.
   final String? description;
   final String? groupName;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
   final String? namespace;
-  /// The principal ID of the group.
+  /// Principal ID of the group.
   final String? principalId;
   final String? region;
 
   /// Creates a new [GetQuicksightGroupResult].
   /// [arn] ARN for the group.
   /// [awsAccountId] Optional.
-  /// [description] The group description.
+  /// [description] Group description.
   /// [groupName] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [namespace] Optional.
-  /// [principalId] The principal ID of the group.
+  /// [principalId] Principal ID of the group.
   /// [region] Optional.
   const GetQuicksightGroupResult({
     this.arn,

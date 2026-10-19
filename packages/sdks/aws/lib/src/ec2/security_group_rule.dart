@@ -638,7 +638,7 @@ class SecurityGroupRule extends pulumi.CustomResource {
   late final pulumi.Output<String> securityGroupRuleId;
   /// Whether the security group itself will be added as a source to this ingress rule. Cannot be specified with `cidrBlocks`, `ipv6CidrBlocks`, or `sourceSecurityGroupId`.
   late final pulumi.Output<bool?> self;
-  /// Security group id to allow access to/from, depending on the `type`. Cannot be specified with `cidrBlocks`, `ipv6CidrBlocks`, or `self`.
+  /// Security group ID to allow access to/from, depending on the `type`. Cannot be specified with `cidrBlocks`, `ipv6CidrBlocks`, or `self`.
   late final pulumi.Output<String> sourceSecurityGroupId;
   /// End port (or ICMP code if protocol is "icmp").
   late final pulumi.Output<int> toPort;
@@ -660,7 +660,7 @@ class SecurityGroupRule extends pulumi.CustomResource {
           'aws:ec2/securityGroupRule:SecurityGroupRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     cidrBlocks = registerOutput<List<String>?>('cidrBlocks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');

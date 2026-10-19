@@ -183,7 +183,7 @@ import 'probe_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.networkmonitor.Probe` using the monitor name and probe id. For example:
+/// Using `pulumi import`, import `aws.networkmonitor.Probe` using the monitor name and probe ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:networkmonitor/probe:Probe example monitor-7786087912324693644,probe-3qm8p693i4fi1h8lqylzkbp42e
@@ -225,7 +225,7 @@ class Probe extends pulumi.CustomResource {
           'aws:networkmonitor/probe:Probe',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     addressFamily = registerOutput<String>('addressFamily');
     arn = registerOutput<String>('arn');

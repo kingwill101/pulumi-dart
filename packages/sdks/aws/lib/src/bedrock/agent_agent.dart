@@ -6,7 +6,7 @@ import 'agent_agent_prompt_override_configuration.dart';
 import 'agent_agent_state.dart';
 import 'agent_agent_timeouts.dart';
 
-/// Resource for managing an AWS Agents for Amazon Bedrock Agent.
+/// Manages an AWS Agents for Amazon Bedrock Agent.
 ///
 /// ## Example Usage
 ///
@@ -562,7 +562,7 @@ class AgentAgent extends pulumi.CustomResource {
   late final pulumi.Output<int> idleSessionTtlInSeconds;
   /// Instructions that tell the agent what it should do and how it should interact with users. If `prepareAgent` is `true` this argument is required. The valid range is 40 - 20000 characters.
   late final pulumi.Output<String> instruction;
-  /// Configurations for the agent's ability to retain the conversational context.
+  /// Configurations for the agent's ability to retain the conversational context. See `memoryConfiguration` Block for details.
   late final pulumi.Output<List<AgentAgentMemoryConfiguration>> memoryConfigurations;
   /// Whether to prepare the agent after creation or modification. Defaults to `true`.
   late final pulumi.Output<bool> prepareAgent;
@@ -572,7 +572,7 @@ class AgentAgent extends pulumi.CustomResource {
   late final pulumi.Output<List<AgentAgentPromptOverrideConfiguration>> promptOverrideConfigurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Whether the in-use check is skipped when deleting the agent.
+  /// Whether to skip the in-use check when deleting the agent. Defaults to `false`.
   late final pulumi.Output<bool> skipResourceInUseCheck;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -592,7 +592,7 @@ class AgentAgent extends pulumi.CustomResource {
           'aws:bedrock/agentAgent:AgentAgent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     agentArn = registerOutput<String>('agentArn');
     agentCollaboration = registerOutput<String>('agentCollaboration');

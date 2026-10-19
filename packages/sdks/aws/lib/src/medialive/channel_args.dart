@@ -14,52 +14,52 @@ import 'channel_vpc.dart';
 /// {@endtemplate}
 /// {@macro pulumi_medialive_channel_channel_args_doc}
 class ChannelArgs {
-  /// Specification of CDI inputs for this channel. See CDI Input Specification for more details.
+  /// Specification of CDI inputs for this channel. See `cdiInputSpecification` Block for details.
   final pulumi.Input<ChannelCdiInputSpecification?>? cdiInputSpecification;
-  /// Concise argument description.
+  /// Class of the channel. Valid values: `STANDARD`, `SINGLE_PIPELINE`.
   final pulumi.Input<String> channelClass;
-  /// Destinations for channel. See Destinations for more details.
+  /// Destinations for the channel. See `destinations` Block for details.
   final pulumi.Input<List<ChannelDestination>> destinations;
-  /// Encoder settings. See Encoder Settings for more details.
+  /// Encoder settings. See `encoderSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettings> encoderSettings;
-  /// Input attachments for the channel. See Input Attachments for more details.
+  /// Input attachments for the channel. See `inputAttachments` Block for details.
   final pulumi.Input<List<ChannelInputAttachment>> inputAttachments;
-  /// Specification of network and file inputs for the channel.
+  /// Specification of network and file inputs for the channel. See `inputSpecification` Block for details.
   final pulumi.Input<ChannelInputSpecification> inputSpecification;
-  /// The log level to write to Cloudwatch logs.
+  /// Level of verbosity for the logs written to CloudWatch Logs.
   final pulumi.Input<String?>? logLevel;
-  /// Maintenance settings for this channel. See Maintenance for more details.
+  /// Maintenance settings for this channel. See `maintenance` Block for details.
   final pulumi.Input<ChannelMaintenance?>? maintenance;
-  /// Name of the Channel.
+  /// Name of the channel.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Concise argument description.
+  /// ARN of the IAM role for the channel.
   final pulumi.Input<String?>? roleArn;
-  /// Whether to start/stop channel. Default: `false`
+  /// Whether to start/stop channel. Default: `false`.
   final pulumi.Input<bool?>? startChannel;
-  /// A map of tags to assign to the channel. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the channel. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// Settings for the VPC outputs. See VPC for more details.
+  /// Settings for the VPC outputs. See `vpc` Block for details.
   final pulumi.Input<ChannelVpc?>? vpc;
 
   /// Creates a new [ChannelArgs].
-  /// [cdiInputSpecification] Specification of CDI inputs for this channel. See CDI Input Specification for more details.
-  /// [channelClass] Concise argument description.
-  /// [destinations] Destinations for channel. See Destinations for more details.
-  /// [encoderSettings] Encoder settings. See Encoder Settings for more details.
-  /// [inputAttachments] Input attachments for the channel. See Input Attachments for more details.
-  /// [inputSpecification] Specification of network and file inputs for the channel.
-  /// [logLevel] The log level to write to Cloudwatch logs.
-  /// [maintenance] Maintenance settings for this channel. See Maintenance for more details.
-  /// [name] Name of the Channel.
+  /// [cdiInputSpecification] Specification of CDI inputs for this channel. See `cdiInputSpecification` Block for details.
+  /// [channelClass] Class of the channel. Valid values: `STANDARD`, `SINGLE_PIPELINE`.
+  /// [destinations] Destinations for the channel. See `destinations` Block for details.
+  /// [encoderSettings] Encoder settings. See `encoderSettings` Block for details.
+  /// [inputAttachments] Input attachments for the channel. See `inputAttachments` Block for details.
+  /// [inputSpecification] Specification of network and file inputs for the channel. See `inputSpecification` Block for details.
+  /// [logLevel] Level of verbosity for the logs written to CloudWatch Logs.
+  /// [maintenance] Maintenance settings for this channel. See `maintenance` Block for details.
+  /// [name] Name of the channel.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [roleArn] Concise argument description.
-  /// [startChannel] Whether to start/stop channel. Default: `false`
-  /// [tags] A map of tags to assign to the channel. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [vpc] Settings for the VPC outputs. See VPC for more details.
+  /// [roleArn] ARN of the IAM role for the channel.
+  /// [startChannel] Whether to start/stop channel. Default: `false`.
+  /// [tags] Map of tags to assign to the channel. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [vpc] Settings for the VPC outputs. See `vpc` Block for details.
   const ChannelArgs({
     this.cdiInputSpecification,
     required this.channelClass,

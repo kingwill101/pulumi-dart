@@ -6,24 +6,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegistryState {
   /// ARN of Glue Registry.
   final pulumi.Input<String?>? arn;
-  /// A description of the registry.
+  /// Description of the registry.
   final pulumi.Input<String?>? description;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The Name of the registry.
+  /// Name of the registry.
   final pulumi.Input<String?>? registryName;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [RegistryState].
   /// [arn] ARN of Glue Registry.
-  /// [description] A description of the registry.
+  /// [description] Description of the registry.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [registryName] The Name of the registry.
+  /// [registryName] Name of the registry.
   /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const RegistryState({
     this.arn,
     this.description,

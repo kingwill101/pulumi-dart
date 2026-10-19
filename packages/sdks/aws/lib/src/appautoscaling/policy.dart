@@ -5,12 +5,12 @@ import 'policy_state.dart';
 import 'policy_step_scaling_policy_configuration.dart';
 import 'policy_target_tracking_scaling_policy_configuration.dart';
 
-/// Provides an Application AutoScaling Policy resource.
+/// Provides an Application Auto Scaling Policy resource.
 ///
 /// {{% examples %}}
 /// ## Example Usage
 ///
-/// ### DynamoDB Table Autoscaling
+/// ### DynamoDB Table AutoScaling
 ///
 /// ```terraform
 /// resource "aws_appautoscaling_target" "dynamodb_table_read_target" {
@@ -38,7 +38,7 @@ import 'policy_target_tracking_scaling_policy_configuration.dart';
 /// }
 /// ```
 ///
-/// ### ECS Service Autoscaling
+/// ### ECS Service AutoScaling
 ///
 /// ```terraform
 /// resource "aws_appautoscaling_target" "ecs_target" {
@@ -84,7 +84,7 @@ import 'policy_target_tracking_scaling_policy_configuration.dart';
 /// &gt; });
 /// &gt; ```
 ///
-/// ### Aurora Read Replica Autoscaling
+/// ### Aurora Read Replica AutoScaling
 ///
 /// ```terraform
 /// resource "aws_appautoscaling_target" "replicas" {
@@ -261,7 +261,7 @@ import 'policy_target_tracking_scaling_policy_configuration.dart';
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import Application AutoScaling Policy using the `service-namespace` , `resource-id`, `scalable-dimension` and `policy-name` separated by `/`. For example:
+/// Using `pulumi import`, import Application Auto Scaling Policy using the `service-namespace` , `resource-id`, `scalable-dimension` and `policy-name` separated by `/`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appautoscaling/policy:Policy test-policy service-namespace/resource-id/scalable-dimension/policy-name
@@ -305,7 +305,7 @@ class Policy extends pulumi.CustomResource {
           'aws:appautoscaling/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     alarmArns = registerOutput<List<String>>('alarmArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');

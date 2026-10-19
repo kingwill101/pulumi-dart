@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_set_physical_table_map_custom_sql_column.dart';
 
 class DataSetPhysicalTableMapCustomSql {
-  /// Column schema from the SQL query result set. See columns.
+  /// Column schema from the SQL query result set. See `physical_table_map.custom_sql.columns` Block below.
   final pulumi.Input<List<DataSetPhysicalTableMapCustomSqlColumn>?>? columns;
   /// ARN of the data source.
   final pulumi.Input<String> dataSourceArn;
@@ -14,7 +14,7 @@ class DataSetPhysicalTableMapCustomSql {
   final pulumi.Input<String> sqlQuery;
 
   /// Creates a new [DataSetPhysicalTableMapCustomSql].
-  /// [columns] Column schema from the SQL query result set. See columns.
+  /// [columns] Column schema from the SQL query result set. See `physical_table_map.custom_sql.columns` Block below.
   /// [dataSourceArn] ARN of the data source.
   /// [name] Display name for the SQL query result.
   /// [sqlQuery] SQL query.

@@ -4,14 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_output_group_output_output_settings_archive_output_settings_container_settings_m2ts_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings {
-  /// M2TS Settings. See [M2TS Settings](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-m2tssettings.html) for more details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings?>? m2tsSettings;
-  /// Raw Settings. This can be set as an empty block.
+  /// Raw settings. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? rawSettings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings].
-  /// [m2tsSettings] M2TS Settings. See [M2TS Settings](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-medialive-channel-m2tssettings.html) for more details.
-  /// [rawSettings] Raw Settings. This can be set as an empty block.
+  /// [m2tsSettings] Optional.
+  /// [rawSettings] Raw settings. Can be set as an empty block.
   const ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings({
     this.m2tsSettings,
     this.rawSettings,

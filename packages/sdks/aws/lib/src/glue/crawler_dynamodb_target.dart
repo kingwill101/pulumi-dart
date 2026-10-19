@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CrawlerDynamodbTarget {
-  /// The name of the DynamoDB table to crawl.
+  /// Name of the DynamoDB table to crawl.
   final pulumi.Input<String> path;
-  /// Indicates whether to scan all the records, or to sample rows from the table. Scanning all the records can take a long time when the table is not a high throughput table.  defaults to `true`.
+  /// Whether to scan all the records, or to sample rows from the table. Scanning all the records can take a long time when the table is not a high throughput table.  defaults to `true`.
   final pulumi.Input<bool?>? scanAll;
-  /// The percentage of the configured read capacity units to use by the AWS Glue crawler. The valid values are null or a value between 0.1 to 1.5.
+  /// Percentage of the configured read capacity units to use by the AWS Glue crawler. The valid values are null or a value between 0.1 to 1.5.
   final pulumi.Input<double?>? scanRate;
 
   /// Creates a new [CrawlerDynamodbTarget].
-  /// [path] The name of the DynamoDB table to crawl.
-  /// [scanAll] Indicates whether to scan all the records, or to sample rows from the table. Scanning all the records can take a long time when the table is not a high throughput table.  defaults to `true`.
-  /// [scanRate] The percentage of the configured read capacity units to use by the AWS Glue crawler. The valid values are null or a value between 0.1 to 1.5.
+  /// [path] Name of the DynamoDB table to crawl.
+  /// [scanAll] Whether to scan all the records, or to sample rows from the table. Scanning all the records can take a long time when the table is not a high throughput table.  defaults to `true`.
+  /// [scanRate] Percentage of the configured read capacity units to use by the AWS Glue crawler. The valid values are null or a value between 0.1 to 1.5.
   const CrawlerDynamodbTarget({
     required this.path,
     this.scanAll,

@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_input_attachment_input_settings_caption_selector_selector_settings.dart';
 
 class ChannelInputAttachmentInputSettingsCaptionSelector {
+  /// When specified, indicates the three-letter language code of the caption track to extract from the source.
   final pulumi.Input<String?>? languageCode;
-  /// Name of the Channel.
-  ///
-  /// The following arguments are optional:
+  /// Name of the caption selector.
   final pulumi.Input<String> name;
+  /// Caption selector settings. See `caption_selector.selector_settings` Block for details.
   final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings?>? selectorSettings;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsCaptionSelector].
-  /// [languageCode] Optional.
-  /// [name] Name of the Channel.
-  /// [selectorSettings] Optional.
+  /// [languageCode] When specified, indicates the three-letter language code of the caption track to extract from the source.
+  /// [name] Name of the caption selector.
+  /// [selectorSettings] Caption selector settings. See `caption_selector.selector_settings` Block for details.
   const ChannelInputAttachmentInputSettingsCaptionSelector({
     this.languageCode,
     required this.name,

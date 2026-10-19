@@ -14,7 +14,7 @@ class GameSessionQueueArgs {
   final pulumi.Input<List<String>?>? destinations;
   /// Name of the session queue.
   final pulumi.Input<String?>? name;
-  /// An SNS topic ARN that is set up to receive game session placement notifications.
+  /// SNS topic ARN that is set up to receive game session placement notifications.
   final pulumi.Input<String?>? notificationTarget;
   /// One or more policies used to choose fleet based on player latency. See below.
   final pulumi.Input<List<GameSessionQueuePlayerLatencyPolicy>?>? playerLatencyPolicies;
@@ -29,7 +29,7 @@ class GameSessionQueueArgs {
   /// [customEventData] Information to be added to all events that are related to this game session queue.
   /// [destinations] List of fleet/alias ARNs used by session queue for placing game sessions.
   /// [name] Name of the session queue.
-  /// [notificationTarget] An SNS topic ARN that is set up to receive game session placement notifications.
+  /// [notificationTarget] SNS topic ARN that is set up to receive game session placement notifications.
   /// [playerLatencyPolicies] One or more policies used to choose fleet based on player latency. See below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -67,7 +67,7 @@ class GameSessionQueueArgs {
       playerLatencyPolicies: (() { final guardedValue = map['playerLatencyPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GameSessionQueuePlayerLatencyPolicy>(guardedValue, (value) => GameSessionQueuePlayerLatencyPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -5,7 +5,6 @@
 class GetEmailIdentityResult {
   /// ARN of the email identity.
   final String? arn;
-  /// Email identity.
   final String? email;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
@@ -13,7 +12,7 @@ class GetEmailIdentityResult {
 
   /// Creates a new [GetEmailIdentityResult].
   /// [arn] ARN of the email identity.
-  /// [email] Email identity.
+  /// [email] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Optional.
   const GetEmailIdentityResult({

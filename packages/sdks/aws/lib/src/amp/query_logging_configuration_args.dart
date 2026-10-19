@@ -9,21 +9,21 @@ import 'query_logging_configuration_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_amp_query_logging_configuration_query_logging_configuration_args_doc}
 class QueryLoggingConfigurationArgs {
-  /// Configuration block for the logging destinations. See `destinations`.
+  /// Configuration block for the logging destinations. See `destination` Block.
   final pulumi.Input<List<QueryLoggingConfigurationDestination>> destinations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   final pulumi.Input<QueryLoggingConfigurationTimeouts?>? timeouts;
-  /// The ID of the AMP workspace for which to configure query logging.
+  /// ID of the AMP workspace for which to configure query logging.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> workspaceId;
 
   /// Creates a new [QueryLoggingConfigurationArgs].
-  /// [destinations] Configuration block for the logging destinations. See `destinations`.
+  /// [destinations] Configuration block for the logging destinations. See `destination` Block.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
-  /// [workspaceId] The ID of the AMP workspace for which to configure query logging.
+  /// [workspaceId] ID of the AMP workspace for which to configure query logging.
   const QueryLoggingConfigurationArgs({
     required this.destinations,
     this.region,

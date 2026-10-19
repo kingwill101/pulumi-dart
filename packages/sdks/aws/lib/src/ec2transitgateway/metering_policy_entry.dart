@@ -272,11 +272,13 @@ import 'metering_policy_entry_timeouts.dart';
 class MeteringPolicyEntry extends pulumi.CustomResource {
   /// Destination CIDR block to match. If not specified, all destination CIDR blocks are matched.
   late final pulumi.Output<String?> destinationCidrBlock;
+  /// Destination port range to match. If not specified, all destination ports are matched.
   late final pulumi.Output<String?> destinationPortRange;
+  /// Destination Transit Gateway attachment ID to match.
   late final pulumi.Output<String?> destinationTransitGatewayAttachmentId;
-  /// Destination attachment resource type to match. Valid values are `vpc`, `vpn`, `direct-connect-gateway`, `connect`, `peering`, `tgw-peering`.
+  /// Destination attachment resource type to match. Valid values are `vpc`, `vpn`, `vpn-concentrator`, `direct-connect-gateway`, `connect`, `peering`, `tgw-peering`, `network-function`, `client-vpn`.
   late final pulumi.Output<String?> destinationTransitGatewayAttachmentType;
-  /// The account to charge for matching traffic. Valid values are `source-attachment-owner` or `destination-attachment-owner`.
+  /// The account to charge for matching traffic. Valid values are `source-attachment-owner`, `destination-attachment-owner`, or `transit-gateway-owner`.
   late final pulumi.Output<String> meteredAccount;
   /// Rule number for this entry. Lower numbers have higher priority. Valid values are between `1` and `32766`.
   late final pulumi.Output<int> policyRuleNumber;
@@ -286,9 +288,11 @@ class MeteringPolicyEntry extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Source CIDR block to match. If not specified, all source CIDR blocks are matched.
   late final pulumi.Output<String?> sourceCidrBlock;
+  /// Source port range to match. If not specified, all source ports are matched.
   late final pulumi.Output<String?> sourcePortRange;
+  /// Source Transit Gateway attachment ID to match.
   late final pulumi.Output<String?> sourceTransitGatewayAttachmentId;
-  /// Source attachment resource type to match. Valid values are `vpc`, `vpn`, `direct-connect-gateway`, `connect`, `peering`, `tgw-peering`.
+  /// Source attachment resource type to match. Valid values are `vpc`, `vpn`, `vpn-concentrator`, `direct-connect-gateway`, `connect`, `peering`, `tgw-peering`, `network-function`, `client-vpn`.
   late final pulumi.Output<String?> sourceTransitGatewayAttachmentType;
   late final pulumi.Output<MeteringPolicyEntryTimeouts?> timeouts;
   /// EC2 Transit Gateway Metering Policy identifier.
@@ -308,7 +312,7 @@ class MeteringPolicyEntry extends pulumi.CustomResource {
           'aws:ec2transitgateway/meteringPolicyEntry:MeteringPolicyEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     destinationCidrBlock = registerOutput<String?>('destinationCidrBlock');
     destinationPortRange = registerOutput<String?>('destinationPortRange');

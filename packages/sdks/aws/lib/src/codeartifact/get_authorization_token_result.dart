@@ -49,7 +49,7 @@ class GetAuthorizationTokenResult {
       authorizationToken: (() { final guardedValue = map['authorizationToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
       domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return guardedValue as String; })(),
       domainOwner: (() { final guardedValue = map['domainOwner']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      durationSeconds: (() { final guardedValue = map['durationSeconds']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      durationSeconds: (() { final guardedValue = map['durationSeconds']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       expiration: (() { final guardedValue = map['expiration']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),

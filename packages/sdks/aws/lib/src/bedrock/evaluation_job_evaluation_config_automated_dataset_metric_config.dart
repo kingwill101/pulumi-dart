@@ -8,13 +8,13 @@ class EvaluationJobEvaluationConfigAutomatedDatasetMetricConfig {
   final pulumi.Input<EvaluationJobEvaluationConfigAutomatedDatasetMetricConfigDataset> dataset;
   /// Names of the metrics to use for the evaluation job.
   final pulumi.Input<List<String>> metricNames;
-  /// Type of task to evaluate. Common values are `Summarization`, `Classification`, `QuestionAndAnswer`, `Generation`, and `Custom`.
+  /// Type of task to evaluate. Valid values: `Summarization`, `Classification`, `QuestionAndAnswer`, `Generation`, `Custom`.
   final pulumi.Input<String> taskType;
 
   /// Creates a new [EvaluationJobEvaluationConfigAutomatedDatasetMetricConfig].
   /// [dataset] Prompt dataset to use. See `dataset` Block below.
   /// [metricNames] Names of the metrics to use for the evaluation job.
-  /// [taskType] Type of task to evaluate. Common values are `Summarization`, `Classification`, `QuestionAndAnswer`, `Generation`, and `Custom`.
+  /// [taskType] Type of task to evaluate. Valid values: `Summarization`, `Classification`, `QuestionAndAnswer`, `Generation`, `Custom`.
   const EvaluationJobEvaluationConfigAutomatedDatasetMetricConfig({
     required this.dataset,
     required this.metricNames,

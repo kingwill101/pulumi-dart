@@ -2340,7 +2340,7 @@ pulumi.Output<GetRouteTablePropagationsResult> getRouteTablePropagationsOutput(
   ).apply(GetRouteTablePropagationsResult.fromMap);
 }
 
-/// Provides informations for routes of a specific transit gateway, such as state, type, cidr
+/// Provides informations for routes of a specific transit gateway, such as state, type, CIDR
 ///
 /// ## Example Usage
 ///

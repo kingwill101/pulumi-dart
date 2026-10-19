@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'catalog_table_optimizer_configuration_retention_configuration_iceberg_configuration.dart';
 
 class CatalogTableOptimizerConfigurationRetentionConfiguration {
-  /// The configuration for an Iceberg snapshot retention optimizer.
+  /// Configuration for an Iceberg snapshot retention optimizer. See `configuration.retention_configuration.iceberg_configuration` Block for additional details.
   final pulumi.Input<CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration?>? icebergConfiguration;
 
   /// Creates a new [CatalogTableOptimizerConfigurationRetentionConfiguration].
-  /// [icebergConfiguration] The configuration for an Iceberg snapshot retention optimizer.
+  /// [icebergConfiguration] Configuration for an Iceberg snapshot retention optimizer. See `configuration.retention_configuration.iceberg_configuration` Block for additional details.
   const CatalogTableOptimizerConfigurationRetentionConfiguration({
     this.icebergConfiguration,
   });

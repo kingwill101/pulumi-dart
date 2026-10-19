@@ -15,15 +15,15 @@ import 'catalog_timeouts.dart';
 class CatalogArgs {
   /// Whether third-party engines can access data in Amazon S3 locations that are registered with Lake Formation. Valid values are `True` and `False`.
   final pulumi.Input<String?>? allowFullTableExternalDataAccess;
-  /// Configuration block of properties for the catalog. See `catalogProperties` below.
+  /// Configuration block of properties for the catalog. See `catalogProperties` Block below.
   final pulumi.Input<CatalogCatalogProperties?>? catalogProperties;
-  /// List of default permissions on databases for principals. See `createDatabaseDefaultPermissions` below.
+  /// List of default permissions on databases for principals. See `createDatabaseDefaultPermissions` Block below.
   final pulumi.Input<List<CatalogCreateDatabaseDefaultPermission>?>? createDatabaseDefaultPermissions;
-  /// List of default permissions on tables for principals. See `createTableDefaultPermissions` below.
+  /// List of default permissions on tables for principals. See `createTableDefaultPermissions` Block below.
   final pulumi.Input<List<CatalogCreateTableDefaultPermission>?>? createTableDefaultPermissions;
   /// Description of the catalog.
   final pulumi.Input<String?>? description;
-  /// Configuration block for a federated catalog. See `federatedCatalog` below.
+  /// Configuration block for a federated catalog. See `federatedCatalog` Block below.
   final pulumi.Input<CatalogFederatedCatalog?>? federatedCatalog;
   /// Name of the catalog.
   final pulumi.Input<String?>? name;
@@ -35,23 +35,23 @@ class CatalogArgs {
   final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// Configuration block for a target Redshift catalog. See `targetRedshiftCatalog` below.
+  /// Configuration block for a target Redshift catalog. See `targetRedshiftCatalog` Block below.
   final pulumi.Input<CatalogTargetRedshiftCatalog?>? targetRedshiftCatalog;
   final pulumi.Input<CatalogTimeouts?>? timeouts;
 
   /// Creates a new [CatalogArgs].
   /// [allowFullTableExternalDataAccess] Whether third-party engines can access data in Amazon S3 locations that are registered with Lake Formation. Valid values are `True` and `False`.
-  /// [catalogProperties] Configuration block of properties for the catalog. See `catalogProperties` below.
-  /// [createDatabaseDefaultPermissions] List of default permissions on databases for principals. See `createDatabaseDefaultPermissions` below.
-  /// [createTableDefaultPermissions] List of default permissions on tables for principals. See `createTableDefaultPermissions` below.
+  /// [catalogProperties] Configuration block of properties for the catalog. See `catalogProperties` Block below.
+  /// [createDatabaseDefaultPermissions] List of default permissions on databases for principals. See `createDatabaseDefaultPermissions` Block below.
+  /// [createTableDefaultPermissions] List of default permissions on tables for principals. See `createTableDefaultPermissions` Block below.
   /// [description] Description of the catalog.
-  /// [federatedCatalog] Configuration block for a federated catalog. See `federatedCatalog` below.
+  /// [federatedCatalog] Configuration block for a federated catalog. See `federatedCatalog` Block below.
   /// [name] Name of the catalog.
   /// [overwriteChildResourcePermissionsWithDefault] Whether to overwrite existing Lake Formation permissions on child resources with the default permissions. Valid values are `Accept` and `Deny`.
   /// [parameters] Map of key-value pairs that define parameters and properties of the catalog.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [targetRedshiftCatalog] Configuration block for a target Redshift catalog. See `targetRedshiftCatalog` below.
+  /// [targetRedshiftCatalog] Configuration block for a target Redshift catalog. See `targetRedshiftCatalog` Block below.
   /// [timeouts] Optional.
   const CatalogArgs({
     this.allowFullTableExternalDataAccess,

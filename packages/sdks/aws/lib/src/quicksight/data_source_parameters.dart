@@ -32,7 +32,7 @@ class DataSourceParameters {
   final pulumi.Input<DataSourceParametersAurora?>? aurora;
   /// Parameters for connecting to Aurora Postgresql.
   final pulumi.Input<DataSourceParametersAuroraPostgresql?>? auroraPostgresql;
-  /// Parameters for connecting to AWS IOT Analytics.
+  /// Parameters for connecting to AWS IoT Analytics.
   final pulumi.Input<DataSourceParametersAwsIotAnalytics?>? awsIotAnalytics;
   /// Parameters for connecting to Databricks.
   final pulumi.Input<DataSourceParametersDatabricks?>? databricks;
@@ -72,7 +72,7 @@ class DataSourceParameters {
   /// [athena] Parameters for connecting to Athena.
   /// [aurora] Parameters for connecting to Aurora MySQL.
   /// [auroraPostgresql] Parameters for connecting to Aurora Postgresql.
-  /// [awsIotAnalytics] Parameters for connecting to AWS IOT Analytics.
+  /// [awsIotAnalytics] Parameters for connecting to AWS IoT Analytics.
   /// [databricks] Parameters for connecting to Databricks.
   /// [jira] Parameters for connecting to Jira.
   /// [mariaDb] Parameters for connecting to MariaDB.

@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcIpamPoolCidrCidrAuthorizationContext {
-  /// The plain-text authorization message for the prefix and account.
+  /// Plain-text authorization message for the prefix and account.
   final pulumi.Input<String?>? message;
-  /// The signed authorization message for the prefix and account.
+  /// Signed authorization message for the prefix and account.
   final pulumi.Input<String?>? signature;
 
   /// Creates a new [VpcIpamPoolCidrCidrAuthorizationContext].
-  /// [message] The plain-text authorization message for the prefix and account.
-  /// [signature] The signed authorization message for the prefix and account.
+  /// [message] Plain-text authorization message for the prefix and account.
+  /// [signature] Signed authorization message for the prefix and account.
   const VpcIpamPoolCidrCidrAuthorizationContext({
     this.message,
     this.signature,

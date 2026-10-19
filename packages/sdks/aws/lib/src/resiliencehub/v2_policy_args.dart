@@ -29,6 +29,8 @@ class V2PolicyArgs {
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
+  /// Whether the policy is shared with other member accounts of the organization. Only applicable if the policy owner is a management account or delegated administrator. Defaults to `false`.
+  final pulumi.Input<bool?>? sharingEnabled;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
 
@@ -41,6 +43,7 @@ class V2PolicyArgs {
   /// [multiRegion] Multi-region disaster recovery configuration. See `multiRegion` Block below.
   /// [name] Name of the policy. Changing this value requires creating a new resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [sharingEnabled] Whether the policy is shared with other member accounts of the organization. Only applicable if the policy owner is a management account or delegated administrator. Defaults to `false`.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const V2PolicyArgs({
     this.availabilitySlo,
@@ -51,6 +54,7 @@ class V2PolicyArgs {
     this.multiRegion,
     this.name,
     this.region,
+    this.sharingEnabled,
     this.tags,
   });
 
@@ -64,6 +68,7 @@ class V2PolicyArgs {
       'multiRegion': ?pulumi.Input.mapOptionalInputValue<V2PolicyMultiRegion, Map<String, dynamic>>(multiRegion, (value) => value.toMap()),
       'name': ?name,
       'region': ?region,
+      'sharingEnabled': ?sharingEnabled,
       'tags': ?tags,
     };
   }
@@ -78,6 +83,7 @@ class V2PolicyArgs {
       multiRegion: (() { final guardedValue = map['multiRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(V2PolicyMultiRegion.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sharingEnabled: (() { final guardedValue = map['sharingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

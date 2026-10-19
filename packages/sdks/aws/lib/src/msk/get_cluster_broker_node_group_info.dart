@@ -5,20 +5,26 @@ import 'get_cluster_broker_node_group_info_connectivity_info.dart';
 import 'get_cluster_broker_node_group_info_storage_info.dart';
 
 class GetClusterBrokerNodeGroupInfo {
+  /// Distribution of broker nodes across Availability Zones.
   final pulumi.Input<String> azDistribution;
+  /// List of subnets to connect to in the client VPC.
   final pulumi.Input<List<String>> clientSubnets;
+  /// Information about the cluster access configuration. See `connectivityInfo` Block for details.
   final pulumi.Input<List<GetClusterBrokerNodeGroupInfoConnectivityInfo>> connectivityInfos;
+  /// Instance type used for the broker nodes.
   final pulumi.Input<String> instanceType;
+  /// List of security groups to associate with the elastic network interfaces to control who can communicate with the cluster.
   final pulumi.Input<List<String>> securityGroups;
+  /// Storage information for the broker nodes. See `storageInfo` Block for details.
   final pulumi.Input<List<GetClusterBrokerNodeGroupInfoStorageInfo>> storageInfos;
 
   /// Creates a new [GetClusterBrokerNodeGroupInfo].
-  /// [azDistribution] Required.
-  /// [clientSubnets] Required.
-  /// [connectivityInfos] Required.
-  /// [instanceType] Required.
-  /// [securityGroups] Required.
-  /// [storageInfos] Required.
+  /// [azDistribution] Distribution of broker nodes across Availability Zones.
+  /// [clientSubnets] List of subnets to connect to in the client VPC.
+  /// [connectivityInfos] Information about the cluster access configuration. See `connectivityInfo` Block for details.
+  /// [instanceType] Instance type used for the broker nodes.
+  /// [securityGroups] List of security groups to associate with the elastic network interfaces to control who can communicate with the cluster.
+  /// [storageInfos] Storage information for the broker nodes. See `storageInfo` Block for details.
   const GetClusterBrokerNodeGroupInfo({
     required this.azDistribution,
     required this.clientSubnets,

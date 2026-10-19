@@ -136,7 +136,7 @@ import 'user_state.dart';
 /// $ pulumi import aws:appstream/user:User example UserName/AuthenticationType
 /// ```
 class User extends pulumi.CustomResource {
-  /// ARN of the appstream user.
+  /// ARN of the AppStream user.
   late final pulumi.Output<String> arn;
   /// Authentication type for the user. You must specify USERPOOL. Valid values: `API`, `SAML`, `USERPOOL`
   late final pulumi.Output<String> authenticationType;
@@ -169,7 +169,7 @@ class User extends pulumi.CustomResource {
           'aws:appstream/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     authenticationType = registerOutput<String>('authenticationType');

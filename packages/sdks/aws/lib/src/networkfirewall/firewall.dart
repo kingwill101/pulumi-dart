@@ -447,7 +447,7 @@ class Firewall extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// A setting indicating whether the firewall is protected against changes to its Availability Zone configuration. When set to `true`, you must first disable this protection before adding or removing Availability Zones.
   late final pulumi.Output<bool?> availabilityZoneChangeProtection;
-  /// Required when creating a transit gateway-attached firewall. Set of configuration blocks describing the avaiability availability where you want to create firewall endpoints for a transit gateway-attached firewall.
+  /// Required when creating a transit gateway-attached firewall. Set of configuration blocks describing the availability availability where you want to create firewall endpoints for a transit gateway-attached firewall.
   late final pulumi.Output<List<FirewallAvailabilityZoneMapping>> availabilityZoneMappings;
   /// A flag indicating whether the firewall is protected against deletion. Use this setting to protect against accidentally deleting a firewall that is in use. Defaults to `false`.
   late final pulumi.Output<bool?> deleteProtection;
@@ -496,7 +496,7 @@ class Firewall extends pulumi.CustomResource {
           'aws:networkfirewall/firewall:Firewall',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZoneChangeProtection = registerOutput<bool?>('availabilityZoneChangeProtection');

@@ -8,7 +8,7 @@ class GetCoipPoolsResult {
   final List<GetCoipPoolsFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// Set of COIP Pool Identifiers
+  /// Set of CoIP Pool Identifiers
   final List<String>? poolIds;
   final String? region;
   final Map<String, String>? tags;
@@ -16,7 +16,7 @@ class GetCoipPoolsResult {
   /// Creates a new [GetCoipPoolsResult].
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [poolIds] Set of COIP Pool Identifiers
+  /// [poolIds] Set of CoIP Pool Identifiers
   /// [region] Optional.
   /// [tags] Optional.
   const GetCoipPoolsResult({

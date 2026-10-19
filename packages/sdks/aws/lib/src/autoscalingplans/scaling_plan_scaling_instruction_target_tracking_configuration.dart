@@ -59,10 +59,10 @@ class ScalingPlanScalingInstructionTargetTrackingConfiguration {
     return ScalingPlanScalingInstructionTargetTrackingConfiguration(
       customizedScalingMetricSpecification: (() { final guardedValue = map['customizedScalingMetricSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       disableScaleIn: (() { final guardedValue = map['disableScaleIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      estimatedInstanceWarmup: (() { final guardedValue = map['estimatedInstanceWarmup']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      estimatedInstanceWarmup: (() { final guardedValue = map['estimatedInstanceWarmup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       predefinedScalingMetricSpecification: (() { final guardedValue = map['predefinedScalingMetricSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      scaleInCooldown: (() { final guardedValue = map['scaleInCooldown']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      scaleOutCooldown: (() { final guardedValue = map['scaleOutCooldown']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      scaleInCooldown: (() { final guardedValue = map['scaleInCooldown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      scaleOutCooldown: (() { final guardedValue = map['scaleOutCooldown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetValue: pulumi.Input.fromValue((map['targetValue'] as num).toDouble()),
     );
   }

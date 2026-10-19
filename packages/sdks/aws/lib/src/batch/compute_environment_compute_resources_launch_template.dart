@@ -7,13 +7,13 @@ class ComputeEnvironmentComputeResourcesLaunchTemplate {
   final pulumi.Input<String?>? launchTemplateId;
   /// Name of the launch template.
   final pulumi.Input<String?>? launchTemplateName;
-  /// The version number of the launch template. Default: The default version of the launch template.
+  /// Version number of the launch template. Default: The default version of the launch template.
   final pulumi.Input<String?>? version;
 
   /// Creates a new [ComputeEnvironmentComputeResourcesLaunchTemplate].
   /// [launchTemplateId] ID of the launch template. You must specify either the launch template ID or launch template name in the request, but not both.
   /// [launchTemplateName] Name of the launch template.
-  /// [version] The version number of the launch template. Default: The default version of the launch template.
+  /// [version] Version number of the launch template. Default: The default version of the launch template.
   const ComputeEnvironmentComputeResourcesLaunchTemplate({
     this.launchTemplateId,
     this.launchTemplateName,

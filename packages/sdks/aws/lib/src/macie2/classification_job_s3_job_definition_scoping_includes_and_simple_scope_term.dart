@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTerm {
-  /// The operator to use in a condition. Valid values are: `EQ`, `GT`, `GTE`, `LT`, `LTE`, `NE`, `CONTAINS`, `STARTS_WITH`
+  /// Operator to use in a condition. Valid values are `EQ`, `GT`, `GTE`, `LT`, `LTE`, `NE`, `CONTAINS`, `STARTS_WITH`.
   final pulumi.Input<String?>? comparator;
-  /// The object property to use in the condition.
+  /// Object property to use in the condition.
   final pulumi.Input<String?>? key;
-  /// An array that lists the values to use in the condition.
+  /// Array that lists the values to use in the condition.
   final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTerm].
-  /// [comparator] The operator to use in a condition. Valid values are: `EQ`, `GT`, `GTE`, `LT`, `LTE`, `NE`, `CONTAINS`, `STARTS_WITH`
-  /// [key] The object property to use in the condition.
-  /// [values] An array that lists the values to use in the condition.
+  /// [comparator] Operator to use in a condition. Valid values are `EQ`, `GT`, `GTE`, `LT`, `LTE`, `NE`, `CONTAINS`, `STARTS_WITH`.
+  /// [key] Object property to use in the condition.
+  /// [values] Array that lists the values to use in the condition.
   const ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTerm({
     this.comparator,
     this.key,

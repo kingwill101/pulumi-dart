@@ -146,7 +146,7 @@ class GroupAssociation extends pulumi.CustomResource {
           'aws:synthetics/groupAssociation:GroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     canaryArn = registerOutput<String>('canaryArn');
     groupArn = registerOutput<String>('groupArn');

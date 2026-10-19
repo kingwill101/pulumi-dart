@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsAudioDescriptionAudioNormalizationSettings {
-  /// Audio normalization algorithm to use. itu17701 conforms to the CALM Act specification, itu17702 to the EBU R-128 specification.
+  /// Audio normalization algorithm to use. `itu17701` conforms to the CALM Act specification; `itu17702` conforms to the EBU R-128 specification.
   final pulumi.Input<String?>? algorithm;
   /// Algorithm control for the audio description.
   final pulumi.Input<String?>? algorithmControl;
@@ -11,7 +11,7 @@ class ChannelEncoderSettingsAudioDescriptionAudioNormalizationSettings {
   final pulumi.Input<double?>? targetLkfs;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionAudioNormalizationSettings].
-  /// [algorithm] Audio normalization algorithm to use. itu17701 conforms to the CALM Act specification, itu17702 to the EBU R-128 specification.
+  /// [algorithm] Audio normalization algorithm to use. `itu17701` conforms to the CALM Act specification; `itu17702` conforms to the EBU R-128 specification.
   /// [algorithmControl] Algorithm control for the audio description.
   /// [targetLkfs] Target LKFS (loudness) to adjust volume to.
   const ChannelEncoderSettingsAudioDescriptionAudioNormalizationSettings({

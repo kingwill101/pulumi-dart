@@ -12,52 +12,54 @@ class GetInputResult {
   final String? arn;
   /// Channels attached to Input.
   final List<String>? attachedChannels;
+  /// Destination settings for PUSH type inputs. See `destinations` Block for more details.
   final List<GetInputDestination>? destinations;
+  /// ID of the device.
   final String? id;
-  /// The input class.
+  /// Input class.
   final String? inputClass;
-  /// Settings for the devices.
+  /// Settings for the devices. See `inputDevices` Block for more details.
   final List<GetInputInputDevice>? inputDevices;
-  /// A list of IDs for all Inputs which are partners of this one.
+  /// IDs for all Inputs which are partners of this one.
   final List<String>? inputPartnerIds;
   /// Source type of the input.
   final String? inputSourceType;
-  /// A list of the MediaConnect Flows.
+  /// MediaConnect Flows. See `mediaConnectFlows` Block for more details.
   final List<GetInputMediaConnectFlow>? mediaConnectFlows;
   /// Name of the input.
   final String? name;
   final String? region;
-  /// The ARN of the role this input assumes during and after creation.
+  /// ARN of the role this input assumes during and after creation.
   final String? roleArn;
   /// List of input security groups.
   final List<String>? securityGroups;
-  /// The source URLs for a PULL-type input.
+  /// Source URLs for a PULL-type input. See `sources` Block for more details.
   final List<GetInputSource>? sources;
-  /// The state of the input.
+  /// State of the input.
   final String? state;
-  /// A map of tags assigned to the Input.
+  /// Map of tags assigned to the Input.
   final Map<String, String>? tags;
-  /// The type of the input.
+  /// Type of the input.
   final String? type;
 
   /// Creates a new [GetInputResult].
   /// [arn] ARN of the Input.
   /// [attachedChannels] Channels attached to Input.
-  /// [destinations] Optional.
-  /// [id] Optional.
-  /// [inputClass] The input class.
-  /// [inputDevices] Settings for the devices.
-  /// [inputPartnerIds] A list of IDs for all Inputs which are partners of this one.
+  /// [destinations] Destination settings for PUSH type inputs. See `destinations` Block for more details.
+  /// [id] ID of the device.
+  /// [inputClass] Input class.
+  /// [inputDevices] Settings for the devices. See `inputDevices` Block for more details.
+  /// [inputPartnerIds] IDs for all Inputs which are partners of this one.
   /// [inputSourceType] Source type of the input.
-  /// [mediaConnectFlows] A list of the MediaConnect Flows.
+  /// [mediaConnectFlows] MediaConnect Flows. See `mediaConnectFlows` Block for more details.
   /// [name] Name of the input.
   /// [region] Optional.
-  /// [roleArn] The ARN of the role this input assumes during and after creation.
+  /// [roleArn] ARN of the role this input assumes during and after creation.
   /// [securityGroups] List of input security groups.
-  /// [sources] The source URLs for a PULL-type input.
-  /// [state] The state of the input.
-  /// [tags] A map of tags assigned to the Input.
-  /// [type] The type of the input.
+  /// [sources] Source URLs for a PULL-type input. See `sources` Block for more details.
+  /// [state] State of the input.
+  /// [tags] Map of tags assigned to the Input.
+  /// [type] Type of the input.
   const GetInputResult({
     this.arn,
     this.attachedChannels,

@@ -16,7 +16,7 @@ class GetVoicesArgs {
   final pulumi.Input<String?>? languageCode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// List of voices with their properties. See `voices` Attribute Reference below.
+  /// List of voices with their properties. See `voices` Block below.
   final pulumi.Input<List<GetVoicesVoice>?>? voices;
 
   /// Creates a new [GetVoicesArgs].
@@ -24,7 +24,7 @@ class GetVoicesArgs {
   /// [includeAdditionalLanguageCodes] Whether to return any bilingual voices that use the specified language as an additional language.
   /// [languageCode] Language identification tag for filtering the list of voices returned. If not specified, all available voices are returned.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [voices] List of voices with their properties. See `voices` Attribute Reference below.
+  /// [voices] List of voices with their properties. See `voices` Block below.
   const GetVoicesArgs({
     this.engine,
     this.includeAdditionalLanguageCodes,

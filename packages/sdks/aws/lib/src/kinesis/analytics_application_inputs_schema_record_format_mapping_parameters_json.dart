@@ -3,11 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson {
-  /// Path to the top-level parent that contains the records.
   final pulumi.Input<String> recordRowPath;
 
   /// Creates a new [AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson].
-  /// [recordRowPath] Path to the top-level parent that contains the records.
+  /// [recordRowPath] Required.
   const AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson({
     required this.recordRowPath,
   });

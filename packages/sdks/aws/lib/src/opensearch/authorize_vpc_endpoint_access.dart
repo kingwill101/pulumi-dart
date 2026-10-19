@@ -3,7 +3,7 @@ import 'authorize_vpc_endpoint_access_args.dart';
 import 'authorize_vpc_endpoint_access_authorized_principal.dart';
 import 'authorize_vpc_endpoint_access_state.dart';
 
-/// Resource for managing an AWS OpenSearch Authorize Vpc Endpoint Access.
+/// Resource for managing an AWS OpenSearch Authorize VPC Endpoint Access.
 ///
 /// ## Example Usage
 ///
@@ -141,7 +141,7 @@ import 'authorize_vpc_endpoint_access_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import OpenSearch Authorize Vpc Endpoint Access using the `domainName` and `account` separated by a comma (,). For example:
+/// Using `pulumi import`, import OpenSearch Authorize VPC Endpoint Access using the `domainName` and `account` separated by a comma (,). For example:
 ///
 /// ```sh
 /// $ pulumi import aws:opensearch/authorizeVpcEndpointAccess:AuthorizeVpcEndpointAccess example authorize_vpc_endpoint_access-id-12345678,123456789012
@@ -168,7 +168,7 @@ class AuthorizeVpcEndpointAccess extends pulumi.CustomResource {
           'aws:opensearch/authorizeVpcEndpointAccess:AuthorizeVpcEndpointAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     account = registerOutput<String>('account');
     authorizedPrincipals = registerOutput<List<AuthorizeVpcEndpointAccessAuthorizedPrincipal>>('authorizedPrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthorizeVpcEndpointAccessAuthorizedPrincipal>(guardedValue, (value) => AuthorizeVpcEndpointAccessAuthorizedPrincipal.fromMap((value as Map).cast<String, dynamic>())); });

@@ -105,7 +105,7 @@ import 'account_state.dart';
 /// $ pulumi import aws:securityhub/account:Account example 123456789012
 /// ```
 class Account extends pulumi.CustomResource {
-  /// ARN of the SecurityHub Hub created in the account.
+  /// ARN of the Security Hub Hub created in the account.
   late final pulumi.Output<String> arn;
   /// Whether to automatically enable new controls when they are added to standards that are enabled. By default, this is set to true, and new controls are enabled automatically. To not automatically enable new controls, set this to false.
   late final pulumi.Output<bool?> autoEnableControls;
@@ -128,7 +128,7 @@ class Account extends pulumi.CustomResource {
           'aws:securityhub/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoEnableControls = registerOutput<bool?>('autoEnableControls');

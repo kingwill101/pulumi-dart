@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'theme_configuration_sheet_tile_border.dart';
 
 class ThemeConfigurationSheetTile {
-  /// The border around a tile. See border.
+  /// Border around a tile. See border.
   final pulumi.Input<ThemeConfigurationSheetTileBorder?>? border;
 
   /// Creates a new [ThemeConfigurationSheetTile].
-  /// [border] The border around a tile. See border.
+  /// [border] Border around a tile. See border.
   const ThemeConfigurationSheetTile({
     this.border,
   });

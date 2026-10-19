@@ -507,7 +507,7 @@ class CapacityTask extends pulumi.CustomResource {
           'aws:outposts/capacityTask:CapacityTask',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     assetId = registerOutput<String>('assetId');
     capacityTaskId = registerOutput<String>('capacityTaskId');

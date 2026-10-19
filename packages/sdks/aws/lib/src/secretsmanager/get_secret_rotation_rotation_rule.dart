@@ -30,7 +30,7 @@ class GetSecretRotationRotationRule {
 
   factory GetSecretRotationRotationRule.fromMap(Map<String, dynamic> map) {
     return GetSecretRotationRotationRule(
-      automaticallyAfterDays: pulumi.Input.fromValue((map['automaticallyAfterDays'] as num).toInt()),
+      automaticallyAfterDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['automaticallyAfterDays'])),
       duration: pulumi.Input.fromValue(map['duration'] as String),
       scheduleExpression: pulumi.Input.fromValue(map['scheduleExpression'] as String),
     );

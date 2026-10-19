@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_image_pipeline_image_scanning_configuration_ecr_configuration.dart';
 
 class GetImagePipelineImageScanningConfiguration {
-  /// List if an object with ecr configuration for image scanning
+  /// List if an object with ECR configuration for image scanning
   final pulumi.Input<List<GetImagePipelineImageScanningConfigurationEcrConfiguration>> ecrConfigurations;
   /// Whether image scanning is enabled.
   final pulumi.Input<bool> imageScanningEnabled;
 
   /// Creates a new [GetImagePipelineImageScanningConfiguration].
-  /// [ecrConfigurations] List if an object with ecr configuration for image scanning
+  /// [ecrConfigurations] List if an object with ECR configuration for image scanning
   /// [imageScanningEnabled] Whether image scanning is enabled.
   const GetImagePipelineImageScanningConfiguration({
     required this.ecrConfigurations,

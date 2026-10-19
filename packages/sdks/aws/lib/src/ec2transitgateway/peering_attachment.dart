@@ -256,8 +256,8 @@ import 'peering_attachment_state.dart';
 class PeeringAttachment extends pulumi.CustomResource {
   /// ARN of the attachment.
   late final pulumi.Output<String> arn;
-  /// Describes whether dynamic routing is enabled or disabled for the transit gateway peering request. See options below for more details!
-  late final pulumi.Output<PeeringAttachmentOptions?> options;
+  /// Block describing whether dynamic routing is enabled or disabled for the transit gateway peering request. If not configured, the value is populated from the API. See options below for more details!
+  late final pulumi.Output<PeeringAttachmentOptions> options;
   /// Account ID of EC2 Transit Gateway to peer with. Defaults to the account ID the AWS provider is currently connected to.
   late final pulumi.Output<String> peerAccountId;
   /// Region of EC2 Transit Gateway to peer with.
@@ -286,10 +286,10 @@ class PeeringAttachment extends pulumi.CustomResource {
           'aws:ec2transitgateway/peeringAttachment:PeeringAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
-    this.options = registerOutput<PeeringAttachmentOptions?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringAttachmentOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.options = registerOutput<PeeringAttachmentOptions>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringAttachmentOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     peerAccountId = registerOutput<String>('peerAccountId');
     peerRegion = registerOutput<String>('peerRegion');
     peerTransitGatewayId = registerOutput<String>('peerTransitGatewayId');
@@ -325,7 +325,7 @@ class PeeringAttachment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     arn = registerOutput<String>('arn');
-    this.options = registerOutput<PeeringAttachmentOptions?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringAttachmentOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.options = registerOutput<PeeringAttachmentOptions>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringAttachmentOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     peerAccountId = registerOutput<String>('peerAccountId');
     peerRegion = registerOutput<String>('peerRegion');
     peerTransitGatewayId = registerOutput<String>('peerTransitGatewayId');
@@ -346,7 +346,7 @@ class PeeringAttachment extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     arn = registerOutput<String>('arn');
-    this.options = registerOutput<PeeringAttachmentOptions?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringAttachmentOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.options = registerOutput<PeeringAttachmentOptions>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringAttachmentOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     peerAccountId = registerOutput<String>('peerAccountId');
     peerRegion = registerOutput<String>('peerRegion');
     peerTransitGatewayId = registerOutput<String>('peerTransitGatewayId');

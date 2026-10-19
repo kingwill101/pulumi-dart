@@ -13,7 +13,7 @@ class GetQuicksightUserArgs {
   final pulumi.Input<String?>? namespace;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The name of the user that you want to match.
+  /// Name of the user that you want to match.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> userName;
@@ -22,7 +22,7 @@ class GetQuicksightUserArgs {
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   /// [namespace] QuickSight namespace. Defaults to `default`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [userName] The name of the user that you want to match.
+  /// [userName] Name of the user that you want to match.
   const GetQuicksightUserArgs({
     this.awsAccountId,
     this.namespace,

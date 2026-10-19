@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInput {
-  /// The ARN of the delivery stream.
+  /// ARN of the delivery stream.
   final pulumi.Input<String> resourceArn;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInput].
-  /// [resourceArn] The ARN of the delivery stream.
+  /// [resourceArn] ARN of the delivery stream.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInput({
     required this.resourceArn,
   });

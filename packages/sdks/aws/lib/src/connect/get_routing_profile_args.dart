@@ -13,7 +13,7 @@ class GetRoutingProfileArgs {
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Returns information on a specific Routing Profile by Routing Profile id
+  /// Returns information on a specific Routing Profile by Routing Profile ID
   ///
   /// &gt; **NOTE:** `instanceId` and one of either `name` or `routingProfileId` is required.
   final pulumi.Input<String?>? routingProfileId;
@@ -24,7 +24,7 @@ class GetRoutingProfileArgs {
   /// [instanceId] Reference to the hosting Amazon Connect Instance
   /// [name] Returns information on a specific Routing Profile by name
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [routingProfileId] Returns information on a specific Routing Profile by Routing Profile id
+  /// [routingProfileId] Returns information on a specific Routing Profile by Routing Profile ID
   /// [tags] Map of tags to assign to the Routing Profile.
   const GetRoutingProfileArgs({
     required this.instanceId,

@@ -18,7 +18,7 @@ class ScriptArgs {
   final pulumi.Input<Map<String, String>?>? tags;
   /// Version that is associated with this script.
   final pulumi.Input<String?>? version;
-  /// A data object containing your Realtime scripts and dependencies as a zip  file. The zip file can have one or multiple files. Maximum size of a zip file is 5 MB.
+  /// Data object containing your Realtime scripts and dependencies as a zip  file. The zip file can have one or multiple files. Maximum size of a zip file is 5 MB.
   final pulumi.Input<String?>? zipFile;
 
   /// Creates a new [ScriptArgs].
@@ -27,7 +27,7 @@ class ScriptArgs {
   /// [storageLocation] Information indicating where your game script files are stored. See below.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [version] Version that is associated with this script.
-  /// [zipFile] A data object containing your Realtime scripts and dependencies as a zip  file. The zip file can have one or multiple files. Maximum size of a zip file is 5 MB.
+  /// [zipFile] Data object containing your Realtime scripts and dependencies as a zip  file. The zip file can have one or multiple files. Maximum size of a zip file is 5 MB.
   const ScriptArgs({
     this.name,
     this.region,

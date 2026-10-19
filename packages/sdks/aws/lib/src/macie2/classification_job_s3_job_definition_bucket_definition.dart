@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClassificationJobS3JobDefinitionBucketDefinition {
-  /// The unique identifier for the AWS account that owns the buckets.
+  /// Unique identifier for the AWS account that owns the buckets.
   final pulumi.Input<String> accountId;
-  /// An array that lists the names of the buckets.
+  /// Array that lists the names of the buckets.
   final pulumi.Input<List<String>> buckets;
 
   /// Creates a new [ClassificationJobS3JobDefinitionBucketDefinition].
-  /// [accountId] The unique identifier for the AWS account that owns the buckets.
-  /// [buckets] An array that lists the names of the buckets.
+  /// [accountId] Unique identifier for the AWS account that owns the buckets.
+  /// [buckets] Array that lists the names of the buckets.
   const ClassificationJobS3JobDefinitionBucketDefinition({
     required this.accountId,
     required this.buckets,

@@ -117,6 +117,13 @@ import 'service_setting_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `arn` (String) ARN of the service setting.
+///
+///
 /// Using `pulumi import`, import AWS SSM Service Setting using the `settingId`. For example:
 ///
 /// ```sh
@@ -146,7 +153,7 @@ class ServiceSetting extends pulumi.CustomResource {
           'aws:ssm/serviceSetting:ServiceSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     region = registerOutput<String>('region');

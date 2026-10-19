@@ -8,7 +8,7 @@ class ResourceState {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String?>? arn;
-  /// Flag to enable AWS LakeFormation hybrid access permission mode.
+  /// Flag to enable AWS Lake Formation hybrid access permission mode.
   final pulumi.Input<bool?>? hybridAccessEnabled;
   /// Date and time the resource was last modified in [RFC 3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   final pulumi.Input<String?>? lastModified;
@@ -27,7 +27,7 @@ class ResourceState {
 
   /// Creates a new [ResourceState].
   /// [arn] ARN of the resource.
-  /// [hybridAccessEnabled] Flag to enable AWS LakeFormation hybrid access permission mode.
+  /// [hybridAccessEnabled] Flag to enable AWS Lake Formation hybrid access permission mode.
   /// [lastModified] Date and time the resource was last modified in [RFC 3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] Role that has read/write access to the resource.

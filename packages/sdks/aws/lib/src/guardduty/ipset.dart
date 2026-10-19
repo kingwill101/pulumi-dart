@@ -291,25 +291,25 @@ import 'ipset_state.dart';
 /// $ pulumi import aws:guardduty/iPSet:IPSet MyIPSet 00b00fd5aecc0ab60a708659477e9617:123456789012
 /// ```
 class IPSet extends pulumi.CustomResource {
-  /// Specifies whether GuardDuty is to start using the uploaded IPSet.
+  /// Whether to start using the uploaded IPSet.
   late final pulumi.Output<bool> activate;
   /// ARN of the GuardDuty IPSet.
   late final pulumi.Output<String> arn;
-  /// The detector ID of the GuardDuty.
+  /// Detector ID of the GuardDuty.
   late final pulumi.Output<String> detectorId;
-  /// The format of the file that contains the IPSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
+  /// Format of the file that contains the IPSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
   late final pulumi.Output<String> format;
   /// ID of the GuardDuty IPSet.
   late final pulumi.Output<String> ipSetId;
-  /// The URI of the file that contains the IPSet.
+  /// URI of the file that contains the IPSet.
   late final pulumi.Output<String> location;
-  /// The friendly name to identify the IPSet.
+  /// Friendly name to identify the IPSet.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [IPSet].
@@ -324,7 +324,7 @@ class IPSet extends pulumi.CustomResource {
           'aws:guardduty/iPSet:IPSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     activate = registerOutput<bool>('activate');
     arn = registerOutput<String>('arn');

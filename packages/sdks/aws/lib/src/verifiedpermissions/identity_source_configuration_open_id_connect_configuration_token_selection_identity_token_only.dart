@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionIdentityTokenOnly {
-  /// The ID token audience, or client ID, claim values that you want to accept in your policy store from an OIDC identity provider.
+  /// ID token audience, or client ID, claim values that you want to accept in your policy store from an OIDC identity provider.
   final pulumi.Input<List<String>?>? clientIds;
-  /// The claim that determines the principal in OIDC identity tokens.
+  /// Claim that determines the principal in OIDC identity tokens.
   final pulumi.Input<String?>? principalIdClaim;
 
   /// Creates a new [IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionIdentityTokenOnly].
-  /// [clientIds] The ID token audience, or client ID, claim values that you want to accept in your policy store from an OIDC identity provider.
-  /// [principalIdClaim] The claim that determines the principal in OIDC identity tokens.
+  /// [clientIds] ID token audience, or client ID, claim values that you want to accept in your policy store from an OIDC identity provider.
+  /// [principalIdClaim] Claim that determines the principal in OIDC identity tokens.
   const IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionIdentityTokenOnly({
     this.clientIds,
     this.principalIdClaim,

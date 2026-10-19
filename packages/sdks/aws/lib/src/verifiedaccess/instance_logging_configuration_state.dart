@@ -5,17 +5,17 @@ import 'instance_logging_configuration_access_logs.dart';
 
 /// Input properties used for looking up and filtering InstanceLoggingConfiguration resources.
 class InstanceLoggingConfigurationState {
-  /// A block that specifies the configuration options for Verified Access instances. Detailed below.
+  /// Block that specifies the configuration options for Verified Access instances. Detailed below.
   final pulumi.Input<InstanceLoggingConfigurationAccessLogs?>? accessLogs;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The ID of the Verified Access instance.
+  /// ID of the Verified Access instance.
   final pulumi.Input<String?>? verifiedaccessInstanceId;
 
   /// Creates a new [InstanceLoggingConfigurationState].
-  /// [accessLogs] A block that specifies the configuration options for Verified Access instances. Detailed below.
+  /// [accessLogs] Block that specifies the configuration options for Verified Access instances. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [verifiedaccessInstanceId] The ID of the Verified Access instance.
+  /// [verifiedaccessInstanceId] ID of the Verified Access instance.
   const InstanceLoggingConfigurationState({
     this.accessLogs,
     this.region,

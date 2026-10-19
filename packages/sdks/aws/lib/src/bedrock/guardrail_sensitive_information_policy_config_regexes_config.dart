@@ -5,30 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GuardrailSensitiveInformationPolicyConfigRegexesConfig {
   /// Options for sensitive information action. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
   final pulumi.Input<String> action;
-  /// The regex description.
+  /// Regex description.
   final pulumi.Input<String?>? description;
   /// Action to take when harmful content is detected in the input. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
   final pulumi.Input<String?>? inputAction;
   /// Whether to enable guardrail evaluation on the input. When disabled, you aren't charged for the evaluation.
   final pulumi.Input<bool?>? inputEnabled;
-  /// The regex name.
+  /// Regex name.
   final pulumi.Input<String> name;
   /// Action to take when harmful content is detected in the output. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
   final pulumi.Input<String?>? outputAction;
   /// Whether to enable guardrail evaluation on the output. When disabled, you aren't charged for the evaluation.
   final pulumi.Input<bool?>? outputEnabled;
-  /// The regex pattern.
+  /// Regex pattern.
   final pulumi.Input<String> pattern;
 
   /// Creates a new [GuardrailSensitiveInformationPolicyConfigRegexesConfig].
   /// [action] Options for sensitive information action. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
-  /// [description] The regex description.
+  /// [description] Regex description.
   /// [inputAction] Action to take when harmful content is detected in the input. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
   /// [inputEnabled] Whether to enable guardrail evaluation on the input. When disabled, you aren't charged for the evaluation.
-  /// [name] The regex name.
+  /// [name] Regex name.
   /// [outputAction] Action to take when harmful content is detected in the output. Valid values: `BLOCK`, `ANONYMIZE`, `NONE`.
   /// [outputEnabled] Whether to enable guardrail evaluation on the output. When disabled, you aren't charged for the evaluation.
-  /// [pattern] The regex pattern.
+  /// [pattern] Regex pattern.
   const GuardrailSensitiveInformationPolicyConfigRegexesConfig({
     required this.action,
     this.description,

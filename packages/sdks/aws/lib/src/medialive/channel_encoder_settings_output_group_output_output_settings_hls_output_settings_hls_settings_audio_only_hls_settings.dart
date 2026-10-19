@@ -4,16 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_output_group_output_output_settings_hls_output_settings_hls_settings_audio_only_hls_settings_audio_only_image.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings {
+  /// Group to which the audio rendition belongs.
   final pulumi.Input<String?>? audioGroupId;
+  /// Image for an audio-only output. See `audioOnlyImage` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettingsAudioOnlyImage?>? audioOnlyImage;
+  /// Four types of audio-only tracks.
   final pulumi.Input<String?>? audioTrackType;
+  /// Whether the stream is an audio-only stream.
   final pulumi.Input<String?>? segmentType;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings].
-  /// [audioGroupId] Optional.
-  /// [audioOnlyImage] Optional.
-  /// [audioTrackType] Optional.
-  /// [segmentType] Optional.
+  /// [audioGroupId] Group to which the audio rendition belongs.
+  /// [audioOnlyImage] Image for an audio-only output. See `audioOnlyImage` Block for details.
+  /// [audioTrackType] Four types of audio-only tracks.
+  /// [segmentType] Whether the stream is an audio-only stream.
   const ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings({
     this.audioGroupId,
     this.audioOnlyImage,

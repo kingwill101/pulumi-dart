@@ -54,7 +54,7 @@ class RateBasedRuleArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       predicates: (() { final guardedValue = map['predicates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RateBasedRulePredicate>(guardedValue, (value) => RateBasedRulePredicate.fromMap((value as Map).cast<String, dynamic>()))); })(),
       rateKey: pulumi.Input.fromValue(map['rateKey'] as String),
-      rateLimit: pulumi.Input.fromValue((map['rateLimit'] as num).toInt()),
+      rateLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rateLimit'])),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

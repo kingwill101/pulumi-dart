@@ -181,7 +181,7 @@ class Environment extends pulumi.CustomResource {
   /// to be deployed
   late final pulumi.Output<String> application;
   late final pulumi.Output<String> arn;
-  /// The autoscaling groups used by this Environment.
+  /// The Auto Scaling groups used by this Environment.
   late final pulumi.Output<List<String>> autoscalingGroups;
   /// Fully qualified DNS name for this Environment.
   late final pulumi.Output<String> cname;
@@ -230,7 +230,7 @@ class Environment extends pulumi.CustomResource {
   /// Elastic Beanstalk Environment tier. Valid values are `Worker`
   /// or `WebServer`. If tier is left blank `WebServer` will be used.
   late final pulumi.Output<String?> tier;
-  /// Autoscaling triggers in use by this Environment.
+  /// Auto Scaling triggers in use by this Environment.
   late final pulumi.Output<List<String>> triggers;
   /// The name of the Elastic Beanstalk Application Version
   /// to use in deployment.
@@ -253,7 +253,7 @@ class Environment extends pulumi.CustomResource {
           'aws:elasticbeanstalk/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     allSettings = registerOutput<List<EnvironmentAllSetting>>('allSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentAllSetting>(guardedValue, (value) => EnvironmentAllSetting.fromMap((value as Map).cast<String, dynamic>())); });
     application = registerOutput<String>('application');

@@ -8,28 +8,40 @@ import 'telemetry_evaluation_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_observabilityadmin_telemetry_evaluation_telemetry_evaluation_args_doc}
 class TelemetryEvaluationArgs {
+  /// Whether to start telemetry evaluation in all AWS Regions where CloudWatch Observability Admin is available. The current region becomes the home region. Mutually exclusive with `regions`.
+  final pulumi.Input<bool?>? allRegions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
+  /// List of AWS Regions to include in multi-region telemetry evaluation. The current region is always implicitly included. Mutually exclusive with `allRegions`.
+  final pulumi.Input<List<String>?>? regions;
   final pulumi.Input<TelemetryEvaluationTimeouts?>? timeouts;
 
   /// Creates a new [TelemetryEvaluationArgs].
+  /// [allRegions] Whether to start telemetry evaluation in all AWS Regions where CloudWatch Observability Admin is available. The current region becomes the home region. Mutually exclusive with `regions`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [regions] List of AWS Regions to include in multi-region telemetry evaluation. The current region is always implicitly included. Mutually exclusive with `allRegions`.
   /// [timeouts] Optional.
   const TelemetryEvaluationArgs({
+    this.allRegions,
     this.region,
+    this.regions,
     this.timeouts,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'allRegions': ?allRegions,
       'region': ?region,
+      'regions': ?regions,
       'timeouts': ?pulumi.Input.mapOptionalInputValue<TelemetryEvaluationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
     };
   }
 
   factory TelemetryEvaluationArgs.fromMap(Map<String, dynamic> map) {
     return TelemetryEvaluationArgs(
+      allRegions: (() { final guardedValue = map['allRegions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       timeouts: (() { final guardedValue = map['timeouts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TelemetryEvaluationTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetKeyXksKeyConfiguration {
-  /// The globally unique identifier for the key
+  /// ID of the external key in the external key manager.
   final pulumi.Input<String> id;
 
   /// Creates a new [GetKeyXksKeyConfiguration].
-  /// [id] The globally unique identifier for the key
+  /// [id] ID of the external key in the external key manager.
   const GetKeyXksKeyConfiguration({
     required this.id,
   });

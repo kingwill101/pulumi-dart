@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_set_row_level_permission_tag_configuration_tag_rule.dart';
 
 class DataSetRowLevelPermissionTagConfiguration {
-  /// The status of row-level security tags. If enabled, the status is `ENABLED`. If disabled, the status is `DISABLED`.
+  /// Status of row-level security tags. If enabled, the status is `ENABLED`. If disabled, the status is `DISABLED`.
   final pulumi.Input<String?>? status;
-  /// A set of rules associated with row-level security, such as the tag names and columns that they are assigned to. See tag_rules.
+  /// Set of rules associated with row-level security, such as the tag names and columns that they are assigned to. See `tagRules` Block below.
   final pulumi.Input<List<DataSetRowLevelPermissionTagConfigurationTagRule>> tagRules;
 
   /// Creates a new [DataSetRowLevelPermissionTagConfiguration].
-  /// [status] The status of row-level security tags. If enabled, the status is `ENABLED`. If disabled, the status is `DISABLED`.
-  /// [tagRules] A set of rules associated with row-level security, such as the tag names and columns that they are assigned to. See tag_rules.
+  /// [status] Status of row-level security tags. If enabled, the status is `ENABLED`. If disabled, the status is `DISABLED`.
+  /// [tagRules] Set of rules associated with row-level security, such as the tag names and columns that they are assigned to. See `tagRules` Block below.
   const DataSetRowLevelPermissionTagConfiguration({
     this.status,
     required this.tagRules,

@@ -145,13 +145,15 @@ class View extends pulumi.CustomResource {
   late final pulumi.Output<String> billingViewType;
   /// Timestamp when the billing view was created.
   late final pulumi.Output<String> createdAt;
-  /// Filter Cost Explorer APIs using the expression. Refer to the data-filter-expression block documentation for more details.
+  /// Filter Cost Explorer APIs using the expression. See `dataFilterExpression` below for details.
   late final pulumi.Output<ViewDataFilterExpression?> dataFilterExpression;
   /// Number of billing views that use this billing view as a source.
   late final pulumi.Output<int> derivedViewCount;
   /// Description of the custom billing view.
   late final pulumi.Output<String?> description;
   /// Name of the custom billing view to be created.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> name;
   /// Account owner of the billing view.
   late final pulumi.Output<String> ownerAccountId;
@@ -160,10 +162,8 @@ class View extends pulumi.CustomResource {
   /// Number of source views associated with this billing view.
   late final pulumi.Output<int> sourceViewCount;
   /// List of ARNs of the source data views for the custom billing view.
-  ///
-  /// The following arguments are optional:
   late final pulumi.Output<List<String>?> sourceViews;
-  /// List of key value map specifying tags associated to the billing view being created.
+  /// Key-value map of tags associated with the billing view being created.
   late final pulumi.Output<Map<String, String>?> tags;
   /// List of key value map specifying tags associated to the billing view.
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -185,7 +185,7 @@ class View extends pulumi.CustomResource {
           'aws:billing/view:View',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     billingViewType = registerOutput<String>('billingViewType');

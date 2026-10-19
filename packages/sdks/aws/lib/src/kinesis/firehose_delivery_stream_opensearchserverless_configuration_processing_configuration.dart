@@ -6,12 +6,12 @@ import 'firehose_delivery_stream_opensearchserverless_configuration_processing_c
 class FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfiguration {
   /// Enables or disables data processing.
   final pulumi.Input<bool?>? enabled;
-  /// Specifies the data processors as multiple blocks. See `processors` block below for details.
+  /// Data processors as multiple blocks. See `processors` block below for details.
   final pulumi.Input<List<FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessor>?>? processors;
 
   /// Creates a new [FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.
-  /// [processors] Specifies the data processors as multiple blocks. See `processors` block below for details.
+  /// [processors] Data processors as multiple blocks. See `processors` block below for details.
   const FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfiguration({
     this.enabled,
     this.processors,

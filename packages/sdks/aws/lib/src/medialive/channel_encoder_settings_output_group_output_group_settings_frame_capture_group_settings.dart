@@ -5,12 +5,14 @@ import 'channel_encoder_settings_output_group_output_group_settings_frame_captur
 import 'channel_encoder_settings_output_group_output_group_settings_frame_capture_group_settings_frame_capture_cdn_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettings {
+  /// Parameters that identify where to write the frame captures. See `destination` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsDestination> destination;
+  /// Parameters that control the interactions with the CDN. See `frameCaptureCdnSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsFrameCaptureCdnSettings?>? frameCaptureCdnSettings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettings].
-  /// [destination] Required.
-  /// [frameCaptureCdnSettings] Optional.
+  /// [destination] Parameters that identify where to write the frame captures. See `destination` Block for details.
+  /// [frameCaptureCdnSettings] Parameters that control the interactions with the CDN. See `frameCaptureCdnSettings` Block for details.
   const ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettings({
     required this.destination,
     this.frameCaptureCdnSettings,

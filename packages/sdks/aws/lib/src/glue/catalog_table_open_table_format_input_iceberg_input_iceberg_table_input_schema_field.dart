@@ -6,7 +6,6 @@ class CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaField {
   /// Documentation or description text that provides additional context about the purpose and usage of this field. Length between 0 and 255 characters.
   final pulumi.Input<String?>? doc;
   /// Catalog ID, database name, and table name, separated by colons (`:`).
-  /// * `partition_index[*].index_status` - Status of the partition index.
   final pulumi.Input<int> id;
   /// Default value as JSON used to populate the field's value for all records that were written before the field was added to the schema.
   final pulumi.Input<String?>? initialDefault;
@@ -53,7 +52,7 @@ class CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaField {
   factory CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaField.fromMap(Map<String, dynamic> map) {
     return CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputSchemaField(
       doc: (() { final guardedValue = map['doc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      id: pulumi.Input.fromValue((map['id'] as num).toInt()),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       initialDefault: (() { final guardedValue = map['initialDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       required: pulumi.Input.fromValue(map['required'] as bool),

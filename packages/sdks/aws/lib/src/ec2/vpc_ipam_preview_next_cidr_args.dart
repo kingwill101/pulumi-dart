@@ -9,17 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcIpamPreviewNextCidrArgs {
   /// Exclude a particular CIDR range from being returned by the pool.
   final pulumi.Input<List<String>?>? disallowedCidrs;
-  /// The ID of the pool to which you want to assign a CIDR.
+  /// ID of the pool to which you want to assign a CIDR.
   final pulumi.Input<String> ipamPoolId;
-  /// The netmask length of the CIDR you would like to preview from the IPAM pool.
+  /// Netmask length of the CIDR you would like to preview from the IPAM pool.
   final pulumi.Input<int?>? netmaskLength;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [VpcIpamPreviewNextCidrArgs].
   /// [disallowedCidrs] Exclude a particular CIDR range from being returned by the pool.
-  /// [ipamPoolId] The ID of the pool to which you want to assign a CIDR.
-  /// [netmaskLength] The netmask length of the CIDR you would like to preview from the IPAM pool.
+  /// [ipamPoolId] ID of the pool to which you want to assign a CIDR.
+  /// [netmaskLength] Netmask length of the CIDR you would like to preview from the IPAM pool.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const VpcIpamPreviewNextCidrArgs({
     this.disallowedCidrs,
@@ -41,7 +41,7 @@ class VpcIpamPreviewNextCidrArgs {
     return VpcIpamPreviewNextCidrArgs(
       disallowedCidrs: (() { final guardedValue = map['disallowedCidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipamPoolId: pulumi.Input.fromValue(map['ipamPoolId'] as String),
-      netmaskLength: (() { final guardedValue = map['netmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      netmaskLength: (() { final guardedValue = map['netmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

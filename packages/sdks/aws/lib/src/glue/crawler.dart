@@ -1087,9 +1087,9 @@ import 'crawler_state.dart';
 /// $ pulumi import aws:glue/crawler:Crawler MyJob MyJob
 /// ```
 class Crawler extends pulumi.CustomResource {
-  /// The ARN of the crawler
+  /// ARN of the crawler
   late final pulumi.Output<String> arn;
-  /// List of nested AWS Glue Data Catalog target arguments. See Catalog Target below.
+  /// List of nested AWS Glue Data Catalog target arguments. See `catalogTarget` below.
   late final pulumi.Output<List<CrawlerCatalogTarget>?> catalogTargets;
   /// List of custom classifiers. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
   late final pulumi.Output<List<String>?> classifiers;
@@ -1097,47 +1097,47 @@ class Crawler extends pulumi.CustomResource {
   late final pulumi.Output<String?> configuration;
   /// Glue database where results are written.
   late final pulumi.Output<String> databaseName;
-  /// List of nested Delta Lake target arguments. See Delta Target below.
+  /// List of nested Delta Lake target arguments. See `deltaTarget` below.
   late final pulumi.Output<List<CrawlerDeltaTarget>?> deltaTargets;
   /// Description of the crawler.
   late final pulumi.Output<String?> description;
-  /// List of nested DynamoDB target arguments. See Dynamodb Target below.
+  /// List of nested DynamoDB target arguments. See `dynamodbTarget` below.
   late final pulumi.Output<List<CrawlerDynamodbTarget>?> dynamodbTargets;
-  /// List of nested Hudi target arguments. See Iceberg Target below.
+  /// List of nested Hudi target arguments. See `hudiTarget` below.
   late final pulumi.Output<List<CrawlerHudiTarget>?> hudiTargets;
-  /// List of nested Iceberg target arguments. See Iceberg Target below.
+  /// List of nested Iceberg target arguments. See `icebergTarget` below.
   late final pulumi.Output<List<CrawlerIcebergTarget>?> icebergTargets;
-  /// List of nested JDBC target arguments. See JDBC Target below.
+  /// List of nested JDBC target arguments. See `jdbcTarget` below.
   late final pulumi.Output<List<CrawlerJdbcTarget>?> jdbcTargets;
-  /// Specifies Lake Formation configuration settings for the crawler. See Lake Formation Configuration below.
+  /// Lake Formation configuration settings for the crawler. See `lakeFormationConfiguration` below.
   late final pulumi.Output<CrawlerLakeFormationConfiguration?> lakeFormationConfiguration;
-  /// Specifies data lineage configuration settings for the crawler. See Lineage Configuration below.
+  /// Data lineage configuration settings for the crawler. See `lineageConfiguration` below.
   late final pulumi.Output<CrawlerLineageConfiguration?> lineageConfiguration;
-  /// List of nested MongoDB target arguments. See MongoDB Target below.
+  /// List of nested MongoDB target arguments. See `mongodbTarget` below.
   late final pulumi.Output<List<CrawlerMongodbTarget>?> mongodbTargets;
   /// Name of the crawler.
   late final pulumi.Output<String> name;
-  /// A policy that specifies whether to crawl the entire dataset again, or to crawl only folders that were added since the last crawler run.. See Recrawl Policy below.
+  /// Policy that specifies whether to crawl the entire dataset again, or to crawl only folders that were added since the last crawler run. See `recrawlPolicy` below.
   late final pulumi.Output<CrawlerRecrawlPolicy?> recrawlPolicy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources.
+  /// IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources.
   late final pulumi.Output<String> role;
-  /// List of nested Amazon S3 target arguments. See S3 Target below.
+  /// List of nested Amazon S3 target arguments. See `s3Target` below.
   late final pulumi.Output<List<CrawlerS3Target>?> s3Targets;
-  /// A cron expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
+  /// Cron expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
   late final pulumi.Output<String?> schedule;
-  /// Policy for the crawler's update and deletion behavior. See Schema Change Policy below.
+  /// Policy for the crawler's update and deletion behavior. See `schemaChangePolicy` below.
   late final pulumi.Output<CrawlerSchemaChangePolicy?> schemaChangePolicy;
-  /// The name of Security Configuration to be used by the crawler
+  /// Name of Security Configuration to be used by the crawler.
   late final pulumi.Output<String?> securityConfiguration;
-  /// The table prefix used for catalog tables that are created.
+  /// Table prefix used for catalog tables that are created.
   late final pulumi.Output<String?> tablePrefix;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// &gt; **NOTE:** Must specify at least one of `dynamodbTarget`, `jdbcTarget`, `s3Target`, `mongodbTarget` or `catalogTarget`.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Crawler].
@@ -1152,7 +1152,7 @@ class Crawler extends pulumi.CustomResource {
           'aws:glue/crawler:Crawler',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     catalogTargets = registerOutput<List<CrawlerCatalogTarget>?>('catalogTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CrawlerCatalogTarget>(guardedValue, (value) => CrawlerCatalogTarget.fromMap((value as Map).cast<String, dynamic>())); });

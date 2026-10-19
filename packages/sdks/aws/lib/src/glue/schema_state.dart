@@ -6,48 +6,48 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchemaState {
   /// ARN of the schema.
   final pulumi.Input<String?>? arn;
-  /// The compatibility mode of the schema. Values values are: `NONE`, `DISABLED`, `BACKWARD`, `BACKWARD_ALL`, `FORWARD`, `FORWARD_ALL`, `FULL`, and `FULL_ALL`.
+  /// Compatibility mode of the schema. Values values are: `NONE`, `DISABLED`, `BACKWARD`, `BACKWARD_ALL`, `FORWARD`, `FORWARD_ALL`, `FULL`, and `FULL_ALL`.
   final pulumi.Input<String?>? compatibility;
-  /// The data format of the schema definition. Valid values are `AVRO`, `JSON` and `PROTOBUF`.
+  /// Data format of the schema definition. Valid values are `AVRO`, `JSON` and `PROTOBUF`.
   final pulumi.Input<String?>? dataFormat;
-  /// A description of the schema.
+  /// Description of the schema.
   final pulumi.Input<String?>? description;
-  /// The latest version of the schema associated with the returned schema definition.
+  /// Latest version of the schema associated with the returned schema definition.
   final pulumi.Input<int?>? latestSchemaVersion;
-  /// The next version of the schema associated with the returned schema definition.
+  /// Next version of the schema associated with the returned schema definition.
   final pulumi.Input<int?>? nextSchemaVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The ARN of the Glue Registry to create the schema in.
+  /// ARN of the Glue Registry to create the schema in.
   final pulumi.Input<String?>? registryArn;
-  /// The name of the Glue Registry.
+  /// Name of the Glue Registry.
   final pulumi.Input<String?>? registryName;
-  /// The version number of the checkpoint (the last time the compatibility mode was changed).
+  /// Version number of the checkpoint (the last time the compatibility mode was changed).
   final pulumi.Input<int?>? schemaCheckpoint;
-  /// The schema definition using the `dataFormat` setting for `schemaName`.
+  /// Schema definition using the `dataFormat` setting for `schemaName`.
   final pulumi.Input<String?>? schemaDefinition;
-  /// The Name of the schema.
+  /// Name of the schema.
   final pulumi.Input<String?>? schemaName;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [SchemaState].
   /// [arn] ARN of the schema.
-  /// [compatibility] The compatibility mode of the schema. Values values are: `NONE`, `DISABLED`, `BACKWARD`, `BACKWARD_ALL`, `FORWARD`, `FORWARD_ALL`, `FULL`, and `FULL_ALL`.
-  /// [dataFormat] The data format of the schema definition. Valid values are `AVRO`, `JSON` and `PROTOBUF`.
-  /// [description] A description of the schema.
-  /// [latestSchemaVersion] The latest version of the schema associated with the returned schema definition.
-  /// [nextSchemaVersion] The next version of the schema associated with the returned schema definition.
+  /// [compatibility] Compatibility mode of the schema. Values values are: `NONE`, `DISABLED`, `BACKWARD`, `BACKWARD_ALL`, `FORWARD`, `FORWARD_ALL`, `FULL`, and `FULL_ALL`.
+  /// [dataFormat] Data format of the schema definition. Valid values are `AVRO`, `JSON` and `PROTOBUF`.
+  /// [description] Description of the schema.
+  /// [latestSchemaVersion] Latest version of the schema associated with the returned schema definition.
+  /// [nextSchemaVersion] Next version of the schema associated with the returned schema definition.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [registryArn] The ARN of the Glue Registry to create the schema in.
-  /// [registryName] The name of the Glue Registry.
-  /// [schemaCheckpoint] The version number of the checkpoint (the last time the compatibility mode was changed).
-  /// [schemaDefinition] The schema definition using the `dataFormat` setting for `schemaName`.
-  /// [schemaName] The Name of the schema.
+  /// [registryArn] ARN of the Glue Registry to create the schema in.
+  /// [registryName] Name of the Glue Registry.
+  /// [schemaCheckpoint] Version number of the checkpoint (the last time the compatibility mode was changed).
+  /// [schemaDefinition] Schema definition using the `dataFormat` setting for `schemaName`.
+  /// [schemaName] Name of the schema.
   /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const SchemaState({
     this.arn,
     this.compatibility,
@@ -90,12 +90,12 @@ class SchemaState {
       compatibility: (() { final guardedValue = map['compatibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataFormat: (() { final guardedValue = map['dataFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      latestSchemaVersion: (() { final guardedValue = map['latestSchemaVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      nextSchemaVersion: (() { final guardedValue = map['nextSchemaVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      latestSchemaVersion: (() { final guardedValue = map['latestSchemaVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      nextSchemaVersion: (() { final guardedValue = map['nextSchemaVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registryArn: (() { final guardedValue = map['registryArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registryName: (() { final guardedValue = map['registryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      schemaCheckpoint: (() { final guardedValue = map['schemaCheckpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      schemaCheckpoint: (() { final guardedValue = map['schemaCheckpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       schemaDefinition: (() { final guardedValue = map['schemaDefinition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schemaName: (() { final guardedValue = map['schemaName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

@@ -17,8 +17,10 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const example = new aws.kinesis.Stream("example", {
+///     streamModeDetails: {
+///         streamMode: "ON_DEMAND",
+///     },
 ///     name: "example",
-///     shardCount: 2,
 /// });
 /// const mediaPipelinesAssumeRole = aws.iam.getPolicyDocument({
 ///     statements: [{
@@ -62,8 +64,10 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example = aws.kinesis.Stream("example",
-///     name="example",
-///     shard_count=2)
+///     stream_mode_details={
+///         "stream_mode": "ON_DEMAND",
+///     },
+///     name="example")
 /// media_pipelines_assume_role = aws.iam.get_policy_document(statements=[{
 ///     "principals": [{
 ///         "type": "Service",
@@ -107,8 +111,11 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// {
 ///     var example = new Aws.Kinesis.Stream("example", new()
 ///     {
+///         StreamModeDetails = new Aws.Kinesis.Inputs.StreamStreamModeDetailsArgs
+///         {
+///             StreamMode = "ON_DEMAND",
+///         },
 ///         Name = "example",
-///         ShardCount = 2,
 ///     });
 ///
 ///     var mediaPipelinesAssumeRole = Aws.Iam.GetPolicyDocument.Invoke(new()
@@ -188,8 +195,10 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		example, err := kinesis.NewStream(ctx, "example", &kinesis.StreamArgs{
-/// 			Name:       pulumi.String("example"),
-/// 			ShardCount: pulumi.Int(2),
+/// 			StreamModeDetails: &kinesis.StreamStreamModeDetailsArgs{
+/// 				StreamMode: pulumi.String("ON_DEMAND"),
+/// 			},
+/// 			Name: pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -292,8 +301,10 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///   }
 /// }
 /// resource "aws_kinesis_stream" "example" {
-///   name        = "example"
-///   shard_count = 2
+///   stream_mode_details = {
+///     stream_mode = "ON_DEMAND"
+///   }
+///   name = "example"
 /// }
 /// resource "aws_iam_role" "call_analytics_role" {
 ///   name               = "CallAnalyticsRole"
@@ -308,6 +319,7 @@ import 'media_insights_pipeline_configuration_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.kinesis.Stream;
 /// import com.pulumi.aws.kinesis.StreamArgs;
+/// import com.pulumi.aws.kinesis.inputs.StreamStreamModeDetailsArgs;
 /// import com.pulumi.aws.iam.IamFunctions;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentArgs;
 /// import com.pulumi.aws.iam.inputs.GetPolicyDocumentStatementArgs;
@@ -333,8 +345,10 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new Stream("example", StreamArgs.builder()
+///             .streamModeDetails(StreamStreamModeDetailsArgs.builder()
+///                 .streamMode("ON_DEMAND")
+///                 .build())
 ///             .name("example")
-///             .shardCount(2)
 ///             .build());
 ///
 ///         final var mediaPipelinesAssumeRole = IamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
@@ -399,8 +413,9 @@ import 'media_insights_pipeline_configuration_state.dart';
 ///   example:
 ///     type: aws:kinesis:Stream
 ///     properties:
+///       streamModeDetails:
+///         streamMode: ON_DEMAND
 ///       name: example
-///       shardCount: 2
 ///   callAnalyticsRole:
 ///     type: aws:iam:Role
 ///     name: call_analytics_role
@@ -2134,7 +2149,7 @@ class MediaInsightsPipelineConfiguration extends pulumi.CustomResource {
           'aws:chimesdkmediapipelines/mediaInsightsPipelineConfiguration:MediaInsightsPipelineConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     elements = registerOutput<List<MediaInsightsPipelineConfigurationElement>>('elements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MediaInsightsPipelineConfigurationElement>(guardedValue, (value) => MediaInsightsPipelineConfigurationElement.fromMap((value as Map).cast<String, dynamic>())); });

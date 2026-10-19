@@ -4,7 +4,7 @@
 /// Result data returned by getResource.
 class GetResourceResult {
   final String? arn;
-  /// Flag to enable AWS LakeFormation hybrid access permission mode.
+  /// Flag to enable AWS Lake Formation hybrid access permission mode.
   final bool? hybridAccessEnabled;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
@@ -20,7 +20,7 @@ class GetResourceResult {
 
   /// Creates a new [GetResourceResult].
   /// [arn] Optional.
-  /// [hybridAccessEnabled] Flag to enable AWS LakeFormation hybrid access permission mode.
+  /// [hybridAccessEnabled] Flag to enable AWS Lake Formation hybrid access permission mode.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [lastModified] Date and time the resource was last modified in [RFC 3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   /// [region] Optional.

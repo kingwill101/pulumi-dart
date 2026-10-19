@@ -23,7 +23,7 @@ class PipelineState {
   final pulumi.Input<int?>? minUnits;
   /// ARN of the pipeline.
   final pulumi.Input<String?>? pipelineArn;
-  /// The pipeline configuration in YAML format. This argument accepts the pipeline configuration as a string or within a .yaml file. If you provide the configuration as a string, each new line must be escaped with `\n`.
+  /// The pipeline configuration in YAML format. This argument accepts the pipeline configuration as a string or within a `.yaml` file. If you provide the configuration as a string, each new line must be escaped with `\n`.
   final pulumi.Input<String?>? pipelineConfigurationBody;
   /// Name of the pipeline. Pipeline names are unique across the pipelines owned by an account within an AWS Region.
   ///
@@ -48,7 +48,7 @@ class PipelineState {
   /// [maxUnits] The maximum pipeline capacity, in Ingestion Compute Units (ICUs).
   /// [minUnits] The minimum pipeline capacity, in Ingestion Compute Units (ICUs).
   /// [pipelineArn] ARN of the pipeline.
-  /// [pipelineConfigurationBody] The pipeline configuration in YAML format. This argument accepts the pipeline configuration as a string or within a .yaml file. If you provide the configuration as a string, each new line must be escaped with `\n`.
+  /// [pipelineConfigurationBody] The pipeline configuration in YAML format. This argument accepts the pipeline configuration as a string or within a `.yaml` file. If you provide the configuration as a string, each new line must be escaped with `\n`.
   /// [pipelineName] Name of the pipeline. Pipeline names are unique across the pipelines owned by an account within an AWS Region.
   /// [pipelineRoleArn] ARN of the IAM role that grants the pipeline permission to access AWS resources.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -100,8 +100,8 @@ class PipelineState {
       encryptionAtRestOptions: (() { final guardedValue = map['encryptionAtRestOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineEncryptionAtRestOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ingestEndpointUrls: (() { final guardedValue = map['ingestEndpointUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       logPublishingOptions: (() { final guardedValue = map['logPublishingOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineLogPublishingOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxUnits: (() { final guardedValue = map['maxUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minUnits: (() { final guardedValue = map['minUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxUnits: (() { final guardedValue = map['maxUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minUnits: (() { final guardedValue = map['minUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       pipelineArn: (() { final guardedValue = map['pipelineArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pipelineConfigurationBody: (() { final guardedValue = map['pipelineConfigurationBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pipelineName: (() { final guardedValue = map['pipelineName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

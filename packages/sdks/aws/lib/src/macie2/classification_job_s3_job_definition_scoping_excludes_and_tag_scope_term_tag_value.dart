@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValue {
-  /// The tag key.
+  /// Tag key.
   final pulumi.Input<String?>? key;
-  /// The tag value.
+  /// Tag value.
   final pulumi.Input<String?>? value;
 
   /// Creates a new [ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValue].
-  /// [key] The tag key.
-  /// [value] The tag value.
+  /// [key] Tag key.
+  /// [value] Tag value.
   const ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValue({
     this.key,
     this.value,

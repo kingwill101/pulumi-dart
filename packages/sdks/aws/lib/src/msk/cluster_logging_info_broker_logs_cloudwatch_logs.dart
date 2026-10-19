@@ -3,13 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterLoggingInfoBrokerLogsCloudwatchLogs {
+  /// Whether to enable or disable streaming broker logs to CloudWatch Logs.
   final pulumi.Input<bool> enabled;
-  /// Name of the Cloudwatch Log Group to deliver logs to.
+  /// Name of the CloudWatch Log Group to deliver logs to.
   final pulumi.Input<String?>? logGroup;
 
   /// Creates a new [ClusterLoggingInfoBrokerLogsCloudwatchLogs].
-  /// [enabled] Required.
-  /// [logGroup] Name of the Cloudwatch Log Group to deliver logs to.
+  /// [enabled] Whether to enable or disable streaming broker logs to CloudWatch Logs.
+  /// [logGroup] Name of the CloudWatch Log Group to deliver logs to.
   const ClusterLoggingInfoBrokerLogsCloudwatchLogs({
     required this.enabled,
     this.logGroup,

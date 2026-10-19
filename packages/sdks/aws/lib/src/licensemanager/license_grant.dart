@@ -172,7 +172,7 @@ import 'license_grant_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.licensemanager.LicenseGrant` using the grant arn. For example:
+/// Using `pulumi import`, import `aws.licensemanager.LicenseGrant` using the grant ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:licensemanager/licenseGrant:LicenseGrant test arn:aws:license-manager::123456789011:grant:g-01d313393d9e443d8664cc054db1e089
@@ -211,7 +211,7 @@ class LicenseGrant extends pulumi.CustomResource {
           'aws:licensemanager/licenseGrant:LicenseGrant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     allowedOperations = registerOutput<List<String>>('allowedOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     arn = registerOutput<String>('arn');

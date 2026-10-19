@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainEncryptionAtRest {
   /// Whether node to node encryption is enabled.
   final pulumi.Input<bool> enabled;
-  /// The KMS key id used to encrypt data at rest.
+  /// The KMS key ID used to encrypt data at rest.
   final pulumi.Input<String> kmsKeyId;
 
   /// Creates a new [GetDomainEncryptionAtRest].
   /// [enabled] Whether node to node encryption is enabled.
-  /// [kmsKeyId] The KMS key id used to encrypt data at rest.
+  /// [kmsKeyId] The KMS key ID used to encrypt data at rest.
   const GetDomainEncryptionAtRest({
     required this.enabled,
     required this.kmsKeyId,

@@ -30,7 +30,7 @@ class AmiCopyArgs {
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Id of the AMI to copy. This id must be valid in the region
+  /// ID of the AMI to copy. This ID must be valid in the region
   /// given by `sourceAmiRegion`.
   final pulumi.Input<String> sourceAmiId;
   /// Region from which the AMI will be copied. This may be the
@@ -49,7 +49,7 @@ class AmiCopyArgs {
   /// [kmsKeyId] Full ARN of the KMS Key to use when encrypting the snapshots of an image during a copy operation. If not specified, then the default AWS KMS Key will be used
   /// [name] Region-unique name for the AMI.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [sourceAmiId] Id of the AMI to copy. This id must be valid in the region
+  /// [sourceAmiId] ID of the AMI to copy. This ID must be valid in the region
   /// [sourceAmiRegion] Region from which the AMI will be copied. This may be the
   /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const AmiCopyArgs({
