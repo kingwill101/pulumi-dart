@@ -5,9 +5,9 @@ import 'system_data_response.dart';
 
 /// A Durable Task Scheduler resource
 ///
-/// Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-01-preview.
+/// Uses Azure REST API version 2026-02-01. In version 2.x of the Azure Native provider, it used API version 2024-10-01-preview.
 ///
-/// Other available API versions: 2025-04-01-preview, 2025-11-01, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-10-01-preview, 2025-04-01-preview, 2025-11-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -32,15 +32,15 @@ import 'system_data_response.dart';
 ///             },
 ///             Sku = new AzureNative.DurableTask.Inputs.SchedulerSkuArgs
 ///             {
-///                 Name = "Dedicated",
+///                 Name = AzureNative.DurableTask.SchedulerSkuName.Dedicated,
 ///             },
 ///         },
 ///         ResourceGroupName = "rgopenapi",
 ///         SchedulerName = "testscheduler",
 ///         Tags =
 ///         {
-///             { "key2138", "fjaeecgnvqd" },
-///             { "key7131", "ryohwcoiccwsnewjigfmijz" },
+///             { "department", "research" },
+///             { "development", "true" },
 ///         },
 ///     });
 ///
@@ -66,14 +66,14 @@ import 'system_data_response.dart';
 /// 					pulumi.String("10.0.0.0/8"),
 /// 				},
 /// 				Sku: &durabletask.SchedulerSkuArgs{
-/// 					Name: pulumi.String("Dedicated"),
+/// 					Name: pulumi.String(durabletask.SchedulerSkuNameDedicated),
 /// 				},
 /// 			},
 /// 			ResourceGroupName: pulumi.String("rgopenapi"),
 /// 			SchedulerName:     pulumi.String("testscheduler"),
 /// 			Tags: pulumi.StringMap{
-/// 				"key2138": pulumi.String("fjaeecgnvqd"),
-/// 				"key7131": pulumi.String("ryohwcoiccwsnewjigfmijz"),
+/// 				"department":  pulumi.String("research"),
+/// 				"development": pulumi.String("true"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -105,8 +105,8 @@ import 'system_data_response.dart';
 ///   resource_group_name = "rgopenapi"
 ///   scheduler_name      = "testscheduler"
 ///   tags = {
-///     "key2138" = "fjaeecgnvqd"
-///     "key7131" = "ryohwcoiccwsnewjigfmijz"
+///     "department"  = "research"
+///     "development" = "true"
 ///   }
 /// }
 ///
@@ -146,8 +146,8 @@ import 'system_data_response.dart';
 ///             .resourceGroupName("rgopenapi")
 ///             .schedulerName("testscheduler")
 ///             .tags(Map.ofEntries(
-///                 Map.entry("key2138", "fjaeecgnvqd"),
-///                 Map.entry("key7131", "ryohwcoiccwsnewjigfmijz")
+///                 Map.entry("department", "research"),
+///                 Map.entry("development", "true")
 ///             ))
 ///             .build());
 ///
@@ -165,14 +165,14 @@ import 'system_data_response.dart';
 ///     properties: {
 ///         ipAllowlist: ["10.0.0.0/8"],
 ///         sku: {
-///             name: "Dedicated",
+///             name: azure_native.durabletask.SchedulerSkuName.Dedicated,
 ///         },
 ///     },
 ///     resourceGroupName: "rgopenapi",
 ///     schedulerName: "testscheduler",
 ///     tags: {
-///         key2138: "fjaeecgnvqd",
-///         key7131: "ryohwcoiccwsnewjigfmijz",
+///         department: "research",
+///         development: "true",
 ///     },
 /// });
 ///
@@ -187,14 +187,14 @@ import 'system_data_response.dart';
 ///     properties={
 ///         "ip_allowlist": ["10.0.0.0/8"],
 ///         "sku": {
-///             "name": "Dedicated",
+///             "name": azure_native.durabletask.SchedulerSkuName.DEDICATED,
 ///         },
 ///     },
 ///     resource_group_name="rgopenapi",
 ///     scheduler_name="testscheduler",
 ///     tags={
-///         "key2138": "fjaeecgnvqd",
-///         "key7131": "ryohwcoiccwsnewjigfmijz",
+///         "department": "research",
+///         "development": "true",
 ///     })
 ///
 /// ```
@@ -213,8 +213,8 @@ import 'system_data_response.dart';
 ///       resourceGroupName: rgopenapi
 ///       schedulerName: testscheduler
 ///       tags:
-///         key2138: fjaeecgnvqd
-///         key7131: ryohwcoiccwsnewjigfmijz
+///         department: research
+///         development: 'true'
 ///
 /// ```
 ///
@@ -226,7 +226,7 @@ import 'system_data_response.dart';
 /// An existing resource can be imported using its type token, name, and identifier, e.g.
 ///
 /// ```sh
-/// $ pulumi import azure-native:durabletask:Scheduler fwxpolhofploqzwdooyg /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}
+/// $ pulumi import azure-native:durabletask:Scheduler testscheduler /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}
 /// ```
 class Scheduler extends pulumi.CustomResource {
   /// The Azure API version of the resource.

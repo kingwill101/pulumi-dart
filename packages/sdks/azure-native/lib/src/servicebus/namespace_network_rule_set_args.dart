@@ -32,15 +32,15 @@ class NamespaceNetworkRuleSetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [trustedServiceAccessEnabled] Value that indicates whether Trusted Service Access is Enabled or not.
   /// [virtualNetworkRules] List VirtualNetwork Rules
-  NamespaceNetworkRuleSetArgs({
+  const NamespaceNetworkRuleSetArgs({
     this.defaultAction,
     this.ipRules,
     required this.namespaceName,
-    pulumi.Input<dynamic>? publicNetworkAccess,
+    this.publicNetworkAccess,
     required this.resourceGroupName,
     this.trustedServiceAccessEnabled,
     this.virtualNetworkRules,
-  }) : publicNetworkAccess = publicNetworkAccess ?? pulumi.Input.fromValue('Enabled');
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -7,20 +7,25 @@ import 'scheduler_sku.dart';
 class SchedulerProperties {
   /// IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR
   final pulumi.Input<List<String>> ipAllowlist;
+  /// Allow or disallow public network access to durable task scheduler
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// SKU of the durable task scheduler
   final pulumi.Input<SchedulerSku> sku;
 
   /// Creates a new [SchedulerProperties].
   /// [ipAllowlist] IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR
+  /// [publicNetworkAccess] Allow or disallow public network access to durable task scheduler
   /// [sku] SKU of the durable task scheduler
   const SchedulerProperties({
     required this.ipAllowlist,
+    this.publicNetworkAccess,
     required this.sku,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'ipAllowlist': ipAllowlist,
+      'publicNetworkAccess': ?publicNetworkAccess,
       'sku': pulumi.Input.mapInputValue<SchedulerSku, Map<String, dynamic>>(sku, (value) => value.toMap()),
     };
   }
@@ -28,6 +33,7 @@ class SchedulerProperties {
   factory SchedulerProperties.fromMap(Map<String, dynamic> map) {
     return SchedulerProperties(
       ipAllowlist: pulumi.Input.fromValue((map['ipAllowlist'] as List).cast<String>()),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sku: pulumi.Input.fromValue(SchedulerSku.fromMap((map['sku']! as Map).cast<String, dynamic>())),
     );
   }
