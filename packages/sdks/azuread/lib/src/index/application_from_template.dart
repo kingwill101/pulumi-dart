@@ -111,7 +111,7 @@ import 'application_from_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -119,19 +119,22 @@ import 'application_from_template_state.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getapplicationtemplate" "example" {
+/// data "azuread_application_template" "example" {
 ///   display_name = "Marketo"
 /// }
-/// data "azuread_getapplication" "exampleGetApplication" {
-///   object_id = azuread_applicationfromtemplate.example.application_object_id
+/// data "azuread_application" "exampleGetApplication" {
+///   object_id = azuread_application_from_template.example.application_object_id
 /// }
-/// data "azuread_getserviceprincipal" "exampleGetServicePrincipal" {
-///   object_id = azuread_applicationfromtemplate.example.service_principal_object_id
+/// data "azuread_service_principal" "exampleGetServicePrincipal" {
+///   object_id = azuread_application_from_template.example.service_principal_object_id
 /// }
 ///
-/// resource "azuread_applicationfromtemplate" "example" {
+/// resource "azuread_application_from_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Example Application"
-///   template_id  = data.azuread_getapplicationtemplate.example.template_id
+///   template_id  = data.azuread_application_template.example.template_id
 /// }
 /// ```
 /// ```java
@@ -239,7 +242,7 @@ class ApplicationFromTemplate extends pulumi.CustomResource {
           'azuread:index/applicationFromTemplate:ApplicationFromTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     applicationObjectId = registerOutput<String>('applicationObjectId');
@@ -254,11 +257,12 @@ class ApplicationFromTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationFromTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationFromTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -272,6 +276,23 @@ class ApplicationFromTemplate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationId = registerOutput<String>('applicationId');
+    applicationObjectId = registerOutput<String>('applicationObjectId');
+    displayName = registerOutput<String>('displayName');
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
+    servicePrincipalObjectId = registerOutput<String>('servicePrincipalObjectId');
+    templateId = registerOutput<String>('templateId');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationFromTemplate] resource.
+  ApplicationFromTemplate.reference(String urn)
+    : super(
+        'azuread:index/applicationFromTemplate:ApplicationFromTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationId = registerOutput<String>('applicationId');
     applicationObjectId = registerOutput<String>('applicationObjectId');
     displayName = registerOutput<String>('displayName');

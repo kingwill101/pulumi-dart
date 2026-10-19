@@ -146,7 +146,7 @@ import 'named_location_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -154,14 +154,20 @@ import 'named_location_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_namedlocation" "example-ip" {
+/// resource "azuread_named_location" "example-ip" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "IP Named Location"
 ///   ip = {
 ///     ip_ranges = ["1.1.1.1/32", "2.2.2.2/32"]
 ///     trusted   = true
 ///   }
 /// }
-/// resource "azuread_namedlocation" "example-country" {
+/// resource "azuread_named_location" "example-country" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Country Named Location"
 ///   country = {
 ///     countries_and_regions                 = ["GB", "US"]
@@ -269,7 +275,7 @@ class NamedLocation extends pulumi.CustomResource {
           'azuread:index/namedLocation:NamedLocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     country = registerOutput<NamedLocationCountry?>('country', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamedLocationCountry.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
@@ -282,11 +288,12 @@ class NamedLocation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NamedLocationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NamedLocation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -300,6 +307,21 @@ class NamedLocation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    country = registerOutput<NamedLocationCountry?>('country', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamedLocationCountry.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    ip = registerOutput<NamedLocationIp?>('ip', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamedLocationIp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    objectId = registerOutput<String>('objectId');
+  }
+
+  /// Creates a typed reference to an existing [NamedLocation] resource.
+  NamedLocation.reference(String urn)
+    : super(
+        'azuread:index/namedLocation:NamedLocation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     country = registerOutput<NamedLocationCountry?>('country', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamedLocationCountry.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
     ip = registerOutput<NamedLocationIp?>('ip', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamedLocationIp.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -295,7 +295,7 @@ import 'conditional_access_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -303,7 +303,10 @@ import 'conditional_access_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_conditionalaccesspolicy" "example" {
+/// resource "azuread_conditional_access_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example policy"
 ///   state        = "disabled"
 ///   conditions = {
@@ -636,7 +639,7 @@ import 'conditional_access_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -644,10 +647,13 @@ import 'conditional_access_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getclientconfig" "current" {
+/// data "azuread_client_config" "current" {
 /// }
 ///
-/// resource "azuread_conditionalaccesspolicy" "example" {
+/// resource "azuread_conditional_access_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example policy"
 ///   state        = "disabled"
 ///   conditions = {
@@ -656,7 +662,7 @@ import 'conditional_access_policy_state.dart';
 ///       included_applications = ["All"]
 ///     }
 ///     client_applications = {
-///       included_service_principals = [data.azuread_getclientconfig.current.object_id]
+///       included_service_principals = [data.azuread_client_config.current.object_id]
 ///       excluded_service_principals = []
 ///     }
 ///     users = {
@@ -924,7 +930,7 @@ import 'conditional_access_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -932,10 +938,13 @@ import 'conditional_access_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getclientconfig" "current" {
+/// data "azuread_client_config" "current" {
 /// }
 ///
-/// resource "azuread_conditionalaccesspolicy" "example" {
+/// resource "azuread_conditional_access_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example policy"
 ///   state        = "disabled"
 ///   conditions = {
@@ -945,7 +954,7 @@ import 'conditional_access_policy_state.dart';
 ///     }
 ///     client_applications = {
 ///       included_service_principals = ["ServicePrincipalsInMyTenant"]
-///       excluded_service_principals = [data.azuread_getclientconfig.current.object_id]
+///       excluded_service_principals = [data.azuread_client_config.current.object_id]
 ///     }
 ///     users = {
 ///       included_users = ["None"]
@@ -1079,7 +1088,7 @@ class ConditionalAccessPolicy extends pulumi.CustomResource {
           'azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     conditions = registerOutput<ConditionalAccessPolicyConditions>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConditionalAccessPolicyConditions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
@@ -1094,11 +1103,12 @@ class ConditionalAccessPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConditionalAccessPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConditionalAccessPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1118,5 +1128,22 @@ class ConditionalAccessPolicy extends pulumi.CustomResource {
     objectId = registerOutput<String>('objectId');
     sessionControls = registerOutput<ConditionalAccessPolicySessionControls?>('sessionControls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConditionalAccessPolicySessionControls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [ConditionalAccessPolicy] resource.
+  ConditionalAccessPolicy.reference(String urn)
+    : super(
+        'azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    conditions = registerOutput<ConditionalAccessPolicyConditions>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConditionalAccessPolicyConditions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    grantControls = registerOutput<ConditionalAccessPolicyGrantControls?>('grantControls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConditionalAccessPolicyGrantControls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    objectId = registerOutput<String>('objectId');
+    sessionControls = registerOutput<ConditionalAccessPolicySessionControls?>('sessionControls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConditionalAccessPolicySessionControls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
   }
 }

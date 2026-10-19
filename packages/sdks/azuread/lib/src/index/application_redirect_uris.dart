@@ -156,7 +156,7 @@ import 'application_redirect_uris_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationRedirectUris(ctx, "example_public", &azuread.ApplicationRedirectUrisArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:          pulumi.String("PublicClient"),
 /// 			RedirectUris: pulumi.StringArray{
 /// 				pulumi.String("myapp://auth"),
@@ -171,7 +171,7 @@ import 'application_redirect_uris_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationRedirectUris(ctx, "example_spa", &azuread.ApplicationRedirectUrisArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:          pulumi.String("SPA"),
 /// 			RedirectUris: pulumi.StringArray{
 /// 				pulumi.String("https://mobile.example.com/"),
@@ -182,7 +182,7 @@ import 'application_redirect_uris_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationRedirectUris(ctx, "example_web", &azuread.ApplicationRedirectUrisArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:          pulumi.String("Web"),
 /// 			RedirectUris: pulumi.StringArray{
 /// 				pulumi.String("https://app.example.com/"),
@@ -198,7 +198,7 @@ import 'application_redirect_uris_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -206,21 +206,33 @@ import 'application_redirect_uris_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_applicationregistration" "example" {
+/// resource "azuread_application_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_applicationredirecturis" "example_public" {
-///   application_id = azuread_applicationregistration.example.id
+/// resource "azuread_application_redirect_uris" "example_public" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_id = azuread_application_registration.example.id
 ///   type           = "PublicClient"
 ///   redirect_uris  = ["myapp://auth", "sample.mobile.app.bundie.id://auth", "https://login.microsoftonline.com/common/oauth2/nativeclient", "https://login.live.com/oauth20_desktop.srf", "ms-appx-web://Microsoft.AAD.BrokerPlugin/00000000-1111-1111-1111-222222222222", "urn:ietf:wg:oauth:2.0:foo"]
 /// }
-/// resource "azuread_applicationredirecturis" "example_spa" {
-///   application_id = azuread_applicationregistration.example.id
+/// resource "azuread_application_redirect_uris" "example_spa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_id = azuread_application_registration.example.id
 ///   type           = "SPA"
 ///   redirect_uris  = ["https://mobile.example.com/", "https://beta.example.com/"]
 /// }
-/// resource "azuread_applicationredirecturis" "example_web" {
-///   application_id = azuread_applicationregistration.example.id
+/// resource "azuread_application_redirect_uris" "example_web" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_id = azuread_application_registration.example.id
 ///   type           = "Web"
 ///   redirect_uris  = ["https://app.example.com/", "https://classic.example.com/", "urn:ietf:wg:oauth:2.0:oob"]
 /// }
@@ -352,10 +364,10 @@ class ApplicationRedirectUris extends pulumi.CustomResource {
           'azuread:index/applicationRedirectUris:ApplicationRedirectUris',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
-    redirectUris = registerOutput<List<String>>('redirectUris');
+    redirectUris = registerOutput<List<String>>('redirectUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -364,11 +376,12 @@ class ApplicationRedirectUris extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationRedirectUrisState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationRedirectUris._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -383,7 +396,21 @@ class ApplicationRedirectUris extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     applicationId = registerOutput<String>('applicationId');
-    redirectUris = registerOutput<List<String>>('redirectUris');
+    redirectUris = registerOutput<List<String>>('redirectUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationRedirectUris] resource.
+  ApplicationRedirectUris.reference(String urn)
+    : super(
+        'azuread:index/applicationRedirectUris:ApplicationRedirectUris',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    redirectUris = registerOutput<List<String>>('redirectUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
   }
 }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SynchronizationJobSchedule {
   /// Date and time when this job will expire, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
-  final pulumi.Input<String>? expiration;
+  final pulumi.Input<String?>? expiration;
   /// The interval between synchronization iterations ISO8601. E.g. PT40M run every 40 minutes.
-  final pulumi.Input<String>? interval;
+  final pulumi.Input<String?>? interval;
   /// State of the job.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [SynchronizationJobSchedule].
   /// [expiration] Date and time when this job will expire, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'synchronization_job_args.dart';
+import 'synchronization_job_schedule.dart';
 import 'synchronization_job_state.dart';
 
 /// Manages a synchronization job associated with a service principal (enterprise application) within Azure Active Directory.
@@ -30,7 +31,7 @@ import 'synchronization_job_state.dart';
 ///     objectId: exampleApplicationFromTemplate.servicePrincipalObjectId,
 /// });
 /// const exampleSynchronizationSecret = new azuread.SynchronizationSecret("example", {
-///     servicePrincipalId: exampleGetServicePrincipal.apply(exampleGetServicePrincipal => exampleGetServicePrincipal.id),
+///     servicePrincipalId: exampleGetServicePrincipal.id,
 ///     credentials: [
 ///         {
 ///             key: "BaseAddress",
@@ -43,7 +44,7 @@ import 'synchronization_job_state.dart';
 ///     ],
 /// });
 /// const exampleSynchronizationJob = new azuread.SynchronizationJob("example", {
-///     servicePrincipalId: exampleGetServicePrincipal.apply(exampleGetServicePrincipal => exampleGetServicePrincipal.id),
+///     servicePrincipalId: exampleGetServicePrincipal.id,
 ///     templateId: "dataBricks",
 ///     enabled: true,
 /// });
@@ -152,9 +153,7 @@ import 'synchronization_job_state.dart';
 /// 			ObjectId: exampleApplicationFromTemplate.ServicePrincipalObjectId,
 /// 		}, nil)
 /// 		_, err = azuread.NewSynchronizationSecret(ctx, "example", &azuread.SynchronizationSecretArgs{
-/// 			ServicePrincipalId: pulumi.String(exampleGetServicePrincipal.ApplyT(func(exampleGetServicePrincipal azuread.GetServicePrincipalResult) (*string, error) {
-/// 				return exampleGetServicePrincipal.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			ServicePrincipalId: exampleGetServicePrincipal.Id(),
 /// 			Credentials: azuread.SynchronizationSecretCredentialArray{
 /// 				&azuread.SynchronizationSecretCredentialArgs{
 /// 					Key:   pulumi.String("BaseAddress"),
@@ -170,11 +169,9 @@ import 'synchronization_job_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewSynchronizationJob(ctx, "example", &azuread.SynchronizationJobArgs{
-/// 			ServicePrincipalId: pulumi.String(exampleGetServicePrincipal.ApplyT(func(exampleGetServicePrincipal azuread.GetServicePrincipalResult) (*string, error) {
-/// 				return exampleGetServicePrincipal.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			TemplateId: pulumi.String("dataBricks"),
-/// 			Enabled:    pulumi.Bool(true),
+/// 			ServicePrincipalId: exampleGetServicePrincipal.Id(),
+/// 			TemplateId:         pulumi.String("dataBricks"),
+/// 			Enabled:            pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -184,7 +181,7 @@ import 'synchronization_job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -192,19 +189,25 @@ import 'synchronization_job_state.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getapplicationtemplate" "example" {
+/// data "azuread_application_template" "example" {
 ///   display_name = "Azure Databricks SCIM Provisioning Connector"
 /// }
-/// data "azuread_getserviceprincipal" "exampleGetServicePrincipal" {
-///   object_id = azuread_applicationfromtemplate.example.service_principal_object_id
+/// data "azuread_service_principal" "exampleGetServicePrincipal" {
+///   object_id = azuread_application_from_template.example.service_principal_object_id
 /// }
 ///
-/// resource "azuread_applicationfromtemplate" "example" {
+/// resource "azuread_application_from_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
-///   template_id  = data.azuread_getapplicationtemplate.example.template_id
+///   template_id  = data.azuread_application_template.example.template_id
 /// }
-/// resource "azuread_synchronizationsecret" "example" {
-///   service_principal_id = data.azuread_getserviceprincipal.exampleGetServicePrincipal.id
+/// resource "azuread_synchronization_secret" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_principal_id = data.azuread_service_principal.exampleGetServicePrincipal.id
 ///   credentials {
 ///     key   = "BaseAddress"
 ///     value = "https://adb-example.azuredatabricks.net/api/2.0/preview/scim"
@@ -214,8 +217,11 @@ import 'synchronization_job_state.dart';
 ///     value = "some-token"
 ///   }
 /// }
-/// resource "azuread_synchronizationjob" "example" {
-///   service_principal_id = data.azuread_getserviceprincipal.exampleGetServicePrincipal.id
+/// resource "azuread_synchronization_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_principal_id = data.azuread_service_principal.exampleGetServicePrincipal.id
 ///   template_id          = "dataBricks"
 ///   enabled              = true
 /// }
@@ -336,7 +342,7 @@ class SynchronizationJob extends pulumi.CustomResource {
   /// Whether the provisioning job is enabled. Default state is `true`.
   late final pulumi.Output<bool?> enabled;
   /// A `schedule` list as documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> schedules;
+  late final pulumi.Output<List<SynchronizationJobSchedule>> schedules;
   /// The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
   late final pulumi.Output<String> servicePrincipalId;
   /// Identifier of the synchronization template this job is based on.
@@ -354,10 +360,10 @@ class SynchronizationJob extends pulumi.CustomResource {
           'azuread:index/synchronizationJob:SynchronizationJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     enabled = registerOutput<bool?>('enabled');
-    schedules = registerOutput<List<Map<String, dynamic>>>('schedules');
+    schedules = registerOutput<List<SynchronizationJobSchedule>>('schedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SynchronizationJobSchedule>(guardedValue, (value) => SynchronizationJobSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
     templateId = registerOutput<String>('templateId');
   }
@@ -367,11 +373,12 @@ class SynchronizationJob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SynchronizationJobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SynchronizationJob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -386,7 +393,22 @@ class SynchronizationJob extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     enabled = registerOutput<bool?>('enabled');
-    schedules = registerOutput<List<Map<String, dynamic>>>('schedules');
+    schedules = registerOutput<List<SynchronizationJobSchedule>>('schedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SynchronizationJobSchedule>(guardedValue, (value) => SynchronizationJobSchedule.fromMap((value as Map).cast<String, dynamic>())); });
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
+    templateId = registerOutput<String>('templateId');
+  }
+
+  /// Creates a typed reference to an existing [SynchronizationJob] resource.
+  SynchronizationJob.reference(String urn)
+    : super(
+        'azuread:index/synchronizationJob:SynchronizationJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    enabled = registerOutput<bool?>('enabled');
+    schedules = registerOutput<List<SynchronizationJobSchedule>>('schedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SynchronizationJobSchedule>(guardedValue, (value) => SynchronizationJobSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
     templateId = registerOutput<String>('templateId');
   }

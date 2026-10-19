@@ -83,7 +83,7 @@ import 'service_principal_password_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewServicePrincipalPassword(ctx, "example", &azuread.ServicePrincipalPasswordArgs{
-/// 			ServicePrincipalId: exampleServicePrincipal.ID(),
+/// 			ServicePrincipalId: exampleServicePrincipal.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -93,7 +93,7 @@ import 'service_principal_password_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -102,13 +102,22 @@ import 'service_principal_password_state.dart';
 /// }
 ///
 /// resource "azuread_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_serviceprincipal" "example" {
+/// resource "azuread_service_principal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_id = azuread_application.example.client_id
 /// }
-/// resource "azuread_serviceprincipalpassword" "example" {
-///   service_principal_id = azuread_serviceprincipal.example.id
+/// resource "azuread_service_principal_password" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_principal_id = azuread_service_principal.example.id
 /// }
 /// ```
 /// ```java
@@ -267,9 +276,9 @@ import 'service_principal_password_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewServicePrincipalPassword(ctx, "example", &azuread.ServicePrincipalPasswordArgs{
-/// 			ServicePrincipalId: exampleServicePrincipal.ID(),
+/// 			ServicePrincipalId: exampleServicePrincipal.ID().ToIDOutput().ToStringOutput(),
 /// 			RotateWhenChanged: pulumi.StringMap{
-/// 				"rotation": exampleRotating.ID(),
+/// 				"rotation": exampleRotating.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -280,7 +289,7 @@ import 'service_principal_password_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -292,16 +301,28 @@ import 'service_principal_password_state.dart';
 /// }
 ///
 /// resource "azuread_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_serviceprincipal" "example" {
+/// resource "azuread_service_principal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_id = azuread_application.example.client_id
 /// }
 /// resource "time_rotating" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   rotation_days = 7
 /// }
-/// resource "azuread_serviceprincipalpassword" "example" {
-///   service_principal_id = azuread_serviceprincipal.example.id
+/// resource "azuread_service_principal_password" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_principal_id = azuread_service_principal.example.id
 ///   rotate_when_changed = {
 ///     "rotation" = time_rotating.example.id
 ///   }
@@ -413,16 +434,17 @@ class ServicePrincipalPassword extends pulumi.CustomResource {
           'azuread:index/servicePrincipalPassword:ServicePrincipalPassword',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
+          additionalSecretOutputs: const ['value'],
         ) {
     displayName = registerOutput<String>('displayName');
     endDate = registerOutput<String>('endDate');
     endDateRelative = registerOutput<String?>('endDateRelative');
     keyId = registerOutput<String>('keyId');
-    rotateWhenChanged = registerOutput<Map<String, String>?>('rotateWhenChanged');
+    rotateWhenChanged = registerOutput<Map<String, String>?>('rotateWhenChanged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
     startDate = registerOutput<String>('startDate');
-    value = registerOutput<String>('value');
+    value = registerOutput<String>('value', isSecret: true);
   }
 
   /// Gets an existing [ServicePrincipalPassword] resource's state with the given [name] and [id].
@@ -430,11 +452,12 @@ class ServicePrincipalPassword extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServicePrincipalPasswordState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServicePrincipalPassword._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -452,9 +475,29 @@ class ServicePrincipalPassword extends pulumi.CustomResource {
     endDate = registerOutput<String>('endDate');
     endDateRelative = registerOutput<String?>('endDateRelative');
     keyId = registerOutput<String>('keyId');
-    rotateWhenChanged = registerOutput<Map<String, String>?>('rotateWhenChanged');
+    rotateWhenChanged = registerOutput<Map<String, String>?>('rotateWhenChanged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
     startDate = registerOutput<String>('startDate');
-    value = registerOutput<String>('value');
+    value = registerOutput<String>('value', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [ServicePrincipalPassword] resource.
+  ServicePrincipalPassword.reference(String urn)
+    : super(
+        'azuread:index/servicePrincipalPassword:ServicePrincipalPassword',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['value'],
+        isResourceReference: true,
+      ) {
+    displayName = registerOutput<String>('displayName');
+    endDate = registerOutput<String>('endDate');
+    endDateRelative = registerOutput<String?>('endDateRelative');
+    keyId = registerOutput<String>('keyId');
+    rotateWhenChanged = registerOutput<Map<String, String>?>('rotateWhenChanged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
+    startDate = registerOutput<String>('startDate');
+    value = registerOutput<String>('value', isSecret: true);
   }
 }

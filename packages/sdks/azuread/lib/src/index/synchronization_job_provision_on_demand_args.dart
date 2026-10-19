@@ -15,7 +15,7 @@ class SynchronizationJobProvisionOnDemandArgs {
   /// The ID of the synchronization job.
   final pulumi.Input<String> synchronizationJobId;
   /// Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
-  final pulumi.Input<Map<String, String>>? triggers;
+  final pulumi.Input<Map<String, String>?>? triggers;
 
   /// Creates a new [SynchronizationJobProvisionOnDemandArgs].
   /// [parameters] One or more `parameter` blocks as documented below.

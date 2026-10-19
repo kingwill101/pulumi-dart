@@ -100,7 +100,7 @@ import 'directory_role_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -108,16 +108,22 @@ import 'directory_role_assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getuser" "example" {
+/// data "azuread_user" "example" {
 ///   user_principal_name = "jdoe@example.com"
 /// }
 ///
-/// resource "azuread_directoryrole" "example" {
+/// resource "azuread_directory_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Security administrator"
 /// }
-/// resource "azuread_directoryroleassignment" "example" {
-///   role_id             = azuread_directoryrole.example.template_id
-///   principal_object_id = data.azuread_getuser.example.object_id
+/// resource "azuread_directory_role_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   role_id             = azuread_directory_role.example.template_id
+///   principal_object_id = data.azuread_user.example.object_id
 /// }
 /// ```
 /// ```java
@@ -313,7 +319,7 @@ import 'directory_role_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -321,11 +327,14 @@ import 'directory_role_assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getuser" "example" {
+/// data "azuread_user" "example" {
 ///   user_principal_name = "jdoe@example.com"
 /// }
 ///
-/// resource "azuread_customdirectoryrole" "example" {
+/// resource "azuread_custom_directory_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "My Custom Role"
 ///   enabled      = true
 ///   version      = "1.0"
@@ -333,9 +342,12 @@ import 'directory_role_assignment_state.dart';
 ///     allowed_resource_actions = ["microsoft.directory/applications/basic/update", "microsoft.directory/applications/standard/read"]
 ///   }
 /// }
-/// resource "azuread_directoryroleassignment" "example" {
-///   role_id             = azuread_customdirectoryrole.example.object_id
-///   principal_object_id = data.azuread_getuser.example.object_id
+/// resource "azuread_directory_role_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   role_id             = azuread_custom_directory_role.example.object_id
+///   principal_object_id = data.azuread_user.example.object_id
 /// }
 /// ```
 /// ```java
@@ -542,7 +554,7 @@ import 'directory_role_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -557,19 +569,28 @@ import 'directory_role_assignment_state.dart';
 ///   input = "/%s"
 ///   args  = [azuread_application.example.object_id]
 /// }
-/// data "azuread_getuser" "example" {
+/// data "azuread_user" "example" {
 ///   user_principal_name = "jdoe@example.com"
 /// }
 ///
-/// resource "azuread_directoryrole" "example" {
+/// resource "azuread_directory_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Cloud application administrator"
 /// }
 /// resource "azuread_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "My Application"
 /// }
-/// resource "azuread_directoryroleassignment" "example" {
-///   role_id             = azuread_directoryrole.example.template_id
-///   principal_object_id = data.azuread_getuser.example.object_id
+/// resource "azuread_directory_role_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   role_id             = azuread_directory_role.example.template_id
+///   principal_object_id = data.azuread_user.example.object_id
 ///   directory_scope_id  = data.std_format.invoke_0.result
 /// }
 /// ```
@@ -692,7 +713,7 @@ class DirectoryRoleAssignment extends pulumi.CustomResource {
           'azuread:index/directoryRoleAssignment:DirectoryRoleAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     appScopeId = registerOutput<String>('appScopeId');
     directoryScopeId = registerOutput<String>('directoryScopeId');
@@ -705,11 +726,12 @@ class DirectoryRoleAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DirectoryRoleAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DirectoryRoleAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -723,6 +745,21 @@ class DirectoryRoleAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appScopeId = registerOutput<String>('appScopeId');
+    directoryScopeId = registerOutput<String>('directoryScopeId');
+    principalObjectId = registerOutput<String>('principalObjectId');
+    roleId = registerOutput<String>('roleId');
+  }
+
+  /// Creates a typed reference to an existing [DirectoryRoleAssignment] resource.
+  DirectoryRoleAssignment.reference(String urn)
+    : super(
+        'azuread:index/directoryRoleAssignment:DirectoryRoleAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appScopeId = registerOutput<String>('appScopeId');
     directoryScopeId = registerOutput<String>('directoryScopeId');
     principalObjectId = registerOutput<String>('principalObjectId');

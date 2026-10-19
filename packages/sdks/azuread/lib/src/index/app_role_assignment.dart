@@ -200,7 +200,7 @@ import 'app_role_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -208,34 +208,46 @@ import 'app_role_assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getapplicationpublishedappids" "wellKnown" {
+/// data "azuread_application_published_app_ids" "wellKnown" {
 /// }
 ///
-/// resource "azuread_serviceprincipal" "msgraph" {
-///   client_id    = data.azuread_getapplicationpublishedappids.wellKnown.result.microsoftGraph
+/// resource "azuread_service_principal" "msgraph" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   client_id    = data.azuread_application_published_app_ids.wellKnown.result.microsoftGraph
 ///   use_existing = true
 /// }
 /// resource "azuread_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 ///   required_resource_accesses {
-///     resource_app_id = data.azuread_getapplicationpublishedappids.wellKnown.result.microsoftGraph
+///     resource_app_id = data.azuread_application_published_app_ids.wellKnown.result.microsoftGraph
 ///     resource_accesses {
-///       id   = azuread_serviceprincipal.msgraph.app_role_ids["User.Read.All"]
+///       id   = azuread_service_principal.msgraph.app_role_ids["User.Read.All"]
 ///       type = "Role"
 ///     }
 ///     resource_accesses {
-///       id   = azuread_serviceprincipal.msgraph.oauth2_permission_scope_ids["User.ReadWrite"]
+///       id   = azuread_service_principal.msgraph.oauth2_permission_scope_ids["User.ReadWrite"]
 ///       type = "Scope"
 ///     }
 ///   }
 /// }
-/// resource "azuread_serviceprincipal" "example" {
+/// resource "azuread_service_principal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_id = azuread_application.example.client_id
 /// }
-/// resource "azuread_approleassignment" "example" {
-///   app_role_id         = azuread_serviceprincipal.msgraph.app_role_ids["User.Read.All"]
-///   principal_object_id = azuread_serviceprincipal.example.object_id
-///   resource_object_id  = azuread_serviceprincipal.msgraph.object_id
+/// resource "azuread_app_role_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   app_role_id         = azuread_service_principal.msgraph.app_role_ids["User.Read.All"]
+///   principal_object_id = azuread_service_principal.example.object_id
+///   resource_object_id  = azuread_service_principal.msgraph.object_id
 /// }
 /// ```
 /// ```java
@@ -279,11 +291,11 @@ import 'app_role_assignment_state.dart';
 ///                 .resourceAppId(wellKnown.result().microsoftGraph())
 ///                 .resourceAccesses(
 ///                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-///                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
+///                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("User.Read.All")))
 ///                         .type("Role")
 ///                         .build(),
 ///                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-///                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
+///                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.get("User.ReadWrite")))
 ///                         .type("Scope")
 ///                         .build())
 ///                 .build())
@@ -294,7 +306,7 @@ import 'app_role_assignment_state.dart';
 ///             .build());
 ///
 ///         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()
-///             .appRoleId(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
+///             .appRoleId(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("User.Read.All")))
 ///             .principalObjectId(exampleServicePrincipal.objectId())
 ///             .resourceObjectId(msgraph.objectId())
 ///             .build());
@@ -547,7 +559,7 @@ import 'app_role_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -556,6 +568,9 @@ import 'app_role_assignment_state.dart';
 /// }
 ///
 /// resource "azuread_application" "internal" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "internal"
 ///   app_roles {
 ///     allowed_member_types = ["Application"]
@@ -566,26 +581,38 @@ import 'app_role_assignment_state.dart';
 ///     value                = "Query.All"
 ///   }
 /// }
-/// resource "azuread_serviceprincipal" "internal" {
+/// resource "azuread_service_principal" "internal" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_id = azuread_application.internal.client_id
 /// }
 /// resource "azuread_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 ///   required_resource_accesses {
 ///     resource_app_id = azuread_application.internal.client_id
 ///     resource_accesses {
-///       id   = azuread_serviceprincipal.internal.app_role_ids["Query.All"]
+///       id   = azuread_service_principal.internal.app_role_ids["Query.All"]
 ///       type = "Role"
 ///     }
 ///   }
 /// }
-/// resource "azuread_serviceprincipal" "example" {
+/// resource "azuread_service_principal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_id = azuread_application.example.client_id
 /// }
-/// resource "azuread_approleassignment" "example" {
-///   app_role_id         = azuread_serviceprincipal.internal.app_role_ids["Query.All"]
-///   principal_object_id = azuread_serviceprincipal.example.object_id
-///   resource_object_id  = azuread_serviceprincipal.internal.object_id
+/// resource "azuread_app_role_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   app_role_id         = azuread_service_principal.internal.app_role_ids["Query.All"]
+///   principal_object_id = azuread_service_principal.example.object_id
+///   resource_object_id  = azuread_service_principal.internal.object_id
 /// }
 /// ```
 /// ```java
@@ -637,7 +664,7 @@ import 'app_role_assignment_state.dart';
 ///             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
 ///                 .resourceAppId(internal.clientId())
 ///                 .resourceAccesses(ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-///                     .id(internalServicePrincipal.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.Query.All()))
+///                     .id(internalServicePrincipal.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("Query.All")))
 ///                     .type("Role")
 ///                     .build())
 ///                 .build())
@@ -648,7 +675,7 @@ import 'app_role_assignment_state.dart';
 ///             .build());
 ///
 ///         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()
-///             .appRoleId(internalServicePrincipal.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.Query.All()))
+///             .appRoleId(internalServicePrincipal.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("Query.All")))
 ///             .principalObjectId(exampleServicePrincipal.objectId())
 ///             .resourceObjectId(internalServicePrincipal.objectId())
 ///             .build());
@@ -736,7 +763,7 @@ class AppRoleAssignment extends pulumi.CustomResource {
           'azuread:index/appRoleAssignment:AppRoleAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     appRoleId = registerOutput<String>('appRoleId');
     principalDisplayName = registerOutput<String>('principalDisplayName');
@@ -751,11 +778,12 @@ class AppRoleAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppRoleAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppRoleAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -769,6 +797,23 @@ class AppRoleAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appRoleId = registerOutput<String>('appRoleId');
+    principalDisplayName = registerOutput<String>('principalDisplayName');
+    principalObjectId = registerOutput<String>('principalObjectId');
+    principalType = registerOutput<String>('principalType');
+    resourceDisplayName = registerOutput<String>('resourceDisplayName');
+    resourceObjectId = registerOutput<String>('resourceObjectId');
+  }
+
+  /// Creates a typed reference to an existing [AppRoleAssignment] resource.
+  AppRoleAssignment.reference(String urn)
+    : super(
+        'azuread:index/appRoleAssignment:AppRoleAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appRoleId = registerOutput<String>('appRoleId');
     principalDisplayName = registerOutput<String>('principalDisplayName');
     principalObjectId = registerOutput<String>('principalObjectId');

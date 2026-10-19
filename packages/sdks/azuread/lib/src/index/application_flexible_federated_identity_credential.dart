@@ -86,7 +86,7 @@ import 'application_flexible_federated_identity_credential_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationFlexibleFederatedIdentityCredential(ctx, "example", &azuread.ApplicationFlexibleFederatedIdentityCredentialArgs{
-/// 			ApplicationId:            example.ID(),
+/// 			ApplicationId:            example.ID().ToIDOutput().ToStringOutput(),
 /// 			ClaimsMatchingExpression: pulumi.String("claims['sub'] matches 'repo:contoso/contoso-repo:ref:refs/heads/*' and claims['job_workflow_ref'] matches 'contoso/contoso-prod/.github/workflows/*.yml@refs/heads/main'"),
 /// 			DisplayName:              pulumi.String("my-repo-deploy"),
 /// 			Description:              pulumi.String("Deployments for my-repo"),
@@ -101,7 +101,7 @@ import 'application_flexible_federated_identity_credential_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -109,11 +109,17 @@ import 'application_flexible_federated_identity_credential_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_applicationregistration" "example" {
+/// resource "azuread_application_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_applicationflexiblefederatedidentitycredential" "example" {
-///   application_id             = azuread_applicationregistration.example.id
+/// resource "azuread_application_flexible_federated_identity_credential" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_id             = azuread_application_registration.example.id
 ///   claims_matching_expression = "claims['sub'] matches 'repo:contoso/contoso-repo:ref:refs/heads/*' and claims['job_workflow_ref'] matches 'contoso/contoso-prod/.github/workflows/*.yml@refs/heads/main'"
 ///   display_name               = "my-repo-deploy"
 ///   description                = "Deployments for my-repo"
@@ -216,7 +222,7 @@ class ApplicationFlexibleFederatedIdentityCredential extends pulumi.CustomResour
           'azuread:index/applicationFlexibleFederatedIdentityCredential:ApplicationFlexibleFederatedIdentityCredential',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     audience = registerOutput<String>('audience');
@@ -232,11 +238,12 @@ class ApplicationFlexibleFederatedIdentityCredential extends pulumi.CustomResour
     String name,
     pulumi.Input<String> id, {
     ApplicationFlexibleFederatedIdentityCredentialState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationFlexibleFederatedIdentityCredential._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -250,6 +257,24 @@ class ApplicationFlexibleFederatedIdentityCredential extends pulumi.CustomResour
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationId = registerOutput<String>('applicationId');
+    audience = registerOutput<String>('audience');
+    claimsMatchingExpression = registerOutput<String>('claimsMatchingExpression');
+    credentialId = registerOutput<String>('credentialId');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    issuer = registerOutput<String>('issuer');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationFlexibleFederatedIdentityCredential] resource.
+  ApplicationFlexibleFederatedIdentityCredential.reference(String urn)
+    : super(
+        'azuread:index/applicationFlexibleFederatedIdentityCredential:ApplicationFlexibleFederatedIdentityCredential',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationId = registerOutput<String>('applicationId');
     audience = registerOutput<String>('audience');
     claimsMatchingExpression = registerOutput<String>('claimsMatchingExpression');

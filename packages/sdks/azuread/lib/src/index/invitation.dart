@@ -73,7 +73,7 @@ import 'invitation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -82,6 +82,9 @@ import 'invitation_state.dart';
 /// }
 ///
 /// resource "azuread_invitation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_email_address = "jdoe@example.com"
 ///   redirect_url       = "https://portal.azure.com"
 /// }
@@ -196,7 +199,7 @@ import 'invitation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -205,6 +208,9 @@ import 'invitation_state.dart';
 /// }
 ///
 /// resource "azuread_invitation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_email_address = "jdoe@example.com"
 ///   redirect_url       = "https://portal.azure.com"
 ///   message = {
@@ -336,7 +342,7 @@ import 'invitation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -345,6 +351,9 @@ import 'invitation_state.dart';
 /// }
 ///
 /// resource "azuread_invitation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_display_name  = "Bob Bobson"
 ///   user_email_address = "bbobson@example.com"
 ///   redirect_url       = "https://portal.azure.com"
@@ -434,7 +443,7 @@ class Invitation extends pulumi.CustomResource {
           'azuread:index/invitation:Invitation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     message = registerOutput<InvitationMessage?>('message', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvitationMessage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     redeemUrl = registerOutput<String>('redeemUrl');
@@ -450,11 +459,12 @@ class Invitation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InvitationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Invitation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -468,6 +478,24 @@ class Invitation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    message = registerOutput<InvitationMessage?>('message', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvitationMessage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redeemUrl = registerOutput<String>('redeemUrl');
+    redirectUrl = registerOutput<String>('redirectUrl');
+    userDisplayName = registerOutput<String?>('userDisplayName');
+    userEmailAddress = registerOutput<String>('userEmailAddress');
+    userId = registerOutput<String>('userId');
+    userType = registerOutput<String?>('userType');
+  }
+
+  /// Creates a typed reference to an existing [Invitation] resource.
+  Invitation.reference(String urn)
+    : super(
+        'azuread:index/invitation:Invitation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     message = registerOutput<InvitationMessage?>('message', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvitationMessage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     redeemUrl = registerOutput<String>('redeemUrl');
     redirectUrl = registerOutput<String>('redirectUrl');

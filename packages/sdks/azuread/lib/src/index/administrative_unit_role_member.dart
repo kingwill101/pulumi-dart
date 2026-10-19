@@ -115,7 +115,7 @@ import 'administrative_unit_role_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -123,20 +123,29 @@ import 'administrative_unit_role_member_state.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getuser" "example" {
+/// data "azuread_user" "example" {
 ///   user_principal_name = "jdoe@example.com"
 /// }
 ///
-/// resource "azuread_administrativeunit" "example" {
+/// resource "azuread_administrative_unit" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Example-AU"
 /// }
-/// resource "azuread_directoryrole" "example" {
+/// resource "azuread_directory_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Security administrator"
 /// }
-/// resource "azuread_administrativeunitrolemember" "example" {
-///   role_object_id                = azuread_directoryrole.example.object_id
-///   administrative_unit_object_id = azuread_administrativeunit.example.object_id
-///   member_object_id              = data.azuread_getuser.example.object_id
+/// resource "azuread_administrative_unit_role_member" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   role_object_id                = azuread_directory_role.example.object_id
+///   administrative_unit_object_id = azuread_administrative_unit.example.object_id
+///   member_object_id              = data.azuread_user.example.object_id
 /// }
 /// ```
 /// ```java
@@ -243,7 +252,7 @@ class AdministrativeUnitRoleMember extends pulumi.CustomResource {
           'azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     administrativeUnitObjectId = registerOutput<String>('administrativeUnitObjectId');
     memberObjectId = registerOutput<String>('memberObjectId');
@@ -255,11 +264,12 @@ class AdministrativeUnitRoleMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AdministrativeUnitRoleMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AdministrativeUnitRoleMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -273,6 +283,20 @@ class AdministrativeUnitRoleMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    administrativeUnitObjectId = registerOutput<String>('administrativeUnitObjectId');
+    memberObjectId = registerOutput<String>('memberObjectId');
+    roleObjectId = registerOutput<String>('roleObjectId');
+  }
+
+  /// Creates a typed reference to an existing [AdministrativeUnitRoleMember] resource.
+  AdministrativeUnitRoleMember.reference(String urn)
+    : super(
+        'azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     administrativeUnitObjectId = registerOutput<String>('administrativeUnitObjectId');
     memberObjectId = registerOutput<String>('memberObjectId');
     roleObjectId = registerOutput<String>('roleObjectId');

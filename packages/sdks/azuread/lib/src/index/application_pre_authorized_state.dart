@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ApplicationPreAuthorized resources.
 class ApplicationPreAuthorizedState {
   /// The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// The client ID of the application being authorized. Changing this field forces a new resource to be created.
-  final pulumi.Input<String>? authorizedClientId;
+  final pulumi.Input<String?>? authorizedClientId;
   /// A set of permission scope IDs required by the authorized application.
-  final pulumi.Input<List<String>>? permissionIds;
+  final pulumi.Input<List<String>?>? permissionIds;
 
   /// Creates a new [ApplicationPreAuthorizedState].
   /// [applicationId] The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.

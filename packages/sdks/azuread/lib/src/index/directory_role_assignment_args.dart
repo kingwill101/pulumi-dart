@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_directory_role_assignment_directory_role_assignment_args_doc}
 class DirectoryRoleAssignmentArgs {
   /// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directoryScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? appScopeId;
+  final pulumi.Input<String?>? appScopeId;
   /// Identifier of the directory object representing the scope of the assignment. Cannot be used with `appScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? directoryScopeId;
+  final pulumi.Input<String?>? directoryScopeId;
   /// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   final pulumi.Input<String> principalObjectId;
   /// The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.

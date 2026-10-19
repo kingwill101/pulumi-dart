@@ -100,7 +100,7 @@ import 'application_owner_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationOwner(ctx, "example_jane", &azuread.ApplicationOwnerArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			OwnerObjectId: jane.ObjectId,
 /// 		})
 /// 		if err != nil {
@@ -111,7 +111,7 @@ import 'application_owner_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -119,16 +119,25 @@ import 'application_owner_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_applicationregistration" "example" {
+/// resource "azuread_application_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
 /// resource "azuread_user" "jane" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_principal_name = "jane.fischer@example.com"
 ///   display_name        = "Jane Fischer"
 ///   password            = "Ch@ngeMe"
 /// }
-/// resource "azuread_applicationowner" "example_jane" {
-///   application_id  = azuread_applicationregistration.example.id
+/// resource "azuread_application_owner" "example_jane" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_id  = azuread_application_registration.example.id
 ///   owner_object_id = azuread_user.jane.object_id
 /// }
 /// ```
@@ -223,7 +232,7 @@ class ApplicationOwner extends pulumi.CustomResource {
           'azuread:index/applicationOwner:ApplicationOwner',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     ownerObjectId = registerOutput<String>('ownerObjectId');
@@ -234,11 +243,12 @@ class ApplicationOwner extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationOwnerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationOwner._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -252,6 +262,19 @@ class ApplicationOwner extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationId = registerOutput<String>('applicationId');
+    ownerObjectId = registerOutput<String>('ownerObjectId');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationOwner] resource.
+  ApplicationOwner.reference(String urn)
+    : super(
+        'azuread:index/applicationOwner:ApplicationOwner',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationId = registerOutput<String>('applicationId');
     ownerObjectId = registerOutput<String>('ownerObjectId');
   }

@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGroupRoleManagementPolicyArgs {
   /// The ID of the Azure AD group for which the policy applies.
   final pulumi.Input<String> groupId;
-  /// The type of assignment this policy coveres. Can be either `member` or `owner`.
+  /// The type of assignment this policy covers. Can be either `member` or `owner`.
   final pulumi.Input<String> roleId;
 
   /// Creates a new [GetGroupRoleManagementPolicyArgs].
   /// [groupId] The ID of the Azure AD group for which the policy applies.
-  /// [roleId] The type of assignment this policy coveres. Can be either `member` or `owner`.
+  /// [roleId] The type of assignment this policy covers. Can be either `member` or `owner`.
   const GetGroupRoleManagementPolicyArgs({
     required this.groupId,
     required this.roleId,

@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AdministrativeUnit resources.
 class AdministrativeUnitState {
   /// The description of the administrative unit.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the administrative unit.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
-  final pulumi.Input<bool>? hiddenMembershipEnabled;
+  final pulumi.Input<bool?>? hiddenMembershipEnabled;
   /// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
   ///
   /// &gt; **Caution** When using the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
   ///
   /// &gt; **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
-  final pulumi.Input<List<String>>? members;
+  final pulumi.Input<List<String>?>? members;
   /// The object ID of the administrative unit.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// If `true`, will return an error if an existing administrative unit is found with the same name
-  final pulumi.Input<bool>? preventDuplicateNames;
+  final pulumi.Input<bool?>? preventDuplicateNames;
 
   /// Creates a new [AdministrativeUnitState].
   /// [description] The description of the administrative unit.

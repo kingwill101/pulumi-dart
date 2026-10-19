@@ -6,7 +6,7 @@ class GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover {
   /// The ID of the object which will act as an approver.
   final pulumi.Input<String> objectId;
   /// The type of object acting as an approver. Possible options are `singleUser` and `groupMembers`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover].
   /// [objectId] The ID of the object which will act as an approver.

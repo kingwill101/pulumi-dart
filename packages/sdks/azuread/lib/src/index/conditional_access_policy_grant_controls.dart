@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConditionalAccessPolicyGrantControls {
   /// ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
-  final pulumi.Input<String>? authenticationStrengthPolicyId;
+  final pulumi.Input<String?>? authenticationStrengthPolicyId;
   /// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
-  final pulumi.Input<List<String>>? builtInControls;
+  final pulumi.Input<List<String>?>? builtInControls;
   /// List of custom controls IDs required by the policy.
-  final pulumi.Input<List<String>>? customAuthenticationFactors;
+  final pulumi.Input<List<String>?>? customAuthenticationFactors;
   /// Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
   final pulumi.Input<String> operator;
   /// List of terms of use IDs required by the policy.
   ///
   /// &gt; At least one of `authenticationStrengthPolicyId`, `builtInControls` or `termsOfUse` must be specified.
-  final pulumi.Input<List<String>>? termsOfUses;
+  final pulumi.Input<List<String>?>? termsOfUses;
 
   /// Creates a new [ConditionalAccessPolicyGrantControls].
   /// [authenticationStrengthPolicyId] ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.

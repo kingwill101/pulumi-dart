@@ -6,11 +6,11 @@ import 'access_package_assignment_policy_question_text.dart';
 
 class AccessPackageAssignmentPolicyQuestion {
   /// One or more blocks configuring a choice to the question, as documented below.
-  final pulumi.Input<List<AccessPackageAssignmentPolicyQuestionChoice>>? choices;
+  final pulumi.Input<List<AccessPackageAssignmentPolicyQuestionChoice>?>? choices;
   /// Whether this question is required.
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
   /// The sequence number of this question.
-  final pulumi.Input<int>? sequence;
+  final pulumi.Input<int?>? sequence;
   /// A block describing the content of this question, as documented below.
   final pulumi.Input<AccessPackageAssignmentPolicyQuestionText> text;
 
@@ -39,7 +39,7 @@ class AccessPackageAssignmentPolicyQuestion {
     return AccessPackageAssignmentPolicyQuestion(
       choices: (() { final guardedValue = map['choices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestionChoice>(guardedValue, (value) => AccessPackageAssignmentPolicyQuestionChoice.fromMap((value as Map).cast<String, dynamic>()))); })(),
       required: (() { final guardedValue = map['required']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      sequence: (() { final guardedValue = map['sequence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sequence: (() { final guardedValue = map['sequence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       text: pulumi.Input.fromValue(AccessPackageAssignmentPolicyQuestionText.fromMap((map['text']! as Map).cast<String, dynamic>())),
     );
   }

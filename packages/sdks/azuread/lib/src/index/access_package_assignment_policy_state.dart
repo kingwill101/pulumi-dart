@@ -9,25 +9,25 @@ import 'access_package_assignment_policy_requestor_settings.dart';
 /// Input properties used for looking up and filtering AccessPackageAssignmentPolicy resources.
 class AccessPackageAssignmentPolicyState {
   /// The ID of the access package that will contain the policy.
-  final pulumi.Input<String>? accessPackageId;
+  final pulumi.Input<String?>? accessPackageId;
   /// An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
-  final pulumi.Input<AccessPackageAssignmentPolicyApprovalSettings>? approvalSettings;
+  final pulumi.Input<AccessPackageAssignmentPolicyApprovalSettings?>? approvalSettings;
   /// An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
-  final pulumi.Input<AccessPackageAssignmentPolicyAssignmentReviewSettings>? assignmentReviewSettings;
+  final pulumi.Input<AccessPackageAssignmentPolicyAssignmentReviewSettings?>? assignmentReviewSettings;
   /// The description of the policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the policy.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// How many days this assignment is valid for.
-  final pulumi.Input<int>? durationInDays;
+  final pulumi.Input<int?>? durationInDays;
   /// The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
-  final pulumi.Input<String>? expirationDate;
+  final pulumi.Input<String?>? expirationDate;
   /// Whether users will be able to request extension of their access to this package before their access expires.
-  final pulumi.Input<bool>? extensionEnabled;
+  final pulumi.Input<bool?>? extensionEnabled;
   /// One or more `question` blocks for the requestor, as documented below.
-  final pulumi.Input<List<AccessPackageAssignmentPolicyQuestion>>? questions;
+  final pulumi.Input<List<AccessPackageAssignmentPolicyQuestion>?>? questions;
   /// A `requestorSettings` block to configure the users who can request access, as documented below.
-  final pulumi.Input<AccessPackageAssignmentPolicyRequestorSettings>? requestorSettings;
+  final pulumi.Input<AccessPackageAssignmentPolicyRequestorSettings?>? requestorSettings;
 
   /// Creates a new [AccessPackageAssignmentPolicyState].
   /// [accessPackageId] The ID of the access package that will contain the policy.
@@ -75,7 +75,7 @@ class AccessPackageAssignmentPolicyState {
       assignmentReviewSettings: (() { final guardedValue = map['assignmentReviewSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessPackageAssignmentPolicyAssignmentReviewSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      durationInDays: (() { final guardedValue = map['durationInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      durationInDays: (() { final guardedValue = map['durationInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       expirationDate: (() { final guardedValue = map['expirationDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       extensionEnabled: (() { final guardedValue = map['extensionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       questions: (() { final guardedValue = map['questions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestion>(guardedValue, (value) => AccessPackageAssignmentPolicyQuestion.fromMap((value as Map).cast<String, dynamic>()))); })(),

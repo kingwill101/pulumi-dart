@@ -118,7 +118,7 @@ import 'application_api_access_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationApiAccess(ctx, "example_msgraph", &azuread.ApplicationApiAccessArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			ApiClientId:   pulumi.String(wellKnown.Result.MicrosoftGraph),
 /// 			RoleIds: pulumi.StringArray{
 /// 				pulumi.String(msgraph.AppRoleIds.Group.Read.All),
@@ -136,7 +136,7 @@ import 'application_api_access_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -144,20 +144,26 @@ import 'application_api_access_state.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getapplicationpublishedappids" "wellKnown" {
+/// data "azuread_application_published_app_ids" "wellKnown" {
 /// }
-/// data "azuread_getserviceprincipal" "msgraph" {
-///   client_id = data.azuread_getapplicationpublishedappids.wellKnown.result["MicrosoftGraph"]
+/// data "azuread_service_principal" "msgraph" {
+///   client_id = data.azuread_application_published_app_ids.wellKnown.result["MicrosoftGraph"]
 /// }
 ///
-/// resource "azuread_applicationregistration" "example" {
+/// resource "azuread_application_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_applicationapiaccess" "example_msgraph" {
-///   application_id = azuread_applicationregistration.example.id
-///   api_client_id  = data.azuread_getapplicationpublishedappids.wellKnown.result["MicrosoftGraph"]
-///   role_ids       = [data.azuread_getserviceprincipal.msgraph.app_role_ids["Group.Read.All"], data.azuread_getserviceprincipal.msgraph.app_role_ids["User.Read.All"]]
-///   scope_ids      = [data.azuread_getserviceprincipal.msgraph.oauth2_permission_scope_ids["User.ReadWrite"]]
+/// resource "azuread_application_api_access" "example_msgraph" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_id = azuread_application_registration.example.id
+///   api_client_id  = data.azuread_application_published_app_ids.wellKnown.result["MicrosoftGraph"]
+///   role_ids       = [data.azuread_service_principal.msgraph.app_role_ids["Group.Read.All"], data.azuread_service_principal.msgraph.app_role_ids["User.Read.All"]]
+///   scope_ids      = [data.azuread_service_principal.msgraph.oauth2_permission_scope_ids["User.ReadWrite"]]
 /// }
 /// ```
 /// ```java
@@ -293,7 +299,7 @@ import 'application_api_access_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationApiAccess(ctx, "example", &azuread.ApplicationApiAccessArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -303,7 +309,7 @@ import 'application_api_access_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -312,9 +318,15 @@ import 'application_api_access_state.dart';
 /// }
 ///
 /// resource "azuread_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_applicationapiaccess" "example" {
+/// resource "azuread_application_api_access" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id = azuread_application.example.id
 /// }
 /// ```
@@ -397,12 +409,12 @@ class ApplicationApiAccess extends pulumi.CustomResource {
           'azuread:index/applicationApiAccess:ApplicationApiAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     apiClientId = registerOutput<String>('apiClientId');
     applicationId = registerOutput<String>('applicationId');
-    roleIds = registerOutput<List<String>?>('roleIds');
-    scopeIds = registerOutput<List<String>?>('scopeIds');
+    roleIds = registerOutput<List<String>?>('roleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scopeIds = registerOutput<List<String>?>('scopeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ApplicationApiAccess] resource's state with the given [name] and [id].
@@ -410,11 +422,12 @@ class ApplicationApiAccess extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationApiAccessState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationApiAccess._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -430,7 +443,22 @@ class ApplicationApiAccess extends pulumi.CustomResource {
         ) {
     apiClientId = registerOutput<String>('apiClientId');
     applicationId = registerOutput<String>('applicationId');
-    roleIds = registerOutput<List<String>?>('roleIds');
-    scopeIds = registerOutput<List<String>?>('scopeIds');
+    roleIds = registerOutput<List<String>?>('roleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scopeIds = registerOutput<List<String>?>('scopeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ApplicationApiAccess] resource.
+  ApplicationApiAccess.reference(String urn)
+    : super(
+        'azuread:index/applicationApiAccess:ApplicationApiAccess',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiClientId = registerOutput<String>('apiClientId');
+    applicationId = registerOutput<String>('applicationId');
+    roleIds = registerOutput<List<String>?>('roleIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scopeIds = registerOutput<List<String>?>('scopeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

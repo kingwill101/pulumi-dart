@@ -70,7 +70,7 @@ import 'application_password_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationPassword(ctx, "example", &azuread.ApplicationPasswordArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -80,7 +80,7 @@ import 'application_password_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -88,11 +88,17 @@ import 'application_password_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_applicationregistration" "example" {
+/// resource "azuread_application_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_applicationpassword" "example" {
-///   application_id = azuread_applicationregistration.example.id
+/// resource "azuread_application_password" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_id = azuread_application_registration.example.id
 /// }
 /// ```
 /// ```java
@@ -227,9 +233,9 @@ import 'application_password_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationPassword(ctx, "example", &azuread.ApplicationPasswordArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			RotateWhenChanged: pulumi.StringMap{
-/// 				"rotation": exampleRotating.ID(),
+/// 				"rotation": exampleRotating.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -240,7 +246,7 @@ import 'application_password_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -251,14 +257,23 @@ import 'application_password_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_applicationregistration" "example" {
+/// resource "azuread_application_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
 /// resource "time_rotating" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   rotation_days = 7
 /// }
-/// resource "azuread_applicationpassword" "example" {
-///   application_id = azuread_applicationregistration.example.id
+/// resource "azuread_application_password" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_id = azuread_application_registration.example.id
 ///   rotate_when_changed = {
 ///     "rotation" = time_rotating.example.id
 ///   }
@@ -359,16 +374,17 @@ class ApplicationPasswordResource extends pulumi.CustomResource {
           'azuread:index/applicationPassword:ApplicationPassword',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
+          additionalSecretOutputs: const ['value'],
         ) {
     applicationId = registerOutput<String>('applicationId');
     displayName = registerOutput<String>('displayName');
     endDate = registerOutput<String>('endDate');
     endDateRelative = registerOutput<String?>('endDateRelative');
     keyId = registerOutput<String>('keyId');
-    rotateWhenChanged = registerOutput<Map<String, String>?>('rotateWhenChanged');
+    rotateWhenChanged = registerOutput<Map<String, String>?>('rotateWhenChanged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     startDate = registerOutput<String>('startDate');
-    value = registerOutput<String>('value');
+    value = registerOutput<String>('value', isSecret: true);
   }
 
   /// Gets an existing [ApplicationPasswordResource] resource's state with the given [name] and [id].
@@ -376,11 +392,12 @@ class ApplicationPasswordResource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationPasswordState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationPasswordResource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -399,8 +416,28 @@ class ApplicationPasswordResource extends pulumi.CustomResource {
     endDate = registerOutput<String>('endDate');
     endDateRelative = registerOutput<String?>('endDateRelative');
     keyId = registerOutput<String>('keyId');
-    rotateWhenChanged = registerOutput<Map<String, String>?>('rotateWhenChanged');
+    rotateWhenChanged = registerOutput<Map<String, String>?>('rotateWhenChanged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     startDate = registerOutput<String>('startDate');
-    value = registerOutput<String>('value');
+    value = registerOutput<String>('value', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [ApplicationPasswordResource] resource.
+  ApplicationPasswordResource.reference(String urn)
+    : super(
+        'azuread:index/applicationPassword:ApplicationPassword',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['value'],
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    displayName = registerOutput<String>('displayName');
+    endDate = registerOutput<String>('endDate');
+    endDateRelative = registerOutput<String?>('endDateRelative');
+    keyId = registerOutput<String>('keyId');
+    rotateWhenChanged = registerOutput<Map<String, String>?>('rotateWhenChanged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    startDate = registerOutput<String>('startDate');
+    value = registerOutput<String>('value', isSecret: true);
   }
 }

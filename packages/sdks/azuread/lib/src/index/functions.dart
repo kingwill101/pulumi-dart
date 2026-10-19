@@ -12,6 +12,8 @@ import 'get_application_published_app_ids_result.dart';
 import 'get_application_result.dart';
 import 'get_application_template_args.dart';
 import 'get_application_template_result.dart';
+import 'get_authentication_strength_policy_args.dart';
+import 'get_authentication_strength_policy_result.dart';
 import 'get_client_config_result.dart';
 import 'get_directory_object_args.dart';
 import 'get_directory_object_result.dart';
@@ -101,7 +103,7 @@ import 'get_users_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -109,7 +111,7 @@ import 'get_users_result.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getaccesspackage" "example" {
+/// data "azuread_access_package" "example" {
 ///   object_id = "00000000-0000-0000-0000-000000000000"
 /// }
 /// ```
@@ -208,7 +210,7 @@ import 'get_users_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -216,7 +218,7 @@ import 'get_users_result.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getaccesspackage" "example" {
+/// data "azuread_access_package" "example" {
 ///   catalog_id   = "00000000-0000-0000-0000-000000000000"
 ///   display_name = "My access package Catalog"
 /// }
@@ -272,6 +274,17 @@ Future<GetAccessPackageResult> getAccessPackage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccessPackageResult.fromMap(result);
+}
+
+pulumi.Output<GetAccessPackageResult> getAccessPackageOutput(
+  GetAccessPackageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getAccessPackage:getAccessPackage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPackageResult.fromMap);
 }
 
 /// i
@@ -340,7 +353,7 @@ Future<GetAccessPackageResult> getAccessPackage(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -348,7 +361,7 @@ Future<GetAccessPackageResult> getAccessPackage(
 ///   }
 /// }
 ///
-/// data "azuread_getaccesspackagecatalog" "example" {
+/// data "azuread_access_package_catalog" "example" {
 ///   object_id = "00000000-0000-0000-0000-000000000000"
 /// }
 /// ```
@@ -443,7 +456,7 @@ Future<GetAccessPackageResult> getAccessPackage(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -451,7 +464,7 @@ Future<GetAccessPackageResult> getAccessPackage(
 ///   }
 /// }
 ///
-/// data "azuread_getaccesspackagecatalog" "example" {
+/// data "azuread_access_package_catalog" "example" {
 ///   display_name = "My access package Catalog"
 /// }
 /// ```
@@ -504,6 +517,17 @@ Future<GetAccessPackageCatalogResult> getAccessPackageCatalog(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccessPackageCatalogResult.fromMap(result);
+}
+
+pulumi.Output<GetAccessPackageCatalogResult> getAccessPackageCatalogOutput(
+  GetAccessPackageCatalogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getAccessPackageCatalog:getAccessPackageCatalog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPackageCatalogResult.fromMap);
 }
 
 /// Gets information about an access package catalog role.
@@ -572,7 +596,7 @@ Future<GetAccessPackageCatalogResult> getAccessPackageCatalog(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -580,7 +604,7 @@ Future<GetAccessPackageCatalogResult> getAccessPackageCatalog(
 ///   }
 /// }
 ///
-/// data "azuread_getaccesspackagecatalogrole" "example" {
+/// data "azuread_access_package_catalog_role" "example" {
 ///   display_name = "Catalog owner"
 /// }
 /// ```
@@ -674,7 +698,7 @@ Future<GetAccessPackageCatalogResult> getAccessPackageCatalog(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -682,7 +706,7 @@ Future<GetAccessPackageCatalogResult> getAccessPackageCatalog(
 ///   }
 /// }
 ///
-/// data "azuread_getaccesspackagecatalogrole" "example" {
+/// data "azuread_access_package_catalog_role" "example" {
 ///   object_id = "00000000-0000-0000-0000-000000000000"
 /// }
 /// ```
@@ -735,6 +759,17 @@ Future<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccessPackageCatalogRoleResult.fromMap(result);
+}
+
+pulumi.Output<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRoleOutput(
+  GetAccessPackageCatalogRoleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPackageCatalogRoleResult.fromMap);
 }
 
 /// Gets information about an adminisrative unit in Azure Active Directory.
@@ -803,7 +838,7 @@ Future<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -811,7 +846,7 @@ Future<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole(
 ///   }
 /// }
 ///
-/// data "azuread_getadministrativeunit" "example" {
+/// data "azuread_administrative_unit" "example" {
 ///   display_name = "Example-AU"
 /// }
 /// ```
@@ -905,7 +940,7 @@ Future<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -913,7 +948,7 @@ Future<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole(
 ///   }
 /// }
 ///
-/// data "azuread_getadministrativeunit" "example" {
+/// data "azuread_administrative_unit" "example" {
 ///   object_id = "00000000-0000-0000-0000-000000000000"
 /// }
 /// ```
@@ -966,6 +1001,17 @@ Future<GetAdministrativeUnitResult> getAdministrativeUnit(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAdministrativeUnitResult.fromMap(result);
+}
+
+pulumi.Output<GetAdministrativeUnitResult> getAdministrativeUnitOutput(
+  GetAdministrativeUnitArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getAdministrativeUnit:getAdministrativeUnit',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAdministrativeUnitResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Application within Azure Active Directory.
@@ -1038,7 +1084,7 @@ Future<GetAdministrativeUnitResult> getAdministrativeUnit(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -1046,12 +1092,12 @@ Future<GetAdministrativeUnitResult> getAdministrativeUnit(
 ///   }
 /// }
 ///
-/// data "azuread_getapplication" "example" {
+/// data "azuread_application" "example" {
 ///   display_name = "My First AzureAD Application"
 /// }
 ///
 /// output "applicationObjectId" {
-///   value = data.azuread_getapplication.example.object_id
+///   value = data.azuread_application.example.object_id
 /// }
 /// ```
 /// ```java
@@ -1106,6 +1152,17 @@ Future<GetApplicationResult> getApplication(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApplicationResult.fromMap(result);
+}
+
+pulumi.Output<GetApplicationResult> getApplicationOutput(
+  GetApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getApplication:getApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationResult.fromMap);
 }
 
 /// Use this data source to discover application IDs for APIs published by Microsoft.
@@ -1169,7 +1226,7 @@ Future<GetApplicationResult> getApplication(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -1177,11 +1234,11 @@ Future<GetApplicationResult> getApplication(
 ///   }
 /// }
 ///
-/// data "azuread_getapplicationpublishedappids" "wellKnown" {
+/// data "azuread_application_published_app_ids" "wellKnown" {
 /// }
 ///
 /// output "publishedAppIds" {
-///   value = data.azuread_getapplicationpublishedappids.wellKnown.result
+///   value = data.azuread_application_published_app_ids.wellKnown.result
 /// }
 /// ```
 /// ```java
@@ -1368,7 +1425,7 @@ Future<GetApplicationResult> getApplication(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -1376,23 +1433,29 @@ Future<GetApplicationResult> getApplication(
 ///   }
 /// }
 ///
-/// data "azuread_getapplicationpublishedappids" "wellKnown" {
+/// data "azuread_application_published_app_ids" "wellKnown" {
 /// }
 ///
-/// resource "azuread_serviceprincipal" "msgraph" {
-///   client_id    = data.azuread_getapplicationpublishedappids.wellKnown.result["MicrosoftGraph"]
+/// resource "azuread_service_principal" "msgraph" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   client_id    = data.azuread_application_published_app_ids.wellKnown.result["MicrosoftGraph"]
 ///   use_existing = true
 /// }
 /// resource "azuread_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 ///   required_resource_accesses {
-///     resource_app_id = data.azuread_getapplicationpublishedappids.wellKnown.result["MicrosoftGraph"]
+///     resource_app_id = data.azuread_application_published_app_ids.wellKnown.result["MicrosoftGraph"]
 ///     resource_accesses {
-///       id   = azuread_serviceprincipal.msgraph.app_role_ids["User.Read.All"]
+///       id   = azuread_service_principal.msgraph.app_role_ids["User.Read.All"]
 ///       type = "Role"
 ///     }
 ///     resource_accesses {
-///       id   = azuread_serviceprincipal.msgraph.oauth2_permission_scope_ids["User.ReadWrite"]
+///       id   = azuread_service_principal.msgraph.oauth2_permission_scope_ids["User.ReadWrite"]
 ///       type = "Scope"
 ///     }
 ///   }
@@ -1437,11 +1500,11 @@ Future<GetApplicationResult> getApplication(
 ///                 .resourceAppId(wellKnown.result().MicrosoftGraph())
 ///                 .resourceAccesses(
 ///                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-///                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
+///                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("User.Read.All")))
 ///                         .type("Role")
 ///                         .build(),
 ///                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-///                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
+///                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.get("User.ReadWrite")))
 ///                         .type("Scope")
 ///                         .build())
 ///                 .build())
@@ -1486,6 +1549,17 @@ Future<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIds(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApplicationPublishedAppIdsResult.fromMap(result);
+}
+
+pulumi.Output<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIdsOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetApplicationPublishedAppIdsResult.fromMap);
 }
 
 /// Use this data source to access information about an Application Template from the [Azure AD App Gallery](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/category/azure-active-directory-apps).
@@ -1554,7 +1628,7 @@ Future<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIds(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -1562,12 +1636,12 @@ Future<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIds(
 ///   }
 /// }
 ///
-/// data "azuread_getapplicationtemplate" "example" {
+/// data "azuread_application_template" "example" {
 ///   display_name = "Marketo"
 /// }
 ///
 /// output "applicationTemplateId" {
-///   value = data.azuread_getapplicationtemplate.example.template_id
+///   value = data.azuread_application_template.example.template_id
 /// }
 /// ```
 /// ```java
@@ -1622,6 +1696,368 @@ Future<GetApplicationTemplateResult> getApplicationTemplate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApplicationTemplateResult.fromMap(result);
+}
+
+pulumi.Output<GetApplicationTemplateResult> getApplicationTemplateOutput(
+  GetApplicationTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getApplicationTemplate:getApplicationTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationTemplateResult.fromMap);
+}
+
+/// Use this data source to retrieve information about an authentication strength policy within Azure Active Directory. This can be used to read either the built-in policies supplied by Microsoft, or custom policies created in the tenant.
+///
+/// ## API Permissions
+///
+/// The following API permissions are required in order to use this data source.
+///
+/// When authenticated with a service principal, this data source requires one of the following application roles: `Policy.Read.AuthenticationMethod` or `Policy.Read.All`
+///
+/// When authenticated with a user principal, this data source requires one of the following directory roles: `Conditional Access Administrator`, `Security Administrator`, `Security Reader` or `Global Administrator`
+///
+/// ## Example Usage
+///
+/// *Look up a built-in policy by display name*
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azuread from "@pulumi/azuread";
+///
+/// const example = azuread.getAuthenticationStrengthPolicy({
+///     displayName: "Multifactor authentication",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_azuread as azuread
+///
+/// example = azuread.get_authentication_strength_policy(display_name="Multifactor authentication")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureAD = Pulumi.AzureAD;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = AzureAD.GetAuthenticationStrengthPolicy.Invoke(new()
+///     {
+///         DisplayName = "Multifactor authentication",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := azuread.GetAuthenticationStrengthPolicy(ctx, &azuread.LookupAuthenticationStrengthPolicyArgs{
+/// 			DisplayName: pulumi.StringRef("Multifactor authentication"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_authentication_strength_policy" "example" {
+///   display_name = "Multifactor authentication"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azuread.AzureadFunctions;
+/// import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+///             .displayName("Multifactor authentication")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: azuread:getAuthenticationStrengthPolicy
+///       arguments:
+///         displayName: Multifactor authentication
+/// ```
+///
+///
+/// The display names of the built-in policies supplied by Microsoft are:
+///
+/// * `Multifactor authentication`
+/// * `Passwordless MFA`
+/// * `Phishing-resistant MFA`
+///
+/// *Look up a policy by object ID*
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azuread from "@pulumi/azuread";
+///
+/// const example = azuread.getAuthenticationStrengthPolicy({
+///     objectId: "00000000-0000-0000-0000-000000000004",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_azuread as azuread
+///
+/// example = azuread.get_authentication_strength_policy(object_id="00000000-0000-0000-0000-000000000004")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureAD = Pulumi.AzureAD;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = AzureAD.GetAuthenticationStrengthPolicy.Invoke(new()
+///     {
+///         ObjectId = "00000000-0000-0000-0000-000000000004",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := azuread.GetAuthenticationStrengthPolicy(ctx, &azuread.LookupAuthenticationStrengthPolicyArgs{
+/// 			ObjectId: pulumi.StringRef("00000000-0000-0000-0000-000000000004"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_authentication_strength_policy" "example" {
+///   object_id = "00000000-0000-0000-0000-000000000004"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azuread.AzureadFunctions;
+/// import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+///             .objectId("00000000-0000-0000-0000-000000000004")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: azuread:getAuthenticationStrengthPolicy
+///       arguments:
+///         objectId: 00000000-0000-0000-0000-000000000004
+/// ```
+///
+///
+/// *Look up a policy managed elsewhere in the same configuration*
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azuread from "@pulumi/azuread";
+///
+/// const example = azuread.getAuthenticationStrengthPolicy({
+///     objectId: exampleAzureadAuthenticationStrengthPolicy.objectId,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_azuread as azuread
+///
+/// example = azuread.get_authentication_strength_policy(object_id=example_azuread_authentication_strength_policy["objectId"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using AzureAD = Pulumi.AzureAD;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = AzureAD.GetAuthenticationStrengthPolicy.Invoke(new()
+///     {
+///         ObjectId = exampleAzureadAuthenticationStrengthPolicy.ObjectId,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := azuread.GetAuthenticationStrengthPolicy(ctx, &azuread.LookupAuthenticationStrengthPolicyArgs{
+/// 			ObjectId: pulumi.StringRef(exampleAzureadAuthenticationStrengthPolicy.ObjectId),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     azuread = {
+///       source = "pulumi/azuread"
+///     }
+///   }
+/// }
+///
+/// data "azuread_authentication_strength_policy" "example" {
+///   object_id = exampleAzureadAuthenticationStrengthPolicy.objectId
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azuread.AzureadFunctions;
+/// import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+///             .objectId(exampleAzureadAuthenticationStrengthPolicy.get("objectId"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: azuread:getAuthenticationStrengthPolicy
+///       arguments:
+///         objectId: ${exampleAzureadAuthenticationStrengthPolicy.objectId}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_authentication_strength_policy_get_authentication_strength_policy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetAuthenticationStrengthPolicyResult> getAuthenticationStrengthPolicy(
+  GetAuthenticationStrengthPolicyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'azuread:index/getAuthenticationStrengthPolicy:getAuthenticationStrengthPolicy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetAuthenticationStrengthPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetAuthenticationStrengthPolicyResult> getAuthenticationStrengthPolicyOutput(
+  GetAuthenticationStrengthPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getAuthenticationStrengthPolicy:getAuthenticationStrengthPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthenticationStrengthPolicyResult.fromMap);
 }
 
 /// Use this data source to access the configuration of the AzureAD provider.
@@ -1683,7 +2119,7 @@ Future<GetApplicationTemplateResult> getApplicationTemplate(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -1691,11 +2127,11 @@ Future<GetApplicationTemplateResult> getApplicationTemplate(
 ///   }
 /// }
 ///
-/// data "azuread_getclientconfig" "current" {
+/// data "azuread_client_config" "current" {
 /// }
 ///
 /// output "objectId" {
-///   value = data.azuread_getclientconfig.current.object_id
+///   value = data.azuread_client_config.current.object_id
 /// }
 /// ```
 /// ```java
@@ -1745,6 +2181,17 @@ Future<GetClientConfigResult> getClientConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClientConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetClientConfigResult> getClientConfigOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getClientConfig:getClientConfig',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetClientConfigResult.fromMap);
 }
 
 /// Retrieves the OData type for a generic directory object having the provided object ID.
@@ -1818,7 +2265,7 @@ Future<GetClientConfigResult> getClientConfig(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -1826,12 +2273,12 @@ Future<GetClientConfigResult> getClientConfig(
 ///   }
 /// }
 ///
-/// data "azuread_getdirectoryobject" "example" {
+/// data "azuread_directory_object" "example" {
 ///   object_id = "00000000-0000-0000-0000-000000000000"
 /// }
 ///
 /// output "objectType" {
-///   value = data.azuread_getdirectoryobject.example.type
+///   value = data.azuread_directory_object.example.type
 /// }
 /// ```
 /// ```java
@@ -1894,6 +2341,17 @@ Future<GetDirectoryObjectResult> getDirectoryObject(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDirectoryObjectResult.fromMap(result);
+}
+
+pulumi.Output<GetDirectoryObjectResult> getDirectoryObjectOutput(
+  GetDirectoryObjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getDirectoryObject:getDirectoryObject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDirectoryObjectResult.fromMap);
 }
 
 /// Use this data source to access information about directory role templates within Azure Active Directory.
@@ -1959,7 +2417,7 @@ Future<GetDirectoryObjectResult> getDirectoryObject(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -1967,11 +2425,11 @@ Future<GetDirectoryObjectResult> getDirectoryObject(
 ///   }
 /// }
 ///
-/// data "azuread_getdirectoryroletemplates" "current" {
+/// data "azuread_directory_role_templates" "current" {
 /// }
 ///
 /// output "roles" {
-///   value = data.azuread_getdirectoryroletemplates.current.object_ids
+///   value = data.azuread_directory_role_templates.current.object_ids
 /// }
 /// ```
 /// ```java
@@ -2021,6 +2479,17 @@ Future<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDirectoryRoleTemplatesResult.fromMap(result);
+}
+
+pulumi.Output<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplatesOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetDirectoryRoleTemplatesResult.fromMap);
 }
 
 /// Use this data source to access information about activated directory roles within Azure Active Directory.
@@ -2086,7 +2555,7 @@ Future<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -2094,11 +2563,11 @@ Future<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates(
 ///   }
 /// }
 ///
-/// data "azuread_getdirectoryroles" "current" {
+/// data "azuread_directory_roles" "current" {
 /// }
 ///
 /// output "roles" {
-///   value = data.azuread_getdirectoryroles.current.object_ids
+///   value = data.azuread_directory_roles.current.object_ids
 /// }
 /// ```
 /// ```java
@@ -2148,6 +2617,17 @@ Future<GetDirectoryRolesResult> getDirectoryRoles(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDirectoryRolesResult.fromMap(result);
+}
+
+pulumi.Output<GetDirectoryRolesResult> getDirectoryRolesOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getDirectoryRoles:getDirectoryRoles',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetDirectoryRolesResult.fromMap);
 }
 
 /// Use this data source to access information about existing Domains within Azure Active Directory.
@@ -2213,7 +2693,7 @@ Future<GetDirectoryRolesResult> getDirectoryRoles(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -2221,11 +2701,11 @@ Future<GetDirectoryRolesResult> getDirectoryRoles(
 ///   }
 /// }
 ///
-/// data "azuread_getdomains" "aadDomains" {
+/// data "azuread_domains" "aadDomains" {
 /// }
 ///
 /// output "domainNames" {
-///   value = data.azuread_getdomains.aadDomains.domains[*].domain_name
+///   value = data.azuread_domains.aadDomains.domains[*].domain_name
 /// }
 /// ```
 /// ```java
@@ -2269,6 +2749,17 @@ Future<GetDomainsResult> getDomains(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainsResult.fromMap(result);
+}
+
+pulumi.Output<GetDomainsResult> getDomainsOutput(
+  GetDomainsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getDomains:getDomains',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainsResult.fromMap);
 }
 
 /// Gets information about an Azure Active Directory group.
@@ -2340,7 +2831,7 @@ Future<GetDomainsResult> getDomains(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -2348,7 +2839,7 @@ Future<GetDomainsResult> getDomains(
 ///   }
 /// }
 ///
-/// data "azuread_getgroup" "example" {
+/// data "azuread_group" "example" {
 ///   display_name     = "MyGroupName"
 ///   security_enabled = true
 /// }
@@ -2404,6 +2895,17 @@ Future<GetGroupResult> getGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetGroupResult> getGroupOutput(
+  GetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getGroup:getGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupResult.fromMap);
 }
 
 /// Use this data source to retrieve a role policy for an Azure AD group.
@@ -2482,7 +2984,7 @@ Future<GetGroupResult> getGroup(
 /// 			return err
 /// 		}
 /// 		_ = azuread.GetGroupRoleManagementPolicyOutput(ctx, azuread.GetGroupRoleManagementPolicyOutputArgs{
-/// 			GroupId: example.ID(),
+/// 			GroupId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleId:  pulumi.String("owner"),
 /// 		}, nil)
 /// 		return nil
@@ -2490,7 +2992,7 @@ Future<GetGroupResult> getGroup(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -2498,12 +3000,15 @@ Future<GetGroupResult> getGroup(
 ///   }
 /// }
 ///
-/// data "azuread_getgrouprolemanagementpolicy" "ownersPolicy" {
+/// data "azuread_group_role_management_policy" "ownersPolicy" {
 ///   group_id = azuread_group.example.id
 ///   role_id  = "owner"
 /// }
 ///
 /// resource "azuread_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "group-name"
 ///   security_enabled = true
 /// }
@@ -2572,6 +3077,17 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGroupRoleManagementPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicyOutput(
+  GetGroupRoleManagementPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getGroupRoleManagementPolicy:getGroupRoleManagementPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupRoleManagementPolicyResult.fromMap);
 }
 
 /// Gets Object IDs or Display Names for multiple Azure Active Directory groups.
@@ -2651,7 +3167,7 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -2659,7 +3175,7 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 ///   }
 /// }
 ///
-/// data "azuread_getgroups" "example" {
+/// data "azuread_groups" "example" {
 ///   display_names = ["group-a", "group-b"]
 /// }
 /// ```
@@ -2757,7 +3273,7 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -2765,7 +3281,7 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 ///   }
 /// }
 ///
-/// data "azuread_getgroups" "sales" {
+/// data "azuread_groups" "sales" {
 ///   display_name_prefix = "sales-"
 /// }
 /// ```
@@ -2859,7 +3375,7 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -2867,7 +3383,7 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 ///   }
 /// }
 ///
-/// data "azuread_getgroups" "all" {
+/// data "azuread_groups" "all" {
 ///   return_all = true
 /// }
 /// ```
@@ -2965,7 +3481,7 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -2973,7 +3489,7 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 ///   }
 /// }
 ///
-/// data "azuread_getgroups" "mailEnabled" {
+/// data "azuread_groups" "mailEnabled" {
 ///   mail_enabled = true
 ///   return_all   = true
 /// }
@@ -3078,7 +3594,7 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -3086,7 +3602,7 @@ Future<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(
 ///   }
 /// }
 ///
-/// data "azuread_getgroups" "securityOnly" {
+/// data "azuread_groups" "securityOnly" {
 ///   mail_enabled     = false
 ///   return_all       = true
 ///   security_enabled = true
@@ -3145,6 +3661,17 @@ Future<GetGroupsResult> getGroups(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGroupsResult.fromMap(result);
+}
+
+pulumi.Output<GetGroupsResult> getGroupsOutput(
+  GetGroupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getGroups:getGroups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupsResult.fromMap);
 }
 
 /// Gets information about a Named Location within Azure Active Directory.
@@ -3210,7 +3737,7 @@ Future<GetGroupsResult> getGroups(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -3218,7 +3745,7 @@ Future<GetGroupsResult> getGroups(
 ///   }
 /// }
 ///
-/// data "azuread_getnamedlocation" "example" {
+/// data "azuread_named_location" "example" {
 ///   display_name = "My Named Location"
 /// }
 /// ```
@@ -3297,6 +3824,17 @@ Future<GetNamedLocationResult> getNamedLocation(
   return GetNamedLocationResult.fromMap(result);
 }
 
+pulumi.Output<GetNamedLocationResult> getNamedLocationOutput(
+  GetNamedLocationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getNamedLocation:getNamedLocation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamedLocationResult.fromMap);
+}
+
 /// Gets information about an existing service principal associated with an application within Azure Active Directory.
 ///
 /// ## API Permissions
@@ -3362,7 +3900,7 @@ Future<GetNamedLocationResult> getNamedLocation(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -3370,7 +3908,7 @@ Future<GetNamedLocationResult> getNamedLocation(
 ///   }
 /// }
 ///
-/// data "azuread_getserviceprincipal" "example" {
+/// data "azuread_service_principal" "example" {
 ///   display_name = "my-awesome-application"
 /// }
 /// ```
@@ -3465,7 +4003,7 @@ Future<GetNamedLocationResult> getNamedLocation(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -3473,7 +4011,7 @@ Future<GetNamedLocationResult> getNamedLocation(
 ///   }
 /// }
 ///
-/// data "azuread_getserviceprincipal" "example" {
+/// data "azuread_service_principal" "example" {
 ///   client_id = "00000000-0000-0000-0000-000000000000"
 /// }
 /// ```
@@ -3568,7 +4106,7 @@ Future<GetNamedLocationResult> getNamedLocation(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -3576,7 +4114,7 @@ Future<GetNamedLocationResult> getNamedLocation(
 ///   }
 /// }
 ///
-/// data "azuread_getserviceprincipal" "example" {
+/// data "azuread_service_principal" "example" {
 ///   object_id = "00000000-0000-0000-0000-000000000000"
 /// }
 /// ```
@@ -3629,6 +4167,17 @@ Future<GetServicePrincipalResult> getServicePrincipal(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServicePrincipalResult.fromMap(result);
+}
+
+pulumi.Output<GetServicePrincipalResult> getServicePrincipalOutput(
+  GetServicePrincipalArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getServicePrincipal:getServicePrincipal',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServicePrincipalResult.fromMap);
 }
 
 /// Gets basic information for multiple Azure Active Directory service principals.
@@ -3709,7 +4258,7 @@ Future<GetServicePrincipalResult> getServicePrincipal(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -3717,7 +4266,7 @@ Future<GetServicePrincipalResult> getServicePrincipal(
 ///   }
 /// }
 ///
-/// data "azuread_getserviceprincipals" "example" {
+/// data "azuread_service_principals" "example" {
 ///   display_names = ["example-app", "another-app"]
 /// }
 /// ```
@@ -3833,7 +4382,7 @@ Future<GetServicePrincipalResult> getServicePrincipal(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -3841,7 +4390,7 @@ Future<GetServicePrincipalResult> getServicePrincipal(
 ///   }
 /// }
 ///
-/// data "azuread_getserviceprincipals" "example" {
+/// data "azuread_service_principals" "example" {
 ///   client_ids = ["11111111-0000-0000-0000-000000000000", "22222222-0000-0000-0000-000000000000", "33333333-0000-0000-0000-000000000000"]
 /// }
 /// ```
@@ -3959,7 +4508,7 @@ Future<GetServicePrincipalResult> getServicePrincipal(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -3967,7 +4516,7 @@ Future<GetServicePrincipalResult> getServicePrincipal(
 ///   }
 /// }
 ///
-/// data "azuread_getserviceprincipals" "example" {
+/// data "azuread_service_principals" "example" {
 ///   object_ids = ["00000000-0000-0000-0000-000000000000", "00000000-0000-0000-0000-111111111111", "00000000-0000-0000-0000-222222222222"]
 /// }
 /// ```
@@ -4026,6 +4575,17 @@ Future<GetServicePrincipalsResult> getServicePrincipals(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServicePrincipalsResult.fromMap(result);
+}
+
+pulumi.Output<GetServicePrincipalsResult> getServicePrincipalsOutput(
+  GetServicePrincipalsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getServicePrincipals:getServicePrincipals',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServicePrincipalsResult.fromMap);
 }
 
 /// Gets information about an Azure Active Directory user.
@@ -4091,7 +4651,7 @@ Future<GetServicePrincipalsResult> getServicePrincipals(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -4099,7 +4659,7 @@ Future<GetServicePrincipalsResult> getServicePrincipals(
 ///   }
 /// }
 ///
-/// data "azuread_getuser" "example" {
+/// data "azuread_user" "example" {
 ///   user_principal_name = "user@example.com"
 /// }
 /// ```
@@ -4152,6 +4712,17 @@ Future<GetUserResult> getUser(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserResult.fromMap(result);
+}
+
+pulumi.Output<GetUserResult> getUserOutput(
+  GetUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getUser:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserResult.fromMap);
 }
 
 /// Gets basic information for multiple Azure Active Directory users.
@@ -4230,7 +4801,7 @@ Future<GetUserResult> getUser(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -4238,7 +4809,7 @@ Future<GetUserResult> getUser(
 ///   }
 /// }
 ///
-/// data "azuread_getusers" "users" {
+/// data "azuread_users" "users" {
 ///   user_principal_names = ["kat@example.com", "byte@example.com"]
 /// }
 /// ```
@@ -4295,4 +4866,15 @@ Future<GetUsersResult> getUsers(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUsersResult.fromMap(result);
+}
+
+pulumi.Output<GetUsersResult> getUsersOutput(
+  GetUsersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azuread:index/getUsers:getUsers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUsersResult.fromMap);
 }

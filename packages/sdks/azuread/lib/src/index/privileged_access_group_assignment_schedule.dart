@@ -117,7 +117,7 @@ import 'privileged_access_group_assignment_schedule_state.dart';
 /// 		}
 /// 		_, err = azuread.NewPrivilegedAccessGroupAssignmentSchedule(ctx, "example", &azuread.PrivilegedAccessGroupAssignmentScheduleArgs{
 /// 			GroupId:        pulumi.Any(pim.Id),
-/// 			PrincipalId:    member.ID(),
+/// 			PrincipalId:    member.ID().ToIDOutput().ToStringOutput(),
 /// 			AssignmentType: pulumi.String("member"),
 /// 			Duration:       pulumi.String("P30D"),
 /// 			Justification:  pulumi.String("as requested"),
@@ -130,7 +130,7 @@ import 'privileged_access_group_assignment_schedule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -139,16 +139,25 @@ import 'privileged_access_group_assignment_schedule_state.dart';
 /// }
 ///
 /// resource "azuread_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "group-name"
 ///   security_enabled = true
 /// }
 /// resource "azuread_user" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_principal_name = "jdoe@example.com"
 ///   display_name        = "J. Doe"
 ///   mail_nickname       = "jdoe"
 ///   password            = "SecretP@sswd99!"
 /// }
-/// resource "azuread_privilegedaccessgroupassignmentschedule" "example" {
+/// resource "azuread_privileged_access_group_assignment_schedule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_id        = pim.id
 ///   principal_id    = azuread_user.member.id
 ///   assignment_type = "member"
@@ -194,7 +203,7 @@ import 'privileged_access_group_assignment_schedule_state.dart';
 ///             .build());
 ///
 ///         var examplePrivilegedAccessGroupAssignmentSchedule = new PrivilegedAccessGroupAssignmentSchedule("examplePrivilegedAccessGroupAssignmentSchedule", PrivilegedAccessGroupAssignmentScheduleArgs.builder()
-///             .groupId(pim.id())
+///             .groupId(pim.get("id"))
 ///             .principalId(member.id())
 ///             .assignmentType("member")
 ///             .duration("P30D")
@@ -248,7 +257,7 @@ class PrivilegedAccessGroupAssignmentSchedule extends pulumi.CustomResource {
   late final pulumi.Output<String> groupId;
   /// The justification for this assignment. May be required by the role policy.
   late final pulumi.Output<String?> justification;
-  /// Is this assigment permanently valid.
+  /// Is this assignment permanently valid.
   ///
   /// At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
   late final pulumi.Output<bool> permanentAssignment;
@@ -275,7 +284,7 @@ class PrivilegedAccessGroupAssignmentSchedule extends pulumi.CustomResource {
           'azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     assignmentType = registerOutput<String>('assignmentType');
     duration = registerOutput<String?>('duration');
@@ -295,11 +304,12 @@ class PrivilegedAccessGroupAssignmentSchedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrivilegedAccessGroupAssignmentScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrivilegedAccessGroupAssignmentSchedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -313,6 +323,28 @@ class PrivilegedAccessGroupAssignmentSchedule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    assignmentType = registerOutput<String>('assignmentType');
+    duration = registerOutput<String?>('duration');
+    expirationDate = registerOutput<String>('expirationDate');
+    groupId = registerOutput<String>('groupId');
+    justification = registerOutput<String?>('justification');
+    permanentAssignment = registerOutput<bool>('permanentAssignment');
+    principalId = registerOutput<String>('principalId');
+    startDate = registerOutput<String>('startDate');
+    status = registerOutput<String>('status');
+    ticketNumber = registerOutput<String?>('ticketNumber');
+    ticketSystem = registerOutput<String?>('ticketSystem');
+  }
+
+  /// Creates a typed reference to an existing [PrivilegedAccessGroupAssignmentSchedule] resource.
+  PrivilegedAccessGroupAssignmentSchedule.reference(String urn)
+    : super(
+        'azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     assignmentType = registerOutput<String>('assignmentType');
     duration = registerOutput<String?>('duration');
     expirationDate = registerOutput<String>('expirationDate');

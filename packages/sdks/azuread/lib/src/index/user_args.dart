@@ -8,77 +8,77 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_user_user_args_doc}
 class UserArgs {
   /// Whether or not the account should be enabled.
-  final pulumi.Input<bool>? accountEnabled;
+  final pulumi.Input<bool?>? accountEnabled;
   /// The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`. Omit this property or specify a blank string to unset.
-  final pulumi.Input<String>? ageGroup;
+  final pulumi.Input<String?>? ageGroup;
   /// A list of telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure AD Connect.
-  final pulumi.Input<List<String>>? businessPhones;
+  final pulumi.Input<List<String>?>? businessPhones;
   /// The city in which the user is located.
-  final pulumi.Input<String>? city;
+  final pulumi.Input<String?>? city;
   /// The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
-  final pulumi.Input<String>? companyName;
+  final pulumi.Input<String?>? companyName;
   /// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
-  final pulumi.Input<String>? consentProvidedForMinor;
+  final pulumi.Input<String?>? consentProvidedForMinor;
   /// The cost center associated with the user.
-  final pulumi.Input<String>? costCenter;
+  final pulumi.Input<String?>? costCenter;
   /// The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
-  final pulumi.Input<String>? country;
+  final pulumi.Input<String?>? country;
   /// The name for the department in which the user works.
-  final pulumi.Input<String>? department;
+  final pulumi.Input<String?>? department;
   /// Whether the user's password is exempt from expiring. Defaults to `false`.
-  final pulumi.Input<bool>? disablePasswordExpiration;
+  final pulumi.Input<bool?>? disablePasswordExpiration;
   /// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
-  final pulumi.Input<bool>? disableStrongPassword;
+  final pulumi.Input<bool?>? disableStrongPassword;
   /// The name to display in the address book for the user.
   final pulumi.Input<String> displayName;
   /// The name of the division in which the user works.
-  final pulumi.Input<String>? division;
+  final pulumi.Input<String?>? division;
   /// The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
-  final pulumi.Input<String>? employeeHireDate;
+  final pulumi.Input<String?>? employeeHireDate;
   /// The employee identifier assigned to the user by the organisation.
-  final pulumi.Input<String>? employeeId;
+  final pulumi.Input<String?>? employeeId;
   /// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
-  final pulumi.Input<String>? employeeType;
+  final pulumi.Input<String?>? employeeType;
   /// The fax number of the user.
-  final pulumi.Input<String>? faxNumber;
+  final pulumi.Input<String?>? faxNumber;
   /// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
-  final pulumi.Input<bool>? forcePasswordChange;
+  final pulumi.Input<bool?>? forcePasswordChange;
   /// The given name (first name) of the user.
-  final pulumi.Input<String>? givenName;
+  final pulumi.Input<String?>? givenName;
   /// The user’s job title.
-  final pulumi.Input<String>? jobTitle;
+  final pulumi.Input<String?>? jobTitle;
   /// The SMTP address for the user. This property cannot be unset once specified.
-  final pulumi.Input<String>? mail;
+  final pulumi.Input<String?>? mail;
   /// The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
-  final pulumi.Input<String>? mailNickname;
+  final pulumi.Input<String?>? mailNickname;
   /// The object ID of the user's manager.
-  final pulumi.Input<String>? managerId;
+  final pulumi.Input<String?>? managerId;
   /// The primary cellular telephone number for the user.
-  final pulumi.Input<String>? mobilePhone;
+  final pulumi.Input<String?>? mobilePhone;
   /// The office location in the user's place of business.
-  final pulumi.Input<String>? officeLocation;
+  final pulumi.Input<String?>? officeLocation;
   /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `userPrincipalName` property when creating a new user account.
-  final pulumi.Input<String>? onpremisesImmutableId;
+  final pulumi.Input<String?>? onpremisesImmutableId;
   /// A list of additional email addresses for the user.
-  final pulumi.Input<List<String>>? otherMails;
+  final pulumi.Input<List<String>?>? otherMails;
   /// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
   ///
   /// &gt; **Passwords and importing users** Passwords can be changed but not cleared. Removing the `password` property for an existing user resource, or setting the password value to a blank string, will not remove the password. When importing a user, Terraform will not reset the password unless the value is subsequently changed in your configuration.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
-  final pulumi.Input<String>? postalCode;
+  final pulumi.Input<String?>? postalCode;
   /// The user's preferred language, in ISO 639-1 notation.
-  final pulumi.Input<String>? preferredLanguage;
+  final pulumi.Input<String?>? preferredLanguage;
   /// Whether or not the Outlook global address list should include this user. Defaults to `true`.
-  final pulumi.Input<bool>? showInAddressList;
+  final pulumi.Input<bool?>? showInAddressList;
   /// The state or province in the user's address.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The street address of the user's place of business.
-  final pulumi.Input<String>? streetAddress;
+  final pulumi.Input<String?>? streetAddress;
   /// The user's surname (family name or last name).
-  final pulumi.Input<String>? surname;
+  final pulumi.Input<String?>? surname;
   /// The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
-  final pulumi.Input<String>? usageLocation;
+  final pulumi.Input<String?>? usageLocation;
   /// The user principal name (UPN) of the user.
   final pulumi.Input<String> userPrincipalName;
 

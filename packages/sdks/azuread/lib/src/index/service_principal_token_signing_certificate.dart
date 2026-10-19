@@ -83,7 +83,7 @@ import 'service_principal_token_signing_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewServicePrincipalTokenSigningCertificate(ctx, "example", &azuread.ServicePrincipalTokenSigningCertificateArgs{
-/// 			ServicePrincipalId: exampleServicePrincipal.ID(),
+/// 			ServicePrincipalId: exampleServicePrincipal.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -93,7 +93,7 @@ import 'service_principal_token_signing_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -102,13 +102,22 @@ import 'service_principal_token_signing_certificate_state.dart';
 /// }
 ///
 /// resource "azuread_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_serviceprincipal" "example" {
+/// resource "azuread_service_principal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_id = azuread_application.example.client_id
 /// }
-/// resource "azuread_serviceprincipaltokensigningcertificate" "example" {
-///   service_principal_id = azuread_serviceprincipal.example.id
+/// resource "azuread_service_principal_token_signing_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_principal_id = azuread_service_principal.example.id
 /// }
 /// ```
 /// ```java
@@ -246,7 +255,7 @@ import 'service_principal_token_signing_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewServicePrincipalTokenSigningCertificate(ctx, "example", &azuread.ServicePrincipalTokenSigningCertificateArgs{
-/// 			ServicePrincipalId: exampleServicePrincipal.ID(),
+/// 			ServicePrincipalId: exampleServicePrincipal.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName:        pulumi.String("CN=example.com"),
 /// 			EndDate:            pulumi.String("2023-05-01T01:02:03Z"),
 /// 		})
@@ -258,7 +267,7 @@ import 'service_principal_token_signing_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -267,13 +276,22 @@ import 'service_principal_token_signing_certificate_state.dart';
 /// }
 ///
 /// resource "azuread_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_serviceprincipal" "example" {
+/// resource "azuread_service_principal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_id = azuread_application.example.client_id
 /// }
-/// resource "azuread_serviceprincipaltokensigningcertificate" "example" {
-///   service_principal_id = azuread_serviceprincipal.example.id
+/// resource "azuread_service_principal_token_signing_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_principal_id = azuread_service_principal.example.id
 ///   display_name         = "CN=example.com"
 ///   end_date             = "2023-05-01T01:02:03Z"
 /// }
@@ -380,7 +398,8 @@ class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResource {
           'azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
+          additionalSecretOutputs: const ['value'],
         ) {
     displayName = registerOutput<String>('displayName');
     endDate = registerOutput<String>('endDate');
@@ -388,7 +407,7 @@ class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResource {
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
     startDate = registerOutput<String>('startDate');
     thumbprint = registerOutput<String>('thumbprint');
-    value = registerOutput<String>('value');
+    value = registerOutput<String>('value', isSecret: true);
   }
 
   /// Gets an existing [ServicePrincipalTokenSigningCertificate] resource's state with the given [name] and [id].
@@ -396,11 +415,12 @@ class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServicePrincipalTokenSigningCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServicePrincipalTokenSigningCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -420,6 +440,25 @@ class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResource {
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
     startDate = registerOutput<String>('startDate');
     thumbprint = registerOutput<String>('thumbprint');
-    value = registerOutput<String>('value');
+    value = registerOutput<String>('value', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [ServicePrincipalTokenSigningCertificate] resource.
+  ServicePrincipalTokenSigningCertificate.reference(String urn)
+    : super(
+        'azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['value'],
+        isResourceReference: true,
+      ) {
+    displayName = registerOutput<String>('displayName');
+    endDate = registerOutput<String>('endDate');
+    keyId = registerOutput<String>('keyId');
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
+    startDate = registerOutput<String>('startDate');
+    thumbprint = registerOutput<String>('thumbprint');
+    value = registerOutput<String>('value', isSecret: true);
   }
 }

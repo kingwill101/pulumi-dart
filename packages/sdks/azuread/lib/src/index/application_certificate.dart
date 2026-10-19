@@ -97,7 +97,7 @@ import 'application_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:          pulumi.String("AsymmetricX509Cert"),
 /// 			Value:         pulumi.String(invokeFile.Result),
 /// 			EndDate:       pulumi.String("2021-05-01T01:02:03Z"),
@@ -110,7 +110,7 @@ import 'application_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -121,11 +121,17 @@ import 'application_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_applicationregistration" "example" {
+/// resource "azuread_application_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_applicationcertificate" "example" {
-///   application_id = azuread_applicationregistration.example.id
+/// resource "azuread_application_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_id = azuread_application_registration.example.id
 ///   type           = "AsymmetricX509Cert"
 ///   value          = file("cert.pem")
 ///   end_date       = "2021-05-01T01:02:03Z"
@@ -277,7 +283,7 @@ import 'application_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-/// 			Input: std.File(ctx, &std.FileArgs{
+/// 			Input: std.File(ctx, std.FileArgs{
 /// 				Input: "cert.der",
 /// 			}, nil).Result,
 /// 		}, nil)
@@ -285,7 +291,7 @@ import 'application_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:          pulumi.String("AsymmetricX509Cert"),
 /// 			Encoding:      pulumi.String("base64"),
 /// 			Value:         pulumi.String(invokeBase64encode.Result),
@@ -299,7 +305,7 @@ import 'application_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -310,11 +316,17 @@ import 'application_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_applicationregistration" "example" {
+/// resource "azuread_application_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_applicationcertificate" "example" {
-///   application_id = azuread_applicationregistration.example.id
+/// resource "azuread_application_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_id = azuread_application_registration.example.id
 ///   type           = "AsymmetricX509Cert"
 ///   encoding       = "base64"
 ///   value          = base64encode(file("cert.der"))
@@ -647,8 +659,8 @@ import 'application_certificate_state.dart';
 /// 			KeyVaultId: exampleAzurermKeyVault.Id,
 /// 			CertificatePolicy: []map[string]interface{}{
 /// 				map[string]interface{}{
-/// 					"issuerParameters": []map[string]interface{}{
-/// 						map[string]interface{}{
+/// 					"issuerParameters": []map[string]string{
+/// 						{
 /// 							"name": "Self",
 /// 						},
 /// 					},
@@ -662,20 +674,20 @@ import 'application_certificate_state.dart';
 /// 					},
 /// 					"lifetimeAction": []map[string]interface{}{
 /// 						map[string]interface{}{
-/// 							"action": []map[string]interface{}{
-/// 								map[string]interface{}{
+/// 							"action": []map[string]string{
+/// 								{
 /// 									"actionType": "AutoRenew",
 /// 								},
 /// 							},
-/// 							"trigger": []map[string]interface{}{
-/// 								map[string]interface{}{
+/// 							"trigger": []map[string]int{
+/// 								{
 /// 									"daysBeforeExpiry": 30,
 /// 								},
 /// 							},
 /// 						},
 /// 					},
-/// 					"secretProperties": []map[string]interface{}{
-/// 						map[string]interface{}{
+/// 					"secretProperties": []map[string]string{
+/// 						{
 /// 							"contentType": "application/x-pkcs12",
 /// 						},
 /// 					},
@@ -690,8 +702,8 @@ import 'application_certificate_state.dart';
 /// 								"keyCertSign",
 /// 								"keyEncipherment",
 /// 							},
-/// 							"subjectAlternativeNames": []map[string]interface{}{
-/// 								map[string]interface{}{
+/// 							"subjectAlternativeNames": []map[string][]string{
+/// 								{
 /// 									"dnsNames": []string{
 /// 										"internal.contoso.com",
 /// 										"domain.hello.world",
@@ -709,7 +721,7 @@ import 'application_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
-/// 			ApplicationId: exampleApplication.ID(),
+/// 			ApplicationId: exampleApplication.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:          pulumi.String("AsymmetricX509Cert"),
 /// 			Encoding:      pulumi.String("hex"),
 /// 			Value:         example.CertificateData,
@@ -724,7 +736,7 @@ import 'application_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -732,7 +744,10 @@ import 'application_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "azurerm_keyvaultcertificate" "example" {
+/// resource "azurerm_key_vault_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "generated-cert"
 ///   key_vault_id = exampleAzurermKeyVault.id
 ///   certificate_policy = [{
@@ -768,15 +783,21 @@ import 'application_certificate_state.dart';
 ///   }]
 /// }
 /// resource "azuread_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_applicationcertificate" "example" {
+/// resource "azuread_application_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id = azuread_application.example.id
 ///   type           = "AsymmetricX509Cert"
 ///   encoding       = "hex"
-///   value          = azurerm_keyvaultcertificate.example.certificateData
-///   end_date       = azurerm_keyvaultcertificate.example.certificateAttribute[0].expires
-///   start_date     = azurerm_keyvaultcertificate.example.certificateAttribute[0].notBefore
+///   value          = azurerm_key_vault_certificate.example.certificateData
+///   end_date       = azurerm_key_vault_certificate.example.certificateAttribute[0].expires
+///   start_date     = azurerm_key_vault_certificate.example.certificateAttribute[0].notBefore
 /// }
 /// ```
 /// ```java
@@ -810,7 +831,7 @@ import 'application_certificate_state.dart';
 ///
 ///         var example = new KeyVaultCertificate("example", KeyVaultCertificateArgs.builder()
 ///             .name("generated-cert")
-///             .keyVaultId(exampleAzurermKeyVault.id())
+///             .keyVaultId(exampleAzurermKeyVault.get("id"))
 ///             .certificatePolicy(Arrays.asList(Map.ofEntries(
 ///                 Map.entry("issuerParameters", Arrays.asList(Map.of("name", "Self"))),
 ///                 Map.entry("keyProperties", Arrays.asList(Map.ofEntries(
@@ -844,9 +865,9 @@ import 'application_certificate_state.dart';
 ///             .applicationId(exampleApplication.id())
 ///             .type("AsymmetricX509Cert")
 ///             .encoding("hex")
-///             .value(example.certificateData())
-///             .endDate(example.certificateAttribute()[0].expires())
-///             .startDate(example.certificateAttribute()[0].notBefore())
+///             .value(example.get("certificateData"))
+///             .endDate(example.get("certificateAttribute")[0].get("expires"))
+///             .startDate(example.get("certificateAttribute")[0].get("notBefore"))
 ///             .build());
 ///
 ///     }
@@ -949,7 +970,8 @@ class ApplicationCertificate extends pulumi.CustomResource {
           'azuread:index/applicationCertificate:ApplicationCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
+          additionalSecretOutputs: const ['value'],
         ) {
     applicationId = registerOutput<String>('applicationId');
     encoding = registerOutput<String?>('encoding');
@@ -958,7 +980,7 @@ class ApplicationCertificate extends pulumi.CustomResource {
     keyId = registerOutput<String>('keyId');
     startDate = registerOutput<String>('startDate');
     type = registerOutput<String?>('type');
-    value = registerOutput<String>('value');
+    value = registerOutput<String>('value', isSecret: true);
   }
 
   /// Gets an existing [ApplicationCertificate] resource's state with the given [name] and [id].
@@ -966,11 +988,12 @@ class ApplicationCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -991,6 +1014,26 @@ class ApplicationCertificate extends pulumi.CustomResource {
     keyId = registerOutput<String>('keyId');
     startDate = registerOutput<String>('startDate');
     type = registerOutput<String?>('type');
-    value = registerOutput<String>('value');
+    value = registerOutput<String>('value', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [ApplicationCertificate] resource.
+  ApplicationCertificate.reference(String urn)
+    : super(
+        'azuread:index/applicationCertificate:ApplicationCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['value'],
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    encoding = registerOutput<String?>('encoding');
+    endDate = registerOutput<String>('endDate');
+    endDateRelative = registerOutput<String?>('endDateRelative');
+    keyId = registerOutput<String>('keyId');
+    startDate = registerOutput<String>('startDate');
+    type = registerOutput<String?>('type');
+    value = registerOutput<String>('value', isSecret: true);
   }
 }
